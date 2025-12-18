@@ -1,0 +1,1 @@
+在开始之前，请获取最新版本的 [Docker Desktop](/get-started/get-docker.md)。Docker 会定期添加新功能，本指南中的某些部分可能仅在使用最新版本的 Docker Desktop 时才能正常工作。

@@ -1,0 +1,57 @@
+---
+title: 扩展镜像标签
+linkTitle: 添加标签
+description: Docker 扩展标签
+keywords: Docker, extensions, sdk, labels
+aliases: 
+ - /desktop/extensions-sdk/extensions/labels/
+weight: 10
+---
+
+扩展使用镜像标签来提供额外的信息，例如标题、描述、截图等。
+
+这些信息随后会显示为扩展的概览，以便用户选择安装。
+
+![由标签生成的扩展概览](images/marketplace-details.png)
+
+你可以在扩展的 `Dockerfile` 中定义 [镜像标签](/reference/dockerfile.md#label)。
+
+> [!IMPORTANT]
+>
+> 如果 `Dockerfile` 中缺少任何 **必需** 的标签，Docker Desktop 会将该扩展视为无效，不会在 Marketplace 中列出。
+
+以下是你在构建扩展时可以或必须指定的标签列表：
+
+| 标签                                       | 是否必需 | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 示例                                                                                                                                                                                                                                                         |
+| ------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `org.opencontainers.image.title`            | 是      | 镜像的人类可读标题（字符串）。这会显示在 Docker Desktop 的 UI 中。                                                                                                                                                                                                                                                                                                                                                                                                                        | my-extension                                                                                                                                                                                                                                                    |
+| `org.opencontainers.image.description`      | 是      | 镜像中打包软件的人类可读描述（字符串）                                                                                                                                                                                                                                                                                                                                                                                                                                                     | This extension is cool.                                                                                                                                                                                                                                         |
+| `org.opencontainers.image.vendor`           | 是      | 分发实体、组织或个人的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Acme, Inc.                                                                                                                                                                                                                                                      |
+| `com.docker.desktop.extension.api.version`  | 是      | 扩展兼容的 Docker Extension 管理器版本。必须遵循 [语义化版本](https://semver.org/)。                                                                                                                                                                                                                                                                                                                                                                                                     | 特定版本如 `0.1.0`，或约束表达式：`>= 0.1.0`、`>= 1.4.7, < 2.0`。对于你的第一个扩展，你可以使用 `docker extension version` 来了解 SDK API 版本，并指定 `>= <SDK_API_VERSION>`。                                   |
+| `com.docker.desktop.extension.icon`         | 是      | 扩展图标（格式：.svg .png .jpg）                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `https://example.com/assets/image.svg`                                                                                                                                                                                                                          |
+| `com.docker.extension.screenshots`          | 是      | 面向用户的 JSON 格式图片 URL 数组及替代文本（按元数据中的顺序显示）在扩展的详情页面中展示。**注意：** 截图的推荐尺寸为 2400x1600 像素。                                                                                                                                                                                                                                                                                                                                                       | `[{"alt":"image 1 的替代文本",` `"url":"https://example.com/image1.png"},` `{"alt":"image2 的替代文本",` `"url":"https://example.com/image2.jpg"}]`                                                                                         |
+| `com.docker.extension.detailed-description` | 是      | 以纯文本或 HTML 格式提供的扩展详细信息，显示在详情对话框中。                                                                                                                                                                                                                                                                                                                                                                                                                            | `My detailed description` 或 `<h1>My detailed description</h1>`                                                                                                                                                                                                 |
+| `com.docker.extension.publisher-url`        | 是      | 在详情对话框中显示的发布者网站 URL。                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `https://example.com`                                                                                                                                                                                                                                           |
+| `com.docker.extension.additional-urls`      | 否       | 面向用户的 JSON 格式标题和附加 URL 数组（按元数据中的顺序显示）在扩展的详情页面中展示。Docker 建议在适用的情况下显示以下链接：文档、支持、服务条款和隐私政策链接。                                                                                                                                                                                                                                                                                                                              | `[{"title":"Documentation","url":"https://example.com/docs"},` `{"title":"Support","url":"https://example.com/bar/support"},` `{"title":"Terms of Service","url":"https://example.com/tos"},` `{"title":"Privacy policy","url":"https://example.com/privacy"}]` |
+| `com.docker.extension.changelog`            | 是      | 仅包含当前版本变更的纯文本或 HTML 格式更新日志。                                                                                                                                                                                                                                                                                                                                                                                                                                           | `Extension changelog` 或 `<p>Extension changelog<ul>` `<li>New feature A</li>` `<li>Bug fix on feature B</li></ul></p>`                                                                                                                                         |
+| `com.docker.extension.account-info`         | 否       | 用户是否需要注册 SaaS 平台才能使用扩展的某些功能。                                                                                                                                                                                                                                                                                                                                                                                                                                          | `required` 表示需要，否则留空。                                                                                                                                                                                                           |
+| `com.docker.extension.categories`           | 否       | 扩展所属的 Marketplace 类别列表：`ci-cd`、`container-orchestration`、`cloud-deployment`、`cloud-development`、`database`、`kubernetes`、`networking`、`image-registry`、`security`、`testing-tools`、`utility-tools`、`volumes`。如果你未指定此标签，用户在 Marketplace 中按类别筛选时将无法找到你的扩展。2022 年 9 月 22 日之前发布到 Marketplace 的扩展已被 Docker 自动分类。 | 多个类别时以逗号分隔，例如 `kubernetes,security`；单个类别时例如 `kubernetes`。                                                                                                   |
+
+> [!TIP]
+>
+> Docker Desktop 会对提供的 HTML 内容应用 CSS 样式。你可以确保它在 [Marketplace 中正确渲染](#preview-the-extension-in-the-marketplace)。建议你遵循 [样式指南](../design/_index.md)。
+
+## 在 Marketplace 中预览扩展
+
+你可以验证镜像标签的渲染效果是否符合预期。
+
+当你创建并安装未发布的扩展时，可以在 Marketplace 的 **Managed** 选项卡中预览扩展。你可以看到扩展标签在列表和详情页面中的渲染效果。
+
+> 预览已在 Marketplace 中列出的扩展
+>
+> 当你安装已发布在 Marketplace 中的扩展的本地镜像时（例如带有 `latest` 标签的镜像），你的本地镜像不会被检测为“未发布”。
+>
+> 你可以重新标记你的镜像，使其具有不同的镜像名称，该名称不会被列为已发布的扩展。
+> 使用 `docker tag org/published-extension unpublished-extension`，然后执行 `docker extension install unpublished-extension`。
+
+![List preview](images/list-preview.png)

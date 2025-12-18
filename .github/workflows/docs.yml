@@ -1,0 +1,88 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - docs
+    paths:
+      - 'docs_zh/**'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      HUGO_VERSION: 0.141.0
+      TZ: Asia/Shanghai
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/checkout@v6
+      - name: Install Hugo
+        run: |
+          curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          mkdir "${HOME}/.local/hugo"
+          tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
+      - name: Verify installations
+        run: |
+          echo "Hugo: $(hugo version)"
+          echo "Node.js: $(node --version)"
+      - name: Fetch Source
+        run: |
+          git clone https://github.com/docker/docs.git docsite
+      - name: Build Docs
+        run: |
+          cp -r docs_zh/* ./docsite/content
+          cd docsite/
+          npm install
+          hugo build
+      - name: Copy CNAME  
+        run: cp CNAME docsite/public/
+
+      ### SSH Server WEB
+      - name: Set up SSH
+        uses: LuisEnMarroquin/setup-ssh-action@v3.0.0
+        with:
+          ORIGIN: ${{ secrets.SSH_HOSTNAME }}
+          SSHKEY: ${{ secrets.SSH_KEY }}
+          NAME: webserver
+          PORT: ${{ secrets.SSH_PORT }}
+          USER: ${{ secrets.SSH_USERNAME }}
+      - run: echo "" >> ~/.ssh/access  # fix
+      - name: Deploy the website
+        env: 
+          WEBROOT: /data/wwwroot/roocode
+        run: |
+          ssh webserver "rm -rf $WEBROOT && mkdir -p $WEBROOT"
+          scp -r docsite/public/* webserver:${WEBROOT}
+
+      ### GitHub Pages
+      # - run: cp CNAME docsite/public/
+      # - uses: actions/upload-pages-artifact@v4
+      #   with:
+      #     path: docsite/public
+      # - uses: actions/deploy-pages@v4
+      #   id: deployment
+
+      - name: Deploy to Branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docsite/public

@@ -1,0 +1,1 @@
+配置（Configs）允许服务在无需重新构建 Docker 镜像的情况下调整其行为。与卷（volumes）类似，配置也被挂载为容器文件系统中的文件。在容器内的挂载点默认位置为 Linux 容器的 `/<config-name>` 和 Windows 容ainers 的 `C:\<config-name>`。

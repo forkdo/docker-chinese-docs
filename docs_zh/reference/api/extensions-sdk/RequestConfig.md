@@ -1,0 +1,36 @@
+---
+title: "接口: RequestConfig"
+description: Docker 扩展 API 参考
+keywords: Docker, 扩展, sdk, API, 参考
+aliases:
+ - /desktop/extensions-sdk/dev/api/reference/interfaces/RequestConfig/
+ - /extensions/extensions-sdk/dev/api/reference/interfaces/RequestConfig/
+---
+
+**`Since`**
+
+0.2.0
+
+## 属性
+
+### url
+
+• `Readonly` **url**: `string`
+
+___
+
+### method
+
+• `Readonly` **method**: `string`
+
+___
+
+### headers
+
+• `Readonly` **headers**: `Record`<`string`, `string`\>
+
+___
+
+### data
+
+• `Readonly` **data**: `any`

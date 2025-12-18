@@ -1,0 +1,15 @@
+---
+datafolder: engine-cli
+datafile: docker_version
+title: docker version
+aliases:
+- /edge/engine/reference/commandline/version/
+- /engine/reference/commandline/version/
+layout: cli
+---
+
+<!--
+本页面根据 Docker 源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
+
+https://github.com/docker/cli
+-->

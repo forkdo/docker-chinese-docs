@@ -1,0 +1,14 @@
+---
+datafolder: scout-cli
+datafile: docker_scout_environment
+aliases:
+- /engine/reference/commandline/scout_environment
+title: docker scout environment
+layout: cli
+---
+
+<!--
+此页面由 Docker 源代码自动生成。如果您想对这里显示的文本提出修改建议，请在 GitHub 上的源代码仓库中提交问题：
+
+https://github.com/docker/scout-cli
+-->

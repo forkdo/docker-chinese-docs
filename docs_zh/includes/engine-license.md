@@ -1,0 +1,1 @@
+Apache 许可证，版本 2.0。完整许可证请参阅 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
