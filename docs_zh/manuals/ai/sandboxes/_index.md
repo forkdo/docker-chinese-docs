@@ -10,7 +10,7 @@ params:
       text: 实验性功能
 ---
 
-{{< summary-bar feature_name="Docker 沙盒" >}}
+{{< summary-bar feature_name="Docker Sandboxes" >}}
 
 Docker 沙盒可简化在本地机器上安全运行 AI 代理的过程。
 该功能专为使用 Claude Code 等编码代理进行开发的开发者设计，

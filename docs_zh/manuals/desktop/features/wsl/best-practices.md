@@ -1,12 +1,10 @@
 ---
 title: 最佳实践
-description: &desc 在 WSL 2 环境下使用 Docker Desktop 的最佳实践
+description: 在 WSL 2 环境下使用 Docker Desktop 的最佳实践
 keywords: wsl, docker desktop, best practices
 tags: [最佳实践]
 aliases:
 - /desktop/wsl/best-practices/
-params:
-  description: *desc
 ---
 
 - 始终使用最新版本的 WSL。最低要求使用 WSL 2.1.5 版本，否则 Docker Desktop 可能无法正常工作。测试、开发和文档均基于最新的内核版本。旧版本的 WSL 可能导致：

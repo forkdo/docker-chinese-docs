@@ -4,7 +4,7 @@ description: 了解如何配置 Claude Code 身份验证、传递 CLI 选项，�
 weight: 30
 ---
 
-{{< summary-bar feature_name="Docker 沙盒" >}}
+{{< summary-bar feature_name="Docker Sandboxes" >}}
 
 本指南介绍在沙盒环境中运行 Claude Code 的身份验证、配置文件和常用选项。
 

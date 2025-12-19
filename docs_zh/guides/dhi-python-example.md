@@ -5,7 +5,7 @@ summary: |
 type: redirect
 target: /dhi/migration/examples/python/
 tags: [dhi]
-languages: []
+
 params:
   time: 10 分钟
   featured: true

@@ -4,7 +4,7 @@ linkTitle: 发布说明
 weight: 10
 description: 了解最新 Docker Compose 版本的新功能、错误修复和破坏性变更
 keywords: release notes, compose
-tags: [发布说明]
+tags: [release-notes]
 toc_max: 2
 aliases:
 - /release-notes/docker-compose/

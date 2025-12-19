@@ -4,8 +4,8 @@ description: &desc 使用 Dex 在测试中模拟 OAuth 服务
 keywords: Dex, 容器化开发
 linktitle: 使用 Dex 模拟 OAuth 服务
 summary: *desc
-tags: [应用开发, 分布式系统]
-languages: []
+tags: [app-dev, distributed-systems]
+
 params:
   time: 10 分钟
 ---

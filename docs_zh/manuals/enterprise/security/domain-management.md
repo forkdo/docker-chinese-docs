@@ -1,13 +1,10 @@
 ---
 title: 管理域名
-description: &desc 添加、验证和管理域名，以控制用户访问并启用 Docker 组织中的自动配置
+description: 添加、验证和管理域名，以控制用户访问并启用 Docker 组织中的自动配置
 keywords: 域名管理, 域名验证, 自动配置, 用户管理, DNS, TXT 记录, 管理控制台
 weight: 55
 aliases:
  - /security/for-admins/domain-management/
-params:
-  - name: description
-    value: *desc
 ---
 
 {{< summary-bar feature_name="Domain management" >}}

@@ -35,7 +35,7 @@ weight: 40
 
 ### 导入构建
 
-{{< summary-bar feature_name="导入构建" >}}
+{{< summary-bar feature_name="Import builds" >}}
 
 **导入构建**按钮允许您导入其他人或 CI 环境中的构建记录。导入构建记录后，您可以直接在 Docker Desktop 中查看该构建的完整日志、跟踪和其他数据。
 

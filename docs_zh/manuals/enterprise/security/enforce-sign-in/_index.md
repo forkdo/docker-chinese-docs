@@ -12,7 +12,7 @@ aliases:
 weight: 30
 ---
 
-{{< summary-bar feature_name="强制登录" >}}
+{{< summary-bar feature_name="Enforce sign-in" >}}
 
 默认情况下，用户可以不登录组织直接使用 Docker Desktop。
 当用户未作为组织成员登录时，他们将无法享受订阅权益，并可能绕过组织配置的安全功能。

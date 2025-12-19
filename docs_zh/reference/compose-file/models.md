@@ -5,7 +5,7 @@ keywords: compose, compose 规范, 模型, compose 文件参考
 weight: 120
 ---
 
-{{< summary-bar feature_name="Compose 模型" >}}
+{{< summary-bar feature_name="Compose models" >}}
 
 顶级 `models` 部分声明了您的 Compose 应用程序所使用的 AI 模型。这些模型通常作为 OCI 工件拉取，由模型运行器执行，并作为 API 暴露，您的服务容器可以消费这些 API。
 

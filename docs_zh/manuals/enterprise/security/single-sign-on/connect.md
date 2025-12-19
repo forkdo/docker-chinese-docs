@@ -1,13 +1,10 @@
 ---
 title: 连接单点登录
 linkTitle: 连接
-description: &desc 连接 Docker 与您的身份提供商，测试配置，并启用强制策略
+description: 连接 Docker 与您的身份提供商，测试配置，并启用强制策略
 keywords: 配置 sso, 设置 sso, docker sso 设置, docker 身份提供商, sso 强制策略, docker hub, 安全
 aliases:
  - /security/for-admins/single-sign-on/connect/
-params:
-  - name: description
-    value: *desc
 ---
 
 {{< summary-bar feature_name="SSO" >}}

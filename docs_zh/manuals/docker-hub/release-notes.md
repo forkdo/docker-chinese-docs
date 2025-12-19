@@ -6,7 +6,7 @@ description: 了解 Docker Hub 的新功能、错误修复和重大变更
 keywords: docker hub, 新功能, 发布说明
 toc_min: 1
 toc_max: 2
-tags: [发布说明]
+tags: [release-notes]
 ---
 
 在此处，您可以了解每个 Docker Hub 版本的最新变更、新功能、错误修复和已知问题。

@@ -3,7 +3,7 @@ title: 使用 Bake 构建 Compose 项目
 description: 学习如何使用 Docker Buildx Bake 构建 Docker Compose 项目
 summary: |
   本指南演示如何使用 Bake 为 Docker Compose 项目构建生产级镜像。
-languages: []
+
 tags: [devops]
 params:
   time: 20 分钟

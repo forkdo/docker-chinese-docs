@@ -5,4 +5,4 @@ title: Docker Desktop 日志
 layout: cli
 ---
 
-{{< summary-bar feature_name="Docker Desktop CLI 日志" >}}
+{{< summary-bar feature_name="Docker Desktop CLI logs" >}}

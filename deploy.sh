@@ -34,12 +34,30 @@ incremental_update() {
     # git diff docs/
 }
 
+# Patch Hugo layouts to avoid errors on missing metadata
+patch_hugo_layouts() {
+    if [[ -d docsite/layouts ]]; then
+        sed -i 's/errorf "\[summary-bar\]/warnf "[summary-bar]/g' docsite/layouts/shortcodes/summary-bar.html || true
+        sed -i 's/errorf "\[tags\]/warnf "[tags]/g' docsite/layouts/partials/tags.html || true
+        sed -i 's/errorf "\[languages\]/warnf "[languages]/g' docsite/layouts/partials/languages.html || true
+    fi
+}
+
 # 复制 docs_zh 至  content
 copy_docs_zh() {
     if [[ ! -d docsite ]]; then
         git clone https://github.com/docker/docs.git docsite
     fi
+    patch_hugo_layouts
     cp -r docs_zh/* docsite/content
+}
+
+# 本地测试
+start_dev() {
+    copy_docs_zh
+    cd docsite
+    npm install
+    hugo server -D
 }
 
 # 调用翻译脚本
@@ -82,6 +100,10 @@ main() {
                 ;;
             -s|--hugo)
                 install_hugo
+                shift
+                ;;
+            -r|--start)
+                start_dev
                 shift
                 ;;
             -t|--translate)
