@@ -4,17 +4,17 @@ title: 代码块
 toc_max: 3
 ---
 
-Rouge 提供了许多不同的代码块“提示”。如果你省略提示，它会尝试猜测，有时会出错。以下是我们经常使用的一些提示。
+Rouge 提供了许多不同的代码块“提示”。如果省略提示，它会尝试猜测，有时可能会猜错。以下是我们经常使用的几个提示。
 
 ## 变量
 
-如果你的示例包含可能变化的占位符值，请使用格式 `<[A-Z_]+>` 表示占位符值：`<MY_VARIABLE>`
+如果示例中包含可能更改的占位符值，请使用格式 `<[A-Z_]+>` 表示占位符值：`<MY_VARIABLE>`
 
 ```text
-export name=<MY_VARIABLE>
+export name=<MY_NAME>
 ```
 
-这种语法专用于变量名，会使变量以特殊的颜色和字体样式渲染。
+此语法保留用于变量名，将导致变量以特殊的颜色和字体样式呈现。
 
 ## 高亮行
 
@@ -90,14 +90,15 @@ RUN --mount=type=bind,target=. \
 
 ## Bash
 
-当你想显示 Bash 脚本时，请使用 `bash` 语言代码块：
+当需要显示 Bash 脚本时，请使用 `bash` 语言代码块：
 
 ```bash
 #!/usr/bin/bash
 echo "deb https://download.docker.com/linux/ubuntu noble stable" | sudo tee /etc/apt/sources.list.d/docker.list
 ```
 
-如果你想显示交互式 shell，请改用 `console`。在使用 `console` 的情况下，请确保在用户提示符前添加美元符号：
+如果要显示交互式 shell，请改用 `console`。
+在使用 `console` 的情况下，请确保为用户提示符添加美元符号：
 
 ```console
 $ echo "deb https://download.docker.com/linux/ubuntu noble stable" | sudo tee /etc/apt/sources.list.d/docker.list
@@ -168,7 +169,7 @@ end
 # Hello
 ```
 
-如果你想在代码块内包含一个三重围栏代码块，可以用四重围栏代码块包裹你的代码块：
+如果要在代码块中包含三重围栏代码块，可以将代码块包装在四重围栏代码块中：
 
 `````markdown
 ````markdown

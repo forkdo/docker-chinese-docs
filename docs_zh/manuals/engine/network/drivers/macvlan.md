@@ -1,7 +1,7 @@
 ---
 title: Macvlan 网络驱动
 description:
-  关于如何使用 Macvlan 让容器在网络中表现为物理机器的全部内容
+  关于如何使用 Macvlan 让容器在网络中表现为物理设备的全部内容
 keywords: network, macvlan, standalone
 aliases:
   - /config/containers/macvlan/
@@ -11,45 +11,45 @@ aliases:
   - /engine/network/tutorials/macvlan/
 ---
 
-某些应用程序，尤其是遗留应用程序或监控网络流量的应用程序，期望直接连接到物理网络。在这种情况下，你可以使用 `macvlan` 网络驱动为每个容器的虚拟网络接口分配一个 MAC 地址，使其看起来像是直接连接到物理网络的物理网络接口。此时，你需要在 Docker 主机上指定一个物理接口用于 Macvlan，以及网络的子网和网关。你甚至可以使用不同的物理网络接口来隔离你的 Macvlan 网络。
+某些应用程序（尤其是传统应用程序或监控网络流量的应用程序）需要直接连接到物理网络。在这种情况下，您可以使用 `macvlan` 网络驱动为每个容器的虚拟网络接口分配一个 MAC 地址，使其看起来像是直接连接到物理网络的物理网络接口。此时，您需要指定 Docker 主机上的一个物理接口用于 Macvlan，以及网络的子网和网关。您甚至可以使用不同的物理网络接口来隔离 Macvlan 网络。
 
-## 平台支持和要求
+## 平台支持与要求
 
-- Macvlan 驱动仅在 Linux 主机上工作。不支持 Mac 或 Windows 上的 Docker Desktop，也不支持 Windows 上的 Docker Engine。
-- 大多数云提供商阻止 macvlan 网络。你可能需要对网络设备的物理访问权限。
-- 需要至少 Linux 内核版本 3.9（建议版本 4.0 或更高）。
-- Macvlan 驱动在无根模式（rootless mode）下不受支持。
+- macvlan 驱动仅适用于 Linux 主机。不支持 Docker Desktop for Mac 或 Windows，也不支持 Windows 上的 Docker Engine。
+- 大多数云提供商禁止 macvlan 网络。您可能需要直接访问网络设备。
+- 至少需要 Linux 内核版本 3.9（推荐使用 4.0 或更高版本）。
+- macvlan 驱动不支持无根模式（rootless mode）。
 
 ## 注意事项
 
-- 你可能由于 IP 地址耗尽或“VLAN 扩散”（VLAN spread）而意外降低网络性能，后者是指网络中存在过多唯一 MAC 地址的情况。
+- 您可能因 IP 地址耗尽或“VLAN 扩散”（当网络中不恰当地存在大量唯一 MAC 地址时发生的情况）而意外降低网络性能。
 
-- 你的网络设备需要能够处理“混杂模式”（promiscuous mode），即一个物理接口可以分配多个 MAC 地址。
+- 您的网络设备需要能够处理“混杂模式”（promiscuous mode），即一个物理接口可被分配多个 MAC 地址。
 
-- 如果你的应用程序可以使用网桥（在单个 Docker 主机上）或覆盖网络（在多个 Docker 主机间通信），这些方案从长期来看可能更好。
+- 如果您的应用程序可以使用桥接（在单个 Docker 主机上）或覆盖网络（跨多个 Docker 主机通信），这些方案从长远来看可能更优。
 
-- 连接到 macvlan 网络的容器无法直接与主机通信，这是 Linux 内核的限制。如果你需要主机与容器之间的通信，你可以将容器同时连接到网桥网络。也可以在主机上创建一个与同一父接口相同的 macvlan 接口，并为其分配 Docker 网络子网中的 IP 地址。
+- 连接到 macvlan 网络的容器无法直接与主机通信，这是 Linux 内核的限制。如果需要在主机和容器之间通信，您可以将容器同时连接到桥接网络和 macvlan 网络。也可以在主机上创建一个使用相同父接口的 macvlan 接口，并为其分配 Docker 网络子网中的 IP 地址。
 
 ## 选项
 
-下表描述了使用 `macvlan` 驱动创建网络时，你可以通过 `--opt` 传递的驱动特定选项。
+下表描述了使用 `macvlan` 驱动创建网络时可传递给 `--opt` 的驱动特定选项。
 
-| 选项             | 默认值   | 描述                                                                   |
+| 选项           | 默认值   | 描述                                                                         |
 | -------------- | -------- | ----------------------------------------------------------------------------- |
-| `macvlan_mode` | `bridge` | 设置 Macvlan 模式。可以是以下之一：`bridge`、`vepa`、`passthru`、`private` |
-| `parent`       |          | 指定要使用的父接口。                                        |
+| `macvlan_mode` | `bridge` | 设置 Macvlan 模式。可选值包括：`bridge`、`vepa`、`passthru`、`private`        |
+| `parent`       |          | 指定要使用的父接口。                                                          |
 
 ## 创建 Macvlan 网络
 
-创建 Macvlan 网络时，它可以处于桥接模式或 802.1Q 中继桥接模式。
+创建 Macvlan 网络时，可以是桥接模式或 802.1Q 中继桥接模式。
 
 - 在桥接模式下，Macvlan 流量通过主机上的物理设备传输。
 
-- 在 802.1Q 中继桥接模式下，流量通过 Docker 动态创建的 802.1Q 子接口传输。这允许你更精细地控制路由和过滤。
+- 在 802.1Q 中继桥接模式下，流量通过 Docker 动态创建的 802.1Q 子接口传输。这使您能够以更细粒度控制路由和过滤。
 
 ### 桥接模式
 
-要创建与特定物理网络接口桥接的 `macvlan` 网络，请在 `docker network create` 命令中使用 `--driver macvlan`。你还需要指定 `parent`，即流量在 Docker 主机上实际通过的接口。
+要创建一个与给定物理网络接口桥接的 `macvlan` 网络，请在 `docker network create` 命令中使用 `--driver macvlan`。您还需要指定 `parent`，即流量在 Docker 主机上实际经过的接口。
 
 ```console
 $ docker network create -d macvlan \
@@ -58,7 +58,7 @@ $ docker network create -d macvlan \
   -o parent=eth0 pub_net
 ```
 
-如果你需要从 `macvlan` 网络中排除某些 IP 地址（例如某个 IP 地址已被使用），请使用 `--aux-addresses`：
+如果需要从 `macvlan` 网络中排除某些 IP 地址（例如某个 IP 地址已被占用），请使用 `--aux-addresses`：
 
 ```console
 $ docker network create -d macvlan \
@@ -71,7 +71,7 @@ $ docker network create -d macvlan \
 
 ### 802.1Q 中继桥接模式
 
-如果你指定的 `parent` 接口名称中包含点号（例如 `eth0.50`），Docker 会将其解释为 `eth0` 的子接口并自动创建该子接口。
+如果在 `parent` 接口名称中包含点号（如 `eth0.50`），Docker 会将其解释为 `eth0` 的子接口，并自动创建该子接口。
 
 ```console
 $ docker network create -d macvlan \
@@ -80,13 +80,13 @@ $ docker network create -d macvlan \
     -o parent=eth0.50 macvlan50
 ```
 
-### 使用 IPvlan 而非 Macvlan
+### 使用 IPvlan 替代 Macvlan
 
-使用选项 `-o ipvlan_mode=l2` 创建的 `ipvlan` 网络与 macvlan 网络类似。主要区别是 `ipvlan` 驱动不会为每个容器分配 MAC 地址，ipvlan 网络中的设备共享第 2 层网络栈。因此，容器使用父接口的 MAC 地址。
+使用选项 `-o ipvlan_mode=l2` 创建的 `ipvlan` 网络与 macvlan 网络类似。主要区别在于 `ipvlan` 驱动不会为每个容器分配 MAC 地址，而是共享 layer-2 网络栈。因此，容器使用父接口的 MAC 地址。
 
-网络将看到更少的 MAC 地址，主机的 MAC 地址将与每个容器的 IP 地址关联。
+网络将看到更少的 MAC 地址，且主机的 MAC 地址将与每个容器的 IP 地址关联。
 
-网络类型的选择取决于你的环境和需求。[Linux 内核文档](https://docs.kernel.org/networking/ipvlan.html#what-to-choose-macvlan-vs-ipvlan)中有一些关于权衡的说明。
+网络类型的选择取决于您的环境和需求。关于权衡取舍的一些说明，请参阅 [Linux 内核文档](https://docs.kernel.org/networking/ipvlan.html#what-to-choose-macvlan-vs-ipvlan)。
 
 ```console
 $ docker network create -d ipvlan \
@@ -97,7 +97,7 @@ $ docker network create -d ipvlan \
 
 ## 使用 IPv6
 
-如果你已[配置 Docker 守护进程以允许 IPv6](/manuals/engine/daemon/ipv6.md)，你可以使用双栈 IPv4/IPv6 `macvlan` 网络。
+如果您已[配置 Docker 守护进程以允许 IPv6](/manuals/engine/daemon/ipv6.md)，则可以使用双栈 IPv4/IPv6 `macvlan` 网络。
 
 ```console
 $ docker network create -d macvlan \
@@ -110,16 +110,16 @@ $ docker network create -d macvlan \
 
 ## 使用示例
 
-本节提供使用 macvlan 网络的实际示例，包括桥接模式和 802.1Q 中继桥接模式。
+本节提供使用 macvlan 网络的动手示例，包括桥接模式和 802.1Q 中继桥接模式。
 
 > [!NOTE]
-> 这些示例假设你的以太网接口是 `eth0`。如果你的设备名称不同，请使用相应的名称。
+> 这些示例假设您的以太网接口为 `eth0`。如果您的设备名称不同，请相应替换。
 
 ### 桥接模式示例
 
-在桥接模式下，你的流量通过 `eth0` 传输，Docker 使用容器的 MAC 地址将流量路由到容器。对于网络上的网络设备，你的容器看起来像是物理连接到网络的。
+在桥接模式下，您的流量通过 `eth0` 传输，Docker 使用容器的 MAC 地址将流量路由到容器。对于网络上的其他设备，您的容器看起来像是物理连接到网络的。
 
-1. 创建一个名为 `my-macvlan-net` 的 macvlan 网络。修改 `subnet`、`gateway` 和 `parent` 值以匹配你的环境：
+1. 创建一个名为 `my-macvlan-net` 的 macvlan 网络。根据您的环境修改 `subnet`、`gateway` 和 `parent` 值：
 
    ```console
    $ docker network create -d macvlan \
@@ -136,7 +136,7 @@ $ docker network create -d macvlan \
    $ docker network inspect my-macvlan-net
    ```
 
-2. 启动一个 `alpine` 容器并将其附加到 `my-macvlan-net` 网络。`-dit` 标志在后台启动容器。`--rm` 标志在容器停止时将其移除：
+2. 启动一个 `alpine` 容器并将其连接到 `my-macvlan-net` 网络。`-dit` 标志使容器在后台启动。`--rm` 标志在容器停止时自动删除它：
 
    ```console
    $ docker run --rm -dit \
@@ -152,7 +152,7 @@ $ docker network create -d macvlan \
    $ docker container inspect my-macvlan-alpine
    ```
 
-   查找类似以下的输出：
+   查找类似以下输出：
 
    ```json
    "Networks": {
@@ -166,7 +166,7 @@ $ docker network create -d macvlan \
    }
    ```
 
-4. 检查容器如何看待自己的网络接口：
+4. 检查容器如何看待其自身的网络接口：
 
    ```console
    $ docker exec my-macvlan-alpine ip addr show eth0
@@ -186,7 +186,7 @@ $ docker network create -d macvlan \
    172.16.86.0/24 dev eth0 scope link  src 172.16.86.2
    ```
 
-5. 停止容器（Docker 会自动移除它）并移除网络：
+5. 停止容器（Docker 会自动删除它）并删除网络：
 
    ```console
    $ docker container stop my-macvlan-alpine
@@ -195,9 +195,9 @@ $ docker network create -d macvlan \
 
 ### 802.1Q 中继桥接模式示例
 
-在 802.1Q 中继桥接模式下，你的流量通过 `eth0` 的子接口（称为 `eth0.10`）传输，Docker 使用容器的 MAC 地址将流量路由到容器。对于网络上的网络设备，你的容器看起来像是物理连接到网络的。
+在 802.1Q 中继桥接模式下，您的流量通过 `eth0` 的子接口（称为 `eth0.10`）传输，Docker 使用容器的 MAC 地址将流量路由到容器。对于网络上的其他设备，您的容器看起来像是物理连接到网络的。
 
-1. 创建一个名为 `my-8021q-macvlan-net` 的 macvlan 网络。修改 `subnet`、`gateway` 和 `parent` 值以匹配你的环境：
+1. 创建一个名为 `my-8021q-macvlan-net` 的 macvlan 网络。根据您的环境修改 `subnet`、`gateway` 和 `parent` 值：
 
    ```console
    $ docker network create -d macvlan \
@@ -207,14 +207,14 @@ $ docker network create -d macvlan \
      my-8021q-macvlan-net
    ```
 
-   验证网络已创建且父接口为 `eth0.10`。你可以在 Docker 主机上使用 `ip addr show` 来验证接口 `eth0.10` 存在：
+   验证网络已创建且父接口为 `eth0.10`。您可以在 Docker 主机上使用 `ip addr show` 验证接口 `eth0.10` 是否存在：
 
    ```console
    $ docker network ls
    $ docker network inspect my-8021q-macvlan-net
    ```
 
-2. 启动一个 `alpine` 容器并将其附加到 `my-8021q-macvlan-net` 网络：
+2. 启动一个 `alpine` 容器并将其连接到 `my-8021q-macvlan-net` 网络：
 
    ```console
    $ docker run --rm -itd \
@@ -232,7 +232,7 @@ $ docker network create -d macvlan \
 
    查找包含 MAC 地址的 `Networks` 部分。
 
-4. 检查容器如何看待自己的网络接口：
+4. 检查容器如何看待其自身的网络接口：
 
    ```console
    $ docker exec my-second-macvlan-alpine ip addr show eth0
@@ -252,7 +252,7 @@ $ docker network create -d macvlan \
    172.16.86.0/24 dev eth0 scope link  src 172.16.86.2
    ```
 
-5. 停止容器并移除网络：
+5. 停止容器并删除网络：
 
    ```console
    $ docker container stop my-second-macvlan-alpine

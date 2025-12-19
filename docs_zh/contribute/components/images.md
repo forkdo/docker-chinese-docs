@@ -1,22 +1,22 @@
 ---
-description: Docker 文档中使用的组件和格式化示例
-title: 图片
+description: components and formatting examples used in Docker's docs
+title: Images
 toc_max: 3
 ---
 
 ## 示例
 
-- 小图片：![a small image](/assets/images/footer_moby_icon.png)
+- 一个小图片：![a small image](/assets/images/footer_moby_icon.png)
 
-- 大图片默认会占据阅读列的全宽：
+- 大图片默认会占据阅读列的全部宽度：
 
   ![a pretty wide image](/assets/images/banner_image_24512.png)
 
-- 可使用查询参数设置图片尺寸：`?h=<height>&w=<width>`
+- 可以使用查询参数设置图片大小：`?h=<height>&w=<width>`
 
   ![a pretty wide image](/assets/images/banner_image_24512.png?w=100&h=50)
 
-- 可使用查询参数添加图片边框：`?border=true`
+- 可以使用查询参数添加边框：`?border=true`
 
   ![a small image](/assets/images/footer_moby_icon.png?border=true)
 
@@ -24,17 +24,17 @@ toc_max: 3
 ## HTML 和 Markdown
 
 ```markdown
-- 小图片：![a small image](/assets/images/footer_moby_icon.png)
+- 一个小图片：![a small image](/assets/images/footer_moby_icon.png)
 
-- 大图片默认会占据阅读列的全宽：
+- 大图片默认会占据阅读列的全部宽度：
 
   ![a pretty wide image](/assets/images/banner_image_24512.png)
 
-- 可使用查询参数设置图片尺寸：`?h=<height>&w=<width>`
+- 可以使用查询参数设置图片大小：`?h=<height>&w=<width>`
 
   ![a pretty wide image](/assets/images/banner_image_24512.png?w=100&h=50)
 
-- 可使用查询参数添加图片边框：`?border=true`
+- 可以使用查询参数添加边框：`?border=true`
 
   ![a small image](/assets/images/footer_moby_icon.png?border=true)
 ```

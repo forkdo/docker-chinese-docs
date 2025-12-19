@@ -1,1 +1,1 @@
-使用 `include`，你可以直接在当前的 `compose.yaml` 文件中引入一个独立的 `compose.yaml` 文件。这使得将复杂应用模块化为子 Compose 文件变得简单，从而让应用配置变得更加简洁和明确。
+使用 `include`，您可以将单独的 `compose.yaml` 文件直接合并到当前的 `compose.yaml` 文件中。这样可以轻松地将复杂应用程序模块化到子 Compose 文件中，从而使应用程序配置变得更简单、更明确。

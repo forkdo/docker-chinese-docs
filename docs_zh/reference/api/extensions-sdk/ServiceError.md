@@ -1,15 +1,15 @@
 ---
-title: "接口: ServiceError"
+title: "接口：ServiceError"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, SDK, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ServiceError/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ServiceError/
 ---
 
-当接收到状态码不在 2xx 范围内的 HTTP 响应时抛出的错误。
+当收到 HTTP 响应的状态码超出 2xx 范围时抛出的错误。
 
-**`Since`**
+**`自`**
 
 0.2.0
 

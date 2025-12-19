@@ -1,7 +1,7 @@
 ---
 title: "Interface: ExtensionHost"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExtensionHost/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExtensionHost/
@@ -27,9 +27,9 @@ await ddClient.extension.host.cli.exec("kubectl", ["-h"]);
 
 ---
 
-在后端容器或宿主机上执行命令并流式输出结果。
+流式传输在后端容器或宿主机上执行的命令输出。
 
-假设 `kubectl` 二进制文件作为扩展的一部分打包，您可以在宿主机上启动 `kubectl -h` 命令：
+假设 `kubectl` 二进制文件作为扩展的一部分打包，你可以在宿主机上启动 `kubectl -h` 命令：
 
 ```typescript
 await ddClient.extension.host.cli.exec("kubectl", ["-h"], {
@@ -49,7 +49,7 @@ await ddClient.extension.host.cli.exec("kubectl", ["-h"], {
                console.error(error);
              },
              onClose(exitCode: number): void {
-               console.log("onClose 退出码 " + exitCode);
+               console.log("onClose with exit code " + exitCode);
              },
            },
          });

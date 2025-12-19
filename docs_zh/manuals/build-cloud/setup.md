@@ -8,25 +8,25 @@ aliases:
   - /build/cloud/setup/
 ---
 
-在开始使用 Docker Build Cloud 之前，您需要将构建器添加到本地环境中。
+在开始使用 Docker Build Cloud 之前，您必须先将构建器添加到本地环境中。
 
-## 前置条件
+## 前提条件
 
 要开始使用 Docker Build Cloud，您需要：
 
 - 下载并安装 Docker Desktop 4.26.0 或更高版本。
 - 在 [Docker Build Cloud 仪表板](https://app.docker.com/build/) 上创建云构建器。
-  - 创建构建器时，为其选择一个名称（例如 `default`）。您将在下面的 CLI 步骤中使用此名称作为 `BUILDER_NAME`。
+  - 创建构建器时，请为其选择一个名称（例如 `default`）。您将在下面的 CLI 步骤中使用此名称作为 `BUILDER_NAME`。
 
-### 在没有 Docker Desktop 的情况下使用 Docker Build Cloud
+### 不使用 Docker Desktop 使用 Docker Build Cloud
 
-要在没有 Docker Desktop 的情况下使用 Docker Build Cloud，您必须下载并安装支持 Docker Build Cloud（`cloud` 驱动）的 Buildx 版本。您可以在 [此仓库](https://github.com/docker/buildx-desktop) 的发布页面找到兼容的 Buildx 二进制文件。
+要在不使用 Docker Desktop 的情况下使用 Docker Build Cloud，您必须下载并安装支持 Docker Build Cloud（`cloud` 驱动）的 Buildx 版本。您可以在 [此仓库](https://github.com/docker/buildx-desktop) 的发布页面找到兼容的 Buildx 二进制文件。
 
-如果您计划使用 `docker compose build` 命令与 Docker Build Cloud 构建，还需要支持 Docker Build Cloud 的 Docker Compose 版本。您可以在 [此仓库](https://github.com/docker/compose-desktop) 的发布页面找到兼容的 Docker Compose 二进制文件。
+如果您计划使用 `docker compose build` 命令通过 Docker Build Cloud 构建，您还需要支持 Docker Build Cloud 的 Docker Compose 版本。您可以在 [此仓库](https://github.com/docker/compose-desktop) 的发布页面找到兼容的 Docker Compose 二进制文件。
 
 ## 步骤
 
-您可以使用 CLI 通过 `docker buildx create` 命令添加云构建器，也可以使用 Docker Desktop 设置 GUI。
+您可以使用 CLI 中的 `docker buildx create` 命令，或使用 Docker Desktop 设置 GUI 来添加云构建器。
 
 {{< tabs >}}
 {{< tab name="CLI" >}}
@@ -43,7 +43,7 @@ aliases:
    $ docker buildx create --driver cloud <ORG>/<BUILDER_NAME>
    ```
 
-   将 `<ORG>` 替换为 Docker Hub 上您 Docker 组织的命名空间（如果是个人账户，则替换为您的用户名），将 `<BUILDER_NAME>` 替换为您在仪表板中创建构建器时选择的名称。
+   将 `<ORG>` 替换为您的 Docker 组织的 Docker Hub 命名空间（或如果您使用个人账户，则替换为您的用户名），将 `<BUILDER_NAME>` 替换为您在仪表板中创建构建器时选择的名称。
 
    这将创建一个名为 `cloud-ORG-BUILDER_NAME` 的云构建器本地实例。
 
@@ -54,14 +54,15 @@ aliases:
    > $ docker buildx create --driver cloud acme/default
    > ```
 
+
 {{< /tab >}}
 {{< tab name="Docker Desktop" >}}
 
-1. 使用 Docker Desktop 中的 **登录** 按钮登录您的 Docker 账户。
+1. 使用 Docker Desktop 中的 **Sign in** 按钮登录您的 Docker 账户。
 
-2. 打开 Docker Desktop 设置并导航到 **构建器** 选项卡。
+2. 打开 Docker Desktop 设置并导航到 **Builders** 选项卡。
 
-3. 在 **可用构建器** 下，选择 **连接到构建器**。
+3. 在 **Available builders** 下，选择 **Connect to builder**。
 
 {{< /tab >}}
 {{< /tabs >}}
@@ -70,14 +71,14 @@ aliases:
 
 ## 防火墙配置
 
-要在防火墙后使用 Docker Build Cloud，请确保您的防火墙允许访问以下地址的流量：
+要在防火墙后使用 Docker Build Cloud，请确保您的防火墙允许流量访问以下地址：
 
 - 3.211.38.21
 - https://auth.docker.io
 - https://build-cloud.docker.com
 - https://hub.docker.com
 
-## 下一步
+## 后续内容
 
-- 查看 [使用 Docker Build Cloud 构建](usage.md) 了解如何使用 Docker Build Cloud 的示例。
-- 查看 [在 CI 中使用 Docker Build Cloud](ci.md) 了解如何在 CI 系统中使用 Docker Build Cloud 的示例。
+- 参阅 [使用 Docker Build Cloud 构建](usage.md) 了解如何使用 Docker Build Cloud 的示例。
+- 参阅 [在 CI 中使用 Docker Build Cloud](ci.md) 了解如何在 CI 系统中使用 Docker Build Cloud 的示例。

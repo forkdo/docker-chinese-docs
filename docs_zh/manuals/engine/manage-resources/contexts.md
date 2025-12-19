@@ -1,5 +1,5 @@
 ---
-title: Docker 上下文
+title: Docker contexts
 description: 了解如何使用上下文从单个客户端管理多个守护进程
 keywords: engine, context, cli, daemons, remote
 aliases:
@@ -18,8 +18,7 @@ aliases:
 - 一个默认的本地上下文
 - 一个远程共享上下文
 
-一旦配置了这些上下文，
-你就可以使用 `docker context use <context-name>` 命令在它们之间切换。
+一旦配置了这些上下文，你就可以使用 `docker context use <context-name>` 命令在它们之间切换。
 
 ## 前置条件
 
@@ -27,7 +26,7 @@ aliases:
 
 - 一个支持顶级 `context` 命令的 Docker 客户端
 
-运行 `docker context` 来验证你的 Docker 客户端是否支持上下文。
+运行 `docker context` 以验证你的 Docker 客户端是否支持上下文。
 
 ## 上下文的结构
 
@@ -48,7 +47,7 @@ default *                                             unix:///var/run/docker.soc
 这显示了一个名为 "default" 的上下文。
 它被配置为通过本地 `/var/run/docker.sock` Unix 套接字与守护进程通信。
 
-`NAME` 列中的星号（\*）表示这是当前活动的上下文。
+`NAME` 列中的星号表示这是活动上下文。
 这意味着所有 `docker` 命令都针对此上下文运行，
 除非通过环境变量（如 `DOCKER_HOST` 和 `DOCKER_CONTEXT`）或命令行标志（如 `--context` 和 `--host`）覆盖。
 
@@ -79,7 +78,7 @@ $ docker context inspect default
 
 你可以使用 `docker context create` 命令创建新上下文。
 
-以下示例创建一个名为 `docker-test` 的新上下文，并指定上下文的主机端点为 TCP 套接字 `tcp://docker:2375`。
+以下示例创建了一个名为 `docker-test` 的新上下文，并指定该上下文的主机端点为 TCP 套接字 `tcp://docker:2375`。
 
 ```console
 $ docker context create docker-test --docker host=tcp://docker:2375
@@ -88,7 +87,7 @@ Successfully created context "docker-test"
 ```
 
 新上下文存储在 `~/.docker/contexts/` 目录下的 `meta.json` 文件中。
-你创建的每个新上下文都会在 `~/.docker/contexts/` 的专用子目录中拥有自己的 `meta.json` 文件。
+你创建的每个新上下文都在 `~/.docker/contexts/` 的专用子目录中拥有自己的 `meta.json`。
 
 你可以使用 `docker context ls` 和 `docker context inspect <context-name>` 查看新上下文。
 
@@ -99,13 +98,13 @@ default *                                             unix:///var/run/docker.soc
 docker-test                                           tcp://docker:2375
 ```
 
-当前上下文用星号（\*）表示。
+当前上下文用星号 ("\*") 标识。
 
 ## 使用不同的上下文
 
 你可以使用 `docker context use` 在上下文之间切换。
 
-以下命令将 `docker` CLI 切换为使用 `docker-test` 上下文。
+以下命令将 `docker` CLI 切换到使用 `docker-test` 上下文。
 
 ```console
 $ docker context use docker-test
@@ -113,7 +112,7 @@ docker-test
 Current context is now "docker-test"
 ```
 
-通过列出所有上下文并确保星号（\*）在 `docker-test` 上下文旁边，来验证操作。
+通过列出所有上下文并确保星号 ("\*") 出现在 `docker-test` 上下文旁边来验证操作。
 
 ```console
 $ docker context ls
@@ -146,7 +145,7 @@ $ export DOCKER_CONTEXT=docker-test
 {{< /tab >}}
 {{< /tabs >}}
 
-运行 `docker context ls` 验证 `docker-test` 上下文现在是活动上下文。
+运行 `docker context ls` 以验证 `docker-test` 上下文现在是否为活动上下文。
 
 你也可以使用全局 `--context` 标志来覆盖上下文。
 以下命令使用名为 `production` 的上下文。
@@ -178,8 +177,7 @@ Written file "docker-test.dockercontext"
 $ cat docker-test.dockercontext
 ```
 
-在另一台主机上使用 `docker context import` 导入此文件，
-以创建具有相同配置的上下文。
+在另一台主机上使用 `docker context import` 导入此文件，以创建具有相同配置的上下文。
 
 ```console
 $ docker context import docker-test docker-test.dockercontext

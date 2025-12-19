@@ -6,7 +6,7 @@ target: /dhi/migration/migrate-from-wolfi/
 tags: [dhi]
 languages: []
 params:
-  time: 10 分钟
+  time: 10 minutes
   featured: true
   image: /images/guides/dhi-migrate-wolfi.webp
 ---

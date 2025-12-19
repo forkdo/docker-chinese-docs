@@ -1,15 +1,16 @@
 ---
 description: 如何在持续集成流水线中设置 Docker Scout
-keywords: 扫描, 漏洞, Hub, 供应链, 安全, ci, 持续集成, github actions, gitlab
+keywords: scanning, vulnerabilities, Hub, 供应链, 安全, ci, 持续集成,
+  github actions, gitlab
 title: 在持续集成中使用 Docker Scout
 linkTitle: 持续集成
 aliases:
 - /scout/ci/
 ---
 
-你可以使用 GitHub Action 或 Docker Scout CLI 插件，在构建 Docker 镜像时通过持续集成流水线分析它们。
+您可以使用 GitHub action 或 Docker Scout CLI 插件，在持续集成流水线中构建 Docker 镜像时对其进行分析。
 
-可用的集成方式：
+可用的集成选项：
 
 - [GitHub Actions](gha.md)
 - [GitLab](gitlab.md)
@@ -17,4 +18,4 @@ aliases:
 - [Circle CI](circle-ci.md)
 - [Jenkins](jenkins.md)
 
-你也可以在 CI/CD 流水线中添加运行时集成，这样在部署镜像时可以将其分配到某个环境，例如 `production` 或 `staging`。更多信息，请参见 [环境监控](../environment/_index.md)。
+您还可以添加运行时集成作为 CI/CD 流水线的一部分，这使您能够在部署时将一个镜像分配给某个环境（例如 `production` 或 `staging`）。有关更多信息，请参阅 [环境监控](../environment/_index.md)。

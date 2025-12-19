@@ -14,17 +14,17 @@ aliases:
 
 `include` 列表中的每个路径都会作为独立的 Compose 应用模型加载，拥有自己的项目目录，以便解析相对路径。
 
-一旦包含的 Compose 应用加载完成，所有资源都会被复制到当前的 Compose 应用模型中。
+一旦包含的 Compose 应用加载完成，所有资源都会被复制到当前 Compose 应用模型中。
 
 > [!NOTE]
 >
-> `include` 会递归应用，因此如果一个包含的 Compose 文件声明了自己的 `include` 部分，那些文件也会被包含进来。
+> `include` 会递归应用，因此如果一个包含的 Compose 文件声明了自己的 `include` 部分，这些文件也会被包含进来。
 
 ## 示例
 
 ```yaml
 include:
-  - my-compose-include.yaml  # 声明了 serviceB
+  - my-compose-include.yaml  # 包含 serviceB 的声明
 services:
   serviceA:
     build: .
@@ -32,9 +32,9 @@ services:
       - serviceB # 直接使用 serviceB，就像它在当前 Compose 文件中声明一样
 ```
 
-`my-compose-include.yaml` 管理着 `serviceB`，其中包含一些副本、用于检查数据的 Web UI、隔离的网络、用于数据持久化的卷等。依赖 `serviceB` 的应用不需要了解这些基础设施细节，而是将 Compose 文件作为可依赖的构建块来使用。
+`my-compose-include.yaml` 管理着 `serviceB`，其中包含一些副本、用于检查数据的 Web UI、隔离的网络、用于数据持久化的卷等。依赖 `serviceB` 的应用程序不需要了解这些基础设施细节，而是将 Compose 文件作为可依赖的构建块来使用。
 
-这意味着管理 `serviceB` 的团队可以重构自己的数据库组件，引入额外的服务，而不会影响任何依赖团队。这也意味着依赖团队不需要在每次运行 Compose 命令时都添加额外的标志。
+这意味着管理 `serviceB` 的团队可以重构自己的数据库组件，引入额外的服务，而不会影响任何依赖团队。这也意味着依赖团队在运行每个 Compose 命令时不需要添加额外的标志。
 
 ```yaml
 include:
@@ -45,21 +45,21 @@ services:
     depends_on:
       - serviceB 
 ```
-`include` 允许你从远程源（如 OCI 工件或 Git 仓库）引用 Compose 文件。  
+`include` 允许你从远程源（如 OCI 工件或 Git 仓库）引用 Compose 文件。
 这里 `serviceB` 是在 Docker Hub 上存储的 Compose 文件中定义的。
 
 ## 在包含的 Compose 文件中使用覆盖
 
-如果 `include` 中的任何资源与包含的 Compose 文件中的资源冲突，Compose 会报告错误。此规则防止与包含的 Compose 文件作者定义的资源发生意外冲突。但是，在某些情况下，你可能希望自定义包含的模型。这可以通过在 include 指令中添加覆盖文件来实现：
+如果 `include` 中的任何资源与包含的 Compose 文件中的资源冲突，Compose 会报告错误。此规则可防止与包含的 Compose 文件作者定义的资源发生意外冲突。但是，在某些情况下，你可能希望自定义包含的模型。这可以通过在 include 指令中添加覆盖文件来实现：
 
 ```yaml
 include:
   - path : 
       - third-party/compose.yaml
-      - override.yaml  # 第三方模型的本地覆盖
+      - override.yaml  # 对第三方模型的本地覆盖
 ```
 
-这种方法的主要限制是，你需要为每个 include 维护一个专用的覆盖文件。对于具有多个 include 的复杂项目，这会导致许多 Compose 文件。
+此方法的主要限制是，你需要为每个 include 维护一个专用的覆盖文件。对于具有多个 include 的复杂项目，这会导致许多 Compose 文件。
 
 另一种选择是使用 `compose.override.yaml` 文件。虽然当同一资源被声明时，使用 `include` 的文件会拒绝冲突，但全局 Compose 覆盖文件可以覆盖最终合并的模型，如下例所示：
 
@@ -84,7 +84,7 @@ services:
       - ./data:/data
 ```
 
-结合使用，这允许你受益于第三方可重用组件，并根据需要调整 Compose 模型。
+结合使用，这使你能够受益于第三方可重用组件，并根据需要调整 Compose 模型。
 
 ## 参考信息
 

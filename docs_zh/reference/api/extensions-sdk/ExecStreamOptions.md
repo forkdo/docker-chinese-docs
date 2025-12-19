@@ -1,17 +1,17 @@
 ---
-title: "接口: ExecStreamOptions"
+title: "接口：ExecStreamOptions"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases: 
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecStreamOptions/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecStreamOptions/
 ---
 
-**`Since`**
+**`自版本`**
 
 0.2.2
 
-## 属性
+## 属性 (Properties)
 
 ### onOutput
 
@@ -21,12 +21,11 @@ aliases:
 
 ▸ (`data`): `void`
 
-执行命令时接收到输出时调用。
-默认情况下，输出会在任意边界处被分割成块。
-如果您希望输出按完整行分割，请将 `splitOutputLines` 设置为 true。
-然后回调函数将对每一行调用一次。
+当接收到命令执行的输出时调用。
+默认情况下，输出会在任意边界处分割成块。
+如果您希望输出按完整行分割，请将 `splitOutputLines` 设置为 true。此时回调将针对每一行调用一次。
 
-**`Since`**
+**`自版本`**
 
 0.2.0
 
@@ -34,7 +33,7 @@ aliases:
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `data` | `{ stdout: string; stderr?: undefined } \| { stdout?: undefined; stderr: string }` | 输出内容。可以包含 stdout 字符串或 stderr 字符串，一次只包含一种。 |
+| `data` | `{ stdout: string; stderr?: undefined } \| { stdout?: undefined; stderr: string }` | 输出内容。可以包含 stdout 字符串或 stderr 字符串，一次只能包含一种。 |
 
 ##### 返回值
 
@@ -50,13 +49,13 @@ ___
 
 ▸ (`error`): `void`
 
-如果执行的命令出错，则调用此函数报告错误。
+当执行的命令发生错误时调用以报告错误。
 
 ##### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `error` | `any` | 执行命令时发生的错误 |
+| `error` | `any` | 执行命令过程中发生的错误 |
 
 ##### 返回值
 
@@ -72,7 +71,7 @@ ___
 
 ▸ (`exitCode`): `void`
 
-进程退出时调用。
+当进程退出时调用。
 
 ##### 参数
 
@@ -90,4 +89,4 @@ ___
 
 • `可选` `只读` **splitOutputLines**: `boolean`
 
-指定 `onOutput(data)` 的调用行为。默认为原始输出，在任意位置分割输出。如果设置为 true，`onOutput` 将对每一行调用一次。
+指定调用 `onOutput(data)` 的行为。默认为原始输出，在任何位置分割输出。如果设置为 true，`onOutput` 将针对每一行调用一次。

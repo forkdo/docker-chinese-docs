@@ -1,32 +1,32 @@
 ---
-title: 容器化 Deno 应用
-linkTitle: 容器化你的应用
+title: 将 Deno 应用程序容器化
+linkTitle: 容器化你的应用程序
 weight: 10
 keywords: deno, containerize, initialize
-description: 了解如何容器化 Deno 应用。
+description: 了解如何将 Deno 应用程序容器化。
 aliases:
   - /language/deno/containerize/
 ---
 
-## 前置条件
+## 先决条件
 
-* 你已安装 [Git 客户端](https://git-scm.com/downloads)。本节示例使用基于命令行的 Git 客户端，但你可以使用任意客户端。
+* 你有一个 [Git 客户端](https://git-scm.com/downloads)。本节中的示例使用的是基于命令行的 Git 客户端，但你可以使用任何客户端。
 
-## 概述
+## 概览
 
-长期以来，Node.js 一直是服务端 JavaScript 应用的首选运行时。然而，近年来出现了新的替代运行时，包括 [Deno](https://deno.land/)。与 Node.js 一样，Deno 也是 JavaScript 和 TypeScript 运行时，但它采用了更现代的安全特性、内置标准库以及对 TypeScript 的原生支持。
+长期以来，Node.js 一直是服务端 JavaScript 应用程序的首选运行时。然而，近年来出现了新的替代运行时，包括 [Deno](https://deno.land/)。与 Node.js 类似，Deno 也是一个 JavaScript 和 TypeScript 运行时，但它采用了全新的方法，具有现代安全特性、内置标准库以及对 TypeScript 的原生支持。
 
-为什么使用 Docker 开发 Deno 应用？拥有多种运行时选择令人兴奋，但在不同环境中一致地管理多个运行时及其依赖可能比较棘手。Docker 在这方面非常有价值。使用容器按需创建和销毁环境可以简化运行时管理并确保一致性。此外，随着 Deno 持续发展和演进，Docker 有助于建立可靠且可复现的开发环境，减少设置难题并简化工作流。
+为什么要使用 Docker 开发 Deno 应用程序？拥有多种运行时选择令人兴奋，但在不同环境中一致地管理多个运行时及其依赖项可能很棘手。这正是 Docker 的价值所在。使用容器按需创建和销毁环境可以简化运行时管理并确保一致性。此外，随着 Deno 的不断发展，Docker 有助于建立一个可靠且可重现的开发环境，最大限度地减少设置挑战并简化工作流程。
 
-## 获取示例应用
+## 获取示例应用程序
 
-克隆示例应用以配合本指南使用。打开终端，切换到你想工作的目录，然后运行以下命令克隆仓库：
+克隆示例应用程序以配合本指南使用。打开终端，切换到你想工作的目录，然后运行以下命令克隆仓库：
 
 ```console
 $ git clone https://github.com/dockersamples/docker-deno.git && cd docker-deno
 ```
 
-现在你的 `deno-docker` 目录中应包含以下内容：
+现在你的 `deno-docker` 目录中应该包含以下内容：
 
 ```text
 ├── deno-docker/
@@ -37,9 +37,9 @@ $ git clone https://github.com/dockersamples/docker-deno.git && cd docker-deno
 │ └── README.md
 ```
 
-## 了解示例应用
+## 了解示例应用程序
 
-示例应用是一个简单的 Deno 应用，使用 Oak 框架创建一个返回 JSON 响应的简单 API。应用监听 8000 端口，当在浏览器中访问时返回消息 `{"Status" : "OK"}`。
+示例应用程序是一个简单的 Deno 应用程序，它使用 Oak 框架创建一个返回 JSON 响应的简单 API。该应用程序监听 8000 端口，当你在浏览器中访问该应用程序时，会返回消息 `{"Status" : "OK"}`。
 
 ```typescript
 // server.ts
@@ -48,7 +48,7 @@ import { Application, Router } from "https://deno.land/x/oak@v12.0.0/mod.ts";
 const app = new Application();
 const router = new Router();
 
-// 定义返回 JSON 的路由
+// 定义一个返回 JSON 的路由
 router.get("/", (context) => {
   context.response.body = { Status: "OK" };
   context.response.type = "application/json";
@@ -63,19 +63,32 @@ await app.listen({ port: 8000 });
 
 ## 创建 Dockerfile
 
-在创建 Dockerfile 之前，你需要选择一个基础镜像。你可以使用 [Deno Docker 官方镜像](https://hub.docker.com/r/denoland/deno)，或者从 [Hardened Image 目录](https://hub.docker.com/hardened-images/catalog) 中选择 Docker Hardened Image (DHI)。
+在创建 Dockerfile 之前，你需要选择一个基础镜像。你可以使用 [Deno Docker 官方镜像](https://hub.docker.com/r/denoland/deno) 或来自 [Hardened Image 目录](https://hub.docker.com/hardened-images/catalog) 的 Docker Hardened Image (DHI)。
 
-选择 DHI 的优势在于它是一个生产就绪的镜像，体积轻量且安全。更多信息请参见 [Docker Hardened Images](https://docs.docker.com/dhi/)。
+选择 DHI 的优势在于它是一个生产就绪的镜像，轻量且安全。更多信息，请参阅 [Docker Hardened Images](https://docs.docker.com/dhi/)。
 
 {{< tabs >}}
 {{< tab name="使用 Docker Hardened Images" >}}
-Docker Hardened Images (DHIs) 可在 [Docker Hub](https://hub.docker.com/hardened-images/catalog/dhi/deno) 上获取 Deno 版本。与使用 Docker 官方镜像不同，你必须先将 Deno 镜像镜像到你的组织中，然后将其用作基础镜像。请按照 [DHI 快速入门](/dhi/get-started/) 中的说明为 Deno 创建镜像仓库。
 
-镜像仓库必须以 `dhi-` 开头，例如：`FROM <your-namespace>/dhi-deno:<tag>`。在以下 Dockerfile 中，`FROM` 指令使用 `<your-namespace>/dhi-deno:2` 作为基础镜像。
+Docker Hardened Images (DHIs) 在 [Docker Hardened Images 目录](https://hub.docker.com/hardened-images/catalog/dhi/deno) 中提供 Deno 版本。你可以直接从 `dhi.io` 注册表拉取 DHIs。
+
+1. 登录 DHI 注册表：
+
+   ```console
+   $ docker login dhi.io
+   ```
+
+2. 拉取 Deno DHI 作为 `dhi.io/deno:2`。此示例中的标签 (`2`) 指的是 Deno 最新 2.x 版本。
+
+   ```console
+   $ docker pull dhi.io/deno:2
+   ```
+
+有关其他可用版本，请参阅[目录](https://hub.docker.com/hardened-images/catalog/dhi/deno)。
 
 ```dockerfile
 # 使用 DHI Deno 镜像作为基础镜像
-FROM <your-namespace>/dhi-deno:2
+FROM dhi.io/deno:2
 
 # 设置工作目录
 WORKDIR /app
@@ -83,7 +96,7 @@ WORKDIR /app
 # 将服务器代码复制到容器中
 COPY server.ts .
 
-# 设置权限（可选，但推荐用于安全）
+# 设置权限（可选，但出于安全考虑推荐）
 USER deno
 
 # 暴露 8000 端口
@@ -96,9 +109,9 @@ CMD ["run", "--allow-net", "server.ts"]
 {{< /tab >}}
 {{< tab name="使用官方镜像" >}}
 
-使用 Docker 官方镜像非常直接。在以下 Dockerfile 中，你会注意到 `FROM` 指令使用 `denoland/deno:latest` 作为基础镜像。
+使用 Docker 官方镜像很简单。在以下 Dockerfile 中，你会注意到 `FROM` 指令使用 `denoland/deno:latest` 作为基础镜像。
 
-这是 Deno 的官方镜像。该镜像在 [Docker Hub](https://hub.docker.com/r/denoland/deno) 上可用。
+这是 Deno 的官方镜像。该镜像[可在 Docker Hub 上获得](https://hub.docker.com/r/denoland/deno)。
 
 ```dockerfile
 # 使用官方 Deno 镜像
@@ -110,7 +123,7 @@ WORKDIR /app
 # 将服务器代码复制到容器中
 COPY server.ts .
 
-# 设置权限（可选，但推荐用于安全）
+# 设置权限（可选，但出于安全考虑推荐）
 USER deno
 
 # 暴露 8000 端口
@@ -127,51 +140,51 @@ CMD ["run", "--allow-net", "server.ts"]
 
 - 将容器中的工作目录设置为 `/app`。
 - 将 `server.ts` 复制到容器中。
-- 将用户设置为 `deno`，以非 root 用户身份运行应用。
-- 暴露 8000 端口以允许流量访问应用。
+- 将用户设置为 `deno`，以非 root 用户身份运行应用程序。
+- 暴露 8000 端口以允许访问应用程序的流量。
 - 使用 `CMD` 指令运行 Deno 服务器。
-- 使用 `--allow-net` 标志允许应用的网络访问。`server.ts` 文件使用 Oak 框架创建一个监听 8000 端口的简单 API。
+- 使用 `--allow-net` 标志允许应用程序的网络访问。`server.ts` 文件使用 Oak 框架创建一个监听 8000 端口的简单 API。
 
-## 运行应用
+## 运行应用程序
 
-确保你位于 `deno-docker` 目录中。在终端中运行以下命令构建并运行应用：
+确保你在 `deno-docker` 目录中。在终端中运行以下命令来构建并运行应用程序。
 
 ```console
 $ docker compose up --build
 ```
 
-打开浏览器，访问 [http://localhost:8000](http://localhost:8000)。你将在浏览器中看到消息 `{"Status" : "OK"}`。
+打开浏览器并访问 [http://localhost:8000](http://localhost:8000) 查看应用程序。你将在浏览器中看到消息 `{"Status" : "OK"}`。
 
-在终端中按 `ctrl`+`c` 停止应用。
+在终端中，按 `ctrl`+`c` 停止应用程序。
 
-### 在后台运行应用
+### 在后台运行应用程序
 
-你可以通过添加 `-d` 选项使应用在后台运行，与终端分离。在 `deno-docker` 目录中，终端运行以下命令：
+你可以通过添加 `-d` 选项使应用程序在终端后台运行。在 `deno-docker` 目录中，在终端中运行以下命令。
 
 ```console
 $ docker compose up --build -d
 ```
 
-打开浏览器，访问 [http://localhost:8000](http://localhost:8000)。
+打开浏览器并访问 [http://localhost:8000](http://localhost:8000) 查看应用程序。
 
-在终端中运行以下命令停止应用：
+在终端中，运行以下命令停止应用程序。
 
 ```console
 $ docker compose down
 ```
 
-## 小结
+## 总结
 
-在本节中，你学习了如何使用 Docker 容器化并运行 Deno 应用。
+在本节中，你学习了如何使用 Docker 容器化并运行你的 Deno 应用程序。
 
 相关信息：
 
  - [Dockerfile 参考](/reference/dockerfile.md)
  - [.dockerignore 文件](/reference/dockerfile.md#dockerignore-file)
- - [Docker Compose 概述](/manuals/compose/_index.md)
+ - [Docker Compose 概览](/manuals/compose/_index.md)
  - [Compose 文件参考](/reference/compose-file/_index.md)
  - [Docker Hardened Images](/dhi/)
 
-## 后续步骤
+## 下一步
 
-在下一节中，你将学习如何使用容器开发应用。
+在下一节中，你将学习如何使用容器开发你的应用程序。

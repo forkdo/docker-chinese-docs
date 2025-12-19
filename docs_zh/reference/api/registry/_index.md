@@ -1,5 +1,5 @@
 ---
-title: 注册表 API
+title: Registry API
 build:
   render: never
 ---

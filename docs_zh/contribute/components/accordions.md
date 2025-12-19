@@ -1,5 +1,5 @@
 ---
-description: components and formatting examples used in Docker's docs
+description: Docker 文档中使用的组件和格式示例
 title: 折叠面板
 toc_max: 3
 ---
@@ -14,7 +14,7 @@ $ docker run hello-world
 
 {{< /accordion >}}
 
-## 标记语法
+## 标记
 
 ````markdown
 {{</* accordion title="折叠面板示例" */>}}

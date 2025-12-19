@@ -1,61 +1,61 @@
 ---
 title: '镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>'
 linktitle: 镜像仓库
-description: 了解如何将镜像镜像到组织的命名空间，以及如何选择性地推送到另一个私有注册表。
+description: 了解如何将镜像镜像到您组织的命名空间，并可选择将其推送到另一个私有注册中心。
 weight: 20
-keywords: 镜像 docker 镜像, 私有容器注册表, docker hub 自动化, webhook 镜像同步, 安全镜像分发, 内部注册表, jfrog artifactory, harbor 注册表, amazon ecr, google artifact registry, github 容器注册表
+keywords: 镜像 docker 镜像, 私有容器注册中心, docker hub 自动化, webhook 镜像同步, 安全镜像分发, 内部注册中心, jfrog artifactory, harbor registry, amazon ecr, google artifact registry, github container registry
 ---
 
 {{< summary-bar feature_name="Docker Hardened Images" >}}
 
-镜像功能需要 DHI Enterprise 订阅。没有 DHI Enterprise 订阅，你可以直接从 `dhi.io` 拉取 Docker Hardened Images，无需镜像。有了 DHI Enterprise 订阅，你必须通过镜像来获得：
+镜像需要 DHI Enterprise 订阅。如果没有 DHI Enterprise 订阅，您可以直接从 `dhi.io` 拉取 Docker Hardened Images，无需镜像。拥有 DHI Enterprise 订阅后，您必须进行镜像才能获得：
 
 - 合规变体（启用 FIPS 或准备 STIG 的镜像）
-- 扩展生命周期支持（ELS）变体（需要附加组件）
-- 镜像或 Helm 图表的自定义
-- 离线或受限网络环境
-- SLA 支持的安全更新
+- 扩展生命周期支持 (ELS) 变体（需要附加组件）
+- 镜像或 Helm chart 自定义
+- 气隙或受限网络环境
+- 支持 SLA 的安全更新
 
 ## 如何镜像
 
 本主题涵盖 Docker Hardened Image (DHI) 仓库的两种镜像类型：
 
-- [镜像到 Docker Hub](#mirror-a-dhi-repository-to-docker-hub)：将 DHI 仓库镜像到 Docker Hub 上组织的命名空间。这需要 DHI Enterprise 订阅，用于[自定义镜像或图表](./customize.md)，并访问合规变体和 ELS 变体（需要附加组件）。这必须通过 Docker Hub 网页界面完成。
+- [镜像到 Docker Hub](#mirror-a-dhi-repository-to-docker-hub)：将 DHI 仓库镜像到您在 Docker Hub 上的组织命名空间。这需要 DHI Enterprise 订阅，用于[自定义镜像或 chart](./customize.md) 以及访问合规变体和 ELS 变体（需要附加组件）。这必须通过 Docker Hub Web 界面完成。
 
-- [镜像到第三方注册表](#mirror-a-dhi-repository-to-a-third-party-registry)：将仓库镜像到另一个容器注册表，例如 Amazon ECR、Google Artifact Registry 或私有的 Harbor 实例。
+- [镜像到第三方注册中心](#mirror-a-dhi-repository-to-a-third-party-registry)：将仓库镜像到另一个容器注册中心，例如 Amazon ECR、Google Artifact Registry 或私有 Harbor 实例。
 
-## 镜像 DHI 仓库到 Docker Hub
+## 将 DHI 仓库镜像到 Docker Hub
 
-将仓库镜像到 Docker Hub 需要 DHI Enterprise 订阅，并启用对合规变体、扩展生命周期支持（ELS）变体（需要附加组件）和自定义功能的访问：
+将仓库镜像到 Docker Hub 需要 DHI Enterprise 订阅，并支持访问合规变体、扩展生命周期支持 (ELS) 变体（需要附加组件）以及自定义功能：
 
-- 镜像仓库：镜像允许你通过添加包、OCI 工件（如自定义证书或其他工具）、环境变量、标签和其他配置设置来自定义镜像。更多详情，请参见[自定义 Docker Hardened Image](./customize.md#customize-a-docker-hardened-image)。
+- **镜像仓库**：镜像允许您通过添加软件包、OCI 工件（例如自定义证书或附加工具）、环境变量、标签和其他配置设置来自定义镜像。更多详情，请参阅[自定义 Docker Hardened Image](./customize.md#customize-a-docker-hardened-image)。
 
-- 图表仓库：镜像允许你自定义图表内的镜像引用。当你使用自定义镜像或将镜像镜像到第三方注册表并需要图表引用这些自定义位置时，这特别有用。更多详情，请参见[自定义 Docker Hardened Helm 图表](./customize.md#customize-a-docker-hardened-helm-chart)。
+- **Chart 仓库**：镜像允许您自定义 chart 中的镜像引用。这在使用自定义镜像或将镜像镜像到第三方注册中心并需要 chart 引用这些自定义位置时特别有用。更多详情，请参阅[自定义 Docker Hardened Helm chart](./customize.md#customize-a-docker-hardened-helm-chart)。
 
-只有组织所有者才能执行镜像。一旦镜像完成，仓库将出现在你组织的仓库列表中，前缀为 `dhi-`。它将继续接收更新的镜像。
+只有组织所有者可以执行镜像。镜像完成后，仓库将出现在您组织的命名空间中，您可以根据需要对其进行自定义。
 
 要镜像 Docker Hardened Image 仓库：
 
 1. 访问 [Docker Hub](https://hub.docker.com) 并登录。
 2. 选择 **My Hub**。
-3. 在命名空间下拉菜单中，选择你的组织。
+3. 在命名空间下拉菜单中，选择您的组织。
 4. 选择 **Hardened Images** > **Catalog**。
-5. 选择一个 DHI 仓库查看其详细信息。
+5. 选择一个 DHI 仓库以查看其详细信息。
 6. 镜像仓库：
-    - 要镜像镜像仓库，选择 **Use this image** > **Mirror repository**，然后按照屏幕上的说明操作。如果你有 ELS 附加组件，还可以选择 **Enable support for end-of-life versions**。
-    - 要镜像 Helm 图表仓库，选择 **Get Helm chart**，然后按照屏幕上的说明操作。
+    - 要镜像镜像仓库，请选择 **Use this image** > **Mirror repository**，然后按照屏幕上的说明操作。如果您有 ELS 附加组件，还可以选择 **Enable support for end-of-life versions**。
+    - 要镜像 Helm chart 仓库，请选择 **Get Helm chart**，然后按照屏幕上的说明操作。
 
 所有标签完成镜像可能需要几分钟时间。
 
-镜像仓库后，仓库将出现在你组织的仓库列表中，前缀为 `dhi-`。它将继续接收更新的镜像。
+镜像仓库后，该仓库将出现在您组织的仓库列表中，前缀为 `dhi-`。它将继续接收更新的镜像。
 
-镜像后，仓库在 Docker Hub 上像任何其他私有仓库一样工作，你现在可以自定义它。要了解有关自定义的更多信息，请参见[自定义 Docker Hardened Image 或图表](./customize.md)。
+镜像后，该仓库的工作方式与 Docker Hub 上的任何其他私有仓库相同，您现在可以对其进行自定义。要了解有关自定义的更多信息，请参阅[自定义 Docker Hardened Image 或 chart](./customize.md)。
 
 ### 用于同步和警报的 Webhook 集成
 
-为了保持外部注册表或系统与你镜像的 Docker Hardened Images 同步，并在更新发生时接收通知，你可以在 Docker Hub 上的镜像仓库上配置[webhook](/docker-hub/repos/manage/webhooks/)。每当推送或更新新镜像标签时，webhook 会向你定义的 URL 发送 `POST` 请求。
+为了使外部注册中心或系统与您镜像的 Docker Hardened Images 保持同步，并在更新发生时接收通知，您可以在 Docker Hub 中的镜像仓库上配置 [webhook](/docker-hub/repos/manage/webhooks/)。Webhook 会在推送或更新新的镜像标签时向您定义的 URL 发送 `POST` 请求。
 
-例如，你可能配置一个 webhook 调用 CI/CD 系统的 `https://ci.example.com/hooks/dhi-sync`，每当新标签被镜像时。此 webhook 触发的自动化可以从 Docker Hub 拉取更新的镜像并推送到内部注册表，如 Amazon ECR、Google Artifact Registry 或 GitHub Container Registry。
+例如，您可以配置一个 webhook，在镜像新标签时调用 `https://ci.example.com/hooks/dhi-sync` 处的 CI/CD 系统。此 webhook 触发的自动化可以从 Docker Hub 拉取更新的镜像，并将其推送到内部注册中心，例如 Amazon ECR、Google Artifact Registry 或 GitHub Container Registry。
 
 其他常见的 webhook 用例包括：
 
@@ -63,9 +63,9 @@ keywords: 镜像 docker 镜像, 私有容器注册表, docker hub 自动化, web
 - 签名或提升镜像
 - 向下游系统发送通知
 
-#### 示例 webhook 载荷
+#### Webhook 有效负载示例
 
-当触发 webhook 时，Docker Hub 发送如下 JSON 载荷：
+当 webhook 被触发时，Docker Hub 会发送如下所示的 JSON 有效负载：
 
 ```json
 {
@@ -89,41 +89,41 @@ keywords: 镜像 docker 镜像, 私有容器注册表, docker hub 自动化, web
 
 ### 停止镜像仓库
 
-只有组织所有者才能停止镜像仓库。停止镜像后，仓库仍然存在，但将不再接收更新。你仍然可以使用最后镜像的镜像或图表，但仓库将不会从原始仓库接收新标签或更新。
+只有组织所有者可以停止镜像仓库。停止镜像后，仓库仍然存在，但将不再接收更新。您仍然可以使用最后镜像的镜像或 chart，但该仓库将不会从原始仓库接收新的标签或更新。
 
 > [!NOTE]
 >
-> 如果你只想停止镜像 ELS 版本，可以在镜像仓库的 **Settings** 选项卡中取消选中 ELS 选项。更多详情，请参见[为仓库禁用 ELS](./els.md#disable-els-for-a-repository)。
+> 如果您只想停止镜像 ELS 版本，可以在镜像仓库的 **Settings** 选项卡中取消选中 ELS 选项。更多详情，请参阅[为仓库禁用 ELS](./els.md#disable-els-for-a-repository)。
 
 要停止镜像仓库：
 
 1. 访问 [Docker Hub](https://hub.docker.com) 并登录。
 2. 选择 **My Hub**。
-3. 在命名空间下拉菜单中，选择你有 DHI 访问权限的组织。
+3. 在命名空间下拉菜单中，选择有权访问 DHI 的组织。
 4. 选择 **Hardened Images** > **Manage**。
 5. 选择 **Mirrored Images** 或 **Mirrored Helm charts** 选项卡。
 6. 在要停止镜像的仓库的最右侧列中，选择菜单图标。
 7. 选择 **Stop mirroring**。
 
-## 镜像 DHI 仓库到第三方注册表
+## 将 DHI 仓库镜像到第三方注册中心
 
-你可以选择将 DHI 仓库镜像到另一个容器注册表，例如 Amazon ECR、Google Artifact Registry、GitHub Container Registry 或私有的 Harbor 实例。
+您可以选择将 DHI 仓库镜像到另一个容器注册中心，例如 Amazon ECR、Google Artifact Registry、GitHub Container Registry 或私有 Harbor 实例。
 
-你可以使用任何标准工作流来镜像镜像，例如 [Docker CLI](/reference/cli/docker/_index.md)、[Docker Hub Registry API](/reference/api/registry/latest/)、第三方注册表工具或 CI/CD 自动化。
+您可以使用任何标准工作流来镜像镜像，例如 [Docker CLI](/reference/cli/docker/_index.md)、[Docker Hub Registry API](/reference/api/registry/latest/)、第三方注册中心工具或 CI/CD 自动化。
 
-但是，为了保留完整的安全上下文，包括证明，你必须同时镜像其关联的 OCI 工件。DHI 仓库将镜像层存储在 `dhi.io`（或自定义镜像的 `docker.io`）上，而签名的证明存储在单独的注册表中（`registry.scout.docker.com`）。
+但是，为了保留完整的安全上下文（包括证明），您还必须镜像其关联的 OCI 工件。DHI 仓库将镜像层存储在 `dhi.io`（或自定义镜像的 `docker.io`）上，并将签名的证明存储在单独的注册中心 (`registry.scout.docker.com`) 中。
 
-要复制两者，你可以使用 [`regctl`](https://regclient.org/cli/regctl/)，这是一个支持镜像镜像及其附加工件（如 SBOM、漏洞报告和 SLSA 来源）的 OCI 感知 CLI。对于持续同步，你可以使用 [`regsync`](https://regclient.org/cli/regsync/)。
+要复制两者，您可以使用 [`regctl`](https://regclient.org/cli/regctl/)，这是一个支持镜像镜像以及附加工件（如 SBOM、漏洞报告和 SLSA 证明）的 OCI 感知 CLI。对于持续同步，您可以使用 [`regsync`](https://regclient/regcli/regsync/)。
 
-### 使用 `regctl` 镜像示例
+### 使用 `regctl` 进行镜像的示例
 
-以下示例展示如何使用 `regctl` 将 Docker Hardened Image 的特定标签从 Docker Hub 镜像到另一个注册表，同时保留其关联的证明。你必须先[安装 `regctl`](https://github.com/regclient/regclient)。
+以下示例展示了如何使用 `regctl` 将 Docker Hardened Image 的特定标签从 Docker Hub 镜像到另一个注册中心，并附带其关联的证明。您必须首先[安装 `regctl`](https://github.com/regclient/regclient)。
 
-示例假设你已将 DHI 仓库镜像到 Docker Hub 上组织的命名空间，如前一节所述。你可以通过更新 `SRC_ATT_REPO` 和 `SRC_REPO` 变量来对非镜像镜像应用相同步骤。
+该示例假设您已如前一节所述，将 DHI 仓库镜像到您在 Docker Hub 上的组织命名空间。您可以通过相应地更新 `SRC_ATT_REPO` 和 `SRC_REPO` 变量，将相同的步骤应用于非镜像镜像。
 
-1. 为你的特定环境设置环境变量。将占位符替换为你的实际值。
+1. 为您的特定环境设置环境变量。将占位符替换为您的实际值。
 
-   在此示例中，你使用 Docker 用户名来表示 DHI 仓库被镜像到的 Docker Hub 组织的成员。为具有 `read only` 访问权限的用户准备一个[个人访问令牌 (PAT)](../../security/access-tokens.md)。或者，你可以使用组织命名空间和[组织访问令牌 (OAT)](../../enterprise/security/access-tokens.md) 登录 Docker Hub，但 OAT 尚不支持 `registry.scout.docker.com`。
+   在此示例中，您使用 Docker 用户名来表示镜像 DHI 仓库的 Docker Hub 组织的成员。准备一个具有 `read only` 访问权限的[个人访问令牌 (PAT)](../../security/access-tokens.md)。或者，您可以使用组织命名空间和[组织访问令牌 (OAT)](../../enterprise/security/access-tokens.md) 登录 Docker Hub，但 OAT 尚未支持 `registry.scout.docker.com`。
 
    ```console
    $ export DOCKER_USERNAME="YOUR_DOCKER_USERNAME"
@@ -138,7 +138,7 @@ keywords: 镜像 docker 镜像, 私有容器注册表, docker hub 自动化, web
    $ export TAG="3.13-alpine3.21"
    ```
 
-2. 通过 `regctl` 登录 Docker Hub、包含证明的 Scout 注册表以及你的目标注册表。
+2. 通过 `regctl` 登录到 Docker Hub、包含证明的 Scout 注册中心以及您的目标注册中心。
 
    ```console
    $ echo $DOCKER_PAT | regctl registry login -u "$DOCKER_USERNAME" --pass-stdin docker.io
@@ -166,7 +166,7 @@ keywords: 镜像 docker 镜像, 私有容器注册表, docker hub 自动化, web
    DIGEST="$(regctl manifest head "${DEST_REG}/${DEST_REPO}:${TAG}" --platform linux/amd64)"
    ```
 
-   列出附加的工件（SBOM、来源、VEX、漏洞报告）。
+   列出附加的工件（SBOM、证明、VEX、漏洞报告）。
 
    ```console
    $ regctl artifact list "${DEST_REG}/${DEST_REPO}@${DIGEST}"
@@ -178,15 +178,15 @@ keywords: 镜像 docker 镜像, 私有容器注册表, docker hub 自动化, web
    $ docker scout attest list "registry://${DEST_REG}/${DEST_REPO}@${DIGEST}"
    ```
 
-### 使用 `regsync` 持续镜像示例
+### 使用 `regsync` 进行持续镜像的示例
 
-`regsync` 自动从 Docker Hub 上组织的镜像 DHI 仓库拉取并推送到外部注册表，包括证明。它读取 YAML 配置文件并可以过滤标签。
+`regsync` 可自动从您在 Docker Hub 上的组织镜像的 DHI 仓库拉取，并推送到您的外部注册中心，包括证明。它读取 YAML 配置文件并可以过滤标签。
 
 以下示例使用 `regsync.yaml` 文件同步 Node 24 和 Python 3.12 Debian 13 变体，排除 Alpine 和 Debian 12。
 
 ```yaml{title="regsync.yaml"}
 version: 1
-# 可选：如果不想依赖之前的 CLI 登录，可以内联凭据
+# 可选：如果不依赖先前的 CLI 登录，可以内联凭证
 # creds:
 #   - registry: docker.io
 #     user: <your-docker-username>
@@ -222,7 +222,7 @@ sync:
       deny: [ ".*alpine.*", ".*debian12.*" ]
 ```
 
-要使用配置文件进行试运行，你可以运行以下命令。你必须先[安装 `regsync`](https://github.com/regclient/regclient)。
+要使用配置文件进行试运行，您可以运行以下命令。您必须首先[安装 `regsync`](https://github.com/regclient/regclient)。
 
 ```console
 $ regsync check -c regsync.yaml
@@ -234,6 +234,6 @@ $ regsync check -c regsync.yaml
 $ regsync once -c regsync.yaml
 ```
 
-## 接下来
+## 下一步
 
-镜像后，请参见[拉取 DHI](./use.md#pull-a-dhi)以了解如何拉取和使用镜像的镜像。
+镜像后，请参阅[拉取 DHI](./use.md#pull-a-dhi) 以了解如何拉取和使用镜像镜像。

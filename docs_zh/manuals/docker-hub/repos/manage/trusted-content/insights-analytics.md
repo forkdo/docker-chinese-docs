@@ -1,6 +1,6 @@
 ---
-title: Insights and analytics
-description: Discover how to access usage statistics of your images on Docker Hub
+title: 洞察与分析
+description: 了解如何访问 Docker Hub 上镜像的使用统计数据
 keywords: docker hub, hub, insights, analytics, api, verified publisher
 aliases:
 - /docker-hub/publish/insights-analytics/
@@ -8,373 +8,408 @@ aliases:
 - /trusted-content/insights-analytics/
 ---
 
-Insights and analytics provides usage analytics for [Docker Verified Publisher
-(DVP)](https://www.docker.com/partners/programs/) and [Docker-Sponsored Open
-Source (DSOS)](https://www.docker.com/community/open-source/application/#)
-images on Docker Hub. This includes self-serve access to image and extension
-usage metrics for a desired time span. You can see the number of image pulls by
-tag or by digest, geolocation, cloud provider, client, and more.
+“洞察与分析”为 Docker Hub 上的 [Docker Verified Publisher (DVP)](https://www.docker.com/partners/programs/) 和 [Docker-Sponsored Open Source (DSOS)](https://www.docker.com/community/open-source/application/#) 镜像提供使用分析。这包括自助访问特定时间段内的镜像和扩展使用指标。您可以查看按标签或摘要划分的镜像拉取次数、地理位置、云服务提供商、客户端等信息。
 
 > [!NOTE]
 >
-> The Legacy DVP program applies to existing customers who have not yet renewed
-> to DVP Core. The DVP Legacy program is deprecated and will be retired. Contact
-> your Docker sales representative or
-> [Docker](https://www.docker.com/partners/programs/) for more information.
+> 旧版 DVP 计划适用于尚未续订 DVP Core 的现有客户。DVP 旧版计划已弃用，并将被停用。有关更多信息，请联系您的 Docker 销售代表或 [Docker](https://www.docker.com/partners/programs/)。
 
 {{< tabs >}}
-{{< tab name="DVP program" >}}
+{{< tab name="DVP 计划" >}}
 
-All members of an organization have access to the analytics data. Members can
-access analytics data in the [Docker Hub](https://hub.docker.com/) web interface
-or by using the [DVP Data API](/reference/api/dvp/latest/). The following covers
-the web interface.
+组织的所有成员均可访问分析数据。成员可以通过 [Docker Hub](https://hub.docker.com/) Web 界面或使用 [DVP Data API](/reference/api/dvp/latest/) 访问分析数据。以下内容介绍 Web 界面的使用方法。
 
-## Available reports
+## 可用报告
 
-The following reports may be available for download as CSV files:
+以下报告可能以 CSV 文件形式提供下载：
 
-- [Summary](#summary-report)
-- [Trends](#trends-report)
-- [Technographic](#technographic-report)
-- [Technographic companies](#technographic-companies-report)
-- [Tracked companies](#tracked-companies-report)
+- [摘要](#摘要报告)
+- [趋势](#趋势报告)
+- [技术栈分析](#技术栈分析报告)
+- [技术栈公司分析](#技术栈公司分析报告)
+- [追踪公司分析](#追踪公司分析报告)
 
-The reports available for download may vary based on your organization's
-subscription. Contact your Docker sales representative or
-[Docker](https://www.docker.com/partners/programs/) for more information.
+可供下载的报告可能因您组织的订阅而异。有关更多信息，请联系您的 Docker 销售代表或 [Docker](https://www.docker.com/partners/programs/)。
 
-### Summary report
+### 摘要报告
 
-The summary report provides high-level usage metrics aggregated across all your
-Docker Hub content, organized by namespace and repository. This report gives you
-a comprehensive overview of your image portfolio performance, helping you
-understand which repositories, tags, and specific image versions are most
-popular with your users.
+摘要报告提供跨所有 Docker Hub 内容的高级使用指标，按命名空间和仓库组织。该报告让您全面了解镜像组合的表现，帮助您了解哪些仓库、标签和特定镜像版本最受用户欢迎。
 
-You can use this report to answer questions like:
+您可以使用此报告回答以下问题：
 
-- Which of my repositories are getting the most usage?
-- How do different image tags compare in terms of adoption?
-- What's the ratio of actual downloads versus version checks across my
-  portfolio?
-- Which specific image digests are being pulled most frequently?
-- How has overall usage changed over time for my entire image collection?
+- 哪些仓库的使用量最大？
+- 不同镜像标签在采用率方面有何差异？
+- 在您的组合中，实际下载与版本检查的比率是多少？
+- 哪些特定的镜像摘要被拉取得最频繁？
+- 整个镜像集合的整体使用情况随时间如何变化？
 
-To access the report:
+访问报告：
 
-1. Sign in to [Docker Hub](https://hub.docker.com/).
-2. Select **My Hub** in the top navigation.
-3. Select your organization in the left navigation.
-4. Select **Analytics** > **Overview** in the left navigation.
-5. Download the report by doing one of the following:
-   - Select **Download Weekly Summary**.
-   - Select the **Download Monthly Summary**.
-   - Expand the **Summary reports for the year** drop-down and then select
-     **Download report** for the desired week or month.
+1. 登录 [Docker Hub](https://hub.docker.com/)。
+2. 在顶部导航中选择 **My Hub**。
+3. 在左侧导航中选择您的组织。
+4. 在左侧导航中选择 **Analytics** > **Overview**。
+5. 通过以下任一方式下载报告：
+   - 选择 **Download Weekly Summary**。
+   - 选择 **Download Monthly Summary**。
+   - 展开 **Summary reports for the year** 下拉菜单，然后为所需周或月选择 **Download report**。
 
-The summary report is a CSV file that contains the following data points:
+摘要报告是一个 CSV 文件，包含以下数据点：
 
-| Field | Description |
+| 字段 | 描述 |
 |-------|-------------|
-| `DATE_GRANULARITY` | Weekly or monthly granularity of the data. Indicates whether the data is aggregated by week or month. |
-| `DATE_REFERENCE` | The start date of the week or month in YYYY-MM-DD format (e.g., `2025-09-29` for the week starting September 29, 2025). |
-| `PUBLISHER_NAME` | The name of the Docker organization that owns the repository (e.g., `demonstrationorg`). |
-| `LEVEL` | The aggregation level of the data - either `repository` (summary for entire repository), `tag` (summary for specific tag), or `digest` (summary for specific digest). |
-| `REFERENCE` | The specific reference being summarized - the repository name, tag name, or digest hash depending on the level. |
-| `DATA_DOWNLOADS` | The number of actual image downloads. |
-| `VERSION_CHECKS` | The number of version checks performed (HEAD requests to check for updates without downloading the full image). |
-| `EVENT_COUNT` | The total number of events, calculated as the sum of data downloads and version checks. |
+| `DATE_GRANULARITY` | 数据的周或月粒度。指示数据是按周还是按月聚合。 |
+| `DATE_REFERENCE` | 周或月的开始日期，格式为 YYYY-MM-DD（例如，`2025-09-29` 表示 2025 年 9 月 29 日开始的周）。 |
+| `PUBLISHER_NAME` | 拥有该仓库的 Docker 组织名称（例如 `demonstrationorg`）。 |
+| `LEVEL` | 数据的聚合级别 - `repository`（整个仓库的摘要）、`tag`（特定标签的摘要）或 `digest`（特定摘要的摘要）。 |
+| `REFERENCE` | 被汇总的具体引用 - 仓库名称、标签名称或摘要哈希，具体取决于级别。 |
+| `DATA_DOWNLOADS` | 实际镜像下载次数。 |
+| `VERSION_CHECKS` | 执行的版本检查次数（用于检查更新而不下载完整镜像的 HEAD 请求）。 |
+| `EVENT_COUNT` | 事件总数，计算为数据下载和版本检查的总和。 |
 
-### Trends report
+### 趋势报告
 
-The trends report helps you understand how adoption of your container images
-evolves over time. It provides visibility into pull activity across repositories
-and tags, enabling you to identify adoption patterns, version migration trends,
-and usage environments (e.g., local development, CI/CD, production).
+趋势报告帮助您了解容器镜像的采用情况随时间的变化。它提供了跨仓库和标签的拉取活动可见性，使您能够识别采用模式、版本迁移趋势和使用环境（例如，本地开发、CI/CD、生产）。
 
-You can use this report to answer questions like:
+您可以使用此报告回答以下问题：
 
-- Which versions are gaining or losing traction?
-- Is a new release being adopted?
-- How does usage vary across cloud providers?
+- 哪些版本正在获得或失去关注？
+- 新版本是否正在被采用？
+- 使用情况在不同云服务提供商之间如何变化？
 
-To access the report:
+访问报告：
 
-1. Sign in to [Docker Hub](https://hub.docker.com/).
-2. Select **My Hub** in the top navigation.
-3. Select your organization in the left navigation.
-4. Select **Analytics** > **Trends** in the left navigation.
-5. Select **DATA BY WEEK** or **DATA BY MONTH** to choose the data granularity.
-6. Select **Download report** for the desired week or month.
+1. 登录 [Docker Hub](https://hub.docker.com/)。
+2. 在顶部导航中选择 **My Hub**。
+3. 在左侧导航中选择您的组织。
+4. 在左侧导航中选择 **Analytics** > **Trends**。
+5. 选择 **DATA BY WEEK** 或 **DATA BY MONTH** 以选择数据粒度。
+6. 为所需周或月选择 **Download report**。
 
-The trends report is a CSV file that contains the following data points:
+趋势报告是一个 CSV 文件，包含以下数据点：
 
-| Field | Description |
+| 字段 | 描述 |
 |-------|-------------|
-| `DATE_GRANULARITY` | Weekly or monthly granularity of the data. |
-| `DATE_REFERENCE` | The start date of the week or month. |
-| `PUBLISHER_NAME` | The name of the organization that owns the repository. |
-| `IMAGE_REPOSITORY` | The full name of the image repository (e.g., `demonstrationorg/scout-demo`). |
-| `NAMESPACE` | The Docker organization or namespace that owns the repository. |
-| `IP_COUNTRY` | The country code (ISO 3166-1 alpha-2) where the pull request originated from (e.g., `US`, `CA`). |
-| `CLOUD_SERVICE_PROVIDER` | The cloud service provider used for the pull request (e.g., `gcp`, `aws`, `azure`) or `no csp` for non-cloud providers. |
-| `USER_AGENT` | The client application or tool used to pull the image (e.g., `docker`, `docker-scout`, `node-fetch`, `regclient`). |
-| `TAG` | The specific image tag that was pulled, or `\\N` if no specific tag was used. |
-| `DATA_DOWNLOADS` | The number of data downloads for the specified criteria. |
-| `VERSION_CHECKS` | The number of version checks (HEAD requests) performed without downloading the full image. |
-| `PULLS` | The total number of pull requests (data downloads + version checks). |
-| `UNIQUE_AUTHENTICATED_USERS` | The number of unique authenticated users who performed pulls. |
-| `UNIQUE_UNAUTHENTICATED_USERS` | The number of unique unauthenticated users who performed pulls. |
+| `DATE_GRANULARITY` | 数据的周或月粒度。 |
+| `DATE_REFERENCE` | 周或月的开始日期。 |
+| `PUBLISHER_NAME` | 拥有该仓库的组织名称。 |
+| `IMAGE_REPOSITORY` | 镜像仓库的完整名称（例如 `demonstrationorg/scout-demo`）。 |
+| `NAMESPACE` | 拥有该仓库的 Docker 组织或命名空间。 |
+| `IP_COUNTRY` | 拉取请求来源的国家/地区代码（ISO 3166-1 alpha-2）（例如 `US`, `CA`）。 |
+| `CLOUD_SERVICE_PROVIDER` | 拉取请求使用的云服务提供商（例如 `gcp`, `aws`, `azure`）或非云提供商的 `no csp`。 |
+| `USER_AGENT` | 用于拉取镜像的客户端应用程序或工具（例如 `docker`, `docker-scout`, `node-fetch`, `regclient`）。 |
+| `TAG` | 被拉取的特定镜像标签，如果未使用特定标签则为 `\\N`。 |
+| `DATA_DOWNLOADS` | 指定条件下的数据下载次数。 |
+| `VERSION_CHECKS` | 在不下载完整镜像的情况下执行的版本检查（HEAD 请求）次数。 |
+| `PULLS` | 拉取请求总数（数据下载 + 版本检查）。 |
+| `UNIQUE_AUTHENTICATED_USERS` | 执行拉取操作的唯一认证用户数。 |
+| `UNIQUE_UNAUTHENTICATED_USERS` | 执行拉取操作的唯一未认证用户数。 |
 
-### Technographic report
+### 技术栈分析报告
 
-The technographic report provides insights into how your Docker Verified
-Publisher (DVP) images are used alongside other container images in real-world
-technology stacks. This report helps you understand the technical ecosystem
-where your images operate and identify co-usage patterns with other images.
+技术栈分析报告提供关于您的 Docker Verified Publisher (DVP) 镜像在真实世界技术栈中如何与其他容器镜像一起使用的洞察。该报告帮助您了解镜像运行的技术生态系统，并识别与其他镜像的共同使用模式。
 
-You can use this report to answer questions like:
+您可以使用此报告回答以下问题：
 
-- Which other images are commonly used together with your images?
-- What percentage of your user base also uses specific complementary
-  technologies?
-- How many companies in your ecosystem use both your image and other popular
-  images?
-- What technology stacks are most popular among your users?
+- 哪些其他镜像通常与您的镜像一起使用？
+- 您的用户群中有多少百分比也使用特定的互补技术？
+- 您的生态系统中有多少公司同时使用您的镜像和其他流行镜像？
+- 您的用户中最受欢迎的技术栈是什么？
 
-To access the report:
+访问报告：
 
-1. Sign in to [Docker Hub](https://hub.docker.com/).
-2. Select **My Hub** in the top navigation.
-3. Select your organization in the left navigation.
-4. Select **Analytics** > **Technographic** in the left navigation.
-5. Select **DATA BY WEEK** or **DATA BY MONTH** to choose the data granularity.
-6. Select **Download report** for the desired week or month.
+1. 登录 [Docker Hub](https://hub.docker.com/)。
+2. 在顶部导航中选择 **My Hub**。
+3. 在左侧导航中选择您的组织。
+4. 在左侧导航中选择 **Analytics** > **Technographic**。
+5. 选择 **DATA BY WEEK** 或 **DATA BY MONTH** 以选择数据粒度。
+6. 为所需周或月选择 **Download report**。
 
-The technographic report is a CSV file that contains the following data points:
+技术栈分析报告是一个 CSV 文件，包含以下数据点：
 
-| Field | Description |
+| 字段 | 描述 |
 |-------|-------------|
-| `DATE_GRANULARITY` | Weekly or monthly granularity of the data. |
-| `DATE_REFERENCE` | The start date of the week or month in YYYY-MM-DD format. |
-| `PUBLISHER_ID` | The unique identifier for the publisher organization. |
-| `PUBLISHER_NAME` | The name of the organization that owns the DVP repository. |
-| `DVPP_IMAGE` | Your Docker Verified Publisher image repository name. |
-| `PAIRED_IMAGE` | The other image repository that is commonly used together with your DVP image. |
-| `USERS` | The number of unique users who pulled both your DVP image and the paired image within the time period. |
-| `TOTAL_PULLERS` | The total number of unique users who pulled your DVP image during the time period. |
-| `PCT_USERS` | The percentage of your image's users who also use the paired image (users/total_pullers). |
-| `DOMAINS` | The number of unique company domains that pulled both your DVP image and the paired image. |
-| `TOTAL_DOMAINS` | The total number of unique company domains that pulled your DVP image. |
-| `PCT_DOMAINS` | The percentage of company domains using your image that also use the paired image (domains/total_domains). |
+| `DATE_GRANULARITY` | 数据的周或月粒度。 |
+| `DATE_REFERENCE` | 周或月的开始日期，格式为 YYYY-MM-DD。 |
+| `PUBLISHER_ID` | 发布者组织的唯一标识符。 |
+| `PUBLISHER_NAME` | 拥有 DVP 仓库的组织名称。 |
+| `DVPP_IMAGE` | 您的 Docker Verified Publisher 镜像仓库名称。 |
+| `PAIRED_IMAGE` | 与您的 DVP 镜像共同使用的其他镜像仓库。 |
+| `USERS` | 在时间段内同时拉取了您的 DVP 镜像和配对镜像的唯一用户数。 |
+| `TOTAL_PULLERS` | 在时间段内拉取了您的 DVP 镜像的唯一用户总数。 |
+| `PCT_USERS` | 同时使用配对镜像的您的镜像用户百分比（用户数/总拉取用户数）。 |
+| `DOMAINS` | 同时拉取了您的 DVP 镜像和配对镜像的唯一公司域名数量。 |
+| `TOTAL_DOMAINS` | 拉取了您的 DVP 镜像的唯一公司域名总数。 |
+| `PCT_DOMAINS` | 使用您镜像的公司域名中同时使用配对镜像的百分比（域名数/总域名数）。 |
 
 > [!NOTE]
 >
-> To protect user privacy and ensure statistical significance, the technographic
-> report only includes image pairings that have at least 10 unique users.
-> Personal, disposable, and university email domains are excluded from the
-> company domain analysis.
+> 为保护用户隐私并确保统计显著性，技术栈分析报告仅包含至少有 10 个唯一用户的镜像配对。个人、一次性使用和大学电子邮件域名不包括在公司域名分析中。
 
-### Technographic companies report
+### 技术栈公司分析报告
 
-The technographic companies report provides a detailed view of which specific
-companies (identified by their domains) are using your Docker Verified Publisher
-(DVP) images together with other container images. This report gives you
-visibility into the actual organizations adopting your technology stack
-combinations, enabling targeted business development and partnership
-opportunities.
+技术栈公司分析报告提供详细视图，显示哪些特定公司（通过其域名识别）正在将您的 Docker Verified Publisher (DVP) 镜像与其他容器镜像一起使用。该报告让您了解实际采用您技术栈组合的组织，从而实现有针对性的业务开发和合作伙伴机会。
 
-You can use this report to answer questions like:
+您可以使用此报告回答以下问题：
 
-- Which companies are using my image alongside specific complementary
-  technologies?
-- What technology stacks are adopted by enterprise customers in my target
-  market?
-- Which organizations might be good candidates for partnership discussions?
-- How can I identify potential customers who are already using related
-  technologies?
+- 哪些公司正在将我的镜像与特定的互补技术一起使用？
+- 我的目标市场中的企业客户采用了哪些技术栈？
+- 哪些组织可能是合作伙伴讨论的良好候选对象？
+- 如何识别已经在使用相关技术的潜在客户？
 
-To access the report:
+访问报告：
 
-1. Sign in to [Docker Hub](https://hub.docker.com/).
-2. Select **My Hub** in the top navigation.
-3. Select your organization in the left navigation.
-4. Select **Analytics** > **Technographic** in the left navigation.
-5. Select **DATA BY WEEK** or **DATA BY MONTH** to choose the data granularity.
-6. Select **Download report** for the desired week or month.
+1. 登录 [Docker Hub](https://hub.docker.com/)。
+2. 在顶部导航中选择 **My Hub**。
+3. 在左侧导航中选择您的组织。
+4. 在左侧导航中选择 **Analytics** > **Technographic**。
+5. 选择 **DATA BY WEEK** 或 **DATA BY MONTH** 以选择数据粒度。
+6. 为所需周或月选择 **Download report**。
 
-The technographic companies report is a CSV file that contains the following
-data points:
+技术栈公司分析报告是一个 CSV 文件，包含以下数据点：
 
-| Field | Description |
+| 字段 | 描述 |
 |-------|-------------|
-| `DATE_GRANULARITY` | Weekly or monthly granularity of the data. |
-| `DATE_REFERENCE` | The start date of the week or month in YYYY-MM-DD format. |
-| `PUBLISHER_NAME` | The name of the organization that owns the DVP repository. |
-| `DOMAIN` | The company domain that pulled both your DVP image and the paired image (e.g., `example.com`). |
-| `DVPP_IMAGE` | Your Docker Verified Publisher image repository name. |
-| `PAIRED_IMAGE` | The other image repository that was used together with your DVP image by this company. |
+| `DATE_GRANULARITY` | 数据的周或月粒度。 |
+| `DATE_REFERENCE` | 周或月的开始日期，格式为 YYYY-MM-DD。 |
+| `PUBLISHER_NAME` | 拥有 DVP 仓库的组织名称。 |
+| `DOMAIN` | 同时拉取了您的 DVP 镜像和配对镜像的公司域名（例如 `example.com`）。 |
+| `DVPP_IMAGE` | 您的 Docker Verified Publisher 镜像仓库名称。 |
+| `PAIRED_IMAGE` | 该公司与您的 DVP 镜像一起使用的其他镜像仓库。 |
 
-Each row represents a unique combination of a company domain, your DVP image,
-and another image that were used together during the specified time period.
+每一行代表一个公司域名、您的 DVP 镜像和另一个镜像在指定时间段内共同使用的唯一组合。
 
 > [!NOTE]
 >
-> To protect privacy and ensure data quality, this report excludes personal
-> email domains, disposable email services, and university domains. Only
-> business and organizational domains are included in the analysis.
+> 为保护隐私和确保数据质量，此报告排除了个人电子邮件域名、一次性电子邮件服务和大学域名。分析中仅包含商业和组织域名。
 
-### Tracked companies report
+### 追踪公司分析报告
 
-The tracked companies report provides detailed insights into how specific
-companies are using your Docker Verified Publisher (DVP) images. This report
-helps you understand usage patterns, deployment environments, and adoption
-trends across your customer base and potential prospects.
+追踪公司分析报告提供关于特定公司如何使用您的 Docker Verified Publisher (DVP) 镜像的详细洞察。该报告帮助您了解客户群和潜在客户中的使用模式、部署环境和采用趋势。
 
-You can use this report to answer questions like:
+您可以使用此报告回答以下问题：
 
-- How are specific companies using my images across different environments?
-- What deployment patterns do I see across local development, CI/CD, and
-  production?
-- Which companies are heavy users of my images?
-- How does usage vary by geography and cloud providers for tracked companies?
+- 特定公司在不同环境中如何使用我的镜像？
+- 在本地开发、CI/CD 和生产中看到了哪些部署模式？
+- 哪些公司是我的镜像的重度用户？
+- 对于被追踪的公司，使用情况在地理位置和云服务提供商之间如何变化？
 
-To access the report:
+访问报告：
 
-1. Sign in to [Docker Hub](https://hub.docker.com/).
-2. Select **My Hub** in the top navigation.
-3. Select your organization in the left navigation.
-4. Select **Analytics** > **Tracked Companies** in the left navigation.
-5. Select **DATA BY WEEK** or **DATA BY MONTH** to choose the data granularity.
-6. Select **Download report** for the desired week or month.
+1. 登录 [Docker Hub](https://hub.docker.com/)。
+2. 在顶部导航中选择 **My Hub**。
+3. 在左侧导航中选择您的组织。
+4. 在左侧导航中选择 **Analytics** > **Tracked Companies**。
+5. 选择 **DATA BY WEEK** 或 **DATA BY MONTH** 以选择数据粒度。
+6. 为所需周或月选择 **Download report**。
 
-The tracked companies report is a CSV file that contains the following data
-points:
+追踪公司分析报告是一个 CSV 文件，包含以下数据点：
 
-| Field | Description |
+| 字段 | 描述 |
 |-------|-------------|
-| `DATE_GRANULARITY` | Weekly or monthly granularity of the data. |
-| `DATE_REFERENCE` | The start date of the week or month in YYYY-MM-DD format. |
-| `PUBLISHER_NAME` | The name of the organization that owns the DVP repository. |
-| `DOMAIN` | The company domain (e.g., `docker.com`) associated with the image pulls. |
-| `IP_COUNTRY` | The country code (ISO 3166-1 alpha-2) where the pull request originated from. |
-| `CLOUD_SERVICE_PROVIDER` | The cloud service provider used for the pull request or `no csp` for non-cloud providers. |
-| `USER_AGENT` | The client application or tool used to pull the image. |
-| `INFERRED_USE_CASE` | The inferred deployment environment based on user agent and cloud provider analysis. Values include: <br>• `Local Dev`: Local development environment (e.g., Docker Desktop, direct `docker` commands) <br>• `CI/CD`: Continuous integration/deployment pipelines (e.g., containerd, build tools, registry mirroring) <br>• `Prod`: Production environments (e.g., Kubernetes, container orchestration platforms) <br>• `Unknown`: Unable to determine the use case from available data |
-| `IMAGE_REPOSITORY` | The specific DVP image repository that was pulled. |
-| `DATA_DOWNLOADS` | The number of actual image layer downloads for this combination. |
-| `VERSION_CHECKS` | The number of version checks (HEAD requests) performed without downloading the full image. |
-| `PULLS` | The total number of pull requests (data downloads + version checks). |
-| `UNIQUE_AUTHENTICATED_USERS` | The number of unique authenticated users from this domain who performed pulls. |
+| `DATE_GRANULARITY` | 数据的周或月粒度。 |
+| `DATE_REFERENCE` | 周或月的开始日期，格式为 YYYY-MM-DD。 |
+| `PUBLISHER_NAME` | 拥有 DVP 仓库的组织名称。 |
+| `DOMAIN` | 与镜像拉取相关的公司域名（例如 `docker.com`）。 |
+| `IP_COUNTRY` | 拉取请求来源的国家/地区代码（ISO 3166-1 alpha-2）。 |
+| `CLOUD_SERVICE_PROVIDER` | 拉取请求使用的云服务提供商或非云提供商的 `no csp`。 |
+| `USER_AGENT` | 用于拉取镜像的客户端应用程序或工具。 |
+| `INFERRED_USE_CASE` | 基于用户代理和云服务提供商分析推断的部署环境。值包括：<br>• `Local Dev`: 本地开发环境（例如 Docker Desktop、直接 `docker` 命令）<br>• `CI/CD`: 持续集成/部署管道（例如 containerd、构建工具、注册表镜像）<br>• `Prod`: 生产环境（例如 Kubernetes、容器编排平台）<br>• `Unknown`: 无法根据可用数据确定用例 |
+| `IMAGE_REPOSITORY` | 被拉取的特定 DVP 镜像仓库。 |
+| `DATA_DOWNLOADS` | 此组合的实际镜像层下载次数。 |
+| `VERSION_CHECKS` | 在不下载完整镜像的情况下执行的版本检查（HEAD 请求）次数。 |
+| `PULLS` | 拉取请求总数（数据下载 + 版本检查）。 |
+| `UNIQUE_AUTHENTICATED_USERS` | 来自该域名并执行了拉取操作的唯一认证用户数。 |
 
 > [!NOTE]
 >
-> Use case inference is determined by analyzing user agent patterns and cloud
-> service provider usage. Local development tools used on cloud infrastructure
-> are reclassified as CI/CD, and CI/CD tools used on cloud infrastructure are
-> reclassified as production to better reflect actual deployment patterns.
+> 用例推断是通过分析用户代理模式和云服务提供商使用情况来确定的。在云基础设施上使用的本地开发工具被重新归类为 CI/CD，在云基础设施上使用的 CI/CD 工具被重新归类为生产，以更好地反映实际的部署模式。
 
 {{< /tab >}}
-{{< tab name="DSOS & Legacy DVP programs" >}}
+{{< tab name="DSOS 和旧版 DVP 计划" >}}
 
 > [!IMPORTANT]
 >
-> The Legacy DVP program applies to existing customers who have not yet renewed
-> to DVP Core. The DVP Legacy program is deprecated and will be retired. Contact
-> your Docker sales representative or
-> [Docker](https://www.docker.com/partners/programs/) for more information.
+> 旧版 DVP 计划适用于尚未续订 DVP Core 的现有客户。DVP 旧版计划已弃用，并将被停用。有关更多信息，请联系您的 Docker 销售代表或 [Docker](https://www.docker.com/partners/programs/)。
 
-## View the image's analytics data
+## 查看镜像的分析数据
 
-You can find analytics data for your repositories on the **Insights and
-analytics** dashboard at the following URL:
-`https://hub.docker.com/orgs/{namespace}/insights/images`. The dashboard
-contains a visualization of the usage data and a table where you can download
-the data as CSV files.
+您可以在以下 URL 的 **Insights and analytics** 仪表板上找到仓库的分析数据：
+`https://hub.docker.com/orgs/{namespace}/insights/images`。该仪表板包含使用数据的可视化图表和一个表格，您可以在其中将数据下载为 CSV 文件。
 
-To view data in the chart:
+要在图表中查看数据：
 
-- Select the data granularity: weekly or monthly
-- Select the time interval: 3, 6, or 12 months
-- Select one or more repositories in the list
+- 选择数据粒度：周或月
+- 选择时间间隔：3、6 或 12 个月
+- 在列表中选择一个或多个仓库
 
-![Insights and analytics chart visualization](../../../images/chart.png)
+![洞察与分析图表可视化](../../../images/chart.png)
 
 > [!TIP]
 >
-> Hovering your cursor over the chart displays a tooltip, showing precise data
-> for points in time.
+> 将光标悬停在图表上会显示工具提示，显示时间点的精确数据。
 
-### Share analytics data
+### 分享分析数据
 
-You can share the visualization with others using the **Share** icon at the top
-of the chart. This is a convenient way to share statistics with others in your
-organization.
+您可以使用图表顶部的 **Share** 图标与他人共享可视化图表。这是与组织内其他人共享统计数据的便捷方式。
 
-![Chart share icon](../../../images/chart-share-icon.png)
+![图表分享图标](../../../images/chart-share-icon.png)
 
-Selecting the icon generates a link that's copied to your clipboard. The link
-preserves the display selections you made. When someone follows the link, the
-**Insights and analytics** page opens and displays the chart with the same
-configuration as you had set up when creating the link.
+选择该图标会生成一个链接并复制到您的剪贴板。该链接会保留您所做的显示选择。当有人访问该链接时，**Insights and analytics** 页面将打开，并显示与您创建链接时设置的相同配置的图表。
 
-## Extension analytics data
+## 扩展分析数据
 
-If you have published Docker Extensions in the Extension marketplace, you can
-also get analytics about your extension usage, available as CSV files. You can
-download extension CSV reports from the **Insights and analytics** dashboard at
-the following URL:
-`https://hub.docker.com/orgs/{namespace}/insights/extensions`. If your Docker
-namespace contains extensions known in the marketplace, you will see an
-**Extensions** tab listing CSV files for your extension(s).
+如果您已在扩展市场中发布了 Docker 扩展，您还可以获取有关扩展使用情况的分析数据，以 CSV 文件形式提供。您可以从以下 URL 的 **Insights and analytics** 仪表板下载扩展 CSV 报告：
+`https://hub.docker.com/orgs/{namespace}/insights/extensions`。如果您的 Docker 命名空间包含市场中已知的扩展，您将看到一个 **Extensions** 选项卡，其中列出了扩展的 CSV 文件。
 
-## Exporting analytics data
+## 导出分析数据
 
-You can export the analytics data either from the web dashboard, or using the
-[DVP Data API](/reference/api/dvp/latest.md). All members of an organization
-have access to the analytics data.
+您可以从 Web 仪表板导出分析数据，或使用 [DVP Data API](/reference/api/dvp/latest.md)。组织的所有成员均可访问分析数据。
 
-The data is available as a downloadable CSV file, in a weekly (Monday through
-Sunday) or monthly format. Monthly data is available from the first day of the
-following calendar month. You can import this data into your own systems, or you
-can analyze it manually as a spreadsheet.
+数据以可下载的 CSV 文件形式提供，格式为每周（周一至周日）或每月。每月数据可从下一个日历月的第一天开始获取。您可以将此数据导入您自己的系统，或者作为电子表格进行手动分析。
 
-### Export data
+### 导出数据
 
-Export usage data for your organization's images using the Docker Hub website by
-following these steps:
+使用 Docker Hub 网站导出组织镜像的使用数据，请按照以下步骤操作：
 
-1.  Sign in to [Docker Hub](https://hub.docker.com/) and select **My Hub**.
+1.  登录 [Docker Hub](https://hub.docker.com/) 并选择 **My Hub**。
+2.  选择您的组织并选择 **Analytics**。
+3.  设置要导出分析数据的时间范围。
 
-2.  Choose your organization and select **Analytics**.
+    摘要和原始数据的可下载 CSV 文件将出现在右侧。
 
-3.  Set the time span for which you want to export analytics data.
+    ![分析数据的筛选选项和下载链接](../../../images/download-analytics-data.png)
 
-    The downloadable CSV files for summary and raw data appear on the right-hand
-    side.
+### 使用 API 导出数据
 
-    ![Filtering options and download links for analytics data](../../../images/download-analytics-data.png)
+HTTP API 端点位于：
+`https://hub.docker.com/api/publisher/analytics/v1`。了解如何使用 API 导出数据，请参阅 [DVP Data API 文档](/reference/api/dvp/latest.md)。
 
-### Export data using the API
+## 数据点
 
-The HTTP API endpoints are available at:
-`https://hub.docker.com/api/publisher/analytics/v1`. Learn how to export data
-using the API in the [DVP Data API documentation](/reference/api/dvp/latest.md).
+以原始或摘要格式导出数据。每种格式包含不同的数据点和结构。
 
-## Data points
+以下部分描述了每种格式的可用数据点。**Date added** 列显示了字段首次引入的时间。
 
-Export data in either raw or summary format. Each format contains different data
-points and with different structure.
+### 镜像拉取原始数据
 
-The following sections describe the available data points for each format. The
-**Date added** column shows when the field was first introduced.
+原始数据格式包含以下数据点。CSV 文件中的每一行代表一次镜像拉取。
 
-### Image pulls raw data
-
-The raw data format contains the following data points. Each row in the CSV file
-represents an image pull.
-
-| Data point                    | Description                                                                                                  | Date added        |
+| 数据点 | 描述 | 添加日期 |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------- |
-| Action                        | Request type, see [Action classification
+| Action | 请求类型，参见 [操作分类规则][1]。`pull_by_tag`、`pull_by_digest` 或 `version_check` 之一。 | 2022 年 1 月 1 日 |
+| Action day | 时间戳的日期部分：`YYYY-MM-DD`。 | 2022 年 1 月 1 日 |
+| Country | 请求来源国家/地区。 | 2022 年 1 月 1 日 |
+| Digest | 镜像摘要。 | 2022 年 1 月 1 日 |
+| HTTP method | 请求中使用的 HTTP 方法，详情请参见 [registry API 文档][2]。 | 2022 年 1 月 1 日 |
+| Host | 事件中使用的云服务提供商。 | 2022 年 1 月 1 日 |
+| Namespace | Docker [组织][3]（镜像命名空间）。 | 2022 年 1 月 1 日 |
+| Reference | 请求中使用的镜像摘要或标签。 | 2022 年 1 月 1 日 |
+| Repository | Docker [仓库][4]（镜像名称）。 | 2022 年 1 月 1 日 |
+| Tag (included when available) | 仅当请求引用标签时才可用的标签名称。 | 2022 年 1 月 1 日 |
+| Timestamp | 请求的日期和时间：`YYYY-MM-DD 00:00:00`。 | 2022 年 1 月 1 日 |
+| Type | 事件来源的行业。`business`、`isp`、`hosting`、`education`、`null` 之一。 | 2022 年 1 月 1 日 |
+| User agent tool | 用户用于拉取镜像的应用程序（例如 `docker` 或 `containerd`）。 | 2022 年 1 月 1 日 |
+| User agent version | 用于拉取镜像的应用程序版本。 | 2022 年 1 月 1 日 |
+| Domain | 请求来源域名，参见 [隐私](#隐私)。 | 2022 年 10 月 11 日 |
+| Owner | 拥有该仓库的组织名称。 | 2022 年 12 月 19 日 |
+
+[1]: #image-pulls-action-classification-rules
+[2]: /registry/spec/api/
+[3]: /admin/organization/orgs/
+[4]: /docker-hub/repos/
+
+### 镜像拉取摘要数据
+
+有两种级别的摘要数据可用：
+
+- 仓库级别：每个命名空间和仓库的摘要
+- 标签或摘要级别：每个命名空间、仓库和引用（标签或摘要）的摘要
+
+摘要数据格式包含选定时间范围内的以下数据点：
+
+| 数据点 | 描述 | 添加日期 |
+| ----------------- | ------------------------------------------------------- | ----------------- |
+| Unique IP address | 唯一 IP 地址的数量，参见 [隐私](#隐私)。 | 2022 年 1 月 1 日 |
+| Pull by tag | GET 请求，按摘要或按标签。 | 2022 年 1 月 1 日 |
+| Pull by digest | 按摘要的 GET 或 HEAD 请求，或按摘要的 HEAD。 | 2022 年 1 月 1 日 |
+| Version check | 按标签的 HEAD，后未跟随 GET | 2022 年 1 月 1 日 |
+| Owner | 拥有该仓库的组织名称。 | 2022 年 12 月 19 日 |
+
+### 镜像拉取操作分类规则
+
+一个操作代表与 `docker pull` 相关的多个请求事件。拉取操作按类别分组，以使数据在理解用户行为和意图方面更有意义。类别包括：
+
+- 版本检查
+- 按标签拉取
+- 按摘要拉取
+
+自动化系统会频繁检查您的镜像是否有新版本。能够区分 CI 中的“版本检查”与用户的实际镜像拉取，可以让您更深入地了解用户的行为。
+
+下表描述了用于确定拉取背后意图的规则。要提供反馈或询问有关这些规则的问题，[请填写 Google 表格](https://forms.gle/nb7beTUQz9wzXy1b6)。
+
+| 起始事件 | 引用 | 后续操作 | 结果操作 | 用例 | 备注 |
+| :------------- | :-------- | :-------------------------------------------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| HEAD | 标签 | N/A | 版本检查 | 用户本地机器上已存在所有层 | 这类似于用户本地已存在所有镜像层时的按标签拉取用例，但它区分了用户意图并进行相应分类。 |
+| GET | 标签 | N/A | 按标签拉取 | 用户本地机器上已存在所有层和/或镜像是单架构的 | |
+| GET | 标签 | 按不同摘要获取 | 按标签拉取 | 镜像是多架构的 | 第二次按摘要的 GET 必须与第一次不同。 |
+| HEAD | 标签 | 按相同摘要获取 | 按标签拉取 | 镜像是多架构的，但部分或所有镜像层已存在于本地机器上 | 按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。如果镜像是多架构的，可能会发生额外的 GET（请参见本表中的下一行）。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。 |
+| HEAD | 标签 | 按相同摘要获取，然后按不同摘要进行第二次获取 | 按标签拉取 | 镜像是多架构的 | 按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。由于镜像是多架构的，因此存在按不同摘要的第二次 GET。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。 |
+| HEAD | 标签 | 按相同摘要获取，然后按不同摘要进行第二次获取 | 按标签拉取 | 镜像是多架构的 | 按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。由于镜像是多架构的，因此存在按不同摘要的第二次 GET。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。 |
+| GET | 摘要 | N/A | 按摘要拉取 | 用户本地机器上已存在所有层和/或镜像是单架构的 | |
+| HEAD | 摘要 | N/A | 按摘要拉取 | 用户本地机器上已存在所有层 | |
+| GET | 摘要 | 按不同摘要获取 | 按摘要拉取 | 镜像是多架构的 | 第二次按摘要的 GET 必须与第一次不同。 |
+| HEAD | 摘要 | 按相同摘要获取 | 按摘要拉取 | 镜像是单架构的和/或镜像是多架构的，但部分镜像已存在于本地机器上 | |
+| HEAD | 摘要 | 按相同摘要获取，然后按不同摘要进行第二次获取 | 按摘要拉取 | 镜像是多架构的 | |
+
+### 扩展摘要数据
+
+有两种级别的扩展摘要数据可用：
+
+- 核心摘要，包含基本的扩展使用信息：扩展安装次数、卸载次数和总安装次数
+
+核心摘要数据文件包含选定时间范围内的以下数据点：
+
+| 数据点 | 描述 | 添加日期 |
+| ----------------- | ------------------------------------------------------- | ----------------- |
+| Installs | 扩展的安装次数 | 2024 年 2 月 1 日 |
+| TotalInstalls | 扩展的总安装次数 | 2024 年 2 月 1 日 |
+| Uninstalls | 扩展的卸载次数 | 2024 年 2 月 1 日 |
+| TotalUninstalls | 扩展的总卸载次数 | 2024 年 2 月 1 日 |
+| Updates | 扩展的更新次数 | 2024 年 2 月 1 日 |
+
+- 高级摘要，包含高级的扩展使用信息：按唯一用户划分的安装、卸载，以及按唯一用户划分的扩展打开次数。
+
+核心摘要数据文件包含选定时间范围内的以下数据点：
+
+| 数据点 | 描述 | 添加日期 |
+| ----------------- | ------------------------------------------------------- | ----------------- |
+| Installs | 扩展的安装次数 | 2024 年 2 月 1 日 |
+| UniqueInstalls | 安装扩展的唯一用户数 | 2024 年 2 月 1 日 |
+| Uninstalls | 扩展的卸载次数 | 2024 年 2 月 1 日 |
+| UniqueUninstalls | 卸载扩展的唯一用户数 | 2024 年 2 月 1 日 |
+| Usage | 扩展选项卡的打开次数 | 2024 年 2 月 1 日 |
+| UniqueUsers | 打开扩展选项卡的唯一用户数 | 2024 年 2 月 1 日 |
+
+## 数据随时间的变化
+
+洞察与分析服务不断改进，以增加其为发布者带来的价值。某些更改可能包括添加新的数据点，或改进现有数据以使其更有用。
+
+数据集中的更改（例如添加或删除字段）通常仅从该字段首次引入的日期开始适用，并向后兼容。
+
+请参阅 [数据点](#数据点) 部分中的表格，以查看特定数据点从哪个日期开始可用。
+
+{{< /tab >}}
+{{< /tabs >}}
+
+## 隐私
+
+本节包含有关隐私保护措施的信息，这些措施确保 Docker Hub 上的内容消费者保持完全匿名。
+
+> [!IMPORTANT]
+>
+> Docker 绝不会在分析数据中共享任何个人身份信息 (PII)。
+
+镜像拉取摘要数据集包含唯一 IP 地址计数。该数据点仅包含请求镜像的不同唯一 IP 地址的数量。单个 IP 地址永远不会被共享。
+
+镜像拉取原始数据集包含用户 IP 域名作为数据点。这是与用于拉取镜像的 IP 地址关联的域名。如果 IP 类型为 `business`，则该域名代表与该 IP 地址关联的公司或组织（例如 `docker.com`）。对于任何非 `business` 的其他 IP 类型，该域名代表用于发出请求的互联网服务提供商或托管提供商。平均而言，只有约 30% 的拉取操作被归类为 `business` IP 类型（这因发布者和镜像而异）。

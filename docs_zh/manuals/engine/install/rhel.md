@@ -16,13 +16,13 @@ aliases:
 download-url-base: https://download.docker.com/linux/rhel
 ---
 
-要开始在 RHEL 上使用 Docker Engine，请先确认您满足[先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)操作。
+要开始在 RHEL 上使用 Docker Engine，请确保你[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)操作。
 
 ## 先决条件
 
 ### 操作系统要求
 
-要安装 Docker Engine，您需要以下 RHEL 版本之一的受支持版本：
+要安装 Docker Engine，你需要以下 RHEL 版本之一的受支持版本：
 
 - RHEL 8
 - RHEL 9
@@ -30,9 +30,9 @@ download-url-base: https://download.docker.com/linux/rhel
 
 ### 卸载旧版本
 
-在安装 Docker Engine 之前，您需要卸载任何冲突的软件包。
+在安装 Docker Engine 之前，你需要卸载任何冲突的软件包。
 
-您的 Linux 发行版可能提供非官方的 Docker 软件包，这些软件包可能与 Docker 提供的官方软件包冲突。在安装官方版本的 Docker Engine 之前，您必须卸载这些软件包。
+你的 Linux 发行版可能提供非官方的 Docker 软件包，这些软件包可能与 Docker 提供的官方软件包冲突。在安装官方版本的 Docker Engine 之前，你必须卸载这些软件包。
 
 ```console
 $ sudo dnf remove docker \
@@ -47,25 +47,25 @@ $ sudo dnf remove docker \
                   runc
 ```
 
-`dnf` 可能报告您未安装这些软件包中的任何一个。
+`dnf` 可能报告你未安装这些软件包中的任何一个。
 
 存储在 `/var/lib/docker/` 中的镜像、容器、卷和网络在卸载 Docker 时不会自动删除。
 
 ## 安装方法
 
-您可以根据需要以不同的方式安装 Docker Engine：
+你可以根据需要以不同方式安装 Docker Engine：
 
-- 您可以[设置 Docker 的仓库](#install-using-the-repository)并从中安装，以便于安装和升级任务。这是推荐的方法。
+- 你可以[设置 Docker 的仓库](#install-using-the-repository)并从中安装，以便于安装和升级任务。这是推荐的方法。
 
-- 您可以下载 RPM 包，[手动安装](#install-from-a-package)，并完全手动管理升级。这在某些情况下很有用，例如在无法访问互联网的气隙系统上安装 Docker。
+- 你可以下载 RPM 包，[手动安装](#install-from-a-package)，并完全手动管理升级。这在某些情况下很有用，例如在无法访问互联网的隔离系统上安装 Docker。
 
-- 在测试和开发环境中，您可以使用自动化的[便捷脚本](#install-using-the-convenience-script)来安装 Docker。
+- 在测试和开发环境中，你可以使用自动化的[便捷脚本](#install-using-the-convenience-script)来安装 Docker。
 
 {{% include "engine-license.md" %}}
 
 ### 使用 rpm 仓库安装 {#install-using-the-repository}
 
-首次在新主机上安装 Docker Engine 之前，您需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。
+首次在新主机上安装 Docker Engine 之前，你需要设置 Docker 仓库。之后，你可以从该仓库安装和更新 Docker。
 
 #### 设置仓库
 
@@ -81,7 +81,7 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
 1. 安装 Docker 包。
 
    {{< tabs >}}
-   {{< tab name="最新版" >}}
+   {{< tab name="最新版本" >}}
 
    要安装最新版本，请运行：
 
@@ -89,15 +89,14 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
    $ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 
-   如果提示接受 GPG 密钥，请验证指纹是否匹配
-   `060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35`，如果匹配则接受。
+   如果提示接受 GPG 密钥，请验证指纹是否匹配 `060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35`，如果匹配则接受。
 
    此命令安装 Docker，但不会启动 Docker。它还会创建一个 `docker` 组，但默认情况下不会将任何用户添加到该组。
 
    {{< /tab >}}
    {{< tab name="特定版本" >}}
 
-   要安装特定版本，请先列出仓库中可用的版本：
+   要安装特定版本，首先列出仓库中可用的版本：
 
    ```console
    $ dnf list docker-ce --showduplicates | sort -r
@@ -107,11 +106,11 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
    <...>
    ```
 
-   返回的列表取决于启用的仓库，并且特定于您的 RHEL 版本（在此示例中由 `.el9` 后缀表示）。
+   返回的列表取决于启用的仓库，并且特定于你的 RHEL 版本（在此示例中由 `.el9` 后缀指示）。
 
    通过其完全限定的包名安装特定版本，包名是包名（`docker-ce`）加上版本字符串（第 2 列），用连字符（`-`）分隔。例如，`docker-ce-3:{{% param "docker_ce_version" %}}-1.el9`。
 
-   将 `<VERSION_STRING>` 替换为您想要的版本，然后运行以下命令进行安装：
+   将 `<VERSION_STRING>` 替换为所需版本，然后运行以下命令进行安装：
 
    ```console
    $ sudo dnf install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io docker-buildx-plugin docker-compose-plugin
@@ -128,8 +127,7 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
    $ sudo systemctl enable --now docker
    ```
 
-   这将配置 Docker systemd 服务，使其在系统启动时自动启动。如果您不希望 Docker 自动启动，请改用 `sudo
-   systemctl start docker`。
+   这会配置 Docker systemd 服务，使其在系统启动时自动启动。如果你不希望 Docker 自动启动，请改用 `sudo systemctl start docker`。
 
 3. 通过运行 `hello-world` 镜像验证安装是否成功：
 
@@ -139,22 +137,22 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
 
    此命令下载测试镜像并在容器中运行它。当容器运行时，它会打印确认消息然后退出。
 
-您现在已成功安装并启动了 Docker Engine。
+你现在已经成功安装并启动了 Docker Engine。
 
 {{% include "root-errors.md" %}}
 
 #### 升级 Docker Engine
 
-要升级 Docker Engine，请遵循[安装说明](#install-using-the-repository)，选择您要安装的新版本。
+要升级 Docker Engine，请遵循[安装说明](#install-using-the-repository)，选择你想要安装的新版本。
 
 ### 从包安装
 
-如果您无法使用 Docker 的 `rpm` 仓库安装 Docker Engine，您可以下载适用于您版本的 `.rpm` 文件并手动安装。每次要升级 Docker Engine 时，您都需要下载新文件。
+如果无法使用 Docker 的 `rpm` 仓库安装 Docker Engine，你可以手动下载适用于你版本的 `.rpm` 文件并安装它。每次要升级 Docker Engine 时，都需要下载新文件。
 
 <!-- markdownlint-disable-next-line -->
 1. 访问 [{{% param "download-url-base" %}}/]({{% param "download-url-base" %}}/)。
 
-2. 在列表中选择您的 RHEL 版本。
+2. 在列表中选择你的 RHEL 版本。
 
 3. 选择适用的架构（`x86_64`、`aarch64` 或 `s390x`），然后进入 `stable/Packages/`。
 
@@ -184,8 +182,7 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
    $ sudo systemctl enable --now docker
    ```
 
-   这将配置 Docker systemd 服务，使其在系统启动时自动启动。如果您不希望 Docker 自动启动，请改用 `sudo
-   systemctl start docker`。
+   这会配置 Docker systemd 服务，使其在系统启动时自动启动。如果你不希望 Docker 自动启动，请改用 `sudo systemctl start docker`。
 
 7. 通过运行 `hello-world` 镜像验证安装是否成功：
 
@@ -195,14 +192,13 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
 
    此命令下载测试镜像并在容器中运行它。当容器运行时，它会打印确认消息然后退出。
 
-您现在已成功安装并启动了 Docker Engine。
+你现在已经成功安装并启动了 Docker Engine。
 
 {{% include "root-errors.md" %}}
 
 #### 升级 Docker Engine
 
-要升级 Docker Engine，请下载更新的包文件并重复[安装过程](#install-from-a-package)，使用 `dnf upgrade`
-代替 `dnf install`，并指向新文件。
+要升级 Docker Engine，请下载更新的包文件并重复[安装过程](#install-from-a-package)，使用 `dnf upgrade` 代替 `dnf install`，并指向新文件。
 
 {{% include "install-script.md" %}}
 
@@ -221,7 +217,7 @@ $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce
    $ sudo rm -rf /var/lib/containerd
    ```
 
-您必须手动删除任何编辑过的配置文件。
+你必须手动删除任何编辑过的配置文件。
 
 ## 后续步骤
 

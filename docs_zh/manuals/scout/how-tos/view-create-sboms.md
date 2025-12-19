@@ -1,15 +1,15 @@
 ---
 title: Docker Scout SBOM
 description: 使用 Docker Scout 提取项目的 SBOM。
-keywords: scout, 供应链, sbom, 软件物料清单, spdx, cli, 证明, 文件
+keywords: scout, supply chain, sbom, software bill of material, spdx, cli, attestations, file
 aliases:
 - /engine/sbom/
 - /scout/sbom/
 ---
 
-[镜像分析](/manuals/scout/explore/analysis.md) 使用镜像 SBOM 来了解镜像包含哪些包和版本。
-Docker Scout 优先使用镜像上可用的 SBOM 证明（推荐）。
-如果镜像上没有 SBOM 证明，Docker Scout 会通过索引镜像内容来创建一个。
+[镜像分析](/manuals/scout/explore/analysis.md) 使用镜像 SBOM 来了解镜像包含的软件包及其版本。
+如果镜像上可用 SBOM 签名（推荐），Docker Scout 会使用该签名。
+如果没有可用的 SBOM 签名，Docker Scout 会通过索引镜像内容来创建一个。
 
 ## 从 CLI 查看
 
@@ -19,9 +19,9 @@ Docker Scout 优先使用镜像上可用的 SBOM 证明（推荐）。
 $ docker scout sbom [IMAGE]
 ```
 
-默认情况下，这会将 SBOM 以 JSON 格式打印到标准输出。
-`docker scout sbom` 生成的默认 JSON 格式不是 SPDX-JSON。
-要输出 SPDX，请使用 `--format spdx` 标志：
+默认情况下，此命令将 SBOM 以 JSON 格式打印到 stdout。
+`docker scout sbom` 生成的默认 JSON 格式并非 SPDX-JSON。
+要输出 SPDX 格式，请使用 `--format spdx` 标志：
 
 ```console
 $ docker scout sbom --format spdx [IMAGE]
@@ -55,14 +55,13 @@ $ docker scout sbom --format list alpine
   zlib                    1.2.13-r1    apk
 ```
 
-有关 `docker scout sbom` 命令的更多信息，请参考 [CLI 参考](/reference/cli/docker/scout/sbom.md)。
+有关 `docker scout sbom` 命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/sbom.md)。
 
-## 作为构建证明附加 {#attest}
+## 作为构建签名附加 {#attest}
 
-您可以在构建时生成 SBOM 并将其作为[证明](/manuals/build/metadata/attestations/_index.md)附加到镜像上。
-BuildKit 提供了一个默认的 SBOM 生成器，它与 Docker Scout 使用的不同。
-您可以使用 `docker build` 命令的 `--attest` 标志来配置 BuildKit 使用 Docker Scout SBOM 生成器。
-Docker Scout SBOM 索引器提供更丰富的结果，并确保与 Docker Scout 镜像分析更好的兼容性。
+你可以在构建时生成 SBOM 并将其作为[签名](/manuals/build/metadata/attestations/_index.md)附加到镜像上。BuildKit 提供了一个默认的 SBOM 生成器，它与 Docker Scout 使用的生成器不同。
+你可以使用 `docker build` 命令的 `--attest` 标志来配置 BuildKit 使用 Docker Scout SBOM 生成器。
+Docker Scout SBOM 索引器提供更丰富的结果，并确保与 Docker Scout 镜像分析具有更好的兼容性。
 
 ```console
 $ docker build --tag <org>/<image> \
@@ -70,17 +69,15 @@ $ docker build --tag <org>/<image> \
   --push .
 ```
 
-要构建带有 SBOM 证明的镜像，您必须使用 [containerd 镜像存储](/manuals/desktop/features/containerd.md) 功能，或者将 `docker-container` 构建器与 `--push` 标志一起使用，直接将镜像（含证明）推送到注册表。
-经典的镜像存储不支持清单列表或镜像索引，而这些是向镜像添加证明所必需的。
+要构建带有 SBOM 签名的镜像，你必须使用 [containerd 镜像存储](/manuals/desktop/features/containerd.md)功能，或者使用 `docker-container` 构建器并配合 `--push` 标志将镜像（连同签名）直接推送到注册表。经典镜像存储不支持清单列表或镜像索引，而这是向镜像添加签名所必需的。
 
 ## 提取到文件
 
-将镜像的 SBOM 提取并保存到 SPDX JSON 文件的命令，取决于镜像是否已推送到注册表还是本地镜像。
+将镜像的 SBOM 提取为 SPDX JSON 文件的命令取决于镜像是否已推送到注册表或是本地镜像。
 
 ### 远程镜像
 
-要提取镜像的 SBOM 并保存到文件，可以使用 `docker buildx imagetools inspect` 命令。
-此命令仅对注册表中的镜像有效。
+要提取镜像的 SBOM 并将其保存到文件，可以使用 `docker buildx imagetools inspect` 命令。此命令仅适用于注册表中的镜像。
 
 ```console
 $ docker buildx imagetools inspect <image> --format "{{ json .SBOM }}" > sbom.spdx.json
@@ -88,7 +85,7 @@ $ docker buildx imagetools inspect <image> --format "{{ json .SBOM }}" > sbom.sp
 
 ### 本地镜像
 
-要提取本地镜像的 SPDX 文件，请使用 `local` 导出器构建镜像，并使用 `scout-sbom-indexer` SBOM 生成器插件。
+要为本地镜像提取 SPDX 文件，请使用 `local` 导出器构建镜像，并使用 `scout-sbom-indexer` SBOM 生成器插件。
 
 以下命令将 SBOM 保存到 `build/sbom.spdx.json` 文件。
 

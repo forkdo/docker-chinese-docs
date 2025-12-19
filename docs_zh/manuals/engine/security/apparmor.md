@@ -1,24 +1,22 @@
 ---
 description: 在 Docker 中启用 AppArmor
-keywords: AppArmor, 安全, docker, 文档
+keywords: AppArmor, security, docker, documentation
 title: Docker 的 AppArmor 安全配置文件
 ---
 
-AppArmor（应用程序防护）是一个 Linux 安全模块，用于保护操作系统及其应用程序免受安全威胁。要使用它，系统管理员需要将 AppArmor 安全配置文件与每个程序关联。Docker 期望找到一个已加载并正在执行的 AppArmor 策略。
+AppArmor (Application Armor) 是一种 Linux 安全模块，用于保护操作系统及其应用程序免受安全威胁。使用时，系统管理员需要将 AppArmor 安全配置文件与每个程序关联。Docker 期望找到已加载并强制执行的 AppArmor 策略。
 
-Docker 会自动为容器生成并加载一个名为 `docker-default` 的默认配置文件。Docker 二进制文件在 `tmpfs` 中生成此配置文件，然后将其加载到内核中。
+Docker 会自动为容器生成并加载一个名为 `docker-default` 的默认配置文件。Docker 二进制文件会在 `tmpfs` 中生成此配置文件，然后将其加载到内核中。
 
 > [!NOTE]
 >
-> 此配置文件用于容器，而不是 Docker 守护进程。
+> 此配置文件用于容器，而非 Docker 守护进程。
 
-Docker Engine 守护进程也存在一个配置文件，但目前 `deb` 软件包并未安装它。如果您对守护进程配置文件的源码感兴趣，它位于 Docker Engine 源码仓库的
-[contrib/apparmor](https://github.com/moby/moby/tree/master/contrib/apparmor) 目录中。
+Docker Engine 守护进程存在对应的配置文件，但目前并未随 `deb` 软件包安装。如果您对守护进程配置文件的源码感兴趣，可以在 Docker Engine 源代码仓库的 [contrib/apparmor](https://github.com/moby/moby/tree/master/contrib/apparmor) 目录中找到。
 
 ## 了解策略
 
-`docker-default` 配置文件是运行容器的默认配置文件。它在提供广泛应用程序兼容性的同时，提供适度的保护。该配置文件由以下
-[模板](https://github.com/moby/profiles/blob/main/apparmor/template.go) 生成。
+`docker-default` 配置文件是运行容器的默认配置。它在提供广泛的应用程序兼容性的同时，也提供了适度的保护。该配置文件是根据以下 [模板](https://github.com/moby/profiles/blob/main/apparmor/template.go) 生成的。
 
 运行容器时，除非您使用 `security-opt` 选项覆盖，否则它将使用 `docker-default` 策略。例如，以下命令显式指定了默认策略：
 
@@ -40,7 +38,7 @@ $ apparmor_parser -r -W /path/to/your_profile
 $ docker run --rm -it --security-opt apparmor=your_profile hello-world
 ```
 
-要从 AppArmor 中卸载配置文件：
+要从 AppArmor 卸载配置文件：
 
 ```console
 # 卸载配置文件
@@ -49,14 +47,14 @@ $ apparmor_parser -R /path/to/profile
 
 ### 编写配置文件的资源
 
-AppArmor 中文件通配符的语法与某些其他通配符实现略有不同。强烈建议您查看以下资源，了解 AppArmor 配置文件语法。
+AppArmor 中的文件通配符语法与其他一些通配符实现略有不同。强烈建议您查看以下有关 AppArmor 配置文件语法的资源。
 
-- [快速配置文件语言](https://gitlab.com/apparmor/apparmor/wikis/QuickProfileLanguage)
-- [通配符语法](https://gitlab.com/apparmor/apparmor/wikis/AppArmor_Core_Policy_Reference#AppArmor_globbing_syntax)
+- [Quick Profile Language](https://gitlab.com/apparmor/apparmor/wikis/QuickProfileLanguage)
+- [Globbing Syntax](https://gitlab.com/apparmor/apparmor/wikis/AppArmor_Core_Policy_Reference#AppArmor_globbing_syntax)
 
 ## Nginx 示例配置文件
 
-在本例中，您将为 Nginx 创建一个自定义 AppArmor 配置文件。以下是自定义配置文件。
+在此示例中，您将为 Nginx 创建一个自定义 AppArmor 配置文件。以下是自定义配置文件。
 
 ```c
 #include <tunables/global>
@@ -111,11 +109,11 @@ profile docker-nginx flags=(attach_disconnected,mediate_deleted) {
   capability setgid,
   capability net_bind_service,
 
-  deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
-  # deny write to files not in /proc/<number>/** or /proc/sys/**
+  deny @{PROC}/* w,   # 拒绝直接在 /proc 下（非子目录中）的所有文件的写入权限
+  # 拒绝对非 /proc/<number>/** 或 /proc/sys/** 文件的写入权限
   deny @{PROC}/{[^1-9],[^1-9][^0-9],[^1-9s][^0-9y][^0-9s],[^1-9][^0-9][^0-9][^0-9]*}/** w,
-  deny @{PROC}/sys/[^k]** w,  # deny /proc/sys except /proc/sys/k* (effectively /proc/sys/kernel)
-  deny @{PROC}/sys/kernel/{?,??,[^s][^h][^m]**} w,  # deny everything except shm* in /proc/sys/kernel/
+  deny @{PROC}/sys/[^k]** w,  # 拒绝 /proc/sys，除了 /proc/sys/k*（实际上是 /proc/sys/kernel）
+  deny @{PROC}/sys/kernel/{?,??,[^s][^h][^m]**} w,  # 拒绝 /proc/sys/kernel/ 中除 shm* 之外的所有内容
   deny @{PROC}/sysrq-trigger rwklx,
   deny @{PROC}/mem rwklx,
   deny @{PROC}/kmem rwklx,
@@ -133,10 +131,9 @@ profile docker-nginx flags=(attach_disconnected,mediate_deleted) {
 }
 ```
 
-1. 将自定义配置文件保存到磁盘上的
-   `/etc/apparmor.d/containers/docker-nginx` 文件中。
+1. 将自定义配置文件保存到磁盘的 `/etc/apparmor.d/containers/docker-nginx` 文件中。
 
-   本例中的文件路径不是必需的。在生产环境中，您可以使用其他路径。
+   此示例中的文件路径不是强制要求。在生产环境中，您可以使用其他路径。
 
 2. 加载配置文件。
 
@@ -144,9 +141,9 @@ profile docker-nginx flags=(attach_disconnected,mediate_deleted) {
    $ sudo apparmor_parser -r -W /etc/apparmor.d/containers/docker-nginx
    ```
 
-3. 使用配置文件运行容器。
+3. 使用该配置文件运行容器。
 
-   要以分离模式运行 nginx：
+   以分离模式运行 nginx：
 
    ```console
    $ docker run --security-opt "apparmor=docker-nginx" \
@@ -184,31 +181,31 @@ profile docker-nginx flags=(attach_disconnected,mediate_deleted) {
 
 ## 调试 AppArmor
 
-您可以使用 `dmesg` 调试问题，并使用 `aa-status` 检查已加载的配置文件。
+您可以使用 `dmesg` 来调试问题，并使用 `aa-status` 检查已加载的配置文件。
 
 ### 使用 dmesg
 
-以下是一些关于 AppArmor 调试的有用提示。
+以下是一些有用的提示，用于调试您可能遇到的任何与 AppArmor 相关的问题。
 
-AppArmor 会向 `dmesg` 发送非常详细的日志消息。通常，AppArmor 行如下所示：
+AppArmor 会向 `dmesg` 发送大量详细消息。通常，AppArmor 的一行日志如下所示：
 
 ```text
 [ 5442.864673] audit: type=1400 audit(1453830992.845:37): apparmor="ALLOWED" operation="open" profile="/usr/bin/docker" name="/home/jessie/docker/man/man1/docker-attach.1" pid=10923 comm="docker" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
 ```
 
-在上面的例子中，您可以看到 `profile=/usr/bin/docker`。这意味着用户已加载 `docker-engine`（Docker Engine 守护进程）配置文件。
+在上面的示例中，您可以看到 `profile=/usr/bin/docker`。这意味着用户已加载 `docker-engine` (Docker Engine 守护进程) 配置文件。
 
-再看另一个日志行：
+再看另一行日志：
 
 ```text
 [ 3256.689120] type=1400 audit(1405454041.341:73): apparmor="DENIED" operation="ptrace" profile="docker-default" pid=17651 comm="docker" requested_mask="receive" denied_mask="receive"
 ```
 
-这次配置文件是 `docker-default`，默认情况下它在容器上运行，除非处于 `privileged` 模式。此行显示 apparmor 已拒绝容器中的 `ptrace`。这正是预期的行为。
+这次的配置文件是 `docker-default`，除非在 `privileged` 模式下，否则默认在容器上运行。此行显示 apparmor 已在容器中拒绝了 `ptrace`。这完全符合预期。
 
 ### 使用 aa-status
 
-如果您需要检查哪些配置文件已加载，可以使用 `aa-status`。输出如下所示：
+如果需要检查哪些配置文件已加载，可以使用 `aa-status`。输出如下所示：
 
 ```console
 $ sudo aa-status
@@ -240,15 +237,12 @@ apparmor module is loaded.
 0 processes are unconfined but have a profile defined.
 ```
 
-上述输出显示，运行在各种容器 PID 上的 `docker-default` 配置文件处于 `enforce` 模式。这意味着 AppArmor 正在阻止并审计 `docker-default` 配置文件范围外的任何操作，并记录到 `dmesg` 中。
+上面的输出显示，运行在各种容器 PID 上的 `docker-default` 配置文件处于 `enforce` 模式。这意味着 AppArmor 正在主动阻止任何超出 `docker-default` 配置文件范围的操作，并将这些操作记录到 `dmesg` 中。
 
-上述输出还显示 `/usr/bin/docker`（Docker Engine 守护进程）配置文件处于 `complain` 模式。这意味着 AppArmor 仅将配置文件范围外的活动记录到 `dmesg` 中。（除了 Ubuntu Trusty 的某些有趣行为被强制执行的情况。）
+上面的输出还显示 `/usr/bin/docker` (Docker Engine 守护进程) 配置文件正在 `complain` 模式下运行。这意味着 AppArmor 仅将超出配置文件范围的活动记录到 `dmesg` 中。（Ubuntu Trusty 的情况除外，该版本会强制执行一些有趣的行为。）
 
 ## 为 Docker 的 AppArmor 代码做贡献
 
-高级用户和软件包管理员可以在 Docker Engine 源码仓库的
-[contrib/apparmor](https://github.com/moby/moby/tree/master/contrib/apparmor)
-目录下找到 `/usr/bin/docker`（Docker Engine 守护进程）的配置文件。
+高级用户和软件包管理器可以在 Docker Engine 源代码仓库的 [contrib/apparmor](https://github.com/moby/moby/tree/master/contrib/apparmor) 目录下找到 `/usr/bin/docker` (Docker Engine 守护进程) 的配置文件。
 
-容器的 `docker-default` 配置文件位于
-[profiles/apparmor](https://github.com/moby/profiles/blob/main/apparmor)。
+容器的 `docker-default` 配置文件位于 [profiles/apparmor](https://github.com/moby/profiles/blob/main/apparmor)。

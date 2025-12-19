@@ -1,27 +1,27 @@
 ---
 description: 了解如何配置 Docker Compose 以使用 NVIDIA GPU 运行基于 CUDA 的容器
 keywords: 文档, docs, docker, compose, GPU 访问, NVIDIA, 示例
-title: 使用 GPU 访问运行 Docker Compose 服务
+title: 使用 GPU 访问权限运行 Docker Compose 服务
 linkTitle: 启用 GPU 支持
 weight: 90
 aliases:
 - /compose/gpu-support/
 ---
 
-如果 Docker 主机包含 GPU 设备且 Docker 守护进程已相应配置，则 Compose 服务可以定义 GPU 设备预留。为此，请确保您已安装[先决条件](/manuals/engine/containers/resource_constraints.md#gpu)，如果您尚未安装。
+如果 Docker 主机包含 GPU 设备且 Docker Daemon 已相应配置，则 Compose 服务可以定义 GPU 设备预留。为此，请确保您已安装[先决条件](/manuals/engine/containers/resource_constraints.md#gpu)，如果您尚未安装。
 
-以下部分中的示例专门关注如何在 Docker Compose 中为服务容器提供 GPU 访问。
+以下部分中的示例专门关注如何使用 Docker Compose 为服务容器提供 GPU 访问权限。
 您可以使用 `docker-compose` 或 `docker compose` 命令。更多信息，请参阅[迁移到 Compose V2](/manuals/compose/releases/migrate.md)。
 
 ## 为服务容器启用 GPU 访问
 
-在 `compose.yaml` 文件中，GPU 通过 Compose Deploy 规范中的 [device](/reference/compose-file/deploy.md#devices) 属性在需要它们的服务中引用。
+在 `compose.yaml` 文件中，通过服务的 [device](/reference/compose-file/deploy.md#devices) 属性引用 GPU，该属性来自 Compose Deploy 规范，位于需要 GPU 的服务中。
 
-这提供了对 GPU 预留的更细粒度控制，因为可以为以下设备属性设置自定义值：
+这提供了对 GPU 预留更精细的控制，因为可以为以下设备属性设置自定义值：
 
 - `capabilities`。此值指定为字符串列表。例如，`capabilities: [gpu]`。您必须在 Compose 文件中设置此字段。否则，服务部署时会返回错误。
-- `count`。指定为整数或值 `all`，表示应预留的 GPU 设备数量（前提是主机提供该数量的 GPU）。如果 `count` 设置为 `all` 或未指定，则默认使用主机上的所有 GPU。
-- `device_ids`。此值指定为字符串列表，表示主机上的 GPU 设备 ID。您可以在主机上的 `nvidia-smi` 输出中找到设备 ID。如果未设置 `device_ids`，则默认使用主机上的所有 GPU。
+- `count`。指定为整数或值 `all`，表示应预留的 GPU 设备数量（前提是主机提供该数量的 GPU）。如果 `count` 设置为 `all` 或未指定，则默认使用主机上所有可用的 GPU。
+- `device_ids`。此值指定为字符串列表，表示主机上的 GPU 设备 ID。您可以在主机上的 `nvidia-smi` 输出中找到设备 ID。如果未设置 `device_ids`，则默认使用主机上所有可用的 GPU。
 - `driver`。指定为字符串，例如 `driver: 'nvidia'`
 - `options`。表示驱动特定选项的键值对。
 
@@ -35,7 +35,7 @@ aliases:
 
 有关这些属性的更多信息，请参阅[Compose Deploy 规范](/reference/compose-file/deploy.md#devices)。
 
-### 运行具有 1 个 GPU 设备访问权限的服务的 Compose 文件示例
+### 使用访问 1 个 GPU 设备的 Compose 文件示例
 
 ```yaml
 services:

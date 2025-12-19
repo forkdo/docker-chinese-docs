@@ -1,5 +1,5 @@
 ---
-title: "接口: DesktopUI"
+title: "接口：DesktopUI"
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:

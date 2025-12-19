@@ -3,7 +3,7 @@ title: 容器化 Ruby on Rails 应用
 linkTitle: 容器化你的应用
 weight: 10
 keywords: ruby, flask, containerize, initialize
-description: 了解如何容器化 Ruby on Rails 应用。
+description: 学习如何容器化 Ruby on Rails 应用。
 aliases:
   - /language/ruby/build-images/
   - /language/ruby/run-containers/
@@ -14,27 +14,27 @@ aliases:
 ## 前置条件
 
 - 你已安装最新版本的 [Docker Desktop](/get-started/get-docker.md)。
-- 你有一个 [Git 客户端](https://git-scm.com/downloads)。本节示例使用 Git CLI，但你可以使用任意客户端。
+- 你已安装 [Git 客户端](https://git-scm.com/downloads)。本节示例使用 Git CLI，但你可以使用任意客户端。
 
 ## 概述
 
-本节将指导你完成容器化 [Ruby on Rails](https://rubyonrails.org/) 应用的全过程。
+本节将引导你完成容器化 [Ruby on Rails](https://rubyonrails.org/) 应用的全过程。
 
-从 Rails 7.1 开始，[Docker 已默认支持](https://guides.rubyonrails.org/7_1_release_notes.html#generate-dockerfiles-for-new-rails-applications)。这意味着创建新 Rails 应用时，系统会自动生成 `Dockerfile`、`.dockerignore` 和 `bin/docker-entrypoint` 文件。
+从 Rails 7.1 开始，[Docker 已原生支持](https://guides.rubyonrails.org/7_1_release_notes.html#generate-dockerfiles-for-new-rails-applications)。这意味着创建新 Rails 应用时，系统会自动生成 `Dockerfile`、`.dockerignore` 和 `bin/docker-entrypoint` 文件。
 
-如果你已有 Rails 应用，则需要手动创建 Docker 资产。不幸的是，`docker init` 命令目前还不支持 Rails。这意味着如果你使用 Rails，需要从下方示例中手动复制 Dockerfile 和相关配置。
+如果你已有 Rails 应用，则需要手动创建 Docker 资产。不幸的是，`docker init` 命令目前还不支持 Rails。这意味着如果你使用 Rails，需要从下方示例中手动复制 Dockerfile 和其他相关配置。
 
 ## 1. 初始化 Docker 资产
 
-Rails 7.1 及更高版本默认生成多阶段 Dockerfile。以下是两个版本的示例：一个使用 Docker Hardened Images（DHI），另一个使用官方 Docker 镜像。
+Rails 7.1 及以上版本默认生成多阶段 Dockerfile。以下是两种版本：一种使用 Docker Hardened Images (DHI)，另一种使用官方 Docker 镜像。
 
-> [Docker Hardened Images（DHIs）](https://docs.docker.com/dhi/) 是由 Docker 维护的最小化、安全且可用于生产的容器基础镜像和应用镜像。
+> [Docker Hardened Images (DHIs)](https://docs.docker.com/dhi/) 是由 Docker 维护的最小化、安全且可用于生产的容器基础镜像和应用镜像。
 
-为获得更好的安全性，建议在可能的情况下使用 DHI 镜像。它们专为减少漏洞和简化合规性而设计。
+为提升安全性，建议在可能的情况下使用 DHI 镜像。它们旨在减少漏洞并简化合规性。
 
-> 多阶段 Dockerfile 通过分离构建和运行时依赖，帮助创建更小、更高效的镜像，确保最终镜像仅包含必要的组件。更多信息请参阅 [多阶段构建指南](/get-started/docker-concepts/building-images/multi-stage-builds/)。
+> 多阶段 Dockerfile 通过分离构建和运行时依赖，帮助创建更小、更高效的镜像，确保最终镜像仅包含必要组件。详见 [多阶段构建指南](/get-started/docker-concepts/building-images/multi-stage-builds/)。
 
-虽然 Dockerfile 会自动生成，但理解其目的和功能非常重要。强烈建议你查看以下示例。
+虽然 Dockerfile 会自动生成，但理解其用途和功能很重要。强烈建议查看以下示例。
 
 {{< tabs >}}
 {{< tab name="使用 Docker Hardened Images" >}}
@@ -49,7 +49,7 @@ Rails 7.1 及更高版本默认生成多阶段 Dockerfile。以下是两个版�
 
 # 如需容器化开发环境，请参阅 Dev Containers：https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-# 确保 RUBY_VERSION 与 .ruby-version 中的 Ruby 版本匹配
+# 确保 RUBY_VERSION 与 .ruby-version 中的 Ruby 版本一致
 ARG RUBY_VERSION=3.4.7
 FROM <your-namespace>/dhi-ruby:$RUBY_VERSION-dev AS base
 
@@ -76,9 +76,9 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git pkg-config libyaml-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# 安装 JavaScript 依赖和 Node.js 用于资源编译
+# 安装 JavaScript 依赖和 Node.js 以编译资源
 #
-# 如果你使用 NodeJS 编译资源，请取消注释以下行
+# 若使用 NodeJS 编译资源，请取消注释以下行
 #
 # ARG NODE_VERSION=18.12.0
 # ARG YARN_VERSION=1.22.19
@@ -97,7 +97,7 @@ RUN bundle install && \
 
 # 安装 node modules
 #
-# 如果你使用 NodeJS 编译资源，请取消注释以下行
+# 若使用 NodeJS 编译资源，请取消注释以下行
 #
 # COPY package.json yarn.lock ./
 # RUN --mount=type=cache,id=yarn,target=/rails/.cache/yarn YARN_CACHE_FOLDER=/rails/.cache/yarn \
@@ -106,26 +106,26 @@ RUN bundle install && \
 # 复制应用代码
 COPY . .
 
-# 预编译 bootsnap 代码以加快启动速度
+# 预编译 bootsnap 代码以提升启动速度
 RUN bundle exec bootsnap precompile app/ lib/
 
-# 为生产环境预编译资源，无需 RAILS_MASTER_KEY 密钥
+# 无需密钥 RAILS_MASTER_KEY 即可预编译生产资源
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # 应用镜像的最终阶段
 FROM base
 
-# 从构建阶段复制构建产物：gems 和应用
+# 复制构建产物：gems 和应用
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
-# 以非 root 用户运行并仅拥有运行时文件，以提高安全性
+# 以非 root 用户运行并仅拥有运行时文件，提升安全性
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
-# 入口点脚本准备数据库。
+# 入口脚本准备数据库
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # 默认通过 Thruster 启动服务器，运行时可覆盖
@@ -146,7 +146,7 @@ CMD ["./bin/thrust", "./bin/rails", "server"]
 
 # 如需容器化开发环境，请参阅 Dev Containers：https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-# 确保 RUBY_VERSION 与 .ruby-version 中的 Ruby 版本匹配
+# 确保 RUBY_VERSION 与 .ruby-version 中的 Ruby 版本一致
 ARG RUBY_VERSION=3.4.7
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
@@ -173,9 +173,9 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git pkg-config libyaml-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# 安装 JavaScript 依赖和 Node.js 用于资源编译
+# 安装 JavaScript 依赖和 Node.js 以编译资源
 #
-# 如果你使用 NodeJS 编译资源，请取消注释以下行
+# 若使用 NodeJS 编译资源，请取消注释以下行
 #
 # ARG NODE_VERSION=18.12.0
 # ARG YARN_VERSION=1.22.19
@@ -194,7 +194,7 @@ RUN bundle install && \
 
 # 安装 node modules
 #
-# 如果你使用 NodeJS 编译资源，请取消注释以下行
+# 若使用 NodeJS 编译资源，请取消注释以下行
 #
 # COPY package.json yarn.lock ./
 # RUN --mount=type=cache,id=yarn,target=/rails/.cache/yarn YARN_CACHE_FOLDER=/rails/.cache/yarn \
@@ -203,26 +203,26 @@ RUN bundle install && \
 # 复制应用代码
 COPY . .
 
-# 预编译 bootsnap 代码以加快启动速度
+# 预编译 bootsnap 代码以提升启动速度
 RUN bundle exec bootsnap precompile app/ lib/
 
-# 为生产环境预编译资源，无需 RAILS_MASTER_KEY 密钥
+# 无需密钥 RAILS_MASTER_KEY 即可预编译生产资源
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # 应用镜像的最终阶段
 FROM base
 
-# 从构建阶段复制构建产物：gems 和应用
+# 复制构建产物：gems 和应用
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
-# 以非 root 用户运行并仅拥有运行时文件，以提高安全性
+# 以非 root 用户运行并仅拥有运行时文件，提升安全性
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
-# 入口点脚本准备数据库。
+# 入口脚本准备数据库
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # 默认通过 Thruster 启动服务器，运行时可覆盖
@@ -233,7 +233,7 @@ CMD ["./bin/thrust", "./bin/rails", "server"]
 {{< /tab >}}
 {{< /tabs >}}
 
-上述 Dockerfile 假设你将 Thruster 与 Puma 一起用作应用服务器。如果你使用其他服务器，可将最后三行替换为以下内容：
+上述 Dockerfile 假设你将 Thruster 与 Puma 作为应用服务器一起使用。如果你使用其他服务器，可将最后三行替换为以下内容：
 
 ```dockerfile
 # 启动应用服务器
@@ -252,7 +252,7 @@ if [ -z "${LD_PRELOAD+x}" ]; then
     export LD_PRELOAD
 fi
 
-# 如果运行 rails server，则创建或迁移现有数据库
+# 若运行 rails server，则创建或迁移现有数据库
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
 fi
@@ -260,10 +260,10 @@ fi
 exec "${@}"
 ```
 
-除了上述两个文件，你还需要一个 `.dockerignore` 文件。该文件用于排除构建上下文中的文件和目录。以下是 `.dockerignore` 文件的示例。
+除了上述两个文件，你还需要 `.dockerignore` 文件。该文件用于排除构建上下文中的文件和目录。以下是 `.dockerignore` 文件的示例。
 
 ```text {collapse=true,title=".dockerignore"}
-# 有关忽略文件的更多信息，请参阅 https://docs.docker.com/engine/reference/builder/#dockerignore-file
+# 详见 https://docs.docker.com/engine/reference/builder/#dockerignore-file 了解忽略文件的更多信息。
 
 # 忽略 git 目录。
 /.git/
@@ -289,7 +289,7 @@ exec "${@}"
 /tmp/pids/*
 !/tmp/pids/.keep
 
-# 忽略存储（开发环境中的上传文件和任何 SQLite 数据库）。
+# 忽略存储（开发中的上传文件和任何 SQLite 数据库）。
 /storage/*
 !/storage/.keep
 /tmp/storage/*
@@ -312,7 +312,7 @@ exec "${@}"
 /Dockerfile*
 ```
 
-最后一个可选文件是 `compose.yaml`，它由 Docker Compose 使用，用于定义应用的各个服务。由于使用 SQLite 作为数据库，无需定义单独的数据库服务。唯一需要的服务就是 Rails 应用本身。
+最后一个可选文件是 `compose.yaml`，Docker Compose 使用它定义应用的各个服务。由于使用 SQLite 作为数据库，无需定义单独的数据库服务。唯一需要的服务是 Rails 应用本身。
 
 ```yaml {title=compose.yaml}
 services:
@@ -324,7 +324,7 @@ services:
       - "3000:80"
 ```
 
-现在你的应用目录中应包含以下文件：
+现在你的应用文件夹中应包含以下文件：
 
 - `.dockerignore`
 - `compose.yaml`
@@ -340,7 +340,7 @@ services:
 
 ## 2. 运行应用
 
-要在本地运行应用，请在应用目录的终端中执行以下命令：
+要在终端中运行应用，请在应用目录中执行以下命令。
 
 ```console
 $ RAILS_MASTER_KEY=<master_key_value> docker compose up --build
@@ -352,7 +352,7 @@ $ RAILS_MASTER_KEY=<master_key_value> docker compose up --build
 
 ## 3. 在后台运行应用
 
-你可以通过添加 `-d` 选项，让应用在后台脱离终端运行。在 `docker-ruby-on-rails` 目录中，于终端执行以下命令：
+添加 `-d` 选项可使应用在后台运行。在 `docker-ruby-on-rails` 目录中，于终端执行以下命令。
 
 ```console
 $ docker compose up --build -d
@@ -362,13 +362,13 @@ $ docker compose up --build -d
 
 你应该能看到一个简单的 Ruby on Rails 应用。
 
-在终端中执行以下命令停止应用：
+在终端中执行以下命令停止应用。
 
 ```console
 $ docker compose down
 ```
 
-有关 Compose 命令的更多信息，请参阅 [Compose CLI 参考](/reference/cli/docker/compose/_index.md)。
+更多 Compose 命令信息，请参阅 [Compose CLI 参考](/reference/cli/docker/compose/_index.md)。
 
 ## 小结
 
@@ -380,4 +380,4 @@ $ docker compose down
 
 ## 后续步骤
 
-在下一节中，你将了解如何使用 GitHub Actions 设置 CI/CD 流水线。
+在下一节中，你将学习如何使用 GitHub Actions 设置 CI/CD 流水线。

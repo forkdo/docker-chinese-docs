@@ -4,29 +4,42 @@ datafile: docker_sandbox_ls
 title: docker sandbox ls
 layout: cli
 ---
-
 # docker sandbox ls
-
-## 用法
-
-```bash
-docker sandbox ls [OPTIONS]
-```
 
 ## 描述
 
-列出所有沙箱。
+列出所有可用的沙盒。
+
+## 使用
+
+```
+docker sandbox ls [OPTIONS]
+```
 
 ## 选项
 
-| 选项 | 描述 |
-| --- | --- |
-| `--filter , -f` | 根据条件过滤输出 |
-| `--format` | 使用 Go 模板格式化输出 |
-| `--quiet , -q` | 仅显示沙箱 ID |
+| 名称        | 简写 | 类型    | 默认值 | 描述                                                                 |
+|-------------|------|---------|--------|----------------------------------------------------------------------|
+| --format    | -f   | string  |        | 使用自定义输出格式打印输出：<br>`--format '{{.Name}}'`               |
+| --no-trunc  |      | bool    | false  | 不截断输出                                                            |
+| --quiet     | -q   | bool    | false  | 仅显示沙盒 ID                                                         |
 
-## 父命令
+## 示例
 
-| 命令 | 描述 |
-| --- | --- |
-| [docker sandbox](docker_sandbox.md) | 管理沙箱 |
+### 使用自定义格式列出所有沙盒
+
+```
+$ docker sandbox ls --format '{{.Name}}'
+```
+
+### 列出所有沙盒的 ID
+
+```
+$ docker sandbox ls -q
+```
+
+### 列出所有沙盒（不截断输出）
+
+```
+$ docker sandbox ls --no-trunc
+```

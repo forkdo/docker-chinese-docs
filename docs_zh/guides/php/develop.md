@@ -1,37 +1,38 @@
 ---
 title: 使用容器进行 PHP 开发
-linkTitle: 开发你的应用
+linkTitle: 开发您的应用
 weight: 20
 keywords: php, development
-description: 学习如何在本地使用容器开发你的 PHP 应用。
+description: 了解如何使用容器在本地开发您的 PHP 应用程序。
 aliases:
   - /language/php/develop/
   - /guides/language/php/develop/
 ---
 
-## 前置条件
+## 先决条件
 
-完成 [容器化 PHP 应用](containerize.md)。
+已完成[容器化 PHP 应用程序](containerize.md)。
 
 ## 概述
 
-在本节中，你将学习如何为你的容器化应用设置开发环境。包括：
+在本节中，您将学习如何为容器化应用程序设置开发环境。这包括：
 
 - 添加本地数据库并持久化数据
-- 添加 phpMyAdmin 与数据库交互
-- 配置 Compose 以在你编辑和保存代码时自动更新运行中的 Compose 服务
-- 创建一个包含开发依赖的开发容器
+- 添加 phpMyAdmin 以与数据库交互
+- 配置 Compose，以便在您编辑并保存代码时自动更新正在运行的 Compose 服务
+- 创建包含开发依赖项的开发容器
 
 ## 添加本地数据库并持久化数据
 
-你可以使用容器设置本地服务，例如数据库。为此，你需要执行以下操作：
+您可以使用容器来设置本地服务，例如数据库。
+要对示例应用程序执行此操作，您需要执行以下操作：
 
-- 更新 `Dockerfile` 以安装连接数据库的扩展
-- 更新 `compose.yaml` 文件以添加数据库服务和持久化数据的卷
+- 更新 `Dockerfile` 以安装连接数据库所需的扩展
+- 更新 `compose.yaml` 文件以添加数据库服务和用于持久化数据的卷
 
 ### 更新 Dockerfile 以安装扩展
 
-要安装 PHP 扩展，你需要更新 `Dockerfile`。在 IDE 或文本编辑器中打开你的 Dockerfile，然后更新内容。以下 `Dockerfile` 包含一行新代码，用于安装 `pdo` 和 `pdo_mysql` 扩展。所有注释已被移除。
+要安装 PHP 扩展，您需要更新 `Dockerfile`。在 IDE 或文本编辑器中打开您的 Dockerfile，然后更新内容。以下 `Dockerfile` 包含一行新内容，用于安装 `pdo` 和 `pdo_mysql` 扩展。所有注释均已移除。
 
 ```dockerfile {hl_lines=11}
 # syntax=docker/dockerfile:1
@@ -51,22 +52,22 @@ COPY ./src /var/www/html
 USER www-data
 ```
 
-有关安装 PHP 扩展的更多详细信息，请参阅 [PHP 官方 Docker 镜像](https://hub.docker.com/_/php)。
+有关安装 PHP 扩展的更多详细信息，请参阅 [PHP 的官方 Docker 镜像](https://hub.docker.com/_/php)。
 
 ### 更新 compose.yaml 文件以添加数据库并持久化数据
 
-在 IDE 或文本编辑器中打开 `compose.yaml` 文件。你会注意到它已经包含 PostgreSQL 数据库和卷的注释指令。对于此应用，你将使用 MariaDB。有关 MariaDB 的更多详细信息，请参阅 [MariaDB 官方 Docker 镜像](https://hub.docker.com/_/mariadb)。
+在 IDE 或文本编辑器中打开 `compose.yaml` 文件。您会注意到它已经包含注释掉的 PostgreSQL 数据库和卷的说明。对于此应用程序，您将使用 MariaDB。有关 MariaDB 的更多详细信息，请参阅 [MariaDB 官方 Docker 镜像](https://hub.docker.com/_/mariadb)。
 
-在 IDE 或文本编辑器中打开 `src/database.php` 文件。你会注意到它读取环境变量以连接到数据库。
+在 IDE 或文本编辑器中打开 `src/database.php` 文件。您会注意到它读取环境变量以连接到数据库。
 
-在 `compose.yaml` 文件中，你需要更新以下内容：
+在 `compose.yaml` 文件中，您需要更新以下内容：
 
-1. 取消注释并更新数据库指令以使用 MariaDB。
-2. 向服务器服务添加一个密钥以传入数据库密码。
+1. 取消注释并更新 MariaDB 的数据库说明。
+2. 向服务器服务添加一个 secret 以传入数据库密码。
 3. 向服务器服务添加数据库连接环境变量。
-4. 取消注释卷指令以持久化数据。
+4. 取消注释卷说明以持久化数据。
 
-以下是更新后的 `compose.yaml` 文件。所有注释已被移除。
+以下是更新后的 `compose.yaml` 文件。所有注释均已移除。
 
 ```yaml
 services:
@@ -119,11 +120,11 @@ secrets:
 
 > [!NOTE]
 >
-> 有关 Compose 文件中指令的更多信息，请参阅 [Compose 文件参考](/reference/compose-file/)。
+> 要了解有关 Compose 文件中指令的更多信息，请参阅 [Compose 文件参考](/reference/compose-file/)。
 
-在使用 Compose 运行应用之前，请注意此 Compose 文件使用 `secrets` 并指定 `password.txt` 文件来保存数据库密码。你必须创建此文件，因为它不包含在源代码仓库中。
+在使用 Compose 运行应用程序之前，请注意此 Compose 文件使用 `secrets` 并指定一个 `password.txt` 文件来保存数据库密码。您必须创建此文件，因为它不包含在源代码仓库中。
 
-在 `docker-php-sample` 目录中，创建一个名为 `db` 的新目录，并在该目录中创建一个名为 `password.txt` 的文件。在 IDE 或文本编辑器中打开 `password.txt`，添加以下密码。密码必须在单行中，文件中不能有额外的行。
+在 `docker-php-sample` 目录中，创建一个名为 `db` 的新目录，并在该目录中创建一个名为 `password.txt` 的文件。在 IDE 或文本编辑器中打开 `password.txt` 并添加以下密码。密码必须位于单行上，文件中不能有其他行。
 
 ```text
 example
@@ -131,7 +132,7 @@ example
 
 保存并关闭 `password.txt` 文件。
 
-你现在应该在 `docker-php-sample` 目录中有以下内容。
+您现在应该在 `docker-php-sample` 目录中拥有以下内容。
 
 ```text
 ├── docker-php-sample/
@@ -150,34 +151,34 @@ example
 │ └── README.md
 ```
 
-运行以下命令以启动你的应用。
+运行以下命令以启动您的应用程序。
 
 ```console
 $ docker compose up --build
 ```
 
-在浏览器中打开 [http://localhost:9000/database.php](http://localhost:9000/database.php) 查看应用。你应该看到一个带有文本和计数器的简单 Web 应用，每次刷新时计数器都会递增。
+打开浏览器并访问 [http://localhost:9000/database.php](http://localhost:9000/database.php) 查看应用程序。您应该会看到一个简单的 Web 应用程序，其中包含文本和一个计数器，每次刷新时计数器都会递增。
 
-在终端中按 `ctrl+c` 停止你的应用。
+在终端中按 `ctrl+c` 停止您的应用程序。
 
-## 验证数据在数据库中持久化
+## 验证数据是否在数据库中持久化
 
-在终端中运行 `docker compose rm` 以删除容器，然后运行 `docker compose up` 再次运行你的应用。
+在终端中，运行 `docker compose rm` 以移除您的容器，然后运行 `docker compose up` 再次运行您的应用程序。
 
 ```console
 $ docker compose rm
 $ docker compose up --build
 ```
 
-在浏览器中刷新 [http://localhost:9000/database.php](http://localhost:9000/database.php) 并验证之前的计数仍然存在。如果没有卷，数据库数据在删除容器后将不会持久化。
+在浏览器中刷新 [http://localhost:9000/database.php](http://localhost:9000/database.php)，并验证之前的计数是否仍然存在。如果没有卷，数据库数据在移除容器后将不会持久保存。
 
-在终端中按 `ctrl+c` 停止你的应用。
+在终端中按 `ctrl+c` 停止您的应用程序。
 
-## 添加 phpMyAdmin 与数据库交互
+## 添加 phpMyAdmin 以与数据库交互
 
-你可以通过更新 `compose.yaml` 文件轻松为你的应用栈添加服务。
+您可以通过更新 `compose.yaml` 文件轻松地将服务添加到您的应用程序堆栈中。
 
-更新你的 `compose.yaml` 以添加 phpMyAdmin 的新服务。有关详细信息，请参阅 [phpMyAdmin 官方 Docker 镜像](https://hub.docker.com/_/phpmyadmin)。以下是更新后的 `compose.yaml` 文件。
+更新您的 `compose.yaml` 以添加一个新的 phpMyAdmin 服务。有关更多详细信息，请参阅 [phpMyAdmin 官方 Docker 镜像](https://hub.docker.com/_/phpmyadmin)。以下是更新后的 `compose.yaml` 文件。
 
 ```yaml {hl_lines="42-49"}
 services:
@@ -236,21 +237,21 @@ secrets:
     file: db/password.txt
 ```
 
-在终端中运行 `docker compose up` 以再次运行你的应用。
+在终端中，运行 `docker compose up` 再次运行您的应用程序。
 
 ```console
 $ docker compose up --build
 ```
 
-在浏览器中打开 [http://localhost:8080](http://localhost:8080) 以访问 phpMyAdmin。使用 `root` 作为用户名和 `example` 作为密码登录。你现在可以通过 phpMyAdmin 与数据库交互。
+在浏览器中打开 [http://localhost:8080](http://localhost:8080) 以访问 phpMyAdmin。使用 `root` 作为用户名，`example` 作为密码登录。您现在可以通过 phpMyAdmin 与数据库交互。
 
-在终端中按 `ctrl+c` 停止你的应用。
+在终端中按 `ctrl+c` 停止您的应用程序。
 
 ## 自动更新服务
 
-使用 Compose Watch 在你编辑和保存代码时自动更新你的运行中 Compose 服务。有关 Compose Watch 的更多详细信息，请参阅 [使用 Compose Watch](/manuals/compose/how-tos/file-watch.md)。
+使用 Compose Watch 在您编辑并保存代码时自动更新正在运行的 Compose 服务。有关 Compose Watch 的更多详细信息，请参阅[使用 Compose Watch](/manuals/compose/how-tos/file-watch.md)。
 
-在 IDE 或文本编辑器中打开你的 `compose.yaml` 文件，然后添加 Compose Watch 指令。以下是更新后的 `compose.yaml` 文件。
+在 IDE 或文本编辑器中打开您的 `compose.yaml` 文件，然后添加 Compose Watch 说明。以下是更新后的 `compose.yaml` 文件。
 
 ```yaml {hl_lines="17-21"}
 services:
@@ -314,32 +315,32 @@ secrets:
     file: db/password.txt
 ```
 
-运行以下命令以使用 Compose Watch 运行你的应用。
+运行以下命令以使用 Compose Watch 运行您的应用程序。
 
 ```console
 $ docker compose watch
 ```
 
-在浏览器中打开 [http://localhost:9000/hello.php](http://localhost:9000/hello.php) 验证应用正在运行。
+打开浏览器并验证应用程序是否正在运行于 [http://localhost:9000/hello.php](http://localhost:9000/hello.php)。
 
-你现在在本地机器上对应用源文件的任何更改都会立即反映在运行的容器中。
+现在，您本地机器上对应用程序源文件的任何更改都将立即反映在正在运行的容器中。
 
-在 IDE 或文本编辑器中打开 `hello.php`，将字符串 `Hello, world!` 更新为 `Hello, Docker!`。
+在 IDE 或文本编辑器中打开 `hello.php`，并将字符串 `Hello, world!` 更新为 `Hello, Docker!`。
 
-保存 `hello.php` 的更改，然后等待几秒钟让应用同步。在浏览器中刷新 [http://localhost:9000/hello.php](http://localhost:9000/hello.php) 并验证更新的文本已出现。
+保存对 `hello.php` 的更改，然后等待几秒钟让应用程序同步。在浏览器中刷新 [http://localhost:9000/hello.php](http://localhost:9000/hello.php)，并验证是否出现了更新后的文本。
 
-在终端中按 `ctrl+c` 停止 Compose Watch。在终端中运行 `docker compose down` 以停止应用。
+在终端中按 `ctrl+c` 停止 Compose Watch。在终端中运行 `docker compose down` 以停止应用程序。
 
 ## 创建开发容器
 
-此时，当你运行容器化应用时，Composer 不会安装开发依赖。虽然这对于生产环境很好，但它缺少你在开发时可能需要的工具和依赖，并且不包含 `tests` 目录。你可以使用多阶段构建在同一 Dockerfile 中为开发和生产构建阶段。有关详细信息，请参阅 [多阶段构建](/manuals/build/building/multi-stage.md)。
+此时，当您运行容器化应用程序时，Composer 不会安装开发依赖项。虽然这个小镜像适合生产环境，但它缺少开发时可能需要的工具和依赖项，并且不包含 `tests` 目录。您可以使用多阶段构建在同一个 Dockerfile 中为开发和生产构建阶段。有关更多详细信息，请参阅[多阶段构建](/manuals/build/building/multi-stage.md)。
 
-在 `Dockerfile` 中，你需要更新以下内容：
+在 `Dockerfile` 中，您需要更新以下内容：
 
-1. 将 `deps` 阶段拆分为两个阶段。一个用于生产（`prod-deps`），另一个（`dev-deps`）用于安装开发依赖。
+1. 将 `deps` 阶段拆分为两个阶段。一个用于生产 (`prod-deps`)，另一个 (`dev-deps`) 用于安装开发依赖项。
 2. 创建一个通用的 `base` 阶段。
 3. 为开发创建一个新的 `development` 阶段。
-4. 更新 `final` 阶段以从新的 `prod-deps` 阶段复制依赖。
+4. 更新 `final` 阶段以从新的 `prod-deps` 阶段复制依赖项。
 
 以下是更改前后的 `Dockerfile`。
 
@@ -402,9 +403,9 @@ USER www-data
 {{< /tab >}}
 {{< /tabs >}}
 
-通过添加指令以目标开发阶段来更新你的 `compose.yaml` 文件。
+更新您的 `compose.yaml` 文件，添加一个指令以定位开发阶段。
 
-以下是更新后的 `compose.yaml` 文件的部分内容。
+以下是 `compose.yaml` 文件的更新部分。
 
 ```yaml {hl_lines=5}
 services:
@@ -415,31 +416,31 @@ services:
       # ...
 ```
 
-你的容器化应用现在将安装开发依赖。
+您的容器化应用程序现在将安装开发依赖项。
 
-运行以下命令以启动你的应用。
+运行以下命令以启动您的应用程序。
 
 ```console
 $ docker compose up --build
 ```
 
-在浏览器中打开 [http://localhost:9000/hello.php](http://localhost:9000/hello.php) 查看应用。你应该仍然看到简单的 "Hello, Docker!" 应用。
+打开浏览器并访问 [http://localhost:9000/hello.php](http://localhost:9000/hello.php) 查看应用程序。您应该仍然会看到简单的 "Hello, Docker!" 应用程序。
 
-在终端中按 `ctrl+c` 停止你的应用。
+在终端中按 `ctrl+c` 停止您的应用程序。
 
-虽然应用看起来相同，你现在可以使用开发依赖。继续下一节以了解如何使用 Docker 运行测试。
+虽然应用程序看起来相同，但您现在可以利用开发依赖项了。继续下一节，了解如何使用 Docker 运行测试。
 
 ## 总结
 
-在本节中，你了解了如何设置你的 Compose 文件以添加本地数据库并持久化数据。你还学习了如何使用 Compose Watch 在你更新代码时自动同步你的应用。最后，你学习了如何创建一个包含开发所需依赖的开发容器。
+在本节中，您了解了如何设置 Compose 文件以添加本地数据库并持久化数据。您还学习了如何使用 Compose Watch 在更新代码时自动同步应用程序。最后，您学习了如何创建包含开发所需依赖项的开发容器。
 
 相关信息：
 
 - [Compose 文件参考](/reference/compose-file/)
 - [Compose 文件监视](/manuals/compose/how-tos/file-watch.md)
 - [Dockerfile 参考](/reference/dockerfile.md)
-- [PHP 官方 Docker 镜像](https://hub.docker.com/_/php)
+- [PHP 的官方 Docker 镜像](https://hub.docker.com/_/php)
 
 ## 下一步
 
-在下一节中，你将学习如何使用 Docker 运行单元测试。
+在下一节中，您将学习如何使用 Docker 运行单元测试。

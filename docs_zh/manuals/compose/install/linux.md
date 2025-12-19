@@ -1,6 +1,6 @@
 ---
-description: 使用包仓库或手动方式在 Linux 上安装 Docker Compose 插件的分步说明。
-keywords: 在 Linux 上安装 docker compose, docker compose 插件, docker-compose-plugin linux, docker compose v2, docker compose 手动安装, linux docker compose
+description: 分步指导如何在 Linux 上使用软件包仓库或手动方法安装 Docker Compose 插件。
+keywords: install docker compose linux, docker compose plugin, docker-compose-plugin linux, docker compose v2, docker compose manual install, linux docker compose
 toc_max: 3
 title: 安装 Docker Compose 插件
 linkTitle: 插件
@@ -11,19 +11,19 @@ aliases:
 weight: 10
 ---
 
-本页面包含如何在 Linux 命令行上安装 Docker Compose 插件的说明。
+本页包含如何在 Linux 上从命令行安装 Docker Compose 插件的说明。
 
-要在 Linux 上安装 Docker Compose 插件，您可以选择以下任一方式：
-- [在 Linux 系统上设置 Docker 的仓库](#install-using-the-repository)。
+要在 Linux 上安装 Docker Compose 插件，您可以：
+- [在您的 Linux 系统上设置 Docker 的仓库](#install-using-the-repository)。
 - [手动安装](#install-the-plugin-manually)。
 
 > [!NOTE]
 >
-> 这些说明假设您已安装 Docker Engine 和 Docker CLI，现在需要安装 Docker Compose 插件。
+> 这些说明假设您已经安装了 Docker Engine 和 Docker CLI，现在想要安装 Docker Compose 插件。
 
 ## 使用仓库安装
 
-1. 设置仓库。请在以下文档中查找特定发行版的说明：
+1.  设置仓库。在以下链接中查找特定发行版的说明：
 
     [Ubuntu](/manuals/engine/install/ubuntu.md#install-using-the-repository) |
     [CentOS](/manuals/engine/install/centos.md#set-up-the-repository) |
@@ -32,7 +32,7 @@ weight: 10
     [Fedora](/manuals/engine/install/fedora.md#set-up-the-repository) |
     [RHEL](/manuals/engine/install/rhel.md#set-up-the-repository)。
 
-2. 更新包索引，并安装最新版本的 Docker Compose：
+2.  更新软件包索引，并安装最新版本的 Docker Compose：
 
     * 对于 Ubuntu 和 Debian，运行：
 
@@ -47,7 +47,7 @@ weight: 10
         $ sudo yum install docker-compose-plugin
         ```
 
-3.  通过检查版本验证 Docker Compose 是否正确安装。
+3.  通过检查版本来验证 Docker Compose 是否已正确安装。
 
     ```console
     $ docker compose version
@@ -74,7 +74,7 @@ weight: 10
 
 > [!WARNING]
 >
-> 手动安装不会自动更新。为便于维护，请使用 Docker 仓库方法。
+> 手动安装不会自动更新。为了便于维护，请使用 Docker 仓库方法。
 
 1.  要下载并安装 Docker Compose CLI 插件，请运行：
 
@@ -87,11 +87,11 @@ weight: 10
     此命令为当前用户在 `$HOME` 目录下下载并安装最新版本的 Docker Compose。
 
     要安装：
-    - Docker Compose 供系统上 _所有用户_ 使用，请将 `~/.docker/cli-plugins` 替换为 `/usr/local/lib/docker/cli-plugins`。
-    - 不同版本的 Compose，请将 `{{% param "compose_version" %}}` 替换为您要使用的 Compose 版本。
-    - 不同架构，请将 `x86_64` 替换为您需要的[架构](https://github.com/docker/compose/releases)。
+    - 供系统上_所有用户_使用的 Docker Compose，请将 `~/.docker/cli-plugins` 替换为 `/usr/local/lib/docker/cli-plugins`。
+    - 不同版本的 Compose，请将 `{{% param "compose_version" %}}` 替换为您想要使用的 Compose 版本。
+    - 用于不同的架构，请将 `x86_64` 替换为您想要的[架构](https://github.com/docker/compose/releases)。
 
-2. 为二进制文件应用可执行权限：
+2.  为二进制文件应用可执行权限：
 
     ```console
     $ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
@@ -102,13 +102,13 @@ weight: 10
     $ sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     ```
 
-3. 测试安装。
+3.  测试安装。
 
     ```console
     $ docker compose version
     ```
 
-## 下一步？
+## 下一步是什么？
 
 - [了解 Compose 的工作原理](/manuals/compose/intro/compose-application-model.md)
 - [尝试快速入门指南](/manuals/compose/gettingstarted.md)

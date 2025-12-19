@@ -1,21 +1,21 @@
 ---
-title: 迁移检查清单
-description: 迁移到 Docker Hardened Images 时需要考虑的检查清单
+title: 迁移清单
+description: 迁移到 Docker Hardened Images 时需要考虑的清单
 weight: 10
-keywords: 迁移检查清单, dhi, docker hardened images
+keywords: migration checklist, dhi, docker hardened images
 ---
 
-使用此检查清单确保您在迁移到 Docker Hardened Images 时考虑了所有关键因素。
+使用此清单确保您在迁移到 Docker Hardened Images 时考虑到了所有关键事项。
 
 ## 迁移注意事项
 
-| 项目               | 需要的操作                                                                                                                                                                                                                                                                                                                 |
+| 项目               | 需要执行的操作                                                                                                                                                                                                                                                                                                                 |
 |:-------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 基础镜像         | 更新您的 Dockerfile 中的 `FROM` 语句，引用 Docker Hardened Image 而非当前的基础镜像。                                                                                                                                                                                                                                                      |
-| 包管理         | 仅在构建阶段使用 `dev` 标签的镜像安装包。对于基于 Alpine 的镜像使用 `apk`，对于基于 Debian 的镜像使用 `apt`。由于运行时镜像不包含包管理器，因此请将必要的构件复制到您的运行时阶段。                                                                                                                                                                        |
-| 非 root 用户      | 验证您的应用程序需要的所有文件和目录都可由非 root 用户（UID 65532）读写，因为运行时镜像默认以非 root 身份运行。                                                                                                                                                                              |
-| 多阶段构建  | 在需要构建工具和包管理器的构建阶段使用 `dev` 或 `sdk` 标签的镜像。在最终运行时阶段使用非 dev 镜像。                                                                                                                                                                                                                                     |
-| TLS 证书   | 移除任何安装 ca-certificates 的步骤，因为 DHI 默认包含 ca-certificates。                                                                                                                                                                                                                               |
-| 端口              | 配置您的应用程序在容器内监听 1025 或更高端口，因为非 root 用户无法在 Kubernetes 或早于 20.10 版本的 Docker Engine 中绑定到特权端口（低于 1024）。 |
+| 基础镜像         | 更新 Dockerfile 中的 `FROM` 语句，引用 Docker Hardened Image 而非当前的基础镜像。                                                                                                                                                                                                                                                      |
+| 包管理         | 仅在构建阶段使用 `dev` 标签的镜像安装包。对于基于 Alpine 的镜像使用 `apk`，对于基于 Debian 的镜像使用 `apt`。将必要的构件复制到运行时阶段，因为运行时镜像不包含包管理器。                                                                                                                                                                        |
+| 非 root 用户      | 验证您的应用程序所需的所有文件和目录对非 root 用户（UID 65532）可读可写，因为运行时镜像默认以非 root 身份运行。                                                                                                                                                                              |
+| 多阶段构建      | 在需要构建工具和包管理器的构建阶段使用 `dev` 或 `sdk` 标签的镜像。在最终运行时阶段使用非 dev 镜像。                                                                                                                                                                                                                                     |
+| TLS 证书        | 移除任何安装 ca-certificates 的步骤，因为 DHI 默认包含 ca-certificates。                                                                                                                                                                                                                               |
+| 端口              | 配置您的应用程序在容器内监听 1025 或更高端口，因为非 root 用户无法绑定到特权端口（低于 1024）在 Kubernetes 或早于 20.10 版本的 Docker Engine 中。 |
 | 入口点        | 使用 `docker inspect` 或镜像文档检查所选 DHI 的入口点。如果您的应用程序依赖不同的入口点，请更新 Dockerfile 的 `ENTRYPOINT` 或 `CMD` 指令。                                                                                                                                                                        |
-| 无 shell           | 将任何 shell 命令（`RUN`, `SHELL`）移至使用 `dev` 标签镜像的构建阶段。运行时镜像不包含 shell，因此请从构建阶段复制所有必要构件。                                                                                                                                                                            |
+| 无 shell           | 将任何 shell 命令（`RUN`、`SHELL`）移至使用 `dev` 标签镜像的构建阶段。运行时镜像不包含 shell，因此从构建阶段复制所有必要构件。                                                                                                                                                                            |

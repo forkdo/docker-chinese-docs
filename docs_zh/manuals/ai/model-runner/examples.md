@@ -9,7 +9,7 @@ keywords: Docker, ai, model runner, examples, github actions, genai, sample proj
 
 ## 示例项目
 
-现在，您可以开始构建由 Docker Model Runner 提供支持的生成式 AI 应用了。
+现在您可以开始构建由 Docker Model Runner 提供支持的生成式 AI 应用了。
 
 如果您想尝试一个现有的 GenAI 应用，请按照以下步骤操作：
 
@@ -19,16 +19,16 @@ keywords: Docker, ai, model runner, examples, github actions, genai, sample proj
    $ git clone https://github.com/docker/hello-genai.git
    ```
 
-1. 在终端中，进入 `hello-genai` 目录。
+1. 在您的终端中，进入 `hello-genai` 目录。
 
 1. 运行 `run.sh` 以拉取所选模型并启动应用。
 
-1. 在浏览器中打开应用，地址请参阅仓库的
-   [README](https://github.com/docker/hello-genai)。
+1. 在浏览器中打开应用，地址在仓库的
+   [README](https://github.com/docker/hello-genai) 中指定。
 
 您将看到 GenAI 应用的界面，可以在其中开始输入提示。
 
-现在，您可以与自己的 GenAI 应用交互，它由本地模型提供支持。尝试几个提示，注意响应速度有多快——所有操作都在您的机器上通过 Docker 运行。
+现在您可以与自己的 GenAI 应用交互，该应用由本地模型提供支持。尝试一些提示，注意响应速度有多快——所有操作都在您的机器上通过 Docker 运行。
 
 ## 在 GitHub Actions 中使用 Model Runner
 

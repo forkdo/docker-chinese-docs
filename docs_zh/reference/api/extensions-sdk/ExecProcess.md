@@ -1,7 +1,7 @@
 ---
-title: "接口: ExecProcess"
+title: "接口：ExecProcess"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecProcess/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecProcess/
@@ -17,7 +17,7 @@ aliases:
 
 ▸ **close**(): `void`
 
-关闭通过 exec(streamingOptions) 启动的进程
+关闭由 exec(streamingOptions) 启动的进程
 
 #### 返回值
 

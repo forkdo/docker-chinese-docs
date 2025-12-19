@@ -1,13 +1,13 @@
 ---
-title: "接口: HttpService"
-description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+title: "接口：HttpService"
+description: Docker 扩展 API 参考文档
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/HttpService/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/HttpService/
 ---
 
-**`Since`**
+**`自版本`**
 
 0.2.0
 
@@ -17,7 +17,7 @@ aliases:
 
 ▸ **get**(`url`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP GET 请求。
+向后端服务发起 HTTP GET 请求。
 
 ```typescript
 ddClient.extension.vm.service
@@ -41,7 +41,7 @@ ___
 
 ▸ **post**(`url`, `data`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP POST 请求。
+向后端服务发起 HTTP POST 请求。
 
 ```typescript
 ddClient.extension.vm.service
@@ -54,7 +54,7 @@ ddClient.extension.vm.service
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `url` | `string` | 后端服务的 URL。 |
-| `data` | `any` | 请求的主体。 |
+| `data` | `any` | 请求体内容。 |
 
 #### 返回值
 
@@ -66,7 +66,7 @@ ___
 
 ▸ **put**(`url`, `data`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP PUT 请求。
+向后端服务发起 HTTP PUT 请求。
 
 ```typescript
 ddClient.extension.vm.service
@@ -79,7 +79,7 @@ ddClient.extension.vm.service
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `url` | `string` | 后端服务的 URL。 |
-| `data` | `any` | 请求的主体。 |
+| `data` | `any` | 请求体内容。 |
 
 #### 返回值
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **patch**(`url`, `data`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP PATCH 请求。
+向后端服务发起 HTTP PATCH 请求。
 
 ```typescript
 ddClient.extension.vm.service
@@ -104,7 +104,7 @@ ddClient.extension.vm.service
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `url` | `string` | 后端服务的 URL。 |
-| `data` | `any` | 请求的主体。 |
+| `data` | `any` | 请求体内容。 |
 
 #### 返回值
 
@@ -116,7 +116,7 @@ ___
 
 ▸ **delete**(`url`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP DELETE 请求。
+向后端服务发起 HTTP DELETE 请求。
 
 ```typescript
 ddClient.extension.vm.service
@@ -140,7 +140,7 @@ ___
 
 ▸ **head**(`url`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP HEAD 请求。
+向后端服务发起 HTTP HEAD 请求。
 
 ```typescript
 ddClient.extension.vm.service
@@ -164,7 +164,7 @@ ___
 
 ▸ **request**(`config`): `Promise`<`unknown`\>
 
-向后端服务执行 HTTP 请求。
+向后端服务发起 HTTP 请求。
 
 ```typescript
 ddClient.extension.vm.service

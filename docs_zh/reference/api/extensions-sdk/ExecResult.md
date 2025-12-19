@@ -1,21 +1,22 @@
+```markdown
 ---
 title: "接口: ExecResult"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecResult/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecResult/
 ---
 
-**`Since`**
+**`自版本`**
 
 0.2.0
 
-## 层级结构
+## 继承关系
 
 - [`RawExecResult`](RawExecResult.md)
 
-  ↳ **`ExecResult`** (ExecResult)
+  ↳ **`ExecResult`**
 
 ## 方法
 
@@ -23,7 +24,7 @@ aliases:
 
 ▸ **lines**(): `string`[]
 
-拆分输出行。
+分割输出行。
 
 #### 返回值
 
@@ -43,7 +44,7 @@ ___
 
 `any`[]
 
-每行都是 JSON 对象的行列表。
+行列表，其中每一行都是一个 JSON 对象。
 
 ___
 
@@ -63,7 +64,7 @@ JSON 对象。
 
 ### cmd
 
-• `可选` `只读` **cmd**: `string`
+• `Optional` `Readonly` **cmd**: `string`
 
 #### 继承自
 
@@ -73,7 +74,7 @@ ___
 
 ### killed
 
-• `可选` `只读` **killed**: `boolean`
+• `Optional` `Readonly` **killed**: `boolean`
 
 #### 继承自
 
@@ -83,7 +84,7 @@ ___
 
 ### signal
 
-• `可选` `只读` **signal**: `string`
+• `Optional` `Readonly` **signal**: `string`
 
 #### 继承自
 
@@ -93,7 +94,7 @@ ___
 
 ### code
 
-• `可选` `只读` **code**: `number`
+• `Optional` `Readonly` **code**: `number`
 
 #### 继承自
 
@@ -103,7 +104,7 @@ ___
 
 ### stdout
 
-• `只读` **stdout**: `string`
+• `Readonly` **stdout**: `string`
 
 #### 继承自
 
@@ -113,8 +114,9 @@ ___
 
 ### stderr
 
-• `只读` **stderr**: `string`
+• `Readonly` **stderr**: `string`
 
 #### 继承自
 
 [RawExecResult](RawExecResult.md).[stderr](RawExecResult.md#stderr)
+```

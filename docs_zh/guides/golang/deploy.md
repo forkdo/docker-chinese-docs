@@ -3,24 +3,24 @@ title: 测试你的 Go 部署
 linkTitle: 测试你的部署
 weight: 50
 keywords: deploy, go, local, development
-description: Learn how to deploy your Go application
+description: 了解如何部署你的 Go 应用程序
 aliases:
   - /language/golang/deploy/
   - /guides/language/golang/deploy/
 ---
 
-## 前置条件
+## 先决条件
 
-- 完成本指南的所有前置章节，从 [构建你的 Go 镜像](build-images.md) 开始。
-- 在 Docker Desktop 中[启用 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
+- 完成本指南的所有先前部分，从 [构建你的 Go 镜像](build-images.md) 开始。
+- 在 Docker Desktop 中 [开启 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
 
 ## 概述
 
-在本节中，你将学习如何使用 Docker Desktop 将你的应用程序部署到开发机器上的完整 Kubernetes 环境。这让你可以在本地 Kubernetes 上测试和调试工作负载，然后再进行部署。
+在本节中，你将学习如何使用 Docker Desktop 将你的应用程序部署到开发机器上功能齐全的 Kubernetes 环境中。这允许你在部署之前在本地 Kubernetes 上测试和调试你的工作负载。
 
 ## 创建 Kubernetes YAML 文件
 
-在你的项目目录中，创建一个名为 `docker-go-kubernetes.yaml` 的文件。在 IDE 或文本编辑器中打开该文件，并添加以下内容。将 `DOCKER_USERNAME/REPO_NAME` 替换为你的 Docker 用户名和在 [为你的 Go 应用配置 CI/CD](configure-ci-cd.md) 中创建的仓库名称。
+在你的项目目录中，创建一个名为 `docker-go-kubernetes.yaml` 的文件。在 IDE 或文本编辑器中打开该文件，并添加以下内容。将 `DOCKER_USERNAME/REPO_NAME` 替换为你的 Docker 用户名和你在 [为你的 Go 应用程序配置 CI/CD](configure-ci-cd.md) 中创建的仓库名称。
 
 ```yaml
 apiVersion: apps/v1
@@ -146,22 +146,22 @@ status:
   loadBalancer: {}
 ```
 
-在这个 Kubernetes YAML 文件中，有四个对象，用 `---` 分隔。除了数据库的服务和部署外，另外两个对象是：
+在这个 Kubernetes YAML 文件中，有四个对象，由 `---` 分隔。除了数据库的服务（Service）和部署（Deployment）之外，另外两个对象是：
 
-- 一个 Deployment，描述一组可扩展的相同 Pod。在本例中，你将得到一个副本，也就是你的 Pod 的一个副本。该 Pod 在 `template` 下描述，其中只有一个容器。该容器是从 GitHub Actions 在 [为你的 Go 应用配置 CI/CD](configure-ci-cd.md) 中构建的镜像创建的。
-- 一个 NodePort 服务，它将从主机的 30001 端口路由流量到 Pod 内部的 8080 端口，允许你从网络访问你的应用。
+- 一个 Deployment，描述了一组可扩展的相同 Pod。在这种情况下，你只会得到一个副本（replica），即你的 Pod 的一个拷贝。该 Pod 在 `template` 下描述，其中只有一个容器。该容器由 GitHub Actions 在 [为你的 Go 应用程序配置 CI/CD](configure-ci-cd.md) 中构建的镜像创建。
+- 一个 NodePort 服务，它将主机上的端口 30001 的流量路由到它所路由到的 Pod 内部的端口 8080，允许你从网络访问你的应用程序。
 
-要了解有关 Kubernetes 对象的更多信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
+要了解更多关于 Kubernetes 对象的信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
 
-## 部署并检查你的应用
+## 部署并检查你的应用程序
 
-1. 在终端中，导航到项目目录并部署你的应用到 Kubernetes。
+1. 在终端中，导航到项目目录并将你的应用程序部署到 Kubernetes。
 
    ```console
    $ kubectl apply -f docker-go-kubernetes.yaml
    ```
 
-   你应该看到类似以下的输出，表示你的 Kubernetes 对象已成功创建。
+   你应该会看到类似以下内容的输出，表明你的 Kubernetes 对象已成功创建。
 
    ```shell
    deployment.apps/db created
@@ -176,7 +176,7 @@ status:
    $ kubectl get deployments
    ```
 
-   你的部署应该如下所示列出：
+   你的部署应如下所列：
 
    ```shell
    NAME     READY   UP-TO-DATE   AVAILABLE   AGE
@@ -184,13 +184,13 @@ status:
    server   1/1     1            1           76s
    ```
 
-   这表明所有 Pod 都已启动并运行。对你的服务也进行同样的检查。
+   这表明所有的 Pod 都已启动并运行。对你的服务也进行同样的检查。
 
    ```console
    $ kubectl get services
    ```
 
-   你应该得到类似以下的输出。
+   你应该会得到类似以下的输出。
 
    ```shell
    NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
@@ -199,9 +199,9 @@ status:
    server       NodePort    10.102.94.225   <none>        8080:30001/TCP   2m8s
    ```
 
-   除了默认的 `kubernetes` 服务外，你可以看到你的 `server` 服务和 `db` 服务。`server` 服务正在 30001/TCP 端口接受流量。
+   除了默认的 `kubernetes` 服务，你还可以看到你的 `server` 服务和 `db` 服务。`server` 服务正在端口 30001/TCP 上接收流量。
 
-3. 打开一个终端并使用 curl 请求你的应用，验证它是否正常工作。
+3. 打开一个终端并使用 curl 访问你的应用程序以验证其是否正常工作。
 
    ```console
    $ curl --request POST \
@@ -210,13 +210,13 @@ status:
      --data '{"value": "Hello, Oliver!"}'
    ```
 
-   你应该收到以下消息。
+   你应该会收到以下消息。
 
    ```json
    { "value": "Hello, Oliver!" }
    ```
 
-4. 运行以下命令来拆除你的应用。
+4. 运行以下命令以拆除你的应用程序。
 
    ```console
    $ kubectl delete -f docker-go-kubernetes.yaml
@@ -224,10 +224,10 @@ status:
 
 ## 总结
 
-在本节中，你学习了如何使用 Docker Desktop 将你的应用部署到开发机器上的完整 Kubernetes 环境。
+在本节中，你学习了如何使用 Docker Desktop 将你的应用程序部署到开发机器上功能齐全的 Kubernetes 环境中。
 
 相关信息：
 
 - [Kubernetes 文档](https://kubernetes.io/docs/home/)
-- [使用 Docker Desktop 部署到 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md)
+- [使用 Docker Desktop 在 Kubernetes 上部署](/manuals/desktop/use-desktop/kubernetes.md)
 - [Swarm 模式概述](/manuals/engine/swarm/_index.md)

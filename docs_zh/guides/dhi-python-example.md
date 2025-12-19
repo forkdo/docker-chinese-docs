@@ -1,7 +1,7 @@
 ---
 title: 将 Python 应用迁移到 DHI
 summary: |
-  展示如何将 Python 应用程序迁移到 Docker Hardened Images 的示例
+  示例：展示如何将 Python 应用程序迁移到 Docker Hardened Images
 type: redirect
 target: /dhi/migration/examples/python/
 tags: [dhi]

@@ -1,1 +1,1 @@
-使用 Compose，你可以利用内置的 [YAML](https://www.yaml.org/spec/1.2/spec.html#id2765878) 功能，让 Compose 文件更加整洁和高效。锚点（anchors）和别名（aliases）允许你创建可复用的代码块。当你发现多个服务之间存在共同配置时，这非常有用。使用可复用的代码块可以最大限度地减少潜在的错误。
+使用 Compose 时，可以利用内置的 [YAML](https://www.yaml.org/spec/1.2/spec.html#id2765878) 特性，使 Compose 文件更加简洁高效。锚点（Anchors）和别名（Aliases）可用于创建可复用的代码块。当你发现多个服务之间存在通用配置时，这一特性尤为实用。通过复用代码块，可以减少潜在的错误。

@@ -9,19 +9,19 @@ aliases:
 - /desktop/usbip/
 ---
 
-{{< summary-bar feature_name="USB/IP 支持" >}}
+{{< summary-bar feature_name="USB/IP support" >}}
 
-USB/IP 能够让您通过网络共享 USB 设备，然后从 Docker 容器内部访问这些设备。本文档重点介绍如何共享连接到运行 Docker Desktop 的机器上的 USB 设备。您可以重复以下过程来附加和使用其他 USB 设备。
+USB/IP 可让您通过网络共享 USB 设备，然后即可从 Docker 容器内访问这些设备。本页面重点介绍如何共享连接到运行 Docker Desktop 的主机上的 USB 设备。您可以根据需要重复以下过程来挂载和使用其他 USB 设备。
 
 > [!NOTE]
 >
-> Docker Desktop 内置了许多常见 USB 设备的驱动程序，但 Docker 无法保证所有可能的 USB 设备都能与这种设置兼容。
+> Docker Desktop 包含许多常见 USB 设备的内置驱动程序，但 Docker 无法保证所有 USB 设备都能在此设置下正常工作。
 
-## 设置和使用
+## 设置与使用
 
-### 步骤一：运行 USB/IP 服务器
+### 第一步：运行 USB/IP 服务器
 
-要使用 USB/IP，您需要运行一个 USB/IP 服务器。在本指南中，我们将使用 [jiegec/usbip](https://github.com/jiegec/usbip) 提供的实现。
+要使用 USB/IP，您需要运行一个 USB/IP 服务器。本指南将使用 [jiegec/usbip](https://github.com/jiegec/usbip) 提供的实现。
 
 1. 克隆仓库。
 
@@ -36,17 +36,17 @@ USB/IP 能够让您通过网络共享 USB 设备，然后从 Docker 容器内部
     $ env RUST_LOG=info cargo run --example hid_keyboard
     ```
 
-### 步骤二：启动一个特权 Docker 容器
+### 第二步：启动特权 Docker 容器
 
-要附加 USB 设备，需要启动一个特权 Docker 容器，并将 PID 命名空间设置为 `host`：
+要挂载 USB 设备，请启动一个特权 Docker 容器，并将其 PID 命名空间设置为 `host`：
 
 ```console
 $ docker run --rm -it --privileged --pid=host alpine
 ```
 
-`--privileged` 为容器提供对主机的完全访问权限，`--pid=host` 允许容器共享主机的进程命名空间。
+`--privileged` 使容器拥有对主机的完全访问权限，`--pid=host` 允许其共享主机的进程命名空间。
 
-### 步骤三：进入 PID 1 的挂载命名空间
+### 第三步：进入 PID 1 的挂载命名空间
 
 在容器内，进入 `init` 进程的挂载命名空间，以访问预安装的 USB/IP 工具：
 
@@ -54,9 +54,9 @@ $ docker run --rm -it --privileged --pid=host alpine
 $ nsenter -t 1 -m
 ```
 
-### 步骤四：使用 USB/IP 工具
+### 第四步：使用 USB/IP 工具
 
-现在您可以像在其他系统上一样使用 USB/IP 工具：
+现在，您可以像在任何其他系统上一样使用 USB/IP 工具：
 
 #### 列出 USB 设备
 
@@ -78,17 +78,17 @@ Exportable USB devices
            :  0 - unknown class / unknown subclass / unknown protocol (03/00/00)
 ```
 
-#### 附加 USB 设备
+#### 挂载 USB 设备
 
-要附加特定的 USB 设备，或者在本例中附加模拟键盘：
+要挂载特定的 USB 设备，本例中是模拟的键盘：
 
 ```console
 $ usbip attach -r host.docker.internal -d 0-0-0
 ```
 
-#### 验证设备连接
+#### 验证设备挂载
 
-附加模拟键盘后，检查 `/dev/input` 目录中的设备节点：
+挂载模拟键盘后，检查 `/dev/input` 目录中的设备节点：
 
 ```console
 $ ls /dev/input/
@@ -100,11 +100,11 @@ $ ls /dev/input/
 event0  mice
 ```
 
-### 步骤五：从另一个容器访问设备
+### 第五步：从另一个容器访问设备
 
-在初始容器保持运行以维持 USB 设备工作的同时，您可以从另一个容器访问已附加的设备。例如：
+当初始容器保持运行以维持 USB 设备操作时，您可以从另一个容器访问已挂载的设备。例如：
 
-1. 启动一个带有附加设备的新容器。
+1. 启动一个包含已挂载设备的新容器。
 
     ```console
     $ docker run --rm -it --device "/dev/input/event0" alpine
@@ -117,7 +117,7 @@ event0  mice
     $ evtest /dev/input/event0
     ```
 
-3. 与设备交互，观察输出。
+3. 与设备交互，并观察输出。
 
     示例输出：
 

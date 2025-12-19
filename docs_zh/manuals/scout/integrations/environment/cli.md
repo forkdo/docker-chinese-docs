@@ -1,24 +1,24 @@
 ---
-description: 使用 CLI 客户端将运行时环境与 Docker Scout 集成
+description: 使用 CLI 客户端将您的运行时环境与 Docker Scout 集成
 keywords: docker scout, integration, image analysis, runtime, workloads, cli, environments
-title: 使用 CLI 的通用环境集成
+title: 通过 CLI 进行通用环境集成
 linkTitle: 通用 (CLI)
 ---
 
 {{% include "scout-early-access.md" %}}
 
-您可以通过在 CI 工作流中运行 Docker Scout CLI 客户端来创建通用环境集成。CLI 客户端可作为 GitHub 上的二进制文件和 Docker Hub 上的容器镜像获取。使用客户端调用 `docker scout environment` 命令将您的镜像分配到环境中。
+您可以通过在 CI 工作流中运行 Docker Scout CLI 客户端来创建通用环境集成。CLI 客户端可在 GitHub 上作为二进制文件获取，也可在 Docker Hub 上作为容器镜像获取。使用该客户端调用 `docker scout environment` 命令，将您的镜像分配给环境。
 
-有关如何使用 `docker scout environment` 命令的详细信息，请参考 [CLI 参考文档](/reference/cli/docker/scout/environment.md)。
+有关如何使用 `docker scout environment` 命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/environment.md)。
 
 ## 示例
 
-开始之前，在您的 CI 系统中设置以下环境变量：
+在开始之前，请在您的 CI 系统中设置以下环境变量：
 
 - `DOCKER_SCOUT_HUB_USER`：您的 Docker Hub 用户名
 - `DOCKER_SCOUT_HUB_PASSWORD`：您的 Docker Hub 个人访问令牌
 
-确保这些变量对您的项目可访问。
+确保您的项目可以访问这些变量。
 
 {{< tabs >}}
 {{< tab name="Circle CI" >}}

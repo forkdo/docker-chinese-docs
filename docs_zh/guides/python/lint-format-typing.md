@@ -1,36 +1,36 @@
 ---
-title: Python 的代码检查、格式化和类型检查
-linkTitle: 代码检查和类型检查
+title: Python 的代码检查、格式化与类型检查
+linkTitle: 代码检查与类型检查
 weight: 25
 keywords: Python, linting, formatting, type checking, ruff, pyright
-description: 了解如何为你的 Python 应用设置代码检查、格式化和类型检查。
+description: 了解如何为您的 Python 应用程序设置代码检查、格式化和类型检查。
 aliases:
   - /language/python/lint-format-typing/
 ---
 
-## 前置条件
+## 前提条件
 
-完成 [开发你的应用](develop.md)。
+请先完成 [开发您的应用程序](develop.md)。
 
 ## 概述
 
-在本节中，你将学习如何为你的 Python 应用设置代码质量工具。包括：
+在本节中，您将学习如何为 Python 应用程序设置代码质量工具。这些工具包括：
 
 - 使用 Ruff 进行代码检查和格式化
 - 使用 Pyright 进行静态类型检查
-- 使用 pre-commit hooks 自动化检查
+- 通过 pre-commit 钩子自动化检查流程
 
 ## 使用 Ruff 进行代码检查和格式化
 
-Ruff 是一个用 Rust 编写的极快的 Python 代码检查和格式化工具。它用一个统一的工具替代了 flake8、isort 和 black 等多个工具。
+Ruff 是一个用 Rust 编写的、速度极快的 Python 代码检查器和格式化工具。它用一个统一的工具取代了 flake8、isort 和 black 等多个工具。
 
-在使用 Ruff 之前，先在你的 Python 环境中安装它：
+在使用 Ruff 之前，请先在您的 Python 环境中安装它：
 
 ```bash
 pip install ruff
 ```
 
-如果你使用虚拟环境，请确保它已激活，这样运行下面的命令时 `ruff` 命令才可用。
+如果您使用的是虚拟环境，请确保它已激活，以便在运行以下命令时可以使用 `ruff` 命令。
 
 创建一个 `pyproject.toml` 文件：
 
@@ -59,7 +59,7 @@ ignore = [
 
 ### 使用 Ruff
 
-运行以下命令检查和格式化你的代码：
+运行以下命令来检查和格式化您的代码：
 
 ```bash
 # 检查错误
@@ -74,7 +74,7 @@ ruff format .
 
 ## 使用 Pyright 进行类型检查
 
-Pyright 是一个快速的 Python 静态类型检查工具，对现代 Python 特性支持良好。
+Pyright 是一个快速的 Python 静态类型检查器，与现代 Python 特性配合良好。
 
 在 `pyproject.toml` 中添加 `Pyright` 配置：
 
@@ -87,15 +87,15 @@ exclude = [".venv"]
 
 ### 运行 Pyright
 
-检查代码中的类型错误：
+要检查代码中的类型错误：
 
 ```bash
 pyright
 ```
 
-## 设置 pre-commit hooks
+## 设置 pre-commit 钩子
 
-pre-commit hooks 在每次提交前自动运行检查。以下 `.pre-commit-config.yaml` 片段设置了 Ruff：
+Pre-commit 钩子会在每次提交之前自动运行检查。以下 `.pre-commit-config.yaml` 片段设置了 Ruff：
 
 ```yaml
   https: https://github.com/charliermarsh/ruff-pre-commit
@@ -115,16 +115,16 @@ git commit -m "Test commit"  # 自动运行检查
 
 ## 总结
 
-在本节中，你学会了如何：
+在本节中，您学习了如何：
 
 - 配置和使用 Ruff 进行代码检查和格式化
 - 设置 Pyright 进行静态类型检查
-- 使用 pre-commit hooks 自动化检查
+- 使用 pre-commit 钩子自动化检查流程
 
-这些工具帮助保持代码质量，并在开发早期发现错误。
+这些工具有助于维护代码质量，并在开发早期发现错误。
 
 ## 后续步骤
 
-- [配置 GitHub Actions](configure-github-actions.md) 自动运行这些检查
-- 自定义代码检查规则以匹配团队的风格偏好
+- [配置 GitHub Actions](configure-github-actions.md) 以自动运行这些检查
+- 自定义代码检查规则以符合您团队的风格偏好
 - 探索高级类型检查功能

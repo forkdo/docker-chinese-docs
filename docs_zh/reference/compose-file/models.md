@@ -7,9 +7,9 @@ weight: 120
 
 {{< summary-bar feature_name="Compose 模型" >}}
 
-顶级 `models` 部分声明了你的 Compose 应用程序所使用的 AI 模型。这些模型通常作为 OCI 工件被拉取，由模型运行器执行，并以 API 形式暴露，供你的服务容器消费。
+顶级 `models` 部分声明了您的 Compose 应用程序所使用的 AI 模型。这些模型通常作为 OCI 工件拉取，由模型运行器执行，并作为 API 暴露，您的服务容器可以消费这些 API。
 
-服务只有在 `services` 顶级元素中的 `models` 属性明确授权时，才能访问模型。
+服务只有在 `services` 顶级元素中的 [`models` 属性](services.md#models) 明确授权时，才能访问模型。
 
 ## 示例
 
@@ -28,7 +28,7 @@ models:
     model: ai/model
 ```
 
-在此基本示例中：
+在这个基本示例中：
 
  - app 服务使用 `ai_model`。
  - `ai_model` 被定义为 OCI 工件（`ai/model`），由模型运行器拉取并提供服务。
@@ -53,16 +53,16 @@ models:
       - "--another-flag=42"
 ```
 
-在此高级设置中：
+在这个高级设置中：
 
- - 服务 app 使用长语法引用 `my_model`。
+ - 服务 app 使用长格式语法引用 `my_model`。
  - Compose 将模型运行器的 URL 作为环境变量 `MODEL_URL` 注入。
 
 ## 属性
 
 - `model`（必需）：模型的 OCI 工件标识符。Compose 通过模型运行器拉取并运行此标识符。
-- `context_size`：定义模型的最大 token 上下文大小。
-- `runtime_flags`：当模型启动时，传递给推理引擎的原始命令行标志列表。
+- `context_size`：定义模型的最大令牌上下文大小。
+- `runtime_flags`：模型启动时传递给推理引擎的原始命令行标志列表。
 
 ## 额外资源
 

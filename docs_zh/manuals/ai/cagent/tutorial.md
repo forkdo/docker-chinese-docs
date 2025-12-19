@@ -1,43 +1,43 @@
 ---
-title: 构建一个编程助手
-description: 创建一个能够读取、编写和验证代码变更的编程助手，帮助你的项目开发
-keywords: [cagent, tutorial, coding agent, ai assistant]
+title: 构建编码代理
+description: 创建一个能够读取、写入并验证项目代码更改的编码代理
+keywords: [cagent, 教程, 编码代理, AI 助手]
 weight: 30
 ---
 
-本教程将教你如何构建一个能够协助软件开发任务的编程助手。你将从一个基础助手开始，逐步添加能力，最终得到一个可用于生产的助手，它能够读取代码、修改代码、运行测试，甚至查找文档。
+本教程将指导你如何构建一个能够协助软件开发任务的编码代理。你将从一个基础代理开始，逐步为其添加功能，最终得到一个生产就绪的助手，它能够读取代码、进行修改、运行测试，甚至查阅文档。
 
-完成本教程后，你将掌握如何组织助手指令、配置工具，以及如何组合多个助手来处理复杂工作流。
+最终，你将理解如何构建代理指令、配置工具，以及如何组合多个代理以处理复杂的工作流。
 
-## 你将构建的内容
+## 你将构建什么
 
-一个能够：
+一个能够执行以下操作的编码代理：
 
 - 读取和修改项目中的文件
 - 运行测试和代码检查等命令
 - 遵循结构化的开发工作流
-- 在需要时查找文档
+- 在需要时查阅文档
 - 跟踪多步骤任务的进度
 
-## 你将学到的内容
+## 你将学到什么
 
-- 如何在 YAML 中配置 cagent 助手
-- 如何为助手提供工具访问权限（文件系统、Shell 等）
-- 如何编写高效的助手指令
-- 如何组合多个助手处理专门任务
-- 如何为自己的项目定制助手
+- 如何在 YAML 中配置 cagent 代理
+- 如何让代理访问工具（文件系统、Shell 等）
+- 如何编写有效的代理指令
+- 如何组合多个代理以处理专门的任务
+- 如何为自己的项目调整代理
 
-## 前置条件
+## 前提条件
 
 开始之前，你需要：
 
-- **安装 cagent** - 参见 [安装指南](_index.md#installation)
-- **配置 API 密钥** - 在环境中设置 `ANTHROPIC_API_KEY` 或 `OPENAI_API_KEY`。密钥可从 [Anthropic](https://console.anthropic.com/) 或 [OpenAI](https://platform.openai.com/api-keys) 获取
-- **一个项目** - 任何你希望助手协助的代码库
+- **已安装 cagent** - 参见[安装指南](_index.md#installation)
+- **已配置 API 密钥** - 在环境中设置 `ANTHROPIC_API_KEY` 或 `OPENAI_API_KEY`。从 [Anthropic](https://console.anthropic.com/) 或 [OpenAI](https://platform.openai.com/api-keys) 获取密钥
+- **一个可供操作的项目** - 任何你希望获得代理协助的代码库
 
-## 创建你的第一个助手
+## 创建你的第一个代理
 
-cagent 助手通过 YAML 配置文件定义。最简单的助手只需要模型和定义其用途的指令。
+cagent 代理在 YAML 配置文件中定义。最小化的代理只需要一个模型和定义其用途的指令。
 
 创建一个名为 `agents.yml` 的文件：
 
@@ -45,25 +45,25 @@ cagent 助手通过 YAML 配置文件定义。最简单的助手只需要模型�
 agents:
   root:
     model: openai/gpt-5
-    description: 一个基础的编程助手
+    description: A basic coding assistant
     instruction: |
-      你是一个有用的编程助手。
-      帮助我编写和理解代码。
+      You are a helpful coding assistant.
+      Help me write and understand code.
 ```
 
-运行你的助手：
+运行你的代理：
 
 ```console
 $ cagent run agents.yml
 ```
 
-尝试询问："如何在 Python 中读取文件？"
+尝试提问："How do I read a file in Python?"（如何在 Python 中读取文件？）
 
-助手可以回答编程问题，但还无法查看你的文件或运行命令。要让它在实际开发中发挥作用，需要为它提供工具访问权限。
+代理可以回答编码问题，但它还无法看到你的文件或运行命令。要使其对实际开发工作有用，需要授予其工具访问权限。
 
 ## 添加工具
 
-编程助手需要与项目文件交互并运行命令。通过添加工具集来启用这些能力。
+编码代理需要与你的项目文件交互并运行命令。通过添加工具集来启用这些功能。
 
 更新 `agents.yml` 以添加文件系统和 Shell 访问权限：
 
@@ -71,59 +71,60 @@ $ cagent run agents.yml
 agents:
   root:
     model: openai/gpt-5
-    description: 具备文件系统访问权限的编程助手
+    description: A coding assistant with filesystem access
     instruction: |
-      你是一个有用的编程助手。
-      你可以读写文件来帮助我开发软件。
-      在完成任务前，始终检查代码是否正常工作。
+      You are a helpful coding assistant.
+      You can read and write files to help me develop software.
+      Always check if code works before finishing a task.
     toolsets:
       - type: filesystem
       - type: shell
 ```
 
-运行更新后的助手并尝试："读取 README.md 文件并总结内容。"
+运行更新后的代理并尝试："Read the README.md file and summarize it."（读取 README.md 文件并总结其内容。）
 
-你的助手现在可以：
+你的代理现在可以：
 
-- 读写当前目录中的文件
+- 读取和写入当前目录中的文件
 - 执行 Shell 命令
-- 探索项目结构
+- 探索你的项目结构
 
-> [!NOTE] 默认情况下，文件系统访问权限仅限于当前工作目录。如果助手需要访问其他目录，会请求权限。
+> [!NOTE] 默认情况下，文件系统访问仅限于当前工作目录。如果代理需要访问其他目录，它会请求权限。
 
-助手现在可以与代码交互，但行为仍然比较通用。接下来，你将教会它如何高效工作。
+代理现在可以与你的代码交互，但其行为仍然是通用的。接下来，你将教导它如何有效地工作。
 
-## 组织助手指令
+## 构建代理指令
 
-通用指令产生通用结果。对于生产环境使用，你希望助手遵循特定的工作流并理解项目的约定。
+通用的指令产生通用的结果。对于生产用途，你希望代理遵循特定的工作流并理解你项目的约定。
 
-使用结构化指令更新你的助手。此示例展示了一个 Go 开发助手，但你可以将其模式适配到任何语言：
+使用结构化的指令更新你的代理。此示例展示了一个 Go 开发代理，但你可以针对任何语言调整此模式：
 
 ```yaml
 agents:
   root:
     model: anthropic/claude-sonnet-4-5
-    description: 专家级 Go 开发者
+    description: Expert Go developer
     instruction: |
-      你的目标是通过检查、修改和验证代码变更来协助代码相关任务。
+      Your goal is to help with code-related tasks by examining, modifying,
+      and validating code changes.
 
       <TASK>
-          # 工作流：
-          # 1. 分析：理解需求并识别相关代码。
-          # 2. 检查：搜索文件，分析结构和依赖关系。
-          # 3. 修改：遵循最佳实践进行变更。
-          # 4. 验证：运行代码检查/测试。如果发现问题，返回修改步骤。
+          # Workflow:
+          # 1. Analyze: Understand requirements and identify relevant code.
+          # 2. Examine: Search for files, analyze structure and dependencies.
+          # 3. Modify: Make changes following best practices.
+          # 4. Validate: Run linters/tests. If issues found, return to Modify.
       </TASK>
 
-      约束条件：
-      - 在修改前彻底检查
-      - 始终在任务完成前验证变更
-      - 将代码写入文件，不要在聊天中显示
+      Constraints:
+      - Be thorough in examination before making changes
+      - Always validate changes before considering the task complete
+      - Write code to files, don't show it in chat
 
-      ## 开发工作流
-      - `go build ./...` - 构建应用
-      - `go test ./...` - 运行测试
-      - `golangci-lint run` - 检查代码质量
+      ## Development Workflow
+      - `go build ./...` - Build the application
+      - `go test ./...` - Run tests
+      - `golangci-lint run` - Check code quality
 
     add_date: true
     add_environment_info: true
@@ -133,34 +134,36 @@ agents:
       - type: todo
 ```
 
-尝试询问："为 main.go 中的 `parseConfig` 函数添加错误处理"
+尝试提问："Add error handling to the `parseConfig` function in main.go"（为 main.go 中的 `parseConfig` 函数添加错误处理）
 
-结构化指令为你的助手提供了：
+结构化的指令为你的代理提供了：
 
-- 清晰的工作流（分析、检查、修改、验证）
-- 项目特定的命令
+- 一个清晰的工作流（分析、检查、修改、验证）
+- 要运行的项目特定命令
 - 防止常见错误的约束
-- 环境上下文（`add_date` 和 `add_environment_info`）
+- 关于环境的上下文（`add_date` 和 `add_environment_info`）
 
-`todo` 工具集帮助助手跟踪多步骤任务的进度。当你要求复杂变更时，助手会分解工作并在进行时更新进度。
+`todo` 工具集帮助代理跟踪多步骤任务的进度。当你要求进行复杂的更改时，代理会分解工作并在执行过程中更新其进度。
 
-## 组合多个助手
+## 组合多个代理
 
-复杂任务通常需要专业助手。你可以添加处理特定职责的子助手，比如在主助手专注于编码时研究文档。
+复杂的任务通常受益于专门的代理。你可以添加处理特定职责的子代理，例如研究文档，而你的主代理则专注于编码。
 
-添加一个能够搜索文档的图书管理员助手：
+添加一个可以搜索文档的图书管理员代理：
 
 ```yaml
 agents:
   root:
     model: anthropic/claude-sonnet-4-5
-    description: 专家级 Go 开发者
+    description: Expert Go developer
     instruction: |
-      你的目标是通过检查、修改和验证代码变更来协助代码相关任务。
+      Your goal is to help with code-related tasks by examining, modifying,
+      and validating code changes.
 
-      当你需要查找文档或研究某些内容时，请咨询图书管理员助手。
+      When you need to look up documentation or research how something works,
+      ask the librarian agent.
 
-      （其余指令与之前部分相同...）
+      (rest of instructions from previous section...)
     toolsets:
       - type: filesystem
       - type: shell
@@ -170,86 +173,87 @@ agents:
 
   librarian:
     model: anthropic/claude-haiku-4-5
-    description: 文档研究员
+    description: Documentation researcher
     instruction: |
-      你是图书管理员。你的工作是查找相关文档、文章或资源来帮助开发助手。
+      You are the librarian. Your job is to find relevant documentation,
+      articles, or resources to help the developer agent.
 
-      根据需要搜索互联网并获取网页。
+      Search the internet and fetch web pages as needed.
     toolsets:
       - type: mcp
         ref: docker:duckduckgo
       - type: fetch
 ```
 
-尝试询问："如何在 Go 中使用 `context.Context`？然后将其添加到我的服务器代码中。"
+尝试提问："How do I use `context.Context` in Go? Then add it to my server code."（如何在 Go 中使用 `context.Context`？然后将其添加到我的服务器代码中。）
 
-你的主助手会将研究任务委托给图书管理员，然后利用这些信息修改代码。这使主助手的上下文专注于编码任务，同时仍能访问最新的文档。
+你的主代理会将研究任务委托给图书管理员，然后使用该信息来修改你的代码。这使得主代理的上下文专注于编码任务，同时仍然可以访问最新的文档。
 
-为图书管理员使用更小、更快的模型（Haiku）可以节省成本，因为文档查找不需要与代码变更相同的推理深度。
+为图书管理员使用更小、更快的模型（Haiku）可以节省成本，因为文档查找不需要像代码更改那样的推理深度。
 
-## 适配你的项目
+## 为你的项目调整
 
-现在你理解了核心概念，可以为你的特定项目定制助手：
+现在你已经理解了核心概念，可以为你的特定项目调整代理：
 
 ### 更新开发命令
 
-用你的项目工作流替换 Go 命令：
+将 Go 命令替换为你项目的工作流：
 
 ```yaml
-## 开发工作流
-- `npm test` - 运行测试
-- `npm run lint` - 检查代码质量
-- `npm run build` - 构建应用
+## Development Workflow
+- `npm test` - Run tests
+- `npm run lint` - Check code quality
+- `npm run build` - Build the application
 ```
 
-### 添加项目特定约束
+### 添加项目特定的约束
 
-如果助手总是犯同样的错误，添加明确的约束：
+如果你的代理持续犯同样的错误，请添加明确的约束：
 
 ```yaml
-约束条件：
-  - 在任务完成前始终运行测试
-  - 遵循 src/ 目录中的现有代码风格
-  - 永远不要修改 generated/ 目录中的文件
-  - 新文件使用 TypeScript 严格模式
+Constraints:
+  - Always run tests before considering a task complete
+  - Follow the existing code style in src/ directories
+  - Never modify files in the generated/ directory
+  - Use TypeScript strict mode for new files
 ```
 
 ### 选择合适的模型
 
-对于编程任务，使用注重推理的模型：
+对于编码任务，使用注重推理的模型：
 
-- `anthropic/claude-sonnet-4-5` - 强推理能力，适合复杂代码
-- `openai/gpt-5` - 快速，良好的通用编程能力
+- `anthropic/claude-sonnet-4-5` - 推理能力强，适用于复杂代码
+- `openai/gpt-5` - 速度快，通用编码能力好
 
-对于文档查找等辅助任务，较小的模型效果良好：
+对于文档查找等辅助任务，较小的模型效果很好：
 
-- `anthropic/claude-haiku-4-5` - 快速且经济
-- `openai/gpt-5-mini` - 适合简单任务
+- `anthropic/claude-haiku-4-5` - 快速且成本效益高
+- `openai/gpt-5-mini` - 适用于简单任务
 
-### 基于使用情况迭代
+### 根据使用情况进行迭代
 
-改进助手的最佳方法是使用它。当你发现问题时：
+改进代理的最佳方法是使用它。当你发现问题时：
 
-1. 添加特定指令以防止问题
-2. 更新约束以指导行为
-3. 在开发工作流中添加相关命令
-4. 考虑为复杂领域添加专业子助手
+1. 添加特定指令以防止该问题
+2. 更新约束以引导行为
+3. 向开发工作流添加相关命令
+4. 考虑为复杂领域添加专门的子代理
 
-## 你学到的内容
+## 你学到了什么
 
 你现在知道如何：
 
 - 创建基本的 cagent 配置
-- 添加工具以启用助手能力
-- 编写结构化指令以获得一致的行为
-- 组合多个助手处理专门任务
-- 为不同的编程语言和工作流定制助手
+- 添加工具以启用代理功能
+- 编写结构化的指令以实现一致的行为
+- 组合多个代理以处理专门的任务
+- 针对不同的编程语言和工作流调整代理
 
 ## 后续步骤
 
-- 学习 [最佳实践](best-practices.md) 以处理大输出、组织助手团队和优化性能
-- 将 cagent 与你的 [编辑器](integrations/acp.md) 集成，或在 MCP 客户端中将助手用作 [工具](integrations/mcp.md)
-- 查看 [配置参考](reference/config.md) 了解所有可用选项
-- 探索 [工具参考](reference/toolsets.md) 了解可启用的功能
-- 查看 [示例配置](https://github.com/docker/cagent/tree/main/examples) 了解不同用例
-- 查看完整的 [golang_developer.yaml](https://github.com/docker/cagent/blob/main/golang_developer.yaml)，这是 Docker 团队用来开发 cagent 的配置
+- 学习处理大型输出、构建代理团队和优化性能的[最佳实践](best-practices.md)
+- 将 cagent 与你的[编辑器](integrations/acp.md)集成，或在 [MCP 客户端](integrations/mcp.md)中将代理用作工具
+- 查阅[配置参考](reference/config.md)了解所有可用选项
+- 探索[工具集参考](reference/toolsets.md)以查看可以启用的功能
+- 查看[示例配置](https://github.com/docker/cagent/tree/main/examples)以了解不同的用例
+- 查看 Docker 团队用于开发 cagent 的完整 [golang_developer.yaml](https://github.com/docker/cagent/blob/main/golang_developer.yaml)

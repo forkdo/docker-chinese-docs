@@ -1,7 +1,7 @@
 ---
 title: "接口: NavigationIntents"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/NavigationIntents/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/NavigationIntents/
@@ -11,7 +11,7 @@ aliases:
 
 0.2.0
 
-## 容器方法
+## 容器方法 (Container Methods)
 
 ### viewContainers
 
@@ -43,13 +43,13 @@ await ddClient.desktopUI.navigate.viewContainer(id)
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。你可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 容器的完整 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`void`\>
 
-如果容器不存在，Promise 将失败。
+如果容器不存在，则返回一个失败的 Promise。
 
 ___
 
@@ -67,13 +67,13 @@ await ddClient.desktopUI.navigate.viewContainerLogs(id)
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。你可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 容器的完整 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`void`\>
 
-如果容器不存在，Promise 将失败。
+如果容器不存在，则返回一个失败的 Promise。
 
 ___
 
@@ -91,13 +91,13 @@ await ddClient.desktopUI.navigate.viewContainerInspect(id)
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。你可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 容器的完整 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`void`\>
 
-如果容器不存在，Promise 将失败。
+如果容器不存在，则返回一个失败的 Promise。
 
 ___
 
@@ -119,13 +119,13 @@ await ddClient.desktopUI.navigate.viewContainerTerminal(id)
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。你可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 容器的完整 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`void`\>
 
-如果容器不存在，Promise 将失败。
+如果容器不存在，则返回一个失败的 Promise。
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **viewContainerStats**(`id`): `Promise`<`void`\>
 
-导航到容器统计信息，查看 CPU、内存、磁盘读写和网络 I/O 使用情况。
+导航到容器统计信息，以查看 CPU、内存、磁盘读写和网络 I/O 使用情况。
 
 ```typescript
 await ddClient.desktopUI.navigate.viewContainerStats(id)
@@ -143,17 +143,17 @@ await ddClient.desktopUI.navigate.viewContainerStats(id)
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。你可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 容器的完整 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`void`\>
 
-如果容器不存在，Promise 将失败。
+如果容器不存在，则返回一个失败的 Promise。
 
 ___
 
-## 镜像方法
+## 镜像方法 (Images Methods)
 
 ### viewImages
 
@@ -176,7 +176,7 @@ ___
 ▸ **viewImage**(`id`, `tag`): `Promise`<`void`\>
 
 导航到 Docker Desktop 中由 `id` 和 `tag` 引用的特定镜像。
-在此导航路径中，你可以找到镜像层、命令、创建时间和大小。
+在此导航路径中，您可以找到镜像层、命令、创建时间和大小。
 
 ```typescript
 await ddClient.desktopUI.navigate.viewImage(id, tag)
@@ -186,18 +186,18 @@ await ddClient.desktopUI.navigate.viewImage(id, tag)
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的镜像 ID（包含 sha），例如 `sha256:34ab3ae068572f4e85c448b4035e6be5e19cc41f69606535cd4d768a63432673`。 |
+| `id` | `string` | 完整的镜像 ID（包括 sha），例如 `sha256:34ab3ae068572f4e85c448b4035e6be5e19cc41f69606535cd4d768a63432673`。 |
 | `tag` | `string` | 镜像的标签，例如 `latest`、`0.0.1` 等。 |
 
 #### 返回值
 
 `Promise`<`void`\>
 
-如果镜像不存在，Promise 将失败。
+如果镜像不存在，则返回一个失败的 Promise。
 
 ___
 
-## 卷方法
+## 卷方法 (Volume Methods)
 
 ### viewVolumes
 

@@ -1,14 +1,14 @@
 ---
-title: 排查代码质量工作流问题
-linkTitle: 排查
-summary: 解决 E2B 沙箱、MCP 服务器连接以及 GitHub/SonarQube 集成的常见问题。
-description: 提供在使用 E2B 构建代码质量工作流时，针对 MCP 工具无法加载、身份验证错误、权限问题、工作流超时等常见问题的解决方案。
+title: 故障排除代码质量工作流
+linkTitle: 故障排除
+summary: 解决 E2B 沙盒、MCP 服务器连接以及 GitHub/SonarQube 集成的常见问题。
+description: 使用 E2B 构建代码质量工作流时，针对 MCP 工具无法加载、身份验证错误、权限问题、工作流超时以及其他常见问题的解决方案。
 weight: 30
 ---
 
-本页面涵盖在使用 E2B 沙箱和 MCP 服务器构建代码质量工作流时可能遇到的常见问题及其解决方案。
+本页介绍在使用 E2B 沙盒和 MCP 服务器构建代码质量工作流时可能遇到的常见问题及其解决方案。
 
-如果您遇到的问题未在本文档中涵盖，请查阅 [E2B 文档](https://e2b.dev/docs)。
+如果您遇到此处未涵盖的问题，请查阅 [E2B 文档](https://e2b.dev/docs)。
 
 ## MCP 工具不可用
 
@@ -16,13 +16,13 @@ weight: 30
 
 解决方案：
 
-1.  确认您使用了授权头：
+1.  确认您正在使用授权标头：
 
     ```plaintext
     --header "Authorization: Bearer ${mcpToken}"
     ```
 
-2.  检查您是否等待了 MCP 初始化完成。
+2.  检查您是否在等待 MCP 初始化。
 
     ```typescript
     // typescript
@@ -34,7 +34,7 @@ weight: 30
     await asyncio.sleep(1)
     ```
 
-3.  确保凭据同时存在于 `envs` 和 `mcp` 配置中：
+3.  确保证书同时存在于 `envs` 和 `mcp` 配置中：
 
     ```typescript
     // typescript
@@ -82,15 +82,15 @@ weight: 30
 
 ## GitHub 工具正常但 SonarQube 不行
 
-问题：GitHub MCP 工具加载成功，但 SonarQube 工具未出现。
+问题：GitHub MCP 工具加载，但 SonarQube 工具未显示。
 
-解决方案：SonarQube MCP 服务器需要与 GitHub 同时配置。请始终在沙箱配置中同时包含两个服务器，即使您只使用其中一个。
+解决方案：SonarQube MCP 服务器需要同时配置 GitHub。即使您只测试其中一个，也请始终在沙盒配置中包含这两个服务器。
 
 {{< tabs group="language" >}}
 {{< tab name="TypeScript" >}}
 
 ```typescript
-// 即使只使用其中一个，也要包含两个服务器
+// 即使只使用一个，也要包含两个服务器
 const sbx = await Sandbox.betaCreate({
   envs: {
     ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY!,
@@ -114,7 +114,7 @@ const sbx = await Sandbox.betaCreate({
 {{< tab name="Python" >}}
 
 ```python
-# 即使只使用其中一个，也要包含两个服务器
+# 即使只使用一个，也要包含两个服务器
 sbx = await AsyncSandbox.beta_create(
     envs={
         "ANTHROPIC_API_KEY": os.getenv("ANTHROPIC_API_KEY"),
@@ -139,13 +139,13 @@ sbx = await AsyncSandbox.beta_create(
 
 ## Claude 无法访问私有仓库
 
-问题：报告 "I don't have access to that repository"（我无法访问该仓库）。
+问题："I don't have access to that repository"（我无权访问该仓库）。
 
 解决方案：
 
-1. 确认您的 GitHub 令牌具有 `repo` 权限范围（不仅仅是 `public_repo`）。
-2. 先使用公共仓库测试。
-3. 确保 `.env` 文件中的仓库所有者和名称正确：
+1. 验证您的 GitHub 令牌具有 `repo` 权限范围（不仅仅是 `public_repo`）。
+2. 先使用公共仓库进行测试。
+3. 确保 `.env` 中的仓库所有者和名称正确：
 
    {{< tabs group="language" >}}
    {{< tab name="TypeScript" >}}
@@ -168,11 +168,11 @@ sbx = await AsyncSandbox.beta_create(
 
 ## 工作流超时或运行时间过长
 
-问题：工作流无法完成或 Claude 信用额度耗尽。
+问题：工作流未完成或 Claude 额度耗尽。
 
 解决方案：
 
-1. 对于复杂工作流，使用 `timeoutMs: 0`（TypeScript）或 `timeout_ms=0`（Python）以允许无限制时间：
+1. 对于复杂的工作流，使用 `timeoutMs: 0`（TypeScript）或 `timeout_ms=0`（Python）以允许无限制时间：
 
    {{< tabs group="language" >}}
    {{< tab name="TypeScript" >}}
@@ -203,15 +203,15 @@ sbx = await AsyncSandbox.beta_create(
    {{< /tab >}}
    {{< /tabs >}}
 
-2. 将复杂工作流拆分为更小、更专注的任务。
-3. 监控您的 Anthropic API 信用额度使用情况。
-4. 在提示中添加检查点："每完成一步，在继续之前显示进度"。
+2. 将复杂的工作流分解为更小、更专注的任务。
+3. 监控您的 Anthropic API 额度使用情况。
+4. 在提示中添加检查点：“完成每一步后，在继续之前显示进度”。
 
-## 沙箱清理错误
+## 沙盒清理错误
 
-问题：沙箱未正确清理，导致资源耗尽。
+问题：沙盒未被正确清理，导致资源耗尽。
 
-解决方案：始终使用适当的错误处理，在 `finally` 块中执行清理：
+解决方案：始终在 `finally` 块中使用适当的错误处理进行清理：
 
 {{< tabs group="language" >}}
 {{< tab name="TypeScript" >}}
@@ -266,7 +266,7 @@ async def robust_workflow():
 
 ## 环境变量未加载
 
-问题：脚本因环境变量 "undefined" 或 "None" 而失败。
+问题：脚本因环境变量为 "undefined" 或 "None" 而失败。
 
 解决方案：
 
@@ -279,9 +279,9 @@ async def robust_workflow():
    import "dotenv/config";
    ```
 
-2. 确认 `.env` 文件位于您的脚本同一目录中。
+2. 验证 `.env` 文件与您的脚本位于同一目录中。
 
-3. 检查变量名完全匹配（区分大小写）：
+3. 检查变量名称是否完全匹配（区分大小写）：
 
    ```typescript
    // .env 文件
@@ -302,9 +302,9 @@ async def robust_workflow():
       load_dotenv()
       ```
 
-   2. 确认 `.env` 文件位于您的脚本同一目录中。
+   2. 验证 `.env` 文件与您的脚本位于同一目录中。
 
-   3. 检查变量名完全匹配（区分大小写）：
+   3. 检查变量名称是否完全匹配（区分大小写）：
 
       ```python
       # .env 文件
@@ -324,7 +324,7 @@ async def robust_workflow():
 
 解决方案：
 
-1. 确认您的 SonarCloud 组织密钥正确。
+1. 验证您的 SonarCloud 组织密钥是否正确。
 2. 确保您在 SonarCloud 中至少配置了一个项目。
-3. 检查您的 SonarQube 令牌具有必要的权限。
+3. 检查您的 SonarQube 令牌是否具有必要的权限。
 4. 确认您的项目已在 SonarCloud 中至少分析过一次。

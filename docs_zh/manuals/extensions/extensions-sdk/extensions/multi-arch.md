@@ -6,18 +6,18 @@ aliases:
  - /desktop/extensions-sdk/extensions/multi-arch/
 ---
 
-强烈建议，至少为以下架构提供扩展支持：
+强烈建议，您的扩展至少应支持以下架构：
 
 - `linux/amd64`
 - `linux/arm64`
 
-Docker Desktop 会根据用户的系统架构检索扩展镜像。如果扩展未提供匹配用户系统架构的镜像，Docker Desktop 将无法安装该扩展。因此，用户无法在 Docker Desktop 中运行该扩展。
+Docker Desktop 会根据用户的系统架构检索扩展镜像。如果扩展未提供与用户系统架构相匹配的镜像，Docker Desktop 将无法安装该扩展。结果就是，用户无法在 Docker Desktop 中运行该扩展。
 
-## 为多架构构建并推送
+## 为多个架构构建和推送
 
-如果您通过 `docker extension init` 命令创建扩展，目录根部的 `Makefile` 包含一个名为 `push-extension` 的目标。
+如果您是通过 `docker extension init` 命令创建的扩展，目录根目录下的 `Makefile` 包含一个名为 `push-extension` 的目标。
 
-运行 `make push-extension` 可以针对 `linux/amd64` 和 `linux/arm64` 两个平台构建扩展，并推送到 Docker Hub。
+您可以运行 `make push-extension` 来针对 `linux/amd64` 和 `linux/arm64` 两个平台构建您的扩展，并将它们推送到 Docker Hub。
 
 例如：
 
@@ -25,13 +25,13 @@ Docker Desktop 会根据用户的系统架构检索扩展镜像。如果扩展�
 $ make push-extension
 ```
 
-或者，如果您从空目录开始，可使用以下命令为多架构构建扩展：
+或者，如果您是从一个空目录开始的，请使用以下命令为多个架构构建您的扩展：
 
 ```console
 $ docker buildx build --push --platform=linux/amd64,linux/arm64 --tag=username/my-extension:0.0.1 .
 ```
 
-然后，您可以使用 [`docker buildx imagetools` 命令](/reference/cli/docker/buildx/imagetools/_index.md) 检查镜像清单，确认镜像是否支持两种架构：
+然后，您可以使用 [`docker buildx imagetools` 命令](/reference/cli/docker/buildx/imagetools/_index.md) 检查镜像清单，以查看镜像是否可用于两种架构：
 
 ```console
 $ docker buildx imagetools inspect username/my-extension:0.0.1
@@ -51,17 +51,17 @@ Manifests:
 
 > [!TIP]
 >
-> 如果推送镜像时遇到问题，请确保您已登录 Docker Hub。否则，请运行 `docker login` 进行身份验证。
+> 如果在推送镜像时遇到问题，请确保您已登录 Docker Hub。否则，请运行 `docker login` 进行身份验证。
 
 更多信息，请参阅 [多平台镜像](/manuals/build/building/multi-platform.md) 页面。
 
 ## 添加多架构二进制文件
 
-如果您的扩展包含部署到主机的二进制文件，那么在为多架构构建扩展时，确保这些二进制文件也具有正确的架构非常重要。
+如果您的扩展包含一些部署到主机的二进制文件，那么在针对多个架构构建扩展时，确保它们也具有正确的架构至关重要。
 
-目前，Docker 未在 `metadata.json` 文件中提供显式指定每个架构多个二进制文件的方法。但是，您可以在扩展的 `Dockerfile` 中根据 `TARGETARCH` 添加特定架构的二进制文件。
+目前，Docker 不提供在 `metadata.json` 文件中为每个架构显式指定多个二进制文件的方法。但是，您可以根据扩展 `Dockerfile` 中的 `TARGETARCH` 添加特定于架构的二进制文件。
 
-以下示例展示了一个扩展，它在操作中使用二进制文件，且需要在 Mac 和 Windows 的 Docker Desktop 中运行。
+以下示例展示了一个在其操作中使用二进制文件的扩展。该扩展需要在 Docker Desktop for Mac 和 Windows 上都能运行。
 
 在 `Dockerfile` 中，根据目标架构下载二进制文件：
 
@@ -93,7 +93,7 @@ LABEL org.opencontainers.image.title="example-extension" \
 COPY --from=dl /out /
 ```
 
-在 `metadata.json` 文件中，为每个平台指定每个二进制文件的路径：
+在 `metadata.json` 文件中，为每个平台上的每个二进制文件指定路径：
 
 ```json
 {
@@ -124,17 +124,17 @@ COPY --from=dl /out /
 }
 ```
 
-结果是，当 `TARGETARCH` 等于：
+因此，当 `TARGETARCH` 等于：
 
-- `arm64` 时，获取的 `kubectl` 二进制文件对应 `arm64` 架构，并复制到最终阶段的 `/darwin/kubectl`。
-- `amd64` 时，获取两个 `kubectl` 二进制文件，一个用于 Darwin，另一个用于 Windows。它们分别复制到最终阶段的 `/darwin/kubectl` 和 `/windows/kubectl.exe`。
+- `arm64` 时，获取的 `kubectl` 二进制文件对应于 `arm64` 架构，并被复制到最终阶段的 `/darwin/kubectl`。
+- `amd64` 时，会获取两个 `kubectl` 二进制文件。一个用于 Darwin，另一个用于 Windows。它们分别被复制到最终阶段的 `/darwin/kubectl` 和 `/windows/kubectl.exe`。
 
 > [!NOTE]
 >
-> 在这两种情况下，Darwin 的二进制文件目标路径都是 `darwin/kubectl`。唯一的变化是下载的架构特定二进制文件。
+> Darwin 的二进制目标路径在两种情况下都是 `darwin/kubectl`。唯一变化的是下载的特定于架构的二进制文件。
 
-当安装扩展时，扩展框架会将二进制文件从扩展镜像中的 `/darwin/kubectl`（Darwin）或 `/windows/kubectl.exe`（Windows）复制到用户主机文件系统的特定位置。
+安装扩展时，扩展框架会将二进制文件从扩展镜像中的 `/darwin/kubectl`（对于 Darwin）或 `/windows/kubectl.exe`（对于 Windows）复制到用户主机文件系统中的特定位置。
 
-## 我能否开发运行 Windows 容器的扩展？
+## 我可以开发运行 Windows 容器的扩展吗？
 
-虽然 Docker Extensions 支持 Windows、Mac 和 Linux 的 Docker Desktop，但扩展框架仅支持 Linux 容器。因此，构建扩展镜像时必须将 `linux` 作为目标操作系统。
+尽管 Docker 扩展在 Docker Desktop for Windows、Mac 和 Linux 上均受支持，但扩展框架仅支持 Linux 容器。因此，在构建扩展镜像时，必须将操作系统目标指定为 `linux`。

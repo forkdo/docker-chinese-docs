@@ -1,53 +1,48 @@
 ---
-title: 使用绑定挂载
+title: 使用 bind mounts
 weight: 60
-linkTitle: "Part 5: Use bind mounts"
+linkTitle: "第 5 部分：使用 bind mounts"
 keywords: 'get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop'
-description: 在我们的应用程序中使用绑定挂载
+description: 在我们的应用程序中使用 bind mounts
 aliases:
  - /guides/walkthroughs/access-local-folder/
  - /get-started/06_bind_mounts/
  - /guides/workshop/06_bind_mounts/
 ---
 
-在[第四部分](./05_persisting_data.md)中，你使用了卷挂载（volume mount）来持久化
-数据库中的数据。当你需要一个持久的地方来存储应用程序数据时，卷挂载是一个很好的选择。
+在[第 4 部分](./05_persisting_data.md)中，您使用了卷挂载来持久化数据库中的数据。当您需要一个持久化的位置来存储应用程序数据时，卷挂载是一个很好的选择。
 
-绑定挂载（bind mount）是另一种挂载类型，它允许你将主机文件系统中的目录
-共享到容器中。在开发应用程序时，你可以使用绑定挂载将源代码挂载到容器中。容器会立即看到你对代码所做的更改，一旦你保存文件即可。这意味着
-你可以在容器中运行监听文件系统变化并做出响应的进程。
+bind mount 是另一种挂载类型，它允许您将主机文件系统中的目录共享到容器中。在开发应用程序时，您可以使用 bind mount 将源代码挂载到容器中。容器会立即看到您对代码所做的更改，一旦您保存文件。这意味着您可以在容器中运行监视文件系统更改并对其做出响应的进程。
 
-在本章中，你将看到如何使用绑定挂载和一个名为
-[nodemon](https://npmjs.com/package/nodemon) 的工具来监听文件变化，然后自动重启应用程序。
-大多数其他语言和框架中都有类似的工具。
+在本章中，您将看到如何使用 bind mounts 和一个名为 [nodemon](https://npmjs.com/package/nodemon) 的工具来监视文件更改，然后自动重启应用程序。大多数其他语言和框架都有类似工具。
 
-## 快速比较卷类型
+## 快速卷类型比较
 
-以下是使用 `--mount` 的命名卷和绑定挂载的示例：
+以下是使用 `--mount` 的命名卷和 bind mount 的示例：
 
 - 命名卷：`type=volume,src=my-volume,target=/usr/local/data`
-- 绑定挂载：`type=bind,src=/path/to/data,target=/usr/local/data`
+- Bind mount：`type=bind,src=/path/to/data,target=/usr/local/data`
 
-下表概述了卷挂载和绑定挂载之间的主要区别。
+下表概述了卷挂载和 bind mount 之间的主要区别。
 
-|                                              | 命名卷                                      | 绑定挂载                                          |
-| -------------------------------------------- | ------------------------------------------- | ------------------------------------------------- |
-| 主机位置                                     | Docker 自动选择                             | 你自行决定                                          |
-| 用容器内容填充新卷                           | 是                                          | 否                                                |
-| 支持卷驱动                                   | 是                                          | 否                                                |
+|                                              | 命名卷                                          | Bind mounts                                      |
+| -------------------------------------------- | ------------------------------------------------ | ------------------------------------------------ |
+| 主机位置                                     | Docker 选择                                      | 您决定                                           |
+| 使用容器内容填充新卷                         | 是                                               | 否                                               |
+| 支持卷驱动                                   | 是                                               | 否                                               |
 
-## 尝试使用绑定挂载
+## 尝试使用 bind mounts
 
-在查看如何使用绑定挂载来开发你的应用程序之前，你可以运行一个快速实验来实际理解绑定挂载的工作原理。
+在了解如何使用 bind mounts 开发应用程序之前，您可以运行一个快速实验，以实际了解 bind mounts 的工作原理。
 
-1. 确认你的 `getting-started-app` 目录位于 Docker Desktop 文件共享设置中定义的目录中。此设置定义了你可以与容器共享的文件系统部分。有关访问该设置的详细信息，请参阅 [文件共享](/manuals/desktop/settings-and-maintenance/settings.md#file-sharing)。
+1. 验证您的 `getting-started-app` 目录是否位于 Docker Desktop 文件共享设置中定义的目录中。此设置定义了您可以与容器共享的文件系统的哪些部分。有关访问该设置的详细信息，请参阅 [文件共享](/manuals/desktop/settings-and-maintenance/settings.md#file-sharing)。
 
     > [!NOTE]
     > **文件共享**选项卡仅在 Hyper-V 模式下可用，因为在 WSL 2 模式和 Windows 容器模式下文件会自动共享。
 
-2. 打开终端并将目录更改为 `getting-started-app` 目录。
+2. 打开终端并切换到 `getting-started-app` 目录。
 
-3. 运行以下命令，在 `ubuntu` 容器中启动 `bash`，并使用绑定挂载。
+3. 运行以下命令，使用 bind mount 在 `ubuntu` 容器中启动 `bash`。
 
    {{< tabs >}}
    {{< tab name="Mac / Linux" >}}
@@ -80,9 +75,9 @@ aliases:
    {{< /tab >}}
    {{< /tabs >}}
    
-   `--mount type=bind` 选项告诉 Docker 创建一个绑定挂载，其中 `src` 是你主机上的当前工作目录（`getting-started-app`），`target` 是该目录在容器内应出现的位置（`/src`）。
+   `--mount type=bind` 选项告诉 Docker 创建 bind mount，其中 `src` 是主机上的当前工作目录（`getting-started-app`），而 `target` 是该目录在容器内应出现的位置（`/src`）。
 
-4. 运行命令后，Docker 在容器文件系统的根目录启动一个交互式 `bash` 会话。
+4. 运行命令后，Docker 在容器的文件系统根目录中启动交互式 `bash` 会话。
 
    ```console
    root@ac1237fad8db:/# pwd
@@ -92,9 +87,9 @@ aliases:
    boot  etc  lib   mnt    proc  run   src   sys  usr
    ```
 
-5. 将目录更改为 `src` 目录。
+5. 切换到 `src` 目录。
 
-   这是你启动容器时挂载的目录。列出此目录的内容会显示与主机上 `getting-started-app` 目录相同的文件。
+   这是启动容器时挂载的目录。列出此目录的内容将显示与主机上 `getting-started-app` 目录中相同的文件。
 
    ```console
    root@ac1237fad8db:/# cd src
@@ -110,7 +105,7 @@ aliases:
    Dockerfile  myfile.txt  node_modules  package.json  spec  src  yarn.lock
    ```
 
-7. 打开主机上的 `getting-started-app` 目录，观察 `myfile.txt` 文件就在目录中。
+7. 在主机上打开 `getting-started-app` 目录，并观察 `myfile.txt` 文件是否在目录中。
 
    ```text
    ├── getting-started-app/
@@ -124,7 +119,7 @@ aliases:
    ```
 
 8. 从主机上删除 `myfile.txt` 文件。
-9. 在容器中，再次列出 `app` 目录的内容。观察到文件现在消失了。
+9. 在容器中，再次列出 `app` 目录的内容。观察该文件现在已消失。
 
    ```console
    root@ac1237fad8db:/src# ls
@@ -133,21 +128,21 @@ aliases:
 
 10. 使用 `Ctrl` + `D` 停止交互式容器会话。
 
-以上就是对绑定挂载的简要介绍。此过程演示了文件如何在主机和容器之间共享，以及更改如何立即反映在两边。现在你可以使用绑定挂载来开发软件。
+这就是对 bind mounts 的简要介绍。此过程演示了文件如何在主机和容器之间共享，以及如何立即在两侧反映更改。现在您可以使用 bind mounts 来开发软件。
 
 ## 开发容器
 
-使用绑定挂载在本地开发设置中很常见。优点是开发机器不需要安装所有构建工具和环境。通过单个 docker run 命令，Docker 就会拉取依赖项和工具。
+使用 bind mounts 对于本地开发设置很常见。其优点是开发机器不需要安装所有构建工具和开发环境。只需一条 docker run 命令，Docker 就会拉取依赖项和工具。
 
-### 在开发容器中运行你的应用
+### 在开发容器中运行您的应用
 
-以下步骤描述了如何使用绑定挂载运行开发容器，该容器执行以下操作：
+以下步骤描述了如何使用 bind mount 运行开发容器，该容器将执行以下操作：
 
-- 将你的源代码挂载到容器中
+- 将源代码挂载到容器中
 - 安装所有依赖项
-- 启动 `nodemon` 以监听文件系统变化
+- 启动 `nodemon` 以监视文件系统更改
 
-你可以使用 CLI 或 Docker Desktop 在容器中运行绑定挂载。
+您可以使用 CLI 或 Docker Desktop 通过 bind mount 运行容器。
 
 {{< tabs >}}
 {{< tab name="Mac / Linux CLI" >}}
@@ -165,12 +160,12 @@ aliases:
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
-   - `-w /app` - 设置“工作目录”或命令将从其运行的当前目录
-   - `--mount type=bind,src="$(pwd)",target=/app` - 将主机上的当前目录绑定挂载到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。注意这是你的应用的基镜像，来自 Dockerfile
-   - `sh -c "yarn install && yarn run dev"` - 命令。你正在使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果你查看 `package.json`，你会看到 `dev` 脚本启动 `nodemon`。
+   - `-w /app` - 设置“工作目录”或命令将运行的当前目录
+   - `--mount type=bind,src="$(pwd)",target=/app` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
-3. 你可以使用 `docker logs <container-id>` 观察日志。当你看到以下内容时，你就准备好了：
+3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
    ```console
    $ docker logs -f <container-id>
@@ -184,7 +179,7 @@ aliases:
    Listening on port 3000
    ```
 
-   当你完成观察日志后，按 `Ctrl`+`C` 退出。
+   查看完日志后，按 `Ctrl`+`C` 退出。
 
 {{< /tab >}}
 {{< tab name="PowerShell CLI" >}}
@@ -202,12 +197,12 @@ aliases:
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
-   - `-w /app` - 设置“工作目录”或命令将从其运行的当前目录
-   - `--mount "type=bind,src=$pwd,target=/app"` - 将主机上的当前目录绑定挂载到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。注意这是你的应用的基镜像，来自 Dockerfile
-   - `sh -c "yarn install && yarn run dev"` - 命令。你正在使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果你查看 `package.json`，你会看到 `dev` 脚本启动 `nodemon`。
+   - `-w /app` - 设置“工作目录”或命令将运行的当前目录
+   - `--mount "type=bind,src=$pwd,target=/app"` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
-3. 你可以使用 `docker logs <container-id>` 观察日志。当你看到以下内容时，你就准备好了：
+3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
    ```console
    $ docker logs -f <container-id>
@@ -221,7 +216,7 @@ aliases:
    Listening on port 3000
    ```
 
-   当你完成观察日志后，按 `Ctrl`+`C` 退出。
+   查看完日志后，按 `Ctrl`+`C` 退出。
 
 {{< /tab >}}
 {{< tab name="Command Prompt CLI" >}}
@@ -239,12 +234,12 @@ aliases:
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
-   - `-w /app` - 设置“工作目录”或命令将从其运行的当前目录
-   - `--mount "type=bind,src=%cd%,target=/app"` - 将主机上的当前目录绑定挂载到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。注意这是你的应用的基镜像，来自 Dockerfile
-   - `sh -c "yarn install && yarn run dev"` - 命令。你正在使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果你查看 `package.json`，你会看到 `dev` 脚本启动 `nodemon`。
+   - `-w /app` - 设置“工作目录”或命令将运行的当前目录
+   - `--mount "type=bind,src=%cd%,target=/app"` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
-3. 你可以使用 `docker logs <container-id>` 观察日志。当你看到以下内容时，你就准备好了：
+3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
    ```console
    $ docker logs -f <container-id>
@@ -258,7 +253,7 @@ aliases:
    Listening on port 3000
    ```
 
-   当你完成观察日志后，按 `Ctrl`+`C` 退出。
+   查看完日志后，按 `Ctrl`+`C` 退出。
 
 {{< /tab >}}
 {{< tab name="Git Bash CLI" >}}
@@ -276,12 +271,12 @@ aliases:
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
-   - `-w //app` - 设置“工作目录”或命令将从其运行的当前目录
-   - `--mount type=bind,src="/$(pwd)",target=/app` - 将主机上的当前目录绑定挂载到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。注意这是你的应用的基镜像，来自 Dockerfile
-   - `sh -c "yarn install && yarn run dev"` - 命令。你正在使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果你查看 `package.json`，你会看到 `dev` 脚本启动 `nodemon`。
+   - `-w //app` - 设置“工作目录”或命令将运行的当前目录
+   - `--mount type=bind,src="/$(pwd)",target=/app` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
-3. 你可以使用 `docker logs <container-id>` 观察日志。当你看到以下内容时，你就准备好了：
+3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
    ```console
    $ docker logs -f <container-id>
@@ -295,35 +290,35 @@ aliases:
    Listening on port 3000
    ```
 
-   当你完成观察日志后，按 `Ctrl`+`C` 退出。
+   查看完日志后，按 `Ctrl`+`C` 退出。
 
 {{< /tab >}}
 {{< tab name="Docker Desktop" >}}
 
 确保当前没有运行任何 `getting-started` 容器。
 
-使用绑定挂载运行镜像。
+使用 bind mount 运行镜像。
 
-1. 在 Docker Desktop 顶部选择搜索框。
+1. 选择 Docker Desktop 顶部的搜索框。
 2. 在搜索窗口中，选择 **Images** 选项卡。
 3. 在搜索框中，指定容器名称 `getting-started`。
 
    > [!TIP]
    >
-   > 使用搜索过滤器过滤镜像，仅显示 **Local images**。
+   >  使用搜索过滤器过滤镜像，仅显示 **本地镜像**。
 
-4. 选择你的镜像，然后选择 **Run**。
+4. 选择您的镜像，然后选择 **Run**。
 5. 选择 **Optional settings**。
 6. 在 **Host path** 中，指定主机上 `getting-started-app` 目录的路径。
 7. 在 **Container path** 中，指定 `/app`。
 8. 选择 **Run**。
 
-你可以使用 Docker Desktop 观察容器日志。
+您可以使用 Docker Desktop 查看容器日志。
 
 1. 在 Docker Desktop 中选择 **Containers**。
-2. 选择你的容器名称。
+2. 选择您的容器名称。
 
-当你看到以下内容时，你就准备好了：
+当您看到以下内容时，表示已准备就绪：
 
 ```console
 nodemon -L src/index.js
@@ -339,11 +334,11 @@ Listening on port 3000
 {{< /tab >}}
 {{< /tabs >}}
 
-### 使用开发容器开发你的应用
+### 使用开发容器开发您的应用
 
-在主机上更新你的应用，观察更改在容器中的反映。
+在主机上更新您的应用，并查看容器中反映的更改。
 
-1. 在 `src/static/js/app.js` 文件中，第 109 行，将“Add Item”按钮更改为仅显示“Add”：
+1. 在 `src/static/js/app.js` 文件的第 109 行，将“Add Item”按钮更改为仅显示“Add”：
 
    ```diff
    - {submitting ? 'Adding...' : 'Add Item'}
@@ -352,6 +347,29 @@ Listening on port 3000
 
    保存文件。
 
-2. 刷新浏览器中的页面，你应该几乎立即看到更改，这是因为绑定挂载。Nodemon 检测到更改并重启服务器。Node 服务器重启可能需要几秒钟。如果你遇到错误，请在几秒钟后尝试刷新。
+2. 刷新网页浏览器中的页面，您应该几乎立即看到更改，因为 bind mount。Nodemon 检测到更改并重启服务器。Node 服务器重启可能需要几秒钟。如果遇到错误，请等待几秒后重试刷新。
 
-   ![Screenshot of updated
+   ![更新后的“Add”按钮标签截图](images/updated-add-button.webp)
+
+3. 您可以随意进行其他所需的更改。每次进行更改并保存文件时，由于 bind mount，更改都会反映在容器中。当 Nodemon 检测到更改时，它会自动在容器内重启应用。完成后，停止容器并使用以下命令构建新镜像：
+
+   ```console
+   $ docker build -t getting-started .
+   ```
+
+## 总结
+
+至此，您可以持久化数据库，并在开发过程中看到应用的更改，而无需重建镜像。
+
+除了卷挂载和 bind mounts 之外，Docker 还支持其他挂载类型和存储驱动，以处理更复杂和特殊的使用场景。
+
+相关信息：
+
+ - [docker CLI 参考](/reference/cli/docker/)
+ - [管理 Docker 中的数据](https://docs.docker.com/storage/)
+
+## 下一步
+
+为了准备将您的应用部署到生产环境，您需要将数据库从 SQLite 迁移到可以更好扩展的数据库。为简化起见，您将继续使用关系型数据库，并将应用切换为使用 MySQL。但是，您应该如何运行 MySQL？如何允许容器相互通信？您将在下一节中了解这些内容。
+
+{{< button text="多容器应用" url="07_multi_container.md" >}}

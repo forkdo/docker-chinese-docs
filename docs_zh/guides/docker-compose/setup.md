@@ -6,7 +6,7 @@ weight: 20
 
 本 Docker Compose 演示展示了如何编排多容器应用程序环境，简化开发和部署流程。
 
-- 将 Docker Compose 与 `docker run` 命令进行对比
+- 比较 Docker Compose 与 `docker run` 命令
 - 使用 Compose 文件配置多容器 Web 应用
 - 使用一条命令运行多容器 Web 应用
 

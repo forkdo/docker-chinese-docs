@@ -8,10 +8,10 @@ grid:
   - title: "常见问题"
     icon: "help"
     description: 图标名称 = help
-  - title: "上手/快速开始"
+  - title: "入门/快速开始"
     icon: "explore"
     description: 图标名称 = explore
-  - title: "发布说明"
+  - title: "发行说明"
     icon: "note_add"
     description: 图标名称 = note_add
   - title: "反馈"
@@ -20,7 +20,7 @@ grid:
   - title: "多平台/架构"
     icon: "content_copy"
     description: 图标名称 = content_copy
-  - title: "Rootless/ECI"
+  - title: "无根/ECI"
     icon: "security"
     description: 图标名称 = security
   - title: "设置管理"
@@ -32,7 +32,7 @@ grid:
   - title: "网络"
     icon: "network_node"
     description: 图标名称 = network_node
-  - title: "功能探索"
+  - title: "探索功能"
     icon: "feature_search"
     description: 图标名称 = feature_search
   - title: "公司"
@@ -41,7 +41,7 @@ grid:
   - title: "组织"
     icon: "store"
     description: 图标名称 = store
-  - title: "额外资源"
+  - title: "其他资源"
     icon: "category"
     description: 图标名称 = category
   - title: "设计"
@@ -59,7 +59,7 @@ grid:
   - title: "日志"
     icon: "text_snippet"
     description: 图标名称 = text_snippet
-  - title: "清理/剪切"
+  - title: "修剪/剪切"
     icon: "content_cut"
     description: 图标名称 = content_cut
   - title: "配置"
@@ -68,10 +68,10 @@ grid:
   - title: "已弃用"
     icon: "folder_delete"
     description: 图标名称 = folder_delete
-  - title: "内存"
+  - title: "RAM"
     icon: "home_storage"
     description: 图标名称 = home_storage
-  - title: "身份与访问管理"
+  - title: "IAM"
     icon: "photo_library"
     description: 图标名称 = photo_library
   - title: "打包"
@@ -92,7 +92,7 @@ grid:
   - title: "缓存"
     icon: "cycle"
     description: 图标名称 = cycle
-  - title: "Bake"
+  - title: "构建"
     icon: "cake"
     description: 图标名称 = cake
   - title: "Docker ID"
@@ -107,7 +107,7 @@ grid:
   - title: "官方镜像"
     icon: "verified"
     description: 图标名称 = verified
-  - title: "Hardened Docker Desktop"
+  - title: "强化版 Docker Desktop"
     icon: "lock"
     description: 图标名称 = lock
   - title: "登录"
@@ -145,7 +145,6 @@ grid:
     description: 图标名称 = settings
 ---
 
-以下是我们在文档中用于表示不同主题或功能的图标的清单。请与 [cards 组件](cards.md) 配合使用。
+以下是我们在文档中用来表示不同主题或功能的图标清单。可与[卡片组件](cards.md)配合使用。
 
 {{< grid >}}
-

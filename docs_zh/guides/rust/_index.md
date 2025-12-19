@@ -1,8 +1,8 @@
 ---
-title: Rust 语言特定指南
+title: Rust 语言专属指南
 linkTitle: Rust
 description: 使用 Docker 容器化 Rust 应用
-keywords: Docker, 入门, Rust, 语言
+keywords: Docker, getting started, Rust, language
 summary: |
   本指南介绍如何使用 Docker 容器化 Rust 应用程序。
 toc_min: 1
@@ -15,16 +15,16 @@ params:
   time: 20 分钟
 ---
 
-Rust 语言特定指南将教你如何使用 Docker 创建容器化的 Rust 应用程序。在本指南中，你将学习如何：
+本 Rust 语言专属指南将指导您如何使用 Docker 创建容器化的 Rust 应用程序。通过本指南，您将学习如何：
 
 - 容器化 Rust 应用程序
-- 构建镜像并作为容器运行新构建的镜像
+- 构建镜像并将新构建的镜像作为容器运行
 - 设置卷和网络
 - 使用 Compose 编排容器
 - 使用容器进行开发
-- 使用 GitHub Actions 为应用程序配置 CI/CD 管道
-- 将容器化的 Rust 应用程序本地部署到 Kubernetes 以测试和调试部署
+- 使用 GitHub Actions 为您的应用程序配置 CI/CD 管道
+- 将容器化的 Rust 应用程序本地部署到 Kubernetes 以测试和调试您的部署
 
-完成 Rust 模块后，你应该能够基于本指南中提供的示例和说明，容器化你自己的 Rust 应用程序。
+完成 Rust 模块后，您应能够基于本指南提供的示例和说明来容器化您自己的 Rust 应用程序。
 
-从构建你的第一个 Rust 镜像开始。
+从构建您的第一个 Rust 镜像开始。

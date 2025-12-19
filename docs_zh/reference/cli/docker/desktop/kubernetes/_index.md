@@ -1,7 +1,7 @@
 ---
 datafolder: desktop-cli
 datafile: docker_desktop_kubernetes
-title: docker desktop kubernetes
+title: Docker Desktop Kubernetes
 layout: cli
 ---
 

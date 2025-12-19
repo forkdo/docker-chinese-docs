@@ -10,6 +10,6 @@ cascade:
     layout: default
   - _target:
       path: /reference/api/engine/version/**
-    description: Docker Engine API 的参考文档和 Swagger（OpenAPI）规范。
+    description: Docker Engine API 的参考文档和 Swagger (OpenAPI) 规范。
     layout: api
 ---

@@ -1,43 +1,43 @@
 ---
-linkTitle: Security
+linkTitle: 安全
 title: 企业级安全
-description: 了解 Docker 提供的企业级安全功能，并探索最佳实践
+description: 了解 Docker 提供的适用于企业级的安全功能，并探索最佳实践
 keywords: docker, docker hub, docker desktop, security, enterprises, scale
 weight: 10
 params:
   sidebar:
     group: Enterprise
 grid_admins:
-- title: Settings Management
-  description: 了解设置管理如何保护开发者的开发工作流。
+- title: 设置管理
+  description: 了解设置管理如何保护开发者的工作流程。
   icon: shield_locked
   link: /enterprise/security/hardened-desktop/settings-management/
-- title: Enhanced Container Isolation
-  description: 了解增强型容器隔离如何防止容器攻击。
+- title: 增强容器隔离
+  description: 了解增强容器隔离如何防止容器攻击。
   icon: security
   link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-- title: Registry Access Management
-  description: 控制开发者在使用 Docker Desktop 时可访问的注册表。
+- title: 注册表访问管理
+  description: 控制开发者在 Docker Desktop 上可以访问的注册表。
   icon: home_storage
   link: /enterprise/security/hardened-desktop/registry-access-management/
-- title: Image Access Management
-  description: 控制开发者可从 Docker Hub 拉取的镜像。
+- title: 镜像访问管理
+  description: 控制开发者可以从 Docker Hub 拉取的镜像。
   icon: photo_library
   link: /enterprise/security/hardened-desktop/image-access-management/
-- title: "Air-Gapped Containers"
+- title: "气隙容器"
   description: 限制容器访问不需要的网络资源。
   icon: "vpn_lock"
   link: /enterprise/security/hardened-desktop/air-gapped-containers/
-- title: Enforce sign-in
-  description: 为团队和组织成员配置登录。
+- title: 强制登录
+  description: 为您的团队和组织成员配置登录。
   link: /enterprise/security/enforce-sign-in/
   icon: passkey
-- title: Domain management
-  description: 识别组织中未捕获的用户。
+- title: 域名管理
+  description: 识别组织内未被覆盖的用户。
   link: /enterprise/security/domain-management/
   icon: person_search
 - title: Docker Scout
-  description: 探索 Docker Scout 如何帮助您构建更安全的软件供应链。
+  description: 探索 Docker Scout 如何帮助您创建更安全的软件供应链。
   icon: query_stats
   link: /scout/
 - title: SSO
@@ -48,25 +48,25 @@ grid_admins:
   description: 设置 SCIM 以自动配置和取消配置用户。
   icon: checklist
   link: /enterprise/security/provisioning/scim/
-- title: Roles and permissions
-  description: 为个人分配角色，赋予他们在组织内的不同权限。
+- title: 角色和权限
+  description: 为个人分配角色，赋予他们在组织内不同的权限。
   icon: badge
   link: /enterprise/security/roles-and-permissions/
-- title: Private marketplace for Extensions (Beta)
-  description: 了解如何配置和设置私有市场，为您的 Docker Desktop 用户提供精选的扩展列表。
+- title: 扩展的私有市场（Beta）
+  description: 了解如何为您的 Docker Desktop 用户配置和设置带有精选扩展列表的私有市场。
   icon: storefront
   link: /desktop/extensions/private-marketplace/
-- title: Organization access tokens
-  description: 创建组织访问令牌作为密码的替代方案。
+- title: 组织访问令牌
+  description: 创建组织访问令牌作为密码的替代。
   link: /enterprise/security/access-tokens/
   icon: password
 ---
 
-Docker 为管理员和开发者提供了安全保护机制。
+Docker 为管理员和开发者提供安全护栏。
 
-如果您是管理员，您可以对开发者的 Docker 产品强制执行登录，并使用 DevOps 安全控制（如增强型容器隔离和注册表访问管理）来扩展、管理和保护您的 Docker Desktop 实例。
+如果您是管理员，您可以为您的开发者在所有 Docker 产品中强制登录，并通过增强容器隔离和注册表访问管理等 DevOps 安全控制来扩展、管理和保护您的 Docker Desktop 实例。
 
-## 管理员指南
+## 面向管理员
 
 探索 Docker 提供的安全功能，以满足您公司的安全策略。
 

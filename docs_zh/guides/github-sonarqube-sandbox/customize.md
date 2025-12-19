@@ -1,57 +1,57 @@
 ---
 title: 自定义代码质量检查工作流
 linkTitle: 自定义工作流
-summary: 调整你的 GitHub 和 SonarQube 工作流，重点关注特定质量缺陷，集成 CI/CD，并设置自定义阈值。
-description: 学习如何自定义提示以聚焦特定质量缺陷，按文件模式过滤，设置质量阈值，并将工作流集成到 GitHub Actions 中，实现自动代码质量检查。
+summary: 调整 GitHub 和 SonarQube 工作流，重点关注特定质量问题，与 CI/CD 集成，并设置自定义阈值。
+description: 了解如何针对特定质量问题自定义提示词、按文件模式过滤、设置质量阈值，并将工作流与 GitHub Actions 集成以实现自动化代码质量检查。
 weight: 20
 ---
 
-现在你已经了解了在 E2B 沙箱中使用 GitHub 和 SonarQube 自动化代码质量工作流的基础知识，你可以根据自身需求自定义该工作流。
+现在您已经了解了如何在 E2B 沙箱中使用 GitHub 和 SonarQube 自动化代码质量工作流的基础知识，可以根据需要自定义工作流。
 
-## 聚焦特定质量缺陷
+## 重点关注特定质量问题
 
-修改提示词，优先处理某些类型的缺陷：
+修改提示词以优先处理某些问题类型：
 
 {{< tabs group="language" >}}
 {{< tab name="TypeScript" >}}
 
 ```typescript
-const prompt = `使用 SonarQube 和 GitHub MCP 工具：
+const prompt = `Using SonarQube and GitHub MCP tools:
 
-仅关注：
-- 安全漏洞（CRITICAL 优先级）
-- Bug（HIGH 优先级）
-- 本次迭代跳过代码异味
+Focus only on:
+- Security vulnerabilities (CRITICAL priority)
+- Bugs (HIGH priority)
+- Skip code smells for this iteration
 
-分析 "${repoPath}"，并优先修复最高优先级的缺陷。`;
+Analyze "${repoPath}" and fix the highest priority issues first.`;
 ```
 
 {{< /tab >}}
 {{< tab name="Python" >}}
 
 ```python
-prompt = f"""使用 SonarQube 和 GitHub MCP 工具：
+prompt = f"""Using SonarQube and GitHub MCP tools:
 
-仅关注：
-- 安全漏洞（CRITICAL 优先级）
-- Bug（HIGH 优先级）
-- 本次迭代跳过代码异味
+Focus only on:
+- Security vulnerabilities (CRITICAL priority)
+- Bugs (HIGH priority)
+- Skip code smells for this iteration
 
-分析 "{repo_path}"，并优先修复最高优先级的缺陷。"""
+Analyze "{repo_path}" and fix the highest priority issues first."""
 ```
 
 {{< /tab >}}
 {{< /tabs >}}
 
-## 集成 CI/CD
+## 与 CI/CD 集成
 
-在 GitHub Actions 中添加此工作流，使其在拉取请求时自动运行：
+将此工作流添加到 GitHub Actions，以便在拉取请求时自动运行：
 
 {{< tabs group="language" >}}
 {{< tab name="TypeScript" >}}
 
 ```yaml
-name: 自动化质量检查
+name: Automated quality checks
 on:
   pull_request:
     types: [opened, synchronize]
@@ -80,7 +80,7 @@ jobs:
 {{< tab name="Python" >}}
 
 ```yaml
-name: 自动化质量检查
+name: Automated quality checks
 on:
   pull_request:
     types: [opened, synchronize]
@@ -116,24 +116,24 @@ jobs:
 {{< tab name="TypeScript" >}}
 
 ```typescript
-const prompt = `分析代码质量，但仅考虑：
-- src/**/*.js 中的文件
-- 排除测试文件（*.test.js, *.spec.js）
-- 排除 dist/ 中的构建产物
+const prompt = `Analyze code quality but only consider:
+- Files in src/**/*.js
+- Exclude test files (*.test.js, *.spec.js)
+- Exclude build artifacts in dist/
 
-仅关注生产代码。`;
+Focus on production code only.`;
 ```
 
 {{< /tab >}}
 {{< tab name="Python" >}}
 
 ```python
-prompt = """分析代码质量，但仅考虑：
-- src/**/*.js 中的文件
-- 排除测试文件（*.test.js, *.spec.js）
-- 排除 dist/ 中的构建产物
+prompt = """Analyze code quality but only consider:
+- Files in src/**/*.js
+- Exclude test files (*.test.js, *.spec.js)
+- Exclude build artifacts in dist/
 
-仅关注生产代码。"""
+Focus on production code only."""
 ```
 
 {{< /tab >}}
@@ -141,34 +141,34 @@ prompt = """分析代码质量，但仅考虑：
 
 ## 设置质量阈值
 
-定义何时应创建拉取请求：
+定义何时应创建 PR：
 
 {{< tabs group="language" >}}
 {{< tab name="TypeScript" >}}
 
 ```typescript
-const prompt = `质量门禁阈值：
-- 仅在满足以下条件时创建 PR：
-  * Bug 数量至少减少 1 个
-  * 未引入新的安全漏洞
-  * 代码覆盖率未下降
-  * 技术债务至少减少 15 分钟
+const prompt = `Quality gate thresholds:
+- Only create PR if:
+  * Bug count decreases by at least 1
+  * No new security vulnerabilities introduced
+  * Code coverage does not decrease
+  * Technical debt reduces by at least 15 minutes
 
-若变更不满足这些阈值，说明原因并跳过 PR 创建。`;
+If changes do not meet these thresholds, explain why and skip PR creation.`;
 ```
 
 {{< /tab >}}
 {{< tab name="Python" >}}
 
 ```python
-prompt = """质量门禁阈值：
-- 仅在满足以下条件时创建 PR：
-  * Bug 数量至少减少 1 个
-  * 未引入新的安全漏洞
-  * 代码覆盖率未下降
-  * 技术债务至少减少 15 分钟
+prompt = """Quality gate thresholds:
+- Only create PR if:
+  * Bug count decreases by at least 1
+  * No new security vulnerabilities introduced
+  * Code coverage does not decrease
+  * Technical debt reduces by at least 15 minutes
 
-若变更不满足这些阈值，说明原因并跳过 PR 创建。"""
+If changes do not meet these thresholds, explain why and skip PR creation."""
 ```
 
 {{< /tab >}}
@@ -176,4 +176,4 @@ prompt = """质量门禁阈值：
 
 ## 后续步骤
 
-学习如何排查常见问题。
+了解如何排查常见问题。

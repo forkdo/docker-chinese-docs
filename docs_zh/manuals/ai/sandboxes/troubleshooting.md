@@ -1,22 +1,22 @@
 ---
 title: 故障排除
-description: 解决在本地沙箱化智能体时的常见问题
+description: 解决在本地为代理创建沙箱时的常见问题。
 weight: 50
 ---
 
 {{< summary-bar feature_name="Docker Sandboxes" >}}
 
-本指南帮助您解决在本地沙箱化 Claude Code 时遇到的常见问题。
+本指南帮助您解决在本地为 Claude Code 创建沙箱时的常见问题。
 
 <!-- vale off -->
 
-## 'sandbox' 不是 docker 命令
+## 'sandbox' 不是一个 docker 命令
 
 <!-- vale on -->
 
-当您运行 `docker sandbox` 时，看到错误提示该命令不存在。
+当您运行 `docker sandbox` 时，会看到一条提示该命令不存在的错误。
 
-这表示 CLI 插件未安装或未放置在正确位置。解决方法：
+这意味着 CLI 插件未安装或未位于正确的位置。要解决此问题：
 
 1. 验证插件是否存在：
 
@@ -24,16 +24,15 @@ weight: 50
    $ ls -la ~/.docker/cli-plugins/docker-sandbox
    ```
 
-   文件应存在且可执行。
+   该文件应该存在并且是可执行的。
 
-2. 如果使用 Docker Desktop，请重启以检测插件。
+2. 如果使用 Docker Desktop，请重启它以检测该插件。
 
-## "实验性功能"需要管理员启用
+## 需要由您的管理员启用“实验性功能”
 
-尝试使用沙箱时，看到关于 beta 功能被禁用的错误。
+在尝试使用沙箱时，您看到一条关于 Beta 功能被禁用的错误。
 
-这通常发生在 Docker Desktop 安装由管理员管理且锁定设置的情况下。如果组织使用 [Settings Management](/enterprise/security/hardened-desktop/settings-management/)，
-请要求管理员 [允许 beta 功能](/enterprise/security/hardened-desktop/settings-management/configure-json-file/#beta-features)：
+当您的 Docker Desktop 安装由锁定了设置的管理员管理时，会发生这种情况。如果您的组织使用了[设置管理](/enterprise/security/hardened-desktop/settings-management/)，请要求您的管理员[允许 Beta 功能](/enterprise/security/hardened-desktop/settings-management/configure-json-file/#beta-features)：
 
 ```json
 {
@@ -45,21 +44,21 @@ weight: 50
 }
 ```
 
-## 认证失败
+## 身份验证失败
 
-Claude 无法认证，或看到 API 密钥错误。
+Claude 无法进行身份验证，或者您看到 API 密钥错误。
 
-API 密钥可能无效、过期或配置不正确。修复方法取决于您的凭据模式：
+API 密钥可能无效、已过期或未正确配置。解决方法取决于您的凭证模式：
 
-如果使用 `--credentials=sandbox`（默认）：
+如果使用 `--credentials=sandbox`（默认模式）：
 
-1. 删除存储的凭据：
+1. 移除已存储的凭证：
 
    ```console
    $ docker volume rm docker-claude-sandbox-data
    ```
 
-2. 启动新沙箱并完成认证流程：
+2. 启动一个新的沙箱并完成身份验证工作流：
 
    ```console
    $ docker sandbox run claude
@@ -67,11 +66,11 @@ API 密钥可能无效、过期或配置不正确。修复方法取决于您的�
 
 ## 工作区包含 API 密钥配置
 
-启动沙箱时看到关于凭据冲突的警告。
+启动沙箱时，您会看到一条关于凭证冲突的警告。
 
-这通常发生在工作区的 `.claude.json` 文件包含 `primaryApiKey` 字段时。选择以下方法之一：
+当您的工作区中包含一个带有 `primaryApiKey` 字段的 `.claude.json` 文件时，会发生这种情况。请选择以下方法之一：
 
-- 从 `.claude.json` 中移除 `primaryApiKey` 字段：
+- 从您的 `.claude.json` 中移除 `primaryApiKey` 字段：
 
   ```json
   {
@@ -82,37 +81,37 @@ API 密钥可能无效、过期或配置不正确。修复方法取决于您的�
   }
   ```
 
-- 或继续忽略警告 - 工作区凭据将被忽略，优先使用沙箱凭据。
+- 或者在出现警告的情况下继续 - 工作区凭证将被忽略，优先使用沙箱凭证。
 
 ## 访问工作区文件时权限被拒绝
 
-Claude 或命令访问工作区文件时失败，出现"权限被拒绝"错误。
+当访问工作区中的文件时，Claude 或命令因“权限被拒绝”错误而失败。
 
-这通常表示工作区路径对 Docker 不可访问，或文件权限过于严格。
+这通常意味着工作区路径无法被 Docker 访问，或者文件权限过于严格。
 
 如果使用 Docker Desktop：
 
-1. 检查文件共享设置：Docker Desktop → **Settings** → **Resources** → **File Sharing**。
+1. 在 Docker Desktop → **设置** → **资源** → **文件共享** 中检查文件共享设置。
 
-2. 确保工作区路径（或父目录）列在虚拟文件共享下。
+2. 确保您的工作区路径（或其父目录）已列在虚拟文件共享下。
 
-3. 如果缺失，点击"+"添加包含工作区的目录。
+3. 如果缺失，点击“+”添加包含您工作区的目录。
 
 4. 重启 Docker Desktop。
 
-对于所有平台，验证文件权限：
+对于所有平台，请验证文件权限：
 
 ```console
 $ ls -la <workspace>
 ```
 
-确保文件可读。如有需要：
+确保文件是可读的。如果需要：
 
 ```console
 $ chmod -R u+r <workspace>
 ```
 
-同时验证工作区路径存在：
+同时验证工作区路径是否存在：
 
 ```console
 $ cd <workspace>

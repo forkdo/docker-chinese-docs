@@ -1,33 +1,33 @@
 ---
 title: 在容器中运行 .NET 测试
-linkTitle: 运行你的测试
+linkTitle: 运行测试
 weight: 30
 keywords: .NET, test
-description: 了解如何在容器中运行你的 .NET 测试。
+description: 了解如何在容器中运行 .NET 测试。
 aliases:
   - /language/dotnet/run-tests/
   - /guides/language/dotnet/run-tests/
 ---
 
-## 前置条件
+## 先决条件
 
-完成本指南之前的所有章节，从 [容器化 .NET 应用](containerize.md) 开始。
+完成本指南中从[容器化 .NET 应用程序](containerize.md)开始的所有先前部分。
 
 ## 概述
 
-测试是现代软件开发的重要组成部分。对不同的开发团队而言，测试可能包含多种含义。包括单元测试、集成测试和端到端测试。在本指南中，你将了解如何在开发和构建时在 Docker 中运行单元测试。
+测试是现代软件开发的重要组成部分。对于不同的开发团队，测试可能意味着很多事情。有单元测试、集成测试和端到端测试。在本指南中，您将了解在开发和构建时使用 Docker 运行单元测试。
 
 ## 本地开发时运行测试
 
-示例应用在 `tests` 目录中已包含一个 xUnit 测试。本地开发时，你可以使用 Compose 在容器中运行测试。
+示例应用程序在 `tests` 目录中已经包含一个 xUnit 测试。在本地开发时，您可以使用 Compose 来运行测试。
 
-在 `docker-dotnet-sample` 目录中运行以下命令，在容器中执行测试。
+在 `docker-dotnet-sample` 目录中运行以下命令，以在容器内运行测试。
 
 ```console
 $ docker compose run --build --rm server dotnet test /source/tests
 ```
 
-你应该看到类似以下内容的输出。
+您应该看到包含以下内容的输出。
 
 ```console
 Starting test execution, please wait...
@@ -40,7 +40,7 @@ Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration:
 
 ## 构建时运行测试
 
-要在构建时运行测试，你需要更新 Dockerfile。你可以创建一个新的测试阶段来运行测试，或者在现有的构建阶段中运行测试。在本指南中，更新 Dockerfile 在构建阶段中运行测试。
+要在构建时运行测试，您需要更新 Dockerfile。您可以创建一个运行测试的新测试阶段，或在现有构建阶段中运行测试。对于本指南，请更新 Dockerfile 以在构建阶段中运行测试。
 
 以下是更新后的 Dockerfile。
 
@@ -76,13 +76,13 @@ USER appuser
 ENTRYPOINT ["dotnet", "myWebApp.dll"]
 ```
 
-运行以下命令，使用构建阶段作为目标构建镜像并查看测试结果。包含 `--progress=plain` 以查看构建输出，`--no-cache` 确保测试始终运行，`--target build` 指定目标为构建阶段。
+运行以下命令，使用构建阶段作为目标构建镜像并查看测试结果。包含 `--progress=plain` 以查看构建输出，`--no-cache` 以确保测试始终运行，以及 `--target build` 以定位构建阶段。
 
 ```console
 $ docker build -t dotnet-docker-image-test --progress=plain --no-cache --target build .
 ```
 
-你应该看到输出中包含以下内容。
+您应该看到包含以下内容的输出。
 
 ```console
 #11 [build 5/5] RUN dotnet test /source/tests
@@ -104,7 +104,7 @@ $ docker build -t dotnet-docker-image-test --progress=plain --no-cache --target 
 
 ## 总结
 
-在本节中，你学习了如何使用 Compose 在本地开发时运行测试，以及如何在构建镜像时运行测试。
+在本节中，您学习了如何使用 Compose 在本地开发时运行测试，以及如何在构建镜像时运行测试。
 
 相关信息：
 
@@ -112,4 +112,4 @@ $ docker build -t dotnet-docker-image-test --progress=plain --no-cache --target 
 
 ## 下一步
 
-接下来，你将学习如何使用 GitHub Actions 设置 CI/CD 流水线。
+接下来，您将学习如何使用 GitHub Actions 设置 CI/CD 流水线。

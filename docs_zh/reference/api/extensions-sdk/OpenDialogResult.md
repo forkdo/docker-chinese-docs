@@ -1,7 +1,7 @@
 ---
 title: "Interface: OpenDialogResult"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/OpenDialogResult/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/OpenDialogResult/
@@ -33,4 +33,4 @@ ___
 
 • `Optional` `Readonly` **bookmarks**: `string`[]
 
-仅限 macOS。一个与 `filePaths` 数组对应的数组，包含经过 base64 编码的安全作用域书签数据字符串。必须启用 `securityScopedBookmarks` 才会填充此数组。
+仅限 macOS。一个与 `filePaths` 数组匹配的、包含安全作用域书签数据的 `base64` 编码字符串数组。必须启用 `securityScopedBookmarks` 才能填充此字段。

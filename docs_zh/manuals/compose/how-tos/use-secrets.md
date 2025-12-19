@@ -1,33 +1,33 @@
 ---
-title: 在 Docker Compose 中安全地管理密钥
-linkTitle: Compose 中的密钥
+title: 在 Docker Compose 中安全管理机密信息
+linkTitle: Compose 中的机密信息
 weight: 60
-description: 了解如何在 Docker Compose 中安全地管理运行时和构建时密钥。
-keywords: 密钥, compose, 安全, 环境变量, docker 密钥, 安全的 Docker 构建, 容器中的敏感数据
+description: 了解如何在 Docker Compose 中安全管理运行时和构建时的机密信息。
+keywords: secrets, compose, security, environment variables, docker secrets, secure Docker builds, sensitive data in containers
 tags: [Secrets]
 aliases:
 - /compose/use-secrets/
 ---
 
-密钥是任何不应通过网络传输或在 Dockerfile 或应用程序源代码中未加密存储的数据，例如密码、证书或 API 密钥。
+机密信息（Secret）是指任何不应通过网络传输或以未加密形式存储在 Dockerfile 或应用程序源代码中的数据片段，例如密码、证书或 API 密钥。
 
 {{% include "compose/secrets.md" %}}
 
-环境变量通常对所有进程都可用，跟踪访问权限可能很困难。在调试错误时，它们也可能被打印到日志中，而您并不知情。使用密钥可以减轻这些风险。
+环境变量通常对所有进程都可见，并且难以追踪访问情况。在调试错误时，它们也可能在不知情的情况下被打印到日志中。使用机密信息可以降低这些风险。
 
-## 使用密钥
+## 使用机密信息
 
-密钥作为文件挂载在容器内的 `/run/secrets/<secret_name>` 路径下。
+机密信息以文件形式挂载到容器内的 `/run/secrets/<secret_name>` 路径下。
 
-将密钥注入容器是一个两步过程。首先，使用 [Compose 文件中的顶级 secrets 元素](/reference/compose-file/secrets.md) 定义密钥。然后，更新您的服务定义，使用 [secrets 属性](/reference/compose-file/services.md#secrets) 引用所需密钥。Compose 按服务授予密钥访问权限。
+将机密信息注入容器需要两个步骤。首先，使用 Compose 文件中的[顶层 secrets 元素](/reference/compose-file/secrets.md)定义机密信息。接着，更新服务定义，使用 [secrets 属性](/reference/compose-file/services.md#secrets)引用它们所需的机密信息。Compose 基于每个服务授予对机密信息的访问权限。
 
-与其他方法不同，此方法允许通过标准文件系统权限在服务容器内进行细粒度访问控制。
+与其他方法不同，这种方式允许通过标准的文件系统权限在服务容器内进行细粒度的访问控制。
 
 ## 示例
 
-### 单服务密钥注入
+### 单个服务的机密信息注入
 
-在以下示例中，前端服务被授予访问 `my_secret` 密钥的权限。在容器中，`/run/secrets/my_secret` 被设置为文件 `./my_secret.txt` 的内容。
+在以下示例中，`frontend` 服务被授予访问 `my_secret` 机密信息的权限。在容器中，`/run/secrets/my_secret` 被设置为文件 `./my_secret.txt` 的内容。
 
 ```yaml
 services:
@@ -40,7 +40,7 @@ secrets:
     file: ./my_secret.txt
 ```
 
-### 多服务密钥共享和密码管理
+### 多服务机密信息共享与密码管理
 
 ```yaml
 services:
@@ -80,19 +80,19 @@ secrets:
 volumes:
     db_data:
 ```
-在上面的高级示例中：
+在上述高级示例中：
 
-- 每个服务下的 `secrets` 属性定义了您要注入到特定容器中的密钥。
-- 顶级 `secrets` 部分定义了变量 `db_password` 和 `db_root_password`，并提供了填充其值的 `file`。
-- 每个容器的部署意味着 Docker 在 `/run/secrets/<secret_name>` 下创建一个绑定挂载，包含其特定值。
+- 每个服务下的 `secrets` 属性定义了要注入到特定容器中的机密信息。
+- 顶层的 `secrets` 部分定义了变量 `db_password` 和 `db_root_password`，并提供了填充其值的 `file`。
+- 部署每个容器时，Docker 会在 `/run/secrets/<secret_name>` 下创建一个绑定挂载，其中包含它们的特定值。
 
 > [!NOTE]
 >
-> 此处演示的 `_FILE` 环境变量是某些镜像（包括 Docker 官方镜像，如 [mysql](https://hub.docker.com/_/mysql) 和 [postgres](https://hub.docker.com/_/postgres)）使用的约定。
+> 此处演示的 `_FILE` 环境变量是一些镜像（包括 Docker 官方镜像，如 [mysql](https://hub.docker.com/_/mysql) 和 [postgres](https://hub.docker.com/_/postgres)）使用的约定。
 
-### 构建密钥
+### 构建机密信息
 
-在以下示例中，`npm_token` 密钥在构建时可用。其值来自 `NPM_TOKEN` 环境变量。
+在以下示例中，`npm_token` 机密信息在构建时可用。其值取自 `NPM_TOKEN` 环境变量。
 
 ```yaml
 services:
@@ -109,6 +109,6 @@ secrets:
 
 ## 资源
 
-- [Secrets 顶级元素](/reference/compose-file/secrets.md)
-- [服务顶级元素的 secrets 属性](/reference/compose-file/services.md#secrets)
-- [构建密钥](https://docs.docker.com/build/building/secrets/)
+- [Secrets 顶层元素](/reference/compose-file/secrets.md)
+- [服务顶层元素的 Secrets 属性](/reference/compose-file/services.md#secrets)
+- [构建机密信息](https://docs.docker.com/build/building/secrets/)

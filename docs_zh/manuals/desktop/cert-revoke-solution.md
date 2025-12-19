@@ -1,13 +1,13 @@
 ---
-description: 了解如何解决影响 Docker Desktop macOS 用户的近期问题，包括启动问题和误报的恶意软件警告，提供升级、补丁和变通方案。
+description: 了解如何解决影响 macOS 用户使用 Docker Desktop 的近期问题，包括启动故障和误报的恶意软件警告，提供升级、补丁和变通方案。
 keywords: Docker desktop, 修复, mac, 故障排除, macos, 误报恶意软件警告, 补丁, 升级解决方案
-title: 解决 Mac 上的 Docker Desktop 启动问题
+title: 修复 Mac 上的 Docker Desktop 启动问题
 linkTitle: 修复 Mac 启动问题
 weight: 220
 sitemap: false
 ---
 
-本指南提供了解决近期影响部分 Docker Desktop macOS 用户问题的步骤。该问题可能导致 Docker Desktop 无法启动，某些情况下还可能触发不准确的恶意软件警告。有关事件的更多详细信息，请参阅 [博客文章](https://www.docker.com/blog/incident-update-docker-desktop-for-mac/)。
+本指南提供了解决近期影响部分 macOS 用户使用 Docker Desktop 问题的步骤。该问题可能导致 Docker Desktop 无法启动，在某些情况下还可能触发不准确的恶意软件警告。有关该事件的更多详细信息，请参阅[博客文章](https://www.docker.com/blog/incident-update-docker-desktop-for-mac/)。
 
 > [!NOTE]
 >
@@ -15,13 +15,13 @@ sitemap: false
 
 ## 可用解决方案
 
-根据您的情况，有以下几种选项：
+根据您的情况，有以下几种可选方案：
 
 ### 升级到 Docker Desktop 版本 4.37.2（推荐）
 
 推荐的方法是升级到最新的 Docker Desktop 版本，即版本 4.37.2。
 
-如果可能，直接通过应用程序更新。如果不行，且您仍然看到恶意软件弹窗，请按以下步骤操作：
+如果可能，请直接通过应用程序更新。如果无法更新，且仍然看到恶意软件弹窗，请按以下步骤操作：
 
 1. 终止无法正常启动的 Docker 进程：
    ```console
@@ -42,7 +42,7 @@ sitemap: false
 
 5. 输入您的密码。
 
-现在您应该可以看到 Docker Desktop 仪表板。
+现在您应该能看到 Docker Desktop 仪表板。
 
 > [!TIP]
 >
@@ -50,7 +50,7 @@ sitemap: false
 
 ### 如果您使用版本 4.32 - 4.36，请安装补丁
 
-如果您无法升级到最新版本且看到恶意软件弹窗，请按以下步骤操作：
+如果您无法升级到最新版本，且看到恶意软件弹窗，请按以下步骤操作：
 
 1. 终止无法正常启动的 Docker 进程：
    ```console
@@ -71,7 +71,7 @@ sitemap: false
 
 5. 输入您的密码。
 
-现在您应该可以看到 Docker Desktop 仪表板。
+现在您应该能看到 Docker Desktop 仪表板。
 
 > [!TIP]
 >
@@ -87,28 +87,28 @@ sitemap: false
    ```console
    #!/bin/bash
 
-   # 停止 docker 服务
-   echo "正在停止 Docker..."
+   # Stop the docker services
+   echo "Stopping Docker..."
    sudo pkill -i docker
 
-   # 停止 vmnetd 服务
-   echo "正在停止 com.docker.vmnetd 服务..."
+   # Stop the vmnetd service
+   echo "Stopping com.docker.vmnetd service..."
    sudo launchctl bootout system /Library/LaunchDaemons/com.docker.vmnetd.plist
 
-   # 停止 socket 服务
-   echo "正在停止 com.docker.socket 服务..."
+   # Stop the socket service
+   echo "Stopping com.docker.socket service..."
    sudo launchctl bootout system /Library/LaunchDaemons/com.docker.socket.plist
 
-   # 移除 vmnetd 二进制文件
-   echo "正在移除 com.docker.vmnetd 二进制文件..."
+   # Remove vmnetd binary
+   echo "Removing com.docker.vmnetd binary..."
    sudo rm -f /Library/PrivilegedHelperTools/com.docker.vmnetd
 
-   # 移除 socket 二进制文件
-   echo "正在移除 com.docker.socket 二进制文件..."
+   # Remove socket binary
+   echo "Removing com.docker.socket binary..."
    sudo rm -f /Library/PrivilegedHelperTools/com.docker.socket
 
-   # 安装新二进制文件
-   echo "正在安装新二进制文件..."
+   # Install new binaries
+   echo "Install new binaries..."
    sudo cp /Applications/Docker.app/Contents/Library/LaunchServices/com.docker.vmnetd /Library/PrivilegedHelperTools/
    sudo cp /Applications/Docker.app/Contents/MacOS/com.docker.socket /Library/PrivilegedHelperTools/
    ```

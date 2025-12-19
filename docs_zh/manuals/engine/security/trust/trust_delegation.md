@@ -1,26 +1,26 @@
 ---
 description: 内容信任的委托
-keywords: 信任, 安全, 委托, 密钥, 仓库
+keywords: trust, security, delegations, keys, repository
 title: 内容信任的委托
 aliases:
 - /ee/dtr/user/access-dtr/configure-your-notary-client/
 ---
 
-Docker 内容信任 (DCT) 中的委托允许您控制谁可以或不可以为镜像标签签名。委托将有一对私钥和公钥。委托可以包含多对密钥和贡献者，以 a) 允许多个用户成为委托的一部分，以及 b) 支持密钥轮换。
+Docker 内容信任 (DCT) 中的委托（Delegations）允许你控制谁可以以及谁不可以签署镜像标签。委托将拥有一对私钥和公钥。一个委托可以包含多对密钥和贡献者，以便 a) 允许多个用户成为委托的一部分，以及 b) 支持密钥轮换。
 
-Docker 内容信任中最重要的委托是 `targets/releases`。这被视为可信镜像标签的规范来源，如果贡献者的密钥不在此委托下，他们将无法为标签签名。
+Docker 内容信任中最重要的委托是 `targets/releases`。这被视为受信任镜像标签的规范来源，如果贡献者的密钥不在该委托下，他们将无法签署标签。
 
-幸运的是，当使用 `$ docker trust` 命令时，我们会自动初始化仓库、管理仓库密钥，并通过 `docker trust signer add` 将贡献者的密钥添加到 `targets/releases` 委托中。
+幸运的是，当使用 `$ docker trust` 命令时，我们会自动初始化仓库、管理仓库密钥，并通过 `docker trust signer add` 将协作者的密钥添加到 `targets/releases` 委托中。
 
 ## 配置 Docker 客户端
 
-默认情况下，`$ docker trust` 命令期望的 notary 服务器 URL 与镜像标签中指定的注册表 URL 相同（遵循与 `$ docker push` 类似的逻辑）。在使用 Docker Hub 或 DTR 时，notary 服务器 URL 与注册表 URL 相同。但是，对于自托管环境或第三方注册表，您需要指定 notary 服务器的替代 URL。这可以通过以下方式完成：
+默认情况下，`$ docker trust` 命令期望 notary 服务器 URL 与镜像标签中指定的注册表 URL 相同（遵循与 `$ docker push` 类似的逻辑）。当使用 Docker Hub 或 DTR 时，notary 服务器 URL 与注册表 URL 相同。但是，对于自托管环境或第三方注册表，你需要指定 notary 服务器的替代 URL。这通过以下方式完成：
 
 ```console
 $ export DOCKER_CONTENT_TRUST_SERVER=https://<URL>:<PORT>
 ```
 
-如果您在自托管环境中未导出此变量，您可能会看到如下错误：
+如果你在自托管环境中没有导出此变量，可能会看到如下错误：
 
 ```console
 $ docker trust signer add --key cert.pem jeff registry.example.com/admin/demo
@@ -33,7 +33,7 @@ WARN[0000] Error while downloading remote metadata, using cached timestamp - thi
 <...>
 ```
 
-如果您为 notary 服务器启用了身份验证，或者正在使用 DTR，您需要在将数据推送到 notary 服务器之前登录。
+如果你已为 notary 服务器启用身份验证，或者正在使用 DTR，则需要在向 notary 服务器推送数据之前登录。
 
 ```console
 $ docker login registry.example.com/user/repo
@@ -49,7 +49,7 @@ Successfully initialized "registry.example.com/user/repo"
 Successfully added signer: jeff to registry.example.com/user/repo
 ```
 
-如果您未登录，您将看到：
+如果你没有登录，将会看到：
 
 ```console
 $ docker trust signer add --key cert.pem jeff registry.example.com/user/repo
@@ -62,11 +62,11 @@ Failed to add signer to: registry.example.com/user/repo
 
 ## 配置 Notary 客户端
 
-DCT 的一些高级功能需要 Notary CLI。要安装和配置 Notary CLI：
+DCT 的一些更高级功能需要 Notary CLI。要安装和配置 Notary CLI：
 
-1. 下载 [客户端](https://github.com/theupdateframework/notary/releases) 并确保它在您的路径中可用。
+1. 下载 [客户端](https://github.com/theupdateframework/notary/releases) 并确保它在你的路径中可用。
 
-2. 在 `~/.notary/config.json` 创建一个配置文件，内容如下：
+2. 在 `~/.notary/config.json` 创建一个包含以下内容的配置文件：
 
 ```json
 {
@@ -80,15 +80,15 @@ DCT 的一些高级功能需要 Notary CLI。要安装和配置 Notary CLI：
 
 新创建的配置文件包含有关本地 Docker 信任数据位置和 notary 服务器 URL 的信息。
 
-有关如何在 Docker 内容信任用例之外使用 notary 的更详细信息，请参阅 [Notary CLI 文档](https://github.com/theupdateframework/notary/blob/master/docs/command_reference.md)
+有关如何在 Docker 内容信任用例之外使用 notary 的更多详细信息，请参阅 [Notary CLI 文档](https://github.com/theupdateframework/notary/blob/master/docs/command_reference.md)
 
 ## 创建委托密钥
 
-添加第一个贡献者的先决条件是一对委托密钥。这些密钥可以使用 `$ docker trust` 本地生成，也可以由证书颁发机构生成。
+添加第一个贡献者的先决条件是一对委托密钥。这些密钥可以使用 `$ docker trust` 在本地生成，也可以由证书颁发机构生成。
 
 ### 使用 Docker Trust 生成密钥
 
-Docker trust 内置了委托密钥对生成器，`$ docker trust generate <name>`。运行此命令将自动将委托私钥加载到本地 Docker 信任存储中。
+Docker trust 有一个用于生成委托密钥对的内置生成器，`$ docker trust generate <name>`。运行此命令会自动将委托私钥加载到本地 Docker 信任存储中。
 
 ```console
 $ docker trust key generate jeff
@@ -101,7 +101,7 @@ Successfully generated and loaded private key. Corresponding public key availabl
 
 ### 手动生成密钥
 
-如果您需要手动生成私钥（RSA 或 ECDSA）和包含公钥的 X.509 证书，您可以使用本地工具如 openssl 或 cfssl 以及本地或公司范围的证书颁发机构。
+如果你需要手动生成私钥（RSA 或 ECDSA）和包含公钥的 X.509 证书，可以使用本地工具（如 openssl 或 cfssl）以及本地或公司范围的证书颁发机构。
 
 以下是如何生成 2048 位 RSA 部分密钥的示例（所有 RSA 密钥必须至少为 2048 位）：
 
@@ -114,23 +114,23 @@ Generating RSA private key, 2048 bit long modulus
 e is 65537 (0x10001)
 ```
 
-他们应该将 `delegation.key` 保密，因为它用于签名标签。
+他们应保持 `delegation.key` 的私密性，因为它用于签署标签。
 
-然后他们需要生成包含公钥的 x509 证书，这是您需要从他们那里获得的。以下是生成 CSR（证书签名请求）的命令：
+然后他们需要生成一个包含公钥的 x509 证书，这是你需要从他们那里获得的。以下是生成 CSR（证书签名请求）的命令：
 
 ```console
 $ openssl req -new -sha256 -key delegation.key -out delegation.csr
 ```
 
-然后他们可以将其发送给他们信任的 CA 来签署证书，或者他们可以自签名证书（在此示例中，创建一个有效期为 1 年的证书）：
+然后他们可以将其发送给你信任的任何 CA 来签署证书，或者他们可以自签署证书（在此示例中，创建一个有效期为 1 年的证书）：
 
 ```console
 $ openssl x509 -req -sha256 -days 365 -in delegation.csr -signkey delegation.key -out delegation.crt
 ```
 
-然后他们需要将 `delegation.crt` 给您，无论它是自签名的还是由 CA 签名的。
+然后他们需要给你 `delegation.crt`，无论它是自签名的还是由 CA 签署的。
 
-最后，您需要将私钥添加到您的本地 Docker 信任存储中。
+最后，你需要将私钥添加到本地 Docker 信任存储中。
 
 ```console
 $ docker trust key load delegation.key --name jeff
@@ -154,22 +154,21 @@ root                                    f6c6a4b00fefd8751f86194c7d87a3bede444540
 jeff                                    9deed251daa1aa6f9d5f9b752847647cf8d705da0763aa5467650d0987ed5306    /home/ubuntu/.docker/trust/private
 ```
 
-## 管理 Notary 服务器中的委托
+## 在 Notary 服务器中管理委托
 
-当使用 `$ docker trust` 将第一个委托添加到 Notary 服务器时，我们会自动为仓库启动信任数据。这包括创建 notary 目标和快照密钥，以及将快照密钥轮换为由 notary 服务器管理。有关这些密钥的更多信息，请参阅
-[管理内容信任的密钥](trust_key_mng.md)。
+当使用 `$ docker trust` 将第一个委托添加到 Notary 服务器时，我们会自动为仓库初始化信任数据。这包括创建 notary target 和 snapshot 密钥，并将 snapshot 密钥轮换为由 notary 服务器管理。有关这些密钥的更多信息可以在[管理内容信任密钥](trust_key_mng.md)中找到。
 
-在启动仓库时，您将需要本地 Notary 规范根密钥的密钥和密码短语。如果您之前没有启动过仓库，因此没有 Notary 根密钥，`$ docker trust` 将为您创建一个。
+初始化仓库时，你需要本地 Notary 规范根密钥的密钥和密码短语。如果你之前没有初始化过仓库，因此没有 Notary 根密钥，`$ docker trust` 将为你创建一个。
 
 > [!IMPORTANT]
 >
-> 请务必保护和备份您的 [Notary 规范根密钥](trust_key_mng.md)。
+> 请务必保护并备份你的 [Notary 规范根密钥](trust_key_mng.md)。
 
-### 启动仓库
+### 初始化仓库
 
-要将第一个密钥上传到委托，同时启动仓库，您可以使用 `$ docker trust signer add` 命令。这将把贡献者的公钥添加到 `targets/releases` 委托中，并创建第二个 `targets/<name>` 委托。
+要将第一个密钥上传到委托，同时初始化仓库，你可以使用 `$ docker trust signer add` 命令。这将把贡献者的公钥添加到 `targets/releases` 委托，并创建第二个 `targets/<name>` 委托。
 
-对于 DCT，第二个委托的名称（在下面的示例中为 `jeff`）有助于您跟踪密钥的所有者。在 Notary 的更高级用例中，额外的委托用于层次结构。
+对于 DCT，第二个委托的名称（在下面的示例中为 `jeff`）用于帮助你跟踪密钥的所有者。在 Notary 的更高级用例中，额外的委托用于层次结构。
 
 ```console
 $ docker trust signer add --key cert.pem jeff registry.example.com/admin/demo
@@ -183,7 +182,7 @@ Successfully initialized "registry.example.com/admin/demo"
 Successfully added signer: jeff to registry.example.com/admin/demo
 ```
 
-您可以使用 `$ docker trust inspect` 命令查看每个仓库推送到 Notary 服务器的密钥。
+你可以使用 `$ docker trust inspect` 命令查看哪些密钥已推送到每个仓库的 Notary 服务器。
 
 ```console
 $ docker trust inspect --pretty registry.example.com/admin/demo
@@ -202,7 +201,7 @@ Administrative keys for registry.example.com/admin/demo
   Root Key:	64d147e59e44870311dd2d80b9f7840039115ef3dfa5008127d769a5f657a5d7
 ```
 
-您也可以使用 Notary CLI 列出委托和密钥。在这里，您可以清楚地看到密钥已附加到 `targets/releases` 和 `targets/jeff`。
+你也可以使用 Notary CLI 列出委托和密钥。在这里你可以清楚地看到密钥附加到了 `targets/releases` 和 `targets/jeff`。
 
 ```console
 $ notary delegation list registry.example.com/admin/demo
@@ -214,11 +213,11 @@ targets/jeff        "" <all paths>    1091060d7bfd938dfa5be703fa057974f9322a4fae
 targets/releases    "" <all paths>    1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1    1 
 ```
 
-### 添加额外的签名者
+### 添加额外的签署者
 
-Docker Trust 允许您为每个仓库配置多个委托，以便您管理委托的生命周期。当使用 `$ docker trust` 添加额外的委托时，协作者的密钥将再次添加到 `targets/release` 角色中。
+Docker Trust 允许你为每个仓库配置多个委托，从而允许你管理委托的生命周期。当使用 `$ docker trust` 添加额外的委托时，协作者的密钥会再次添加到 `targets/release` 角色中。
 
-> 注意您将需要仓库密钥的密码短语；这在您首次启动仓库时配置。
+> 注意：你需要仓库密钥的密码短语；这将在你首次初始化仓库时配置。
 
 ```console
 $ docker trust signer add --key ben.pub ben registry.example.com/admin/demo
@@ -228,7 +227,7 @@ Enter passphrase for repository key with ID b0014f8:
 Successfully added signer: ben to registry.example.com/admin/demo
 ```
 
-检查以证明现在有 2 个委托（签名者）。
+检查以证明现在有 2 个委托（签署者）。
 
 ```console
 $ docker trust inspect --pretty registry.example.com/admin/demo
@@ -249,11 +248,11 @@ Administrative keys for registry.example.com/admin/demo
 
 ### 向现有委托添加密钥
 
-为了支持密钥轮换和过期/退役密钥等操作，您可以为每个委托发布多个贡献者密钥。这里的唯一先决条件是确保您使用相同的委托名称，在此情况下为 `jeff`。Docker trust 将自动处理将这个新密钥添加到 `targets/releases`。
+为了支持密钥轮换以及过期/停用密钥等功能，你可以在每个委托下发布多个贡献者密钥。这里唯一的先决条件是确保使用相同的委托名称，在本例中为 `jeff`。Docker trust 会自动处理将此新密钥添加到 `targets/releases`。
 
 > [!NOTE]
 >
-> 您将需要仓库密钥的密码短语；这在您首次启动仓库时配置。
+> 你需要仓库密钥的密码短语；这将在你首次初始化仓库时配置。
 
 ```console
 $ docker trust signer add --key cert2.pem jeff registry.example.com/admin/demo
@@ -263,7 +262,7 @@ Enter passphrase for repository key with ID b0014f8:
 Successfully added signer: jeff to registry.example.com/admin/demo
 ```
 
-检查以证明委托（签名者）现在包含多个密钥 ID。
+检查以证明委托（签署者）现在包含多个密钥 ID。
 
 ```console
 $ docker trust inspect --pretty registry.example.com/admin/demo
@@ -284,11 +283,11 @@ Administrative keys for registry.example.com/admin/demo
 
 ### 删除委托
 
-如果您需要删除委托，包括附加到 `targets/releases` 角色的贡献者密钥，您可以使用 `$ docker trust signer remove` 命令。
+如果你需要删除委托，包括附加到 `targets/releases` 角色的贡献者密钥，你可以使用 `$ docker trust signer remove` 命令。
 
 > [!NOTE]
 >
-> 被删除委托签名的标签需要由活跃的委托重新签名
+> 由已删除委托签署的标签将需要由活动委托重新签署。
 
 ```console
 $ docker trust signer remove ben registry.example.com/admin/demo
@@ -299,32 +298,31 @@ Successfully removed ben from registry.example.com/admin/demo
 
 #### 故障排除
 
-1) 如果您看到 `targets/releases` 中没有可用密钥的错误，您需要使用 `docker trust signer add` 添加额外的委托，然后才能重新签名镜像。
+1) 如果你看到错误提示 `targets/releases` 中没有可用的密钥，你需要在重新签署镜像之前使用 `docker trust signer add` 添加额外的委托。
 
    ```text
    WARN[0000] role targets/releases has fewer keys than its threshold of 1; it will not be usable until keys are added to it
    ```
 
-2) 如果您已经添加了额外的委托并且看到 `targest/releases` 中没有有效签名的错误消息，您需要使用 Notary CLI 重新签名 `targets/releases` 委托文件。
+2) 如果你已经添加了额外的委托，并且看到错误消息提示 `targets/releases` 中没有有效的签名，你需要使用 Notary CLI 重新签署 `targets/releases` 委托文件。
 
    ```text
    WARN[0000] Error getting targets/releases: valid signatures did not meet threshold for targets/releases 
    ```
 
-   使用 `$ notary witness` 命令重新签名委托文件
+   使用 `$ notary witness` 命令重新签署委托文件。
 
    ```console
    $ notary witness registry.example.com/admin/demo targets/releases --publish
    ```
 
-   有关 `notary witness` 命令的更多信息，请参阅
-   [Notary 客户端高级使用指南](https://github.com/theupdateframework/notary/blob/master/docs/advanced_usage.md#recovering-a-delegation)
+   有关 `notary witness` 命令的更多信息，请参阅 [Notary 客户端高级使用指南](https://github.com/theupdateframework/notary/blob/master/docs/advanced_usage.md#recovering-a-delegation)
 
 ### 从委托中删除贡献者的密钥
 
-作为委托密钥轮换的一部分，您可能想要删除单个密钥但保留委托。这可以使用 Notary CLI 完成。
+作为委托密钥轮换的一部分，你可能希望删除单个密钥但保留委托。这可以使用 Notary CLI 完成。
 
-请记住，您必须从 `targets/releases` 角色和特定于该签名者的角色 `targets/<name>` 中删除密钥。
+请记住，你必须从 `targets/releases` 角色和特定于该签署者的角色 `targets/<name>` 中删除密钥。
 
 1) 我们需要从 Notary 服务器获取密钥 ID
 
@@ -342,4 +340,89 @@ Successfully removed ben from registry.example.com/admin/demo
 2) 从 `targets/releases` 委托中删除
 
    ```console
-   $ notary delegation remove registry.example.com/admin/demo targets/releases 1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f
+   $ notary delegation remove registry.example.com/admin/demo targets/releases 1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1 --publish
+   
+   Auto-publishing changes to registry.example.com/admin/demo
+   Enter username: admin
+   Enter password: 
+   Enter passphrase for targets key with ID b0014f8: 
+   Successfully published changes for repository registry.example.com/admin/demo
+   ```
+
+3) 从 `targets/<name>` 委托中删除
+
+   ```console
+   $ notary delegation remove registry.example.com/admin/demo targets/jeff 1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1 --publish
+   
+   Removal of delegation role targets/jeff with keys [5570b88df0736c468493247a07e235e35cf3641270c944d0e9e8899922fc6f99], to repository "registry.example.com/admin/demo" staged for next publish.
+   
+   Auto-publishing changes to registry.example.com/admin/demo
+   Enter username: admin    
+   Enter password: 
+   Enter passphrase for targets key with ID b0014f8: 
+   Successfully published changes for repository registry.example.com/admin/demo
+   ```
+
+4) 检查剩余的委托列表
+
+   ```console
+   $ notary delegation list registry.example.com/admin/demo
+   
+   ROLE                PATHS             KEY IDS                                                             THRESHOLD
+   ----                -----             -------                                                             ---------
+   targets/jeff        "" <all paths>    8fb597cbaf196f0781628b2f52bff6b3912e4e8075720378fda60d17232bbcf9    1    
+   targets/releases    "" <all paths>    8fb597cbaf196f0781628b2f52bff6b3912e4e8075720378fda60d17232bbcf9    1    
+   ```
+
+### 删除本地委托私钥
+
+作为委托密钥轮换的一部分，你可能需要从本地 Docker 信任存储中删除本地委托密钥。这使用 Notary CLI 完成，使用 `$ notary key remove` 命令。
+
+1) 我们需要从本地 Docker Trust 存储中获取密钥 ID
+
+   ```console
+   $ notary key list
+   
+   ROLE       GUN                          KEY ID                                                              LOCATION
+   ----       ---                          ------                                                              --------
+   root                                    f6c6a4b00fefd8751f86194c7d87a3bede444540eb3378c4a11ce10852ab1f96    /home/ubuntu/.docker/trust/private
+   admin                                   8fb597cbaf196f0781628b2f52bff6b3912e4e8075720378fda60d17232bbcf9    /home/ubuntu/.docker/trust/private
+   jeff                                    1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1    /home/ubuntu/.docker/trust/private
+   targets    ...example.com/admin/demo    c819f2eda8fba2810ec6a7f95f051c90276c87fddfc3039058856fad061c009d    /home/ubuntu/.docker/trust/private
+   ```
+
+2) 从本地 Docker Trust 存储中删除密钥
+
+   ```console
+   $ notary key remove 1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1
+   
+   Are you sure you want to remove 1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1 (role jeff) from /home/ubuntu/.docker/trust/private?  (yes/no)  y
+   
+   Deleted 1091060d7bfd938dfa5be703fa057974f9322a4faef6f580334f3d6df44c02d1 (role jeff) from /home/ubuntu/.docker/trust/private.
+   ```
+
+## 从仓库中删除所有信任数据
+
+你可以使用 Notary CLI 从仓库中删除所有信任数据，包括仓库、目标、快照和所有委托密钥。
+
+在删除特定仓库之前，容器注册表通常需要这样做。
+
+```console
+$ notary delete registry.example.com/admin/demo --remote
+
+Deleting trust data for repository registry.example.com/admin/demo
+Enter username: admin
+Enter password: 
+Successfully deleted local and remote trust data for repository registry.example.com/admin/demo
+
+$ docker trust inspect --pretty registry.example.com/admin/demo
+
+No signatures or cannot access registry.example.com/admin/demo
+```
+
+## 相关信息
+
+* [Docker 中的内容信任](index.md)
+* [管理内容信任密钥](trust_key_mng.md)
+* [内容信任自动化](trust_automation.md)
+* [在内容信任沙盒中体验](trust_sandbox.md)

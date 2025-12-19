@@ -1,9 +1,9 @@
 ---
 title: 使用构建缓存
-keywords: 概念, 构建, 镜像, 容器, Docker Desktop
-description: 本概念页面将向您介绍构建缓存、哪些更改会令缓存失效以及如何高效使用构建缓存。
+keywords: concepts, build, images, container, docker desktop
+description: 本概念页面将向您介绍构建缓存、哪些更改会使缓存失效以及如何有效使用构建缓存。
 summary: |
-  高效使用构建缓存可以让您通过重用之前构建的结果并跳过不必要的步骤来实现更快的构建。为了最大化缓存使用率并避免资源密集且耗时的重建，了解缓存失效的工作原理至关重要。在本指南中，您将学习如何高效使用 Docker 构建缓存，以简化 Docker 镜像开发和持续集成工作流。
+  通过有效利用构建缓存，您可以重用先前构建的结果并跳过不必要的步骤，从而实现更快的构建。为了最大化缓存使用率并避免资源密集型和耗时的重新构建，理解缓存失效的工作原理至关重要。在本指南中，您将学习如何高效地使用 Docker 构建缓存，以简化 Docker 镜像开发和持续集成工作流。
 weight: 4
 aliases: 
  - /guides/docker-concepts/building-images/using-the-build-cache/
@@ -11,9 +11,9 @@ aliases:
 
 {{< youtube-embed Ri6jMknjprY >}}
 
-## 说明
+## 解释
 
-考虑一下您为 [入门](./writing-a-dockerfile/) 应用创建的以下 Dockerfile。
+考虑您为 [getting-started](./writing-a-dockerfile/) 应用创建的以下 Dockerfile。
 
 ```dockerfile
 FROM node:22-alpine
@@ -23,27 +23,29 @@ RUN yarn install --production
 CMD ["node", "./src/index.js"]
 ```
 
-当您运行 `docker build` 命令创建新镜像时，Docker 会执行 Dockerfile 中的每条指令，为每条命令按顺序创建一个层。对于每条指令，Docker 会检查是否可以重用之前构建中的指令。如果发现您之前已经执行过类似的指令，Docker 就不需要重新执行，而是会使用缓存的结果。这样，您的构建过程会更快、更高效，为您节省宝贵的时间和资源。
+当您运行 `docker build` 命令来创建新镜像时，Docker 会按指定顺序执行 Dockerfile 中的每个指令，为每个命令创建一个层。对于每个指令，Docker 会检查是否可以重用先前构建中的指令。如果发现之前已经执行过类似的指令，Docker 就不需要重新执行，而是使用缓存的结果。这样，您的构建过程变得更快、更高效，为您节省宝贵的时间和资源。
 
-高效使用构建缓存可以让您通过重用之前构建的结果并跳过不必要的工作来实现更快的构建。为了最大化缓存使用率并避免资源密集且耗时的重建，了解缓存失效的工作原理非常重要。以下是一些可能导致缓存失效的情况示例：
+有效使用构建缓存可以通过重用先前构建的结果并跳过不必要的工作来实现更快的构建。
+为了最大化缓存使用率并避免资源密集型和耗时的重新构建，理解缓存失效的工作原理非常重要。
+以下是一些可能导致缓存失效的情况示例：
 
-- `RUN` 指令的任何命令更改都会使该层失效。Docker 检测到更改，如果 Dockerfile 中的 `RUN` 命令有任何修改，Docker 会使其缓存失效。
+- 对 `RUN` 指令命令的任何更改都会使该层失效。如果您的 Dockerfile 中对 `RUN` 命令有任何修改，Docker 会检测到该更改并使构建缓存失效。
 
-- 使用 `COPY` 或 `ADD` 指令复制到镜像中的文件的任何更改。Docker 会密切关注项目目录中文件的任何更改。无论是内容还是权限等属性的更改，Docker 都会将这些修改视为触发缓存失效的因素。
+- 对使用 `COPY` 或 `ADD` 指令复制到镜像中的文件的任何更改。Docker 会监视项目目录内文件的任何更改。无论是内容更改还是权限等属性更改，Docker 都会将这些修改视为触发缓存失效的因素。
 
-- 一旦某一层失效，其后的所有层也会失效。如果任何先前的层（包括基础镜像或中间层）因更改而失效，Docker 会确保依赖它的后续层也被失效。这保持了构建过程的同步，防止了不一致性。
+- 一旦某一层失效，所有后续层也会失效。如果任何先前的层（包括基础镜像或中间层）因更改而失效，Docker 会确保依赖于它的后续层也失效。这可以保持构建过程同步并防止不一致。
 
-当您编写或编辑 Dockerfile 时，请注意避免不必要的缓存未命中，以确保构建尽可能快速高效地运行。
+在编写或编辑 Dockerfile 时，请注意避免不必要的缓存未命中，以确保构建尽可能快速高效地运行。
 
-## 动手尝试
+## 动手实践
 
-在本实践指南中，您将学习如何为 Node.js 应用高效使用 Docker 构建缓存。
+在本实践指南中，您将学习如何为 Node.js 应用有效使用 Docker 构建缓存。
 
-### 构建应用
+### 构建应用程序
 
 1. [下载并安装](https://www.docker.com/products/docker-desktop/) Docker Desktop。
 
-2. 打开终端并 [克隆此示例应用](https://github.com/dockersamples/todo-list-app)。
+2. 打开终端并[克隆此示例应用程序](https://github.com/dockersamples/todo-list-app)。
 
     ```console
     $ git clone https://github.com/dockersamples/todo-list-app
@@ -72,23 +74,23 @@ CMD ["node", "./src/index.js"]
     $ docker build .
     ```
 
-    这是构建过程的结果：
+    构建过程的结果如下：
 
     ```console
     [+] Building 20.0s (10/10) FINISHED
     ```
 
-    第一行表示整个构建过程耗时 *20.0 秒*。首次构建可能需要一些时间，因为它会安装依赖项。
+    第一行表示整个构建过程耗时 *20.0 秒*。首次构建可能需要一些时间，因为它需要安装依赖项。
 
-5. 不做更改重新构建。
+5. 不做任何更改重新构建。
 
-   现在，在不更改源代码或 Dockerfile 的情况下重新运行 `docker build` 命令，如下所示：
+   现在，在不对源代码或 Dockerfile 进行任何更改的情况下重新运行 `docker build` 命令，如下所示：
 
     ```console
     $ docker build .
     ```
 
-   只要命令和上下文保持不变，后续构建就会比初始构建更快，这是由于缓存机制。Docker 会缓存构建过程中生成的中间层。当您在不更改 Dockerfile 或源代码的情况下重新构建镜像时，Docker 可以重用缓存层，显著加快构建过程。
+   只要命令和上下文保持不变，初始构建之后的后续构建会更快，这得益于缓存机制。Docker 会缓存构建过程中生成的中间层。当您在不更改 Dockerfile 或源代码的情况下重新构建镜像时，Docker 可以重用缓存的层，从而显著加快构建过程。
 
     ```console
     [+] Building 1.0s (9/9) FINISHED                                                                            docker:desktop-linux
@@ -105,7 +107,7 @@ CMD ["node", "./src/index.js"]
      => => exporting manifest
    ```
 
-   后续构建仅用 1.0 秒就完成了，利用了缓存层。无需重复依赖项安装等耗时步骤。
+   后续构建仅耗时 1.0 秒，这是通过利用缓存层实现的。无需重复执行安装依赖项等耗时步骤。
 
     <table>
       <thead>
@@ -114,9 +116,9 @@ CMD ["node", "./src/index.js"]
           </th>
           <th>描述
           </th>
-          <th>首次耗时
+          <th>耗时（首次运行）
           </th>
-          <th>第二次耗时
+          <th>耗时（第二次运行）
           </th>
         </tr>
       </thead>
@@ -124,7 +126,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>1
        </td>
-       <td><code>从 Dockerfile 加载构建定义</code>
+       <td><code>Load build definition from Dockerfile</code>
        </td>
        <td>0.0 秒
        </td>
@@ -134,7 +136,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>2
        </td>
-       <td><code>加载 docker.io/library/node:22-alpine 的元数据</code>
+       <td><code>Load metadata for docker.io/library/node:22-alpine</code>
        </td>
        <td>2.7 秒
        </td>
@@ -144,7 +146,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>3
        </td>
-       <td><code>加载 .dockerignore</code>
+       <td><code>Load .dockerignore</code>
        </td>
        <td>0.0 秒
        </td>
@@ -154,7 +156,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>4
        </td>
-       <td><code>加载构建上下文</code>
+       <td><code>Load build context</code>
     <p>
     (上下文大小: 4.60MB)
        </td>
@@ -166,7 +168,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>5
        </td>
-       <td><code>设置工作目录 (WORKDIR)</code>
+       <td><code>Set the working directory (WORKDIR)</code>
        </td>
        <td>0.1 秒
        </td>
@@ -176,7 +178,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>6
        </td>
-       <td><code>将本地代码复制到容器中</code>
+       <td><code>Copy the local code into the container</code>
        </td>
        <td>0.0 秒
        </td>
@@ -186,7 +188,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>7
        </td>
-       <td><code>运行 yarn install --production</code>
+       <td><code>Run yarn install --production</code>
        </td>
        <td>10.0 秒
        </td>
@@ -196,7 +198,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>8
        </td>
-       <td><code>导出层</code>
+       <td><code>Exporting layers</code>
        </td>
        <td>2.2 秒
        </td>
@@ -206,7 +208,7 @@ CMD ["node", "./src/index.js"]
       <tr>
        <td>9
        </td>
-       <td><code>导出最终镜像</code>
+       <td><code>Exporting the final image</code>
        </td>
        <td>3.0 秒
        </td>
@@ -216,9 +218,9 @@ CMD ["node", "./src/index.js"]
      </tbody>
     </table>
 
-    回到 `docker image history` 输出，您会看到 Dockerfile 中的每条命令都成为镜像中的新层。您可能记得，当您对镜像进行更改时，yarn 依赖项必须重新安装。有办法解决这个问题吗？每次构建都重新安装相同的依赖项似乎没什么意义，对吧？
+    回到 `docker image history` 的输出，您会看到 Dockerfile 中的每个命令都成为镜像中的一个新层。您可能还记得，当您对镜像进行更改时，`yarn` 依赖项必须重新安装。有什么方法可以解决这个问题吗？每次构建都重新安装相同的依赖项没有太大意义，对吧？
 
-    要解决这个问题，请重新构建您的 Dockerfile，使依赖缓存保持有效，除非确实需要使其失效。对于基于 Node 的应用，依赖项在 `package.json` 文件中定义。如果该文件更改，您希望重新安装依赖项；如果文件未更改，则使用缓存的依赖项。因此，首先复制该文件，然后安装依赖项，最后复制其他所有内容。这样，只有当 `package.json` 文件更改时，您才需要重新创建 yarn 依赖项。
+    为了解决这个问题，请重构您的 Dockerfile，以便依赖项缓存保持有效，除非确实需要使其失效。对于基于 Node 的应用程序，依赖项在 `package.json` 文件中定义。如果该文件发生更改，您需要重新安装依赖项；但如果文件未更改，则使用缓存的依赖项。因此，首先只复制该文件，然后安装依赖项，最后复制其他所有内容。这样，只有在 `package.json` 文件发生更改时，才需要重新创建 yarn 依赖项。
 
 6. 更新 Dockerfile，首先复制 `package.json` 文件，安装依赖项，然后复制其他所有内容。
 
@@ -244,7 +246,7 @@ CMD ["node", "./src/index.js"]
     $ docker build .
     ```
 
-    然后您会看到类似以下的输出：
+    然后您将看到类似以下的输出：
 
     ```console
     [+] Building 16.1s (10/10) FINISHED
@@ -267,17 +269,17 @@ CMD ["node", "./src/index.js"]
     => => naming to docker.io/library/node-app:2.0                                                 0.0s
     ```
 
-    您会看到所有层都被重建了。这很好，因为您对 Dockerfile 进行了相当大的更改。
+    您会看到所有层都已重新构建。这完全没问题，因为您对 Dockerfile 做了相当大的更改。
 
-9. 现在，对 `src/static/index.html` 文件进行更改（比如将标题更改为 "The Awesome Todo App"）。
+9. 现在，对 `src/static/index.html` 文件进行更改（例如将标题更改为 "The Awesome Todo App"）。
 
-10. 构建 Docker 镜像。这次，您的输出应该略有不同。
+10. 构建 Docker 镜像。这次，您的输出应该看起来有点不同。
 
     ```console
     $ docker build -t node-app:3.0 .
     ```
 
-    然后您会看到类似以下的输出：
+    然后您将看到类似以下的输出：
 
     ```console
     [+] Building 1.2s (10/10) FINISHED 
@@ -300,18 +302,19 @@ CMD ["node", "./src/index.js"]
     => => naming to docker.io/library/node-app:3.0                                                 0.0s
     ```
 
-    首先，您应该注意到构建快了很多。您会看到几个步骤正在使用之前缓存的层。这很好；您正在使用构建缓存。推送和拉取此镜像及其更新也会更快。
+    首先，您应该注意到构建速度更快了。您会看到有几个步骤正在使用先前缓存的层。这是个好消息；您正在使用构建缓存。推送和拉取此镜像及其更新也会快得多。
 
 通过遵循这些优化技术，您可以使 Docker 构建更快、更高效，从而实现更快的迭代周期并提高开发效率。
 
-## 额外资源
+## 其他资源
 
 * [使用缓存管理优化构建](/build/cache/)
 * [缓存存储后端](/build/cache/backends/)
 * [构建缓存失效](/build/cache/invalidation/)
 
+
 ## 下一步
 
-现在您已经了解了如何高效使用 Docker 构建缓存，您已准备好学习多阶段构建。
+现在您已经了解了如何有效使用 Docker 构建缓存，您可以开始学习多阶段构建。
 
 {{< button text="多阶段构建" url="multi-stage-builds" >}}

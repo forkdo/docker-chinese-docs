@@ -1,12 +1,12 @@
 ---
 title: 示例
-description: 从智能体示例中获取灵感
+description: 从 agent 示例中获取灵感
 keywords: [ai, agent, cagent]
 weight: 40
 ---
 
-从以下智能体示例中获取灵感。
-更多示例请访问 [cagent GitHub 仓库](https://github.com/docker/cagent/tree/main/examples)。
+从以下 agent 示例中获取灵感。
+更多示例请参阅 [cagent GitHub 仓库](https://github.com/docker/cagent/tree/main/examples)。
 
 ## 开发团队
 

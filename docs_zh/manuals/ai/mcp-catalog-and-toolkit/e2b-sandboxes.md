@@ -1,42 +1,42 @@
 ---
-title: E2B 沙箱
-description: 用于 AI 代理的云安全沙箱，内置 Docker MCP 网关集成
-keywords: E2B, 云沙箱, MCP 网关, AI 代理, MCP 目录
+title: E2B 沙盒
+description: 专为 AI 智能体设计的基于云的安全沙盒，内置 Docker MCP Gateway 集成
+keywords: E2B, 云沙盒, MCP Gateway, AI 智能体, MCP Catalog
 aliases:
   - /ai/mcp-catalog-and-toolkit/sandboxes/
 ---
 
-Docker 与 [E2B](https://e2b.dev/) 合作，E2B 是 AI 代理安全云沙箱的提供商。通过此次合作，每个 E2B 沙箱都可直接访问 Docker 的 [MCP 目录](https://hub.docker.com/mcp)，该目录包含来自 GitHub、Notion 和 Stripe 等发布商的 200+ 个工具。
+Docker 已与 [E2B](https://e2b.dev/) 达成合作，后者是为 AI 智能体提供安全云沙盒的供应商。通过此次合作，每个 E2B 沙盒均可直接访问 Docker 的 [MCP Catalog](https://hub.docker.com/mcp)，该目录汇集了来自 GitHub、Notion 和 Stripe 等发布者的 200 多款工具。
 
-创建沙箱时，您需要指定它应该访问哪些 MCP 工具。E2B 会启动这些工具，并通过 Docker MCP 网关提供访问。
+创建沙盒时，您需指定其应访问的 MCP 工具。E2B 会启动这些工具，并通过 Docker MCP Gateway 提供访问权限。
 
 ## 示例：使用 GitHub 和 Notion MCP 服务器
 
-本示例演示如何在 E2B 沙箱中连接多个 MCP 服务器。您将分析 Notion 中的数据，并使用 Claude 创建 GitHub 问题。
+本示例演示如何在 E2B 沙盒中连接多个 MCP 服务器。您将使用 Claude 分析 Notion 中的数据并创建 GitHub 问题。
 
-### 先决条件
+### 前提条件
 
-开始之前，请确保您具备以下条件：
+开始之前，请确保具备以下条件：
 
-- [E2B 账户](https://e2b.dev/docs/quickstart)，并具有 API 访问权限
-- Claude 的 Anthropic API 密钥
+- 拥有 API 访问权限的 [E2B 账户](https://e2b.dev/docs/quickstart)
+- 用于 Claude 的 Anthropic API 密钥
 
   > [!NOTE]
-  > 本示例使用预装在 E2B 沙箱中的 Claude Code。
-  > 但是，您可以将示例调整为使用其他 AI 助手。
+  > 本示例使用预装在 E2B 沙盒中的 Claude Code。
+  > 不过，您可以调整示例以使用其他自选的 AI 助手。
   > 有关替代连接方法，请参阅 [E2B 的 MCP 文档](https://e2b.dev/docs/mcp/quickstart)。
 
-- 机器上安装了 Node.js 18+
-- 具有以下内容的 Notion 账户：
+- 本地已安装 Node.js 18+
+- Notion 账户，包含：
   - 包含示例数据的数据库
   - [集成令牌](https://www.notion.com/help/add-and-manage-connections-with-the-api)
-- 具有以下内容的 GitHub 账户：
+- GitHub 账户，包含：
   - 用于测试的仓库
-  - 具有 `repo` 范围的个人访问令牌
+  - 具有 `repo` 作用域的个人访问令牌
 
 ### 设置环境
 
-创建一个新目录并初始化 Node.js 项目：
+创建新目录并初始化 Node.js 项目：
 
 ```console
 $ mkdir mcp-e2b-quickstart
@@ -44,7 +44,7 @@ $ cd mcp-e2b-quickstart
 $ npm init -y
 ```
 
-通过更新 `package.json` 配置项目以支持 ES 模块：
+通过更新 `package.json` 为项目配置 ES 模块：
 
 ```json
 {
@@ -57,13 +57,13 @@ $ npm init -y
 }
 ```
 
-安装所需的依赖项：
+安装所需依赖项：
 
 ```console
 $ npm install e2b dotenv
 ```
 
-创建一个包含凭据的 `.env` 文件：
+创建包含凭证的 `.env` 文件：
 
 ```console
 $ cat > .env << 'EOF'
@@ -74,19 +74,19 @@ GITHUB_TOKEN=ghp_your_github_pat_here
 EOF
 ```
 
-保护您的凭据：
+保护您的凭证：
 
 ```console
 $ echo ".env" >> .gitignore
 $ echo "node_modules/" >> .gitignore
 ```
 
-### 创建带有 MCP 服务器的 E2B 沙箱
+### 创建带 MCP 服务器的 E2B 沙盒
 
 {{< tabs group="" >}}
 {{< tab name="Typescript">}}
 
-创建一个名为 `index.ts` 的文件：
+创建名为 `index.ts` 的文件：
 
 ```typescript
 import "dotenv/config";
@@ -146,7 +146,7 @@ $ npx tsx index.ts
 {{< /tab >}}
 {{< tab name="Python">}}
 
-创建一个名为 `index.py` 的文件：
+创建名为 `index.py` 的文件：
 
 ```python
 import os
@@ -216,9 +216,9 @@ $ python index.py
 ```
 
 {{< /tab >}}
-{{</tabs >}}
+{{< /tabs >}}
 
-您应该看到：
+您将看到：
 
 ```console
 Creating E2B sandbox with Notion and GitHub MCP servers...
@@ -232,16 +232,16 @@ Added HTTP MCP server e2b-mcp-gateway with URL: https://50005-xxxxx.e2b.app/mcp
 Connection successful! Cleaning up...
 ```
 
-### 使用示例工作流测试
+### 使用示例工作流进行测试
 
-现在，通过运行一个简单的工作流来测试设置，该工作流搜索 Notion 并创建 GitHub 问题。
+现在，通过运行一个简单的工作流来测试设置，该工作流将搜索 Notion 并创建 GitHub 问题。
 
 {{< tabs group="" >}}
 {{< tab name="Typescript">}}
 
 > [!IMPORTANT]
 >
-> 在提示中将 `owner/repo` 替换为您实际的 GitHub 用户名和仓库名称（例如，`yourname/test-repo`）。
+> 将提示中的 `owner/repo` 替换为您的实际 GitHub 用户名和仓库名称（例如 `yourname/test-repo`）。
 
 使用以下示例更新 `index.ts`：
 
@@ -320,7 +320,7 @@ $ npx tsx index.ts
 
 > [!IMPORTANT]
 >
-> 在提示中将 `owner/repo` 替换为您实际的 GitHub 用户名和仓库名称（例如，`yourname/test-repo`）。
+> 将提示中的 `owner/repo` 替换为您的实际 GitHub 用户名和仓库名称（例如 `yourname/test-repo`）。
 
 ```python
 import os
@@ -404,9 +404,9 @@ $ python workflow.py
 ```
 
 {{< /tab >}}
-{{</tabs >}}
+{{< /tabs >}}
 
-您应该看到：
+您将看到：
 
 ```console
 Creating sandbox...
@@ -437,13 +437,13 @@ Successfully created test issue:
 Both operations completed successfully. The MCP servers are properly configured and working.
 ```
 
-沙箱连接了多个 MCP 服务器，并在 Notion 和 GitHub 之间协调工作流。您可以将此模式扩展到 Docker MCP 目录中的任何 200+ MCP 服务器。
+该沙盒连接了多个 MCP 服务器，并协调了跨 Notion 和 GitHub 的工作流。您可以扩展此模式，以组合 Docker MCP Catalog 中的 200 多个 MCP 服务器中的任意一个。
 
 ## 相关页面
 
 - [如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流](/guides/github-sonarqube-sandbox.md)
 - [Docker + E2B：构建可信 AI 的未来](https://www.docker.com/blog/docker-e2b-building-the-future-of-trusted-ai/)
-- [Docker 沙箱](/manuals/ai/sandboxes/_index.md)
+- [Docker 沙盒](/manuals/ai/sandboxes/_index.md)
 - [Docker MCP 工具包和目录](/manuals/ai/mcp-catalog-and-toolkit/_index.md)
-- [Docker MCP 网关](/manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md)
+- [Docker MCP Gateway](/manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md)
 - [E2B MCP 文档](https://e2b.dev/docs/mcp)

@@ -1,5 +1,5 @@
 ---
-description: 开始使用 Docker Desktop for Mac。本指南涵盖系统要求、下载地址，以及安装和更新的详细步骤。
+description: 安装适用于 Mac 的 Docker Desktop 开始使用。本指南涵盖系统要求、下载位置以及安装和更新的说明。
 keywords: docker for mac, install docker macos, docker mac, docker mac install, docker install macos, install docker on mac, install docker macbook, docker desktop for mac, how to install docker on mac, setup docker on mac
 title: 在 Mac 上安装 Docker Desktop
 linkTitle: Mac
@@ -14,43 +14,44 @@ aliases:
 - /desktop/mac/apple-silicon/
 - /desktop/install/mac-install/
 - /desktop/install/mac/
+
 ---
 
-> **Docker Desktop 使用条款**
+> **Docker Desktop 条款**
 >
-> 大型企业（超过 250 名员工或年收入超过 1000 万美元）商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing/)。
+> 在大型企业中（员工人数超过 250 人或年收入超过 1000 万美元）将 Docker Desktop 用于商业用途需要[付费订阅](https://www.docker.com/pricing/)。
 
-本页面提供 Docker Desktop for Mac 的下载链接、系统要求，以及详细的安装步骤说明。
+此页面提供了适用于 Mac 的 Docker Desktop 的下载链接、系统要求以及分步安装说明。
 
-{{< button text="适用于 Apple 芯片的 Docker Desktop for Mac" url="https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64" >}}
-{{< button text="适用于 Intel 芯片的 Docker Desktop for Mac" url="https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64" >}}
+{{< button text="适用于 Apple 芯片的 Mac 的 Docker Desktop" url="https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64" >}}
+{{< button text="适用于 Intel 芯片的 Mac 的 Docker Desktop" url="https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64" >}}
 
-*如需校验和信息，请参阅 [发布说明](/manuals/desktop/release-notes.md)。*
+*有关校验和，请参阅[发行说明](/manuals/desktop/release-notes.md)。*
 
 ## 系统要求
 
 {{< tabs >}}
-{{< tab name="Intel 芯片 Mac" >}}
+{{< tab name="搭载 Intel 芯片的 Mac" >}}
 
-- 支持的 macOS 版本。
+- 受支持的 macOS 版本。
 
-  > [!IMPORTANT]
+  > [!重要]
   >
-  > Docker Desktop 支持当前版本及前两个主要 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止对最旧版本的支持，并支持最新的 macOS 版本（同时支持前两个版本）。
+  > Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。
 
-- 至少 4 GB RAM。
+- 至少 4 GB 内存。
 
 {{< /tab >}}
-{{< tab name="Apple 芯片 Mac" >}}
+{{< tab name="搭载 Apple 芯片的 Mac" >}}
 
-- 支持的 macOS 版本。
+- 受支持的 macOS 版本。
 
-  > [!IMPORTANT]
+  > [!重要]
   >
-  > Docker Desktop 支持当前版本及前两个主要 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止对最旧版本的支持，并支持最新的 macOS 版本（同时支持前两个版本）。
+  > Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。
 
-- 至少 4 GB RAM。
-- 为获得最佳体验，建议安装 Rosetta 2。Rosetta 2 不再是严格必需的，但使用 Darwin/AMD64 时，仍有少量可选命令行工具需要 Rosetta 2。详情请参阅 [已知问题](/manuals/desktop/troubleshoot-and-support/troubleshoot/known-issues.md)。如需从命令行手动安装 Rosetta 2，请运行以下命令：
+- 至少 4 GB 内存。
+- 为了获得最佳体验，建议安装 Rosetta 2。Rosetta 2 不再是严格必需项，但某些可选命令行工具在使用 Darwin/AMD64 时仍需要 Rosetta 2。请参阅[已知问题](/manuals/desktop/troubleshoot-and-support/troubleshoot/known-issues.md)。要从命令行手动安装 Rosetta 2，请运行以下命令：
 
    ```console
    $ softwareupdate --install-rosetta
@@ -58,52 +59,52 @@ aliases:
 {{< /tab >}}
 {{< /tabs >}}
 
-> **安装或更新前**
+> **在安装或更新之前**
 >
 > - 退出可能在后台调用 Docker 的工具（Visual Studio Code、终端、代理应用）。
 >
-> - 如果您管理设备集群或通过 MDM 安装，请使用 [**PKG 安装程序**](/manuals/enterprise/enterprise-deployment/pkg-install-and-configure.md)。
+> - 如果您管理设备群或通过 MDM 安装，请使用[**PKG 安装程序**](/manuals/enterprise/enterprise-deployment/pkg-install-and-configure.md)。
 >
-> - 安装完成前，请保持安装卷挂载状态。
+> - 在安装完成之前，请保持安装程序卷处于挂载状态。
 >
-> 如果遇到“Docker.app 已损坏”对话框，请参阅 [修复 macOS 上的“Docker.app 已损坏”](/manuals/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog.md)。
+> 如果您遇到“Docker.app 已损坏”对话框，请参阅[修复 macOS 上的“Docker.app 已损坏”](/manuals/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog.md)。
 
 ## 在 Mac 上安装和运行 Docker Desktop
 
-> [!TIP]
+> [!提示]
 >
-> 请参阅 [常见问题](/manuals/desktop/troubleshoot-and-support/faqs/general.md#how-do-I-run-docker-desktop-without-administrator-privileges)，了解如何在无需管理员权限的情况下安装和运行 Docker Desktop。
+> 请参阅[常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md#how-do-I-run-docker-desktop-without-administrator-privileges)，了解如何在不需要管理员权限的情况下安装和运行 Docker Desktop。
 
 ### 交互式安装
 
-1. 使用页面顶部的下载按钮或从 [发布说明](/manuals/desktop/release-notes.md) 下载安装程序。
+1. 使用页面顶部的下载按钮或从[发行说明](/manuals/desktop/release-notes.md)下载安装程序。
 
-2. 双击 `Docker.dmg` 打开安装程序，然后将 Docker 图标拖到 **应用程序** 文件夹中。默认情况下，Docker Desktop 安装在 `/Applications/Docker.app`。
+2. 双击 `Docker.dmg` 打开安装程序，然后将 Docker 图标拖到**应用程序**文件夹中。默认情况下，Docker Desktop 安装在 `/Applications/Docker.app`。
 
-3. 在 **应用程序** 文件夹中双击 `Docker.app` 以启动 Docker。
+3. 双击**应用程序**文件夹中的 `Docker.app` 启动 Docker。
 
-4. Docker 菜单显示 Docker 订阅服务协议。
+4. Docker 菜单会显示 Docker 订阅服务协议。
 
-    关键要点摘要：
-    - Docker Desktop 免费用于小型企业（少于 250 名员工且年收入低于 1000 万美元）、个人使用、教育和非商业开源项目。
-    - 否则，专业使用需要付费订阅。
+    以下是关键点的摘要：
+    - Docker Desktop 对小型企业（员工少于 250 人且年收入低于 1000 万美元）、个人使用、教育以及非商业开源项目免费。
+    - 否则，专业用途需要付费订阅。
     - 政府实体也需要付费订阅。
-    - Docker Pro、Team 和 Business 订阅包含 Docker Desktop 的商业使用许可。
+    - Docker Pro、Team 和 Business 订阅包括 Docker Desktop 的商业用途。
 
-5. 选择 **接受** 以继续。
+5. 选择**接受**以继续。
 
-   注意：如果不接受条款，Docker Desktop 将无法运行。您也可以稍后通过打开 Docker Desktop 来接受条款。
+   请注意，如果您不同意条款，Docker Desktop 将无法运行。您可以选择稍后通过打开 Docker Desktop 来接受条款。
 
-   详细信息，请参阅 [Docker Desktop 订阅服务协议](https://www.docker.com/legal/docker-subscription-service-agreement)。建议您同时阅读 [常见问题](https://www.docker.com/pricing/faq)。
+   有关更多信息，请参阅 [Docker Desktop 订阅服务协议](https://www.docker.com/legal/docker-subscription-service-agreement)。建议您同时阅读[常见问题解答](https://www.docker.com/pricing/faq)。
 
-6. 在安装窗口中，选择以下任一项：
-   - **使用推荐设置（需要密码）**。这允许 Docker Desktop 自动设置必要的配置。
-   - **使用高级设置**。然后您可以设置 Docker CLI 工具的位置（系统目录或用户目录）、启用默认 Docker 套接字，以及启用特权端口映射。详细信息，请参阅 [设置](/manuals/desktop/settings-and-maintenance/settings.md#advanced)。
-7. 选择 **完成**。如果在第 6 步中应用了任何需要密码的配置，请输入密码以确认您的选择。
+6. 在安装窗口中，选择以下任一选项：
+   - **使用推荐设置（需要密码）**。这允许 Docker Desktop 自动设置必要的配置设置。
+   - **使用高级设置**。然后，您可以将 Docker CLI 工具的位置设置在系统或用户目录中，启用默认 Docker 套接字，并启用特权端口映射。有关更多信息以及如何设置 Docker CLI 工具的位置，请参阅[设置](/manuals/desktop/settings-and-maintenance/settings.md#advanced)。
+7. 选择**完成**。如果您在第 6 步中应用了任何需要密码的配置，请输入密码以确认您的选择。
 
 ### 从命令行安装
 
-从页面顶部的下载按钮或从 [发布说明](/manuals/desktop/release-notes.md) 下载 `Docker.dmg` 后，在终端中运行以下命令，将 Docker Desktop 安装到 **应用程序** 文件夹：
+下载 `Docker.dmg` 后（使用页面顶部的下载按钮或从[发行说明](/manuals/desktop/release-notes.md)），在终端中运行以下命令以在**应用程序**文件夹中安装 Docker Desktop：
 
 ```console
 $ sudo hdiutil attach Docker.dmg
@@ -111,7 +112,7 @@ $ sudo /Volumes/Docker/Docker.app/Contents/MacOS/install
 $ sudo hdiutil detach /Volumes/Docker
 ```
 
-默认情况下，Docker Desktop 安装在 `/Applications/Docker.app`。由于 macOS 通常在首次使用应用程序时执行安全检查，`install` 命令可能需要几分钟才能运行完成。
+默认情况下，Docker Desktop 安装在 `/Applications/Docker.app`。由于 macOS 通常在首次使用应用程序时执行安全检查，因此 `install` 命令可能需要几分钟才能运行。
 
 #### 安装程序标志
 
@@ -120,24 +121,24 @@ $ sudo hdiutil detach /Volumes/Docker
 ##### 安装行为
 
 - `--accept-license`：现在接受 [Docker 订阅服务协议](https://www.docker.com/legal/docker-subscription-service-agreement)，而不是在首次运行应用程序时要求接受。
-- `--user=<username>`：在安装期间执行一次特权配置。这消除了用户首次运行时授予 root 权限的需要。详细信息，请参阅 [特权助手权限要求](/manuals/desktop/setup/install/mac-permission-requirements.md#permission-requirements)。要查找用户名，请在 CLI 中输入 `ls /Users`。
+- `--user=<username>`：在安装过程中执行一次特权配置。这消除了用户在首次运行时授予 root 权限的需要。有关更多信息，请参阅[特权帮助程序权限要求](/manuals/desktop/setup/install/mac-permission-requirements.md#permission-requirements)。要查找用户名，请在 CLI 中输入 `ls /Users`。
 
 ##### 安全和访问
 
-- `--allowed-org=<org name>`：要求用户在运行应用程序时登录并成为指定 Docker Hub 组织的成员。
-- `--user=<username>`：在安装期间执行一次特权配置。这消除了用户首次运行时授予 root 权限的需要。详细信息，请参阅 [特权助手权限要求](/manuals/desktop/setup/install/mac-permission-requirements.md#permission-requirements)。要查找用户名，请在 CLI 中输入 `ls /Users`。
-- `--admin-settings`：自动创建 `admin-settings.json` 文件，管理员使用该文件控制其组织内客户端计算机上的某些 Docker Desktop 设置。详细信息，请参阅 [设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md)。
+- `--allowed-org=<org name>`：要求用户在运行应用程序时登录并成为指定的 Docker Hub 组织的一部分
+- `--user=<username>`：在安装过程中执行一次特权配置。这消除了用户在首次运行时授予 root 权限的需要。有关更多信息，请参阅[特权帮助程序权限要求](/manuals/desktop/setup/install/mac-permission-requirements.md#permission-requirements)。要查找用户名，请在 CLI 中输入 `ls /Users`。
+- `--admin-settings`：自动创建一个 `admin-settings.json` 文件，管理员使用该文件来控制其组织内客户端机器上的某些 Docker Desktop 设置。有关更多信息，请参阅[设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md)。
   - 必须与 `--allowed-org=<org name>` 标志一起使用。
   - 例如：`--allowed-org=<org name> --admin-settings="{'configurationFileVersion': 2, 'enhancedContainerIsolation': {'value': true, 'locked': false}}"`
 
 ##### 代理配置
 
 - `--proxy-http-mode=<mode>`：设置 HTTP 代理模式。两种模式为 `system`（默认）或 `manual`。
-- `--override-proxy-http=<URL>`：设置传出 HTTP 请求必须使用的 HTTP 代理 URL。需要 `--proxy-http-mode` 为 `manual`。
-- `--override-proxy-https=<URL>`：设置传出 HTTPS 请求必须使用的 HTTP 代理 URL，需要 `--proxy-http-mode` 为 `manual`。
-- `--override-proxy-exclude=<hosts/domains>`：对主机和域绕过代理设置。使用逗号分隔列表。
+- `--override-proxy-http=<URL>`：设置用于传出 HTTP 请求的 HTTP 代理的 URL。它要求 `--proxy-http-mode` 为 `manual`。
+- `--override-proxy-https=<URL>`：设置用于传出 HTTPS 请求的 HTTP 代理的 URL，要求 `--proxy-http-mode` 为 `manual`
+- `--override-proxy-exclude=<hosts/domains>`：为主机和域绕过代理设置。这是一个逗号分隔的列表。
 - `--override-proxy-pac=<PAC file URL>`：设置 PAC 文件 URL。此设置仅在使用 `manual` 代理模式时生效。
-- `--override-proxy-embedded-pac=<PAC script>`：指定嵌入式 PAC（代理自动配置）脚本。此设置仅在使用 `manual` 代理模式时生效，且优先于 `--override-proxy-pac` 标志。
+- `--override-proxy-embedded-pac=<PAC script>`：指定嵌入的 PAC（代理自动配置）脚本。此设置仅在使用 `manual` 代理模式时生效，并且优先于 `--override-proxy-pac` 标志。
 
 ###### 指定 PAC 文件示例
 
@@ -151,9 +152,9 @@ $ sudo /Applications/Docker.app/Contents/MacOS/install --user testuser --proxy-h
 $ sudo /Applications/Docker.app/Contents/MacOS/install --user testuser --proxy-http-mode="manual" --override-proxy-embedded-pac="function FindProxyForURL(url, host) { return \"DIRECT\"; }"
 ```
 
-> [!TIP]
+> [!提示]
 >
-> 作为 IT 管理员，您可以使用终端管理（MDM）软件识别环境中 Docker Desktop 实例的数量及其版本。这可以提供准确的许可证报告，帮助确保您的计算机使用最新版本的 Docker Desktop，并启用 [强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)。
+> 作为 IT 管理员，您可以使用端点管理 (MDM) 软件来识别环境中 Docker Desktop 实例的数量及其版本。这可以提供准确的许可证报告，帮助确保您的机器使用最新版本的 Docker Desktop，并使您能够[强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)。
 > - [Intune](https://learn.microsoft.com/en-us/mem/intune/apps/app-discovered-apps)
 > - [Jamf](https://docs.jamf.com/10.25.0/jamf-pro/administrator-guide/Application_Usage.html)
 > - [Kandji](https://support.kandji.io/support/solutions/articles/72000559793-view-a-device-application-list)
@@ -162,10 +163,10 @@ $ sudo /Applications/Docker.app/Contents/MacOS/install --user testuser --proxy-h
 
 ## 下一步
 
-- 探索 [Docker 的订阅计划](https://www.docker.com/pricing/)，了解 Docker 能为您提供的服务。
+- 浏览 [Docker 的订阅](https://www.docker.com/pricing/)，了解 Docker 可以为您提供什么。
 - [开始使用 Docker](/get-started/introduction/_index.md)。
 - [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其所有功能。
-- [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、变通方法、如何运行和提交诊断信息，以及如何提交问题。
-- [常见问题](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供了常见问题的答案。
-- [发布说明](/manuals/desktop/release-notes.md) 列出了 Docker Desktop 发布的组件更新、新功能和改进。
-- [备份和还原数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供了与 Docker 相关数据的备份和还原说明。
+- [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、解决方法、如何运行和提交诊断信息以及提交问题。
+- [常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供常见问题的答案。
+- [发行说明](/manuals/desktop/release-notes.md) 列出了与 Docker Desktop 版本相关的组件更新、新功能和改进。
+- [备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供了有关备份和恢复与 Docker 相关的数据的说明。

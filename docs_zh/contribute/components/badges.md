@@ -1,51 +1,51 @@
 ---
-description: Docker 文档中使用的组件和格式化示例
+description: Docker 文档中使用的组件和格式示例
 title: 徽章
 toc_max: 3
 ---
 
 ### 示例
 
-{{< badge color=blue text="blue badge" >}}
-{{< badge color=amber text="amber badge" >}}
-{{< badge color=red text="red badge" >}}
-{{< badge color=green text="green badge" >}}
-{{< badge color=violet text="violet badge" >}}
-{{< badge color=gray text="gray badge" >}}
+{{< badge color=blue text="蓝色徽章" >}}
+{{< badge color=amber text="琥珀色徽章" >}}
+{{< badge color=red text="红色徽章" >}}
+{{< badge color=green text="绿色徽章" >}}
+{{< badge color=violet text="紫色徽章" >}}
+{{< badge color=gray text="灰色徽章" >}}
 
-你也可以让徽章成为一个链接。
+您还可以将徽章设置为链接。
 
-[{{< badge color="blue" text="badge with a link" >}}](../_index.md)
+[{{< badge color="blue" text="带链接的徽章" >}}](../_index.md)
 
 ### 使用指南
 
-使用徽章来标示新内容以及处于不同发布生命周期阶段的产品内容：
+使用徽章来指示发布生命周期中不同阶段的新内容和产品内容：
 
-- 使用紫色徽章来标示新的早期访问或实验性内容
-- 使用蓝色徽章来标示 Beta 版内容
-- 使用绿色徽章来标示正式发布（GA）或非产品相关的内容，例如指南/学习路径
-- 使用灰色徽章来标示已弃用的内容
+- 紫色徽章：用于突出显示新的早期访问或实验性内容
+- 蓝色徽章：用于突出显示 Beta 内容
+- 绿色徽章：用于突出显示已正式发布 (GA) 的新内容或非产品相关的内容（例如指南/学习路径）
+- 灰色徽章：用于突出显示已弃用的内容
 
-最佳实践是，对于功能发布后的内容，此徽章的使用时间不应超过 2 个月。
+最佳实践是在功能发布后最多使用此徽章 2 个月。
 
 ### 标记语法
 
-内联徽章：
+行内徽章：
 
 ```go
-{{</* badge color=amber text="amber badge" */>}}
-[{{</* badge color="blue" text="badge with a link" */>}}](../overview.md)
+{{</* badge color=amber text="琥珀色徽章" */>}}
+[{{</* badge color="blue" text="带链接的徽章" */>}}](../overview.md)
 ```
 
-侧边栏徽章（在 frontmatter 中）：
+Frontmatter 中的侧边栏徽章：
 
 ```yaml
 ---
-title: Page title
+title: 页面标题
 params:
   sidebar:
     badge:
       color: gray
-      text: Deprecated
+      text: 已弃用
 ---
 ```

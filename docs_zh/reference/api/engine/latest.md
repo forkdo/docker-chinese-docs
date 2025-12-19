@@ -1,3 +1,4 @@
+```markdown
 ---
 build:
   render: never
@@ -7,3 +8,4 @@ params:
     goto: /reference/api/engine/latest/
 weight: 20
 ---
+```

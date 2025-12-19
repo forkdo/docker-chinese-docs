@@ -9,18 +9,18 @@ aliases:
   - /guides/language/rust/deploy/
 ---
 
-## 前置条件
+## 先决条件
 
-- 完成本指南的前面部分，从 [开发你的 Rust 应用](develop.md) 开始。
-- 在 Docker Desktop 中[启用 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
+- 完成本指南的前面部分，从 [开发你的 Rust 应用程序](develop.md) 开始。
+- 在 Docker Desktop 中 [开启 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
 
 ## 概述
 
-在本节中，你将学习如何使用 Docker Desktop 将你的应用部署到开发机器上的完整 Kubernetes 环境。这让你可以在本地对 Kubernetes 进行工作负载的测试和调试，然后再部署。
+在本节中，你将学习如何使用 Docker Desktop 将你的应用程序部署到开发机器上功能齐全的 Kubernetes 环境中。这让你可以在部署之前，在本地 Kubernetes 环境中测试和调试你的工作负载。
 
 ## 创建 Kubernetes YAML 文件
 
-在你的 `docker-rust-postgres` 目录中，创建一个名为 `docker-rust-kubernetes.yaml` 的文件。在 IDE 或文本编辑器中打开该文件，并添加以下内容。将 `DOCKER_USERNAME/REPO_NAME` 替换为你的 Docker 用户名和在 [为你的 Rust 应用配置 CI/CD](configure-ci-cd.md) 中创建的仓库名称。
+在你的 `docker-rust-postgres` 目录中，创建一个名为 `docker-rust-kubernetes.yaml` 的文件。在 IDE 或文本编辑器中打开该文件，并添加以下内容。将 `DOCKER_USERNAME/REPO_NAME` 替换为你的 Docker 用户名和你在 [为你的 Rust 应用程序配置 CI/CD](configure-ci-cd.md) 中创建的仓库名称。
 
 ```yaml
 apiVersion: apps/v1
@@ -150,20 +150,20 @@ status:
 
 在这个 Kubernetes YAML 文件中，有四个对象，由 `---` 分隔。除了数据库的 Service 和 Deployment 外，另外两个对象是：
 
-- 一个 Deployment，描述了一组可扩展的相同 Pod。在本例中，你将只得到一个副本，即你的 Pod 的一个副本。该 Pod 在 `template` 下描述，其中只有一个容器。该容器是从 GitHub Actions 在 [为你的 Rust 应用配置 CI/CD](configure-ci-cd.md) 中构建的镜像创建的。
-- 一个 NodePort 服务，它将把主机上端口 30001 的流量路由到 Pod 内的端口 5000，允许你从网络访问你的应用。
+- 一个 Deployment，描述了一组可扩展的相同 Pod。在这种情况下，你只会得到一个副本（replica），或者说 Pod 的一个拷贝。在 `template` 下描述的这个 Pod 中只有一个容器。该容器是由 GitHub Actions 在 [为你的 Rust 应用程序配置 CI/CD](configure-ci-cd.md) 中构建的镜像创建的。
+- 一个 NodePort 服务，它将主机上的 30001 端口的流量路由到它所路由到的 Pod 内部的 5000 端口，从而允许你从网络访问你的应用程序。
 
-要了解有关 Kubernetes 对象的更多信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
+要了解更多关于 Kubernetes 对象的信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
 
-## 部署并检查你的应用
+## 部署并检查你的应用程序
 
-1. 在终端中，导航到 `docker-rust-postgres` 并将你的应用部署到 Kubernetes。
+1. 在终端中，导航到 `docker-rust-postgres` 目录，并将你的应用程序部署到 Kubernetes。
 
    ```console
    $ kubectl apply -f docker-rust-kubernetes.yaml
    ```
 
-   你应该看到类似以下的输出，表示你的 Kubernetes 对象已成功创建。
+   你应该会看到类似以下内容的输出，表明你的 Kubernetes 对象已成功创建。
 
    ```shell
    deployment.apps/server created
@@ -186,13 +186,13 @@ status:
    server   1/1     1            1           2m21s
    ```
 
-   这表示你在 YAML 中请求的所有 Pod 都已启动并运行。对你的服务也进行同样的检查。
+   这表明你在 YAML 中要求的所有 Pod 都已启动并运行。对你的服务也进行同样的检查。
 
    ```console
    $ kubectl get services
    ```
 
-   你应该得到类似以下的输出。
+   你应该会得到类似以下的输出。
 
    ```shell
    NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
@@ -201,16 +201,16 @@ status:
    server       NodePort    10.101.235.213   <none>        5000:30001/TCP   109s
    ```
 
-   除了默认的 `kubernetes` 服务外，你还可以看到你的 `service-entrypoint` 服务，它在端口 30001/TCP 上接受流量。
+   除了默认的 `kubernetes` 服务外，你还可以看到你的 `service-entrypoint` 服务正在 30001/TCP 端口上接收流量。
 
-3. 在终端中，使用 curl 调用服务。
+3. 在终端中，使用 curl 访问该服务。
 
    ```console
    $ curl http://localhost:30001/users
    [{"id":1,"login":"root"}]
    ```
 
-4. 运行以下命令来拆除你的应用。
+4. 运行以下命令来拆除你的应用程序。
 
    ```console
    $ kubectl delete -f docker-rust-kubernetes.yaml
@@ -218,7 +218,7 @@ status:
 
 ## 总结
 
-在本节中，你学习了如何使用 Docker Desktop 将你的应用部署到开发机器上的完整 Kubernetes 环境。
+在本节中，你学习了如何使用 Docker Desktop 将你的应用程序部署到开发机器上功能齐全的 Kubernetes 环境中。
 
 相关信息：
 

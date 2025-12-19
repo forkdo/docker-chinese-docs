@@ -1,6 +1,6 @@
 ---
 build:
   render: never
-title: 配置
+title: 设置
 weight: 10
 ---

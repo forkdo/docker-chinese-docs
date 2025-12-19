@@ -1,63 +1,112 @@
 ---
 datafolder: sandbox-cli
 datafile: docker_sandbox
-title: docker sandbox
+title: Docker 沙箱
 layout: cli
 ---
+# Docker 沙箱
 
-# docker sandbox
+Docker 沙箱是一个隔离的环境，用于在容器中运行代码，而不会影响主机系统。这对于测试、开发和安全实验非常有用。
 
-Docker 沙箱命令
+## 前置条件
 
-## 用法
+- Docker 已安装并运行
+- 基本的 Docker 知识
 
+## 快速开始
+
+### 1. 创建沙箱
+
+```bash
+# 创建一个新的 Docker 沙箱
+docker run -d --name my-sandbox \
+  -v /path/to/your/code:/workspace \
+  -p 8080:8080 \
+  --restart unless-stopped \
+  ubuntu:latest tail -f /dev/null
+
+# 进入沙箱
+docker exec -it my-sandbox bash
 ```
-docker sandbox [COMMAND]
+
+### 2. 使用沙箱
+
+```bash
+# 在沙箱中安装软件
+apt-get update && apt-get install -y python3 python3-pip
+
+# 运行你的代码
+python3 /workspace/app.py
 ```
 
-## 全局选项
-
-| 选项 | 默认值 | 描述 |
-|------|--------|------|
-| `--config` | `~/.docker` | 客户端配置文件所在目录（默认值为 "~/.docker"） |
-| `-c`, `--context` |  | 要使用的上下文 |
-| `-D`, `--debug` |  | 启用调试模式 |
-| `-H`, `--host` |  | Docker 服务器套接字的地址 |
-| `--insecure-registry` |  | 将注册表标记为不安全的注册表 |
-| `--log-level` |  | 日志级别 ("debug"|"info"|"warn"|"error"|"fatal")（默认值为 "info"） |
-| `--tls` |  | 使用 TLS；由客户端自动启用 |
-| `--tlscacert` | `~/.docker/ca.pem` | 信任的 CA 证书的路径 |
-| `--tlscert` | `~/.docker/cert.pem` | TLS 证书文件的路径 |
-| `--tlskey` | `~/.docker/key.pem` | TLS 密钥文件的路径 |
-| `--tlsverify` |  | 使用 TLS 并验证远程 |
-| `-v`, `--version` |  | 打印版本信息并退出 |
-
-## 选项
-
-| 选项 | 默认值 | 描述 |
-|------|--------|------|
-| `-h`, `--help` |  | 显示帮助信息 |
-
-## 父命令
+## 常用命令
 
 | 命令 | 描述 |
 |------|------|
-| [docker](../docker/) | Docker CLI 命令行接口 |
+| `docker ps` | 查看运行中的沙箱 |
+| `docker stop <name>` | 停止沙箱 |
+| `docker start <name>` | 启动沙箱 |
+| `docker rm <name>` | 删除沙箱 |
+| `docker logs <name>` | 查看沙箱日志 |
 
-## 子命令
+## 配置示例
 
-| 命令 | 描述 |
-|------|------|
-| [docker sandbox create](./create/) | 创建一个沙箱 |
-| [docker sandbox delete](./delete/) | 删除一个沙箱 |
-| [docker sandbox exec](./exec/) | 在沙箱中执行命令 |
-| [docker sandbox inspect](./inspect/) | 显示一个或多个沙箱的详细信息 |
-| [docker sandbox list](./list/) | 列出沙箱 |
-| [docker sandbox pause](./pause/) | 暂停沙箱 |
-| [docker sandbox resume](./resume/) | 恢复沙箱 |
-| [docker sandbox run](./run/) | 运行一个沙箱 |
-| [docker sandbox start](./start/) | 启动沙箱 |
-| [docker sandbox stop](./stop/) | 停止沙箱 |
-| [docker sandbox update](./update/) | 更新沙箱 |
-| [docker sandbox wait](./wait/) | 等待沙箱 |
-| [docker sandbox wait-for-ready](./wait-for-ready/) | 等待沙箱就绪 |
+### docker-compose.yml
+
+```yaml
+version: '3.8'
+services:
+  sandbox:
+    image: ubuntu:latest
+    container_name: my-sandbox
+    volumes:
+      - ./code:/workspace
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    command: tail -f /dev/null
+```
+
+## 最佳实践
+
+1. **使用非 root 用户**：在容器中创建专用用户
+2. **限制资源**：使用 `--cpus` 和 `--memory` 参数
+3. **只读挂载**：对于不需要写入的目录使用只读挂载
+4. **清理**：定期删除不再使用的沙箱
+
+## 故障排除
+
+### 问题：沙箱无法启动
+
+**解决方案**：
+```bash
+# 检查 Docker 状态
+systemctl status docker
+
+# 检查端口冲突
+netstat -tulpn | grep 8080
+```
+
+### 问题：无法访问沙箱中的文件
+
+**解决方案**：
+```bash
+# 检查挂载点
+docker inspect my-sandbox | grep Mounts -A 10
+
+# 验证权限
+ls -la /path/to/your/code
+```
+
+## 安全提示
+
+- 不要在沙箱中存储敏感信息
+- 使用网络隔离（`--network none`）
+- 定期更新基础镜像
+- 监控容器资源使用情况
+
+## 相关链接
+
+- [Docker 官方文档](https://docs.docker.com/)
+- [Docker CLI 参考](https://docs.docker.com/engine/reference/commandline/docker/)
+- [最佳实践指南](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)

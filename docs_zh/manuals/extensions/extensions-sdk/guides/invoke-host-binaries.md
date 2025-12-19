@@ -1,31 +1,31 @@
 ---
-title: 调用宿主机二进制文件
-description: 使用扩展 SDK 从前端调用宿主机上的二进制文件。
+title: 调用主机二进制文件
+description: 使用扩展 SDK 从前端添加对主机二进制文件的调用。
 keywords: Docker, extensions, sdk, build
 aliases:
  - /desktop/extensions-sdk/guides/invoke-host-binaries/
 ---
 
-在某些情况下，您的扩展可能需要从宿主机调用一些命令。例如，您可能需要调用云提供商的 CLI 来创建新资源，或调用扩展提供的工具的 CLI，甚至运行宿主机上的 shell 脚本。
+在某些情况下，您的扩展可能需要调用主机上的某些命令。例如，您可能希望调用云提供商的 CLI 来创建新资源，或调用扩展提供的工具的 CLI，甚至运行主机上的 shell 脚本。
 
-您可以通过扩展 SDK 在容器中执行 CLI 来实现这一点。但该 CLI 需要访问宿主机的文件系统，如果它在容器中运行，这既不方便也不高效。
+您可以通过使用扩展 SDK 在容器中执行 CLI 来实现这一点。但是，如果 CLI 在容器中运行，则它需要访问主机的文件系统，这既不容易也不快速。
 
-本文档介绍如何在宿主机上运行作为扩展一部分分发并部署到宿主机的可执行文件（二进制文件、shell 脚本）。由于扩展可以在多个平台上运行，这意味着您需要为所有要支持的平台提供相应的可执行文件。
+本页介绍了如何运行作为扩展的一部分并部署到主机上的可执行文件（二进制文件、shell 脚本）。由于扩展可以在多个平台上运行，这意味着您需要为所有希望支持的平台提供可执行文件。
 
-深入了解扩展的[架构](../architecture/_index.md)。
+了解更多关于扩展的[架构](../architecture/_index.md)。
 
 > [!NOTE]
 >
-> 请注意，扩展以用户权限运行，此 API 不限制在扩展元数据的 [host 部分](../architecture/metadata.md#host-section) 中列出的二进制文件（某些扩展可能在用户交互期间安装软件，并调用新安装的二进制文件，即使它们未在扩展元数据中列出）。
+> 请注意，扩展以用户访问权限运行，此 API 不限于扩展元数据中[主机部分](../architecture/metadata.md#host-section)列出的二进制文件（某些扩展可能在用户交互期间安装软件，并调用新安装的二进制文件，即使未在扩展元数据中列出）。
 
-在本示例中，CLI 是一个简单的 `Hello world` 脚本，需要带参数调用并返回字符串。
+在此示例中，CLI 是一个简单的 `Hello world` 脚本，必须使用参数调用并返回字符串。
 
-## 将可执行文件添加到扩展
+## 将可执行文件添加到扩展中
 
 {{< tabs >}}
 {{< tab name="Mac 和 Linux" >}}
 
-为 macOS 和 Linux 创建一个 `bash` 脚本，文件路径为 `binaries/unix/hello.sh`，内容如下：
+为 macOS 和 Linux 创建一个 `bash` 脚本，文件名为 `binaries/unix/hello.sh`，内容如下：
 
 ```bash
 #!/bin/sh
@@ -35,7 +35,7 @@ echo "Hello, $1!"
 {{< /tab >}}
 {{< tab name="Windows" >}}
 
-为 Windows 创建一个 `batch script`，文件路径为 `binaries/windows/hello.cmd`，内容如下：
+为 Windows 创建另一个 `批处理脚本`，文件名为 `binaries/windows/hello.cmd`，内容如下：
 
 ```bash
 @echo off
@@ -45,10 +45,10 @@ echo "Hello, %1!"
 {{< /tab >}}
 {{< /tabs >}}
 
-然后更新 `Dockerfile`，将 `binaries` 文件夹复制到扩展容器的文件系统中，并使文件可执行。
+然后更新 `Dockerfile`，将 `binaries` 文件夹复制到扩展的容器文件系统中，并使文件可执行。
 
 ```dockerfile
-# Copy the binaries into the right folder
+# 将二进制文件复制到正确的文件夹
 COPY --chmod=0755 binaries/windows/hello.cmd /windows/hello.cmd
 COPY --chmod=0755 binaries/unix/hello.sh /linux/hello.sh
 COPY --chmod=0755 binaries/unix/hello.sh /darwin/hello.sh
@@ -56,8 +56,8 @@ COPY --chmod=0755 binaries/unix/hello.sh /darwin/hello.sh
 
 ## 从 UI 调用可执行文件
 
-在您的扩展中，使用 Docker Desktop Client 对象通过 `ddClient.extension.host.cli.exec()` 函数[调用扩展提供的 shell 脚本](../dev/api/backend.md#invoke-an-extension-binary-on-the-host)。
-在本示例中，二进制文件返回一个字符串作为结果，通过 `result?.stdout` 获取，扩展视图渲染后立即执行。
+在您的扩展中，使用 Docker Desktop 客户端对象通过 `ddClient.extension.host.cli.exec()` 函数[调用扩展提供的主机上的 shell 脚本](../dev/api/backend.md#invoke-an-extension-binary-on-the-host)。
+在此示例中，二进制文件返回一个字符串作为结果，通过 `result?.stdout` 获取，一旦扩展视图被渲染。
 
 {{< tabs group="framework" >}}
 {{< tab name="React" >}}
@@ -95,7 +95,7 @@ export function App() {
 > [!IMPORTANT]
 >
 > 我们还没有 Vue 的示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Vue)
-> 并告诉我们您是否需要 Vue 示例。
+> 并告诉我们您是否需要一个 Vue 的示例。
 
 {{< /tab >}}
 {{< tab name="Angular" >}}
@@ -103,7 +103,7 @@ export function App() {
 > [!IMPORTANT]
 >
 > 我们还没有 Angular 的示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Angular)
-> 并告诉我们您是否需要 Angular 示例。
+> 并告诉我们您是否需要一个 Angular 的示例。
 
 {{< /tab >}}
 {{< tab name="Svelte" >}}
@@ -111,14 +111,14 @@ export function App() {
 > [!IMPORTANT]
 >
 > 我们还没有 Svelte 的示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Svelte)
-> 并告诉我们您是否需要 Svelte 示例。
+> 并告诉我们您是否需要一个 Svelte 的示例。
 
 {{< /tab >}}
 {{< /tabs >}}
 
 ## 配置元数据文件
 
-宿主机二进制文件必须在 `metadata.json` 文件中指定，以便 Docker Desktop 在安装扩展时将它们复制到宿主机。一旦扩展被卸载，已复制的二进制文件也会被删除。
+主机二进制文件必须在 `metadata.json` 文件中指定，以便 Docker Desktop 在安装扩展时将其复制到主机上。一旦扩展被卸载，复制的二进制文件也会被删除。
 
 ```json
 {

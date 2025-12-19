@@ -1,14 +1,14 @@
 ---
 description: 了解如何优化 VFS 驱动的使用。
-keywords: 容器, 存储, 驱动, vfs
+keywords: container, storage, driver, vfs
 title: VFS 存储驱动
 aliases:
   - /storage/storagedriver/vfs-driver/
 ---
 
-VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目录，不支持写时复制（copy-on-write）。要创建新层时，会对前一层执行“深度复制”。这导致性能较低，且比其他存储驱动占用更多磁盘空间。然而，它稳定可靠，可在任何环境中运行。它也可用作测试环境中验证其他存储后端的机制。
+VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目录，不支持写时复制（copy-on-write）。要创建新层，需要对其上一层执行“深度复制”。这会导致性能低于其他存储驱动，并且占用更多磁盘空间。不过，它很稳健、稳定，可在任何环境中运行。在测试环境中，它还可用于验证其他存储后端。
 
-## 使用 `vfs` 存储驱动配置 Docker
+## 配置 Docker 使用 `vfs` 存储驱动
 
 1. 停止 Docker。
 
@@ -16,7 +16,7 @@ VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目�
    $ sudo systemctl stop docker
    ```
 
-2.  编辑 `/etc/docker/daemon.json`。如果文件不存在，请创建它。假设文件为空，请添加以下内容。
+2. 编辑 `/etc/docker/daemon.json`。如果该文件尚不存在，请创建它。假设该文件为空，请添加以下内容：
 
     ```json
     {
@@ -33,15 +33,16 @@ VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目�
     }
     ```
 
-    如果 `daemon.json` 文件包含无效 JSON，Docker 将无法启动。
+    如果 `daemon.json` 文件包含无效的 JSON，Docker 将无法启动。
 
-3.  启动 Docker。
+3. 启动 Docker。
 
     ```console
     $ sudo systemctl start docker
     ```
 
-4.  验证守护进程正在使用 `vfs` 存储驱动。使用 `docker info` 命令并查找 `Storage Driver`。
+4. 验证守护进程是否正在使用 `vfs` 存储驱动。
+   使用 `docker info` 命令并查找 `Storage Driver`。
 
     ```console
     $ docker info
@@ -50,17 +51,17 @@ VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目�
     ...
     ```
 
-Docker 现在正在使用 `vfs` 存储驱动。Docker 已自动创建 `/var/lib/docker/vfs/` 目录，其中包含运行中容器使用的所有层。
+Docker 现在正在使用 `vfs` 存储驱动。Docker 已自动创建 `/var/lib/docker/vfs/` 目录，其中包含运行容器所使用的所有层。
 
 ## `vfs` 存储驱动的工作原理
 
-每个镜像层和可写容器层在 Docker 主机上表示为 `/var/lib/docker/` 下的子目录。联合挂载提供所有层的统一视图。目录名称不直接对应层本身的 ID。
+每个镜像层和容器可写层在 Docker 主机上都表示为 `/var/lib/docker/` 下的子目录。联合挂载提供所有层的统一视图。目录名称与层本身的 ID 并不直接对应。
 
-VFS 不支持写时复制（COW）。每次创建新层时，都会对其父层进行深度复制。这些层都位于 `/var/lib/docker/vfs/dir/` 下。
+VFS 不支持写时复制（COW）。每次创建新层时，都会对其父层执行深度复制。这些层都位于 `/var/lib/docker/vfs/dir/` 下。
 
-### 示例：镜像和容器的磁盘结构
+### 示例：磁盘上的镜像和容器结构
 
-以下 `docker pull` 命令显示 Docker 主机正在下载一个包含五层的 Docker 镜像。
+以下 `docker pull` 命令显示 Docker 主机正在下载由五层组成的 Docker 镜像。
 
 ```console
 $ docker pull ubuntu
@@ -76,7 +77,7 @@ Digest: sha256:84c334414e2bfdcae99509a6add166bbb4fa4041dc3fa6af08046a66fed3005f
 Status: Downloaded newer image for ubuntu:latest
 ```
 
-拉取后，每一层都表示为 `/var/lib/docker/vfs/dir/` 下的子目录。目录名称与 `docker pull` 命令中显示的镜像层 ID 没有关联。要查看每层在磁盘上占用的空间大小，可以使用 `du -sh` 命令，它以人类可读的格式给出大小。
+拉取后，每一层都表示为 `/var/lib/docker/vfs/dir/` 的子目录。目录名称与 `docker pull` 命令中显示的镜像层 ID 不相关。要查看每层在磁盘上占用的空间大小，可以使用 `du -sh` 命令，该命令以人类可读的格式显示大小。
 
 ```console
 $ ls -l /var/lib/docker/vfs/dir/
@@ -101,7 +102,7 @@ $ du -sh /var/lib/docker/vfs/dir/*
 104M	/var/lib/docker/vfs/dir/e92be7a4a4e3ccbb7dd87695bca1a0ea373d4f673f455491b1342b33ed91446b
 ```
 
-以上输出显示三层各占用 104M，两层各占用 125M。这些目录之间只有微小差异，但它们都消耗相同量的磁盘空间。这是使用 `vfs` 存储驱动的缺点之一。
+上述输出显示有三层各占用 104M，两层各占用 125M。这些目录之间只有细微差异，但都消耗相同的磁盘空间。这是使用 `vfs` 存储驱动的一个缺点。
 
 ## 相关信息
 

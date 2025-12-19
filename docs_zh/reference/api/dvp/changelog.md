@@ -1,14 +1,14 @@
 ---
-description: Docker Verified Publisher API 变更日志
-title: Docker Verified Publisher API 变更日志
-linkTitle: 变更日志
-keywords: docker dvp, dvp, whats new, release notes, api, changelog
+description: Docker 认证发布者 API 更新日志
+title: Docker 认证发布者 API 更新日志
+linkTitle: 更新日志
+keywords: docker dvp, dvp, 新增功能, 版本说明, api, 更新日志
 weight: 2
 toc_min: 1
 toc_max: 2
 ---
 
-在这里，您可以了解 Docker Verified Publisher API 的最新更改、新功能、错误修复和已知问题。
+您可以在这里了解 Docker 认证发布者 API 的最新变更、新增功能、错误修复以及已知问题。
 
 ---
 
@@ -16,4 +16,4 @@ toc_max: 2
 
 ### 新增
 
-- 创建变更日志
+- 创建更新日志

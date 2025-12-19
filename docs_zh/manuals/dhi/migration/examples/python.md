@@ -5,24 +5,24 @@ weight: 20
 keywords: python, migration, dhi
 ---
 
-本示例展示了如何将 Python 应用程序迁移到 Docker Hardened Images。
+本示例展示如何将 Python 应用程序迁移到 Docker Hardened Images。
 
-以下示例展示了迁移前后的 Dockerfile。每个示例包含四种变体：
+以下示例展示了迁移到 Docker Hardened Images 前后的 Dockerfile。每个示例包含四种变体：
 
-- 迁移前（Wolfi）：使用 Wolfi 发行版镜像的示例 Dockerfile，迁移前状态
-- 迁移前（DOI）：使用 Docker 官方镜像的示例 Dockerfile，迁移前状态
-- 迁移后（多阶段）：使用多阶段构建迁移至 DHI 的示例 Dockerfile（推荐用于最小化、安全的镜像）
-- 迁移后（单阶段）：使用单阶段构建迁移至 DHI 的示例 Dockerfile（更简单但镜像更大，攻击面更广）
+- 迁移前 (Wolfi)：使用 Wolfi 发行版镜像的示例 Dockerfile，迁移到 DHI 之前
+- 迁移前 (DOI)：使用 Docker Official Images 的示例 Dockerfile，迁移到 DHI 之前
+- 迁移后 (多阶段)：迁移到 DHI 后使用多阶段构建的示例 Dockerfile（推荐用于最小化、安全的镜像）
+- 迁移后 (单阶段)：迁移到 DHI 后使用单阶段构建的示例 Dockerfile（更简单，但会生成更大的镜像，攻击面更广）
 
 > [!NOTE]
 >
-> 多阶段构建适用于大多数场景。单阶段构建为简化而支持，但存在体积和安全性方面的权衡。
+> 大多数用例推荐使用多阶段构建。为简化操作也支持单阶段构建，但在镜像大小和安全性方面需要权衡。
 >
-> 在拉取 Docker Hardened Images 之前，必须先对 `dhi.io` 进行身份验证。
-> 运行 `docker login dhi.io` 进行认证。
+> 在拉取 Docker Hardened Images 之前，必须先向 `dhi.io` 进行身份验证。
+> 运行 `docker login dhi.io` 进行身份验证。
 
 {{< tabs >}}
-{{< tab name="Before (Wolfi)" >}}
+{{< tab name="迁移前 (Wolfi)" >}}
 
 ```dockerfile
 #syntax=docker/dockerfile:1
@@ -39,7 +39,7 @@ WORKDIR /app
 RUN python -m venv /app/venv
 COPY requirements.txt .
 
-# Install any additional packages if needed using apk
+# 如果需要，使用 apk 安装任何额外的包
 # RUN apk add --no-cache gcc musl-dev
 
 RUN pip install --no-cache-dir -r requirements.txt
@@ -58,7 +58,7 @@ ENTRYPOINT [ "python", "/app/app.py" ]
 ```
 
 {{< /tab >}}
-{{< tab name="Before (DOI)" >}}
+{{< tab name="迁移前 (DOI)" >}}
 
 ```dockerfile
 #syntax=docker/dockerfile:1
@@ -75,7 +75,7 @@ WORKDIR /app
 RUN python -m venv /app/venv
 COPY requirements.txt .
 
-# Install any additional packages if needed using apt
+# 如果需要，使用 apt 安装任何额外的包
 # RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir -r requirements.txt
@@ -94,12 +94,12 @@ ENTRYPOINT [ "python", "/app/app.py" ]
 ```
 
 {{< /tab >}}
-{{< tab name="After (multi-stage)" >}}
+{{< tab name="迁移后 (多阶段)" >}}
 
 ```dockerfile
 #syntax=docker/dockerfile:1
 
-# === Build stage: Install dependencies and create virtual environment ===
+# === 构建阶段：安装依赖并创建虚拟环境 ===
 FROM dhi.io/python:3.13-alpine3.21-dev AS builder
 
 ENV LANG=C.UTF-8
@@ -112,12 +112,12 @@ WORKDIR /app
 RUN python -m venv /app/venv
 COPY requirements.txt .
 
-# Install any additional packages if needed using apk
+# 如果需要，使用 apk 安装任何额外的包
 # RUN apk add --no-cache gcc musl-dev
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# === Final stage: Create minimal runtime image ===
+# === 最终阶段：创建最小运行时镜像 ===
 FROM dhi.io/python:3.13-alpine3.21
 
 WORKDIR /app
@@ -132,7 +132,7 @@ ENTRYPOINT [ "python", "/app/app.py" ]
 ```
 
 {{< /tab >}}
-{{< tab name="After (single-stage)" >}}
+{{< tab name="迁移后 (单阶段)" >}}
 
 ```dockerfile
 #syntax=docker/dockerfile:1
@@ -149,7 +149,7 @@ WORKDIR /app
 RUN python -m venv /app/venv
 COPY requirements.txt .
 
-# Install any additional packages if needed using apk
+# 如果需要，使用 apk 安装任何额外的包
 # RUN apk add --no-cache gcc musl-dev
 
 RUN pip install --no-cache-dir -r requirements.txt

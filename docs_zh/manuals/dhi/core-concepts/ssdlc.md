@@ -1,30 +1,30 @@
 ---
 title: 安全软件开发生命周期
 linktitle: SSDLC
-description: 了解 Docker Hardened Images 如何通过集成扫描、签名和调试工具来支持安全的 SDLC。
-keywords: 安全软件开发, ssdlc 容器, slsa 合规性, docker scout 集成, 安全容器调试
+description: 了解 Docker Hardened Images 如何通过与扫描、签名和调试工具集成来支持安全的 SDLC。
+keywords: 安全软件开发, ssdlc 容器, slsa 合规, docker scout 集成, 安全容器调试
 ---
 
 ## 什么是安全软件开发生命周期？
 
-安全软件开发生命周期（SSDLC）将安全实践融入软件交付的每个阶段，从设计、开发到部署和监控。它不仅仅是编写安全的代码，更是关于在整个构建和发布软件的工具、环境和工作流中嵌入安全。
+安全软件开发生命周期（SSDLC）将安全实践融入软件交付的每个阶段，从设计和开发到部署和监控。它不仅仅是编写安全代码，更在于将安全嵌入到用于构建和发布软件的工具、环境和工作流中。
 
 SSDLC 实践通常由合规框架、组织策略和供应链安全标准（如 SLSA（软件制品供应链级别）或 NIST SSDF）指导。
 
 ## 为什么 SSDLC 很重要
 
-现代应用程序依赖于快速、迭代的开发，但如果不在早期构建保护措施，快速交付往往会引入安全风险。SSDLC 有助于：
+现代应用程序依赖于快速、迭代式的开发，但如果不在早期构建保护，快速交付往往会引入安全风险。SSDLC 有助于：
 
 - 在漏洞到达生产环境之前就加以防范
-- 通过可追踪和可审计的工作流确保合规
+- 通过可追溯和可审计的工作流确保合规
 - 通过保持一致的安全标准降低运营风险
-- 在 CI/CD 流水线和云原生环境中实现安全自动化
+- 在 CI/CD 管道和云原生环境中实现安全自动化
 
-通过在软件交付的每个阶段都将安全作为首要任务，组织可以左移安全控制，降低成本和复杂性。
+通过在软件交付的每个阶段都将安全作为首要任务，组织可以左移防护并降低成本和复杂性。
 
 ## Docker 如何支持安全的 SDLC
 
-Docker 提供了工具和安全内容，使团队能够在容器生命周期中更轻松地采用 SSDLC 实践。借助 [Docker Hardened Images](../_index.md)（DHIs）、[Docker Debug](../../../reference/cli/docker/debug.md) 和 [Docker Scout](../../../manuals/scout/_index.md)，团队可以在不损失效率的情况下增强安全性。
+Docker 提供了工具和安全内容，使团队更容易在整个容器生命周期中采用 SSDLC 实践。借助 [Docker Hardened Images](../_index.md)（DHIs）、[Docker Debug](../../../reference/cli/docker/debug.md) 和 [Docker Scout](../../../manuals/scout/_index.md)，团队可以在不损失效率的情况下增强安全性。
 
 ### 规划和设计
 
@@ -38,9 +38,9 @@ Docker 提供了工具和安全内容，使团队能够在容器生命周期中�
 
 ### 开发
 
-在开发过程中，安全应该是透明且易于应用的。Docker Hardened Images 支持默认安全的开发：
+在开发过程中，安全性应该是透明且易于应用的。Docker Hardened Images 支持默认安全的开发：
 
-- Dev 变体包含用于便捷的 shell、包管理器和编译器
+- 开发变体包含 shell、包管理器和编译器以方便使用
 - 最小运行时变体减少最终镜像的攻击面
 - 多阶段构建允许您将构建时工具与运行时环境分离
 
@@ -52,16 +52,16 @@ Docker 提供了工具和安全内容，使团队能够在容器生命周期中�
 
 ### 构建和测试
 
-构建流水线是及早发现问题的理想场所。Docker Scout 与 Docker Hub 和 CLI 集成，可以：
+构建管道是早期发现问题的理想场所。Docker Scout 与 Docker Hub 和 CLI 集成以：
 
 - 使用多个漏洞数据库扫描已知的 CVE
 - 将漏洞追溯到特定层和依赖项
 - 解释已签名的 VEX 数据以抑制已知无关的问题
 - 导出 JSON 扫描报告供 CI/CD 工作流使用
 
-使用 Docker Hardened Images 的构建流水线受益于：
+使用 Docker Hardened Images 的构建管道受益于：
 
-- 可重现、已签名的镜像
+- 可重现的、已签名的镜像
 - 最小构建面以减少暴露
 - 符合 SLSA Build Level 3 标准
 
@@ -69,8 +69,8 @@ Docker 提供了工具和安全内容，使团队能够在容器生命周期中�
 
 在大规模发布软件时，安全自动化至关重要。Docker 通过以下方式支持此阶段：
 
-- 在部署前验证签名和来源
-- 使用 Docker Scout 强制执行策略门禁
+- 在部署前进行签名验证和来源验证
+- 使用 Docker Scout 实施策略强制门控
 - 使用 Docker Debug 进行安全、非侵入式的容器检查
 
 DHIs 附带部署期间自动验证镜像所需的元数据和签名。
@@ -82,8 +82,8 @@ DHIs 附带部署期间自动验证镜像所需的元数据和签名。
 - 通过 Docker Hub 持续监控镜像漏洞
 - 使用 Docker Scout 获取 CVE 修复指导和补丁可见性
 - 接收使用重建和重新签名的安全层更新的 DHI 镜像
-- 使用 Docker Debug 调试运行中的工作负载，而无需修改镜像
+- 使用 Docker Debug 调试正在运行的工作负载，而无需修改镜像
 
 ## 总结
 
-Docker 通过结合安全内容（DHIs）和开发者友好的工具（Docker Scout 和 Docker Debug）来帮助团队在整个 SSDLC 中嵌入安全。这些集成促进了安全实践，而不会引入摩擦，使组织更容易在整个软件交付生命周期中采用合规和供应链安全。
+Docker 通过将安全内容（DHIs）与开发者友好的工具（Docker Scout 和 Docker Debug）结合，帮助团队在整个 SSDLC 中嵌入安全性。这些集成促进安全实践，同时不引入摩擦，使组织更容易在软件交付生命周期中采用合规和供应链安全。

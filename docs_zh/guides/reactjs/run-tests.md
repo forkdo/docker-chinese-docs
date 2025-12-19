@@ -3,22 +3,22 @@ title: 在容器中运行 React.js 测试
 linkTitle: 运行你的测试
 weight: 40
 keywords: react.js, react, test, vitest
-description: 了解如何在容器中运行你的 React.js 测试。
+description: 了解如何在容器中运行 React.js 测试。
 
 ---
 
 ## 前置条件
 
-完成本指南前面的所有章节，从 [容器化 React.js 应用](containerize.md) 开始。
+完成本指南的所有前面章节，从 [容器化 React.js 应用](containerize.md) 开始。
 
 ## 概述
 
 测试是开发流程中的关键环节。在本节中，你将学习如何：
 
-- 在 Docker 容器中使用 Vitest 运行单元测试。
-- 使用 Docker Compose 在隔离且可复现的环境中运行测试。
+- 在 Docker 容器内使用 Vitest 运行单元测试。
+- 使用 Docker Compose 在隔离、可复现的环境中运行测试。
 
-你将使用 [Vitest](https://vitest.dev) — 一个为 Vite 设计的超快测试运行器，配合 [Testing Library](https://testing-library.com/) 进行断言。
+你将使用 [Vitest](https://vitest.dev) —— 一个专为 Vite 设计的极速测试运行器，结合 [Testing Library](https://testing-library.com/) 进行断言。
 
 ---
 
@@ -52,7 +52,7 @@ $ npm install --save-dev vitest @testing-library/react @testing-library/jest-dom
 
 ### 步骤 2：配置 Vitest
 
-在项目根目录的 `vitest.config.ts` 文件中添加以下配置：
+在项目根目录更新 `vitest.config.ts` 文件，添加以下配置：
 
 ```ts {hl_lines="14-18",linenos=true}
 /// <reference types="vitest" />
@@ -77,12 +77,12 @@ export default defineConfig({
 ```
 
 > [!NOTE]
-> `vitest.config.ts` 中的 `test` 选项对于在 Docker 中进行可靠的测试至关重要：
+> `vitest.config.ts` 中的 `test` 选项对于在 Docker 内可靠测试至关重要：
 > - `environment: "jsdom"` 为渲染和 DOM 交互模拟浏览器环境。
 > - `setupFiles: "./src/setupTests.ts"` 在每个测试文件之前加载全局配置或模拟（可选但推荐）。
 > - `globals: true` 启用全局测试函数（如 `describe`、`it` 和 `expect`），无需导入。
 >
-> 更多详情，请参考官方 [Vitest 配置文档](https://vitest.dev/config/)。
+> 更多详情，请参阅官方 [Vitest 配置文档](https://vitest.dev/config/)。
 
 ### 步骤 3：更新 compose.yaml
 
@@ -134,7 +134,7 @@ services:
 
 ### 步骤 4：运行测试
 
-从项目根目录运行以下命令，在容器中执行测试套件：
+从项目根目录运行以下命令，在容器内执行测试套件：
 
 ```console
 $ docker compose run --rm react-test
@@ -143,7 +143,7 @@ $ docker compose run --rm react-test
 此命令将：
 - 启动 `compose.yaml` 文件中定义的 `react-test` 服务。
 - 使用与开发相同的环境执行 `npm run test` 脚本。
-- 在测试完成后自动删除容器（使用 [`docker compose run --rm`](/engine/reference/commandline/compose_run) 命令）。
+- 测试完成后自动删除容器（使用 [`docker compose run --rm`](/engine/reference/commandline/compose_run) 命令）。
 
 > [!NOTE]
 > 有关 Compose 命令的更多信息，请参阅 [Compose CLI 参考](/reference/cli/docker/compose/_index.md)。
@@ -152,14 +152,14 @@ $ docker compose run --rm react-test
 
 ## 总结
 
-在本节中，你学习了如何在 Docker 容器中使用 Vitest 和 Docker Compose 为你的 React.js 应用运行单元测试。
+在本节中，你学习了如何在 Docker 容器中使用 Vitest 和 Docker Compose 运行 React.js 应用的单元测试。
 
-你的成果包括：
+你的收获：
 - 安装并配置 Vitest 和 React Testing Library 以测试 React 组件。
 - 在 `compose.yaml` 中创建 `react-test` 服务以隔离测试执行。
-- 复用开发阶段的 `Dockerfile.dev`，确保开发和测试环境的一致性。
-- 使用 `docker compose run --rm react-test` 在容器中运行测试。
-- 确保跨环境的测试可靠且可重复，不依赖本地机器配置。
+- 复用开发用的 `Dockerfile.dev`，确保开发和测试环境的一致性。
+- 使用 `docker compose run --rm react-test` 在容器内运行测试。
+- 确保跨环境的测试可靠性和可重复性，不依赖本地机器配置。
 
 ---
 
@@ -167,7 +167,7 @@ $ docker compose run --rm react-test
 
 探索官方参考和最佳实践，优化你的 Docker 测试工作流：
 
-- [Dockerfile 参考](/reference/dockerfile/) – 了解所有 Dockerfile 指令和语法。
+- [Dockerfile 参考](/reference/dockerfile/) – 理解所有 Dockerfile 指令和语法。
 - [编写 Dockerfile 的最佳实践](/develop/develop-images/dockerfile_best-practices/) – 编写高效、可维护且安全的 Dockerfile。
 - [Compose 文件参考](/compose/compose-file/) – 学习 `compose.yaml` 中配置服务的完整语法和选项。
 - [`docker compose run` CLI 参考](/reference/cli/docker/compose/run/) – 在服务容器中运行一次性命令。

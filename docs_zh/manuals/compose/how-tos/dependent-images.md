@@ -1,5 +1,5 @@
 ---
-description: 为具有共享定义的服务构建镜像
+description: 为共享定义的服务构建镜像
 keywords: compose, build
 title: 构建依赖镜像
 weight: 50
@@ -7,13 +7,13 @@ weight: 50
 
 {{< summary-bar feature_name="Compose dependent images" >}}
 
-为了减少推送/拉取时间和镜像体积，Compose 应用的常见做法是让服务尽可能共享基础层。你通常会为所有服务选择相同的操作系统基础镜像。但你也可以更进一步，当你的镜像共享相同的系统包时，共享镜像层。需要解决的挑战是如何避免在所有服务中重复完全相同的 Dockerfile 指令。
+为了减少推送/拉取时间以及镜像体积，Compose 应用程序的一个常见实践是让服务尽可能共享基础层。通常，你会为所有服务选择相同的操作系统基础镜像。但更进一步，当镜像共享相同的系统包时，还可以共享镜像层。接下来需要解决的挑战是避免在所有服务中重复编写完全相同的 Dockerfile 指令。
 
-为便于说明，本页面假设你希望所有服务都使用 `alpine` 基础镜像构建，并安装系统包 `openssl`。
+为了便于说明，本页假设你希望所有服务都基于 `alpine` 基础镜像构建，并安装系统包 `openssl`。
 
 ## 多阶段 Dockerfile
 
-推荐的方法是将共享声明分组到单个 Dockerfile 中，并使用多阶段功能，使服务镜像从该共享声明构建。
+推荐的方法是将共享声明分组到单个 Dockerfile 中，并使用多阶段特性，以便服务镜像基于此共享声明进行构建。
 
 Dockerfile：
 
@@ -22,11 +22,11 @@ FROM alpine as base
 RUN /bin/sh -c apk add --update --no-cache openssl
 
 FROM base as service_a
-# build service a
+# 构建服务 a
 ...
 
 FROM base as service_b
-# build service b
+# 构建服务 b
 ...
 ```
 
@@ -44,7 +44,7 @@ services:
 
 ## 使用另一个服务的镜像作为基础镜像
 
-一种流行的模式是重用服务镜像作为另一个服务的基础镜像。由于 Compose 不解析 Dockerfile，它无法自动检测服务之间的这种依赖关系以正确排序构建执行。
+一种常见的模式是在一个服务中复用另一个服务的镜像作为基础镜像。由于 Compose 不会解析 Dockerfile，因此它无法自动检测服务之间的这种依赖关系，从而无法正确排序构建执行。
 
 a.Dockerfile：
 
@@ -57,7 +57,7 @@ b.Dockerfile：
 
 ```dockerfile
 FROM service_a
-# build service b
+# 构建服务 b
 ```
 
 Compose 文件：
@@ -74,7 +74,7 @@ services:
        dockerfile: b.Dockerfile
 ```
 
-传统的 Docker Compose v1 使用顺序构建镜像，这使得这种模式可以开箱即用。Compose v2 使用 BuildKit 优化构建并在并行中构建镜像，需要显式声明。
+传统的 Docker Compose v1 会顺序构建镜像，这使得该模式可以开箱即用。Compose v2 使用 BuildKit 优化构建，并并行构建镜像，因此需要显式声明。
 
 推荐的方法是将依赖的基础镜像声明为额外的构建上下文：
 
@@ -91,20 +91,20 @@ services:
      build:
        dockerfile: b.Dockerfile
        additional_contexts:
-         # `FROM service_a` 将被解析为对服务 "a" 的依赖，需要先构建
+         # `FROM service_a` 将被解析为对服务 "a" 的依赖，该服务必须首先构建
          service_a: "service:a"
 ```
 
-使用 `additional_contexts` 属性，你可以引用由另一个服务构建的镜像，而无需显式命名：
+使用 `additional_contexts` 属性，你可以引用另一个服务构建的镜像，而无需显式命名：
 
 b.Dockerfile：
 
 ```dockerfile
 
 FROM base_image  
-# `base_image` 不解析为实际镜像。这用于指向命名的额外上下文
+# `base_image` 不会解析为实际的镜像。这用于指向一个命名的附加上下文
 
-# build service b
+# 构建服务 b
 ```
 
 Compose 文件：
@@ -114,12 +114,12 @@ services:
   a:
      build: 
        dockerfile: a.Dockerfile
-       # built image will be tagged <project_name>_a
+       # 构建的镜像将被标记为 <project_name>_a
   b:
      build:
        dockerfile: b.Dockerfile
        additional_contexts:
-         # `FROM base_image` 将被解析为对服务 "a" 的依赖，需要先构建
+         # `FROM base_image` 将被解析为对服务 "a" 的依赖，该服务必须首先构建
          base_image: "service:a"
 ```
 
@@ -139,7 +139,7 @@ $ COMPOSE_BAKE=true docker compose build
  ✔ service_a  Built    
 ```
 
-Bake 也可以通过编辑 `$HOME/.docker/config.json` 配置文件设置为默认构建器：
+也可以通过编辑 `$HOME/.docker/config.json` 配置文件将 Bake 选为默认构建器：
 ```json
 {
   ...
@@ -152,7 +152,7 @@ Bake 也可以通过编辑 `$HOME/.docker/config.json` 配置文件设置为默�
 }
 ```
 
-## 额外资源
+## 其他资源
 
 - [Docker Compose 构建参考](/reference/cli/docker/compose/build.md)
 - [了解多阶段 Dockerfile](/manuals/build/building/multi-stage.md)

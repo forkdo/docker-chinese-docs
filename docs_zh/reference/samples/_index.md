@@ -1,7 +1,7 @@
 ---
 linkTitle: Samples
 title: 示例概览
-description: 通过学习官方 Docker 示例，了解如何将不同类型的服务容器化。
+description: 通过学习官方 Docker 示例，了解如何容器化不同类型的服务。
 cascade:
   layout: samples
   type: samples
@@ -14,7 +14,7 @@ aliases:
 - /samples/
 ---
 
-通过学习官方 Docker 示例，了解如何将不同类型的服务容器化。
+通过学习官方 Docker 示例，了解如何容器化不同类型的服务。
 
 ## 数据库
 

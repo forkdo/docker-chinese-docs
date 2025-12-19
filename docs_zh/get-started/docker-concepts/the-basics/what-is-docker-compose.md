@@ -10,32 +10,32 @@ aliases:
 
 {{< youtube-embed xhcUIK4fGtY >}}
 
-## 说明
+## 解释
 
-如果你一直在跟进前面的指南，那么你一直在使用单容器应用程序。但现在你想要做一些更复杂的事情——运行数据库、消息队列、缓存，或者其他各种服务。你会把所有东西都安装在一个容器里吗？还是运行多个容器？如果你运行多个容器，那它们之间如何连接？
+如果您一直在遵循之前的指南，那么您一直在处理单容器应用程序。但是，现在您想要做一些更复杂的事情——运行数据库、消息队列、缓存或各种其他服务。您是将所有内容都安装在一个容器中，还是运行多个容器？如果运行多个容器，如何将它们全部连接在一起？
 
-容器的一个最佳实践是：每个容器应该只做一件事，并且把它做好。虽然这个规则有例外，但要避免让一个容器做多件事的倾向。
+容器的一个最佳实践是，每个容器应该只做一件事并且做好。虽然此规则有例外，但应避免让一个容器做多件事的倾向。
 
-你可以使用多个 `docker run` 命令来启动多个容器。但很快你就会意识到，你需要管理网络、所有连接容器到网络所需的标志，以及更多内容。而且完成之后，清理工作也会更复杂一些。
+您可以使用多个 `docker run` 命令来启动多个容器。但是，您很快就会意识到需要管理网络、将容器连接到这些网络所需的所有标志等等。而且当您完成时，清理工作会稍微复杂一些。
 
-使用 Docker Compose，你可以将所有容器及其配置定义在一个 YAML 文件中。如果你将此文件包含在代码仓库中，那么任何克隆你仓库的人都可以通过一个命令快速启动并运行。
+使用 Docker Compose，您可以在单个 YAML 文件中定义所有容器及其配置。如果将此文件包含在您的代码仓库中，任何克隆您的仓库的人都可以通过单个命令启动并运行。
 
-重要的是要理解，Compose 是一个声明式工具——你只需定义，然后执行。你并不总是需要从头开始重建所有内容。如果你做了更改，再次运行 `docker compose up`，Compose 会智能地协调你文件中的更改并应用它们。
+重要的是要理解 Compose 是一个声明式工具——您只需定义它然后继续。您并不总是需要从头开始重新创建所有内容。如果您进行了更改，再次运行 `docker compose up`，Compose 将协调文件中的更改并智能地应用它们。
 
 > **Dockerfile 与 Compose 文件**
 >
-> Dockerfile 提供构建容器镜像的指令，而 Compose 文件定义你运行中的容器。通常，Compose 文件会引用一个 Dockerfile 来为特定服务构建镜像。
+> Dockerfile 提供了构建容器镜像的指令，而 Compose 文件定义了您正在运行的容器。通常，Compose 文件会引用 Dockerfile 来构建特定服务要使用的镜像。
 
 ## 动手尝试
 
-在这个实践中，你将学习如何使用 Docker Compose 运行一个多容器应用程序。你将使用一个用 Node.js 构建的待办事项列表应用，并使用 MySQL 作为数据库服务器。
+在本实践中，您将学习如何使用 Docker Compose 运行多容器应用程序。您将使用一个简单的待办事项列表应用程序，该应用程序使用 Node.js 构建，并使用 MySQL 作为数据库服务器。
 
 ### 启动应用程序
 
-按照以下说明在你的系统上运行待办事项列表应用。
+按照说明在您的系统上运行待办事项列表应用程序。
 
 1. [下载并安装](https://www.docker.com/products/docker-desktop/) Docker Desktop。
-2. 打开终端，[克隆这个示例应用](https://github.com/dockersamples/todo-list-app)。
+2. 打开终端并[克隆此示例应用程序](https://github.com/dockersamples/todo-list-app)。
 
     ```console
     git clone https://github.com/dockersamples/todo-list-app 
@@ -47,7 +47,7 @@ aliases:
     cd todo-list-app
     ```
 
-    在此目录中，你会找到一个名为 `compose.yaml` 的文件。这个 YAML 文件就是所有魔法发生的地方！它定义了构成你应用程序的所有服务及其配置。每个服务都指定了其镜像、端口、卷、网络，以及其功能所需的任何其他设置。花点时间探索这个 YAML 文件，熟悉其结构。
+    在此目录中，您会找到一个名为 `compose.yaml` 的文件。这个 YAML 文件就是所有神奇之处发生的地方！它定义了构成您的应用程序的所有服务及其配置。每个服务都指定了其镜像、端口、卷、网络以及其功能所需的任何其他设置。花些时间探索 YAML 文件并熟悉其结构。
 
 4. 使用 [`docker compose up`](/reference/cli/docker/compose/up/) 命令启动应用程序：
 
@@ -55,7 +55,7 @@ aliases:
     docker compose up -d --build
     ```
 
-    当你运行此命令时，你应该会看到类似以下的输出：
+    运行此命令时，您应该会看到类似以下的输出：
 
     ```console
     [+] Running 5/5
@@ -71,25 +71,24 @@ aliases:
       ✔ Container todo-list-app-mysql-1         Started         0.3s
     ```
 
-    这里发生了许多事情！有几点值得注意：
+    这里发生了很多事情！有几件事需要指出：
 
-    - 两个容器镜像从 Docker Hub 下载——node 和 MySQL
-    - 为你的应用程序创建了一个网络
-    - 创建了一个卷以在容器重启之间持久化数据库文件
-    - 启动了两个容器及其所有必要配置
+    - 从 Docker Hub 下载了两个容器镜像——node 和 MySQL
+    - 为您的应用程序创建了一个网络
+    - 创建了一个卷，用于在容器重启之间持久化数据库文件
+    - 启动了两个容器，所有必要的配置都已就绪
 
-    如果这让你感到不知所措，别担心！你会适应的！
+    如果感觉有点不知所措，别担心！您会掌握的！
 
-5. 现在一切已启动并运行，你可以在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看网站。注意，应用程序可能需要 10-15 秒才能完全启动。如果页面没有立即加载，请稍等片刻并刷新。随意添加待办事项、标记完成并删除它们。
+5. 现在一切启动并运行后，您可以在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看站点。请注意，应用程序可能需要 10-15 秒才能完全启动。如果页面没有立即加载，请稍等片刻并刷新。您可以随意向列表中添加项目、勾选它们以及删除它们。
 
-    ![A screenshot of a webpage showing the todo-list application running on port 3000](images/todo-list-app.webp?border=true&w=950&h=400)
+    ![显示在端口 3000 上运行的待办事项列表应用程序的网页截图](images/todo-list-app.webp?border=true&w=950&h=400)
 
-6. 如果你查看 Docker Desktop GUI，你可以看到容器并深入了解其配置。
+6. 如果查看 Docker Desktop GUI，您可以看到容器并深入了解其配置。
 
-    ![A screenshot of Docker Desktop dashboard showing the list of containers running todo-list app](images/todo-list-containers.webp?border=true&w=950&h=400)
+    ![显示运行待办事项列表应用程序的容器列表的 Docker Desktop 仪表板截图](images/todo-list-containers.webp?border=true&w=950&h=400)
 
-
-### 拆除应用
+### 拆除
 
 由于此应用程序是使用 Docker Compose 启动的，因此在完成后很容易将其全部拆除。
 
@@ -99,7 +98,7 @@ aliases:
     docker compose down
     ```
 
-    你会看到类似以下的输出：
+    您将看到类似以下的输出：
 
     ```console
     [+] Running 3/3
@@ -110,9 +109,9 @@ aliases:
 
     > **卷持久化**
     >
-    > 默认情况下，当你拆除 Compose 栈时，卷 _不会_ 自动删除。其想法是，如果你再次启动栈，你可能需要这些数据。
+    > 默认情况下，当您拆除 Compose 堆栈时，卷_不会_自动删除。这样做的想法是，如果您再次启动堆栈，可能需要恢复数据。
     >
-    > 如果你确实想删除卷，可以在运行 `docker compose down` 命令时添加 `--volumes` 标志：
+    > 如果您确实想删除卷，请在运行 `docker compose down` 命令时添加 `--volumes` 标志：
     >
     > ```console
     > docker compose down --volumes
@@ -120,22 +119,20 @@ aliases:
     > ✔ Volume todo-list-app_todo-mysql-data  Removed
     > ```
 
-2. 或者，你可以使用 Docker Desktop GUI 通过选择应用程序栈并点击 **删除** 按钮来删除容器。
+2. 或者，您可以使用 Docker Desktop GUI 通过选择应用程序堆栈并选择**删除**按钮来删除容器。
 
-    ![A screenshot of the Docker Desktop GUI showing the containers view with an arrow pointing to the "Delete" button](images/todo-list-delete.webp?w=930&h=400)
+    ![Docker Desktop GUI 的截图，显示容器视图，箭头指向“删除”按钮](images/todo-list-delete.webp?w=930&h=400)
 
-    > **使用 GUI 管理 Compose 栈**
+    > **对 Compose 堆栈使用 GUI**
     >
-    > 请注意，如果你在 GUI 中删除 Compose 应用的容器，它只会删除容器。如果你想删除，你必须手动删除网络和卷。
+    > 请注意，如果在 GUI 中删除 Compose 应用程序的容器，则只会删除容器。如果您想删除网络和卷，则必须手动删除它们。
 
-在这个演练中，你学习了如何使用 Docker Compose 启动和停止一个多容器应用程序。
+在本演练中，您学习了如何使用 Docker Compose 启动和停止多容器应用程序。
 
+## 其他资源
 
-## 额外资源
-
-本页面是对 Compose 的简要介绍。在以下资源中，你可以更深入地了解 Compose 以及如何编写 Compose 文件。
-
+本页是对 Compose 的简要介绍。在以下资源中，您可以更深入地了解 Compose 以及如何编写 Compose 文件。
 
 * [Docker Compose 概述](/compose/)
 * [Docker Compose CLI 概述](/compose/reference/)
-* [Compose 如何工作](/compose/intro/compose-application-model/)
+* [Compose 的工作原理](/compose/intro/compose-application-model/)

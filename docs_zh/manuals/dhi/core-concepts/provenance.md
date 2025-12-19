@@ -1,61 +1,61 @@
 ---
-title: 镜像来源
-description: 了解构建来源元数据如何帮助追踪 Docker Hardened 镜像的起源，并支持符合 SLSA 标准。
-keywords: 镜像来源, 容器构建可追溯性, slsa 合规性, 已签名容器镜像, 软件供应链信任
+title: 镜像溯源
+description: 了解构建溯源元数据如何帮助追踪 Docker Hardened Images 的来源，并支持符合 SLSA 规范。
+keywords: image provenance, container build traceability, slsa compliance, signed container image, software supply chain trust
 ---
 
-## 什么是镜像来源？
+## 什么是镜像溯源？
 
-镜像来源是指追踪容器镜像起源、作者和完整性的元数据。它回答了以下关键问题：
+镜像溯源是指用于追踪容器镜像来源、作者身份和完整性的元数据。它可以回答一些关键问题，例如：
 
 - 此镜像来自哪里？
-- 谁构建了它？
+- 它是由谁构建的？
 - 它是否被篡改过？
 
-来源信息建立了责任链，帮助你验证所使用的镜像确实来自可信且可验证的构建过程。
+溯源建立了一个监管链，帮助您验证您正在使用的镜像是可信且可验证的构建过程的结果。
 
-## 为什么镜像来源很重要
+## 为什么镜像溯源很重要
 
-来源信息是保障软件供应链安全的基础。没有它，你可能面临以下风险：
+溯源是保障软件供应链安全的基础。没有它，您将面临以下风险：
 
 - 运行未经验证或恶意的镜像
-- 无法满足内部或监管合规要求
-- 失去对生成容器的组件和工作流的可见性
+- 无法满足内部或法规合规性要求
+- 对生成容器的组件和工作流失去可见性
 
-有了可靠的来源信息，你将获得：
+拥有可靠的溯源，您可以获得：
 
-- 信任：确认镜像是真实且未被更改的。
+- 信任：确保您的镜像是真实且未经更改的。
 - 可追溯性：了解完整的构建过程和源输入。
 - 可审计性：提供合规性和构建完整性的可验证证据。
 
-来源信息还支持自动策略执行，是 SLSA（软件制品供应链级别）等框架的关键要求。
+溯源还支持自动化策略执行，并且是 SLSA (Supply-chain Levels for Software Artifacts) 等框架的一项关键要求。
 
-## Docker Hardened 镜像如何支持来源信息
+## Docker Hardened Images 如何支持溯源
 
-Docker Hardened 镜像（DHI）内置了来源信息，帮助你采用默认安全实践并满足供应链安全标准。
+Docker Hardened Images (DHIs) 在设计时就内置了溯源功能，以帮助您采用默认安全的实践，并满足供应链安全标准。
 
-### 证明（Attestations）
+### 证明
 
-DHI 包含 [证明](./attestations.md)——描述镜像构建方式、时间和地点的机器可读元数据。这些证明使用行业标准（如 [in-toto](https://in-toto.io/)）生成，并符合 [SLSA 来源](https://slsa.dev/spec/v1.0/provenance/) 规范。
+DHI 包含 [证明](./attestations.md)——一种机器可读的元数据，用于描述镜像的构建方式、时间和地点。这些证明使用 [in-toto](https://in-toto.io/) 等行业标准生成，并符合 [SLSA provenance](https://slsa.dev/spec/v1.0/provenance/) 规范。
 
-证明允许你：
+证明允许您：
 
-- 验证构建是否遵循了预期步骤
-- 确认输入和环境符合策略
-- 追踪跨系统和阶段的构建过程
+- 验证构建过程是否遵循了预期的步骤
+- 确认输入和环境满足策略要求
+- 跨系统和阶段追踪构建过程
 
 ### 代码签名
 
-每个 Docker Hardened 镜像都经过加密 [签名](./signatures.md)，并与摘要一起存储在注册表中。这些签名是真实性的可验证证明，与 `cosign`、Docker Scout 和 Kubernetes 准入控制器等工具兼容。
+每个 Docker Hardened Image 都经过加密 [签名](./signatures.md)，并与摘要一起存储在镜像仓库中。这些签名是真实性的可验证证明，并与 cosign、Docker Scout 和 Kubernetes 准入控制器等工具兼容。
 
-通过镜像签名，你可以：
+通过镜像签名，您可以：
 
 - 确认镜像由 Docker 发布
-- 检测镜像是否被修改或重新发布
+- 检测镜像是否已被修改或重新发布
 - 在 CI/CD 或生产部署中强制执行签名验证
 
-## 附加资源
+## 其他资源
 
-- [来源证明](/build/metadata/attestations/slsa-provenance/)
+- [溯源证明](/build/metadata/attestations/slsa-provenance/)
 - [镜像签名](./signatures.md)
-- [证明概述](./attestations.md)
+- [证明概览](./attestations.md)

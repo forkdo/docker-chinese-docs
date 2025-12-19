@@ -10,20 +10,20 @@ aliases:
 - /desktop/install/linux/rhel/
 ---
 
-> **Docker Desktop 使用条款**
+> **Docker Desktop 条款**
 >
-> 大型企业（超过 250 名员工或年收入超过 1000 万美元）商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing/)。
+> 在大型企业（超过 250 名员工或年收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing/)。
 
-本页面包含如何在 Red Hat Enterprise Linux (RHEL) 发行版上成功安装、启动和升级 Docker Desktop 的信息。
+本页包含有关如何在 Red Hat Enterprise Linux (RHEL) 发行版上安装、启动和升级 Docker Desktop 的信息。
 
-## 前置条件
+## 先决条件
 
 要成功安装 Docker Desktop，您必须：
 
 - 满足[通用系统要求](_index.md#general-system-requirements)。
-- 拥有 64 位版本的 RHEL 8 或 RHEL 9。
+- 拥有 RHEL 8 或 RHEL 9 的 64 位版本。
 
-- 如果 `pass` 未安装，或无法安装，则必须启用 [CodeReady Linux Builder (CRB) 仓库](https://access.redhat.com/articles/4348511) 和 [企业版 Linux 额外软件包 (EPEL)](https://docs.fedoraproject.org/en-US/epel/)。
+- 如果 `pass` 未安装，或者无法安装，则必须启用 [CodeReady Linux Builder (CRB) 仓库](https://access.redhat.com/articles/4348511) 和 [Extra Packages for Enterprise Linux (EPEL)](https://docs.fedoraproject.org/en-US/epel/)。
 
    {{< tabs group="os_version" >}}
    {{< tab name="RHEL 9" >}}
@@ -49,7 +49,7 @@ aliases:
    {{< tabs group="os_version" >}}
    {{< tab name="RHEL 9" >}}
    ```console
-   $ # enable EPEL as described above
+   $ # 如上所述启用 EPEL
    $ sudo dnf install gnome-shell-extension-appindicator
    $ sudo gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
    ```
@@ -57,7 +57,7 @@ aliases:
    {{< /tab >}}
    {{< tab name="RHEL 8" >}}
    ```console
-   $ # enable EPEL as described above
+   $ # 如上所述启用 EPEL
    $ sudo dnf install gnome-shell-extension-appindicator
    $ sudo dnf install gnome-shell-extension-desktop-icons
    $ sudo gnome-shell-extension-tool -e appindicatorsupport@rgcjonas.gmail.com
@@ -66,7 +66,7 @@ aliases:
    {{< /tab >}}
    {{< /tabs >}}
 
-- 如果您未使用 GNOME，则必须安装 `gnome-terminal` 以启用 Docker Desktop 的终端访问：
+- 如果您不使用 GNOME，则必须安装 `gnome-terminal` 以启用从 Docker Desktop 访问终端：
 
    ```console
    $ sudo dnf install gnome-terminal
@@ -74,9 +74,9 @@ aliases:
 
 ## 安装 Docker Desktop
 
-在 RHEL 上安装 Docker Desktop：
+要在 RHEL 上安装 Docker Desktop：
 
-1. 设置 Docker 的软件包仓库，如下所示：
+1. 按如下方式设置 Docker 的软件包仓库：
 
    ```console
    $ sudo dnf config-manager --add-repo {{% param "download-url-base" %}}/docker-ce.repo
@@ -90,15 +90,15 @@ aliases:
    $ sudo dnf install ./docker-desktop-x86_64-rhel.rpm
    ```
 
-RPM 软件包包含一个 post-install 脚本，可自动完成其他设置步骤。
+RPM 软件包包含一个安装后脚本，该脚本会自动完成其他设置步骤。
 
-post-install 脚本会：
+安装后脚本：
 
-- 为 Docker Desktop 二进制文件设置能力，以映射特权端口并设置资源限制。
-- 为 Kubernetes 添加 DNS 名称到 `/etc/hosts`。
-- 创建从 `/usr/local/bin/com.docker.cli` 到 `/usr/bin/docker` 的符号链接。
-  这是因为经典 Docker CLI 安装在 `/usr/bin/docker`。Docker Desktop 安装程序还会在 `/usr/local/bin/com.docker.cli` 安装一个 Docker CLI 二进制文件，该文件包含云集成功能，本质上是 Compose CLI 的包装器。符号链接确保包装器可以访问经典 Docker CLI。
-- 创建从 `/usr/libexec/qemu-kvm` 到 `/usr/local/bin/qemu-system-x86_64` 的符号链接。
+- 在 Docker Desktop 二进制文件上设置 capabilities，以映射特权端口和设置资源限制。
+- 为 Kubernetes 添加一个 DNS 名称到 `/etc/hosts`。
+- 创建一个从 `/usr/local/bin/com.docker.cli` 到 `/usr/bin/docker` 的符号链接。
+  这是因为经典 Docker CLI 安装在 `/usr/bin/docker`。Docker Desktop 安装程序还会安装一个包含云集成功能的 Docker CLI 二进制文件，它本质上是 Compose CLI 的包装器，位于 `/usr/local/bin/com.docker.cli`。该符号链接确保包装器可以访问经典 Docker CLI。
+- 创建一个从 `/usr/libexec/qemu-kvm` 到 `/usr/local/bin/qemu-system-x86_64` 的符号链接。
 
 ## 启动 Docker Desktop
 
@@ -106,7 +106,7 @@ post-install 脚本会：
 
 > [!TIP]
 >
-> 要将 Red Hat 订阅数据附加到容器，请参阅 [Red Hat 验证解决方案](https://access.redhat.com/solutions/5870841)。
+> 要将 Red Hat 订阅数据附加到容器，请参阅 [Red Hat 验证的解决方案](https://access.redhat.com/solutions/5870841)。
 >
 > 例如：
 > ```console
@@ -115,8 +115,8 @@ post-install 脚本会：
 
 ## 升级 Docker Desktop
 
-Docker Desktop 发布新版本后，Docker UI 会显示通知。
-您需要先卸载旧版本，然后每次升级 Docker Desktop 时下载新软件包。运行：
+一旦发布了 Docker Desktop 的新版本，Docker UI 会显示通知。
+每次要升级 Docker Desktop 时，您需要先卸载旧版本，然后下载新软件包。运行：
 
 ```console
 $ sudo dnf remove docker-desktop
@@ -125,10 +125,10 @@ $ sudo dnf install ./docker-desktop-<arch>-rhel.rpm
 
 ## 后续步骤
 
-- 查看 [Docker 的订阅计划](https://www.docker.com/pricing/)，了解 Docker 可以为您提供什么。
-- 查看 [Docker 工作坊](/get-started/workshop/_index.md)，学习如何构建镜像并将其作为容器化应用程序运行。
+- 查看 [Docker 的订阅](https://www.docker.com/pricing/)，了解 Docker 可以为您提供什么。
+- 浏览 [Docker 研讨会](/get-started/workshop/_index.md)，了解如何构建镜像并将其作为容器化应用程序运行。
 - [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其所有功能。
-- [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、变通方案、如何运行和提交诊断信息，以及如何提交问题。
-- [常见问题](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供了常见问题的答案。
-- [发布说明](/manuals/desktop/release-notes.md) 列出了与 Docker Desktop 发布相关的组件更新、新功能和改进。
-- [备份和还原数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供了与 Docker 相关的数据备份和还原说明。
+- [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、解决方法、如何运行和提交诊断信息以及提交问题。
+- [常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供了常见问题的解答。
+- [发行说明](/manuals/desktop/release-notes.md) 列出了与 Docker Desktop 版本相关的组件更新、新功能和改进。
+- [备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供了有关备份和恢复 Docker 相关数据的说明。

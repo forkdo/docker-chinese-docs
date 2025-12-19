@@ -1,3 +1,4 @@
+```markdown
 ---
 datafolder: offload-cli
 datafile: docker_offload_diagnose
@@ -6,3 +7,4 @@ layout: cli
 ---
 
 {{< summary-bar feature_name="Docker Offload" >}}
+```

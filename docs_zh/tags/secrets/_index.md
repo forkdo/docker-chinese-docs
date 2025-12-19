@@ -1,8 +1,9 @@
 ---
-title: 密钥
-description: 安全地在容器中使用敏感信息
+title: Secrets
+description: 在容器中安全地使用敏感信息
 ---
 
-密钥是一段数据，例如密码、SSH 私钥、SSL 证书，或任何不应通过网络传输或以明文形式存储在 Dockerfile 或应用程序源代码中的内容。
+Secret（机密）是一段数据，例如密码、SSH 私钥、SSL
+证书，或任何不应通过网络传输或以未加密形式存储在 Dockerfile 或应用程序源代码中的内容。
 
-Docker 提供了专门的功能来管理密钥。
+Docker 提供了专门指定的功能来管理 secrets。

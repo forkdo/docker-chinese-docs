@@ -2,8 +2,8 @@
 title: 镜像构建最佳实践
 weight: 90
 linkTitle: "第 8 部分：镜像构建最佳实践"
-keywords: 快速开始, 安装, 概述, 快速入门, 介绍, 概念, 容器,
-  docker desktop
+keywords: 入门，设置，概述，快速开始，简介，概念，容器，
+  Docker Desktop
 description: 为您的应用程序构建镜像的技巧
 aliases:
  - /get-started/09_image_best/
@@ -14,13 +14,13 @@ aliases:
 
 使用 `docker image history` 命令，您可以查看镜像中每个层的创建命令。
 
-1. 使用 `docker image history` 命令查看您创建的 `getting-started` 镜像的层。
+1. 使用 `docker image history` 命令查看您创建的 `getting-started` 镜像的各层。
 
     ```console
     $ docker image history getting-started
     ```
 
-    您应该得到类似以下的输出。
+    您应该会看到类似以下的输出。
 
     ```plaintext
     IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
@@ -39,9 +39,9 @@ aliases:
     <missing>           13 days ago         /bin/sh -c #(nop) ADD file:e69d441d729412d24…   5.59MB   
     ```
 
-    每一行代表镜像中的一个层。这里的显示底部是基础层，顶部是最新的层。通过这个，您还可以快速看到每个层的大小，帮助诊断大型镜像。
+    每一行代表镜像中的一个层。这里的显示是底部为基础层，顶部为最新层。通过这个输出，您还可以快速查看每个层的大小，帮助诊断大型镜像。
 
-2. 您会注意到几行被截断了。如果您添加 `--no-trunc` 标志，您将获得完整的输出。
+2. 您会注意到几行被截断了。如果添加 `--no-trunc` 标志，您将获得完整的输出。
 
     ```console
     $ docker image history --no-trunc getting-started
@@ -49,9 +49,9 @@ aliases:
 
 ## 层缓存
 
-现在您已经看到了分层的实际效果，有一个重要的经验教训可以帮助减少容器镜像的构建时间。一旦某一层发生变化，所有下游层都必须重新创建。
+现在您已经看到了分层的实际效果，接下来有一个重要的知识点，可以帮助减少容器镜像的构建时间。一旦某一层发生变化，所有下游层都必须重新创建。
 
-回顾一下您为快速开始应用程序创建的以下 Dockerfile。
+回顾一下您为入门应用创建的以下 Dockerfile。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -62,9 +62,9 @@ RUN yarn install --production
 CMD ["node", "src/index.js"]
 ```
 
-回到镜像历史输出，您会看到 Dockerfile 中的每个命令都成为镜像中的一个新层。您可能还记得，当您对镜像进行更改时，yarn 依赖项必须重新安装。每次构建都携带相同的依赖项没有太多意义。
+回到镜像历史输出，您会看到 Dockerfile 中的每条命令都变成了镜像中的一个新层。您可能还记得，当您修改镜像时，yarn 依赖项必须重新安装。每次构建都携带相同的依赖项并没有太大意义。
 
-要解决这个问题，您需要重新构建 Dockerfile 以帮助缓存依赖项。对于基于 Node 的应用程序，这些依赖项在 `package.json` 文件中定义。您可以先复制该文件，安装依赖项，然后再复制其他所有内容。然后，只有当 `package.json` 发生更改时，您才需要重新创建 yarn 依赖项。
+要解决这个问题，您需要重新调整 Dockerfile 的结构，以支持依赖项的缓存。对于基于 Node 的应用，这些依赖项在 `package.json` 文件中定义。您可以先复制该文件，安装依赖项，然后再复制其他所有内容。这样，只有当 `package.json` 发生更改时，才会重新创建 yarn 依赖项。
 
 1. 更新 Dockerfile，先复制 `package.json`，安装依赖项，然后再复制其他所有内容。
 
@@ -84,7 +84,7 @@ CMD ["node", "src/index.js"]
     $ docker build -t getting-started .
     ```
 
-    您应该看到类似以下的输出。
+    您应该会看到类似以下的输出。
 
     ```plaintext
     [+] Building 16.1s (10/10) FINISHED
@@ -106,7 +106,7 @@ CMD ["node", "src/index.js"]
     => => naming to docker.io/library/getting-started
     ```
 
-3. 现在，对 `src/static/index.html` 文件进行更改。例如，将 `<title>` 更改为 "The Awesome Todo App"。
+3. 现在，修改 `src/static/index.html` 文件。例如，将 `<title>` 改为 "The Awesome Todo App"。
 
 4. 再次使用 `docker build -t getting-started .` 构建 Docker 镜像。这次，您的输出应该略有不同。
 
@@ -130,18 +130,18 @@ CMD ["node", "src/index.js"]
     => => naming to docker.io/library/getting-started
     ```
 
-    首先，您应该注意到构建速度快了很多。而且，您会看到几个步骤正在使用之前缓存的层。推送和拉取此镜像及其更新也会更快。
+    首先，您应该注意到构建速度快了很多。而且，您会看到几个步骤使用了之前缓存的层。推送和拉取此镜像及其更新也会更快。
 
 ## 多阶段构建
 
-多阶段构建是一种功能强大的工具，可以帮助使用多个阶段来创建镜像。它们有几个优点：
+多阶段构建是一种非常强大的工具，它使用多个阶段来创建镜像。它有几个优点：
 
 - 将构建时依赖项与运行时依赖项分离
-- 通过仅发送应用程序运行所需的文件来减少整体镜像大小
+- 通过仅发送应用运行所需的文件来减少整体镜像大小
 
 ### Maven/Tomcat 示例
 
-构建基于 Java 的应用程序时，您需要 JDK 将源代码编译为 Java 字节码。但是，JDK 在生产环境中并不需要。此外，您可能使用 Maven 或 Gradle 等工具来帮助构建应用程序。这些工具在最终镜像中也不需要。多阶段构建可以解决这个问题。
+构建基于 Java 的应用时，您需要 JDK 将源代码编译为 Java 字节码。但是，JDK 在生产环境中并不需要。此外，您可能使用 Maven 或 Gradle 等工具来帮助构建应用。这些工具在最终镜像中也不需要。多阶段构建可以解决这个问题。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -154,11 +154,11 @@ FROM tomcat
 COPY --from=build /app/target/file.war /usr/local/tomcat/webapps 
 ```
 
-在这个示例中，您使用一个阶段（称为 `build`）使用 Maven 执行实际的 Java 构建。在第二阶段（从 `FROM tomcat` 开始），您从 `build` 阶段复制文件。最终镜像是仅创建的最后一个阶段，可以使用 `--target` 标志覆盖。
+在这个示例中，您使用一个阶段（称为 `build`）来使用 Maven 执行实际的 Java 构建。在第二阶段（从 `FROM tomcat` 开始），您从 `build` 阶段复制文件。最终镜像只是正在创建的最后一个阶段，可以使用 `--target` 标志覆盖。
 
 ### React 示例
 
-构建 React 应用程序时，您需要 Node 环境将 JS 代码（通常是 JSX）、SASS 样式表等编译为静态 HTML、JS 和 CSS。如果您不进行服务器端渲染，甚至不需要 Node 环境来运行您的生产构建。您可以在静态 nginx 容器中发送静态资源。
+构建 React 应用时，您需要 Node 环境将 JS 代码（通常是 JSX）、SASS 样式表等编译为静态 HTML、JS 和 CSS。如果您不进行服务器端渲染，甚至不需要 Node 环境来运行生产构建。您可以将静态资源发送到静态 nginx 容器中。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -186,6 +186,6 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 ## 下一步
 
-在下一节中，您将了解可以用来继续学习容器的其他资源。
+在下一节中，您将学习可以用来继续学习容器的其他资源。
 
 {{< button text="下一步" url="10_what_next.md" >}}

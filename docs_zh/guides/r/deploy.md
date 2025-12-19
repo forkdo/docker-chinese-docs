@@ -2,8 +2,8 @@
 title: 测试你的 R 部署
 linkTitle: 测试你的部署
 weight: 50
-keywords: 部署, kubernetes, R
-description: 了解如何在本地使用 Kubernetes 进行开发
+keywords: deploy, kubernetes, R
+description: 了解如何使用 Kubernetes 在本地开发
 aliases:
   - /language/r/deploy/
   - /guides/language/r/deploy/
@@ -12,15 +12,15 @@ aliases:
 ## 前置条件
 
 - 完成本指南之前的所有章节，从 [容器化 R 应用](containerize.md) 开始。
-- 在 Docker Desktop 中 [启用 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
+- 在 Docker Desktop 中[启用 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
 
 ## 概述
 
-在本节中，你将学习如何使用 Docker Desktop 将你的应用部署到开发机器上的完整 Kubernetes 环境。这让你可以在本地测试和调试工作负载，然后再部署到生产环境。
+在本节中，你将学习如何使用 Docker Desktop 将应用部署到开发机器上的完整 Kubernetes 环境。这使得你可以在本地测试和调试工作负载后，再部署到生产环境。
 
 ## 创建 Kubernetes YAML 文件
 
-在你的 `r-docker-dev` 目录中，创建一个名为 `docker-r-kubernetes.yaml` 的文件。在 IDE 或文本编辑器中打开该文件，并添加以下内容。将 `DOCKER_USERNAME/REPO_NAME` 替换为你的 Docker 用户名和在 [为你的 R 应用配置 CI/CD](configure-ci-cd.md) 中创建的仓库名称。
+在你的 `r-docker-dev` 目录中，创建一个名为 `docker-r-kubernetes.yaml` 的文件。在 IDE 或文本编辑器中打开该文件，并添加以下内容。将 `DOCKER_USERNAME/REPO_NAME` 替换为你的 Docker 用户名和在 [为 R 应用配置 CI/CD](configure-ci-cd.md) 中创建的仓库名称。
 
 ```yaml
 apiVersion: apps/v1
@@ -61,16 +61,16 @@ spec:
       nodePort: 30001
 ```
 
-在这个 Kubernetes YAML 文件中，有两个对象，用 `---` 分隔：
+在这个 Kubernetes YAML 文件中，有两个对象，由 `---` 分隔：
 
-- 一个 Deployment，描述一组可扩展的相同 Pod。在本例中，你将只得到一个副本，即你的 Pod 的一个副本。在 `template` 下描述的 Pod 中只有一个容器。该容器是从 GitHub Actions 在 [为你的 R 应用配置 CI/CD](configure-ci-cd.md) 中构建的镜像创建的。
-- 一个 NodePort 服务，它将把主机上的 30001 端口的流量路由到 Pod 内部的 3838 端口，允许你从网络访问你的应用。
+- 一个 Deployment，描述一组可扩展的相同 Pod。在本例中，你将只得到一个副本，即你的 Pod 的一个副本。该 Pod 在 `template` 下描述，其中只有一个容器。该容器是从 GitHub Actions 在 [为 R 应用配置 CI/CD](configure-ci-cd.md) 中构建的镜像创建的。
+- 一个 NodePort 服务，它将从主机的 30001 端口路由流量到 Pod 内部的 3838 端口，允许你从网络访问你的应用。
 
-要了解有关 Kubernetes 对象的更多信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
+要了解更多信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
 
 ## 部署并检查你的应用
 
-1. 在终端中，导航到 `r-docker-dev` 目录，将你的应用部署到 Kubernetes。
+1. 在终端中，导航到 `r-docker-dev` 并将应用部署到 Kubernetes。
 
    ```console
    $ kubectl apply -f docker-r-kubernetes.yaml
@@ -112,7 +112,7 @@ spec:
 
    除了默认的 `kubernetes` 服务外，你还可以看到你的 `service-entrypoint` 服务，它接受 30001/TCP 端口的流量。
 
-3. 在浏览器中访问以下地址。注意，在此示例中没有部署数据库。
+3. 在浏览器中访问以下地址。注意，在此示例中未部署数据库。
 
    ```console
    http://localhost:30001/
@@ -126,7 +126,7 @@ spec:
 
 ## 总结
 
-在本节中，你学习了如何使用 Docker Desktop 将你的应用部署到开发机器上的完整 Kubernetes 环境。
+在本节中，你学习了如何使用 Docker Desktop 将应用部署到开发机器上的完整 Kubernetes 环境。
 
 相关信息：
 

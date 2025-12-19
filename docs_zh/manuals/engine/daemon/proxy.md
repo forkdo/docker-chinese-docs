@@ -14,19 +14,19 @@ aliases:
 
 <a name="httphttps-proxy"><!-- included for deep-links to old section --></a>
 
-如果您的组织使用代理服务器连接互联网，您可能需要为 Docker 守护进程配置代理服务器。守护进程使用代理服务器访问存储在 Docker Hub 和其他注册表上的镜像，以及连接 Docker 集群中的其他节点。
+如果您的组织使用代理服务器连接互联网，您可能需要配置 Docker 守护进程以使用代理服务器。守护进程使用代理服务器访问存储在 Docker Hub 和其他注册表中的镜像，以及连接 Docker 集群中的其他节点。
 
 本文档介绍如何为 Docker 守护进程配置代理。有关为 Docker CLI 配置代理设置的说明，请参阅 [配置 Docker CLI 使用代理服务器](/manuals/engine/cli/proxy.md)。
 
 > [!IMPORTANT]
-> 在 `daemon.json` 中指定的代理配置会被 Docker Desktop 忽略。如果您使用 Docker Desktop，可以使用 [Docker Desktop 设置](/manuals/desktop/settings-and-maintenance/settings.md#proxies) 配置代理。
+> `daemon.json` 中指定的代理配置会被 Docker Desktop 忽略。如果您使用 Docker Desktop，可以使用 [Docker Desktop 设置](/manuals/desktop/settings-and-maintenance/settings.md#proxies) 配置代理。
 
 有两种方式可以配置这些设置：
 
-- 通过配置文件或 CLI 标志[配置守护进程](#daemon-configuration)
-- 在系统上设置[环境变量](#environment-variables)
+- 通过配置文件或 CLI 标志 [配置守护进程](#daemon-configuration)
+- 在系统上设置 [环境变量](#environment-variables)
 
-直接配置守护进程的设置优先于环境变量。
+直接配置守护进程优先于环境变量。
 
 ## 守护进程配置
 
@@ -50,7 +50,7 @@ $ sudo systemctl restart docker
 
 ## 环境变量
 
-Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP 或 HTTPS 代理行为：
+Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP 或 HTTPS 代理行为：
 
 - `HTTP_PROXY`
 - `http_proxy`
@@ -90,7 +90,7 @@ Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP �
    Environment="HTTPS_PROXY=https://proxy.example.com:3129"
    ```
 
-   可以设置多个环境变量；同时设置非 HTTPS 和 HTTPS 代理：
+   可以设置多个环境变量；要同时设置非 HTTPS 和 HTTPS 代理：
 
    ```systemd
    [Service]
@@ -107,7 +107,7 @@ Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP �
    > Environment="HTTP_PROXY=http://domain%%5Cuser:complex%%23pass@proxy.example.com:3128/"
    > ```
 
-3. 如果您有需要直接连接的内部 Docker 注册表，可以使用 `NO_PROXY` 环境变量指定它们。
+3. 如果您有需要直接联系的内部 Docker 注册表，不通过代理，可以通过 `NO_PROXY` 环境变量指定它们。
 
    `NO_PROXY` 变量指定一个包含逗号分隔值的字符串，用于指定应排除在代理之外的主机。您可以指定以下选项来排除主机：
 
@@ -117,7 +117,7 @@ Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP �
      - `example.com` 匹配 `example.com` 和 `foo.example.com`
      - `.example.com` 仅匹配 `foo.example.com`
    - 单个星号（`*`）表示不应进行代理
-   - IP 地址前缀（`1.2.3.4:80`）和域名（`foo.example.com:80`）可以接受字面端口号
+   - IP 地址前缀（`1.2.3.4:80`）和域名（`foo.example.com:80`）接受字面端口号
 
    示例：
 
@@ -166,7 +166,7 @@ Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP �
    Environment="HTTPS_PROXY=https://proxy.example.com:3129"
    ```
 
-   可以设置多个环境变量；同时设置非 HTTPS 和 HTTPS 代理：
+   可以设置多个环境变量；要同时设置非 HTTPS 和 HTTPS 代理：
 
    ```systemd
    [Service]
@@ -183,7 +183,7 @@ Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP �
    > Environment="HTTP_PROXY=http://domain%%5Cuser:complex%%23pass@proxy.example.com:3128/"
    > ```
 
-3. 如果您有需要直接连接的内部 Docker 注册表，可以使用 `NO_PROXY` 环境变量指定它们。
+3. 如果您有需要直接联系的内部 Docker 注册表，不通过代理，可以通过 `NO_PROXY` 环境变量指定它们。
 
    `NO_PROXY` 变量指定一个包含逗号分隔值的字符串，用于指定应排除在代理之外的主机。您可以指定以下选项来排除主机：
 
@@ -193,7 +193,7 @@ Docker 守护进程在启动环境时检查以下环境变量，以配置 HTTP �
      - `example.com` 匹配 `example.com` 和 `foo.example.com`
      - `.example.com` 仅匹配 `foo.example.com`
    - 单个星号（`*`）表示不应进行代理
-   - IP 地址前缀（`1.2.3.4:80`）和域名（`foo.example.com:80`）可以接受字面端口号
+   - IP 地址前缀（`1.2.3.4:80`）和域名（`foo.example.com:80`）接受字面端口号
 
    示例：
 

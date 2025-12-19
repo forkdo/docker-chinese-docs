@@ -29,7 +29,7 @@ git push origin docs
 4. 设置上游仓库
 ```bash
 # GitHub fork Codespaces 方式已自动设置
-git remote add upstream https://github.com/docker/docs.git
+git remote set-url upstream https://github.com/docker/docs.git
 git fetch upstream main
 git checkout upstream/main -- content
 ```
@@ -38,7 +38,7 @@ git checkout upstream/main -- content
 ```bash
 rm -rf docs
 mv content docs
-git diff docs
+git diff docs/
 ```
 
 6. 本地测试

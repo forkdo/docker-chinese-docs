@@ -1,7 +1,7 @@
 ---
-title: "接口: ExecResultV0"
+title: "Interface: ExecResultV0"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecResultV0/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecResultV0/
@@ -11,37 +11,37 @@ aliases:
 
 ### cmd
 
-• `可选` `只读` **cmd**: `string`
+• `Optional` `Readonly` **cmd**: `string`
 
 ___
 
 ### killed
 
-• `可选` `只读` **killed**: `boolean`
+• `Optional` `Readonly` **killed**: `boolean`
 
 ___
 
 ### signal
 
-• `可选` `只读` **signal**: `string`
+• `Optional` `Readonly` **signal**: `string`
 
 ___
 
 ### code
 
-• `可选` `只读` **code**: `number`
+• `Optional` `Readonly` **code**: `number`
 
 ___
 
 ### stdout
 
-• `只读` **stdout**: `string`
+• `Readonly` **stdout**: `string`
 
 ___
 
 ### stderr
 
-• `只读` **stderr**: `string`
+• `Readonly` **stderr**: `string`
 
 ## 方法
 
@@ -63,13 +63,13 @@ ___
 
 ▸ **parseJsonLines**(): `any`[]
 
-将每一行输出解析为 JSON 对象。
+将每行输出解析为 JSON 对象。
 
 #### 返回值
 
 `any`[]
 
-每行都是 JSON 对象的行列表。
+行列表，其中每行都是一个 JSON 对象。
 
 ___
 

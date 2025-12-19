@@ -1,43 +1,43 @@
 ---
-title: 为你的 C++ 应用创建多阶段构建
-linkTitle: 使用多阶段构建容器化你的应用
+title: 为您的 C++ 应用程序创建多阶段构建
+linkTitle: 使用多阶段构建将您的应用容器化
 weight: 5
-keywords: C++, 容器化, 多阶段
-description: 学习如何为 C++ 应用创建多阶段构建。
+keywords: C++, containerize, multi-stage
+description: 了解如何为 C++ 应用程序创建多阶段构建。
 aliases:
 - /language/cpp/multistage/
 - /guides/language/cpp/multistage/
 ---
 
-## 前置条件
+## 前提条件
 
-- 你已安装 [Git 客户端](https://git-scm.com/downloads)。本节示例使用基于命令行的 Git 客户端，但你可以使用任何客户端。
+- 您拥有 [Git 客户端](https://git-scm.com/downloads)。本节中的示例使用基于命令行的 Git 客户端，但您可以使用任何客户端。
 
 ## 概述
 
-本节将指导你为 C++ 应用创建一个多阶段 Docker 构建。
-多阶段构建是 Docker 的一项功能，允许你在构建过程的不同阶段使用不同的基础镜像，
-从而优化最终镜像的大小，并将构建依赖与运行时依赖分离。
+本节将引导您为 C++ 应用程序创建多阶段 Docker 构建。
+多阶段构建是 Docker 的一项功能，允许您在构建过程的不同阶段使用不同的基础镜像，
+这样您可以优化最终镜像的大小，并将构建依赖项与运行时依赖项分离。
 
-对于 C++ 等编译型语言，标准实践是设置一个编译阶段来编译代码，以及一个运行阶段来运行编译后的二进制文件，
-因为构建依赖在运行时并不需要。
+对于像 C++ 这样的编译型语言，标准做法是拥有一个编译代码的构建阶段和一个运行编译后二进制文件的运行时阶段，
+因为构建依赖项在运行时并不需要。
 
-## 获取示例应用
+## 获取示例应用程序
 
-让我们使用一个简单的 C++ 应用，它会在终端打印 `Hello, World!`。首先，克隆示例仓库以供本指南使用：
+让我们使用一个简单的 C++ 应用程序，它向终端打印 `Hello, World!`。为此，请克隆示例存储库以配合本指南使用：
 
 ```bash
 $ git clone https://github.com/dockersamples/c-plus-plus-docker.git
 ```
 
-本节的示例位于仓库的 `hello` 目录下。进入该目录并查看文件：
+本节的示例位于存储库的 `hello` 目录下。进入该目录并查看文件：
 
 ```bash
 $ cd c-plus-plus-docker/hello
 $ ls
 ```
 
-你应该看到以下文件：
+您应该会看到以下文件：
 
 ```text
 Dockerfile  hello.cpp
@@ -45,7 +45,7 @@ Dockerfile  hello.cpp
 
 ## 检查 Dockerfile
 
-在 IDE 或文本编辑器中打开 `Dockerfile`。`Dockerfile` 包含了构建 Docker 镜像的指令。
+在 IDE 或文本编辑器中打开 `Dockerfile`。`Dockerfile` 包含用于构建 Docker 镜像的指令。
 
 ```Dockerfile
 # 阶段 1：构建阶段
@@ -60,10 +60,10 @@ WORKDIR /app
 # 将源代码复制到容器中
 COPY hello.cpp .
 
-# 静态编译 C++ 代码，确保不依赖运行时库
+# 静态编译 C++ 代码以确保它不依赖运行时库
 RUN g++ -o hello hello.cpp -static
 
-# 阶段 2：运行阶段
+# 阶段 2：运行时阶段
 FROM scratch
 
 # 从构建阶段复制静态二进制文件
@@ -73,20 +73,20 @@ COPY --from=build /app/hello /hello
 CMD ["/hello"]
 ```
 
-`Dockerfile` 包含两个阶段：
+`Dockerfile` 有两个阶段：
 
-1. **构建阶段**：此阶段使用 `ubuntu:latest` 镜像来编译 C++ 代码并创建静态二进制文件。
-2. **运行阶段**：此阶段使用 `scratch` 镜像（一个空镜像），从构建阶段复制静态二进制文件并运行它。
+1.  **构建阶段**：此阶段使用 `ubuntu:latest` 镜像来编译 C++ 代码并创建静态二进制文件。
+2.  **运行时阶段**：此阶段使用 `scratch` 镜像（一个空镜像），从构建阶段复制静态二进制文件并运行它。
 
 ## 构建 Docker 镜像
 
-要在 `hello` 目录中构建 Docker 镜像，请运行以下命令：
+要构建 Docker 镜像，请在 `hello` 目录中运行以下命令：
 
 ```bash
 $ docker build -t hello .
 ```
 
-`-t` 标志为镜像打上 `hello` 标签。
+`-t` 标志将镜像标记为名称 `hello`。
 
 ## 运行 Docker 容器
 
@@ -96,17 +96,17 @@ $ docker build -t hello .
 $ docker run hello
 ```
 
-你应该在终端中看到输出 `Hello, World!`。
+您应该会在终端中看到输出 `Hello, World!`。
 
 ## 总结
 
-在本节中，你学会了如何为 C++ 应用创建多阶段构建。多阶段构建帮助你优化最终镜像的大小，并将构建依赖与运行时依赖分离。
-在此示例中，最终镜像仅包含静态二进制文件，不包含任何构建依赖。
+在本节中，您学习了如何为 C++ 应用程序创建多阶段构建。多阶段构建帮助您优化最终镜像的大小，并将构建依赖项与运行时依赖项分离。
+在此示例中，最终镜像仅包含静态二进制文件，不包含任何构建依赖项。
 
-由于镜像使用空的基础镜像，因此通常的系统工具也不存在。例如，你无法在容器中运行简单的 `ls` 命令：
+由于镜像具有空的基础镜像，因此通常的 OS 工具也不存在。因此，例如，您无法在容器中运行简单的 `ls` 命令：
 
 ```bash
 $ docker run hello ls
 ```
 
-这使得镜像非常轻量且安全。
+这使得镜像非常轻量级且安全。

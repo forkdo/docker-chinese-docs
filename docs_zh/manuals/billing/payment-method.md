@@ -1,23 +1,23 @@
 ---
-title: 添加或更新付款方式
+title: 添加或更新支付方式
 weight: 20
-description: 了解如何在 Docker Hub 中添加或更新付款方式
-keywords: 付款, 账单, 订阅, 支持的付款方式, 付款失败, 添加信用卡, 银行转账, Stripe Link, 付款失败
+description: 了解如何在 Docker Hub 中添加或更新支付方式
+keywords: payments, billing, subscription, supported payment methods, failed payments, add credit card, bank transfer, Stripe Link, payment failure
 aliases:
     - /billing/core-billing/payment-method/
 ---
 
-本文档介绍如何为你的个人账户或组织添加或更新付款方式。
+本文介绍如何为您的个人账户或组织添加或更新支付方式。
 
-你可以随时添加付款方式或更新账户现有的付款方式。
+您可以随时添加支付方式或更新账户现有的支付方式。
 
-> [!IMPORTANT]
+> [!重要]
 >
-> 如果你想要移除所有付款方式，你必须先将订阅降级为免费订阅。参见 [降级](../subscription/change.md)。
+> 如果要移除所有支付方式，您必须先将订阅降级为免费订阅。请参阅[降级](../subscription/change.md)。
 
-以下付款方式受支持：
+支持的支付方式如下：
 
-- 卡片
+- 银行卡
   - Visa
   - MasterCard
   - American Express
@@ -25,132 +25,124 @@ aliases:
   - JCB
   - Diners
   - UnionPay
-- 钱包
+- 电子钱包
   - Stripe Link
 - 银行账户
-  - 使用已
-  [验证](manuals/billing/payment-method.md#verify-a-bank-account) 的美国
-  银行账户进行自动清算所 (ACH) 转账
+  - 通过[已验证](manuals/billing/payment-method.md#verify-a-bank-account)的美国银行账户进行自动清算所 (ACH) 转账
 - [发票付款](/manuals/billing/history.md)
 
 所有费用均以美元 (USD) 计价。
 
 {{% include "tax-compliance.md" %}}
 
-## 管理付款方式
+## 管理支付方式
 
 ### 个人账户
 
 {{< tabs >}}
-{{< tab name="Docker subscription" >}}
+{{< tab name="Docker 订阅" >}}
 
-要添加付款方式：
+添加支付方式：
 
-1. 登录 [Docker Home](https://app.docker.com/) 并选择你的组织。
-1. 选择 **Billing**。
-1. 从左侧菜单选择 **Payment methods**。
-1. 选择 **Add payment method**。
-1. 输入你的新付款信息：
-    - 添加卡片：
-        - 选择 **Card** 并填写卡片信息表单。
-    - 添加 Link 付款：
-        - 选择 **Secure, 1-click checkout with Link** 并输入你的
-        Link **email address** 和 **phone number**。
-        - 如果你尚未使用 Link，你必须填写卡片信息表单以存储 Link 付款的卡片。
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择**计费**。
+1. 从左侧菜单中选择**支付方式**。
+1. 选择**添加支付方式**。
+1. 输入新的支付信息：
+    - 添加银行卡：
+        - 选择**银行卡**并填写银行卡信息表单。
+    - 添加 Link 支付：
+        - 选择**使用 Link 安全一键结账**，并输入您的 Link **电子邮箱地址**和**手机号码**。
+        - 如果您还不是 Link 用户，则必须填写银行卡信息表单以存储用于 Link 支付的银行卡。
     - 添加银行账户：
-        - 选择 **US bank account**。
-        - 验证你的 **Email** 和 **Full name**。
-        - 如果你的银行在列表中，选择你银行的名称。
-        - 如果你的银行不在列表中，选择 **Search for your bank**。
-        - 要验证你的银行账户，请参见
-        [验证银行账户](manuals/billing/payment-method.md#verify-a-bank-account)。
-1. 选择 **Add payment method**。
-1. 可选。你可以通过选择 **Set as default** 操作来设置默认付款方式。
-1. 可选。你可以通过选择 **Delete** 操作来移除非默认付款方式。
+        - 选择**美国银行账户**。
+        - 验证您的**电子邮箱**和**全名**。
+        - 如果您的银行在列表中，请选择您的银行名称。
+        - 如果您的银行不在列表中，请选择**搜索您的银行**。
+        - 要验证银行账户，请参阅[验证银行账户](manuals/billing/payment-method.md#verify-a-bank-account)。
+1. 选择**添加支付方式**。
+1. 可选。您可以通过选择**设为默认**操作来设置新的默认支付方式。
+1. 可选。您可以通过选择**删除**操作来移除非默认支付方式。
 
-> [!NOTE]
+> [!注意]
 >
-> 如果你想将美国银行账户设置为默认付款方式，你必须先
-> [验证账户](#verify-a-bank-account)。
+> 如果要将美国银行账户设为默认支付方式，您必须先[验证该账户](#verify-a-bank-account)。
 
 {{< /tab >}}
-{{< tab name="Legacy Docker subscription" >}}
+{{< tab name="旧版 Docker 订阅" >}}
 
-要添加付款方式：
+添加支付方式：
 
 1. 登录 [Docker Hub](https://hub.docker.com)。
-1. 选择 **Billing**。
-1. 选择 **Payment methods** 链接。
-1. 选择 **Add payment method**。
-1. 输入你的新付款信息：
-    - 添加卡片：
-        - 选择 **Card** 并填写卡片信息表单。
-    - 添加 Link 付款：
-        - 选择 **Secure, 1-click checkout with Link** 并输入你的
-        Link **email address** 和 **phone number**。
-        - 如果你不是现有的 Link 客户，你必须填写卡片信息表单以存储 Link 付款的卡片。
-1. 选择 **Add**。
-1. 选择 **Actions** 图标，然后选择 **Make default** 以确保你的新付款方式适用于所有购买和订阅。
-1. 可选。你可以通过选择 **Actions** 图标，然后选择 **Delete** 来移除非默认付款方式。
+1. 选择**计费**。
+1. 选择**支付方式**链接。
+1. 选择**添加支付方式**。
+1. 输入新的支付信息：
+    - 添加银行卡：
+        - 选择**银行卡**并填写银行卡信息表单。
+    - 添加 Link 支付：
+        - 选择**使用 Link 安全一键结账**，并输入您的 Link **电子邮箱地址**和**手机号码**。
+        - 如果您还不是 Link 用户，则必须填写银行卡信息表单以存储用于 Link 支付的银行卡。
+1. 选择**添加**。
+1. 选择**操作**图标，然后选择**设为默认**，以确保您的新支付方式适用于所有购买和订阅。
+1. 可选。您可以通过选择**操作**图标来移除非默认支付方式。然后选择**删除**。
 
 {{< /tab >}}
 {{< /tabs >}}
 
 ### 组织
 
-> [!NOTE]
+> [!注意]
 >
-> 你必须是组织所有者才能更改付款信息。
+> 您必须是组织所有者才能更改支付信息。
 
 {{< tabs >}}
-{{< tab name="Docker subscription" >}}
+{{< tab name="Docker 订阅" >}}
 
-要添加付款方式：
+添加支付方式：
 
-1. 登录 [Docker Home](https://app.docker.com/) 并选择你的组织。
-1. 选择 **Billing**。
-1. 从左侧菜单选择 **Payment methods**。
-1. 选择 **Add payment method**。
-1. 输入你的新付款信息：
-    - 添加卡片：
-        - 选择 **Card** 并填写卡片信息表单。
-    - 添加 Link 付款：
-        - 选择 **Secure, 1-click checkout with Link** 并输入你的
-        Link **email address** 和 **phone number**。
-        - 如果你不是现有的 Link 客户，你必须填写卡片信息表单以存储 Link 付款的卡片。
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择**计费**。
+1. 从左侧菜单中选择**支付方式**。
+1. 选择**添加支付方式**。
+1. 输入新的支付信息：
+    - 添加银行卡：
+        - 选择**银行卡**并填写银行卡信息表单。
+    - 添加 Link 支付：
+        - 选择**使用 Link 安全一键结账**，并输入您的 Link **电子邮箱地址**和**手机号码**。
+        - 如果您还不是 Link 用户，则必须填写银行卡信息表单以存储用于 Link 支付的银行卡。
     - 添加银行账户：
-        - 选择 **US bank account**。
-        - 验证你的 **Email** 和 **Full name**。
-        - 如果你的银行在列表中，选择你银行的名称。
-        - 如果你的银行不在列表中，选择 **Search for your bank**。
-        - 要验证你的银行账户，请参见 [验证银行账户](manuals/billing/payment-method.md#verify-a-bank-account)。
-1. 选择 **Add payment method**。
-1. 可选。你可以通过选择 **Set as default** 操作来设置默认付款方式。
-1. 可选。你可以通过选择 **Delete** 操作来移除非默认付款方式。
+        - 选择**美国银行账户**。
+        - 验证您的**电子邮箱**和**全名**。
+        - 如果您的银行在列表中，请选择您的银行名称。
+        - 如果您的银行不在列表中，请选择**搜索您的银行**。
+        - 要验证银行账户，请参阅[验证银行账户](manuals/billing/payment-method.md#verify-a-bank-account)。
+1. 选择**添加支付方式**。
+1. 可选。您可以通过选择**设为默认**操作来设置新的默认支付方式。
+1. 可选。您可以通过选择**删除**操作来移除非默认支付方式。
 
-> [!NOTE]
+> [!注意]
 >
-> 如果你想将美国银行账户设置为默认付款方式，你必须先验证账户。
+> 如果要将美国银行账户设为默认支付方式，您必须先验证该账户。
 
 {{< /tab >}}
-{{< tab name="Legacy Docker subscription" >}}
+{{< tab name="旧版 Docker 订阅" >}}
 
-要添加付款方式：
+添加支付方式：
 
 1. 登录 [Docker Hub](https://hub.docker.com)。
-1. 选择你的组织，然后选择 **Billing**。
-1. 选择 **Payment methods** 链接。
-1. 选择 **Add payment method**。
-1. 输入你的新付款信息：
-    - 添加卡片：
-        - 选择 **Card** 并填写卡片信息表单。
-    - 添加 Link 付款：
-        - 选择 **Secure, 1-click checkout with Link** 并输入你的
-        Link **email address** 和 **phone number**。
-        - 如果你不是现有的 Link 客户，你必须填写卡片信息表单以存储 Link 付款的卡片。
-1. 选择 **Add payment method**。
-1. 选择 **Actions** 图标，然后选择 **Make default** 以确保你的新付款方式适用于所有购买和订阅。
-1. 可选。你可以通过选择 **Actions** 图标，然后选择 **Delete** 来移除非默认付款方式。
+1. 选择您的组织，然后选择**计费**。
+1. 选择**支付方式**链接。
+1. 选择**添加支付方式**。
+1. 输入新的支付信息：
+    - 添加银行卡：
+        - 选择**银行卡**并填写银行卡信息表单。
+    - 添加 Link 支付：
+        - 选择**使用 Link 安全一键结账**，并输入您的 Link **电子邮箱地址**和**手机号码**。
+        - 如果您还不是 Link 用户，则必须填写银行卡信息表单以存储用于 Link 支付的银行卡。
+1. 选择**添加支付方式**。
+1. 选择**操作**图标，然后选择**设为默认**，以确保您的新支付方式适用于所有购买和订阅。
+1. 可选。您可以通过选择**操作**图标来移除非默认支付方式。然后选择**删除**。
 
 {{< /tab >}}
 {{< /tabs >}}
@@ -159,71 +151,70 @@ aliases:
 
 {{< summary-bar feature_name="Pay by invoice" >}}
 
-发票付款适用于年度订阅的 Teams 和 Business 客户，从首次续订开始。当你选择此付款方式时，你将使用付款卡或 ACH 银行转账预先支付你的首次订阅期费用。
+发票付款适用于拥有年度订阅的团队和企业客户，从首次续订开始可用。选择此支付方式时，您将使用支付卡或 ACH 银行转账预付首个订阅周期的费用。
 
-在续订时，你将收到一封通过电子邮件发送的发票，而不是自动付款，你必须手动支付。发票付款不适用于订阅升级或更改。
+续订时，您将收到一封电子邮件发票，需要手动支付，而不是自动扣款。发票付款不适用于订阅升级或变更。
 
-1. 登录 [Docker Home](https://app.docker.com/) 并选择你的组织。
-1. 选择 **Billing**。
-1. 选择 **Payment methods**，然后选择 **Pay by invoice**。
-1. 要启用发票付款，选择切换按钮。
-1. 确认你的账单联系人详细信息。如果需要更改，请选择 **Change** 并输入你的新详细信息。
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择**计费**。
+1. 选择**支付方式**，然后选择**发票付款**。
+1. 要启用发票付款，请选择切换开关。
+1. 确认您的计费联系信息。如果需要更改，请选择**更改**并输入新的详细信息。
 
 ## 验证银行账户
 
-有两种方法可以将银行账户验证为付款方式：
+有两种方式可以将银行账户验证为支付方式：
 
-- 即时验证：Docker 支持多家主要银行的即时验证。
+- 即时验证：Docker 支持多家主要银行进行即时验证。
 - 手动验证：所有其他银行必须手动验证。
 
 {{< tabs >}}
-{{< tab name="Instant verification" >}}
+{{< tab name="即时验证" >}}
 
 ### 即时验证
 
-要即时验证你的银行账户，你必须从 Docker 账单流程中登录到你的银行账户：
+要即时验证银行账户，您必须从 Docker 计费流程登录您的银行账户：
 
-1. 选择 **US bank account** 作为你的付款方式。
-1. 验证你的 **Email** 和 **Full name**。
-1. 如果你的银行在列表中，选择你银行的名称或选择 **Search for your bank**。
-1. 登录到你的银行并查看条款和条件。此协议允许 Docker 从你连接的银行账户中扣款。
-1. 选择 **Agree and continue**。
-1. 选择要链接和验证的账户，然后选择 **Connect account**。
+1. 选择**美国银行账户**作为支付方式。
+1. 验证您的**电子邮箱**和**全名**。
+1. 如果您的银行在列表中，请选择您的银行名称或选择**搜索您的银行**。
+1. 登录您的银行账户并查看条款和条件。此协议允许 Docker 从您连接的银行账户扣款。
+1. 选择**同意并继续**。
+1. 选择要链接和验证的账户，然后选择**连接账户**。
 
-当账户验证成功后，你将在弹出的模态框中看到成功消息。
+账户验证成功后，您将在弹出窗口中看到成功消息。
 
 {{< /tab >}}
-{{< tab name="Manual verification" >}}
+{{< tab name="手动验证" >}}
 
 ### 手动验证
 
-要手动验证你的银行账户，你必须输入银行对账单中的微存款金额：
+要手动验证银行账户，您必须输入银行对账单中的小额存款金额：
 
-1. 选择 **US bank account** 作为你的付款方式。
-1. 验证你的 **Email** 和 **First and last name**。
-1. 选择 **Enter bank details manually instead**。
-1. 输入你的银行详细信息：**Routing number** 和 **Account number**。
-1. 选择 **Submit**。
-1. 你将收到一封包含如何手动验证说明的电子邮件。
+1. 选择**美国银行账户**作为支付方式。
+1. 验证您的**电子邮箱**和**姓名**。
+1. 选择**改为手动输入银行详细信息**。
+1. 输入银行详细信息：**路由号码**和**账号**。
+1. 选择**提交**。
+1. 您将收到一封电子邮件，其中包含手动验证的说明。
 
-手动验证使用微存款。你将在 1-2 个工作日内在你的银行账户中看到一笔小额存款（例如 $0.01）。打开你的手动验证电子邮件并输入此存款金额以验证你的账户。
+手动验证使用小额存款。您将在 1-2 个工作日内在银行账户中看到一笔小额存款（例如 $0.01）。打开手动验证电子邮件并输入该存款金额以验证您的账户。
 
 {{< /tab >}}
 {{< /tabs >}}
 
-## 付款失败
+## 支付失败
 
-> [!NOTE]
+> [!注意]
 >
-> 你不能手动重试失败的付款。Docker 将根据重试时间表重试失败的付款。
+> 您无法手动重试失败的支付。Docker 将根据重试计划重试失败的支付。
 
-如果你的订阅付款失败，将有 15 天的宽限期，包括到期日。Docker 会尝试 3 次收集付款，时间安排如下：
+如果订阅支付失败，将有 15 天的宽限期（包括到期日）。Docker 将按照以下计划重试收取支付 3 次：
 
 - 到期日后 3 天
 - 上次尝试后 5 天
 - 上次尝试后 7 天
 
-Docker 还会在每次付款失败尝试后发送一封电子邮件通知
-`Action Required - Credit Card Payment Failed`，并附上未付款发票。
+Docker 还会在每次支付失败后发送一封电子邮件通知 `需要操作 - 信用卡支付失败`，并附上未付发票。
 
-一旦宽限期结束且发票仍未支付，订阅将降级为免费订阅，所有付费功能将被禁用。
+宽限期结束后，如果发票仍未支付，订阅将降级为免费订阅，所有付费功能将被禁用。

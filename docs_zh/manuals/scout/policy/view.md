@@ -1,49 +1,48 @@
 ---
 title: 查看 Docker Scout 策略状态
 description: |
-  Docker Scout 仪表板和 `docker scout policy` 命令可让您查看镜像的策略状态。
+  Docker Scout 仪表板和 `docker scout policy` 命令可用于查看镜像的策略状态。
 keywords: scout, policy, status, vulnerabilities, supply chain, cves, licenses
 ---
 
-您可以通过 [Docker Scout 仪表板](#dashboard) 或使用 [CLI](#cli) 来跟踪制品的策略状态。
+您可以从 [Docker Scout 仪表板](#dashboard) 或使用 [CLI](#cli) 跟踪制品的策略状态。
 
 ## 仪表板
 
-[Docker Scout Dashboard](https://scout.docker.com/) 的 **概览** 选项卡会显示您仓库最近策略变化的摘要。
-此摘要展示了在最新镜像与前一个镜像之间，策略评估变化最大的那些镜像。
+[Docker Scout 仪表板](https://scout.docker.com/) 的 **Overview** 选项卡显示了仓库策略的近期变更摘要。此摘要展示了在最新镜像与上一镜像之间，策略评估变化最大的镜像。
 
 ![策略概览](../images/policy-overview.webp)
 
-### 仓库的策略状态
+### 每个仓库的策略状态
 
-**镜像** 选项卡会显示所选环境中所有镜像的当前策略状态以及最近的策略趋势。列表中的 **策略状态** 列显示：
+**Images** 选项卡显示所选环境中所有镜像的当前策略状态和近期策略趋势。列表中的 **Policy status** 列显示：
 
-- 已满足的策略数量与总策略数量
-- 最近的策略趋势
+- 已满足的策略数量与策略总数之比
+- 近期策略趋势
 
 ![镜像列表中的策略状态](../images/policy-image-list.webp)
 
-策略趋势用方向箭头表示，指示与同一环境中前一个镜像相比，当前镜像在策略方面是变好、变差还是没有变化。
+策略趋势由方向箭头表示，指示与同一环境中的上一镜像相比，当前镜像的策略是变好、变差还是保持不变。
 
-- 向上的绿色箭头显示最新推送的镜像中变好的策略数量
-- 向下的红色箭头显示最新推送的镜像中变差的策略数量
-- 双向的灰色箭头显示最新版本镜像中未发生变化的策略数量
+- 向上绿色箭头显示在最新推送的镜像中变好的策略数量。
+- 向下红色箭头显示在最新推送的镜像中变差的策略数量。
+- 双向灰色箭头显示在最新版本镜像中保持不变的策略数量。
 
-如果您选择一个仓库，可以打开 **策略** 选项卡，查看最近一次分析的镜像与其前一个镜像之间详细的策略差异。
+如果选择某个仓库，可以打开 **Policy** 选项卡，查看最新分析镜像与其前一镜像的策略差异的详细描述。
 
-### 详细结果与修复建议
+### 详细结果和修复方法
 
-要在仪表板中查看镜像的完整评估结果，请导航到镜像标签页面并打开 **策略** 选项卡。这会显示当前镜像所有策略违规的详细分解。
+要查看镜像的完整评估结果，请在 Docker Scout 仪表板中导航到镜像标签并打开 **Policy** 选项卡。这将显示当前镜像所有策略违规的细分。
 
 ![详细的策略评估结果](../images/policy-detailed-results.webp)
 
-此视图还提供如何改进违规策略状态的建议。
+此视图还提供了如何改进违规策略状态的建议。
 
 ![标签视图中的策略详情](../images/policy-tag-view.webp)
 
-对于与漏洞相关的策略，策略详情视图会显示能够消除该漏洞的修复版本（如果可用）。要解决此问题，请将软件包版本升级到修复版本。
+对于与漏洞相关的策略，策略详情视图会在修复版本可用时显示消除漏洞的修复版本。要修复问题，请将软件包版本升级到修复版本。
 
-对于与许可证相关的策略，列表会显示所有许可证不符合策略标准的软件包。要解决此问题，请找到移除违规软件包依赖的方法，例如寻找一个以更合适许可证分发的替代软件包。
+对于与许可相关的策略，列表会显示所有许可证不符合策略标准的软件包。要修复问题，请设法移除对违规软件包的依赖，例如寻找在更合适许可下分发的替代软件包。
 
 ## CLI
 
@@ -59,7 +58,7 @@ $ docker scout policy \
     ✓ Policy evaluation results found
 
 
-​## 概览
+​## Overview
 ​
 ​             │               Analyzed Image
 ​─────────────┼──────────────────────────────────────────────
@@ -68,11 +67,11 @@ $ docker scout policy \
 ​    platform │ linux/amd64
 ​
 ​
-​## 策略
+​## Policies
 ​
-​策略状态  FAILED  (2/8 policies met, 3 missing data)
+​Policy status  FAILED  (2/8 policies met, 3 missing data)
 ​
-​  状态 │                  策略                             │           结果
+​  Status │                  Policy                             │           Results
 ​─────────┼─────────────────────────────────────────────────────┼──────────────────────────────
 ​  ✓      │ No copyleft licenses                                │    0 packages
 ​  !      │ Default non-root user                               │
@@ -88,4 +87,4 @@ $ docker scout policy \
 ...
 ```
 
-有关该命令的更多信息，请参考 [CLI 参考文档](/reference/cli/docker/scout/policy.md)。
+有关该命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/policy.md)。

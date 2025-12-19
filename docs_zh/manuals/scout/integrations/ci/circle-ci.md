@@ -5,11 +5,11 @@ title: 将 Docker Scout 与 Circle CI 集成
 linkTitle: Circle CI
 ---
 
-以下示例在 CircleCI 触发时运行。触发后，它会检出 "docker/scout-demo-service:latest" 镜像及其标签，然后使用 Docker Scout 创建 CVE 报告。
+以下示例在 CircleCI 中触发时运行。触发时，它会检出 "docker/scout-demo-service:latest" 镜像和标签，然后使用 Docker Scout 创建 CVE 报告。
 
 将以下内容添加到 _.circleci/config.yml_ 文件中。
 
-首先，设置工作流的其余部分。将以下内容添加到 YAML 文件：
+首先，设置工作流的其余部分。将以下内容添加到 YAML 文件中：
 
 ```yaml
 version: 2.1
@@ -22,7 +22,7 @@ jobs:
       IMAGE_TAG: docker/scout-demo-service:latest
 ```
 
-这定义了工作流使用的容器镜像和镜像的环境变量。
+这定义了工作流使用的容器镜像以及镜像的环境变量。
 
 将以下内容添加到 YAML 文件以定义工作流的步骤：
 
@@ -31,13 +31,13 @@ steps:
   # 检出仓库文件
   - checkout
   
-  # 设置独立的 Docker 环境以运行 `docker` 命令
+  # 设置一个单独的 Docker 环境以在其中运行 `docker` 命令
   - setup_remote_docker:
       version: 20.10.24
 
   # 安装 Docker Scout 并登录 Docker Hub
   - run:
-      name: Install Docker Scout
+      name: 安装 Docker Scout
       command: |
         env
         curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- -b /home/circleci/bin
@@ -45,21 +45,21 @@ steps:
 
   # 构建 Docker 镜像
   - run:
-      name: Build Docker image
+      name: 构建 Docker 镜像
       command: docker build -t $IMAGE_TAG .
   
   # 运行 Docker Scout          
   - run:
-      name: Scan image for CVEs
+      name: 扫描镜像中的 CVE
       command: |
         docker-scout cves $IMAGE_TAG --exit-code --only-severity critical,high
 ```
 
-这会检出仓库文件，然后设置独立的 Docker 环境以运行命令。
+这会检出仓库文件，然后设置一个单独的 Docker 环境以在其中运行命令。
 
-它安装 Docker Scout，登录 Docker Hub，构建 Docker 镜像，然后运行 Docker Scout 生成 CVE 报告。它仅显示关键或高严重性的漏洞。
+它安装 Docker Scout，登录 Docker Hub，构建 Docker 镜像，然后运行 Docker Scout 生成 CVE 报告。它只显示严重或高危漏洞。
 
-最后，为工作流添加名称和工作流的任务：
+最后，为工作流及其作业添加名称：
 
 ```yaml
 workflows:

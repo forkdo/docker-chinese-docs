@@ -1,7 +1,7 @@
 ---
 title: "接口: ExtensionVM"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExtensionVM/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExtensionVM/
@@ -11,7 +11,7 @@ aliases:
 
 0.2.0
 
-## 属性
+## 属性 (Properties)
 
 ### cli
 
@@ -28,19 +28,18 @@ await ddClient.extension.vm.cli.exec(
 );
 ```
 
-流式传输在后端容器中执行的命令输出。
+流式传输在后端容器中执行命令的输出。
 
-当扩展定义了自己的 `compose.yaml` 文件且包含多个容器时，
-命令将在定义的第一个容器中执行。
-如需在其他容器中执行命令，请调整容器的定义顺序。
+当扩展定义了自己的 `compose.yaml` 文件并包含多个容器时，该命令将在定义的第一个容器上执行。
+更改容器的定义顺序，以便在另一个容器上执行命令。
 
-示例：在后端容器中启动命令 `ls -l`：
+示例：在后端容器中生成命令 `ls -l`：
 
 ```typescript
 await ddClient.extension.vm.cli.exec("ls", ["-l"], {
            stream: {
              onOutput(data): void {
-                 // 由于可能同时接收到 `stdout` 和 `stderr`，我们将其包装在 JSON 对象中
+                 // 由于我们可能同时接收到 `stdout` 和 `stderr`，因此将它们包装在 JSON 对象中
                  JSON.stringify(
                    {
                      stdout: data.stdout,
@@ -66,7 +65,7 @@ await ddClient.extension.vm.cli.exec("ls", ["-l"], {
 
 **`Param`**
 
-命令的参数。
+要执行的命令的参数。
 
 **`Param`**
 

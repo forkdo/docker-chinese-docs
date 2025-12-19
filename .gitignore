@@ -1,7 +1,10 @@
 # Python
 .venv/
 
-.env
 build/
 docsite/
 translated/
+
+**.log
+**.txt
+config.toml

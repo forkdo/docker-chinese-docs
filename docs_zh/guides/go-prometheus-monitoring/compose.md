@@ -3,16 +3,16 @@ title: 使用 Docker Compose 连接服务
 linkTitle: 使用 Docker Compose 连接服务
 weight: 30 #
 keywords: go, golang, prometheus, grafana, containerize, monitor
-description: 了解如何使用 Docker Compose 连接服务，通过 Prometheus 和 Grafana 监控 Golang 应用。
+description: 了解如何使用 Docker Compose 连接服务，以通过 Prometheus 和 Grafana 监控 Golang 应用程序。
 ---
 
-现在你已经将 Golang 应用容器化，接下来将使用 Docker Compose 将服务连接在一起。你将把 Golang 应用、Prometheus 和 Grafana 服务连接起来，通过 Prometheus 和 Grafana 监控 Golang 应用。
+现在您已经将 Golang 应用程序容器化，接下来将使用 Docker Compose 将您的服务连接在一起。您将把 Golang 应用程序、Prometheus 和 Grafana 服务连接起来，以便使用 Prometheus 和 Grafana 监控 Golang 应用程序。
 
 ## 创建 Docker Compose 文件
 
-在 Golang 应用的根目录下创建一个名为 `compose.yml` 的新文件。Docker Compose 文件包含运行多个服务并将其连接在一起的指令。
+在 Golang 应用程序的根目录中创建一个名为 `compose.yml` 的新文件。Docker Compose 文件包含运行多个服务并将它们连接在一起的指令。
 
-以下是一个使用 Golang、Prometheus 和 Grafana 的项目的 Docker Compose 文件。你也可以在 `go-prometheus-monitoring` 目录中找到此文件。
+以下是一个使用 Golang、Prometheus 和 Grafana 的项目的 Docker Compose 文件。您也可以在 `go-prometheus-monitoring` 目录中找到此文件。
 
 ```yaml
 services:
@@ -70,11 +70,11 @@ networks:
 
 ## 理解 Docker Compose 文件
 
-Docker Compose 文件由三个服务组成：
+Docker Compose 文件包含三个服务：
 
-- **Golang 应用服务**：此服务使用 Dockerfile 构建 Golang 应用并在容器中运行。它暴露应用的端口 `8000` 并连接到 `go-network` 网络。它还定义了一个健康检查来监控应用的健康状况。你使用 `healthcheck` 来监控应用的健康状况。健康检查每 30 秒运行一次，如果健康检查失败，最多重试 5 次。健康检查使用 `curl` 命令检查应用的 `/health` 端点。除了健康检查外，你还添加了 `develop` 部分来监控应用源代码的变化，并使用 Docker Compose Watch 功能重建应用。
+- **Golang 应用程序服务**：此服务使用 Dockerfile 构建 Golang 应用程序，并在容器中运行它。它暴露应用程序的端口 `8000` 并连接到 `go-network` 网络。它还定义了一个健康检查来监控应用程序的健康状况。您还使用了 `healthcheck` 来监控应用程序的健康状况。健康检查每 30 秒运行一次，如果健康检查失败则重试 5 次。健康检查使用 `curl` 命令检查应用程序的 `/health` 端点。除了健康检查，您还添加了一个 `develop` 部分来监视应用程序源代码的更改，并使用 Docker Compose Watch 功能重建应用程序。
 
-- **Prometheus 服务**：此服务在容器中运行 Prometheus 服务器。它使用官方的 Prometheus 镜像 `prom/prometheus:v2.55.0`。它在端口 `9090` 上暴露 Prometheus 服务器并连接到 `go-network` 网络。你还将 `Docker` 目录中的 `prometheus.yml` 文件挂载到项目根目录。`prometheus.yml` 文件包含 Prometheus 配置，用于从 Golang 应用抓取指标。这就是你将 Prometheus 服务器连接到 Golang 应用的方式。
+- **Prometheus 服务**：此服务在容器中运行 Prometheus 服务器。它使用官方的 Prometheus 镜像 `prom/prometheus:v2.55.0`。它在端口 `9090` 上暴露 Prometheus 服务器，并连接到 `go-network` 网络。您还从项目根目录下的 `Docker` 目录挂载了 `prometheus.yml` 文件。`prometheus.yml` 文件包含从 Golang 应用程序抓取指标的 Prometheus 配置。这就是您将 Prometheus 服务器连接到 Golang 应用程序的方式。
 
     ```yaml
     global:
@@ -87,9 +87,9 @@ Docker Compose 文件由三个服务组成：
           - targets: ["api:8000"]
     ```
 
-    在 `prometheus.yml` 文件中，你定义了一个名为 `myapp` 的任务，用于从 Golang 应用抓取指标。`targets` 字段指定抓取指标的目标。在这种情况下，目标是运行在端口 `8000` 上的 Golang 应用。`api` 是 Docker Compose 文件中 Golang 应用的服务名称。Prometheus 服务器将每 10 秒从 Golang 应用抓取一次指标。
+    在 `prometheus.yml` 文件中，您定义了一个名为 `myapp` 的任务来从 Golang 应用程序抓取指标。`targets` 字段指定了要抓取指标的目标。在本例中，目标是运行在端口 `8000` 上的 Golang 应用程序。`api` 是 Docker Compose 文件中 Golang 应用程序的服务名称。Prometheus 服务器将每 10 秒从 Golang 应用程序抓取一次指标。
 
-- **Grafana 服务**：此服务在容器中运行 Grafana 服务器。它使用官方的 Grafana 镜像 `grafana/grafana:11.3.0`。它在端口 `3000` 上暴露 Grafana 服务器并连接到 `go-network` 网络。你还将 `Docker` 目录中的 `grafana.yml` 文件挂载到项目根目录。`grafana.yml` 文件包含 Grafana 配置，用于添加 Prometheus 数据源。这就是你将 Grafana 服务器连接到 Prometheus 服务器的方式。在环境变量中，你设置了 Grafana 管理员用户和密码，用于登录 Grafana 仪表板。
+- **Grafana 服务**：此服务在容器中运行 Grafana 服务器。它使用官方的 Grafana 镜像 `grafana/grafana:11.3.0`。它在端口 `3000` 上暴露 Grafana 服务器，并连接到 `go-network` 网络。您还从项目根目录下的 `Docker` 目录挂载了 `grafana.yml` 文件。`grafana.yml` 文件包含添加 Prometheus 数据源的 Grafana 配置。这就是您将 Grafana 服务器连接到 Prometheus 服务器的方式。在环境变量中，您设置了 Grafana 管理员用户和密码，这些将用于登录 Grafana 仪表板。
 
     ```yaml
     apiVersion: 1
@@ -100,21 +100,21 @@ Docker Compose 文件由三个服务组成：
       isDefault: true
     ```
       
-    在 `grafana.yml` 文件中，你定义了一个名为 `Prometheus (Main)` 的 Prometheus 数据源。`type` 字段指定数据源的类型，即 `prometheus`。`url` 字段指定用于获取指标的 Prometheus 服务器的 URL。在这种情况下，URL 是 `http://prometheus:9090`。`prometheus` 是 Docker Compose 文件中 Prometheus 服务器的服务名称。`isDefault` 字段指定数据源是否为 Grafana 中的默认数据源。
+    在 `grafana.yml` 文件中，您定义了一个名为 `Prometheus (Main)` 的 Prometheus 数据源。`type` 字段指定了数据源的类型，即 `prometheus`。`url` 字段指定了要从中获取指标的 Prometheus 服务器的 URL。在本例中，URL 是 `http://prometheus:9090`。`prometheus` 是 Docker Compose 文件中 Prometheus 服务器的服务名称。`isDefault` 字段指定该数据源是否是 Grafana 中的默认数据源。
 
-除了服务外，Docker Compose 文件还定义了一个名为 `grafana-data` 的卷来持久化 Grafana 数据，以及一个名为 `go-network` 的网络来连接服务。你创建了一个自定义网络 `go-network` 来连接服务。`driver: bridge` 字段指定用于网络的网络驱动。
+除了服务之外，Docker Compose 文件还定义了一个名为 `grafana-data` 的卷来持久化 Grafana 数据，以及一个名为 `go-network` 的网络来将服务连接在一起。您创建了一个自定义网络 `go-network` 来连接服务。`driver: bridge` 字段指定了网络要使用的网络驱动程序。
 
-## 构建和运行服务
+## 构建并运行服务
 
-现在你有了 Docker Compose 文件，可以使用 Docker Compose 构建服务并一起运行它们。
+现在您有了 Docker Compose 文件，可以使用 Docker Compose 构建服务并将它们一起运行。
 
-要构建和运行服务，请在终端中运行以下命令：
+要构建并运行服务，请在终端中运行以下命令：
 
 ```console
 $ docker compose up
 ```
 
-`docker compose up` 命令构建 Docker Compose 文件中定义的服务并将它们一起运行。你会在终端中看到类似的输出：
+`docker compose up` 命令构建 Docker Compose 文件中定义的服务并将它们一起运行。您将在终端中看到类似的输出：
 
 ```console
  ✔ Network go-prometheus-monitoring_go-network  Created                                                           0.0s 
@@ -144,7 +144,7 @@ grafana     | logger=ngalert.state.manager t=2025-03-15T05:57:07.088956839Z leve
 grafana     | logger=plugin.angulardetectorsprovider.dynamic t=2025-03-15T05:57:07.530317298Z level=info msg="Patterns update finished" duration=440.489125ms
 ```
 
-服务将开始运行，你可以通过 `http://localhost:8000` 访问 Golang 应用，通过 `http://localhost:9090/health` 访问 Prometheus，通过 `http://localhost:3000` 访问 Grafana。你也可以使用 `docker ps` 命令检查运行中的容器。
+服务将开始运行，您可以通过 `http://localhost:8000` 访问 Golang 应用程序，通过 `http://localhost:9090/health` 访问 Prometheus，通过 `http://localhost:3000` 访问 Grafana。您也可以使用 `docker ps` 命令检查正在运行的容器。
 
 ```console
 $ docker ps
@@ -152,15 +152,15 @@ $ docker ps
 
 ## 总结
 
-在本节中，你学习了如何使用 Docker Compose 将服务连接在一起。你创建了一个 Docker Compose 文件来一起运行多个服务，并使用网络将它们连接起来。你还学习了如何使用 Docker Compose 构建和运行服务。
+在本节中，您学习了如何使用 Docker Compose 将服务连接在一起。您创建了一个 Docker Compose 文件来一起运行多个服务，并使用网络将它们连接起来。您还学习了如何使用 Docker Compose 构建和运行服务。
 
 相关信息：
 
  - [Docker Compose 概述](/manuals/compose/_index.md)
  - [Compose 文件参考](/reference/compose-file/_index.md)
 
-接下来，你将学习如何使用 Docker Compose 开发 Golang 应用，并使用 Prometheus 和 Grafana 监控它。
+接下来，您将学习如何使用 Docker Compose 开发 Golang 应用程序，并使用 Prometheus 和 Grafana 监控它。
 
 ## 后续步骤
 
-在下一节中，你将学习如何使用 Docker 开发 Golang 应用。你还将学习如何使用 Docker Compose Watch 在代码更改时重建镜像。最后，你将测试应用并使用 Prometheus 作为数据源在 Grafana 中可视化指标。
+在下一节中，您将学习如何使用 Docker 开发 Golang 应用程序。您还将学习如何使用 Docker Compose Watch 在代码更改时重建镜像。最后，您将测试应用程序并使用 Prometheus 作为数据源在 Grafana 中可视化指标。

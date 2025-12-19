@@ -1,7 +1,7 @@
 ---
-title: "接口: ExecOptions"
+title: "Interface: ExecOptions"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecOptions/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecOptions/
@@ -11,7 +11,7 @@ aliases:
 
 0.3.0
 
-## 层次结构
+## 层级结构
 
 - **`ExecOptions`**
 

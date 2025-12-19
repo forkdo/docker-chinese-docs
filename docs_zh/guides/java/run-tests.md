@@ -1,26 +1,26 @@
 ---
-title: 运行你的 Java 测试
-linkTitle: 运行你的测试
+title: 运行 Java 测试
+linkTitle: 运行测试
 weight: 30
-keywords: Java, build, test
-description: 如何构建和运行你的 Java 测试
+keywords: Java, 构建, 测试
+description: 如何构建并运行 Java 测试
 aliases:
   - /language/java/run-tests/
   - /guides/language/java/run-tests/
 ---
 
-## 前置条件
+## 前提条件
 
-完成本指南的所有前置章节，从 [容器化 Java 应用](containerize.md) 开始。
+完成本指南的所有前几节，从 [容器化 Java 应用程序](containerize.md) 开始。
 
 ## 概述
 
-测试是现代软件开发的重要组成部分。对不同的开发团队而言，测试可能包含多种含义。包括单元测试、集成测试和端到端测试。在本指南中，你将了解如何在 Docker 中运行单元测试。
+测试是现代软件开发中不可或缺的一部分。对于不同的开发团队来说，测试可能意味着很多事情。有单元测试、集成测试和端到端测试。在本指南中，你将了解如何在 Docker 中运行单元测试。
 
 ### 用于测试的多阶段 Dockerfile
 
-在以下示例中，你将把测试命令集成到 Dockerfile 中。
-将 Dockerfile 的内容替换为以下内容。
+在下面的示例中，你将测试命令提取到 Dockerfile 中。
+用以下内容替换你的 Dockerfile 内容。
 
 ```dockerfile {hl_lines="3-19"}
 # syntax=docker/dockerfile:1
@@ -83,21 +83,21 @@ EXPOSE 8080
 ENTRYPOINT [ "java", "-Dspring.profiles.active=postgres", "org.springframework.boot.loader.launch.JarLauncher" ]
 ```
 
-首先，你添加了一个新的基础阶段（base stage）。在基础阶段中，你添加了测试阶段和 deps 阶段都需要的通用指令。
+首先，你添加了一个新的 `base` 阶段。在 `base` 阶段，你添加了 `test` 和 `deps` 阶段都需要的通用指令。
 
-接着，你添加了一个基于基础阶段的新测试阶段，标记为 `test`。在该阶段中，你复制了必要的源文件，然后指定 `RUN` 执行 `./mvnw test`。与使用 `CMD` 不同，你使用 `RUN` 来运行测试。原因是 `CMD` 指令在容器运行时执行，而 `RUN` 指令在镜像构建时执行。使用 `RUN` 时，如果测试失败，构建将失败。
+接下来，你添加了一个基于 `base` 阶段、名为 `test` 的新阶段。在此阶段，你复制了必要的源文件，然后指定 `RUN` 来运行 `./mvnw test`。你使用了 `RUN` 而不是 `CMD` 来运行测试。原因是 `CMD` 指令在容器运行时执行，而 `RUN` 指令在构建镜像时执行。使用 `RUN` 时，如果测试失败，构建也会失败。
 
-最后，你更新了 deps 阶段，使其基于基础阶段，并移除了现在已属于基础阶段的指令。
+最后，你更新了 `deps` 阶段，使其基于 `base` 阶段，并删除了现已移至 `base` 阶段的指令。
 
-运行以下命令，使用测试阶段作为目标构建新镜像并查看测试结果。包含 `--progress=plain` 以查看构建输出，`--no-cache` 确保测试始终运行，`--target test` 指定目标为测试阶段。
+运行以下命令，使用 `test` 阶段作为目标来构建新镜像并查看测试结果。包含 `--progress=plain` 以查看构建输出，`--no-cache` 以确保始终运行测试，以及 `--target test` 以针对 `test` 阶段。
 
-现在，构建你的镜像并运行测试。你将运行 `docker build` 命令并添加 `--target test` 标志，以便专门运行测试构建阶段。
+现在，构建你的镜像并运行你的测试。你将运行 `docker build` 命令并添加 `--target test` 标志，以便专门运行测试构建阶段。
 
 ```console
 $ docker build -t java-docker-image-test --progress=plain --no-cache --target=test .
 ```
 
-你应该看到包含以下内容的输出：
+你应该会看到包含以下内容的输出
 
 ```console
 ...
@@ -113,6 +113,6 @@ $ docker build -t java-docker-image-test --progress=plain --no-cache --target=te
 #15 DONE 101.4s
 ```
 
-## 后续步骤
+## 下一步
 
 在下一节中，你将了解如何使用 GitHub Actions 设置 CI/CD 流水线。

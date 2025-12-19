@@ -9,9 +9,10 @@ weight: 80
 
 {{% include "compose/extension.md" %}}
 
-扩展也可以与 [锚点和别名](fragments.md) 一起使用。
+扩展也可以与[锚点和别名](fragments.md)结合使用。
 
-它们还可以用于 Compose 文件中的任何结构，只要该结构不期望用户自定义键即可。Compose 使用这些扩展来启用实验性功能，类似于浏览器为 [自定义 CSS 特性](https://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords) 添加支持的方式。
+它们还可以在 Compose 文件中任何不期望出现用户自定义键的结构中使用。
+Compose 使用这些来启用实验性功能，就像浏览器添加对[自定义 CSS 功能](https://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords)的支持一样。
 
 ## 示例 1
 
@@ -54,7 +55,8 @@ services:
     image: another-image:latest
 ```
 
-在此示例中，环境变量不属于任一服务。它们完全被提取到了 `x-env` 扩展字段中。这定义了一个包含 environment 字段的新节点。使用 `&env` YAML 锚点，两个服务都可以将扩展字段的值引用为 `*env`。
+在此示例中，环境变量不属于任何一个服务。它们被完全提取到 `x-env` 扩展字段中。
+这定义了一个包含 environment 字段的新节点。使用 `&env` YAML 键，以便两个服务都可以将扩展字段的值引用为 `*env`。
 
 ## 示例 3
 
@@ -71,14 +73,14 @@ x-function: &function
      constraints:
        - 'node.platform.os == linux'
 services:
- # Node.js 提供节点（主机）的操作系统信息
+ # Node.js gives OS info about the node (Host)
  nodeinfo:
    <<: *function
    image: functions/nodeinfo:latest
    environment:
      no_proxy: "gateway"
      https_proxy: $https_proxy
- # 使用 `cat` 回显响应，这是执行速度最快的函数。
+ # Uses `cat` to echo back response, fastest function to execute.
  echoit:
    <<: *function
    image: functions/alpine:health
@@ -88,11 +90,11 @@ services:
      https_proxy: $https_proxy
 ```
 
-`nodeinfo` 和 `echoit` 服务都通过 `&function` 锚点包含 `x-function` 扩展，然后设置它们特定的镜像和环境。
+`nodeinfo` 和 `echoit` 服务都通过 `&function` 键包含 `x-function` 扩展，然后设置它们特定的镜像和环境。
 
-## 示例 4 
+## 示例 4
 
-使用 [YAML 合并](https://yaml.org/type/merge.html)，也可以使用多个扩展，并共享和覆盖特定需求的附加属性：
+使用 [YAML 合并](https://yaml.org/type/merge.html) 也可以使用多个扩展，并为特定需求共享和覆盖额外的属性：
 
 ```yml
 x-environment: &default-environment
@@ -114,19 +116,19 @@ services:
 >
 > 在上面的示例中，环境变量使用 `FOO: BAR` 映射语法声明，而序列语法 `- FOO=BAR` 仅在不涉及片段时有效。
 
-## 背景知识：历史信息
+## 信息性历史说明
 
-本节为背景知识。在撰写本文时，已知存在以下前缀：
+本节为信息性内容。在撰写本文时，已知存在以下前缀：
 
-| 前缀     | 供应商/组织 |
+| 前缀       | 供应商/组织         |
 | ---------- | ------------------- |
 | docker     | Docker              |
 | kubernetes | Kubernetes          |
 
 ## 指定字节值
 
-将字节值表示为 `{amount}{byte unit}` 格式的字符串：
-支持的单位有 `b`（字节）、`k` 或 `kb`（千字节）、`m` 或 `mb`（兆字节）和 `g` 或 `gb`（千兆字节）。
+值以 `{数量}{字节单位}` 格式的字符串表示字节值：
+支持的单位有 `b`（字节）、`k` 或 `kb`（千字节）、`m` 或 `mb`（兆字节）以及 `g` 或 `gb`（吉字节）。
 
 ```text
     2b
@@ -138,7 +140,7 @@ services:
 
 ## 指定持续时间
 
-将持续时间表示为 `{value}{unit}` 格式的字符串。
+值以 `{值}{单位}` 形式的字符串表示持续时间。
 支持的单位有 `us`（微秒）、`ms`（毫秒）、`s`（秒）、`m`（分钟）和 `h`（小时）。
 值可以组合多个值，无需分隔符。
 

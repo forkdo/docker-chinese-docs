@@ -6,39 +6,39 @@ linkTitle: 快速入门
 weight: 10
 ---
 
-Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作流并减少设置时间。你可以基于 Docker Hub 中的预构建镜像进行开发，然后使用仓库与团队或数百万其他开发者共享和分发你自己的镜像。
+Docker Hub 提供了庞大的预构建镜像和资源库，能够加速开发工作流并减少设置时间。您可以基于 Docker Hub 的预构建镜像进行构建，然后使用仓库与您的团队或数百万其他开发者分享和分发您自己的镜像。
 
-本指南将向你展示如何查找和运行预构建镜像。然后，它将引导你创建自定义镜像并通过 Docker Hub 共享它。
+本指南将指导您如何查找并运行预构建镜像。随后，您将学习创建自定义镜像并通过 Docker Hub 进行分享。
 
-## 前置条件
+## 前提条件
 
 - [下载并安装 Docker](../../get-started/get-docker.md)
 - [创建 Docker 账户](https://app.docker.com/signup)
 
 ## 步骤 1：在 Docker Hub 库中查找镜像
 
-你可以在 Docker Hub 本身、Docker Desktop 仪表板或通过 CLI 中搜索内容。
+您可以在 Docker Hub 网站、Docker Desktop 仪表板中搜索内容，或者使用 CLI 进行搜索。
 
-在 Docker Hub 中搜索或浏览内容：
+要在 Docker Hub 上搜索或浏览内容：
 
 {{< tabs >}}
 {{< tab name="Docker Hub" >}}
 
-1. 导航到 [Docker Hub 探索页面](https://hub.docker.com/explore)。
+1. 导航至 [Docker Hub 探索页面](https://hub.docker.com/explore)。
 
-   在 **探索** 页面，你可以按目录或类别浏览，或使用搜索快速找到内容。
+   在 **Explore** 页面上，您可以按目录或类别浏览，或者使用搜索功能快速找到内容。
 
-2. 在 **类别** 下，选择 **Web 服务器**。
+2. 在 **Categories** 下，选择 **Web servers**。
 
-   结果显示后，你可以使用页面左侧的过滤器进一步筛选结果。
+   结果显示后，您可以使用页面左侧的筛选器进一步筛选结果。
 
-3. 在过滤器中，选择 **Docker 官方镜像**。
+3. 在筛选器中，选择 **Docker Official Image**。
 
-   按可信内容过滤可确保你只看到由 Docker 和验证发布合作伙伴策划的高质量、安全的镜像。
+   按可信内容筛选可确保您只看到由 Docker 和经验证的发布合作伙伴策划的高质量、安全的镜像。
 
 4. 在结果中，选择 **nginx** 镜像。
 
-   选择镜像将打开镜像的页面，你可以在其中了解如何使用该镜像。在页面上，你还会找到 `docker pull` 命令来拉取镜像。
+   选择镜像将打开镜像页面，您可以在其中了解有关如何使用该镜像的更多信息。在该页面上，您还可以找到用于拉取镜像的 `docker pull` 命令。
 
 {{< /tab >}}
 {{< tab name="Docker Desktop" >}}
@@ -46,13 +46,13 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
 1. 打开 Docker Desktop 仪表板。
 2. 选择 **Docker Hub** 视图。
 
-   在 **Docker Hub** 视图中，你可以按目录或类别浏览，或使用搜索快速找到内容。
+   在 **Docker Hub** 视图中，您可以按目录或类别浏览，或者使用搜索功能快速找到内容。
 
-3. 保持搜索框为空，然后选择 **搜索**。
+3. 将搜索框留空，然后选择 **Search**。
 
-   搜索结果会显示在搜索框旁边，现在有额外的过滤器。
+   搜索结果将显示在搜索框旁边，现在还附带了额外的筛选器。
 
-4. 选择搜索过滤器图标，然后选择 **Docker 官方镜像** 和 **Web 服务器**。
+4. 选择搜索筛选器图标，然后选择 **Docker Official Image** 和 **Web Servers**。
 5. 在结果中，选择 **nginx** 镜像。
 
 {{< /tab >}}
@@ -62,7 +62,7 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
 
    > [!TIP]
    >
-   > Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 **>_ 终端** 打开它。
+   > Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 **>_ Terminal** 即可打开它。
 
 2. 在终端中，运行以下命令。
 
@@ -70,34 +70,35 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
    $ docker search --filter is-official=true nginx
    ```
 
-   与 Docker Hub 和 Docker Desktop 界面不同，你无法使用 `docker search` 命令按类别浏览。有关该命令的更多详细信息，请参阅 [docker search](/reference/cli/docker/search/)。
+   与 Docker Hub 和 Docker Desktop 界面不同，您无法使用 `docker search` 命令按类别浏览。有关该命令的更多详细信息，请参阅 [docker search](/reference/cli/docker/search/)。
 
 {{< /tab >}}
 {{< /tabs >}}
 
-现在你已经找到了一个镜像，是时候将它拉取并在你的设备上运行了。
+现在您已经找到了镜像，是时候将其拉取并在您的设备上运行了。
 
 ## 步骤 2：从 Docker Hub 拉取并运行镜像
 
-你可以使用 CLI 或 Docker Desktop 仪表板从 Docker Hub 运行镜像。
+您可以使用 CLI 或 Docker Desktop 仪表板运行来自 Docker Hub 的镜像。
 
 {{< tabs >}}
 {{< tab name="Docker Desktop" >}}
 
-1. 在 Docker Desktop 仪表板中，选择 **Docker Hub** 视图中的 **nginx** 镜像。详细信息请参阅 [步骤 1：在 Docker Hub 库中查找镜像](#步骤-1在-docker-hub-库中查找镜像)。
+1. 在 Docker Desktop 仪表板中，在 **Docker Hub** 视图中选择 **nginx** 镜像。更多详情，请参阅 [步骤 1：在 Docker Hub 库中查找镜像](#步骤-1在-docker-hub-库中查找镜像)。
 
-2. 在 **nginx** 屏幕上，选择 **运行**。
+2. 在 **nginx** 屏幕上，选择 **Run**。
 
-   如果镜像在你的设备上不存在，它会自动从 Docker Hub 拉取。根据你的连接情况，拉取镜像可能需要几秒或几分钟。镜像拉取后，Docker Desktop 中会弹出一个窗口，你可以指定运行选项。
+   如果镜像在您的设备上不存在，它会自动从 Docker Hub 拉取。拉取镜像可能需要几秒或几分钟，具体取决于您的连接速度。镜像拉取完成后，Docker Desktop 中会出现一个窗口，您可以在其中指定运行选项。
 
-3. 在 **主机端口** 选项中，指定 `8080`。
-4. 选择 **运行**。
+3. 在 **Host port** 选项中，指定 `8080`。
+4. 选择 **Run**。
 
-   容器启动后会显示容器日志。
+   容器启动后，容器日志将显示出来。
 
-5. 选择 **8080:80** 链接打开服务器，或在浏览器中访问 [http://localhost:8080](http://localhost:8080)。
+5. 选择 **8080:80** 链接以打开服务器，或者在您的 Web 浏览器中访问 [http://localhost:8080](http://localhost:8080)。
 
-6. 在 Docker Desktop 仪表板中，选择 **停止** 按钮停止容器。
+6. 在 Docker Desktop 仪表板中，选择 **Stop** 按钮以停止容器。
+
 
 {{< /tab >}}
 {{< tab name="CLI" >}}
@@ -106,15 +107,15 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
 
    > [!TIP]
    >
-   > Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 **>_ 终端** 打开它。
+   > Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 **>_ Terminal** 即可打开它。
 
-2. 在终端中，运行以下命令拉取并运行 Nginx 镜像。
+2. 在您的终端中，运行以下命令以拉取并运行 Nginx 镜像。
 
    ```console
    $ docker run -p 8080:80 --rm nginx
    ```
 
-   `docker run` 命令会自动拉取并运行镜像，无需先运行 `docker pull`。要了解有关该命令及其选项的更多信息，请参阅 [`docker run` CLI 参考](../../reference/cli/docker/container/run.md)。运行该命令后，你应该看到类似以下的输出。
+   `docker run` 命令会自动拉取并运行镜像，无需先运行 `docker pull`。要了解有关该命令及其选项的更多信息，请参阅 [`docker run` CLI 参考](../../reference/cli/docker/container/run.md)。运行命令后，您应该会看到类似以下的输出。
 
    ```console {collapse=true}
    Unable to find image 'nginx:latest' locally
@@ -147,35 +148,35 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
    ...
    ```
 
-3. 访问 [http://localhost:8080](http://localhost:8080) 查看默认的 Nginx 页面，验证容器正在运行。
+3. 访问 [http://localhost:8080](http://localhost:8080) 以查看默认的 Nginx 页面，并验证容器是否正在运行。
 
 4. 在终端中，按 <kdb>Ctrl+C</kbd> 停止容器。
 
 {{< /tab >}}
 {{< /tabs >}}
 
-现在你已经运行了一个 Web 服务器，无需任何设置或配置。Docker Hub 提供对预构建、即用型容器镜像的即时访问，让你可以快速拉取和运行应用程序，而无需手动安装或配置软件。借助 Docker Hub 庞大的镜像库，你可以轻松地试验和部署应用程序，提高生产力，并轻松尝试新工具、设置开发环境或在现有软件基础上构建。
+您现在已经运行了一个 Web 服务器，无需任何设置或配置。Docker Hub 提供对预构建、即用型容器镜像的即时访问，让您可以快速拉取和运行应用程序，而无需手动安装或配置软件。借助 Docker Hub 庞大的镜像库，您可以轻松地进行实验和部署应用程序，从而提高生产力，使尝试新工具、设置开发环境或在现有软件基础上构建变得更加容易。
 
-你也可以扩展 Docker Hub 中的镜像，让你能够快速构建和自定义自己的镜像以满足特定需求。
+您还可以扩展来自 Docker Hub 的镜像，从而快速构建和定制您自己的镜像以满足特定需求。
 
-## 步骤 3：构建并推送镜像到 Docker Hub
+## 步骤 3：构建镜像并推送到 Docker Hub
 
-1. 创建一个 [Dockerfile](/reference/dockerfile.md) 来指定你的应用程序：
+1. 创建一个 [Dockerfile](/reference/dockerfile.md) 来指定您的应用程序：
 
    ```dockerfile
    FROM nginx
    RUN echo "<h1>Hello world from Docker!</h1>" > /usr/share/nginx/html/index.html
    ```
 
-   这个 Dockerfile 扩展了 Docker Hub 中的 Nginx 镜像，创建一个简单的网站。只需几行代码，你就可以轻松设置、自定义和共享一个静态网站。
+   这个 Dockerfile 扩展了来自 Docker Hub 的 Nginx 镜像，以创建一个简单的网站。只需几行代码，您就可以使用 Docker 轻松设置、定制和分享静态网站。
 
-2. 运行以下命令构建你的镜像。将 `<YOUR-USERNAME>` 替换为你的 Docker ID。
+2. 运行以下命令以构建您的镜像。将 `<YOUR-USERNAME>` 替换为您的 Docker ID。
 
    ```console
    $ docker build -t <YOUR-USERNAME>/nginx-custom .
    ```
 
-   此命令构建你的镜像并标记它，以便 Docker 知道将其推送到 Docker Hub 中的哪个仓库。要了解有关该命令及其选项的更多信息，请参阅 [`docker build` CLI 参考](../../reference/cli/docker/buildx/build.md)。运行该命令后，你应该看到类似以下的输出。
+   此命令构建您的镜像并为其打上标签，以便 Docker 了解要将其推送到 Docker Hub 中的哪个仓库。要了解有关该命令及其选项的更多信息，请参阅 [`docker build` CLI 参考](../../reference/cli/docker/buildx/build.md)。运行命令后，您应该会看到类似以下的输出。
 
    ```console {collapse=true}
    [+] Building 0.6s (6/6) FINISHED                      docker:desktop-linux
@@ -192,19 +193,19 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
     => => naming to docker.io/mobyismyname/nginx-custom                  0.0s
    ```
 
-3. 运行以下命令测试你的镜像。将 `<YOUR-USERNAME>` 替换为你的 Docker ID。
+3. 运行以下命令以测试您的镜像。将 `<YOUR-USERNAME>` 替换为您的 Docker ID。
 
    ```console
    $ docker run -p 8080:80 --rm <YOUR-USERNAME>/nginx-custom
    ```
 
-4. 访问 [http://localhost:8080](http://localhost:8080) 查看页面。你应该看到 `Hello world from Docker!`。
+4. 访问 [http://localhost:8080](http://localhost:8080) 以查看页面。您应该会看到 `Hello world from Docker!`。
 
 5. 在终端中，按 CTRL+C 停止容器。
 
-6. 登录 Docker Desktop。在将镜像推送到 Docker Hub 之前，你必须先登录。
+6. 登录 Docker Desktop。在将镜像推送到 Docker Hub 之前，您必须先登录。
 
-7. 运行以下命令将你的镜像推送到 Docker Hub。将 `<YOUR-USERNAME>` 替换为你的 Docker ID。
+7. 运行以下命令将您的镜像推送到 Docker Hub。将 `<YOUR-USERNAME>` 替换为您的 Docker ID。
 
    ```console
    $ docker push <YOUR-USERNAME>/nginx-custom
@@ -212,9 +213,9 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
 
     > [!NOTE]
     >
-    > 你必须通过 Docker Desktop 或命令行登录 Docker Hub，并且还必须正确命名你的镜像，如上述步骤所示。
+    > 您必须通过 Docker Desktop 或命令行登录 Docker Hub，并且还必须按照上述步骤正确命名您的镜像。
 
-   该命令将镜像推送到 Docker Hub，并在仓库不存在时自动创建仓库。要了解有关该命令的更多信息，请参阅 [`docker push` CLI 参考](../../reference/cli/docker/image/push.md)。运行该命令后，你应该看到类似以下的输出。
+   该命令将镜像推送到 Docker Hub，并在镜像不存在时自动创建仓库。要了解有关该命令的更多信息，请参阅 [`docker push` CLI 参考](../../reference/cli/docker/image/push.md)。运行命令后，您应该会看到类似以下的输出。
 
    ```console {collapse=true}
    Using default tag: latest
@@ -230,41 +231,41 @@ Docker Hub 提供了庞大的预构建镜像和资源库，可加速开发工作
    latest: digest: sha256:7f5223ae866e725a7f86b856c30edd3b86f60d76694df81d90b08918d8de1e3f size: 1985
    ```
 
-  现在你已经创建了一个仓库并推送了你的镜像，是时候查看你的仓库并探索其选项了。
+  现在您已经创建了仓库并推送了镜像，是时候查看您的仓库并探索其选项了。
 
-## 步骤 4：在 Docker Hub 上查看你的仓库并探索选项
+## 步骤 4：在 Docker Hub 上查看您的仓库并探索选项
 
-你可以在 Docker Hub 或 Docker Desktop 界面中查看你的 Docker Hub 仓库。
+您可以在 Docker Hub 或 Docker Desktop 界面中查看您的 Docker Hub 仓库。
 
 {{< tabs >}}
 {{< tab name="Docker Hub" >}}
 
-1. 访问 [Docker Hub](https://hub.docker.com) 并登录。
+1. 前往 [Docker Hub](https://hub.docker.com) 并登录。
 
-   登录后，你应该在 **仓库** 页面。如果没有，请转到 [**仓库**](https://hub.docker.com/repositories/) 页面。
+   登录后，您应该位于 **Repositories** 页面。如果没有，请前往 [**Repositories**](https://hub.docker.com/repositories/) 页面。
 
 2. 找到 **nginx-custom** 仓库并选择该行。
 
-   选择仓库后，你应该看到更多关于你的仓库的详细信息和选项。
+   选择仓库后，您应该会看到更多关于您仓库的详细信息和选项。
 
 {{< /tab >}}
 {{< tab name="Docker Desktop" >}}
 
 1. 登录 Docker Desktop。
-2. 选择 **镜像** 视图。
-3. 选择 **Hub 仓库** 选项卡。
+2. 选择 **Images** 视图。
+3. 选择 **Hub repositories** 选项卡。
 
-   你的 Docker Hub 仓库列表会出现。
+   将显示您的 Docker Hub 仓库列表。
 
-4. 找到 **nginx-custom** 仓库，将鼠标悬停在行上，然后选择 **在 Hub 中查看**。
+4. 找到 **nginx-custom** 仓库，将鼠标悬停在该行上，然后选择 **View in Hub**。
 
-   Docker Hub 会打开，你可以查看镜像的更多详细信息。
+   Docker Hub 将打开，您能够查看有关该镜像的更多详细信息。
 
 {{< /tab >}}
 {{< /tabs >}}
 
-现在你已经验证了你的仓库存在于 Docker Hub 上，并且你发现了更多选项。查看下一步以了解这些选项的更多信息。
+您现在已经验证了您的仓库存在于 Docker Hub 上，并且发现了更多关于它的选项。查看后续步骤以了解更多关于其中一些选项的信息。
 
-## 下一步
+## 后续步骤
 
-添加 [仓库信息](./repos/manage/information.md) 以帮助用户查找和使用你的镜像。
+添加[仓库信息](./repos/manage/information.md)以帮助用户查找和使用您的镜像。

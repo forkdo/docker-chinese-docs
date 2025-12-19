@@ -8,7 +8,9 @@ layout: cli
 ---
 
 <!--
-此页面由 Docker 源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题：
+此页面是自动从 Docker 的源代码生成的。如果您想
+建议更改此处显示的文本，请在 GitHub 上的源代码仓库中
+提交工单：
 
 https://github.com/docker/scout-cli
 -->

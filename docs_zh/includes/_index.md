@@ -1,3 +1,4 @@
+```yaml
 ---
 cascade:
 - build:
@@ -5,3 +6,4 @@ cascade:
     publishResources: false
     render: never
 ---
+```

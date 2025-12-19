@@ -5,7 +5,7 @@ weight: 30
 keywords: Docker, ai, model runner, rest api, openai, endpoints, documentation
 ---
 
-启用 Model Runner 后，将有新的 API 端点可用。你可以使用这些端点以编程方式与模型交互。
+启用 Model Runner 后，将提供新的 API 端点。你可以使用这些端点以编程方式与模型交互。
 
 ### 确定基础 URL
 
@@ -24,7 +24,7 @@ keywords: Docker, ai, model runner, rest api, openai, endpoints, documentation
 - 从主机进程：`http://localhost:12434/`
 
 > [!NOTE]
-> `172.17.0.1` 接口默认可能对 Compose 项目中的容器不可用。
+> `172.17.0.1` 接口默认情况下可能对 Compose 项目中的容器不可用。
 > 在这种情况下，在你的 Compose 服务 YAML 中添加 `extra_hosts` 指令：
 >
 > ```yaml
@@ -34,7 +34,7 @@ keywords: Docker, ai, model runner, rest api, openai, endpoints, documentation
 > 然后你可以通过 http://model-runner.docker.internal:12434/ 访问 Docker Model Runner API
 
 {{< /tab >}}
-{{</tabs >}}
+{{< /tabs >}}
 
 ### 可用的 DMR 端点
 
@@ -78,18 +78,17 @@ DMR 支持以下 OpenAI 端点：
   GET /engines/llama.cpp/v1/models/{namespace}/{name}
   ```
 
-- [列出聊天补全](https://platform.openai.com/docs/api-reference/chat/list)：
+- [列出聊天完成](https://platform.openai.com/docs/api-reference/chat/list)：
 
   ```text
   POST /engines/llama.cpp/v1/chat/completions
   ```
 
-- [创建补全](https://platform.openai.com/docs/api-reference/completions/create)：
+- [创建完成](https://platform.openai.com/docs/api-reference/completions/create)：
 
   ```text
   POST /engines/llama.cpp/v1/completions
   ```
-
 
 - [创建嵌入](https://platform.openai.com/docs/api-reference/embeddings/create)：
 
@@ -97,10 +96,10 @@ DMR 支持以下 OpenAI 端点：
   POST /engines/llama.cpp/v1/embeddings
   ```
 
-要通过 Unix 套接字 (`/var/run/docker.sock`) 调用这些端点，需在其路径前加上 `/exp/vDD4.40`。
+要通过 Unix 套接字（`/var/run/docker.sock`）调用这些端点，需在其路径前添加 `/exp/vDD4.40`。
 
 > [!NOTE]
-> 你可以省略路径中的 `llama.cpp`。例如：`POST /engines/v1/chat/completions`。
+> 你可以从路径中省略 `llama.cpp`。例如：`POST /engines/v1/chat/completions`。
 
 ## REST API 示例
 
@@ -133,13 +132,13 @@ curl http://model-runner.docker.internal/engines/llama.cpp/v1/chat/completions \
 
 要通过 TCP 从主机调用 `chat/completions` OpenAI 端点：
 
-1. 从 Docker Desktop GUI 或通过 [Docker Desktop CLI](/manuals/desktop/features/desktop-cli.md) 启用主机侧的 TCP 支持。
+1. 从 Docker Desktop GUI 启用主机侧 TCP 支持，或通过 [Docker Desktop CLI](/manuals/desktop/features/desktop-cli.md) 启用。
    例如：`docker desktop enable model-runner --tcp <port>`。
 
    如果你在 Windows 上运行，还需启用 GPU 支持的推理。
    参见 [启用 Docker Model Runner](get-started.md#enable-docker-model-runner-in-docker-desktop)。
 
-1. 按照上一节的文档使用 `localhost` 和正确的端口与之交互。
+1. 按照上一节的文档使用 `localhost` 和正确的端口与其交互。
 
 ```bash
 #!/bin/sh

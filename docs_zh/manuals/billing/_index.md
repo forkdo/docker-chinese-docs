@@ -1,8 +1,8 @@
 ---
 title: 管理账单和支付
-linkTitle: 账单管理
-description: 查找有关管理 Docker 订阅账单和支付的信息。
-keywords: 账单、发票、支付、订阅、Docker 账单、更新支付方式、账单历史、发票、支付验证、免税
+linkTitle: 账单
+description: 查找有关管理 Docker 订阅的账单和支付的信息。
+keywords: 账单, 发票, 支付, 订阅, Docker 账单, 更新支付方式, 账单历史, 发票, 支付验证, 税务豁免
 weight: 10
 params:
   sidebar:
@@ -17,18 +17,18 @@ grid_core:
   link: /billing/details/
   icon: contract_edit
 - title: 查看账单历史
-  description: 了解如何查看账单历史并下载过往发票。
+  description: 了解如何查看账单历史并下载过去的发票。
   link: /billing/history/
   icon: payments
 - title: 账单常见问题
-  description: 找到您需要的答案，探索常见问题。
+  description: 查找您需要的答案并探索常见问题。
   link: /billing/faqs/
   icon: help
 - title: 注册税务证明
-  description: 了解如何注册免税证明。
+  description: 了解如何注册税务豁免证明。
   link: /billing/tax-certificate/
   icon: developer_guide
-- title: 3D 安全验证
+- title: 3D Secure 身份验证
   description: 了解 Docker 账单如何支持 3DS 以及如何排查潜在问题。
   link: /billing/3d-secure/
   icon: wallet
@@ -36,6 +36,6 @@ aliases:
   - /billing/docker-hub-pricing/
 ---
 
-使用本节中的资源来管理您的 Docker 订阅账单和支付。
+使用本部分中的资源来管理 Docker 订阅的账单和支付。
 
 {{< grid items="grid_core" >}}

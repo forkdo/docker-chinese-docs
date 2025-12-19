@@ -2,7 +2,7 @@
 description: Docker Hub API 变更日志
 title: Docker Hub API 变更日志
 linkTitle: 变更日志
-keywords: docker hub, hub, 新功能, 发布说明, api, 变更日志
+keywords: docker hub, hub, 新功能, 发布说明, api, changelog
 weight: 2
 toc_min: 1
 toc_max: 2
@@ -10,7 +10,7 @@ aliases:
   - /reference/api/hub/latest-changelog/
 ---
 
-在这里，您可以了解 Docker 服务 API 的最新更改、新功能、错误修复和已知问题。
+在这里，您可以了解 Docker Service API 的最新变更、新功能、错误修复和已知问题。
 
 ---
 
@@ -18,7 +18,7 @@ aliases:
 
 ### 更新
 
-- 在 [PAT 管理](/reference/api/hub/latest/#tag/access-tokens) 端点上添加缺失的 `expires_at` 字段。
+- 在 [PAT 管理](/reference/api/hub/latest/#tag/access-tokens) 端点中添加缺失的 `expires_at` 字段。
 
 ## 2025-09-25
 
@@ -70,7 +70,7 @@ aliases:
 
 ### 新增
 
-- 添加用于组织访问令牌 (OAT) 管理的 [API](/reference/api/hub/latest/#tag/org-access-tokens)。
+- 添加用于组织访问令牌（OATs）管理的 [API](/reference/api/hub/latest/#tag/org-access-tokens)。
 
 ---
 

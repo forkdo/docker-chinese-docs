@@ -1,5 +1,5 @@
 ---
-description: Docker 文档中使用到的组件和格式化示例
+description: Docker 文档中使用的组件和格式示例
 title: 按钮
 toc_max: 3
 ---

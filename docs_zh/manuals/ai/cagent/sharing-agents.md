@@ -1,33 +1,33 @@
 ---
-title: 共享智能体
-description: 通过 OCI 仓库分发智能体配置
+title: 共享代理
+description: 通过 OCI 仓库分发代理配置
 keywords: [cagent, oci, registry, docker hub, sharing, distribution]
 weight: 50
 ---
 
-将你的智能体推送到仓库，并通过名称共享。你的队友可以直接引用 `agentcatalog/security-expert`，而不是到处复制 YAML 文件，或者询问你的智能体配置存放在哪里。
+将你的代理推送到仓库中，并通过名称共享。你的队友可以引用 `agentcatalog/security-expert`，而不需要到处复制 YAML 文件，也不需要询问你代理配置的位置。
 
-当你在仓库中更新智能体时，所有人在下次拉取或重启客户端时都会自动获得新版本。
+当你在仓库中更新代理时，所有人在下次拉取或重启客户端时都会获得新版本。
 
 ## 前置条件
 
-要将智能体推送到仓库，首先需要认证：
+要将代理推送到仓库，首先需要认证：
 
 ```console
 $ docker login
 ```
 
-对于其他仓库，请使用其相应的认证方法。
+对于其他仓库，请使用其认证方法。
 
-## 发布智能体
+## 发布代理
 
-将智能体配置推送到仓库：
+将代理配置推送到仓库：
 
 ```console
 $ cagent push ./agent.yml myusername/agent-name
 ```
 
-如果仓库不存在，push 命令会自动创建。你可以使用 Docker Hub 或任何兼容 OCI 的仓库。
+如果仓库不存在，push 命令会自动创建。可以使用 Docker Hub 或任何兼容 OCI 的仓库。
 
 为特定版本打标签：
 
@@ -36,9 +36,9 @@ $ cagent push ./agent.yml myusername/agent-name:v1.0.0
 $ cagent push ./agent.yml myusername/agent-name:latest
 ```
 
-## 使用已发布的智能体
+## 使用已发布的代理
 
-拉取智能体以在本地检查：
+拉取代理以在本地检查：
 
 ```console
 $ cagent pull agentcatalog/pirate
@@ -46,7 +46,7 @@ $ cagent pull agentcatalog/pirate
 
 这会将配置保存为本地 YAML 文件。
 
-直接从仓库运行智能体：
+直接从仓库运行代理：
 
 ```console
 $ cagent run agentcatalog/pirate
@@ -71,7 +71,7 @@ $ cagent run agentcatalog/pirate
 
 ### MCP 客户端集成
 
-智能体可以在 MCP 客户端中作为工具暴露：
+代理可以在 MCP 客户端中作为工具暴露：
 
 ```json
 {
@@ -84,8 +84,8 @@ $ cagent run agentcatalog/pirate
 }
 ```
 
-## 下一步
+## 后续步骤
 
-- 使用共享智能体设置 [ACP 集成](./integrations/acp.md)
-- 使用共享智能体配置 [MCP 集成](./integrations/mcp.md)
-- 浏览 [智能体目录](https://hub.docker.com/u/agentcatalog) 查看示例
+- 使用共享代理设置 [ACP 集成](./integrations/acp.md)
+- 使用共享代理配置 [MCP 集成](./integrations/mcp.md)
+- 浏览 [代理目录](https://hub.docker.com/u/agentcatalog) 查看示例

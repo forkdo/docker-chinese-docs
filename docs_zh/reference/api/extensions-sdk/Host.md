@@ -1,7 +1,7 @@
 ---
-title: "接口: Host"
+title: "接口：Host"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, sdk, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases: 
  - /desktop/extensions-sdk/dev/api/reference/interfaces/Host/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/Host/
@@ -31,7 +31,7 @@ ddClient.host.openExternal("https://docker.com");
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `url` | `string` | 浏览器将打开的 URL（必须包含协议 `http` 或 `https`）。 |
+| `url` | `string` | 浏览器将打开的 URL（必须包含 `http` 或 `https` 协议）。 |
 
 #### 返回值
 

@@ -11,10 +11,10 @@ aliases:
 `awslogs` 日志驱动将容器日志发送到 [Amazon CloudWatch Logs](https://aws.amazon.com/cloudwatch/details/#log-monitoring)。
 日志条目可以通过 [AWS 管理控制台](https://console.aws.amazon.com/cloudwatch/home#logs:) 或 [AWS SDK 和命令行工具](https://docs.aws.amazon.com/cli/latest/reference/logs/index.html) 检索。
 
-## 用法
+## 使用方法
 
-要将 `awslogs` 驱动设置为默认日志驱动，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值，该文件位于 Linux 主机上的 `/etc/docker/` 或 Windows Server 上的 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
-以下示例将日志驱动设置为 `awslogs` 并设置 `awslogs-region` 选项。
+要将 `awslogs` 驱动设为默认日志驱动，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。该文件位于 Linux 主机上的 `/etc/docker/` 或 Windows Server 上的 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+以下示例将日志驱动设为 `awslogs` 并设置 `awslogs-region` 选项。
 
 ```json
 {
@@ -27,7 +27,7 @@ aliases:
 
 重启 Docker 以使更改生效。
 
-您也可以使用 `docker run` 的 `--log-driver` 选项为特定容器设置日志驱动：
+您也可以在运行容器时使用 `--log-driver` 选项为特定容器设置日志驱动：
 
 ```console
 $ docker run --log-driver=awslogs ...
@@ -49,7 +49,7 @@ myservice:
 
 ### awslogs-region
 
-`awslogs` 日志驱动将您的 Docker 日志发送到特定区域。使用 `awslogs-region` 日志选项或 `AWS_REGION` 环境变量设置区域。默认情况下，如果您的 Docker 守护进程运行在 EC2 实例上且未设置区域，驱动将使用实例的区域。
+`awslogs` 日志驱动将您的 Docker 日志发送到特定区域。使用 `awslogs-region` 日志选项或 `AWS_REGION` 环境变量设置区域。默认情况下，如果您的 Docker 守护进程在 EC2 实例上运行且未设置区域，驱动将使用实例的区域。
 
 ```console
 $ docker run --log-driver=awslogs --log-opt awslogs-region=us-east-1 ...
@@ -80,11 +80,11 @@ $ docker run --log-driver=awslogs --log-opt awslogs-region=us-east-1 --log-opt a
 
 > [!NOTE]
 >
-> 给定日志组内的日志流一次只能由一个容器使用。同时对多个容器使用相同的日志流可能会导致日志性能降低。
+> 给定日志组内的日志流一次只能由一个容器使用。同时为多个容器使用相同的日志流可能会导致日志性能降低。
 
 ### awslogs-create-group
 
-默认情况下，如果日志组不存在，日志驱动将返回错误。但是，您可以将 `awslogs-create-group` 设置为 `true` 以根据需要自动创建日志组。
+默认情况下，如果日志组不存在，日志驱动将返回错误。但是，您可以将 `awslogs-create-group` 设置为 `true` 以按需自动创建日志组。
 `awslogs-create-group` 选项默认为 `false`。
 
 ```console
@@ -123,8 +123,7 @@ $ docker run \
 `awslogs-datetime-format` 选项使用 [Python `strftime` 格式](https://strftime.org) 定义多行起始模式。
 日志消息由匹配该模式的行和任何不匹配该模式的后续行组成。因此，匹配的行是日志消息之间的分隔符。
 
-使用此格式的一个用例是解析堆栈转储等输出，否则这些输出可能会记录在多个条目中。
-正确的模式允许将其捕获在单个条目中。
+使用此格式的一个用例是解析堆栈转储等输出，否则这些输出可能会记录在多个条目中。正确的模式允许将其捕获在单个条目中。
 
 如果同时配置了 `awslogs-datetime-format` 和 `awslogs-multiline-pattern`，此选项始终优先。
 
@@ -142,7 +141,7 @@ with some random words
 [May 01, 2017 19:01:32] Another message was logged
 ```
 
-该格式可以表示为 `strftime` 表达式 `[%b %d, %Y %H:%M:%S]`，`awslogs-datetime-format` 值可以设置为该表达式：
+该格式可以用 `strftime` 表达式 `[%b %d, %Y %H:%M:%S]` 表示，`awslogs-datetime-format` 值可以设置为该表达式：
 
 ```console
 $ docker run \
@@ -156,15 +155,15 @@ $ docker run \
 这将日志解析为以下 CloudWatch 日志事件：
 
 ```console
-# First event
+# 第一个事件
 [May 01, 2017 19:00:01] A message was logged
 
-# Second event
+# 第二个事件
 [May 01, 2017 19:00:04] Another multi-line message was logged
 Some random message
 with some random words
 
-# Third event
+# 第三个事件
 [May 01, 2017 19:01:32] Another message was logged
 ```
 
@@ -174,34 +173,34 @@ with some random words
 | :--- | :--------------------------------------------------------------- | :------- |
 | `%a` | 星期几的缩写名称。                                        | Mon      |
 | `%A` | 星期几的全名。                                               | Monday   |
-| `%w` | 星期几作为十进制数字，其中 0 是星期日，6 是星期六。 | 0        |
-| `%d` | 月份中的日期作为零填充的十进制数字。                | 08       |
+| `%w` | 星期几作为十进制数，0 为星期日，6 为星期六。 | 0        |
+| `%d` | 月份中的日期作为零填充的十进制数。                | 08       |
 | `%b` | 月份的缩写名称。                                          | Feb      |
 | `%B` | 月份的全名。                                                 | February |
-| `%m` | 月份作为零填充的十进制数字。                           | 02       |
-| `%Y` | 带世纪的年份作为十进制数字。                           | 2008     |
-| `%y` | 不带世纪的年份作为零填充的十进制数字。            | 08       |
-| `%H` | 小时（24小时制）作为零填充的十进制数字。            | 19       |
-| `%I` | 小时（12小时制）作为零填充的十进制数字。            | 07       |
+| `%m` | 月份作为零填充的十进制数。                           | 02       |
+| `%Y` | 带世纪的年份作为十进制数。                           | 2008     |
+| `%y` | 不带世纪的年份作为零填充的十进制数。            | 08       |
+| `%H` | 小时（24 小时制）作为零填充的十进制数。            | 19       |
+| `%I` | 小时（12 小时制）作为零填充的十进制数。            | 07       |
 | `%p` | AM 或 PM。                                                        | AM       |
-| `%M` | 分钟作为零填充的十进制数字。                          | 57       |
-| `%S` | 秒作为零填充的十进制数字。                          | 04       |
-| `%L` | 毫秒作为零填充的十进制数字。                    | .123     |
-| `%f` | 微秒作为零填充的十进制数字。                    | 000345   |
-| `%z` | UTC 偏移，格式为 +HHMM 或 -HHMM。                           | +1300    |
+| `%M` | 分钟作为零填充的十进制数。                          | 57       |
+| `%S` | 秒作为零填充的十进制数。                          | 04       |
+| `%L` | 毫秒作为零填充的十进制数。                    | .123     |
+| `%f` | 微秒作为零填充的十进制数。                    | 000345   |
+| `%z` | UTC 偏移量，格式为 +HHMM 或 -HHMM。                           | +1300    |
 | `%Z` | 时区名称。                                                  | PST      |
-| `%j` | 年份中的日期作为零填充的十进制数字。                 | 363      |
+| `%j` | 年份中的日期作为零填充的十进制数。                 | 363      |
 
 ### awslogs-multiline-pattern
 
 `awslogs-multiline-pattern` 选项使用正则表达式定义多行起始模式。
 日志消息由匹配该模式的行和任何不匹配该模式的后续行组成。因此，匹配的行是日志消息之间的分隔符。
 
-如果也配置了 `awslogs-datetime-format`，则忽略此选项。
+如果也配置了 `awslogs-datetime-format`，此选项将被忽略。
 
 > [!NOTE]
 >
-> 多行日志执行所有日志消息的正则表达式解析和匹配。这可能对日志性能产生负面影响。
+> 多行日志执行所有日志消息的正则表达式解析和匹配，这可能对日志性能产生负面影响。
 
 考虑以下日志流，其中每条日志消息应以模式 `INFO` 开头：
 
@@ -226,31 +225,29 @@ $ docker run \
 这将日志解析为以下 CloudWatch 日志事件：
 
 ```console
-# First event
+# 第一个事件
 INFO A message was logged
 
-# Second event
+# 第二个事件
 INFO Another multi-line message was logged
      Some random message
 
-# Third event
+# 第三个事件
 INFO Another message was logged
 ```
 
 ### tag
 
-指定 `tag` 作为 `awslogs-stream` 选项的替代。`tag` 解释 Go 模板标记，例如 `{{.ID}}`、`{{.FullID}}` 或 `{{.Name}}` `docker.{{.ID}}`。
-有关支持的模板替换的详细信息，请参阅 [tag 选项文档](log_tags.md)。
+指定 `tag` 作为 `awslogs-stream` 选项的替代。`tag` 解释 Go 模板标记，如 `{{.ID}}`、`{{.FullID}}` 或 `{{.Name}}` `docker.{{.ID}}`。有关支持的模板替换的详细信息，请参阅 [tag 选项文档](log_tags.md)。
 
-当同时指定 `awslogs-stream` 和 `tag` 时，为 `awslogs-stream` 提供的值会覆盖使用 `tag` 指定的模板。
+当同时指定 `awslogs-stream` 和 `tag` 时，`awslogs-stream` 提供的值会覆盖 `tag` 指定的模板。
 
 如果未指定，容器 ID 将用作日志流。
 
 > [!NOTE]
 >
-> CloudWatch 日志 API 不支持日志名称中的 `:`。这可能在使用 `{{ .ImageName }}` 作为标签时造成一些问题，
-> 因为 Docker 镜像的格式为 `IMAGE:TAG`，例如 `alpine:latest`。
-> 可以使用模板标记来获得正确的格式。要获取镜像名称和容器 ID 的前 12 个字符，您可以使用：
+> CloudWatch 日志 API 不支持日志名称中的 `:`。这在使用 `{{ .ImageName }}` 作为标签时可能会导致一些问题，因为 Docker 镜像的格式为 `IMAGE:TAG`，例如 `alpine:latest`。
+> 可以使用模板标记获取正确的格式。要获取镜像名称和容器 ID 的前 12 个字符，您可以使用：
 >
 > ```bash
 > --log-opt tag='{{ with split .ImageName ":" }}{{join . "_"}}{{end}}-{{.ID}}'
@@ -276,7 +273,7 @@ INFO Another message was logged
 
 ## 凭据
 
-您必须向 Docker 守护进程提供 AWS 凭据才能使用 `awslogs` 日志驱动。您可以使用 `AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY` 和 `AWS_SESSION_TOKEN` 环境变量、默认 AWS 共享凭据文件（root 用户的 `~/.aws/credentials`）或如果您在 Amazon EC2 实例上运行 Docker 守护进程，则使用 Amazon EC2 实例配置文件提供这些凭据。
+您必须向 Docker 守护进程提供 AWS 凭据才能使用 `awslogs` 日志驱动。您可以通过 `AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY` 和 `AWS_SESSION_TOKEN` 环境变量、默认 AWS 共享凭据文件（root 用户的 `~/.aws/credentials`）或如果您在 Amazon EC2 实例上运行 Docker 守护进程，则使用 Amazon EC2 实例配置文件提供这些凭据。
 
 凭据必须附加允许 `logs:CreateLogStream` 和 `logs:PutLogEvents` 操作的策略，如以下示例所示。
 

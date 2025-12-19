@@ -11,28 +11,28 @@ aliases:
 
 ## 前置条件
 
-- 完成本指南的所有前置章节，从 [容器化 Node.js 应用](containerize.md) 开始。
+- 完成本指南的所有前面章节，从 [容器化 Node.js 应用](containerize.md) 开始。
 - 在 Docker Desktop 中[启用 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md#enable-kubernetes)。
 
 ## 概述
 
-在本节中，你将学习如何使用 Docker Desktop 将容器化的 Node.js 应用部署到 Kubernetes。此部署使用生产就绪的配置，包括安全加固、自动扩缩容、持久化存储和高可用性功能。
+在本节中，你将学习如何使用 Docker Desktop 将容器化的 Node.js 应用部署到 Kubernetes。此部署使用生产就绪的配置，包括安全加固、自动扩展、持久化存储和高可用性功能。
 
 你将部署一个完整的栈，包括：
 
-- 具有 3 个副本的 Node.js Todo 应用。
-- 具有持久化存储的 PostgreSQL 数据库。
-- 基于 CPU 和内存使用率的自动扩缩容。
-- 用于外部访问的 Ingress 配置。
+- Node.js Todo 应用，3 个副本。
+- PostgreSQL 数据库，带有持久化存储。
+- 基于 CPU 和内存使用率的自动扩展。
+- 入口配置以供外部访问。
 - 安全设置。
 
 ## 创建 Kubernetes 部署文件
 
-在项目根目录创建一个名为 `nodejs-sample-kubernetes.yaml` 的新文件：
+在项目根目录创建一个新文件 `nodejs-sample-kubernetes.yaml`：
 
 ```yaml
 # ========================================
-# Node.js Todo 应用 - Kubernetes 部署
+# Node.js Todo App - Kubernetes Deployment
 # ========================================
 
 apiVersion: v1
@@ -44,7 +44,7 @@ metadata:
 
 ---
 # ========================================
-# 应用配置的 ConfigMap
+# ConfigMap for Application Configuration
 # ========================================
 apiVersion: v1
 kind: ConfigMap
@@ -61,7 +61,7 @@ data:
 
 ---
 # ========================================
-# 数据库凭据的 Secret
+# Secret for Database Credentials
 # ========================================
 apiVersion: v1
 kind: Secret
@@ -70,7 +70,7 @@ metadata:
   namespace: todoapp
 type: Opaque
 data:
-  postgres-password: dG9kb2FwcF9wYXNzd29yZA== # base64 编码的 "todoapp_password"
+  postgres-password: dG9kb2FwcF9wYXNzd29yZA== # base64 encoded "todoapp_password"
 
 ---
 # ========================================
@@ -91,7 +91,7 @@ spec:
 
 ---
 # ========================================
-# PostgreSQL 部署
+# PostgreSQL Deployment
 # ========================================
 apiVersion: apps/v1
 kind: Deployment
@@ -162,7 +162,7 @@ spec:
 
 ---
 # ========================================
-# PostgreSQL 服务
+# PostgreSQL Service
 # ========================================
 apiVersion: v1
 kind: Service
@@ -183,7 +183,7 @@ spec:
 
 ---
 # ========================================
-# 应用部署
+# Application Deployment
 # ========================================
 apiVersion: apps/v1
 kind: Deployment
@@ -278,7 +278,7 @@ spec:
 
 ---
 # ========================================
-# 应用服务
+# Application Service
 # ========================================
 apiVersion: v1
 kind: Service
@@ -299,7 +299,7 @@ spec:
 
 ---
 # ========================================
-# 用于外部访问的 Ingress
+# Ingress for External Access
 # ========================================
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -374,7 +374,7 @@ spec:
 
 ## 配置部署
 
-在部署之前，你需要为你的环境自定义部署文件：
+在部署之前，你需要根据你的环境自定义部署文件：
 
 1. **镜像引用**：将 `your-username` 替换为你的 GitHub 用户名或 Docker Hub 用户名：
 
@@ -382,17 +382,17 @@ spec:
    image: ghcr.io/your-username/docker-nodejs-sample:latest
    ```
 
-2. **域名**：在两个位置将 `yourdomain.com` 替换为你的实际域名：
+2. **域名**：在两个地方将 `yourdomain.com` 替换为你的实际域名：
 
    ```yaml
-   # 在 ConfigMap 中
+   # In ConfigMap
    ALLOWED_ORIGINS: "https://yourdomain.com"
 
-   # 在 Ingress 中
+   # In Ingress
    - host: yourdomain.com
    ```
 
-3. **数据库密码**（可选）：默认密码已进行 base64 编码。如需更改：
+3. **数据库密码**（可选）：默认密码已经 base64 编码。如需更改：
 
    ```console
    $ echo -n "your-new-password" | base64
@@ -405,7 +405,7 @@ spec:
      postgres-password: <your-base64-encoded-password>
    ```
 
-4. **存储类**：根据你的集群调整（当前为 `standard`）
+4. **存储类**：根据你的集群调整（当前：`standard`）
 
 ## 理解部署
 
@@ -416,44 +416,44 @@ spec:
 部署包括：
 
 - **Node.js 应用**：运行 3 个副本的容器化 Todo 应用
-- **PostgreSQL 数据库**：具有 10Gi 持久化存储的单实例
+- **PostgreSQL 数据库**：单实例，带有 10Gi 的持久化存储
 - **服务**：Kubernetes 服务处理应用副本间的负载均衡
-- **Ingress**：通过支持 SSL/TLS 的 Ingress 控制器进行外部访问
+- **入口**：通过入口控制器和 SSL/TLS 支持进行外部访问
 
 ### 安全
 
-部署使用了多种安全功能：
+部署使用了多项安全功能：
 
 - 容器以非 root 用户（UID 1001）运行
 - 只读根文件系统防止未授权写入
-- Linux 能力被移除以最小化攻击面
-- 敏感数据（如数据库密码）存储在 Kubernetes secrets 中
+- Linux 权限被丢弃以最小化攻击面
+- 敏感数据如数据库密码存储在 Kubernetes secrets 中
 
 ### 高可用
 
 为保持应用可靠运行：
 
-- 三个应用副本确保在一个 pod 失败时服务继续
+- 三个应用副本确保一个 pod 失败时服务继续
 - Pod 破坏预算在更新期间保持至少一个可用 pod
 - 滚动更新允许零停机时间部署
 - `/health` 端点的健康检查确保只有健康的 pod 接收流量
 
-### 自动扩缩容
+### 自动扩展
 
-Horizontal Pod Autoscaler 根据资源使用情况自动扩缩容应用：
+水平 Pod 自动扩展器根据资源使用情况扩展应用：
 
-- 在 1 到 5 个副本间自动扩缩容
-- CPU 使用率超过 70% 时触发扩缩容
-- 内存使用率超过 80% 时触发扩缩容
+- 在 1 到 5 个副本间自动扩展
+- CPU 使用率超过 70% 时触发扩展
+- 内存使用率超过 80% 时触发扩展
 - 资源限制：每个 pod 256Mi-512Mi 内存，250m-500m CPU
 
 ### 数据持久化
 
 PostgreSQL 数据持久化存储：
 
-- 10Gi 持久卷存储数据库文件
+- 10Gi 持久化卷存储数据库文件
 - 数据库在首次启动时自动初始化
-- 数据在 pod 重启和更新时保持
+- 数据在 pod 重启和更新期间保持
 
 ## 部署你的应用
 
@@ -526,7 +526,7 @@ postgres-pvc   Bound    pvc-12345678-1234-1234-1234-123456789012   10Gi       RW
 
 ### 步骤 3：访问你的应用
 
-对于本地测试，使用端口转发访问你的应用：
+对于本地测试，使用端口转发访问应用：
 
 ```console
 $ kubectl port-forward -n todoapp service/todoapp-service 8080:80
@@ -536,7 +536,7 @@ $ kubectl port-forward -n todoapp service/todoapp-service 8080:80
 
 ### 步骤 4：测试部署
 
-测试应用是否正常工作：
+测试应用是否正确工作：
 
 1. **通过 Web 界面添加一些待办事项**
 2. **检查应用 pod**：
@@ -557,7 +557,7 @@ $ kubectl port-forward -n todoapp service/todoapp-service 8080:80
    $ kubectl get pods -n todoapp -l app=todoapp-postgres
    ```
 
-5. **监控自动扩缩容**：
+5. **监控自动扩展**：
    ```console
    $ kubectl describe hpa todoapp-hpa -n todoapp
    ```
@@ -574,21 +574,21 @@ $ kubectl delete -f nodejs-sample-kubernetes.yaml
 
 你已将容器化的 Node.js 应用部署到 Kubernetes。你学会了如何：
 
-- 创建具有安全加固的综合 Kubernetes 部署文件
-- 部署具有持久化存储的多层应用（Node.js + PostgreSQL）
-- 配置自动扩缩容、健康检查和高可用性功能
+- 创建带有安全加固的全面 Kubernetes 部署文件
+- 部署多层应用（Node.js + PostgreSQL）并配置持久化存储
+- 配置自动扩展、健康检查和高可用性功能
 - 使用 Docker Desktop 的 Kubernetes 在本地测试和监控部署
 
-你的应用现在运行在具有企业级功能的生产就绪环境中，包括安全上下文、资源管理和自动扩缩容。
+你的应用现在运行在具有企业级功能的生产就绪环境中，包括安全上下文、资源管理和自动扩展。
 
 ---
 
 ## 相关资源
 
-探索官方参考和最佳实践，以优化你的 Kubernetes 部署工作流：
+探索官方参考和最佳实践，以提升你的 Kubernetes 部署工作流：
 
 - [Kubernetes 文档](https://kubernetes.io/docs/home/) – 了解核心概念、工作负载、服务等。
-- [使用 Docker Desktop 部署到 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md) – 使用 Docker Desktop 内置的 Kubernetes 支持进行本地测试和开发。
+- [使用 Docker Desktop 部署到 Kubernetes](/manuals/desktop/use-desktop/kubernetes.md) – 使用 Docker Desktop 的内置 Kubernetes 支持进行本地测试和开发。
 - [`kubectl` CLI 参考](https://kubernetes.io/docs/reference/kubectl/) – 从命令行管理 Kubernetes 集群。
-- [Kubernetes Deployment 资源](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) – 了解如何使用部署管理应用和扩缩容。
+- [Kubernetes Deployment 资源](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) – 了解如何使用部署管理扩展应用。
 - [Kubernetes Service 资源](https://kubernetes.io/docs/concepts/services-networking/service/) – 了解如何将应用暴露给内部和外部流量。

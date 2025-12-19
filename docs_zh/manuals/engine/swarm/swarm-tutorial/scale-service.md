@@ -6,11 +6,11 @@ weight: 50
 notoc: true
 ---
 
-在 Swarm 中 [部署服务](deploy-service.md) 后，您可以使用 Docker CLI 来扩展服务中的容器数量。在服务中运行的容器称为任务。
+在将[部署服务](deploy-service.md)到 Swarm 之后，就可以使用 Docker CLI 来扩展服务中的容器数量。服务中运行的容器称为任务。
 
-1.  如果您还没有打开终端，请通过 SSH 连接到运行管理节点的机器。例如，本教程使用名为 `manager1` 的机器。
+1.  如果尚未操作，请打开终端并 SSH 登录到运行管理节点的机器。例如，本教程使用名为 `manager1` 的机器。
 
-2.  运行以下命令来更改 Swarm 中运行服务的期望状态：
+2.  运行以下命令，更改 Swarm 中运行服务的期望状态：
 
     ```console
     $ docker service scale <SERVICE-ID>=<NUMBER-OF-TASKS>
@@ -24,7 +24,7 @@ notoc: true
     helloworld scaled to 5
     ```
 
-3.  运行 `docker service ps <SERVICE-ID>` 查看更新的任务列表：
+3.  运行 `docker service ps <SERVICE-ID>` 查看更新后的任务列表：
 
     ```console
     $ docker service ps helloworld
@@ -37,9 +37,9 @@ notoc: true
     helloworld.5.ba19kca06l18zujfwxyc5lkyn  alpine  worker2   Running        Running 24 seconds
     ```
 
-    您可以看到 Swarm 创建了 4 个新任务，将服务扩展到总共 5 个正在运行的 Alpine Linux 实例。这些任务分布在 Swarm 的三个节点之间。其中一个在 `manager1` 上运行。
+    可以看到，Swarm 已创建 4 个新任务，将 Alpine Linux 的运行实例总数扩展到 5 个。这些任务分布在 Swarm 的三个节点上。其中一个在 `manager1` 上运行。
 
-4.  运行 `docker ps` 查看连接节点上运行的容器。以下示例显示在 `manager1` 上运行的任务：
+4.  运行 `docker ps` 查看当前连接节点上运行的容器。以下示例显示了在 `manager1` 上运行的任务：
 
     ```console
     $ docker ps
@@ -48,7 +48,7 @@ notoc: true
     528d68040f95        alpine:latest       "ping docker.com"   About a minute ago   Up About a minute                       helloworld.4.auky6trawmdlcne8ad8phb0f1
     ```
 
-    如果您想查看其他节点上运行的容器，请通过 SSH 连接到这些节点并运行 `docker ps` 命令。
+    如果想查看其他节点上运行的容器，请 SSH 登录到这些节点并运行 `docker ps` 命令。
 
 ## 下一步
 

@@ -1,16 +1,16 @@
 ---
 description: 了解如何向 Docker Hub 上的仓库添加内容。
 keywords: Docker Hub, Hub, 仓库内容, push
-title: 推送镜像到仓库
+title: 将镜像推送到仓库
 linkTitle: 推送镜像
 weight: 30
 ---
 
-要向 Docker Hub 上的仓库添加内容，您需要为 Docker 镜像打标签，然后将其推送到您的仓库。此过程使您能够与他人共享镜像，或在不同环境中使用它们。
+要向 Docker Hub 上的仓库添加内容，您需要先为您的 Docker 镜像打上标签，然后将其推送到您的仓库。此过程可让您与他人共享镜像或在不同的环境中使用它们。
 
-1. 为 Docker 镜像打标签。
+1. 为您的 Docker 镜像打上标签。
 
-   `docker tag` 命令为 Docker 镜像分配一个标签，其中包含您的 Docker Hub 命名空间和仓库名称。一般语法为：
+   `docker tag` 命令为您的 Docker 镜像分配一个标签，该标签包含您的 Docker Hub 命名空间和仓库名称。通用语法为：
 
    ```console
    $ docker tag [SOURCE_IMAGE[:TAG]] [NAMESPACE/REPOSITORY[:TAG]]
@@ -18,7 +18,7 @@ weight: 30
 
    示例：
 
-   如果您的本地镜像名为 `my-app`，并且您想将其标记为仓库 `my-namespace/my-repo` 的标签 `v1.0`，请运行：
+   如果您的本地镜像名为 `my-app`，并且您希望将其标记为 `my-namespace/my-repo` 仓库的 `v1.0` 版本，请运行：
 
    ```console
    $ docker tag my-app my-namespace/my-repo:v1.0
@@ -26,7 +26,7 @@ weight: 30
 
 2. 将镜像推送到 Docker Hub。
 
-   使用 `docker push` 命令将标记的镜像上传到 Docker Hub 上指定的仓库。
+   使用 `docker push` 命令将您已标记的镜像上传到 Docker Hub 上的指定仓库。
 
    示例：
 

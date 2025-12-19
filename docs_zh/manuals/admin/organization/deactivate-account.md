@@ -1,6 +1,6 @@
 ---
 title: 停用组织
-description: 了解如何停用 Docker 组织及所需的前置步骤。
+description: 了解如何停用 Docker 组织以及所需的先决条件步骤。
 keywords: 删除, 停用组织, 账户, 组织管理, Admin Console, 取消订阅
 weight: 42
 aliases:
@@ -9,14 +9,13 @@ aliases:
 
 {{< summary-bar feature_name="General admin" >}}
 
-了解如何停用 Docker 组织，包括所需的前置步骤。有关停用用户账户的信息，
-请参阅 [停用用户账户](../../accounts/deactivate-user-account.md)。
+了解如何停用 Docker 组织，包括所需的先决条件步骤。有关停用用户账户的信息，请参阅 [停用用户账户](../../accounts/deactivate-user-account.md)。
 
 > [!WARNING]
 >
-> 停用账户后，所有使用您 Docker 账户或组织账户的 Docker 产品和服务将无法访问。
+> 停用账户后，所有使用您的 Docker 账户或组织账户的 Docker 产品和服务将无法访问。
 
-## 前置条件
+## 先决条件
 
 在停用组织之前，您必须完成以下所有步骤：
 
@@ -35,8 +34,7 @@ aliases:
 >
 > 此操作无法撤销。请确保在停用组织之前已收集所有需要的数据。
 
-1. 登录 [Docker Home](https://app.docker.com) 并选择您要停用的组织。
-1. 选择 **Admin Console**，然后选择 **Deactivate**。如果 **Deactivate**
-按钮不可用，请确认您已完成所有 [前置条件](#前置条件)。
+1. 登录 [Docker Home](https://app.docker.com) 并选择要停用的组织。
+1. 选择 **Admin Console**，然后选择 **Deactivate**。如果 **Deactivate** 按钮不可用，请确认您已完成所有 [先决条件](#先决条件)。
 1. 输入组织名称以确认停用。
 1. 选择 **Deactivate organization**。

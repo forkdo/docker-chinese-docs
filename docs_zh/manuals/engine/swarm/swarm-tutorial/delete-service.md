@@ -1,16 +1,16 @@
 ---
-description: 从 Swarm 中删除服务
-keywords: tutorial, cluster management, swarm, service, get started
-title: 删除 Swarm 上运行的服务
+description: 从 swarm 中删除服务
+keywords: 教程, 集群管理, swarm, 服务, 入门
+title: 删除在 swarm 上运行的服务
 weight: 60
 notoc: true
 ---
 
-本教程的剩余步骤不再使用 `helloworld` 服务，因此现在可以从 Swarm 中删除该服务。
+教程的剩余步骤不再使用 `helloworld` 服务，因此现在您可以将该服务从 swarm 中删除。
 
-1.  如果尚未打开终端，请通过 SSH 连接到运行管理节点的机器。例如，本教程使用名为 `manager1` 的机器。
+1.  如果尚未打开终端，请打开终端并 SSH 登录到运行管理器节点的机器。例如，本教程使用名为 `manager1` 的机器。
 
-2.  运行 `docker service rm helloworld` 以从 Swarm 中删除 `helloworld` 服务。
+2.  运行 `docker service rm helloworld` 命令以删除 `helloworld` 服务。
 
     ```console
     $ docker service rm helloworld
@@ -18,7 +18,7 @@ notoc: true
     helloworld
     ```
 
-3.  运行 `docker service inspect <SERVICE-ID>` 以验证 Swarm 管理器已删除该服务。CLI 将返回一条服务未找到的消息：
+3.  运行 `docker service inspect <SERVICE-ID>` 命令以验证 swarm 管理器是否已删除该服务。CLI 会返回一条消息，提示未找到该服务：
 
     ```console
     $ docker service inspect helloworld
@@ -26,7 +26,7 @@ notoc: true
     Status: Error: no such service: helloworld, Code: 1
     ```
 
-4.  尽管服务已不存在，但任务容器需要几秒钟才能清理完毕。您可以在节点上使用 `docker ps` 命令验证任务何时被移除。
+4.  尽管服务已不存在，任务容器仍需要几秒钟才能清理完毕。您可以在节点上使用 `docker ps` 命令来验证任务何时被移除。
 
     ```console
     $ docker ps

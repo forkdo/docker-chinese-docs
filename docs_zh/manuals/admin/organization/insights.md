@@ -1,170 +1,170 @@
 ---
-title: Insights
-description: 了解组织中用户及其 Docker 使用情况的洞察信息。
-keywords: 组织, Insights, Docker Desktop 分析, 用户使用统计, Docker Business, 追踪 Docker 活动
+title: 洞察 (Insights)
+description: 了解您组织的用户及其 Docker 使用情况。
+keywords: organization, insights, Docker Desktop analytics, user usage statistics, Docker Business, track Docker activity
 ---
 
 {{< summary-bar feature_name="Insights" >}}
 
-Insights 帮助管理员可视化并了解 Docker 在其组织内的使用情况。通过 Insights，管理员可以确保团队充分具备利用 Docker 最大潜力的能力，从而提高组织整体的生产力和效率。
+Insights 帮助管理员可视化并了解 Docker 在其组织内的使用情况。通过 Insights，管理员可以确保其团队完全有能力充分利用 Docker，从而提高整个组织的生产力和效率。
 
 主要优势包括：
 
-- 统一的工作环境：在团队间建立并维护标准化配置。
-- 最佳实践：推广并强制执行使用指南，确保最佳性能。
+- 统一的工作环境：在团队之间建立并维护标准化的配置。
+- 最佳实践：推广并强制执行使用指南，以确保最佳性能。
 - 提高可见性：监控并推动组织配置和策略的采用。
-- 优化许可证使用：确保开发者能够访问 Docker 订阅提供的高级功能。
+- 优化许可证使用：确保开发人员能够访问 Docker 订阅提供的高级功能。
 
-## 前置条件
+## 先决条件
 
 要使用 Insights，您必须满足以下要求：
 
-- [Docker Business 订阅](../../subscription/details.md#docker-business)
-- 管理员必须为用户[强制登录](/security/for-admins/enforce-sign-in/)
-- 您的客户经理必须为您的组织启用 Insights
+- [Docker Business 订阅](https://www.docker.com/pricing/)
+- 管理员必须[强制用户登录](/security/for-admins/enforce-sign-in/)
+- 您的客户经理 (Account Executive) 必须为您的组织开启 Insights
 
-## 查看组织用户的 Insights
+## 查看组织用户的洞察数据
 
-要访问 Insights，请联系您的客户经理开启该功能。功能开启后，按以下步骤访问 Insights：
+要访问 Insights，请联系您的客户经理 (Account Executive) 以开启该功能。功能开启后，请按照以下步骤访问 Insights：
 
 1. 登录 [Docker Home](https://app.docker.com/) 并选择您的组织。
-1. 选择 **Insights**，然后选择数据的时间段。
+2. 选择 **Insights**，然后选择数据的时间段。
 
 > [!NOTE]
 >
-> Insights 数据不是实时的，每日更新一次。在 Insights 页面的右上角查看 **最后更新** 日期，以了解数据最后更新的时间。
+> Insights 数据不是实时的，而是每日更新。在 Insights 页面的右上角，查看**最后更新**日期以了解数据的最后更新时间。
 
-Insights 数据在以下图表中显示：
+Insights 数据显示在以下图表中：
 
- - [Docker Desktop 用户](#docker-desktop-用户)
- - [构建](#构建)
- - [容器](#容器)
- - [Docker Desktop 使用情况](#docker-desktop-使用情况)
- - [Docker Hub 镜像](#docker-hub-镜像)
- - [扩展](#扩展)
+ - [Docker Desktop 用户](#docker-desktop-users)
+ - [构建 (Builds)](#builds)
+ - [容器 (Containers)](#containers)
+ - [Docker Desktop 使用情况](#docker-desktop-usage)
+ - [Docker Hub 镜像](#docker-hub-images)
+ - [扩展 (Extensions)](#extensions)
 
 ### Docker Desktop 用户
 
-跟踪您域名内活跃的 Docker Desktop 用户，按许可证状态区分。此图表帮助您了解组织内的参与度水平，提供关于有多少用户正在积极使用 Docker Desktop 的洞察。注意，选择退出分析的用户不包含在活跃计数中。
+跟踪您域中的活跃 Docker Desktop 用户，按许可证状态区分。此图表帮助您了解组织内的参与度，提供有关有多少用户正在积极使用 Docker Desktop 的洞察。请注意，选择退出分析的用户不包含在活跃计数中。
 
-图表包含以下数据：
+该图表包含以下数据：
 
 | 数据 | 描述 |
 |:-----------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 活跃用户 | 已积极使用 Docker Desktop 并使用 Docker 账户登录的用户数量，该账户在您的组织中具有许可证，或使用与您的组织关联的域名邮箱地址登录。 <br><br>未登录与您的组织关联的账户的用户不会在数据中显示。为确保用户使用与组织关联的账户登录，您可以[强制登录](/security/for-admins/enforce-sign-in/)。 |
-| 组织成员总数 | 使用过 Docker Desktop 的用户数量，无论其 Insights 活动如何。 |
-| 选择退出分析的用户 | 选择退出发送分析数据的组织成员数量。 <br><br>当用户选择退出发送分析数据时，您在 Insights 中将看不到他们的任何数据。为确保数据包含所有用户，您可以使用 [Settings Management](/desktop/hardened-desktop/settings-management/) 为所有用户设置 `analyticsEnabled`。 |
-| 活跃用户（图表） | 随时间变化的总活跃用户数。 |
+| 活跃用户 (Active user) | 曾积极使用过 Docker Desktop 的用户数量，这些用户使用您组织内拥有许可证的 Docker 账户登录，或者使用与您组织关联的域中的电子邮件地址登录的 Docker 账户。<br><br>未登录与您组织关联的账户的用户不会显示在数据中。为确保用户使用与您组织关联的账户登录，您可以[强制登录](/security/for-admins/enforce-sign-in/)。 |
+| 组织成员总数 (Total organization members) | 使用过 Docker Desktop 的用户数量，无论其 Insights 活动如何。 |
+| 选择退出分析的用户 (Users opted out of analytics) | 属于您组织成员但选择退出发送分析的用户数量。<br><br>当用户选择退出发送分析时，您将不会在 Insights 中看到他们的任何数据。为确保数据包含所有用户，您可以使用[设置管理](/desktop/hardened-desktop/settings-management/)为所有用户设置 `analyticsEnabled`。 |
+| 活跃用户（图表） (Active users (graph)) | 总活跃用户随时间变化的视图。 |
 
-### 构建
+### 构建 (Builds)
 
-使用此图表监控开发效率和团队在构建上投入的时间。它提供了构建活动的清晰视图，帮助您识别模式、优化构建时间并提高整体开发效率。
+通过此图表监控开发效率和团队在构建上投入的时间。它提供了构建活动的清晰视图，帮助您识别模式、优化构建时间并提高整体开发生产力。
 
-图表包含以下数据：
+该图表包含以下数据：
 
-| 数据                   | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 数据 | 描述 |
 |:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 每用户平均构建数 | 每活跃用户的平均构建数量。构建包括用户运行以下任一命令的任何时间：<ul><li>`docker build`</li><li>`docker buildx b`</li><li>`docker buildx bake`</li><li>`docker buildx build`</li><li>`docker buildx f`</li><li>`docker builder b`</li><li>`docker builder bake`</li><li>`docker builder build`</li><li>`docker builder f`</li><li>`docker compose build`</li><li>`docker compose up --build`</li><li>`docker image build`</li></ul> |
-| 平均构建时间     | 每次构建的平均构建时间。                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 构建成功率     | 成功构建占总构建数量的百分比。成功的构建包括任何正常退出的构建。                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 总构建数（图表）   | 总构建数，分为成功构建和失败构建。成功的构建包括任何正常退出的构建。失败的构建包括任何异常退出的构建。                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 每用户平均构建次数 (Average build per user) | 每个活跃用户的平均构建次数。构建包括用户运行以下任一命令的任何时间：<ul><li>`docker build`</li><li>`docker buildx b`</li><li>`docker buildx bake`</li><li>`docker buildx build`</li><li>`docker buildx f`</li><li>`docker builder b`</li><li>`docker builder bake`</li><li>`docker builder build`</li><li>`docker builder f`</li><li>`docker compose build`</li><li>`docker compose up --build`</li><li>`docker image build`</li></ul> |
+| 平均构建时间 (Average build time) | 每次构建的平均构建时间。 |
+| 构建成功率 (Build success rate) | 成功构建占总构建次数的百分比。成功构建包括任何正常退出的构建。 |
+| 总构建次数（图表） (Total builds (graph)) | 总构建次数，分为成功构建和失败构建。成功构建包括任何正常退出的构建。失败构建包括任何异常退出的构建。 |
 
-### 容器
+### 容器 (Containers)
 
-使用此图表查看用户运行的容器总数和平均数。它让您了解组织内的容器使用情况，帮助您理解使用趋势并有效管理资源。
+通过此图表查看用户运行的容器总数和平均数。它让您可以衡量整个组织的容器使用情况，帮助您了解使用趋势并有效管理资源。
 
-图表包含以下数据：
+该图表包含以下数据：
 
-| 数据                                   | 描述                                                                                                                                                                |
+| 数据 | 描述 |
 |:---------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 运行的容器总数                   | 活跃用户运行的容器总数。运行的容器包括使用 Docker Desktop 图形用户界面、`docker run` 或 `docker compose` 运行的容器。 |
-| 平均运行容器数       | 每活跃用户的平均运行容器数。                                                                                                                      |
-| 活跃用户运行的容器数（图表） | 活跃用户随时间运行的容器数。                                                                                                                    |
+| 运行的容器总数 (Total containers run) | 活跃用户运行的容器总数。运行的容器包括使用 Docker Desktop 图形用户界面、`docker run` 或 `docker compose` 运行的容器。 |
+| 平均运行容器数 (Average number of containers run) | 每个活跃用户运行的平均容器数。 |
+| 活跃用户运行的容器数（图表） (Containers run by active users (graph)) | 活跃用户随时间运行的容器数量。 |
 
 ### Docker Desktop 使用情况
 
-使用此图表探索 Docker Desktop 的使用模式，以优化团队的工作流程并确保兼容性。它提供了 Docker Desktop 如何被利用的宝贵洞察，使您能够简化流程并提高效率。
+通过此图表探索 Docker Desktop 的使用模式，以优化团队的工作流程并确保兼容性。它提供了有关 Docker Desktop 如何被利用的宝贵见解，使您能够简化流程并提高效率。
 
-图表包含以下数据：
+该图表包含以下数据：
 
-| 数据                              | 描述                                                                                                                                                                                                                                                                       |
+| 数据 | 描述 |
 |:----------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 最常用版本                 | 组织内用户最常用的 Docker Desktop 版本。                                                                                                                                                                                                                                    |
-| 最常用操作系统                      | 用户最常用的操作系统。                                                                                                                                                                                                                                          |
-| 活跃用户的版本分布（图表）  | 活跃用户使用的每个 Docker Desktop 版本的数量。 <br><br>要了解每个版本和发布日期的更多信息，请参阅 [Docker Desktop 发行说明](/desktop/release-notes/)。                                                                                     |
-| 活跃用户的界面分布（图表） | 按与 Docker Desktop 交互的界面类型分组的活跃用户数。 <br><br>CLI 用户是任何运行过 `docker` 命令的活跃用户。GUI 用户是任何与 Docker Desktop 图形用户界面交互过的活跃用户。 |
+| 最常用版本 (Most used version) | 您组织中用户最常用的 Docker Desktop 版本。 |
+| 最常用操作系统 (Most used OS) | 用户最常用的操作系统。 |
+| 按活跃用户划分的版本（图表） (Versions by active users (graph)) | 使用每个 Docker Desktop 版本的活跃用户数量。<br><br>要了解每个版本和发布日期的更多信息，请参阅 [Docker Desktop 发行说明](/desktop/release-notes/)。 |
+| 按活跃用户划分的界面（图表） (Interface by active users (graph)) | 按用于与 Docker Desktop 交互的界面类型分组的活跃用户数量。<br><br>CLI 用户是指运行过 `docker` 命令的任何活跃用户。GUI 用户是指与 Docker Desktop 图形用户界面交互过的任何活跃用户。 |
 
 ### Docker Hub 镜像
 
-使用此图表分析镜像分发活动，并查看域内最常用的 Docker Hub 镜像。这些信息帮助您管理镜像使用，确保最关键的资源易于获取并高效使用。
+通过此图表分析镜像分发活动，并查看您域中最常用的 Docker Hub 镜像。此信息帮助您管理镜像使用情况，确保最关键的资源随时可用并被高效使用。
 
 > [!NOTE]
 >
-> 镜像数据仅针对 Docker Hub。第三方注册表和镜像的数据不包括在内。
+> 镜像数据仅适用于 Docker Hub。不包含第三方注册表和镜像的数据。
 
-图表包含以下数据：
+该图表包含以下数据：
 
-| 数据                 | 描述                                                                                                     |
+| 数据 | 描述 |
 |:---------------------|:----------------------------------------------------------------------------------------------------------------|
-| 拉取的镜像总数  | 用户从 Docker Hub 拉取的镜像总数。                                                     |
-| 推送的镜像总数  | 用户推送到 Docker Hub 的镜像总数。                                                       |
-| 最受欢迎的 10 个拉取镜像 | 用户从 Docker Hub 拉取的前 10 个镜像列表，以及每个镜像被拉取的次数。 |
+| 拉取的镜像总数 (Total pulled images) | 用户从 Docker Hub 拉取的镜像总数。 |
+| 推送的镜像总数 (Total pushed images) | 用户推送到 Docker Hub 的镜像总数。 |
+| 拉取次数排名前 10 的镜像 (Top 10 pulled images) | 用户从 Docker Hub 拉取次数排名前 10 的镜像列表，以及每个镜像被拉取的次数。 |
 
-### 扩展
+### 扩展 (Extensions)
 
-使用此图表监控扩展安装活动。它提供了团队使用的 Docker Desktop 扩展的可见性，让您跟踪采用情况并识别提高生产力的流行工具。
+通过此图表监控扩展安装活动。它提供了对团队正在使用的 Docker Desktop 扩展的可见性，让您能够跟踪采用情况并识别提高生产力的流行工具。
 
-图表包含以下数据：
+该图表包含以下数据：
 
-| 数据                                           | 描述                                                                                                                                      |
+| 数据 | 描述 |
 |:-----------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|
-| 已安装扩展的组织百分比    | 组织内至少安装了一个 Docker Desktop 扩展的用户百分比。                                               |
-| 组织内安装的前 5 个扩展 | 用户在组织内安装的前 5 个 Docker Desktop 扩展列表，以及每个扩展的安装用户数。 |
+| 安装了扩展的组织百分比 (Percentage of org with extensions installed) | 您组织中至少安装了一个 Docker Desktop 扩展的用户百分比。 |
+| 组织中安装次数排名前 5 的扩展 (Top 5 extensions installed in the organization) | 您组织中用户安装次数排名前 5 的 Docker Desktop 扩展列表，以及安装了每个扩展的用户数量。 |
 
 ## 导出 Docker Desktop 用户数据
 
 您可以将 Docker Desktop 用户数据导出为 CSV 文件：
 
 1. 打开 [Docker Home](https://app.docker.com) 并从左上角的账户下拉菜单中选择您的组织。
-1. 在左侧导航菜单中选择 **Admin Console**。
-1. 选择 **Desktop insights**。
-1. 为您的洞察数据选择一个时间范围：**1 周**、**1 个月** 或 **3 个月**。
-1. 选择 **Export** 并从下拉菜单中选择 **Docker Desktop users**。
+2. 在左侧导航菜单中选择 **Admin Console**。
+3. 选择 **Desktop insights**。
+4. 为您的洞察数据选择一个时间段：**1 周**、**1 个月**或**3 个月**。
+5. 选择 **Export**，然后从下拉菜单中选择 **Docker Desktop users**。
 
-您的导出将自动下载。打开文件以查看导出的数据。
+您的导出将自动下载。打开文件以查看导出数据。
 
 ### 理解导出数据
 
 Docker Desktop 用户导出文件包含以下数据点：
 
-- 姓名：用户的姓名
-- 用户名：用户的 Docker ID
-- 邮箱：用户与其 Docker ID 关联的邮箱地址
-- 类型：用户类型
-- 角色：用户的 [角色](/manuals/enterprise/security/roles-and-permissions.md)
-- 团队：用户所属的组织内的团队
-- 加入日期：用户加入组织的日期
-- 最后登录日期：用户上次通过网络浏览器登录 Docker 的日期（包括 Docker Hub 和 Docker Home）
-- Docker Desktop 版本：用户安装的 Docker Desktop 版本
-- 最后使用日期：用户上次使用 Docker Desktop 应用程序的日期
-- 选择退出分析：用户是否在 Docker Desktop 中关闭了[发送使用统计信息](/manuals/enterprise/security/hardened-desktop/settings-management/settings-reference.md#send-usage-statistics) 设置
+- Name：用户姓名
+- Username：用户的 Docker ID
+- Email：与用户 Docker ID 关联的电子邮件地址
+- Type：用户类型
+- Role：用户[角色](/manuals/enterprise/security/roles-and-permissions.md)
+- Teams：用户所属的您组织内的团队
+- Date Joined：用户加入您组织的日期
+- Last Logged-In Date：用户上次使用其 Web 浏览器登录 Docker 的日期（这包括 Docker Hub 和 Docker Home）
+- Docker Desktop Version：用户已安装的 Docker Desktop 版本
+- Last Seen Date：用户上次使用 Docker Desktop 应用程序的日期
+- Opted Out Analytics：用户是否在 Docker Desktop 中选择退出[发送使用统计信息](/manuals/enterprise/security/hardened-desktop/settings-management/settings-reference.md#send-usage-statistics)设置
 
-## 排查 Insights 问题
+## 故障排除 Insights
 
-如果您在 Insights 中遇到数据问题，请考虑以下解决方案以解决常见问题：
+如果您在 Insights 中遇到数据问题，请考虑以下解决方案来解决常见问题：
 
 - 将用户更新到最新版本的 Docker Desktop。
 
-   对于使用 Docker Desktop 4.16 或更低版本的用户，不会显示数据。此外，旧版本可能无法提供所有数据。确保所有用户都安装了最新版本的 Docker Desktop。
+   使用 4.16 或更低版本 Docker Desktop 的用户不会显示数据。此外，旧版本可能无法提供所有数据。确保所有用户都已安装最新版本的 Docker Desktop。
 
-- 为所有用户在 Docker Desktop 中开启 **发送使用统计信息**。
+- 为所有用户在 Docker Desktop 中开启**发送使用统计信息**。
 
-   如果用户选择退出发送 Docker Desktop 的使用统计信息，则他们的使用数据不会成为 Insights 的一部分。要大规模管理所有用户的设置，您可以使用 [Settings Management](/desktop/hardened-desktop/settings-management/) 并开启 `analyticsEnabled` 设置。
+   如果用户选择退出发送 Docker Desktop 的使用统计信息，那么他们的使用数据将不会成为 Insights 的一部分。要为所有用户大规模管理此设置，您可以使用[设置管理](/desktop/hardened-desktop/settings-management/)并开启 `analyticsEnabled` 设置。
 
-- 确保用户使用 Docker Desktop，而不是 Docker Engine 的独立版本。
+- 确保用户使用 Docker Desktop，而不是使用独立版本的 Docker Engine。
 
-   只有 Docker Desktop 可以为 Insights 提供数据。如果用户在 Docker Desktop 之外安装 Docker Engine，Docker Engine 将不会为该用户提供数据。
+   只有 Docker Desktop 才能为 Insights 提供数据。如果用户在 Docker Desktop 之外安装了 Docker Engine，Docker Engine 将不会为该用户提供数据。
 
-- 确保用户登录到与您的组织关联的账户。
+- 确保用户登录到与您组织关联的账户。
 
-   未登录到与您的组织关联的账户的用户不会在数据中显示。为确保用户使用与组织关联的账户登录，您可以[强制登录](/security/for-admins/enforce-sign-in/)。
+   未登录与您组织关联的账户的用户不会显示在数据中。为确保用户使用与您组织关联的账户登录，您可以[强制登录](/security/for-admins/enforce-sign-in/)。

@@ -1,16 +1,16 @@
 ---
-description: 了解暂停 Docker Desktop 仪表板的含义
-keywords: Docker Desktop Dashboard, 管理, 容器, GUI, 仪表板, 暂停, 用户手册
+description: &desc 了解暂停 Docker Desktop Dashboard 的含义
+keywords: Docker Desktop Dashboard, manage, containers, gui, dashboard, pause, user manual
 title: 暂停 Docker Desktop
 weight: 70
 ---
 
-暂停 Docker Desktop 会临时挂起运行 Docker Engine 的 Linux 虚拟机。这会将所有容器的当前状态保存在内存中，并冻结所有正在运行的进程，显著降低 CPU 和内存使用量，有助于节省笔记本电脑的电池电量。
+暂停 Docker Desktop 会暂时挂起运行 Docker Engine 的 Linux 虚拟机。这将保存所有容器在内存中的当前状态，并冻结所有正在运行的进程，显著降低 CPU 和内存使用率，有助于节省笔记本电脑的电池电量。
 
-要暂停 Docker Desktop，请在 Docker 仪表板的页脚左侧选择 **暂停** 图标。要手动恢复 Docker Desktop，可选择 Docker 菜单中的 **恢复** 选项，或运行任何 Docker CLI 命令。
+要暂停 Docker Desktop，请在 Docker Dashboard 底部左侧选择 **Pause** 图标。要手动恢复 Docker Desktop，请选择 Docker 菜单中的 **Resume** 选项，或运行任意 Docker CLI 命令。
 
-当你手动暂停 Docker Desktop 时，Docker 菜单和 Docker Desktop 仪表板上会显示暂停状态。你仍然可以访问 **设置** 和 **故障排除** 菜单。
+当您手动暂停 Docker Desktop 时，Docker 菜单和 Docker Desktop Dashboard 上会显示暂停状态。您仍然可以访问 **Settings** 和 **Troubleshoot** 菜单。
 
 > [!TIP]
 >
-> Resource Saver 功能默认启用，相比手动暂停功能，能提供更好的 CPU 和内存节省效果。更多信息请参阅 [Resource Saver 模式](resource-saver.md)。
+> 资源节省器功能默认已启用，相比手动暂停功能可提供更好的 CPU 和内存节省效果。更多信息请参见 [Resource Saver mode](resource-saver.md)。

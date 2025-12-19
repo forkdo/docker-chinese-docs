@@ -1,7 +1,7 @@
 ---
 title: "接口: BackendV0"
 description: Docker 扩展 API 参考
-keywords: Docker, 扩展, SDK, API, 参考
+keywords: Docker, extensions, sdk, API, reference
 aliases:
  - /desktop/extensions-sdk/dev/api/reference/interfaces/BackendV0/
  - /extensions/extensions-sdk/dev/api/reference/interfaces/BackendV0/
@@ -23,7 +23,7 @@ console.log(output);
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。
+> 该方法将在未来的版本中移除。
 
 #### 参数
 
@@ -44,7 +44,7 @@ ___
 
 ▸ **get**(`url`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP GET 请求。
+向后端服务执行 HTTP GET 请求。
 
 ```typescript
 window.ddClient.backend
@@ -54,7 +54,7 @@ window.ddClient.backend
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [get](HttpService.md#get)。
+> 该方法将在未来的版本中移除。请改用 [get](HttpService.md#get)。
 
 #### 参数
 
@@ -72,7 +72,7 @@ ___
 
 ▸ **post**(`url`, `data`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP POST 请求。
+向后端服务执行 HTTP POST 请求。
 
 ```typescript
 window.ddClient.backend
@@ -82,14 +82,14 @@ window.ddClient.backend
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [post](HttpService.md#post)。
+> 该方法将在未来的版本中移除。请改用 [post](HttpService.md#post)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `url` | `string` | 后端服务的 URL。 |
-| `data` | `any` | 请求体。 |
+| `data` | `any` | 请求的主体。 |
 
 #### 返回值
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **put**(`url`, `data`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP PUT 请求。
+向后端服务执行 HTTP PUT 请求。
 
 ```typescript
 window.ddClient.backend
@@ -111,14 +111,14 @@ window.ddClient.backend
 
 > [!WARNING]
 > 
-> 此方法将在未来版本中移除。请改用 [put](HttpService.md#put)。
+> 该方法将在未来的版本中移除。请改用 [put](HttpService.md#put)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `url` | `string` | 后端服务的 URL。 |
-| `data` | `any` | 请求体。 |
+| `data` | `any` | 请求的主体。 |
 
 #### 返回值
 
@@ -130,7 +130,7 @@ ___
 
 ▸ **patch**(`url`, `data`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP PATCH 请求。
+向后端服务执行 HTTP PATCH 请求。
 
 ```typescript
 window.ddClient.backend
@@ -140,14 +140,14 @@ window.ddClient.backend
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [patch](HttpService.md#patch)。
+> 该方法将在未来的版本中移除。请改用 [patch](HttpService.md#patch)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `url` | `string` | 后端服务的 URL。 |
-| `data` | `any` | 请求体。 |
+| `data` | `any` | 请求的主体。 |
 
 #### 返回值
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **delete**(`url`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP DELETE 请求。
+向后端服务执行 HTTP DELETE 请求。
 
 ```typescript
 window.ddClient.backend
@@ -169,7 +169,7 @@ window.ddClient.backend
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [delete](HttpService.md#delete)。
+> 该方法将在未来的版本中移除。请改用 [delete](HttpService.md#delete)。
 
 #### 参数
 
@@ -187,7 +187,7 @@ ___
 
 ▸ **head**(`url`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP HEAD 请求。
+向后端服务执行 HTTP HEAD 请求。
 
 ```typescript
 window.ddClient.backend
@@ -197,7 +197,7 @@ window.ddClient.backend
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [head](HttpService.md#head)。
+> 该方法将在未来的版本中移除。请改用 [head](HttpService.md#head)。
 
 #### 参数
 
@@ -215,7 +215,7 @@ ___
 
 ▸ **request**(`config`): `Promise`<`unknown`\>
 
-向后端服务发送 HTTP 请求。
+向后端服务执行 HTTP 请求。
 
 ```typescript
 window.ddClient.backend
@@ -225,7 +225,7 @@ window.ddClient.backend
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [request](HttpService.md#request)。
+> 该方法将在未来的版本中移除。请改用 [request](HttpService.md#request)。
 
 #### 参数
 
@@ -239,14 +239,14 @@ window.ddClient.backend
 
 ___
 
-## 虚拟机方法
+## VM 方法
 
 ### execInVMExtension
 
 ▸ **execInVMExtension**(`cmd`): `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 在后端容器内执行命令。
-如果您的扩展附带了需要在后端容器中运行的额外二进制文件，可以使用 `execInVMExtension` 函数。
+如果你的扩展附带了需要在后端容器内运行的其他二进制文件，可以使用 `execInVMExtension` 函数。
 
 ```typescript
 const output = await window.ddClient.backend.execInVMExtension(
@@ -258,7 +258,7 @@ console.log(output);
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。请改用 [exec](ExtensionCli.md#exec)。
+> 该方法将在未来的版本中移除。请改用 [exec](ExtensionCli.md#exec)。
 
 #### 参数
 
@@ -276,7 +276,7 @@ ___
 
 ▸ **spawnInVMExtension**(`cmd`, `args`, `callback`): `void`
 
-返回后端容器中执行命令的输出流。
+从后端容器中执行的命令返回一个流。
 
 ```typescript
 window.ddClient.spawnInVMExtension(
@@ -284,7 +284,7 @@ window.ddClient.spawnInVMExtension(
   [`arg1`, `arg2`],
   (data: any, err: any) => {
     console.log(data.stdout, data.stderr);
-    // 命令退出后，我们会得到状态码
+    // 命令退出时，我们会获得状态码
     if (data.code) {
       console.log(data.code);
     }
@@ -294,15 +294,15 @@ window.ddClient.spawnInVMExtension(
 
 > [!WARNING]
 >
-> 此方法将在未来版本中移除。
+> 该方法将在未来的版本中移除。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
 | `cmd` | `string` | 要执行的命令。 |
-| `args` | `string`[] | 命令的参数。 |
-| `callback` | (`data`: `any`, `error`: `any`) => `void` | 监听命令输出数据和错误的回调函数。 |
+| `args` | `string`[] | 要执行的命令的参数。 |
+| `callback` | (`data`: `any`, `error`: `any`) => `void` | 用于监听命令输出数据和错误的回调函数。 |
 
 #### 返回值
 

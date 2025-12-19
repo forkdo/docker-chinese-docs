@@ -8,21 +8,21 @@ aliases:
   - /config/formatting/
 ---
 
-Docker 支持 [Go 模板](https://golang.org/pkg/text/template/)，你可以使用它来操作某些命令和日志驱动的输出格式。
+Docker 支持 [Go templates](https://golang.org/pkg/text/template/)，您可以用它来操作某些命令和日志驱动的输出格式。
 
-Docker 提供了一组基本函数来操作模板元素。
-所有这些示例都使用 `docker inspect` 命令，但许多其他 CLI 命令都有 `--format` 标志，许多 CLI 命令参考文档中也包含自定义输出格式的示例。
+Docker 提供了一套基本函数来操作模板元素。
+所有这些示例都使用 `docker inspect` 命令，但许多其他 CLI 命令都有一个 `--format` 标志，并且许多 CLI 命令参考都包含了自定义输出格式的示例。
 
 > [!NOTE]
 >
-> 使用 `--format` 标志时，需要注意你的 shell 环境。
-> 在 POSIX shell 中，你可以使用单引号运行以下命令：
+> 使用 `--format` 标志时，您需要注意您的 shell 环境。
+> 在 POSIX shell 中，您可以使用单引号运行以下命令：
 >
 > ```console
 > $ docker inspect --format '{{join .Args " , "}}'
 > ```
 >
-> 否则，在 Windows shell（例如 PowerShell）中，你需要使用单引号，但需要转义参数内的双引号，如下所示：
+> 否则，在 Windows shell（例如 PowerShell）中，您需要使用单引号，并按如下方式对参数内的双引号进行转义：
 >
 > ```console
 > $ docker inspect --format '{{join .Args \" , \"}}'
@@ -31,8 +31,8 @@ Docker 提供了一组基本函数来操作模板元素。
 
 ## join
 
-`join` 将字符串列表连接成单个字符串。
-它在列表的每个元素之间放置一个分隔符。
+`join` 连接一个字符串列表以创建单个字符串。
+它会在列表中的每个元素之间放置一个分隔符。
 
 ```console
 $ docker inspect --format '{{join .Args " , "}}' container
@@ -40,7 +40,7 @@ $ docker inspect --format '{{join .Args " , "}}' container
 
 ## table
 
-`table` 指定你想要查看其输出的字段。
+`table` 指定您希望在其输出中看到的字段。
 
 ```console
 $ docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}\t{{.Size}}"
@@ -48,7 +48,7 @@ $ docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}\t{{.Size}
 
 ## json
 
-`json` 将元素编码为 json 字符串。
+`json` 将一个元素编码为 json 字符串。
 
 ```console
 $ docker inspect --format '{{json .Mounts}}' container
@@ -56,7 +56,7 @@ $ docker inspect --format '{{json .Mounts}}' container
 
 ## lower
 
-`lower` 将字符串转换为其小写表示形式。
+`lower` 将字符串转换为小写形式。
 
 ```console
 $ docker inspect --format "{{lower .Name}}" container
@@ -64,7 +64,7 @@ $ docker inspect --format "{{lower .Name}}" container
 
 ## split
 
-`split` 将字符串切片为由分隔符分隔的字符串列表。
+`split` 使用分隔符将字符串切片成一个字符串列表。
 
 ```console
 $ docker inspect --format '{{split .Image ":"}}' container
@@ -72,7 +72,7 @@ $ docker inspect --format '{{split .Image ":"}}' container
 
 ## title
 
-`title` 将字符串的首字符大写。
+`title` 将字符串的首字母大写。
 
 ```console
 $ docker inspect --format "{{title .Name}}" container
@@ -80,7 +80,7 @@ $ docker inspect --format "{{title .Name}}" container
 
 ## upper
 
-`upper` 将字符串转换为其大写表示形式。
+`upper` 将字符串转换为大写形式。
 
 ```console
 $ docker inspect --format "{{upper .Name}}" container
@@ -88,35 +88,35 @@ $ docker inspect --format "{{upper .Name}}" container
 
 ## pad
 
-`pad` 向字符串添加空白填充。你可以指定在字符串前后添加的空格数。
+`pad` 为字符串添加空白填充。您可以指定要在字符串前后添加的空格数。
 
 ```console
 $ docker image list --format '{{pad .Repository 5 10}}'
 ```
 
-此示例在镜像仓库名称前添加 5 个空格，在其后添加 10 个空格。
+本示例在镜像仓库名称前添加 5 个空格，在名称后添加 10 个空格。
 
 ## truncate
 
-`truncate` 将字符串缩短到指定长度。如果字符串比指定长度短，则保持不变。
+`truncate` 将字符串缩短到指定长度。如果字符串短于指定长度，则保持不变。
 
 ```console
 $ docker image list --format '{{truncate .Repository 15}}'
 ```
 
-此示例显示镜像仓库名称，如果超过 15 个字符则截断为前 15 个字符。
+本示例显示镜像仓库名称，如果名称超过 15 个字符，则截断为前 15 个字符。
 
 ## println
 
-`println` 在新行上打印每个值。
+`println` 将每个值打印在新的一行上。
 
 ```console
 $ docker inspect --format='{{range .NetworkSettings.Networks}}{{println .IPAddress}}{{end}}' container
 ```
 
-## 提示
+## Hint
 
-要找出可以打印哪些数据，请以 json 格式显示所有内容：
+要找出可以打印哪些数据，请将所有内容以 json 格式显示：
 
 ```console
 $ docker container ls --format='{{json .}}'
