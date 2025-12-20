@@ -1,6 +1,5 @@
 ---
-title: 故障排除
-description: 解决常见问题
+title: Troubleshooting
+description: Resolve common issues
 ---
-
-故障排除文章包含解决使用 Docker 产品时可能遇到的常见问题和陷阱的指南。
+Troubleshooting articles contain guides to resolve common issues and pitfalls you may encounter when using Docker products.

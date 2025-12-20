@@ -1,5 +1,3 @@
-```markdown
----
 datafolder: mcp-cli
 datafile: docker_mcp_server_inspect
 title: docker mcp server inspect
@@ -11,4 +9,3 @@ layout: cli
 
 https://github.com/docker/mcp-gateway
 -->
-```

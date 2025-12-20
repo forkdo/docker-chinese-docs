@@ -1,5 +1,3 @@
-```markdown
----
 linkTitle: 迁移到 Compose v2
 Title: 从 Docker Compose v1 迁移到 v2
 weight: 30
@@ -132,4 +130,3 @@ Compose v2 现在包含在 [Docker Hub 上的 Docker 官方镜像](https://hub.d
 - [PyPI 上的 docker-compose v1](https://pypi.org/project/docker-compose/1.29.2/)
 - [Docker Hub 上的 docker/compose v1](https://hub.docker.com/r/docker/compose)
 - [GitHub 上的 docker-compose v1 源代码](https://github.com/docker/compose/releases/tag/1.29.2)
-```

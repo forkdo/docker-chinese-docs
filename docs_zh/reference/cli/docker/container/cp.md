@@ -1,5 +1,3 @@
-```markdown
----
 datafolder: engine-cli
 datafile: docker_container_cp
 title: docker container cp
@@ -16,4 +14,3 @@ layout: cli
 
 https://github.com/docker/cli
 -->
-```

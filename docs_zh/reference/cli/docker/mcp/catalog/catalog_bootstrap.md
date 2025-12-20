@@ -1,5 +1,3 @@
-```markdown
----
 datafolder: mcp-cli
 datafile: docker_mcp_catalog_bootstrap
 title: docker mcp catalog bootstrap
@@ -12,7 +10,6 @@ layout: cli
 
 https://github.com/docker/mcp-gateway
 -->
-```
 
 ```markdown
 # docker mcp catalog bootstrap

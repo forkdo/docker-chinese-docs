@@ -380,6 +380,16 @@ def translate_worker(provider: Dict):
                 if value is not None:
                     final_frontmatter_dict[field] = value
             
+            # --- DEBUGGING PRINTS (Conditional for tags files) ---
+            if rel_path.startswith("docs_zh/tags/"):
+                logger.info(f"--- DEBUG: English Frontmatter for {rel_path} ---")
+                logger.info(english_frontmatter)
+                logger.info(f"--- DEBUG: Preserved Data for {rel_path} ---")
+                logger.info(preserved_data)
+                logger.info(f"--- DEBUG: Final Frontmatter Dict for {rel_path} ---")
+                logger.info(final_frontmatter_dict)
+            # --- END DEBUGGING PRINTS ---
+            
             final_translated_content = "---\n" + yaml.dump(final_frontmatter_dict, allow_unicode=True, sort_keys=False) + "---\n" + translated_body
         
         # 保存

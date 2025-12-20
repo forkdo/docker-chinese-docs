@@ -1,5 +1,3 @@
-```markdown
----
 title: "接口: ExecResult"
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
@@ -119,4 +117,3 @@ ___
 #### 继承自
 
 [RawExecResult](RawExecResult.md).[stderr](RawExecResult.md#stderr)
-```

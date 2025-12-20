@@ -1,5 +1,3 @@
-```markdown
----
 build:
   render: never
 title: AI 与 Docker Compose
@@ -8,4 +6,3 @@ params:
   sidebar:
     group: AI
 ---
-```

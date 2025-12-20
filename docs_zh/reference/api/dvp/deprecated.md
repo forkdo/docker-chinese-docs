@@ -1,5 +1,3 @@
-```markdown
----
 description: 已弃用的 Docker Verified Publisher API 端点
 keywords: deprecated
 title: 已弃用的 Docker Verified Publisher API 端点
@@ -36,4 +34,3 @@ weight: 3
 重新格式化页面
 
 ---
-```
