@@ -1,32 +1,29 @@
 ---
-title: Version and name top-level elements
-description: Understand when and if to set the version and name top-level element
+title: 版本和名称顶级元素
+description: 了解何时以及是否设置版本和名称顶级元素
+weight: 10
 keywords: compose, compose specification, services, compose file reference
 aliases:
- - /compose/compose-file/04-version-and-name/
-weight: 10
+- /compose/compose-file/04-version-and-name/
 ---
-
-## Version top-level element (obsolete)
+## 版本顶级元素（已弃用）
 
 > [!IMPORTANT]
 >
-> The top-level `version` property is defined by the Compose Specification for backward compatibility. It is only informative and you'll receive a warning message that it is obsolete if used. 
+> 顶级 `version` 属性由 Compose 规范定义，用于向后兼容。该属性仅用于提供信息，如果使用，你将收到一条关于其已弃用的警告消息。
 
-Compose always uses the most recent schema to validate the Compose file, regardless of the `version` field.
+无论 `version` 字段如何设置，Compose 始终使用最新的 schema 来验证 Compose 文件。
 
-Compose validates whether it can fully parse the Compose file. If some fields are unknown, typically
-because the Compose file was written with fields defined by a newer version of the Specification, you'll receive a warning message. 
+Compose 会验证它是否可以完全解析 Compose 文件。如果某些字段未知，通常是因为 Compose 文件是由较新版本的规范中定义的字段编写的，你将会收到一条警告消息。
 
-## Name top-level element
+## 名称顶级元素
 
-The top-level `name` property is defined by the Compose Specification as the project name to be used if you don't set one explicitly.
+顶级 `name` 属性由 Compose 规范定义，用作在你未显式设置项目名称时使用的项目名称。
 
-Compose offers a way for you to override this name, and sets a
-default project name to be used if the top-level `name` element is not set.
+Compose 提供了一种让你覆盖此名称的方法，并在未设置顶级 `name` 元素时设置一个默认的项目名称。
 
-Whenever a project name is defined by top-level `name` or by some custom mechanism, it is exposed for
-[interpolation](interpolation.md) and environment variable resolution as `COMPOSE_PROJECT_NAME`
+无论项目名称是由顶级 `name` 还是某些自定义机制定义的，它都会以 `COMPOSE_PROJECT_NAME` 的形式暴露出来，用于
+[插值](interpolation.md) 和环境变量解析。
 
 ```yml
 name: myapp
@@ -37,4 +34,4 @@ services:
     command: echo "I'm running ${COMPOSE_PROJECT_NAME}"
 ```
 
-For more information on other ways to name Compose projects, see [Specify a project name](/manuals/compose/how-tos/project-name.md).
+有关命名 Compose 项目的其他方式的更多信息，请参阅 [指定项目名称](/manuals/compose/how-tos/project-name.md)。
