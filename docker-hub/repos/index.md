@@ -25,11 +25,11 @@ Docker Hub 仓库是容器镜像的集合，使您能够公开或私下存储、
 - [删除](./delete.md) 仓库。
 - [管理个人设置](./settings.md)：对于您的帐户，您可以为仓库设置个人偏好，包括默认仓库隐私和自动构建通知。
 
-- [创建仓库](https://docs.docker.com/docker-hub/repos/create/)
+- [创建仓库](/docker-hub/repos/create/)
 
-- [归档或取消归档仓库](https://docs.docker.com/docker-hub/repos/archive/)
+- [归档或取消归档仓库](/docker-hub/repos/archive/)
 
-- [删除仓库](https://docs.docker.com/docker-hub/repos/delete/)
+- [删除仓库](/docker-hub/repos/delete/)
 
-- [仓库个人设置](https://docs.docker.com/docker-hub/repos/settings/)
+- [仓库个人设置](/docker-hub/repos/settings/)
 

@@ -20,11 +20,11 @@
 - 配置[日志驱动程序](configure.md)。
 - 编写 [Dockerfile](/reference/dockerfile.md)。
 
-- [使用日志记录驱动插件](https://docs.docker.com/engine/logging/plugins/)
+- [使用日志记录驱动插件](/engine/logging/plugins/)
 
-- [将 docker logs 与远程日志记录驱动程序结合使用](https://docs.docker.com/engine/logging/dual-logging/)
+- [将 docker logs 与远程日志记录驱动程序结合使用](/engine/logging/dual-logging/)
 
-- [自定义日志驱动输出](https://docs.docker.com/engine/logging/log_tags/)
+- [自定义日志驱动输出](/engine/logging/log_tags/)
 
-- [配置日志驱动程序](https://docs.docker.com/engine/logging/configure/)
+- [配置日志驱动程序](/engine/logging/configure/)
 

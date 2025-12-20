@@ -183,11 +183,11 @@
 - 关于 Docker 的[语态与语气](style/voice-tone.md)的信息。
 - 一份[写作清单](checklist.md)，帮助您在为 Docker 文档做贡献时参考。
 
-- [源文件规范](https://docs.docker.com/contribute/file-conventions/)
+- [源文件规范](/contribute/file-conventions/)
 
-- [内容中的 UI 元素](https://docs.docker.com/contribute/ui/)
+- [内容中的 UI 元素](/contribute/ui/)
 
-- [写作清单](https://docs.docker.com/contribute/checklist/)
+- [写作清单](/contribute/checklist/)
 
-- [编写 Docker 使用指南的规范](https://docs.docker.com/contribute/guides/)
+- [编写 Docker 使用指南的规范](/contribute/guides/)
 

@@ -6,13 +6,13 @@
 https://github.com/docker/cli
 -->
 
-- [docker trust inspect](https://docs.docker.com/reference/cli/docker/trust/inspect/)
+- [docker trust inspect](/reference/cli/docker/trust/inspect/)
 
-- [docker trust key](https://docs.docker.com/reference/cli/docker/trust/key/)
+- [docker trust key](/reference/cli/docker/trust/key/)
 
-- [docker trust revoke](https://docs.docker.com/reference/cli/docker/trust/revoke/)
+- [docker trust revoke](/reference/cli/docker/trust/revoke/)
 
-- [docker trust sign](https://docs.docker.com/reference/cli/docker/trust/sign/)
+- [docker trust sign](/reference/cli/docker/trust/sign/)
 
-- [docker trust signer](https://docs.docker.com/reference/cli/docker/trust/signer/)
+- [docker trust signer](/reference/cli/docker/trust/signer/)
 

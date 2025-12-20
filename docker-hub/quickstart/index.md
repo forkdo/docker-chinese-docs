@@ -353,7 +353,7 @@ Docker Hub 提供了庞大的预构建镜像和资源库，能够加速开发工
     </div>
   </div>
 </div>
-<p><code>docker run</code> 命令会自动拉取并运行镜像，无需先运行 <code>docker pull</code>。要了解有关该命令及其选项的更多信息，请参阅 <a class="link" href="https://docs.docker.com/reference/cli/docker/container/run/"><code>docker run</code> CLI 参考</a>。运行命令后，您应该会看到类似以下的输出。</p>
+<p><code>docker run</code> 命令会自动拉取并运行镜像，无需先运行 <code>docker pull</code>。要了解有关该命令及其选项的更多信息，请参阅 <a class="link" href="/reference/cli/docker/container/run/"><code>docker run</code> CLI 参考</a>。运行命令后，您应该会看到类似以下的输出。</p>
 <div
   data-pagefind-ignore
   x-data

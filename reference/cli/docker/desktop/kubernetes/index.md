@@ -32,5 +32,5 @@
 
 
 
-- [Docker Desktop Kubernetes 镜像](https://docs.docker.com/reference/cli/docker/desktop/kubernetes/images/)
+- [Docker Desktop Kubernetes 镜像](/reference/cli/docker/desktop/kubernetes/images/)
 

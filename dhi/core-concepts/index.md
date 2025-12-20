@@ -519,37 +519,37 @@ Docker Hardened Images（DHIs）建立在安全的软件供应链实践基础之
 </div>
 
 
-- [CIS 基准](https://docs.docker.com/dhi/core-concepts/cis/)
+- [CIS 基准](/dhi/core-concepts/cis/)
 
-- [常见漏洞和暴露 (CVE)](https://docs.docker.com/dhi/core-concepts/cves/)
+- [常见漏洞和暴露 (CVE)](/dhi/core-concepts/cves/)
 
-- [FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](https://docs.docker.com/dhi/core-concepts/fips/)
+- [FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/core-concepts/fips/)
 
-- [Docker Hardened Images 中的 glibc 和 musl 支持](https://docs.docker.com/dhi/core-concepts/glibc-musl/)
+- [Docker Hardened Images 中的 glibc 和 musl 支持](/dhi/core-concepts/glibc-musl/)
 
-- [软件物料清单 (SBOM)](https://docs.docker.com/dhi/core-concepts/sbom/)
+- [软件物料清单 (SBOM)](/dhi/core-concepts/sbom/)
 
-- [软件制品供应链安全等级 (SLSA)](https://docs.docker.com/dhi/core-concepts/slsa/)
+- [软件制品供应链安全等级 (SLSA)](/dhi/core-concepts/slsa/)
 
-- [安全软件开发生命周期](https://docs.docker.com/dhi/core-concepts/ssdlc/)
+- [安全软件开发生命周期](/dhi/core-concepts/ssdlc/)
 
-- [STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](https://docs.docker.com/dhi/core-concepts/stig/)
+- [STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/core-concepts/stig/)
 
-- [漏洞可利用性交换 (VEX)](https://docs.docker.com/dhi/core-concepts/vex/)
+- [漏洞可利用性交换 (VEX)](/dhi/core-concepts/vex/)
 
-- [不可变基础设施](https://docs.docker.com/dhi/core-concepts/immutability/)
+- [不可变基础设施](/dhi/core-concepts/immutability/)
 
-- [代码签名](https://docs.docker.com/dhi/core-concepts/signatures/)
+- [代码签名](/dhi/core-concepts/signatures/)
 
-- [基础镜像加固](https://docs.docker.com/dhi/core-concepts/hardening/)
+- [基础镜像加固](/dhi/core-concepts/hardening/)
 
-- [极简或无发行版镜像](https://docs.docker.com/dhi/core-concepts/distroless/)
+- [极简或无发行版镜像](/dhi/core-concepts/distroless/)
 
-- [证明](https://docs.docker.com/dhi/core-concepts/attestations/)
+- [证明](/dhi/core-concepts/attestations/)
 
-- [软件供应链安全](https://docs.docker.com/dhi/core-concepts/sscs/)
+- [软件供应链安全](/dhi/core-concepts/sscs/)
 
-- [镜像摘要](https://docs.docker.com/dhi/core-concepts/digests/)
+- [镜像摘要](/dhi/core-concepts/digests/)
 
-- [镜像溯源](https://docs.docker.com/dhi/core-concepts/provenance/)
+- [镜像溯源](/dhi/core-concepts/provenance/)
 

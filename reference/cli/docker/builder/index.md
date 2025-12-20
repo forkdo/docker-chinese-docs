@@ -6,5 +6,5 @@
 https://github.com/docker/cli
 -->
 
-- [docker builder prune](https://docs.docker.com/reference/cli/docker/builder/prune/)
+- [docker builder prune](/reference/cli/docker/builder/prune/)
 

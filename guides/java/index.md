@@ -11,13 +11,13 @@ Java 入门指南将教你如何使用 Docker 创建容器化的 Spring Boot 应
 
 开始容器化你的第一个 Java 应用。
 
-- [容器化 Java 应用程序](https://docs.docker.com/guides/java/containerize/)
+- [容器化 Java 应用程序](/guides/java/containerize/)
 
-- [使用容器进行 Java 开发](https://docs.docker.com/guides/java/develop/)
+- [使用容器进行 Java 开发](/guides/java/develop/)
 
-- [运行 Java 测试](https://docs.docker.com/guides/java/run-tests/)
+- [运行 Java 测试](/guides/java/run-tests/)
 
-- [为 Java 应用程序配置 CI/CD](https://docs.docker.com/guides/java/configure-ci-cd/)
+- [为 Java 应用程序配置 CI/CD](/guides/java/configure-ci-cd/)
 
-- [测试你的 Java 部署](https://docs.docker.com/guides/java/deploy/)
+- [测试你的 Java 部署](/guides/java/deploy/)
 

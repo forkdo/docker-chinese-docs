@@ -33,15 +33,15 @@
 
 从构建你的第一个 Go 镜像开始。
 
-- [构建您的 Go 镜像](https://docs.docker.com/guides/golang/build-images/)
+- [构建您的 Go 镜像](/guides/golang/build-images/)
 
-- [以容器形式运行 Go 镜像](https://docs.docker.com/guides/golang/run-containers/)
+- [以容器形式运行 Go 镜像](/guides/golang/run-containers/)
 
-- [使用容器进行 Go 开发](https://docs.docker.com/guides/golang/develop/)
+- [使用容器进行 Go 开发](/guides/golang/develop/)
 
-- [使用 Go test 运行测试](https://docs.docker.com/guides/golang/run-tests/)
+- [使用 Go test 运行测试](/guides/golang/run-tests/)
 
-- [为您的 Go 应用程序配置 CI/CD](https://docs.docker.com/guides/golang/configure-ci-cd/)
+- [为您的 Go 应用程序配置 CI/CD](/guides/golang/configure-ci-cd/)
 
-- [测试你的 Go 部署](https://docs.docker.com/guides/golang/deploy/)
+- [测试你的 Go 部署](/guides/golang/deploy/)
 

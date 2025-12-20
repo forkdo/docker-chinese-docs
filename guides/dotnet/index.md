@@ -12,13 +12,13 @@
 
 首先，从容器化一个现有的 .NET 应用程序开始。
 
-- [容器化 .NET 应用程序](https://docs.docker.com/guides/dotnet/containerize/)
+- [容器化 .NET 应用程序](/guides/dotnet/containerize/)
 
-- [使用容器进行 .NET 开发](https://docs.docker.com/guides/dotnet/develop/)
+- [使用容器进行 .NET 开发](/guides/dotnet/develop/)
 
-- [在容器中运行 .NET 测试](https://docs.docker.com/guides/dotnet/run-tests/)
+- [在容器中运行 .NET 测试](/guides/dotnet/run-tests/)
 
-- [为你的 .NET 应用程序配置 CI/CD](https://docs.docker.com/guides/dotnet/configure-ci-cd/)
+- [为你的 .NET 应用程序配置 CI/CD](/guides/dotnet/configure-ci-cd/)
 
-- [测试 .NET 部署](https://docs.docker.com/guides/dotnet/deploy/)
+- [测试 .NET 部署](/guides/dotnet/deploy/)
 

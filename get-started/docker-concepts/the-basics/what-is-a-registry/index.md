@@ -158,5 +158,5 @@ _镜像仓库_ 是存储和管理容器镜像的集中化位置，而 _镜像仓
 现在您已经理解了容器和镜像的基础知识，可以开始学习 Docker Compose。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose/">什么是 Docker Compose？</a>
+<a class="button not-prose" href="/get-started/docker-concepts/the-basics/what-is-docker-compose/">什么是 Docker Compose？</a>
 

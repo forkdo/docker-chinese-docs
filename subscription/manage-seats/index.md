@@ -105,11 +105,11 @@
       </span>
     </div>
     <div class="admonition-content">
-      <p>如果您选择使用美国银行账户支付，则必须验证账户。更多信息，请参阅 <a class="link" href="https://docs.docker.com/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
+      <p>如果您选择使用美国银行账户支付，则必须验证账户。更多信息，请参阅 <a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
     </div>
   </blockquote>
 
-<p>现在您可以向组织中添加更多成员。更多信息，请参阅 <a class="link" href="https://docs.docker.com/admin/organization/members/">管理组织成员</a>。</p>
+<p>现在您可以向组织中添加更多成员。更多信息，请参阅 <a class="link" href="/admin/organization/members/">管理组织成员</a>。</p>
 
       </div>
     

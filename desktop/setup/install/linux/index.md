@@ -70,7 +70,7 @@
 <p>Docker Desktop for Linux 和 Docker Engine 可以在同一台机器上并行安装。Docker Desktop for Linux 将容器和镜像存储在虚拟机内的隔离存储位置，并提供控制以限制
     
   
-  <a class="link" href="https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources">其资源</a>。为 Docker Desktop 使用专用的存储位置可以防止它干扰同一台机器上的 Docker Engine 安装。</p>
+  <a class="link" href="/desktop/settings-and-maintenance/settings/#resources">其资源</a>。为 Docker Desktop 使用专用的存储位置可以防止它干扰同一台机器上的 Docker Engine 安装。</p>
 <p>虽然可以同时运行 Docker Desktop 和 Docker Engine，但在某些情况下同时运行两者可能会导致问题。例如，在为容器映射网络端口（<code>-p</code> / <code>--publish</code>）时，Docker Desktop 和 Docker Engine 都可能尝试保留机器上的相同端口，从而导致冲突（“端口已被占用”）。</p>
 <p>我们通常建议在使用 Docker Desktop 时停止 Docker Engine，以防止 Docker Engine 消耗资源并避免上述冲突。</p>
 <p>使用以下命令停止 Docker Engine 服务：</p>
@@ -159,7 +159,7 @@
 <p>Docker CLI 可用于与多个 Docker Engine 交互。例如，您可以使用相同的 Docker CLI 来控制本地 Docker Engine 和控制在云中运行的远程 Docker Engine 实例。
     
   
-  <a class="link" href="https://docs.docker.com/engine/manage-resources/contexts/">Docker Contexts</a> 允许您在 Docker Engine 实例之间切换。</p>
+  <a class="link" href="/engine/manage-resources/contexts/">Docker Contexts</a> 允许您在 Docker Engine 实例之间切换。</p>
 <p>安装 Docker Desktop 时，会创建一个专用的 &quot;desktop-linux&quot; 上下文以与 Docker Desktop 交互。启动时，Docker Desktop 会自动将其自身的上下文 (<code>desktop-linux</code>) 设置为当前上下文。这意味着后续的 Docker CLI 命令都针对 Docker Desktop。关闭时，Docker Desktop 会将当前上下文重置为 <code>default</code> 上下文。</p>
 <p>使用 <code>docker context ls</code> 命令查看机器上可用的上下文。当前上下文用星号 (<code>*</code>) 表示。</p>
 <div
@@ -285,7 +285,7 @@
 <p>有关更多详细信息，请参阅 
     
   
-  <a class="link" href="https://docs.docker.com/engine/manage-resources/contexts/">Docker Context 文档</a>。</p>
+  <a class="link" href="/engine/manage-resources/contexts/">Docker Context 文档</a>。</p>
 
   </div>
 </div>
@@ -387,13 +387,13 @@ $ sudo usermod -aG kvm $USER
    - [在 Fedora 上安装](fedora.md)
    - [在 Arch 上安装](archlinux.md)
 
-- [在 Ubuntu 上安装 Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/ubuntu/)
+- [在 Ubuntu 上安装 Docker Desktop](/desktop/setup/install/linux/ubuntu/)
 
-- [在 Debian 上安装 Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/debian/)
+- [在 Debian 上安装 Docker Desktop](/desktop/setup/install/linux/debian/)
 
-- [在 Fedora 上安装 Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/fedora/)
+- [在 Fedora 上安装 Docker Desktop](/desktop/setup/install/linux/fedora/)
 
-- [在基于 Arch 的发行版上安装 Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/archlinux/)
+- [在基于 Arch 的发行版上安装 Docker Desktop](/desktop/setup/install/linux/archlinux/)
 
-- [在 RHEL 上安装 Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/rhel/)
+- [在 RHEL 上安装 Docker Desktop](/desktop/setup/install/linux/rhel/)
 

@@ -116,7 +116,7 @@
       </span>
     </div>
     <div class="admonition-content">
-      <p>如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅<a class="link" href="https://docs.docker.com/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
+      <p>如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
     </div>
   </blockquote>
 
@@ -240,7 +240,7 @@
       </span>
     </div>
     <div class="admonition-content">
-      <p>如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅<a class="link" href="https://docs.docker.com/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
+      <p>如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
     </div>
   </blockquote>
 

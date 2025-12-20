@@ -244,11 +244,11 @@ Learn more about the available attestation types and how to use them:
 - [SBOM](sbom.md)
 
 
-- [Image attestation storage](https://docs.docker.com/build/metadata/attestations/attestation-storage/)
+- [Image attestation storage](/build/metadata/attestations/attestation-storage/)
 
-- [Provenance attestations](https://docs.docker.com/build/metadata/attestations/slsa-provenance/)
+- [Provenance attestations](/build/metadata/attestations/slsa-provenance/)
 
-- [SBOM attestations](https://docs.docker.com/build/metadata/attestations/sbom/)
+- [SBOM attestations](/build/metadata/attestations/sbom/)
 
-- [SLSA definitions](https://docs.docker.com/build/metadata/attestations/slsa-definitions/)
+- [SLSA definitions](/build/metadata/attestations/slsa-definitions/)
 

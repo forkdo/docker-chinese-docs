@@ -39,13 +39,13 @@
 
 完成 Node.js 入门模块后，你就可以使用本指南提供的示例和说明来容器化你自己的 Node.js 应用程序了。
 
-- [容器化 Node.js 应用](https://docs.docker.com/guides/nodejs/containerize/)
+- [容器化 Node.js 应用](/guides/nodejs/containerize/)
 
-- [为 Node.js 开发使用容器](https://docs.docker.com/guides/nodejs/develop/)
+- [为 Node.js 开发使用容器](/guides/nodejs/develop/)
 
-- [在容器中运行 Node.js 测试](https://docs.docker.com/guides/nodejs/run-tests/)
+- [在容器中运行 Node.js 测试](/guides/nodejs/run-tests/)
 
-- [使用 GitHub Actions 自动化构建](https://docs.docker.com/guides/nodejs/configure-github-actions/)
+- [使用 GitHub Actions 自动化构建](/guides/nodejs/configure-github-actions/)
 
-- [部署你的 Node.js 应用](https://docs.docker.com/guides/nodejs/deploy/)
+- [部署你的 Node.js 应用](/guides/nodejs/deploy/)
 

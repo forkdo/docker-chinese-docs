@@ -282,5 +282,5 @@ docker: Error response from daemon: driver failed programming external connectiv
 接下来，你将学习如何与他人共享镜像。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/04_sharing_app/">共享应用程序</a>
+<a class="button not-prose" href="/get-started/workshop/04_sharing_app/">共享应用程序</a>
 

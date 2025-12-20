@@ -187,15 +187,15 @@ Docker CLI 工具提供了一组命令来帮助您构建和发布扩展，这些
 </div>
 
 
-- [构建和发布流程](https://docs.docker.com/extensions/extensions-sdk/process/)
+- [构建和发布流程](/extensions/extensions-sdk/process/)
 
-- [快速入门](https://docs.docker.com/extensions/extensions-sdk/quickstart/)
+- [快速入门](/extensions/extensions-sdk/quickstart/)
 
-- [第二部分：发布](https://docs.docker.com/extensions/extensions-sdk/extensions/)
+- [第二部分：发布](/extensions/extensions-sdk/extensions/)
 
-- [扩展架构](https://docs.docker.com/extensions/extensions-sdk/architecture/)
+- [扩展架构](/extensions/extensions-sdk/architecture/)
 
-- [Docker 扩展的 UI 样式概览](https://docs.docker.com/extensions/extensions-sdk/design/)
+- [Docker 扩展的 UI 样式概览](/extensions/extensions-sdk/design/)
 
-- [](https://docs.docker.com/extensions/extensions-sdk/dev/)
+- [](/extensions/extensions-sdk/dev/)
 

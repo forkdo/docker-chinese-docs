@@ -722,7 +722,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/docker-hub/images/chart.png"
+    src="/docker-hub/images/chart.png"
     alt="洞察与分析图表可视化"
     
     
@@ -742,7 +742,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/docker-hub/images/chart.png"
+        src="/docker-hub/images/chart.png"
         alt="洞察与分析图表可视化"
       />
     </div>
@@ -802,7 +802,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/docker-hub/images/chart-share-icon.png"
+    src="/docker-hub/images/chart-share-icon.png"
     alt="图表分享图标"
     
     
@@ -822,7 +822,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/docker-hub/images/chart-share-icon.png"
+        src="/docker-hub/images/chart-share-icon.png"
         alt="图表分享图标"
       />
     </div>
@@ -848,7 +848,7 @@
 <p>您可以从 Web 仪表板导出分析数据，或使用 
     
   
-  <a class="link" href="https://docs.docker.com/reference/api/dvp/latest/">DVP Data API</a>。组织的所有成员均可访问分析数据。</p>
+  <a class="link" href="/reference/api/dvp/latest/">DVP Data API</a>。组织的所有成员均可访问分析数据。</p>
 <p>数据以可下载的 CSV 文件形式提供，格式为每周（周一至周日）或每月。每月数据可从下一个日历月的第一天开始获取。您可以将此数据导入您自己的系统，或者作为电子表格进行手动分析。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="导出数据">
@@ -887,7 +887,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/docker-hub/images/download-analytics-data.png"
+    src="/docker-hub/images/download-analytics-data.png"
     alt="分析数据的筛选选项和下载链接"
     
     
@@ -907,7 +907,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/docker-hub/images/download-analytics-data.png"
+        src="/docker-hub/images/download-analytics-data.png"
         alt="分析数据的筛选选项和下载链接"
       />
     </div>
@@ -926,7 +926,7 @@
 <code>https://hub.docker.com/api/publisher/analytics/v1</code>。了解如何使用 API 导出数据，请参阅 
     
   
-  <a class="link" href="https://docs.docker.com/reference/api/dvp/latest/">DVP Data API 文档</a>。</p>
+  <a class="link" href="/reference/api/dvp/latest/">DVP Data API 文档</a>。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="数据点">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%95%b0%e6%8d%ae%e7%82%b9">

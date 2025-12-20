@@ -8,27 +8,27 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_bootstrap/)
+- [](/reference/cli/docker/mcp/catalog/catalog_bootstrap/)
 
-- [docker mcp catalog add](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_add/)
+- [docker mcp catalog add](/reference/cli/docker/mcp/catalog/catalog_add/)
 
-- [docker mcp catalog create](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_create/)
+- [docker mcp catalog create](/reference/cli/docker/mcp/catalog/catalog_create/)
 
-- [docker mcp catalog export](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_export/)
+- [docker mcp catalog export](/reference/cli/docker/mcp/catalog/catalog_export/)
 
-- [docker mcp catalog fork](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_fork/)
+- [docker mcp catalog fork](/reference/cli/docker/mcp/catalog/catalog_fork/)
 
-- [docker mcp catalog import](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_import/)
+- [docker mcp catalog import](/reference/cli/docker/mcp/catalog/catalog_import/)
 
-- [docker mcp catalog init](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_init/)
+- [docker mcp catalog init](/reference/cli/docker/mcp/catalog/catalog_init/)
 
-- [docker mcp catalog ls](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_ls/)
+- [docker mcp catalog ls](/reference/cli/docker/mcp/catalog/catalog_ls/)
 
-- [docker mcp catalog reset](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_reset/)
+- [docker mcp catalog reset](/reference/cli/docker/mcp/catalog/catalog_reset/)
 
-- [docker mcp catalog rm](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_rm/)
+- [docker mcp catalog rm](/reference/cli/docker/mcp/catalog/catalog_rm/)
 
-- [docker mcp catalog show](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_show/)
+- [docker mcp catalog show](/reference/cli/docker/mcp/catalog/catalog_show/)
 
-- [docker mcp catalog update](https://docs.docker.com/reference/cli/docker/mcp/catalog/catalog_update/)
+- [docker mcp catalog update](/reference/cli/docker/mcp/catalog/catalog_update/)
 

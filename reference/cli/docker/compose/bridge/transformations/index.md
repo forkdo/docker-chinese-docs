@@ -6,7 +6,7 @@
 https://github.com/docker/compose
 -->
 
-- [docker compose bridge transformations create](https://docs.docker.com/reference/cli/docker/compose/bridge/transformations/create/)
+- [docker compose bridge transformations create](/reference/cli/docker/compose/bridge/transformations/create/)
 
-- [docker compose bridge transformations list](https://docs.docker.com/reference/cli/docker/compose/bridge/transformations/list/)
+- [docker compose bridge transformations list](/reference/cli/docker/compose/bridge/transformations/list/)
 

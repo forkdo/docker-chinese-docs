@@ -89,5 +89,5 @@ Crowdstrike 和类似工具可以观察通过后端进程传递的所有流量�
 | 容器写入主机文件 | 是 | 同一进程执行写入 | 
 | 容器访问其自己的文件系统层 | 否 | 仅存在于虚拟机内部 |
 
-- [探索 Docker Desktop 上的网络操作指南](https://docs.docker.com/desktop/features/networking/networking-how-tos/)
+- [探索 Docker Desktop 上的网络操作指南](/desktop/features/networking/networking-how-tos/)
 

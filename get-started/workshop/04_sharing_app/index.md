@@ -123,5 +123,5 @@
 在下一节中，你将学习如何在容器化应用程序中持久化数据。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/05_persisting_data/">Persist the DB</a>
+<a class="button not-prose" href="/get-started/workshop/05_persisting_data/">Persist the DB</a>
 

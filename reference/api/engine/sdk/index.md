@@ -360,5 +360,5 @@ $ go get github.com/moby/moby/client
 | Scala | [reactive-docker](https://github.com/almoehi/reactive-docker) |
 | Swift | [docker-client-swift](https://github.com/valeriomazzeo/docker-client-swift) |
 
-- [使用 Docker Engine SDK 和 Docker API 的示例](https://docs.docker.com/reference/api/engine/sdk/examples/)
+- [使用 Docker Engine SDK 和 Docker API 的示例](/reference/api/engine/sdk/examples/)
 

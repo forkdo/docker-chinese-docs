@@ -22,9 +22,9 @@ Docker Compose 通过提供一种简单的方法来解决管理多容器 Docker 
 
 <div id="compose-lp-survey-anchor"></div>
 
-- [为什么使用 Docker Compose？](https://docs.docker.com/guides/docker-compose/why/)
+- [为什么使用 Docker Compose？](/guides/docker-compose/why/)
 
-- [演示：设置和使用 Docker Compose](https://docs.docker.com/guides/docker-compose/setup/)
+- [演示：设置和使用 Docker Compose](/guides/docker-compose/setup/)
 
-- [常见挑战与问题](https://docs.docker.com/guides/docker-compose/common-questions/)
+- [常见挑战与问题](/guides/docker-compose/common-questions/)
 

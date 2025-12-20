@@ -72,31 +72,31 @@ Swarm 中的每个节点都强制执行 TLS 双向身份验证和加密，以保
   * [service ps](/reference/cli/docker/service/ps.md)
   * [service update](/reference/cli/docker/service/update.md)
 
-- [Swarm 模式中的 Raft 共识](https://docs.docker.com/engine/swarm/raft/)
+- [Swarm 模式中的 Raft 共识](/engine/swarm/raft/)
 
-- [Swarm 模式入门](https://docs.docker.com/engine/swarm/swarm-tutorial/)
+- [Swarm 模式入门](/engine/swarm/swarm-tutorial/)
 
-- [Swarm 模式关键概念](https://docs.docker.com/engine/swarm/key-concepts/)
+- [Swarm 模式关键概念](/engine/swarm/key-concepts/)
 
-- [使用 Docker Configs 存储配置数据](https://docs.docker.com/engine/swarm/configs/)
+- [使用 Docker Configs 存储配置数据](/engine/swarm/configs/)
 
-- [使用 Docker secrets 管理敏感数据](https://docs.docker.com/engine/swarm/secrets/)
+- [使用 Docker secrets 管理敏感数据](/engine/swarm/secrets/)
 
-- [使用集群模式路由网格](https://docs.docker.com/engine/swarm/ingress/)
+- [使用集群模式路由网格](/engine/swarm/ingress/)
 
-- [在 Swarm 模式下运行 Docker Engine](https://docs.docker.com/engine/swarm/swarm-mode/)
+- [在 Swarm 模式下运行 Docker Engine](/engine/swarm/swarm-mode/)
 
-- [将堆栈部署到 Swarm](https://docs.docker.com/engine/swarm/stack-deploy/)
+- [将堆栈部署到 Swarm](/engine/swarm/stack-deploy/)
 
-- [将服务部署到 swarm](https://docs.docker.com/engine/swarm/services/)
+- [将服务部署到 swarm](/engine/swarm/services/)
 
-- [将节点加入到一个 swarm 中](https://docs.docker.com/engine/swarm/join-nodes/)
+- [将节点加入到一个 swarm 中](/engine/swarm/join-nodes/)
 
-- [管理 swarm 中的节点](https://docs.docker.com/engine/swarm/manage-nodes/)
+- [管理 swarm 中的节点](/engine/swarm/manage-nodes/)
 
-- [管理 swarm 服务网络](https://docs.docker.com/engine/swarm/networking/)
+- [管理 swarm 服务网络](/engine/swarm/networking/)
 
-- [管理和维护 Docker Engine 集群](https://docs.docker.com/engine/swarm/admin_guide/)
+- [管理和维护 Docker Engine 集群](/engine/swarm/admin_guide/)
 
-- [锁定 Swarm 以保护其加密密钥](https://docs.docker.com/engine/swarm/swarm_manager_locking/)
+- [锁定 Swarm 以保护其加密密钥](/engine/swarm/swarm_manager_locking/)
 

@@ -8,7 +8,7 @@
 https://github.com/docker/cli
 -->
 
-- [docker trust key generate](https://docs.docker.com/reference/cli/docker/trust/key/generate/)
+- [docker trust key generate](/reference/cli/docker/trust/key/generate/)
 
-- [docker trust key load](https://docs.docker.com/reference/cli/docker/trust/key/load/)
+- [docker trust key load](/reference/cli/docker/trust/key/load/)
 

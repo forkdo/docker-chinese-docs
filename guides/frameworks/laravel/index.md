@@ -24,11 +24,11 @@ Laravel 是一个流行的 PHP 框架，允许开发者快速高效地构建 Web
 - 使用 Laravel 并希望简化环境管理的开发者。
 - 寻求高效管理与部署 Laravel 应用的 DevOps 工程师。
 
-- [使用 Docker Compose 搭建 Laravel 的先决条件](https://docs.docker.com/guides/frameworks/laravel/prerequisites/)
+- [使用 Docker Compose 搭建 Laravel 的先决条件](/guides/frameworks/laravel/prerequisites/)
 
-- [使用 Docker Compose 搭建 Laravel 生产环境](https://docs.docker.com/guides/frameworks/laravel/production-setup/)
+- [使用 Docker Compose 搭建 Laravel 生产环境](/guides/frameworks/laravel/production-setup/)
 
-- [使用 Docker Compose 进行 Laravel 开发环境设置](https://docs.docker.com/guides/frameworks/laravel/development-setup/)
+- [使用 Docker Compose 进行 Laravel 开发环境设置](/guides/frameworks/laravel/development-setup/)
 
-- [在 Laravel 中使用 Docker 的常见问题](https://docs.docker.com/guides/frameworks/laravel/common-questions/)
+- [在 Laravel 中使用 Docker 的常见问题](/guides/frameworks/laravel/common-questions/)
 

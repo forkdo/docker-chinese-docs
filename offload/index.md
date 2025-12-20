@@ -255,17 +255,17 @@ Docker Offload 是一项完全托管的服务，它让你能够使用你已经�
 </div>
 
 
-- [Docker Offload 快速开始](https://docs.docker.com/offload/quickstart/)
+- [Docker Offload 快速开始](/offload/quickstart/)
 
-- [关于 Docker Offload](https://docs.docker.com/offload/about/)
+- [关于 Docker Offload](/offload/about/)
 
-- [配置 Docker Offload](https://docs.docker.com/offload/configuration/)
+- [配置 Docker Offload](/offload/configuration/)
 
-- [Docker Offload 使用与计费](https://docs.docker.com/offload/usage/)
+- [Docker Offload 使用与计费](/offload/usage/)
 
-- [优化 Docker Offload 使用](https://docs.docker.com/offload/optimize/)
+- [优化 Docker Offload 使用](/offload/optimize/)
 
-- [故障排除 Docker Offload](https://docs.docker.com/offload/troubleshoot/)
+- [故障排除 Docker Offload](/offload/troubleshoot/)
 
-- [提供反馈](https://docs.docker.com/offload/feedback/)
+- [提供反馈](/offload/feedback/)
 

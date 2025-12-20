@@ -112,5 +112,5 @@
 接下来，您将学习如何使用 Swarm 模式路由网格
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/ingress/">使用 Swarm 模式路由网格</a>
+<a class="button not-prose" href="/engine/swarm/ingress/">使用 Swarm 模式路由网格</a>
 

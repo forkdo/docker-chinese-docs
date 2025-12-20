@@ -1022,5 +1022,5 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
 为了准备将您的应用部署到生产环境，您需要将数据库从 SQLite 迁移到可以更好扩展的数据库。为简化起见，您将继续使用关系型数据库，并将应用切换为使用 MySQL。但是，您应该如何运行 MySQL？如何允许容器相互通信？您将在下一节中了解这些内容。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/07_multi_container/">多容器应用</a>
+<a class="button not-prose" href="/get-started/workshop/07_multi_container/">多容器应用</a>
 

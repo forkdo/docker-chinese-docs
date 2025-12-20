@@ -11,9 +11,9 @@ Docker Compose 提供了另外两个选项来在处理多个 Compose 文件时�
 - 通过引用另一个 Compose 文件并选择你想要在自己应用程序中使用的部分，来[扩展一个 Compose 文件](extends.md)，并能够覆盖某些属性。
 - 直接在你的 Compose 文件中[包含其他 Compose 文件](include.md)。
 
-- [合并 Compose 文件](https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/)
+- [合并 Compose 文件](/compose/how-tos/multiple-compose-files/merge/)
 
-- [扩展你的 Compose 文件](https://docs.docker.com/compose/how-tos/multiple-compose-files/extends/)
+- [扩展你的 Compose 文件](/compose/how-tos/multiple-compose-files/extends/)
 
-- [Include](https://docs.docker.com/compose/how-tos/multiple-compose-files/include/)
+- [Include](/compose/how-tos/multiple-compose-files/include/)
 

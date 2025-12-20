@@ -223,7 +223,7 @@ Docker Desktop 仅在安装时需要管理员权限。安装完成后，运行�
       <p>如果您使用的是 WSL 2 后端，请首先确保您满足 WSL 2 的
     
   
-  <a class="link" href="https://docs.docker.com/desktop/features/wsl/best-practices/">最低版本要求</a>。否则，请先更新 WSL 2。</p>
+  <a class="link" href="/desktop/features/wsl/best-practices/">最低版本要求</a>。否则，请先更新 WSL 2。</p>
     </div>
   </blockquote>
 

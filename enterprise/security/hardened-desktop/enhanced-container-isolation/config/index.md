@@ -115,7 +115,7 @@
 <li>
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/configure-admin-console/">创建或编辑设置策略</a>。</li>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/configure-admin-console/">创建或编辑设置策略</a>。</li>
 <li>找到 <strong>Enhanced Container Isolation</strong> 设置。</li>
 <li>使用受信任的镜像和命令限制配置 <strong>Docker socket access control</strong>。</li>
 </ol>
@@ -129,7 +129,7 @@
         <p>创建一个 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/configure-json-file/"><code>admin-settings.json</code> 文件</a> 并添加：</p>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/configure-json-file/"><code>admin-settings.json</code> 文件</a> 并添加：</p>
 <div
   data-pagefind-ignore
   x-data

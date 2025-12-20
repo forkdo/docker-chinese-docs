@@ -383,5 +383,5 @@ $ docker volume inspect todo-db
 接下来，你将学习如何使用绑定挂载更高效地开发你的应用。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/06_bind_mounts/">使用绑定挂载</a>
+<a class="button not-prose" href="/get-started/workshop/06_bind_mounts/">使用绑定挂载</a>
 

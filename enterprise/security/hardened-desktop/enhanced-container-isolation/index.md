@@ -255,11 +255,11 @@ $ docker run -it --rm alpine
 >
 > ECI 保护因 Docker Desktop 版本而异，目前不保护扩展容器。Docker 构建和 Docker Desktop 中的 Kubernetes 具有不同程度的保护，具体取决于版本。详细信息请参阅 [增强容器隔离限制](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/limitations.md)。
 
-- [启用增强型容器隔离](https://docs.docker.com/enterprise/security/hardened-desktop/enhanced-container-isolation/enable-eci/)
+- [启用增强型容器隔离](/enterprise/security/hardened-desktop/enhanced-container-isolation/enable-eci/)
 
-- [配置 Docker 套接字异常和高级设置](https://docs.docker.com/enterprise/security/hardened-desktop/enhanced-container-isolation/config/)
+- [配置 Docker 套接字异常和高级设置](/enterprise/security/hardened-desktop/enhanced-container-isolation/config/)
 
-- [增强型容器隔离的限制](https://docs.docker.com/enterprise/security/hardened-desktop/enhanced-container-isolation/limitations/)
+- [增强型容器隔离的限制](/enterprise/security/hardened-desktop/enhanced-container-isolation/limitations/)
 
-- [增强型容器隔离常见问题解答](https://docs.docker.com/enterprise/security/hardened-desktop/enhanced-container-isolation/faq/)
+- [增强型容器隔离常见问题解答](/enterprise/security/hardened-desktop/enhanced-container-isolation/faq/)
 

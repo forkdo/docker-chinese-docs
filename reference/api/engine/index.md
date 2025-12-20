@@ -116,9 +116,9 @@ v1.44 之前的 API 版本已弃用。您可以在 GitHub 上的代码仓库中�
 - [API 版本 1.18–1.23 的文档](https://github.com/moby/moby/tree/v25.0.0/docs/api)。
 - [API 版本 1.17 及更早版本的文档](https://github.com/moby/moby/tree/v1.9.1/docs/reference/api)。
 
-- [使用 Docker Engine SDK 进行开发](https://docs.docker.com/reference/api/engine/sdk/)
+- [使用 Docker Engine SDK 进行开发](/reference/api/engine/sdk/)
 
-- [](https://docs.docker.com/reference/api/engine/latest/)
+- [](/reference/api/engine/latest/)
 
-- [Engine API version history](https://docs.docker.com/reference/api/engine/version-history/)
+- [Engine API version history](/reference/api/engine/version-history/)
 

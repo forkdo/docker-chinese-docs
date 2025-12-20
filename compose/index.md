@@ -263,11 +263,11 @@ Compose 可在所有环境中使用 - 生产环境、预发布环境、开发环
 </div>
 
 
-- [Docker Compose 安装概述](https://docs.docker.com/compose/install/)
+- [Docker Compose 安装概述](/compose/install/)
 
-- [Docker Compose 快速入门](https://docs.docker.com/compose/gettingstarted/)
+- [Docker Compose 快速入门](/compose/gettingstarted/)
 
-- [Compose Bridge 概述](https://docs.docker.com/compose/bridge/)
+- [Compose Bridge 概述](/compose/bridge/)
 
-- [使用 Compose SDK](https://docs.docker.com/compose/compose-sdk/)
+- [使用 Compose SDK](/compose/compose-sdk/)
 

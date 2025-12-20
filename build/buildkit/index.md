@@ -250,11 +250,11 @@ see [GitHub issues](https://github.com/moby/buildkit/issues?q=is%3Aissue%20state
     ```
 
 
-- [buildkitd.toml](https://docs.docker.com/build/buildkit/toml-configuration/)
+- [buildkitd.toml](/build/buildkit/toml-configuration/)
 
-- [Configure BuildKit](https://docs.docker.com/build/buildkit/configure/)
+- [Configure BuildKit](/build/buildkit/configure/)
 
-- [Custom Dockerfile syntax](https://docs.docker.com/build/buildkit/frontend/)
+- [Custom Dockerfile syntax](/build/buildkit/frontend/)
 
-- [Dockerfile release notes](https://docs.docker.com/build/buildkit/dockerfile-release-notes/)
+- [Dockerfile release notes](/build/buildkit/dockerfile-release-notes/)
 

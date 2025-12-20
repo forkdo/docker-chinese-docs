@@ -93,21 +93,21 @@ root = "/mnt/containerd-data"
 - [容器安全](/manuals/engine/security/_index.md)
 - [配置 Docker 守护进程使用代理](./proxy.md)
 
-- [启动守护进程](https://docs.docker.com/engine/daemon/start/)
+- [启动守护进程](/engine/daemon/start/)
 
-- [使用 IPv6 网络](https://docs.docker.com/engine/daemon/ipv6/)
+- [使用 IPv6 网络](/engine/daemon/ipv6/)
 
-- [守护进程代理配置](https://docs.docker.com/engine/daemon/proxy/)
+- [守护进程代理配置](/engine/daemon/proxy/)
 
-- [实时恢复](https://docs.docker.com/engine/daemon/live-restore/)
+- [实时恢复](/engine/daemon/live-restore/)
 
-- [Docker 守护进程故障排除](https://docs.docker.com/engine/daemon/troubleshoot/)
+- [Docker 守护进程故障排除](/engine/daemon/troubleshoot/)
 
-- [使用 Prometheus 收集 Docker 指标](https://docs.docker.com/engine/daemon/prometheus/)
+- [使用 Prometheus 收集 Docker 指标](/engine/daemon/prometheus/)
 
-- [替代容器运行时](https://docs.docker.com/engine/daemon/alternative-runtimes/)
+- [替代容器运行时](/engine/daemon/alternative-runtimes/)
 
-- [读取守护程序日志](https://docs.docker.com/engine/daemon/logs/)
+- [读取守护程序日志](/engine/daemon/logs/)
 
-- [配置 Docker 守护进程的远程访问](https://docs.docker.com/engine/daemon/remote-access/)
+- [配置 Docker 守护进程的远程访问](/engine/daemon/remote-access/)
 

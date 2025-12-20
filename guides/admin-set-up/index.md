@@ -47,11 +47,11 @@ Docker 的工具提供了一个可扩展、安全的平台，使您的开发人�
 - Azure Connect (OIDC)
 - 像 Intune 这样的 MDM 解决方案
 
-- [沟通与信息收集](https://docs.docker.com/guides/admin-set-up/comms-and-info-gathering/)
+- [沟通与信息收集](/guides/admin-set-up/comms-and-info-gathering/)
 
-- [最终确定计划并开始设置](https://docs.docker.com/guides/admin-set-up/finalize-plans-and-setup/)
+- [最终确定计划并开始设置](/guides/admin-set-up/finalize-plans-and-setup/)
 
-- [测试](https://docs.docker.com/guides/admin-set-up/testing/)
+- [测试](/guides/admin-set-up/testing/)
 
-- [部署您的 Docker 设置](https://docs.docker.com/guides/admin-set-up/deploy/)
+- [部署您的 Docker 设置](/guides/admin-set-up/deploy/)
 

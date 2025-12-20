@@ -156,5 +156,5 @@ Docker Desktop 通过简化应用程序在不同环境中的设置、配置和�
 现在您已经安装了 Docker Desktop 并运行了您的第一个容器，是时候开始使用容器进行开发了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/introduction/develop-with-containers/">使用容器进行开发</a>
+<a class="button not-prose" href="/get-started/introduction/develop-with-containers/">使用容器进行开发</a>
 

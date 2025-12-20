@@ -42,5 +42,5 @@
 接下来，您将设置一个新服务并应用滚动更新。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/">应用滚动更新</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/rolling-update/">应用滚动更新</a>
 

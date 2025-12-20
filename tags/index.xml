@@ -2,142 +2,142 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>标签 on Docker Docs</title>
-    <link>https://docs.docker.com/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in 标签 on Docker Docs</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://docs.docker.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
-      <link>https://docs.docker.com/tags/ai/</link>
+      <link>/tags/ai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/ai/</guid>
+      <guid>/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>DevOps</title>
-      <link>https://docs.docker.com/tags/devops/</link>
+      <link>/tags/devops/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/devops/</guid>
+      <guid>/tags/devops/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker 加固镜像</title>
-      <link>https://docs.docker.com/tags/dhi/</link>
+      <link>/tags/dhi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/dhi/</guid>
+      <guid>/tags/dhi/</guid>
       <description></description>
     </item>
     <item>
       <title>Secrets</title>
-      <link>https://docs.docker.com/tags/secrets/</link>
+      <link>/tags/secrets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/secrets/</guid>
+      <guid>/tags/secrets/</guid>
       <description>&lt;p&gt;Secret（机密）是一段数据，例如密码、SSH 私钥、SSL&#xA;证书，或任何不应通过网络传输或以未加密形式存储在 Dockerfile 或应用程序源代码中的内容。&lt;/p&gt;&#xA;&lt;p&gt;Docker 提供了专门指定的功能来管理 secrets。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Troubleshooting</title>
-      <link>https://docs.docker.com/tags/troubleshooting/</link>
+      <link>/tags/troubleshooting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/troubleshooting/</guid>
+      <guid>/tags/troubleshooting/</guid>
       <description>&lt;p&gt;Troubleshooting articles contain guides to resolve common issues and pitfalls you may encounter when using Docker products.&lt;/p&gt;</description>
     </item>
     <item>
       <title>云服务</title>
-      <link>https://docs.docker.com/tags/cloud-services/</link>
+      <link>/tags/cloud-services/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/cloud-services/</guid>
+      <guid>/tags/cloud-services/</guid>
       <description></description>
     </item>
     <item>
       <title>产品演示</title>
-      <link>https://docs.docker.com/tags/product-demo/</link>
+      <link>/tags/product-demo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/product-demo/</guid>
+      <guid>/tags/product-demo/</guid>
       <description></description>
     </item>
     <item>
       <title>分布式系统</title>
-      <link>https://docs.docker.com/tags/distributed-systems/</link>
+      <link>/tags/distributed-systems/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/distributed-systems/</guid>
+      <guid>/tags/distributed-systems/</guid>
       <description></description>
     </item>
     <item>
       <title>发布说明</title>
-      <link>https://docs.docker.com/tags/release-notes/</link>
+      <link>/tags/release-notes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/release-notes/</guid>
+      <guid>/tags/release-notes/</guid>
       <description>&lt;p&gt;发布说明描述了在特定版本中对产品所做的修正、更改或增强。&lt;/p&gt;</description>
     </item>
     <item>
       <title>可观测性</title>
-      <link>https://docs.docker.com/tags/observability/</link>
+      <link>/tags/observability/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/observability/</guid>
+      <guid>/tags/observability/</guid>
       <description></description>
     </item>
     <item>
       <title>常见问题</title>
-      <link>https://docs.docker.com/tags/faq/</link>
+      <link>/tags/faq/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/faq/</guid>
+      <guid>/tags/faq/</guid>
       <description>&lt;p&gt;常见问题解答涵盖了有关 Docker 各项内容的常见问题，包括账户、管理、组织管理、Docker Desktop、Docker Compose 等。&lt;/p&gt;</description>
     </item>
     <item>
       <title>应用开发</title>
-      <link>https://docs.docker.com/tags/app-dev/</link>
+      <link>/tags/app-dev/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/app-dev/</guid>
+      <guid>/tags/app-dev/</guid>
       <description></description>
     </item>
     <item>
       <title>数据库</title>
-      <link>https://docs.docker.com/tags/databases/</link>
+      <link>/tags/databases/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/databases/</guid>
+      <guid>/tags/databases/</guid>
       <description></description>
     </item>
     <item>
       <title>数据科学</title>
-      <link>https://docs.docker.com/tags/data-science/</link>
+      <link>/tags/data-science/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/data-science/</guid>
+      <guid>/tags/data-science/</guid>
       <description></description>
     </item>
     <item>
       <title>最佳实践</title>
-      <link>https://docs.docker.com/tags/best-practices/</link>
+      <link>/tags/best-practices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/best-practices/</guid>
+      <guid>/tags/best-practices/</guid>
       <description>&lt;p&gt;最佳实践文章描述了通常情况下最地道且最优化的做事方法与技术。&lt;/p&gt;</description>
     </item>
     <item>
       <title>框架</title>
-      <link>https://docs.docker.com/tags/frameworks/</link>
+      <link>/tags/frameworks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/frameworks/</guid>
+      <guid>/tags/frameworks/</guid>
       <description></description>
     </item>
     <item>
       <title>管理</title>
-      <link>https://docs.docker.com/tags/admin/</link>
+      <link>/tags/admin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/admin/</guid>
+      <guid>/tags/admin/</guid>
       <description></description>
     </item>
     <item>
       <title>网络</title>
-      <link>https://docs.docker.com/tags/networking/</link>
+      <link>/tags/networking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/networking/</guid>
+      <guid>/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>部署</title>
-      <link>https://docs.docker.com/tags/deploy/</link>
+      <link>/tags/deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/tags/deploy/</guid>
+      <guid>/tags/deploy/</guid>
       <description></description>
     </item>
   </channel>

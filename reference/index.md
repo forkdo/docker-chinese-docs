@@ -278,15 +278,15 @@
 </div>
 
 
-- [CLI 参考](https://docs.docker.com/reference/cli/)
+- [CLI 参考](/reference/cli/)
 
-- [Build checks](https://docs.docker.com/reference/build-checks/)
+- [Build checks](/reference/build-checks/)
 
-- [Compose 文件参考](https://docs.docker.com/reference/compose-file/)
+- [Compose 文件参考](/reference/compose-file/)
 
-- [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
+- [Dockerfile reference](/reference/dockerfile/)
 
-- [示例概览](https://docs.docker.com/reference/samples/)
+- [示例概览](/reference/samples/)
 
-- [术语表](https://docs.docker.com/reference/glossary/)
+- [术语表](/reference/glossary/)
 

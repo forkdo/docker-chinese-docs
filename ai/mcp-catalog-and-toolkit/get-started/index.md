@@ -145,7 +145,7 @@ Docker Desktop 中的 **Learning center** 提供了教程和资源，帮助您�
 <p>您的浏览器将打开 GitHub 授权页面。请按照屏幕上的说明 
     
   
-  <a class="link" href="https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/#authenticate-via-oauth">通过 OAuth 进行身份验证</a>。</p>
+  <a class="link" href="/ai/mcp-catalog-and-toolkit/toolkit/#authenticate-via-oauth">通过 OAuth 进行身份验证</a>。</p>
 </li>
 <li>
 <p>身份验证完成后返回 Docker Desktop。</p>
@@ -266,7 +266,7 @@ Docker Desktop 中的 **Learning center** 提供了教程和资源，帮助您�
 <p>您的浏览器将打开 GitHub 授权页面。请按照屏幕上的说明 
     
   
-  <a class="link" href="https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/#authenticate-via-oauth">通过 OAuth 进行身份验证</a>。</p>
+  <a class="link" href="/ai/mcp-catalog-and-toolkit/toolkit/#authenticate-via-oauth">通过 OAuth 进行身份验证</a>。</p>
 </li>
 <li>
 <p>添加 <strong>Playwright</strong> 服务器。运行：</p>
@@ -529,7 +529,7 @@ $ gemini "使用 GitHub MCP 服务器向我展示我的开放拉取请求"
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/ai/mcp-catalog-and-toolkit/images/goose.avif"
+    src="/ai/mcp-catalog-and-toolkit/images/goose.avif"
     alt="Goose desktop app"
     
     
@@ -549,7 +549,7 @@ $ gemini "使用 GitHub MCP 服务器向我展示我的开放拉取请求"
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/ai/mcp-catalog-and-toolkit/images/goose.avif"
+        src="/ai/mcp-catalog-and-toolkit/images/goose.avif"
         alt="Goose desktop app"
       />
     </div>

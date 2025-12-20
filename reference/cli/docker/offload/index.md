@@ -53,13 +53,13 @@
 
 
 
-- [](https://docs.docker.com/reference/cli/docker/offload/diagnose/)
+- [](/reference/cli/docker/offload/diagnose/)
 
-- [docker offload start](https://docs.docker.com/reference/cli/docker/offload/start/)
+- [docker offload start](/reference/cli/docker/offload/start/)
 
-- [docker offload status](https://docs.docker.com/reference/cli/docker/offload/status/)
+- [docker offload status](/reference/cli/docker/offload/status/)
 
-- [docker offload stop](https://docs.docker.com/reference/cli/docker/offload/stop/)
+- [docker offload stop](/reference/cli/docker/offload/stop/)
 
-- [docker offload version](https://docs.docker.com/reference/cli/docker/offload/version/)
+- [docker offload version](/reference/cli/docker/offload/version/)
 

@@ -104,7 +104,7 @@ builder](#selected-builder) configuration is interpreted correctly.
   see [Build drivers](drivers/_index.md)
 
 
-- [Build drivers](https://docs.docker.com/build/builders/drivers/)
+- [Build drivers](/build/builders/drivers/)
 
-- [Manage builders](https://docs.docker.com/build/builders/manage/)
+- [Manage builders](/build/builders/manage/)
 

@@ -114,7 +114,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/click-image.webp"
+    src="/get-started/docker-concepts/the-basics/images/click-image.webp"
     alt="Docker Desktop 仪表板的截图，显示左侧边栏中的镜像视图"
     width="1050"
     height="400"
@@ -136,7 +136,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/click-image.webp"
+        src="/get-started/docker-concepts/the-basics/images/click-image.webp"
         alt="Docker Desktop 仪表板的截图，显示左侧边栏中的镜像视图"
       />
     </div>
@@ -164,7 +164,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/search-image.webp"
+    src="/get-started/docker-concepts/the-basics/images/search-image.webp"
     alt="Docker Desktop 仪表板的截图，显示搜索标签"
     
     
@@ -186,7 +186,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/search-image.webp"
+        src="/get-started/docker-concepts/the-basics/images/search-image.webp"
         alt="Docker Desktop 仪表板的截图，显示搜索标签"
       />
     </div>
@@ -214,7 +214,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/select-image.webp"
+    src="/get-started/docker-concepts/the-basics/images/select-image.webp"
     alt="Docker Desktop 仪表板的截图，显示 docker/welcome-to-docker 镜像的搜索结果"
     width="1050"
     height="400"
@@ -236,7 +236,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/select-image.webp"
+        src="/get-started/docker-concepts/the-basics/images/select-image.webp"
         alt="Docker Desktop 仪表板的截图，显示 docker/welcome-to-docker 镜像的搜索结果"
       />
     </div>
@@ -276,7 +276,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/pulled-image.webp"
+    src="/get-started/docker-concepts/the-basics/images/pulled-image.webp"
     alt="Docker Desktop 仪表板的截图，显示镜像视图，箭头指向 docker/welcome-to-docker 镜像"
     width="1050"
     height="400"
@@ -298,7 +298,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/pulled-image.webp"
+        src="/get-started/docker-concepts/the-basics/images/pulled-image.webp"
         alt="Docker Desktop 仪表板的截图，显示镜像视图，箭头指向 docker/welcome-to-docker 镜像"
       />
     </div>
@@ -326,7 +326,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/image-layers.webp"
+    src="/get-started/docker-concepts/the-basics/images/image-layers.webp"
     alt="docker/welcome-to-docker 镜像的镜像详情视图截图"
     width="1050"
     height="400"
@@ -348,7 +348,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/image-layers.webp"
+        src="/get-started/docker-concepts/the-basics/images/image-layers.webp"
         alt="docker/welcome-to-docker 镜像的镜像详情视图截图"
       />
     </div>
@@ -373,7 +373,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 <li>打开终端，使用 
     
   
-  <a class="link" href="https://docs.docker.com/reference/cli/docker/search/"><code>docker search</code></a> 命令搜索镜像：</li>
+  <a class="link" href="/reference/cli/docker/search/"><code>docker search</code></a> 命令搜索镜像：</li>
 </ol>
 <div
   data-pagefind-ignore
@@ -456,7 +456,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 <li>使用 
     
   
-  <a class="link" href="https://docs.docker.com/reference/cli/docker/image/pull/"><code>docker pull</code></a> 命令拉取镜像。</li>
+  <a class="link" href="/reference/cli/docker/image/pull/"><code>docker pull</code></a> 命令拉取镜像。</li>
 </ol>
 <div
   data-pagefind-ignore
@@ -557,7 +557,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 <li>使用 
     
   
-  <a class="link" href="https://docs.docker.com/reference/cli/docker/image/ls/"><code>docker image ls</code></a> 命令列出你下载的镜像：</li>
+  <a class="link" href="/reference/cli/docker/image/ls/"><code>docker image ls</code></a> 命令列出你下载的镜像：</li>
 </ol>
 <div
   data-pagefind-ignore
@@ -652,7 +652,7 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 <li>使用 
     
   
-  <a class="link" href="https://docs.docker.com/reference/cli/docker/image/history/"><code>docker image history</code></a> 命令列出镜像的层：</li>
+  <a class="link" href="/reference/cli/docker/image/history/"><code>docker image history</code></a> 命令列出镜像的层：</li>
 </ol>
 <div
   data-pagefind-ignore
@@ -781,5 +781,5 @@ Docker Hub 提供了各种 Docker 支持和认可的镜像，称为 Docker Trust
 现在你已经了解了镜像的基础知识，是时候学习如何通过注册中心来分发镜像了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/">什么是注册中心？</a>
+<a class="button not-prose" href="/get-started/docker-concepts/the-basics/what-is-a-registry/">什么是注册中心？</a>
 

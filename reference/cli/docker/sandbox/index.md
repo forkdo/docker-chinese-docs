@@ -106,13 +106,13 @@ ls -la /path/to/your/code
 - [Docker CLI 参考](https://docs.docker.com/engine/reference/commandline/docker/)
 - [最佳实践指南](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
-- [](https://docs.docker.com/reference/cli/docker/sandbox/version/)
+- [](/reference/cli/docker/sandbox/version/)
 
-- [docker sandbox inspect](https://docs.docker.com/reference/cli/docker/sandbox/inspect/)
+- [docker sandbox inspect](/reference/cli/docker/sandbox/inspect/)
 
-- [docker sandbox ls](https://docs.docker.com/reference/cli/docker/sandbox/ls/)
+- [docker sandbox ls](/reference/cli/docker/sandbox/ls/)
 
-- [docker sandbox run](https://docs.docker.com/reference/cli/docker/sandbox/run/)
+- [docker sandbox run](/reference/cli/docker/sandbox/run/)
 
-- [docker sandbox 删除](https://docs.docker.com/reference/cli/docker/sandbox/rm/)
+- [docker sandbox 删除](/reference/cli/docker/sandbox/rm/)
 

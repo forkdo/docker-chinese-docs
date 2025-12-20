@@ -66,5 +66,5 @@
 接下来，您将向集群中添加另外两个节点。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/">添加两个节点</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/add-nodes/">添加两个节点</a>
 

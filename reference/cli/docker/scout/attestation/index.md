@@ -8,9 +8,9 @@
 https://github.com/docker/scout-cli
 -->
 
-- [docker scout attestation add](https://docs.docker.com/reference/cli/docker/scout/attestation/add/)
+- [docker scout attestation add](/reference/cli/docker/scout/attestation/add/)
 
-- [docker scout attestation get](https://docs.docker.com/reference/cli/docker/scout/attestation/get/)
+- [docker scout attestation get](/reference/cli/docker/scout/attestation/get/)
 
-- [docker scout 证明列表](https://docs.docker.com/reference/cli/docker/scout/attestation/list/)
+- [docker scout 证明列表](/reference/cli/docker/scout/attestation/list/)
 

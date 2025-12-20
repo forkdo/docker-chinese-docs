@@ -70,15 +70,15 @@ Docker Hub 可以自动从外部仓库中的源代码构建镜像，并将构建
 队列中待处理构建的最大数量为 30，Docker Hub 会丢弃超出此数量的后续请求。Pro 订阅的并发构建数为 5，Team 和 Business 订阅的并发构建数为 15。
 自动构建可以处理最大 10 GB 大小的镜像。
 
-- [设置自动化构建](https://docs.docker.com/docker-hub/repos/manage/builds/setup/)
+- [设置自动化构建](/docker-hub/repos/manage/builds/setup/)
 
-- [配置从 GitHub 和 BitBucket 的自动构建](https://docs.docker.com/docker-hub/repos/manage/builds/link-source/)
+- [配置从 GitHub 和 BitBucket 的自动构建](/docker-hub/repos/manage/builds/link-source/)
 
-- [自动化仓库测试](https://docs.docker.com/docker-hub/repos/manage/builds/automated-testing/)
+- [自动化仓库测试](/docker-hub/repos/manage/builds/automated-testing/)
 
-- [自动化构建和自动化测试的高级选项](https://docs.docker.com/docker-hub/repos/manage/builds/advanced/)
+- [自动化构建和自动化测试的高级选项](/docker-hub/repos/manage/builds/advanced/)
 
-- [排查自动构建问题](https://docs.docker.com/docker-hub/repos/manage/builds/troubleshoot/)
+- [排查自动构建问题](/docker-hub/repos/manage/builds/troubleshoot/)
 
-- [管理自动构建](https://docs.docker.com/docker-hub/repos/manage/builds/manage-builds/)
+- [管理自动构建](/docker-hub/repos/manage/builds/manage-builds/)
 

@@ -106,9 +106,9 @@ WSL 旨在促进 Windows 和 Linux 环境之间的互操作性。其文件系统
 *   [了解 WSL 2 的 GPU 支持](/manuals/desktop/features/gpu.md)
 *   [WSL 上的自定义内核](custom-kernels.md)
 
-- [使用 WSL](https://docs.docker.com/desktop/features/wsl/use-wsl/)
+- [使用 WSL](/desktop/features/wsl/use-wsl/)
 
-- [在 WSL 上使用自定义内核](https://docs.docker.com/desktop/features/wsl/custom-kernels/)
+- [在 WSL 上使用自定义内核](/desktop/features/wsl/custom-kernels/)
 
-- [最佳实践](https://docs.docker.com/desktop/features/wsl/best-practices/)
+- [最佳实践](/desktop/features/wsl/best-practices/)
 

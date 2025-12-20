@@ -52,11 +52,11 @@ For more information on using cache to do efficient builds, see:
 - [Cache storage backends](./backends/_index.md)
 
 
-- [Build cache invalidation](https://docs.docker.com/build/cache/invalidation/)
+- [Build cache invalidation](/build/cache/invalidation/)
 
-- [Build garbage collection](https://docs.docker.com/build/cache/garbage-collection/)
+- [Build garbage collection](/build/cache/garbage-collection/)
 
-- [Cache storage backends](https://docs.docker.com/build/cache/backends/)
+- [Cache storage backends](/build/cache/backends/)
 
-- [Optimize cache usage in builds](https://docs.docker.com/build/cache/optimize/)
+- [Optimize cache usage in builds](/build/cache/optimize/)
 

@@ -144,5 +144,5 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 现在您已经创建了 Dockerfile 并学习了基础知识，是时候学习构建、标记和推送镜像了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/">构建、标记和发布镜像</a>
+<a class="button not-prose" href="/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/">构建、标记和发布镜像</a>
 

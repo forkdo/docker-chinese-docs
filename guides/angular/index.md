@@ -36,13 +36,13 @@ Angular 语言专用指南向您展示如何使用 Docker 容器化 Angular 应�
 
 完成 Angular 入门模块后，您将完全准备好使用本指南中详述的示例和最佳实践来容器化您自己的 Angular 应用程序。
 
-- [容器化 Angular 应用程序](https://docs.docker.com/guides/angular/containerize/)
+- [容器化 Angular 应用程序](/guides/angular/containerize/)
 
-- [使用容器进行 Angular 开发](https://docs.docker.com/guides/angular/develop/)
+- [使用容器进行 Angular 开发](/guides/angular/develop/)
 
-- [在容器中运行 Angular 测试](https://docs.docker.com/guides/angular/run-tests/)
+- [在容器中运行 Angular 测试](/guides/angular/run-tests/)
 
-- [使用 GitHub Actions 自动化构建](https://docs.docker.com/guides/angular/configure-github-actions/)
+- [使用 GitHub Actions 自动化构建](/guides/angular/configure-github-actions/)
 
-- [测试你的 Angular 部署](https://docs.docker.com/guides/angular/deploy/)
+- [测试你的 Angular 部署](/guides/angular/deploy/)
 

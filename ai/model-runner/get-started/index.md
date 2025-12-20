@@ -269,7 +269,7 @@ docker model uninstall-runner --images && docker model install-runner
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/ai/model-runner/images/dmr-catalog.png"
+    src="/ai/model-runner/images/dmr-catalog.png"
     alt="显示 Docker Hub 视图的屏幕截图。"
     
     
@@ -289,7 +289,7 @@ docker model uninstall-runner --images && docker model install-runner
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/ai/model-runner/images/dmr-catalog.png"
+        src="/ai/model-runner/images/dmr-catalog.png"
         alt="显示 Docker Hub 视图的屏幕截图。"
       />
     </div>
@@ -480,7 +480,7 @@ docker model uninstall-runner --images && docker model install-runner
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/ai/model-runner/images/dmr-run.png"
+    src="/ai/model-runner/images/dmr-run.png"
     alt="显示本地视图的屏幕截图。"
     
     
@@ -500,7 +500,7 @@ docker model uninstall-runner --images && docker model install-runner
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/ai/model-runner/images/dmr-run.png"
+        src="/ai/model-runner/images/dmr-run.png"
         alt="显示本地视图的屏幕截图。"
       />
     </div>
@@ -637,7 +637,7 @@ $ docker model package --gguf "$(pwd)/model.gguf" --push myorg/mistral-7b-v0.1:Q
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/ai/model-runner/images/dmr-logs.png"
+    src="/ai/model-runner/images/dmr-logs.png"
     alt="显示模型视图的屏幕截图。"
     
     
@@ -657,7 +657,7 @@ $ docker model package --gguf "$(pwd)/model.gguf" --push myorg/mistral-7b-v0.1:Q
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/ai/model-runner/images/dmr-logs.png"
+        src="/ai/model-runner/images/dmr-logs.png"
         alt="显示模型视图的屏幕截图。"
       />
     </div>

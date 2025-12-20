@@ -216,13 +216,13 @@
 </div>
 
 
-- [Settings Management](https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/)
+- [Settings Management](/enterprise/security/hardened-desktop/settings-management/)
 
-- [增强容器隔离](https://docs.docker.com/enterprise/security/hardened-desktop/enhanced-container-isolation/)
+- [增强容器隔离](/enterprise/security/hardened-desktop/enhanced-container-isolation/)
 
-- [注册表访问管理](https://docs.docker.com/enterprise/security/hardened-desktop/registry-access-management/)
+- [注册表访问管理](/enterprise/security/hardened-desktop/registry-access-management/)
 
-- [镜像访问管理](https://docs.docker.com/enterprise/security/hardened-desktop/image-access-management/)
+- [镜像访问管理](/enterprise/security/hardened-desktop/image-access-management/)
 
-- [气隙容器](https://docs.docker.com/enterprise/security/hardened-desktop/air-gapped-containers/)
+- [气隙容器](/enterprise/security/hardened-desktop/air-gapped-containers/)
 

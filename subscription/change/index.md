@@ -69,7 +69,7 @@
 <ol>
 <li>登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您要升级的组织。</li>
 <li>选择 <strong>Billing</strong>（账单）。</li>
-<li>（可选）如果您要从免费的 Personal 订阅升级到 Team 订阅并希望保留您的用户名，请<a class="link" href="https://docs.docker.com/admin/organization/convert-account/">将您的用户帐户转换为组织</a>。</li>
+<li>（可选）如果您要从免费的 Personal 订阅升级到 Team 订阅并希望保留您的用户名，请<a class="link" href="/admin/organization/convert-account/">将您的用户帐户转换为组织</a>。</li>
 <li>选择 <strong>Upgrade</strong>（升级）。</li>
 <li>按照屏幕上的说明完成升级。</li>
 </ol>
@@ -91,7 +91,7 @@
       </span>
     </div>
     <div class="admonition-content">
-      <p>如果您选择使用美国银行帐户付款，则必须验证该帐户。有关更多信息，请参阅<a class="link" href="https://docs.docker.com/billing/payment-method/#verify-a-bank-account">验证银行帐户</a>。</p>
+      <p>如果您选择使用美国银行帐户付款，则必须验证该帐户。有关更多信息，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行帐户</a>。</p>
     </div>
   </blockquote>
 

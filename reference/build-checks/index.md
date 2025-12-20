@@ -112,45 +112,45 @@ To learn more about how to use build checks, see
 </table>
 
 
-- [ConsistentInstructionCasing](https://docs.docker.com/reference/build-checks/consistent-instruction-casing/)
+- [ConsistentInstructionCasing](/reference/build-checks/consistent-instruction-casing/)
 
-- [CopyIgnoredFile](https://docs.docker.com/reference/build-checks/copy-ignored-file/)
+- [CopyIgnoredFile](/reference/build-checks/copy-ignored-file/)
 
-- [DuplicateStageName](https://docs.docker.com/reference/build-checks/duplicate-stage-name/)
+- [DuplicateStageName](/reference/build-checks/duplicate-stage-name/)
 
-- [ExposeInvalidFormat](https://docs.docker.com/reference/build-checks/expose-invalid-format/)
+- [ExposeInvalidFormat](/reference/build-checks/expose-invalid-format/)
 
-- [ExposeProtoCasing](https://docs.docker.com/reference/build-checks/expose-proto-casing/)
+- [ExposeProtoCasing](/reference/build-checks/expose-proto-casing/)
 
-- [FromAsCasing](https://docs.docker.com/reference/build-checks/from-as-casing/)
+- [FromAsCasing](/reference/build-checks/from-as-casing/)
 
-- [FromPlatformFlagConstDisallowed](https://docs.docker.com/reference/build-checks/from-platform-flag-const-disallowed/)
+- [FromPlatformFlagConstDisallowed](/reference/build-checks/from-platform-flag-const-disallowed/)
 
-- [InvalidDefaultArgInFrom](https://docs.docker.com/reference/build-checks/invalid-default-arg-in-from/)
+- [InvalidDefaultArgInFrom](/reference/build-checks/invalid-default-arg-in-from/)
 
-- [InvalidDefinitionDescription](https://docs.docker.com/reference/build-checks/invalid-definition-description/)
+- [InvalidDefinitionDescription](/reference/build-checks/invalid-definition-description/)
 
-- [JSONArgsRecommended](https://docs.docker.com/reference/build-checks/json-args-recommended/)
+- [JSONArgsRecommended](/reference/build-checks/json-args-recommended/)
 
-- [LegacyKeyValueFormat](https://docs.docker.com/reference/build-checks/legacy-key-value-format/)
+- [LegacyKeyValueFormat](/reference/build-checks/legacy-key-value-format/)
 
-- [MaintainerDeprecated](https://docs.docker.com/reference/build-checks/maintainer-deprecated/)
+- [MaintainerDeprecated](/reference/build-checks/maintainer-deprecated/)
 
-- [MultipleInstructionsDisallowed](https://docs.docker.com/reference/build-checks/multiple-instructions-disallowed/)
+- [MultipleInstructionsDisallowed](/reference/build-checks/multiple-instructions-disallowed/)
 
-- [NoEmptyContinuation](https://docs.docker.com/reference/build-checks/no-empty-continuation/)
+- [NoEmptyContinuation](/reference/build-checks/no-empty-continuation/)
 
-- [RedundantTargetPlatform](https://docs.docker.com/reference/build-checks/redundant-target-platform/)
+- [RedundantTargetPlatform](/reference/build-checks/redundant-target-platform/)
 
-- [ReservedStageName](https://docs.docker.com/reference/build-checks/reserved-stage-name/)
+- [ReservedStageName](/reference/build-checks/reserved-stage-name/)
 
-- [SecretsUsedInArgOrEnv](https://docs.docker.com/reference/build-checks/secrets-used-in-arg-or-env/)
+- [SecretsUsedInArgOrEnv](/reference/build-checks/secrets-used-in-arg-or-env/)
 
-- [StageNameCasing](https://docs.docker.com/reference/build-checks/stage-name-casing/)
+- [StageNameCasing](/reference/build-checks/stage-name-casing/)
 
-- [UndefinedArgInFrom](https://docs.docker.com/reference/build-checks/undefined-arg-in-from/)
+- [UndefinedArgInFrom](/reference/build-checks/undefined-arg-in-from/)
 
-- [UndefinedVar](https://docs.docker.com/reference/build-checks/undefined-var/)
+- [UndefinedVar](/reference/build-checks/undefined-var/)
 
-- [WorkdirRelativePath](https://docs.docker.com/reference/build-checks/workdir-relative-path/)
+- [WorkdirRelativePath](/reference/build-checks/workdir-relative-path/)
 

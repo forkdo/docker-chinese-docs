@@ -44,9 +44,9 @@ Docker Desktop 的 UI 使用 React 和 [MUI](https://mui.com/)（基于 Material
 - 查看我们的 [MUI 最佳实践](mui-best-practices.md)。
 - 了解如何 [发布您的扩展程序](../extensions/_index.md)。
 
-- [Docker 扩展的设计指南](https://docs.docker.com/extensions/extensions-sdk/design/design-guidelines/)
+- [Docker 扩展的设计指南](/extensions/extensions-sdk/design/design-guidelines/)
 
-- [Docker 设计原则](https://docs.docker.com/extensions/extensions-sdk/design/design-principles/)
+- [Docker 设计原则](/extensions/extensions-sdk/design/design-principles/)
 
-- [MUI 最佳实践](https://docs.docker.com/extensions/extensions-sdk/design/mui-best-practices/)
+- [MUI 最佳实践](/extensions/extensions-sdk/design/mui-best-practices/)
 

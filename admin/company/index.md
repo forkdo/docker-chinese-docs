@@ -295,11 +295,11 @@
 </div>
 
 
-- [创建公司](https://docs.docker.com/admin/company/new-company/)
+- [创建公司](/admin/company/new-company/)
 
-- [管理公司成员](https://docs.docker.com/admin/company/users/)
+- [管理公司成员](/admin/company/users/)
 
-- [管理公司所有者](https://docs.docker.com/admin/company/owners/)
+- [管理公司所有者](/admin/company/owners/)
 
-- [管理公司组织](https://docs.docker.com/admin/company/organizations/)
+- [管理公司组织](/admin/company/organizations/)
 

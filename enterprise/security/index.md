@@ -368,17 +368,17 @@ Docker 为管理员和开发者提供安全护栏。
 </div>
 
 
-- [单点登录概述](https://docs.docker.com/enterprise/security/single-sign-on/)
+- [单点登录概述](/enterprise/security/single-sign-on/)
 
-- [配置用户](https://docs.docker.com/enterprise/security/provisioning/)
+- [配置用户](/enterprise/security/provisioning/)
 
-- [强制登录 Docker Desktop](https://docs.docker.com/enterprise/security/enforce-sign-in/)
+- [强制登录 Docker Desktop](/enterprise/security/enforce-sign-in/)
 
-- [角色与权限](https://docs.docker.com/enterprise/security/roles-and-permissions/)
+- [角色与权限](/enterprise/security/roles-and-permissions/)
 
-- [管理域名](https://docs.docker.com/enterprise/security/domain-management/)
+- [管理域名](/enterprise/security/domain-management/)
 
-- [强化版 Docker Desktop](https://docs.docker.com/enterprise/security/hardened-desktop/)
+- [强化版 Docker Desktop](/enterprise/security/hardened-desktop/)
 
-- [Organization access tokens](https://docs.docker.com/enterprise/security/access-tokens/)
+- [Organization access tokens](/enterprise/security/access-tokens/)
 

@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI on Docker Docs</title>
-    <link>https://docs.docker.com/tags/ai/</link>
+    <link>/tags/ai/</link>
     <description>Recent content in AI on Docker Docs</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://docs.docker.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PDF 分析与对话</title>
-      <link>https://docs.docker.com/guides/genai-pdf-bot/</link>
+      <link>/guides/genai-pdf-bot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/genai-pdf-bot/</guid>
+      <guid>/guides/genai-pdf-bot/</guid>
       <description>了解如何使用 Docker 和生成式人工智能构建 PDF 机器人，用于解析 PDF 文档并生成响应。</description>
     </item>
     <item>
       <title>使用 Ollama 和 Docker 构建 RAG 应用程序</title>
-      <link>https://docs.docker.com/guides/rag-ollama/</link>
+      <link>/guides/rag-ollama/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/rag-ollama/</guid>
+      <guid>/guides/rag-ollama/</guid>
       <description>本指南演示如何使用 Docker 部署检索增强生成 (RAG) 模型与 Ollama。</description>
     </item>
     <item>
       <title>使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件</title>
-      <link>https://docs.docker.com/guides/genai-claude-code-mcp/claude-code-mcp-guide/</link>
+      <link>/guides/genai-claude-code-mcp/claude-code-mcp-guide/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/genai-claude-code-mcp/claude-code-mcp-guide/</guid>
+      <guid>/guides/genai-claude-code-mcp/claude-code-mcp-guide/</guid>
       <description>本指南展示了如何将 Claude Code 连接到 Docker MCP Toolkit，使其能够搜索 Docker Hub 镜像，并通过自然语言生成完整的 Docker Compose 堆栈。&#xA;您将启用 Docker Hub MCP 服务器，连接 Claude Code，验证 MCP 访问权限，并通过对话式提示创建一个 Node.js + PostgreSQL 堆栈。</description>
     </item>
     <item>
       <title>使用 TensorFlow.js 进行人脸检测</title>
-      <link>https://docs.docker.com/guides/tensorflowjs/</link>
+      <link>/guides/tensorflowjs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/tensorflowjs/</guid>
+      <guid>/guides/tensorflowjs/</guid>
       <description>本指南介绍如何在 Docker 容器中运行 TensorFlow.js。</description>
     </item>
     <item>
       <title>构建命名实体识别应用</title>
-      <link>https://docs.docker.com/guides/named-entity-recognition/</link>
+      <link>/guides/named-entity-recognition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/named-entity-recognition/</guid>
+      <guid>/guides/named-entity-recognition/</guid>
       <description>本指南介绍如何使用 Docker 容器化命名实体识别 (NER) 模型。</description>
     </item>
     <item>
       <title>在 GenAI 中利用 RAG 教授新知识</title>
-      <link>https://docs.docker.com/guides/genai-leveraging-rag/</link>
+      <link>/guides/genai-leveraging-rag/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/genai-leveraging-rag/</guid>
+      <guid>/guides/genai-leveraging-rag/</guid>
       <description>本指南解释了如何使用检索增强生成（RAG）和 Neo4j 设置 GenAI 栈，涵盖核心概念、部署步骤和案例研究。还包括针对优化 AI 在实时数据上性能的故障排除提示。</description>
     </item>
     <item>
       <title>构建一个情感分析应用</title>
-      <link>https://docs.docker.com/guides/sentiment-analysis/</link>
+      <link>/guides/sentiment-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/sentiment-analysis/</guid>
+      <guid>/guides/sentiment-analysis/</guid>
       <description>本指南演示了如何使用 Docker 对情感分析模型进行容器化。</description>
     </item>
     <item>
       <title>构建文本识别应用</title>
-      <link>https://docs.docker.com/guides/text-classification/</link>
+      <link>/guides/text-classification/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/text-classification/</guid>
+      <guid>/guides/text-classification/</guid>
       <description>本指南详细介绍如何使用 Docker 容器化文本分类模型。</description>
     </item>
     <item>
       <title>构建文本摘要应用</title>
-      <link>https://docs.docker.com/guides/text-summarization/</link>
+      <link>/guides/text-summarization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/text-summarization/</guid>
+      <guid>/guides/text-summarization/</guid>
       <description>本指南介绍如何使用 Docker 容器化文本摘要模型。</description>
     </item>
     <item>
       <title>使用 Docker 构建和运行智能体 AI 应用程序</title>
-      <link>https://docs.docker.com/guides/agentic-ai/</link>
+      <link>/guides/agentic-ai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/agentic-ai/</guid>
+      <guid>/guides/agentic-ai/</guid>
       <description>了解如何使用 Docker Model Runner、MCP Toolkit 和 Docker Offload 创建 AI 智能体应用程序。</description>
     </item>
     <item>
       <title>GenAI 视频转录与对话</title>
-      <link>https://docs.docker.com/guides/genai-video-bot/</link>
+      <link>/guides/genai-video-bot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/genai-video-bot/</guid>
+      <guid>/guides/genai-video-bot/</guid>
       <description>了解如何使用 Docker 构建并部署一个生成式人工智能视频分析与转录机器人。</description>
     </item>
     <item>
       <title>构建语言翻译应用程序</title>
-      <link>https://docs.docker.com/guides/language-translation/</link>
+      <link>/guides/language-translation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/language-translation/</guid>
+      <guid>/guides/language-translation/</guid>
       <description>本指南演示如何使用 Docker 部署语言翻译模型以执行自然语言处理（NLP）任务。</description>
     </item>
   </channel>

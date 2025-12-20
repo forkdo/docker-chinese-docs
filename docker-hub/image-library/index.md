@@ -9,11 +9,11 @@ Docker Hub 的内容库是世界上最大的容器镜像、扩展和插件集合
 - [目录](./catalogs.md)：探索专门的集合，例如生成式 AI 目录。
 - [镜像](./mirror.md)：了解如何将 Docker Hub 的容器镜像库创建为拉取缓存。
 
-- [Docker Hub 搜索](https://docs.docker.com/docker-hub/image-library/search/)
+- [Docker Hub 搜索](/docker-hub/image-library/search/)
 
-- [可信内容](https://docs.docker.com/docker-hub/image-library/trusted-content/)
+- [可信内容](/docker-hub/image-library/trusted-content/)
 
-- [Docker Hub 目录](https://docs.docker.com/docker-hub/image-library/catalogs/)
+- [Docker Hub 目录](/docker-hub/image-library/catalogs/)
 
-- [镜像 Docker Hub 官方镜像库](https://docs.docker.com/docker-hub/image-library/mirror/)
+- [镜像 Docker Hub 官方镜像库](/docker-hub/image-library/mirror/)
 

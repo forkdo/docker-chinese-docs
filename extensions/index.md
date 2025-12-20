@@ -17,13 +17,13 @@ Docker 扩展让您可以在 Docker Desktop 中使用第三方工具来扩展其
 
 <iframe width="750" height="315" src="https://www.youtube.com/embed/3rAGXS8pszQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-- [Marketplace 扩展](https://docs.docker.com/extensions/marketplace/)
+- [Marketplace 扩展](/extensions/marketplace/)
 
-- [非 Marketplace 扩展](https://docs.docker.com/extensions/non-marketplace/)
+- [非 Marketplace 扩展](/extensions/non-marketplace/)
 
-- [为扩展配置私有市场](https://docs.docker.com/extensions/private-marketplace/)
+- [为扩展配置私有市场](/extensions/private-marketplace/)
 
-- [Docker Extensions 的设置与反馈](https://docs.docker.com/extensions/settings-feedback/)
+- [Docker Extensions 的设置与反馈](/extensions/settings-feedback/)
 
-- [扩展 SDK 概览](https://docs.docker.com/extensions/extensions-sdk/)
+- [扩展 SDK 概览](/extensions/extensions-sdk/)
 

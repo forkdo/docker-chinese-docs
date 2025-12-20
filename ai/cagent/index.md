@@ -179,19 +179,19 @@ $ cagent pull myusername/debugger
   参考](https://github.com/docker/cagent?tab=readme-ov-file#-configuration-reference)
   <!-- TODO: move to this site/repo -->
 
-- [模型提供商](https://docs.docker.com/ai/cagent/model-providers/)
+- [模型提供商](/ai/cagent/model-providers/)
 
-- [使用 Docker Model Runner 运行本地模型](https://docs.docker.com/ai/cagent/local-models/)
+- [使用 Docker Model Runner 运行本地模型](/ai/cagent/local-models/)
 
-- [构建编码代理](https://docs.docker.com/ai/cagent/tutorial/)
+- [构建编码代理](/ai/cagent/tutorial/)
 
-- [最佳实践](https://docs.docker.com/ai/cagent/best-practices/)
+- [最佳实践](/ai/cagent/best-practices/)
 
-- [共享代理](https://docs.docker.com/ai/cagent/sharing-agents/)
+- [共享代理](/ai/cagent/sharing-agents/)
 
-- [集成](https://docs.docker.com/ai/cagent/integrations/)
+- [集成](/ai/cagent/integrations/)
 
-- [RAG](https://docs.docker.com/ai/cagent/rag/)
+- [RAG](/ai/cagent/rag/)
 
-- [评估 (Evals)](https://docs.docker.com/ai/cagent/evals/)
+- [评估 (Evals)](/ai/cagent/evals/)
 

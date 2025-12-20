@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>产品演示 on Docker Docs</title>
-    <link>https://docs.docker.com/tags/product-demo/</link>
+    <link>/tags/product-demo/</link>
     <description>Recent content in 产品演示 on Docker Docs</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://docs.docker.com/tags/product-demo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/product-demo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker Build Cloud: 通过快速、多架构构建来收回您的时间</title>
-      <link>https://docs.docker.com/guides/docker-build-cloud/</link>
+      <link>/guides/docker-build-cloud/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/docker-build-cloud/</guid>
+      <guid>/guides/docker-build-cloud/</guid>
       <description>利用基于云的资源、共享团队缓存和原生多架构支持，使应用程序的构建速度提升高达 39 倍。</description>
     </item>
     <item>
       <title>使用 Docker Compose 定义和运行多容器应用程序</title>
-      <link>https://docs.docker.com/guides/docker-compose/</link>
+      <link>/guides/docker-compose/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/docker-compose/</guid>
+      <guid>/guides/docker-compose/</guid>
       <description>简化定义、配置和运行多容器&#xA;Docker 应用程序的过程。</description>
     </item>
     <item>
       <title>使用 Docker Scout 保障您的软件供应链安全</title>
-      <link>https://docs.docker.com/guides/docker-scout/</link>
+      <link>/guides/docker-scout/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/docker-scout/</guid>
+      <guid>/guides/docker-scout/</guid>
       <description>通过自动化漏洞检测和修复来增强容器安全性。</description>
     </item>
     <item>
       <title>精通 Testcontainers Cloud by Docker：利用容器简化集成测试
 </title>
-      <link>https://docs.docker.com/guides/testcontainers-cloud/</link>
+      <link>/guides/testcontainers-cloud/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/testcontainers-cloud/</guid>
+      <guid>/guides/testcontainers-cloud/</guid>
       <description>使用 Testcontainers Cloud 自动化、扩展和优化测试工作流</description>
     </item>
   </channel>

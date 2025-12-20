@@ -50,9 +50,9 @@ Docker Desktop 适用于：
 
 您可以在 Linux 或 Windows Server 上[安装 Docker Compose 独立版](standalone.md)。
 
-- [安装 Docker Compose 插件](https://docs.docker.com/compose/install/linux/)
+- [安装 Docker Compose 插件](/compose/install/linux/)
 
-- [安装独立的 Docker Compose（旧版）](https://docs.docker.com/compose/install/standalone/)
+- [安装独立的 Docker Compose（旧版）](/compose/install/standalone/)
 
-- [卸载 Docker Compose](https://docs.docker.com/compose/install/uninstall/)
+- [卸载 Docker Compose](/compose/install/uninstall/)
 

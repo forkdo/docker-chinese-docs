@@ -175,15 +175,15 @@ $ docker buildx build --push -t <registry>/<image> \
 > Since BuildKit v0.21, `image-manifest` is enabled by default.
 
 
-- [Amazon S3 cache](https://docs.docker.com/build/cache/backends/s3/)
+- [Amazon S3 cache](/build/cache/backends/s3/)
 
-- [Azure Blob Storage cache](https://docs.docker.com/build/cache/backends/azblob/)
+- [Azure Blob Storage cache](/build/cache/backends/azblob/)
 
-- [GitHub Actions cache](https://docs.docker.com/build/cache/backends/gha/)
+- [GitHub Actions cache](/build/cache/backends/gha/)
 
-- [Inline cache](https://docs.docker.com/build/cache/backends/inline/)
+- [Inline cache](/build/cache/backends/inline/)
 
-- [Local cache](https://docs.docker.com/build/cache/backends/local/)
+- [Local cache](/build/cache/backends/local/)
 
-- [Registry cache](https://docs.docker.com/build/cache/backends/registry/)
+- [Registry cache](/build/cache/backends/registry/)
 

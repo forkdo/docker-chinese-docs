@@ -7,7 +7,7 @@
 
 首先，容器化一个现有的 GenAI 应用。
 
-- [容器化生成式 AI 应用程序](https://docs.docker.com/guides/genai-pdf-bot/containerize/)
+- [容器化生成式 AI 应用程序](/guides/genai-pdf-bot/containerize/)
 
-- [使用容器进行生成式 AI 开发](https://docs.docker.com/guides/genai-pdf-bot/develop/)
+- [使用容器进行生成式 AI 开发](/guides/genai-pdf-bot/develop/)
 

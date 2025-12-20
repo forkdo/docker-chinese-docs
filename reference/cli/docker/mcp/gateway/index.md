@@ -6,5 +6,5 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp gateway run](https://docs.docker.com/reference/cli/docker/mcp/gateway/gateway_run/)
+- [docker mcp gateway run](/reference/cli/docker/mcp/gateway/gateway_run/)
 

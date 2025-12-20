@@ -246,7 +246,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/workshop/images/dashboard-two-containers.webp"
+    src="/get-started/workshop/images/dashboard-two-containers.webp"
     alt="Docker Desktop 正在运行 get-started 容器"
     
     
@@ -266,7 +266,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/workshop/images/dashboard-two-containers.webp"
+        src="/get-started/workshop/images/dashboard-two-containers.webp"
         alt="Docker Desktop 正在运行 get-started 容器"
       />
     </div>
@@ -293,5 +293,5 @@
 接下来，您将对应用程序进行修改，并学习如何使用新镜像更新正在运行的应用程序。在此过程中，您将学习一些其他有用的命令。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/03_updating_app/">更新应用程序</a>
+<a class="button not-prose" href="/get-started/workshop/03_updating_app/">更新应用程序</a>
 

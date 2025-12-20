@@ -6,11 +6,11 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp secret export](https://docs.docker.com/reference/cli/docker/mcp/secrets/secret_export/)
+- [docker mcp secret export](/reference/cli/docker/mcp/secrets/secret_export/)
 
-- [docker mcp secret ls](https://docs.docker.com/reference/cli/docker/mcp/secrets/secret_ls/)
+- [docker mcp secret ls](/reference/cli/docker/mcp/secrets/secret_ls/)
 
-- [docker mcp secret rm](https://docs.docker.com/reference/cli/docker/mcp/secrets/secret_rm/)
+- [docker mcp secret rm](/reference/cli/docker/mcp/secrets/secret_rm/)
 
-- [docker mcp secret set](https://docs.docker.com/reference/cli/docker/mcp/secrets/secret_set/)
+- [docker mcp secret set](/reference/cli/docker/mcp/secrets/secret_set/)
 

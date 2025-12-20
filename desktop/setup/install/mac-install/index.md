@@ -112,7 +112,7 @@
 <p>为了获得最佳体验，建议安装 Rosetta 2。Rosetta 2 不再是严格必需项，但某些可选命令行工具在使用 Darwin/AMD64 时仍需要 Rosetta 2。请参阅
     
   
-  <a class="link" href="https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/">已知问题</a>。要从命令行手动安装 Rosetta 2，请运行以下命令：</p>
+  <a class="link" href="/desktop/troubleshoot-and-support/troubleshoot/known-issues/">已知问题</a>。要从命令行手动安装 Rosetta 2，请运行以下命令：</p>
 <div
   data-pagefind-ignore
   x-data

@@ -7,9 +7,9 @@
 https://github.com/docker/scout-cli
 -->
 
-- [docker scout repo disable](https://docs.docker.com/reference/cli/docker/scout/repo/disable/)
+- [docker scout repo disable](/reference/cli/docker/scout/repo/disable/)
 
-- [docker scout repo enable](https://docs.docker.com/reference/cli/docker/scout/repo/enable/)
+- [docker scout repo enable](/reference/cli/docker/scout/repo/enable/)
 
-- [docker scout repo list](https://docs.docker.com/reference/cli/docker/scout/repo/list/)
+- [docker scout repo list](/reference/cli/docker/scout/repo/list/)
 

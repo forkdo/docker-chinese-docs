@@ -98,7 +98,7 @@
 <p>填写所需详细信息，例如描述、发布者或应用版本，然后选择 <strong>Next</strong>（下一步）。</p>
 </li>
 <li>
-<p>可选：在 <strong>Program</strong>（程序）选项卡上，您可以更新 <strong>Install command</strong>（安装命令）字段以满足您的需求。该字段已预填充 <code>msiexec /i &quot;DockerDesktop.msi&quot; /qn</code>。有关您可以进行的更改示例，请参阅<a class="link" href="https://docs.docker.com/enterprise/enterprise-deployment/msi-install-and-configure/">常见安装场景</a>。</p>
+<p>可选：在 <strong>Program</strong>（程序）选项卡上，您可以更新 <strong>Install command</strong>（安装命令）字段以满足您的需求。该字段已预填充 <code>msiexec /i &quot;DockerDesktop.msi&quot; /qn</code>。有关您可以进行的更改示例，请参阅<a class="link" href="/enterprise/enterprise-deployment/msi-install-and-configure/">常见安装场景</a>。</p>
 
 
   

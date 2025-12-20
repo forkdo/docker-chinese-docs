@@ -23,7 +23,7 @@ Docker Hub 设有滥用速率限制，以保护应用程序和基础设施。此
 
 您可以通过查看错误代码来区分拉取速率限制和滥用速率限制。滥用限制会返回简单的 `429 Too Many Requests` 响应。而拉取限制会返回包含指向文档链接的更详细错误消息。
 
-- [Docker Hub 拉取使用情况和限制](https://docs.docker.com/docker-hub/usage/pulls/)
+- [Docker Hub 拉取使用情况和限制](/docker-hub/usage/pulls/)
 
-- [优化 Docker Hub 使用的最佳实践](https://docs.docker.com/docker-hub/usage/manage/)
+- [优化 Docker Hub 使用的最佳实践](/docker-hub/usage/manage/)
 

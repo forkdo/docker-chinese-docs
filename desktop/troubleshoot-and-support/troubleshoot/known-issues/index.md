@@ -50,7 +50,7 @@
 <p>Mac 活动监视器报告 Docker 使用的内存量是其实际使用量的两倍。这是由于 <a class="link" href="https://docs.google.com/document/d/17ZiQC1Tp9iH320K-uqVLyiJmk4DHJ3c4zgQetJiKYQM/edit?usp=sharing" rel="noopener">macOS 的一个 bug</a>。</p>
 </li>
 <li>
-<p><strong>&quot;Docker.app 已损坏&quot; 对话框</strong>：如果在安装或更新过程中看到 &quot;Docker.app 已损坏，无法打开&quot; 的对话框，这通常是由于其他应用程序在使用 Docker CLI 时执行了非原子复制操作所致。请参见 <a class="link" href="https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/">修复 macOS 上的 &quot;Docker.app 已损坏&quot;</a> 获取解决步骤。</p>
+<p><strong>&quot;Docker.app 已损坏&quot; 对话框</strong>：如果在安装或更新过程中看到 &quot;Docker.app 已损坏，无法打开&quot; 的对话框，这通常是由于其他应用程序在使用 Docker CLI 时执行了非原子复制操作所致。请参见 <a class="link" href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/">修复 macOS 上的 &quot;Docker.app 已损坏&quot;</a> 获取解决步骤。</p>
 </li>
 <li>
 <p>在 <code>.dmg</code> 中运行 <code>Docker.app</code> 后强制弹出 <code>.dmg</code> 可能导致

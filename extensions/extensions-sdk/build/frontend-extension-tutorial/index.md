@@ -574,7 +574,7 @@ command and display the result in a table.
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/extensions/extensions-sdk/build/images/react-extension.png"
+    src="/extensions/extensions-sdk/build/images/react-extension.png"
     alt="Screenshot of the container list."
     
     
@@ -594,7 +594,7 @@ command and display the result in a table.
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/extensions/extensions-sdk/build/images/react-extension.png"
+        src="/extensions/extensions-sdk/build/images/react-extension.png"
         alt="Screenshot of the container list."
       />
     </div>

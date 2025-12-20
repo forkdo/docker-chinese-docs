@@ -88,15 +88,15 @@ Docker Build Cloud 相比本地构建提供了多项优势：
 
 有关 Docker Build Cloud 的角色和权限信息，请参阅[角色和权限](/manuals/enterprise/security/roles-and-permissions.md#docker-build-cloud-permissions)。
 
-- [Docker Build Cloud 设置](https://docs.docker.com/build-cloud/setup/)
+- [Docker Build Cloud 设置](/build-cloud/setup/)
 
-- [使用 Docker Build Cloud](https://docs.docker.com/build-cloud/usage/)
+- [使用 Docker Build Cloud](/build-cloud/usage/)
 
-- [在 CI 中使用 Docker Build Cloud](https://docs.docker.com/build-cloud/ci/)
+- [在 CI 中使用 Docker Build Cloud](/build-cloud/ci/)
 
-- [优化云端构建](https://docs.docker.com/build-cloud/optimization/)
+- [优化云端构建](/build-cloud/optimization/)
 
-- [Builder settings](https://docs.docker.com/build-cloud/builder-settings/)
+- [Builder settings](/build-cloud/builder-settings/)
 
-- [Docker Build Cloud 发布说明](https://docs.docker.com/build-cloud/release-notes/)
+- [Docker Build Cloud 发布说明](/build-cloud/release-notes/)
 

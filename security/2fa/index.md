@@ -47,5 +47,5 @@
 4. 输入您的密码，然后选择 **Confirm**（确认）。
 5. 选择 **Disable 2FA**（禁用 2FA）。
 
-- [恢复您的 Docker 账户](https://docs.docker.com/security/2fa/recover-hub-account/)
+- [恢复您的 Docker 账户](/security/2fa/recover-hub-account/)
 

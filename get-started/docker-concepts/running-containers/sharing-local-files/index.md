@@ -309,5 +309,5 @@ $ docker run -v HOST-DIRECTORY:/CONTAINER-DIRECTORY:rw nginx
 现在您已经学会了如何与容器共享本地文件，是时候学习多容器应用了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/running-containers/multi-container-applications/">多容器应用</a>
+<a class="button not-prose" href="/get-started/docker-concepts/running-containers/multi-container-applications/">多容器应用</a>
 

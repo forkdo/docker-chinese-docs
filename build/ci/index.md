@@ -52,5 +52,5 @@ annotate, and push container images on the GitHub Actions platform. See
 get started.
 
 
-- [Docker Build GitHub Actions](https://docs.docker.com/build/ci/github-actions/)
+- [Docker Build GitHub Actions](/build/ci/github-actions/)
 

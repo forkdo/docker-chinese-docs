@@ -113,14 +113,14 @@ using Docker Desktop or Docker Engine standalone:</p>
 
     
   
-  <a class="link" href="https://docs.docker.com/desktop/features/containerd/">Docker Desktop settings</a>.</p>
+  <a class="link" href="/desktop/features/containerd/">Docker Desktop settings</a>.</p>
 </li>
 <li>
 <p>If you're using Docker Engine standalone, enable the containerd image store
 using the 
     
   
-  <a class="link" href="https://docs.docker.com/engine/storage/containerd/">daemon configuration file</a>.</p>
+  <a class="link" href="/engine/storage/containerd/">daemon configuration file</a>.</p>
 </li>
 </ul>
 
@@ -194,7 +194,7 @@ builder that uses the <code>docker-container</code> driver.</p>
 Docker Engine image store. For more information, see 
     
   
-  <a class="link" href="https://docs.docker.com/build/builders/drivers/">Build
+  <a class="link" href="/build/builders/drivers/">Build
 drivers</a>.</p>
     </div>
   </blockquote>

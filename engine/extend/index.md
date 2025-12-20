@@ -264,17 +264,17 @@ plugin is installed and `APICall` is the call to the plugin API.
 For example, `http://localhost/VolumeDriver.List`
 
 
-- [Access authorization plugin](https://docs.docker.com/engine/extend/plugins_authorization/)
+- [Access authorization plugin](/engine/extend/plugins_authorization/)
 
-- [Docker log driver plugins](https://docs.docker.com/engine/extend/plugins_logging/)
+- [Docker log driver plugins](/engine/extend/plugins_logging/)
 
-- [Docker network driver plugins](https://docs.docker.com/engine/extend/plugins_network/)
+- [Docker network driver plugins](/engine/extend/plugins_network/)
 
-- [Docker Plugin API](https://docs.docker.com/engine/extend/plugin_api/)
+- [Docker Plugin API](/engine/extend/plugin_api/)
 
-- [Docker volume plugins](https://docs.docker.com/engine/extend/plugins_volume/)
+- [Docker volume plugins](/engine/extend/plugins_volume/)
 
-- [Plugin Config Version 1 of Plugin V2](https://docs.docker.com/engine/extend/config/)
+- [Plugin Config Version 1 of Plugin V2](/engine/extend/config/)
 
-- [Use Docker Engine plugins](https://docs.docker.com/engine/extend/legacy_plugins/)
+- [Use Docker Engine plugins](/engine/extend/legacy_plugins/)
 

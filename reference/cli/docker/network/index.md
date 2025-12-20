@@ -8,17 +8,17 @@
 https://github.com/docker/cli
 -->
 
-- [docker network connect](https://docs.docker.com/reference/cli/docker/network/connect/)
+- [docker network connect](/reference/cli/docker/network/connect/)
 
-- [docker network create](https://docs.docker.com/reference/cli/docker/network/create/)
+- [docker network create](/reference/cli/docker/network/create/)
 
-- [docker network disconnect](https://docs.docker.com/reference/cli/docker/network/disconnect/)
+- [docker network disconnect](/reference/cli/docker/network/disconnect/)
 
-- [docker network inspect](https://docs.docker.com/reference/cli/docker/network/inspect/)
+- [docker network inspect](/reference/cli/docker/network/inspect/)
 
-- [docker network ls](https://docs.docker.com/reference/cli/docker/network/ls/)
+- [docker network ls](/reference/cli/docker/network/ls/)
 
-- [docker network prune](https://docs.docker.com/reference/cli/docker/network/prune/)
+- [docker network prune](/reference/cli/docker/network/prune/)
 
-- [docker network rm](https://docs.docker.com/reference/cli/docker/network/rm/)
+- [docker network rm](/reference/cli/docker/network/rm/)
 

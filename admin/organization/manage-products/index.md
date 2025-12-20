@@ -169,11 +169,11 @@
 <li>
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/enforce-sign-in/">强制登录</a>。</li>
-<li>手动管理成员 <a class="link" href="https://docs.docker.com/admin/organization/members/">手动</a> 或使用 
+  <a class="link" href="/enterprise/security/enforce-sign-in/">强制登录</a>。</li>
+<li>手动管理成员 <a class="link" href="/admin/organization/members/">手动</a> 或使用 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/provisioning/">配置</a>。</li>
+  <a class="link" href="/enterprise/security/provisioning/">配置</a>。</li>
 </ol>
 <p>启用强制登录后，只有您组织的成员才能在登录后使用 Docker Desktop。</p>
 
@@ -193,10 +193,10 @@
 <p>要管理 Docker Hub 访问权限，请登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并配置 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/registry-access-management/">Registry Access Management</a> 或 
+  <a class="link" href="/enterprise/security/hardened-desktop/registry-access-management/">Registry Access Management</a> 或 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/image-access-management/">Image Access Management</a>。</p>
+  <a class="link" href="/enterprise/security/hardened-desktop/image-access-management/">Image Access Management</a>。</p>
 
       </div>
     
@@ -237,11 +237,11 @@
 <ol>
 <li>以组织所有者身份登录 <a class="link" href="https://scout.docker.com/" rel="noopener">Docker Scout</a>。</li>
 <li>选择您的组织，然后选择 <strong>Settings</strong>。</li>
-<li>要管理为 Docker Scout 分析启用的仓库，请选择 <strong>Repository settings</strong>。有关更多信息，请参阅 <a class="link" href="https://docs.docker.com/scout/explore/dashboard/#repository-settings">仓库设置</a>。</li>
+<li>要管理为 Docker Scout 分析启用的仓库，请选择 <strong>Repository settings</strong>。有关更多信息，请参阅 <a class="link" href="/scout/explore/dashboard/#repository-settings">仓库设置</a>。</li>
 <li>要管理对 Docker Scout 的访问以在 Docker Desktop 上用于本地镜像，请使用 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/">Settings Management</a> 并将 <code>sbomIndexing</code> 设置为 <code>false</code> 以禁用，或设置为 <code>true</code> 以启用。</li>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/">Settings Management</a> 并将 <code>sbomIndexing</code> 设置为 <code>false</code> 以禁用，或设置为 <code>true</code> 以启用。</li>
 </ol>
 
       </div>
@@ -302,7 +302,7 @@
 <p>要管理您组织的 Docker Offload 访问权限，请使用 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/">Settings Management</a>：</p>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/">Settings Management</a>：</p>
 <ol>
 <li>以组织所有者身份登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a>。</li>
 <li>选择 <strong>Admin Console</strong> &gt; <strong>Desktop Settings Management</strong>。</li>
@@ -320,7 +320,7 @@
 <p>有关 Settings Management 的更多详细信息，请参阅 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/settings-reference/#enable-docker-offload">设置参考</a>。</p>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/settings-reference/#enable-docker-offload">设置参考</a>。</p>
 
       </div>
     

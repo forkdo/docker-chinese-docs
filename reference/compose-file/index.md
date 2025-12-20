@@ -188,37 +188,37 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 </div>
 
 
-- [Version and name top-level elements](https://docs.docker.com/reference/compose-file/version-and-name/)
+- [Version and name top-level elements](/reference/compose-file/version-and-name/)
 
-- [在 Docker Compose 中定义服务](https://docs.docker.com/reference/compose-file/services/)
+- [在 Docker Compose 中定义服务](/reference/compose-file/services/)
 
-- [在 Docker Compose 中定义和管理网络](https://docs.docker.com/reference/compose-file/networks/)
+- [在 Docker Compose 中定义和管理网络](/reference/compose-file/networks/)
 
-- [在 Docker Compose 中定义和管理卷](https://docs.docker.com/reference/compose-file/volumes/)
+- [在 Docker Compose 中定义和管理卷](/reference/compose-file/volumes/)
 
-- [Configs 顶级元素](https://docs.docker.com/reference/compose-file/configs/)
+- [Configs 顶级元素](/reference/compose-file/configs/)
 
-- [Secrets](https://docs.docker.com/reference/compose-file/secrets/)
+- [Secrets](/reference/compose-file/secrets/)
 
-- [片段](https://docs.docker.com/reference/compose-file/fragments/)
+- [片段](/reference/compose-file/fragments/)
 
-- [扩展](https://docs.docker.com/reference/compose-file/extension/)
+- [扩展](/reference/compose-file/extension/)
 
-- [插值](https://docs.docker.com/reference/compose-file/interpolation/)
+- [插值](/reference/compose-file/interpolation/)
 
-- [合并 Compose 文件](https://docs.docker.com/reference/compose-file/merge/)
+- [合并 Compose 文件](/reference/compose-file/merge/)
 
-- [使用 include 模块化 Compose 文件](https://docs.docker.com/reference/compose-file/include/)
+- [使用 include 模块化 Compose 文件](/reference/compose-file/include/)
 
-- [模型](https://docs.docker.com/reference/compose-file/models/)
+- [模型](/reference/compose-file/models/)
 
-- [学习在 Docker Compose 中使用配置文件](https://docs.docker.com/reference/compose-file/profiles/)
+- [学习在 Docker Compose 中使用配置文件](/reference/compose-file/profiles/)
 
-- [Compose 构建规范](https://docs.docker.com/reference/compose-file/build/)
+- [Compose 构建规范](/reference/compose-file/build/)
 
-- [Compose 部署规范](https://docs.docker.com/reference/compose-file/deploy/)
+- [Compose 部署规范](/reference/compose-file/deploy/)
 
-- [Compose 开发规范](https://docs.docker.com/reference/compose-file/develop/)
+- [Compose 开发规范](/reference/compose-file/develop/)
 
-- [旧版本](https://docs.docker.com/reference/compose-file/legacy-versions/)
+- [旧版本](/reference/compose-file/legacy-versions/)
 

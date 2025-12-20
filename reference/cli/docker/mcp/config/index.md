@@ -6,13 +6,13 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp config dump](https://docs.docker.com/reference/cli/docker/mcp/config/config_dump/)
+- [docker mcp config dump](/reference/cli/docker/mcp/config/config_dump/)
 
-- [docker mcp config read](https://docs.docker.com/reference/cli/docker/mcp/config/config_read/)
+- [docker mcp config read](/reference/cli/docker/mcp/config/config_read/)
 
-- [docker mcp config reset](https://docs.docker.com/reference/cli/docker/mcp/config/config_reset/)
+- [docker mcp config reset](/reference/cli/docker/mcp/config/config_reset/)
 
-- [docker mcp config restore](https://docs.docker.com/reference/cli/docker/mcp/config/config_restore/)
+- [docker mcp config restore](/reference/cli/docker/mcp/config/config_restore/)
 
-- [docker mcp config write](https://docs.docker.com/reference/cli/docker/mcp/config/config_write/)
+- [docker mcp config write](/reference/cli/docker/mcp/config/config_write/)
 

@@ -271,9 +271,9 @@ Docker 通过其开发者级别的安全功能，帮助您保护本地环境、�
 </div>
 
 
-- [个人访问令牌](https://docs.docker.com/security/access-tokens/)
+- [个人访问令牌](/security/access-tokens/)
 
-- [为您的 Docker 账户启用双因素认证](https://docs.docker.com/security/2fa/)
+- [为您的 Docker 账户启用双因素认证](/security/2fa/)
 
-- [Docker 安全公告](https://docs.docker.com/security/security-announcements/)
+- [Docker 安全公告](/security/security-announcements/)
 

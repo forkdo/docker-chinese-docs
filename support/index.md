@@ -110,7 +110,7 @@ Docker Desktop 支持仅对付费订阅用户提供。
 <li>在
     
   
-  <a class="link" href="https://docs.docker.com/desktop/setup/vm-vdi/">某些 VM 或 VDI 环境</a>中运行（仅限 Docker Business）</li>
+  <a class="link" href="/desktop/setup/vm-vdi/">某些 VM 或 VDI 环境</a>中运行（仅限 Docker Business）</li>
 </ul>
 
       </div>
@@ -158,7 +158,7 @@ Docker Desktop 支持仅对付费订阅用户提供。
       <p>仅在 
     
   
-  <a class="link" href="https://docs.docker.com/desktop/setup/vm-vdi/">VM 或 VDI 环境中运行 Docker Desktop</a> 的支持仅对 Docker Business 客户提供。</p>
+  <a class="link" href="/desktop/setup/vm-vdi/">VM 或 VDI 环境中运行 Docker Desktop</a> 的支持仅对 Docker Business 客户提供。</p>
     </div>
   </blockquote>
 

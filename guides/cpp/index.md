@@ -17,15 +17,15 @@ C++ 入门指南教你如何使用 Docker 创建容器化的 C++ 应用程序。
 
 从容器化一个现有的 C++ 应用程序开始。
 
-- [为您的 C++ 应用程序创建多阶段构建](https://docs.docker.com/guides/cpp/multistage/)
+- [为您的 C++ 应用程序创建多阶段构建](/guides/cpp/multistage/)
 
-- [容器化 C++ 应用程序](https://docs.docker.com/guides/cpp/containerize/)
+- [容器化 C++ 应用程序](/guides/cpp/containerize/)
 
-- [使用容器进行 C++ 开发](https://docs.docker.com/guides/cpp/develop/)
+- [使用容器进行 C++ 开发](/guides/cpp/develop/)
 
-- [为 C++ 应用程序配置 CI/CD](https://docs.docker.com/guides/cpp/configure-ci-cd/)
+- [为 C++ 应用程序配置 CI/CD](/guides/cpp/configure-ci-cd/)
 
-- [测试你的 C++ 部署](https://docs.docker.com/guides/cpp/deploy/)
+- [测试你的 C++ 部署](/guides/cpp/deploy/)
 
-- [C++ Docker 镜像的供应链安全](https://docs.docker.com/guides/cpp/security/)
+- [C++ Docker 镜像的供应链安全](/guides/cpp/security/)
 

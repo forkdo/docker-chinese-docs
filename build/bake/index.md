@@ -50,29 +50,29 @@ targets concurrently.
 To learn how to get started with Bake, head over to the [Bake introduction](./introduction.md).
 
 
-- [Introduction to Bake](https://docs.docker.com/build/bake/introduction/)
+- [Introduction to Bake](/build/bake/introduction/)
 
-- [Bake targets](https://docs.docker.com/build/bake/targets/)
+- [Bake targets](/build/bake/targets/)
 
-- [Inheritance in Bake](https://docs.docker.com/build/bake/inheritance/)
+- [Inheritance in Bake](/build/bake/inheritance/)
 
-- [Variables in Bake](https://docs.docker.com/build/bake/variables/)
+- [Variables in Bake](/build/bake/variables/)
 
-- [Expression evaluation in Bake](https://docs.docker.com/build/bake/expressions/)
+- [Expression evaluation in Bake](/build/bake/expressions/)
 
-- [Functions](https://docs.docker.com/build/bake/funcs/)
+- [Functions](/build/bake/funcs/)
 
-- [Matrix targets](https://docs.docker.com/build/bake/matrices/)
+- [Matrix targets](/build/bake/matrices/)
 
-- [Using Bake with additional contexts](https://docs.docker.com/build/bake/contexts/)
+- [Using Bake with additional contexts](/build/bake/contexts/)
 
-- [Bake file reference](https://docs.docker.com/build/bake/reference/)
+- [Bake file reference](/build/bake/reference/)
 
-- [Bake standard library functions](https://docs.docker.com/build/bake/stdlib/)
+- [Bake standard library functions](/build/bake/stdlib/)
 
-- [Building with Bake from a Compose file](https://docs.docker.com/build/bake/compose-file/)
+- [Building with Bake from a Compose file](/build/bake/compose-file/)
 
-- [Overriding configurations](https://docs.docker.com/build/bake/overrides/)
+- [Overriding configurations](/build/bake/overrides/)
 
-- [Remote Bake file definition](https://docs.docker.com/build/bake/remote-definition/)
+- [Remote Bake file definition](/build/bake/remote-definition/)
 

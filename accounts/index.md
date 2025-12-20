@@ -179,11 +179,11 @@ Docker 账户用于：
 </div>
 
 
-- [创建 Docker 账户](https://docs.docker.com/accounts/create-account/)
+- [创建 Docker 账户](/accounts/create-account/)
 
-- [Docker 帐户常见问题](https://docs.docker.com/accounts/general-faqs/)
+- [Docker 帐户常见问题](/accounts/general-faqs/)
 
-- [管理 Docker 账户](https://docs.docker.com/accounts/manage-account/)
+- [管理 Docker 账户](/accounts/manage-account/)
 
-- [停用 Docker 账户](https://docs.docker.com/accounts/deactivate-user-account/)
+- [停用 Docker 账户](/accounts/deactivate-user-account/)
 

@@ -6,7 +6,7 @@
 https://github.com/docker/compose
 -->
 
-- [docker compose bridge convert](https://docs.docker.com/reference/cli/docker/compose/bridge/convert/)
+- [docker compose bridge convert](/reference/cli/docker/compose/bridge/convert/)
 
-- [docker compose bridge 转换](https://docs.docker.com/reference/cli/docker/compose/bridge/transformations/)
+- [docker compose bridge 转换](/reference/cli/docker/compose/bridge/transformations/)
 

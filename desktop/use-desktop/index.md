@@ -98,17 +98,17 @@ Docker Desktop 还包含一个托盘图标，称为 Docker 菜单
 - **Restart**（重启）
 - **Quit Docker Desktop**（退出 Docker Desktop）
 
-- [探索 Docker Desktop 中的“容器”视图](https://docs.docker.com/desktop/use-desktop/container/)
+- [探索 Docker Desktop 中的“容器”视图](/desktop/use-desktop/container/)
 
-- [探索 Docker Desktop 中的 Images 视图](https://docs.docker.com/desktop/use-desktop/images/)
+- [探索 Docker Desktop 中的 Images 视图](/desktop/use-desktop/images/)
 
-- [在 Docker Desktop 中探索卷视图](https://docs.docker.com/desktop/use-desktop/volumes/)
+- [在 Docker Desktop 中探索卷视图](/desktop/use-desktop/volumes/)
 
-- [探索 Docker Desktop 中的构建视图](https://docs.docker.com/desktop/use-desktop/builds/)
+- [探索 Docker Desktop 中的构建视图](/desktop/use-desktop/builds/)
 
-- [探索 Kubernetes 视图](https://docs.docker.com/desktop/use-desktop/kubernetes/)
+- [探索 Kubernetes 视图](/desktop/use-desktop/kubernetes/)
 
-- [Docker Desktop 的资源节省模式](https://docs.docker.com/desktop/use-desktop/resource-saver/)
+- [Docker Desktop 的资源节省模式](/desktop/use-desktop/resource-saver/)
 
-- [暂停 Docker Desktop](https://docs.docker.com/desktop/use-desktop/pause/)
+- [暂停 Docker Desktop](/desktop/use-desktop/pause/)
 

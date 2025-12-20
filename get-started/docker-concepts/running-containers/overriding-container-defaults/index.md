@@ -201,5 +201,5 @@ $ docker run -e POSTGRES_PASSWORD=secret postgres docker-entrypoint.sh -h localh
 现在您已经了解了如何覆盖容器默认设置，是时候学习如何持久化容器数据了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/running-containers/persisting-container-data/">持久化容器数据</a>
+<a class="button not-prose" href="/get-started/docker-concepts/running-containers/persisting-container-data/">持久化容器数据</a>
 

@@ -204,13 +204,13 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 </div>
 
 
-- [探索 Docker Desktop](https://docs.docker.com/desktop/use-desktop/)
+- [探索 Docker Desktop](/desktop/use-desktop/)
 
-- [卸载 Docker Desktop](https://docs.docker.com/desktop/uninstall/)
+- [卸载 Docker Desktop](/desktop/uninstall/)
 
-- [修复 Mac 上的 Docker Desktop 启动问题](https://docs.docker.com/desktop/cert-revoke-solution/)
+- [修复 Mac 上的 Docker Desktop 启动问题](/desktop/cert-revoke-solution/)
 
-- [Docker Desktop 发布说明](https://docs.docker.com/desktop/release-notes/)
+- [Docker Desktop 发布说明](/desktop/release-notes/)
 
-- [](https://docs.docker.com/desktop/enterprise/)
+- [](/desktop/enterprise/)
 

@@ -202,17 +202,17 @@ Docker 订阅提供 Docker 产品的商业使用许可，包括 Docker Desktop�
 </div>
 
 
-- [设置您的订阅](https://docs.docker.com/subscription/setup/)
+- [设置您的订阅](/subscription/setup/)
 
-- [扩展您的订阅](https://docs.docker.com/subscription/scale/)
+- [扩展您的订阅](/subscription/scale/)
 
-- [管理订阅席位](https://docs.docker.com/subscription/manage-seats/)
+- [管理订阅席位](/subscription/manage-seats/)
 
-- [更改您的订阅](https://docs.docker.com/subscription/change/)
+- [更改您的订阅](/subscription/change/)
 
-- [Docker Desktop 许可协议](https://docs.docker.com/subscription/desktop-license/)
+- [Docker Desktop 许可协议](/subscription/desktop-license/)
 
-- [订阅常见问题](https://docs.docker.com/subscription/faq/)
+- [订阅常见问题](/subscription/faq/)
 
-- [](https://docs.docker.com/subscription/details/)
+- [](/subscription/details/)
 

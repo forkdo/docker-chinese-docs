@@ -254,5 +254,5 @@ volumes:
 接下来，你将学习一些可用于改进 Dockerfile 的最佳实践。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/09_image_best/">镜像构建最佳实践</a>
+<a class="button not-prose" href="/get-started/workshop/09_image_best/">镜像构建最佳实践</a>
 

@@ -9,11 +9,11 @@
 
 首先，让我们从容器化现有 R 应用程序开始。
 
-- [容器化 R 应用程序](https://docs.docker.com/guides/r/containerize/)
+- [容器化 R 应用程序](/guides/r/containerize/)
 
-- [使用容器进行 R 开发](https://docs.docker.com/guides/r/develop/)
+- [使用容器进行 R 开发](/guides/r/develop/)
 
-- [为您的 R 应用程序配置 CI/CD](https://docs.docker.com/guides/r/configure-ci-cd/)
+- [为您的 R 应用程序配置 CI/CD](/guides/r/configure-ci-cd/)
 
-- [测试你的 R 部署](https://docs.docker.com/guides/r/deploy/)
+- [测试你的 R 部署](/guides/r/deploy/)
 

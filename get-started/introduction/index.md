@@ -11,11 +11,11 @@
 - 构建你的第一个镜像
 - 在 Docker Hub 上发布你的镜像
 
-- [获取 Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/)
+- [获取 Docker Desktop](/get-started/introduction/get-docker-desktop/)
 
-- [使用容器进行开发](https://docs.docker.com/get-started/introduction/develop-with-containers/)
+- [使用容器进行开发](/get-started/introduction/develop-with-containers/)
 
-- [构建并推送你的第一个镜像](https://docs.docker.com/get-started/introduction/build-and-push-first-image/)
+- [构建并推送你的第一个镜像](/get-started/introduction/build-and-push-first-image/)
 
-- [下一步](https://docs.docker.com/get-started/introduction/whats-next/)
+- [下一步](/get-started/introduction/whats-next/)
 

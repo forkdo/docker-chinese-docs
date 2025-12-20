@@ -311,5 +311,5 @@ CMD ["node", "./src/index.js"]
 现在您已经了解了如何有效使用 Docker 构建缓存，您可以开始学习多阶段构建。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/">多阶段构建</a>
+<a class="button not-prose" href="/get-started/docker-concepts/building-images/multi-stage-builds/">多阶段构建</a>
 

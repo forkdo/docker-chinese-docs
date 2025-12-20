@@ -75,7 +75,7 @@
 
 了解如何[调用主机二进制文件](../guides/invoke-host-binaries.md)。
 
-- [扩展元数据](https://docs.docker.com/extensions/extensions-sdk/architecture/metadata/)
+- [扩展元数据](/extensions/extensions-sdk/architecture/metadata/)
 
-- [扩展安全性](https://docs.docker.com/extensions/extensions-sdk/architecture/security/)
+- [扩展安全性](/extensions/extensions-sdk/architecture/security/)
 

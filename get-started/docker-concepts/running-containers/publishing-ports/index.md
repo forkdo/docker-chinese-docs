@@ -126,5 +126,5 @@ $ docker run -P nginx
 现在您已经了解了如何发布和暴露端口，接下来可以学习如何使用 `docker run` 命令覆盖容器默认值。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/running-containers/overriding-container-defaults/">覆盖容器默认值</a>
+<a class="button not-prose" href="/get-started/docker-concepts/running-containers/overriding-container-defaults/">覆盖容器默认值</a>
 

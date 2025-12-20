@@ -6,13 +6,13 @@
 https://github.com/docker/cli
 -->
 
-- [docker manifest annotate](https://docs.docker.com/reference/cli/docker/manifest/annotate/)
+- [docker manifest annotate](/reference/cli/docker/manifest/annotate/)
 
-- [docker manifest create](https://docs.docker.com/reference/cli/docker/manifest/create/)
+- [docker manifest create](/reference/cli/docker/manifest/create/)
 
-- [docker manifest inspect](https://docs.docker.com/reference/cli/docker/manifest/inspect/)
+- [docker manifest inspect](/reference/cli/docker/manifest/inspect/)
 
-- [docker manifest push](https://docs.docker.com/reference/cli/docker/manifest/push/)
+- [docker manifest push](/reference/cli/docker/manifest/push/)
 
-- [docker manifest rm](https://docs.docker.com/reference/cli/docker/manifest/rm/)
+- [docker manifest rm](/reference/cli/docker/manifest/rm/)
 

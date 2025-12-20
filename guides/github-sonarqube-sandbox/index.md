@@ -27,9 +27,9 @@
 
 阅读 Docker 的博客文章：[Docker + E2B：构建可信 AI 的未来](https://www.docker.com/blog/docker-e2b-building-the-future-of-trusted-ai/)。
 
-- [构建代码质量检查工作流](https://docs.docker.com/guides/github-sonarqube-sandbox/workflow/)
+- [构建代码质量检查工作流](/guides/github-sonarqube-sandbox/workflow/)
 
-- [自定义代码质量检查工作流](https://docs.docker.com/guides/github-sonarqube-sandbox/customize/)
+- [自定义代码质量检查工作流](/guides/github-sonarqube-sandbox/customize/)
 
-- [故障排除代码质量工作流](https://docs.docker.com/guides/github-sonarqube-sandbox/troubleshoot/)
+- [故障排除代码质量工作流](/guides/github-sonarqube-sandbox/troubleshoot/)
 

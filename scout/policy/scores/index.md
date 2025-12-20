@@ -150,7 +150,7 @@ Docker Scout 健康评分提供对 Docker Hub 上镜像的安全评估和整体�
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/scout/images/score-badges-repolist.png"
+    src="/scout/images/score-badges-repolist.png"
     alt="仓库健康评分"
     
     
@@ -170,7 +170,7 @@ Docker Scout 健康评分提供对 Docker Hub 上镜像的安全评估和整体�
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/scout/images/score-badges-repolist.png"
+        src="/scout/images/score-badges-repolist.png"
         alt="仓库健康评分"
       />
     </div>
@@ -208,7 +208,7 @@ Docker Scout 健康评分提供对 Docker Hub 上镜像的安全评估和整体�
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/scout/images/score-badges-dd.png"
+    src="/scout/images/score-badges-dd.png"
     alt="仓库健康评分"
     
     
@@ -228,7 +228,7 @@ Docker Scout 健康评分提供对 Docker Hub 上镜像的安全评估和整体�
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/scout/images/score-badges-dd.png"
+        src="/scout/images/score-badges-dd.png"
         alt="仓库健康评分"
       />
     </div>

@@ -110,7 +110,7 @@
 <li>验证您的<strong>电子邮箱</strong>和<strong>全名</strong>。</li>
 <li>如果您的银行在列表中，请选择您的银行名称。</li>
 <li>如果您的银行不在列表中，请选择<strong>搜索您的银行</strong>。</li>
-<li>要验证银行账户，请参阅<a class="link" href="https://docs.docker.com/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</li>
+<li>要验证银行账户，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</li>
 </ul>
 </li>
 </ul>
@@ -246,7 +246,7 @@
 <li>验证您的<strong>电子邮箱</strong>和<strong>全名</strong>。</li>
 <li>如果您的银行在列表中，请选择您的银行名称。</li>
 <li>如果您的银行不在列表中，请选择<strong>搜索您的银行</strong>。</li>
-<li>要验证银行账户，请参阅<a class="link" href="https://docs.docker.com/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</li>
+<li>要验证银行账户，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</li>
 </ul>
 </li>
 </ul>

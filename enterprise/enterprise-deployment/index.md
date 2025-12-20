@@ -144,17 +144,17 @@ Docker Desktop 支持专为企业级 IT 环境设计的可扩展部署选项。�
 </div>
 
 
-- [MSI 安装程序](https://docs.docker.com/enterprise/enterprise-deployment/msi-install-and-configure/)
+- [MSI 安装程序](/enterprise/enterprise-deployment/msi-install-and-configure/)
 
-- [PKG 安装程序](https://docs.docker.com/enterprise/enterprise-deployment/pkg-install-and-configure/)
+- [PKG 安装程序](/enterprise/enterprise-deployment/pkg-install-and-configure/)
 
-- [在 Windows 上通过 Microsoft Store 安装 Docker Desktop](https://docs.docker.com/enterprise/enterprise-deployment/ms-store/)
+- [在 Windows 上通过 Microsoft Store 安装 Docker Desktop](/enterprise/enterprise-deployment/ms-store/)
 
-- [使用 Intune 部署](https://docs.docker.com/enterprise/enterprise-deployment/use-intune/)
+- [使用 Intune 部署](/enterprise/enterprise-deployment/use-intune/)
 
-- [使用 Jamf Pro 部署](https://docs.docker.com/enterprise/enterprise-deployment/use-jamf-pro/)
+- [使用 Jamf Pro 部署](/enterprise/enterprise-deployment/use-jamf-pro/)
 
-- [Microsoft Dev Box 中的 Docker Desktop](https://docs.docker.com/enterprise/enterprise-deployment/dev-box/)
+- [Microsoft Dev Box 中的 Docker Desktop](/enterprise/enterprise-deployment/dev-box/)
 
-- [企业部署常见问题](https://docs.docker.com/enterprise/enterprise-deployment/faq/)
+- [企业部署常见问题](/enterprise/enterprise-deployment/faq/)
 

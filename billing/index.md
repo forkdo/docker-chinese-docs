@@ -173,17 +173,17 @@
 </div>
 
 
-- [添加或更新支付方式](https://docs.docker.com/billing/payment-method/)
+- [添加或更新支付方式](/billing/payment-method/)
 
-- [管理您的账单信息](https://docs.docker.com/billing/details/)
+- [管理您的账单信息](/billing/details/)
 
-- [Docker 计费使用 3D Secure 身份验证](https://docs.docker.com/billing/3d-secure/)
+- [Docker 计费使用 3D Secure 身份验证](/billing/3d-secure/)
 
-- [发票和账单历史记录](https://docs.docker.com/billing/history/)
+- [发票和账单历史记录](/billing/history/)
 
-- [提交免税证明](https://docs.docker.com/billing/tax-certificate/)
+- [提交免税证明](/billing/tax-certificate/)
 
-- [更改账单周期](https://docs.docker.com/billing/cycle/)
+- [更改账单周期](/billing/cycle/)
 
-- [计费常见问题](https://docs.docker.com/billing/faqs/)
+- [计费常见问题](/billing/faqs/)
 

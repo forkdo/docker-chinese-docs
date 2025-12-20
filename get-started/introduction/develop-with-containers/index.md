@@ -147,5 +147,5 @@ Docker Desktop 实现了这一切以及更多功能。一旦您开始用容器�
 应用程序更新后，您就可以学习如何将其打包为容器镜像并推送到注册表，特别是 Docker Hub。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/introduction/build-and-push-first-image/">构建并推送您的第一个镜像</a>
+<a class="button not-prose" href="/get-started/introduction/build-and-push-first-image/">构建并推送您的第一个镜像</a>
 

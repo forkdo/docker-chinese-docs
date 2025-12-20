@@ -57,5 +57,5 @@
 现在您的 swarm 包含了一个管理节点和两个工作节点。接下来，您将部署一个服务。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/deploy-service/">部署服务</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/deploy-service/">部署服务</a>
 

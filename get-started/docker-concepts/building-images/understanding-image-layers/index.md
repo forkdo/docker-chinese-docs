@@ -200,5 +200,5 @@
 正如前面所暗示的，大多数镜像构建并不使用 `docker container commit`。相反，您将使用 Dockerfile，它会为您自动执行这些步骤。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/">编写 Dockerfile</a>
+<a class="button not-prose" href="/get-started/docker-concepts/building-images/writing-a-dockerfile/">编写 Dockerfile</a>
 

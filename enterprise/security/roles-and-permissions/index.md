@@ -147,7 +147,7 @@ Docker 提供两种角色类型以满足不同的组织需求：
 </div>
 
 
-- [核心角色](https://docs.docker.com/enterprise/security/roles-and-permissions/core-roles/)
+- [核心角色](/enterprise/security/roles-and-permissions/core-roles/)
 
-- [自定义角色](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/)
+- [自定义角色](/enterprise/security/roles-and-permissions/custom-roles/)
 

@@ -164,5 +164,5 @@ $ docker rm -f new-db
 现在您已经了解了如何持久化容器数据，是时候学习如何与容器共享本地文件了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/running-containers/sharing-local-files/">与容器共享本地文件</a>
+<a class="button not-prose" href="/get-started/docker-concepts/running-containers/sharing-local-files/">与容器共享本地文件</a>
 

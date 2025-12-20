@@ -14,13 +14,13 @@
 
 从构建您的第一个 Rust 镜像开始。
 
-- [构建您的 Rust 镜像](https://docs.docker.com/guides/rust/build-images/)
+- [构建您的 Rust 镜像](/guides/rust/build-images/)
 
-- [以容器方式运行你的 Rust 镜像](https://docs.docker.com/guides/rust/run-containers/)
+- [以容器方式运行你的 Rust 镜像](/guides/rust/run-containers/)
 
-- [开发你的 Rust 应用程序](https://docs.docker.com/guides/rust/develop/)
+- [开发你的 Rust 应用程序](/guides/rust/develop/)
 
-- [为您的 Rust 应用程序配置 CI/CD](https://docs.docker.com/guides/rust/configure-ci-cd/)
+- [为您的 Rust 应用程序配置 CI/CD](/guides/rust/configure-ci-cd/)
 
-- [测试你的 Rust 部署](https://docs.docker.com/guides/rust/deploy/)
+- [测试你的 Rust 部署](/guides/rust/deploy/)
 

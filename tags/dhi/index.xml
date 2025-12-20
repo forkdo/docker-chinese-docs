@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker 加固镜像 on Docker Docs</title>
-    <link>https://docs.docker.com/tags/dhi/</link>
+    <link>/tags/dhi/</link>
     <description>Recent content in Docker 加固镜像 on Docker Docs</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://docs.docker.com/tags/dhi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/dhi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从 Docker 官方镜像迁移到 DHI</title>
-      <link>https://docs.docker.com/guides/dhi-from-doi/</link>
+      <link>/guides/dhi-from-doi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/dhi-from-doi/</guid>
+      <guid>/guides/dhi-from-doi/</guid>
       <description>从 Docker 官方镜像迁移到 Docker Hardened Images 的分步指南</description>
     </item>
     <item>
       <title>从 Wolfi 迁移到 DHI</title>
-      <link>https://docs.docker.com/guides/dhi-from-wolfi/</link>
+      <link>/guides/dhi-from-wolfi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/dhi-from-wolfi/</guid>
+      <guid>/guides/dhi-from-wolfi/</guid>
       <description>从 Wolfi 迁移到 Docker Hardened Images 的分步指南</description>
     </item>
     <item>
       <title>将 Go 应用迁移到 DHI</title>
-      <link>https://docs.docker.com/guides/dhi-go-example/</link>
+      <link>/guides/dhi-go-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/dhi-go-example/</guid>
+      <guid>/guides/dhi-go-example/</guid>
       <description>展示如何将 Go 应用程序迁移到 Docker Hardened Images 的示例</description>
     </item>
     <item>
       <title>将 Node.js 应用迁移到 DHI</title>
-      <link>https://docs.docker.com/guides/dhi-nodejs-example/</link>
+      <link>/guides/dhi-nodejs-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/dhi-nodejs-example/</guid>
+      <guid>/guides/dhi-nodejs-example/</guid>
       <description>示例展示如何将 Node.js 应用程序迁移到 Docker Hardened Images</description>
     </item>
     <item>
       <title>将 Python 应用迁移到 DHI</title>
-      <link>https://docs.docker.com/guides/dhi-python-example/</link>
+      <link>/guides/dhi-python-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/dhi-python-example/</guid>
+      <guid>/guides/dhi-python-example/</guid>
       <description>示例：展示如何将 Python 应用程序迁移到 Docker Hardened Images</description>
     </item>
   </channel>

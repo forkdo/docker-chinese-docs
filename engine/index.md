@@ -266,21 +266,21 @@ CLI 使用 [Docker API](/reference/api/engine/_index.md) 通过脚本或直接 C
 
 在大型企业（员工超过 250 人或年收入超过 1000 万美元）中通过 Docker Desktop 获得的 Docker Engine 的商业使用，需要[付费订阅](https://www.docker.com/pricing/)。Apache 许可证 2.0 版。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
 
-- [安装 Docker Engine](https://docs.docker.com/engine/install/)
+- [安装 Docker Engine](/engine/install/)
 
-- [存储](https://docs.docker.com/engine/storage/)
+- [存储](/engine/storage/)
 
-- [网络概述](https://docs.docker.com/engine/network/)
+- [网络概述](/engine/network/)
 
-- [Docker 守护进程配置概述](https://docs.docker.com/engine/daemon/)
+- [Docker 守护进程配置概述](/engine/daemon/)
 
-- [查看容器日志](https://docs.docker.com/engine/logging/)
+- [查看容器日志](/engine/logging/)
 
-- [Swarm 模式](https://docs.docker.com/engine/swarm/)
+- [Swarm 模式](/engine/swarm/)
 
-- [Docker Engine 安全](https://docs.docker.com/engine/security/)
+- [Docker Engine 安全](/engine/security/)
 
-- [Deprecated Docker Engine features](https://docs.docker.com/engine/deprecated/)
+- [Deprecated Docker Engine features](/engine/deprecated/)
 
-- [Docker Engine managed plugin system](https://docs.docker.com/engine/extend/)
+- [Docker Engine managed plugin system](/engine/extend/)
 

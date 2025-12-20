@@ -221,9 +221,9 @@ $ ln -s /Applications/Docker.app/Contents/Resources/cli-plugins/docker-model ~/.
 
 [开始使用 DMR](get-started.md)
 
-- [DMR 入门指南](https://docs.docker.com/ai/model-runner/get-started/)
+- [DMR 入门指南](/ai/model-runner/get-started/)
 
-- [DMR REST API](https://docs.docker.com/ai/model-runner/api-reference/)
+- [DMR REST API](/ai/model-runner/api-reference/)
 
-- [DMR 示例](https://docs.docker.com/ai/model-runner/examples/)
+- [DMR 示例](/ai/model-runner/examples/)
 

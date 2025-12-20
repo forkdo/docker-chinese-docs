@@ -6,5 +6,5 @@
 https://github.com/docker/scout-cli
 -->
 
-- [docker scout vex get](https://docs.docker.com/reference/cli/docker/scout/vex/get/)
+- [docker scout vex get](/reference/cli/docker/scout/vex/get/)
 

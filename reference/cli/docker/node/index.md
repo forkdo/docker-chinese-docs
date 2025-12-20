@@ -6,17 +6,17 @@
 https://github.com/docker/cli
 -->
 
-- [docker node demote](https://docs.docker.com/reference/cli/docker/node/demote/)
+- [docker node demote](/reference/cli/docker/node/demote/)
 
-- [docker node inspect](https://docs.docker.com/reference/cli/docker/node/inspect/)
+- [docker node inspect](/reference/cli/docker/node/inspect/)
 
-- [docker node ls](https://docs.docker.com/reference/cli/docker/node/ls/)
+- [docker node ls](/reference/cli/docker/node/ls/)
 
-- [docker node promote](https://docs.docker.com/reference/cli/docker/node/promote/)
+- [docker node promote](/reference/cli/docker/node/promote/)
 
-- [docker node ps](https://docs.docker.com/reference/cli/docker/node/ps/)
+- [docker node ps](/reference/cli/docker/node/ps/)
 
-- [docker node rm](https://docs.docker.com/reference/cli/docker/node/rm/)
+- [docker node rm](/reference/cli/docker/node/rm/)
 
-- [docker node update](https://docs.docker.com/reference/cli/docker/node/update/)
+- [docker node update](/reference/cli/docker/node/update/)
 

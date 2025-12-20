@@ -187,13 +187,13 @@ Status: Downloaded newer image for registry.example.com/user/image@sha256:ee7491
 * [管理内容信任的密钥](trust_key_mng.md)
 * [在内容信任沙盒中体验](trust_sandbox.md)
 
-- [使用 Compose 部署 Notary Server](https://docs.docker.com/engine/security/trust/deploying_notary/)
+- [使用 Compose 部署 Notary Server](/engine/security/trust/deploying_notary/)
 
-- [使用内容信任实现自动化](https://docs.docker.com/engine/security/trust/trust_automation/)
+- [使用内容信任实现自动化](/engine/security/trust/trust_automation/)
 
-- [内容信任的委托](https://docs.docker.com/engine/security/trust/trust_delegation/)
+- [内容信任的委托](/engine/security/trust/trust_delegation/)
 
-- [在内容信任沙盒中进行操作](https://docs.docker.com/engine/security/trust/trust_sandbox/)
+- [在内容信任沙盒中进行操作](/engine/security/trust/trust_sandbox/)
 
-- [管理内容信任的密钥](https://docs.docker.com/engine/security/trust/trust_key_mng/)
+- [管理内容信任的密钥](/engine/security/trust/trust_key_mng/)
 

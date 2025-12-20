@@ -435,7 +435,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/introduction/images/install-docker-extension.webp"
+    src="/get-started/introduction/images/install-docker-extension.webp"
     alt="VS Code 扩展市场的截图"
     
     
@@ -455,7 +455,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/introduction/images/install-docker-extension.webp"
+        src="/get-started/introduction/images/install-docker-extension.webp"
         alt="VS Code 扩展市场的截图"
       />
     </div>
@@ -483,7 +483,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/introduction/images/clone-the-repo.webp"
+    src="/get-started/introduction/images/clone-the-repo.webp"
     alt="显示如何克隆仓库的 VS Code 截图"
     
     
@@ -505,7 +505,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/introduction/images/clone-the-repo.webp"
+        src="/get-started/introduction/images/clone-the-repo.webp"
         alt="显示如何克隆仓库的 VS Code 截图"
       />
     </div>
@@ -533,7 +533,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/introduction/images/build-vscode-menu-item.webp"
+    src="/get-started/introduction/images/build-vscode-menu-item.webp"
     alt="显示右键菜单和“构建镜像”菜单项的 VS Code 截图"
     
     
@@ -555,7 +555,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/introduction/images/build-vscode-menu-item.webp"
+        src="/get-started/introduction/images/build-vscode-menu-item.webp"
         alt="显示右键菜单和“构建镜像”菜单项的 VS Code 截图"
       />
     </div>
@@ -598,7 +598,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/introduction/images/build-vscode-push-image.webp"
+    src="/get-started/introduction/images/build-vscode-push-image.webp"
     alt="显示 Docker 扩展和右键菜单以推送镜像的截图"
     
     
@@ -618,7 +618,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/introduction/images/build-vscode-push-image.webp"
+        src="/get-started/introduction/images/build-vscode-push-image.webp"
         alt="显示 Docker 扩展和右键菜单以推送镜像的截图"
       />
     </div>
@@ -656,5 +656,5 @@
 现在你已经构建了一个镜像，是时候讨论为什么作为开发者你应该更多地了解 Docker，以及它将如何帮助你的日常任务。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/introduction/whats-next/">下一步</a>
+<a class="button not-prose" href="/get-started/introduction/whats-next/">下一步</a>
 

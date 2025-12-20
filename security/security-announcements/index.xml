@@ -2,67 +2,67 @@
   <channel><title>Docker Docs - Security Announcements</title>
     <description>Docker security announcements and updates</description>
 
-    <link>https://docs.docker.com/security/security-announcements/</link>
+    <link>/security/security-announcements/</link>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Dec 2025 12:34:32 +0800</lastBuildDate>
-    <atom:link href="https://docs.docker.com/security/security-announcements/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Sat, 20 Dec 2025 12:48:54 +0800</lastBuildDate>
+    <atom:link href="/security/security-announcements/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>Docker Desktop 4.44.3 security update: CVE-2025-9074</title>
-      <link>https://docs.docker.com/security/security-announcements/#docker-desktop-4443-security-update-cve-2025-9074</link>
+      <link>/security/security-announcements/#docker-desktop-4443-security-update-cve-2025-9074</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
       <guid>security-docker-desktop-4443-security-update-cve-2025-9074</guid>
       <description>&lt;p&gt;&lt;strong&gt;Security fix for CVE-2025-9074&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Fixed CVE-2025-9074 where a malicious container running on Docker Desktop could access the Docker Engine and launch additional containers without requiring the Docker socket to be mounted. This could allow unauthorized access to user files on the host system. Enhanced Container Isolation (ECI) does not mitigate this vulnerability.&lt;/p&gt;</description>
     </item><item>
       <title>Docker Desktop 4.44.0 security update: CVE-2025-23266</title>
-      <link>https://docs.docker.com/security/security-announcements/#docker-desktop-4440-security-update-cve-2025-23266</link>
+      <link>/security/security-announcements/#docker-desktop-4440-security-update-cve-2025-23266</link>
       <pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate>
       <guid>security-docker-desktop-4440-security-update-cve-2025-23266</guid>
       <description>&lt;p&gt;&lt;strong&gt;NVIDIA Container Toolkit vulnerability awareness&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;CVE-2025-23266 is a critical vulnerability affecting the NVIDIA Container Toolkit in CDI mode up to version 1.17.7. Docker Desktop includes version 1.17.8, which is not impacted. However, older versions of Docker Desktop that bundled earlier toolkit versions may be affected if CDI mode was manually enabled. Upgrade to Docker Desktop 4.44 or later to ensure you&#39;re using the patched version.&lt;/p&gt;</description>
     </item><item>
       <title>Docker Desktop 4.43.0 security update: CVE-2025-6587</title>
-      <link>https://docs.docker.com/security/security-announcements/#docker-desktop-4430-security-update-cve-2025-6587</link>
+      <link>/security/security-announcements/#docker-desktop-4430-security-update-cve-2025-6587</link>
       <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
       <guid>security-docker-desktop-4430-security-update-cve-2025-6587</guid>
       <description>&lt;p&gt;&lt;strong&gt;Security fix for CVE-2025-6587&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Fixed CVE-2025-6587 where sensitive system environment variables were included in Docker Desktop diagnostic logs, allowing for potential secret exposure.&lt;/p&gt;</description>
     </item><item>
       <title>Docker Desktop 4.41.0 Security Update: CVE-2025-3224, CVE-2025-4095, and CVE-2025-3911</title>
-      <link>https://docs.docker.com/security/security-announcements/#docker-desktop-4410-security-update-cve-2025-3224-cve-2025-4095-and-cve-2025-3911</link>
+      <link>/security/security-announcements/#docker-desktop-4410-security-update-cve-2025-3224-cve-2025-4095-and-cve-2025-3911</link>
       <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
       <guid>security-docker-desktop-4410-security-update-cve-2025-3224-cve-2025-4095-and-cve-2025-3911</guid>
       <description>&lt;p&gt;&lt;strong&gt;Three security vulnerabilities fixed&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Three vulnerabilities in Docker Desktop were fixed on April 28 in the 4.41.0 release: CVE-2025-3224 (elevation of privilege during updates), CVE-2025-4095 (Registry Access Management policy bypass on macOS), and CVE-2025-3911 (sensitive information exposure in log files). We strongly encourage updating to Docker Desktop 4.41.0.&lt;/p&gt;</description>
     </item><item>
       <title>Docker Desktop 4.34.2 Security Update: CVE-2024-8695 and CVE-2024-8696</title>
-      <link>https://docs.docker.com/security/security-announcements/#</link>
+      <link>/security/security-announcements/#</link>
       <pubDate>Fri, 13 Sep 2024 00:00:00 +0000</pubDate>
       <guid>security-</guid>
       <description>&lt;p&gt;&lt;strong&gt;Docker Extensions RCE vulnerabilities fixed&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Two remote code execution (RCE) vulnerabilities in Docker Desktop related to Docker Extensions were reported by Cure53 and fixed on September 12 in the 4.34.2 release. CVE-2024-8695 (Critical) and CVE-2024-8696 (High) could be abused by malicious extensions. No existing extensions exploiting the vulnerabilities were found. We strongly encourage updating to Docker Desktop 4.34.2.&lt;/p&gt;</description>
     </item><item>
       <title>Deprecation of password logins on CLI when SSO enforced</title>
-      <link>https://docs.docker.com/security/security-announcements/#deprecation-of-password-logins-on-cli-when-sso-enforced</link>
+      <link>/security/security-announcements/#deprecation-of-password-logins-on-cli-when-sso-enforced</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
       <guid>security-deprecation-of-password-logins-on-cli-when-sso-enforced</guid>
       <description>&lt;p&gt;&lt;strong&gt;CLI password authentication ending for SSO-enforced organizations&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;When SSO enforcement was first introduced, Docker provided a grace period to continue using passwords on the Docker CLI. On September 16, 2024, this grace period will end and passwords will no longer authenticate to Docker Hub via the Docker CLI when SSO is enforced. Affected users must switch to Personal Access Tokens (PATs) to continue signing in.&lt;/p&gt;</description>
     </item><item>
       <title>SOC 2 Type 2 attestation and ISO 27001 certification</title>
-      <link>https://docs.docker.com/security/security-announcements/#soc-2-type-2-attestation-and-iso-27001-certification</link>
+      <link>/security/security-announcements/#soc-2-type-2-attestation-and-iso-27001-certification</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
       <guid>security-soc-2-type-2-attestation-and-iso-27001-certification</guid>
       <description>&lt;p&gt;&lt;strong&gt;Docker achieves security certifications&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Docker has received SOC 2 Type 2 attestation and ISO 27001 certification with no exceptions or major non-conformities. Security is a fundamental pillar to Docker&#39;s operations, and these certifications demonstrate Docker&#39;s ongoing commitment to security for our user base.&lt;/p&gt;</description>
     </item><item>
       <title>Docker Security Advisory: Multiple Vulnerabilities in runc, BuildKit, and Moby</title>
-      <link>https://docs.docker.com/security/security-announcements/#docker-security-advisory-multiple-vulnerabilities-in-runc-buildkit-and-moby</link>
+      <link>/security/security-announcements/#docker-security-advisory-multiple-vulnerabilities-in-runc-buildkit-and-moby</link>
       <pubDate>Fri, 02 Feb 2024 00:00:00 +0000</pubDate>
       <guid>security-docker-security-advisory-multiple-vulnerabilities-in-runc-buildkit-and-moby</guid>
       <description>&lt;p&gt;&lt;strong&gt;Critical container ecosystem vulnerabilities addressed&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Security researchers at Snyk Labs identified four security vulnerabilities: CVE-2024-21626 (runc), CVE-2024-23651, CVE-2024-23652, CVE-2024-23653 (BuildKit), plus CVE-2024-23650 and CVE-2024-24557. Patched versions were published January 31 with Docker Desktop 4.27.1 released February 1. Update to runc ≥1.1.12, BuildKit ≥0.12.5, Moby ≥25.0.2/24.0.9, and Docker Desktop ≥4.27.1.&lt;/p&gt;</description>
     </item><item>
       <title>Text4Shell CVE-2022-42889</title>
-      <link>https://docs.docker.com/security/security-announcements/#text4shell-cve-2022-42889</link>
+      <link>/security/security-announcements/#text4shell-cve-2022-42889</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       <guid>security-text4shell-cve-2022-42889</guid>
       <description>&lt;p&gt;&lt;strong&gt;Apache Commons Text library vulnerability&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;CVE-2022-42889 discovered in Apache Commons Text library. Versions up to but not including 1.10.0 are affected. Docker Hub security scans after October 21, 2021 correctly identify this CVE. Several Docker Official Images contained vulnerable versions and have been updated: bonita, Couchbase, Geonetwork, neo4j, sliverpeas, solr, xwiki.&lt;/p&gt;</description>
     </item><item>
       <title>Log4j 2 CVE-2021-44228</title>
-      <link>https://docs.docker.com/security/security-announcements/#log4j-2-cve-2021-44228</link>
+      <link>/security/security-announcements/#log4j-2-cve-2021-44228</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       <guid>security-log4j-2-cve-2021-44228</guid>
       <description>&lt;p&gt;&lt;strong&gt;Critical Log4j 2 remote code execution vulnerability&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;The Log4j 2 CVE-2021-44228 vulnerability allows remote code execution from easily available contexts. Vulnerable versions are 2.0 to 2.14.1 inclusive. First fixed version is 2.15.0, but 2.17.0 recommended for complete fix due to CVE-2021-45046 and CVE-2021-45105. Docker Hub scans after December 13, 2021 correctly identify Log4j 2 CVEs. Multiple Docker Official Images were affected and updated.&lt;/p&gt;</description>

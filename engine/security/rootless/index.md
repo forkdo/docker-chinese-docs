@@ -269,7 +269,7 @@ Server:
 
 如果您遇到错误，请参阅[故障排除](./troubleshoot.md)。
 
-- [使用技巧](https://docs.docker.com/engine/security/rootless/tips/)
+- [使用技巧](/engine/security/rootless/tips/)
 
-- [问题排查](https://docs.docker.com/engine/security/rootless/troubleshoot/)
+- [问题排查](/engine/security/rootless/troubleshoot/)
 

@@ -8,9 +8,9 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp oauth authorize](https://docs.docker.com/reference/cli/docker/mcp/oauth/oauth_authorize/)
+- [docker mcp oauth authorize](/reference/cli/docker/mcp/oauth/oauth_authorize/)
 
-- [docker mcp oauth ls](https://docs.docker.com/reference/cli/docker/mcp/oauth/oauth_ls/)
+- [docker mcp oauth ls](/reference/cli/docker/mcp/oauth/oauth_ls/)
 
-- [docker mcp oauth revoke](https://docs.docker.com/reference/cli/docker/mcp/oauth/oauth_revoke/)
+- [docker mcp oauth revoke](/reference/cli/docker/mcp/oauth/oauth_revoke/)
 

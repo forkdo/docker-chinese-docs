@@ -8,11 +8,11 @@
 https://github.com/docker/cli
 -->
 
-- [docker config create](https://docs.docker.com/reference/cli/docker/config/create/)
+- [docker config create](/reference/cli/docker/config/create/)
 
-- [docker config inspect](https://docs.docker.com/reference/cli/docker/config/inspect/)
+- [docker config inspect](/reference/cli/docker/config/inspect/)
 
-- [docker config ls](https://docs.docker.com/reference/cli/docker/config/ls/)
+- [docker config ls](/reference/cli/docker/config/ls/)
 
-- [docker config rm](https://docs.docker.com/reference/cli/docker/config/rm/)
+- [docker config rm](/reference/cli/docker/config/rm/)
 

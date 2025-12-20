@@ -22,11 +22,11 @@ Bun 入门指南教你如何使用 Docker 创建容器化的 Bun 应用程序。
 
 首先，将一个现有的 Bun 应用程序容器化。
 
-- [容器化 Bun 应用程序](https://docs.docker.com/guides/bun/containerize/)
+- [容器化 Bun 应用程序](/guides/bun/containerize/)
 
-- [为 Bun 开发使用容器](https://docs.docker.com/guides/bun/develop/)
+- [为 Bun 开发使用容器](/guides/bun/develop/)
 
-- [为你的 Bun 应用程序配置 CI/CD](https://docs.docker.com/guides/bun/configure-ci-cd/)
+- [为你的 Bun 应用程序配置 CI/CD](/guides/bun/configure-ci-cd/)
 
-- [测试你的 Bun 部署](https://docs.docker.com/guides/bun/deploy/)
+- [测试你的 Bun 部署](/guides/bun/deploy/)
 

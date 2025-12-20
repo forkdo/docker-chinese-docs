@@ -255,19 +255,19 @@ MCP Gateway
 </div>
 
 
-- [Docker MCP Toolkit 入门指南](https://docs.docker.com/ai/mcp-catalog-and-toolkit/get-started/)
+- [Docker MCP Toolkit 入门指南](/ai/mcp-catalog-and-toolkit/get-started/)
 
-- [Docker MCP 目录](https://docs.docker.com/ai/mcp-catalog-and-toolkit/catalog/)
+- [Docker MCP 目录](/ai/mcp-catalog-and-toolkit/catalog/)
 
-- [Docker MCP Toolkit](https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/)
+- [Docker MCP Toolkit](/ai/mcp-catalog-and-toolkit/toolkit/)
 
-- [动态 MCP](https://docs.docker.com/ai/mcp-catalog-and-toolkit/dynamic-mcp/)
+- [动态 MCP](/ai/mcp-catalog-and-toolkit/dynamic-mcp/)
 
-- [MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/)
+- [MCP Gateway](/ai/mcp-catalog-and-toolkit/mcp-gateway/)
 
-- [Docker Hub MCP 服务器](https://docs.docker.com/ai/mcp-catalog-and-toolkit/hub-mcp/)
+- [Docker Hub MCP 服务器](/ai/mcp-catalog-and-toolkit/hub-mcp/)
 
-- [安全常见问题解答](https://docs.docker.com/ai/mcp-catalog-and-toolkit/faqs/)
+- [安全常见问题解答](/ai/mcp-catalog-and-toolkit/faqs/)
 
-- [E2B 沙盒](https://docs.docker.com/ai/mcp-catalog-and-toolkit/e2b-sandboxes/)
+- [E2B 沙盒](/ai/mcp-catalog-and-toolkit/e2b-sandboxes/)
 

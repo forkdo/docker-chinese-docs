@@ -268,23 +268,23 @@ Docker 组织是一个由团队和仓库组成的集合，并采用集中式管�
 </div>
 
 
-- [创建您的组织](https://docs.docker.com/admin/organization/orgs/)
+- [创建您的组织](/admin/organization/orgs/)
 
-- [为您的组织完成上车流程](https://docs.docker.com/admin/organization/onboard/)
+- [为您的组织完成上车流程](/admin/organization/onboard/)
 
-- [管理组织成员](https://docs.docker.com/admin/organization/members/)
+- [管理组织成员](/admin/organization/members/)
 
-- [将账户转换为组织](https://docs.docker.com/admin/organization/convert-account/)
+- [将账户转换为组织](/admin/organization/convert-account/)
 
-- [创建和管理团队](https://docs.docker.com/admin/organization/manage-a-team/)
+- [创建和管理团队](/admin/organization/manage-a-team/)
 
-- [停用组织](https://docs.docker.com/admin/organization/deactivate-account/)
+- [停用组织](/admin/organization/deactivate-account/)
 
-- [管理 Docker 产品](https://docs.docker.com/admin/organization/manage-products/)
+- [管理 Docker 产品](/admin/organization/manage-products/)
 
-- [活动日志](https://docs.docker.com/admin/organization/activity-logs/)
+- [活动日志](/admin/organization/activity-logs/)
 
-- [组织信息](https://docs.docker.com/admin/organization/general-settings/)
+- [组织信息](/admin/organization/general-settings/)
 
-- [洞察 (Insights)](https://docs.docker.com/admin/organization/insights/)
+- [洞察 (Insights)](/admin/organization/insights/)
 

@@ -6,75 +6,75 @@
 https://github.com/docker/cli
 -->
 
-- [](https://docs.docker.com/reference/cli/docker/inspect/)
+- [](/reference/cli/docker/inspect/)
 
-- [](https://docs.docker.com/reference/cli/docker/pull/)
+- [](/reference/cli/docker/pull/)
 
-- [](https://docs.docker.com/reference/cli/docker/push/)
+- [](/reference/cli/docker/push/)
 
-- [docker build (legacy builder)](https://docs.docker.com/reference/cli/docker/build-legacy/)
+- [docker build (legacy builder)](/reference/cli/docker/build-legacy/)
 
-- [docker builder](https://docs.docker.com/reference/cli/docker/builder/)
+- [docker builder](/reference/cli/docker/builder/)
 
-- [docker buildx](https://docs.docker.com/reference/cli/docker/buildx/)
+- [docker buildx](/reference/cli/docker/buildx/)
 
-- [docker checkpoint](https://docs.docker.com/reference/cli/docker/checkpoint/)
+- [docker checkpoint](/reference/cli/docker/checkpoint/)
 
-- [docker compose](https://docs.docker.com/reference/cli/docker/compose/)
+- [docker compose](/reference/cli/docker/compose/)
 
-- [docker config](https://docs.docker.com/reference/cli/docker/config/)
+- [docker config](/reference/cli/docker/config/)
 
-- [docker container](https://docs.docker.com/reference/cli/docker/container/)
+- [docker container](/reference/cli/docker/container/)
 
-- [docker context](https://docs.docker.com/reference/cli/docker/context/)
+- [docker context](/reference/cli/docker/context/)
 
-- [docker debug](https://docs.docker.com/reference/cli/docker/debug/)
+- [docker debug](/reference/cli/docker/debug/)
 
-- [docker desktop (Beta)](https://docs.docker.com/reference/cli/docker/desktop/)
+- [docker desktop (Beta)](/reference/cli/docker/desktop/)
 
-- [docker image](https://docs.docker.com/reference/cli/docker/image/)
+- [docker image](/reference/cli/docker/image/)
 
-- [docker init](https://docs.docker.com/reference/cli/docker/init/)
+- [docker init](/reference/cli/docker/init/)
 
-- [docker logout](https://docs.docker.com/reference/cli/docker/logout/)
+- [docker logout](/reference/cli/docker/logout/)
 
-- [docker manifest](https://docs.docker.com/reference/cli/docker/manifest/)
+- [docker manifest](/reference/cli/docker/manifest/)
 
-- [docker mcp](https://docs.docker.com/reference/cli/docker/mcp/)
+- [docker mcp](/reference/cli/docker/mcp/)
 
-- [docker model](https://docs.docker.com/reference/cli/docker/model/)
+- [docker model](/reference/cli/docker/model/)
 
-- [docker network](https://docs.docker.com/reference/cli/docker/network/)
+- [docker network](/reference/cli/docker/network/)
 
-- [docker node](https://docs.docker.com/reference/cli/docker/node/)
+- [docker node](/reference/cli/docker/node/)
 
-- [docker offload](https://docs.docker.com/reference/cli/docker/offload/)
+- [docker offload](/reference/cli/docker/offload/)
 
-- [Docker Pass](https://docs.docker.com/reference/cli/docker/pass/)
+- [Docker Pass](/reference/cli/docker/pass/)
 
-- [docker plugin](https://docs.docker.com/reference/cli/docker/plugin/)
+- [docker plugin](/reference/cli/docker/plugin/)
 
-- [docker scout](https://docs.docker.com/reference/cli/docker/scout/)
+- [docker scout](/reference/cli/docker/scout/)
 
-- [docker search](https://docs.docker.com/reference/cli/docker/search/)
+- [docker search](/reference/cli/docker/search/)
 
-- [docker secret](https://docs.docker.com/reference/cli/docker/secret/)
+- [docker secret](/reference/cli/docker/secret/)
 
-- [docker service](https://docs.docker.com/reference/cli/docker/service/)
+- [docker service](/reference/cli/docker/service/)
 
-- [docker stack](https://docs.docker.com/reference/cli/docker/stack/)
+- [docker stack](/reference/cli/docker/stack/)
 
-- [docker swarm](https://docs.docker.com/reference/cli/docker/swarm/)
+- [docker swarm](/reference/cli/docker/swarm/)
 
-- [docker system](https://docs.docker.com/reference/cli/docker/system/)
+- [docker system](/reference/cli/docker/system/)
 
-- [docker trust](https://docs.docker.com/reference/cli/docker/trust/)
+- [docker trust](/reference/cli/docker/trust/)
 
-- [docker version](https://docs.docker.com/reference/cli/docker/version/)
+- [docker version](/reference/cli/docker/version/)
 
-- [docker volume](https://docs.docker.com/reference/cli/docker/volume/)
+- [docker volume](/reference/cli/docker/volume/)
 
-- [Docker 沙箱](https://docs.docker.com/reference/cli/docker/sandbox/)
+- [Docker 沙箱](/reference/cli/docker/sandbox/)
 
-- [docker 登录](https://docs.docker.com/reference/cli/docker/login/)
+- [docker 登录](/reference/cli/docker/login/)
 

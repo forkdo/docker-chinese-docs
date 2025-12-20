@@ -435,29 +435,29 @@
 </div>
 
 
-- [探索 Docker 硬化镜像](https://docs.docker.com/dhi/how-to/explore/)
+- [探索 Docker 硬化镜像](/dhi/how-to/explore/)
 
-- [镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](https://docs.docker.com/dhi/how-to/mirror/)
+- [镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/mirror/)
 
-- [自定义 Docker 强化镜像或图表 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](https://docs.docker.com/dhi/how-to/customize/)
+- [自定义 Docker 强化镜像或图表 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/customize/)
 
-- [使用 Docker Hardened Image](https://docs.docker.com/dhi/how-to/use/)
+- [使用 Docker Hardened Image](/dhi/how-to/use/)
 
-- [在 Kubernetes 中使用 Docker Hardened 镜像](https://docs.docker.com/dhi/how-to/k8s/)
+- [在 Kubernetes 中使用 Docker Hardened 镜像](/dhi/how-to/k8s/)
 
-- [使用 Docker 加固镜像（DHI）Helm chart](https://docs.docker.com/dhi/how-to/helm/)
+- [使用 Docker 加固镜像（DHI）Helm chart](/dhi/how-to/helm/)
 
-- [管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](https://docs.docker.com/dhi/how-to/manage/)
+- [管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/manage/)
 
-- [使用 Docker Hardened Images 的扩展生命周期支持 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](https://docs.docker.com/dhi/how-to/els/)
+- [使用 Docker Hardened Images 的扩展生命周期支持 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/els/)
 
-- [对比 Docker Hardened 镜像](https://docs.docker.com/dhi/how-to/compare/)
+- [对比 Docker Hardened 镜像](/dhi/how-to/compare/)
 
-- [验证 Docker Hardened Image 或 chart](https://docs.docker.com/dhi/how-to/verify/)
+- [验证 Docker Hardened Image 或 chart](/dhi/how-to/verify/)
 
-- [扫描 Docker Hardened Images](https://docs.docker.com/dhi/how-to/scan/)
+- [扫描 Docker Hardened Images](/dhi/how-to/scan/)
 
-- [使用策略强制执行 Docker Hardened Image 用法](https://docs.docker.com/dhi/how-to/policies/)
+- [使用策略强制执行 Docker Hardened Image 用法](/dhi/how-to/policies/)
 
-- [调试 Docker Hardened Image 容器](https://docs.docker.com/dhi/how-to/debug/)
+- [调试 Docker Hardened Image 容器](/dhi/how-to/debug/)
 

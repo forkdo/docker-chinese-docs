@@ -32,23 +32,23 @@ Compose 文件（即 `compose.yaml` 文件）遵循 [Compose 规范](/reference/
     <p>应用程序的计算组件被定义为 
     
   
-  <a class="link" href="https://docs.docker.com/reference/compose-file/services/">服务</a>。服务是一个抽象概念，在平台上通过运行相同的容器镜像和配置（一次或多次）来实现。</p>
+  <a class="link" href="/reference/compose-file/services/">服务</a>。服务是一个抽象概念，在平台上通过运行相同的容器镜像和配置（一次或多次）来实现。</p>
 <p>服务之间通过 
     
   
-  <a class="link" href="https://docs.docker.com/reference/compose-file/networks/">网络</a> 进行通信。在 Compose 规范中，网络是一种平台能力抽象，用于在连接在一起的服务内的容器之间建立 IP 路由。</p>
+  <a class="link" href="/reference/compose-file/networks/">网络</a> 进行通信。在 Compose 规范中，网络是一种平台能力抽象，用于在连接在一起的服务内的容器之间建立 IP 路由。</p>
 <p>服务将持久数据存储并共享到 
     
   
-  <a class="link" href="https://docs.docker.com/reference/compose-file/volumes/">卷</a> 中。该规范将此类持久数据描述为具有全局选项的高级文件系统挂载。</p>
+  <a class="link" href="/reference/compose-file/volumes/">卷</a> 中。该规范将此类持久数据描述为具有全局选项的高级文件系统挂载。</p>
 <p>某些服务需要依赖于运行时或平台的配置数据。为此，规范定义了一个专门的 
     
   
-  <a class="link" href="https://docs.docker.com/reference/compose-file/configs/">配置 (configs)</a> 概念。在容器内部，配置的行为类似于卷——它们作为文件被挂载。但是，配置在平台级别的定义方式不同。</p>
+  <a class="link" href="/reference/compose-file/configs/">配置 (configs)</a> 概念。在容器内部，配置的行为类似于卷——它们作为文件被挂载。但是，配置在平台级别的定义方式不同。</p>
 <p>
     
   
-  <a class="link" href="https://docs.docker.com/reference/compose-file/secrets/">密钥 (secret)</a> 是配置数据的一种特定类型，用于处理敏感数据，这些数据不应在没有安全考虑的情况下暴露。密钥作为文件挂载到其容器中提供给服务使用，但提供敏感数据的特定于平台的资源足够独特，值得在 Compose 规范中拥有一个独立的概念和定义。</p>
+  <a class="link" href="/reference/compose-file/secrets/">密钥 (secret)</a> 是配置数据的一种特定类型，用于处理敏感数据，这些数据不应在没有安全考虑的情况下暴露。密钥作为文件挂载到其容器中提供给服务使用，但提供敏感数据的特定于平台的资源足够独特，值得在 Compose 规范中拥有一个独立的概念和定义。</p>
 
 
   
@@ -74,7 +74,7 @@ Compose 文件（即 `compose.yaml` 文件）遵循 [Compose 规范](/reference/
 <p>项目是在平台上对应用规范进行的单独部署。项目的名称（通过顶层 
     
   
-  <a class="link" href="https://docs.docker.com/reference/compose-file/version-and-name/"><code>name</code></a> 属性设置）用于将资源分组在一起，并将其与其他应用程序或具有不同参数的同一 Compose 规范应用程序的其他安装隔离开来。如果您在平台上创建资源，则必须在资源名称前加上项目名称前缀，并设置标签 <code>com.docker.compose.project</code>。</p>
+  <a class="link" href="/reference/compose-file/version-and-name/"><code>name</code></a> 属性设置）用于将资源分组在一起，并将其与其他应用程序或具有不同参数的同一 Compose 规范应用程序的其他安装隔离开来。如果您在平台上创建资源，则必须在资源名称前加上项目名称前缀，并设置标签 <code>com.docker.compose.project</code>。</p>
 <p>Compose 提供了一种设置自定义项目名称并覆盖此名称的方法，因此同一个 <code>compose.yaml</code> 文件可以通过传递不同的名称在相同基础设施上部署两次，而无需更改。</p>
 
   </div>

@@ -29,11 +29,11 @@
 
 你将创建一个 Golang 服务器并使用 Prometheus 暴露指标。
 
-- [构建应用程序](https://docs.docker.com/guides/go-prometheus-monitoring/application/)
+- [构建应用程序](/guides/go-prometheus-monitoring/application/)
 
-- [容器化一个 Golang 应用](https://docs.docker.com/guides/go-prometheus-monitoring/containerize/)
+- [容器化一个 Golang 应用](/guides/go-prometheus-monitoring/containerize/)
 
-- [使用 Docker Compose 连接服务](https://docs.docker.com/guides/go-prometheus-monitoring/compose/)
+- [使用 Docker Compose 连接服务](/guides/go-prometheus-monitoring/compose/)
 
-- [开发你的应用程序](https://docs.docker.com/guides/go-prometheus-monitoring/develop/)
+- [开发你的应用程序](/guides/go-prometheus-monitoring/develop/)
 

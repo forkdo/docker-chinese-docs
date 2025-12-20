@@ -33,24 +33,24 @@
 接下来，你将容器化一个简单的应用，并动手实践这些概念。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/02_our_app/">容器化一个应用</a>
+<a class="button not-prose" href="/get-started/workshop/02_our_app/">容器化一个应用</a>
 
 
-- [容器化应用程序](https://docs.docker.com/get-started/workshop/02_our_app/)
+- [容器化应用程序](/get-started/workshop/02_our_app/)
 
-- [更新应用程序](https://docs.docker.com/get-started/workshop/03_updating_app/)
+- [更新应用程序](/get-started/workshop/03_updating_app/)
 
-- [共享应用程序](https://docs.docker.com/get-started/workshop/04_sharing_app/)
+- [共享应用程序](/get-started/workshop/04_sharing_app/)
 
-- [持久化数据库](https://docs.docker.com/get-started/workshop/05_persisting_data/)
+- [持久化数据库](/get-started/workshop/05_persisting_data/)
 
-- [使用 bind mounts](https://docs.docker.com/get-started/workshop/06_bind_mounts/)
+- [使用 bind mounts](/get-started/workshop/06_bind_mounts/)
 
-- [多容器应用](https://docs.docker.com/get-started/workshop/07_multi_container/)
+- [多容器应用](/get-started/workshop/07_multi_container/)
 
-- [使用 Docker Compose](https://docs.docker.com/get-started/workshop/08_using_compose/)
+- [使用 Docker Compose](/get-started/workshop/08_using_compose/)
 
-- [镜像构建最佳实践](https://docs.docker.com/get-started/workshop/09_image_best/)
+- [镜像构建最佳实践](/get-started/workshop/09_image_best/)
 
-- [Docker 工作坊之后该做什么](https://docs.docker.com/get-started/workshop/10_what_next/)
+- [Docker 工作坊之后该做什么](/get-started/workshop/10_what_next/)
 

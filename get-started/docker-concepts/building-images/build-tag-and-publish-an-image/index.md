@@ -301,5 +301,5 @@ docker push my-username/my-image
 现在您已经了解了如何构建和发布镜像，是时候学习如何使用 Docker 构建缓存来加速构建过程了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/building-images/using-the-build-cache/">使用构建缓存</a>
+<a class="button not-prose" href="/get-started/docker-concepts/building-images/using-the-build-cache/">使用构建缓存</a>
 

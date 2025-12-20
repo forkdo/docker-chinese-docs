@@ -6,7 +6,7 @@
 https://github.com/docker/scout-cli
 -->
 
-- [docker scout cache df](https://docs.docker.com/reference/cli/docker/scout/cache/df/)
+- [docker scout cache df](/reference/cli/docker/scout/cache/df/)
 
-- [docker scout cache prune](https://docs.docker.com/reference/cli/docker/scout/cache/prune/)
+- [docker scout cache prune](/reference/cli/docker/scout/cache/prune/)
 

@@ -8,11 +8,11 @@
 https://github.com/docker/cli
 -->
 
-- [docker system df](https://docs.docker.com/reference/cli/docker/system/df/)
+- [docker system df](/reference/cli/docker/system/df/)
 
-- [docker system events](https://docs.docker.com/reference/cli/docker/system/events/)
+- [docker system events](/reference/cli/docker/system/events/)
 
-- [docker system info](https://docs.docker.com/reference/cli/docker/system/info/)
+- [docker system info](/reference/cli/docker/system/info/)
 
-- [docker system prune](https://docs.docker.com/reference/cli/docker/system/prune/)
+- [docker system prune](/reference/cli/docker/system/prune/)
 

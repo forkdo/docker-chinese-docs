@@ -144,11 +144,11 @@ Settings Management 具有以下限制：
 - [使用 `admin-settings.json` 文件配置 Settings Management](configure-json-file.md)
 - [使用 Docker Admin Console 配置 Settings Management](configure-admin-console.md)
 
-- [使用 JSON 文件配置设置管理](https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/configure-json-file/)
+- [使用 JSON 文件配置设置管理](/enterprise/security/hardened-desktop/settings-management/configure-json-file/)
 
-- [使用 Admin Console 配置设置管理](https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/configure-admin-console/)
+- [使用 Admin Console 配置设置管理](/enterprise/security/hardened-desktop/settings-management/configure-admin-console/)
 
-- [桌面设置合规性报告](https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/compliance-reporting/)
+- [桌面设置合规性报告](/enterprise/security/hardened-desktop/settings-management/compliance-reporting/)
 
-- [设置参考](https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/settings-reference/)
+- [设置参考](/enterprise/security/hardened-desktop/settings-management/settings-reference/)
 

@@ -8,13 +8,13 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [](https://docs.docker.com/reference/cli/docker/mcp/server/server_inspect/)
+- [](/reference/cli/docker/mcp/server/server_inspect/)
 
-- [docker mcp server disable](https://docs.docker.com/reference/cli/docker/mcp/server/server_disable/)
+- [docker mcp server disable](/reference/cli/docker/mcp/server/server_disable/)
 
-- [docker mcp server enable](https://docs.docker.com/reference/cli/docker/mcp/server/server_enable/)
+- [docker mcp server enable](/reference/cli/docker/mcp/server/server_enable/)
 
-- [docker mcp server list](https://docs.docker.com/reference/cli/docker/mcp/server/server_ls/)
+- [docker mcp server list](/reference/cli/docker/mcp/server/server_ls/)
 
-- [docker mcp server reset](https://docs.docker.com/reference/cli/docker/mcp/server/server_reset/)
+- [docker mcp server reset](/reference/cli/docker/mcp/server/server_reset/)
 

@@ -184,17 +184,17 @@ Docker Hub 的主要功能：
 </div>
 
 
-- [Docker Hub 快速入门](https://docs.docker.com/docker-hub/quickstart/)
+- [Docker Hub 快速入门](/docker-hub/quickstart/)
 
-- [仓库](https://docs.docker.com/docker-hub/repos/)
+- [仓库](/docker-hub/repos/)
 
-- [内容库](https://docs.docker.com/docker-hub/image-library/)
+- [内容库](/docker-hub/image-library/)
 
-- [Docker Hub 使用情况和限制](https://docs.docker.com/docker-hub/usage/)
+- [Docker Hub 使用情况和限制](/docker-hub/usage/)
 
-- [服务账户](https://docs.docker.com/docker-hub/service-accounts/)
+- [服务账户](/docker-hub/service-accounts/)
 
-- [排查 Docker Hub 问题](https://docs.docker.com/docker-hub/troubleshoot/)
+- [排查 Docker Hub 问题](/docker-hub/troubleshoot/)
 
-- [Docker Hub 发布说明](https://docs.docker.com/docker-hub/release-notes/)
+- [Docker Hub 发布说明](/docker-hub/release-notes/)
 

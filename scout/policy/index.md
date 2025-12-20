@@ -383,13 +383,13 @@ Docker Scout 使用[来源证明](/manuals/build/metadata/attestations/slsa-prov
 
 为确保 Docker Scout 始终了解您的基础镜像，您可以在构建时附加[来源证明](/manuals/build/metadata/attestations/slsa-provenance.md)。Docker Scout 使用来源证明来找出基础镜像版本。
 
-- [Docker Scout 健康评分](https://docs.docker.com/scout/policy/scores/)
+- [Docker Scout 健康评分](/scout/policy/scores/)
 
-- [使用 Docker Scout 进行修复](https://docs.docker.com/scout/policy/remediation/)
+- [使用 Docker Scout 进行修复](/scout/policy/remediation/)
 
-- [在 CI 中评估策略合规性](https://docs.docker.com/scout/policy/ci/)
+- [在 CI 中评估策略合规性](/scout/policy/ci/)
 
-- [查看 Docker Scout 策略状态](https://docs.docker.com/scout/policy/view/)
+- [查看 Docker Scout 策略状态](/scout/policy/view/)
 
-- [配置策略](https://docs.docker.com/scout/policy/configure/)
+- [配置策略](/scout/policy/configure/)
 

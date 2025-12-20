@@ -664,5 +664,5 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
 在下一节中，你将学习 Docker Compose。使用 Docker Compose，你可以更轻松地共享你的应用程序栈，并让其他人通过一个简单、单一的命令来启动它们。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/08_using_compose/">使用 Docker Compose</a>
+<a class="button not-prose" href="/get-started/workshop/08_using_compose/">使用 Docker Compose</a>
 

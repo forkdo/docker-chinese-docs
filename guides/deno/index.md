@@ -23,11 +23,11 @@ Deno 入门指南将教你如何使用 Docker 创建一个容器化的 Deno 应�
 
 首先容器化一个现有的 Deno 应用程序。
 
-- [将 Deno 应用程序容器化](https://docs.docker.com/guides/deno/containerize/)
+- [将 Deno 应用程序容器化](/guides/deno/containerize/)
 
-- [在容器中进行 Deno 开发](https://docs.docker.com/guides/deno/develop/)
+- [在容器中进行 Deno 开发](/guides/deno/develop/)
 
-- [为您的 Deno 应用程序配置 CI/CD](https://docs.docker.com/guides/deno/configure-ci-cd/)
+- [为您的 Deno 应用程序配置 CI/CD](/guides/deno/configure-ci-cd/)
 
-- [测试你的 Deno 部署](https://docs.docker.com/guides/deno/deploy/)
+- [测试你的 Deno 部署](/guides/deno/deploy/)
 

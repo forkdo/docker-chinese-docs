@@ -179,17 +179,17 @@ DHI 提供两个层级：**DHI Free** 免费提供核心安全功能，而 **DHI
 </div>
 
 
-- [Docker Hardened Images 快速开始](https://docs.docker.com/dhi/get-started/)
+- [Docker Hardened Images 快速开始](/dhi/get-started/)
 
-- [Docker Hardened Images 功能](https://docs.docker.com/dhi/features/)
+- [Docker Hardened Images 功能](/dhi/features/)
 
-- [探索 Docker Hardened Images](https://docs.docker.com/dhi/explore/)
+- [探索 Docker Hardened Images](/dhi/explore/)
 
-- [迁移](https://docs.docker.com/dhi/migration/)
+- [迁移](/dhi/migration/)
 
-- [操作指南](https://docs.docker.com/dhi/how-to/)
+- [操作指南](/dhi/how-to/)
 
-- [核心概念](https://docs.docker.com/dhi/core-concepts/)
+- [核心概念](/dhi/core-concepts/)
 
-- [故障排除](https://docs.docker.com/dhi/troubleshoot/)
+- [故障排除](/dhi/troubleshoot/)
 

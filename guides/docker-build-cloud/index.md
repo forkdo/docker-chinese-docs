@@ -29,11 +29,11 @@ Docker Build Cloud 加快了镜像构建速度，从而提高了开发人员的�
 
 <div id="dbc-lp-survey-anchor"></div>
 
-- [为什么选择 Docker Build Cloud？](https://docs.docker.com/guides/docker-build-cloud/why/)
+- [为什么选择 Docker Build Cloud？](/guides/docker-build-cloud/why/)
 
-- [演示：在开发中设置并使用 Docker Build Cloud](https://docs.docker.com/guides/docker-build-cloud/dev/)
+- [演示：在开发中设置并使用 Docker Build Cloud](/guides/docker-build-cloud/dev/)
 
-- [演示：在 CI 中使用 Docker Build Cloud](https://docs.docker.com/guides/docker-build-cloud/ci/)
+- [演示：在 CI 中使用 Docker Build Cloud](/guides/docker-build-cloud/ci/)
 
-- [常见挑战与问题](https://docs.docker.com/guides/docker-build-cloud/common-questions/)
+- [常见挑战与问题](/guides/docker-build-cloud/common-questions/)
 

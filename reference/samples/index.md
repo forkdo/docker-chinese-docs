@@ -22,85 +22,85 @@
 
 [Agentic AI](../samples/agentic-ai.md) \| [AI/ML](../samples/ai-ml.md) \| [Cloudflared](../samples/cloudflared.md) \| [Elasticsearch / Logstash / Kibana](../samples/elasticsearch.md) \| [Minecraft](../samples/minecraft.md) \| [NGINX](../samples/nginx.md) \| [Pi-hole](../samples/pi-hole.md) \| [Plex](../samples/plex.md) \| [Traefik](../samples/traefik.md) \| [WireGuard](../samples/wireguard.md)
 
-- [.NET 示例](https://docs.docker.com/reference/samples/dotnet/)
+- [.NET 示例](/reference/samples/dotnet/)
 
-- [Agentic AI 示例](https://docs.docker.com/reference/samples/agentic-ai/)
+- [Agentic AI 示例](/reference/samples/agentic-ai/)
 
-- [AI/ML 示例](https://docs.docker.com/reference/samples/ai-ml/)
+- [AI/ML 示例](/reference/samples/ai-ml/)
 
-- [Angular 示例](https://docs.docker.com/reference/samples/angular/)
+- [Angular 示例](/reference/samples/angular/)
 
-- [Cloudflared 示例](https://docs.docker.com/reference/samples/cloudflared/)
+- [Cloudflared 示例](/reference/samples/cloudflared/)
 
-- [Django 示例](https://docs.docker.com/reference/samples/django/)
+- [Django 示例](/reference/samples/django/)
 
-- [Elasticsearch / Logstash / Kibana 示例](https://docs.docker.com/reference/samples/elasticsearch/)
+- [Elasticsearch / Logstash / Kibana 示例](/reference/samples/elasticsearch/)
 
-- [Express 示例](https://docs.docker.com/reference/samples/express/)
+- [Express 示例](/reference/samples/express/)
 
-- [FastAPI 示例](https://docs.docker.com/reference/samples/fastapi/)
+- [FastAPI 示例](/reference/samples/fastapi/)
 
-- [Flask 示例](https://docs.docker.com/reference/samples/flask/)
+- [Flask 示例](/reference/samples/flask/)
 
-- [Gitea 示例](https://docs.docker.com/reference/samples/gitea/)
+- [Gitea 示例](/reference/samples/gitea/)
 
-- [Go 示例](https://docs.docker.com/reference/samples/go/)
+- [Go 示例](/reference/samples/go/)
 
-- [Java 示例](https://docs.docker.com/reference/samples/java/)
+- [Java 示例](/reference/samples/java/)
 
-- [JavaScript 示例](https://docs.docker.com/reference/samples/javascript/)
+- [JavaScript 示例](/reference/samples/javascript/)
 
-- [MariaDB 示例](https://docs.docker.com/reference/samples/mariadb/)
+- [MariaDB 示例](/reference/samples/mariadb/)
 
-- [Minecraft 示例](https://docs.docker.com/reference/samples/minecraft/)
+- [Minecraft 示例](/reference/samples/minecraft/)
 
-- [MongoDB 样本](https://docs.docker.com/reference/samples/mongodb/)
+- [MongoDB 样本](/reference/samples/mongodb/)
 
-- [MS-SQL 示例](https://docs.docker.com/reference/samples/ms-sql/)
+- [MS-SQL 示例](/reference/samples/ms-sql/)
 
-- [MySQL 示例](https://docs.docker.com/reference/samples/mysql/)
+- [MySQL 示例](/reference/samples/mysql/)
 
-- [Nextcloud 示例](https://docs.docker.com/reference/samples/nextcloud/)
+- [Nextcloud 示例](/reference/samples/nextcloud/)
 
-- [NGINX 示例](https://docs.docker.com/reference/samples/nginx/)
+- [NGINX 示例](/reference/samples/nginx/)
 
-- [Node.js 示例](https://docs.docker.com/reference/samples/nodejs/)
+- [Node.js 示例](/reference/samples/nodejs/)
 
-- [PHP 示例](https://docs.docker.com/reference/samples/php/)
+- [PHP 示例](/reference/samples/php/)
 
-- [Pi-hole 示例](https://docs.docker.com/reference/samples/pi-hole/)
+- [Pi-hole 示例](/reference/samples/pi-hole/)
 
-- [Plex 示例](https://docs.docker.com/reference/samples/plex/)
+- [Plex 示例](/reference/samples/plex/)
 
-- [Portainer 示例](https://docs.docker.com/reference/samples/portainer/)
+- [Portainer 示例](/reference/samples/portainer/)
 
-- [PostgreSQL 示例](https://docs.docker.com/reference/samples/postgres/)
+- [PostgreSQL 示例](/reference/samples/postgres/)
 
-- [Prometheus 示例](https://docs.docker.com/reference/samples/prometheus/)
+- [Prometheus 示例](/reference/samples/prometheus/)
 
-- [Python 示例](https://docs.docker.com/reference/samples/python/)
+- [Python 示例](/reference/samples/python/)
 
-- [Rails 示例](https://docs.docker.com/reference/samples/rails/)
+- [Rails 示例](/reference/samples/rails/)
 
-- [React 示例](https://docs.docker.com/reference/samples/react/)
+- [React 示例](/reference/samples/react/)
 
-- [Redis 示例](https://docs.docker.com/reference/samples/redis/)
+- [Redis 示例](/reference/samples/redis/)
 
-- [Ruby 示例](https://docs.docker.com/reference/samples/ruby/)
+- [Ruby 示例](/reference/samples/ruby/)
 
-- [Rust 示例](https://docs.docker.com/reference/samples/rust/)
+- [Rust 示例](/reference/samples/rust/)
 
-- [Spark 示例](https://docs.docker.com/reference/samples/spark/)
+- [Spark 示例](/reference/samples/spark/)
 
-- [Spring Boot 示例](https://docs.docker.com/reference/samples/spring/)
+- [Spring Boot 示例](/reference/samples/spring/)
 
-- [Traefik 示例](https://docs.docker.com/reference/samples/traefik/)
+- [Traefik 示例](/reference/samples/traefik/)
 
-- [TypeScript 示例](https://docs.docker.com/reference/samples/typescript/)
+- [TypeScript 示例](/reference/samples/typescript/)
 
-- [Vue.js 示例](https://docs.docker.com/reference/samples/vuejs/)
+- [Vue.js 示例](/reference/samples/vuejs/)
 
-- [WireGuard 示例](https://docs.docker.com/reference/samples/wireguard/)
+- [WireGuard 示例](/reference/samples/wireguard/)
 
-- [WordPress 示例](https://docs.docker.com/reference/samples/wordpress/)
+- [WordPress 示例](/reference/samples/wordpress/)
 

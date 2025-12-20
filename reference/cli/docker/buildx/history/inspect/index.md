@@ -8,5 +8,5 @@
 https://github.com/docker/buildx
 -->
 
-- [docker buildx history inspect attachment](https://docs.docker.com/reference/cli/docker/buildx/history/inspect/attachment/)
+- [docker buildx history inspect attachment](/reference/cli/docker/buildx/history/inspect/attachment/)
 

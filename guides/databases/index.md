@@ -174,7 +174,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/guides/images/databases-1.webp"
+    src="/guides/images/databases-1.webp"
     alt="指定了选项的可选设置屏幕。"
     
     
@@ -194,7 +194,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/guides/images/databases-1.webp"
+        src="/guides/images/databases-1.webp"
         alt="指定了选项的可选设置屏幕。"
       />
     </div>
@@ -588,7 +588,7 @@ mysql> SHOW DATABASES;
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/guides/images/databases-2.webp"
+    src="/guides/images/databases-2.webp"
     alt="指定了选项的可选设置屏幕。"
     
     
@@ -608,7 +608,7 @@ mysql> SHOW DATABASES;
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/guides/images/databases-2.webp"
+        src="/guides/images/databases-2.webp"
         alt="指定了选项的可选设置屏幕。"
       />
     </div>
@@ -1038,7 +1038,7 @@ mysql> SHOW DATABASES;
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/guides/images/databases-3.webp"
+    src="/guides/images/databases-3.webp"
     alt="指定了选项的可选设置屏幕。"
     
     
@@ -1058,7 +1058,7 @@ mysql> SHOW DATABASES;
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/guides/images/databases-3.webp"
+        src="/guides/images/databases-3.webp"
         alt="指定了选项的可选设置屏幕。"
       />
     </div>
@@ -1174,7 +1174,7 @@ mysql> SHOW DATABASES;
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/guides/images/databases-3.webp"
+    src="/guides/images/databases-3.webp"
     alt="指定了选项的可选设置屏幕。"
     
     
@@ -1194,7 +1194,7 @@ mysql> SHOW DATABASES;
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/guides/images/databases-3.webp"
+        src="/guides/images/databases-3.webp"
         alt="指定了选项的可选设置屏幕。"
       />
     </div>

@@ -72,22 +72,22 @@ iptables -I INPUT -m udp --dport 4789 -m policy --dir in --pol none -j DROP
 接下来，您将创建一个 swarm。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/">创建 swarm</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/create-swarm/">创建 swarm</a>
 
 
-- [创建 swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
+- [创建 swarm](/engine/swarm/swarm-tutorial/create-swarm/)
 
-- [向 swarm 添加节点](https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/)
+- [向 swarm 添加节点](/engine/swarm/swarm-tutorial/add-nodes/)
 
-- [将服务部署到 swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/deploy-service/)
+- [将服务部署到 swarm](/engine/swarm/swarm-tutorial/deploy-service/)
 
-- [在 swarm 上检查服务](https://docs.docker.com/engine/swarm/swarm-tutorial/inspect-service/)
+- [在 swarm 上检查服务](/engine/swarm/swarm-tutorial/inspect-service/)
 
-- [扩展 Swarm 中的服务](https://docs.docker.com/engine/swarm/swarm-tutorial/scale-service/)
+- [扩展 Swarm 中的服务](/engine/swarm/swarm-tutorial/scale-service/)
 
-- [删除在 swarm 上运行的服务](https://docs.docker.com/engine/swarm/swarm-tutorial/delete-service/)
+- [删除在 swarm 上运行的服务](/engine/swarm/swarm-tutorial/delete-service/)
 
-- [对服务应用滚动更新](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/)
+- [对服务应用滚动更新](/engine/swarm/swarm-tutorial/rolling-update/)
 
-- [将 swarm 中的节点设置为排空状态](https://docs.docker.com/engine/swarm/swarm-tutorial/drain-node/)
+- [将 swarm 中的节点设置为排空状态](/engine/swarm/swarm-tutorial/drain-node/)
 

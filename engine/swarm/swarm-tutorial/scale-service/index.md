@@ -49,5 +49,5 @@
 在本教程的这一点上，您已完成 `helloworld` 服务的操作。接下来，您将删除该服务。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/delete-service/">删除服务</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/delete-service/">删除服务</a>
 

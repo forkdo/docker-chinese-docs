@@ -12,13 +12,13 @@ PHP 语言专属指南将教你如何使用 Docker 创建容器化的 PHP 应用
 
 首先容器化一个现有的 PHP 应用。
 
-- [容器化 PHP 应用](https://docs.docker.com/guides/php/containerize/)
+- [容器化 PHP 应用](/guides/php/containerize/)
 
-- [使用容器进行 PHP 开发](https://docs.docker.com/guides/php/develop/)
+- [使用容器进行 PHP 开发](/guides/php/develop/)
 
-- [在容器中运行 PHP 测试](https://docs.docker.com/guides/php/run-tests/)
+- [在容器中运行 PHP 测试](/guides/php/run-tests/)
 
-- [为您的 PHP 应用程序配置 CI/CD](https://docs.docker.com/guides/php/configure-ci-cd/)
+- [为您的 PHP 应用程序配置 CI/CD](/guides/php/configure-ci-cd/)
 
-- [测试您的 PHP 部署](https://docs.docker.com/guides/php/deploy/)
+- [测试您的 PHP 部署](/guides/php/deploy/)
 

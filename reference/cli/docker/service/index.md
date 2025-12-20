@@ -6,21 +6,21 @@
 https://github.com/docker/cli
 -->
 
-- [docker service create](https://docs.docker.com/reference/cli/docker/service/create/)
+- [docker service create](/reference/cli/docker/service/create/)
 
-- [docker service inspect](https://docs.docker.com/reference/cli/docker/service/inspect/)
+- [docker service inspect](/reference/cli/docker/service/inspect/)
 
-- [docker service logs](https://docs.docker.com/reference/cli/docker/service/logs/)
+- [docker service logs](/reference/cli/docker/service/logs/)
 
-- [docker service ls](https://docs.docker.com/reference/cli/docker/service/ls/)
+- [docker service ls](/reference/cli/docker/service/ls/)
 
-- [docker service ps](https://docs.docker.com/reference/cli/docker/service/ps/)
+- [docker service ps](/reference/cli/docker/service/ps/)
 
-- [docker service rm](https://docs.docker.com/reference/cli/docker/service/rm/)
+- [docker service rm](/reference/cli/docker/service/rm/)
 
-- [docker service rollback](https://docs.docker.com/reference/cli/docker/service/rollback/)
+- [docker service rollback](/reference/cli/docker/service/rollback/)
 
-- [docker service scale](https://docs.docker.com/reference/cli/docker/service/scale/)
+- [docker service scale](/reference/cli/docker/service/scale/)
 
-- [docker service update](https://docs.docker.com/reference/cli/docker/service/update/)
+- [docker service update](/reference/cli/docker/service/update/)
 

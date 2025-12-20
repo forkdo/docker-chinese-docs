@@ -25,17 +25,17 @@ Docker Scout 通过提供自动化漏洞检测和修复、解决不安全的容�
 
 <div id="scout-lp-survey-anchor"></div>
 
-- [为什么选择 Docker Scout？](https://docs.docker.com/guides/docker-scout/why/)
+- [为什么选择 Docker Scout？](/guides/docker-scout/why/)
 
-- [Docker Scout demo](https://docs.docker.com/guides/docker-scout/demo/)
+- [Docker Scout demo](/guides/docker-scout/demo/)
 
-- [软件供应链安全](https://docs.docker.com/guides/docker-scout/s3c/)
+- [软件供应链安全](/guides/docker-scout/s3c/)
 
-- [软件物料清单](https://docs.docker.com/guides/docker-scout/sbom/)
+- [软件物料清单](/guides/docker-scout/sbom/)
 
-- [证明](https://docs.docker.com/guides/docker-scout/attestations/)
+- [证明](/guides/docker-scout/attestations/)
 
-- [修复](https://docs.docker.com/guides/docker-scout/remediation/)
+- [修复](/guides/docker-scout/remediation/)
 
-- [常见挑战与问题](https://docs.docker.com/guides/docker-scout/common-questions/)
+- [常见挑战与问题](/guides/docker-scout/common-questions/)
 

@@ -6,19 +6,19 @@
 https://github.com/docker/cli
 -->
 
-- [docker swarm ca](https://docs.docker.com/reference/cli/docker/swarm/ca/)
+- [docker swarm ca](/reference/cli/docker/swarm/ca/)
 
-- [docker swarm init](https://docs.docker.com/reference/cli/docker/swarm/init/)
+- [docker swarm init](/reference/cli/docker/swarm/init/)
 
-- [docker swarm join](https://docs.docker.com/reference/cli/docker/swarm/join/)
+- [docker swarm join](/reference/cli/docker/swarm/join/)
 
-- [docker swarm join-token](https://docs.docker.com/reference/cli/docker/swarm/join-token/)
+- [docker swarm join-token](/reference/cli/docker/swarm/join-token/)
 
-- [docker swarm leave](https://docs.docker.com/reference/cli/docker/swarm/leave/)
+- [docker swarm leave](/reference/cli/docker/swarm/leave/)
 
-- [docker swarm unlock](https://docs.docker.com/reference/cli/docker/swarm/unlock/)
+- [docker swarm unlock](/reference/cli/docker/swarm/unlock/)
 
-- [docker swarm unlock-key](https://docs.docker.com/reference/cli/docker/swarm/unlock-key/)
+- [docker swarm unlock-key](/reference/cli/docker/swarm/unlock-key/)
 
-- [docker swarm update](https://docs.docker.com/reference/cli/docker/swarm/update/)
+- [docker swarm update](/reference/cli/docker/swarm/update/)
 

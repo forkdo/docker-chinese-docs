@@ -6,11 +6,11 @@
 https://github.com/docker/cli
 -->
 
-- [docker secret create](https://docs.docker.com/reference/cli/docker/secret/create/)
+- [docker secret create](/reference/cli/docker/secret/create/)
 
-- [docker secret inspect](https://docs.docker.com/reference/cli/docker/secret/inspect/)
+- [docker secret inspect](/reference/cli/docker/secret/inspect/)
 
-- [docker secret ls](https://docs.docker.com/reference/cli/docker/secret/ls/)
+- [docker secret ls](/reference/cli/docker/secret/ls/)
 
-- [docker secret rm](https://docs.docker.com/reference/cli/docker/secret/rm/)
+- [docker secret rm](/reference/cli/docker/secret/rm/)
 

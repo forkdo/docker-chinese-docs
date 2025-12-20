@@ -97,5 +97,5 @@
 - 如需设置登录强制，请参阅 [配置登录强制](/manuals/enterprise/security/enforce-sign-in/methods.md)。
 - 如需配置 SSO 强制，请参阅 [强制 SSO](/manuals/enterprise/security/single-sign-on/connect.md)。
 
-- [配置登录强制执行](https://docs.docker.com/enterprise/security/enforce-sign-in/methods/)
+- [配置登录强制执行](/enterprise/security/enforce-sign-in/methods/)
 

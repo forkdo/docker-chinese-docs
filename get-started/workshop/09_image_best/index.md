@@ -179,5 +179,5 @@ COPY --from=build /app/build /usr/share/nginx/html
 在下一节中，您将学习可以用来继续学习容器的其他资源。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/workshop/10_what_next/">下一步</a>
+<a class="button not-prose" href="/get-started/workshop/10_what_next/">下一步</a>
 

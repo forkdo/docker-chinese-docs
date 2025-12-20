@@ -36,9 +36,9 @@ cagent 代理可以根据您的使用方式集成到不同的环境中。每种�
 如果您希望 Claude Desktop（或其他 MCP 客户端）能够将您的专用代理作为工具调用，请选择 MCP。
 如果您正在构建需要通过 HTTP 互相调用的多代理系统，请选择 A2A。
 
-- [A2A 模式](https://docs.docker.com/ai/cagent/integrations/a2a/)
+- [A2A 模式](/ai/cagent/integrations/a2a/)
 
-- [ACP 集成](https://docs.docker.com/ai/cagent/integrations/acp/)
+- [ACP 集成](/ai/cagent/integrations/acp/)
 
-- [MCP 模式](https://docs.docker.com/ai/cagent/integrations/mcp/)
+- [MCP 模式](/ai/cagent/integrations/mcp/)
 

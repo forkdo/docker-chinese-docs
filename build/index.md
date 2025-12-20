@@ -236,19 +236,19 @@ advanced scenarios.
 
 
 
-- [Checking your build configuration](https://docs.docker.com/build/checks/)
+- [Checking your build configuration](/build/checks/)
 
-- [Builders](https://docs.docker.com/build/builders/)
+- [Builders](/build/builders/)
 
-- [Bake](https://docs.docker.com/build/bake/)
+- [Bake](/build/bake/)
 
-- [Docker build cache](https://docs.docker.com/build/cache/)
+- [Docker build cache](/build/cache/)
 
-- [Continuous integration with Docker](https://docs.docker.com/build/ci/)
+- [Continuous integration with Docker](/build/ci/)
 
-- [Exporters overview](https://docs.docker.com/build/exporters/)
+- [Exporters overview](/build/exporters/)
 
-- [BuildKit](https://docs.docker.com/build/buildkit/)
+- [BuildKit](/build/buildkit/)
 
-- [Build release notes](https://docs.docker.com/build/release-notes/)
+- [Build release notes](/build/release-notes/)
 

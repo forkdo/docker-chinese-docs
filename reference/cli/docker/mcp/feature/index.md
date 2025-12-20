@@ -6,9 +6,9 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp feature disable](https://docs.docker.com/reference/cli/docker/mcp/feature/feature_disable/)
+- [docker mcp feature disable](/reference/cli/docker/mcp/feature/feature_disable/)
 
-- [docker mcp feature enable](https://docs.docker.com/reference/cli/docker/mcp/feature/feature_enable/)
+- [docker mcp feature enable](/reference/cli/docker/mcp/feature/feature_enable/)
 
-- [docker mcp feature ls](https://docs.docker.com/reference/cli/docker/mcp/feature/feature_ls/)
+- [docker mcp feature ls](/reference/cli/docker/mcp/feature/feature_ls/)
 

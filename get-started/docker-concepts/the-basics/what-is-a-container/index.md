@@ -115,7 +115,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/search-the-docker-image.webp"
+    src="/get-started/docker-concepts/the-basics/images/search-the-docker-image.webp"
     alt="Docker Desktop 仪表板的截图，显示 welcome-to-docker 镜像的搜索结果"
     width="1000"
     height="700"
@@ -137,7 +137,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/search-the-docker-image.webp"
+        src="/get-started/docker-concepts/the-basics/images/search-the-docker-image.webp"
         alt="Docker Desktop 仪表板的截图，显示 welcome-to-docker 镜像的搜索结果"
       />
     </div>
@@ -174,7 +174,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/run-a-new-container.webp"
+    src="/get-started/docker-concepts/the-basics/images/run-a-new-container.webp"
     alt="Docker Desktop 仪表板的截图，显示容器运行对话框，容器名称为 welcome-to-docker，端口号指定为 8080"
     width="550"
     height="400"
@@ -196,7 +196,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/run-a-new-container.webp"
+        src="/get-started/docker-concepts/the-basics/images/run-a-new-container.webp"
         alt="Docker Desktop 仪表板的截图，显示容器运行对话框，容器名称为 welcome-to-docker，端口号指定为 8080"
       />
     </div>
@@ -235,7 +235,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/view-your-containers.webp"
+    src="/get-started/docker-concepts/the-basics/images/view-your-containers.webp"
     alt="Docker Desktop GUI 容器视图的截图，显示 welcome-to-docker 容器正在主机端口 8080 上运行"
     width="750"
     height="600"
@@ -257,7 +257,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/view-your-containers.webp"
+        src="/get-started/docker-concepts/the-basics/images/view-your-containers.webp"
         alt="Docker Desktop GUI 容器视图的截图，显示 welcome-to-docker 容器正在主机端口 8080 上运行"
       />
     </div>
@@ -292,7 +292,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
+    src="/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
     alt="来自正在运行的容器的登录页面截图"
     
     
@@ -314,7 +314,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
+        src="/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
         alt="来自正在运行的容器的登录页面截图"
       />
     </div>
@@ -356,7 +356,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/explore-your-container.webp"
+    src="/get-started/docker-concepts/the-basics/images/explore-your-container.webp"
     alt="Docker Desktop 仪表板的截图，显示正在运行的容器内的文件和目录"
     
     
@@ -378,7 +378,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/explore-your-container.webp"
+        src="/get-started/docker-concepts/the-basics/images/explore-your-container.webp"
         alt="Docker Desktop 仪表板的截图，显示正在运行的容器内的文件和目录"
       />
     </div>
@@ -422,7 +422,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/stop-your-container.webp"
+    src="/get-started/docker-concepts/the-basics/images/stop-your-container.webp"
     alt="Docker Desktop 仪表板的截图，已选择 welcome 容器并准备停止"
     
     
@@ -444,7 +444,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/stop-your-container.webp"
+        src="/get-started/docker-concepts/the-basics/images/stop-your-container.webp"
         alt="Docker Desktop 仪表板的截图，已选择 welcome 容器并准备停止"
       />
     </div>
@@ -646,7 +646,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
+    src="/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
     alt="来自正在运行的容器的 Nginx Web 服务器登录页面截图"
     
     
@@ -668,7 +668,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
+        src="/get-started/docker-concepts/the-basics/images/access-the-frontend.webp"
         alt="来自正在运行的容器的 Nginx Web 服务器登录页面截图"
       />
     </div>
@@ -812,5 +812,5 @@
 既然您已经了解了 Docker 容器的基础知识，是时候学习 Docker 镜像了。
 
 
-<a class="button not-prose" href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/">什么是镜像？</a>
+<a class="button not-prose" href="/get-started/docker-concepts/the-basics/what-is-an-image/">什么是镜像？</a>
 

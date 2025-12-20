@@ -23,9 +23,9 @@
 - Entra ID SAML 2.0
 - Azure Connect (OIDC)
 
-- [在 Docker 中设置角色和权限](https://docs.docker.com/guides/admin-user-management/setup/)
+- [在 Docker 中设置角色和权限](/guides/admin-user-management/setup/)
 
-- [在 Docker 中上手并管理角色与权限](https://docs.docker.com/guides/admin-user-management/onboard/)
+- [在 Docker 中上手并管理角色与权限](/guides/admin-user-management/onboard/)
 
-- [监控与洞察](https://docs.docker.com/guides/admin-user-management/audit-and-monitor/)
+- [监控与洞察](/guides/admin-user-management/audit-and-monitor/)
 

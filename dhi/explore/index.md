@@ -177,15 +177,15 @@ Docker Hardened Images (DHI) 是由 Docker 维护的最小化、安全且可用�
 </div>
 
 
-- [什么是加固镜像？为什么要使用它们？](https://docs.docker.com/dhi/explore/what/)
+- [什么是加固镜像？为什么要使用它们？](/dhi/explore/what/)
 
-- [Docker Hardened Images 的构建方式](https://docs.docker.com/dhi/explore/build-process/)
+- [Docker Hardened Images 的构建方式](/dhi/explore/build-process/)
 
-- [Docker Hardened Images 可用类型](https://docs.docker.com/dhi/explore/available/)
+- [Docker Hardened Images 可用类型](/dhi/explore/available/)
 
-- [Docker 强化镜像的测试方式](https://docs.docker.com/dhi/explore/test/)
+- [Docker 强化镜像的测试方式](/dhi/explore/test/)
 
-- [理解 Docker 加固镜像的角色和职责](https://docs.docker.com/dhi/explore/responsibility/)
+- [理解 Docker 加固镜像的角色和职责](/dhi/explore/responsibility/)
 
-- [提供反馈](https://docs.docker.com/dhi/explore/feedback/)
+- [提供反馈](/dhi/explore/feedback/)
 

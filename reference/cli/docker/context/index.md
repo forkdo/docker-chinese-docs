@@ -8,21 +8,21 @@ in the source repository on GitHub:
 https://github.com/docker/cli
 -->
 
-- [docker context create](https://docs.docker.com/reference/cli/docker/context/create/)
+- [docker context create](/reference/cli/docker/context/create/)
 
-- [docker context export](https://docs.docker.com/reference/cli/docker/context/export/)
+- [docker context export](/reference/cli/docker/context/export/)
 
-- [docker context import](https://docs.docker.com/reference/cli/docker/context/import/)
+- [docker context import](/reference/cli/docker/context/import/)
 
-- [docker context inspect](https://docs.docker.com/reference/cli/docker/context/inspect/)
+- [docker context inspect](/reference/cli/docker/context/inspect/)
 
-- [docker context ls](https://docs.docker.com/reference/cli/docker/context/ls/)
+- [docker context ls](/reference/cli/docker/context/ls/)
 
-- [docker context rm](https://docs.docker.com/reference/cli/docker/context/rm/)
+- [docker context rm](/reference/cli/docker/context/rm/)
 
-- [docker context show](https://docs.docker.com/reference/cli/docker/context/show/)
+- [docker context show](/reference/cli/docker/context/show/)
 
-- [docker context update](https://docs.docker.com/reference/cli/docker/context/update/)
+- [docker context update](/reference/cli/docker/context/update/)
 
-- [docker context use](https://docs.docker.com/reference/cli/docker/context/use/)
+- [docker context use](/reference/cli/docker/context/use/)
 

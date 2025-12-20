@@ -887,7 +887,7 @@
 >
   <img
     loading="lazy"
-    src="https://docs.docker.com/desktop/images/console.png"
+    src="/desktop/images/console.png"
     alt="Mac 控制台搜索 Docker 应用"
     
     
@@ -907,7 +907,7 @@
       <img
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
-        src="https://docs.docker.com/desktop/images/console.png"
+        src="/desktop/images/console.png"
         alt="Mac 控制台搜索 Docker 应用"
       />
     </div>
@@ -978,9 +978,9 @@
 - [修复 macOS 上的 "Docker.app 已损坏" 问题](mac-damaged-dialog.md) - 解决 macOS 安装问题
 - [获取 Docker 产品支持](/manuals/support/_index.md)
 
-- [Docker Desktop 故障排除主题](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/topics/)
+- [Docker Desktop 故障排除主题](/desktop/troubleshoot-and-support/troubleshoot/topics/)
 
-- [已知问题](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/)
+- [已知问题](/desktop/troubleshoot-and-support/troubleshoot/known-issues/)
 
-- [修复 macOS 上“Docker.app 已损坏，无法打开”的问题](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/)
+- [修复 macOS 上“Docker.app 已损坏，无法打开”的问题](/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/)
 

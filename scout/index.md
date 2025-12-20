@@ -208,11 +208,11 @@ Docker Scout 还支持与第三方系统（如容器注册表和 CI 平台）集
 </div>
 
 
-- [安装 Docker Scout](https://docs.docker.com/scout/install/)
+- [安装 Docker Scout](/scout/install/)
 
-- [Docker Scout 快速入门](https://docs.docker.com/scout/quickstart/)
+- [Docker Scout 快速入门](/scout/quickstart/)
 
-- [Docker Scout 中的策略评估入门](https://docs.docker.com/scout/policy/)
+- [Docker Scout 中的策略评估入门](/scout/policy/)
 
-- [将 Docker Scout 与其他系统集成](https://docs.docker.com/scout/integrations/)
+- [将 Docker Scout 与其他系统集成](/scout/integrations/)
 

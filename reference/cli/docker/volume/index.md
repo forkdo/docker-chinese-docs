@@ -6,15 +6,15 @@
 https://github.com/docker/cli
 -->
 
-- [docker volume create](https://docs.docker.com/reference/cli/docker/volume/create/)
+- [docker volume create](/reference/cli/docker/volume/create/)
 
-- [docker volume inspect](https://docs.docker.com/reference/cli/docker/volume/inspect/)
+- [docker volume inspect](/reference/cli/docker/volume/inspect/)
 
-- [docker volume ls](https://docs.docker.com/reference/cli/docker/volume/ls/)
+- [docker volume ls](/reference/cli/docker/volume/ls/)
 
-- [docker volume prune](https://docs.docker.com/reference/cli/docker/volume/prune/)
+- [docker volume prune](/reference/cli/docker/volume/prune/)
 
-- [docker volume rm](https://docs.docker.com/reference/cli/docker/volume/rm/)
+- [docker volume rm](/reference/cli/docker/volume/rm/)
 
-- [docker volume update](https://docs.docker.com/reference/cli/docker/volume/update/)
+- [docker volume update](/reference/cli/docker/volume/update/)
 

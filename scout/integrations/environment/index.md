@@ -79,7 +79,7 @@ docker/scout-demo-service:main@sha256:ef08dca54c4f371e7ea090914f503982e890ec81d2
 
 当您在 **Images** 选项卡上选择一个环境时，列表中的标签代表用于部署镜像的标签。标签是可变的，这意味着您可以更改标签引用的镜像摘要。如果 Docker Scout 检测到某个标签引用了过时的摘要，则会在镜像名称旁边显示一个警告图标。
 
-- [将 Docker Scout 与 Sysdig 集成](https://docs.docker.com/scout/integrations/environment/sysdig/)
+- [将 Docker Scout 与 Sysdig 集成](/scout/integrations/environment/sysdig/)
 
-- [通过 CLI 进行通用环境集成](https://docs.docker.com/scout/integrations/environment/cli/)
+- [通过 CLI 进行通用环境集成](/scout/integrations/environment/cli/)
 

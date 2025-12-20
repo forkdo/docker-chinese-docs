@@ -734,63 +734,63 @@
 </div>
 
 
-- [获取 Docker 产品支持](https://docs.docker.com/support/)
+- [获取 Docker 产品支持](/support/)
 
-- [Docker Hardened Images](https://docs.docker.com/dhi/)
+- [Docker Hardened Images](/dhi/)
 
-- [Docker Desktop](https://docs.docker.com/desktop/)
+- [Docker Desktop](/desktop/)
 
-- [Docker Engine](https://docs.docker.com/engine/)
+- [Docker Engine](/engine/)
 
-- [Docker MCP Catalog and Toolkit](https://docs.docker.com/ai/mcp-catalog-and-toolkit/)
+- [Docker MCP Catalog and Toolkit](/ai/mcp-catalog-and-toolkit/)
 
-- [企业级安全](https://docs.docker.com/enterprise/security/)
+- [企业级安全](/enterprise/security/)
 
-- [管理](https://docs.docker.com/admin/)
+- [管理](/admin/)
 
-- [管理账单和支付](https://docs.docker.com/billing/)
+- [管理账单和支付](/billing/)
 
-- [部署 Docker Desktop](https://docs.docker.com/enterprise/enterprise-deployment/)
+- [部署 Docker Desktop](/enterprise/enterprise-deployment/)
 
-- [Docker Offload](https://docs.docker.com/offload/)
+- [Docker Offload](/offload/)
 
-- [Docker Build](https://docs.docker.com/build/)
+- [Docker Build](/build/)
 
-- [Docker Build Cloud](https://docs.docker.com/build-cloud/)
+- [Docker Build Cloud](/build-cloud/)
 
-- [Docker 沙盒](https://docs.docker.com/ai/sandboxes/)
+- [Docker 沙盒](/ai/sandboxes/)
 
-- [Docker Compose](https://docs.docker.com/compose/)
+- [Docker Compose](/compose/)
 
-- [Docker Hub](https://docs.docker.com/docker-hub/)
+- [Docker Hub](/docker-hub/)
 
-- [Docker 账户](https://docs.docker.com/accounts/)
+- [Docker 账户](/accounts/)
 
-- [Docker Model Runner](https://docs.docker.com/ai/model-runner/)
+- [Docker Model Runner](/ai/model-runner/)
 
-- [Ask Gordon](https://docs.docker.com/ai/gordon/)
+- [Ask Gordon](/ai/gordon/)
 
-- [Docker Scout](https://docs.docker.com/scout/)
+- [Docker Scout](/scout/)
 
-- [Testcontainers](https://docs.docker.com/testcontainers/)
+- [Testcontainers](/testcontainers/)
 
-- [开发者安全](https://docs.docker.com/security/)
+- [开发者安全](/security/)
 
-- [订阅](https://docs.docker.com/subscription/)
+- [订阅](/subscription/)
 
-- [cagent](https://docs.docker.com/ai/cagent/)
+- [cagent](/ai/cagent/)
 
-- [Docker 扩展](https://docs.docker.com/extensions/)
+- [Docker 扩展](/extensions/)
 
-- [Docker Home、管理控制台、账单、安全和订阅功能的发布说明](https://docs.docker.com/platform-release-notes/)
+- [Docker Home、管理控制台、账单、安全和订阅功能的发布说明](/platform-release-notes/)
 
-- [Testcontainers Cloud](https://docs.docker.com/tcc/)
+- [Testcontainers Cloud](/tcc/)
 
-- [](https://docs.docker.com/ai/compose/)
+- [](/ai/compose/)
 
-- [Docker 的产品发布生命周期](https://docs.docker.com/release-lifecycle/)
+- [Docker 的产品发布生命周期](/release-lifecycle/)
 
-- [已弃用和停用的 Docker 产品和功能](https://docs.docker.com/retired/)
+- [已弃用和停用的 Docker 产品和功能](/retired/)
 
-- [管理未关联的机器](https://docs.docker.com/unassociated-machines/)
+- [管理未关联的机器](/unassociated-machines/)
 

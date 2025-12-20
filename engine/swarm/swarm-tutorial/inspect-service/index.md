@@ -109,5 +109,5 @@
 接下来，您将更改 swarm 中运行服务的规模。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/scale-service/">更改规模</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/scale-service/">更改规模</a>
 

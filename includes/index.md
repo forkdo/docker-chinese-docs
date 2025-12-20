@@ -9,91 +9,91 @@ cascade:
 ---
 ```
 
-- [](https://docs.docker.com/includes/aci-ecs-eol/)
+- [](/includes/aci-ecs-eol/)
 
-- [](https://docs.docker.com/includes/buildx-v0.10-disclaimer/)
+- [](/includes/buildx-v0.10-disclaimer/)
 
-- [](https://docs.docker.com/includes/compose-eol/)
+- [](/includes/compose-eol/)
 
-- [](https://docs.docker.com/includes/compose/build/)
+- [](/includes/compose/build/)
 
-- [](https://docs.docker.com/includes/compose/configs/)
+- [](/includes/compose/configs/)
 
-- [](https://docs.docker.com/includes/compose/configure-watch/)
+- [](/includes/compose/configure-watch/)
 
-- [](https://docs.docker.com/includes/compose/deploy/)
+- [](/includes/compose/deploy/)
 
-- [](https://docs.docker.com/includes/compose/extension/)
+- [](/includes/compose/extension/)
 
-- [](https://docs.docker.com/includes/compose/fragments/)
+- [](/includes/compose/fragments/)
 
-- [](https://docs.docker.com/includes/compose/include/)
+- [](/includes/compose/include/)
 
-- [](https://docs.docker.com/includes/compose/interpolation/)
+- [](/includes/compose/interpolation/)
 
-- [](https://docs.docker.com/includes/compose/merge/)
+- [](/includes/compose/merge/)
 
-- [](https://docs.docker.com/includes/compose/networks/)
+- [](/includes/compose/networks/)
 
-- [](https://docs.docker.com/includes/compose/profiles/)
+- [](/includes/compose/profiles/)
 
-- [](https://docs.docker.com/includes/compose/secrets/)
+- [](/includes/compose/secrets/)
 
-- [](https://docs.docker.com/includes/compose/services-depends-on/)
+- [](/includes/compose/services-depends-on/)
 
-- [](https://docs.docker.com/includes/compose/services-develop/)
+- [](/includes/compose/services-develop/)
 
-- [](https://docs.docker.com/includes/compose/services-env-file/)
+- [](/includes/compose/services-env-file/)
 
-- [](https://docs.docker.com/includes/compose/services-environment/)
+- [](/includes/compose/services-environment/)
 
-- [](https://docs.docker.com/includes/compose/services-healthcheck/)
+- [](/includes/compose/services-healthcheck/)
 
-- [](https://docs.docker.com/includes/compose/services-networks/)
+- [](/includes/compose/services-networks/)
 
-- [](https://docs.docker.com/includes/compose/services-ports/)
+- [](/includes/compose/services-ports/)
 
-- [](https://docs.docker.com/includes/compose/services-secrets/)
+- [](/includes/compose/services-secrets/)
 
-- [](https://docs.docker.com/includes/compose/services-volumes/)
+- [](/includes/compose/services-volumes/)
 
-- [](https://docs.docker.com/includes/compose/services/)
+- [](/includes/compose/services/)
 
-- [](https://docs.docker.com/includes/compose/volumes/)
+- [](/includes/compose/volumes/)
 
-- [](https://docs.docker.com/includes/compose/watch/)
+- [](/includes/compose/watch/)
 
-- [](https://docs.docker.com/includes/deploy/)
+- [](/includes/deploy/)
 
-- [](https://docs.docker.com/includes/desktop-license-update/)
+- [](/includes/desktop-license-update/)
 
-- [](https://docs.docker.com/includes/desktop-linux-launch/)
+- [](/includes/desktop-linux-launch/)
 
-- [](https://docs.docker.com/includes/dev-envs-changing/)
+- [](/includes/dev-envs-changing/)
 
-- [](https://docs.docker.com/includes/dockerfile-labs-channel/)
+- [](/includes/dockerfile-labs-channel/)
 
-- [](https://docs.docker.com/includes/engine-license/)
+- [](/includes/engine-license/)
 
-- [](https://docs.docker.com/includes/experimental/)
+- [](/includes/experimental/)
 
-- [](https://docs.docker.com/includes/extensions-form/)
+- [](/includes/extensions-form/)
 
-- [](https://docs.docker.com/includes/gordondhi/)
+- [](/includes/gordondhi/)
 
-- [](https://docs.docker.com/includes/guides-get-docker/)
+- [](/includes/guides-get-docker/)
 
-- [](https://docs.docker.com/includes/hub-categories/)
+- [](/includes/hub-categories/)
 
-- [](https://docs.docker.com/includes/install-script/)
+- [](/includes/install-script/)
 
-- [](https://docs.docker.com/includes/open-terminal/)
+- [](/includes/open-terminal/)
 
-- [](https://docs.docker.com/includes/root-errors/)
+- [](/includes/root-errors/)
 
-- [](https://docs.docker.com/includes/swarm-compose-compat/)
+- [](/includes/swarm-compose-compat/)
 
-- [](https://docs.docker.com/includes/swarm-mode/)
+- [](/includes/swarm-mode/)
 
-- [](https://docs.docker.com/includes/tax-compliance/)
+- [](/includes/tax-compliance/)
 

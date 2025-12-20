@@ -73,9 +73,9 @@
 
 - [Slack](./team-collaboration/slack.md)
 
-- [](https://docs.docker.com/scout/integrations/team-collaboration/)
+- [](/scout/integrations/team-collaboration/)
 
-- [将 Docker Scout 与环境集成](https://docs.docker.com/scout/integrations/environment/)
+- [将 Docker Scout 与环境集成](/scout/integrations/environment/)
 
-- [在持续集成中使用 Docker Scout](https://docs.docker.com/scout/integrations/ci/)
+- [在持续集成中使用 Docker Scout](/scout/integrations/ci/)
 

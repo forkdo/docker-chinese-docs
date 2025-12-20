@@ -67,7 +67,7 @@ Gordon 以及 Claude Desktop 或 Cursor 等其他 MCP 客户端，可以与作�
 </div>
 
 
-- [Gordon 中的内置工具](https://docs.docker.com/ai/gordon/mcp/built-in-tools/)
+- [Gordon 中的内置工具](/ai/gordon/mcp/built-in-tools/)
 
-- [使用 YAML 配置 MCP 服务器](https://docs.docker.com/ai/gordon/mcp/yaml/)
+- [使用 YAML 配置 MCP 服务器](/ai/gordon/mcp/yaml/)
 

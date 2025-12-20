@@ -161,13 +161,13 @@
 </div>
 
 
-- [迁移清单](https://docs.docker.com/dhi/migration/checklist/)
+- [迁移清单](/dhi/migration/checklist/)
 
-- [使用 Docker 的 AI 助手进行迁移](https://docs.docker.com/dhi/migration/migrate-with-ai/)
+- [使用 Docker 的 AI 助手进行迁移](/dhi/migration/migrate-with-ai/)
 
-- [从 Alpine 或 Debian 迁移](https://docs.docker.com/dhi/migration/migrate-from-doi/)
+- [从 Alpine 或 Debian 迁移](/dhi/migration/migrate-from-doi/)
 
-- [从 Wolfi 迁移](https://docs.docker.com/dhi/migration/migrate-from-wolfi/)
+- [从 Wolfi 迁移](/dhi/migration/migrate-from-wolfi/)
 
-- [迁移示例](https://docs.docker.com/dhi/migration/examples/)
+- [迁移示例](/dhi/migration/examples/)
 

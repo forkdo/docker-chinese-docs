@@ -42,15 +42,15 @@
 >
 > 请通过 [反馈表单](https://survey.alchemer.com/s3/7184948/Publishers-Feedback-Form) 告诉我们您的使用体验。
 
-- [扩展镜像标签](https://docs.docker.com/extensions/extensions-sdk/extensions/labels/)
+- [扩展镜像标签](/extensions/extensions-sdk/extensions/labels/)
 
-- [验证您的扩展](https://docs.docker.com/extensions/extensions-sdk/extensions/validate/)
+- [验证您的扩展](/extensions/extensions-sdk/extensions/validate/)
 
-- [打包并发布您的扩展](https://docs.docker.com/extensions/extensions-sdk/extensions/DISTRIBUTION/)
+- [打包并发布您的扩展](/extensions/extensions-sdk/extensions/DISTRIBUTION/)
 
-- [分享你的扩展](https://docs.docker.com/extensions/extensions-sdk/extensions/share/)
+- [分享你的扩展](/extensions/extensions-sdk/extensions/share/)
 
-- [在 Marketplace 中发布](https://docs.docker.com/extensions/extensions-sdk/extensions/publish/)
+- [在 Marketplace 中发布](/extensions/extensions-sdk/extensions/publish/)
 
-- [构建多架构扩展](https://docs.docker.com/extensions/extensions-sdk/extensions/multi-arch/)
+- [构建多架构扩展](/extensions/extensions-sdk/extensions/multi-arch/)
 

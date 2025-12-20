@@ -117,7 +117,7 @@
 <li>对于 Windows 10/11 上的 Docker Desktop，安装最新的 <a class="link" href="https://www.nvidia.com/Download/index.aspx" rel="noopener">NVIDIA 驱动程序</a>，并确保你正在使用 
     
   
-  <a class="link" href="https://docs.docker.com/desktop/features/wsl/#turn-on-docker-desktop-wsl-2">WSL2 后端</a>。</li>
+  <a class="link" href="/desktop/features/wsl/#turn-on-docker-desktop-wsl-2">WSL2 后端</a>。</li>
 </ul>
 </li>
 <li>
@@ -190,7 +190,7 @@
       <p>有关 Compose 指令的更多详细信息，请参阅 
     
   
-  <a class="link" href="https://docs.docker.com/compose/how-tos/gpu-support/">使用 Docker Compose 启用 GPU 访问</a>。</p>
+  <a class="link" href="/compose/how-tos/gpu-support/">使用 Docker Compose 启用 GPU 访问</a>。</p>
     </div>
   </blockquote>
 

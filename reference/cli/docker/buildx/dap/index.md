@@ -8,7 +8,7 @@
 https://github.com/docker/buildx
 -->
 
-- [docker buildx dap attach](https://docs.docker.com/reference/cli/docker/buildx/dap/attach/)
+- [docker buildx dap attach](/reference/cli/docker/buildx/dap/attach/)
 
-- [docker buildx dap build](https://docs.docker.com/reference/cli/docker/buildx/dap/build/)
+- [docker buildx dap build](/reference/cli/docker/buildx/dap/build/)
 

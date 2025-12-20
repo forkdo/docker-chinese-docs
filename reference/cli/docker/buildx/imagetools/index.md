@@ -6,7 +6,7 @@
 https://github.com/docker/buildx
 -->
 
-- [docker buildx imagetools create](https://docs.docker.com/reference/cli/docker/buildx/imagetools/create/)
+- [docker buildx imagetools create](/reference/cli/docker/buildx/imagetools/create/)
 
-- [docker buildx imagetools inspect](https://docs.docker.com/reference/cli/docker/buildx/imagetools/inspect/)
+- [docker buildx imagetools inspect](/reference/cli/docker/buildx/imagetools/inspect/)
 

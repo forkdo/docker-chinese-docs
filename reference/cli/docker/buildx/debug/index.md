@@ -8,5 +8,5 @@
 https://github.com/docker/buildx
 -->
 
-- [docker buildx debug build](https://docs.docker.com/reference/cli/docker/buildx/debug/build/)
+- [docker buildx debug build](/reference/cli/docker/buildx/debug/build/)
 

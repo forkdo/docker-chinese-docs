@@ -6,9 +6,9 @@
 https://github.com/docker/compose
 -->
 
-- [docker compose alpha dry-run](https://docs.docker.com/reference/cli/docker/compose/alpha/dry-run/)
+- [docker compose alpha dry-run](/reference/cli/docker/compose/alpha/dry-run/)
 
-- [docker compose alpha scale](https://docs.docker.com/reference/cli/docker/compose/alpha/scale/)
+- [docker compose alpha scale](/reference/cli/docker/compose/alpha/scale/)
 
-- [docker compose alpha viz](https://docs.docker.com/reference/cli/docker/compose/alpha/viz/)
+- [docker compose alpha viz](/reference/cli/docker/compose/alpha/viz/)
 

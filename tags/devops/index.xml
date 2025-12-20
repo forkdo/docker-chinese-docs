@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOps on Docker Docs</title>
-    <link>https://docs.docker.com/tags/devops/</link>
+    <link>/tags/devops/</link>
     <description>Recent content in DevOps on Docker Docs</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://docs.docker.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Pipelines 与 Docker 入门</title>
-      <link>https://docs.docker.com/guides/azure-pipelines/</link>
+      <link>/guides/azure-pipelines/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/azure-pipelines/</guid>
+      <guid>/guides/azure-pipelines/</guid>
       <description>了解如何使用 Azure Pipelines 自动构建和推送 Docker 镜像。</description>
     </item>
     <item>
       <title>使用 Docker 的 GitHub Actions 入门</title>
-      <link>https://docs.docker.com/guides/gha/</link>
+      <link>/guides/gha/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/gha/</guid>
+      <guid>/guides/gha/</guid>
       <description>了解如何使用 GitHub Actions 自动构建和推送镜像。</description>
     </item>
     <item>
       <title>使用 Bake 构建 Compose 项目</title>
-      <link>https://docs.docker.com/guides/compose-bake/</link>
+      <link>/guides/compose-bake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/compose-bake/</guid>
+      <guid>/guides/compose-bake/</guid>
       <description>本指南演示如何使用 Bake 为 Docker Compose 项目构建生产级镜像。</description>
     </item>
     <item>
       <title>使用 Docker Buildx Bake 掌握多平台构建、测试等</title>
-      <link>https://docs.docker.com/guides/bake/</link>
+      <link>/guides/bake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/bake/</guid>
+      <guid>/guides/bake/</guid>
       <description>学习使用 Buildx Bake 通过声明式配置自动化 Docker 构建和测试。</description>
     </item>
     <item>
       <title>如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流</title>
-      <link>https://docs.docker.com/guides/github-sonarqube-sandbox/</link>
+      <link>/guides/github-sonarqube-sandbox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.docker.com/guides/github-sonarqube-sandbox/</guid>
+      <guid>/guides/github-sonarqube-sandbox/</guid>
       <description>使用 E2B 沙盒与 Docker 的 MCP 目录构建 AI 驱动的代码质量工作流，实现 GitHub 和 SonarQube 的自动化集成。</description>
     </item>
   </channel>

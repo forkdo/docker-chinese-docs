@@ -6,7 +6,7 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp policy dump](https://docs.docker.com/reference/cli/docker/mcp/policy/policy_dump/)
+- [docker mcp policy dump](/reference/cli/docker/mcp/policy/policy_dump/)
 
-- [docker mcp policy set](https://docs.docker.com/reference/cli/docker/mcp/policy/policy_set/)
+- [docker mcp policy set](/reference/cli/docker/mcp/policy/policy_set/)
 

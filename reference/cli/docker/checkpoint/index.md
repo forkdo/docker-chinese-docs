@@ -8,9 +8,9 @@
 https://github.com/docker/cli
 -->
 
-- [docker checkpoint create](https://docs.docker.com/reference/cli/docker/checkpoint/create/)
+- [docker checkpoint create](/reference/cli/docker/checkpoint/create/)
 
-- [docker checkpoint ls](https://docs.docker.com/reference/cli/docker/checkpoint/ls/)
+- [docker checkpoint ls](/reference/cli/docker/checkpoint/ls/)
 
-- [docker checkpoint rm](https://docs.docker.com/reference/cli/docker/checkpoint/rm/)
+- [docker checkpoint rm](/reference/cli/docker/checkpoint/rm/)
 

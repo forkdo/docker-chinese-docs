@@ -82,39 +82,39 @@ you through the process of setting up and using Docker GitHub Actions for
 building Docker images, and pushing images to Docker Hub.
 
 
-- [Add image annotations with GitHub Actions](https://docs.docker.com/build/ci/github-actions/annotations/)
+- [Add image annotations with GitHub Actions](/build/ci/github-actions/annotations/)
 
-- [Add SBOM and provenance attestations with GitHub Actions](https://docs.docker.com/build/ci/github-actions/attestations/)
+- [Add SBOM and provenance attestations with GitHub Actions](/build/ci/github-actions/attestations/)
 
-- [Validating build configuration with GitHub Actions](https://docs.docker.com/build/ci/github-actions/checks/)
+- [Validating build configuration with GitHub Actions](/build/ci/github-actions/checks/)
 
-- [Using secrets with GitHub Actions](https://docs.docker.com/build/ci/github-actions/secrets/)
+- [Using secrets with GitHub Actions](/build/ci/github-actions/secrets/)
 
-- [GitHub Actions build summary](https://docs.docker.com/build/ci/github-actions/build-summary/)
+- [GitHub Actions build summary](/build/ci/github-actions/build-summary/)
 
-- [Configuring your GitHub Actions builder](https://docs.docker.com/build/ci/github-actions/configure-builder/)
+- [Configuring your GitHub Actions builder](/build/ci/github-actions/configure-builder/)
 
-- [Cache management with GitHub Actions](https://docs.docker.com/build/ci/github-actions/cache/)
+- [Cache management with GitHub Actions](/build/ci/github-actions/cache/)
 
-- [Copy image between registries with GitHub Actions](https://docs.docker.com/build/ci/github-actions/copy-image-registries/)
+- [Copy image between registries with GitHub Actions](/build/ci/github-actions/copy-image-registries/)
 
-- [Export to Docker with GitHub Actions](https://docs.docker.com/build/ci/github-actions/export-docker/)
+- [Export to Docker with GitHub Actions](/build/ci/github-actions/export-docker/)
 
-- [Local registry with GitHub Actions](https://docs.docker.com/build/ci/github-actions/local-registry/)
+- [Local registry with GitHub Actions](/build/ci/github-actions/local-registry/)
 
-- [Multi-platform image with GitHub Actions](https://docs.docker.com/build/ci/github-actions/multi-platform/)
+- [Multi-platform image with GitHub Actions](/build/ci/github-actions/multi-platform/)
 
-- [Named contexts with GitHub Actions](https://docs.docker.com/build/ci/github-actions/named-contexts/)
+- [Named contexts with GitHub Actions](/build/ci/github-actions/named-contexts/)
 
-- [Push to multiple registries with GitHub Actions](https://docs.docker.com/build/ci/github-actions/push-multi-registries/)
+- [Push to multiple registries with GitHub Actions](/build/ci/github-actions/push-multi-registries/)
 
-- [Reproducible builds with GitHub Actions](https://docs.docker.com/build/ci/github-actions/reproducible-builds/)
+- [Reproducible builds with GitHub Actions](/build/ci/github-actions/reproducible-builds/)
 
-- [Share built image between jobs with GitHub Actions](https://docs.docker.com/build/ci/github-actions/share-image-jobs/)
+- [Share built image between jobs with GitHub Actions](/build/ci/github-actions/share-image-jobs/)
 
-- [Manage tags and labels with GitHub Actions](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
+- [Manage tags and labels with GitHub Actions](/build/ci/github-actions/manage-tags-labels/)
 
-- [Test before push with GitHub Actions](https://docs.docker.com/build/ci/github-actions/test-before-push/)
+- [Test before push with GitHub Actions](/build/ci/github-actions/test-before-push/)
 
-- [Update Docker Hub description with GitHub Actions](https://docs.docker.com/build/ci/github-actions/update-dockerhub-desc/)
+- [Update Docker Hub description with GitHub Actions](/build/ci/github-actions/update-dockerhub-desc/)
 

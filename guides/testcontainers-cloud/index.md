@@ -22,11 +22,11 @@ Docker Pro、Team 和 Business 订阅包含 Testcontainers Cloud 运行时分钟
 - 寻求可扩展且一致的测试环境以进行全面集成和端到端测试的 QA 团队。
 - 需要可靠、容器化的测试环境来测试微服务和数据库的开发人员。
 
-- [为什么选择 Testcontainers Cloud？](https://docs.docker.com/guides/testcontainers-cloud/why/)
+- [为什么选择 Testcontainers Cloud？](/guides/testcontainers-cloud/why/)
 
-- [通过 Docker 设置 Testcontainers Cloud](https://docs.docker.com/guides/testcontainers-cloud/demo-local/)
+- [通过 Docker 设置 Testcontainers Cloud](/guides/testcontainers-cloud/demo-local/)
 
-- [在 CI 流水线中配置 Testcontainers Cloud](https://docs.docker.com/guides/testcontainers-cloud/demo-ci/)
+- [在 CI 流水线中配置 Testcontainers Cloud](/guides/testcontainers-cloud/demo-ci/)
 
-- [常见挑战与问题](https://docs.docker.com/guides/testcontainers-cloud/common-questions/)
+- [常见挑战与问题](/guides/testcontainers-cloud/common-questions/)
 

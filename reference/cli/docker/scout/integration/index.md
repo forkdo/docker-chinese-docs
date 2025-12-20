@@ -12,9 +12,9 @@ https://github.com/docker/scout-cli
 
 
 
-- [docker scout integration configure](https://docs.docker.com/reference/cli/docker/scout/integration/configure/)
+- [docker scout integration configure](/reference/cli/docker/scout/integration/configure/)
 
-- [docker scout integration delete](https://docs.docker.com/reference/cli/docker/scout/integration/delete/)
+- [docker scout integration delete](/reference/cli/docker/scout/integration/delete/)
 
-- [docker scout integration list](https://docs.docker.com/reference/cli/docker/scout/integration/list/)
+- [docker scout integration list](/reference/cli/docker/scout/integration/list/)
 

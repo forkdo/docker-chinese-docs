@@ -64,21 +64,21 @@ Docker Engine 是一个开源项目，由 Moby 项目维护者和社区成员提
 
 设置 Docker 后，您可以通过[使用 Docker 入门](/get-started/introduction/_index.md)学习基础知识。
 
-- [在 Ubuntu 上安装 Docker Engine](https://docs.docker.com/engine/install/ubuntu/)
+- [在 Ubuntu 上安装 Docker Engine](/engine/install/ubuntu/)
 
-- [在 Debian 上安装 Docker Engine](https://docs.docker.com/engine/install/debian/)
+- [在 Debian 上安装 Docker Engine](/engine/install/debian/)
 
-- [在 RHEL 上安装 Docker Engine](https://docs.docker.com/engine/install/rhel/)
+- [在 RHEL 上安装 Docker Engine](/engine/install/rhel/)
 
-- [在 Fedora 上安装 Docker Engine](https://docs.docker.com/engine/install/fedora/)
+- [在 Fedora 上安装 Docker Engine](/engine/install/fedora/)
 
-- [在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine](https://docs.docker.com/engine/install/raspberry-pi-os/)
+- [在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine](/engine/install/raspberry-pi-os/)
 
-- [在 CentOS 上安装 Docker Engine](https://docs.docker.com/engine/install/centos/)
+- [在 CentOS 上安装 Docker Engine](/engine/install/centos/)
 
-- [Docker Engine 在 SLES (s390x) 上](https://docs.docker.com/engine/install/sles/)
+- [Docker Engine 在 SLES (s390x) 上](/engine/install/sles/)
 
-- [通过二进制文件安装 Docker Engine](https://docs.docker.com/engine/install/binaries/)
+- [通过二进制文件安装 Docker Engine](/engine/install/binaries/)
 
-- [Docker Engine 的 Linux 安装后步骤](https://docs.docker.com/engine/install/linux-postinstall/)
+- [Docker Engine 的 Linux 安装后步骤](/engine/install/linux-postinstall/)
 

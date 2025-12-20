@@ -62,9 +62,9 @@ Compose Bridge 还支持通过 Docker Model Runner 使用 LLM 的应用程序。
 - [使用 Compose Bridge](usage.md)
 - [探索如何自定义 Compose Bridge](customize.md)
 
-- [使用默认的 Compose Bridge 转换](https://docs.docker.com/compose/bridge/usage/)
+- [使用默认的 Compose Bridge 转换](/compose/bridge/usage/)
 
-- [自定义 Compose Bridge](https://docs.docker.com/compose/bridge/customize/)
+- [自定义 Compose Bridge](/compose/bridge/customize/)
 
-- [在 Compose Bridge 中使用 Docker Model Runner](https://docs.docker.com/compose/bridge/use-model-runner/)
+- [在 Compose Bridge 中使用 Docker Model Runner](/compose/bridge/use-model-runner/)
 

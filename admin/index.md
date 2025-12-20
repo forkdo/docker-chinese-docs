@@ -221,7 +221,7 @@ Docker 的 [Admin Console](https://app.docker.com/admin) 允许您：
 </div>
 
 
-- [组织管理概览](https://docs.docker.com/admin/organization/)
+- [组织管理概览](/admin/organization/)
 
-- [公司管理概览](https://docs.docker.com/admin/company/)
+- [公司管理概览](/admin/company/)
 

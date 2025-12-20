@@ -165,13 +165,13 @@
 </div>
 
 
-- [获取 Docker](https://docs.docker.com/get-started/get-docker/)
+- [获取 Docker](/get-started/get-docker/)
 
-- [什么是 Docker？](https://docs.docker.com/get-started/docker-overview/)
+- [什么是 Docker？](/get-started/docker-overview/)
 
-- [介绍](https://docs.docker.com/get-started/introduction/)
+- [介绍](/get-started/introduction/)
 
-- [Docker 工作坊概览](https://docs.docker.com/get-started/workshop/)
+- [Docker 工作坊概览](/get-started/workshop/)
 
-- [学习资源](https://docs.docker.com/get-started/resources/)
+- [学习资源](/get-started/resources/)
 

@@ -7,7 +7,7 @@
 
 首先容器化现有的 RAG 应用程序。
 
-- [容器化 RAG 应用程序](https://docs.docker.com/guides/rag-ollama/containerize/)
+- [容器化 RAG 应用程序](/guides/rag-ollama/containerize/)
 
-- [使用容器进行 RAG 开发](https://docs.docker.com/guides/rag-ollama/develop/)
+- [使用容器进行 RAG 开发](/guides/rag-ollama/develop/)
 

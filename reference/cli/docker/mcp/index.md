@@ -8,25 +8,25 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [](https://docs.docker.com/reference/cli/docker/mcp/tools/)
+- [](/reference/cli/docker/mcp/tools/)
 
-- [docker mcp catalog](https://docs.docker.com/reference/cli/docker/mcp/catalog/)
+- [docker mcp catalog](/reference/cli/docker/mcp/catalog/)
 
-- [docker mcp client](https://docs.docker.com/reference/cli/docker/mcp/client/)
+- [docker mcp client](/reference/cli/docker/mcp/client/)
 
-- [docker mcp config](https://docs.docker.com/reference/cli/docker/mcp/config/)
+- [docker mcp config](/reference/cli/docker/mcp/config/)
 
-- [docker mcp gateway](https://docs.docker.com/reference/cli/docker/mcp/gateway/)
+- [docker mcp gateway](/reference/cli/docker/mcp/gateway/)
 
-- [docker mcp oauth](https://docs.docker.com/reference/cli/docker/mcp/oauth/)
+- [docker mcp oauth](/reference/cli/docker/mcp/oauth/)
 
-- [docker mcp policy](https://docs.docker.com/reference/cli/docker/mcp/policy/)
+- [docker mcp policy](/reference/cli/docker/mcp/policy/)
 
-- [docker mcp secret](https://docs.docker.com/reference/cli/docker/mcp/secrets/)
+- [docker mcp secret](/reference/cli/docker/mcp/secrets/)
 
-- [docker mcp server](https://docs.docker.com/reference/cli/docker/mcp/server/)
+- [docker mcp server](/reference/cli/docker/mcp/server/)
 
-- [docker mcp version](https://docs.docker.com/reference/cli/docker/mcp/version/)
+- [docker mcp version](/reference/cli/docker/mcp/version/)
 
-- [docker mcp 功能](https://docs.docker.com/reference/cli/docker/mcp/feature/)
+- [docker mcp 功能](/reference/cli/docker/mcp/feature/)
 

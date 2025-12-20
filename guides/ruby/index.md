@@ -9,11 +9,11 @@ Ruby 语言特定指南将教你如何使用 Docker 容器化一个 Ruby on Rail
 
 从容器化一个现有的 Ruby on Rails 应用程序开始。
 
-- [容器化 Ruby on Rails 应用](https://docs.docker.com/guides/ruby/containerize/)
+- [容器化 Ruby on Rails 应用](/guides/ruby/containerize/)
 
-- [使用 GitHub Actions 自动化构建](https://docs.docker.com/guides/ruby/configure-github-actions/)
+- [使用 GitHub Actions 自动化构建](/guides/ruby/configure-github-actions/)
 
-- [使用容器进行 Ruby on Rails 开发](https://docs.docker.com/guides/ruby/develop/)
+- [使用容器进行 Ruby on Rails 开发](/guides/ruby/develop/)
 
-- [测试您的 Ruby on Rails 部署](https://docs.docker.com/guides/ruby/deploy/)
+- [测试您的 Ruby on Rails 部署](/guides/ruby/deploy/)
 

@@ -123,5 +123,5 @@
 接下来，你将学习如何在 swarm 中排空（drain）一个节点。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/drain-node/">排空节点</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/drain-node/">排空节点</a>
 

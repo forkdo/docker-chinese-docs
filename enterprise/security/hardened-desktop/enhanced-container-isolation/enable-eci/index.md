@@ -137,7 +137,7 @@ Docker Business 订阅。
 <li>
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/configure-admin-console/">创建或编辑设置策略</a>。</li>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/configure-admin-console/">创建或编辑设置策略</a>。</li>
 <li>将 <strong>Enhanced Container Isolation</strong> 设置为 <strong>Always enabled</strong>。</li>
 </ol>
 
@@ -152,7 +152,7 @@ Docker Business 订阅。
 <p>创建 
     
   
-  <a class="link" href="https://docs.docker.com/enterprise/security/hardened-desktop/settings-management/configure-json-file/"><code>admin-settings.json</code> 文件</a> 并添加：</p>
+  <a class="link" href="/enterprise/security/hardened-desktop/settings-management/configure-json-file/"><code>admin-settings.json</code> 文件</a> 并添加：</p>
 <div
   data-pagefind-ignore
   x-data

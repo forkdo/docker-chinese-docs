@@ -213,11 +213,11 @@ Docker Pass 使用以下 Vault API 端点：
 - [Docker 凭据助手规范](https://github.com/docker/docker-credential-helpers)
 - [GitHub 仓库](https://github.com/hashicorp/vault)
 
-- [docker pass get](https://docs.docker.com/reference/cli/docker/pass/get/)
+- [docker pass get](/reference/cli/docker/pass/get/)
 
-- [docker pass ls](https://docs.docker.com/reference/cli/docker/pass/ls/)
+- [docker pass ls](/reference/cli/docker/pass/ls/)
 
-- [docker pass rm](https://docs.docker.com/reference/cli/docker/pass/rm/)
+- [docker pass rm](/reference/cli/docker/pass/rm/)
 
-- [docker pass set](https://docs.docker.com/reference/cli/docker/pass/set/)
+- [docker pass set](/reference/cli/docker/pass/set/)
 

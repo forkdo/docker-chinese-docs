@@ -8,7 +8,7 @@
 https://github.com/docker/cli
 -->
 
-- [docker trust signer add](https://docs.docker.com/reference/cli/docker/trust/signer/add/)
+- [docker trust signer add](/reference/cli/docker/trust/signer/add/)
 
-- [docker trust signer remove](https://docs.docker.com/reference/cli/docker/trust/signer/remove/)
+- [docker trust signer remove](/reference/cli/docker/trust/signer/remove/)
 

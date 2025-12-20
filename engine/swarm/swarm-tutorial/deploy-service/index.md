@@ -31,5 +31,5 @@
 现在您已准备好检查服务。
 
 
-<a class="button not-prose" href="https://docs.docker.com/engine/swarm/swarm-tutorial/inspect-service/">检查服务</a>
+<a class="button not-prose" href="/engine/swarm/swarm-tutorial/inspect-service/">检查服务</a>
 
