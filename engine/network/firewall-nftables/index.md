@@ -1,0 +1,180 @@
+# Docker 与 nftables
+
+> [!WARNING]
+>
+> Docker 29.0.0 中引入的 nftables 支持是实验性的，配置选项、行为和实现都可能在未来的版本中发生变化。
+> overlay 网络的规则尚未从 iptables 迁移。因此，当 Docker 守护进程运行在 Swarm 模式时，不能启用 nftables。
+
+要使用 nftables 替代 iptables，请在 Docker Engine 命令行中使用选项 `--firewall-backend=nftables`，或在配置文件中设置 `"firewall-backend": "nftables"`。您可能还需要修改主机上的 IP 转发配置，并从 iptables 的 `DOCKER-USER` 链迁移规则，参见[从 iptables 迁移到 nftables](#从-iptables-迁移到-nftables)。
+
+对于桥接网络，Docker 会在主机的网络命名空间中创建 nftables 规则。对于桥接和其他网络类型，DNS 的 nftables 规则也会在容器的网络命名空间中创建。
+
+可以使用守护进程选项 `iptables` 和 `ip6tables` 来禁用 nftables 规则的创建。_这些选项同时适用于 iptables 和 nftables。_
+参见[防止 Docker 操纵防火墙规则](packet-filtering-firewalls.md#prevent-docker-from-manipulating-firewall-rules)。
+然而，对于大多数用户来说，不推荐这样做，因为它可能会破坏容器网络。
+
+## Docker 的 nftables 表
+
+对于桥接网络，Docker 会创建两个表：`ip docker-bridges` 和 `ip6 docker-bridges`。
+
+每个表包含若干[基础链](https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains#Adding_base_chains)，并且每个桥接网络都会添加更多的链。moby 项目有一些[内部文档](https://github.com/moby/moby/blob/master/integration/network/bridge/nftablesdoc/index.md)，描述了它的 nftables 以及它们如何依赖于网络和容器配置。然而，这些表及其规则在 Docker Engine 的不同版本之间可能会发生变化。
+
+> [!NOTE]
+>
+> 不要直接修改 Docker 的表，因为这些修改很可能会丢失，Docker 期望对其表拥有完全的所有权。
+
+> [!NOTE]
+>
+> 由于 iptables 有固定的链集合，相当于 nftables 的基础链，所有规则都包含在这些链中。`DOCKER-USER` 链提供了一种将规则插入 `filter` 表的 `FORWARD` 链的方法，以便在 Docker 的规则之前运行。
+> 在 Docker 的 nftables 实现中，没有 `DOCKER-USER` 链。
+> 相反，规则可以添加到单独的表中，这些表具有与 Docker 的基础链相同类型和钩子点的基础链。如果需要，可以使用[基础链优先级](https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains#Base_chain_priority)来告诉 nftables 调用链的顺序。
+> Docker 为其每个基础链使用众所周知的[优先级值](https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks#Priority_within_hook)。
+
+## 从 iptables 迁移到 nftables
+
+如果 Docker 守护进程之前使用 iptables 防火墙后端运行，现在使用 nftables 后端重启，它将删除 Docker 的大部分 iptables 链和规则，并创建 nftables 规则来替代。
+
+如果未启用 IP 转发，Docker 在创建需要 IP 转发的桥接网络时将报告错误。由于默认桥接网络的存在，如果 IPv4 转发被禁用，错误将在守护进程启动期间报告。参见[IP 转发](#ip-转发)。
+
+如果您在 `DOCKER-USER` 链中有规则，参见[迁移 `DOCKER-USER`](#迁移-docker-user)。
+
+如果您的 iptables `FORWARD` 策略被 Docker 设置为 `DROP`，或作为主机防火墙配置的一部分，您可能需要手动更新它。参见[iptables 中的 FORWARD 策略](#forward-策略在-iptables-中)。
+
+### IP 转发
+
+Docker 主机上的 IP 转发启用了 Docker 的功能，包括端口发布、桥接网络之间的通信，以及从主机外部直接路由到桥接网络中的容器。
+
+当使用 iptables 时，根据网络和守护进程配置，Docker 可能会在主机上启用 IPv4 和 IPv6 转发。
+
+启用 nftables 防火墙后端时，Docker 不会自行启用 IP 转发。如果需要转发但未启用，它将报告错误。要禁用 Docker 对 IP 转发的检查，允许它在确定转发被禁用时启动并创建网络，请使用守护进程选项 `--ip-forward=false`，或在配置文件中设置 `"ip-forward": false`。
+
+> [!WARNING]
+>
+> 启用 IP 转发时，请确保您有防火墙规则来阻止非 Docker 接口之间的不希望转发。
+
+> [!NOTE]
+>
+> 如果您停止 Docker 以迁移到 nftables，Docker 可能已经启用了系统中的 IP 转发。重启后，如果没有其他服务重新启用转发，Docker 将无法启动。
+
+如果 Docker 运行在只有一个网络接口且没有其他软件运行的虚拟机中，可能没有不希望转发的流量需要阻止。
+但是，在具有多个网络接口的物理主机上，除非主机充当路由器，否则应使用 nftables 规则阻止这些接口之间的转发。
+
+要在主机上启用 IP 转发，请设置以下 sysctls：
+
+- `net.ipv4.ip_forward=1`
+- `net.ipv6.conf.all.forwarding=1`
+
+如果您的主机使用 `systemd`，您也许可以使用 `systemd-sysctl`。例如，通过编辑 `/etc/sysctl.d/99-sysctl.conf`。
+
+如果主机运行 `firewalld`，您也许可以使用它来阻止不希望转发。Docker 的桥接网络位于一个名为 `docker` 的 firewalld 区域中，它创建了一个名为 `docker-forwarding` 的转发策略，该策略接受从 `ANY` 区域到 `docker` 区域的转发。
+
+例如，要使用 nftables 阻止接口 `eth0` 和 `eth1` 之间的转发，您可以使用：
+
+```console
+table inet no-ext-forwarding {
+	chain no-ext-forwarding {
+		type filter hook forward priority filter; policy accept;
+		iifname "eth0" oifname "eth1" drop
+		iifname "eth1" oifname "eth0" drop
+	}
+}
+```
+
+### FORWARD 策略在 iptables 中
+
+一个具有 `FORWARD` 策略 `DROP` 的 iptables 链将丢弃已被 Docker 的 nftables 规则接受的包，因为包将由 iptables 链和 Docker 的 nftables 链同时处理。
+
+除非删除 `DROP` 策略，或在 iptables `FORWARD` 链中添加额外的 iptables 规则以接受 Docker 相关的流量，否则某些功能（包括端口发布）将无法工作。
+
+当 Docker 使用 iptables 并在主机上启用 IP 转发时，它会将 iptables `FORWARD` 链的默认策略设置为 `DROP`。因此，如果您停止 Docker 以迁移到 nftables，它可能已经设置了一个您需要删除的 `DROP`。无论如何，重启后它将被删除。
+
+要继续使用依赖于链具有 `DROP` 策略的 `DOCKER-USER` 中的规则，您必须为 Docker 相关流量添加显式的 `ACCEPT` 规则。
+
+要检查当前的 iptables `FORWARD` 策略，请使用：
+
+```console
+$ iptables -L FORWARD
+Chain FORWARD (policy DROP)
+target     prot opt source               destination
+$ ip6tables -L FORWARD
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+```
+
+要为 IPv4 和 IPv6 设置 iptables 策略为 `ACCEPT`：
+
+```console
+$ iptables -P FORWARD ACCEPT
+$ ip6tables -P FORWARD ACCEPT
+```
+
+### 迁移 `DOCKER-USER`
+
+使用防火墙后端 "iptables" 时，添加到 iptables `DOCKER-USER` 的规则在 filter 表的 `FORWARD` 链中 Docker 的规则之前处理。
+
+在运行 iptables 后使用 nftables 启动守护进程时，Docker 不会删除从 `FORWARD` 链到 `DOCKER-USER` 的跳转。因此，在 `DOCKER-USER` 中创建的规则将继续运行，直到跳转被删除或主机重启。
+
+使用 nftables 启动时，守护进程不会添加跳转。因此，除非存在现有的跳转，否则 `DOCKER-USER` 中的规则将被忽略。
+
+#### 迁移 ACCEPT 规则
+
+`DOCKER-USER` 链中的一些规则将继续工作。例如，如果一个包被丢弃，它将在 Docker 的 `filter-FORWARD` 链中的 nftables 规则之前或之后被丢弃。但其他规则，特别是用于覆盖 Docker 的 `DROP` 规则的 `ACCEPT` 规则，将不起作用。
+
+在 nftables 中，"accept" 规则不是最终的。它终止其基础链的处理，但接受的包仍将由其他基础链处理，这些链可能会丢弃它。
+
+要覆盖 Docker 的 `drop` 规则，您必须使用防火墙标记。选择一个主机上尚未使用的标记，并使用 Docker Engine 选项 `--bridge-accept-fwmark`。
+
+例如，`--bridge-accept-fwmark=1` 告诉守护进程接受任何具有 `fwmark` 值为 `1` 的包。可选地，您可以提供一个掩码来匹配标记中的特定位，`--bridge-accept-fwmark=0x1/0x3`。
+
+然后，不要在 `DOCKER-USER` 中接受包，而是添加您选择的防火墙标记，Docker 将不会丢弃它。
+
+防火墙标记必须在 Docker 的规则运行之前添加。因此，如果标记添加在类型为 `filter` 且钩子为 `forward` 的链中，它必须具有优先级 `filter - 1` 或更低。
+
+#### 用 nftables 表替换 `DOCKER-USER`
+
+由于 nftables 没有预定义的链，要替换 `DOCKER-USER` 链，您可以创建自己的表并向其中添加链和规则。
+
+`DOCKER-USER` 链的类型为 `filter`，钩子为 `forward`，因此它只能在 filter forward 链中有规则。您表中的基础链可以有任何 `type` 或 `hook`。如果您的规则需要在 Docker 的规则之前运行，请给基础链一个比 Docker 的链更低的 `priority` 数字。或者，更高的优先级以确保它们在 Docker 的规则之后运行。
+
+Docker 的基础链使用在[priority values](https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks#Priority_within_hook)中定义的优先级值。
+
+#### 示例：限制对容器的外部连接
+
+默认情况下，任何远程主机都可以连接到发布到 Docker 主机外部地址的端口。
+
+要仅允许特定 IP 或网络访问容器，请创建一个具有包含 drop 规则的基础链的表。例如，以下表丢弃来自除 `192.0.2.2` 之外的所有 IP 地址的包：
+
+```console
+table ip my-table {
+	chain my-filter-forward {
+		type filter hook forward priority filter; policy accept;
+		iifname "ext_if" ip saddr != 192.0.2.2 counter drop
+	}
+}
+```
+
+您需要将 `ext_if` 更改为主机的外部接口名称。
+
+您也可以改为接受来自源子网的连接。以下表仅接受来自子网 `192.0.2.0/24` 的访问：
+
+```console
+table ip my-table {
+	chain my-filter-forward {
+		type filter hook forward priority filter; policy accept;
+		iifname "ext_if" ip saddr != 192.0.2.0/24 counter drop
+	}
+}
+```
+
+如果您在主机上运行其他使用 IP 转发并需要由不同外部主机访问的服务，您将需要更具体的过滤器。例如，要匹配属于 Docker 用户定义桥接网络的桥接设备的默认前缀 `br-`：
+
+```console
+table ip my-table {
+	chain my-filter-forward {
+		type filter hook forward priority filter; policy accept;
+		iifname "ext_if" oifname "br-*" ip saddr != 192.0.2.0/24 counter drop
+	}
+}
+```
+
+有关 nftables 配置和高级用法的更多信息，请参阅[nftables wiki](https://wiki.nftables.org/wiki-nftables/index.php/Main_Page)。

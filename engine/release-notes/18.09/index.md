@@ -1,0 +1,322 @@
+# Docker Engine 18.09 发行说明
+
+> **注意：**
+>
+> 在此版本中，守护进程、客户端和容器运行时现在都作为独立的软件包分发。更新时，您需要同时更新所有软件包以获取每个软件包的最新补丁版本。例如，在 Ubuntu 上：
+>
+> ```console
+> $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+> ```
+>
+> 有关详细信息，请参阅相应 Linux 发行版的[安装说明](../install/_index.md)。
+
+## 18.09.9
+2019-09-03
+
+### 客户端
+
+* 修复了在非 Windows 系统上检测 Windows 绝对路径的问题。[docker/cli#1990](https://github.com/docker/cli/pull/1990)
+* 修复了 Docker 在 Windows 上拒绝从 delegation.key 加载密钥的问题。[docker/cli#1968](https://github.com/docker/cli/pull/1968)
+* 更新了 bash 和 zsh 的补全脚本。
+
+### 日志
+
+* 修复了读取 journald 日志的问题。[moby/moby#37819](https://github.com/moby/moby/pull/37819) [moby/moby#38859](https://github.com/moby/moby/pull/38859)
+
+### 网络
+
+* 防止在连接到禁用网络的容器的网络上发生 panic。[moby/moby#39589](https://github.com/moby/moby/pull/39589)
+* 修复了应用程序的服务端口随机变得不可用的问题。[docker/libnetwork#2069](https://github.com/docker/libnetwork/pull/2069)
+* 修复了清理 `--config-only` 网络时，`--config-from` 网络异常退出的问题。[docker/libnetwork#2373](https://github.com/docker/libnetwork/pull/2373)
+
+### 运行时
+
+* 更新至 Go 1.11.13。
+* 修复了为容器使用 XFS 磁盘配额时可能导致引擎 panic 的问题。[moby/moby#39644](https://github.com/moby/moby/pull/39644)
+
+### Swarm
+
+* 修复了 "grpc: received message larger than max" 错误。[moby/moby#39306](https://github.com/moby/moby/pull/39306)
+* 修复了节点多个任务无法被移除的问题。[docker/swarmkit#2867](https://github.com/docker/swarmkit/pull/2867)
+
+## 18.09.8
+2019-07-17
+
+### 运行时
+
+* 在调试模式下运行 Docker Engine 时，将更新的密钥屏蔽到日志文件。[CVE-2019-13509](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-13509)：如果 Docker 引擎在调试模式下运行，并且使用 `docker stack deploy` 重新部署包含非外部密钥的堆栈，日志将包含该密钥。
+
+### 客户端
+
+* 修复了 `parallelism` 和 `max_failure_ratio` 字段的回滚配置类型插值问题。
+
+### 已知问题
+
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.7
+2019-06-27
+
+### 构建器
+
+* 修复了在构建仅包含注释的 Dockerfile 时发生的 panic 错误。[moby/moby#38487](https://github.com/moby/moby/pull/38487)
+* 为 GCR 身份验证问题添加了变通方案。[moby/moby#38246](https://github.com/moby/moby/pull/38246)
+* Builder-next：修复了 GCR 令牌缓存实现变通方案中的错误。[moby/moby#39183](https://github.com/moby/moby/pull/39183)
+
+### 网络
+*  修复了 `--network-rm` 无法移除网络的错误。[moby/moby#39174](https://github.com/moby/moby/pull/39174)
+
+### 运行时
+
+* 在 aufs 和层存储中添加了性能优化，有助于大规模并行容器创建和移除。[moby/moby#39107](https://github.com/moby/moby/pull/39107), [moby/moby#39135](https://github.com/moby/moby/pull/39135)
+* 将 containerd 更新至 1.2.6 版本。[moby/moby#39016](https://github.com/moby/moby/pull/39016)
+* 修复了 [CVE-2018-15664](https://nvd.nist.gov/vuln/detail/CVE-2018-15664) 符号链接交换攻击结合目录遍历的问题。[moby/moby#39357](https://github.com/moby/moby/pull/39357)
+* Windows：修复了对 `docker service create --limit-cpu` 的支持。[moby/moby#39190](https://github.com/moby/moby/pull/39190)
+* 守护进程：修复了镜像仓库验证问题。[moby/moby#38991](https://github.com/moby/moby/pull/38991)
+* Docker 不再支持在 ID 映射中对 UID 和 GID 范围进行排序。[moby/moby#39288](https://github.com/moby/moby/pull/39288)
+
+### 日志
+
+* 添加了一个修复，现在允许日志记录器插件使用大型日志行。[moby/moby#39038](https://github.com/moby/moby/pull/39038)
+
+### 已知问题
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.6
+2019-05-06
+
+### 构建器
+* 修复了当 `DOCKER_BUILDKIT=1` 时，使用多个 `<src>` 的 `COPY` 和 `ADD` 不会使缓存失效的问题。[moby/moby#38964](https://github.com/moby/moby/issues/38964)
+
+### 网络
+* 在代理关闭时清理了集群提供程序。[docker/libnetwork#2354](https://github.com/docker/libnetwork/pull/2354)
+* Windows：如果用户未指定主机端口，现在会随机选择一个主机端口。[docker/libnetwork#2369](https://github.com/docker/libnetwork/pull/2369)
+
+### 已知问题
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.5
+
+2019-04-11
+
+### 构建器
+
+* 修复了 `DOCKER_BUILDKIT=1 docker build --squash ..` [docker/engine#176](https://github.com/docker/engine/pull/176)
+
+### 客户端
+
+* 修复了 tty 初始大小错误。[docker/cli#1775](https://github.com/docker/cli/pull/1775)
+* 修复了 dial-stdio 协程泄漏。[docker/cli#1795](https://github.com/docker/cli/pull/1795)
+* 修复了用于跟踪部署的堆栈通知程序的选择器。[docker/cli#1794](https://github.com/docker/cli/pull/1794)
+
+### 网络
+
+* 修复了 `network=host` 在使用 `systemd-resolved` 时使用错误的 `resolv.conf` 的问题。[docker/engine#180](https://github.com/docker/engine/pull/180)
+* 修复了在负载下 Windows ARP 条目随机损坏的问题。[docker/engine#192](https://github.com/docker/engine/pull/192)
+
+### 运行时
+* 现在将带有重启策略的已停止容器显示为 `Restarting`。[docker/engine#181](https://github.com/docker/engine/pull/181)
+* 现在为 exec 使用原始进程规范。[docker/engine#178](https://github.com/docker/engine/pull/178)
+
+### Swarm 模式
+
+* 修复了节点被删除时任务资源泄漏的问题。[docker/engine#185](https://github.com/docker/engine/pull/185)
+
+### 已知问题
+
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.4
+
+ 2019-03-28
+
+### 构建器
+
+* 通过为 `git ref` 添加验证以避免被误解释为标志，修复了 [CVE-2019-13139](https://nvd.nist.gov/vuln/detail/CVE-2019-13139)。[moby/moby#38944](https://github.com/moby/moby/pull/38944)
+
+### 运行时
+
+* 修复了文件名大于 100 个字符时 `docker cp` 的错误。[moby/moby#38634](https://github.com/moby/moby/pull/38634)
+* 修复了 `layer/layer_store` 以确保 `NewInputTarStream` 资源被释放。[moby/moby#38413](https://github.com/moby/moby/pull/38413)
+* 增加了 `GetConfigs` 的 GRPC 限制。[moby/moby#38800](https://github.com/moby/moby/pull/38800)
+* 更新了 `containerd` 1.2.5。[docker/engine#173](https://github.com/docker/engine/pull/173)
+
+### Swarm 模式
+* 修复了将节点加入 swarm 时的空指针异常。[moby/moby#38618](https://github.com/moby/moby/issues/38618)
+* 修复了如果设置了 http 代理，swarm 节点无法作为主节点加入的问题。[moby/moby#36951]
+
+### 已知问题
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.3
+
+2019-02-28
+
+### 网络修复
+* Windows：现在避免重新生成网络 ID，以防止对网络的引用中断。[docker/engine#149](https://github.com/docker/engine/pull/149)
+* Windows：修复了在指定网络时，独立容器上的 `- restart always` 标志不起作用的问题。(docker/escalation#1037)
+* 修复了如果管理节点未连接到覆盖网络，则从 networkdb 获取 IPAM 状态的问题。(docker/escalation#1049)
+
+### 运行时修复和更新
+
+* 更新至 Go 1.10.8 版本。
+* 修改了容器名称生成器中的名称。[docker/engine#159](https://github.com/docker/engine/pull/159)
+* 当复制现有文件夹时，如果目标文件系统不支持 xattr，现在会忽略 xattr 设置错误。[docker/engine#135](https://github.com/docker/engine/pull/135)
+* Graphdriver：修复了如果设置了 "character-device" 位，则无法检测 "device" 模式的问题。[docker/engine#160](https://github.com/docker/engine/pull/160)
+* 修复了连接到 containerd 失败时的空指针解引用。[docker/engine#162](https://github.com/docker/engine/pull/162)
+* 在启动失败时删除了陈旧的 containerd 对象。[docker/engine#154](https://github.com/docker/engine/pull/154)
+
+### 已知问题
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.2
+
+2019-02-11
+
+### 安全修复
+* 更新 `runc` 以解决一个关键漏洞，该漏洞允许特制容器在主机上获得管理权限。[CVE-2019-5736](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736)
+* 使用 3.13 内核的 Ubuntu 14.04 客户需要升级到受支持的 Ubuntu 4.x 内核
+
+有关更多信息，[请参阅 Docker 博客文章](https://blog.docker.com/2019/02/docker-security-update-cve-2018-5736-and-container-security-best-practices/)。
+
+### 已知问题
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.1
+
+2019-01-09
+
+#### 关于此版本的重要说明
+
+在 18.09 之前的 Docker 版本中，containerd 由 Docker 引擎守护进程管理。在 Docker Engine 18.09 中，containerd 由 systemd 管理。由于 containerd 由 systemd 管理，任何对 `docker.service` systemd 配置的自定义配置（例如 `MountFlags=slave`）如果更改了挂载设置，都会破坏 Docker Engine 守护进程与 containerd 之间的交互，您将无法启动容器。
+
+运行以下命令以获取 `docker.service` 的 `MountFlags` 属性的当前值：
+
+```console
+$ sudo systemctl show --property=MountFlags docker.service
+MountFlags=
+```
+
+如果此命令为 `MountFlags` 打印出非空值，请更新您的配置，然后重新启动 docker 服务。
+
+### 安全修复
+* 将 Go 语言升级至 1.10.6 以解决 [CVE-2018-16873](https://nvd.nist.gov/vuln/detail/CVE-2018-16873)、[CVE-2018-16874](https://nvd.nist.gov/vuln/detail/CVE-2018-16874) 和 [CVE-2018-16875](https://nvd.nist.gov/vuln/detail/CVE-2018-16875)。
+* 修复了 authz 插件对 0 长度内容和路径验证的问题。
+* 将 `/proc/asound` 添加到屏蔽路径 [docker/engine#126](https://github.com/docker/engine/pull/126)
+
+### 改进
+* 更新至 BuildKit 0.3.3 [docker/engine#122](https://github.com/docker/engine/pull/122)
+* 更新至 containerd 1.2.2 [docker/engine#144](https://github.com/docker/engine/pull/144)
+* 为使用已弃用的旧版 overlay 和 devicemapper 存储驱动程序提供了额外警告 [docker/engine#85](https://github.com/docker/engine/pull/85)
+* prune：在构建缓存修剪之前执行镜像修剪 [docker/cli#1532](https://github.com/docker/cli/pull/1532)
+* 为实验性 CLI 命令（manifest）添加了 bash 补全 [docker/cli#1542](https://github.com/docker/cli/pull/1542)
+* Windows：允许在 Windows 10 上进行进程隔离 [docker/engine#81](https://github.com/docker/engine/pull/81)
+
+### 修复
+* 在 RHEL/CentOS 上禁用 runc 中的 kmem 记账 (docker/escalation#614, docker/escalation#692) [docker/engine#121](https://github.com/docker/engine/pull/121)
+* 修复了低效的网络配置 [docker/engine#123](https://github.com/docker/engine/pull/123)
+* 修复了 docker system prune 不接受 until 过滤器的问题 [docker/engine#122](https://github.com/docker/engine/pull/122)
+* 避免在 `containerd` 中设置未定义的凭据 [docker/engine#122](https://github.com/docker/engine/pull/122)
+* 修复了 Debian 上的 iptables 兼容性问题 [docker/engine#107](https://github.com/docker/engine/pull/107)
+* 修复了为 docker 主机设置默认模式为 tcp 的问题 [docker/cli#1454](https://github.com/docker/cli/pull/1454)
+* 修复了 `service update --force` 的 bash 补全 [docker/cli#1526](https://github.com/docker/cli/pull/1526)
+* Windows：在清理期间尝试 DetachVhd [docker/engine#113](https://github.com/docker/engine/pull/113)
+* API：正确处理无效 JSON 以返回 400 状态 [docker/engine#110](https://github.com/docker/engine/pull/110)
+* API：在 API < 1.39 时忽略 default-address-pools [docker/engine#118](https://github.com/docker/engine/pull/118)
+* API：向 swagger 添加缺少的默认地址池字段 [docker/engine#119](https://github.com/docker/engine/pull/119)
+* awslogs：在限制中考虑 UTF-8 规范化 [docker/engine#112](https://github.com/docker/engine/pull/112)
+* 禁止在 HTTP 错误响应中读取超过 1MB 的数据 [docker/engine#114](https://github.com/docker/engine/pull/114)
+* apparmor：允许接收来自 `docker kill` 的信号 [docker/engine#116](https://github.com/docker/engine/pull/116)
+* overlay2：如果可能，使用 index=off（修复挂载时的 EBUSY）[docker/engine#84](https://github.com/docker/engine/pull/84)
+
+### 打包
+* 为 docker.service 添加 docker.socket 要求。[docker/docker-ce-packaging#276](https://github.com/docker/docker-ce-packaging/pull/276)
+* 为基于 RHEL 的发行版添加套接字激活。[docker/docker-ce-packaging#274](https://github.com/docker/docker-ce-packaging/pull/274)
+* 为 RPM 软件包添加 libseccomp 要求。[docker/docker-ce-packaging#266](https://github.com/docker/docker-ce-packaging/pull/266)
+
+### 已知问题
+* 从 18.09.0 升级到 18.09.1 时，`containerd` 在 Ubuntu 上未升级到正确的版本。
+* 升级过程有重要变更，如果未正确遵循，可能会影响升级期间在 Swarm 上运行的应用程序的可用性。这些约束会影响从任何 18.09 之前的版本升级到 18.09 或更高版本的任何升级。
+
+## 18.09.0
+
+2018-11-08
+
+#### 关于此版本的重要说明
+
+在 18.09 之前的 Docker 版本中，containerd 由 Docker 引擎守护进程管理。在 Docker Engine 18.09 中，containerd 由 systemd 管理。由于 containerd 由 systemd 管理，任何对 `docker.service` systemd 配置的自定义配置（例如 `MountFlags=slave`）如果更改了挂载设置，都会破坏 Docker Engine 守护进程与 containerd 之间的交互，您将无法启动容器。
+
+运行以下命令以获取 `docker.service` 的 `MountFlags` 属性的当前值：
+
+```console
+$ sudo systemctl show --property=MountFlags docker.service
+MountFlags=
+```
+
+如果此命令为 `MountFlags` 打印出非空值，请更新您的配置，然后重新启动 docker 服务。
+
+### 新功能
+
+* 更新 API 版本至 1.39 [moby/moby#37640](https://github.com/moby/moby/pull/37640)
+* 添加了对使用 SSH 进行远程连接的支持 [docker/cli#1014](https://github.com/docker/cli/pull/1014)
+* 构建器：向 API 添加了 prune 选项 [moby/moby#37651](https://github.com/moby/moby/pull/37651)
+* 向 `/info` 端点添加了 "Warnings"，并将检测移至守护进程 [moby/moby#37502](https://github.com/moby/moby/pull/37502)
+* 允许 BuildKit 构建在未启用实验模式的情况下运行。现在可以通过 daemon.json 中的选项配置 Buildkit [moby/moby#37593](https://github.com/moby/moby/pull/37593) [moby/moby#37686](https://github.com/moby/moby/pull/37686) [moby/moby#37692](https://github.com/moby/moby/pull/37692) [docker/cli#1303](https://github.com/docker/cli/pull/1303) [docker/cli#1275](https://github.com/docker/cli/pull/1275)
+* 使用 BuildKit 时，添加了使用 `--secret` 标志支持构建时密钥 [docker/cli#1288](https://github.com/docker/cli/pull/1288)
+* 使用 BuildKit 时，添加了 SSH 代理套接字转发器 (`docker build --ssh $SSHMOUNTID=$SSH_AUTH_SOCK`) [docker/cli#1438](https://github.com/docker/cli/pull/1438) / [docker/cli#1419](https://github.com/docker/cli/pull/1419)
+* 为 Windows 上的 `ADD` 和 `COPY` 命令添加了 `--chown` 标志支持 [moby/moby#35521](https://github.com/moby/moby/pull/35521)
+* 添加了 `builder prune` 子命令以修剪 BuildKit 构建缓存 [docker/cli#1295](https://github.com/docker/cli/pull/1295) [docker/cli#1334](https://github.com/docker/cli/pull/1334)
+* BuildKit：为 BuildKit 构建缓存添加了可配置的垃圾回收策略 [docker/engine#59](https://github.com/docker/engine/pull/59) / [moby/moby#37846](https://github.com/moby/moby/pull/37846)
+* BuildKit：添加了对使用 BuildKit 时 `docker build --pull ...` 的支持 [moby/moby#37613](https://github.com/moby/moby/pull/37613)
+* BuildKit：添加了对 "registry-mirrors" 和 "insecure-registries" 的支持 [docker/engine#59](https://github.com/docker/engine/pull/59) / [moby/moby#37852](https://github.com/moby/moby/pull/37852)
+* BuildKit：启用网络模式和网桥。[moby/moby#37620](https://github.com/moby/moby/pull/37620)
+* 添加了 `docker engine` 子命令，用于管理在 containerd 之上以特权容器形式运行的 Docker 引擎的生命周期，并允许升级到 Docker Engine Enterprise [docker/cli#1260](https://github.com/docker/cli/pull/1260)
+* 在 `docker info` 输出中公开产品许可证 [docker/cli#1313](https://github.com/docker/cli/pull/1313)
+* 在 `docker info` 输出中显示守护进程产生的警告 [docker/cli#1225](https://github.com/docker/cli/pull/1225)
+* 添加了 "local" 日志驱动程序 [moby/moby#37092](https://github.com/moby/moby/pull/37092)
+* Amazon CloudWatch：添加了 `awslogs-endpoint` 日志记录选项 [moby/moby#37374](https://github.com/moby/moby/pull/37374)
+* 添加了对全局默认地址池的支持 [moby/moby#37558](https://github.com/moby/moby/pull/37558) [docker/cli#1233](https://github.com/docker/cli/pull/1233)
+* 将 containerd 日志级别配置为与 dockerd 相同 [moby/moby#37419](https://github.com/moby/moby/pull/37419)
+* 为 cri-containerd 添加了配置选项 [moby/moby#37519](https://github.com/moby/moby/pull/37519)
+* 将 containerd 客户端更新至 v1.2.0-rc.1 [moby/moby#37664](https://github.com/moby/moby/pull/37664), [docker/engine#75](https://github.com/docker/engine/pull/75) / [moby/moby#37710](https://github.com/moby/moby/pull/37710)
+* 添加了对全局默认地址池的支持 [moby/moby#37558](https://github.com/moby/moby/pull/37558) [docker/cli#1233](https://github.com/docker/cli/pull/1233)
+* 将 `POST /session` 端点移出实验阶段。[moby/moby#40028](https://github.com/moby/moby/pull/40028)
+
+### 改进
+
+* 不在 /info 响应中返回 "`<unknown>`" [moby/moby#37472](https://github.com/moby/moby/pull/37472)
+* BuildKit：将 `--console=[auto,false,true]` 更改为 `--progress=[auto,plain,tty]` [docker/cli#1276](https://github.com/docker/cli/pull/1276)
+* BuildKit：设置 BuildKit 的 ExportedProduct 变量以在将来显示有用的错误。[moby/moby#37439](https://github.com/moby/moby/pull/37439)
+* 当连接到不支持此选项的守护进程时，隐藏 `--data-path-addr` 标志 [docker/docker/cli#1240](https://github.com/docker/cli/pull/1240)
+* 仅在启用 BuildKit 时显示特定于 buildkit 的标志 [docker/cli#1438](https://github.com/docker/cli/pull/1438) / [docker/cli#1427](https://github.com/docker/cli/pull/1427)
+* 改进了版本输出对齐 [docker/cli#1204](https://github.com/docker/cli/pull/1204)
+* 以自然顺序对插件名称和网络进行排序 [docker/cli#1166](https://github.com/docker/cli/pull/1166), [docker/cli#1266](https://github.com/docker/cli/pull/1266)
+* 更新了 bash 和 zsh [补全脚本](https://github.com/docker/cli/issues?q=label%3Aarea%2Fcompletion+milestone%3A18.09.0+is%3Aclosed)
+* 将日志级别传递给 containerd。[moby/moby#37419](https://github.com/moby/moby/pull/37419)
+* 在东西向覆盖负载均衡中使用直接服务器返回 (DSR) [docker/engine#93](https://github.com/docker/engine/pull/93) / [docker/libnetwork#2270](https://github.com/docker/libnetwork/pull/2270)
+* 构建器：使用 buildkit 时暂时禁用网桥网络。[moby/moby#37691](https://github.com/moby/moby/pull/37691)
+* 阻止任务启动，直到节点附件准备就绪 [moby/moby#37604](https://github.com/moby/moby/pull/37604)
+* 将提供的外部 CA 证书传播到 swarm 中的外部 CA 对象。[docker/cli#1178](https://github.com/docker/cli/pull/1178)
+* 移除了 Ubuntu 14.04 "Trusty Tahr" 作为受支持的平台 [docker-ce-packaging#255](https://github.com/docker/docker-ce-packaging/pull/255) / [docker-ce-packaging#254](https://github.com/docker/docker-ce-packaging/pull/254)
+* 移除了 Debian 8 "Jessie" 作为受支持的平台 [docker-ce-packaging#255](https://github.com/docker/docker-ce-packaging/pull/255) / [docker-ce-packaging#254](https://github.com/docker/docker-ce-packaging/pull/254)
+* 移除了 containerd 和 runc 二进制文件的 'docker-' 前缀 [docker/engine#61](https://github.com/docker/engine/pull/61) / [moby/moby#37907](https://github.com/moby/moby/pull/37907), [docker-ce-packaging#241](https://github.com/docker/docker-ce-packaging/pull/241)
+* 将 "engine"、"cli" 和 "containerd" 拆分为单独的软件包，并以单独的 systemd 服务形式运行 containerd [docker-ce-packaging#131](https://github.com/docker/docker-ce-packaging/pull/131), [docker-ce-packaging#158](https://github.com/docker/docker-ce-packaging/pull/158)
+* 使用 Go 1.10.4 构建二进制文件 [docker-ce-packaging#181](https://github.com/docker/docker-ce-packaging/pull/181)
+* 从版本字符串中移除 `-ce` 后缀 [docker-ce-packaging#206](https://github.com/docker/docker-ce-packaging/pull/206)
+
+### 修复
+
+* BuildKit：不要取消 buildkit 状态请求。[moby/moby#37597](https://github.com/moby/moby/pull/37597)
+* 修复了在 docker build 期间缺少构建参数时不显示错误的问题 [moby/moby#37396](https://github.com/moby/moby/pull/37396)
+* 修复了添加 8GB 文件时出现 "unexpected EOF" 错误的问题 [moby/moby#37771](https://github.com/moby/moby/pull/37771)
+* LCOW：确保在 `COPY`/`ADD` 上填充平台。[moby/moby#37563](https://github.com/moby/moby/pull/37563)
+* 修复了将一系列主机端口映射到单个容器端口的问题 [docker/cli#1102](https://github.com/docker/cli/pull/1102)
+* 修复了 `trust inspect` 拼写错误："`AdminstrativeKeys`" [docker/cli#1300](https://github.com/docker/cli/pull/1300)
+* 修复了环境文件解析中对不存在变量和无名变量的导入问题。[docker/cli#1019](https://github.com/docker/cli/pull/1019)
+* 修复了在使用大型悬空镜像列表运行 `docker image prune` 时可能出现的 "内存不足异常" [docker/cli#1432](https://github.com/docker/cli/pull/1432) / [docker/cli#1423](https://github.com/docker/cli/pull/1423)
+* 修复了 Windows 上 ConEmu 和 ConsoleZ 中的管道处理 [moby/moby#37600](https://github.com/moby/moby/pull/37600)
+* 修复了在使用非 HNS 管理的 Hyper-V 网络时 Windows 上的长时间启动问题 [docker/engine#67](https://github.com/docker/engine/pull/67) / [moby/moby#37774](https://github.com/moby/moby/pull/37774)
+* 修复了当 "runtimes" 选项在配置文件和 CLI 中都定义时守护进程无法启动的问题 [docker/engine#57](https://github.com/docker/engine/pull/57) / [moby/moby#37871](https://github.com/moby/moby/pull/37871)
+* 放宽了 `/etc/docker` 目录的权限，以防止在使用 `docker manifest inspect` 时出现 "权限被拒绝" 错误 [docker/engine#56](https://github.com/docker/engine/pull/56) / [moby/moby#37847](https://github.com/moby/moby/pull/37847)
+* 修复了在 `cpuset-cpus` 和 `cpuset-mems` 中使用大数字时的拒绝服务问题 [docker/engine#70](https://github.com/docker/engine/pull/70) / [moby/moby#37967](https://github.com/moby/moby/pull/37967)
+* LCOW：为 `docker import` 添加 `--platform

@@ -1,0 +1,1004 @@
+# Docker Engine API v1.48 参考文档
+[查看源码](https://github.com/moby/moby/blob/v27.2.0/api/swagger.yaml)
+
+## 概述
+
+本文档描述了 Docker Engine API。
+
+Docker Engine API 是与 Docker 守护进程通信的接口。更多关于 Docker 的信息，请访问 [Docker](https://docs.docker.com)。
+
+默认情况下，Docker 守护进程监听 Unix 套接字，该套接字还提供 Docker Engine API。在使用 Docker 命令行客户端时，客户端默认通过此套接字与 Docker 守护进程通信。您还可以使用 curl 命令与 Docker Engine API 进行交互。
+
+Docker Engine API 是可能变化的未版本化 API。请使用指定版本的 Docker Engine API。
+
+此文档是 Docker Engine API 的参考文档。
+
+Docker Engine API 是 RESTful API，它使用 JSON 通过 Unix 套接字或网络接口进行通信。
+
+Docker Engine API 总是向后兼容的，您无需更改 Docker 客户端即可与较新版本的 Docker 通信。Docker 实现了自己的 API，不使用标准 Dockerfile 格式或 OCI 映像格式，并且不与任何其他库共享代码。
+
+## 版本化
+
+Docker Engine API 使用 [API 版本](https://docs.docker.com/engine/api/version-history/) 进行版本控制。API 版本与 Docker Engine 版本不同，不应混为一谈。
+
+请使用指定版本的 Docker Engine API。Docker Engine API 是可能变化的未版本化 API。如果您不使用指定版本的 API，可能会导致互操作性问题。
+
+要查看 Docker 客户端和守护进程支持的 API 版本，请运行 `docker version` 命令。
+
+## 通过 HTTP 使用 Docker Engine API
+
+Docker 客户端可以与 Docker 守护进程通信，方法是通过 `HTTP 客户端` 向 Docker 守护进程监听的 Unix 套接字或端口发出请求，然后读取 HTTP 响应。
+
+Unix 套接字 URL 使用 `http+unix` 方案。
+
+您可以通过 `http+unix` 方案 URL 访问 Unix 套接字，该 URL 是 URL 编码的路径到 Unix 套接字文件。例如，`/var/run/docker.sock` 的 URL 编码是 `http%3A%2F%2Fvar%2Frun%2Fdocker.sock`。
+
+`http+unix` URL 作为 HTTP 请求的主机标头发送。
+
+例如，要通过 Unix 套接字向 `/info` 发出 `GET http://localhost/info` 请求：
+
+```
+GET /info HTTP/1.1
+Host: http://var/run/docker.sock
+```
+
+或者，如果您配置 Docker 守护进程在主机的 2376 端口上监听：
+
+```
+GET /info HTTP/1.1
+Host: localhost:2376
+```
+
+要以编程方式制作 HTTP 请求，您必须禁用 HTTPS。Docker Engine Go 客户端演示了如何通过 HTTP 与 Docker 守护进程通信。
+
+使用 cURL 时，您必须使用 `--unix-socket` 标志或禁用 HTTPS 使用 `-k` 或 `--insecure` 标志。
+
+> **警告**
+>
+> 仅在您配置 Docker 守护进程在主机的端口上监听时使用 `-k` 或 `--insecure` 标志。Docker 不会阻止您的请求，如果您的主机被劫持，可能会危及您的主机。有关详细信息，请参阅 [Docker 守护进程攻击面](https://docs.docker.com/engine/security/#docker-daemon-attack-surface)。
+
+使用 cURL 通过 Unix 套接字：
+
+```bash
+$ curl --unix-socket /var/run/docker.sock http://localhost/version
+```
+
+使用 cURL 通过端口：
+
+```bash
+$ curl -k https://localhost:2376/version
+```
+
+使用 Go 通过 Unix 套接字：
+
+```go
+cli := &http.Client{
+    Transport: &http.Transport{
+        DialContext: func(_ context.Context, _, _ string) (net.Conn, error) {
+            return net.Dial("unix", "/var/run/docker.sock")
+        },
+    },
+}
+
+req, err := http.NewRequest("GET", "http://localhost/version", nil)
+if err != nil {
+    panic(err)
+}
+
+resp, err := cli.Do(req)
+if err != nil {
+    panic(err)
+}
+
+// resp contains the response from the daemon.
+```
+
+使用 Go 通过端口：
+
+```go
+cli := &http.Client{
+    Transport: &http.Transport{},
+}
+
+req, err := http.NewRequest("GET", "https://localhost:2376/version", nil)
+if err != nil {
+    panic(err)
+}
+
+resp, err := cli.Do(req)
+if err != nil {
+    panic(err)
+}
+
+// resp contains the response from the daemon.
+```
+
+## Dockerfile 指令
+
+### Dockerfile 指令
+
+返回 Dockerfile 指令列表。
+
+**状态码：**
+
+- **200** – 成功
+- **500** – 服务器错误
+
+### Dockerfile 指令
+
+返回 Dockerfile 指令列表。
+
+**状态码：**
+
+- **200** – 成功
+- **500** – 服务器错误
+
+## 构建
+
+### 构建镜像
+
+`POST /build`
+
+构建镜像。
+
+> **注意**
+>
+> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
+
+**查询参数：**
+
+- **t** – 镜像的可选名称。
+- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
+- **q** – 保持安静，仅向客户端发送错误。
+- **nocache** – 不使用缓存。
+- **pull** – 总是尝试拉取所有镜像的较新版本。
+- **rm** – 构建成功后删除中间容器。
+- **forcerm** – 始终删除中间容器，除非构建失败。
+- **memory** – 内存限制
+- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
+- **cpushares** – CPU 份额（相对权重）。
+- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
+- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
+- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
+- **shmsize** – `/dev/shm` 的大小，以字节为单位。
+- **squash** – 将构建过程中的所有图层压缩成一个图层。
+- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
+- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
+- **platform** – 构建镜像的目标平台。
+- **target** – 构建时目标阶段的名称。
+- **outputs** – 输出配置。格式：`type=docker,dest=-`
+
+**请求体：**
+
+构建上下文 `"Content-type:" "application/x-tar"`
+
+可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
+
+**示例请求：**
+
+```
+POST /v1.48/build HTTP/1.1
+Content-Type: application/x-tar
+
+[...tar contents...]
+```
+
+**响应体：**
+
+流，格式为：
+
+```
+{"stream": "Step 1/2..."}
+{"stream": "..."}
+{"error": "Error...", "errorDetail": {"message": "Error..."}}
+{"stream": "Successfully built 50f0e01f88b2\n"}
+```
+
+**状态码：**
+
+- **200** – 构建上下文已接受，流已开始。
+- **204** – 构建成功，没有流。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 检查构建
+
+`POST /build/prune`
+
+删除未使用的构建缓存。
+
+**查询参数：**
+
+- **keep-storage** – 要保留的构建缓存的字节数。默认全部删除。
+- **filter** – 用于过滤结果的值（例如，`'until=24h'`）。
+
+**状态码：**
+
+- **200** – 成功
+- **500** – 服务器错误
+
+### 检查构建
+
+`GET /build/prune`
+
+返回要删除的构建缓存的大小。
+
+**查询参数：**
+
+- **filter** – 用于过滤结果的值（例如，`'until=24h'`）。
+
+**状态码：**
+
+- **200** – 成功
+- **500** – 服务器错误
+
+## 镜像
+
+### 列出镜像
+
+`GET /images/json`
+
+返回 Docker 守护进程中存储的镜像列表。
+
+**查询参数：**
+
+- **all** – 显示所有镜像。仅显示顶层镜像的默认值为 false。
+- **filters** – JSON 编码的值映射，用于按条件过滤结果。
+
+  可用的过滤器：
+  - `dangling=true`
+  - `label=key` 或 `label="key=value"` 的镜像必须包含标签，或具有指定值的标签。
+  - `before` 接受镜像名称或标签，或短镜像 ID。例如，`before=nginx:latest`、`before=nginx:1.13.0` 或 `before=a24bb4013296`。结果集会扩展为包括在引用镜像之前创建的所有镜像。
+  - `reference` 根据提供的模式过滤镜像。例如，`reference=nginx:*`。
+  - `shared-size` 接受镜像名称、标签、短镜像 ID 或完整镜像 ID。例如，`shared-size=nginx:latest`、`shared-size=nginx:1.13.0`、`shared-size=a24bb4013296` 或 `shared-size=sha256:983488c45c22ec896af1253453fad4404f816023cee5037c8177f8ca2c5d9424`。结果集会扩展到包括与引用镜像共享图层的所有镜像。
+  - `size` 接受镜像名称、标签、短镜像 ID 或完整镜像 ID。例如，`size=nginx:latest`、`size=nginx:1.13.0`、`size=a24bb4013296` 或 `size=sha256:983488c45c22ec896af1253453fad4404f816023cee5037c8177f8ca2c5d9424`。结果集会扩展到包括与引用镜像具有相同大小的所有镜像。
+
+- **digests** – 仅在 API >= 1.25 时可用。如果设置为 `true`，则为每个镜像返回摘要。
+- **shared-size** – 仅在 API >= 1.30 时可用。如果设置为 `true`，则为每个镜像返回共享大小。
+
+**状态码：**
+
+- **200** – 成功
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 构建镜像
+
+`POST /build`
+
+构建镜像。
+
+> **注意**
+>
+> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
+
+**查询参数：**
+
+- **t** – 镜像的可选名称。
+- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
+- **q** – 保持安静，仅向客户端发送错误。
+- **nocache** – 不使用缓存。
+- **pull** – 总是尝试拉取所有镜像的较新版本。
+- **rm** – 构建成功后删除中间容器。
+- **forcerm** – 始终删除中间容器，除非构建失败。
+- **memory** – 内存限制
+- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
+- **cpushares** – CPU 份额（相对权重）。
+- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
+- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
+- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
+- **shmsize** – `/dev/shm` 的大小，以字节为单位。
+- **squash** – 将构建过程中的所有图层压缩成一个图层。
+- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
+- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
+- **platform** – 构建镜像的目标平台。
+- **target** – 构建时目标阶段的名称。
+- **outputs** – 输出配置。格式：`type=docker,dest=-`
+
+**请求体：**
+
+构建上下文 `"Content-type:" "application/x-tar"`
+
+可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
+
+**示例请求：**
+
+```
+POST /v1.48/build HTTP/1.1
+Content-Type: application/x-tar
+
+[...tar contents...]
+```
+
+**响应体：**
+
+流，格式为：
+
+```
+{"stream": "Step 1/2..."}
+{"stream": "..."}
+{"error": "Error...", "errorDetail": {"message": "Error..."}}
+{"stream": "Successfully built 50f0e01f88b2\n"}
+```
+
+**状态码：**
+
+- **200** – 构建上下文已接受，流已开始。
+- **204** – 构建成功，没有流。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 创建镜像
+
+`POST /images/create`
+
+从 Docker 守护进程的镜像库中拉取镜像或从 tarball 中导入。
+
+**查询参数：**
+
+- **fromImage** – 使用 `image[:tag]`、`image[@digest]` 或 `algo:digest` 指定要拉取的镜像。当同时指定时，`fromImage` 优先于 `fromSrc`。
+- **fromSrc** – 源 tarball 的 ID。可以是从构建 API 返回的 ID、本地文件（`fromSrc=image.tar`）或远程 URL（`fromSrc=-` 表示 STDIN）。当同时指定时，`fromImage` 优先于 `fromSrc`。
+- **repo** – 镜像的存储库。
+- **tag** – 镜像的标签。
+- **message** – 导入时要包含的消息。
+- **platform** – 如果可以使用多个平台，则用于拉取镜像的平台。
+- **changes** – 应用于从 `fromSrc` 创建的容器的 `Dockerfile` 指令列表。
+- **outputMode** – 仅在 API >= 1.47 时可用。如果设置为 `auto`，则在从 tarball 导入时返回镜像 ID。
+
+**请求头：**
+
+如果从 tarball 导入，`Content-Type` 应该是 `application/x-tar`.
+
+**示例请求：**
+
+```
+POST /v1.48/images/create?fromImage=alpine:latest HTTP/1.1
+```
+
+**示例请求：**
+
+```
+POST /v1.48/images/create?fromSrc=-&repo=hello-world HTTP/1.1
+Content-Type: application/x-tar
+
+[...tar content...]
+```
+
+**示例请求：**
+
+```
+POST /v1.48/images/create?fromImage=alpine:latest&platform=arm%2Fv7 HTTP/1.1
+```
+
+**响应体：**
+
+```
+{"status": "Pulling..."}
+{"status": "Pulling", "progress": "1 B/ 100B", "progressDetail": {"current": 1, "total": 100}}
+{"error": "Invalid..."}
+...
+{"status": "Pull complete"}
+```
+
+**状态码：**
+
+- **200** – 没有错误。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 检查镜像
+
+`GET /images/{name}/json`
+
+返回关于单个镜像的信息。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**查询参数：**
+
+- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 获取镜像
+
+`GET /images/{name}/get`
+
+获取镜像的 tarball，可以是单个镜像或仓库。
+
+如果名称是镜像 ID，则会将镜像的 tarball 作为流返回。
+
+如果名称是镜像名称或名称和标签，则会将仓库的 tarball 作为流返回，其中包含所有具有该名称和标签的所有镜像。
+
+下载多个镜像时，流的格式与 `docker save` 的输出相同。
+
+**路径参数：**
+
+- **name** – 要检索的镜像或仓库的名称或 ID。
+
+**查询参数：**
+
+- **allTags** – 如果存在，则除了镜像 ID 之外，还会下载具有 `name` 的所有镜像。
+
+**示例请求：**
+
+```
+GET /v1.48/images/example%2F2048:latest/get HTTP/1.1
+```
+
+**响应头：**
+
+```
+Content-Type: application/x-tar
+```
+
+**状态码：**
+
+- **200** – 请求成功，镜像作为 tar 流返回。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/x-tar
+
+### 获取镜像的所有图层
+
+`GET /images/get`
+
+获取一个或多个镜像的所有图层的 tarball。
+
+对于每个镜像，会有一个 tar 包含图层。
+
+**查询参数：**
+
+- **names** – 要检索的镜像的名称或 ID。
+
+**示例请求：**
+
+```
+GET /v1.48/images/get?names=someImage&names=example%2F2048:latest&names=alpine:3.5 HTTP/1.1
+```
+
+**响应头：**
+
+```
+Content-Type: application/x-tar
+```
+
+**状态码：**
+
+- **200** – 请求成功，镜像作为 tar 流返回。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/x-tar
+
+### 加载镜像
+
+`POST /images/load`
+
+将镜像加载到 Docker 守护进程中。
+
+**查询参数：**
+
+- **quiet** – 仅在 API >= 1.23 时可用。
+- **stream** – 仅在 API >= 1.47 时可用。如果设置为 `true`，则在加载 tarball 时将响应作为流返回。
+
+**请求头：**
+
+`Content-Type` 应该是 `application/x-tar`.
+
+**示例请求：**
+
+```
+POST /v1.48/images/load?quiet=0 HTTP/1.1
+Content-Type: application/x-tar
+Content-Length: 9857
+[...tar contents...]
+```
+
+**示例请求：**
+
+```
+POST /v1.48/images/load?stream=true HTTP/1.1
+Content-Type: application/x-tar
+Content-Length: 9857
+[...tar contents...]
+```
+
+**响应体：**
+
+```
+{"stream": "Loading layer"}
+{"stream": "..."}
+{"error": "Error...", "errorDetail": {"message": "Error..."}}
+{"stream": "Loading complete"}
+```
+
+**状态码：**
+
+- **200** – 没有错误。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 删除镜像
+
+`DELETE /images/{name}`
+
+删除一个或多个镜像。
+
+**路径参数：**
+
+- **name** – 要删除的镜像的名称或 ID。
+
+**查询参数：**
+
+- **force** – 强制删除镜像
+- **noprune** – 不删除未标记的父镜像
+
+**状态码：**
+
+- **200** – 镜像已成功删除。
+- **404** – 镜像未找到
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 搜索 Docker Hub
+
+`GET /images/search`
+
+搜索 Docker Hub 或守护进程配置的注册表。
+
+> **注意**
+>
+> 使用此端点搜索注册表 2.0+（如 Docker Hub）仅在守护进程配置为使用注册表 2.0+ 时有效。
+
+**查询参数：**
+
+- **term** – 要搜索的术语。
+- **limit** – 搜索结果的最大数量。
+- **filters** – JSON 编码的值映射，用于按条件过滤结果。
+
+  可用的过滤器：
+  - `is-automated=true`
+  - `is-official=true`
+  - `stars=N`
+
+**状态码：**
+
+- **200** – 没有错误。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 构建镜像
+
+`POST /build`
+
+构建镜像。
+
+> **注意**
+>
+> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
+
+**查询参数：**
+
+- **t** – 镜像的可选名称。
+- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
+- **q** – 保持安静，仅向客户端发送错误。
+- **nocache** – 不使用缓存。
+- **pull** – 总是尝试拉取所有镜像的较新版本。
+- **rm** – 构建成功后删除中间容器。
+- **forcerm** – 始终删除中间容器，除非构建失败。
+- **memory** – 内存限制
+- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
+- **cpushares** – CPU 份额（相对权重）。
+- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
+- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
+- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
+- **shmsize** – `/dev/shm` 的大小，以字节为单位。
+- **squash** – 将构建过程中的所有图层压缩成一个图层。
+- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
+- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
+- **platform** – 构建镜像的目标平台。
+- **target** – 构建时目标阶段的名称。
+- **outputs** – 输出配置。格式：`type=docker,dest=-`
+
+**请求体：**
+
+构建上下文 `"Content-type:" "application/x-tar"`
+
+可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
+
+**示例请求：**
+
+```
+POST /v1.48/build HTTP/1.1
+Content-Type: application/x-tar
+
+[...tar contents...]
+```
+
+**响应体：**
+
+流，格式为：
+
+```
+{"stream": "Step 1/2..."}
+{"stream": "..."}
+{"error": "Error...", "errorDetail": {"message": "Error..."}}
+{"stream": "Successfully built 50f0e01f88b2\n"}
+```
+
+**状态码：**
+
+- **200** – 构建上下文已接受，流已开始。
+- **204** – 构建成功，没有流。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 构建镜像
+
+`POST /build`
+
+构建镜像。
+
+> **注意**
+>
+> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
+
+**查询参数：**
+
+- **t** – 镜像的可选名称。
+- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
+- **q** – 保持安静，仅向客户端发送错误。
+- **nocache** – 不使用缓存。
+- **pull** – 总是尝试拉取所有镜像的较新版本。
+- **rm** – 构建成功后删除中间容器。
+- **forcerm** – 始终删除中间容器，除非构建失败。
+- **memory** – 内存限制
+- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
+- **cpushares** – CPU 份额（相对权重）。
+- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
+- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
+- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
+- **shmsize** – `/dev/shm` 的大小，以字节为单位。
+- **squash** – 将构建过程中的所有图层压缩成一个图层。
+- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
+- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
+- **platform** – 构建镜像的目标平台。
+- **target** – 构建时目标阶段的名称。
+- **outputs** – 输出配置。格式：`type=docker,dest=-`
+
+**请求体：**
+
+构建上下文 `"Content-type:" "application/x-tar"`
+
+可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
+
+**示例请求：**
+
+```
+POST /v1.48/build HTTP/1.1
+Content-Type: application/x-tar
+
+[...tar contents...]
+```
+
+**响应体：**
+
+流，格式为：
+
+```
+{"stream": "Step 1/2..."}
+{"stream": "..."}
+{"error": "Error...", "errorDetail": {"message": "Error..."}}
+{"stream": "Successfully built 50f0e01f88b2\n"}
+```
+
+**状态码：**
+
+- **200** – 构建上下文已接受，流已开始。
+- **204** – 构建成功，没有流。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 标记镜像
+
+`POST /images/{name}/tag`
+
+将镜像标记到仓库中。
+
+**路径参数：**
+
+- **name** – 要标记的镜像的名称或 ID。
+
+**查询参数：**
+
+- **repo** – 镜像的存储库。
+- **tag** – 镜像的可选标签。
+
+**状态码：**
+
+- **201** – 镜像已成功标记。
+- **400** – 错误参数
+- **404** – 镜像未找到
+- **409** – 标签已存在，无错误
+- **500** – 服务器错误
+
+### 检查镜像
+
+`GET /images/{name}/json`
+
+返回关于单个镜像的信息。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**查询参数：**
+
+- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 获取镜像的构建历史
+
+`GET /images/{name}/history`
+
+返回镜像的历史。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 推送镜像
+
+`POST /images/{name}/push`
+
+将镜像推送到仓库。
+
+如果图像名称仅指定图像 ID，Docker 守护进程将返回错误。
+
+**路径参数：**
+
+- **name** – 要推送的镜像的名称。
+
+**查询参数：**
+
+- **tag** – 要推送的镜像的标签。
+
+**请求头：**
+
+如果图像已经通过身份验证，则应设置 `X-Registry-Auth`。
+
+**示例请求：**
+
+```
+POST /v1.48/images/test:latest/push HTTP/1.1
+X-Registry-Auth: eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6ImFzZGYiLCJzZXJ2ZXIh/4=
+Content-Type: application/octet-stream
+Content-Length: 0
+```
+
+**状态码：**
+
+- **200** – 没有错误。
+- **404** – 镜像不存在。
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/octet-stream
+
+### 删除镜像
+
+`DELETE /images/{name}`
+
+删除一个或多个镜像。
+
+**路径参数：**
+
+- **name** – 要删除的镜像的名称或 ID。
+
+**查询参数：**
+
+- **force** – 强制删除镜像
+- **noprune** – 不删除未标记的父镜像
+
+**状态码：**
+
+- **200** – 镜像已成功删除。
+- **404** – 镜像未找到
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 检查镜像
+
+`GET /images/{name}/json`
+
+返回关于单个镜像的信息。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**查询参数：**
+
+- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 检查镜像
+
+`GET /images/{name}/json`
+
+返回关于单个镜像的信息。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**查询参数：**
+
+- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 获取镜像的构建历史
+
+`GET /images/{name}/history`
+
+返回镜像的历史。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 检查镜像
+
+`GET /images/{name}/json`
+
+返回关于单个镜像的信息。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**查询参数：**
+
+- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 获取镜像的构建历史
+
+`GET /images/{name}/history`
+
+返回镜像的历史。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500** – 服务器错误
+
+**生产者：**
+
+- application/json
+
+### 检查镜像
+
+`GET /images/{name}/json`
+
+返回关于单个镜像的信息。
+
+**路径参数：**
+
+- **name** – 要检查的镜像的名称或 ID。
+
+**查询参数：**
+
+- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
+
+**状态码：**
+
+- **200** – 成功
+- **404** – 镜像不存在
+- **500**

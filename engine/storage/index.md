@@ -1,0 +1,74 @@
+# 存储
+
+Docker 存储涵盖两个不同的概念：
+
+**容器数据持久化**（本页）：如何使用卷（volumes）、绑定挂载（bind mounts）和 tmpfs 挂载将应用数据存储在容器外部。这些数据独立于容器的生命周期而持久存在。
+
+**守护程序存储后端**（[containerd 镜像存储](containerd.md) 和[存储驱动](drivers/)）：守护程序如何在磁盘上存储镜像层和容器可写层。
+
+本页重点介绍容器数据持久化。有关 Docker 如何存储镜像和容器层的信息，请参阅 [containerd 镜像存储](containerd.md) 或 [存储驱动](drivers/)。
+
+## 容器层基础
+
+默认情况下，容器内创建的所有文件都存储在位于只读、不可变的镜像层之上的可写容器层上。
+
+写入容器层的数据在容器被销毁时不会持久保存。这意味着如果另一个进程需要该数据，可能很难将其从容器中取出。
+
+可写层对于每个容器都是唯一的。你无法轻松地将数据从可写层提取到主机或其他容器中。
+
+## 存储挂载选项
+
+Docker 支持以下类型的存储挂载，用于在容器可写层之外存储数据：
+
+- [卷挂载](#volume-mounts)
+- [绑定挂载](#bind-mounts)
+- [tmpfs 挂载](#tmpfs-mounts)
+- [命名管道](#named-pipes)
+
+无论你选择使用哪种挂载类型，从容器内部看，数据看起来都是一样的。它在容器的文件系统中显示为目录或单个文件。
+
+### 卷挂载
+
+卷是由 Docker 守护程序管理的持久性存储机制。即使删除了使用它们的容器，它们也能保留数据。卷数据存储在主机的文件系统上，但为了与卷中的数据交互，你必须将卷挂载到容器。直接访问或与卷数据交互是不受支持的、未定义的行为，可能会导致卷或其数据以意外方式损坏。
+
+卷非常适合于性能关键的数据处理和长期存储需求。由于存储位置在守护程序主机上进行管理，卷提供与直接访问主机文件系统相同的原始文件性能。
+
+### 绑定挂载
+
+绑定挂载在主机系统路径和容器之间创建直接链接，允许访问存储在主机上任何位置的文件或目录。由于它们不受 Docker 隔离，主机上的非 Docker 进程和容器进程都可以同时修改挂载的文件。
+
+当你需要从容器和主机都能访问文件时，请使用绑定挂载。
+
+### tmpfs 挂载
+
+tmpfs 挂载将文件直接存储在主机的内存中，确保数据不会写入磁盘。这种存储是临时的：当容器停止或重启，或者主机重新启动时，数据会丢失。tmpfs 挂载不会在 Docker 主机或容器的文件系统中持久保存数据。
+
+这些挂载适用于需要临时、内存存储的场景，例如缓存中间数据、处理敏感信息（如凭据）或减少磁盘 I/O。仅当数据不需要在当前容器会话之外持久保存时，才使用 tmpfs 挂载。
+
+### 命名管道
+
+[命名管道](https://docs.microsoft.com/en-us/windows/desktop/ipc/named-pipes)可用于 Docker 主机和容器之间的通信。常见的用例是在容器内运行第三方工具，并使用命名管道连接到 Docker Engine API。
+
+## 下一步
+
+了解更多关于容器数据持久化的内容：
+
+- [卷](./volumes.md)
+- [绑定挂载](./bind-mounts.md)
+- [tmpfs 挂载](./tmpfs.md)
+
+了解更多关于守护程序存储后端的内容：
+
+- [containerd 镜像存储](containerd.md)
+- [存储驱动](drivers/)
+
+- [卷（Volumes）](https://docs.docker.com/engine/storage/volumes/)
+
+- [绑定挂载](https://docs.docker.com/engine/storage/bind-mounts/)
+
+- [tmpfs 挂载](https://docs.docker.com/engine/storage/tmpfs/)
+
+- [存储驱动程序](https://docs.docker.com/engine/storage/drivers/)
+
+- [使用 containerd 镜像存储的 Docker Engine](https://docs.docker.com/engine/storage/containerd/)
+

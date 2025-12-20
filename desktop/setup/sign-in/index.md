@@ -1,0 +1,74 @@
+# 登录 Docker Desktop
+
+Docker 推荐使用 Docker Dashboard 右上角的 **Sign in** 选项进行登录。
+
+在管理员权限受限的大型企业中，管理员可以[强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)。
+
+> [!TIP]
+>
+> 浏览 [Docker 核心订阅](https://www.docker.com/pricing/)，了解 Docker 还能为您提供哪些服务。
+
+## 登录的好处
+
+- 直接从 Docker Desktop 访问您的 Docker Hub 仓库。
+
+- 与匿名用户相比，提高您的拉取速率限制。请参阅[使用情况和限制](/manuals/docker-hub/usage/_index.md)。
+
+- 通过[强化桌面](/manuals/enterprise/security/hardened-desktop/_index.md)增强您的组织在容器化开发中的安全性。
+
+> [!NOTE]
+>
+> Docker Desktop 会在 90 天后自动将您登出，或在 30 天无活动后自动登出。
+
+## 使用 Docker Desktop for Linux 登录
+
+Docker Desktop for Linux 依赖 [`pass`](https://www.passwordstore.org/) 将凭据存储在 GPG 加密文件中。
+在使用您的 [Docker ID](/accounts/create-account/) 登录 Docker Desktop 之前，您必须初始化 `pass`。
+如果 `pass` 未配置，Docker Desktop 会显示警告。
+
+1. 生成 GPG 密钥。您可以通过使用 gpg 密钥来初始化 pass。要生成 gpg 密钥，请运行：
+
+   ``` console
+   $ gpg --generate-key
+   ``` 
+2. 按提示输入您的姓名和电子邮件。
+
+   确认后，GPG 会创建一个密钥对。查找包含您的 GPG ID 的 `pub` 行，例如：
+
+   ```text
+   ...
+   pubrsa3072 2022-03-31 [SC] [expires: 2024-03-30]
+    3ABCD1234EF56G78
+   uid          Molly <molly@example.com>
+   ```
+3. 复制 GPG ID 并使用它来初始化 `pass`。例如：
+
+   ```console
+   $ pass init 3ABCD1234EF56G78
+   ``` 
+
+   您应该看到类似以下输出：
+
+   ```text
+   mkdir: created directory '/home/molly/.password-store/'
+   Password store initialized for <generated_gpg-id_public_key>
+   ```
+
+初始化 `pass` 后，您就可以登录并拉取您的私有镜像了。
+当 Docker CLI 或 Docker Desktop 使用凭据时，可能会弹出用户提示，要求您输入在生成 GPG 密钥时设置的密码。
+
+```console
+$ docker pull molly/privateimage
+Using default tag: latest
+latest: Pulling from molly/privateimage
+3b9cc81c3203: Pull complete 
+Digest: sha256:3c6b73ce467f04d4897d7a7439782721fd28ec9bf62ea2ad9e81a5fb7fb3ff96
+Status: Downloaded newer image for molly/privateimage:latest
+docker.io/molly/privateimage:latest
+```
+
+## 下一步？
+
+- [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其功能。
+- 更改您的 [Docker Desktop 设置](/manuals/desktop/settings-and-maintenance/settings.md)。
+- [浏览常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md)。

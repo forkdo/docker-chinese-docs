@@ -1,0 +1,75 @@
+# Docker Engine 17.06 发布说明
+
+## 17.06.2-ce
+2017-09-05
+
+### Client
+
+- 在客户端中启用 TCP keepalive 以防止连接丢失 [docker/cli#415](https://github.com/docker/cli/pull/415)
+
+### Runtime
+
+- Devmapper：确保在调用 setCookie 之后调用 UdevWait [moby/moby#33732](https://github.com/moby/moby/pull/33732)
+- Aufs：确保正确移除 diff 层，以防止残留文件占用存储空间 [moby/moby#34587](https://github.com/moby/moby/pull/34587)
+
+### Swarm mode
+
+- 对于正在运行的任务，忽略 PullOptions [docker/swarmkit#2351](https://github.com/docker/swarmkit/pull/2351)
+
+## 17.06.1-ce
+2017-08-15
+
+### Builder
+
+* 修复一个回归问题，即 `ADD` 指令在提取远程 URL 的归档文件时行为不正确 [#89](https://github.com/docker/docker-ce/pull/89)
+* 修复对远程 "git@" 表示法的处理 [#100](https://github.com/docker/docker-ce/pull/100)
+* 修复 copy `--from` 与强制拉取 的冲突 [#86](https://github.com/docker/docker-ce/pull/86)
+
+### Client
+
+* 使 `docker system prune` 运行时清理卷变为可选操作，并添加 `--volumes` 标志 [#109](https://github.com/docker/docker-ce/pull/109)
+* 在复制任务被分配前显示其进度 [#97](https://github.com/docker/docker-ce/pull/97)
+* 修复当容器不存在时 `docker wait` 命令挂起的问题 [#106](https://github.com/docker/docker-ce/pull/106)
+* 如果 `docker swarm ca` 在不带 `--rotate` 标志的情况下被调用，当传递其他标志时发出警告 [#110](https://github.com/docker/docker-ce/pull/110)
+* 修复当守护进程返回错误时 API 版本协商不生效的问题 [#115](https://github.com/docker/docker-ce/pull/115)
+* 如果在 `system prune` 中 "until" 过滤器与 "--volumes" 组合使用，则打印错误信息 [#154](https://github.com/docker/docker-ce/pull/154)
+
+### Logging
+
+* 修复 `journald` 和 `syslog` 的 stderr 日志记录 [#95](https://github.com/docker/docker-ce/pull/95)
+* 修复日志读取器可能无限期阻塞写入的问题 [#98](https://github.com/docker/docker-ce/pull/98)
+* 修复 `awslogs` 驱动重复记录最后一个事件的问题 [#151](https://github.com/docker/docker-ce/pull/151)
+
+### Networking
+
+* 修复网络驱动程序未接收到驱动程序选项的问题 [#127](https://github.com/docker/docker-ce/pull/127)
+
+### Plugins
+
+* 使插件移除操作对失败更具弹性 [#91](https://github.com/docker/docker-ce/pull/91)
+
+### Runtime
+
+* 防止 `healthcheck` 停止时发生 `goroutine` 泄漏 [#90](https://github.com/docker/docker-ce/pull/90)
+* 在不支持重新标记时，不对 relabel 操作报错 [#92](https://github.com/docker/docker-ce/pull/92)
+* 将 GRPC 连接的最大退避延迟限制为 2 秒 [#94](https://github.com/docker/docker-ce/pull/94)
+* 修复因某些内核中的 bug，导致指定了 memory cgroup 的容器无法运行的问题 [#102](https://github.com/docker/docker-ce/pull/102)
+* 修复容器在暂停时不响应 SIGKILL 的问题 [#102](https://github.com/docker/docker-ce/pull/102)
+* 改进加载不兼容操作系统镜像时的错误信息 [#108](https://github.com/docker/docker-ce/pull/108)
+* 修复 `go-winio` 中的一个句柄泄漏 [#112](https://github.com/docker/docker-ce/pull/112)
+* 修复升级后，当 `--live-restore` 启用时 Docker 无法显示正在运行的容器的问题 [#117](https://github.com/docker/docker-ce/pull/117)
+* 修复在使用 `userns-remap` 功能的守护进程上，使用了 secret 的服务无法启动的 bug [#121](https://github.com/docker/docker-ce/pull/121)
+* 修复移除时对 `not-exist` 错误的错误处理 [#142](https://github.com/docker/docker-ce/pull/142)
+* 修复 REST API Swagger 表示无法用 SwaggerUI 加载的问题 [#156](https://github.com/docker/docker-ce/pull/156)
+
+### Security
+
+* 在创建 secret 时编辑（隐藏）secret 数据 [#99](https://github.com/docker/docker-ce/pull/99)
+
+### Swarm mode
+
+* 不向服务规约 中添加重复的平台信息 [#107](https://github.com/docker/docker-ce/pull/107)
+* 集群更新和内存问题修复 [#114](https://github.com/docker/docker-ce/pull/114)
+* 更改获取网络的请求，使其在 Swarm 中返回预定义的网络 [#150](https://github.com/docker/docker-ce/pull/150)
+
+## 17.06

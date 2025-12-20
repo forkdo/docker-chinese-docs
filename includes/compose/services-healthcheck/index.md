@@ -1,0 +1,2 @@
+# 
+`healthcheck` 属性声明了一个用于确定服务容器是否“健康”的检查。其工作方式与服务的 Docker 镜像在 Dockerfile 中设置的 `HEALTHCHECK` 指令相同，并且具有相同的默认值。您的 Compose 文件可以覆盖 Dockerfile 中设置的值。

@@ -1,0 +1,50 @@
+# 网络驱动
+
+Docker 的网络子系统是可插拔的，使用驱动实现。默认存在多个驱动，并提供核心网络功能：
+
+- `bridge`：默认网络驱动。如果不指定驱动，这就是你创建的网络类型。当你的应用程序运行在需要与同一主机上其他容器通信的容器中时，通常使用桥接网络。
+  参见 [桥接网络驱动](bridge.md)。
+
+- `host`：移除容器与 Docker 主机之间的网络隔离，直接使用主机的网络。
+  参见 [主机网络驱动](host.md)。
+
+- `overlay`：覆盖网络将多个 Docker 守护进程连接在一起，使 Swarm 服务和容器能够跨节点通信。此策略消除了在操作系统级别进行路由的需要。
+  参见 [覆盖网络驱动](overlay.md)。
+
+- `ipvlan`：IPvlan 网络让用户完全控制 IPv4 和 IPv6 地址分配。VLAN 驱动在此基础上，让操作员完全控制第 2 层 VLAN 标记，甚至为对底层网络集成感兴趣的用户提供 IPvlan L3 路由。
+  参见 [IPvlan 网络驱动](ipvlan.md)。
+
+- `macvlan`：Macvlan 网络允许你为容器分配 MAC 地址，使其在网络上显示为物理设备。Docker 守护进程根据 MAC 地址将流量路由到容器。在处理期望直接连接到物理网络，而不是通过 Docker 主机网络栈进行路由的遗留应用程序时，使用 `macvlan` 驱动有时是最佳选择。
+  参见 [Macvlan 网络驱动](macvlan.md)。
+
+- `none`：将容器与主机和其他容器完全隔离。`none` 不适用于 Swarm 服务。
+  参见 [无网络驱动](none.md)。
+
+- [网络插件](/engine/extend/plugins_network/)：你可以安装和使用第三方网络插件与 Docker。
+
+### 网络驱动摘要
+
+- 默认的桥接网络适用于运行不需要特殊网络功能的容器。
+- 用户定义的桥接网络使同一 Docker 主机上的容器能够相互通信。用户定义的网络通常为属于同一项目或组件的多个容器定义一个隔离的网络。
+- 主机网络与容器共享主机的网络。使用此驱动时，容器的网络不会与主机隔离。
+- 当你需要在不同 Docker 主机上运行的容器进行通信，或者多个应用程序使用 Swarm 服务协同工作时，覆盖网络是最佳选择。
+- 当你从虚拟机设置迁移，或者需要你的容器在网络上显示为具有唯一 MAC 地址的物理主机时，Macvlan 网络是最佳选择。
+- IPvlan 与 Macvlan 类似，但不为容器分配唯一的 MAC 地址。当对可以分配给网络接口或端口的 MAC 地址数量有限制时，请考虑使用 IPvlan。
+- 第三方网络插件允许你将 Docker 与专门的网络栈集成。
+
+## 下一步
+
+每个驱动页面都包含详细的解释、配置选项和实际使用示例，以帮助你有效地使用该驱动。
+
+- [](https://docs.docker.com/engine/network/drivers/bridge/)
+
+- [Host 网络驱动](https://docs.docker.com/engine/network/drivers/host/)
+
+- [IPvlan 网络驱动](https://docs.docker.com/engine/network/drivers/ipvlan/)
+
+- [Macvlan 网络驱动](https://docs.docker.com/engine/network/drivers/macvlan/)
+
+- [none 网络驱动](https://docs.docker.com/engine/network/drivers/none/)
+
+- [Overlay 网络驱动](https://docs.docker.com/engine/network/drivers/overlay/)
+

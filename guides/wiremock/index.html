@@ -1,0 +1,2224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+  <title>
+    使用 WireMock 模拟 API 服务 | Docker Docs
+  </title>
+
+
+<meta name="description" content="使用 WireMock 在开发和测试中模拟 API 服务" />
+<meta
+  name="keywords"
+  content="WireMock, container-supported, development"
+/>
+<link rel="canonical" href="https://docs.docker.com/guides/wiremock/" />
+
+
+<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<meta name="theme-color" content="#2496ed" />
+
+
+<meta name="twitter:title" itemprop="title name" content="使用 WireMock 模拟 API 服务" />
+<meta
+  name="twitter:description"
+  property="og:description"
+  itemprop="description"
+  content="使用 WireMock 在开发和测试中模拟 API 服务"
+/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="https://docs.docker.com/" />
+<meta name="twitter:site" content="@docker_docs" />
+<meta name="twitter:url" content="https://twitter.com/docker_docs" />
+<meta
+  name="twitter:image:src"
+  content="https://docs.docker.com/images/thumbnail.webp"
+/>
+<meta name="twitter:image:alt" content="Docker Documentation" />
+<meta property="og:title" content="使用 WireMock 模拟 API 服务" />
+<meta property="og:description" content="使用 WireMock 在开发和测试中模拟 API 服务" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:updated_time"
+  itemprop="dateUpdated"
+  content="2024-10-24 18:09:27 &#43;0200 &#43;0200"
+/>
+<meta
+  property="og:image"
+  itemprop="image primaryImageOfPage"
+  content="https://docs.docker.com/images/thumbnail.webp"
+/>
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://docs.docker.com/guides/wiremock/" />
+<meta property="og:site_name" content="Docker Documentation" />
+<meta
+  property="article:published_time"
+  itemprop="datePublished"
+  content="2024-10-24 18:09:27 &#43;0200 &#43;0200"
+/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"使用 WireMock 模拟 API 服务\"","description":"\"使用 WireMock 在开发和测试中模拟 API 服务\"","url":"https:\/\/docs.docker.com\/guides\/wiremock\/"}</script>
+
+
+  
+    
+    
+      
+        
+          <link
+            rel="stylesheet"
+            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
+            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            crossorigin="anonymous"
+          />
+        
+      
+    
+  
+
+<script
+    src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+    type="text/javascript"
+    charset="UTF-8"
+    data-domain-script="65425fb0-7b36-4317-9f10-7b3e08039af0"
+  ></script>
+  <script type="text/javascript">
+    function OptanonWrapper() {}
+  </script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>  <script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:3169877,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
+<script
+  async
+  src="https://widget.kapa.ai/kapa-widget.bundle.js"
+  data-button-hide="true"
+  data-font-family="Roboto Flex,sans-serif"
+  data-modal-disclaimer-bg-color="#e5f2fc"
+  data-modal-disclaimer-text-color="#086dd7"
+  data-modal-disclaimer="This is a custom LLM for answering questions about Docker. Answers are based on the contents of the documentation. Rate the answers to let us know what you think!"
+  data-kapa-branding-text="powered by [kapa.ai](https://www.kapa.ai) and Docker"
+  data-modal-header-bg-color="#1d63ed"
+  data-modal-image-height="25px"
+  data-modal-image-width="181px"
+  data-modal-title="​"
+  data-modal-override-open-class="open-kapa-widget"
+  data-modal-ask-ai-input-placeholder="Ask me a question about Docker…"
+  data-modal-title-color="#fff"
+  data-project-color="#1d63ed"
+  data-project-logo="/assets/images/logo-icon-white.svg"
+  data-project-name="Docker"
+  data-user-analytics-fingerprint-enabled="true"
+  data-bot-protection-mechanism="hcaptcha"
+  data-website-id="ba5c2cbc-6535-4334-a72e-050f7a681c8a"
+  data-modal-open-on-command-k="true"
+  data-modal-border-radius="6px"
+></script>
+ <script>
+    
+    window.askAI = function(inputId = "search-page-input") {
+      const searchInput = document.querySelector("#" + inputId);
+      const query = searchInput ? searchInput.value.trim() : "";
+
+      if (query && window.Kapa) {
+        window.Kapa.open({
+          mode: "ai",
+          query: query,
+          submit: false
+        });
+      } else if (window.Kapa) {
+        window.Kapa.open({
+          mode: "ai"
+        });
+      }
+    };
+
+    
+    document.addEventListener('click', function(event) {
+      if (event.target.closest('.open-kapa-widget')) {
+        event.preventDefault();
+        window.askAI("search-page-input");
+      }
+    });
+  </script>
+
+<link
+  href="/assets/fonts/RobotoFlex.woff2"
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<script>(()=>{function t(){let e=localStorage.getItem("theme-preference");return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}var r=t();document.firstElementChild.className=r==="dark"?"dark":"light";localStorage.setItem("theme-preference",r);})();
+</script>
+
+<script defer src="https://docs.docker.com/scripts.js"></script>
+
+  </head>
+
+  <body
+    class="dark:bg-navbar-bg-dark bg-navbar-bg flex flex-col items-center text-base text-black dark:text-white"
+  >
+    <header
+  class="sticky top-0 z-20 h-16 w-full bg-blue-600 text-white"
+>
+  <div
+    class="flex h-full justify-between gap-2 mx-auto px-4"
+  >
+    <div class="flex h-full items-center gap-2 lg:gap-8">
+        <button
+          x-data
+          @click="$store.showSidebar = true"
+          class="icon-svg block h-full px-4 md:hidden"
+          aria-label="Menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M150-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"/></svg>
+        </button>
+      <div>
+        
+        <a title="Docker Docs home page" href="https://docs.docker.com/">
+          <div class="hidden sm:block"><svg width="160" height="24" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.6087 10.3866C23.0202 9.98965 21.4744 9.81999 20.3501 10.1235C20.2896 9.00129 19.7119 8.05574 18.656 7.23081L18.2647 6.96776L18.0038 7.36233C17.4914 8.14134 17.2763 9.17951 17.3524 10.1235C17.413 10.7048 17.6148 11.3586 18.0038 11.8333C16.5411 12.6839 15.1925 12.4909 9.22035 12.4909H0.00209363C-0.0250805 13.8427 0.192313 16.4428 1.8414 18.5588C2.02385 18.7923 2.22339 19.0187 2.44001 19.2366C3.78086 20.583 5.80727 21.5698 8.83758 21.5729C13.4603 21.5768 17.4207 19.0724 19.8299 13.017C20.6226 13.0302 22.715 13.1594 23.7391 11.1757C23.764 11.1422 24 10.6496 24 10.6496L23.6087 10.3866ZM6.01846 8.99195H3.42604V11.5905H6.01846V8.99195ZM9.36787 8.99195H6.77545V11.5905H9.36787V8.99195ZM12.7173 8.99195H10.1249V11.5905H12.7173V8.99195ZM16.0667 8.99195H13.4743V11.5905H16.0667V8.99195ZM2.66827 8.99195H0.0766285V11.5905H2.66905L2.66827 8.99195ZM6.01768 5.70936H3.42526V8.30788H6.01768V5.70936ZM9.36709 5.70936H6.77468V8.30788H9.36709V5.70936ZM12.7165 5.70936H10.1241V8.30788H12.7165V5.70936ZM12.7165 2.42676H10.1241V5.02529H12.7165V2.42676Z" fill="white"/>
+<path d="M35.774 21.092C34.578 21.092 33.497 20.816 32.531 20.264C31.5803 19.6967 30.8213 18.93 30.254 17.964C29.702 16.998 29.426 15.9093 29.426 14.698C29.426 13.4867 29.679 12.4057 30.185 11.455C30.7063 10.489 31.4117 9.73 32.301 9.178C33.1903 8.61067 34.1947 8.327 35.314 8.327C36.2187 8.327 37.0543 8.51867 37.821 8.902C38.5877 9.27 39.2317 9.776 39.753 10.42V4.21C39.753 3.85733 39.8603 3.57367 40.075 3.359C40.305 3.14433 40.5887 3.037 40.926 3.037C41.2787 3.037 41.5623 3.14433 41.777 3.359C41.9917 3.57367 42.099 3.85733 42.099 4.21V14.698C42.099 15.9093 41.8153 16.998 41.248 17.964C40.696 18.93 39.9447 19.6967 38.994 20.264C38.0433 20.816 36.97 21.092 35.774 21.092ZM35.774 19.022C36.556 19.022 37.2537 18.838 37.867 18.47C38.4803 18.0867 38.9633 17.5653 39.316 16.906C39.6687 16.2467 39.845 15.5107 39.845 14.698C39.845 13.87 39.6687 13.134 39.316 12.49C38.9633 11.846 38.4803 11.34 37.867 10.972C37.2537 10.5887 36.556 10.397 35.774 10.397C35.0073 10.397 34.3097 10.5887 33.681 10.972C33.0677 11.34 32.577 11.846 32.209 12.49C31.8563 13.134 31.68 13.87 31.68 14.698C31.68 15.5107 31.8563 16.2467 32.209 16.906C32.577 17.5653 33.0677 18.0867 33.681 18.47C34.3097 18.838 35.0073 19.022 35.774 19.022ZM50.9459 21.092C49.7039 21.092 48.6075 20.8237 47.6569 20.287C46.7062 19.735 45.9549 18.9837 45.4029 18.033C44.8662 17.067 44.5979 15.963 44.5979 14.721C44.5979 13.4637 44.8662 12.3597 45.4029 11.409C45.9549 10.443 46.7062 9.69167 47.6569 9.155C48.6075 8.603 49.7039 8.327 50.9459 8.327C52.1725 8.327 53.2612 8.603 54.2119 9.155C55.1625 9.69167 55.9062 10.443 56.4429 11.409C56.9949 12.3597 57.2709 13.4637 57.2709 14.721C57.2709 15.963 57.0025 17.067 56.4659 18.033C55.9292 18.9837 55.1855 19.735 54.2349 20.287C53.2842 20.8237 52.1879 21.092 50.9459 21.092ZM50.9459 19.022C51.7432 19.022 52.4485 18.838 53.0619 18.47C53.6752 18.102 54.1505 17.596 54.4879 16.952C54.8405 16.308 55.0169 15.5643 55.0169 14.721C55.0169 13.8777 54.8405 13.134 54.4879 12.49C54.1505 11.8307 53.6752 11.317 53.0619 10.949C52.4485 10.581 51.7432 10.397 50.9459 10.397C50.1485 10.397 49.4432 10.581 48.8299 10.949C48.2165 11.317 47.7335 11.8307 47.3809 12.49C47.0282 13.134 46.8519 13.8777 46.8519 14.721C46.8519 15.5643 47.0282 16.308 47.3809 16.952C47.7335 17.596 48.2165 18.102 48.8299 18.47C49.4432 18.838 50.1485 19.022 50.9459 19.022ZM65.4664 21.092C64.2397 21.092 63.1434 20.816 62.1774 20.264C61.2267 19.6967 60.4754 18.9377 59.9234 17.987C59.3867 17.021 59.1184 15.9323 59.1184 14.721C59.1184 13.479 59.3867 12.375 59.9234 11.409C60.46 10.443 61.196 9.69167 62.1314 9.155C63.0667 8.603 64.14 8.327 65.3514 8.327C66.256 8.327 67.084 8.50333 67.8354 8.856C68.5867 9.19333 69.2614 9.707 69.8594 10.397C70.0741 10.6423 70.1507 10.8953 70.0894 11.156C70.0281 11.4167 69.8594 11.6467 69.5834 11.846C69.3687 11.9993 69.1311 12.053 68.8704 12.007C68.6097 11.9457 68.372 11.8077 68.1574 11.593C67.406 10.7957 66.4707 10.397 65.3514 10.397C64.5694 10.397 63.8794 10.581 63.2814 10.949C62.6834 11.3017 62.2157 11.8 61.8784 12.444C61.541 13.088 61.3724 13.847 61.3724 14.721C61.3724 15.549 61.541 16.285 61.8784 16.929C62.231 17.573 62.714 18.0867 63.3274 18.47C63.9407 18.838 64.6537 19.022 65.4664 19.022C66.0031 19.022 66.4707 18.9607 66.8694 18.838C67.2834 18.7 67.6591 18.493 67.9964 18.217C68.2417 18.0177 68.4947 17.9103 68.7554 17.895C69.0161 17.8643 69.2461 17.9333 69.4454 18.102C69.706 18.3167 69.8517 18.562 69.8824 18.838C69.913 19.0987 69.821 19.3363 69.6064 19.551C68.5024 20.5783 67.1224 21.092 65.4664 21.092ZM74.7839 16.4L73.3579 14.836L80.4189 8.534C80.6489 8.31933 80.9019 8.21967 81.1779 8.235C81.4692 8.25033 81.7145 8.373 81.9139 8.603C82.1285 8.833 82.2282 9.086 82.2129 9.362C82.1975 9.638 82.0749 9.88333 81.8449 10.098L74.7839 16.4ZM73.7029 21C73.3655 21 73.0895 20.9003 72.8749 20.701C72.6755 20.4863 72.5759 20.2103 72.5759 19.873V4.164C72.5759 3.82667 72.6755 3.55833 72.8749 3.359C73.0895 3.14433 73.3655 3.037 73.7029 3.037C74.0402 3.037 74.3085 3.14433 74.5079 3.359C74.7225 3.55833 74.8299 3.82667 74.8299 4.164V19.873C74.8299 20.2103 74.7225 20.4863 74.5079 20.701C74.3085 20.9003 74.0402 21 73.7029 21ZM81.9139 20.885C81.6685 21.0843 81.3925 21.1687 81.0859 21.138C80.7945 21.1227 80.5492 20.9923 80.3499 20.747L75.6809 14.974L77.2909 13.456L82.0749 19.344C82.2742 19.5893 82.3585 19.8577 82.3279 20.149C82.3125 20.425 82.1745 20.6703 81.9139 20.885ZM89.4361 21.092C88.1634 21.092 87.0287 20.8237 86.0321 20.287C85.0507 19.735 84.2764 18.9837 83.7091 18.033C83.1571 17.067 82.8811 15.963 82.8811 14.721C82.8811 13.4637 83.1417 12.3597 83.6631 11.409C84.1997 10.443 84.9357 9.69167 85.8711 9.155C86.8064 8.603 87.8797 8.327 89.0911 8.327C90.2871 8.327 91.3144 8.59533 92.1731 9.132C93.0317 9.65333 93.6834 10.3817 94.1281 11.317C94.5881 12.237 94.8181 13.3027 94.8181 14.514C94.8181 14.8053 94.7184 15.0507 94.5191 15.25C94.3197 15.434 94.0667 15.526 93.7601 15.526H84.4911V13.686H93.6911L92.7481 14.33C92.7327 13.5633 92.5794 12.881 92.2881 12.283C91.9967 11.6697 91.5827 11.1867 91.0461 10.834C90.5094 10.4813 89.8577 10.305 89.0911 10.305C88.2171 10.305 87.4657 10.4967 86.8371 10.88C86.2237 11.2633 85.7561 11.7923 85.4341 12.467C85.1121 13.1263 84.9511 13.8777 84.9511 14.721C84.9511 15.5643 85.1427 16.3157 85.5261 16.975C85.9094 17.6343 86.4384 18.1557 87.1131 18.539C87.7877 18.9223 88.5621 19.114 89.4361 19.114C89.9114 19.114 90.3944 19.0297 90.8851 18.861C91.3911 18.677 91.7974 18.47 92.1041 18.24C92.3341 18.0713 92.5794 17.987 92.8401 17.987C93.1161 17.9717 93.3537 18.0483 93.5531 18.217C93.8137 18.447 93.9517 18.7 93.9671 18.976C93.9824 19.252 93.8597 19.4897 93.5991 19.689C93.0777 20.103 92.4261 20.4403 91.6441 20.701C90.8774 20.9617 90.1414 21.092 89.4361 21.092ZM97.9372 13.134C97.9372 12.214 98.1596 11.3937 98.6042 10.673C99.0642 9.937 99.6776 9.35433 100.444 8.925C101.211 8.49567 102.054 8.281 102.974 8.281C103.894 8.281 104.577 8.43433 105.021 8.741C105.481 9.03233 105.658 9.385 105.55 9.799C105.504 10.0137 105.412 10.1823 105.274 10.305C105.152 10.4123 105.006 10.4813 104.837 10.512C104.669 10.5427 104.485 10.535 104.285 10.489C103.304 10.2897 102.422 10.2743 101.64 10.443C100.858 10.6117 100.237 10.926 99.7772 11.386C99.3326 11.846 99.1102 12.4287 99.1102 13.134H97.9372ZM97.9602 21C97.5922 21 97.3086 20.908 97.1092 20.724C96.9099 20.5247 96.8102 20.2333 96.8102 19.85V9.569C96.8102 9.201 96.9099 8.91733 97.1092 8.718C97.3086 8.51867 97.5922 8.419 97.9602 8.419C98.3436 8.419 98.6272 8.51867 98.8112 8.718C99.0106 8.902 99.1102 9.18567 99.1102 9.569V19.85C99.1102 20.218 99.0106 20.5017 98.8112 20.701C98.6272 20.9003 98.3436 21 97.9602 21Z" fill="white"/>
+<path d="M112.797 21.115C111.586 21.115 110.497 20.839 109.531 20.287C108.565 19.7197 107.798 18.953 107.231 17.987C106.679 17.021 106.403 15.9247 106.403 14.698C106.403 13.4867 106.671 12.398 107.208 11.432C107.76 10.466 108.504 9.707 109.439 9.155C110.374 8.58767 111.432 8.304 112.613 8.304C113.64 8.304 114.568 8.52633 115.396 8.971C116.224 9.40033 116.891 9.97533 117.397 10.696V3.934C117.397 3.658 117.481 3.44333 117.65 3.29C117.819 3.12133 118.033 3.037 118.294 3.037C118.555 3.037 118.769 3.12133 118.938 3.29C119.107 3.44333 119.191 3.658 119.191 3.934V14.79C119.16 15.986 118.861 17.067 118.294 18.033C117.742 18.9837 116.983 19.735 116.017 20.287C115.066 20.839 113.993 21.115 112.797 21.115ZM112.797 19.505C113.686 19.505 114.476 19.298 115.166 18.884C115.871 18.4547 116.423 17.8797 116.822 17.159C117.236 16.4383 117.443 15.618 117.443 14.698C117.443 13.7933 117.236 12.9807 116.822 12.26C116.423 11.524 115.871 10.949 115.166 10.535C114.476 10.121 113.686 9.914 112.797 9.914C111.923 9.914 111.133 10.121 110.428 10.535C109.723 10.949 109.163 11.524 108.749 12.26C108.335 12.9807 108.128 13.7933 108.128 14.698C108.128 15.618 108.335 16.4383 108.749 17.159C109.163 17.8797 109.723 18.4547 110.428 18.884C111.133 19.298 111.923 19.505 112.797 19.505ZM128.059 21.115C126.832 21.115 125.736 20.839 124.77 20.287C123.804 19.735 123.045 18.976 122.493 18.01C121.941 17.044 121.665 15.9477 121.665 14.721C121.665 13.479 121.941 12.375 122.493 11.409C123.045 10.443 123.804 9.684 124.77 9.132C125.736 8.58 126.832 8.304 128.059 8.304C129.285 8.304 130.374 8.58 131.325 9.132C132.291 9.684 133.05 10.443 133.602 11.409C134.154 12.375 134.437 13.479 134.453 14.721C134.453 15.9477 134.169 17.044 133.602 18.01C133.05 18.976 132.291 19.735 131.325 20.287C130.374 20.839 129.285 21.115 128.059 21.115ZM128.059 19.505C128.948 19.505 129.745 19.298 130.451 18.884C131.156 18.47 131.708 17.9027 132.107 17.182C132.505 16.4613 132.705 15.641 132.705 14.721C132.705 13.801 132.505 12.9807 132.107 12.26C131.708 11.524 131.156 10.949 130.451 10.535C129.745 10.121 128.948 9.914 128.059 9.914C127.169 9.914 126.372 10.121 125.667 10.535C124.961 10.949 124.402 11.524 123.988 12.26C123.589 12.9807 123.39 13.801 123.39 14.721C123.39 15.641 123.589 16.4613 123.988 17.182C124.402 17.9027 124.961 18.47 125.667 18.884C126.372 19.298 127.169 19.505 128.059 19.505ZM142.509 21.115C141.298 21.115 140.217 20.839 139.266 20.287C138.331 19.7197 137.587 18.953 137.035 17.987C136.498 17.021 136.23 15.9323 136.23 14.721C136.23 13.4943 136.491 12.398 137.012 11.432C137.533 10.466 138.246 9.707 139.151 9.155C140.056 8.58767 141.098 8.304 142.279 8.304C143.214 8.304 144.073 8.488 144.855 8.856C145.652 9.224 146.35 9.776 146.948 10.512C147.117 10.696 147.178 10.8953 147.132 11.11C147.086 11.3093 146.956 11.4857 146.741 11.639C146.572 11.7617 146.381 11.8077 146.166 11.777C145.967 11.731 145.79 11.616 145.637 11.432C144.748 10.42 143.628 9.914 142.279 9.914C141.42 9.914 140.661 10.121 140.002 10.535C139.358 10.949 138.852 11.5163 138.484 12.237C138.131 12.9577 137.955 13.7857 137.955 14.721C137.955 15.641 138.147 16.4613 138.53 17.182C138.913 17.9027 139.45 18.47 140.14 18.884C140.83 19.298 141.62 19.505 142.509 19.505C143.107 19.505 143.651 19.4283 144.142 19.275C144.648 19.1063 145.093 18.8533 145.476 18.516C145.66 18.3627 145.852 18.2783 146.051 18.263C146.25 18.2477 146.434 18.309 146.603 18.447C146.787 18.6157 146.887 18.8073 146.902 19.022C146.933 19.2367 146.864 19.4207 146.695 19.574C145.576 20.6013 144.18 21.115 142.509 21.115ZM153.969 21.115C153.064 21.115 152.167 20.9617 151.278 20.655C150.389 20.3483 149.668 19.8883 149.116 19.275C148.947 19.091 148.878 18.884 148.909 18.654C148.94 18.424 149.055 18.2247 149.254 18.056C149.469 17.9027 149.691 17.8413 149.921 17.872C150.151 17.9027 150.343 18.0023 150.496 18.171C150.864 18.6003 151.347 18.93 151.945 19.16C152.558 19.39 153.233 19.505 153.969 19.505C155.104 19.505 155.924 19.3133 156.43 18.93C156.936 18.5313 157.197 18.056 157.212 17.504C157.212 16.952 156.951 16.4997 156.43 16.147C155.909 15.779 155.05 15.4953 153.854 15.296C152.305 15.0507 151.171 14.6213 150.45 14.008C149.729 13.3947 149.369 12.6663 149.369 11.823C149.369 11.041 149.576 10.3893 149.99 9.868C150.404 9.34667 150.956 8.95567 151.646 8.695C152.336 8.43433 153.095 8.304 153.923 8.304C154.95 8.304 155.832 8.48033 156.568 8.833C157.319 9.18567 157.925 9.661 158.385 10.259C158.538 10.4583 158.6 10.6653 158.569 10.88C158.538 11.0947 158.416 11.271 158.201 11.409C158.017 11.5163 157.802 11.5547 157.557 11.524C157.327 11.478 157.128 11.363 156.959 11.179C156.576 10.7343 156.131 10.4123 155.625 10.213C155.119 9.99833 154.536 9.891 153.877 9.891C153.034 9.891 152.359 10.0673 151.853 10.42C151.347 10.7573 151.094 11.1867 151.094 11.708C151.094 12.0607 151.186 12.3673 151.37 12.628C151.569 12.8887 151.899 13.1187 152.359 13.318C152.834 13.5173 153.494 13.686 154.337 13.824C155.487 14.008 156.392 14.284 157.051 14.652C157.726 15.0047 158.201 15.4263 158.477 15.917C158.768 16.3923 158.914 16.9137 158.914 17.481C158.914 18.2017 158.699 18.838 158.27 19.39C157.856 19.9267 157.273 20.3483 156.522 20.655C155.786 20.9617 154.935 21.115 153.969 21.115Z" fill="white"/>
+</svg>
+</div>
+          <div class="block sm:hidden"><svg width="84" height="25" viewBox="0 0 84 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.6087 10.9342C23.0202 10.5373 21.4744 10.3676 20.3501 10.6711C20.2896 9.5489 19.7119 8.60334 18.656 7.77841L18.2647 7.51537L18.0038 7.90993C17.4914 8.68895 17.2763 9.72711 17.3524 10.6711C17.413 11.2525 17.6148 11.9062 18.0038 12.3809C16.5411 13.2315 15.1925 13.0385 9.22035 13.0385H0.00209363C-0.0250805 14.3903 0.192313 16.9904 1.8414 19.1064C2.02385 19.3399 2.22339 19.5663 2.44001 19.7843C3.78086 21.1306 5.80727 22.1174 8.83758 22.1205C13.4603 22.1244 17.4207 19.62 19.8299 13.5646C20.6226 13.5778 22.715 13.707 23.7391 11.7233C23.764 11.6898 24 11.1972 24 11.1972L23.6087 10.9342ZM6.01846 9.53956H3.42604V12.1381H6.01846V9.53956ZM9.36787 9.53956H6.77545V12.1381H9.36787V9.53956ZM12.7173 9.53956H10.1249V12.1381H12.7173V9.53956ZM16.0667 9.53956H13.4743V12.1381H16.0667V9.53956ZM2.66827 9.53956H0.0766285V12.1381H2.66905L2.66827 9.53956ZM6.01768 6.25696H3.42526V8.85549H6.01768V6.25696ZM9.36709 6.25696H6.77468V8.85549H9.36709V6.25696ZM12.7165 6.25696H10.1241V8.85549H12.7165V6.25696ZM12.7165 2.97437H10.1241V5.57289H12.7165V2.97437Z" fill="white"/>
+<path d="M36.774 21.6394C35.578 21.6394 34.497 21.3634 33.531 20.8114C32.5803 20.244 31.8213 19.4774 31.254 18.5114C30.702 17.5454 30.426 16.4567 30.426 15.2454C30.426 14.034 30.679 12.953 31.185 12.0024C31.7063 11.0364 32.4117 10.2774 33.301 9.72536C34.1903 9.15803 35.1947 8.87436 36.314 8.87436C37.2187 8.87436 38.0543 9.06603 38.821 9.44936C39.5877 9.81736 40.2317 10.3234 40.753 10.9674V4.75736C40.753 4.4047 40.8603 4.12103 41.075 3.90636C41.305 3.6917 41.5887 3.58436 41.926 3.58436C42.2787 3.58436 42.5623 3.6917 42.777 3.90636C42.9917 4.12103 43.099 4.4047 43.099 4.75736V15.2454C43.099 16.4567 42.8153 17.5454 42.248 18.5114C41.696 19.4774 40.9447 20.244 39.994 20.8114C39.0433 21.3634 37.97 21.6394 36.774 21.6394ZM36.774 19.5694C37.556 19.5694 38.2537 19.3854 38.867 19.0174C39.4803 18.634 39.9633 18.1127 40.316 17.4534C40.6687 16.794 40.845 16.058 40.845 15.2454C40.845 14.4174 40.6687 13.6814 40.316 13.0374C39.9633 12.3934 39.4803 11.8874 38.867 11.5194C38.2537 11.136 37.556 10.9444 36.774 10.9444C36.0073 10.9444 35.3097 11.136 34.681 11.5194C34.0677 11.8874 33.577 12.3934 33.209 13.0374C32.8563 13.6814 32.68 14.4174 32.68 15.2454C32.68 16.058 32.8563 16.794 33.209 17.4534C33.577 18.1127 34.0677 18.634 34.681 19.0174C35.3097 19.3854 36.0073 19.5694 36.774 19.5694ZM51.9459 21.6394C50.7039 21.6394 49.6075 21.371 48.6569 20.8344C47.7062 20.2824 46.9549 19.531 46.4029 18.5804C45.8662 17.6144 45.5979 16.5104 45.5979 15.2684C45.5979 14.011 45.8662 12.907 46.4029 11.9564C46.9549 10.9904 47.7062 10.239 48.6569 9.70236C49.6075 9.15036 50.7039 8.87436 51.9459 8.87436C53.1725 8.87436 54.2612 9.15036 55.2119 9.70236C56.1625 10.239 56.9062 10.9904 57.4429 11.9564C57.9949 12.907 58.2709 14.011 58.2709 15.2684C58.2709 16.5104 58.0025 17.6144 57.4659 18.5804C56.9292 19.531 56.1855 20.2824 55.2349 20.8344C54.2842 21.371 53.1879 21.6394 51.9459 21.6394ZM51.9459 19.5694C52.7432 19.5694 53.4485 19.3854 54.0619 19.0174C54.6752 18.6494 55.1505 18.1434 55.4879 17.4994C55.8405 16.8554 56.0169 16.1117 56.0169 15.2684C56.0169 14.425 55.8405 13.6814 55.4879 13.0374C55.1505 12.378 54.6752 11.8644 54.0619 11.4964C53.4485 11.1284 52.7432 10.9444 51.9459 10.9444C51.1485 10.9444 50.4432 11.1284 49.8299 11.4964C49.2165 11.8644 48.7335 12.378 48.3809 13.0374C48.0282 13.6814 47.8519 14.425 47.8519 15.2684C47.8519 16.1117 48.0282 16.8554 48.3809 17.4994C48.7335 18.1434 49.2165 18.6494 49.8299 19.0174C50.4432 19.3854 51.1485 19.5694 51.9459 19.5694ZM66.4664 21.6394C65.2397 21.6394 64.1434 21.3634 63.1774 20.8114C62.2267 20.244 61.4754 19.485 60.9234 18.5344C60.3867 17.5684 60.1184 16.4797 60.1184 15.2684C60.1184 14.0264 60.3867 12.9224 60.9234 11.9564C61.46 10.9904 62.196 10.239 63.1314 9.70236C64.0667 9.15036 65.14 8.87436 66.3514 8.87436C67.256 8.87436 68.084 9.0507 68.8354 9.40336C69.5867 9.7407 70.2614 10.2544 70.8594 10.9444C71.0741 11.1897 71.1507 11.4427 71.0894 11.7034C71.0281 11.964 70.8594 12.194 70.5834 12.3934C70.3687 12.5467 70.1311 12.6004 69.8704 12.5544C69.6097 12.493 69.372 12.355 69.1574 12.1404C68.406 11.343 67.4707 10.9444 66.3514 10.9444C65.5694 10.9444 64.8794 11.1284 64.2814 11.4964C63.6834 11.849 63.2157 12.3474 62.8784 12.9914C62.541 13.6354 62.3724 14.3944 62.3724 15.2684C62.3724 16.0964 62.541 16.8324 62.8784 17.4764C63.231 18.1204 63.714 18.634 64.3274 19.0174C64.9407 19.3854 65.6537 19.5694 66.4664 19.5694C67.0031 19.5694 67.4707 19.508 67.8694 19.3854C68.2834 19.2474 68.6591 19.0404 68.9964 18.7644C69.2417 18.565 69.4947 18.4577 69.7554 18.4424C70.0161 18.4117 70.2461 18.4807 70.4454 18.6494C70.706 18.864 70.8517 19.1094 70.8824 19.3854C70.913 19.646 70.821 19.8837 70.6064 20.0984C69.5024 21.1257 68.1224 21.6394 66.4664 21.6394ZM78.1529 21.6394C77.0795 21.6394 76.0829 21.4784 75.1629 21.1564C74.2582 20.819 73.5529 20.3974 73.0469 19.8914C72.8169 19.646 72.7172 19.37 72.7479 19.0634C72.7939 18.7414 72.9472 18.4807 73.2079 18.2814C73.5145 18.036 73.8135 17.9364 74.1049 17.9824C74.4115 18.013 74.6722 18.1434 74.8869 18.3734C75.1475 18.6647 75.5615 18.9407 76.1289 19.2014C76.7115 19.4467 77.3555 19.5694 78.0609 19.5694C78.9502 19.5694 79.6249 19.4237 80.0849 19.1324C80.5602 18.841 80.8055 18.4654 80.8209 18.0054C80.8362 17.5454 80.6139 17.1467 80.1539 16.8094C79.7092 16.472 78.8889 16.196 77.6929 15.9814C76.1442 15.6747 75.0172 15.2147 74.3119 14.6014C73.6219 13.988 73.2769 13.2367 73.2769 12.3474C73.2769 11.5654 73.5069 10.9214 73.9669 10.4154C74.4269 9.89403 75.0172 9.5107 75.7379 9.26536C76.4585 9.0047 77.2099 8.87436 77.9919 8.87436C79.0039 8.87436 79.9009 9.03536 80.6829 9.35736C81.4649 9.67936 82.0859 10.124 82.5459 10.6914C82.7605 10.9367 82.8602 11.1974 82.8449 11.4734C82.8295 11.734 82.6992 11.9564 82.4539 12.1404C82.2085 12.309 81.9172 12.3627 81.5799 12.3014C81.2425 12.24 80.9589 12.102 80.7289 11.8874C80.3455 11.5194 79.9315 11.2664 79.4869 11.1284C79.0422 10.9904 78.5285 10.9214 77.9459 10.9214C77.2712 10.9214 76.6962 11.0364 76.2209 11.2664C75.7609 11.4964 75.5309 11.8337 75.5309 12.2784C75.5309 12.5544 75.5999 12.8074 75.7379 13.0374C75.8912 13.252 76.1825 13.4514 76.6119 13.6354C77.0412 13.804 77.6699 13.9727 78.4979 14.1414C79.6479 14.3714 80.5525 14.6627 81.2119 15.0154C81.8865 15.368 82.3695 15.782 82.6609 16.2574C82.9522 16.7174 83.0979 17.254 83.0979 17.8674C83.0979 18.5727 82.9062 19.209 82.5229 19.7764C82.1549 20.3437 81.6029 20.796 80.8669 21.1334C80.1462 21.4707 79.2415 21.6394 78.1529 21.6394Z" fill="white"/>
+</svg>
+</div>
+        </a>
+      </div>
+      <nav class="mt-1 hidden md:flex lg:flex xl:flex 2xl:flex">
+        
+        <ul class="flex text-sm md:text-base lg:gap-4">
+          
+            <li
+                class="border-b-4 border-transparent hover:border-white/20"
+            >
+              <a class="block px-2 py-1 whitespace-nowrap" href="/get-started/"
+                >Get started</a
+              >
+            </li>
+          
+            <li
+                class="border-b-4"
+            >
+              <a class="block px-2 py-1 whitespace-nowrap" href="/guides/"
+                >Guides</a
+              >
+            </li>
+          
+            <li
+                class="border-b-4 border-transparent hover:border-white/20"
+            >
+              <a class="block px-2 py-1 whitespace-nowrap" href="/manuals/"
+                >Manuals</a
+              >
+            </li>
+          
+            <li
+                class="border-b-4 border-transparent hover:border-white/20"
+            >
+              <a class="block px-2 py-1 whitespace-nowrap" href="/reference/"
+                >Reference</a
+              >
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+    <div id="buttons" class="flex min-w-0 items-center justify-end flex-shrink-0">
+      <div class="flex items-center gap-2">
+        <button
+          @click="open = false"
+          class="cursor-pointer flex items-center gap-2 p-2 rounded-lg bg-blue-700 border border-blue-500 text-white transition-colors focus:outline-none focus:ring focus:ring-blue-400 shimmer open-kapa-widget"
+        >
+          <span class="icon-svg">
+            
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- sparkle icon using path, stroke currentColor -->
+  <path d="M18.5 7.84656V2.84656M5.5 20.8466V15.8466M16 5.34656H21M3 18.3466H8M6.5 1.84656L5.71554 3.41547C5.45005 3.94645 5.31731 4.21194 5.13997 4.442C4.98261 4.64615 4.79959 4.82917 4.59545 4.98653C4.36538 5.16387 4.0999 5.29661 3.56892 5.5621L2 6.34656L3.56892 7.13102C4.0999 7.39651 4.36538 7.52925 4.59545 7.70659C4.79959 7.86395 4.98261 8.04696 5.13997 8.25111C5.31731 8.48117 5.45005 8.74666 5.71554 9.27764L6.5 10.8466L7.28446 9.27764C7.54995 8.74666 7.68269 8.48117 7.86003 8.25111C8.01739 8.04696 8.20041 7.86395 8.40455 7.70659C8.63462 7.52925 8.9001 7.3965 9.43108 7.13102L11 6.34656L9.43108 5.5621C8.9001 5.29661 8.63462 5.16387 8.40455 4.98653C8.20041 4.82917 8.01739 4.64615 7.86003 4.442C7.68269 4.21194 7.54995 3.94645 7.28446 3.41547L6.5 1.84656ZM17 11.8466L16.0489 13.7488C15.7834 14.2798 15.6506 14.5453 15.4733 14.7753C15.3159 14.9795 15.1329 15.1625 14.9288 15.3199C14.6987 15.4972 14.4332 15.6299 13.9023 15.8954L12 16.8466L13.9023 17.7977C14.4332 18.0632 14.6987 18.1959 14.9288 18.3733C15.1329 18.5306 15.3159 18.7136 15.4733 18.9178C15.6506 19.1478 15.7834 19.4133 16.0489 19.9443L17 21.8466L17.9511 19.9443C18.2166 19.4133 18.3494 19.1478 18.5267 18.9178C18.6841 18.7136 18.8671 18.5306 19.0712 18.3733C19.3013 18.1959 19.5668 18.0632 20.0977 17.7977L22 16.8466L20.0977 15.8954C19.5668 15.6299 19.3013 15.4972 19.0712 15.3199C18.8671 15.1625 18.6841 14.9795 18.5267 14.7753C18.3494 14.5453 18.2166 14.2798 17.9511 13.7488L17 11.8466Z"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+<rect width="24" height="24" fill="currentColor" fill-opacity="1"/>
+</g>
+</svg>
+
+
+          </span>
+          <span class="hidden px-1 lg:inline">Ask&nbsp;AI</span>
+        </button>
+
+        <div id="search-bar-container">
+           <div
+  x-ref="searchBarRef"
+  x-data="{ open: false }"
+  @click.outside="open = false;"
+  @keyup.escape.window="open = false"
+  id="search-bar"
+  class="h-full relative flex items-center overflow-visible"
+>
+  <input
+    class="rounded-lg hidden w-64 lg:inline focus:outline-none bg-blue-700 border border-blue-500 px-3 py-[0.5625rem] focus:ring focus:ring-blue-400 placeholder-blue-300 h-[42px]"
+    x-ref="searchBarInput"
+    type="search"
+    id="search-bar-input"
+    placeholder="Search"
+    @focus="open = true;"
+    @keyup.enter.prevent="window.location.href = '/search/?q=' + $event.target.value;"
+    @keyup.escape.prevent="open = false;"
+    @keydown.window="(e) => {
+            switch(e.key) {
+            case 'k':
+              if (e.metaKey || e.ctrlKey) {
+                e.preventDefault();
+                $el.focus();
+              }
+              break;
+            }
+          }"
+    tabindex="0"
+  />
+  <button
+    id="search-bar-icon"
+    @click="window.location.href = '/search/?q=' + $refs.searchBarInput.value;"
+    class="lg:absolute right-2 p-1 rounded-lg cursor-pointer transition-colors hover:bg-blue-600 lg:hover:bg-transparent lg:hover:opacity-80"
+    aria-label="Search"
+  >
+    <div class="bg-blue-700 rounded-md p-2 border border-blue-500 lg:border-none icon-svg">
+      
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- search icon using path, stroke currentColor -->
+  <path d="M15.75 15.75L12.4875 12.4875M14.25 8.25C14.25 11.5637 11.5637 14.25 8.25 14.25C4.93629 14.25 2.25 11.5637 2.25 8.25C2.25 4.93629 4.93629 2.25 8.25 2.25C11.5637 2.25 14.25 4.93629 14.25 8.25Z"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+<rect width="24" height="24" fill="white" fill-opacity="0.85"/>
+</g>
+</svg>
+
+
+    </div>
+  </button>
+  <div
+    id="search-bar-dropdown"
+    x-show="open"
+    x-cloak
+    x-ref="dropdown"
+    class="border-1 fixed z-[999] mt-2 hidden rounded-sm border-gray-100 bg-gray-50 p-6 font-medium text-gray-400 shadow-md md:block dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+    style="width: min(500px, 90vw)"
+    x-effect="if (open) {
+        const rect = $refs.searchBarRef.getBoundingClientRect();
+        const dropdownWidth = Math.min(500, window.innerWidth * 0.9);
+        const viewportWidth = window.innerWidth;
+        
+        // Calculate left position
+        let leftPos = rect.left;
+        
+        // Prevent going off right edge
+        if (leftPos + dropdownWidth > viewportWidth - 20) {
+          leftPos = viewportWidth - dropdownWidth - 20;
+        }
+        
+        // Prevent going off left edge
+        if (leftPos < 20) {
+          leftPos = 20;
+        }
+        
+        $el.style.top = (rect.bottom + 8) + 'px';
+        $el.style.left = leftPos + 'px';
+      }"
+  >
+    <div id="search-bar-results">
+      <div>
+        Start typing to search or try
+        <button onclick="askAI('search-bar-input')" class="link">Ask AI</button
+        >.
+      </div>
+      
+      
+    </div>
+  </div>
+  <script type="module">
+    window.addEventListener("load", async function () {
+      const pagefind = await import("/pagefind/pagefind.js");
+      await pagefind.options({
+        ranking: {
+          termFrequency: 0.2,
+          pageLength: 0.75,
+          termSaturation: 1.4,
+          termSimilarity: 6.0,
+        },
+      });
+
+      const searchBarInput = document.querySelector("#search-bar-input");
+      const searchBarResults = document.querySelector("#search-bar-results");
+      const searchDropdown = document.querySelector("#search-bar-dropdown");
+
+      
+      function updateDropdownPosition() {
+        const searchBar = document.querySelector("#search-bar");
+        if (
+          !searchBar ||
+          !searchDropdown ||
+          searchDropdown.style.display === "none"
+        )
+          return;
+
+        const rect = searchBar.getBoundingClientRect();
+        const dropdownWidth = Math.min(500, window.innerWidth * 0.9);
+        const viewportWidth = window.innerWidth;
+
+        let leftPos = rect.left;
+
+        if (leftPos + dropdownWidth > viewportWidth - 20) {
+          leftPos = viewportWidth - dropdownWidth - 20;
+        }
+
+        if (leftPos < 20) {
+          leftPos = 20;
+        }
+
+        searchDropdown.style.top = rect.bottom + 8 + "px";
+        searchDropdown.style.left = leftPos + "px";
+      }
+
+      window.addEventListener("scroll", updateDropdownPosition);
+      window.addEventListener("resize", updateDropdownPosition);
+
+      async function search(e) {
+        const query = e.target.value;
+        if (query === "") {
+          searchBarResults.innerHTML = `\n      \u003cdiv\u003e\n        Start typing to search or try\n        \u003cbutton onclick=\u0022askAI(\u0027search-bar-input\u0027)\u0022 class=\u0022link\u0022\u003eAsk AI\u003c\/button\n        \u003e.\n      \u003c\/div\u003e\n      `;
+          return;
+        }
+        const search = await pagefind.debouncedSearch(query);
+        if (search === null) {
+          return;
+        } else {
+          const resultsLength = search.results.length;
+          const resultsData = await Promise.all(
+            search.results.slice(0, 5).map((r) => r.data()),
+          );
+          const results = resultsData.map((item, index) => ({
+            ...item,
+            index: index + 1,
+          }));
+
+          if (query) {
+            searchBarResults.classList.remove("hidden");
+          } else {
+            searchBarResults.classList.add("hidden");
+          }
+
+let resultsHTML = `<div class="p-2 text-gray-400 dark:text-gray-500">${resultsLength} results</div>`;
+resultsHTML += results
+  .map((item) => {
+    
+    let excerpt = item.excerpt;
+    if (excerpt.length > 200) {
+      excerpt = excerpt.substring(0, 200);
+    }
+    return `<div class="p-2">
+<div class="flex flex-col items-start item">
+  <a class="link" style="word-break: break-word; overflow-wrap: anywhere;" href="${item.url}" data-query="${query}" data-index="${item.index}">${item.meta.title}</a>
+  <p class="text-black dark:text-white overflow-hidden text-left" style="word-break: break-word; overflow-wrap: anywhere;">…${excerpt}…</p>
+</div>
+</div>`;
+  })
+  .join("");
+
+if (resultsLength > 5) {
+  resultsHTML += `<div class="w-fit ml-auto px-4 py-2"><a href="/search/?q=${query}" class="link">Show all results</a></div>`;
+}
+
+          searchBarResults.innerHTML = resultsHTML;
+        }
+      }
+
+      searchBarInput.addEventListener("input", search);
+
+      
+      if (window.heap !== undefined) {
+        searchBarResults.addEventListener("click", function (event) {
+          if (event.target.tagName === "A" && event.target.closest(".link")) {
+            const searchQuery = event.target.getAttribute("data-query");
+            const resultIndex = event.target.getAttribute("data-index");
+            const url = new URL(event.target.href);
+            const properties = {
+              docs_search_target_path: url.pathname,
+              docs_search_target_title: event.target.textContent,
+              docs_search_query_text: searchQuery,
+              docs_search_target_index: resultIndex,
+              docs_search_source_path: window.location.pathname,
+              docs_search_source_title: document.title,
+            };
+            heap.track("Docs - Search - Click - Result Link", properties);
+          }
+        });
+      }
+    });
+  </script>
+</div>
+
+        </div>
+
+        <button
+          aria-label="Theme switch"
+          id="theme-switch"
+          class="cursor-pointer p-2 rounded-lg bg-blue-700 border border-blue-500 hover:bg-blue-800 hover:border-blue-400 transition-colors focus:outline-none focus:ring focus:ring-blue-400"
+          x-data="{ theme: localStorage.getItem('theme-preference') }"
+          x-init="$watch('theme', value => {
+                localStorage.setItem('theme-preference', value);
+                document.firstElementChild.className = value;
+              })"
+          @click="theme = (theme === 'dark' ? 'light' : 'dark')"
+        >
+          <span class="icon-svg dark:hidden"
+            ><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- sun icon using path, stroke currentColor -->
+  <path d="M12 2V4M12 20V22M4 12H2M6.31412 6.31412L4.8999 4.8999M17.6859 6.31412L19.1001 4.8999M6.31412 17.69L4.8999 19.1042M17.6859 17.69L19.1001 19.1042M22 12H20M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+<rect width="24" height="24" fill="currentColor" fill-opacity="1"/>
+</g>
+</svg>
+
+          </span>
+          <span class="icon-svg hidden dark:block">
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- moon icon using path, stroke currentColor -->
+  <path d="M22 15.8442C20.6866 16.4382 19.2286 16.7688 17.6935 16.7688C11.9153 16.7688 7.23116 12.0847 7.23116 6.30654C7.23116 4.77135 7.5618 3.3134 8.15577 2C4.52576 3.64163 2 7.2947 2 11.5377C2 17.3159 6.68414 22 12.4623 22C16.7053 22 20.3584 19.4742 22 15.8442Z"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+<rect width="24" height="24" fill="currentColor" fill-opacity="1"/>
+</g>
+</svg>
+
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <main class="relative flex w-full max-w-[1920px]">
+      
+      <div
+        style="scroll-behavior: smooth;"
+        x-data
+        x-init="$nextTick(() => {
+          const container = $el; // The div with overflow
+          const item = document.getElementById('sidebar-current-page')
+          if (item) {
+              const containerTop = container.scrollTop;
+              const containerBottom = containerTop + container.clientHeight;
+
+              const itemTop = item.offsetTop - container.offsetTop;
+              const itemBottom = itemTop + item.offsetHeight;
+
+              // Scroll only if the item is out of view
+              if (itemBottom > containerBottom - 200) {
+                  container.scrollTop = itemTop - (container.clientHeight / 2 - item.offsetHeight / 2);
+              }
+          }
+      })"
+        class="bg-background-toc dark:bg-background-toc fixed top-0 z-40 hidden h-screen w-full flex-none overflow-x-hidden overflow-y-auto md:sticky md:top-16 md:z-auto md:block md:h-[calc(100vh-64px)] md:w-[320px]"
+        :class="{ 'hidden': ! $store.showSidebar }"
+      >
+        
+        <div
+          class="fixed bg-black/50 md:hidden"
+          x-show="$store.showSidebar"
+          @click="openSidebar = false"
+          x-transition.opacity
+        ></div>
+        <div
+          class="bg-background-toc dark:bg-background-toc z-50 w-full p-3 md:block md:w-[300px]"
+        >
+          
+          <button class="my-4 md:hidden" @click="$store.showSidebar = false">
+            <span class="icon-svg"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m275-450 147 147q9 9 8.5 21t-9.5 21q-9 9-21 9t-21-9L181-459q-9-9-9-21t9-21l199-199q9-9 21-9t21 9q9 9 9 21.5t-9 21.5L275-510h496q13 0 21.5 8.5T801-480q0 13-8.5 21.5T771-450H275Z"/></svg></span
+            >
+            Back
+          </button>
+          
+          
+  
+<div class="px-2 py-4 md:hidden text-gray-700 dark:text-gray-200 card " x-data="{ expanded: false }">
+  <div class="flex w-full items-center justify-between">
+    
+    <a
+      class="hover:text-blue dark:hover:text-blue"
+      href="https://docs.docker.com/guides/"
+    >
+        <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm300-660v252q0 9 7.5 13.5t15.5-.5l60-36q8-5 15-5t15 5l60 36q8 5 15.5.5T676-528v-252H480Z"/></svg></span>指南</a>
+    <button
+      @click="expanded = !expanded"
+      class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+    >
+      <span x-show="! expanded" class="icon-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+      </span>
+      <span x-cloak x-show="expanded" class="icon-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+      </span>
+    </button>
+  </div>
+  <ul x-cloak x-show="expanded" class="space-y-4 pt-4">
+    
+      
+        <li>
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
+              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          </a>
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          <a class="hover:text-blue dark:hover:text-blue" href="/manuals/">
+              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M349-250h262q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H349q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5Zm0-170h262q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H349q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h336q12.44 0 23.72 5T599-862l183 183q8 8 13 19.28 5 11.28 5 23.72v496q0 24-18 42t-42 18H220Zm331-584q0 12.75 8.63 21.37Q568.25-634 581-634h159L551-820v156Z"/></svg></span>Manuals
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a class="hover:text-blue dark:hover:text-blue" href="/reference/">
+              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-160q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm0-60h680v-436H140v436Zm221-218-83-83q-9-9-8.5-21t9.5-21q9-9 21-9t21 9l104 104q9 9 9 21t-9 21L321-313q-9 9-21 9t-21-9q-9-9-9-21t9-21l82-83Zm159 150q-13 0-21.5-8.5T490-318q0-13 8.5-21.5T520-348h160q13 0 21.5 8.5T710-318q0 13-8.5 21.5T680-288H520Z"/></svg></span>Reference
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+
+  <div class="flex flex-col gap-4 px-4 pt-2">
+  <div class="font-semibold">
+    <a href="https://docs.docker.com/guides/wiremock/">使用 WireMock 在开发和测试中模拟 API 服务</a>
+  </div>
+  <div>使用 WireMock 在开发和测试中模拟 API 服务</div>
+  <div class="space-y-4">
+    <div class="flex flex-wrap gap-2">
+        
+  <span class="chip">
+    <img
+      class="py-1"
+      height="18"
+      width="18"
+      title="JavaScript"
+      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+    />
+    <span>JavaScript</span>
+  </span>
+        
+  <a class="chip" href="https://docs.docker.com/tags/app-dev/">
+    <span class="icon-svg icon-sm pb-0.5">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m338-319-35 137q-2 10-9.5 16t-17.5 6q-14 0-23-11t-5-25l31-123H158q-14 0-23.5-11.5T129-356q2-10 10-16.5t19-6.5h136l51-202H224q-14 0-23.5-11.5T195-618q2-10 10-16.5t19-6.5h136l34-137q2-10 9.5-16t17.5-6q14 0 22.5 10.5T449-765l-30 124h203l34-137q2-10 9.5-16t17.5-6q14 0 22.5 10.5T711-765l-30 124h121q14 0 23.5 11.5T831-604q-2 10-10 16.5t-19 6.5H666l-51 202h121q14 0 23.5 11.5T765-342q-2 10-10 16.5t-19 6.5H600l-35 137q-2 10-9.5 16t-17.5 6q-14 0-23-11t-5-25l31-123H338Zm15-60h203l51-202H404l-51 202Z"/></svg>
+    </span>
+    <span>应用开发</span>
+  </a>
+  <a class="chip" href="https://docs.docker.com/tags/distributed-systems/">
+    <span class="icon-svg icon-sm pb-0.5">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m338-319-35 137q-2 10-9.5 16t-17.5 6q-14 0-23-11t-5-25l31-123H158q-14 0-23.5-11.5T129-356q2-10 10-16.5t19-6.5h136l51-202H224q-14 0-23.5-11.5T195-618q2-10 10-16.5t19-6.5h136l34-137q2-10 9.5-16t17.5-6q14 0 22.5 10.5T449-765l-30 124h203l34-137q2-10 9.5-16t17.5-6q14 0 22.5 10.5T711-765l-30 124h121q14 0 23.5 11.5T831-604q-2 10-10 16.5t-19 6.5H666l-51 202h121q14 0 23.5 11.5T765-342q-2 10-10 16.5t-19 6.5H600l-35 137q-2 10-9.5 16t-17.5 6q-14 0-23-11t-5-25l31-123H338Zm15-60h203l51-202H404l-51 202Z"/></svg>
+    </span>
+    <span>分布式系统</span>
+  </a>
+    </div>
+      <div class="flex gap-2 text-gray-400 dark:text-gray-400">
+        <span class="icon-svg"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M513-492v-171q0-13-8.5-21.5T483-693q-13 0-21.5 8.5T453-663v183q0 6 2 11t6 10l144 149q9 10 22.5 9.5T650-310q9-9 9-22t-9-22L513-492ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-82 31.5-155t86-127.5Q252-817 325-848.5T480-880q82 0 155 31.5t127.5 86Q817-708 848.5-635T880-480q0 82-31.5 155t-86 127.5Q708-143 635-111.5T480-80Z"/></svg></span
+        >
+        <span>20 分钟</span>
+      </div></div>
+  <a href="/guides/" class="link mt-2">« Back to all guides</a>
+</div>
+
+
+        </div>
+      </div>
+
+      
+      <div
+        data-pagefind-body
+        class="dark:bg-background-dark w-full min-w-0 bg-white p-8"
+      >
+        
+  <div class="flex w-full gap-8">
+  <article class="prose dark:prose-invert max-w-4xl min-w-0 flex-[2_2_0%]">
+    <nav
+  id="breadcrumbs"
+  data-pagefind-ignore
+  class="breadcrumbs mb-4 flex min-w-0 items-center gap-2 text-gray-400 dark:text-gray-300"
+>
+  
+    
+    <a href="https://docs.docker.com/" class="link truncate"
+      >主页</a
+    >
+    <span>/</span>
+    
+    <a href="https://docs.docker.com/guides/" class="link truncate"
+      >指南</a
+    >
+    <span>/</span>
+  <span
+    data-pagefind-meta="breadcrumbs:主页 / 指南"
+    class="truncate"
+    >使用 WireMock 模拟 API 服务</span
+  >
+</nav>
+
+    <div class="flex items-start justify-between">
+      <h1 data-pagefind-weight="10">使用 WireMock 在开发和测试中模拟 API 服务</h1>
+      <div class="md-dropdown ml-auto hidden lg:block">
+        <details id="markdownDropdown" class="ml-3 group relative z-10 inline-block" data-heap-id="markdown-dropdown">
+    <summary
+      class="dropdown-base hover:bg-gray-50 dark:hover:bg-gray-900 inline-flex cursor-pointer items-center gap-0 py-1 pl-2 text-sm font-semibold transition-colors"
+      data-heap-id="markdown-dropdown-toggle"
+    >
+      <span class="font-normal">Page options</span>
+      <span class="icon-svg transition-transform group-open:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+      </span>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+
+    
+    <div
+      class="dropdown-base absolute right-0 z-50 mt-1 w-65 origin-top-right p-2 text-sm shadow-md [display:none] group-open:[display:block]"
+      data-heap-id="markdown-dropdown-menu"
+    >
+      <button
+        onclick="copyMarkdown()"
+        data-heap-id="copy-markdown-button"
+        class="sub-button"
+      >
+        <span class="icon-svg mt-[2px] text-base leading-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg>
+        </span>
+        <span class="icon-svg hidden mt-[2px] text-base leading-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg>
+        </span>
+        <div class="leading-tight">
+          <div class="text-base">Copy page as Markdown for LLMs</div>
+        </div>
+      </button>
+
+      <button
+        onclick="viewPlainText()"
+        data-heap-id="view-markdown-button"
+        class="sub-button"
+      >
+        <span class="icon-svg mt-[2px] text-base leading-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M349-250h262q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H349q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5Zm0-170h262q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H349q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h336q12.44 0 23.72 5T599-862l183 183q8 8 13 19.28 5 11.28 5 23.72v496q0 24-18 42t-42 18H220Zm331-584q0 12.75 8.63 21.37Q568.25-634 581-634h159L551-820v156Z"/></svg>
+        </span>
+        <div class="leading-tight">
+          <div class="text-base">View page as plain text</div>
+        </div>
+      </button>
+
+      <button
+        onclick="openInDocsAI()"
+        data-heap-id="search-docs-ai-button"
+        class="sub-button"
+      >
+        <span class="icon-svg mt-[2px] text-base leading-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l242 240q9 8.56 9 21.78T818-143q-9 9-22.22 9-13.22 0-21.78-9L533-384q-30 26-69.96 40.5Q423.08-329 378-329Zm-1-60q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z"/></svg>
+        </span>
+        <div class="leading-tight">
+          <div class="text-base">Ask questions with Docs AI</div>
+        </div>
+      </button>
+      
+       <button
+        onclick="openInClaude()"
+        data-heap-id="search-docs-ai-button"
+        class="sub-button"
+      >
+        <span class="icon-svg mt-[2px] text-base leading-none">
+          <svg fill="currentColor" fill-rule="evenodd" height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Claude</title><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"></path></svg>
+        </span>
+        <div class="leading-tight">
+          <div class="text-base">Open in Claude</div>
+        </div>
+      </button>
+      
+
+    </div>
+  </details>
+
+<script>
+    function getCurrentPlaintextUrl() {
+      const url = window.location.href.split("#")[0].replace(/\/$/, "");
+      return `${url}/index.md`;
+    }
+
+    function copyMarkdown() {
+      fetch(getCurrentPlaintextUrl())
+        .then((response) => response.text())
+        .then((text) => {
+          navigator.clipboard.writeText(text).then(() => {
+            const button = document.querySelector('[data-heap-id="copy-markdown-button"]');
+            if (!button) return;
+
+            const icons = button.querySelectorAll(".icon-svg");
+            const copyIcon = icons[0];
+            const checkIcon = icons[1];
+
+            copyIcon.classList.add("hidden");
+            checkIcon.classList.remove("hidden");
+
+            setTimeout(() => {
+              copyIcon.classList.remove("hidden");
+              checkIcon.classList.add("hidden");
+            }, 2000);
+          });
+        })
+        .catch((err) => {
+          console.error("Error copying markdown:", err);
+        });
+    }
+
+    function viewPlainText() {
+      window.open(getCurrentPlaintextUrl(), "_blank");
+    }
+
+    function openInDocsAI() {
+      const kapaButton = document.querySelector(".open-kapa-widget");
+      if (kapaButton) {
+        kapaButton.click();
+      } else {
+        alert("Couldn't find Docs AI.");
+      }
+    }
+
+    function openInClaude() {
+      const markdownUrl = getCurrentPlaintextUrl();
+      const prompt = `Read ${markdownUrl} so I can ask questions about it.`;
+      const encodedText = encodeURIComponent(prompt);
+      const claudeUrl = `https://claude.ai/new?q=${encodedText}`;
+      window.open(claudeUrl, '_blank');
+    }
+  </script>
+
+      </div>
+    </div>
+    <div class="block lg:hidden">
+      
+  <div data-pagefind-ignore class="not-prose">
+    <div class="pb-0 text-lg lg:pb-2">
+      Table of contents
+    </div>
+    <nav class="toc">
+      
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8-docker-%e8%bf%90%e8%a1%8c-wiremock"
+            >使用 Docker 运行 WireMock</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
+            >先决条件</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%90%af%e5%8a%a8-wiremock"
+            >启动 WireMock</a
+          >
+        </li>
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%9c%a8%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8-wiremock"
+            >在开发中使用 WireMock</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%9c%a8%e6%9c%ac%e5%9c%b0%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%a8%a1%e6%8b%9f%e6%95%b0%e6%8d%ae"
+            >在本地开发中使用模拟数据</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6-1"
+            >先决条件</a
+          >
+        </li>
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%9c%a8%e7%94%9f%e4%ba%a7%e7%8e%af%e5%a2%83%e4%b8%ad%e4%bd%bf%e7%94%a8%e5%ae%9e%e6%97%b6-api-%e4%bb%8e-accuweather-%e8%8e%b7%e5%8f%96%e5%ae%9e%e6%97%b6%e5%a4%a9%e6%b0%94%e6%95%b0%e6%8d%ae"
+            >在生产环境中使用实时 API 从 AccuWeather 获取实时天气数据</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%80%bb%e7%bb%93"
+            >总结</a
+          >
+        </li>
+  </ul>
+    </nav>
+  </div>
+
+      <hr />
+    </div>
+    <p>在本地开发和测试过程中，你的应用依赖远程 API 的情况非常常见。网络问题、速率限制，甚至 API 提供商的停机都可能阻碍你的开发进度。这会显著降低你的工作效率，并使测试变得更加困难。这时，WireMock 就派上用场了。</p>
+<p>WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，模拟真实 API 的行为，为开发和测试提供受控环境。</p>
+<p>设想你有一个 API 和一个前端应用，你想测试前端如何与 API 交互。使用 WireMock，你可以设置一个模拟服务器来模拟 API 的响应，从而在不依赖实际 API 的情况下测试前端行为。这在 API 仍在开发中，或者你想测试不同场景而不想影响实际 API 时特别有用。WireMock 支持 HTTP 和 HTTPS 协议，可以模拟各种响应场景，包括延迟、错误和不同的 HTTP 状态码。</p>
+<p>在本指南中，你将学习如何：</p>
+<ul>
+<li>使用 Docker 启动 WireMock 容器。</li>
+<li>在本地开发中使用模拟数据，而不依赖外部 API。</li>
+<li>在生产环境中使用实时 API，从 AccuWeather 获取实时天气数据。</li>
+</ul>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="使用-docker-运行-wiremock">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8-docker-%e8%bf%90%e8%a1%8c-wiremock">
+    使用 Docker 运行 WireMock
+  </a>
+</h2>
+
+<p>官方的 <a class="link" href="https://hub.docker.com/r/wiremock/wiremock" rel="noopener">WireMock Docker 镜像</a> 提供了一种方便的方式来部署和管理 WireMock 实例。WireMock 支持多种 CPU 架构，包括 amd64、armv7 和 armv8，确保与不同设备和平台的兼容性。你可以在 <a class="link" href="https://wiremock.org/docs/standalone/docker/" rel="noopener">WireMock 文档网站</a> 上了解更多关于独立运行的 WireMock 的信息。</p>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="先决条件">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6">
+    先决条件
+  </a>
+</h3>
+
+<p>要跟随本指南，你需要满足以下先决条件：</p>
+<ul>
+<li><a class="link" href="https://www.docker.com/products/docker-desktop/" rel="noopener">Docker Desktop</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="启动-wiremock">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%af%e5%8a%a8-wiremock">
+    启动 WireMock
+  </a>
+</h3>
+
+<p>通过以下步骤快速演示 WireMock：</p>
+<ol>
+<li>
+<p>在本地克隆 <a class="link" href="https://github.com/dockersamples/wiremock-node-docker" rel="noopener">GitHub 仓库</a>。</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL2RvY2tlcnNhbXBsZXMvd2lyZW1vY2stbm9kZS1kb2NrZXI=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> git clone https://github.com/dockersamples/wiremock-node-docker
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+</li>
+<li>
+<p>进入 <code>wiremock-endpoint</code> 目录</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjZCB3aXJlbW9jay1ub2RlLWRvY2tlci8=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">cd</span> wiremock-node-docker/
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>WireMock 作为你的后端将与之通信以检索数据的模拟 API。模拟 API 响应已经为你在 mappings 目录中创建。</p>
+</li>
+<li>
+<p>在克隆项目目录的根目录下运行以下命令启动 Compose 堆栈</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBkb2NrZXIgY29tcG9zZSB1cCAtZA==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker compose up -d
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>片刻之后，应用程序将启动并运行。</p>
+
+  
+  
+    
+
+
+
+
+
+
+
+
+<figure
+  x-data="{ zoom: false }"
+  @click="zoom = ! zoom"
+  class="cursor-pointer hover:opacity-90"
+>
+  <img
+    loading="lazy"
+    src="https://docs.docker.com/guides/images/wiremock-using-docker.webp"
+    alt="显示 WireMock 容器在 Docker Desktop 上运行的示意图 "
+    
+    
+    class="mx-auto rounded-sm"
+  />
+  
+  <template x-teleport="body">
+    <div
+      x-show="zoom"
+      @click="zoom = false"
+      x-transition.opacity.duration.250ms
+      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
+    >
+      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
+      </button>
+      <img
+        loading="lazy"
+        class="max-h-full max-w-full rounded-sm"
+        src="https://docs.docker.com/guides/images/wiremock-using-docker.webp"
+        alt="显示 WireMock 容器在 Docker Desktop 上运行的示意图 "
+      />
+    </div>
+  </template>
+</figure>
+<p>你可以通过选择 <code>wiremock-node-docker</code> 容器来查看日志：</p>
+
+  
+  
+    
+
+
+
+
+
+
+
+
+<figure
+  x-data="{ zoom: false }"
+  @click="zoom = ! zoom"
+  class="cursor-pointer hover:opacity-90"
+>
+  <img
+    loading="lazy"
+    src="https://docs.docker.com/guides/images/wiremock-logs-docker-desktop.webp"
+    alt="显示 WireMock 容器在 Docker Desktop 上运行的日志的示意图 "
+    
+    
+    class="mx-auto rounded-sm"
+  />
+  
+  <template x-teleport="body">
+    <div
+      x-show="zoom"
+      @click="zoom = false"
+      x-transition.opacity.duration.250ms
+      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
+    >
+      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
+      </button>
+      <img
+        loading="lazy"
+        class="max-h-full max-w-full rounded-sm"
+        src="https://docs.docker.com/guides/images/wiremock-logs-docker-desktop.webp"
+        alt="显示 WireMock 容器在 Docker Desktop 上运行的日志的示意图 "
+      />
+    </div>
+  </template>
+</figure>
+</li>
+<li>
+<p>测试模拟 API。</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjdXJsIGh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGkvdjEvZ2V0V2VhdGhlclw/Y2l0eVw9QmVuZ2FsdXJ1', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl http://localhost:8080/api/v1/getWeather<span class="se">\?</span>city<span class="se">\=</span>Bengaluru
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>它将返回以下带有模拟数据的预定义响应：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJjaXR5IjoiQmVuZ2FsdXJ1IiwidGVtcGVyYXR1cmUiOjI3LjEsImNvbmRpdGlvbnMiOiJNb3N0bHkgY2xvdWR5IiwiZm9yZWNhc3RzIjpbeyJkYXRlIjoiMjAyNC0wOS0wMlQwNzowMDowMCswNTozMCIsInRlbXBlcmF0dXJlIjo4MywiY29uZGl0aW9ucyI6IlBhcnRseSBzdW5ueSB3LyB0LXN0b3JtcyJ9LHsiZGF0ZSI6IjIwMjQtMDktMDNUMDc6MDA6MDArMDU6MzAiLCJ0ZW1wZXJhdHVyZSI6ODMsImNvbmRpdGlvbnMiOiJUaHVuZGVyc3Rvcm1zIn0seyJkYXRlIjoiMjAyNC0wOS0wNFQwNzowMDowMCswNTozMCIsInRlbXBlcmF0dXJlIjo4MywiY29uZGl0aW9ucyI6IkludGVybWl0dGVudCBjbG91ZHMifSx7ImRhdGUiOiIyMDI0LTA5LTA1VDA3OjAwOjAwKzA1OjMwIiwidGVtcGVyYXR1cmUiOjgyLCJjb25kaXRpb25zIjoiRHJlYXJ5In0seyJkYXRlIjoiMjAyNC0wOS0wNlQwNzowMDowMCswNTozMCIsInRlbXBlcmF0dXJlIjo4MiwiY29uZGl0aW9ucyI6IkRyZWFyeSJ9XX0=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">{&#34;city&#34;:&#34;Bengaluru&#34;,&#34;temperature&#34;:27.1,&#34;conditions&#34;:&#34;Mostly cloudy&#34;,&#34;forecasts&#34;:[{&#34;date&#34;:&#34;2024-09-02T07:00:00+05:30&#34;,&#34;temperature&#34;:83,&#34;conditions&#34;:&#34;Partly sunny w/ t-storms&#34;},{&#34;date&#34;:&#34;2024-09-03T07:00:00+05:30&#34;,&#34;temperature&#34;:83,&#34;conditions&#34;:&#34;Thunderstorms&#34;},{&#34;date&#34;:&#34;2024-09-04T07:00:00+05:30&#34;,&#34;temperature&#34;:83,&#34;conditions&#34;:&#34;Intermittent clouds&#34;},{&#34;date&#34;:&#34;2024-09-05T07:00:00+05:30&#34;,&#34;temperature&#34;:82,&#34;conditions&#34;:&#34;Dreary&#34;},{&#34;date&#34;:&#34;2024-09-06T07:00:00+05:30&#34;,&#34;temperature&#34;:82,&#34;conditions&#34;:&#34;Dreary&#34;}]}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>使用 WireMock，你可以通过映射文件定义预定义响应。
+对于这个请求，模拟数据定义在
+<code>wiremock-endpoint/mappings/getWeather/getWeatherBengaluru.json</code> 的 JSON 文件中。</p>
+<p>有关预定义响应的更多信息，请参阅
+<a class="link" href="https://wiremock.org/docs/stubbing/" rel="noopener">WireMock 文档</a>。</p>
+</li>
+</ol>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="在开发中使用-wiremock">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%9c%a8%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8-wiremock">
+    在开发中使用 WireMock
+  </a>
+</h2>
+
+<p>现在你已经尝试了 WireMock，让我们在开发和测试中使用它。在本示例中，你将使用一个具有 Node.js 后端的示例应用程序。此应用堆栈具有以下配置：</p>
+<ul>
+<li>本地开发环境：Node.js 后端和 WireMock 运行的环境。</li>
+<li>Node.js 后端：处理 HTTP 请求的后端应用程序。</li>
+<li>外部 AccuWeather API：从中获取实时天气数据的真实 API。</li>
+<li>WireMock：在测试期间模拟 API 响应的模拟服务器。它以 Docker 容器形式运行。</li>
+</ul>
+
+  
+  
+    
+
+
+
+
+
+
+
+
+<figure
+  x-data="{ zoom: false }"
+  @click="zoom = ! zoom"
+  class="cursor-pointer hover:opacity-90"
+>
+  <img
+    loading="lazy"
+    src="https://docs.docker.com/guides/images/wiremock-arch.webp"
+    alt="显示开发中 WireMock 架构的示意图 "
+    
+    
+    class="mx-auto rounded-sm"
+  />
+  
+  <template x-teleport="body">
+    <div
+      x-show="zoom"
+      @click="zoom = false"
+      x-transition.opacity.duration.250ms
+      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
+    >
+      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
+      </button>
+      <img
+        loading="lazy"
+        class="max-h-full max-w-full rounded-sm"
+        src="https://docs.docker.com/guides/images/wiremock-arch.webp"
+        alt="显示开发中 WireMock 架构的示意图 "
+      />
+    </div>
+  </template>
+</figure>
+<ul>
+<li>在开发中，Node.js 后端向 WireMock 发送请求，而不是实际的 AccuWeather API。</li>
+<li>在生产中，它直接连接到实时 AccuWeather API 以获取真实数据。</li>
+</ul>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="在本地开发中使用模拟数据">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%9c%a8%e6%9c%ac%e5%9c%b0%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%a8%a1%e6%8b%9f%e6%95%b0%e6%8d%ae">
+    在本地开发中使用模拟数据
+  </a>
+</h2>
+
+<p>让我们设置一个 Node 应用，向 WireMock 容器发送请求，而不是实际的 AccuWeather API。</p>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="先决条件-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6-1">
+    先决条件
+  </a>
+</h3>
+
+<ul>
+<li>安装 <a class="link" href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" rel="noopener">Node.js 和 npm</a></li>
+<li>确保 WireMock 容器正在运行（参见 <a class="link" href="#launching-wiremock">启动 Wiremock</a>）</li>
+</ul>
+<p>按照以下步骤设置一个非容器化的 Node 应用程序：</p>
+<ol>
+<li>
+<p>进入 <code>accuweather-api</code> 目录</p>
+<p>确保你在 <code>package.json</code> 文件所在的目录中。</p>
+</li>
+<li>
+<p>设置环境变量。</p>
+<p>打开 <code>.env</code> 文件，位于 <code>accuweather-api/</code> 目录下。删除旧的条目，并确保它只包含以下单行。</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'QVBJX0VORFBPSU5UX0JBU0U9aHR0cDovL2xvY2FsaG9zdDo4MDgw', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">API_ENDPOINT_BASE=http://localhost:8080</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>这将告诉你的 Node.js 应用程序使用 WireMock 服务器进行 API 调用。</p>
+</li>
+<li>
+<p>检查应用程序入口点</p>
+<ul>
+<li>应用程序的主文件是 <code>index.js</code>，位于 <code>accuweather-api/src/api</code> 目录中。</li>
+<li>此文件启动了 <code>getWeather.js</code> 模块，这对你的 Node.js 应用程序至关重要。它使用 <code>dotenv</code> 包从 <code>.env</code> 文件加载环境变量。</li>
+<li>根据 <code>API_ENDPOINT_BASE</code> 的值，应用程序将请求路由到 WireMock 服务器（<code>http://localhost:8080</code>）或 AccuWeather API。在此设置中，它使用 WireMock 服务器。</li>
+<li>代码确保仅在应用程序未使用 WireMock 时才需要 <code>ACCUWEATHER_API_KEY</code>，从而提高效率并避免错误。</li>
+</ul>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'cmVxdWlyZSgiZG90ZW52IikuY29uZmlnKCk7Cgpjb25zdCBleHByZXNzID0gcmVxdWlyZSgiZXhwcmVzcyIpOwpjb25zdCBheGlvcyA9IHJlcXVpcmUoImF4aW9zIik7Cgpjb25zdCByb3V0ZXIgPSBleHByZXNzLlJvdXRlcigpOwpjb25zdCBBUElfRU5EUE9JTlRfQkFTRSA9IHByb2Nlc3MuZW52LkFQSV9FTkRQT0lOVF9CQVNFOwpjb25zdCBBUElfS0VZID0gcHJvY2Vzcy5lbnYuQUNDVVdFQVRIRVJfQVBJX0tFWTsKCmNvbnNvbGUubG9nKCdBUElfRU5EUE9JTlRfQkFTRTonLCBBUElfRU5EUE9JTlRfQkFTRSk7ICAvLyDlnKjlrprkuYnlkI7orrDlvZUKY29uc29sZS5sb2coJ0FDQ1VXRUFUSEVSX0FQSV9LRVkgaXMgc2V0OicsICEhQVBJX0tFWSk7IC8vIOiusOW9leW4g&#43;WwlOWAvOiAjOS4jeaYr&#43;WunumZheWvhumSpQoKaWYgKCFBUElfRU5EUE9JTlRfQkFTRSkgewogIHRocm93IG5ldyBFcnJvcigiQVBJX0VORFBPSU5UX0JBU0UgaXMgbm90IGRlZmluZWQgaW4gZW52aXJvbm1lbnQgdmFyaWFibGVzIik7Cn0KCi8vIOS7heWcqOS4jeS9v&#43;eUqCBXaXJlTW9jayDml7bmo4Dmn6UgQVBJIOWvhumSpQppZiAoQVBJX0VORFBPSU5UX0JBU0UgIT09ICdodHRwOi8vbG9jYWxob3N0OjgwODAnICYmICFBUElfS0VZKSB7CiAgdGhyb3cgbmV3IEVycm9yKCJBQ0NVV0VBVEhFUl9BUElfS0VZIGlzIG5vdCBkZWZpbmVkIGluIGVudmlyb25tZW50IHZhcmlhYmxlcyIpOwp9Ci8vIOiOt&#43;WPluWfjuW4guS9jee9rumUrueahOWHveaVsAphc3luYyBmdW5jdGlvbiBmZXRjaExvY2F0aW9uS2V5KHRvd25OYW1lKSB7CiAgY29uc3QgeyBkYXRhOiBsb2NhdGlvbkRhdGEgfSA9IGF3YWl0CmF4aW9zLmdldChgJHtBUElfRU5EUE9JTlRfQkFTRX0vbG9jYXRpb25zL3YxL2NpdGllcy9zZWFyY2hgLCB7CiAgICBwYXJhbXM6IHsgcTogdG93bk5hbWUsIGRldGFpbHM6IGZhbHNlLCBhcGlrZXk6IEFQSV9LRVkgfSwKICB9KTsKICByZXR1cm4gbG9jYXRpb25EYXRhWzBdPy5LZXk7Cn0=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;dotenv&#34;</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;axios&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">API_ENDPOINT_BASE</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">API_ENDPOINT_BASE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">API_KEY</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ACCUWEATHER_API_KEY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;API_ENDPOINT_BASE:&#39;</span><span class="p">,</span> <span class="nx">API_ENDPOINT_BASE</span><span class="p">);</span>  <span class="c1">// 在定义后记录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ACCUWEATHER_API_KEY is set:&#39;</span><span class="p">,</span> <span class="o">!!</span><span class="nx">API_KEY</span><span class="p">);</span> <span class="c1">// 记录布尔值而不是实际密钥
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">API_ENDPOINT_BASE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;API_ENDPOINT_BASE is not defined in environment variables&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 仅在不使用 WireMock 时检查 API 密钥
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nx">API_ENDPOINT_BASE</span> <span class="o">!==</span> <span class="s1">&#39;http://localhost:8080&#39;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">API_KEY</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;ACCUWEATHER_API_KEY is not defined in environment variables&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取城市位置键的函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">async</span> <span class="kd">function</span> <span class="nx">fetchLocationKey</span><span class="p">(</span><span class="nx">townName</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">locationData</span> <span class="p">}</span> <span class="o">=</span> <span class="kr">await</span>
+</span></span><span class="line"><span class="cl"><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API_ENDPOINT_BASE</span><span class="si">}</span><span class="sb">/locations/v1/cities/search`</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span> <span class="nx">q</span><span class="o">:</span> <span class="nx">townName</span><span class="p">,</span> <span class="nx">details</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">apikey</span><span class="o">:</span> <span class="nx">API_KEY</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">locationData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">Key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+</li>
+<li>
+<p>启动 Node 服务器</p>
+<p>在启动 Node 服务器之前，请确保已通过运行 <code>npm install</code> 安装了 <code>package.json</code> 文件中列出的所有节点包。</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'bnBtIGluc3RhbGwgCm5wbSBydW4gc3RhcnQ=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">npm install 
+</span></span></span><span class="line"><span class="cl"><span class="go">npm run start
+</span></span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>你应该看到以下输出：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'PiBleHByZXNzLWFwaS1zdGFydGVyQDEuMi4wIHN0YXJ0Cj4gbm9kZSBzcmMvaW5kZXguanMKCkFQSV9FTkRQT0lOVF9CQVNFOiBodHRwOi8vbG9jYWxob3N0OjgwODAKLi4KTGlzdGVuaW5nOiBodHRwOi8vbG9jYWxob3N0OjUwMDE=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">&gt; express-api-starter@1.2.0 start
+</span></span><span class="line"><span class="cl">&gt; node src/index.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">API_ENDPOINT_BASE: http://localhost:8080
+</span></span><span class="line"><span class="cl">..
+</span></span><span class="line"><span class="cl">Listening: http://localhost:5001</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>输出表明你的 Node 应用程序已成功启动。
+保持此终端窗口打开。</p>
+</li>
+<li>
+<p>测试模拟 API</p>
+<p>打开一个新的终端窗口，并运行以下命令来测试模拟 API：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjdXJsICJodHRwOi8vbG9jYWxob3N0OjUwMDEvYXBpL3YxL2dldFdlYXRoZXI/Y2l0eT1CZW5nYWx1cnUi', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl <span class="s2">&#34;http://localhost:5001/api/v1/getWeather?city=Bengaluru&#34;</span>
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>你应该看到以下输出：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJjaXR5IjoiQmVuZ2FsdXJ1IiwidGVtcGVyYXR1cmUiOjI3LjEsImNvbmRpdGlvbnMiOiJNb3N0bHkgY2xvdWR5IiwiZm9yZWNhc3RzIjpbeyJkYXRlIjoiMjAyNC0wOS0wMlQwNzowMDowMCswNTozMCIsInRlbXBlcmF0dXJlIjo4MywiY29uZGl0aW9ucyI6IlBhcnRseSBzdW5ueSB3LyB0LXN0b3JtcyJ9LHsiZGF0ZSI6IjIwMjQtMDktMDNUMDc6MDA6MDArMDU6MzAiLCJ0ZW1wZXJhdHVyZSI6ODMsImNvbmRpdGlvbnMiOiJUaHVuZGVyc3Rvcm1zIn0seyJkYXRlIjoiMjAyNC0wOS0wNFQwNzowMDowMCswNTozMCIsInRlbXBlcmF0dXJlIjo4MywiY29uZGl0aW9ucyI6IkludGVybWl0dGVudCBjbG91ZHMifSx7ImRhdGUiOiIyMDI0LTA5LTA1VDA3OjAwOjAwKzA1OjMwIiwidGVtcGVyYXR1cmUiOjgyLCJjb25kaXRpb25zIjoiRHJlYXJ5In0seyJkYXRlIjoiMjAyNC0wOS0wNlQwNzowMDowMCswNTozMCIsInRlbXBlcmF0dXJlIjo4MiwiY29uZGl0aW9ucyI6IkRyZWFyeSJ9XX0l', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">{&#34;city&#34;:&#34;Bengaluru&#34;,&#34;temperature&#34;:27.1,&#34;conditions&#34;:&#34;Mostly cloudy&#34;,&#34;forecasts&#34;:[{&#34;date&#34;:&#34;2024-09-02T07:00:00+05:30&#34;,&#34;temperature&#34;:83,&#34;conditions&#34;:&#34;Partly sunny w/ t-storms&#34;},{&#34;date&#34;:&#34;2024-09-03T07:00:00+05:30&#34;,&#34;temperature&#34;:83,&#34;conditions&#34;:&#34;Thunderstorms&#34;},{&#34;date&#34;:&#34;2024-09-04T07:00:00+05:30&#34;,&#34;temperature&#34;:83,&#34;conditions&#34;:&#34;Intermittent clouds&#34;},{&#34;date&#34;:&#34;2024-09-05T07:00:00+05:30&#34;,&#34;temperature&#34;:82,&#34;conditions&#34;:&#34;Dreary&#34;},{&#34;date&#34;:&#34;2024-09-06T07:00:00+05:30&#34;,&#34;temperature&#34;:82,&#34;conditions&#34;:&#34;Dreary&#34;}]}%</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>这表明你的 Node.js 应用程序现在成功地将请求路由到 WireMock 容器并接收模拟响应。</p>
+<p>你可能已经注意到，你尝试使用 <code>http://localhost:5001</code> 作为 URL，而不是端口 <code>8080</code>。这是因为你的 Node.js 应用程序运行在端口 <code>5001</code> 上，并将请求路由到监听端口 <code>8080</code> 的 WireMock 容器。</p>
+
+
+  
+
+  <blockquote
+    
+    class="admonition admonition-tip admonition not-prose">
+    <div class="admonition-header">
+      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_5432_1749" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="1" width="17" height="22">
+<path d="M9.93896 22H14.939M10.439 10H14.439M12.439 10L12.439 16M15.439 15.3264C17.8039 14.2029 19.439 11.7924 19.439 9C19.439 5.13401 16.305 2 12.439 2C8.57297 2 5.43896 5.13401 5.43896 9C5.43896 11.7924 7.07402 14.2029 9.43896 15.3264V16C9.43896 16.9319 9.43896 17.3978 9.59121 17.7654C9.79419 18.2554 10.1835 18.6448 10.6736 18.8478C11.0411 19 11.5071 19 12.439 19C13.3708 19 13.8368 19 14.2043 18.8478C14.6944 18.6448 15.0837 18.2554 15.2867 17.7654C15.439 17.3978 15.439 16.9319 15.439 16V15.3264Z" stroke="#6C7E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</mask>
+<g mask="url(#mask0_5432_1749)">
+<rect width="24" height="24" fill="currentColor" fill-opacity="0.8"/>
+</g>
+</svg>
+
+      </span>
+      <span class="admonition-title">
+        Tip
+      </span>
+    </div>
+    <div class="admonition-content">
+      <p>在继续下一步之前，请确保停止节点应用程序服务。</p>
+    </div>
+  </blockquote>
+
+</li>
+</ol>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="在生产环境中使用实时-api-从-accuweather-获取实时天气数据">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%9c%a8%e7%94%9f%e4%ba%a7%e7%8e%af%e5%a2%83%e4%b8%ad%e4%bd%bf%e7%94%a8%e5%ae%9e%e6%97%b6-api-%e4%bb%8e-accuweather-%e8%8e%b7%e5%8f%96%e5%ae%9e%e6%97%b6%e5%a4%a9%e6%b0%94%e6%95%b0%e6%8d%ae">
+    在生产环境中使用实时 API 从 AccuWeather 获取实时天气数据
+  </a>
+</h2>
+
+<p>为了使用实时天气数据增强你的 Node.js 应用程序，你可以无缝集成 AccuWeather API。本指南的这一部分将引导你完成设置非容器化 Node.js 应用程序并直接从 AccuWeather API 获取天气信息的步骤。</p>
+<ol>
+<li>
+<p>创建 AccuWeather API 密钥</p>
+<p>在 <a class="link" href="https://developer.accuweather.com/" rel="noopener">https://developer.accuweather.com/</a> 注册一个免费的 AccuWeather 开发者账户。在你的账户中，通过选择顶部导航菜单中的 <code>MY APPS</code> 来创建一个新应用，以获取你的唯一 API 密钥。</p>
+
+  
+  
+    
+
+
+
+
+
+
+
+
+<figure
+  x-data="{ zoom: false }"
+  @click="zoom = ! zoom"
+  class="cursor-pointer hover:opacity-90"
+>
+  <img
+    loading="lazy"
+    src="https://docs.docker.com/guides/images/wiremock-accuweatherapi.webp"
+    alt="显示 AccuWeather 仪表板的示意图"
+    
+    
+    class="mx-auto rounded-sm"
+  />
+  
+  <template x-teleport="body">
+    <div
+      x-show="zoom"
+      @click="zoom = false"
+      x-transition.opacity.duration.250ms
+      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
+    >
+      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
+      </button>
+      <img
+        loading="lazy"
+        class="max-h-full max-w-full rounded-sm"
+        src="https://docs.docker.com/guides/images/wiremock-accuweatherapi.webp"
+        alt="显示 AccuWeather 仪表板的示意图"
+      />
+    </div>
+  </template>
+</figure>
+<p><a class="link" href="https://developer.accuweather.com/" rel="noopener">AccuWeather API</a> 是一个提供实时天气数据和预报的 Web API。开发者可以使用此 API 将天气信息集成到他们的应用程序、网站或其他项目中。</p>
+</li>
+<li>
+<p>进入 <code>accuweather-api</code> 目录</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjZCBhY2N1d2VhdGhlci1hcGk=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">cd</span> accuweather-api
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+</li>
+<li>
+<p>使用 <code>.env</code> 文件设置你的 AccuWeather API 密钥：</p>
+
+
+  
+
+  <blockquote
+    
+    class="admonition admonition-tip admonition not-prose">
+    <div class="admonition-header">
+      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_5432_1749" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="1" width="17" height="22">
+<path d="M9.93896 22H14.939M10.439 10H14.439M12.439 10L12.439 16M15.439 15.3264C17.8039 14.2029 19.439 11.7924 19.439 9C19.439 5.13401 16.305 2 12.439 2C8.57297 2 5.43896 5.13401 5.43896 9C5.43896 11.7924 7.07402 14.2029 9.43896 15.3264V16C9.43896 16.9319 9.43896 17.3978 9.59121 17.7654C9.79419 18.2554 10.1835 18.6448 10.6736 18.8478C11.0411 19 11.5071 19 12.439 19C13.3708 19 13.8368 19 14.2043 18.8478C14.6944 18.6448 15.0837 18.2554 15.2867 17.7654C15.439 17.3978 15.439 16.9319 15.439 16V15.3264Z" stroke="#6C7E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</mask>
+<g mask="url(#mask0_5432_1749)">
+<rect width="24" height="24" fill="currentColor" fill-opacity="0.8"/>
+</g>
+</svg>
+
+      </span>
+      <span class="admonition-title">
+        Tip
+      </span>
+    </div>
+    <div class="admonition-content">
+      <p>为防止冲突，在修改 <code>.env</code> 文件之前，请确保删除任何名为 <code>API_ENDPOINT_BASE</code> 或 <code>ACCUWEATHER_API_KEY</code> 的现有环境变量。</p>
+    </div>
+  </blockquote>
+
+<p>在终端上运行以下命令：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'dW5zZXQgQVBJX0VORFBPSU5UX0JBU0UKdW5zZXQgQUNDVVdFQVRIRVJfQVBJX0tFWQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">unset API_ENDPOINT_BASE
+</span></span></span><span class="line"><span class="cl"><span class="go">unset ACCUWEATHER_API_KEY
+</span></span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>是时候在 <code>.env</code> 文件中设置环境变量了：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'QUNDVVdFQVRIRVJfQVBJX0tFWT1YWFhYWFgKQVBJX0VORFBPSU5UX0JBU0U9aHR0cDovL2RhdGFzZXJ2aWNlLmFjY3V3ZWF0aGVyLmNvbQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">ACCUWEATHER_API_KEY=XXXXXX
+</span></span><span class="line"><span class="cl">API_ENDPOINT_BASE=http://dataservice.accuweather.com</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>确保用正确的值填充 <code>ACCUWEATHER_API_KEY</code>。</p>
+</li>
+<li>
+<p>安装依赖项</p>
+<p>运行以下命令以安装所需的包：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBucG0gaW5zdGFsbA==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> npm install
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>这将安装 <code>package.json</code> 文件中列出的所有包。这些包对项目正常运行至关重要。</p>
+<p>如果你遇到与已弃用的包相关的警告，可以暂时忽略它们，仅用于此演示。</p>
+</li>
+<li>
+<p>假设你的系统上没有正在运行的 Node 服务器，请运行以下命令启动 Node 服务器：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBucG0gcnVuIHN0YXJ0', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> npm run start
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>你应该看到以下输出：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'PiBleHByZXNzLWFwaS1zdGFydGVyQDEuMi4wIHN0YXJ0Cj4gbm9kZSBzcmMvaW5kZXguanMKCkFQSV9FTkRQT0lOVF9CQVNFOiBodHRwOi8vZGF0YXNlcnZpY2UuYWNjdXdlYXRoZXIuY29tCkFDQ1VXRUFUSEVSX0FQSV9LRVkgaXMgc2V0OiB0cnVlIApMaXN0ZW5pbmc6IGh0dHA6Ly9sb2NhbGhvc3Q6NTAwMQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">&gt; express-api-starter@1.2.0 start
+</span></span><span class="line"><span class="cl">&gt; node src/index.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">API_ENDPOINT_BASE: http://dataservice.accuweather.com
+</span></span><span class="line"><span class="cl">ACCUWEATHER_API_KEY is set: true 
+</span></span><span class="line"><span class="cl">Listening: http://localhost:5001</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>保持此终端窗口打开。</p>
+</li>
+<li>
+<p>运行 curl 命令向服务器 URL 发送 GET 请求。</p>
+<p>在新的终端窗口中，输入以下命令：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjdXJsICJodHRwOi8vbG9jYWxob3N0OjUwMDAvYXBpL3YxL2dldFdlYXRoZXI/Y2l0eT1CZW5nYWx1cnUi', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl <span class="s2">&#34;http://localhost:5000/api/v1/getWeather?city=Bengaluru&#34;</span>
+</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>运行此命令时，你实际上是在告诉本地服务器为你提供名为 <code>Bengaluru</code> 的城市的天气数据。请求特别针对 <code>/api/v1/getWeather</code> 端点，并且你提供了查询参数 <code>city=Bengaluru</code>。执行命令后，服务器处理此请求，获取数据并作为响应返回，<code>curl</code> 将在你的终端中显示。</p>
+<p>从外部 AccuWeather API 获取数据时，你正在与反映最新天气状况的实时数据进行交互。</p>
+</li>
+</ol>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="总结">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%80%bb%e7%bb%93">
+    总结
+  </a>
+</h2>
+
+<p>本指南引导你使用 Docker 设置 WireMock。你学习了如何创建存根来模拟 API 端点，从而在不依赖外部服务的情况下开发和测试你的应用程序。通过使用 WireMock，你可以创建可靠且一致的测试环境，重现边缘情况，并加快开发工作流程。</p>
+
+  </article>
+  <div class="-mt-8 hidden min-w-48 flex-1 lg:block">
+    <aside
+  class="sticky top-16 h-[calc(100vh-64px)] min-w-52 space-y-4 overflow-y-auto py-4 w-full"
+>
+  
+  
+  
+<p class="flex items-center gap-1">
+  <span class="icon-svg-stroke icon-sm">
+    
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_5432_2123" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22">
+<path d="M18 10.0001L14 6.00006M2.5 21.5001L5.88437 21.124C6.29786 21.0781 6.5046 21.0551 6.69785 20.9925C6.86929 20.937 7.03245 20.8586 7.18289 20.7594C7.35245 20.6476 7.49955 20.5005 7.79373 20.2063L21 7.00006C22.1046 5.89549 22.1046 4.10463 21 3.00006C19.8955 1.89549 18.1046 1.89549 17 3.00006L3.79373 16.2063C3.49955 16.5005 3.35246 16.6476 3.24064 16.8172C3.14143 16.9676 3.06301 17.1308 3.00751 17.3022C2.94496 17.4955 2.92198 17.7022 2.87604 18.1157L2.5 21.5001Z" stroke="#6C7E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</mask>
+<g mask="url(#mask0_5432_2123)">
+<rect width="24" height="24" fill="currentColor" fill-opacity="0.9"/>
+</g>
+</svg>
+
+
+  </span>
+  <a class="link" rel="noopener"
+    href="https://github.com/docker/docs/edit/main/content/guides/wiremock.md">Edit this page</a>
+</p>
+  
+  
+<p class="flex items-center gap-1">
+  <span class="icon-svg-stroke icon-sm">
+    
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_5432_1323" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="2" width="21" height="21">
+<path d="M12 10.5V7M12 14H12.01M7 18V20.3355C7 20.8684 7 21.1348 7.10923 21.2716C7.20422 21.3906 7.34827 21.4599 7.50054 21.4597C7.67563 21.4595 7.88367 21.2931 8.29976 20.9602L10.6852 19.0518C11.1725 18.662 11.4162 18.4671 11.6875 18.3285C11.9282 18.2055 12.1844 18.1156 12.4492 18.0613C12.7477 18 13.0597 18 13.6837 18H16.2C17.8802 18 18.7202 18 19.362 17.673C19.9265 17.3854 20.3854 16.9265 20.673 16.362C21 15.7202 21 14.8802 21 13.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V14C3 14.93 3 15.395 3.10222 15.7765C3.37962 16.8117 4.18827 17.6204 5.22354 17.8978C5.60504 18 6.07003 18 7 18Z" stroke="#6C7E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</mask>
+<g mask="url(#mask0_5432_1323)">
+<rect width="24" height="24" fill="currentColor" fill-opacity="0.9"/>
+</g>
+</svg>
+
+
+  </span>
+  <a class="link" rel="noopener"
+    href="https://github.com/docker/docs/issues/new?template=doc_issue.yml&location=https%3a%2f%2fdocs.docker.com%2fguides%2fwiremock%2f&labels=status%2Ftriage">Request changes</a>
+</p>
+
+
+  <div id="TableOfContents" class="overflow-x-auto">
+    
+  <div data-pagefind-ignore class="not-prose">
+    <div class="pb-0 text-lg lg:pb-2">
+      Table of contents
+    </div>
+    <nav class="toc">
+      
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8-docker-%e8%bf%90%e8%a1%8c-wiremock"
+            >使用 Docker 运行 WireMock</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
+            >先决条件</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%90%af%e5%8a%a8-wiremock"
+            >启动 WireMock</a
+          >
+        </li>
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%9c%a8%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8-wiremock"
+            >在开发中使用 WireMock</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%9c%a8%e6%9c%ac%e5%9c%b0%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%a8%a1%e6%8b%9f%e6%95%b0%e6%8d%ae"
+            >在本地开发中使用模拟数据</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6-1"
+            >先决条件</a
+          >
+        </li>
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%9c%a8%e7%94%9f%e4%ba%a7%e7%8e%af%e5%a2%83%e4%b8%ad%e4%bd%bf%e7%94%a8%e5%ae%9e%e6%97%b6-api-%e4%bb%8e-accuweather-%e8%8e%b7%e5%8f%96%e5%ae%9e%e6%97%b6%e5%a4%a9%e6%b0%94%e6%95%b0%e6%8d%ae"
+            >在生产环境中使用实时 API 从 AccuWeather 获取实时天气数据</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%80%bb%e7%bb%93"
+            >总结</a
+          >
+        </li>
+  </ul>
+    </nav>
+  </div>
+
+  </div>
+</aside>
+  </div>
+</div>
+
+  <div class="prose dark:prose-invert max-w-4xl">
+    
+  </div>
+
+      </div>
+    </main>
+
+    <footer class="relative z-10 w-full">
+      <div class="footer">
+  <div class="social">
+    <a href="https://www.linkedin.com/company/docker">
+      <span class="icon-svg">
+        
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_230_168" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="20">
+<path d="M18 2C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6C2 3.79086 3.79086 2 6 2H18ZM15.0762 8.78418C13.7764 8.78418 12.9253 9.62482 12.6807 10.1172H12.6494V9.00879H10.2266V17.0137H12.7461V12.6738C12.7461 11.5169 13.4782 10.9531 14.2266 10.9531C14.9329 10.9532 15.4823 11.3514 15.4824 12.6406V17.0137H18.001V12.0625C18.001 9.61838 16.4821 8.7842 15.0762 8.78418ZM6.19238 9.00293V17.0068H8.71191V9.00293H6.19238ZM7.45215 5C6.65026 5.00021 6.00023 5.64761 6 6.44629C6 7.24516 6.65011 7.89335 7.45215 7.89355C8.25436 7.89355 8.90527 7.24529 8.90527 6.44629C8.90504 5.64749 8.25422 5 7.45215 5Z" fill="#6C7E9D"/>
+</mask>
+<g mask="url(#mask0_230_168)">
+<rect width="24" height="24" fill="#4B83F1"/>
+</g>
+</svg>
+
+
+      </span>
+    </a>
+    <a href="https://x.com/docker/">
+      <span class="icon-svg">
+        
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_230_151" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="20">
+<path d="M18 2C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6C2 3.79086 3.79086 2 6 2H18ZM10.9209 12.7061L7 17.2637H7.88574L11.3145 13.2783L14.0527 17.2637H17.043L12.9766 11.3457L16.7158 7H15.8301L12.583 10.7734L9.99023 7H7L10.9209 12.7061ZM12.1172 11.3154L12.5146 11.8838L15.8301 16.627H14.4697L11.7637 12.7568L11.3662 12.1885L8.20508 7.66699H9.56641L12.1172 11.3154Z" fill="#6C7E9D"/>
+</mask>
+<g mask="url(#mask0_230_151)">
+<rect width="24" height="24" fill="#4B83F1"/>
+</g>
+</svg>
+
+
+      </span>
+    </a>
+    <a href="https://www.facebook.com/docker.run">
+      <span class="icon-svg">
+        
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_230_146" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="20">
+<path d="M18 2C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6C2 3.79086 3.79086 2 6 2H18ZM13.625 4.85742C11.5908 4.85753 10.2617 6.09028 10.2617 8.32227V10.2842H8V12.8584H10.2617V19.082C10.715 19.1532 11.18 19.1904 11.6533 19.1904C12.1264 19.1904 12.5908 19.1531 13.0439 19.082V12.8584H15.1191L15.5146 10.2842H13.0439V8.61328C13.0441 7.9091 13.39 7.22266 14.4961 7.22266H15.6191V5.03125C15.6191 5.03125 14.5994 4.85742 13.625 4.85742Z" fill="#6C7E9D"/>
+</mask>
+<g mask="url(#mask0_230_146)">
+<rect width="24" height="24" fill="#4B83F1"/>
+</g>
+</svg>
+
+
+      </span>
+    </a>
+    <a href="http://www.youtube.com/user/dockerrun">
+      <span class="icon-svg">
+        
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_230_161" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="20">
+<path d="M18 2C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6C2 3.79086 3.79086 2 6 2H18ZM11.9355 7.72754C11.9019 7.72754 8.13938 7.7287 7.19727 7.98242C6.67567 8.12299 6.26429 8.53652 6.125 9.06152C5.87349 10.0064 5.87111 11.9686 5.87109 12C5.87111 12.0315 5.87342 13.9947 6.125 14.9395C6.26446 15.4641 6.67588 15.878 7.19727 16.0186C8.14047 16.2722 11.9019 16.2734 11.9355 16.2734C11.9792 16.2734 15.7348 16.2721 16.6748 16.0186C17.1961 15.8779 17.6077 15.4641 17.7471 14.9395C17.9986 13.9953 18 12.0314 18 12C18 11.9686 17.9985 10.0065 17.7471 9.06152C17.6079 8.5367 17.1961 8.12318 16.6748 7.98242C15.7348 7.72891 11.9792 7.72755 11.9355 7.72754ZM13.8652 12L10.6953 13.8037V10.1973L13.8652 12Z" fill="#6C7E9D"/>
+</mask>
+<g mask="url(#mask0_230_161)">
+<rect width="24" height="24" fill="#4B83F1"/>
+</g>
+</svg>
+
+
+      </span>
+    </a>
+    <a href="https://www.instagram.com/dockerinc/">
+      <span class="icon-svg">
+        
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_230_156" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="20">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 2C3.79086 2 2 3.79086 2 6V18C2 20.2091 3.79086 22 6 22H18C20.2091 22 22 20.2091 22 18V6C22 3.79086 20.2091 2 18 2H6ZM7.82824 6.03828C8.21814 5.8855 8.66433 5.78086 9.31759 5.75002C9.97247 5.7186 10.1815 5.71145 11.8485 5.70826C13.5159 5.70508 13.725 5.71144 14.3798 5.7405C15.0333 5.76874 15.4797 5.87179 15.8704 6.02297C16.2746 6.17873 16.6175 6.3884 16.9593 6.72877C17.3011 7.06953 17.5115 7.41129 17.6693 7.81491C17.8218 8.20521 17.9265 8.65101 17.9575 9.30467C17.9885 9.95935 17.9961 10.1682 17.9993 11.8354C18.0025 13.5024 17.9957 13.7117 17.9671 14.367C17.9386 15.0201 17.8358 15.4666 17.6846 15.8572C17.5284 16.2614 17.3192 16.6043 16.9788 16.9461C16.6384 17.288 16.2963 17.4983 15.8927 17.6563C15.5024 17.8086 15.0566 17.9133 14.4033 17.9445C13.7485 17.9755 13.5394 17.9829 11.8718 17.9861C10.205 17.9893 9.99592 17.9829 9.34107 17.954C8.6876 17.9254 8.241 17.8226 7.85052 17.6716C7.4463 17.5152 7.10336 17.3061 6.76161 16.9656C6.41965 16.625 6.209 16.283 6.05146 15.8794C5.89868 15.4893 5.79443 15.0433 5.7632 14.3903C5.73198 13.7352 5.72462 13.5259 5.72144 11.8589C5.71825 10.1917 5.72482 9.98282 5.75345 9.32794C5.78231 8.67426 5.88475 8.22786 6.03594 7.83697C6.19209 7.43295 6.40137 7.0902 6.74212 6.74824C7.08248 6.40649 7.42461 6.19563 7.82824 6.03828ZM8.24897 16.6401C8.4656 16.7235 8.79065 16.8229 9.38922 16.849C10.0369 16.877 10.2309 16.8832 11.8698 16.88C13.5093 16.877 13.7033 16.8701 14.3508 16.8396C14.9488 16.8112 15.2738 16.7105 15.4898 16.6262C15.7765 16.5142 15.9806 16.3803 16.195 16.1657C16.4095 15.9502 16.5422 15.7455 16.6532 15.4589C16.7367 15.2421 16.836 14.9168 16.862 14.3182C16.8905 13.6709 16.8964 13.4768 16.8932 11.8374C16.8903 10.1985 16.8833 10.0043 16.8525 9.35679C16.8242 8.75862 16.7238 8.43356 16.6392 8.21773C16.5272 7.93069 16.3938 7.72698 16.1785 7.51233C15.9633 7.29769 15.7586 7.16541 15.4715 7.0544C15.2553 6.97066 14.9299 6.87159 14.3317 6.84553C13.684 6.81708 13.4898 6.81131 11.8505 6.8145C10.2116 6.81768 10.0176 6.82425 9.37011 6.85489C8.77175 6.88333 8.4471 6.98379 8.23068 7.06834C7.94421 7.18033 7.74012 7.31341 7.52548 7.52885C7.31123 7.74429 7.17856 7.94858 7.06756 8.23584C6.98441 8.45228 6.88435 8.77772 6.85869 9.37589C6.83043 10.0236 6.82448 10.2178 6.82764 11.8567C6.83064 13.4961 6.83759 13.6902 6.86804 14.3373C6.89609 14.9359 6.99733 15.2606 7.08148 15.4772C7.19348 15.7634 7.32696 15.9676 7.54199 16.1822C7.75743 16.396 7.96213 16.5291 8.24897 16.6401ZM15.1324 9.30031C14.7258 9.3011 14.3952 8.97188 14.3944 8.56527C14.3936 8.15867 14.7228 7.82804 15.1296 7.82725C15.5364 7.82645 15.867 8.15587 15.8678 8.56247C15.8684 8.96909 15.5392 9.29951 15.1324 9.30031ZM11.8662 14.9994C10.1254 15.0027 8.71128 13.5943 8.7079 11.8531C8.70451 10.1123 10.1133 8.69794 11.8541 8.69455C13.5953 8.69117 15.0096 10.1004 15.013 11.841C15.0164 13.5822 13.6072 14.996 11.8662 14.9994ZM11.8563 9.80079C10.7264 9.80278 9.81172 10.7208 9.81371 11.8509C9.8159 12.9812 10.7341 13.8957 11.864 13.8935C12.9943 13.8913 13.909 12.9735 13.9068 11.8432C13.9046 10.7129 12.9864 9.7986 11.8563 9.80079Z" fill="#6C7E9D"/>
+</mask>
+<g mask="url(#mask0_230_156)">
+<rect width="24" height="24" fill="#4B83F1"/>
+</g>
+</svg>
+
+
+      </span>
+    </a>
+  </div>
+  <div class="links">
+    <a href="https://www.docker.com/">Product offerings</a>
+    <a href="https://www.docker.com/pricing/">Pricing</a>
+    <a href="https://www.docker.com/company/">About us</a>
+    <a href="https://docs.docker.com/contribute/">贡献指南</a>
+    <a href="/llms.txt">Read llms.txt</a>
+  </div>
+  <div class="secondaryLinks">
+    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+      Cookies Settings
+    </button>
+    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
+    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
+    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+  </div>
+</div>
+<div
+  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
+  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+</div>
+    </footer>
+
+    
+    
+  </body>
+</html>

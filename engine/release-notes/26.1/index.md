@@ -1,0 +1,156 @@
+# Docker Engine 26.1 发布说明
+
+本页面介绍了 Docker Engine 版本 26.1 的最新变更、新增内容、已知问题和修复。
+
+有关更多信息，请参阅：
+
+- 已弃用和已移除功能，请参阅[已弃用的 Engine 功能](../deprecated.md)。
+- Engine API 的变更，请参阅 [Engine API 版本历史](/reference/api/engine/version-history/)。
+
+## 26.1.4
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-06-05</em>
+
+
+有关此版本中 Pull Request 和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.1.4 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.1.4)
+- [moby/moby, 26.1.4 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.1.4)
+- 已弃用和已移除功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.1.4/docs/deprecated.md)。
+- Engine API 的变更，请参阅 [API 版本历史](https://github.com/moby/moby/blob/v26.1.4/docs/api/version-history.md)。
+
+### 安全
+
+此版本将 Go 运行时更新至 1.21.11，其中包含以下方面的安全修复：
+
+- [CVE-2024-24789]
+- [CVE-2024-24790]
+- 由 [Addison Crump](https://github.com/addisoncrump) 报告的，在删除目录期间出现的符号链接 TOCTOU (time-of-check to time-of-use) 竞态条件。
+
+### Bug 修复与增强
+
+- 修复了一个问题，在另一个节点被降级后立即提升某个节点可能导致提升失败。[moby/moby#47870](https://github.com/moby/moby/pull/47870)
+- 防止守护进程日志被 `superfluous response.WriteHeader call ...` 消息刷屏。[moby/moby#47843](https://github.com/moby/moby/pull/47843)
+- 当插件返回空的钩子消息时，不显示空提示。[docker/cli#5083](https://github.com/docker/cli/pull/5083)
+- 修复了与 Visual Studio Container Tools 的兼容性问题。[docker/cli#5095](https://github.com/docker/cli/pull/5095)
+
+### 软件包更新
+
+- 将 containerd（仅静态二进制文件）更新至 [v1.7.17](https://github.com/containerd/containerd/releases/tag/v1.7.17)。[moby/moby#47841](https://github.com/moby/moby/pull/47841)
+- [CVE-2024-24789], [CVE-2024-24790]：将 Go 运行时更新至 1.21.11。[moby/moby#47904](https://github.com/moby/moby/pull/47904)
+- 将 Compose 更新至 [v2.27.1](https://github.com/docker/compose/releases/tag/v2.27.1)。[docker/docker-ce-packages#1022](https://github.com/docker/docker-ce-packaging/pull/1022)
+- 将 Buildx 更新至 [v0.14.1](https://github.com/docker/buildx/releases/tag/v0.14.1)。[docker/docker-ce-packages#1021](https://github.com/docker/docker-ce-packaging/pull/1021)
+
+[CVE-2024-24789]: https://github.com/golang/go/issues/66869
+[CVE-2024-24790]: https://github.com/golang/go/issues/67680
+
+## 26.1.3
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-05-16</em>
+
+
+有关此版本中 Pull Request 和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.1.3 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.1.3)
+- [moby/moby, 26.1.3 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.1.3)
+- 已弃用和已移除功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.1.3/docs/deprecated.md)。
+- Engine API 的变更，请参阅 [API 版本历史](https://github.com/moby/moby/blob/v26.1.3/docs/api/version-history.md)。
+
+### Bug 修复与增强
+
+- 修复了一个回归问题，该问题阻止在 `--internal` 网络内使用 DNS 服务器。[moby/moby#47832](https://github.com/moby/moby/pull/47832)
+- 当内部 DNS 服务器自身的地址被作为外部服务器地址提供时，忽略它以避免无效的递归。[moby/moby#47833](https://github.com/moby/moby/pull/47833)
+
+### 软件包更新
+
+- 允许 runc 在 AppArmor 4.0.0 及更高版本中受限的 runc 配置文件下终止容器。[moby/moby#47829](https://github.com/moby/moby/pull/47829)
+
+## 26.1.2
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-05-08</em>
+
+
+有关此版本中 Pull Request 和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.1.2 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.1.2)
+- [moby/moby, 26.1.2 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.1.2)
+- 已弃用和已移除功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.1.2/docs/deprecated.md)。
+- Engine API 的变更，请参阅 [API 版本历史](https://github.com/moby/moby/blob/v26.1.2/docs/api/version-history.md)。
+
+### Bug 修复与增强
+
+- 修复了一个问题，当容器启动失败时，CLI 进程有时会挂起。[docker/cli#5062](https://github.com/docker/cli/pull/5062)
+
+### 软件包更新
+
+- 将 Go 运行时更新至 1.21.10。[moby/moby#47806](https://github.com/moby/moby/pull/47806)
+
+## 26.1.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-04-30</em>
+
+
+有关此版本中 Pull Request 和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.1.1 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.1.1)
+- [moby/moby, 26.1.1 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.1.1)
+- 已弃用和已移除功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.1.1/docs/deprecated.md)。
+- Engine API 的变更，请参阅 [API 版本历史](https://github.com/moby/moby/blob/v26.1.1/docs/api/version-history.md)。
+
+### Bug 修复与增强
+
+- 修复了在配置 OpenTelemetry 时，`docker run -d` 会打印一个 `context canceled` 虚假错误的问题。[docker/cli#5044](https://github.com/docker/cli/pull/5044)
+- 实验性环境变量 `DOCKER_BRIDGE_PRESERVE_KERNEL_LL=1` 将阻止守护进程移除 Linux 网桥上内核分配的链路本地地址。[moby/moby#47775](https://github.com/moby/moby/pull/47775)
+- 解决了一个阻止在具有只读 `/proc/sys/net` 文件系统的宿主机上创建容器的问题。如果因此无法在接口上禁用 IPv6，请在宿主机上默认禁用 IPv6，或确保 `/proc/sys/net` 可写。要绕过此错误，请在启动 Docker 守护进程前设置环境变量 `DOCKER_ALLOW_IPV6_ON_IPV4_INTERFACE=1`。[moby/moby#47769](https://github.com/moby/moby/pull/47769)
+
+> [!NOTE]
+>
+> `DOCKER_ALLOW_IPV6_ON_IPV4_INTERFACE` 是作为一个临时修复方案添加的，当 IPv6 启用流程得到改进后，它将在未来的主要版本中逐步淘汰。
+
+### 软件包更新
+
+- 将 BuildKit 更新至 [v0.13.2](https://github.com/moby/buildkit/releases/tag/v0.13.2)。[moby/moby#47762](https://github.com/moby/moby/pull/47762)
+- 将 Compose 更新至 [v2.27.0](https://github.com/docker/compose/releases/tag/v2.27.0)。[docker/docker-ce-packages#1017](https://github.com/docker/docker-ce-packaging/pull/1017)
+
+
+## 26.1.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-04-22</em>
+
+
+有关此版本中 Pull Request 和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.1.0 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.1.0)
+- [moby/moby, 26.1.0 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.1.0)
+- 已弃用和已移除功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.1.0/docs/deprecated.md)。
+- Engine API 的变更，请参阅 [API 版本历史](https://github.com/moby/moby/blob/v26.1.0/docs/api/version-history.md)。
+
+### 新增
+
+- 为命令添加了可配置的 OpenTelemetry 工具和基本检测。
+  有关更多信息，请参阅 [适用于 Docker CLI 的 OpenTelemetry](https://docs.docker.com/config/otel)。[docker/cli#4889](https://github.com/docker/cli/pull/4889)
+
+### Bug 修复与增强
+
+- 原生 Windows 容器配置了内部 DNS 服务器用于容器名称解析，以及外部 DNS 服务器用于其他查找。
+  并非所有解析器（包括 `nslookup`）在从内部服务器收到 `SERVFAIL` 答复后都会回退到外部解析器。
+  因此，现在可以通过在 `daemon.json` 文件中设置 `feature` 选项来配置内部 DNS 服务器，使其将请求转发到外部解析器：
+
+  ```json
+  {
+    "features": {
+      "windows-dns-proxy": true
+    }
+  }
+  ```
+
+  [moby/moby#47584](https://github.com/moby/moby/pull/47584)
+
+  > [!NOTE]
+  >
+  > - 这将是 Docker Engine 27.0 中的新默认行为。
+  > - `windows-dns-proxy` 功能标志将在未来的版本中移除。
+
+- Swarm：修复了 `Subpath` 未传递到容器配置的问题。[moby/moby#47711](https://github.com/moby/moby/pull/47711)
+- 经典构建器：修复了 `WORKDIR <directory>/` 构建步骤（末尾带斜杠的目录）的缓存未命中问题。[moby/moby#47723](https://github.com/moby/moby/pull/47723)
+- containerd 镜像存储：修复了当存储中任何镜像具有意外目标时 `docker images` 失败的问题。[moby/moby#47738](https://github.com/moby/moby/pull/47738)

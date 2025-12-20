@@ -1,0 +1,156 @@
+# Docker Engine 26.0 发行说明
+
+本页面描述了 Docker Engine 26.0 版本的最新变更、新增功能、已知问题和修复。
+
+有关以下内容的更多信息：
+
+- 已弃用和已移除的功能，请参阅[已弃用的 Engine 功能](../deprecated.md)。
+- Engine API 的变更，请参阅[Engine API 版本历史](/reference/api/engine/version-history/)。
+
+## 26.0.2
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-04-18</em>
+
+
+有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.0.2 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.0.2)
+- [moby/moby, 26.0.2 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.0.2)
+- 已弃用和已移除的功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.0.2/docs/deprecated.md)。
+- Engine API 的变更，请参阅[API 版本历史](https://github.com/moby/moby/blob/v26.0.2/docs/api/version-history.md)。
+
+### 安全性
+
+此版本包含针对 [CVE-2024-32473] 的安全修复，该问题涉及在仅支持 IPv4 的接口上意外配置了 IPv6。
+
+### 错误修复和增强功能
+
+- [CVE-2024-32473]：确保在仅由引擎分配了 IPv4 地址的接口上禁用 IPv6。[moby#GHSA-x84c-p2g9-rqv9](https://github.com/moby/moby/security/advisories/GHSA-x84c-p2g9-rqv9)
+
+  [CVE-2024-32473]: https://github.com/moby/moby/security/advisories/GHSA-x84c-p2g9-rqv9
+
+## 26.0.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-04-11</em>
+
+
+有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.0.1 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.0.1)
+- [moby/moby, 26.0.1 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.0.1)
+- 已弃用和已移除的功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.0.1/docs/deprecated.md)。
+- Engine API 的变更，请参阅[API 版本历史](https://github.com/moby/moby/blob/v26.0.1/docs/api/version-history.md)。
+
+### 错误修复和增强功能
+
+- 修复了一个回归问题，该问题导致特定于网络接口的 `--sysctl` 选项阻止容器启动。[moby/moby#47646](https://github.com/moby/moby/pull/47646)
+- 从 `docker save` 输出的镜像 `config` OCI 描述符中移除错误的 `platform`。[moby/moby#47694](https://github.com/moby/moby/pull/47694)
+- containerd 镜像存储：`docker save` 生成的 OCI 存档现在在 `index.json` 中具有非空的 `mediaType` 字段。[moby/moby#47701](https://github.com/moby/moby/pull/47701)
+- 修复了一个回归问题，该问题阻止内部解析器将来自 IPvlan L3 网络的请求转发到外部解析器。[moby/moby#47705](https://github.com/moby/moby/pull/47705)
+- 防止在未指定父接口创建的 IPvlan 和 Macvlan 网络中使用外部解析器。[moby/moby#47705](https://github.com/moby/moby/pull/47705)
+
+### 软件包更新
+
+- 将 Go 运行时更新至 1.21.9 [moby/moby#47671](https://github.com/moby/moby/pull/47671), [docker/cli#4987](https://github.com/docker/cli/pull/4987)
+- 将 Compose 更新至 [v1.26.1 ](https://github.com/docker/compose/releases/tag/v2.26.1), [docker/docker-ce-packaging#1009](https://github.com/docker/docker-ce-packaging/pull/1009)
+- 将 containerd 更新至 [v1.7.15](https://github.com/containerd/containerd/releases/tag/v1.7.15)（仅限静态二进制文件）[moby/moby#47692](https://github.com/moby/moby/pull/47692)
+
+## 26.0.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-03-20</em>
+
+
+有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 26.0.0 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A26.0.0)
+- [moby/moby, 26.0.0 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A26.0.0)
+- 已弃用和已移除的功能，请参阅[已弃用功能](https://github.com/docker/cli/blob/v26.0.0/docs/deprecated.md)。
+- Engine API 的变更，请参阅[API 版本历史](https://github.com/moby/moby/blob/v26.0.0/docs/api/version-history.md)。
+
+### 安全性
+
+此版本包含针对 [CVE-2024-29018] 的安全修复，该问题涉及通过权威 DNS 服务器从 'internal' 网络进行潜在的数据泄露。
+
+### 新增功能
+
+- 向 `VolumeOptions` 添加 `Subpath` 字段，使得可以挂载卷的子路径。[moby/moby#45687](https://github.com/moby/moby/pull/45687)
+- 向挂载标志添加 `volume-subpath` 支持 (`--mount type=volume,...,volume-subpath=<subpath>`)。[docker/cli#4331](https://github.com/docker/cli/pull/4331)
+- 在 compose 文件中为 `docker stack deploy` 接受 `=` 分隔符和 `[ipv6]`。[docker/cli#4860](https://github.com/docker/cli/pull/4860)
+- rootless：通过将 `DOCKERD_ROOTLESS_ROOTLESSKIT_DISABLE_HOST_LOOPBACK` 环境变量设置为 `false`（默认为 `true`）来支持启用主机环回。这允许容器使用 IP 地址 `10.0.2.2` 连接到主机。[moby/moby#47352](https://github.com/moby/moby/pull/47352)
+- containerd 镜像存储：`docker image ls` 不再为多平台镜像创建重复条目。[moby/moby#45967](https://github.com/moby/moby/pull/45967)
+- containerd 镜像存储：发送 Prometheus 指标。[moby/moby#47555](https://github.com/moby/moby/pull/47555)
+
+### 错误修复和增强功能
+
+- [CVE-2024-29018]：不要将仅连接到 'internal' 网络的容器的请求转发到外部 DNS 服务器。以前，如果主机的 DNS 服务器在环回地址（如 systemd 的 127.0.0.53）上运行，则会转发请求。[moby/moby#47589](https://github.com/moby/moby/pull/47589)
+- 确保在容器重启时不恢复生成的 MAC 地址，但保留配置的 MAC 地址。[moby/moby#47233](https://github.com/moby/moby/pull/47233)
+
+  > [!WARNING]
+  >
+  > 使用 Docker Engine 25.0.0 创建的容器可能具有重复的 MAC 地址，必须重新创建这些容器。
+  > 使用 25.0.0 或 25.0.1 版本创建并指定了用户定义 MAC 地址的容器，在使用 25.0.2 启动时将获得生成的 MAC 地址。这些容器也必须重新创建。
+
+- 始终尝试在容器的环回接口上启用 IPv6，并且仅在成功时才在 `/etc/hosts` 中包含 IPv6。[moby/moby#47062](https://github.com/moby/moby/pull/47062)
+
+  > [!NOTE]
+  >
+  > 默认情况下，当容器未连接到启用 IPv6 的网络时，IPv6 将保持在容器的环回接口上启用。
+  > 例如，仅连接到纯 IPv4 网络的容器现在在其环回接口上具有 `::1` 地址。
+  >
+  > 要在容器中禁用 IPv6，
+  > 请在 `create` 或 `run` 命令中使用选项 `--sysctl net.ipv6.conf.all.disable_ipv6=1`，
+  > 或在 Compose 文件的服务配置部分使用等效的 `sysctls` 选项。
+  >
+  > 如果容器中 IPv6 不可用，因为它已被显式禁用，
+  > 或主机的网络堆栈未启用 IPv6（或任何其他原因），
+  > 则容器的 `/etc/hosts` 文件将不包含 IPv6 条目。
+
+- 修复 `ADD` Dockerfile 指令在将具有 xattr 的存档解压到不支持它们的文件系统上时，因 `lsetxattr <file>: operation not supported` 而失败的问题。[moby/moby#47175](https://github.com/moby/moby/pull/47175)
+- 修复 `docker container start` 与 `--checkpoint` 一起使用时失败的问题。[moby/moby#47456](https://github.com/moby/moby/pull/47456)
+- 恢复主机与内部桥接网络上容器之间的 IP 连接。[moby/moby#47356](https://github.com/moby/moby/pull/47356)
+- 不对现有的 swarm 网络强制执行新的验证规则。[moby/moby#47361](https://github.com/moby/moby/pull/47361)
+- 恢复 Windows 上默认 "nat" 网络中容器的 DNS 名称。[moby/moby#47375](https://github.com/moby/moby/pull/47375)
+- 在使用模糊参数调用 `docker image ls` 时打印提示。[docker/cli#4849](https://github.com/docker/cli/pull/4849)
+- 在 OpenBSD 上清理 `@docker_cli_[UUID]` 文件。[docker/cli#4862](https://github.com/docker/cli/pull/4862)
+- 在使用没有 TLS 的远程 TCP 连接时，添加明确的[弃用通知](https://github.com/docker/cli/blob/v26.0.0/docs/deprecated.md#unauthenticated-tcp-connections)消息。[docker/cli#4928](https://github.com/docker/cli/pull/4928), [moby/moby#47556](https://github.com/moby/moby/pull/47556)
+- 使用来自主机 `resolv.conf` 的 IPv6 名称服务器作为 Docker Engine 内部 DNS 的上游解析器，而不是将它们列在容器的 `resolv.conf` 中。[moby/moby#47512](https://github.com/moby/moby/pull/47512)
+- containerd 镜像存储：当使用 `--userns-remap` 选项时，隔离具有不同 containerd 命名空间的镜像。[moby/moby#46786](https://github.com/moby/moby/pull/46786)
+- containerd 镜像存储：修复镜像拉取不发出 `Pulling fs layer` 状态的问题。[moby/moby#47432](https://github.com/moby/moby/pull/47432)
+
+### API
+
+- 为了保持向后兼容性，当使用较旧的客户端（API 版本 < v1.44）时，只读挂载默认不是递归的。[moby/moby#47391](https://github.com/moby/moby/pull/47391)
+- `GET /images/{id}/json` 如果镜像配置中缺少 `Created` 字段，则省略该字段（以前是 `0001-01-01T00:00:00Z`）。[moby/moby#47451](https://github.com/moby/moby/pull/47451)
+- 对于 API 版本 <= 1.43，使用 `0001-01-01T00:00:00Z` 填充 `GET /images/{id}/json` 中缺失的 `Created` 字段。[moby/moby#47387](https://github.com/moby/moby/pull/47387)
+- `POST /images/search` 端点结果中的 `is_automated` 字段现在始终为 `false`。因此，搜索 `is-automated=true` 将不会产生任何结果，而 `is-automated=false` 将不执行任何操作。[moby/moby#47465](https://github.com/moby/moby/pull/47465)
+- 从 `GET /images/{name}/json` 响应中移除 `Container` 和 `ContainerConfig` 字段。[moby/moby#47430](https://github.com/moby/moby/pull/47430)
+
+### 软件包更新
+
+- 将 BuildKit 更新至 [v0.13.1](https://github.com/moby/buildkit/releases/tag/v0.13.1)。[moby/moby#47582](https://github.com/moby/moby/pull/47582)
+- 将 Buildx 更新至 [v0.13.1](https://github.com/docker/buildx/releases/tag/v0.13.1)。[docker/docker-ce-packaging#1000](https://github.com/docker/docker-ce-packaging/pull/1000)
+- 将 Compose 更新至 [v2.25.0](https://github.com/docker/compose/releases/tag/v2.25.0)。[docker/docker-ce-packaging#1002](https://github.com/docker/docker-ce-packaging/pull/1002)
+- 将 Go 运行时更新至 [1.21.8](https://go.dev/doc/devel/release#go1.21.8)。[moby/moby#47502](https://github.com/moby/moby/pull/47502)
+- 将 RootlessKit 更新至 [v2.0.2](https://github.com/rootless-containers/rootlesskit/releases/tag/v2.0.2)。  [moby/moby#47508](https://github.com/moby/moby/pull/47504)
+- 将 containerd 更新至 v1.7.13（仅限静态二进制文件）[moby/moby#47278](https://github.com/moby/moby/pull/47278)
+- 将 runc 二进制文件更新至 v1.1.12 [moby/moby#47268](https://github.com/moby/moby/pull/47268)
+- 将 OTel 更新至 v0.46.1 / v1.21.0 [moby/moby#47245](https://github.com/moby/moby/pull/47245)
+
+### 已移除
+
+- 从 `GET /images/{name}/json` 响应中移除 `Container` 和 `ContainerConfig` 字段。[moby/moby#47430](https://github.com/moby/moby/pull/47430)
+- 弃用接受没有 TLS 的远程 TCP 连接的能力。[弃用通知](https://github.com/docker/cli/tree/v26.0.0/deprecation.md#unauthenticated-tcp-connections) [docker/cli#4928](https://github.com/docker/cli/pull/4928) [moby/moby#47556](https://github.com/moby/moby/pull/47556).
+- 移除已弃用的 API 版本（API < v1.24）[moby/moby#47155](https://github.com/moby/moby/pull/47155)
+- 默认禁用已弃用镜像格式的拉取。这些镜像格式已被弃用，支持将在未来的版本中移除。[moby/moby#47459](https://github.com/moby/moby/pull/47459)
+- image：移除已弃用的 IDFromDigest [moby/moby#47198](https://github.com/moby/moby/pull/47198)
+- 移除已弃用的 `github.com/docker/docker/pkg/loopback` 包。[moby/moby#47128](https://github.com/moby/moby/pull/47128)
+- pkg/system：移除已弃用的 `ErrNotSupportedOperatingSystem`, `IsOSSupported` [moby/moby#47129](https://github.com/moby/moby/pull/47129)
+- pkg/homedir：移除已弃用的 Key() 和 GetShortcutString() [moby/moby#47130](https://github.com/moby/moby/pull/47130)
+- pkg/containerfs：移除已弃用的 ResolveScopedPath [moby/moby#47131](https://github.com/moby/moby/pull/47131)
+- 守护进程标志 `--oom-score-adjust` 在 v24.0 中已弃用，现在已移除。[moby/moby#46113](https://github.com/moby/moby/pull/46113)
+- 从 api/types 包中移除已弃用的别名。这些类型在 v25.0.0 中已弃用，并提供了临时别名。[moby/moby#47148](https://github.com/moby/moby/pull/47148)
+  这些别名现在已移除：`types.Info`, `types.Commit`, `types.PluginsInfo`, `types.NetworkAddressPool`, `types.Runtime`, `types.SecurityOpt`, `types.KeyValue`, `types.DecodeSecurityOptions`, `types.CheckpointCreateOptions`, `types.CheckpointListOptions`, `types.CheckpointDeleteOptions`, `types.Checkpoint`, `types.ImageDeleteResponseItem`, `types.ImageSummary`, `types.ImageMetadata`, `types.ServiceUpdateResponse`, `types.ServiceCreateResponse`, `types.ResizeOptions`, `types.ContainerAttachOptions`, `types.ContainerCommitOptions`, `types.ContainerRemoveOptions`, `types.ContainerStartOptions`, `types.ContainerListOptions`, `types.ContainerLogsOptions`
+- cli/command/container：移除已弃用的 `NewStartOptions()` [docker/cli#4811](https://github.com/docker/cli/pull/4811)
+- cli/command：移除已弃用的 `DockerCliOption`, `InitializeOpt` [docker/cli#4810](https://github.com/docker/cli/pull/4810)
+
+  [CVE-2024-29018]: https://github.com/moby/moby/security/advisories/GHSA-mq39-4gv4-mvpx

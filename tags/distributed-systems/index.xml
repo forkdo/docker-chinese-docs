@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>分布式系统 on Docker Docs</title>
+    <link>https://docs.docker.com/tags/distributed-systems/</link>
+    <description>Recent content in 分布式系统 on Docker Docs</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://docs.docker.com/tags/distributed-systems/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Dex 在测试中模拟 OAuth 服务</title>
+      <link>https://docs.docker.com/guides/dex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/dex/</guid>
+      <description>使用 Dex 在测试中模拟 OAuth 服务</description>
+    </item>
+    <item>
+      <title>使用 WireMock 在开发和测试中模拟 API 服务</title>
+      <link>https://docs.docker.com/guides/wiremock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/wiremock/</guid>
+      <description>使用 WireMock 在开发和测试中模拟 API 服务</description>
+    </item>
+    <item>
+      <title>使用 Kafka 和 Docker 开发事件驱动型应用程序</title>
+      <link>https://docs.docker.com/guides/kafka/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/kafka/</guid>
+      <description>本指南介绍如何在 Docker 容器中运行 Apache Kafka。</description>
+    </item>
+  </channel>
+</rss>

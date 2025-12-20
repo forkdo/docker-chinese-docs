@@ -1,0 +1,269 @@
+# Docker Engine 25.0 发布说明
+
+本页面描述了 Docker Engine 25.0 版本的最新变更、新增功能、已知问题和修复。
+
+有关以下内容的更多信息：
+
+- 已弃用和已移除的功能，请参阅[已弃用的 Engine 功能](../deprecated.md)。
+- Engine API 的变更，请参阅[Engine API 版本历史](/reference/api/engine/version-history/)。
+
+## 25.0.5
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-03-19</em>
+
+
+有关此版本的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 25.0.5 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A25.0.5)
+- [moby/moby, 25.0.5 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A25.0.5)
+
+### 安全性
+
+此版本包含针对 [CVE-2024-29018] 的安全修复，该漏洞可能导致通过权威 DNS 服务器从“内部”网络泄露数据。
+
+### 错误修复和增强功能
+
+- [CVE-2024-29018]：对于仅连接到“内部”网络的容器，不再将请求转发到外部 DNS 服务器。如果主机的 DNS 服务器运行在环回地址（如 systemd 的 127.0.0.53）上，此前请求会被转发。[moby/moby#47589](https://github.com/moby/moby/pull/47589)
+- 插件：修复在 UserNS 中运行时挂载 `/etc/hosts` 的问题。[moby/moby#47588](https://github.com/moby/moby/pull/47588)
+- 无根模式：修复 `open /etc/docker/plugins: permission denied` 错误。[moby/moby#47587](https://github.com/moby/moby/pull/47587)
+- 修复多个并行 `docker build` 运行导致磁盘空间泄漏的问题。[moby/moby#47527](https://github.com/moby/moby/pull/47527)
+
+  [CVE-2024-29018]: https://github.com/moby/moby/security/advisories/GHSA-mq39-4gv4-mvpx
+
+## 25.0.4
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-03-07</em>
+
+
+有关此版本的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 25.0.4 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A25.0.4)
+- [moby/moby, 25.0.4 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A25.0.4)
+
+### 错误修复和增强功能
+
+- 恢复 Windows 上默认 "nat" 网络中容器的 DNS 名称。[moby/moby#47490](https://github.com/moby/moby/pull/47490)
+- 修复 `docker start` 与 `--checkpoint` 一起使用时失败的问题。[moby/moby#47466](https://github.com/moby/moby/pull/47466)
+- 不对现有的 swarm 网络强制执行新的验证规则。[moby/moby#47482](https://github.com/moby/moby/pull/47482)
+- 恢复主机与内部桥接网络上容器之间的 IP 连接。[moby/moby#47481](https://github.com/moby/moby/pull/47481)
+- 修复 v25.0 中引入的一个回归问题，该问题导致经典构建器无法添加在非 Linux 操作系统上创建的带有 `xattrs` 的 tar 存档。[moby/moby#47483](https://github.com/moby/moby/pull/47483)
+- containerd 镜像存储：修复镜像拉取时未发出 `Pulling fs layer status` 的问题。[moby/moby#47484](https://github.com/moby/moby/pull/47484)
+- API：为保持向后兼容性，当使用较旧的客户端（API 版本 < v1.44）时，默认将只读挂载设为非递归。[moby/moby#47393](https://github.com/moby/moby/pull/47393)
+- API：`GET /images/{id}/json` 在镜像配置中缺少 `Created` 字段时，省略该字段（此前为 `0001-01-01T00:00:00Z`）。[moby/moby#47451](https://github.com/moby/moby/pull/47451)
+- API：对于 API 版本 <= 1.43，在 `GET /images/{id}/json` 中用 `0001-01-01T00:00:00Z` 填充缺失的 `Created` 字段。[moby/moby#47387](https://github.com/moby/moby/pull/47387)
+- API：修复一个回归问题，该问题导致 API 套接字连接失败时报告为 API 版本协商失败。[moby/moby#47470](https://github.com/moby/moby/pull/47470)
+- API：在容器创建 API 请求中，当指定了容器范围的 MAC 地址，但 `NetworkMode` 的名称或 ID 与 `NetworkSettings.Networks` 中使用的名称或 ID 不同时，保留提供的端点配置。[moby/moby#47510](https://github.com/moby/moby/pull/47510)
+
+### 打包更新
+
+- 将 Go 运行时升级到 1.21.8。[moby/moby#47503](https://github.com/moby/moby/pull/47503)
+- 将 RootlessKit 升级到 v2.0.2。[moby/moby#47508](https://github.com/moby/moby/pull/47508)
+- 将 Compose 升级到 v2.24.7。[docker/docker-ce-packaging#998](https://github.com/moby/moby/pull/998)
+- 将 Buildx 升级到 v0.13.0。[docker/docker-ce-packaging#997](https://github.com/moby/moby/pull/997)
+
+## 25.0.3
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-02-06</em>
+
+
+有关此版本的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 25.0.3 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A25.0.3)
+- [moby/moby, 25.0.3 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A25.0.3)
+
+### 错误修复和增强功能
+
+- containerd 镜像存储：修复了当内容存储中找不到清单时，`docker image history` 会失败的错误。[moby/moby#47348](https://github.com/moby/moby/pull/47348)
+- 确保容器重启时不会恢复生成的 MAC 地址，但会保留配置的 MAC 地址。[moby/moby#47304](https://github.com/moby/moby/pull/47304)
+
+  > [!NOTE]
+  >
+  > - 使用 Docker Engine 25.0.0 创建的容器可能具有重复的 MAC 地址。必须重新创建这些容器。
+  > - 使用 Docker Engine 25.0.0 或 25.0.1 创建的、具有用户定义 MAC 地址的容器，在使用 Docker Engine 25.0.2 启动时会收到新的 MAC 地址。也必须重新创建这些容器。
+
+- 修复 `docker save <image>@<digest>` 生成不包含清单的 OCI 存档索引的问题。[moby/moby#47294](https://github.com/moby/moby/pull/47294)
+- 修复在 RHEL 和 CentOS 7 上无法创建 MTU 高于 1500 的桥接网络的错误。[moby/moby#47308](https://github.com/moby/moby/issues/47308), [moby/moby#47311](https://github.com/moby/moby/pull/47311)
+- 修复容器无法通过 `internal` 网络通信的错误。[moby/moby#47303](https://github.com/moby/moby/pull/47303)
+- 修复 `ipv6` 守护进程选项值被忽略的错误。[moby/moby#47310](https://github.com/moby/moby/pull/47310)
+- 修复尝试使用摘要修订版安装拉取时会导致 panic 的错误。[moby/moby#47323](https://github.com/moby/moby/pull/47323)
+- 修复托管 containerd 管理器中的潜在竞争条件。[moby/moby#47313](https://github.com/moby/moby/pull/47313)
+- 修复 `journald` 日志驱动的问题，该问题在 systemd 255 版本中阻止正确跟踪容器日志。[moby/moby#47243](https://github.com/moby/moby/pull/47243)
+- seccomp：更新内置 seccomp 配置文件，以包含内核 v5.17 到 v6.7 中添加的系统调用，使配置文件与 containerd 使用的配置文件保持一致。[moby/moby#47341](https://github.com/moby/moby/pull/47341)
+- Windows：修复在构建基于比主机版本旧的 Windows 版本的镜像时未使用缓存的问题。[moby/moby#47307](https://github.com/moby/moby/pull/47307), [moby/moby#47337](https://github.com/moby/moby/pull/47337)
+
+### 打包更新
+
+- 移除了对 Ubuntu Lunar (23.04) 的支持。[docker/ce-packaging#986](https://github.com/docker/docker-ce-packaging/pull/986)
+
+## 25.0.2
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-01-31</em>
+
+
+有关此版本的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 25.0.2 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A25.0.2)
+- [moby/moby, 25.0.2 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A25.0.2)
+
+### 安全性
+
+此版本包含针对影响 Docker Engine 及其组件的以下 CVE 的安全修复。
+
+| CVE                                                         | 组件          | 修复版本 | 严重性             |
+| ----------------------------------------------------------- | ------------- | -------- | ------------------ |
+| [CVE-2024-21626](https://scout.docker.com/v/CVE-2024-21626) | runc          | 1.1.12   | 高, CVSS 8.6       |
+| [CVE-2024-23651](https://scout.docker.com/v/CVE-2024-23651) | BuildKit      | 1.12.5   | 高, CVSS 8.7       |
+| [CVE-2024-23652](https://scout.docker.com/v/CVE-2024-23652) | BuildKit      | 1.12.5   | 高, CVSS 8.7       |
+| [CVE-2024-23653](https://scout.docker.com/v/CVE-2024-23653) | BuildKit      | 1.12.5   | 高, CVSS 7.7       |
+| [CVE-2024-23650](https://scout.docker.com/v/CVE-2024-23650) | BuildKit      | 1.12.5   | 中, CVSS 5.5       |
+| [CVE-2024-24557](https://scout.docker.com/v/CVE-2024-24557) | Docker Engine | 25.0.2   | 中, CVSS 6.9       |
+
+上述漏洞的潜在影响包括：
+
+- 未经授权访问主机文件系统
+- 破坏构建缓存的完整性
+- 对于 CVE-2024-21626，可能导致完全容器逃逸的场景
+
+有关此版本中已解决安全问题的更多信息，请参阅[博客文章](https://www.docker.com/blog/docker-security-advisory-multiple-vulnerabilities-in-runc-buildkit-and-moby/)。
+有关每个漏洞的详细信息，请参阅相关的安全公告：
+
+- [CVE-2024-21626](https://github.com/opencontainers/runc/security/advisories/GHSA-xr7r-f8xq-vfvv)
+- [CVE-2024-23651](https://github.com/moby/buildkit/security/advisories/GHSA-m3r6-h7wv-7xxv)
+- [CVE-2024-23652](https://github.com/moby/buildkit/security/advisories/GHSA-4v98-7qmw-rqr8)
+- [CVE-2024-23653](https://github.com/moby/buildkit/security/advisories/GHSA-wr6v-9f75-vh2g)
+- [CVE-2024-23650](https://github.com/moby/buildkit/security/advisories/GHSA-9p26-698r-w4hx)
+- [CVE-2024-24557](https://github.com/moby/moby/security/advisories/GHSA-xw73-rw38-6vjc)
+
+### 打包更新
+
+- 将 containerd 升级到 [v1.6.28](https://github.com/containerd/containerd/releases/tag/v1.6.28)。
+- 将 containerd 升级到 v1.7.13（仅限静态二进制文件）。[moby/moby#47280](https://github.com/moby/moby/pull/47280)
+- 将 runc 升级到 v1.1.12。[moby/moby#47269](https://github.com/moby/moby/pull/47269)
+- 将 Compose 升级到 v2.24.5。[docker/docker-ce-packaging#985](https://github.com/docker/docker-ce-packaging/pull/985)
+- 将 BuildKit 升级到 v0.12.5。[moby/moby#47273](https://github.com/moby/moby/pull/47273)
+
+## 25.0.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-01-23</em>
+
+
+有关此版本的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 25.0.1 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A25.0.1)
+- [moby/moby, 25.0.1 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A25.0.1)
+
+### 错误修复和增强功能
+
+- API：修复在升级到 Docker Engine v25.0 之前创建的具有无效网络配置的容器返回的 HTTP 状态码不正确的问题。[moby/moby#47159](https://github.com/moby/moby/pull/47159)
+- 确保在容器停止并重启时，基于容器 IP 地址的 MAC 地址会重新生成，以防生成的 IP/MAC 地址被重用。[moby/moby#47171](https://github.com/moby/moby/pull/47171)
+- 修复在未通过配置设置时，`host-gateway-ip` 在构建期间不起作用的问题。[moby/moby#47192](https://github.com/moby/moby/pull/47192)
+- 修复阻止容器被重命名两次的错误。[moby/moby#47196](https://github.com/moby/moby/pull/47196)
+- 修复导致在检查容器时将其短 ID 添加到其网络别名的问题。[moby/moby#47182](https://github.com/moby/moby/pull/47182)
+- 修复检测远程构建上下文是否为 Git 存储库时的问题。[moby/moby#47136](https://github.com/moby/moby/pull/47136)
+- 修复 OCI 清单中图层顺序的问题。[moby/moby#47150](https://github.com/moby/moby/issues/47150)
+- 修复在传递 `addr` 或 `ip` 挂载选项时的卷挂载错误。[moby/moby#47185](https://github.com/moby/moby/pull/47185)
+- 改进与扩展属性相关的错误消息，这些属性由于命名空间不正确而无法设置。[moby/moby#47178](https://github.com/moby/moby/pull/47178)
+- Swarm：修复了 `start_interval` 未传递到容器配置的问题。[moby/moby#47163](https://github.com/moby/moby/pull/47163)
+
+### 打包更新
+
+- 将 Compose 升级到 `2.24.2`。[docker/docker-ce-packaging#981](https://github.com/docker/docker-ce-packaging/pull/981)
+
+## 25.0.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2024-01-19</em>
+
+
+有关此版本的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 25.0.0 milestone](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A25.0.0)
+- [moby/moby, 25.0.0 milestone](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A25.0.0)
+
+> [!NOTE]
+>
+> 在 Docker Engine 的早期版本中，递归挂载（子挂载）总是以可写方式挂载，即使指定了只读挂载。此行为在 v25.0.0 中已更改，适用于运行内核版本 5.12 或更高版本的主机。现在，默认情况下，只读绑定挂载是**递归只读**的。
+>
+> 要获得与早期版本相同的行为，可以为 `--mount` 标志指定 `bind-recursive` 选项。
+>
+> ```console
+> $ docker run --mount type=bind,src=SRC,dst=DST,readonly,bind-recursive=writable IMAGE
+> ```
+>
+> 此选项不支持 `-v` 或 `--volume` 标志。
+> 有关更多信息，请参阅[递归挂载](/manuals/engine/storage/bind-mounts.md#recursive-mounts)。
+
+### 新功能
+
+- 守护进程现在使用 systemd 的默认 `LimitNOFILE`。在 Docker Engine 的早期版本中，此限制设置为 `infinity`。这会导致最新版本的 systemd 出现问题，因为硬限制增加了，导致根据 ulimit 调整其行为的程序消耗大量内存。[moby/moby#45534](https://github.com/moby/moby/pull/45534)
+
+  新设置使容器的行为与在主机上运行的程序相同，但可能导致基于软限制做出错误假设的程序行为异常。要获得以前的行为，可以设置 `LimitNOFILE=1048576`。
+
+  此更改目前仅影响使用 `docker` 驱动程序的 BuildKit 通过 `docker build` 创建的构建容器。从 Docker Engine v29.0 (containerd v2.1.5) 开始，此限制将应用于所有容器，而不仅仅是构建容器。
+
+  如果在 systemd v240 或更高版本中遇到较高的 ulimit 问题，请考虑添加系统 `drop-in` 或 `override` 文件来为您的设置配置 ulimit 设置。[Flatcar Container Linux 文档](https://www.flatcar.org/docs/latest/setup/systemd/drop-in-units/) 有一篇很好的文章详细介绍了这个主题。
+
+- 添加 OpenTelemetry 追踪。[moby/moby#45652](https://github.com/moby/moby/pull/45652), [moby/moby#45579](https://github.com/moby/moby/pull/45579)
+- 添加对 Linux 下 CDI 设备的支持。[moby/moby#45134](https://github.com/moby/moby/pull/45134), [docker/cli#4510](https://github.com/docker/cli/pull/4510), [moby/moby#46004](https://github.com/moby/moby/pull/46004)
+- 为健康检查添加一个在容器启动期间使用的附加间隔。[moby/moby#40894](https://github.com/moby/moby/pull/40894), [docker/cli#4405](https://github.com/docker/cli/pull/4405), [moby/moby#45965](https://github.com/moby/moby/pull/45965)
+- 为 `dockerd` 添加 `--log-format` 标志以控制日志格式：text（默认）或 JSON。[moby/moby#45737](https://github.com/moby/moby/pull/45737)
+- 添加对递归只读挂载的支持。[moby/moby#45278](https://github.com/moby/moby/pull/45278), [moby/moby#46037](https://github.com/moby/moby/pull/46037)
+- 添加对基于时间戳过滤镜像的支持，使用 `docker image ls --filter=until=<timestamp>`。[moby/moby#46577](https://github.com/moby/moby/pull/46577)
+
+### 错误修复和增强功能
+
+- API：修复 `ValidateRestartPolicy` 中无效策略的错误消息。[moby/moby#46352](https://github.com/moby/moby/pull/46352)
+- API：更新 `/info` 端点以使用 singleflight。[moby/moby#45847](https://github.com/moby/moby/pull/45847)
+- 添加当使用 `-f` 指定 Dockerfile 文件名同时使用 `stdin` 时的错误消息。[docker/cli#4346](https://github.com/docker/cli/pull/4346)
+- 在 `--network` 长格式中添加对 `mac-address` 和 `link-local-ip` 字段的支持。[docker/cli#4419](https://github.com/docker/cli/pull/4419)
+- 添加对 `docker container create` 和 `docker run` 指定多个 `--network` 标志的支持。[moby/moby#45906](https://github.com/moby/moby/pull/45906)
+- 在指定 IPv6 子网时自动在网络上的启用 IPv6。[moby/moby#46455](https://github.com/moby/moby/pull/46455)
+- 添加对通过 IPv6 传输的覆盖网络的支持。[moby/moby#46790](https://github.com/moby/moby/pull/46790)
+- 配置重载现在更加健壮：如果在配置重载过程中出现错误，则不应用任何配置更改。[moby/moby#43980](https://github.com/moby/moby/pull/43980)
+- 实时恢复：具有自动删除 (`docker run --rm`) 的容器在引擎重启时不再被强制删除。[moby/moby#46857](https://github.com/moby/moby/pull/46857)
+- 实时恢复：实时恢复的容器在守护进程重启时将获得另一个健康检查启动周期。[moby/moby#47051](https://github.com/moby/moby/pull/47051)
+- 容器健康状态刷新到磁盘的频率降低，减少了对闪存存储的磨损。[moby/moby#47044](https://github.com/moby/moby/pull/47044)
+- 确保网络名称唯一。[moby/moby#46251](https://github.com/moby/moby/pull/46251)
+- 确保 overlay2 图层元数据正确。[moby/moby#46471](https://github.com/moby/moby/pull/46471)
+- 修复镜像拉取时的 `Downloading` 进度消息。[moby/moby#46515](https://github.com/moby/moby/pull/46515)
+- 修复 `NetworkConnect` 和 `ContainerCreate`，改进数据验证，并一次性返回所有验证错误。[moby/moby#46183](https://github.com/moby/moby/pull/46183)
+- 修复在启用 IPv6 和 ip6tables 时 `com.docker.network.host_ipv4` 选项的问题。[moby/moby#46446](https://github.com/moby/moby/pull/46446)
+- 修复如果 containerd 停止时守护进程的 `cleanupContainer` 问题。[moby/moby#46213](https://github.com/moby/moby/pull/46213)
+- 修复 libnetwork 错误返回不正确 HTTP 状态码的问题。[moby/moby#46146](https://github.com/moby/moby/pull/46146)
+- 修复 images/json API 过滤器和镜像列表的各种问题。[moby/moby#46034](https://github.com/moby/moby/pull/46034)
+- CIFS 卷现在可以正确解析 FQDN。[moby/moby#46863](https://github.com/moby/moby/pull/46863)
+- 改进 `userland-proxy-path` 守护进程配置选项的验证。验证现在在守护进程启动时进行，而不是在启动具有端口映射的容器时产生错误。[moby/moby#47000](https://github.com/moby/moby/pull/47000)
+- 当网络模式为短网络 ID 时，设置容器接口的 MAC 地址。[moby/moby#46406](https://github.com/moby/moby/pull/46406)
+- 在构建输出中显示之前，对未使用的构建参数进行排序。[moby/moby#45917](https://github.com/moby/moby/pull/45917)
+- `docker image save` tarball 输出现在符合 OCI 标准。[moby/moby#44598](https://github.com/moby/moby/pull/44598)
+- 守护进程不再将 `ACCEPT` 规则附加到加密覆盖网络的 `INPUT` iptables 链的末尾。根据防火墙配置，可能需要一条规则来允许传入的加密覆盖网络流量。[moby/moby#45280](https://github.com/moby/moby/pull/45280)
+- 将具有扩展属性的图层解包到不兼容的文件系统时，现在会失败，而不是静默丢弃扩展属性。[moby/moby#45464](https://github.com/moby/moby/pull/45464)
+- 将守护进程 MTU 选项更新到 BridgeConfig，并在 Windows 上显示警告。[moby/moby#45887](https://github.com/moby/moby/pull/45887)
+- 在创建网络时验证 IPAM 配置。自动修复在此版本之前创建的、`--ip-range` 大于 `--subnet` 的网络。[moby/moby#45759](https://github.com/moby/moby/pull/45759)
+- 仅连接到内部网络的容器现在将没有默认路由设置，从而使 `connect` 系统调用快速失败。[moby/moby#46603](https://github.com/moby/moby/pull/46603)
+- containerd 镜像存储：为 `push`、`pull` 和 `save` 添加镜像事件。[moby/moby#46405](https://github.com/moby/moby/pull/46405)
+- containerd 镜像存储：添加对拉取旧式 schema1 镜像的支持。[moby/moby#46513](https://github.com/moby/moby/pull/46513)
+- containerd 镜像存储：添加对推送所有标签的支持。[moby/moby#46485](https://github.com/moby/moby/pull/46485)
+- containerd 镜像存储：添加对注册表令牌的支持。[moby/moby#46475](https://github.com/moby/moby/pull/46475)
+- containerd 镜像存储：添加对显示使用镜像的容器数量的支持。[moby/moby#46511](https://github.com/moby/moby/pull/46511)
+- containerd 镜像存储：修复与 `ONBUILD`、`MAINTAINER` 和 `HEALTHCHECK` Dockerfile 指令相关的错误。[moby/moby#46313](https://github.com/moby/moby/pull/46313)
+- containerd 镜像存储：修复 `Pulling from` 进度消息。[moby/moby#46494](https://github.com/moby/moby/pull/46494)
+- containerd 镜像存储：添加对通过带有 `sha256:` 前缀的截断 ID 引用镜像的支持。[moby/moby#46435](https://github.com/moby/moby/pull/46435)
+- containerd 镜像存储：修复 `docker images` 默认显示中间层的问题。[moby/moby#46423](https://github.com/moby/moby/pull/46423)
+- containerd 镜像存储：修复在获取镜像时检查指定平台是否存在的问题。[moby/moby#46495](https://github.com/moby/moby/pull/46495)
+- containerd 镜像存储：修复当经典构建器使用多个 `ADD` 或 `COPY` 指令时的错误。[moby/moby#46383](https://github.com/moby/moby/pull/46383)
+- containerd 镜像存储：修复导入镜像时的堆栈溢出错误。[moby/moby#46418](https://github.com/moby/moby/pull/46418)
+- containerd 镜像存储：改进 `docker pull` 进度输出。[moby/moby#46412](https://github.com/moby/moby/pull/46412)
+- containerd 镜像存储：推送镜像后打印标签、摘要和大小。[moby/moby#46384](https://github.com/moby/moby/pull/46384)
+- containerd 镜像存储：从 `UpdateConfig` 中移除 panic。[moby/moby#46433](https://github.com/moby/moby/pull/46433)
+- containerd 镜像存储：当镜像标签类似于摘要时返回错误。[moby/moby#46492](https://github.com/moby/moby/pull/46492)
+- containerd 镜像存储：`docker image ls` 现在显示正确的镜像创建时间和日期。[moby/moby#46719](https://github.com/moby/moby/pull/46719)
+- containerd 镜像存储：修复处理用户命名空间设置时的问题。[moby/moby#46375](https://github.com/moby/moby/pull/46375)
+- containerd 镜像存储：添加对拉取所有标签的支持 (`docker pull -a`)。[moby/moby#46618](https://github.com/moby/moby/pull/46618)
+- containerd 镜像存储：使用镜像引用中的域名作为默认注册表认证域。[moby/moby#46779](https://github.com/moby/moby/pull/46779)
+
+### 打包更新
+
+- 将 API 升级到 v1.44。[moby/moby#45468](https://github.com/moby/moby/pull/45468)
+- 将 Compose 升级到 `2.24.1`。[docker/docker-ce-packaging#980](https://github.com/docker/docker-ce-packaging/pull/980)
+- 将 containerd 升级到 v1.7.12（仅限静态二进制文件）。[moby/moby#47070](https://github.com/moby/moby/pull/47070)
+- 将 Go 运行时升级到 [1.21.6](https://go.dev/doc/devel/release#go1.2

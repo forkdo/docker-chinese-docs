@@ -1,0 +1,77 @@
+# 安装独立的 Docker Compose（旧版）
+
+> [!WARNING]
+>
+> 此安装场景不推荐使用，仅出于向后兼容的目的而受支持。
+
+本页包含如何通过命令行在 Linux 或 Windows Server 上安装 Docker Compose 独立版的说明。
+
+> [!WARNING]
+>
+> Docker Compose 独立版使用 `-compose` 语法，而不是当前的标准语法 `compose`。
+> 例如，使用 Docker Compose 独立版时，您必须键入 `docker-compose up`，而不是 `docker compose up`。
+> 仅将其用于向后兼容。
+
+## 在 Linux 上
+
+1. 要下载并安装 Docker Compose 独立版，请运行：
+
+   ```console
+   $ curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+   ```
+
+2. 为目标安装路径中的独立二进制文件应用可执行权限。
+
+   ```console
+   $ chmod +x /usr/local/bin/docker-compose
+   ```
+
+3. 使用 `docker-compose` 测试并执行 Docker Compose 命令。
+
+> [!TIP]
+>
+> 如果安装后 `docker-compose` 命令失败，请检查您的路径。
+> 您也可以在 `/usr/bin` 或您路径中的任何其他目录创建一个符号链接。
+> 例如：
+> ```console
+> $ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+> ```
+
+## 在 Windows Server 上
+
+如果您[直接在 Microsoft Windows Server 上运行 Docker 守护程序](/manuals/engine/install/binaries.md#install-server-and-client-binaries-on-windows)并想要安装 Docker Compose，请遵循以下说明。
+
+1.  以管理员身份运行 PowerShell。
+    为了继续安装，当询问是否允许此应用对您的设备进行更改时，请选择**是**。
+
+2.  可选。确保 TLS1.2 已启用。
+    GitHub 要求使用 TLS1.2 进行安全连接。如果您使用的是旧版本的 Windows Server（例如 2016），或者怀疑 TLS1.2 未启用，请在 PowerShell 中运行以下命令：
+
+    ```powershell
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    ```
+
+3. 下载最新版本的 Docker Compose (v5.0.1)。运行以下命令：
+
+    ```powershell
+     Start-BitsTransfer -Source "https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-windows-x86_64.exe" -Destination $Env:ProgramFiles\Docker\docker-compose.exe
+    ```
+
+    要安装不同版本的 Docker Compose，请将 `v5.0.1` 替换为您想要使用的 Compose 版本。
+
+    > [!NOTE]
+    >
+    > 在 Windows Server 2019 上，您可以将 Compose 可执行文件添加到 `$Env:ProgramFiles\Docker`。
+     因为此目录已在系统 `PATH` 中注册，您可以在后续步骤中运行 `docker-compose --version` 命令，无需额外配置。
+
+4.  测试安装。
+
+    ```console
+    $ docker-compose.exe version
+    Docker Compose version v5.0.1
+    ```
+
+## 下一步是什么？
+
+- [了解 Compose 的工作原理](/manuals/compose/intro/compose-application-model.md)
+- [尝试快速入门指南](/manuals/compose/gettingstarted.md)

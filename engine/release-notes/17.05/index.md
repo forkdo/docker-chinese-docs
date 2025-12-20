@@ -1,0 +1,85 @@
+# Docker Engine 17.05 发行说明
+
+## 17.05.0-ce
+2017-05-04
+
+### Builder
+
++ 添加多阶段构建支持 [#31257](https://github.com/docker/docker/pull/31257) [#32063](https://github.com/docker/docker/pull/32063)
++ 允许在 `FROM` 中使用构建时参数 (`ARG`) [#31352](https://github.com/docker/docker/pull/31352)
++ 添加用于指定构建目标的选项 [#32496](https://github.com/docker/docker/pull/32496)
+* 接受 `-f -` 以从 `stdin` 读取 Dockerfile，但使用本地上下文进行构建 [#31236](https://github.com/docker/docker/pull/31236)
+* 默认构建时参数（例如 `HTTP_PROXY`）的值不再显示在 docker 镜像历史中，除非在 Dockerfile 中编写了相应的 `ARG` 指令。 [#31584](https://github.com/docker/docker/pull/31584)
+- 修复在父镜像中使用自定义 shell 时设置命令的问题 [#32236](https://github.com/docker/docker/pull/32236)
+- 修复当标签包含单引号和空格时 `docker build --label` 的问题 [#31750](https://github.com/docker/docker/pull/31750)
+
+### Client
+
+* 为 `docker run` 和 `docker create` 添加 `--mount` 标志 [#32251](https://github.com/docker/docker/pull/32251)
+* 为 `docker inspect` 添加 `--type=secret` [#32124](https://github.com/docker/docker/pull/32124)
+* 为 `docker secret ls` 添加 `--format` 选项 [#31552](https://github.com/docker/docker/pull/31552)
+* 为 `docker secret ls` 添加 `--filter` 选项 [#30810](https://github.com/docker/docker/pull/30810)
+* 为 `docker network ls` 添加 `--filter scope=<swarm|local>` [#31529](https://github.com/docker/docker/pull/31529)
+* 为 `docker update` 添加 `--cpus` 支持 [#31148](https://github.com/docker/docker/pull/31148)
+* 为 `docker system prune` 和其他 `prune` 命令添加标签过滤器 [#30740](https://github.com/docker/docker/pull/30740)
+* `docker stack rm` 现在接受多个栈作为输入 [#32110](https://github.com/docker/docker/pull/32110)
+* 改进当客户端降级 API 版本时的 `docker version --format` 选项 [#31022](https://github.com/docker/docker/pull/31022)
+* 使用加密的客户端证书连接到 docker 守护进程时发出提示 [#31364](https://github.com/docker/docker/pull/31364)
+* 在 `docker build` 成功时显示创建的标签 [#32077](https://github.com/docker/docker/pull/32077)
+* 清理 compose 转换错误消息 [#32087](https://github.com/moby/moby/pull/32087)
+
+### Contrib
+
++ 添加对在 amd64 架构上为 Ubuntu 17.04 Zesty 构建 docker deb 包的支持 [#32435](https://github.com/docker/docker/pull/32435)
+
+### Daemon
+
+- 修复如果未设置 `--api-enable-cors`，则 `--api-cors-header` 被忽略的问题 [#32174](https://github.com/docker/docker/pull/32174)
+- 在启动时清理 docker 临时目录 [#31741](https://github.com/docker/docker/pull/31741)
+- 弃用 `--graph` 标志，改用 `--data-root` [#28696](https://github.com/docker/docker/pull/28696)
+
+### Logging
+
++ 添加对日志驱动插件的支持 [#28403](https://github.com/docker/docker/pull/28403)
+* 为 `docker service logs` 添加显示单个任务日志的支持，并添加 `/task/{id}/logs` REST 端点 [#32015](https://github.com/docker/docker/pull/32015)
+* 添加 `--log-opt env-regex` 选项以使用正则表达式匹配环境变量 [#27565](https://github.com/docker/docker/pull/27565)
+
+### Networking
+
++ 允许用户替换和自定义 ingress 网络 [#31714](https://github.com/docker/docker/pull/31714)
+- 修复容器重启后容器中的 UDP 流量无法工作的问题 [#32505](https://github.com/docker/docker/pull/32505)
+- 修复如果设置了不同的数据根目录，文件会被写入 `/var/lib/docker` 的问题 [#32505](https://github.com/docker/docker/pull/32505)
+
+### Runtime
+
+- 确保容器退出时健康检查探针停止运行 [#32274](https://github.com/docker/docker/pull/32274)
+
+### Swarm Mode
+
++ 为服务添加更新/回滚顺序 (`--update-order` / `--rollback-order`) [#30261](https://github.com/docker/docker/pull/30261)
++ 添加对同步 `service create` 和 `service update` 的支持 [#31144](https://github.com/docker/docker/pull/31144)
++ 通过 `HEALTHCHECK --start-period` 和 `--health-start-period` 标志为 `docker service create`、`docker service update`、`docker create` 和 `docker run` 添加对健康检查“宽限期”的支持，以支持具有初始启动时间的容器 [#28938](https://github.com/docker/docker/pull/28938)
+* `docker service create` 现在会尽可能省略用户未指定的字段。这将允许在管理器内部应用默认值 [#32284](https://github.com/docker/docker/pull/32284)
+* `docker service inspect` 现在显示用户未指定字段的默认值 [#32284](https://github.com/docker/docker/pull/32284)
+* 将 `docker service logs` 移出实验阶段 [#32462](https://github.com/docker/docker/pull/32462)
+* 为 API 添加对服务的 Credential Spec 和 SELinux 的支持 [#32339](https://github.com/docker/docker/pull/32339)
+* 为 `docker service create` 和 `docker service update` 添加 `--entrypoint` 标志 [#29228](https://github.com/docker/docker/pull/29228)
+* 为 `docker service update` 添加 `--network-add` 和 `--network-rm` [#32062](https://github.com/docker/docker/pull/32062)
+* 为 `docker service create` 和 `docker service update` 添加 `--credential-spec` 标志 [#32339](https://github.com/docker/docker/pull/32339)
+* 为 `docker service ls` 添加 `--filter mode=<global|replicated>` [#31538](https://github.com/docker/docker/pull/31538)
+* 在客户端解析网络 ID，而不是在创建服务时在守护进程中解析 [#32062](https://github.com/docker/docker/pull/32062)
+* 为 `docker node ls` 添加 `--format` 选项 [#30424](https://github.com/docker/docker/pull/30424)
+* 为 `docker stack deploy` 添加 `--prune` 选项，以删除在 docker-compose 文件中不再定义的服务 [#31302](https://github.com/docker/docker/pull/31302)
+* 当使用 `ingress` 模式时，为 `docker service ls` 添加 `PORTS` 列 [#30813](https://github.com/docker/docker/pull/30813)
+- 修复使用环境变量时不必要地重新部署任务的问题 [#32364](https://github.com/docker/docker/pull/32364)
+- 修复 `docker stack deploy` 在从 docker compose 文件部署时不支持 `endpoint_mode` 的问题 [#32333](https://github.com/docker/docker/pull/32333)
+- 如果无法创建集群组件，则继续启动，以允许从损坏的 swarm 设置中恢复 [#31631](https://github.com/docker/docker/pull/31631)
+
+### Security
+
+* 允许在使用 `--ipc=container:` 或 `--ipc=host` 时设置 SELinux 类型或 MCS 标签 [#30652](https://github.com/docker/docker/pull/30652)
+
+### Deprecation
+
+- 弃用 `--api-enable-cors` 守护进程标志。此标志在 Docker 1.6.0 中已被标记为弃用，但未在弃用功能中列出 [#32352](https://github.com/docker/docker/pull/32352)
+- 移除对 Ubuntu 12.04 (Precise Pangolin) 作为支持平台。Ubuntu 12.04 已终止生命周期 (EOL)，不再接收更新 [#32520](https://github.com/docker/docker/pull/32520)

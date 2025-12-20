@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>应用开发 on Docker Docs</title>
+    <link>https://docs.docker.com/tags/app-dev/</link>
+    <description>Recent content in 应用开发 on Docker Docs</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://docs.docker.com/tags/app-dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Dex 在测试中模拟 OAuth 服务</title>
+      <link>https://docs.docker.com/guides/dex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/dex/</guid>
+      <description>使用 Dex 在测试中模拟 OAuth 服务</description>
+    </item>
+    <item>
+      <title>使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩</title>
+      <link>https://docs.docker.com/guides/opentelemetry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/opentelemetry/</guid>
+      <description>学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。</description>
+    </item>
+    <item>
+      <title>使用 WireMock 在开发和测试中模拟 API 服务</title>
+      <link>https://docs.docker.com/guides/wiremock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/wiremock/</guid>
+      <description>使用 WireMock 在开发和测试中模拟 API 服务</description>
+    </item>
+    <item>
+      <title>借助容器支持的开发实现更快速的开发与测试</title>
+      <link>https://docs.docker.com/guides/container-supported-development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/container-supported-development/</guid>
+      <description>容器并非只能用于你的应用。学习如何运行应用所依赖的服务和其他调试工具，以增强你的开发环境。</description>
+    </item>
+    <item>
+      <title>在开发环境中启动时使用架构和数据预填充数据库</title>
+      <link>https://docs.docker.com/guides/pre-seeding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/pre-seeding/</guid>
+      <description>在开发环境中启动时使用架构和数据预填充数据库</description>
+    </item>
+  </channel>
+</rss>

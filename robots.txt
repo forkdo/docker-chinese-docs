@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /unassociated-machines/
+
+
+Sitemap: https://docs.docker.com/sitemap.xml

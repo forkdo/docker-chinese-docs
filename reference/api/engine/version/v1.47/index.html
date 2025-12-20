@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Docker Engine API v1.47 参考文档</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Docker Engine API 的参考文档和 Swagger (OpenAPI) 规范。" />
+  <meta charset="utf-8" />
+  
+  <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-content>div:first-child {
+      background-color: #086dd7;
+      padding: 16px;
+    }
+
+    .auth-tag,.pat,.oat {
+      border-radius: 4px;
+      color: #fff;
+      padding: 5px;
+    }
+
+    .pat {
+      background-color: rgb(149, 80, 124);
+    }
+
+    .pat::after {
+      content: "personal access token";
+    }
+
+    .oat::after {
+      content: "org access token";
+    }
+
+    .oat {
+      background-color: rgb(24, 111, 175);
+    }
+
+    .auth-tag:not(:last-child) {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  
+  
+    <redoc spec-url="/reference/api/engine/version/v1.47.yaml" hide-hostname="true" suppress-warnings="true" lazy-rendering></redoc>
+  
+  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+</body>
+
+</html>

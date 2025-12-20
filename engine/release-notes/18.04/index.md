@@ -1,0 +1,83 @@
+# Docker Engine 18.04 发行说明
+
+## 18.04.0-ce
+2018-04-10
+
+### Builder
+
+- 修复 builder 和 client 中的拼写错误。[moby/moby#36424](https://github.com/moby/moby/pull/36424)
+
+### Client
+
+* 在 version 命令中打印 Stack API 和 Kubernetes 版本。[docker/cli#898](https://github.com/docker/cli/pull/898)
+- 修复 version 命令中 Kubernetes 重复的问题。[docker/cli#953](https://github.com/docker/cli/pull/953)
+* 在帮助信息中，对 Options 使用 HasAvailableFlags 代替 HasFlags。[docker/cli#959](https://github.com/docker/cli/pull/959)
++ 为 stack deploy 添加对强制变量的支持。[docker/cli#893](https://github.com/docker/cli/pull/893)
+- 修复 docker stack services 命令的 Port 输出。[docker/cli#943](https://github.com/docker/cli/pull/943)
+* 弃用未加密的存储。[docker/cli#561](https://github.com/docker/cli/pull/561)
+* 不为 ConfigFile 设置默认文件名。[docker/cli#917](https://github.com/docker/cli/pull/917)
+- 修复 compose 网络名称。[docker/cli#941](https://github.com/docker/cli/pull/941)
+
+### Logging
+
+* 静默登录：使用凭据存储中的凭据进行登录。[docker/cli#139](https://github.com/docker/cli/pull/139)
++ 添加对日志文件可压缩性的支持。[moby/moby#29932](https://github.com/moby/moby/pull/29932)
+- 修复非阻塞日志模式下的空 LogPath 问题。[moby/moby#36272](https://github.com/moby/moby/pull/36272)
+
+### Networking
+
+- 防止显式删除 ingress 网络。[moby/moby#36538](https://github.com/moby/moby/pull/36538)
+
+### Runtime
+
+* Devmapper 清理改进。[moby/moby#36307](https://github.com/moby/moby/pull/36307)
+* Devmapper.Mounted：移除。[moby/moby#36437](https://github.com/moby/moby/pull/36437)
+* Devmapper/Remove()：使用 Rmdir，忽略错误。[moby/moby#36438](https://github.com/moby/moby/pull/36438)
+* LCOW - 将平台解析器指令更改为 FROM 语句标志。[moby/moby#35089](https://github.com/moby/moby/pull/35089)
+* 将守护进程服务代码拆分到 windows 文件中。[moby/moby#36653](https://github.com/moby/moby/pull/36653)
+* Windows：阻止拉取更高版本的镜像。[moby/moby#36327](https://github.com/moby/moby/pull/36327)
+* Windows：在合并 36586 后 Hyper-V 容器损坏。[moby/moby#36610](https://github.com/moby/moby/pull/36610)
+* Windows：将 kernel_windows 迁移到使用 golang 注册表函数。[moby/moby#36617](https://github.com/moby/moby/pull/36617)
+* Windows：在容器退出时传回系统错误。[moby/moby#35967](https://github.com/moby/moby/pull/35967)
+* Windows：移除服务模式。[moby/moby#36267](https://github.com/moby/moby/pull/36267)
+* Windows：报告版本和 UBR。[moby/moby#36451](https://github.com/moby/moby/pull/36451)
+* 将 Runc 升级到 1.0.0-rc5。[moby/moby#36449](https://github.com/moby/moby/pull/36449)
+* 挂载失败时指示失败的路径。[moby/moby#36407](https://github.com/moby/moby/pull/36407)
+* 更改 errdefs.getImplementer() 的返回值。[moby/moby#36489](https://github.com/moby/moby/pull/36489)
+* Client：修复 hijackedconn 从缓冲区读取的问题。[moby/moby#36663](https://github.com/moby/moby/pull/36663)
+* 为存档请求添加内容编码协商。[moby/moby#36164](https://github.com/moby/moby/pull/36164)
+* Daemon/stats：更健壮的 CPU 采样。[moby/moby#36519](https://github.com/moby/moby/pull/36519)
+* Daemon/stats：移除烦人的 types 文件。[moby/moby#36494](https://github.com/moby/moby/pull/36494)
+* Daemon：使用 context 错误而不是发明新的错误。[moby/moby#36670](https://github.com/moby/moby/pull/36670)
+* 在非 amd64 架构上启用 CRIU (v2)。[moby/moby#36676](https://github.com/moby/moby/pull/36676)
+- 修复在关闭附加容器的 stdin 后客户端间歇性挂起的问题 [moby/moby#36517](https://github.com/moby/moby/pull/36517)
+- 修复重启后容器导出导致守护进程 panic 的问题 [moby/moby#36586](https://github.com/moby/moby/pull/36586)
+- 对多阶段 moby Dockerfile 的后续修复。[moby/moby#36425](https://github.com/moby/moby/pull/36425)
+* 冻结 Docker 镜像中的 busybox 和最新 glibc。[moby/moby#36375](https://github.com/moby/moby/pull/36375)
+* 如果容器将以非 root 用户身份运行，则尽早丢弃允许的、有效的 capabilities。[moby/moby#36587](https://github.com/moby/moby/pull/36587)
+* Layer：移除元数据存储接口。[moby/moby#36504](https://github.com/moby/moby/pull/36504)
+* dockerd 的微小优化。[moby/moby#36577](https://github.com/moby/moby/pull/36577)
+* 白名单 statx 系统调用。[moby/moby#36417](https://github.com/moby/moby/pull/36417)
++ 为插件创建添加缺失的错误返回。[moby/moby#36646](https://github.com/moby/moby/pull/36646)
+- 修复 AppArmor 未应用于 Exec 进程的问题。[moby/moby#36466](https://github.com/moby/moby/pull/36466)
+* Daemon/logger/ring.go：记录错误而不是实例。[moby/moby#36475](https://github.com/moby/moby/pull/36475)
+- 修复如果未收集到统计信息，统计信息收集器会消耗 CPU 的问题。[moby/moby#36609](https://github.com/moby/moby/pull/36609)
+- Fix(distribution)：如果摘要缓存是认证的一部分，则不应移动它。[moby/moby#36509](https://github.com/moby/moby/pull/36509)
+- 确保在失败时移除插件容器。[moby/moby#36715](https://github.com/moby/moby/pull/36715)
+* 升级到 containerd 1.0.3。[moby/moby#36749](https://github.com/moby/moby/pull/36749)
+* 不要对插件挂载切片进行排序。[moby/moby#36711](https://github.com/moby/moby/pull/36711)
+
+### Swarm Mode
+
+* 修复了同步 dispatcher 关闭与进行中的 rpc 的问题。[moby/moby#36371](https://github.com/moby/moby/pull/36371)
+* 将 raft ElectionTick 增加到 10 倍的 HeartbeatTick。[moby/moby#36672](https://github.com/moby/moby/pull/36672)
+* 使 Swarm 管理器 Raft quorum 参数可在守护进程配置中设置。[moby/moby#36726](https://github.com/moby/moby/pull/36726)
+* Ingress 网络不应可附加。[docker/swarmkit#2523](https://github.com/docker/swarmkit/pull/2523)
+* [manager/state] 添加 fernet 作为 raft 加密的选项。[docker/swarmkit#2535](https://github.com/docker/swarmkit/pull/2535)
+* 记录 GRPC 服务器错误。 [docker/swarmkit#2541](https://github.com/docker/swarmkit/pull/2541)
+* 在管理器级别记录领导权变更。[docker/swarmkit#2542](https://github.com/docker/swarmkit/pull/2542)
+* 移除 containerd 执行器。[docker/swarmkit#2568](https://github.com/docker/swarmkit/pull/2568)
+* Agent：当没有可用的远程节点时，延迟会话。[docker/swarmkit#2570](https://github.com/docker/swarmkit/pull/2570)
+* [ca/manager] 完全移除根 CA 密钥加密支持。[docker/swarmkit#2573](https://github.com/docker/swarmkit/pull/2573)
+- 修复 agent 日志记录竞争。[docker/swarmkit#2578](https://github.com/docker/swarmkit/pull/2578)
+* 添加按顺序恢复网络的逻辑。[docker/swarmkit#2571](https://github.com/docker/swarmkit/pull/2571)

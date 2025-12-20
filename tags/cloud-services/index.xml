@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>云服务 on Docker Docs</title>
+    <link>https://docs.docker.com/tags/cloud-services/</link>
+    <description>Recent content in 云服务 on Docker Docs</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://docs.docker.com/tags/cloud-services/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序</title>
+      <link>https://docs.docker.com/guides/localstack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://docs.docker.com/guides/localstack/</guid>
+      <description>本指南介绍如何使用 Docker 运行 LocalStack，这是一个本地 AWS 云堆栈模拟器。</description>
+    </item>
+  </channel>
+</rss>

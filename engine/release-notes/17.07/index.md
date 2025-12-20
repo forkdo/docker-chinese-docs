@@ -1,0 +1,64 @@
+# Docker Engine 17.07 版本说明
+
+## 17.07.0-ce
+2017-08-29
+
+### API 与客户端
+
+* 在 config.json 中增加代理配置支持 [docker/cli#93](https://github.com/docker/cli/pull/93)
+* 默认启用 pprof/debug 端点 [moby/moby#32453](https://github.com/moby/moby/pull/32453)
+* 现在可通过 `docker login` 的新 `--password-stdin` 标志使用 `STDIN` 传递密码 [docker/cli#271](https://github.com/docker/cli/pull/271)
++ 为 docker scale 添加 `--detach` 选项 [docker/cli#243](https://github.com/docker/cli/pull/243)
+* 修复因容器不存在导致 `docker logs --no-stream` 卡住的问题 [moby/moby#34004](https://github.com/moby/moby/pull/34004)
+- 修复 `docker stack ps` 将错误信息输出到 `stdout` 而非 `stderr` 的问题 [docker/cli#298](https://github.com/docker/cli/pull/298)
+* 修复在部署期间发生错误时 `docker service create` 进度条卡住的问题 [docker/cli#259](https://github.com/docker/cli/pull/259)
+* 改进交互模式下的进度条显示效果 [docker/cli#260](https://github.com/docker/cli/pull/260) [docker/cli#237](https://github.com/docker/cli/pull/237)
+* 当使用 `docker login --password` 时打印警告，并推荐使用 `--password-stdin` [docker/cli#270](https://github.com/docker/cli/pull/270)
+* 使 API 版本协商更健壮 [moby/moby#33827](https://github.com/moby/moby/pull/33827)
+* 当连接到低于 Docker 17.05 的守护进程时隐藏 `--detach` 选项 [docker/cli#219](https://github.com/docker/cli/pull/219)
++ 在 `GET /networks/(id or name)` 中添加 `scope` 过滤器 [moby/moby#33630](https://github.com/moby/moby/pull/33630)
+
+### 构建器
+
+* 实现长时运行交互会话并增量发送构建上下文 [moby/moby#32677](https://github.com/moby/moby/pull/32677) [docker/cli#231](https://github.com/docker/cli/pull/231) [moby/moby#33859](https://github.com/moby/moby/pull/33859)
+* 对空续行发出警告 [moby/moby#33719](https://github.com/moby/moby/pull/33719)
+- 修复 `.dockerignore` 中以 `/` 开头的条目无法匹配任何内容的问题 [moby/moby#32088](https://github.com/moby/moby/pull/32088)
+
+### 日志
+
+- 修复轮转日志文件的错误文件模式 [moby/moby#33926](https://github.com/moby/moby/pull/33926)
+- 修复 journald 和 syslog 的 stderr 日志记录 [moby/moby#33832](https://github.com/moby/moby/pull/33832)
+
+### 运行时
+
+* 允许停止已暂停的容器 [moby/moby#34027](https://github.com/moby/moby/pull/34027)
++ 为 overlay2 存储驱动添加配额支持 [moby/moby#32977](https://github.com/moby/moby/pull/32977)
+* 移除 `docker ps` 上的容器锁 [moby/moby#31273](https://github.com/moby/moby/pull/31273)
+* 在 memdb 中存储容器名称 [moby/moby#33886](https://github.com/moby/moby/pull/33886)
+* 修复 `docker exec` 和 `docker pause` 之间的竞态条件 [moby/moby#32881](https://github.com/moby/moby/pull/32881)
+* Devicemapper：重构日志并添加 `--storage-opt dm.libdm_log_level` [moby/moby#33845](https://github.com/moby/moby/pull/33845)
+* Devicemapper：如果启用了延迟移除但未启用延迟删除，防止出现"设备使用中"错误 [moby/moby#33877](https://github.com/moby/moby/pull/33877)
+* Devicemapper：使用 KeepAlive 防止仍在使用的任务被垃圾回收 [moby/moby#33376](https://github.com/moby/moby/pull/33376)
+* 如果修剪操作被取消，报告中间修剪结果 [moby/moby#33979](https://github.com/moby/moby/pull/33979)
+- 修复并发执行 `docker rename <container-id> new_name` 导致容器拥有多个名称的问题 [moby/moby#33940](https://github.com/moby/moby/pull/33940)
+- 修复文件描述符泄漏和错误处理 [moby/moby#33713](https://github.com/moby/moby/pull/33713)
+- 修复运行容器时的 SIGSEGV 问题 [docker/cli#303](https://github.com/docker/cli/pull/303)
+* 防止健康检查停止时 goroutine 泄漏 [moby/moby#33781](https://github.com/moby/moby/pull/33781)
+* 镜像：改进存储锁定 [moby/moby#33755](https://github.com/moby/moby/pull/33755)
+* 修复容器销毁时 Btrfs 配额组未被删除的问题 [moby/moby#29427](https://github.com/moby/moby/pull/29427)
+* Libcontainerd：修复僵尸 containerd 进程未被正确回收的问题 [moby/moby#33419](https://github.com/moby/moby/pull/33419)
+* 为 Windows 上的 Linux 容器做准备
+  * LCOW：为服务 VM 工具提供专用临时空间 [moby/moby#33809](https://github.com/moby/moby/pull/33809)
+  * LCOW：支持除远程文件系统外的所有操作 [moby/moby#33241](https://github.com/moby/moby/pull/33241) [moby/moby#33826](https://github.com/moby/moby/pull/33826)
+  * LCOW：将目录从 lcow 改为 "Linux Containers" [moby/moby#33835](https://github.com/moby/moby/pull/33835)
+  * LCOW：无需额外引号传递命令参数 [moby/moby#33815](https://github.com/moby/moby/pull/33815)
+  * LCOW：因平台架构变更所需的更新 [moby/moby#33785](https://github.com/moby/moby/pull/33785)
+
+### Swarm 模式
+
+* 初步支持可插拔的密钥后端 [moby/moby#34157](https://github.com/moby/moby/pull/34157) [moby/moby#34123](https://github.com/moby/moby/pull/34123)
+* 使用自然排序对 swarm 堆栈和节点进行排序 [docker/cli#315](https://github.com/docker/cli/pull/315)
+* 使引擎支持集群配置事件 [moby/moby#34032](https://github.com/moby/moby/pull/34032)
+* 仅在加入集群过程中传递加入地址 [moby/moby#33361](https://github.com/moby/moby/pull/33361)
+* 修复当同名网络同时存在"local"和"swarm"作用域时服务创建期间的错误 [docker/cli#184](https://github.com/docker/cli/pull/184)
+* (实验性) 添加对 swarm 上插件的支持 [moby/moby#33575](https://github.com/moby/moby/pull/33575)

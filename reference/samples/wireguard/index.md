@@ -1,0 +1,2 @@
+# WireGuard 示例
+

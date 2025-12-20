@@ -1,0 +1,60 @@
+# Docker Engine API v1.47 参考文档
+# Docker Engine API v1.47
+
+本文档描述了 Docker Engine API 的 v1.47 版本。
+
+Docker Engine API 是 Docker 客户端与 Docker 守护进程通信的接口。本文档详细说明了 API 的端点、请求和响应格式。
+
+## API 端点
+
+### 容器相关端点
+
+- **创建容器**: `POST /containers/create`
+- **启动容器**: `POST /containers/{id}/start`
+- **停止容器**: `POST /containers/{id}/stop`
+- **删除容器**: `DELETE /containers/{id}`
+
+### 镜像相关端点
+
+- **拉取镜像**: `POST /images/create`
+- **列出镜像**: `GET /images/json`
+- **删除镜像**: `DELETE /images/{name}`
+
+### 网络相关端点
+
+- **创建网络**: `POST /networks/create`
+- **列出网络**: `GET /networks`
+- **删除网络**: `DELETE /networks/{id}`
+
+### 卷相关端点
+
+- **创建卷**: `POST /volumes/create`
+- **列出卷**: `GET /volumes`
+- **删除卷**: `DELETE /volumes/{name}`
+
+## 请求格式
+
+所有 API 请求都使用 JSON 格式。请求头必须包含：
+- `Content-Type: application/json`
+- `Accept: application/json`
+
+## 响应格式
+
+API 响应使用 JSON 格式。成功响应的状态码为 200，错误响应包含错误信息和相应的 HTTP 状态码。
+
+## 认证
+
+API 使用基于证书的认证。客户端需要提供：
+- 客户端证书
+- 私钥
+- CA 证书
+
+## 版本信息
+
+此 API 版本为 v1.47，与 Docker Engine 24.0 及更高版本兼容。
+
+## 注意事项
+
+- API 端点可能因 Docker 版本而异
+- 某些功能可能需要特定的 Docker 版本支持
+- 建议使用最新版本的 Docker Engine 以获得最佳兼容性

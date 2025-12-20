@@ -1,0 +1,287 @@
+# Docker Engine version 28 release notes
+本页描述了 Docker Engine 版本 28 的最新更改、新增功能、已知问题和修复。
+
+有关更多信息，请参阅：
+
+- 已弃用和移除的功能，请参阅[已弃用的 Engine 功能](../deprecated.md)。
+- Engine API 的更改，请参阅 [Engine API 版本历史](/reference/api/engine/version-history/)。
+
+## 28.5.2
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-11-05</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 28.5.2 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A28.5.2)
+- [moby/moby, 28.5.2 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A28.5.2)
+
+> [!CAUTION]
+> 此版本包含对 runc 中三个严重安全漏洞的修复：
+> - [CVE-2025-31133](https://github.com/opencontainers/runc/security/advisories/GHSA-9493-h29p-rfm2)
+> - [CVE-2025-52565](https://github.com/opencontainers/runc/security/advisories/GHSA-qw9x-cqr3-wc7r)
+> - [CVE-2025-52881](https://github.com/opencontainers/runc/security/advisories/GHSA-cgrx-mc8f-2prm)
+> 
+> 这三个漏洞最终都允许（通过不同方法）通过绕过 runc 对写入任意 `/proc` 文件的限制来实现完全的容器逃逸。
+
+### Bug 修复和增强
+
+- dockerd-rootless.sh: 如果未安装 slirp4netns，则尝试使用 pasta (passt)。[moby/moby#51162](https://github.com/moby/moby/pull/51162)
+
+### 打包更新
+
+- 将 BuildKit 更新至 [v0.25.2](https://github.com/moby/buildkit/releases/tag/v0.25.2)。[moby/moby#51398](https://github.com/moby/moby/pull/51398)
+- 将 Go 运行时更新至 [1.24.9](https://go.dev/doc/devel/release#go1.24.9)。[moby/moby#51387](https://github.com/moby/moby/pull/51387), [docker/cli#6613](https://github.com/docker/cli/pull/6613)
+- 将 runc 更新至 [v1.3.3](https://github.com/opencontainers/runc/releases/tag/v1.3.3)。[moby/moby#51394](https://github.com/moby/moby/pull/51394)
+
+### 弃用
+
+- Go-SDK: cli/command/image/build: 弃用 `DefaultDockerfileName`、`DetectArchiveReader`、`WriteTempDockerfile`、`ResolveAndValidateContextPath`。这些工具仅在内部使用，将在下一个版本中移除。[docker/cli#6610](https://github.com/docker/cli/pull/6610)
+- Go-SDK: cli/command/image/build: 弃用 IsArchive 工具。[docker/cli#6560](https://github.com/docker/cli/pull/6560)
+- Go-SDK: opts: 弃用 `ValidateMACAddress`。[docker/cli#6560](https://github.com/docker/cli/pull/6560)
+- Go-SDK: opts: 弃用 ListOpts.Delete()。[docker/cli#6560](https://github.com/docker/cli/pull/6560)
+
+## 28.5.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-10-08</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 28.5.1 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A28.5.1)
+- [moby/moby, 28.5.1 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A28.5.1)
+
+### Bug 修复和增强
+
+- 将 BuildKit 更新至 v0.25.1。[moby/moby#51137](https://github.com/moby/moby/pull/51137)
+- 将 Go 运行时更新至 [1.24.8](https://go.dev/doc/devel/release#go1.24.8)。[moby/moby#51133](https://github.com/moby/moby/pull/51133), [docker/cli#6541](https://github.com/docker/cli/pull/6541)
+
+### 弃用
+
+- api/types/image: InspectResponse: 弃用 `Parent` 和 `DockerVersion` 字段。[moby/moby#51105](https://github.com/moby/moby/pull/51105)
+- api/types/plugin: 弃用 `Config.DockerVersion` 字段。[moby/moby#51110](https://github.com/moby/moby/pull/51110)
+
+## 28.5.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-10-02</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 28.5.0 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A28.5.0)
+- [moby/moby, 28.5.0 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A28.5.0)
+
+> [!WARNING]
+> **Raspberry Pi OS 32位 (armhf) 弃用**
+>
+> Docker Engine v28 将是支持 Raspberry Pi OS 32位 (armhf) 的最后一个主要版本。
+> 从 Docker Engine v29 开始，新的主要版本将**不再提供** Raspberry Pi OS 32位 (armhf) 的软件包。
+>
+> #### 迁移选项
+> - **64位 ARM:** 安装 Debian `arm64` 软件包（完全支持）。
+> - **32位 ARM (v7):** 安装 Debian `armhf` 软件包（针对 ARMv7 CPU）。
+>
+> **注意：** 基于 ARMv6 架构的旧设备不再受官方软件包支持，包括：
+> - Raspberry Pi 1 (Model A/B/A+/B+)
+> - Raspberry Pi Zero 和 Zero W
+
+### Bug 修复和增强
+
+- 在 CLI 插件目录中，对于损坏的符号链接，不要在 `docker info` 中打印警告。[docker/cli#6476](https://github.com/docker/cli/pull/6476)
+- 修复在空的 `Actor.ID` 事件上 `stats` 时的 panic。[docker/cli#6471](https://github.com/docker/cli/pull/6471)
+
+### 打包更新
+
+- 移除对传统 CBC 密码套件的支持。[docker/cli#6474](https://github.com/docker/cli/pull/6474)
+- 将 Buildkit 更新至 [v0.25.0](https://github.com/moby/buildkit/releases/tag/v0.25.0)。[moby/moby#51075](https://github.com/moby/moby/pull/51075)
+- 将 Dockerfile 语法更新至 [v1.19.0](https://github.com/moby/buildkit/releases/tag/dockerfile%2F1.19.0)。[moby/moby#51075](https://github.com/moby/moby/pull/51075)
+
+### 网络
+
+- 消除了关于从数据存储中删除 `endpoint_count` 的无害警告。[moby/moby#51064](https://github.com/moby/moby/pull/51064)
+- 修复导致 IPAM 插件在 Windows 上无法加载的错误。[moby/moby#51035](https://github.com/moby/moby/pull/51035)
+
+### API
+
+- 弃用对内核内存 TCP 计费（`KernelMemoryTCP`）的支持。[moby/moby#51067](https://github.com/moby/moby/pull/51067)
+- 修复 `GET containers/{name}/checkpoints` 在没有检查点时返回 `null` 而不是空 JSON 数组的问题。[moby/moby#51052](https://github.com/moby/moby/pull/51052)
+
+### Go SDK
+
+- cli-plugins/plugin: Run: 允许自定义 CLI。[docker/cli#6481](https://github.com/docker/cli/pull/6481)
+- cli/command: 添加 `WithUserAgent` 选项。[docker/cli#6477](https://github.com/docker/cli/pull/6477)
+
+### 弃用
+
+- Go-SDK: cli/command: 弃用 `DockerCli.Apply`。此方法不再使用，如果没有剩余用途，将在下一个版本中移除。[docker/cli#6497](https://github.com/docker/cli/pull/6497)
+- Go-SDK: cli/command: 弃用 `DockerCli.ContentTrustEnabled`。此方法不再使用，将在下一个版本中移除。[docker/cli#6495](https://github.com/docker/cli/pull/6495)
+- Go-SDK: cli/command: 弃用 `DockerCli.DefaultVersion`。此方法不再使用，将在下一个版本中移除。[docker/cli#6491](https://github.com/docker/cli/pull/6491)
+- Go-SDK: cli/command: 弃用 `ResolveDefaultContext` 工具。[docker/cli#6529](https://github.com/docker/cli/pull/6529)
+- Go-SDK: cli/command: 弃用 `WithContentTrustFromEnv`、`WithContentTrust` 选项。这些选项在内部使用，将在下一个版本中移除。[docker/cli#6489](https://github.com/docker/cli/pull/6489)
+- Go-SDK: cli/manifest/store: 弃用 `IsNotFound()`。[docker/cli#6514](https://github.com/docker/cli/pull/6514)
+- Go-SDK: templates: 弃用 NewParse() 函数。[docker/cli#6469](https://github.com/docker/cli/pull/6469)
+
+## 28.4.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-09-03</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 28.4.0 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A28.4.0)
+- [moby/moby, 28.4.0 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A28.4.0)
+
+### 新增
+
+- 允许 Docker CLI 在 docker 上下文元数据中存在键值对（`"GODEBUG":"..."`）时设置 `GODEBUG` 环境变量。[docker/cli#6399](https://github.com/docker/cli/pull/6399)
+
+### Bug 修复和增强
+
+- 为 `docker pull` 和 `docker image pull` 添加 shell 补全。[docker/cli#6420](https://github.com/docker/cli/pull/6420)
+- 修复 v28.3.3 中的一个回归，如果客户端未发送 `X-Registry-Auth` 头，可能导致 `docker push` 时发生 panic。[moby/moby#50738](https://github.com/moby/moby/pull/50738)
+- Windows: 可能修复拉取镜像时出现"访问被拒绝"错误的问题。[moby/moby#50871](https://github.com/moby/moby/pull/50871)
+- containerd 镜像存储：修复对本地构建的非本地镜像调用 `docker history` 时失败，并显示 `snapshot X does not exist` 的错误。[moby/moby#50875](https://github.com/moby/moby/pull/50875)
+- containerd 镜像存储：修复 `docker image prune` 发出正确的 `untag` 和 `delete` 事件，并且只列出已删除镜像的根摘要，而不是每个 blob。[moby/moby#50837](https://github.com/moby/moby/pull/50837)
+- 在因缺少身份验证而失败后，从 `docker push` 和 `docker pull` 中移除交互式登录提示。[docker/cli#6256](https://github.com/docker/cli/pull/6256)
+
+### 打包更新
+
+- 将 BuildKit 更新至 [v0.24.0](https://github.com/moby/buildkit/releases/tag/v0.24.0)。[moby#50888](https://github.com/moby/moby/pull/50888)
+- 将 Go 运行时更新至 [1.24.7](https://go.dev/doc/devel/release#go1.24.6)。[moby/moby#50889](https://github.com/moby/moby/pull/50889), [docker/cli#6422](https://github.com/docker/cli/pull/6422)
+- 将 `runc` 更新至 [v1.3.0](https://github.com/opencontainers/runc/releases/tag/v1.3.0)。[moby/moby#50699](https://github.com/moby/moby/pull/50699)
+- 将 containerd（仅静态二进制文件）更新至 [v1.7.28](https://github.com/containerd/containerd/releases/tag/v1.7.28)。[moby/moby#50700](https://github.com/moby/moby/pull/50700)
+
+### 网络
+
+- 修复在 live-restore 时可能导致容器重启缓慢的问题。[moby/moby#50829](https://github.com/moby/moby/pull/50829)
+
+### API
+
+- 更新 `AuthConfig.Email` 字段的弃用消息。[moby/moby#50797](https://github.com/moby/moby/pull/50797)
+
+### Go SDK
+
+- 弃用已迁移到 [github.com/moby/profiles](https://github.com/moby/profiles) 的 profiles 包。[moby/moby#50513](https://github.com/moby/moby/pull/50513)
+
+### 弃用
+
+- 弃用对 `--tlscacert`、`--tlscert` 和 `--tlskey` 命令行标志的引号值的特殊处理。[docker/cli#6291](https://github.com/docker/cli/pull/6291)
+- 在 v28.4 中将传统链接环境变量（`DOCKER_KEEP_DEPRECATED_LEGACY_LINKS_ENV_VARS`）标记为已弃用，并设置在 v30.0 中移除。[docker/cli#6309](https://github.com/docker/cli/pull/6309)
+- Go-SDK: 弃用字段 `NetworkSettingsBase.Bridge`、结构 `NetworkSettingsBase`、`DefaultNetworkSettings` 的所有字段以及结构 `DefaultNetworkSettings`。[moby/moby#50839](https://github.com/moby/moby/pull/50839)
+- Go-SDK: api/types: `build.CacheDiskUsage`、`container.DiskUsage`、`images.DiskUsage` 和 `volumes.DiskUsage` 现已弃用，将在下一个主要版本中移除。[moby/moby#50768](https://github.com/moby/moby/pull/50768)
+- Go-SDK: cli-plugins/manager: 弃用 `ReexecEnvvar`。[docker/cli#6411](https://github.com/docker/cli/pull/6411)
+- Go-SDK: cli-plugins/manager: 弃用注释别名（`CommandAnnotationPlugin`、`CommandAnnotationPluginVendor`、`CommandAnnotationPluginVersion`、`CommandAnnotationPluginInvalid`、`CommandAnnotationPluginCommandPath`），推荐使用 `cli-plugins/manager/metadata` 中的等效项。[docker/cli#6298](https://github.com/docker/cli/pull/6298)
+- Go-SDK: cli-plugins/manager: 弃用元数据别名（`NamePrefix`、`MetadataSubcommandName`、`HookSubcommandName`、`Metadata`、`ReexecEnvvar`），推荐使用 `cli-plugins/manager/metadata` 中的等效项。[docker/cli#6269](https://github.com/docker/cli/pull/6269)
+- Go-SDK: cli-plugins/manager: 移除 `Candidate` 接口，该接口仅供内部使用。[docker/cli#6269](https://github.com/docker/cli/pull/6269)
+- Go-SDK: cli-plugins/manager: 移除 `NewPluginError` 函数，该函数仅供内部使用。[docker/cli#6269](https://github.com/docker/cli/pull/6269)
+- Go-SDK: cli-plugins/manager: 移除已弃用的 `ResourceAttributesEnvvar` 常量。[docker/cli#6269](https://github.com/docker/cli/pull/6269)
+- Go-SDK: cli/command/builder: 弃用 `NewBuilderCommand` 和 `NewBakeStubCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/builder: 弃用 `NewPruneCommand`。[docker/cli#6343](https://github.com/docker/cli/pull/6343)
+- Go-SDK: cli/command/checkpoint: 弃用 `NewCheckpointCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/checkpoint: 弃用 `NewFormat`、`FormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/completion: 弃用 `NoComplete`。[docker/cli#6405](https://github.com/docker/cli/pull/6405)
+- Go-SDK: cli/command/completion: 移除已弃用的 `ValidArgsFn`。[docker/cli#6259](https://github.com/docker/cli/pull/6259)
+- Go-SDK: cli/command/config: 弃用 `NewConfigCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/config: 弃用 `NewFormat`、`FormatWrite`、`InspectFormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/config: 弃用 `RunConfigCreate`、`CreateOptions`、`RunConfigInspect`、`InspectOptions`、`RunConfigList`、`ListOptions`、`RunConfigRemove` 和 `RemoveOptions`。[docker/cli#6369](https://github.com/docker/cli/pull/6369)
+- Go-SDK: cli/command/container: 弃用 `NewBuildCommand`、`NewPullCommand`、`NewPushCommand`、`NewImagesCommand`、`NewImageCommand`、`NewHistoryCommand`、`NewImportCommand`、`NewLoadCommand`、`NewRemoveCommand`、`NewSaveCommand`、`NewTagCommand`、`NewPruneCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/container: 弃用 `NewDiffFormat`、`DiffFormatWrite`。这些函数仅在内部使用，将在下一个版本中移除。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/container: 弃用 `NewRunCommand`、`NewExecCommand`、`NewPsCommand`、`NewContainerCommand`、`NewAttachCommand`、`NewCommitCommand`、`NewCopyCommand`、`NewCreateCommand`、`NewDiffCommand`、`NewExportCommand`、`NewKillCommand`、`NewLogsCommand`、`NewPauseCommand`、`NewPortCommand`、`NewRenameCommand`、`NewRestartCommand`、`NewRmCommand`、`NewStartCommand`、`NewStatsCommand`、`NewStopCommand`、`NewTopCommand`、`NewUnpauseCommand`、`NewUpdateCommand`、`NewWaitCommand`、`NewPruneCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/context: 弃用 `NewContextCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/context: 弃用 `RunCreate` 和 `CreateOptions`。[docker/cli#6403](https://github.com/docker/cli/pull/6403)
+- Go-SDK: cli/command/context: 弃用 `RunExport` 和 `ExportOptions`。[docker/cli#6403](https://github.com/docker/cli/pull/6403)
+- Go-SDK: cli/command/context: 弃用 `RunImport`。[docker/cli#6403](https://github.com/docker/cli/pull/6403)
+- Go-SDK: cli/command/context: 弃用 `RunRemove` 和 `RemoveOptions`。[docker/cli#6403](https://github.com/docker/cli/pull/6403)
+- Go-SDK: cli/command/context: 弃用 `RunUpdate` 和 `UpdateOptions`。[docker/cli#6403](https://github.com/docker/cli/pull/6403)
+- Go-SDK: cli/command/context: 弃用 `RunUse`。[docker/cli#6403](https://github.com/docker/cli/pull/6403)
+- Go-SDK: cli/command/image: 弃用 `AuthResolver` 工具。[docker/cli#6357](https://github.com/docker/cli/pull/6357)
+- Go-SDK: cli/command/image: 弃用 `NewHistoryFormat`、`HistoryWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341), [docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/manifest: 弃用 `NewManifestCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/network: 弃用 `NewFormat`、`FormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/network: 弃用 `NewNetworkCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/node: 弃用 `NewFormat`、`FormatWrite`、`InspectFormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/node: 弃用 `NewNodeCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/plugin: 弃用 `NewFormat`、`FormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/plugin: 弃用 `NewPluginCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/registry: 弃用 `NewLoginCommand`、`NewLogoutCommand`、`NewSearchCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/registry: 弃用 `NewSearchFormat`、`SearchWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/registry: 弃用 `OauthLoginEscapeHatchEnvVar` 常量。[docker/cli#6413](https://github.com/docker/cli/pull/6413)
+- Go-SDK: cli/command/secret: 弃用 `NewFormat`、`FormatWrite`、`InspectFormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/secret: 弃用 `NewSecretCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/service: 弃用 `NewFormat`、`InspectFormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/service: 弃用 `NewServiceCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/stack: 弃用 `NewStackCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/stack: 弃用 `RunList`、`RunServices`。[docker/cli#6391](https://github.com/docker/cli/pull/6391)
+- Go-SDK: cli/command/swarm: 弃用 `NewSwarmCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/system: 弃用 `NewVersionCommand`、`NewInfoCommand`、`NewSystemCommand`、`NewEventsCommand`、`NewInspectCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/task: 弃用 `NewTaskFormat`、`FormatWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/trust: 弃用 `NewTrustCommand`。此函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command/trust: 弃用 `SignedTagInfo`、`SignerInfo`、`NewTrustTagFormat`、`NewSignerInfoFormat`、`TagWrite`、`SignerInfoWrite`。[docker/cli#6341](https://github.com/docker/cli/pull/6341)
+- Go-SDK: cli/command/volume: 弃用 `NewVolumeCommand`、`NewPruneCommand`。这些函数将在下一个版本中移除。[docker/cli#6312](https://github.com/docker/cli/pull/6312)
+- Go-SDK: cli/command: 移除 `AddTrustSigningFlags`、`AddTrustVerificationFlags` 和 `AddPlatformFlag` 工具，这些工具仅在内部使用。[docker/cli#6311](https://github.com/docker/cli/pull/6311)
+- Go-SDK: cli/command: 移除已弃用的 `ConfigureAuth` 工具。[docker/cli#6257](https://github.com/docker/cli/pull/6257)
+- Go-SDK: cli/command: 移除已弃用的 `CopyToFile` 工具。[docker/cli#6257](https://github.com/docker/cli/pull/6257)
+- Go-SDK: cli/config/types: 更新 `AuthConfig.Email` 字段的弃用消息。[docker/cli#6392](https://github.com/docker/cli/pull/6392)
+- Go-SDK: cli: 弃用 `VisitAll`、`DisableFlagsInUseLine` 工具。这些工具仅在内部使用，将在下一个版本中移除。[docker/cli#6276](https://github.com/docker/cli/pull/6276)
+- Go-SDK: cli: 移除 `HasCompletionArg` 工具。此工具仅在内部使用。[docker/cli#6276](https://github.com/docker/cli/pull/6276)
+- Go-SDK: 弃用 `cli/command.RegistryAuthenticationPrivilegedFunc`。[docker/cli#6256](https://github.com/docker/cli/pull/6256)
+- Go-SDK: 弃用 cli/command/stack/formatter。[docker/cli#6391](https://github.com/docker/cli/pull/6391)
+- Go-SDK: 弃用 cli/command/stack/loader。[docker/cli#6391](https://github.com/docker/cli/pull/6391)
+- Go-SDK: 弃用 cli/command/stack/options。[docker/cli#6391](https://github.com/docker/cli/pull/6391)
+- Go-SDK: 弃用 cli/command/stack/swarm。[docker/cli#6391](https://github.com/docker/cli/pull/6391)
+- Go-SDK: opts: 弃用 `NewNamedListOptsRef`、`NewNamedMapOpts`、`NamedListOpts`、`NamedMapOpts` 和 `NamedOption`。这些类型和函数不再使用，将在下一个版本中移除。[docker/cli#6292](https://github.com/docker/cli/pull/6292)
+- Go-SDK: opts: 弃用 `ParseEnvFile`，推荐使用 `kvfile.Parse`。[docker/cli#6381](https://github.com/docker/cli/pull/6381)
+- Go-SDK: opts: 弃用 `QuotedString`。此工具不再使用，将在下一个版本中移除。[docker/cli#6275](https://github.com/docker/cli/pull/6275)
+- Go-SDK: opts: 弃用 `ValidateHost` 工具。此函数不再使用，将在下一个版本中移除。[docker/cli#6280](https://github.com/docker/cli/pull/6280)
+- Go-SDK: pkg/jsonmessage: 弃用 `JSONMessage.From`、`JSONMessage.Time` 和 `JSONMessage.TimeNano` 字段，因为 API 不再为进度消息返回这些字段。请改用 `events.Message` 类型来解析 `/events` 响应。[moby/moby#50762](https://github.com/moby/moby/pull/50762)
+- Go-SDK: cli/registry/client 包已弃用，将在下一个版本中移除。[docker/cli#6313](https://github.com/docker/cli/pull/6313)
+
+## 28.3.3
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-07-29</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 28.3.3 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A28.3.3)
+- [moby/moby, 28.3.3 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A28.3.3)
+
+### 安全
+
+此版本修复了一个问题，在 firewalld 重新加载后，发布的容器端口可以直接从本地网络访问，即使它们本意是只能通过环回地址访问。[CVE-2025-54388](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-54388) / [GHSA-x4rx-4gw3-53p4](https://github.com/moby/moby/security/advisories/GHSA-x4rx-4gw3-53p4) / [moby/moby#50506](https://github.com/moby/moby/pull/50506)。
+
+### 打包更新
+
+- 将 Buildx 更新至 [v0.26.1](https://github.com/docker/buildx/releases/tag/v0.26.1)。[docker/docker-ce-packaging#1230](https://github.com/docker/docker-ce-packaging/pull/1230)
+- 将 Compose 更新至 [v2.39.1](https://github.com/docker/compose/releases/tag/v2.39.1)。[docker/docker-ce-packaging#1234](https://github.com/docker/docker-ce-packaging/pull/1234)
+- 将 Docker Model CLI 插件更新至 [v0.1.36](https://github.com/docker/model-cli/releases/tag/v0.1.36)。[docker/docker-ce-packaging#1233](https://github.com/docker/docker-ce-packaging/pull/1233)
+
+## 28.3.2
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-07-09</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub 里程碑：
+
+- [docker/cli, 28.3.2 里程碑](https://github.com/docker/cli/issues?q=is%3Aclosed+milestone%3A28.3.2)
+- [moby/moby, 28.3.2 里程碑](https://github.com/moby/moby/issues?q=is%3Aclosed+milestone%3A28.3.2)
+
+### Bug 修复和增强
+
+- 修复 `--use-api-socket` 在 targeting 远程 daemon 时无法正常工作的问题。[docker/cli#6157](https://github.com/docker/cli/pull/6157)
+- 修复在启用调试日志记录时打印杂散的"otel error"日志的问题。[docker/cli#6160](https://github.com/docker/cli/pull/6160)
+- 通过 SSH 连接到远程 daemon 时引用 SSH 参数，以避免意外的扩展。[docker/cli#6147](https://github.com/docker/cli/pull/6147)
+- 在 `docker login` 和 `docker logout` 期间设置了 `DOCKER_AUTH_CONFIG` 时发出警告。[docker/cli#6163](https://github.com/docker/cli/pull/6163)
+
+### 打包更新
+
+- 将 Compose 更新至 [v2.38.2](https://github.com/docker/compose/releases/tag/v2.38.2)。[docker/docker-ce-packaging#1225](https://github.com/docker/docker-ce-packaging/pull/1225)
+- 将 Docker Model CLI 插件更新至 [v0.1.33](https://github.com/docker/model-cli/releases/tag/v0.1.33)。[docker/docker-ce-packaging#1227](https://github.com/docker/docker-ce-packaging/pull/1227)
+- 将 Go 运行时更新至 1.24.5。[moby/moby#50354](https://github.com/moby/moby/pull/50354)
+
+## 28.3.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-07-02</em>
+
+
+有关此版本中 pull request 和更改的完整列表，请参阅相关的 GitHub
