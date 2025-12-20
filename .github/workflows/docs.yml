@@ -45,7 +45,8 @@ jobs:
           git clone https://github.com/docker/docs.git docsite
       - name: Fix
         run: |
-          sed -i 's/refLinksErrorLevel: WARNING/refLinksErrorLevel: ERROR/' docsite/hugo.yaml
+          # sed -i 's/refLinksErrorLevel: WARNING/refLinksErrorLevel: ERROR/' docsite/hugo.yaml
+          sed -i '/baseURL/d' docsite/hugo.yaml
       - name: Build Docs
         run: |
           cp -r docs_zh/* ./docsite/content

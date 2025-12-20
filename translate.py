@@ -81,6 +81,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger("Translator")
 
+# Suppress noisy libraries
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("openai").setLevel(logging.WARNING)
+
 class TranslationRecorder:
     def __init__(self, translated_file="translated_files.txt", failed_file="failed_translations.txt"):
         self.translated_file = translated_file
@@ -306,7 +311,7 @@ def translate_worker(provider: Dict):
 
         except Exception as e:
             logger.error(f"[{provider_name}] Read/Parse Error {rel_path}: {e}")
-            print(f"❌ Read/Parse Error: {rel_path}")
+            print(f"❌ [{provider_name}] Read/Parse Error: {rel_path}")
             recorder.record_failure(abs_path)
             file_queue.task_done()
             continue
@@ -341,7 +346,7 @@ def translate_worker(provider: Dict):
 
         if not success:
             logger.error(f"[{provider_name}] Failed {rel_path}")
-            print(f"❌ Failed: {rel_path}")
+            print(f"❌ [{provider_name}] Failed: {rel_path}")
             recorder.record_failure(abs_path)
             file_queue.task_done()
             time.sleep(rate_delay)
@@ -405,12 +410,12 @@ def translate_worker(provider: Dict):
                 f.write(final_translated_content)
             
             logger.info(f"[{provider_name}] Success {rel_path} -> {save_path}")
-            print(f"✅ Translated: {rel_path}") # 只打印成功
+            print(f"✅ [{provider_name}] Translated: {rel_path}") # 只打印成功
             recorder.record_success(abs_path)
             
         except Exception as e:
             logger.error(f"[{provider_name}] Write Error {save_path}: {e}")
-            print(f"❌ Write Error: {save_path}")
+            print(f"❌ [{provider_name}] Write Error: {save_path}")
             recorder.record_failure(abs_path)
 
         file_queue.task_done()
