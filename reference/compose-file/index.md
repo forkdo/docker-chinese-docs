@@ -188,7 +188,7 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 </div>
 
 
-- [Version and name top-level elements](/reference/compose-file/version-and-name/)
+- [版本和名称顶级元素](/reference/compose-file/version-and-name/)
 
 - [在 Docker Compose 中定义服务](/reference/compose-file/services/)
 

@@ -6,11 +6,11 @@
 
 
   <title>
-    Version and name top-level elements | Docker Docs
+    版本和名称顶级元素 | Docker Docs
   </title>
 
 
-<meta name="description" content="Understand when and if to set the version and name top-level element" />
+<meta name="description" content="了解何时以及是否设置版本和名称顶级元素" />
 <meta
   name="keywords"
   content="compose, compose, specification, services, compose, file, reference"
@@ -22,12 +22,12 @@
 <meta name="theme-color" content="#2496ed" />
 
 
-<meta name="twitter:title" itemprop="title name" content="Version and name top-level elements" />
+<meta name="twitter:title" itemprop="title name" content="版本和名称顶级元素" />
 <meta
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="Understand when and if to set the version and name top-level element"
+  content="了解何时以及是否设置版本和名称顶级元素"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -38,8 +38,8 @@
   content="/images/thumbnail.webp"
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
-<meta property="og:title" content="Version and name top-level elements" />
-<meta property="og:description" content="Understand when and if to set the version and name top-level element" />
+<meta property="og:title" content="版本和名称顶级元素" />
+<meta property="og:description" content="了解何时以及是否设置版本和名称顶级元素" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-07-09 15:17:42 &#43;0100 &#43;0100"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"Version and name top-level elements\"","description":"\"Understand when and if to set the version and name top-level element\"","url":"\/reference\/compose-file\/version-and-name\/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"版本和名称顶级元素\"","description":"\"了解何时以及是否设置版本和名称顶级元素\"","url":"\/reference\/compose-file\/version-and-name\/"}</script>
 
 
   
@@ -10062,10 +10062,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/reference/compose-file/version-and-name/"
-        title="Version and name top-level elements"
+        title="版本和名称顶级元素"
       >
         
-  Version and name top-level elements
+  版本和名称顶级元素
 
       </a>
     </li>
@@ -11118,12 +11118,12 @@ if (resultsLength > 5) {
   <span
     data-pagefind-meta="breadcrumbs:主页 / 参考 / Compose 文件参考"
     class="truncate"
-    >Version and name top-level elements</span
+    >版本和名称顶级元素</span
   >
 </nav>
 
     <div class="flex items-start justify-between">
-      <h1 data-pagefind-weight="10">Version and name top-level elements</h1>
+      <h1 data-pagefind-weight="10">版本和名称顶级元素</h1>
       <div class="md-dropdown ml-auto hidden lg:block">
         <details id="markdownDropdown" class="ml-3 group relative z-10 inline-block" data-heap-id="markdown-dropdown">
     <summary
@@ -11268,13 +11268,13 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#version-top-level-element-obsolete"
-            >Version top-level element (obsolete)</a
+          <a class="link lg:no-underline" href="#%e7%89%88%e6%9c%ac%e9%a1%b6%e7%ba%a7%e5%85%83%e7%b4%a0%e5%b7%b2%e5%bc%83%e7%94%a8"
+            >版本顶级元素（已弃用）</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#name-top-level-element"
-            >Name top-level element</a
+          <a class="link lg:no-underline" href="#%e5%90%8d%e7%a7%b0%e9%a1%b6%e7%ba%a7%e5%85%83%e7%b4%a0"
+            >名称顶级元素</a
           >
         </li>
   </ul>
@@ -11284,9 +11284,9 @@ if (resultsLength > 5) {
       <hr />
     </div>
     
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="version-top-level-element-obsolete">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#version-top-level-element-obsolete">
-    Version top-level element (obsolete)
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="版本顶级元素已弃用">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%89%88%e6%9c%ac%e9%a1%b6%e7%ba%a7%e5%85%83%e7%b4%a0%e5%b7%b2%e5%bc%83%e7%94%a8">
+    版本顶级元素（已弃用）
   </a>
 </h2>
 
@@ -11308,25 +11308,23 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>The top-level <code>version</code> property is defined by the Compose Specification for backward compatibility. It is only informative and you'll receive a warning message that it is obsolete if used.</p>
+      <p>顶级 <code>version</code> 属性由 Compose 规范定义，用于向后兼容。该属性仅用于提供信息，如果使用，你将收到一条关于其已弃用的警告消息。</p>
     </div>
   </blockquote>
 
-<p>Compose always uses the most recent schema to validate the Compose file, regardless of the <code>version</code> field.</p>
-<p>Compose validates whether it can fully parse the Compose file. If some fields are unknown, typically
-because the Compose file was written with fields defined by a newer version of the Specification, you'll receive a warning message.</p>
+<p>无论 <code>version</code> 字段如何设置，Compose 始终使用最新的 schema 来验证 Compose 文件。</p>
+<p>Compose 会验证它是否可以完全解析 Compose 文件。如果某些字段未知，通常是因为 Compose 文件是由较新版本的规范中定义的字段编写的，你将会收到一条警告消息。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="name-top-level-element">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#name-top-level-element">
-    Name top-level element
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="名称顶级元素">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%8d%e7%a7%b0%e9%a1%b6%e7%ba%a7%e5%85%83%e7%b4%a0">
+    名称顶级元素
   </a>
 </h2>
 
-<p>The top-level <code>name</code> property is defined by the Compose Specification as the project name to be used if you don't set one explicitly.</p>
-<p>Compose offers a way for you to override this name, and sets a
-default project name to be used if the top-level <code>name</code> element is not set.</p>
-<p>Whenever a project name is defined by top-level <code>name</code> or by some custom mechanism, it is exposed for
-<a class="link" href="/reference/compose-file/interpolation/">interpolation</a> and environment variable resolution as <code>COMPOSE_PROJECT_NAME</code></p>
+<p>顶级 <code>name</code> 属性由 Compose 规范定义，用作在你未显式设置项目名称时使用的项目名称。</p>
+<p>Compose 提供了一种让你覆盖此名称的方法，并在未设置顶级 <code>name</code> 元素时设置一个默认的项目名称。</p>
+<p>无论项目名称是由顶级 <code>name</code> 还是某些自定义机制定义的，它都会以 <code>COMPOSE_PROJECT_NAME</code> 的形式暴露出来，用于
+<a class="link" href="/reference/compose-file/interpolation/">插值</a> 和环境变量解析。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11368,10 +11366,10 @@ default project name to be used if the top-level <code>name</code> element is no
     </div>
   </div>
 </div>
-<p>For more information on other ways to name Compose projects, see 
+<p>有关命名 Compose 项目的其他方式的更多信息，请参阅 
     
   
-  <a class="link" href="/compose/how-tos/project-name/">Specify a project name</a>.</p>
+  <a class="link" href="/compose/how-tos/project-name/">指定项目名称</a>。</p>
 
   </article>
   <div class="-mt-8 hidden min-w-48 flex-1 lg:block">
@@ -11429,13 +11427,13 @@ default project name to be used if the top-level <code>name</code> element is no
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#version-top-level-element-obsolete"
-            >Version top-level element (obsolete)</a
+          <a class="link lg:no-underline" href="#%e7%89%88%e6%9c%ac%e9%a1%b6%e7%ba%a7%e5%85%83%e7%b4%a0%e5%b7%b2%e5%bc%83%e7%94%a8"
+            >版本顶级元素（已弃用）</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#name-top-level-element"
-            >Name top-level element</a
+          <a class="link lg:no-underline" href="#%e5%90%8d%e7%a7%b0%e9%a1%b6%e7%ba%a7%e5%85%83%e7%b4%a0"
+            >名称顶级元素</a
           >
         </li>
   </ul>

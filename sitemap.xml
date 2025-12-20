@@ -296,12 +296,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/reference/compose-file/version-and-name/</loc>
-        <lastmod>2025-07-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc>/security/access-tokens/</loc>
         <lastmod>2025-08-15</lastmod>
         <changefreq>monthly</changefreq>
@@ -706,6 +700,12 @@
       <url>
         <loc>/extensions/extensions-sdk/extensions/labels/</loc>
         <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/compose-file/version-and-name/</loc>
+        <lastmod>2025-07-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>

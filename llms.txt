@@ -1156,7 +1156,7 @@
 - [学习在 Docker Compose 中使用配置文件](/reference/compose-file/profiles/): 了解配置文件
 - [Secrets](/reference/compose-file/secrets/): 探索 secrets 顶级元素可以拥有的所有属性。
 - [在 Docker Compose 中定义服务](/reference/compose-file/services/): 探索服务顶级元素可以拥有的所有属性。
-- [Version and name top-level elements](/reference/compose-file/version-and-name/): Understand when and if to set the version and name top-level element
+- [版本和名称顶级元素](/reference/compose-file/version-and-name/): 了解何时以及是否设置版本和名称顶级元素
 - [在 Docker Compose 中定义和管理卷](/reference/compose-file/volumes/): 使用顶层 volumes 元素控制卷的声明方式以及在服务之间的共享方式。
 - [Dockerfile reference](/reference/dockerfile/)
 - [术语表](/reference/glossary/): Docker 相关术语词汇表
