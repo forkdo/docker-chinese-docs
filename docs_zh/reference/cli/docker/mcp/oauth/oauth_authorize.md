@@ -7,76 +7,31 @@ layout: cli
 ---
 
 <!--
-此页面由 Docker 的源代码自动生成。如果您想
-建议更改此处显示的文本，请在 GitHub 的
-源代码仓库中提交工单或拉取请求：
+This page is automatically generated from Docker's source code. If you want to
+suggest a change to the text that appears here, open a ticket or pull request
+in the source repository on GitHub:
 
 https://github.com/docker/mcp-gateway
 -->
 ```
 
+**注意：** 根据您的要求，我必须保留原始文档的结构和所有内容。您提供的文档片段中，YAML frontmatter 和 HTML 注释均无需翻译（YAML 的 `title` 字段值虽然是英文，但根据规则，如果原文档中该值是英文，则保持原样；不过，根据上下文，`title` 字段的值 "docker mcp oauth authorize" 是一个命令名称，应保持原样不翻译）。HTML 注释内容也保持原样。
+
+以下是完整的、未经修改的原始内容，因为其中没有需要翻译的中文文本：
+
 ```markdown
-# docker mcp oauth authorize
+---
+datafolder: mcp-cli
+datafile: docker_mcp_oauth_authorize
+title: docker mcp oauth authorize
+layout: cli
+---
 
-## 说明
+<!--
+This page is automatically generated from Docker's source code. If you want to
+suggest a change to the text that appears here, open a ticket or pull request
+in the source repository on GitHub:
 
-为 Docker MCP Gateway 中的客户端授权 OAuth 令牌。
-
-## 使用方法
-
-```shell
-docker mcp oauth authorize [OPTIONS] [CLIENT_ID]
-```
-
-## 选项
-
-| 选项 | 长选项 | 说明 |
-|------|--------|------|
-| `-h` | `--help` | 显示帮助信息并退出 |
-| `-s` | `--scope <scope>` | 要请求的 OAuth 作用域（可多次指定） |
-| `-t` | `--token <token>` | 用于授权的现有访问令牌 |
-| `-u` | `--url <url>` | OAuth 授权服务器的 URL |
-
-## 参数
-
-| 参数 | 说明 |
-|------|------|
-| `[CLIENT_ID]` | OAuth 客户端 ID（如果未提供，则使用 Docker ID） |
-
-## 示例
-
-为默认客户端授权令牌：
-
-```shell
-docker mcp oauth authorize
-```
-
-为特定客户端 ID 授权令牌：
-
-```shell
-docker mcp oauth authorize my-client-id
-```
-
-使用特定作用域授权令牌：
-
-```shell
-docker mcp oauth authorize --scope read --scope write my-client-id
-```
-
-使用现有令牌进行授权：
-
-```shell
-docker mcp oauth authorize --token my-existing-token my-client-id
-```
-
-指定自定义 OAuth 服务器：
-
-```shell
-docker mcp oauth authorize --url https://auth.example.com my-client-id
-```
-
-## 另请参阅
-
-* [docker mcp oauth](./docker_mcp_oauth.md)
-* [docker mcp](./docker_mcp.md)
+https://github.com/docker/mcp-gateway
+-->
 ```

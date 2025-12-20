@@ -2,15 +2,14 @@
 title: 容器化 Java 应用程序
 linkTitle: 容器化您的应用
 weight: 10
-keywords: java, containerize, initialize, maven, build
 description: 学习如何将 Java 应用程序容器化。
+keywords: java, containerize, initialize, maven, build
 aliases:
-  - /language/java/build-images/
-  - /language/java/run-containers/
-  - /language/java/containerize/
-  - /guides/language/java/containerize/
+- /language/java/build-images/
+- /language/java/run-containers/
+- /language/java/containerize/
+- /guides/language/java/containerize/
 ---
-
 ## 先决条件
 
 - 您已安装最新版本的 [Docker Desktop](/get-started/get-docker.md)。

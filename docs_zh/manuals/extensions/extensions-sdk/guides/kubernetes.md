@@ -1,5 +1,5 @@
 ---
-title: 通过扩展与 Kubernetes 交互
+title: 从扩展与 Kubernetes 交互
 linkTitle: 与 Kubernetes 交互
 description: 如何从扩展连接到 Kubernetes 集群
 keywords: Docker, Extensions, sdk, Kubernetes
@@ -8,33 +8,33 @@ aliases:
  - /desktop/extensions-sdk/guides/kubernetes/
 ---
 
-Extensions SDK 并未提供任何 API 方法来直接与 Docker Desktop 托管的 Kubernetes 集群或使用其他工具（如 KinD）创建的集群进行交互。但是，本页提供了一种方法，让您可以通过其他 SDK API 从扩展中间接地与 Kubernetes 集群进行交互。
+Extensions SDK 不提供任何直接与 Docker Desktop 管理的 Kubernetes 集群或其他使用 KinD 等工具创建的集群进行交互的 API 方法。不过，本页面提供了一种方法，让您可以通过其他 SDK API 从扩展中间接与 Kubernetes 集群进行交互。
 
-如果您希望请求一个能直接与 Docker Desktop 托管的 Kubernetes 交互的 API，可以在 Extensions SDK GitHub 仓库中为 [此议题](https://github.com/docker/extensions-sdk/issues/181) 点赞。
+如需请求可直接与 Docker Desktop 管理的 Kubernetes 集群交互的 API，您可以在 Extensions SDK GitHub 仓库中为此 [议题](https://github.com/docker/extensions-sdk/issues/181) 投票。
 
 ## 先决条件
 
-### 开启 Kubernetes
+### 启用 Kubernetes
 
-您可以使用 Docker Desktop 内置的 Kubernetes 来启动一个 Kubernetes 单节点集群。
-`kubeconfig` 文件用于在与 `kubectl` 命令行工具或其他客户端结合使用时，配置对 Kubernetes 的访问。
-Docker Desktop 会方便地在用户的主目录下提供一个本地预配置的 `kubeconfig` 文件和 `kubectl` 命令。对于希望从 Docker Desktop 利用 Kubernetes 的用户来说，这是一种快速实现访问的便捷方式。
+您可以使用 Docker Desktop 内置的 Kubernetes 功能来启动一个单节点 Kubernetes 集群。
+`kubeconfig` 文件用于配置对 Kubernetes 的访问权限，通常与 `kubectl` 命令行工具或其他客户端配合使用。
+Docker Desktop 会在用户的 home 目录下方便地提供一个本地预配置的 `kubeconfig` 文件和 `kubectl` 命令。这对于希望利用 Docker Desktop 使用 Kubernetes 的用户来说，是一种快速入门的便捷方式。
 
-## 将 `kubectl` 作为扩展的一部分分发
+## 将 `kubectl` 作为扩展的一部分打包
 
-如果您的扩展需要与 Kubernetes 集群交互，建议将 `kubectl` 命令行工具包含在您的扩展中。这样做后，安装您扩展的用户会在其主机上获得 `kubectl`。
+如果您的扩展需要与 Kubernetes 集群交互，建议您将 `kubectl` 命令行工具作为扩展的一部分包含进来。这样，安装您扩展的用户就会在主机上安装 `kubectl`。
 
-要了解如何为多个平台将 `kubectl` 命令行工具作为 Docker 扩展镜像的一部分进行分发，请参阅 [构建多架构扩展](../extensions/extensions/multi-arch.md#adding-multi-arch-binaries)。
+要了解如何将适用于多个平台的 `kubectl` 命令行工具作为 Docker 扩展镜像的一部分打包，请参阅 [构建多架构扩展](../extensions/multi-arch.md#adding-multi-arch-binaries)。
 
 ## 示例
 
-以下代码片段已整合在 [Kubernetes 示例扩展](https://github.com/docker/extensions-sdk/tree/main/samples/kubernetes-sample-extension) 中。它展示了如何通过分发 `kubectl` 命令行工具来与 Kubernetes 集群进行交互。
+以下代码片段已在 [Kubernetes 示例扩展](https://github.com/docker/extensions-sdk/tree/main/samples/kubernetes-sample-extension) 中整合。它展示了如何通过打包 `kubectl` 命令行工具与 Kubernetes 集群进行交互。
 
-### 检查 Kubernetes API 服务器是否可访问
+### 检查 Kubernetes API 服务器是否可达
 
-一旦 `kubectl` 命令行工具被添加到扩展镜像的 `Dockerfile` 中，并在 `metadata.json` 中定义后，当扩展安装时，Extensions 框架会将 `kubectl` 部署到用户的主机上。
+一旦在 `Dockerfile` 中将 `kubectl` 命令行工具添加到扩展镜像中，并在 `metadata.json` 中定义，Extensions 框架就会在扩展安装时将 `kubectl` 部署到用户的主机上。
 
-您可以使用 JS API `ddClient.extension.host?.cli.exec` 来执行 `kubectl` 命令，例如，检查在特定上下文下 Kubernetes API 服务器是否可访问：
+您可以使用 JS API `ddClient.extension.host?.cli.exec` 来发出 `kubectl` 命令，例如，检查在特定上下文下 Kubernetes API 服务器是否可达：
 
 ```typescript
 const output = await ddClient.extension.host?.cli.exec("kubectl", [
@@ -73,15 +73,15 @@ const output = await ddClient.extension.host?.cli.exec("kubectl", [
 
 ## 持久化 kubeconfig 文件
 
-以下是从主机文件系统持久化和读取 `kubeconfig` 文件的不同方法。用户可以随时向 `kubeconfig` 文件添加、编辑或删除 Kubernetes 上下文。
+以下是在主机文件系统中持久化和读取 `kubeconfig` 文件的不同方法。用户可以随时向 `kubeconfig` 文件添加、编辑或删除 Kubernetes 上下文。
 
 > 警告
 >
-> `kubeconfig` 文件非常敏感，如果被获取，可能会让攻击者获得对 Kubernetes 集群的管理访问权限。
+> `kubeconfig` 文件非常敏感，如果被攻击者获取，可能会获得对 Kubernetes 集群的管理权限。
 
 ### 扩展的后端容器
 
-如果您需要扩展在读取 `kubeconfig` 文件后对其进行持久化，您可以使用一个后端容器，该容器暴露一个 HTTP POST 端点，将文件内容存储在内存中或容器文件系统的某个位置。这样，如果用户从扩展导航到 Docker Desktop 的其他部分然后再返回，您就不需要再次读取 `kubeconfig` 文件。
+如果您需要扩展在读取 `kubeconfig` 文件后仍能持久化该文件，可以设置一个后端容器，暴露一个 HTTP POST 端点来存储文件内容，可以存储在内存中或容器文件系统的某个位置。这样，即使用户从扩展导航到 Docker Desktop 的其他部分，然后再返回，您也不需要再次读取 `kubeconfig` 文件。
 
 ```typescript
 export const updateKubeconfig = async () => {
@@ -111,8 +111,8 @@ export const updateKubeconfig = async () => {
 
 ### Docker 卷
 
-卷是持久化 Docker 容器生成和使用的数据的首选机制。您可以利用它们来持久化 `kubeconfig` 文件。
-通过将 `kubeconfig` 持久化在卷中，当扩展面板关闭时，您就不需要再次读取 `kubeconfig` 文件。这使得它成为在从扩展导航到 Docker Desktop 其他部分时持久化数据的理想选择。
+卷是持久化由 Docker 容器生成和使用的数据的推荐机制。您可以利用卷来持久化 `kubeconfig` 文件。
+通过将 `kubeconfig` 持久化到卷中，当扩展面板关闭时，您就不需要再次读取 `kubeconfig` 文件。这使得它在从扩展导航到 Docker Desktop 其他部分时持久化数据非常理想。
 
 ```typescript
 const kubeConfig = await ddClient.extension.host?.cli.exec("kubectl", [
@@ -141,8 +141,8 @@ await ddClient.docker.cli.exec("run", [
 
 ### 扩展的 `localStorage`
 
-`localStorage` 是浏览器 Web 存储的机制之一。它允许用户以键值对的形式将数据保存在浏览器中，以供以后使用。
-`localStorage` 在浏览器（扩展面板）关闭时不会清除数据。这使得它成为在从扩展导航到 Docker Desktop 其他部分时持久化数据的理想选择。
+`localStorage` 是浏览器 Web 存储的一种机制。它允许用户将数据以键值对的形式保存在浏览器中，以便日后使用。
+`localStorage` 在浏览器（扩展面板）关闭时不会清除数据。这使得它在从扩展导航到 Docker Desktop 其他部分时持久化数据非常理想。
 
 ```typescript
 localStorage.setItem("kubeconfig", kubeConfig);

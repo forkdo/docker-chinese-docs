@@ -11,6 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from openai import OpenAI
 import tomllib
+import yaml
 
 # ==================== 默认系统提示词 ====================
 DEFAULT_SYSTEM_PROMPT = """
@@ -26,7 +27,7 @@ DEFAULT_SYSTEM_PROMPT = """
    - 如果原文档中已有锚点定义，则在翻译该锚点对应的字符串值时保留锚点标记（如 &desc）；别名引用（如 *desc）保持原样不变。
    - 如果原文档中没有锚点或别名，则翻译后绝对不得新增任何锚点、别名、params 块或其他额外字段。
    - 绝对不得添加、删除或修改任何原有字段、锚点、别名或 params 等结构，仅对需要翻译的字符串值进行翻译。
-   - aliases、keywords、tags 等列表字段的值，如果是字符串数组，按原文档格式保留（保持原有引号使用情况，不统一添加或移除引号）。
+   - `aliases`、`keywords`、`tags` 等列表字段中的值，**无论原始值是英文还是中文，都保持原样，绝对不要进行任何翻译或改动。**
 5. 翻译要准确、专业、易懂，技术术语使用业界通用中文表达。
 6. 只输出翻译后的完整 Markdown 内容，不要添加任何说明、注释或多余文本。
 """
@@ -59,6 +60,9 @@ EXCLUDE_DIRS = config["exclude_dirs"]
 SYSTEM_PROMPT = config["system_prompt"]
 MAX_TOKENS = config["max_tokens"]
 LOG_FILE = config["log_file"]
+
+# YAML Frontmatter fields to preserve (do not translate their values)
+PRESERVE_FIELDS = ["tags", "keywords", "aliases"]
 
 # ==================== 日志与记录管理 ====================
 # Setup Logging
@@ -162,34 +166,52 @@ def test_provider(provider: Dict) -> bool:
     except:
         return False
 
-PROVIDERS = []
-print("Checking API Providers...")
-for p in config["raw_providers"]:
-    api_key = p["api_key"].strip()
-    base_url = p["base_url"].strip().rstrip("/")
-    if not api_key or not base_url: continue
-    
-    provider_config = {
-        "name": p.get("name", p.get("model", "unknown")),
-        "api_key": api_key,
-        "model": p.get("model", "unknown").strip(),
-        "base_url": base_url,
-        "concurrency": max(1, int(p.get("concurrency", 1))),
-        "rate_delay": float(p.get("rate_delay", 3.0))
-    }
-    
-    if test_provider(provider_config):
-        print(f"✅ [{provider_config['name']}] Ready")
-        PROVIDERS.append(provider_config)
+PROVIDERS = [] # Global list to be populated
+
+def initialize_providers(skip_check: bool):
+    global PROVIDERS # Declare intent to modify global PROVIDERS list
+    if skip_check:
+        print("Skipping API Provider checks.")
+        # Just load providers without testing, assuming they are valid
+        for p in config["raw_providers"]:
+            api_key = p["api_key"].strip()
+            base_url = p["base_url"].strip().rstrip("/")
+            if not api_key or not base_url: continue
+            PROVIDERS.append({
+                "name": p.get("name", p.get("model", "unknown")),
+                "api_key": api_key,
+                "model": p.get("model", "unknown").strip(),
+                "base_url": base_url,
+                "concurrency": max(1, int(p.get("concurrency", 1))),
+                "rate_delay": float(p.get("rate_delay", 3.0))
+            })
     else:
-        print(f"❌ [{provider_config['name']}] Unavailable")
+        print("Checking API Providers...")
+        for p in config["raw_providers"]:
+            api_key = p["api_key"].strip()
+            base_url = p["base_url"].strip().rstrip("/")
+            if not api_key or not base_url: continue
+            
+            provider_config = {
+                "name": p.get("name", p.get("model", "unknown")),
+                "api_key": api_key,
+                "model": p.get("model", "unknown").strip(),
+                "base_url": base_url,
+                "concurrency": max(1, int(p.get("concurrency", 1))),
+                "rate_delay": float(p.get("rate_delay", 3.0))
+            }
+            
+            if test_provider(provider_config):
+                print(f"✅ [{provider_config['name']}] Ready")
+                PROVIDERS.append(provider_config)
+            else:
+                print(f"❌ [{provider_config['name']}] Unavailable")
 
-if not PROVIDERS:
-    print("Error: No providers available.")
-    exit(1)
+    if not PROVIDERS:
+        print("Error: No providers available.")
+        exit(1)
 
-print(f"Total {len(PROVIDERS)} providers available.")
-
+    print(f"Total {len(PROVIDERS)} providers available.")
 # ==================== 全局状态 ====================
 file_queue = Queue()
 SINGLE_FILE_MODE = False
@@ -221,17 +243,75 @@ def translate_worker(provider: Dict):
 
         # print(f"[{provider_name}] Start: {rel_path}") # 减少刷屏
 
+        # Prepare frontmatter and body
+        original_frontmatter_str = ""
+        original_body = ""
+        
+        frontmatter_for_llm_dict = {} # Frontmatter without preserved fields, for LLM
+        preserved_data = {} # Data to be re-inserted (from English frontmatter)
+
+        # Get corresponding English file path
+        # If ROOT_DIR is /root/test/docker-chinese-docs
+        # and file_path is /root/test/docker-chinese-docs/docs_zh/manuals/foo.md
+        # then rel_path is docs_zh/manuals/foo.md
+        # english_abs_path should be /root/test/docker-chinese-docs/docs/manuals/foo.md
+        # Corrected mapping:
+        english_abs_path = os.path.join(ROOT_DIR, rel_path.replace("docs_zh", "docs", 1))
+        
+        english_frontmatter = {}
+        has_english_frontmatter = False
+
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
+            # Try to load English frontmatter for preserving fields
+            if os.path.exists(english_abs_path):
+                with open(english_abs_path, "r", encoding="utf-8") as f_en:
+                    english_content = f_en.read()
+                if english_content.startswith("---"):
+                    parts_en = english_content.split("---", 2)
+                    if len(parts_en) == 3:
+                        english_frontmatter = yaml.safe_load(parts_en[1].strip())
+                        has_english_frontmatter = True
+                        # Extract preserved data from English frontmatter
+                        preserved_data = {field: english_frontmatter.get(field) for field in PRESERVE_FIELDS if english_frontmatter.get(field) is not None}
+            else:
+                logger.warning(f"[{provider_name}] English equivalent not found for {rel_path} at {english_abs_path}. Cannot preserve fields from English source.")
+
+            # Load Chinese content and frontmatter
+            with open(file_path, "r", encoding="utf-8") as f_zh:
+                content = f_zh.read()
+            
+            # Split frontmatter and body from Chinese content
+            if content.startswith("---"):
+                parts_zh = content.split("---", 2)
+                if len(parts_zh) == 3:
+                    original_frontmatter_str = parts_zh[1].strip()
+                    original_body = parts_zh[2].strip()
+                    
+                    current_chinese_frontmatter = yaml.safe_load(original_frontmatter_str)
+
+                    # Create frontmatter for LLM: start with current Chinese frontmatter, but remove PRESERVE_FIELDS
+                    frontmatter_for_llm_dict = current_chinese_frontmatter.copy()
+                    for field in PRESERVE_FIELDS:
+                        if field in frontmatter_for_llm_dict:
+                            del frontmatter_for_llm_dict[field]
+
+                    # Construct content for LLM: only translated frontmatter + body
+                    modified_content_for_llm = "---\n" + yaml.dump(frontmatter_for_llm_dict, allow_unicode=True, sort_keys=False) + "---\n" + original_body
+                else: # No valid frontmatter, treat as plain markdown
+                    original_body = content
+                    modified_content_for_llm = content
+            else: # No frontmatter, treat as plain markdown
+                original_body = content
+                modified_content_for_llm = content
+
         except Exception as e:
-            logger.error(f"[{provider_name}] Read Error {rel_path}: {e}")
-            print(f"❌ Read Error: {rel_path}")
+            logger.error(f"[{provider_name}] Read/Parse Error {rel_path}: {e}")
+            print(f"❌ Read/Parse Error: {rel_path}")
             recorder.record_failure(abs_path)
             file_queue.task_done()
             continue
-
-        if not FORCE_TRANSLATE and is_likely_chinese(content):
+        
+        if not FORCE_TRANSLATE and is_likely_chinese(original_body): # Check original_body if frontmatter was stripped
             logger.info(f"[{provider_name}] Skip (Chinese): {rel_path}")
             recorder.record_success(abs_path) # 标记为已处理
             file_queue.task_done()
@@ -246,7 +326,7 @@ def translate_worker(provider: Dict):
                     model=provider["model"],
                     messages=[
                         {"role": "system", "content": SYSTEM_PROMPT},
-                        {"role": "user", "content": content}
+                        {"role": "user", "content": modified_content_for_llm}
                     ],
                     temperature=0.3,
                     max_tokens=MAX_TOKENS,
@@ -266,7 +346,42 @@ def translate_worker(provider: Dict):
             file_queue.task_done()
             time.sleep(rate_delay)
             continue
+        
+        # Recombine translated content with preserved frontmatter fields from English source
+        final_translated_content = translated_text
+        if original_frontmatter_str: # If original file had frontmatter
+            translated_body = translated_text # Default to full LLM response as body
+            translated_frontmatter_from_llm = {} # Frontmatter actually returned by LLM
+            
+            # Attempt to split LLM response into frontmatter and body
+            if translated_text.startswith("---"):
+                parts_llm = translated_text.split("---", 2)
+                if len(parts_llm) == 3:
+                    try:
+                        translated_frontmatter_from_llm = yaml.safe_load(parts_llm[1].strip())
+                        translated_body = parts_llm[2].strip()
+                    except yaml.YAMLError:
+                        logger.warning(f"[{provider_name}] LLM returned invalid YAML frontmatter for {rel_path}. Processing as body only for robustness.")
+                        translated_body = translated_text # Fallback: treat entire response as body
+                else: # LLM returned --- but not valid structure
+                    translated_body = translated_text
 
+            # Start with the frontmatter that was sent to LLM (already has original structure and translated non-preserved fields)
+            final_frontmatter_dict = frontmatter_for_llm_dict.copy()
+            
+            # Merge any successfully translated parts of the frontmatter from LLM's response
+            # This handles fields like 'title', 'description' that LLM was supposed to translate
+            for key, value in translated_frontmatter_from_llm.items():
+                final_frontmatter_dict[key] = value
+
+            # Re-insert preserved fields (from English source) into the final frontmatter dictionary
+            # These values take precedence.
+            for field, value in preserved_data.items():
+                if value is not None:
+                    final_frontmatter_dict[field] = value
+            
+            final_translated_content = "---\n" + yaml.dump(final_frontmatter_dict, allow_unicode=True, sort_keys=False) + "---\n" + translated_body
+        
         # 保存
         save_path = file_path
         if OUTPUT_MODE == "new_folder":
@@ -277,7 +392,7 @@ def translate_worker(provider: Dict):
 
         try:
             with open(save_path, "w", encoding="utf-8") as f:
-                f.write(translated_text)
+                f.write(final_translated_content)
             
             logger.info(f"[{provider_name}] Success {rel_path} -> {save_path}")
             print(f"✅ Translated: {rel_path}") # 只打印成功
@@ -310,13 +425,17 @@ def main():
     parser.add_argument("--config", default="config.toml")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--retry-failed", action="store_true")
+    parser.add_argument("--no-provider-check", action="store_true", help="Skip checking API provider availability.")
 
     args = parser.parse_args()
 
     global FORCE_TRANSLATE, RETRY_FAILED_MODE, SINGLE_FILE_MODE
     FORCE_TRANSLATE = args.force
     RETRY_FAILED_MODE = args.retry_failed
+    # NO_PROVIDER_CHECK = args.no_provider_check # Removed, passed directly
 
+    initialize_providers(args.no_provider_check) # Call after parsing args
+    
     if args.file:
         SINGLE_FILE_MODE = True
         if not PROVIDERS: return

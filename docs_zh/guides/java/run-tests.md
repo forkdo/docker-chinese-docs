@@ -2,13 +2,12 @@
 title: 运行 Java 测试
 linkTitle: 运行测试
 weight: 30
-keywords: Java, 构建, 测试
 description: 如何构建并运行 Java 测试
+keywords: Java, build, test
 aliases:
-  - /language/java/run-tests/
-  - /guides/language/java/run-tests/
+- /language/java/run-tests/
+- /guides/language/java/run-tests/
 ---
-
 ## 前提条件
 
 完成本指南的所有前几节，从 [容器化 Java 应用程序](containerize.md) 开始。

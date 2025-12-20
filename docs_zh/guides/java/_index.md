@@ -1,20 +1,19 @@
 ---
 title: Java 语言专属指南
 linkTitle: Java
-keywords: java, 入门
 description: 使用 Docker 容器化 Java 应用
-summary: |
-  本指南演示如何使用 Docker 容器化 Java 应用程序。
+summary: 本指南演示如何使用 Docker 容器化 Java 应用程序。
 toc_min: 1
 toc_max: 2
-aliases:
-  - /language/java/
-  - /guides/language/java/
-languages: [java]
+languages:
+- java
 params:
   time: 20 分钟
+keywords: java, getting started
+aliases:
+- /language/java/
+- /guides/language/java/
 ---
-
 Java 入门指南将教你如何使用 Docker 创建容器化的 Spring Boot 应用程序。在本模块中，你将学习如何：
 
 - 使用 Maven 容器化并运行 Spring Boot 应用程序

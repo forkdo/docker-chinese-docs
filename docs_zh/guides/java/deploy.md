@@ -2,13 +2,12 @@
 title: 测试你的 Java 部署
 linkTitle: 测试你的部署
 weight: 50
-keywords: deploy, kubernetes, java
 description: 学习如何在本地使用 Kubernetes 进行开发
+keywords: deploy, kubernetes, java
 aliases:
-  - /language/java/deploy/
-  - /guides/language/java/deploy/
+- /language/java/deploy/
+- /guides/language/java/deploy/
 ---
-
 ## 前提条件
 
 - 完成本指南的所有先前部分，从[容器化你的应用](containerize.md)开始。

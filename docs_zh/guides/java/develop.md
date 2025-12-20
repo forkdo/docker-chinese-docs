@@ -2,13 +2,12 @@
 title: 使用容器进行 Java 开发
 linkTitle: 开发您的应用
 weight: 20
-keywords: Java, 本地, 开发, 运行,
 description: 了解如何在本地开发您的应用。
+keywords: Java, local, development, run,
 aliases:
-  - /language/java/develop/
-  - /guides/language/java/develop/
+- /language/java/develop/
+- /guides/language/java/develop/
 ---
-
 ## 先决条件
 
 请先完成[容器化您的应用](containerize.md)中的步骤，将您的应用容器化。

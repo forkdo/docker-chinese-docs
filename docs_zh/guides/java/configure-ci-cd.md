@@ -2,13 +2,12 @@
 title: 为 Java 应用程序配置 CI/CD
 linkTitle: 配置 CI/CD
 weight: 40
-keywords: java, CI/CD, 本地, 开发
 description: 了解如何为 Java 应用程序配置 CI/CD
+keywords: java, CI/CD, local, development
 aliases:
-  - /language/java/configure-ci-cd/
-  - /guides/language/java/configure-ci-cd/
+- /language/java/configure-ci-cd/
+- /guides/language/java/configure-ci-cd/
 ---
-
 ## 先决条件
 
 完成本指南前面的部分，从[容器化您的应用程序](containerize.md)开始。您必须拥有 [GitHub](https://github.com/signup) 账户和 [Docker](https://hub.docker.com/signup) 账户才能完成本部分。
