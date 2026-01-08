@@ -114,6 +114,7 @@ copy_docs_zh() {
         git clone https://github.com/docker/docs.git docsite
     fi
     patch_hugo_layouts
+    cp -r docs_zh/* docsite/content
 }
 
 # 本地测试
