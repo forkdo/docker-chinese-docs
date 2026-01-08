@@ -1,4 +1,5 @@
 # 在 WSL 上使用自定义内核
+
 Docker Desktop 依赖于 Microsoft 分发的默认 WSL 2 Linux 内核中内置的若干内核特性。因此，在 WSL 2 上为 Docker Desktop 使用自定义内核并未得到官方支持，并且可能导致 Docker Desktop 启动或运行时出现问题。
 
 然而，在某些情况下，可能有必要运行自定义内核；Docker Desktop 不会阻止其使用，并且一些用户已报告成功使用它们。

@@ -20,9 +20,9 @@ Docker Compose 中的环境变量和插值（interpolation）帮助您创建可�
 
 - [Docker Compose 中的环境变量优先级](/compose/how-tos/environment-variables/envvars-precedence/)
 
+- [在 Docker Compose 中配置预定义环境变量](/compose/how-tos/environment-variables/envvars/)
+
 - [在 Compose 文件中使用插值设置、使用和管理变量](/compose/how-tos/environment-variables/variable-interpolation/)
 
 - [Docker Compose 中处理环境变量的最佳实践](/compose/how-tos/environment-variables/best-practices/)
-
-- [](/compose/how-tos/environment-variables/envvars/)
 

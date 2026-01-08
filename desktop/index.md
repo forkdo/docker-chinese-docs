@@ -210,7 +210,7 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 
 - [修复 Mac 上的 Docker Desktop 启动问题](/desktop/cert-revoke-solution/)
 
-- [](/desktop/enterprise/)
+- [Docker Desktop 发行说明](/desktop/release-notes/)
 
-- [](/desktop/release-notes/)
+- [](/desktop/enterprise/)
 

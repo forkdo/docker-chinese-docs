@@ -179,6 +179,7 @@
 - [使用容器进行 React.js 开发](/guides/reactjs/develop/): 了解如何使用容器在本地开发 React.js 应用程序。
 - [在容器中运行 React.js 测试](/guides/reactjs/run-tests/): 了解如何在容器中运行 React.js 测试。
 - [使用 GitHub Actions 自动化构建](/guides/ruby/configure-github-actions/): 了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。
+- [容器化 Ruby on Rails 应用程序](/guides/ruby/containerize/): 了解如何容器化 Ruby on Rails 应用程序。
 - [测试您的 Ruby on Rails 部署](/guides/ruby/deploy/): 了解如何使用 Kubernetes 进行本地开发
 - [使用容器进行 Ruby on Rails 开发](/guides/ruby/develop/): 学习如何在本地开发你的 Ruby on Rails 应用程序。
 - [构建您的 Rust 镜像](/guides/rust/build-images/): 了解如何构建您的第一个 Rust Docker 镜像
@@ -232,6 +233,7 @@
 - [A2A 模式](/ai/cagent/integrations/a2a/): 通过 Agent-to-Agent 协议暴露 cagent 代理
 - [ACP 集成](/ai/cagent/integrations/acp/): 将你的编辑器或 IDE 配置为使用 cagent 代理作为编程助手
 - [MCP 模式](/ai/cagent/integrations/mcp/): 将 cagent 代理作为工具暴露给 Claude Desktop 和 Claude Code 等 MCP 客户端
+- [使用 Docker Model Runner 运行本地模型](/ai/cagent/local-models/): 使用 Docker Model Runner 在本地运行 AI 模型 - 无需 API 密钥
 - [模型提供商](/ai/cagent/model-providers/): 获取 API 密钥并为 cagent 配置云模型提供商
 - [RAG](/ai/cagent/rag/): RAG 如何为 cagent 智能体提供代码库和文档的访问能力
 - [CLI 参考](/ai/cagent/reference/cli/): cagent 命令行界面的完整参考
@@ -346,30 +348,39 @@
 - [使用默认的 Compose Bridge 转换](/compose/bridge/usage/): 了解如何使用默认的 Compose Bridge 转换将 Compose 文件转换为 Kubernetes 清单文件
 - [在 Compose Bridge 中使用 Docker Model Runner](/compose/bridge/use-model-runner/): 如何将 Docker Model Runner 与 Compose Bridge 结合使用，以实现一致的部署
 - [使用 Compose SDK](/compose/compose-sdk/): 使用 Compose SDK 将 Docker Compose 直接集成到您的应用程序中。
+- [Docker Compose 快速入门](/compose/gettingstarted/): 通过这个动手教程，学习如何使用 Docker Compose，从定义应用依赖到尝试各种命令。
 - [构建依赖镜像](/compose/how-tos/dependent-images/): 为共享定义的服务构建镜像
 - [Docker Compose 中处理环境变量的最佳实践](/compose/how-tos/environment-variables/best-practices/): 解释在 Compose 中设置、使用和管理环境变量的最佳方式
 - [Docker Compose 中的环境变量优先级](/compose/how-tos/environment-variables/envvars-precedence/): 说明 Compose 中环境变量解析方式的场景概览
+- [在 Docker Compose 中配置预定义环境变量](/compose/how-tos/environment-variables/envvars/): 预定义环境变量的配置方法
 - [在容器环境中设置环境变量](/compose/how-tos/environment-variables/set-environment-variables/): 如何使用 Compose 设置、使用和管理环境变量
 - [在 Compose 文件中使用插值设置、使用和管理变量](/compose/how-tos/environment-variables/variable-interpolation/): 如何在 Compose 文件中使用插值设置、使用和管理变量
 - [使用 Compose Watch](/compose/how-tos/file-watch/): 使用文件监视自动更新正在运行的服务
+- [为 Docker Compose 服务启用 GPU 访问](/compose/how-tos/gpu-support/): 了解如何配置 Docker Compose 以使用 NVIDIA GPU 运行基于 CUDA 的容器
 - [在 Compose 中使用生命周期钩子](/compose/how-tos/lifecycle/): 了解如何使用 Docker Compose 的生命周期钩子（如 post_start 和 pre_stop）来自定义容器行为。
 - [扩展你的 Compose 文件](/compose/how-tos/multiple-compose-files/extends/): 了解如何使用 Docker Compose 的 extends 属性在文件和项目之间重用服务配置。
 - [Include](/compose/how-tos/multiple-compose-files/include/): 如何使用 Docker Compose 的 include 顶级元素
 - [合并 Compose 文件](/compose/how-tos/multiple-compose-files/merge/): 了解如何合并 Compose 文件
+- [Compose 中的网络](/compose/how-tos/networking/): Docker Compose 如何在容器之间建立网络连接
 - [将 Docker Compose 应用程序打包为 OCI 工件进行部署](/compose/how-tos/oci-artifact/): 了解如何打包、发布和安全运行来自 OCI 兼容注册表的 Docker Compose 应用程序。
 - [在生产环境中使用 Compose](/compose/how-tos/production/): 了解如何为生产环境配置、部署和更新 Docker Compose 应用程序。
 - [在 Compose 中使用配置集](/compose/how-tos/profiles/): 如何在 Docker Compose 中使用配置集
+- [指定项目名称](/compose/how-tos/project-name/): 了解如何在 Compose 中设置自定义项目名称，以及理解每种方法的优先级。
 - [使用提供者服务](/compose/how-tos/provider-services/): 了解如何在 Docker Compose 中使用提供者服务，将外部功能集成到应用程序中
 - [控制 Compose 中的启动和关闭顺序](/compose/how-tos/startup-order/): 了解如何使用 depends_on 和健康检查在 Docker Compose 中管理服务的启动和关闭顺序。
 - [在 Docker Compose 中安全管理机密信息](/compose/how-tos/use-secrets/): 了解如何在 Docker Compose 中安全管理运行时和构建时的机密信息。
 - [安装 Docker Compose 插件](/compose/install/linux/): 分步指导如何在 Linux 上使用软件包仓库或手动方法安装 Docker Compose 插件。
 - [安装独立的 Docker Compose（旧版）](/compose/install/standalone/): 有关在 Linux 和 Windows Server 上安装旧版 Docker Compose 独立工具的说明
 - [卸载 Docker Compose](/compose/install/uninstall/): 如何卸载 Docker Compose
+- [Compose 的工作原理](/compose/intro/compose-application-model/): 了解 Docker Compose 的工作原理，从应用模型到 Compose 文件和 CLI，通过一个详细的示例进行说明。
 - [为什么使用 Compose？](/compose/intro/features-uses/): 了解 Docker Compose 在容器化应用程序开发和部署中的优势和典型用例
+- [Docker Compose 的历史和发展](/compose/intro/history/): 探索 Docker Compose 从 v1 到 v5 的演变，包括 CLI 变化、YAML 版本控制和 Compose 规范。
+- [发布说明](/compose/release-notes/)
 - [Docker Compose 常见问题解答](/compose/support-and-feedback/faq/): 关于 Docker Compose 的常见问题解答，包括 v1 与 v2 的对比、命令、关闭行为以及开发环境设置。
 - [提供反馈](/compose/support-and-feedback/feedback/): 找到适合您的 Docker Compose 反馈方式
 - [containerd 镜像存储](/desktop/features/containerd/): 如何在 Docker Desktop 中激活 containerd 集成功能
 - [使用 Docker Desktop CLI](/desktop/features/desktop-cli/): 如何使用 Docker Desktop CLI
+- [Docker Desktop for Windows 中的 GPU 支持](/desktop/features/gpu/): 如何在 Docker Desktop 中使用 GPU
 - [探索 Docker Desktop 上的网络操作指南](/desktop/features/networking/networking-how-tos/): 了解如何在 Docker Desktop 中连接容器到主机、跨容器连接，或通过代理和 VPN 进行连接。
 - [同步文件共享](/desktop/features/synchronized-file-sharing/): 了解如何在 Docker Desktop 中使用同步文件共享。
 - [在 Docker Desktop 中使用 USB/IP](/desktop/features/usbip/): 如何在 Docker Desktop 中使用 USB/IP
@@ -378,6 +389,7 @@
 - [最佳实践](/desktop/features/wsl/best-practices/): 在 WSL 2 中使用 Docker Desktop 的最佳实践
 - [在 WSL 上使用自定义内核](/desktop/features/wsl/custom-kernels/): 在 WSL 2 上将自定义内核与 Docker Desktop 配合使用
 - [使用 WSL](/desktop/features/wsl/use-wsl/): 如何使用 Docker 和 WSL 2 进行开发，以及了解 WSL 的 GPU 支持
+- [Docker Desktop 发行说明](/desktop/release-notes/): 查找适用于 Mac、Linux 和 Windows 的 Docker Desktop 发行说明。
 - [如何备份和恢复 Docker Desktop 数据](/desktop/settings-and-maintenance/backup-and-restore/)
 - [更改 Docker Desktop 设置](/desktop/settings-and-maintenance/settings/): 了解并更改 Docker Desktop 的设置
 - [Docker Desktop 允许列表](/desktop/setup/allow-list/): 组织内确保 Docker Desktop 正常运行所需的域名 URL 列表。
@@ -426,6 +438,12 @@
 - [安全软件开发生命周期](/dhi/core-concepts/ssdlc/): 了解 Docker Hardened Images 如何通过与扫描、签名和调试工具集成来支持安全的 SDLC。
 - [STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/core-concepts/stig/): 了解 Docker Hardened Images 如何提供支持 STIG 的容器镜像，并附带可验证的安全扫描证明，以满足政府和企业的合规要求。
 - [漏洞可利用性交换 (VEX)](/dhi/core-concepts/vex/): 了解 VEX 如何通过识别 Docker Hardened Images 中哪些漏洞实际可被利用，帮助您优先处理真实风险。
+- [Docker Hardened Images 可用类型](/dhi/explore/available/): 了解 Docker Hardened Images 目录中提供的不同镜像类型、发行版和变体。
+- [Docker 强化镜像的构建方式](/dhi/explore/build-process/): 了解 Docker 如何通过自动化、注重安全的流水线来构建、测试和维护 Docker 强化镜像。
+- [提供反馈](/dhi/explore/feedback/): 如何与 DHI 团队互动
+- [了解 Docker Hardened Images 的角色和职责](/dhi/explore/responsibility/): 了解使用 Docker Hardened Images 时，Docker、上游项目和您之间的职责划分。
+- [Docker 强化镜像如何进行测试](/dhi/explore/test/): 了解 Docker 强化镜像如何针对标准合规性、功能性和安全性进行自动测试。
+- [什么是加固镜像，为什么要使用它们？](/dhi/explore/what/): 了解什么是加固镜像、它的重要性，以及 Docker 加固镜像如何提供更强的安全性、合规性和运行效率。
 - [Docker Hardened Images 功能](/dhi/features/): Docker Hardened Images 为每个应用提供完全透明、最小攻击面和企业级安全——免费且开源。
 - [Docker Hardened Images 快速开始](/dhi/get-started/): 通过快速开始指南探索并运行 Docker Hardened Image。
 - [对比 Docker Hardened 镜像](/dhi/how-to/compare/): 了解如何对比 Docker Hardened 镜像与其他容器镜像，以评估安全性改进和差异。
@@ -448,6 +466,7 @@
 - [从 Alpine 或 Debian 迁移](/dhi/migration/migrate-from-doi/): 从 Docker 官方镜像迁移到 Docker Hardened 镜像的分步指南
 - [从 Wolfi 迁移](/dhi/migration/migrate-from-wolfi/): 从 Wolfi 发行版镜像迁移到 Docker 加固镜像的分步指南
 - [使用 Docker 的 AI 助手进行迁移](/dhi/migration/migrate-with-ai/): 使用 Docker 的 AI 助手自动将您的 Dockerfile 迁移至 Docker 强化镜像 (DHI)
+- [Docker Hardened Images 资源](/dhi/resources/): 与 Docker Hardened Images 相关的其他资源，包括产品信息、博客文章和 GitHub 仓库
 - [故障排除](/dhi/troubleshoot/): 解决构建、运行或调试 Docker Hardened Images 时的常见问题，例如非 root 用户行为、缺少 shell 和端口访问。
 - [Docker Hub 目录](/docker-hub/image-library/catalogs/): 探索专门的 Docker Hub 集合，例如生成式 AI 目录。
 - [镜像 Docker Hub 官方镜像库](/docker-hub/image-library/mirror/): 为 Docker Hub 镜像设置本地镜像仓库
@@ -547,6 +566,7 @@
 - [Docker 与 iptables](/engine/network/firewall-iptables/): Docker 如何与 iptables 协同工作
 - [Docker 与 nftables](/engine/network/firewall-nftables/): Docker 如何与 nftables 协同工作
 - [旧版容器链接](/engine/network/links/): 了解如何连接 Docker 容器。
+- [数据包过滤与防火墙](/engine/network/packet-filtering-firewalls/): Docker 如何与数据包过滤、iptables 和防火墙协同工作
 - [端口发布与映射](/engine/network/port-publishing/): 访问容器端口
 - [Docker Engine 17.03 发布说明](/engine/release-notes/17.03/)
 - [Docker Engine 17.04 发行说明](/engine/release-notes/17.04/)
@@ -768,7 +788,9 @@
 - [接口: BackendV0](/reference/api/extensions-sdk/BackendV0/): Docker 扩展 API 参考
 - [接口：DesktopUI](/reference/api/extensions-sdk/DesktopUI/): Docker 扩展 API 参考
 - [接口：Dialog](/reference/api/extensions-sdk/Dialog/): Docker 扩展 API 参考
+- [接口：Docker](/reference/api/extensions-sdk/Docker/): Docker 扩展 API 参考
 - [接口：DockerCommand](/reference/api/extensions-sdk/DockerCommand/): Docker 扩展 API 参考
+- [接口：DockerDesktopClient](/reference/api/extensions-sdk/DockerDesktopClient/): Docker 扩展 API 参考
 - [接口: Exec](/reference/api/extensions-sdk/Exec/): Docker 扩展 API 参考
 - [Interface: ExecOptions](/reference/api/extensions-sdk/ExecOptions/): Docker 扩展 API 参考
 - [接口：ExecProcess](/reference/api/extensions-sdk/ExecProcess/): Docker 扩展 API 参考
@@ -1118,6 +1140,8 @@
 - [docker volume rm](/reference/cli/docker/volume/rm/)
 - [docker volume update](/reference/cli/docker/volume/update/)
 - [dockerd](/reference/cli/dockerd/): The daemon command description and usage
+- [Compose Build 规范](/reference/compose-file/build/): 了解 Compose Build 规范
+- [Configs 顶级元素](/reference/compose-file/configs/): 使用 Docker Compose 中的 configs 元素管理和共享配置数据。
 - [Compose 部署规范](/reference/compose-file/deploy/): 了解 Compose 部署规范
 - [Compose 开发规范](/reference/compose-file/develop/): 了解 Compose 开发规范
 - [扩展](/reference/compose-file/extension/): 在 Docker Compose 中使用扩展定义和复用自定义片段
@@ -1130,6 +1154,7 @@
 - [在 Docker Compose 中定义和管理网络](/reference/compose-file/networks/): 了解如何使用 Docker Compose 中的顶层 networks 元素来配置和控制网络。
 - [学习在 Docker Compose 中使用配置文件](/reference/compose-file/profiles/): 了解配置文件
 - [Secrets](/reference/compose-file/secrets/): 探索 secrets 顶级元素可以拥有的所有属性。
+- [在 Docker Compose 中定义服务](/reference/compose-file/services/): 探索服务顶级元素可以拥有的所有属性。
 - [版本和名称顶级元素](/reference/compose-file/version-and-name/): 了解何时以及是否设置版本和名称顶级元素
 - [在 Docker Compose 中定义和管理卷](/reference/compose-file/volumes/): 使用顶层 volumes 元素控制卷的声明方式以及在服务之间的共享方式。
 - [Dockerfile reference](/reference/dockerfile/)

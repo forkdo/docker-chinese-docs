@@ -6,14 +6,14 @@
 
 
   <title>
-     | Docker Docs
+    Configs | Docker Docs
   </title>
 
 
-<meta name="description" content="" />
+<meta name="description" content="使用 Docker Compose 中的 configs 元素管理和共享配置数据。" />
 <meta
   name="keywords"
-  content=""
+  content="compose, compose, specification, configs, compose, file, reference"
 />
 <link rel="canonical" href="/reference/compose-file/configs/" />
 
@@ -22,12 +22,12 @@
 <meta name="theme-color" content="#2496ed" />
 
 
-<meta name="twitter:title" itemprop="title name" content="" />
+<meta name="twitter:title" itemprop="title name" content="Configs" />
 <meta
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content=""
+  content="使用 Docker Compose 中的 configs 元素管理和共享配置数据。"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -38,8 +38,8 @@
   content="/images/thumbnail.webp"
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
-<meta property="og:title" content="" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Configs" />
+<meta property="og:description" content="使用 Docker Compose 中的 configs 元素管理和共享配置数据。" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2026-01-07 07:13:56 &#43;0000 &#43;0000"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"reference","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-07T07:13:56Z","description":"","headline":"","isPartOf":{"@id":"/reference/compose-file/","@type":"WebPage","name":"Compose 文件参考"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/reference/compose-file/configs/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/reference/","name":"参考"},"position":1},{"@type":"ListItem","item":{"@id":"/reference/compose-file/","name":"Compose 文件参考"},"position":2},{"@type":"ListItem","item":{"@id":"/reference/compose-file/configs/","name":""},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"reference","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-07T07:13:56Z","description":"使用 Docker Compose 中的 configs 元素管理和共享配置数据。","headline":"Configs","isPartOf":{"@id":"/reference/compose-file/","@type":"WebPage","name":"Compose 文件参考"},"keywords":"compose, compose, specification, configs, compose, file, reference","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/reference/compose-file/configs/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/reference/","name":"参考"},"position":1},{"@type":"ListItem","item":{"@id":"/reference/compose-file/","name":"Compose 文件参考"},"position":2},{"@type":"ListItem","item":{"@id":"/reference/compose-file/configs/","name":"Configs"},"position":3}]}</script>
 
 
   
@@ -585,7 +585,8 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
+              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
           </a>
         </li>
       
@@ -744,22 +745,6 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/reference/cli/docker/push/"
-        title=""
-      >
-        
-  
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/reference/cli/docker/README/"
         title=""
       >
         
@@ -9217,38 +9202,6 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/reference/api/extensions-sdk/Docker/"
-        title=""
-      >
-        
-  
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/reference/api/extensions-sdk/DockerDesktopClient/"
-        title=""
-      >
-        
-  
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
         href="/reference/api/extensions-sdk/ExecResult/"
         title=""
       >
@@ -9505,11 +9458,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/api/extensions-sdk/Docker/"
+        title="接口：Docker"
+      >
+        
+  接口：Docker
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/api/extensions-sdk/DockerCommand/"
         title="接口：DockerCommand"
       >
         
   接口：DockerCommand
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/api/extensions-sdk/DockerDesktopClient/"
+        title="接口：DockerDesktopClient"
+      >
+        
+  接口：DockerDesktopClient
 
       </a>
     </li>
@@ -10088,6 +10073,22 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/compose-file/services/"
+        title="服务"
+      >
+        
+  服务
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/compose-file/networks/"
         title="网络"
       >
@@ -10109,6 +10110,26 @@ if (resultsLength > 5) {
       >
         
   卷
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue 
+        navbar-entry-background-current
+       rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+          aria-current="page" id="sidebar-current-page"
+        
+        class="block w-full truncate"
+        href="/reference/compose-file/configs/"
+        title="Configs"
+      >
+        
+  Configs
 
       </a>
     </li>
@@ -10248,6 +10269,22 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/compose-file/build/"
+        title="Compose Build 规范"
+      >
+        
+  Compose Build 规范
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/compose-file/deploy/"
         title="Compose 部署规范"
       >
@@ -10269,58 +10306,6 @@ if (resultsLength > 5) {
       >
         
   Compose 开发规范
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/reference/compose-file/build/"
-        title=""
-      >
-        
-  
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue 
-        navbar-entry-background-current
-       rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-          aria-current="page" id="sidebar-current-page"
-        
-        class="block w-full truncate"
-        href="/reference/compose-file/configs/"
-        title=""
-      >
-        
-  
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/reference/compose-file/services/"
-        title=""
-      >
-        
-  
 
       </a>
     </li>
@@ -11117,7 +11102,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      ></a
+      >首页</a
     >
     <span>/</span>
     
@@ -11131,14 +11116,14 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs: / 参考 / Compose 文件参考"
+    data-pagefind-meta="breadcrumbs:首页 / 参考 / Compose 文件参考"
     class="truncate"
-    ></span
+    >Configs</span
   >
 </nav>
 
     <div class="flex items-start justify-between">
-      <h1 data-pagefind-weight="10"></h1>
+      <h1 data-pagefind-weight="10">Configs 顶级元素</h1>
       <div class="md-dropdown ml-auto hidden lg:block">
         <details id="markdownDropdown" class="ml-3 group relative z-10 inline-block" data-heap-id="markdown-dropdown">
     <summary
@@ -11308,35 +11293,22 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>linkTitle: Configs
-title: Configs top-level element
-description: Manage and share configuration data using the configs element in Docker Compose.
-weight: 50
-aliases:</p>
-<ul>
-<li>/compose/compose-file/08-configs/
-keywords: &quot;compose, compose specification, configs, compose file reference&quot;---
-linkTitle: Configs
-title: Configs 顶级元素
-description: 使用 Docker Compose 中的 configs 元素管理和共享配置数据。
-weight: 50---</li>
-</ul>
-<p>配置使服务能够调整其行为，而无需重新构建 Docker 镜像。与卷类似，配置会作为文件挂载到容器的文件系统中。在 Linux 容器中，挂载点在容器内的默认位置为 <code>/&lt;config-name&gt;</code>，在 Windows 容器中则为 <code>C:\&lt;config-name&gt;</code>。</p>
-<p>Services 只有在 <code>services</code> 顶级元素中通过 <a class="link" href="/reference/compose-file/services/#configs"><code>configs</code></a> 属性显式授权后，才能访问 configs。</p>
+    <p>配置使服务能够调整其行为，而无需重新构建 Docker 镜像。与卷类似，配置会以文件形式挂载到容器的文件系统中。在 Linux 容器中，挂载点在容器内的默认位置为 <code>/&lt;config-name&gt;</code>；在 Windows 容器中，则为 <code>C:\&lt;config-name&gt;</code>。</p>
+<p>只有当服务被 <code>services</code> 顶级元素中的 <a class="link" href="/reference/compose-file/services/#configs"><code>configs</code></a> 属性显式授权时，才能访问 configs。</p>
 <p>默认情况下，config：</p>
 <ul>
 <li>归运行容器命令的用户所有，但可以通过服务配置覆盖。</li>
-<li>拥有全局可读权限（模式 0444），除非服务配置覆盖了此设置。</li>
+<li>具有全局可读权限（模式 0444），除非服务配置覆盖了此设置。</li>
 </ul>
-<p>顶级 <code>configs</code> 声明定义或引用了授予 Compose 应用中服务的配置数据。config 的来源可以是 <code>file</code>、<code>environment</code>、<code>content</code> 或 <code>external</code>。</p>
+<p>顶级 <code>configs</code> 声明定义或引用授予 Compose 应用中服务的配置数据。config 的来源可以是 <code>file</code>、<code>environment</code>、<code>content</code> 或 <code>external</code>。</p>
 <ul>
 <li><code>file</code>：使用指定路径下的文件内容创建 config。</li>
-<li><code>environment</code>：使用环境变量的值创建 config 内容。于 Docker Compose 版本 <a class="link" href="https://github.com/docker/compose/releases/tag/v2.23.1" rel="noopener">2.23.1</a> 引入。</li>
-<li><code>content</code>：使用内联值创建内容。于 Docker Compose 版本 <a class="link" href="https://github.com/docker/compose/releases/tag/v2.23.1" rel="noopener">2.23.1</a> 引入。</li>
+<li><code>environment</code>：使用环境变量的值创建 config 内容。引入于 Docker Compose 版本 <a class="link" href="https://github.com/docker/compose/releases/tag/v2.23.1" rel="noopener">2.23.1</a>。</li>
+<li><code>content</code>：使用内联值创建内容。引入于 Docker Compose 版本 <a class="link" href="https://github.com/docker/compose/releases/tag/v2.23.1" rel="noopener">2.23.1</a>。</li>
 <li><code>external</code>：如果设置为 true，<code>external</code> 指定此 config 已经创建。Compose 不会
 尝试创建它，如果它不存在，则会发生错误。</li>
 <li><code>name</code>：要在容器引擎中查找的 config 对象的名称。此字段可用于
-引用包含特殊字符的 configs。该名称将按原样使用，
+引用包含特殊字符的 configs。该名称按原样使用，
 并且<strong>不会</strong>使用项目名称作为作用域前缀。</li>
 </ul>
 
@@ -11346,8 +11318,8 @@ weight: 50---</li>
   </a>
 </h2>
 
-<p>部署应用时会创建 <code>&lt;project_name&gt;_http_config</code>，
-方式是将 <code>httpd.conf</code> 的内容注册为配置数据。</p>
+<p>部署应用程序时会创建 <code>&lt;project_name&gt;_http_config</code>，
+方法是将 <code>httpd.conf</code> 的内容注册为配置数据。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11386,7 +11358,7 @@ weight: 50---</li>
     </div>
   </div>
 </div>
-<p>或者，可以将 <code>http_config</code> 声明为 external。Compose 会查找 <code>http_config</code> 以将配置数据公开给相关服务。</p>
+<p>或者，可以将 <code>http_config</code> 声明为 external。Compose 查找 <code>http_config</code> 以将配置数据公开给相关服务。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11432,7 +11404,7 @@ weight: 50---</li>
   </a>
 </h2>
 
-<p>External configs 查找也可以通过指定 <code>name</code> 来使用不同的键。</p>
+<p>外部 config 查找也可以通过指定 <code>name</code> 来使用不同的键。</p>
 <p>以下
 示例修改了前一个示例，以使用参数 <code>HTTP_CONFIG_KEY</code> 查找 config。实际的查找键在部署时通过变量的 <a class="link" href="/reference/compose-file/interpolation/">interpolation</a> 设置，
 但以硬编码 ID <code>http_config</code> 的形式公开给容器。</p>
@@ -11482,8 +11454,8 @@ weight: 50---</li>
   </a>
 </h2>
 
-<p>部署应用时会创建 <code>&lt;project_name&gt;_app_config</code>，
-方式是将内联内容注册为配置数据。这意味着 Compose 在创建 config 时会推断变量，允许您
+<p>部署应用程序时会创建 <code>&lt;project_name&gt;_app_config</code>，
+方法是将内联内容注册为配置数据。这意味着 Compose 在创建 config 时会推断变量，允许您
 根据服务配置调整内容：</p>
 <div
   data-pagefind-ignore
@@ -11533,8 +11505,8 @@ weight: 50---</li>
   </a>
 </h2>
 
-<p>部署应用时会创建 <code>&lt;project_name&gt;_simple_config</code>，
-使用环境变量的值作为配置数据。这适用于不需要插值的简单配置值：</p>
+<p>部署应用程序时会创建 <code>&lt;project_name&gt;_simple_config</code>，
+使用环境变量的值作为配置数据。这对于不需要插值的简单配置值很有用：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11573,7 +11545,7 @@ weight: 50---</li>
     </div>
   </div>
 </div>
-<p>如果 <code>external</code> 设置为 <code>true</code>，则除 <code>name</code> 以外的所有其他属性都不相关。如果 Compose 检测到任何其他属性，它将拒绝该 Compose 文件，视为无效。</p>
+<p>如果 <code>external</code> 设置为 <code>true</code>，则除 <code>name</code> 之外的所有其他属性均无关紧要。如果 Compose 检测到任何其他属性，它将拒绝该 Compose 文件，视为无效。</p>
 
   </article>
   <div class="-mt-8 hidden min-w-48 flex-1 lg:block">

@@ -35,7 +35,9 @@ x509: certificate signed by unknown authority
 3. 找到 Zscaler 根证书，通常标记为 **Zscaler Root CA**。
 4. 打开证书详细信息并选择 **导出**。
 5. 以 ASCII PEM 格式保存证书。
-6. 在文本编辑器中打开导出的文件，确认其包含 `-----BEGIN CERTIFICATE-----` 和 `-----END CERTIFICATE-----`。
+6. 在文本编辑器中打开导出的文件，确认其包含 `-----BEGIN CERTIFICATE
+-----` 和 `-----END CERTIFICATE
+-----`。
 
 获得证书后，将其存储在可访问的存储库中，例如 JFrog Artifactory 或 Git 存储库。或者，也可以使用 AWS S3 等通用存储。
 

@@ -5,7 +5,7 @@
     <link>/security/security-announcements/</link>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Jan 2026 19:32:54 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Jan 2026 03:18:19 +0800</lastBuildDate>
     <atom:link href="/security/security-announcements/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>Docker Desktop 4.44.3 security update: CVE-2025-9074</title>
       <link>/security/security-announcements/#docker-desktop-4443-security-update-cve-2025-9074</link>

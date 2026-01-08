@@ -1,4 +1,5 @@
 # 将 Node.js 应用迁移到 DHI
+
 # 将 Node.js 应用迁移到 Docker Hardened Images
 
 本指南将引导您完成将 Node.js 应用程序迁移到 Docker Hardened Images (DHI) 的过程。DHI 提供了增强的安全性和合规性功能，同时保持与标准 Docker 镜像的兼容性。

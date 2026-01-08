@@ -82,7 +82,8 @@ services:
       required: false
   ```
 - 从 Docker Compose 2.30.0 版本开始，您可以使用 `format` 属性为 `env_file` 使用替代文件格式。有关更多信息，请参阅 [`format`](/reference/compose-file/services.md#format)。
-- 使用 [`docker compose run -e`](#set-environment-variables-with-docker-compose-run---env) 可以从命令行覆盖 `.env` 文件中的值。
+- 使用 [`docker compose run -e`](#set-environment-variables-with-docker-compose-run
+---env) 可以从命令行覆盖 `.env` 文件中的值。
 
 ## 使用 `docker compose run --env` 设置环境变量
 

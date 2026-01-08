@@ -1,10 +1,5 @@
-# 
-title: Compose Build 规范
-description: 了解 Compose Build 规范
-weight: 130
-aliases:
-  - /compose/compose-file/build/
-keywords: "compose, compose specification, compose file reference, compose build specification"---
+# Compose Build 规范
+
 
 
 Build 是 Compose Specification 的一个可选部分。它告诉 Compose 如何从源代码（重新）构建应用程序，并允许您以一种可移植的方式在 Compose 文件中定义构建过程。`build` 可以被指定为一个定义上下文路径的单字符串，也可以是一个详细的构建定义。
@@ -17,11 +12,11 @@ Build 是 Compose Specification 的一个可选部分。它告诉 Compose 如何
 
 当 Compose 遇到服务的 `build` 子部分和 `image` 属性时，它会遵循 [`pull_policy`](services.md#pull_policy) 属性定义的规则。
 
-如果服务定义中缺少 `pull_policy`，Compose 会首先尝试拉取镜像，如果在镜像仓库或平台缓存中找不到该镜像，则从源代码构建。
+如果服务定义中缺少 `pull_policy`，Compose 会首先尝试拉取镜像，如果在注册表或平台缓存中找不到该镜像，则从源代码构建。
 
-## 发布已构建的镜像
+## 发布构建的镜像
 
-支持 `build` 的 Compose 提供了将已构建的镜像推送到镜像仓库的选项。执行此操作时，它不会尝试推送没有 `image` 属性的服务镜像。Compose 会警告您缺少 `image` 属性，这会导致镜像无法推送。
+支持 `build` 的 Compose 提供了将构建的镜像推送到注册表的选项。执行此操作时，它不会尝试推送没有 `image` 属性的服务镜像。Compose 会警告您缺少 `image` 属性，这会导致镜像无法推送。
 
 ## 示例说明
 
@@ -45,18 +40,18 @@ services:
 
 当用于从源代码构建服务镜像时，Compose 文件会创建三个 Docker 镜像：
 
-* `example/webapp`：使用 Compose 文件所在文件夹内的 `webapp` 子目录作为 Docker 构建上下文来构建 Docker 镜像。如果该文件夹中缺少 `Dockerfile`，则会返回错误。
+* `example/webapp`：使用 Compose 文件所在文件夹内的 `webapp` 子目录作为 Docker 构建上下文来构建 Docker 镜像。如果此文件夹中缺少 `Dockerfile`，则会返回错误。
 * `example/database`：使用 Compose 文件所在文件夹内的 `backend` 子目录来构建 Docker 镜像。使用 `backend.Dockerfile` 文件来定义构建步骤，该文件相对于上下文路径进行搜索，这意味着 `..` 解析为 Compose 文件的文件夹，因此 `backend.Dockerfile` 是一个同级文件。
 * 使用 `custom` 目录并以用户的 `$HOME` 作为 Docker 上下文来构建 Docker 镜像。Compose 会显示关于用于构建镜像的非可移植路径的警告。
 
-在推送时，`example/webapp` 和 `example/database` Docker 镜像都会被推送到默认镜像仓库。`custom` 服务镜像会被跳过，因为没有设置 `image` 属性，Compose 会显示关于此缺失属性的警告。
+在推送时，`example/webapp` 和 `example/database` Docker 镜像都会被推送到默认注册表。`custom` 服务镜像会被跳过，因为没有设置 `image` 属性，Compose 会显示关于此缺失属性的警告。
 
 ## 属性
 
 `build` 子部分定义了 Compose 应用于从源代码构建 Docker 镜像的配置选项。`build` 可以指定为包含构建上下文路径的字符串，或指定为详细结构：
 
 使用字符串语法时，只能将构建上下文配置为以下之一：
-- 相对于 Compose 文件所在文件夹的路径。该路径必须是一个目录，并且必须包含一个 `Dockerfile`
+- 相对于 Compose 文件所在文件夹的路径。此路径必须是一个目录，并且必须包含一个 `Dockerfile`
 
   ```yml
   services:
@@ -198,7 +193,8 @@ args:
 
 Compose Build 实现可能支持自定义类型，Compose 规范定义了必须支持的标准类型：
 
-- `registry` 从由键 `ref` 设置的 OCI 镜像集中检索构建缓存
+- `registry` 通过键 `ref` 设置的 OCI 镜像集来检索构建缓存
+
 
 ```yml
 build:
@@ -385,7 +381,7 @@ Compose 会在容器的网络配置中创建与 IP 地址和主机名匹配的�
 
 ### `labels`
 
-`labels` 为生成的镜像添加元数据。`labels` 可以设置为数组或映射。
+`labels` 为结果镜像添加元数据。`labels` 可以设置为数组或映射。
 
 建议使用反向 DNS 表示法，以防止您的标签与其他软件冲突。
 
@@ -433,7 +429,7 @@ build:
 
 ### `no_cache`
 
-`no_cache` 禁用镜像构建器缓存，并强制对所有镜像层进行完全重建。这仅适用于在 Dockerfile 中声明的层，引用的镜像可以在镜像仓库上的标签更新时从本地镜像存储中检索（参见 [pull](#pull)）。
+`no_cache` 禁用镜像构建器缓存，并强制对所有镜像层进行完全重建。这仅适用于在 Dockerfile 中声明的层，引用的镜像可以在注册表上更新标签时从本地镜像存储中检索（参见 [pull](#pull)）。
 
 ### `platforms`
 
@@ -552,7 +548,7 @@ build:
 
 `provenance` 配置构建器以向发布的镜像添加 [provenance attestation](https://slsa.dev/provenance/v0.2#schema)。
 
-该值可以是布尔值以启用/禁用来源认证，也可以是 key=value 字符串以设置来源配置。您可以使用它通过设置 `mode` 参数来选择要包含在来源认证中的详细程度。
+该值可以是布尔值以启用/禁用来源证明，也可以是 key=value 字符串以设置来源配置。您可以通过设置 `mode` 参数来选择要在来源证明中包含的详细程度。
 
 ```yaml
 build:
@@ -604,7 +600,7 @@ build:
 
 
 
-`sbom` 配置构建器以向发布的镜像添加 [provenance attestation](https://slsa.dev/provenance/v0.2#schema)。该值可以是布尔值以启用/禁用 sbom 认证，也可以是 key=value 字符串以设置 SBOM 生成器配置。这使您可以选择替代的 SBOM 生成器镜像（参见 https://github.com/moby/buildkit/blob/master/docs/attestations/sbom-protocol.md）
+`sbom` 配置构建器以向发布的镜像添加 [provenance attestation](https://slsa.dev/provenance/v0.2#schema)。该值可以是布尔值以启用/禁用 sbom 证明，也可以是 key=value 字符串以设置 SBOM 生成器配置。这使您可以选择替代的 SBOM 生成器镜像（参见 https://github.com/moby/buildkit/blob/master/docs/attestations/sbom-protocol.md）
 
 ```yaml
 build:
@@ -620,7 +616,7 @@ build:
 
 ### `secrets`
 
-`secrets` 授予对由 [secrets](services.md#secrets) 定义的敏感数据的访问权限，基于每个服务构建。支持两种不同的语法变体：短语法和长语法。
+`secrets` 授予对 [secrets](services.md#secrets) 定义的敏感数据的访问权限，基于每个服务构建。支持两种不同的语法变体：短语法和长语法。
 
 如果秘密未在此 Compose 文件的 [`secrets`](secrets.md) 部分中定义，Compose 会报告错误。
 
@@ -644,7 +640,7 @@ secrets:
 
 #### 长语法
 
-长语法提供了更多关于秘密如何在服务的容器中创建的粒度。
+长语法提供了更多关于如何在服务的容器中创建秘密的粒度。
 
 - `source`：平台上存在的秘密的名称。
 - `target`：Dockerfile 中声明的秘密的 ID。如果未指定，则默认为 `source`。
@@ -732,7 +728,7 @@ build:
 
 ### `tags`
 
-`tags` 定义必须与构建镜像关联的标签映射列表。此列表除了服务部分中定义的 `image` [property](services.md#image) 之外
+`tags` 定义必须与构建镜像关联的标签映射列表。此列表除了服务部分中定义的 `image` [属性](services.md#image)
 
 ```yml
 tags:
@@ -784,7 +780,7 @@ build:
 
 
 
-`ulimits` 覆盖容器的默认 `ulimits`。它指定为单个限制的整数或软/硬限制的映射。
+`ulimits` 覆盖容器的默认 `ulimits`。它可以指定为单个限制的整数，或指定为软/硬限制的映射。
 
 ```yml
 services:

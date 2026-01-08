@@ -585,7 +585,8 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
+              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
           </a>
         </li>
       
@@ -655,12 +656,41 @@ if (resultsLength > 5) {
       <div class="flex flex-col items-center">
         
         <a
-          href="/guides/ruby/configure-github-actions/"
+          href="/guides/ruby/containerize/"
           class="
             bg-gray-400 dark:bg-gray-500
            flex h-8 w-8 items-center justify-center rounded-full text-white no-underline"
         >
           1
+        </a>
+        
+        
+          <div
+            class="
+              border-gray-400 dark:border-gray-400
+             h-6 border-l-2"
+          ></div>
+        
+      </div>
+      
+      <div class="ml-2 flex h-8 items-center self-start">
+        <a href="/guides/ruby/containerize/">
+          容器化您的应用
+        </a>
+      </div>
+    </div>
+  
+    
+    <div class="flex">
+      <div class="flex flex-col items-center">
+        
+        <a
+          href="/guides/ruby/configure-github-actions/"
+          class="
+            bg-gray-400 dark:bg-gray-500
+           flex h-8 w-8 items-center justify-center rounded-full text-white no-underline"
+        >
+          2
         </a>
         
         
@@ -689,7 +719,7 @@ if (resultsLength > 5) {
             bg-gray-400 dark:bg-gray-500
            flex h-8 w-8 items-center justify-center rounded-full text-white no-underline"
         >
-          2
+          3
         </a>
         
         
@@ -718,35 +748,6 @@ if (resultsLength > 5) {
             bg-gray-400 dark:bg-gray-500
            flex h-8 w-8 items-center justify-center rounded-full text-white no-underline"
         >
-          3
-        </a>
-        
-        
-          <div
-            class="
-              border-gray-400 dark:border-gray-400
-             h-6 border-l-2"
-          ></div>
-        
-      </div>
-      
-      <div class="ml-2 flex h-8 items-center self-start">
-        <a href="/guides/ruby/deploy/">
-          测试您的部署
-        </a>
-      </div>
-    </div>
-  
-    
-    <div class="flex">
-      <div class="flex flex-col items-center">
-        
-        <a
-          href="/guides/ruby/containerize/"
-          class="
-            bg-gray-400 dark:bg-gray-500
-           flex h-8 w-8 items-center justify-center rounded-full text-white no-underline"
-        >
           4
         </a>
         
@@ -754,8 +755,8 @@ if (resultsLength > 5) {
       </div>
       
       <div class="ml-2 flex h-8 items-center self-start">
-        <a href="/guides/ruby/containerize/">
-          
+        <a href="/guides/ruby/deploy/">
+          测试您的部署
         </a>
       </div>
     </div>
@@ -784,7 +785,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      ></a
+      >首页</a
     >
     <span>/</span>
     
@@ -793,7 +794,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs: / 指南"
+    data-pagefind-meta="breadcrumbs:首页 / 指南"
     class="truncate"
     >Ruby</span
   >
@@ -823,6 +824,10 @@ if (resultsLength > 5) {
 
   <ol>
     <li>
+      <a class="link" href="/guides/ruby/containerize/">容器化您的应用</a>
+      <p>了解如何容器化 Ruby on Rails 应用程序。</p>
+    </li>
+    <li>
       <a class="link" href="/guides/ruby/configure-github-actions/">使用 GitHub Actions 自动化构建</a>
       <p>了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。</p>
     </li>
@@ -833,10 +838,6 @@ if (resultsLength > 5) {
     <li>
       <a class="link" href="/guides/ruby/deploy/">测试您的部署</a>
       <p>了解如何使用 Kubernetes 进行本地开发</p>
-    </li>
-    <li>
-      <a class="link" href="/guides/ruby/containerize/"></a>
-      <p></p>
     </li>
   </ol>
 </article>

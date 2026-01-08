@@ -351,7 +351,7 @@ Docker 支持任何兼容 SAML 2.0 或 OIDC 的身份提供商。本指南为最
       </span>
     </div>
     <div class="admonition-content">
-      <p>请复制整个证书，包括 <code>----BEGIN CERTIFICATE----</code> 和 <code>----END CERTIFICATE----</code> 行。</p>
+      <p>请复制整个证书，包括 <code>----BEGIN CERTIFICATE ----</code> 和 <code>----END CERTIFICATE ----</code> 行。</p>
     </div>
   </blockquote>
 
@@ -404,7 +404,7 @@ Docker 支持任何兼容 SAML 2.0 或 OIDC 的身份提供商。本指南为最
       </span>
     </div>
     <div class="admonition-content">
-      <p>请复制整个证书，包括 <code>----BEGIN CERTIFICATE----</code> 和 <code>----END CERTIFICATE----</code> 行。</p>
+      <p>请复制整个证书，包括 <code>----BEGIN CERTIFICATE ----</code> 和 <code>----END CERTIFICATE ----</code> 行。</p>
     </div>
   </blockquote>
 

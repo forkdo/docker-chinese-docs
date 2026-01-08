@@ -1,4 +1,5 @@
 # 修复 macOS 上“Docker.app 已损坏，无法打开”的问题
+
 ## 错误信息
 
 当您尝试打开 Docker Desktop 时，macOS 会显示以下对话框：

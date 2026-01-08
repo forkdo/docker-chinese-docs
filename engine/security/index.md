@@ -114,8 +114,6 @@ Docker Engine 可以配置为仅运行已签名的镜像。Docker 内容信任�
 
 - [无 root 模式](/engine/security/rootless/)
 
-- [](/engine/security/README/)
-
 - [Docker 中的内容信任](/engine/security/trust/)
 
 - [Docker 安全非事件](/engine/security/non-events/)

@@ -1,17 +1,10 @@
-# 
-title: "Interface: Docker"
-description: Docker extension API reference
-aliases:
-  - /desktop/extensions-sdk/dev/api/reference/interfaces/Docker/
-  - /extensions/extensions-sdk/dev/api/reference/interfaces/Docker/
-keywords: "Docker, extensions, sdk, API, reference"---
-title: "接口: Docker"
-description: Docker 扩展 API 参考---
+# 接口：Docker
+
 **`自版本`**
 
 0.2.0
 
-## 属性
+## 属性 (Properties)
 
 ### cli
 
@@ -40,14 +33,14 @@ const output = await ddClient.docker.cli.exec("volume", [
 
 ---
 
-将执行 Docker 命令的结果以流的形式输出。
+流式传输执行 Docker 命令的输出结果。
 当命令输出过长，或者您需要以流的形式获取输出时，此方法非常有用。
 
 ```typescript
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     onOutput(data): void {
-        // 由于我们可能同时接收到 `stdout` 和 `stderr`，因此将它们包装在 JSON 对象中
+        // 由于可能同时接收到 `stdout` 和 `stderr`，我们将它们包装在 JSON 对象中
         JSON.stringify(
           {
             stdout: data.stdout,
@@ -67,7 +60,7 @@ await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 });
 ```
 
-## 方法
+## 方法 (Methods)
 
 ### listContainers
 
@@ -75,7 +68,7 @@ await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 
 获取正在运行的容器列表（与 `docker ps` 相同）。
 
-默认情况下，这不会列出已停止的容器。
+默认情况下，此方法不会列出已停止的容器。
 您可以使用选项 `{"all": true}` 来列出所有正在运行和已停止的容器。
 
 ```typescript
@@ -88,7 +81,7 @@ const containers = await ddClient.docker.listContainers();
 | :------ | :------ | :------ |
 | `options?` | `any` | （可选）。一个类似 `{ "all": true, "limit": 10, "size": true, "filters": JSON.stringify({ status: ["exited"] }), }` 的 JSON 对象。有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/reference/api/engine/version/v1.52/#operation/ContainerList)。 |
 
-#### 返回
+#### 返回值
 
 `Promise`<`unknown`\>
 
@@ -110,6 +103,6 @@ const images = await ddClient.docker.listImages();
 | :------ | :------ | :------ |
 | `options?` | `any` | （可选）。一个类似 `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true * }` 的 JSON 对象。有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image)。 |
 
-#### 返回
+#### 返回值
 
 `Promise`<`unknown`\>

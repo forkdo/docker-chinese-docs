@@ -12,8 +12,6 @@ https://github.com/docker/cli
 
 - [](/reference/cli/docker/push/)
 
-- [](/reference/cli/docker/README/)
-
 - [docker build (legacy builder)](/reference/cli/docker/build-legacy/)
 
 - [docker builder](/reference/cli/docker/builder/)
