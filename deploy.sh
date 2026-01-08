@@ -18,7 +18,7 @@ else
 fi
 
 DEFAULT_BRANCH="main"
-HUGO_VERSION=0.141.0
+HUGO_VERSION=0.154.2
 
 DELETE_FILE="deleted_docs.txt"
 ADD_FILE="new_docs.txt"
@@ -114,7 +114,6 @@ copy_docs_zh() {
         git clone https://github.com/docker/docs.git docsite
     fi
     patch_hugo_layouts
-    cp -r docs_zh/* docsite/content
 }
 
 # 本地测试
@@ -125,9 +124,17 @@ start_dev() {
     hugo server -D
 }
 
+# 构建网站
+build_site() {
+    copy_docs_zh
+    cd docsite
+    npm install
+    hugo --minify
+}
+
 # 调用翻译脚本
 translate() {
-    uv run translate.py
+    aitr
 }
 
 usage() {
@@ -136,7 +143,9 @@ usage() {
 
 选项:
   -c --copy      复制 docs_zh
+  -b --build     构建网站
   -i --incremental   增量更新
+  -r --start     本地测试
   -s --hugo      安装 Hugo extended（linux-amd64）
   -t --translate  调用翻译脚本
   -h --help      显示此帮助信息
@@ -165,6 +174,10 @@ main() {
                 ;;
             -s|--hugo)
                 install_hugo
+                shift
+                ;;
+            -b|--build)
+                build_site
                 shift
                 ;;
             -r|--start)
