@@ -462,7 +462,7 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -dp 127.0.0.1:3000:3000 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">    -w /app --mount type=bind,src=&#34;$(pwd)&#34;,target=/app \
+</span></span></span><span class="line"><span class="cl"><span class="go">    -w /app --mount type=bind,src=&#34;$(pwd)&#34;,target=/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">    node:lts-alpine \
 </span></span></span><span class="line"><span class="cl"><span class="go">    sh -c &#34;yarn install &amp;&amp; yarn run dev&#34;
 </span></span></span></code></pre></div>
@@ -797,7 +797,7 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -dp 127.0.0.1:3000:3000 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">    -w //app --mount type=bind,src=&#34;/$(pwd)&#34;,target=/app \
+</span></span></span><span class="line"><span class="cl"><span class="go">    -w //app --mount type=bind,src=&#34;/$(pwd)&#34;,target=/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">    node:lts-alpine \
 </span></span></span><span class="line"><span class="cl"><span class="go">    sh -c &#34;yarn install &amp;&amp; yarn run dev&#34;
 </span></span></span></code></pre></div>

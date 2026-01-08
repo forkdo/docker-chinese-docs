@@ -118,19 +118,19 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> cgr.dev/chainguard/node:latest-dev</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">cgr.dev/chainguard/node:latest-dev</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apk 安装其他软件包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apk add --no-cache python3 make g++</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apk 安装其他软件包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apk add --no-cache python3 make g++</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm install<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -175,19 +175,19 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> node:latest</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">node:latest</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apt 安装其他软件包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apt-get update &amp;&amp; apt-get install -y python3 make g++ &amp;&amp; rm -rf /var/lib/apt/lists/*</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apt 安装其他软件包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apt-get update &amp;&amp; apt-get install -y python3 make g++ &amp;&amp; rm -rf /var/lib/apt/lists/*</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm install<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -232,28 +232,28 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># === 构建阶段：安装依赖并构建应用 ===</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/node:23-alpine3.21-dev AS builder</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># === 构建阶段：安装依赖并构建应用 ===</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/node:23-alpine3.21-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apk 安装其他软件包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apk add --no-cache python3 make g++</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apk 安装其他软件包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apk add --no-cache python3 make g++</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm install<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># === 最终阶段：创建最小化运行时镜像 ===</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/node:23-alpine3.21</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span>/app/node_modules/.bin:<span class="nv">$PATH</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># === 最终阶段：创建最小化运行时镜像 ===</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/node:23-alpine3.21</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span>/app/node_modules/.bin:<span class="nv">$PATH</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder --chown<span class="o">=</span>node:node /usr/src/app /app<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder --chown<span class="o">=</span>node:node /usr/src/app /app<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -298,19 +298,19 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/node:23-alpine3.21-dev</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/node:23-alpine3.21-dev</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apk 安装其他软件包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apk add --no-cache python3 make g++</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apk 安装其他软件包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apk add --no-cache python3 make g++</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm install<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;index.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>

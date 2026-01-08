@@ -220,22 +220,22 @@ await app.listen({ port: 8000 });
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 使用 DHI Deno 镜像作为基础镜像</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/deno:2</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/deno:2</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将服务器代码复制到容器中</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> server.ts .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将服务器代码复制到容器中</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> server.ts .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置权限（可选，但出于安全考虑推荐）</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> deno</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置权限（可选，但出于安全考虑推荐）</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">deno</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露 8000 端口</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露 8000 端口</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 运行 Deno 服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;--allow-net&#34;</span><span class="p">,</span> <span class="s2">&#34;server.ts&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 运行 Deno 服务器</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;--allow-net&#34;</span><span class="p">,</span> <span class="s2">&#34;server.ts&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -281,22 +281,22 @@ await app.listen({ port: 8000 });
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 使用官方 Deno 镜像</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> denoland/deno:latest</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">denoland/deno:latest</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将服务器代码复制到容器中</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> server.ts .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将服务器代码复制到容器中</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> server.ts .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置权限（可选，但出于安全考虑推荐）</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> deno</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置权限（可选，但出于安全考虑推荐）</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">deno</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露 8000 端口</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露 8000 端口</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 运行 Deno 服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;--allow-net&#34;</span><span class="p">,</span> <span class="s2">&#34;server.ts&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 运行 Deno 服务器</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;--allow-net&#34;</span><span class="p">,</span> <span class="s2">&#34;server.ts&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>

@@ -223,7 +223,7 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> apt list --all-versions docker-ce
 </span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">docker-ce/bookworm 5:29.1.3-1~debian.12~bookworm &lt;arch&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">docker-ce/bookworm 5:29.1.3-1~debian.12~bookworm &lt;arch&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">docker-ce/bookworm 5:29.1.2-1~debian.12~bookworm &lt;arch&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">...
 </span></span></span></code></pre></div>

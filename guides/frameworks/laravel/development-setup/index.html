@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-12-03 10:26:30 &#43;0100 &#43;0100"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"使用 Docker Compose 进行 Laravel 开发环境设置\"","description":"\"使用 Docker Compose 设置 Laravel 开发环境。\"","url":"\/guides\/frameworks\/laravel\/development-setup\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-12-03T10:26:30+01:00","description":"使用 Docker Compose 设置 Laravel 开发环境。","headline":"使用 Docker Compose 进行 Laravel 开发环境设置","isPartOf":{"@id":"/guides/frameworks/laravel/","@type":"WebPage","name":"使用 Docker Compose 运行 Laravel 应用"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/frameworks/laravel/development-setup/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/frameworks/laravel/","name":"使用 Docker Compose 运行 Laravel 应用"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/frameworks/laravel/development-setup/","name":"使用 Docker Compose 进行 Laravel 开发环境设置"},"position":3}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -795,7 +794,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -809,7 +808,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 指南 / 使用 Docker Compose 运行 Laravel 应用"
+    data-pagefind-meta="breadcrumbs: / 指南 / 使用 Docker Compose 运行 Laravel 应用"
     class="truncate"
     >使用 Docker Compose 进行 Laravel 开发环境设置</span
   >
@@ -1129,65 +1128,65 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 在生产镜像之上构建仅用于开发的层</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> production AS development</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">production</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">development</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 使用 ARG 定义从 Docker 构建命令或 Docker Compose 传递的环境变量。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">XDEBUG_ENABLED</span><span class="o">=</span><span class="nb">true</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 使用 ARG 定义从 Docker 构建命令或 Docker Compose 传递的环境变量。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">XDEBUG_ENABLED</span><span class="o">=</span><span class="nb">true</span>
 </span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">XDEBUG_MODE</span><span class="o">=</span>develop,coverage,debug,profile<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">XDEBUG_HOST</span><span class="o">=</span>host.docker.internal<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">XDEBUG_IDE_KEY</span><span class="o">=</span>DOCKER
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">XDEBUG_HOST</span><span class="o">=</span>host.docker.internal<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">XDEBUG_IDE_KEY</span><span class="o">=</span>DOCKER
 </span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">XDEBUG_LOG</span><span class="o">=</span>/dev/stdout<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">XDEBUG_LOG_LEVEL</span><span class="o">=</span><span class="m">0</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">XDEBUG_LOG_LEVEL</span><span class="o">=</span><span class="m">0</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="s"> root</span><span class="err">
+</span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">root</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果启用则配置 Xdebug</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">XDEBUG_ENABLED</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;true&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pecl install xdebug <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    docker-php-ext-enable xdebug <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.mode=</span><span class="si">${</span><span class="nv">XDEBUG_MODE</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.idekey=</span><span class="si">${</span><span class="nv">XDEBUG_IDE_KEY</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log=</span><span class="si">${</span><span class="nv">XDEBUG_LOG</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log_level=</span><span class="si">${</span><span class="nv">XDEBUG_LOG_LEVEL</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.client_host=</span><span class="si">${</span><span class="nv">XDEBUG_HOST</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.start_with_request=yes&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="k">fi</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果启用则配置 Xdebug</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">XDEBUG_ENABLED</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;true&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pecl install xdebug <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    docker-php-ext-enable xdebug <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.mode=</span><span class="si">${</span><span class="nv">XDEBUG_MODE</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.idekey=</span><span class="si">${</span><span class="nv">XDEBUG_IDE_KEY</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log=</span><span class="si">${</span><span class="nv">XDEBUG_LOG</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log_level=</span><span class="si">${</span><span class="nv">XDEBUG_LOG_LEVEL</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.client_host=</span><span class="si">${</span><span class="nv">XDEBUG_HOST</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.start_with_request=yes&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="k">fi</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 添加用于同步权限的 ARG</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">1000</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 添加用于同步权限的 ARG</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">1000</span>
 </span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">GID</span><span class="o">=</span><span class="m">1000</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c"># 使用指定的 UID 和 GID 创建新用户，如果 GID 已存在则重用现有组</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="k">if</span> getent group <span class="si">${</span><span class="nv">GID</span><span class="si">}</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      <span class="nv">group_name</span><span class="o">=</span><span class="k">$(</span>getent group <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> <span class="p">|</span> cut -d: -f1<span class="k">)</span><span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> -s /bin/bash www<span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="k">else</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      groupadd -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> www <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g www -s /bin/bash www<span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      <span class="nv">group_name</span><span class="o">=</span>www<span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="k">fi</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="k">if</span> getent group <span class="si">${</span><span class="nv">GID</span><span class="si">}</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      <span class="nv">group_name</span><span class="o">=</span><span class="k">$(</span>getent group <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> <span class="p">|</span> cut -d: -f1<span class="k">)</span><span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> -s /bin/bash www<span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      groupadd -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> www <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g www -s /bin/bash www<span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      <span class="nv">group_name</span><span class="o">=</span>www<span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="k">fi</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 动态更新 php-fpm 以使用新的用户和组</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> sed -i <span class="s2">&#34;s/user = www-data/user = www/g&#34;</span> /usr/local/etc/php-fpm.d/www.conf <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    sed -i <span class="s2">&#34;s/group = www-data/group = </span><span class="nv">$group_name</span><span class="s2">/g&#34;</span> /usr/local/etc/php-fpm.d/www.conf<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 动态更新 php-fpm 以使用新的用户和组</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> sed -i <span class="s2">&#34;s/user = www-data/user = www/g&#34;</span> /usr/local/etc/php-fpm.d/www.conf <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    sed -i <span class="s2">&#34;s/group = www-data/group = </span><span class="nv">$group_name</span><span class="s2">/g&#34;</span> /usr/local/etc/php-fpm.d/www.conf<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制入口点脚本</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./docker/development/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> chmod +x /usr/local/bin/entrypoint.sh<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制入口点脚本</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./docker/development/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chmod +x /usr/local/bin/entrypoint.sh<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 切换回非特权用户以运行应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> www-data</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 切换回非特权用户以运行应用程序</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">www-data</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 更改默认命令以运行入口点脚本</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/usr/local/bin/entrypoint.sh&#34;</span><span class="p">]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 更改默认命令以运行入口点脚本</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/usr/local/bin/entrypoint.sh&#34;</span><span class="p">]</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露端口 9000 并启动 php-fpm 服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 9000</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;php-fpm&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口 9000 并启动 php-fpm 服务器</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">9000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;php-fpm&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1232,92 +1231,92 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># docker/development/workspace/Dockerfile</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 使用官方的 PHP CLI 镜像作为基础</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.4-cli</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 使用官方的 PHP CLI 镜像作为基础</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.4-cli</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置用户和组 ID 的环境变量</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">1000</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置用户和组 ID 的环境变量</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">1000</span>
 </span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">GID</span><span class="o">=</span><span class="m">1000</span>
 </span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">NODE_VERSION</span><span class="o">=</span><span class="m">22</span>.0.0<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装系统依赖和构建库</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    curl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    unzip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libpq-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libonig-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libssl-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libxml2-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libcurl4-openssl-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libicu-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libzip-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> docker-php-ext-install -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pdo_mysql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pdo_pgsql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pgsql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    opcache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    intl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    zip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    bcmath <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    soap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> pecl install redis xdebug <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> docker-php-ext-enable redis xdebug<span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> curl -sS https://getcomposer.org/installer <span class="p">|</span> php -- --install-dir<span class="o">=</span>/usr/local/bin --filename<span class="o">=</span>composer <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装系统依赖和构建库</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
+</span></span></span><span class="line"><span class="cl">    curl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    unzip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libpq-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libonig-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libssl-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libxml2-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libcurl4-openssl-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libicu-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libzip-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> docker-php-ext-install -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pdo_mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pdo_pgsql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pgsql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    opcache <span class="se">\
+</span></span></span><span class="line"><span class="cl">    intl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    zip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    bcmath <span class="se">\
+</span></span></span><span class="line"><span class="cl">    soap <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> pecl install redis xdebug <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> docker-php-ext-enable redis xdebug<span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> curl -sS https://getcomposer.org/installer <span class="p">|</span> php -- --install-dir<span class="o">=</span>/usr/local/bin --filename<span class="o">=</span>composer <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 使用 ARG 定义从 Docker 构建命令或 Docker Compose 传递的环境变量。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> XDEBUG_ENABLED<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> XDEBUG_MODE<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> XDEBUG_HOST<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> XDEBUG_IDE_KEY<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> XDEBUG_LOG<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> XDEBUG_LOG_LEVEL<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 使用 ARG 定义从 Docker 构建命令或 Docker Compose 传递的环境变量。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> XDEBUG_ENABLED<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> XDEBUG_MODE<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> XDEBUG_HOST<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> XDEBUG_IDE_KEY<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> XDEBUG_LOG<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> XDEBUG_LOG_LEVEL<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果启用则配置 Xdebug</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">XDEBUG_ENABLED</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;true&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    docker-php-ext-enable xdebug <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.mode=</span><span class="si">${</span><span class="nv">XDEBUG_MODE</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.idekey=</span><span class="si">${</span><span class="nv">XDEBUG_IDE_KEY</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log=</span><span class="si">${</span><span class="nv">XDEBUG_LOG</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log_level=</span><span class="si">${</span><span class="nv">XDEBUG_LOG_LEVEL</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.client_host=</span><span class="si">${</span><span class="nv">XDEBUG_HOST</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;xdebug.start_with_request=yes&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="k">fi</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果启用则配置 Xdebug</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">XDEBUG_ENABLED</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;true&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    docker-php-ext-enable xdebug <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.mode=</span><span class="si">${</span><span class="nv">XDEBUG_MODE</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.idekey=</span><span class="si">${</span><span class="nv">XDEBUG_IDE_KEY</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log=</span><span class="si">${</span><span class="nv">XDEBUG_LOG</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.log_level=</span><span class="si">${</span><span class="nv">XDEBUG_LOG_LEVEL</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.client_host=</span><span class="si">${</span><span class="nv">XDEBUG_HOST</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;xdebug.start_with_request=yes&#34;</span> &gt;&gt; /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini <span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="k">fi</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果组已存在，则使用它；否则创建 &#39;www&#39; 组</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="k">if</span> getent group <span class="si">${</span><span class="nv">GID</span><span class="si">}</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> -s /bin/bash www<span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="k">else</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      groupadd -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> www <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g www -s /bin/bash www<span class="p">;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="k">fi</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    usermod -aG sudo www <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s1">&#39;www ALL=(ALL) NOPASSWD:ALL&#39;</span> &gt;&gt; /etc/sudoers<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果组已存在，则使用它；否则创建 &#39;www&#39; 组</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="k">if</span> getent group <span class="si">${</span><span class="nv">GID</span><span class="si">}</span><span class="p">;</span> <span class="k">then</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> -s /bin/bash www<span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      groupadd -g <span class="si">${</span><span class="nv">GID</span><span class="si">}</span> www <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">      useradd -m -u <span class="si">${</span><span class="nv">UID</span><span class="si">}</span> -g www -s /bin/bash www<span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="k">fi</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    usermod -aG sudo www <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s1">&#39;www ALL=(ALL) NOPASSWD:ALL&#39;</span> &gt;&gt; /etc/sudoers<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 切换到非 root 用户以安装 NVM 和 Node.js</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户以安装 NVM 和 Node.js</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 以 www 用户身份安装 NVM (Node Version Manager)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.nvm&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh <span class="p">|</span> bash <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">[</span> -s <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> . <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nvm install <span class="si">${</span><span class="nv">NODE_VERSION</span><span class="si">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nvm <span class="nb">alias</span> default <span class="si">${</span><span class="nv">NODE_VERSION</span><span class="si">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nvm use default<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 以 www 用户身份安装 NVM (Node Version Manager)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.nvm&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh <span class="p">|</span> bash <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">[</span> -s <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> . <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    nvm install <span class="si">${</span><span class="nv">NODE_VERSION</span><span class="si">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    nvm <span class="nb">alias</span> default <span class="si">${</span><span class="nv">NODE_VERSION</span><span class="si">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    nvm use default<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 确保 NVM 对所有未来的 shell 可用</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nb">echo</span> <span class="s1">&#39;export NVM_DIR=&#34;$HOME/.nvm&#34;&#39;</span> &gt;&gt; /home/www/.bashrc <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s1">&#39;[ -s &#34;$NVM_DIR/nvm.sh&#34; ] &amp;&amp; \. &#34;$NVM_DIR/nvm.sh&#34;&#39;</span> &gt;&gt; /home/www/.bashrc <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s1">&#39;[ -s &#34;$NVM_DIR/bash_completion&#34; ] &amp;&amp; \. &#34;$NVM_DIR/bash_completion&#34;&#39;</span> &gt;&gt; /home/www/.bashrc<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 确保 NVM 对所有未来的 shell 可用</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="nb">echo</span> <span class="s1">&#39;export NVM_DIR=&#34;$HOME/.nvm&#34;&#39;</span> &gt;&gt; /home/www/.bashrc <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s1">&#39;[ -s &#34;$NVM_DIR/nvm.sh&#34; ] &amp;&amp; \. &#34;$NVM_DIR/nvm.sh&#34;&#39;</span> &gt;&gt; /home/www/.bashrc <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s1">&#39;[ -s &#34;$NVM_DIR/bash_completion&#34; ] &amp;&amp; \. &#34;$NVM_DIR/bash_completion&#34;&#39;</span> &gt;&gt; /home/www/.bashrc<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 覆盖入口点以避免默认的 php 入口点</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 覆盖入口点以避免默认的 php 入口点</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[]</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 保持容器运行的默认命令</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;bash&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 保持容器运行的默认命令</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;bash&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1471,10 +1470,10 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">laravel-development</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">laravel-development</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">volumes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">postgres-data-development:</span></span></span></code></pre></div>
       
     </div>
@@ -1762,7 +1761,7 @@ if (resultsLength > 5) {
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

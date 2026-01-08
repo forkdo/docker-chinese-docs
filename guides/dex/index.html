@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-03-27 21:45:28 &#43;0100 &#43;0100"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"使用 Dex 模拟 OAuth 服务\"","description":"\"使用 Dex 在测试中模拟 OAuth 服务\"","url":"\/guides\/dex\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-03-27T21:45:28+01:00","description":"使用 Dex 在测试中模拟 OAuth 服务","headline":"使用 Dex 模拟 OAuth 服务","isPartOf":{"@id":"/guides/","@type":"WebPage","name":"指南"},"keywords":"Dex, 容器化开发","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/dex/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/dex/","name":"使用 Dex 模拟 OAuth 服务"},"position":2}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -663,7 +662,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -672,7 +671,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 指南"
+    data-pagefind-meta="breadcrumbs: / 指南"
     class="truncate"
     >使用 Dex 模拟 OAuth 服务</span
   >
@@ -999,19 +998,19 @@ config.yaml 文件定义了 Dex 的设置，包括连接器、客户端和存储
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># config.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:5556/dex</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">storage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:5556/dex</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">storage</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">memory</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">web</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="m">0.0.0.0</span><span class="p">:</span><span class="m">5556</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">staticClients</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">staticClients</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">example-app</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">redirectURIs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;http://localhost:5555/callback&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Example App&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l">ZXhhbXBsZS1hcHAtc2VjcmV0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">enablePasswordDB</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">staticPasswords</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">enablePasswordDB</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">staticPasswords</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin@example.com&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hash</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;$2a$10$2b2cU8CPhOTaGrs1HRQuAueS7JTT5ZHsHSzYiFPm1leZck7Mc8T4W&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w">
@@ -1098,7 +1097,7 @@ config.yaml 文件定义了 Dex 的设置，包括连接器、客户端和存储
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># docker-compose.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">dex</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">dexidp/dex:latest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">dex</span><span class="w">
@@ -1228,25 +1227,25 @@ config.yaml 文件定义了 Dex 的设置，包括连接器、客户端和存储
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l">http://127.0.0.1:5556/dex</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">storage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">storage</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">memory</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">web</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="m">0.0.0.0</span><span class="p">:</span><span class="m">5556</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">oauth2</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">skipApprovalScreen</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">staticClients</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">staticClients</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">TestClient</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">client_test_id</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l">client_test_secret</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">redirectURIs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">http://{ip-your-app}/path/to/callback/</span><span class="w"> </span><span class="c"># 示例：http://localhost:5555/callback</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">connectors</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># mockCallback 连接器始终返回用户 &#39;kilgore@kilgore.trout&#39;。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">mockCallback</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">connectors</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># mockCallback 连接器始终返回用户 &#39;kilgore@kilgore.trout&#39;。</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">mockCallback</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">mock</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Mock</span></span></span></code></pre></div>
       
@@ -1286,7 +1285,7 @@ config.yaml 文件定义了 Dex 的设置，包括连接器、客户端和存储
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="p">[</span><span class="l">...]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test-oauth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
@@ -1299,7 +1298,7 @@ config.yaml 文件定义了 Dex 的设置，包括连接器、客户端和存储
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">          nohup ./dex serve config.yaml &gt; dex.log 2&gt;&amp;1 &amp;
 </span></span></span><span class="line"><span class="cl"><span class="sd">          sleep 5  # 给 Dex 启动时间</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="l">...]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="p">[</span><span class="l">...]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1509,7 +1508,7 @@ config.yaml 文件定义了 Dex 的设置，包括连接器、客户端和存储
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

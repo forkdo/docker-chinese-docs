@@ -54,51 +54,36 @@ Docker Desktop for Linux 使用 [VirtioFS](https://virtio-fs.gitlab.io/) 作为�
   </button>
   <div x-show="open" x-collapse class="px-4">
     <p>为了不使用提升的权限，同时又不必要地限制对共享文件的操作，Docker Desktop 在用户命名空间（参见 <code>user_namespaces(7)</code>）内运行文件共享服务 (<code>virtiofsd</code>)，并配置了 UID 和 GID 映射。因此，Docker Desktop 依赖于主机的配置，以允许当前用户使用从属 ID 委托。为此，<code>/etc/subuid</code>（参见 <code>subuid(5)</code>）和 <code>/etc/subgid</code>（参见 <code>subgid(5)</code>）必须存在。Docker Desktop 仅支持通过文件配置的从属 ID 委托。Docker Desktop 将当前用户 ID 和 GID 映射到容器中的 0。它使用 <code>/etc/subuid</code> 和 <code>/etc/subgid</code> 中对应当前用户的第一条记录来设置容器中大于 0 的 ID 的映射。</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">容器中的 ID</th>
-            <th
-              class="p-2">主机上的 ID</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2">0 (root)</td>
-            <td
-              class="p-2">运行 Docker Desktop 的用户 ID (例如 1000)</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">1</td>
-            <td
-              class="p-2">0 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100000)</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">2</td>
-            <td
-              class="p-2">1 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100001)</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">3</td>
-            <td
-              class="p-2">2 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100002)</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">...</td>
-            <td
-              class="p-2">...</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>容器中的 ID</th>
+          <th>主机上的 ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0 (root)</td>
+          <td>运行 Docker Desktop 的用户 ID (例如 1000)</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>0 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100000)</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>1 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100001)</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>2 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100002)</td>
+      </tr>
+      <tr>
+          <td>...</td>
+          <td>...</td>
+      </tr>
+  </tbody>
+</table>
 <p>如果 <code>/etc/subuid</code> 和 <code>/etc/subgid</code> 不存在，则需要创建它们。两者都应包含以下格式的条目：
 <code>&lt;用户名&gt;:&lt;ID 范围起始值&gt;:&lt;ID 范围大小&gt;</code>。例如，要允许当前用户使用从 100000 到 165535 的 ID：</p>
 <div
@@ -173,9 +158,9 @@ Docker Desktop for Linux 使用 [VirtioFS](https://virtio-fs.gitlab.io/) 作为�
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> <span class="nv">$USER</span>
 </span></span><span class="line"><span class="cl"><span class="go">exampleuser
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span> cat /etc/subuid
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/subuid
 </span></span><span class="line"><span class="cl"><span class="go">exampleuser:100000:65536
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span> cat /etc/subgid
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/subgid
 </span></span><span class="line"><span class="cl"><span class="go">exampleuser:100000:65536
 </span></span></span></code></pre></div>
       

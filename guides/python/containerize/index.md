@@ -116,16 +116,16 @@ $ git clone https://github.com/estebanx64/python-docker-example && cd python-doc
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker init
 </span></span><span class="line"><span class="cl"><span class="go">欢迎使用 Docker Init CLI！
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">此工具将引导你创建以下文件，并为你的项目设置合理的默认值：
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">此工具将引导你创建以下文件，并为你的项目设置合理的默认值：
 </span></span></span><span class="line"><span class="cl"><span class="go">  - .dockerignore
 </span></span></span><span class="line"><span class="cl"><span class="go">  - Dockerfile
 </span></span></span><span class="line"><span class="cl"><span class="go">  - compose.yaml
 </span></span></span><span class="line"><span class="cl"><span class="go">  - README.Docker.md
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">让我们开始吧！
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">? 你的项目使用什么应用程序平台？Python
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">让我们开始吧！
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">? 你的项目使用什么应用程序平台？Python
 </span></span></span><span class="line"><span class="cl"><span class="go">? 你想使用哪个版本的 Python？3.12
 </span></span></span><span class="line"><span class="cl"><span class="go">? 你的应用程序要监听哪个端口？8000
 </span></span></span><span class="line"><span class="cl"><span class="go">? 运行你的应用程序的命令是什么？python3 -m uvicorn app:app --host=0.0.0.0 --port=8000
@@ -332,55 +332,55 @@ $ git clone https://github.com/estebanx64/python-docker-example && cd python-doc
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此文件中提供了注释以帮助你入门。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果你需要更多帮助，请访问 Dockerfile 参考指南：</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># https://docs.docker.com/go/dockerfile-reference/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此文件中提供了注释以帮助你入门。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果你需要更多帮助，请访问 Dockerfile 参考指南：</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.docker.com/go/dockerfile-reference/</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 想帮助我们改进此模板？请在此处分享你的反馈：https://forms.gle/ybq9Krt8jtBL3iCk7</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 想帮助我们改进此模板？请在此处分享你的反馈：https://forms.gle/ybq9Krt8jtBL3iCk7</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此 Dockerfile 使用 Docker 加固镜像 (DHI) 以增强安全性。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 更多信息，请参阅 https://docs.docker.com/dhi/</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.12<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> python:${PYTHON_VERSION}-slim</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此 Dockerfile 使用 Docker 加固镜像 (DHI) 以增强安全性。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 更多信息，请参阅 https://docs.docker.com/dhi/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.12<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">python:${PYTHON_VERSION}-slim</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阻止 Python 写入 pyc 文件。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阻止 Python 写入 pyc 文件。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c"># 防止 Python 缓冲 stdout 和 stderr，以避免由于缓冲而导致应用程序崩溃时没有发出任何日志的情况。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个非特权用户，应用程序将以此用户身份运行。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 参见 https://docs.docker.com/go/dockerfile-user-best-practices/</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个非特权用户，应用程序将以此用户身份运行。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 参见 https://docs.docker.com/go/dockerfile-user-best-practices/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
 </span></span><span class="line"><span class="cl"><span class="k">RUN</span> adduser <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --disabled-password <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --no-create-home <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    appuser<span class="err">
+</span></span></span><span class="line"><span class="cl">    --disabled-password <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --no-create-home <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    appuser<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将下载依赖项作为单独的步骤，以利用 Docker 的缓存。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 利用缓存挂载到 /root/.cache/pip 以加速后续构建。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 利用绑定挂载到 requirements.txt 以避免必须将它们复制到此层中。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/pip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>requirements.txt,target<span class="o">=</span>requirements.txt <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    python -m pip install -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将下载依赖项作为单独的步骤，以利用 Docker 的缓存。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 利用缓存挂载到 /root/.cache/pip 以加速后续构建。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 利用绑定挂载到 requirements.txt 以避免必须将它们复制到此层中。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/pip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>requirements.txt,target<span class="o">=</span>requirements.txt <span class="se">\
+</span></span></span><span class="line"><span class="cl">    python -m pip install -r requirements.txt<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 切换到非特权用户以运行应用程序。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> appuser</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非特权用户以运行应用程序。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">appuser</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将源代码复制到容器中。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将源代码复制到容器中。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露应用程序监听的端口。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露应用程序监听的端口。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 运行应用程序。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;python3&#34;</span><span class="p">,</span> <span class="s2">&#34;-m&#34;</span><span class="p">,</span> <span class="s2">&#34;uvicorn&#34;</span><span class="p">,</span> <span class="s2">&#34;app:app&#34;</span><span class="p">,</span> <span class="s2">&#34;--host=0.0.0.0&#34;</span><span class="p">,</span> <span class="s2">&#34;--port=8000&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 运行应用程序。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;python3&#34;</span><span class="p">,</span> <span class="s2">&#34;-m&#34;</span><span class="p">,</span> <span class="s2">&#34;uvicorn&#34;</span><span class="p">,</span> <span class="s2">&#34;app:app&#34;</span><span class="p">,</span> <span class="s2">&#34;--host=0.0.0.0&#34;</span><span class="p">,</span> <span class="s2">&#34;--port=8000&#34;</span><span class="p">]</span></span></span></code></pre></div>
             <button
               @click="collapse = true"
               x-show="!collapse"
@@ -457,15 +457,15 @@ $ git clone https://github.com/estebanx64/python-docker-example && cd python-doc
           </div>
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 此文件中提供了注释以帮助你入门。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 如果你需要更多帮助，请访问 Docker Compose 参考指南：</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://docs.docker.com/go/compose-spec-reference/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果你需要更多帮助，请访问 Docker Compose 参考指南：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.docker.com/go/compose-spec-reference/</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 这里的指令将你的应用程序定义为一个名为 &#34;server&#34; 的服务。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 此服务从当前目录中的 Dockerfile 构建。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 你可以在这里添加你的应用程序可能依赖的其他服务，例如数据库或缓存。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 有关示例，请参阅 Awesome Compose 仓库：</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://github.com/docker/awesome-compose</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 这里的指令将你的应用程序定义为一个名为 &#34;server&#34; 的服务。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此服务从当前目录中的 Dockerfile 构建。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 你可以在这里添加你的应用程序可能依赖的其他服务，例如数据库或缓存。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 有关示例，请参阅 Awesome Compose 仓库：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://github.com/docker/awesome-compose</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
@@ -793,58 +793,58 @@ $ git clone https://github.com/estebanx64/python-docker-example && cd python-doc
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此文件中提供了注释以帮助你入门。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果你需要更多帮助，请访问 Dockerfile 参考指南：</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># https://docs.docker.com/go/dockerfile-reference/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此文件中提供了注释以帮助你入门。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果你需要更多帮助，请访问 Dockerfile 参考指南：</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.docker.com/go/dockerfile-reference/</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 想帮助我们改进此模板？请在此处分享你的反馈：https://forms.gle/ybq9Krt8jtBL3iCk7</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 想帮助我们改进此模板？请在此处分享你的反馈：https://forms.gle/ybq9Krt8jtBL3iCk7</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此 Dockerfile 使用 Docker 加固镜像 (DHI) 以增强安全性。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 更多信息，请参阅 https://docs.docker.com/dhi/</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.12.12-debian13-fips-dev<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> &lt;your-workspace&gt;/dhi-python:${PYTHON_VERSION}</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此 Dockerfile 使用 Docker 加固镜像 (DHI) 以增强安全性。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 更多信息，请参阅 https://docs.docker.com/dhi/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.12.12-debian13-fips-dev<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">&lt;your-workspace&gt;/dhi-python:${PYTHON_VERSION</span><span class="o">}</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阻止 Python 写入 pyc 文件。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阻止 Python 写入 pyc 文件。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c"># 防止 Python 缓冲 stdout 和 stderr，以避免由于缓冲而导致应用程序崩溃时没有发出任何日志的情况。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c"># 为 adduser 添加依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt update -y <span class="o">&amp;&amp;</span> apt install adduser -y<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt update -y <span class="o">&amp;&amp;</span> apt install adduser -y<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个非特权用户，应用程序将以此用户身份运行。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 参见 https://docs.docker.com/go/dockerfile-user-best-practices/</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个非特权用户，应用程序将以此用户身份运行。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 参见 https://docs.docker.com/go/dockerfile-user-best-practices/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
 </span></span><span class="line"><span class="cl"><span class="k">RUN</span> adduser <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --disabled-password <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --no-create-home <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    appuser<span class="err">
+</span></span></span><span class="line"><span class="cl">    --disabled-password <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --no-create-home <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    appuser<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将下载依赖项作为单独的步骤，以利用 Docker 的缓存。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 利用缓存挂载到 /root/.cache/pip 以加速后续构建。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 利用绑定挂载到 requirements.txt 以避免必须将它们复制到此层中。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/pip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>requirements.txt,target<span class="o">=</span>requirements.txt <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    python -m pip install -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将下载依赖项作为单独的步骤，以利用 Docker 的缓存。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 利用缓存挂载到 /root/.cache/pip 以加速后续构建。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 利用绑定挂载到 requirements.txt 以避免必须将它们复制到此层中。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/pip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>requirements.txt,target<span class="o">=</span>requirements.txt <span class="se">\
+</span></span></span><span class="line"><span class="cl">    python -m pip install -r requirements.txt<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 切换到非特权用户以运行应用程序。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> appuser</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非特权用户以运行应用程序。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">appuser</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将源代码复制到容器中。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将源代码复制到容器中。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露应用程序监听的端口。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露应用程序监听的端口。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 运行应用程序。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;python3&#34;</span><span class="p">,</span> <span class="s2">&#34;-m&#34;</span><span class="p">,</span> <span class="s2">&#34;uvicorn&#34;</span><span class="p">,</span> <span class="s2">&#34;app:app&#34;</span><span class="p">,</span> <span class="s2">&#34;--host=0.0.0.0&#34;</span><span class="p">,</span> <span class="s2">&#34;--port=8000&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 运行应用程序。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;python3&#34;</span><span class="p">,</span> <span class="s2">&#34;-m&#34;</span><span class="p">,</span> <span class="s2">&#34;uvicorn&#34;</span><span class="p">,</span> <span class="s2">&#34;app:app&#34;</span><span class="p">,</span> <span class="s2">&#34;--host=0.0.0.0&#34;</span><span class="p">,</span> <span class="s2">&#34;--port=8000&#34;</span><span class="p">]</span></span></span></code></pre></div>
             <button
               @click="collapse = true"
               x-show="!collapse"
@@ -921,15 +921,15 @@ $ git clone https://github.com/estebanx64/python-docker-example && cd python-doc
           </div>
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 此文件中提供了注释以帮助你入门。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 如果你需要更多帮助，请访问 Docker Compose 参考指南：</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://docs.docker.com/go/compose-spec-reference/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果你需要更多帮助，请访问 Docker Compose 参考指南：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.docker.com/go/compose-spec-reference/</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 这里的指令将你的应用程序定义为一个名为 &#34;server&#34; 的服务。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 此服务从当前目录中的 Dockerfile 构建。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 你可以在这里添加你的应用程序可能依赖的其他服务，例如数据库或缓存。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 有关示例，请参阅 Awesome Compose 仓库：</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://github.com/docker/awesome-compose</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 这里的指令将你的应用程序定义为一个名为 &#34;server&#34; 的服务。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此服务从当前目录中的 Dockerfile 构建。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 你可以在这里添加你的应用程序可能依赖的其他服务，例如数据库或缓存。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 有关示例，请参阅 Awesome Compose 仓库：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://github.com/docker/awesome-compose</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">

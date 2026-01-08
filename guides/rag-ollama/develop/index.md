@@ -323,7 +323,7 @@
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gd">- OLLAMA=http://ollama:11434
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+ OLLAMA=&lt;your-url&gt;
+</span></span></span><span class="line"><span class="cl"><span class="gi">+ OLLAMA=&lt;your-url&gt;
 </span></span></span></code></pre></div>
       
     </div>

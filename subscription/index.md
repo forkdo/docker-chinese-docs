@@ -6,7 +6,7 @@ Docker 订阅提供 Docker 产品的商业使用许可，包括 Docker Desktop�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   

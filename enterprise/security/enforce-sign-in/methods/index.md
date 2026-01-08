@@ -495,7 +495,7 @@
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 如果目录不存在则创建</span>
 </span></span><span class="line"><span class="cl">sudo mkdir -p <span class="s2">&#34;/Library/Application Support/com.docker.docker&#34;</span>
 </span></span><span class="line"><span class="cl">

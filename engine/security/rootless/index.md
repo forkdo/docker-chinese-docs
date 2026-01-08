@@ -125,16 +125,16 @@ testuser:231072:65536
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Installed docker.service successfully.
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] To control docker.service, run: `systemctl --user (start|stop|restart) docker.service`
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] To run docker.service on system startup, run: `sudo loginctl enable-linger testuser`
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[INFO] Creating CLI context &#34;rootless&#34;
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Creating CLI context &#34;rootless&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">Successfully created context &#34;rootless&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Using CLI context &#34;rootless&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">Current context is now &#34;rootless&#34;
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[INFO] Make sure the following environment variable(s) are set (or add them to ~/.bashrc):
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Make sure the following environment variable(s) are set (or add them to ~/.bashrc):
 </span></span></span><span class="line"><span class="cl"><span class="go">export PATH=/usr/bin:$PATH
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[INFO] Some applications may require the following environment variable too:
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Some applications may require the following environment variable too:
 </span></span></span><span class="line"><span class="cl"><span class="go">export DOCKER_HOST=unix:///run/user/1000/docker.sock
 </span></span></span></code></pre></div>
       
@@ -226,16 +226,16 @@ testuser:231072:65536
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Installed docker.service successfully.
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] To control docker.service, run: `systemctl --user (start|stop|restart) docker.service`
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] To run docker.service on system startup, run: `sudo loginctl enable-linger testuser`
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[INFO] Creating CLI context &#34;rootless&#34;
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Creating CLI context &#34;rootless&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">Successfully created context &#34;rootless&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Using CLI context &#34;rootless&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">Current context is now &#34;rootless&#34;
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[INFO] Make sure the following environment variable(s) are set (or add them to ~/.bashrc):
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Make sure the following environment variable(s) are set (or add them to ~/.bashrc):
 </span></span></span><span class="line"><span class="cl"><span class="go">export PATH=/home/testuser/bin:$PATH
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[INFO] Some applications may require the following environment variable too:
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">[INFO] Some applications may require the following environment variable too:
 </span></span></span><span class="line"><span class="cl"><span class="go">export DOCKER_HOST=unix:///run/user/1000/docker.sock
 </span></span></span></code></pre></div>
       

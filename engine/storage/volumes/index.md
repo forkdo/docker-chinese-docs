@@ -229,7 +229,7 @@ $ docker volume rm my-vol
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name devtest \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount source=myvol2,target=/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
 </span></span></span></code></pre></div>
@@ -276,7 +276,7 @@ $ docker volume rm my-vol
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name devtest \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v myvol2:/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
 </span></span></span></code></pre></div>
@@ -467,7 +467,7 @@ $ docker service rm devtest-service
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name=nginxtest \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name=nginxtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount source=nginx-vol,destination=/usr/share/nginx/html \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
 </span></span></span></code></pre></div>
@@ -514,7 +514,7 @@ $ docker service rm devtest-service
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name=nginxtest \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name=nginxtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v nginx-vol:/usr/share/nginx/html \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
 </span></span></span></code></pre></div>
@@ -624,7 +624,7 @@ $ docker volume rm nginx-vol
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name=nginxtest \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name=nginxtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount source=nginx-vol,destination=/usr/share/nginx/html,readonly \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
 </span></span></span></code></pre></div>
@@ -671,7 +671,7 @@ $ docker volume rm nginx-vol
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name=nginxtest \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name=nginxtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v nginx-vol:/usr/share/nginx/html:ro \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
 </span></span></span></code></pre></div>

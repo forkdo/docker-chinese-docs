@@ -6,7 +6,7 @@ Gordon 以及 Claude Desktop 或 Cursor 等其他 MCP 客户端，可以与作�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   

@@ -459,7 +459,7 @@ Btrfs、ZFS 和其他驱动程序处理写时复制的方式不同。您可以�
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo du -sh /var/lib/docker/containers/*
 </span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">36K  /var/lib/docker/containers/3ed3c1a10430e09f253704116965b01ca920202d52f3bf381fbb833b8ae356bc
+</span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/3ed3c1a10430e09f253704116965b01ca920202d52f3bf381fbb833b8ae356bc
 </span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/40ebdd7634162eb42bdb1ba76a395095527e9c0aa40348e6c325bd0aa289423c
 </span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/939b3bf9e7ece24bcffec57d974c939da2bdcc6a5077b5459c897c1e2fa37a39
 </span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/a5ff32e2b551168b9498870faf16c9cd0af820edf8a5c157f7b80da59d01a107

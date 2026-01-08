@@ -4,7 +4,7 @@ Docker Desktop 支持专为企业级 IT 环境设计的可扩展部署选项。�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   

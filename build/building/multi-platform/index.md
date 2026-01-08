@@ -164,7 +164,7 @@ builder that uses the <code>docker-container</code> driver.</p>
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker buildx create <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  --name container-builder \
+</span></span></span><span class="line"><span class="cl"><span class="go">  --name container-builder \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --driver docker-container \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --bootstrap --use
 </span></span></span></code></pre></div>
@@ -611,16 +611,16 @@ Steps:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> --platform=$BUILDPLATFORM golang:alpine AS build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> TARGETOS<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> TARGETARCH<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nv">GOOS</span><span class="o">=</span><span class="si">${</span><span class="nv">TARGETOS</span><span class="si">}</span> <span class="nv">GOARCH</span><span class="o">=</span><span class="si">${</span><span class="nv">TARGETARCH</span><span class="si">}</span> go build -o server .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=$BUILDPLATFORM</span> golang:alpine AS build<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> TARGETOS<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> TARGETARCH<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span> https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="nv">GOOS</span><span class="o">=</span><span class="si">${</span><span class="nv">TARGETOS</span><span class="si">}</span> <span class="nv">GOARCH</span><span class="o">=</span><span class="si">${</span><span class="nv">TARGETARCH</span><span class="si">}</span> go build -o server .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> alpine</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /app/server /server<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/server&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build /app/server /server<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/server&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -664,14 +664,14 @@ Steps:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> golang:alpine AS build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go build -o server .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">golang:alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span> https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> go build -o server .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> alpine</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /app/server /server<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/server&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build /app/server /server<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/server&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -716,14 +716,14 @@ Steps:
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"># syntax=docker/dockerfile:1
 </span></span><span class="line"><span class="cl"><span class="gd">-FROM golang:alpine AS build
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+FROM --platform=$BUILDPLATFORM golang:alpine AS build
+</span></span></span><span class="line"><span class="cl"><span class="gi">+FROM --platform=$BUILDPLATFORM golang:alpine AS build
 </span></span></span><span class="line"><span class="cl"><span class="gi">+ARG TARGETOS
 </span></span></span><span class="line"><span class="cl"><span class="gi">+ARG TARGETARCH
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>WORKDIR /app
+</span></span></span><span class="line"><span class="cl">WORKDIR /app
 </span></span><span class="line"><span class="cl">ADD https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .
 </span></span><span class="line"><span class="cl"><span class="gd">-RUN go build -o server .
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o server .
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>
+</span></span></span><span class="line"><span class="cl"><span class="gi">+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o server .
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">FROM alpine
 </span></span><span class="line"><span class="cl">COPY --from=build /app/server /server
 </span></span><span class="line"><span class="cl">ENTRYPOINT [&#34;/server&#34;]

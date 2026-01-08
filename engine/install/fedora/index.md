@@ -191,7 +191,7 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dnf list docker-ce --showduplicates <span class="p">|</span> sort -r
 </span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">docker-ce.x86_64    3:29.1.3-1.fc41    docker-ce-stable
+</span></span></span><span class="line"><span class="cl"><span class="go">docker-ce.x86_64    3:29.1.3-1.fc41    docker-ce-stable
 </span></span></span><span class="line"><span class="cl"><span class="go">docker-ce.x86_64    3:29.1.2-1.fc41    docker-ce-stable
 </span></span></span><span class="line"><span class="cl"><span class="go">&lt;...&gt;
 </span></span></span></code></pre></div>

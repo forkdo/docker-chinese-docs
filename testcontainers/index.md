@@ -5,7 +5,7 @@ Testcontainers 是一组开源库，提供了简单且轻量级的 API，用于�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -92,7 +92,7 @@ Testcontainers 会自动检测并使用这些 Docker 环境，无需进行任何
 
  
  <div
-   class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+   class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
  >
    
    

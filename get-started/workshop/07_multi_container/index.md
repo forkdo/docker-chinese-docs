@@ -120,7 +120,7 @@
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">    --network todo-app --network-alias mysql \
+</span></span></span><span class="line"><span class="cl"><span class="go">    --network todo-app --network-alias mysql \
 </span></span></span><span class="line"><span class="cl"><span class="go">    -v todo-mysql-data:/var/lib/mysql \
 </span></span></span><span class="line"><span class="cl"><span class="go">    -e MYSQL_ROOT_PASSWORD=secret \
 </span></span></span><span class="line"><span class="cl"><span class="go">    -e MYSQL_DATABASE=todos \
@@ -438,7 +438,7 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -dp 127.0.0.1:3000:3000 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -w /app -v &#34;$(pwd):/app&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -w /app -v &#34;$(pwd):/app&#34; \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --network todo-app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -e MYSQL_HOST=mysql \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -e MYSQL_USER=root \
@@ -595,7 +595,7 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -dp 127.0.0.1:3000:3000 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -w //app -v &#34;/$(pwd):/app&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -w //app -v &#34;/$(pwd):/app&#34; \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --network todo-app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -e MYSQL_HOST=mysql \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -e MYSQL_USER=root \

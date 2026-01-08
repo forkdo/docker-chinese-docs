@@ -94,7 +94,7 @@
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;Hello, </span><span class="nv">$1</span><span class="s2">!&#34;</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Hello, </span><span class="nv">$1</span><span class="s2">!&#34;</span></span></span></code></pre></div>
       
     </div>
   </div>

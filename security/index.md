@@ -10,7 +10,7 @@ Docker 通过其开发者级别的安全功能，帮助您保护本地环境、�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -156,7 +156,7 @@ Docker 通过其开发者级别的安全功能，帮助您保护本地环境、�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   

@@ -116,34 +116,34 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> cgr.dev/chainguard/python:latest-dev AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">cgr.dev/chainguard/python:latest-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> python -m venv /app/venv<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> python -m venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> requirements.txt .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apk 安装任何额外的包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apk add --no-cache gcc musl-dev</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apk 安装任何额外的包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apk add --no-cache gcc musl-dev</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> cgr.dev/chainguard/python:latest</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">cgr.dev/chainguard/python:latest</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> app.py ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> app.py ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /app/venv /app/venv<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -188,34 +188,34 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> python:latest AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">python:latest</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> python -m venv /app/venv<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> python -m venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> requirements.txt .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apt 安装任何额外的包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apt-get update &amp;&amp; apt-get install -y gcc &amp;&amp; rm -rf /var/lib/apt/lists/*</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apt 安装任何额外的包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apt-get update &amp;&amp; apt-get install -y gcc &amp;&amp; rm -rf /var/lib/apt/lists/*</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> python:latest</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">python:latest</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> app.py ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> app.py ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /app/venv /app/venv<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -260,36 +260,36 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># === 构建阶段：安装依赖并创建虚拟环境 ===</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/python:3.13-alpine3.21-dev AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># === 构建阶段：安装依赖并创建虚拟环境 ===</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/python:3.13-alpine3.21-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> python -m venv /app/venv<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> python -m venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> requirements.txt .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apk 安装任何额外的包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apk add --no-cache gcc musl-dev</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apk 安装任何额外的包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apk add --no-cache gcc musl-dev</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># === 最终阶段：创建最小运行时镜像 ===</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/python:3.13-alpine3.21</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># === 最终阶段：创建最小运行时镜像 ===</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/python:3.13-alpine3.21</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> app.py ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> app.py ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /app/venv /app/venv<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -334,26 +334,26 @@
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c">#syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> dhi.io/python:3.13-alpine3.21-dev</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">dhi.io/python:3.13-alpine3.21-dev</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">LANG</span><span class="o">=</span>C.UTF-8<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/app/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> python -m venv /app/venv<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> python -m venv /app/venv<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> requirements.txt .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果需要，使用 apk 安装任何额外的包</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># RUN apk add --no-cache gcc musl-dev</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果需要，使用 apk 安装任何额外的包</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># RUN apk add --no-cache gcc musl-dev</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> app.py ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> app.py ./<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;/app/app.py&#34;</span> <span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>

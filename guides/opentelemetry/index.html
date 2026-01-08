@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-09-09 15:43:03 &#43;0200 &#43;0200"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"使用 OpenTelemetry 对 JS 应用进行插桩\"","description":"\"学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。\"","url":"\/guides\/opentelemetry\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-09-09T15:43:03+02:00","description":"学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。","headline":"使用 OpenTelemetry 对 JS 应用进行插桩","isPartOf":{"@id":"/guides/","@type":"WebPage","name":"指南"},"keywords":"OpenTelemetry, observability, tracing","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/opentelemetry/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/opentelemetry/","name":"使用 OpenTelemetry 对 JS 应用进行插桩"},"position":2}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -674,7 +673,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -683,7 +682,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 指南"
+    data-pagefind-meta="breadcrumbs: / 指南"
     class="truncate"
     >使用 OpenTelemetry 对 JS 应用进行插桩</span
   >
@@ -1047,8 +1046,8 @@ if (resultsLength > 5) {
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir app <span class="o">&amp;&amp;</span> <span class="nb">cd</span> app
 </span></span><span class="line"><span class="cl">npm init -y
 </span></span><span class="line"><span class="cl">npm install express @opentelemetry/api @opentelemetry/sdk-node <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>            @opentelemetry/auto-instrumentations-node <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>            @opentelemetry/exporter-trace-otlp-http</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">            @opentelemetry/auto-instrumentations-node <span class="se">\
+</span></span></span><span class="line"><span class="cl">            @opentelemetry/exporter-trace-otlp-http</span></span></code></pre></div>
       
     </div>
   </div>
@@ -1086,9 +1085,9 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// app/app.js
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./tracer&#39;</span><span class="p">);</span> <span class="c1">// 初始化 OpenTelemetry
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -1143,7 +1142,7 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// app/tracer.js
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">NodeSDK</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-node&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">{</span> <span class="nx">NodeSDK</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-node&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">{</span> <span class="nx">getNodeAutoInstrumentations</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/auto-instrumentations-node&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">{</span> <span class="nx">OTLPTraceExporter</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/exporter-trace-otlp-http&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
@@ -1199,12 +1198,12 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># collector-config.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">receivers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">receivers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">otlp</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">protocols</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">http</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">exporters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">exporters</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">logging</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">loglevel</span><span class="p">:</span><span class="w"> </span><span class="l">debug</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">jaeger</span><span class="p">:</span><span class="w">
@@ -1212,7 +1211,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tls</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">service</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pipelines</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traces</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">receivers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">otlp]</span><span class="w">
@@ -1262,7 +1261,7 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.9&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">./app</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
@@ -1322,13 +1321,13 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># app/Dockerfile</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> node:18</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">node:18</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm install<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;app.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;app.js&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1617,7 +1616,7 @@ if (resultsLength > 5) {
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

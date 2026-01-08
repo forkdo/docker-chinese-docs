@@ -190,7 +190,7 @@ $ docker run --mount type=tmpfs,dst=/app,tmpfs-size=21474836480,tmpfs-mode=1770
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name tmptest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=tmpfs,destination=/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
@@ -277,7 +277,7 @@ $ docker run --mount type=tmpfs,dst=/app,tmpfs-size=21474836480,tmpfs-mode=1770
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name tmptest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --tmpfs /app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest

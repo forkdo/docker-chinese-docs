@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-09-04 16:36:06 -0400 -0400"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"多阶段构建\"","description":"\"本概念页面将为您介绍多阶段构建的目的及其优势\"","url":"\/get-started\/docker-concepts\/building-images\/multi-stage-builds\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-09-04T16:36:06-04:00","description":"本概念页面将为您介绍多阶段构建的目的及其优势","headline":"多阶段构建","isPartOf":{"@id":"/get-started/docker-concepts/building-images/","@type":"WebPage","name":"构建镜像"},"keywords":"概念, 构建, 镜像, 容器, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/building-images/multi-stage-builds/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":""},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/","name":"构建镜像"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/multi-stage-builds/","name":"多阶段构建"},"position":3}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -567,8 +567,7 @@ if (resultsLength > 5) {
     <a
       class="hover:text-blue dark:hover:text-blue"
       href="/get-started/"
-    >
-        <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>开始使用</a>
+    ></a>
     <button
       @click="expanded = !expanded"
       class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
@@ -1426,12 +1425,12 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
     <a href="/get-started/" class="link truncate"
-      >开始使用</a
+      ></a
     >
     <span>/</span>
     
@@ -1445,7 +1444,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 开始使用 / Docker 概念 / 构建镜像"
+    data-pagefind-meta="breadcrumbs: /  / Docker 概念 / 构建镜像"
     class="truncate"
     >多阶段构建</span
   >
@@ -1690,16 +1689,16 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 阶段 1: 构建环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> builder-image AS build-stage </span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装构建工具 (例如, Maven, Gradle)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制源代码</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 构建命令 (例如, 编译, 打包)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">builder-image</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build-stage</span> <span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装构建工具 (例如, Maven, Gradle)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制源代码</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 构建命令 (例如, 编译, 打包)</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阶段 2: 运行时环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> runtime-image AS final-stage  </span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从构建阶段复制应用程序构件 (例如, JAR 文件)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build-stage /path/in/build/stage /path/to/place/in/final/stage<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 定义运行时配置 (例如, CMD, ENTRYPOINT) </span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 2: 运行时环境</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">runtime-image</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final-stage</span>  <span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从构建阶段复制应用程序构件 (例如, JAR 文件)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build-stage /path/in/build/stage /path/to/place/in/final/stage<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 定义运行时配置 (例如, CMD, ENTRYPOINT) </span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1874,15 +1873,15 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.spring_boot_docker</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootApplication</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringBootDockerApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nd">@SpringBootApplication</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringBootDockerApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">home</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1893,7 +1892,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">SpringBootDockerApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1946,7 +1945,7 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> eclipse-temurin:21.0.8_9-jdk-jammy</span></span></span></code></pre></div>
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21.0.8_9-jdk-jammy</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1985,7 +1984,7 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="s"> /app</span></span></span></code></pre></div>
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -2025,7 +2024,7 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">COPY</span> .mvn/ .mvn<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> mvnw pom.xml ./</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> mvnw pom.xml ./</span></span></code></pre></div>
       
     </div>
   </div>
@@ -2179,13 +2178,13 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> eclipse-temurin:21.0.8_9-jdk-jammy</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> .mvn/ .mvn<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> mvnw pom.xml ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> ./mvnw dependency:go-offline<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> src ./src<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;./mvnw&#34;</span><span class="p">,</span> <span class="s2">&#34;spring-boot:run&#34;</span><span class="p">]</span></span></span></code></pre></div>
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21.0.8_9-jdk-jammy</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> .mvn/ .mvn<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> mvnw pom.xml ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> ./mvnw dependency:go-offline<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> src ./src<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;./mvnw&#34;</span><span class="p">,</span> <span class="s2">&#34;spring-boot:run&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -2504,19 +2503,19 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> eclipse-temurin:21.0.8_9-jdk-jammy AS builder</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /opt/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> .mvn/ .mvn<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> mvnw pom.xml ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> ./mvnw dependency:go-offline<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src ./src<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> ./mvnw clean install<span class="err">
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21.0.8_9-jdk-jammy</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/opt/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> .mvn/ .mvn<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> mvnw pom.xml ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> ./mvnw dependency:go-offline<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./src ./src<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> ./mvnw clean install<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> eclipse-temurin:21.0.8_9-jre-jammy AS final</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /opt/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8080</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /opt/app/target/*.jar /opt/app/*.jar<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;-jar&#34;</span><span class="p">,</span> <span class="s2">&#34;/opt/app/*.jar&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21.0.8_9-jre-jammy</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/opt/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /opt/app/target/*.jar /opt/app/*.jar<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;-jar&#34;</span><span class="p">,</span> <span class="s2">&#34;/opt/app/*.jar&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -2909,7 +2908,7 @@ if (resultsLength > 5) {
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

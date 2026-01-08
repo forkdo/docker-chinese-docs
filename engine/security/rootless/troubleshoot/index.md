@@ -111,11 +111,11 @@
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> <span class="o">[</span> ! -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> sudo cat &lt;&lt;EOF &gt; /etc/apparmor.d/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
 </span></span><span class="line"><span class="cl"><span class="go">abi &lt;abi/4.0&gt;,
 </span></span></span><span class="line"><span class="cl"><span class="go">include &lt;tunables/global&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">&#34;$HOME/bin/rootlesskit&#34; flags=(unconfined) {
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">&#34;$HOME/bin/rootlesskit&#34; flags=(unconfined) {
 </span></span></span><span class="line"><span class="cl"><span class="go">  userns,
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  include if exists &lt;local/${filename}&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">  include if exists &lt;local/${filename}&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">}
 </span></span></span><span class="line"><span class="cl"><span class="go">EOF
 </span></span></span></code></pre></div>

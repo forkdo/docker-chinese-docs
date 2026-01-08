@@ -104,16 +104,16 @@ $ git clone https://github.com/spring-projects/spring-petclinic.git
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker init
 </span></span><span class="line"><span class="cl"><span class="go">Welcome to the Docker Init CLI!
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">This utility will walk you through creating the following files with sensible defaults for your project:
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">This utility will walk you through creating the following files with sensible defaults for your project:
 </span></span></span><span class="line"><span class="cl"><span class="go">  - .dockerignore
 </span></span></span><span class="line"><span class="cl"><span class="go">  - Dockerfile
 </span></span></span><span class="line"><span class="cl"><span class="go">  - compose.yaml
 </span></span></span><span class="line"><span class="cl"><span class="go">  - README.Docker.md
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Let&#39;s get started!
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">WARNING: The following Docker files already exist in this directory:
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">Let&#39;s get started!
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">WARNING: The following Docker files already exist in this directory:
 </span></span></span><span class="line"><span class="cl"><span class="go">  - docker-compose.yml
 </span></span></span><span class="line"><span class="cl"><span class="go">? Do you want to overwrite them? Yes
 </span></span></span><span class="line"><span class="cl"><span class="go">? What application platform does your project use? Java
@@ -195,89 +195,89 @@ $ git clone https://github.com/spring-projects/spring-petclinic.git
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 本文件各处提供了注释，帮助您入门。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果您需要更多帮助，请访问 Dockerfile 参考指南：</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># https://docs.docker.com/go/dockerfile-reference/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 本文件各处提供了注释，帮助您入门。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果您需要更多帮助，请访问 Dockerfile 参考指南：</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.docker.com/go/dockerfile-reference/</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 想帮助我们改进此模板？请在此处分享您的反馈：https://forms.gle/ybq9Krt8jtBL3iCk7</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 想帮助我们改进此模板？请在此处分享您的反馈：https://forms.gle/ybq9Krt8jtBL3iCk7</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">################################################################################</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">################################################################################</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个用于解析和下载依赖项的阶段。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> eclipse-temurin:21-jdk-jammy as deps</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个用于解析和下载依赖项的阶段。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21-jdk-jammy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">deps</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制具有可执行权限的 mvnw 包装器。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --chmod<span class="o">=</span><span class="m">0755</span> mvnw mvnw<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> .mvn/ .mvn/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制具有可执行权限的 mvnw 包装器。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --chmod<span class="o">=</span><span class="m">0755</span> mvnw mvnw<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> .mvn/ .mvn/<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将下载依赖项作为单独步骤，以利用 Docker 的缓存。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 利用缓存挂载到 /root/.m2，以便后续构建无需重新下载包。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 ./mvnw dependency:go-offline -DskipTests<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将下载依赖项作为单独步骤，以利用 Docker 的缓存。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 利用缓存挂载到 /root/.m2，以便后续构建无需重新下载包。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 ./mvnw dependency:go-offline -DskipTests<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">################################################################################</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">################################################################################</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个基于已下载依赖项阶段的构建应用程序阶段。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此 Dockerfile 针对输出 uber jar 的 Java 应用程序进行了优化，uber jar 包含在 JVM 中运行应用所需的所有依赖项。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果您的应用不输出 uber jar，而是依赖 Apache Tomcat 等应用服务器，则需要更新此阶段的包文件名，</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 并更新 &#34;final&#34; 阶段的基础镜像以使用相关应用服务器，例如使用 tomcat（https://hub.docker.com/_/tomcat/）作为基础镜像。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> deps as package</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个基于已下载依赖项阶段的构建应用程序阶段。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此 Dockerfile 针对输出 uber jar 的 Java 应用程序进行了优化，uber jar 包含在 JVM 中运行应用所需的所有依赖项。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果您的应用不输出 uber jar，而是依赖 Apache Tomcat 等应用服务器，则需要更新此阶段的包文件名，</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 并更新 &#34;final&#34; 阶段的基础镜像以使用相关应用服务器，例如使用 tomcat（https://hub.docker.com/_/tomcat/）作为基础镜像。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">deps</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">package</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src src/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    ./mvnw package -DskipTests <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    mv target/<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.artifactId -q -DforceStdout<span class="k">)</span>-<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.version -q -DforceStdout<span class="k">)</span>.jar target/app.jar<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./src src/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
+</span></span></span><span class="line"><span class="cl">    ./mvnw package -DskipTests <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    mv target/<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.artifactId -q -DforceStdout<span class="k">)</span>-<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.version -q -DforceStdout<span class="k">)</span>.jar target/app.jar<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">################################################################################</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">################################################################################</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个用于将应用程序提取到单独层的阶段。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 利用 Spring Boot 的层工具和 Docker 的缓存，将打包的应用程序提取到可复制到最终阶段的单独层中。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 参考 Spring 文档：</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> package as extract</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个用于将应用程序提取到单独层的阶段。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 利用 Spring Boot 的层工具和 Docker 的缓存，将打包的应用程序提取到可复制到最终阶段的单独层中。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 参考 Spring 文档：</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">package</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">extract</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> java -Djarmode<span class="o">=</span>layertools -jar target/app.jar extract --destination target/extracted<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> java -Djarmode<span class="o">=</span>layertools -jar target/app.jar extract --destination target/extracted<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">################################################################################</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">################################################################################</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个新的运行应用程序阶段，该阶段包含应用程序的最小运行时依赖项。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此阶段通常使用与安装或构建阶段不同的基础镜像，必要文件从安装阶段复制。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 以下示例使用 eclipse-turmin 的 JRE 镜像作为运行应用的基础。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 通过指定 &#34;17-jre-jammy&#34; 标签，它还会使用构建 Dockerfile 时该标签的最新版本。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果可重现性很重要，请考虑使用特定的摘要 SHA，例如</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># eclipse-temurin@sha256:99cede493dfd88720b610eb8077c8688d3cca50003d76d1d539b0efc8cca72b4。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> eclipse-temurin:21-jre-jammy AS final</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个新的运行应用程序阶段，该阶段包含应用程序的最小运行时依赖项。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此阶段通常使用与安装或构建阶段不同的基础镜像，必要文件从安装阶段复制。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">#</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 以下示例使用 eclipse-turmin 的 JRE 镜像作为运行应用的基础。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 通过指定 &#34;17-jre-jammy&#34; 标签，它还会使用构建 Dockerfile 时该标签的最新版本。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果可重现性很重要，请考虑使用特定的摘要 SHA，例如</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># eclipse-temurin@sha256:99cede493dfd88720b610eb8077c8688d3cca50003d76d1d539b0efc8cca72b4。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21-jre-jammy</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建一个应用将以其身份运行的非特权用户。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 参见 https://docs.docker.com/go/dockerfile-user-best-practices/</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建一个应用将以其身份运行的非特权用户。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 参见 https://docs.docker.com/go/dockerfile-user-best-practices/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
 </span></span><span class="line"><span class="cl"><span class="k">RUN</span> adduser <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --disabled-password <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --no-create-home <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    appuser<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> appuser</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    --disabled-password <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --no-create-home <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    appuser<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">appuser</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从 &#34;package&#34; 阶段复制可执行文件。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/dependencies/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/spring-boot-loader/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/snapshot-dependencies/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/application/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从 &#34;package&#34; 阶段复制可执行文件。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/dependencies/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/spring-boot-loader/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/snapshot-dependencies/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/application/ ./<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8080</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;org.springframework.boot.loader.launch.JarLauncher&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;org.springframework.boot.loader.launch.JarLauncher&#34;</span> <span class="p">]</span></span></span></code></pre></div>
             <button
               @click="collapse = true"
               x-show="!collapse"
@@ -354,50 +354,50 @@ $ git clone https://github.com/spring-projects/spring-petclinic.git
           </div>
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 本文件各处提供了注释，帮助您入门。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 如果您需要更多帮助，请访问 Docker Compose 参考指南：</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://docs.docker.com/go/compose-spec-reference/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果您需要更多帮助，请访问 Docker Compose 参考指南：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://docs.docker.com/go/compose-spec-reference/</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 此处指令将您的应用程序定义为名为 &#34;server&#34; 的服务。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 此服务从当前目录的 Dockerfile 构建。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 您可以在此处添加应用程序可能依赖的其他服务，例如数据库或缓存。有关示例，请参阅 Awesome Compose 仓库：</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://github.com/docker/awesome-compose</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此处指令将您的应用程序定义为名为 &#34;server&#34; 的服务。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此服务从当前目录的 Dockerfile 构建。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 您可以在此处添加应用程序可能依赖的其他服务，例如数据库或缓存。有关示例，请参阅 Awesome Compose 仓库：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># https://github.com/docker/awesome-compose</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 以下注释部分是定义 PostgreSQL 数据库的示例，您的应用程序可以使用。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># `depends_on` 告诉 Docker Compose 在应用程序之前启动数据库。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># `db-data` 卷在容器重启之间持久化数据库数据。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># `db-password` 密钥用于设置数据库密码。在运行 `docker compose up` 之前，</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 您必须创建 `db/password.txt` 并向其中添加您选择的密码。</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     depends_on:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       db:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#         condition: service_healthy</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   db:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     image: postgres:18</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     restart: always</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     user: postgres</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     secrets:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       - db-password</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     volumes:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       - db-data:/var/lib/postgresql</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     environment:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       - POSTGRES_DB=example</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     expose:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       - 5432</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     healthcheck:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       test: [ &#34;CMD&#34;, &#34;pg_isready&#34; ]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       interval: 10s</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       timeout: 5s</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#       retries: 5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># volumes:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   db-data:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># secrets:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   db-password:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     file: db/password.txt</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 以下注释部分是定义 PostgreSQL 数据库的示例，您的应用程序可以使用。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># `depends_on` 告诉 Docker Compose 在应用程序之前启动数据库。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># `db-data` 卷在容器重启之间持久化数据库数据。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># `db-password` 密钥用于设置数据库密码。在运行 `docker compose up` 之前，</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 您必须创建 `db/password.txt` 并向其中添加您选择的密码。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     depends_on:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       db:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#         condition: service_healthy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#   db:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     image: postgres:18</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     restart: always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     user: postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     secrets:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       - db-password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     volumes:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       - db-data:/var/lib/postgresql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     environment:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       - POSTGRES_DB=example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     expose:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       - 5432</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     healthcheck:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       test: [ &#34;CMD&#34;, &#34;pg_isready&#34; ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       interval: 10s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       timeout: 5s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#       retries: 5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># volumes:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#   db-data:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># secrets:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#   db-password:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">#     file: db/password.txt</span></span></span></code></pre></div>
             <button
               @click="collapse = true"
               x-show="!collapse"

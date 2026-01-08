@@ -35,7 +35,7 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -210,7 +210,7 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 
 - [修复 Mac 上的 Docker Desktop 启动问题](/desktop/cert-revoke-solution/)
 
-- [Docker Desktop 发布说明](/desktop/release-notes/)
-
 - [](/desktop/enterprise/)
+
+- [](/desktop/release-notes/)
 

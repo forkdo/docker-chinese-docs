@@ -100,69 +100,48 @@
 </li>
 </ol>
 <p>摘要报告是一个 CSV 文件，包含以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">字段</th>
-            <th
-              class="p-2">描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2"><code>DATE_GRANULARITY</code></td>
-            <td
-              class="p-2">数据的周或月粒度。指示数据是按周还是按月聚合。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATE_REFERENCE</code></td>
-            <td
-              class="p-2">周或月的开始日期，格式为 YYYY-MM-DD（例如，<code>2025-09-29</code> 表示 2025 年 9 月 29 日开始的周）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PUBLISHER_NAME</code></td>
-            <td
-              class="p-2">拥有该仓库的 Docker 组织名称（例如 <code>demonstrationorg</code>）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>LEVEL</code></td>
-            <td
-              class="p-2">数据的聚合级别 - <code>repository</code>（整个仓库的摘要）、<code>tag</code>（特定标签的摘要）或 <code>digest</code>（特定摘要的摘要）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>REFERENCE</code></td>
-            <td
-              class="p-2">被汇总的具体引用 - 仓库名称、标签名称或摘要哈希，具体取决于级别。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATA_DOWNLOADS</code></td>
-            <td
-              class="p-2">实际镜像下载次数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>VERSION_CHECKS</code></td>
-            <td
-              class="p-2">执行的版本检查次数（用于检查更新而不下载完整镜像的 HEAD 请求）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>EVENT_COUNT</code></td>
-            <td
-              class="p-2">事件总数，计算为数据下载和版本检查的总和。</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DATE_GRANULARITY</code></td>
+          <td>数据的周或月粒度。指示数据是按周还是按月聚合。</td>
+      </tr>
+      <tr>
+          <td><code>DATE_REFERENCE</code></td>
+          <td>周或月的开始日期，格式为 YYYY-MM-DD（例如，<code>2025-09-29</code> 表示 2025 年 9 月 29 日开始的周）。</td>
+      </tr>
+      <tr>
+          <td><code>PUBLISHER_NAME</code></td>
+          <td>拥有该仓库的 Docker 组织名称（例如 <code>demonstrationorg</code>）。</td>
+      </tr>
+      <tr>
+          <td><code>LEVEL</code></td>
+          <td>数据的聚合级别 - <code>repository</code>（整个仓库的摘要）、<code>tag</code>（特定标签的摘要）或 <code>digest</code>（特定摘要的摘要）。</td>
+      </tr>
+      <tr>
+          <td><code>REFERENCE</code></td>
+          <td>被汇总的具体引用 - 仓库名称、标签名称或摘要哈希，具体取决于级别。</td>
+      </tr>
+      <tr>
+          <td><code>DATA_DOWNLOADS</code></td>
+          <td>实际镜像下载次数。</td>
+      </tr>
+      <tr>
+          <td><code>VERSION_CHECKS</code></td>
+          <td>执行的版本检查次数（用于检查更新而不下载完整镜像的 HEAD 请求）。</td>
+      </tr>
+      <tr>
+          <td><code>EVENT_COUNT</code></td>
+          <td>事件总数，计算为数据下载和版本检查的总和。</td>
+      </tr>
+  </tbody>
+</table>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="趋势报告">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%b6%8b%e5%8a%bf%e6%8a%a5%e5%91%8a">
@@ -187,105 +166,72 @@
 <li>为所需周或月选择 <strong>Download report</strong>。</li>
 </ol>
 <p>趋势报告是一个 CSV 文件，包含以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">字段</th>
-            <th
-              class="p-2">描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2"><code>DATE_GRANULARITY</code></td>
-            <td
-              class="p-2">数据的周或月粒度。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATE_REFERENCE</code></td>
-            <td
-              class="p-2">周或月的开始日期。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PUBLISHER_NAME</code></td>
-            <td
-              class="p-2">拥有该仓库的组织名称。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>IMAGE_REPOSITORY</code></td>
-            <td
-              class="p-2">镜像仓库的完整名称（例如 <code>demonstrationorg/scout-demo</code>）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>NAMESPACE</code></td>
-            <td
-              class="p-2">拥有该仓库的 Docker 组织或命名空间。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>IP_COUNTRY</code></td>
-            <td
-              class="p-2">拉取请求来源的国家/地区代码（ISO 3166-1 alpha-2）（例如 <code>US</code>, <code>CA</code>）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>CLOUD_SERVICE_PROVIDER</code></td>
-            <td
-              class="p-2">拉取请求使用的云服务提供商（例如 <code>gcp</code>, <code>aws</code>, <code>azure</code>）或非云提供商的 <code>no csp</code>。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>USER_AGENT</code></td>
-            <td
-              class="p-2">用于拉取镜像的客户端应用程序或工具（例如 <code>docker</code>, <code>docker-scout</code>, <code>node-fetch</code>, <code>regclient</code>）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>TAG</code></td>
-            <td
-              class="p-2">被拉取的特定镜像标签，如果未使用特定标签则为 <code>\\N</code>。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATA_DOWNLOADS</code></td>
-            <td
-              class="p-2">指定条件下的数据下载次数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>VERSION_CHECKS</code></td>
-            <td
-              class="p-2">在不下载完整镜像的情况下执行的版本检查（HEAD 请求）次数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PULLS</code></td>
-            <td
-              class="p-2">拉取请求总数（数据下载 + 版本检查）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>UNIQUE_AUTHENTICATED_USERS</code></td>
-            <td
-              class="p-2">执行拉取操作的唯一认证用户数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>UNIQUE_UNAUTHENTICATED_USERS</code></td>
-            <td
-              class="p-2">执行拉取操作的唯一未认证用户数。</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DATE_GRANULARITY</code></td>
+          <td>数据的周或月粒度。</td>
+      </tr>
+      <tr>
+          <td><code>DATE_REFERENCE</code></td>
+          <td>周或月的开始日期。</td>
+      </tr>
+      <tr>
+          <td><code>PUBLISHER_NAME</code></td>
+          <td>拥有该仓库的组织名称。</td>
+      </tr>
+      <tr>
+          <td><code>IMAGE_REPOSITORY</code></td>
+          <td>镜像仓库的完整名称（例如 <code>demonstrationorg/scout-demo</code>）。</td>
+      </tr>
+      <tr>
+          <td><code>NAMESPACE</code></td>
+          <td>拥有该仓库的 Docker 组织或命名空间。</td>
+      </tr>
+      <tr>
+          <td><code>IP_COUNTRY</code></td>
+          <td>拉取请求来源的国家/地区代码（ISO 3166-1 alpha-2）（例如 <code>US</code>, <code>CA</code>）。</td>
+      </tr>
+      <tr>
+          <td><code>CLOUD_SERVICE_PROVIDER</code></td>
+          <td>拉取请求使用的云服务提供商（例如 <code>gcp</code>, <code>aws</code>, <code>azure</code>）或非云提供商的 <code>no csp</code>。</td>
+      </tr>
+      <tr>
+          <td><code>USER_AGENT</code></td>
+          <td>用于拉取镜像的客户端应用程序或工具（例如 <code>docker</code>, <code>docker-scout</code>, <code>node-fetch</code>, <code>regclient</code>）。</td>
+      </tr>
+      <tr>
+          <td><code>TAG</code></td>
+          <td>被拉取的特定镜像标签，如果未使用特定标签则为 <code>\\N</code>。</td>
+      </tr>
+      <tr>
+          <td><code>DATA_DOWNLOADS</code></td>
+          <td>指定条件下的数据下载次数。</td>
+      </tr>
+      <tr>
+          <td><code>VERSION_CHECKS</code></td>
+          <td>在不下载完整镜像的情况下执行的版本检查（HEAD 请求）次数。</td>
+      </tr>
+      <tr>
+          <td><code>PULLS</code></td>
+          <td>拉取请求总数（数据下载 + 版本检查）。</td>
+      </tr>
+      <tr>
+          <td><code>UNIQUE_AUTHENTICATED_USERS</code></td>
+          <td>执行拉取操作的唯一认证用户数。</td>
+      </tr>
+      <tr>
+          <td><code>UNIQUE_UNAUTHENTICATED_USERS</code></td>
+          <td>执行拉取操作的唯一未认证用户数。</td>
+      </tr>
+  </tbody>
+</table>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="技术栈分析报告">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%8a%80%e6%9c%af%e6%a0%88%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a">
@@ -311,93 +257,64 @@
 <li>为所需周或月选择 <strong>Download report</strong>。</li>
 </ol>
 <p>技术栈分析报告是一个 CSV 文件，包含以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">字段</th>
-            <th
-              class="p-2">描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2"><code>DATE_GRANULARITY</code></td>
-            <td
-              class="p-2">数据的周或月粒度。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATE_REFERENCE</code></td>
-            <td
-              class="p-2">周或月的开始日期，格式为 YYYY-MM-DD。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PUBLISHER_ID</code></td>
-            <td
-              class="p-2">发布者组织的唯一标识符。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PUBLISHER_NAME</code></td>
-            <td
-              class="p-2">拥有 DVP 仓库的组织名称。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DVPP_IMAGE</code></td>
-            <td
-              class="p-2">您的 Docker Verified Publisher 镜像仓库名称。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PAIRED_IMAGE</code></td>
-            <td
-              class="p-2">与您的 DVP 镜像共同使用的其他镜像仓库。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>USERS</code></td>
-            <td
-              class="p-2">在时间段内同时拉取了您的 DVP 镜像和配对镜像的唯一用户数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>TOTAL_PULLERS</code></td>
-            <td
-              class="p-2">在时间段内拉取了您的 DVP 镜像的唯一用户总数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PCT_USERS</code></td>
-            <td
-              class="p-2">同时使用配对镜像的您的镜像用户百分比（用户数/总拉取用户数）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DOMAINS</code></td>
-            <td
-              class="p-2">同时拉取了您的 DVP 镜像和配对镜像的唯一公司域名数量。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>TOTAL_DOMAINS</code></td>
-            <td
-              class="p-2">拉取了您的 DVP 镜像的唯一公司域名总数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PCT_DOMAINS</code></td>
-            <td
-              class="p-2">使用您镜像的公司域名中同时使用配对镜像的百分比（域名数/总域名数）。</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DATE_GRANULARITY</code></td>
+          <td>数据的周或月粒度。</td>
+      </tr>
+      <tr>
+          <td><code>DATE_REFERENCE</code></td>
+          <td>周或月的开始日期，格式为 YYYY-MM-DD。</td>
+      </tr>
+      <tr>
+          <td><code>PUBLISHER_ID</code></td>
+          <td>发布者组织的唯一标识符。</td>
+      </tr>
+      <tr>
+          <td><code>PUBLISHER_NAME</code></td>
+          <td>拥有 DVP 仓库的组织名称。</td>
+      </tr>
+      <tr>
+          <td><code>DVPP_IMAGE</code></td>
+          <td>您的 Docker Verified Publisher 镜像仓库名称。</td>
+      </tr>
+      <tr>
+          <td><code>PAIRED_IMAGE</code></td>
+          <td>与您的 DVP 镜像共同使用的其他镜像仓库。</td>
+      </tr>
+      <tr>
+          <td><code>USERS</code></td>
+          <td>在时间段内同时拉取了您的 DVP 镜像和配对镜像的唯一用户数。</td>
+      </tr>
+      <tr>
+          <td><code>TOTAL_PULLERS</code></td>
+          <td>在时间段内拉取了您的 DVP 镜像的唯一用户总数。</td>
+      </tr>
+      <tr>
+          <td><code>PCT_USERS</code></td>
+          <td>同时使用配对镜像的您的镜像用户百分比（用户数/总拉取用户数）。</td>
+      </tr>
+      <tr>
+          <td><code>DOMAINS</code></td>
+          <td>同时拉取了您的 DVP 镜像和配对镜像的唯一公司域名数量。</td>
+      </tr>
+      <tr>
+          <td><code>TOTAL_DOMAINS</code></td>
+          <td>拉取了您的 DVP 镜像的唯一公司域名总数。</td>
+      </tr>
+      <tr>
+          <td><code>PCT_DOMAINS</code></td>
+          <td>使用您镜像的公司域名中同时使用配对镜像的百分比（域名数/总域名数）。</td>
+      </tr>
+  </tbody>
+</table>
 
 
   
@@ -445,57 +362,40 @@
 <li>为所需周或月选择 <strong>Download report</strong>。</li>
 </ol>
 <p>技术栈公司分析报告是一个 CSV 文件，包含以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">字段</th>
-            <th
-              class="p-2">描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2"><code>DATE_GRANULARITY</code></td>
-            <td
-              class="p-2">数据的周或月粒度。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATE_REFERENCE</code></td>
-            <td
-              class="p-2">周或月的开始日期，格式为 YYYY-MM-DD。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PUBLISHER_NAME</code></td>
-            <td
-              class="p-2">拥有 DVP 仓库的组织名称。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DOMAIN</code></td>
-            <td
-              class="p-2">同时拉取了您的 DVP 镜像和配对镜像的公司域名（例如 <code>example.com</code>）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DVPP_IMAGE</code></td>
-            <td
-              class="p-2">您的 Docker Verified Publisher 镜像仓库名称。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PAIRED_IMAGE</code></td>
-            <td
-              class="p-2">该公司与您的 DVP 镜像一起使用的其他镜像仓库。</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DATE_GRANULARITY</code></td>
+          <td>数据的周或月粒度。</td>
+      </tr>
+      <tr>
+          <td><code>DATE_REFERENCE</code></td>
+          <td>周或月的开始日期，格式为 YYYY-MM-DD。</td>
+      </tr>
+      <tr>
+          <td><code>PUBLISHER_NAME</code></td>
+          <td>拥有 DVP 仓库的组织名称。</td>
+      </tr>
+      <tr>
+          <td><code>DOMAIN</code></td>
+          <td>同时拉取了您的 DVP 镜像和配对镜像的公司域名（例如 <code>example.com</code>）。</td>
+      </tr>
+      <tr>
+          <td><code>DVPP_IMAGE</code></td>
+          <td>您的 Docker Verified Publisher 镜像仓库名称。</td>
+      </tr>
+      <tr>
+          <td><code>PAIRED_IMAGE</code></td>
+          <td>该公司与您的 DVP 镜像一起使用的其他镜像仓库。</td>
+      </tr>
+  </tbody>
+</table>
 <p>每一行代表一个公司域名、您的 DVP 镜像和另一个镜像在指定时间段内共同使用的唯一组合。</p>
 
 
@@ -544,99 +444,68 @@
 <li>为所需周或月选择 <strong>Download report</strong>。</li>
 </ol>
 <p>追踪公司分析报告是一个 CSV 文件，包含以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">字段</th>
-            <th
-              class="p-2">描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2"><code>DATE_GRANULARITY</code></td>
-            <td
-              class="p-2">数据的周或月粒度。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATE_REFERENCE</code></td>
-            <td
-              class="p-2">周或月的开始日期，格式为 YYYY-MM-DD。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PUBLISHER_NAME</code></td>
-            <td
-              class="p-2">拥有 DVP 仓库的组织名称。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DOMAIN</code></td>
-            <td
-              class="p-2">与镜像拉取相关的公司域名（例如 <code>docker.com</code>）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>IP_COUNTRY</code></td>
-            <td
-              class="p-2">拉取请求来源的国家/地区代码（ISO 3166-1 alpha-2）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>CLOUD_SERVICE_PROVIDER</code></td>
-            <td
-              class="p-2">拉取请求使用的云服务提供商或非云提供商的 <code>no csp</code>。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>USER_AGENT</code></td>
-            <td
-              class="p-2">用于拉取镜像的客户端应用程序或工具。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>INFERRED_USE_CASE</code></td>
-            <td
-              class="p-2">基于用户代理和云服务提供商分析推断的部署环境。值包括：<br>• <code>Local Dev</code>: 本地开发环境（例如 Docker Desktop、直接 <code>docker</code> 命令）<br>• <code>CI/CD</code>: 持续集成/部署管道（例如 containerd、构建工具、注册表镜像）<br>• <code>Prod</code>: 生产环境（例如 Kubernetes、容器编排平台）<br>• <code>Unknown</code>: 无法根据可用数据确定用例</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>IMAGE_REPOSITORY</code></td>
-            <td
-              class="p-2">被拉取的特定 DVP 镜像仓库。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>DATA_DOWNLOADS</code></td>
-            <td
-              class="p-2">此组合的实际镜像层下载次数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>VERSION_CHECKS</code></td>
-            <td
-              class="p-2">在不下载完整镜像的情况下执行的版本检查（HEAD 请求）次数。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>PULLS</code></td>
-            <td
-              class="p-2">拉取请求总数（数据下载 + 版本检查）。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2"><code>UNIQUE_AUTHENTICATED_USERS</code></td>
-            <td
-              class="p-2">来自该域名并执行了拉取操作的唯一认证用户数。</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DATE_GRANULARITY</code></td>
+          <td>数据的周或月粒度。</td>
+      </tr>
+      <tr>
+          <td><code>DATE_REFERENCE</code></td>
+          <td>周或月的开始日期，格式为 YYYY-MM-DD。</td>
+      </tr>
+      <tr>
+          <td><code>PUBLISHER_NAME</code></td>
+          <td>拥有 DVP 仓库的组织名称。</td>
+      </tr>
+      <tr>
+          <td><code>DOMAIN</code></td>
+          <td>与镜像拉取相关的公司域名（例如 <code>docker.com</code>）。</td>
+      </tr>
+      <tr>
+          <td><code>IP_COUNTRY</code></td>
+          <td>拉取请求来源的国家/地区代码（ISO 3166-1 alpha-2）。</td>
+      </tr>
+      <tr>
+          <td><code>CLOUD_SERVICE_PROVIDER</code></td>
+          <td>拉取请求使用的云服务提供商或非云提供商的 <code>no csp</code>。</td>
+      </tr>
+      <tr>
+          <td><code>USER_AGENT</code></td>
+          <td>用于拉取镜像的客户端应用程序或工具。</td>
+      </tr>
+      <tr>
+          <td><code>INFERRED_USE_CASE</code></td>
+          <td>基于用户代理和云服务提供商分析推断的部署环境。值包括：<br>• <code>Local Dev</code>: 本地开发环境（例如 Docker Desktop、直接 <code>docker</code> 命令）<br>• <code>CI/CD</code>: 持续集成/部署管道（例如 containerd、构建工具、注册表镜像）<br>• <code>Prod</code>: 生产环境（例如 Kubernetes、容器编排平台）<br>• <code>Unknown</code>: 无法根据可用数据确定用例</td>
+      </tr>
+      <tr>
+          <td><code>IMAGE_REPOSITORY</code></td>
+          <td>被拉取的特定 DVP 镜像仓库。</td>
+      </tr>
+      <tr>
+          <td><code>DATA_DOWNLOADS</code></td>
+          <td>此组合的实际镜像层下载次数。</td>
+      </tr>
+      <tr>
+          <td><code>VERSION_CHECKS</code></td>
+          <td>在不下载完整镜像的情况下执行的版本检查（HEAD 请求）次数。</td>
+      </tr>
+      <tr>
+          <td><code>PULLS</code></td>
+          <td>拉取请求总数（数据下载 + 版本检查）。</td>
+      </tr>
+      <tr>
+          <td><code>UNIQUE_AUTHENTICATED_USERS</code></td>
+          <td>来自该域名并执行了拉取操作的唯一认证用户数。</td>
+      </tr>
+  </tbody>
+</table>
 
 
   
@@ -944,154 +813,100 @@
 </h3>
 
 <p>原始数据格式包含以下数据点。CSV 文件中的每一行代表一次镜像拉取。</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">数据点</th>
-            <th
-              class="p-2">描述</th>
-            <th
-              class="p-2">添加日期</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2">Action</td>
-            <td
-              class="p-2">请求类型，参见 <a class="link" href="#image-pulls-action-classification-rules">操作分类规则</a>。<code>pull_by_tag</code>、<code>pull_by_digest</code> 或 <code>version_check</code> 之一。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Action day</td>
-            <td
-              class="p-2">时间戳的日期部分：<code>YYYY-MM-DD</code>。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Country</td>
-            <td
-              class="p-2">请求来源国家/地区。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Digest</td>
-            <td
-              class="p-2">镜像摘要。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">HTTP method</td>
-            <td
-              class="p-2">请求中使用的 HTTP 方法，详情请参见 
+<table>
+  <thead>
+      <tr>
+          <th>数据点</th>
+          <th>描述</th>
+          <th>添加日期</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Action</td>
+          <td>请求类型，参见 <a class="link" href="#image-pulls-action-classification-rules">操作分类规则</a>。<code>pull_by_tag</code>、<code>pull_by_digest</code> 或 <code>version_check</code> 之一。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Action day</td>
+          <td>时间戳的日期部分：<code>YYYY-MM-DD</code>。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Country</td>
+          <td>请求来源国家/地区。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Digest</td>
+          <td>镜像摘要。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>HTTP method</td>
+          <td>请求中使用的 HTTP 方法，详情请参见 
   <a class="link" href="/registry/spec/api/">registry API 文档</a>。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Host</td>
-            <td
-              class="p-2">事件中使用的云服务提供商。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Namespace</td>
-            <td
-              class="p-2">Docker 
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Host</td>
+          <td>事件中使用的云服务提供商。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Namespace</td>
+          <td>Docker 
   <a class="link" href="/admin/organization/orgs/">组织</a>（镜像命名空间）。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Reference</td>
-            <td
-              class="p-2">请求中使用的镜像摘要或标签。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Repository</td>
-            <td
-              class="p-2">Docker 
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Reference</td>
+          <td>请求中使用的镜像摘要或标签。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Repository</td>
+          <td>Docker 
   <a class="link" href="/docker-hub/repos/">仓库</a>（镜像名称）。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Tag (included when available)</td>
-            <td
-              class="p-2">仅当请求引用标签时才可用的标签名称。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Timestamp</td>
-            <td
-              class="p-2">请求的日期和时间：<code>YYYY-MM-DD 00:00:00</code>。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Type</td>
-            <td
-              class="p-2">事件来源的行业。<code>business</code>、<code>isp</code>、<code>hosting</code>、<code>education</code>、<code>null</code> 之一。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">User agent tool</td>
-            <td
-              class="p-2">用户用于拉取镜像的应用程序（例如 <code>docker</code> 或 <code>containerd</code>）。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">User agent version</td>
-            <td
-              class="p-2">用于拉取镜像的应用程序版本。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Domain</td>
-            <td
-              class="p-2">请求来源域名，参见 <a class="link" href="#%e9%9a%90%e7%a7%81">隐私</a>。</td>
-            <td
-              class="p-2">2022 年 10 月 11 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Owner</td>
-            <td
-              class="p-2">拥有该仓库的组织名称。</td>
-            <td
-              class="p-2">2022 年 12 月 19 日</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Tag (included when available)</td>
+          <td>仅当请求引用标签时才可用的标签名称。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Timestamp</td>
+          <td>请求的日期和时间：<code>YYYY-MM-DD 00:00:00</code>。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Type</td>
+          <td>事件来源的行业。<code>business</code>、<code>isp</code>、<code>hosting</code>、<code>education</code>、<code>null</code> 之一。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>User agent tool</td>
+          <td>用户用于拉取镜像的应用程序（例如 <code>docker</code> 或 <code>containerd</code>）。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>User agent version</td>
+          <td>用于拉取镜像的应用程序版本。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Domain</td>
+          <td>请求来源域名，参见 <a class="link" href="#%e9%9a%90%e7%a7%81">隐私</a>。</td>
+          <td>2022 年 10 月 11 日</td>
+      </tr>
+      <tr>
+          <td>Owner</td>
+          <td>拥有该仓库的组织名称。</td>
+          <td>2022 年 12 月 19 日</td>
+      </tr>
+  </tbody>
+</table>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="镜像拉取摘要数据">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%95%9c%e5%83%8f%e6%8b%89%e5%8f%96%e6%91%98%e8%a6%81%e6%95%b0%e6%8d%ae">
@@ -1105,63 +920,42 @@
 <li>标签或摘要级别：每个命名空间、仓库和引用（标签或摘要）的摘要</li>
 </ul>
 <p>摘要数据格式包含选定时间范围内的以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">数据点</th>
-            <th
-              class="p-2">描述</th>
-            <th
-              class="p-2">添加日期</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2">Unique IP address</td>
-            <td
-              class="p-2">唯一 IP 地址的数量，参见 <a class="link" href="#%e9%9a%90%e7%a7%81">隐私</a>。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Pull by tag</td>
-            <td
-              class="p-2">GET 请求，按摘要或按标签。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Pull by digest</td>
-            <td
-              class="p-2">按摘要的 GET 或 HEAD 请求，或按摘要的 HEAD。</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Version check</td>
-            <td
-              class="p-2">按标签的 HEAD，后未跟随 GET</td>
-            <td
-              class="p-2">2022 年 1 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Owner</td>
-            <td
-              class="p-2">拥有该仓库的组织名称。</td>
-            <td
-              class="p-2">2022 年 12 月 19 日</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>数据点</th>
+          <th>描述</th>
+          <th>添加日期</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Unique IP address</td>
+          <td>唯一 IP 地址的数量，参见 <a class="link" href="#%e9%9a%90%e7%a7%81">隐私</a>。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Pull by tag</td>
+          <td>GET 请求，按摘要或按标签。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Pull by digest</td>
+          <td>按摘要的 GET 或 HEAD 请求，或按摘要的 HEAD。</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Version check</td>
+          <td>按标签的 HEAD，后未跟随 GET</td>
+          <td>2022 年 1 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Owner</td>
+          <td>拥有该仓库的组织名称。</td>
+          <td>2022 年 12 月 19 日</td>
+      </tr>
+  </tbody>
+</table>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="镜像拉取操作分类规则">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%95%9c%e5%83%8f%e6%8b%89%e5%8f%96%e6%93%8d%e4%bd%9c%e5%88%86%e7%b1%bb%e8%a7%84%e5%88%99">
@@ -1177,183 +971,108 @@
 </ul>
 <p>自动化系统会频繁检查您的镜像是否有新版本。能够区分 CI 中的“版本检查”与用户的实际镜像拉取，可以让您更深入地了解用户的行为。</p>
 <p>下表描述了用于确定拉取背后意图的规则。要提供反馈或询问有关这些规则的问题，<a class="link" href="https://forms.gle/nb7beTUQz9wzXy1b6" rel="noopener">请填写 Google 表格</a>。</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2" style="text-align: left">起始事件</th>
-            <th
-              class="p-2" style="text-align: left">引用</th>
-            <th
-              class="p-2" style="text-align: left">后续操作</th>
-            <th
-              class="p-2" style="text-align: left">结果操作</th>
-            <th
-              class="p-2" style="text-align: left">用例</th>
-            <th
-              class="p-2" style="text-align: left">备注</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">标签</td>
-            <td
-              class="p-2" style="text-align: left">N/A</td>
-            <td
-              class="p-2" style="text-align: left">版本检查</td>
-            <td
-              class="p-2" style="text-align: left">用户本地机器上已存在所有层</td>
-            <td
-              class="p-2" style="text-align: left">这类似于用户本地已存在所有镜像层时的按标签拉取用例，但它区分了用户意图并进行相应分类。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">GET</td>
-            <td
-              class="p-2" style="text-align: left">标签</td>
-            <td
-              class="p-2" style="text-align: left">N/A</td>
-            <td
-              class="p-2" style="text-align: left">按标签拉取</td>
-            <td
-              class="p-2" style="text-align: left">用户本地机器上已存在所有层和/或镜像是单架构的</td>
-            <td
-              class="p-2" style="text-align: left"></td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">GET</td>
-            <td
-              class="p-2" style="text-align: left">标签</td>
-            <td
-              class="p-2" style="text-align: left">按不同摘要获取</td>
-            <td
-              class="p-2" style="text-align: left">按标签拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是多架构的</td>
-            <td
-              class="p-2" style="text-align: left">第二次按摘要的 GET 必须与第一次不同。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">标签</td>
-            <td
-              class="p-2" style="text-align: left">按相同摘要获取</td>
-            <td
-              class="p-2" style="text-align: left">按标签拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是多架构的，但部分或所有镜像层已存在于本地机器上</td>
-            <td
-              class="p-2" style="text-align: left">按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。如果镜像是多架构的，可能会发生额外的 GET（请参见本表中的下一行）。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">标签</td>
-            <td
-              class="p-2" style="text-align: left">按相同摘要获取，然后按不同摘要进行第二次获取</td>
-            <td
-              class="p-2" style="text-align: left">按标签拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是多架构的</td>
-            <td
-              class="p-2" style="text-align: left">按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。由于镜像是多架构的，因此存在按不同摘要的第二次 GET。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">标签</td>
-            <td
-              class="p-2" style="text-align: left">按相同摘要获取，然后按不同摘要进行第二次获取</td>
-            <td
-              class="p-2" style="text-align: left">按标签拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是多架构的</td>
-            <td
-              class="p-2" style="text-align: left">按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。由于镜像是多架构的，因此存在按不同摘要的第二次 GET。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">GET</td>
-            <td
-              class="p-2" style="text-align: left">摘要</td>
-            <td
-              class="p-2" style="text-align: left">N/A</td>
-            <td
-              class="p-2" style="text-align: left">按摘要拉取</td>
-            <td
-              class="p-2" style="text-align: left">用户本地机器上已存在所有层和/或镜像是单架构的</td>
-            <td
-              class="p-2" style="text-align: left"></td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">摘要</td>
-            <td
-              class="p-2" style="text-align: left">N/A</td>
-            <td
-              class="p-2" style="text-align: left">按摘要拉取</td>
-            <td
-              class="p-2" style="text-align: left">用户本地机器上已存在所有层</td>
-            <td
-              class="p-2" style="text-align: left"></td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">GET</td>
-            <td
-              class="p-2" style="text-align: left">摘要</td>
-            <td
-              class="p-2" style="text-align: left">按不同摘要获取</td>
-            <td
-              class="p-2" style="text-align: left">按摘要拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是多架构的</td>
-            <td
-              class="p-2" style="text-align: left">第二次按摘要的 GET 必须与第一次不同。</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">摘要</td>
-            <td
-              class="p-2" style="text-align: left">按相同摘要获取</td>
-            <td
-              class="p-2" style="text-align: left">按摘要拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是单架构的和/或镜像是多架构的，但部分镜像已存在于本地机器上</td>
-            <td
-              class="p-2" style="text-align: left"></td>
-        </tr>
-        <tr>
-            <td
-              class="p-2" style="text-align: left">HEAD</td>
-            <td
-              class="p-2" style="text-align: left">摘要</td>
-            <td
-              class="p-2" style="text-align: left">按相同摘要获取，然后按不同摘要进行第二次获取</td>
-            <td
-              class="p-2" style="text-align: left">按摘要拉取</td>
-            <td
-              class="p-2" style="text-align: left">镜像是多架构的</td>
-            <td
-              class="p-2" style="text-align: left"></td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">起始事件</th>
+          <th style="text-align: left">引用</th>
+          <th style="text-align: left">后续操作</th>
+          <th style="text-align: left">结果操作</th>
+          <th style="text-align: left">用例</th>
+          <th style="text-align: left">备注</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">标签</td>
+          <td style="text-align: left">N/A</td>
+          <td style="text-align: left">版本检查</td>
+          <td style="text-align: left">用户本地机器上已存在所有层</td>
+          <td style="text-align: left">这类似于用户本地已存在所有镜像层时的按标签拉取用例，但它区分了用户意图并进行相应分类。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GET</td>
+          <td style="text-align: left">标签</td>
+          <td style="text-align: left">N/A</td>
+          <td style="text-align: left">按标签拉取</td>
+          <td style="text-align: left">用户本地机器上已存在所有层和/或镜像是单架构的</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GET</td>
+          <td style="text-align: left">标签</td>
+          <td style="text-align: left">按不同摘要获取</td>
+          <td style="text-align: left">按标签拉取</td>
+          <td style="text-align: left">镜像是多架构的</td>
+          <td style="text-align: left">第二次按摘要的 GET 必须与第一次不同。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">标签</td>
+          <td style="text-align: left">按相同摘要获取</td>
+          <td style="text-align: left">按标签拉取</td>
+          <td style="text-align: left">镜像是多架构的，但部分或所有镜像层已存在于本地机器上</td>
+          <td style="text-align: left">按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。如果镜像是多架构的，可能会发生额外的 GET（请参见本表中的下一行）。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">标签</td>
+          <td style="text-align: left">按相同摘要获取，然后按不同摘要进行第二次获取</td>
+          <td style="text-align: left">按标签拉取</td>
+          <td style="text-align: left">镜像是多架构的</td>
+          <td style="text-align: left">按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。由于镜像是多架构的，因此存在按不同摘要的第二次 GET。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">标签</td>
+          <td style="text-align: left">按相同摘要获取，然后按不同摘要进行第二次获取</td>
+          <td style="text-align: left">按标签拉取</td>
+          <td style="text-align: left">镜像是多架构的</td>
+          <td style="text-align: left">按标签的 HEAD 发送最新的摘要，后续的 GET 必须是相同的摘要。由于镜像是多架构的，因此存在按不同摘要的第二次 GET。如果用户不需要最新的摘要，则用户执行按摘要的 HEAD。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GET</td>
+          <td style="text-align: left">摘要</td>
+          <td style="text-align: left">N/A</td>
+          <td style="text-align: left">按摘要拉取</td>
+          <td style="text-align: left">用户本地机器上已存在所有层和/或镜像是单架构的</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">摘要</td>
+          <td style="text-align: left">N/A</td>
+          <td style="text-align: left">按摘要拉取</td>
+          <td style="text-align: left">用户本地机器上已存在所有层</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GET</td>
+          <td style="text-align: left">摘要</td>
+          <td style="text-align: left">按不同摘要获取</td>
+          <td style="text-align: left">按摘要拉取</td>
+          <td style="text-align: left">镜像是多架构的</td>
+          <td style="text-align: left">第二次按摘要的 GET 必须与第一次不同。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">摘要</td>
+          <td style="text-align: left">按相同摘要获取</td>
+          <td style="text-align: left">按摘要拉取</td>
+          <td style="text-align: left">镜像是单架构的和/或镜像是多架构的，但部分镜像已存在于本地机器上</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEAD</td>
+          <td style="text-align: left">摘要</td>
+          <td style="text-align: left">按相同摘要获取，然后按不同摘要进行第二次获取</td>
+          <td style="text-align: left">按摘要拉取</td>
+          <td style="text-align: left">镜像是多架构的</td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="扩展摘要数据">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%a9%e5%b1%95%e6%91%98%e8%a6%81%e6%95%b0%e6%8d%ae">
@@ -1366,132 +1085,87 @@
 <li>核心摘要，包含基本的扩展使用信息：扩展安装次数、卸载次数和总安装次数</li>
 </ul>
 <p>核心摘要数据文件包含选定时间范围内的以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">数据点</th>
-            <th
-              class="p-2">描述</th>
-            <th
-              class="p-2">添加日期</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2">Installs</td>
-            <td
-              class="p-2">扩展的安装次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">TotalInstalls</td>
-            <td
-              class="p-2">扩展的总安装次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Uninstalls</td>
-            <td
-              class="p-2">扩展的卸载次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">TotalUninstalls</td>
-            <td
-              class="p-2">扩展的总卸载次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Updates</td>
-            <td
-              class="p-2">扩展的更新次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>数据点</th>
+          <th>描述</th>
+          <th>添加日期</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Installs</td>
+          <td>扩展的安装次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>TotalInstalls</td>
+          <td>扩展的总安装次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Uninstalls</td>
+          <td>扩展的卸载次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>TotalUninstalls</td>
+          <td>扩展的总卸载次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Updates</td>
+          <td>扩展的更新次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+  </tbody>
+</table>
 <ul>
 <li>高级摘要，包含高级的扩展使用信息：按唯一用户划分的安装、卸载，以及按唯一用户划分的扩展打开次数。</li>
 </ul>
 <p>核心摘要数据文件包含选定时间范围内的以下数据点：</p>
-<div class="overflow-x-auto">
-  <table
-  >
-    <thead class="bg-gray-100 dark:bg-gray-800">
-        <tr>
-            <th
-              class="p-2">数据点</th>
-            <th
-              class="p-2">描述</th>
-            <th
-              class="p-2">添加日期</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td
-              class="p-2">Installs</td>
-            <td
-              class="p-2">扩展的安装次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">UniqueInstalls</td>
-            <td
-              class="p-2">安装扩展的唯一用户数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Uninstalls</td>
-            <td
-              class="p-2">扩展的卸载次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">UniqueUninstalls</td>
-            <td
-              class="p-2">卸载扩展的唯一用户数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">Usage</td>
-            <td
-              class="p-2">扩展选项卡的打开次数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-        <tr>
-            <td
-              class="p-2">UniqueUsers</td>
-            <td
-              class="p-2">打开扩展选项卡的唯一用户数</td>
-            <td
-              class="p-2">2024 年 2 月 1 日</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+      <tr>
+          <th>数据点</th>
+          <th>描述</th>
+          <th>添加日期</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Installs</td>
+          <td>扩展的安装次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>UniqueInstalls</td>
+          <td>安装扩展的唯一用户数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Uninstalls</td>
+          <td>扩展的卸载次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>UniqueUninstalls</td>
+          <td>卸载扩展的唯一用户数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>Usage</td>
+          <td>扩展选项卡的打开次数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+      <tr>
+          <td>UniqueUsers</td>
+          <td>打开扩展选项卡的唯一用户数</td>
+          <td>2024 年 2 月 1 日</td>
+      </tr>
+  </tbody>
+</table>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="数据随时间的变化">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%95%b0%e6%8d%ae%e9%9a%8f%e6%97%b6%e9%97%b4%e7%9a%84%e5%8f%98%e5%8c%96">

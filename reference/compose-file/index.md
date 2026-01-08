@@ -19,7 +19,7 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -190,13 +190,9 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 
 - [版本和名称顶级元素](/reference/compose-file/version-and-name/)
 
-- [在 Docker Compose 中定义服务](/reference/compose-file/services/)
-
 - [在 Docker Compose 中定义和管理网络](/reference/compose-file/networks/)
 
 - [在 Docker Compose 中定义和管理卷](/reference/compose-file/volumes/)
-
-- [Configs 顶级元素](/reference/compose-file/configs/)
 
 - [Secrets](/reference/compose-file/secrets/)
 
@@ -214,11 +210,15 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 
 - [学习在 Docker Compose 中使用配置文件](/reference/compose-file/profiles/)
 
-- [Compose 构建规范](/reference/compose-file/build/)
-
 - [Compose 部署规范](/reference/compose-file/deploy/)
 
 - [Compose 开发规范](/reference/compose-file/develop/)
+
+- [](/reference/compose-file/build/)
+
+- [](/reference/compose-file/configs/)
+
+- [](/reference/compose-file/services/)
 
 - [旧版本](/reference/compose-file/legacy-versions/)
 

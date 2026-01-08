@@ -260,13 +260,7 @@ docker build github.com/docker/buildx#d4f088e
     
       <div class="flex flex-wrap gap-1">
         <span class="font-bold">Requires:</span>
-        <span>Docker Buildx 
-    
-  
-  <a class="link" href="/build/release-notes/#0280">0.28.0</a> and later, Dockerfile 
-    
-  
-  <a class="link" href="/build/buildkit/dockerfile-release-notes/#1180">1.18.0</a> and later, and Docker Desktop 
+        <span>Docker Buildx <a class="link" href="https://github.com/docker/buildx/releases/tag/v0.28.0" rel="noopener">0.28.0</a> and later, Dockerfile <a class="link" href="https://github.com/moby/buildkit/releases/tag/dockerfile%2F1.18.0" rel="noopener">1.18.0</a> and later, and Docker Desktop 
     
   
   <a class="link" href="/desktop/release-notes/#4460">4.46.0</a> and later</span>

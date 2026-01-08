@@ -1,10 +1,22 @@
-# Windows 版 Docker Desktop 中的 GPU 支持
-
+# 
+title: GPU support in Docker Desktop for Windows
+linkTitle: GPU support
+weight: 40
+description: How to use GPU in Docker Desktop
+toc_max: 3
+aliases:
+  - /desktop/gpu/
+keywords: "gpu, gpu support, nvidia, wsl2, docker desktop, windows"---
+title: Windows 版 Docker Desktop 中的 GPU 支持
+linkTitle: GPU 支持
+weight: 40
+description: 如何在 Docker Desktop 中使用 GPU
+toc_max: 3---
 > [!NOTE]
 >
 > 目前，Docker Desktop 中的 GPU 支持仅在使用 WSL2 后端的 Windows 上可用。
 
-Windows 版 Docker Desktop 支持 NVIDIA GPU 上的 NVIDIA GPU 半虚拟化 (GPU-PV)，允许容器访问 GPU 资源，以用于 AI、机器学习或视频处理等计算密集型工作负载。
+Windows 版 Docker Desktop 支持 NVIDIA GPU 上的 NVIDIA GPU 半虚拟化 (GPU-PV)，允许容器访问 GPU 资源，用于 AI、机器学习或视频处理等计算密集型工作负载。
 
 ## 先决条件
 
@@ -24,7 +36,7 @@ Windows 版 Docker Desktop 支持 NVIDIA GPU 上的 NVIDIA GPU 半虚拟化 (GPU
 $ docker run --rm -it --gpus=all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark
 ```
 
-这将在 GPU 上运行一个 n-body 模拟基准测试。输出将类似于：
+这会在 GPU 上运行一个 n-body 模拟基准测试。输出将类似于：
 
 ```console
 Run "nbody -benchmark [-numbodies=<numBodies>]" to measure performance.
@@ -58,7 +70,7 @@ GPU Device 0: "GeForce RTX 2060 with Max-Q Design" with compute capability 7.5
 
 > [!NOTE]
 >
-> 从 Docker Desktop 4.54 开始，适用于带 WSL2 的 Windows 的、带有 vLLM 的 Docker Model Runner 已可用。
+> 从 Docker Desktop 4.54 开始，适用于带有 WSL2 的 Windows 的、使用 vLLM 的 Docker Model Runner 已可用。
 
 使用 Docker Model Runner 通过 vLLM 和 GPU 加速来运行 SmolLM2 LLM：
 
@@ -69,7 +81,7 @@ $ docker model install-runner --backend vllm --gpu cuda
 检查其是否已正确安装：
 
 ```console
-$ docker status
+$ docker model status
 Docker Model Runner is running
 
 Status:
@@ -80,6 +92,6 @@ vllm: running vllm version: 0.11.0
 运行该模型：
 
 ```console
-$ docker model un ai/smollm2-vllm hi
+$ docker model run ai/smollm2-vllm hi
 Hello! I'm sure everything goes smoothly here. How can I assist you today?
 ```

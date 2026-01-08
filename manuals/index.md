@@ -8,7 +8,7 @@
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -183,7 +183,7 @@
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -291,7 +291,7 @@
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -552,7 +552,7 @@
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -700,7 +700,7 @@
 
 
 <div
-  class="not-prose md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
+  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
 >
   
   
@@ -736,8 +736,6 @@
 
 - [获取 Docker 产品支持](/support/)
 
-- [Docker Hardened Images](/dhi/)
-
 - [Docker Desktop](/desktop/)
 
 - [Docker Engine](/engine/)
@@ -759,8 +757,6 @@
 - [Docker Build Cloud](/build-cloud/)
 
 - [Docker 沙盒](/ai/sandboxes/)
-
-- [Docker Compose](/compose/)
 
 - [Docker Hub](/docker-hub/)
 
@@ -787,6 +783,10 @@
 - [Testcontainers Cloud](/tcc/)
 
 - [](/ai/compose/)
+
+- [](/compose/)
+
+- [](/dhi/)
 
 - [Docker 的产品发布生命周期](/release-lifecycle/)
 

@@ -181,8 +181,6 @@ $ cagent pull myusername/debugger
 
 - [模型提供商](/ai/cagent/model-providers/)
 
-- [使用 Docker Model Runner 运行本地模型](/ai/cagent/local-models/)
-
 - [构建编码代理](/ai/cagent/tutorial/)
 
 - [最佳实践](/ai/cagent/best-practices/)
@@ -194,4 +192,6 @@ $ cagent pull myusername/debugger
 - [RAG](/ai/cagent/rag/)
 
 - [评估 (Evals)](/ai/cagent/evals/)
+
+- [](/ai/cagent/local-models/)
 

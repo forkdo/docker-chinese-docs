@@ -32,6 +32,10 @@
 - [ServiceError](ServiceError.md)
 - [DockerDesktopClient](DockerDesktopClient.md)
 
+- [](/reference/api/extensions-sdk/Docker/)
+
+- [](/reference/api/extensions-sdk/DockerDesktopClient/)
+
 - [](/reference/api/extensions-sdk/ExecResult/)
 
 - [Interface: ExecOptions](/reference/api/extensions-sdk/ExecOptions/)
@@ -45,8 +49,6 @@
 - [Interface: Toast](/reference/api/extensions-sdk/Toast/)
 
 - [接口: BackendV0](/reference/api/extensions-sdk/BackendV0/)
-
-- [接口: Docker](/reference/api/extensions-sdk/Docker/)
 
 - [接口: Exec](/reference/api/extensions-sdk/Exec/)
 
@@ -67,8 +69,6 @@
 - [接口：Dialog](/reference/api/extensions-sdk/Dialog/)
 
 - [接口：DockerCommand](/reference/api/extensions-sdk/DockerCommand/)
-
-- [接口：DockerDesktopClient](/reference/api/extensions-sdk/DockerDesktopClient/)
 
 - [接口：ExecProcess](/reference/api/extensions-sdk/ExecProcess/)
 

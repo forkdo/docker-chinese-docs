@@ -159,33 +159,33 @@ extension:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> --platform=$BUILDPLATFORM node:18.9-alpine3.15 AS client-builder</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /ui</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># cache packages in layer</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ui/package.json /ui/package.json<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ui/package-lock.json /ui/package-lock.json<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/src/app/.npm <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    npm <span class="nb">set</span> cache /usr/src/app/.npm <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    npm ci<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># install</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ui /ui<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm run build<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=$BUILDPLATFORM</span> node:18.9-alpine3.15 AS client-builder<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/ui</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># cache packages in layer</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ui/package.json /ui/package.json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ui/package-lock.json /ui/package-lock.json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/src/app/.npm <span class="se">\
+</span></span></span><span class="line"><span class="cl">    npm <span class="nb">set</span> cache /usr/src/app/.npm <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    npm ci<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># install</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ui /ui<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm run build<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> alpine</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">LABEL</span> org.opencontainers.image.title<span class="o">=</span><span class="s2">&#34;My extension&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    org.opencontainers.image.description<span class="o">=</span><span class="s2">&#34;Your Desktop Extension Description&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    org.opencontainers.image.vendor<span class="o">=</span><span class="s2">&#34;Awesome Inc.&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.desktop.extension.api.version<span class="o">=</span><span class="s2">&#34;0.3.3&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.desktop.extension.icon<span class="o">=</span><span class="s2">&#34;https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.extension.screenshots<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.extension.detailed-description<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.extension.publisher-url<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.extension.additional-urls<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    com.docker.extension.changelog<span class="o">=</span><span class="s2">&#34;&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">LABEL</span> org.opencontainers.image.title<span class="o">=</span><span class="s2">&#34;My extension&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    org.opencontainers.image.description<span class="o">=</span><span class="s2">&#34;Your Desktop Extension Description&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    org.opencontainers.image.vendor<span class="o">=</span><span class="s2">&#34;Awesome Inc.&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.desktop.extension.api.version<span class="o">=</span><span class="s2">&#34;0.3.3&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.desktop.extension.icon<span class="o">=</span><span class="s2">&#34;https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.extension.screenshots<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.extension.detailed-description<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.extension.publisher-url<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.extension.additional-urls<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    com.docker.extension.changelog<span class="o">=</span><span class="s2">&#34;&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> metadata.json .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> docker.svg .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>client-builder /ui/build ui</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> metadata.json .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> docker.svg .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>client-builder /ui/build ui</span></span></code></pre></div>
       
     </div>
   </div>
@@ -480,7 +480,7 @@ command and display the result in a table.
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// ui/src/App.tsx
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">Paper</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">Stack</span><span class="p">,</span>
@@ -495,16 +495,16 @@ command and display the result in a table.
 </span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createDockerDesktopClient</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@docker/extension-api-client&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//obtain docker desktop extension client
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">ddClient</span> <span class="o">=</span> <span class="nx">createDockerDesktopClient</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ddClient</span> <span class="o">=</span> <span class="nx">createDockerDesktopClient</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">App() {</span>
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">containers</span><span class="p">,</span> <span class="nx">setContainers</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">&lt;</span><span class="nt">any</span><span class="err">[]</span><span class="p">&gt;([]);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// List all containers
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">ddClient</span><span class="p">.</span><span class="nx">docker</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;--all&#39;</span><span class="p">,</span> <span class="s1">&#39;--format&#39;</span><span class="p">,</span> <span class="s1">&#39;&#34;{{json .}}&#34;&#39;</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">ddClient</span><span class="p">.</span><span class="nx">docker</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;--all&#39;</span><span class="p">,</span> <span class="s1">&#39;--format&#39;</span><span class="p">,</span> <span class="s1">&#39;&#34;{{json .}}&#34;&#39;</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// result.parseJsonLines() parses the output of the command into an array of objects
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">setContainers</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">parseJsonLines</span><span class="p">());</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">setContainers</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">parseJsonLines</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">[]);</span>
 </span></span><span class="line"><span class="cl">

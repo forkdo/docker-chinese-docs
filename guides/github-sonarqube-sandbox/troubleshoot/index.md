@@ -163,7 +163,7 @@
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 即使只使用一个，也要包含两个服务器
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">sbx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Sandbox</span><span class="p">.</span><span class="nx">betaCreate</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sbx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Sandbox</span><span class="p">.</span><span class="nx">betaCreate</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">envs</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">ANTHROPIC_API_KEY</span>: <span class="kt">process.env.ANTHROPIC_API_KEY</span><span class="o">!</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">GITHUB_TOKEN</span>: <span class="kt">process.env.GITHUB_TOKEN</span><span class="o">!</span><span class="p">,</span>
@@ -494,7 +494,7 @@
 </span></span><span class="line"><span class="cl">  <span class="sb">`echo &#39;</span><span class="si">${</span><span class="nx">prompt</span><span class="si">}</span><span class="sb">&#39; | claude -p --dangerously-skip-permissions`</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">timeoutMs</span>: <span class="kt">0</span><span class="p">,</span> <span class="c1">// 无超时
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onStdout</span>: <span class="kt">console.log</span><span class="p">,</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">onStdout</span>: <span class="kt">console.log</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">onStderr</span>: <span class="kt">console.log</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div>
@@ -655,10 +655,10 @@
 </span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">sbx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Sandbox</span><span class="p">.</span><span class="nx">betaCreate</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// ... 配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">});</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// ... 工作流逻辑
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&#34;Workflow failed:&#34;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
@@ -872,11 +872,11 @@
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// .env 文件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">GITHUB_TOKEN</span> <span class="o">=</span> <span class="nx">ghp_xxxxx</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">GITHUB_TOKEN</span> <span class="o">=</span> <span class="nx">ghp_xxxxx</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 在代码中
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GITHUB_TOKEN</span><span class="p">;</span> <span class="c1">// 正确
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">github_token</span><span class="p">;</span> <span class="c1">// 错误 - 大小写不匹配
+</span></span></span><span class="line"><span class="cl"><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GITHUB_TOKEN</span><span class="p">;</span> <span class="c1">// 正确
+</span></span></span><span class="line"><span class="cl"><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">github_token</span><span class="p">;</span> <span class="c1">// 错误 - 大小写不匹配
 </span></span></span></code></pre></div>
       
     </div>

@@ -6,14 +6,14 @@
 
 
   <title>
-    Compose 的工作原理 | Docker Docs
+     | Docker Docs
   </title>
 
 
-<meta name="description" content="了解 Docker Compose 的工作原理，从应用模型到 Compose 文件和 CLI，并通过详细示例进行学习。" />
+<meta name="description" content="" />
 <meta
   name="keywords"
-  content="docker, compose, compose.yaml, docker, compose, 模型, compose, cli, 多容器应用, compose, 示例"
+  content=""
 />
 <link rel="canonical" href="/compose/intro/compose-application-model/" />
 
@@ -22,12 +22,12 @@
 <meta name="theme-color" content="#2496ed" />
 
 
-<meta name="twitter:title" itemprop="title name" content="Compose 的工作原理" />
+<meta name="twitter:title" itemprop="title name" content="" />
 <meta
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解 Docker Compose 的工作原理，从应用模型到 Compose 文件和 CLI，并通过详细示例进行学习。"
+  content=""
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -38,13 +38,13 @@
   content="/images/thumbnail.webp"
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
-<meta property="og:title" content="Compose 的工作原理" />
-<meta property="og:description" content="了解 Docker Compose 的工作原理，从应用模型到 Compose 文件和 CLI，并通过详细示例进行学习。" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-10-13 16:23:08 &#43;0900 &#43;0900"
+  content="2026-01-06 09:51:45 &#43;0000 &#43;0000"
 />
 <meta
   property="og:image"
@@ -57,9 +57,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-10-13 16:23:08 &#43;0900 &#43;0900"
+  content="2026-01-06 09:51:45 &#43;0000 &#43;0000"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"Compose 的工作原理\"","description":"\"了解 Docker Compose 的工作原理，从应用模型到 Compose 文件和 CLI，并通过详细示例进行学习。\"","url":"\/compose\/intro\/compose-application-model\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-06T09:51:45Z","description":"","headline":"","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/compose/intro/compose-application-model/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/compose/","name":""},"position":2},{"@type":"ListItem","item":{"@id":"/compose/intro/compose-application-model/","name":""},"position":3}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -679,6 +678,2013 @@ if (resultsLength > 5) {
 </span>
 
     </span>
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: true }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/compose/"
+          >
+            
+  
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class=" ml-3"
+    >
+      
+  
+  
+  <li class="" x-data="{ expanded: true }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <button
+            @click="expanded = !expanded"
+            class="hover:text-blue w-full text-left select-none hover:dark:text-blue-400"
+          >
+            
+  Compose 简介
+
+          </button>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class=" ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/intro/features-uses/"
+        title="为什么使用 Compose？"
+      >
+        
+  为什么使用 Compose？
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue 
+        navbar-entry-background-current
+       rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+          aria-current="page" id="sidebar-current-page"
+        
+        class="block w-full truncate"
+        href="/compose/intro/compose-application-model/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/intro/history/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/compose/install/"
+          >
+            
+  安装
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/install/linux/"
+        title="插件"
+      >
+        
+  插件
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/install/standalone/"
+        title="独立版（旧版）"
+      >
+        
+  独立版（旧版）
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/install/uninstall/"
+        title="卸载"
+      >
+        
+  卸载
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <button
+            @click="expanded = !expanded"
+            class="hover:text-blue w-full text-left select-none hover:dark:text-blue-400"
+          >
+            
+  操作指南
+
+          </button>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/profiles/"
+        title="使用服务配置集"
+      >
+        
+  使用服务配置集
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/lifecycle/"
+        title="使用生命周期钩子"
+      >
+        
+  使用生命周期钩子
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/startup-order/"
+        title="控制启动顺序"
+      >
+        
+  控制启动顺序
+
+      </a>
+    </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/compose/how-tos/environment-variables/"
+          >
+            
+  使用环境变量
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/environment-variables/set-environment-variables/"
+        title="设置环境变量"
+      >
+        
+  设置环境变量
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/environment-variables/envvars-precedence/"
+        title="环境变量优先级"
+      >
+        
+  环境变量优先级
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/environment-variables/variable-interpolation/"
+        title="插值"
+      >
+        
+  插值
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/environment-variables/best-practices/"
+        title="最佳实践"
+      >
+        
+  最佳实践
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/environment-variables/envvars/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/file-watch/"
+        title="使用 Compose Watch"
+      >
+        
+  使用 Compose Watch
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/dependent-images/"
+        title="构建依赖镜像"
+      >
+        
+  构建依赖镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/use-secrets/"
+        title="Compose 中的机密信息"
+      >
+        
+  Compose 中的机密信息
+
+      </a>
+    </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/compose/how-tos/multiple-compose-files/"
+          >
+            
+  使用多个 Compose 文件
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/multiple-compose-files/merge/"
+        title="合并"
+      >
+        
+  合并
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/multiple-compose-files/extends/"
+        title="扩展"
+      >
+        
+  扩展
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/multiple-compose-files/include/"
+        title="Include"
+      >
+        
+  Include
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/production/"
+        title="在生产环境中使用 Compose"
+      >
+        
+  在生产环境中使用 Compose
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/oci-artifact/"
+        title="OCI 工件应用程序"
+      >
+        
+  OCI 工件应用程序
+    <span><span
+  class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
+  >新功能
+</span>
+
+    </span>
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/provider-services/"
+        title="使用提供者服务"
+      >
+        
+  使用提供者服务
+    <span><span
+  class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
+  >新增
+</span>
+
+    </span>
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/gpu-support/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/networking/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/how-tos/project-name/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/compose/bridge/"
+          >
+            
+  Compose Bridge
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/bridge/usage/"
+        title="使用方法"
+      >
+        
+  使用方法
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/bridge/customize/"
+        title="自定义"
+      >
+        
+  自定义
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/bridge/use-model-runner/"
+        title="使用 Model Runner"
+      >
+        
+  使用 Model Runner
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/compose-sdk/"
+        title="Compose SDK"
+      >
+        
+  Compose SDK
+    <span><span
+  class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
+  >New
+</span>
+
+    </span>
+
+      </a>
+    </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <button
+            @click="expanded = !expanded"
+            class="hover:text-blue w-full text-left select-none hover:dark:text-blue-400"
+          >
+            
+  支持与反馈
+
+          </button>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/support-and-feedback/faq/"
+        title="常见问题"
+      >
+        
+  常见问题
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/support-and-feedback/feedback/"
+        title="提供反馈"
+      >
+        
+  提供反馈
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/gettingstarted/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/compose/release-notes/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/dhi/"
+          >
+            
+  
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/get-started/"
+        title="快速开始"
+      >
+        
+  快速开始
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/features/"
+        title="功能"
+      >
+        
+  功能
+
+      </a>
+    </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/dhi/migration/"
+          >
+            
+  迁移
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/checklist/"
+        title="迁移清单"
+      >
+        
+  迁移清单
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/migrate-with-ai/"
+        title="AI 辅助迁移"
+      >
+        
+  AI 辅助迁移
+    <span><span
+  class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
+  >Experimental
+</span>
+
+    </span>
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/migrate-from-doi/"
+        title="从 Alpine 或 Debian 迁移"
+      >
+        
+  从 Alpine 或 Debian 迁移
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/migrate-from-wolfi/"
+        title="从 Wolfi 迁移"
+      >
+        
+  从 Wolfi 迁移
+
+      </a>
+    </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/dhi/migration/examples/"
+          >
+            
+  迁移示例
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/examples/go/"
+        title="Go"
+      >
+        
+  Go
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/examples/python/"
+        title="Python"
+      >
+        
+  Python
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/migration/examples/node/"
+        title="Node.js"
+      >
+        
+  Node.js
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/dhi/how-to/"
+          >
+            
+  操作指南
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/explore/"
+        title="探索镜像"
+      >
+        
+  探索镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/mirror/"
+        title="镜像仓库"
+      >
+        
+  镜像仓库
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/customize/"
+        title="自定义镜像或图表"
+      >
+        
+  自定义镜像或图表
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/use/"
+        title="使用镜像"
+      >
+        
+  使用镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/k8s/"
+        title="在 Kubernetes 中使用镜像"
+      >
+        
+  在 Kubernetes 中使用镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/helm/"
+        title="使用 Helm chart"
+      >
+        
+  使用 Helm chart
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/manage/"
+        title="管理镜像和 charts"
+      >
+        
+  管理镜像和 charts
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/els/"
+        title="使用扩展生命周期支持"
+      >
+        
+  使用扩展生命周期支持
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/compare/"
+        title="对比镜像"
+      >
+        
+  对比镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/verify/"
+        title="验证 image 或 chart"
+      >
+        
+  验证 image 或 chart
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/scan/"
+        title="扫描镜像"
+      >
+        
+  扫描镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/policies/"
+        title="强制执行镜像用法"
+      >
+        
+  强制执行镜像用法
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/how-to/debug/"
+        title="调试容器"
+      >
+        
+  调试容器
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/dhi/core-concepts/"
+          >
+            
+  核心概念
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/cis/"
+        title="CIS 基准"
+      >
+        
+  CIS 基准
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/cves/"
+        title="CVE"
+      >
+        
+  CVE
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/fips/"
+        title="FIPS"
+      >
+        
+  FIPS
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/glibc-musl/"
+        title="glibc 和 musl"
+      >
+        
+  glibc 和 musl
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/sbom/"
+        title="SBOM"
+      >
+        
+  SBOM
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/slsa/"
+        title="SLSA"
+      >
+        
+  SLSA
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/ssdlc/"
+        title="SSDLC"
+      >
+        
+  SSDLC
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/stig/"
+        title="STIG"
+      >
+        
+  STIG
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/vex/"
+        title="VEX"
+      >
+        
+  VEX
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/immutability/"
+        title="不可变性"
+      >
+        
+  不可变性
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/signatures/"
+        title="代码签名"
+      >
+        
+  代码签名
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/hardening/"
+        title="加固"
+      >
+        
+  加固
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/distroless/"
+        title="无发行版镜像"
+      >
+        
+  无发行版镜像
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/attestations/"
+        title="证明"
+      >
+        
+  证明
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/sscs/"
+        title="软件供应链安全"
+      >
+        
+  软件供应链安全
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/digests/"
+        title="镜像摘要"
+      >
+        
+  镜像摘要
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/core-concepts/provenance/"
+        title="镜像溯源"
+      >
+        
+  镜像溯源
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/troubleshoot/"
+        title="故障排除"
+      >
+        
+  故障排除
+
+      </a>
+    </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/dhi/explore/"
+          >
+            
+  
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/explore/available/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/explore/build-process/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/explore/feedback/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/explore/responsibility/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/explore/test/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/explore/what/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/dhi/resources/"
+        title=""
+      >
+        
+  
 
       </a>
     </li>
@@ -2460,14 +4466,10 @@ if (resultsLength > 5) {
       </a>
     </li>
 
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/build/buildkit/dockerfile-release-notes/"
+        href="https://github.com/moby/buildkit/releases"
         title="Dockerfile release notes"
       >
         
@@ -2545,14 +4547,10 @@ if (resultsLength > 5) {
     </ul>
   </li>
 
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/build/release-notes/"
+        href="https://github.com/docker/buildx/releases"
         title="Build release notes"
       >
         
@@ -2628,22 +4626,6 @@ if (resultsLength > 5) {
       >
         
   模型提供商
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/ai/cagent/local-models/"
-        title="本地模型"
-      >
-        
-  本地模型
 
       </a>
     </li>
@@ -2933,6 +4915,22 @@ if (resultsLength > 5) {
       >
         
   评估 (Evals)
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/cagent/local-models/"
+        title=""
+      >
+        
+  
 
       </a>
     </li>
@@ -3507,1048 +5505,6 @@ if (resultsLength > 5) {
           <a
             
             class="hover:text-blue block select-none hover:dark:text-blue-400"
-            href="/dhi/"
-          >
-            
-  Docker Hardened Images
-    <span><span
-  class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >New
-</span>
-
-    </span>
-
-          </a>
-      </div>
-      
-      
-      <button
-        @click="expanded = !expanded"
-        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
-      >
-        <span
-          :class="{ 'hidden' : expanded }"
-          class="icon-svg "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
-        </span>
-        <span
-          :class="{ 'hidden' : !expanded }"
-          class="icon-svg hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
-        </span>
-      </button>
-    </div>
-    <ul
-      :class="{ 'hidden' : !expanded }"
-      class="hidden ml-3"
-    >
-      
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/get-started/"
-        title="快速开始"
-      >
-        
-  快速开始
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/features/"
-        title="功能"
-      >
-        
-  功能
-
-      </a>
-    </li>
-
-  
-  
-  <li class="" x-data="{ expanded: false }">
-    <div
-      class=" flex w-full items-center justify-between rounded-sm"
-    >
-      <div class="navbar-entry-margin w-full truncate">
-          
-          
-          <a
-            
-            class="hover:text-blue block select-none hover:dark:text-blue-400"
-            href="/dhi/explore/"
-          >
-            
-  探索
-
-          </a>
-      </div>
-      
-      
-      <button
-        @click="expanded = !expanded"
-        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
-      >
-        <span
-          :class="{ 'hidden' : expanded }"
-          class="icon-svg "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
-        </span>
-        <span
-          :class="{ 'hidden' : !expanded }"
-          class="icon-svg hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
-        </span>
-      </button>
-    </div>
-    <ul
-      :class="{ 'hidden' : !expanded }"
-      class="hidden ml-3"
-    >
-      
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/explore/what/"
-        title="加固镜像"
-      >
-        
-  加固镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/explore/build-process/"
-        title="构建流程"
-      >
-        
-  构建流程
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/explore/available/"
-        title="Image types"
-      >
-        
-  Image types
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/explore/test/"
-        title="镜像测试"
-      >
-        
-  镜像测试
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/explore/responsibility/"
-        title="职责概述"
-      >
-        
-  职责概述
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/explore/feedback/"
-        title="反馈"
-      >
-        
-  反馈
-
-      </a>
-    </li>
-
-
-
-    </ul>
-  </li>
-
-  
-  
-  <li class="" x-data="{ expanded: false }">
-    <div
-      class=" flex w-full items-center justify-between rounded-sm"
-    >
-      <div class="navbar-entry-margin w-full truncate">
-          
-          
-          <a
-            
-            class="hover:text-blue block select-none hover:dark:text-blue-400"
-            href="/dhi/migration/"
-          >
-            
-  迁移
-
-          </a>
-      </div>
-      
-      
-      <button
-        @click="expanded = !expanded"
-        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
-      >
-        <span
-          :class="{ 'hidden' : expanded }"
-          class="icon-svg "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
-        </span>
-        <span
-          :class="{ 'hidden' : !expanded }"
-          class="icon-svg hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
-        </span>
-      </button>
-    </div>
-    <ul
-      :class="{ 'hidden' : !expanded }"
-      class="hidden ml-3"
-    >
-      
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/checklist/"
-        title="迁移清单"
-      >
-        
-  迁移清单
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/migrate-with-ai/"
-        title="AI 辅助迁移"
-      >
-        
-  AI 辅助迁移
-    <span><span
-  class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >Experimental
-</span>
-
-    </span>
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/migrate-from-doi/"
-        title="从 Alpine 或 Debian 迁移"
-      >
-        
-  从 Alpine 或 Debian 迁移
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/migrate-from-wolfi/"
-        title="从 Wolfi 迁移"
-      >
-        
-  从 Wolfi 迁移
-
-      </a>
-    </li>
-
-  
-  
-  <li class="" x-data="{ expanded: false }">
-    <div
-      class=" flex w-full items-center justify-between rounded-sm"
-    >
-      <div class="navbar-entry-margin w-full truncate">
-          
-          
-          <a
-            
-            class="hover:text-blue block select-none hover:dark:text-blue-400"
-            href="/dhi/migration/examples/"
-          >
-            
-  迁移示例
-
-          </a>
-      </div>
-      
-      
-      <button
-        @click="expanded = !expanded"
-        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
-      >
-        <span
-          :class="{ 'hidden' : expanded }"
-          class="icon-svg "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
-        </span>
-        <span
-          :class="{ 'hidden' : !expanded }"
-          class="icon-svg hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
-        </span>
-      </button>
-    </div>
-    <ul
-      :class="{ 'hidden' : !expanded }"
-      class="hidden ml-3"
-    >
-      
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/examples/go/"
-        title="Go"
-      >
-        
-  Go
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/examples/python/"
-        title="Python"
-      >
-        
-  Python
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/migration/examples/node/"
-        title="Node.js"
-      >
-        
-  Node.js
-
-      </a>
-    </li>
-
-
-
-    </ul>
-  </li>
-
-
-
-    </ul>
-  </li>
-
-  
-  
-  <li class="" x-data="{ expanded: false }">
-    <div
-      class=" flex w-full items-center justify-between rounded-sm"
-    >
-      <div class="navbar-entry-margin w-full truncate">
-          
-          
-          <a
-            
-            class="hover:text-blue block select-none hover:dark:text-blue-400"
-            href="/dhi/how-to/"
-          >
-            
-  操作指南
-
-          </a>
-      </div>
-      
-      
-      <button
-        @click="expanded = !expanded"
-        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
-      >
-        <span
-          :class="{ 'hidden' : expanded }"
-          class="icon-svg "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
-        </span>
-        <span
-          :class="{ 'hidden' : !expanded }"
-          class="icon-svg hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
-        </span>
-      </button>
-    </div>
-    <ul
-      :class="{ 'hidden' : !expanded }"
-      class="hidden ml-3"
-    >
-      
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/explore/"
-        title="探索镜像"
-      >
-        
-  探索镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/mirror/"
-        title="镜像仓库"
-      >
-        
-  镜像仓库
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/customize/"
-        title="自定义镜像或图表"
-      >
-        
-  自定义镜像或图表
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/use/"
-        title="使用镜像"
-      >
-        
-  使用镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/k8s/"
-        title="在 Kubernetes 中使用镜像"
-      >
-        
-  在 Kubernetes 中使用镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/helm/"
-        title="使用 Helm chart"
-      >
-        
-  使用 Helm chart
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/manage/"
-        title="管理镜像和 charts"
-      >
-        
-  管理镜像和 charts
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/els/"
-        title="使用扩展生命周期支持"
-      >
-        
-  使用扩展生命周期支持
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/compare/"
-        title="对比镜像"
-      >
-        
-  对比镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/verify/"
-        title="验证 image 或 chart"
-      >
-        
-  验证 image 或 chart
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/scan/"
-        title="扫描镜像"
-      >
-        
-  扫描镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/policies/"
-        title="强制执行镜像用法"
-      >
-        
-  强制执行镜像用法
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/how-to/debug/"
-        title="调试容器"
-      >
-        
-  调试容器
-
-      </a>
-    </li>
-
-
-
-    </ul>
-  </li>
-
-  
-  
-  <li class="" x-data="{ expanded: false }">
-    <div
-      class=" flex w-full items-center justify-between rounded-sm"
-    >
-      <div class="navbar-entry-margin w-full truncate">
-          
-          
-          <a
-            
-            class="hover:text-blue block select-none hover:dark:text-blue-400"
-            href="/dhi/core-concepts/"
-          >
-            
-  核心概念
-
-          </a>
-      </div>
-      
-      
-      <button
-        @click="expanded = !expanded"
-        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
-      >
-        <span
-          :class="{ 'hidden' : expanded }"
-          class="icon-svg "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
-        </span>
-        <span
-          :class="{ 'hidden' : !expanded }"
-          class="icon-svg hidden"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
-        </span>
-      </button>
-    </div>
-    <ul
-      :class="{ 'hidden' : !expanded }"
-      class="hidden ml-3"
-    >
-      
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/cis/"
-        title="CIS 基准"
-      >
-        
-  CIS 基准
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/cves/"
-        title="CVE"
-      >
-        
-  CVE
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/fips/"
-        title="FIPS"
-      >
-        
-  FIPS
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/glibc-musl/"
-        title="glibc 和 musl"
-      >
-        
-  glibc 和 musl
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/sbom/"
-        title="SBOM"
-      >
-        
-  SBOM
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/slsa/"
-        title="SLSA"
-      >
-        
-  SLSA
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/ssdlc/"
-        title="SSDLC"
-      >
-        
-  SSDLC
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/stig/"
-        title="STIG"
-      >
-        
-  STIG
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/vex/"
-        title="VEX"
-      >
-        
-  VEX
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/immutability/"
-        title="不可变性"
-      >
-        
-  不可变性
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/signatures/"
-        title="代码签名"
-      >
-        
-  代码签名
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/hardening/"
-        title="加固"
-      >
-        
-  加固
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/distroless/"
-        title="无发行版镜像"
-      >
-        
-  无发行版镜像
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/attestations/"
-        title="证明"
-      >
-        
-  证明
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/sscs/"
-        title="软件供应链安全"
-      >
-        
-  软件供应链安全
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/digests/"
-        title="镜像摘要"
-      >
-        
-  镜像摘要
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/core-concepts/provenance/"
-        title="镜像溯源"
-      >
-        
-  镜像溯源
-
-      </a>
-    </li>
-
-
-
-    </ul>
-  </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/dhi/troubleshoot/"
-        title="故障排除"
-      >
-        
-  故障排除
-
-      </a>
-    </li>
-
-
-
-    </ul>
-  </li>
-
-  
-  
-  <li class="" x-data="{ expanded: false }">
-    <div
-      class=" flex w-full items-center justify-between rounded-sm"
-    >
-      <div class="navbar-entry-margin w-full truncate">
-          
-          
-          <a
-            
-            class="hover:text-blue block select-none hover:dark:text-blue-400"
             href="/desktop/"
           >
             
@@ -5033,22 +5989,6 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/desktop/features/gpu/"
-        title="GPU 支持"
-      >
-        
-  GPU 支持
-
-      </a>
-    </li>
-
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
         href="/desktop/features/usbip/"
         title="USB/IP 支持"
       >
@@ -5240,6 +6180,22 @@ if (resultsLength > 5) {
 
     </ul>
   </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/desktop/features/gpu/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
 
 
 
@@ -5792,22 +6748,6 @@ if (resultsLength > 5) {
       </a>
     </li>
 
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
-      <a
-        
-        class="block w-full truncate"
-        href="/desktop/release-notes/"
-        title="发布说明"
-      >
-        
-  发布说明
-
-      </a>
-    </li>
-
   
   
   <li class="" x-data="{ expanded: false }">
@@ -5838,6 +6778,22 @@ if (resultsLength > 5) {
 
     </ul>
   </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/desktop/release-notes/"
+        title=""
+      >
+        
+  
+
+      </a>
+    </li>
 
 
 
@@ -11535,7 +12491,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -11545,7 +12501,7 @@ if (resultsLength > 5) {
     <span>/</span>
     
     <a href="/compose/" class="link truncate"
-      >Docker Compose</a
+      ></a
     >
     <span>/</span>
     
@@ -11554,14 +12510,14 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 手册 / Docker Compose / Compose 简介"
+    data-pagefind-meta="breadcrumbs: / 手册 /  / Compose 简介"
     class="truncate"
-    >Compose 的工作原理</span
+    ></span
   >
 </nav>
 
     <div class="flex items-start justify-between">
-      <h1 data-pagefind-weight="10">Compose 的工作原理</h1>
+      <h1 data-pagefind-weight="10"></h1>
       <div class="md-dropdown ml-auto hidden lg:block">
         <details id="markdownDropdown" class="ml-3 group relative z-10 inline-block" data-heap-id="markdown-dropdown">
     <summary
@@ -11739,11 +12695,24 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>使用 Docker Compose 时，您需要使用一个 YAML 配置文件（即 <a class="link" href="#the-compose-file">Compose 文件</a>）来配置应用程序的服务，然后使用 <a class="link" href="#cli">Compose CLI</a> 根据配置创建并启动所有服务。</p>
-<p>Compose 文件（即 <code>compose.yaml</code> 文件）遵循 
+    <p>title: How Compose works
+weight: 10
+description: &quot;Learn how Docker Compose works, from the application model to Compose files and CLI, whilst following a detailed example.&quot;
+keywords: &quot;docker compose, compose.yaml, docker compose model, compose cli, multi-container application, compose example&quot;
+aliases:</p>
+<ul>
+<li>/compose/compose-file/02-model/</li>
+<li>/compose/compose-yaml-file/</li>
+<li>/compose/compose-application-model/---
+title: Docker Compose 的工作原理
+weight: 10
+description: &quot;了解 Docker Compose 的工作原理，从应用模型到 Compose 文件和 CLI，通过详细的示例进行学习。&quot;---
+使用 Docker Compose 时，您需要使用 YAML 配置文件（称为 <a class="link" href="#the-compose-file">Compose 文件</a>）来配置应用的服务，然后通过 <a class="link" href="#cli">Compose CLI</a> 从配置中创建并启动所有服务。</li>
+</ul>
+<p>Compose 文件，即 <code>compose.yaml</code> 文件，遵循 
     
   
-  <a class="link" href="/reference/compose-file/">Compose 规范</a> 中关于如何定义多容器应用的规则。这是 Docker Compose 对正式 <a class="link" href="https://github.com/compose-spec/compose-spec" rel="noopener">Compose 规范</a> 的实现。</p>
+  <a class="link" href="/reference/compose-file/">Compose 规范</a> 提供的规则来定义多容器应用。这是正式 <a class="link" href="https://github.com/compose-spec/compose-spec" rel="noopener">Compose 规范</a> 的 Docker Compose 实现。</p>
 
 
 
@@ -11769,26 +12738,26 @@ if (resultsLength > 5) {
     >
   </button>
   <div x-show="open" x-collapse class="px-4">
-    <p>应用程序的计算组件被定义为 
+    <p>应用的计算组件被定义为 
     
   
-  <a class="link" href="/reference/compose-file/services/">服务</a>。服务是一个抽象概念，在平台上通过运行相同的容器镜像和配置（一次或多次）来实现。</p>
+  <a class="link" href="/reference/compose-file/services/">服务</a>。服务是一个抽象概念，通过在平台上运行相同的容器镜像和配置，一次或多次实现。</p>
 <p>服务之间通过 
     
   
-  <a class="link" href="/reference/compose-file/networks/">网络</a> 进行通信。在 Compose 规范中，网络是一种平台能力抽象，用于在连接在一起的服务内的容器之间建立 IP 路由。</p>
+  <a class="link" href="/reference/compose-file/networks/">网络</a> 进行通信。在 Compose 规范中，网络是建立连接在一起的服务容器之间 IP 路由的平台能力抽象。</p>
 <p>服务将持久数据存储并共享到 
     
   
-  <a class="link" href="/reference/compose-file/volumes/">卷</a> 中。该规范将此类持久数据描述为具有全局选项的高级文件系统挂载。</p>
-<p>某些服务需要依赖于运行时或平台的配置数据。为此，规范定义了一个专门的 
+  <a class="link" href="/reference/compose-file/volumes/">卷</a> 中。规范将这种持久数据描述为具有全局选项的高级文件系统挂载。</p>
+<p>某些服务需要依赖于运行时或平台的配置数据。为此，规范定义了专用的 
     
   
-  <a class="link" href="/reference/compose-file/configs/">配置 (configs)</a> 概念。在容器内部，配置的行为类似于卷——它们作为文件被挂载。但是，配置在平台级别的定义方式不同。</p>
+  <a class="link" href="/reference/compose-file/configs/">configs</a> 概念。在容器内部，configs 的行为类似于卷——它们被挂载为文件。然而，configs 在平台级别上的定义方式不同。</p>
 <p>
     
   
-  <a class="link" href="/reference/compose-file/secrets/">密钥 (secret)</a> 是配置数据的一种特定类型，用于处理敏感数据，这些数据不应在没有安全考虑的情况下暴露。密钥作为文件挂载到其容器中提供给服务使用，但提供敏感数据的特定于平台的资源足够独特，值得在 Compose 规范中拥有一个独立的概念和定义。</p>
+  <a class="link" href="/reference/compose-file/secrets/">secret</a> 是配置数据的一种特殊类型，用于敏感数据，不应在不考虑安全的情况下暴露。Secrets 以挂载到容器中的文件形式提供给服务，但提供敏感数据的平台特定资源足够特殊，值得在 Compose 规范中拥有独立的概念和定义。</p>
 
 
   
@@ -11807,15 +12776,15 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>使用卷、配置和密钥时，您可以在顶层进行简单声明，然后在服务级别添加更多特定于平台的信息。</p>
+      <p>使用卷、configs 和 secrets，您可以在顶级进行简单声明，然后在服务级别添加更多平台特定信息。</p>
     </div>
   </blockquote>
 
-<p>项目是在平台上对应用规范进行的单独部署。项目的名称（通过顶层 
+<p>项目是在平台上部署应用规范的单个实例。项目的名称通过顶级 
     
   
-  <a class="link" href="/reference/compose-file/version-and-name/"><code>name</code></a> 属性设置）用于将资源分组在一起，并将其与其他应用程序或具有不同参数的同一 Compose 规范应用程序的其他安装隔离开来。如果您在平台上创建资源，则必须在资源名称前加上项目名称前缀，并设置标签 <code>com.docker.compose.project</code>。</p>
-<p>Compose 提供了一种设置自定义项目名称并覆盖此名称的方法，因此同一个 <code>compose.yaml</code> 文件可以通过传递不同的名称在相同基础设施上部署两次，而无需更改。</p>
+  <a class="link" href="/reference/compose-file/version-and-name/"><code>name</code></a> 属性设置，用于将资源分组并与其他应用或具有不同参数的同一 Compose 指定应用的其他安装隔离。如果您在平台上创建资源，必须使用项目前缀命名资源，并设置标签 <code>com.docker.compose.project</code>。</p>
+<p>Compose 提供了一种方式，让您设置自定义项目名称并覆盖此名称，这样相同的 <code>compose.yaml</code> 文件可以通过传递不同的名称在相同基础设施上部署两次，无需更改。</p>
 
   </div>
 </div>
@@ -11828,28 +12797,29 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>Compose 文件的默认路径是工作目录中的 <code>compose.yaml</code>（推荐）或 <code>compose.yml</code>。
-Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml</code>，以实现与早期版本的向后兼容。
-如果两个文件都存在，Compose 优先使用规范的 <code>compose.yaml</code>。</p>
+<p>Compose 文件的默认路径是 <code>compose.yaml</code>（首选）或 <code>compose.yml</code>，放置在工作目录中。
+Compose 也支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml</code> 以保持与早期版本的向后兼容性。
+如果两个文件都存在，Compose 优先选择标准的 <code>compose.yaml</code>。</p>
 <p>您可以使用 
     
   
   <a class="link" href="/reference/compose-file/fragments/">片段</a> 和 
     
   
-  <a class="link" href="/reference/compose-file/extension/">扩展</a> 来保持 Compose 文件的高效和易于维护。</p>
-<p>可以 
+  <a class="link" href="/reference/compose-file/extension/">扩展</a> 来保持 Compose 文件的高效性和易维护性。</p>
+<p>多个 Compose 文件可以 
     
   
-  <a class="link" href="/reference/compose-file/merge/">合并</a> 多个 Compose 文件来定义应用模型。YAML 文件的组合是通过根据您设置的 Compose 文件顺序追加或覆盖 YAML 元素来实现的。
-简单属性和映射会被顺序最高的 Compose 文件覆盖，列表则通过追加进行合并。相对路径是基于第一个 Compose 文件的父文件夹解析的，无论要合并的补充文件托管在哪个文件夹中。由于某些 Compose 文件元素既可以表示为单个字符串，也可以表示为复杂对象，因此合并适用于扩展形式。更多信息，请参阅 
+  <a class="link" href="/reference/compose-file/merge/">合并</a> 在一起定义应用模型。YAML 文件的组合通过基于您设置的 Compose 文件顺序追加或覆盖 YAML 元素来实现。
+简单属性和映射被最高顺序的 Compose 文件覆盖，列表通过追加合并。相对路径基于第一个 Compose 文件的父文件夹解析，当合并的补充文件托管在其他文件夹中时。
+由于某些 Compose 文件元素既可以表示为单个字符串也可以表示为复杂对象，因此合并适用于展开形式。更多信息，请参阅 
     
   
   <a class="link" href="/compose/how-tos/multiple-compose-files/">使用多个 Compose 文件</a>。</p>
-<p>如果您想重用其他 Compose 文件，或将应用模型的部分内容分解到单独的 Compose 文件中，也可以使用 
+<p>如果您想重用其他 Compose 文件，或将应用模型的部分分解为单独的 Compose 文件，您也可以使用 
     
   
-  <a class="link" href="/reference/compose-file/include/"><code>include</code></a>。如果您的 Compose 应用程序依赖于另一个由不同团队管理的应用程序，或者需要与他人共享，这将非常有用。</p>
+  <a class="link" href="/reference/compose-file/include/"><code>include</code></a>。如果您的 Compose 应用依赖于由不同团队管理的另一个应用，或者需要与他人共享，这非常有用。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="cli">
   <a class="text-black dark:text-white no-underline hover:underline" href="#cli">
@@ -11857,8 +12827,8 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
   </a>
 </h2>
 
-<p>Docker CLI 允许您通过 <code>docker compose</code> 命令及其子命令与您的 Docker Compose 应用程序进行交互。如果您使用的是 Docker Desktop，则默认包含 Docker Compose CLI。</p>
-<p>使用 CLI，您可以管理在 <code>compose.yaml</code> 文件中定义的多容器应用程序的生命周期。CLI 命令使您可以轻松启动、停止和配置您的应用程序。</p>
+<p>Docker CLI 让您通过 <code>docker compose</code> 命令及其子命令与 Docker Compose 应用进行交互。如果您使用 Docker Desktop，Docker Compose CLI 默认包含在内。</p>
+<p>使用 CLI，您可以管理在 <code>compose.yaml</code> 文件中定义的多容器应用的生命周期。CLI 命令使您能够轻松地启动、停止和配置应用。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="关键命令">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%85%b3%e9%94%ae%e5%91%bd%e4%bb%a4">
@@ -11866,7 +12836,7 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
   </a>
 </h3>
 
-<p>要启动 <code>compose.yaml</code> 文件中定义的所有服务：</p>
+<p>启动 <code>compose.yaml</code> 文件中定义的所有服务：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11904,7 +12874,7 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
     </div>
   </div>
 </div>
-<p>要停止并移除正在运行的服务：</p>
+<p>停止并移除正在运行的服务：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11942,7 +12912,7 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
     </div>
   </div>
 </div>
-<p>如果您想监控正在运行的容器的输出并调试问题，可以使用以下命令查看日志：</p>
+<p>如果您想监视正在运行的容器的输出并调试问题，可以使用以下命令查看日志：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -11980,7 +12950,7 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
     </div>
   </div>
 </div>
-<p>要列出所有服务及其当前状态：</p>
+<p>列出所有服务及其当前状态：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12029,11 +12999,11 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
   </a>
 </h2>
 
-<p>以下示例说明了上述概述的 Compose 概念。该示例仅供参考。</p>
-<p>考虑一个拆分为前端 Web 应用程序和后端服务的应用程序。</p>
-<p>前端在运行时通过基础设施管理的 HTTP 配置文件进行配置，该文件提供外部域名，以及由平台的安全密钥存储注入的 HTTPS 服务器证书。</p>
+<p>以下示例说明了上述 Compose 概念。该示例为非规范性。</p>
+<p>考虑一个分为前端 Web 应用和后端服务的应用。</p>
+<p>前端在运行时通过由基础设施管理的 HTTP 配置文件进行配置，提供外部域名，以及由平台安全密钥存储注入的 HTTPS 服务器证书。</p>
 <p>后端将数据存储在持久卷中。</p>
-<p>两个服务在隔离的后端网络上相互通信，而前端还连接到前端网络并暴露端口 443 以供外部使用。</p>
+<p>两个服务在隔离的后端网络上相互通信，而前端也连接到前端网络并为外部使用暴露端口 443。</p>
 
   
   
@@ -12079,12 +13049,12 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
     </div>
   </template>
 </figure>
-<p>示例应用程序由以下部分组成：</p>
+<p>示例应用由以下部分组成：</p>
 <ul>
-<li>两个由 Docker 镜像支持的服务：<code>webapp</code> 和 <code>database</code></li>
+<li>两个服务，由 Docker 镜像支持：<code>webapp</code> 和 <code>database</code></li>
 <li>一个密钥（HTTPS 证书），注入到前端</li>
 <li>一个配置（HTTP），注入到前端</li>
-<li>一个持久卷，挂载到后端</li>
+<li>一个持久卷，附加到后端</li>
 <li>两个网络</li>
 </ul>
 <div
@@ -12138,21 +13108,21 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">back-tier</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">volumes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">db-data</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">flocker</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10GiB&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">httpd-config</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">secrets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">secrets</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server-certificate</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># 这些对象的存在足以定义它们</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">front-tier</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">back-tier</span><span class="p">:</span><span class="w"> </span>{}</span></span></code></pre></div>
@@ -12160,8 +13130,8 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
     </div>
   </div>
 </div>
-<p><code>docker compose up</code> 命令启动 <code>frontend</code> 和 <code>backend</code> 服务，创建必要的网络和卷，并将配置和密钥注入到前端服务。</p>
-<p><code>docker compose ps</code> 提供服务当前状态的快照，可以轻松查看哪些容器正在运行、它们的状态以及它们使用的端口：</p>
+<p><code>docker compose up</code> 命令启动 <code>frontend</code> 和 <code>backend</code> 服务，创建必要的网络和卷，并将配置和密钥注入前端服务。</p>
+<p><code>docker compose ps</code> 提供您服务当前状态的快照，便于查看哪些容器正在运行、它们的状态以及它们使用的端口：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12214,10 +13184,7 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
     
   
   <a class="link" href="/compose/gettingstarted/">尝试快速入门指南</a></li>
-<li>
-    
-  
-  <a class="link" href="/compose/support-and-feedback/samples-for-compose/">探索一些示例应用程序</a></li>
+<li><a class="link" href="https://github.com/docker/awesome-compose" rel="noopener">探索一些示例应用</a></li>
 <li>
     
   
@@ -12418,7 +13385,7 @@ Compose 还支持 <code>docker-compose.yaml</code> 和 <code>docker-compose.yml<
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

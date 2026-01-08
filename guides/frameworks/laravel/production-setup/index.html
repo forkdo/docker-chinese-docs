@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-12-04 12:19:40 -0300 -0300"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"使用 Docker Compose 搭建 Laravel 生产环境\"","description":"\"使用 Docker Compose 为 Laravel 搭建可用于生产环境的环境。\"","url":"\/guides\/frameworks\/laravel\/production-setup\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-12-04T12:19:40-03:00","description":"使用 Docker Compose 为 Laravel 搭建可用于生产环境的环境。","headline":"使用 Docker Compose 搭建 Laravel 生产环境","isPartOf":{"@id":"/guides/frameworks/laravel/","@type":"WebPage","name":"使用 Docker Compose 运行 Laravel 应用"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/frameworks/laravel/production-setup/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/frameworks/laravel/","name":"使用 Docker Compose 运行 Laravel 应用"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/frameworks/laravel/production-setup/","name":"使用 Docker Compose 搭建 Laravel 生产环境"},"position":3}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -795,7 +794,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -809,7 +808,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 指南 / 使用 Docker Compose 运行 Laravel 应用"
+    data-pagefind-meta="breadcrumbs: / 指南 / 使用 Docker Compose 运行 Laravel 应用"
     class="truncate"
     >使用 Docker Compose 搭建 Laravel 生产环境</span
   >
@@ -1130,114 +1129,114 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 阶段 1：构建环境和 Composer 依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.4-fpm AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.4-fpm</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装 Laravel 所需的系统依赖和 PHP 扩展（支持 MySQL/PostgreSQL）。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 此阶段的依赖仅用于构建最终镜像。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Node.js 和静态资源构建在 Nginx 阶段处理，不在此阶段。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    curl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    unzip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libpq-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libonig-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libssl-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libxml2-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libcurl4-openssl-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libicu-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libzip-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> docker-php-ext-install -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pdo_mysql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pdo_pgsql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pgsql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    opcache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    intl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    zip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    bcmath <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    soap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> pecl install redis <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> docker-php-ext-enable redis <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装 Laravel 所需的系统依赖和 PHP 扩展（支持 MySQL/PostgreSQL）。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 此阶段的依赖仅用于构建最终镜像。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># Node.js 和静态资源构建在 Nginx 阶段处理，不在此阶段。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
+</span></span></span><span class="line"><span class="cl">    curl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    unzip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libpq-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libonig-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libssl-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libxml2-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libcurl4-openssl-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libicu-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libzip-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> docker-php-ext-install -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pdo_mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pdo_pgsql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pgsql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    opcache <span class="se">\
+</span></span></span><span class="line"><span class="cl">    intl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    zip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    bcmath <span class="se">\
+</span></span></span><span class="line"><span class="cl">    soap <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> pecl install redis <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> docker-php-ext-enable redis <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置容器内的工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置容器内的工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将整个 Laravel 应用程序代码复制到容器中</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 在 Laravel 中，`composer install` 可能触发需要访问应用程序代码的脚本。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 例如，`post-autoload-dump` 事件可能执行类似 `php artisan package:discover` 的 Artisan 命令。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 如果应用程序代码（包括 `artisan` 文件）不存在，这些命令将失败，导致构建错误。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 通过在运行 `composer install` 之前复制整个应用程序代码，我们确保所有必要文件都可用，</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从而允许这些脚本成功运行。在其他情况下，可以先复制 composer 文件，</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 以利用 Docker 的层缓存机制。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将整个 Laravel 应用程序代码复制到容器中</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 在 Laravel 中，`composer install` 可能触发需要访问应用程序代码的脚本。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 例如，`post-autoload-dump` 事件可能执行类似 `php artisan package:discover` 的 Artisan 命令。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 如果应用程序代码（包括 `artisan` 文件）不存在，这些命令将失败，导致构建错误。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">#</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 通过在运行 `composer install` 之前复制整个应用程序代码，我们确保所有必要文件都可用，</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从而允许这些脚本成功运行。在其他情况下，可以先复制 composer 文件，</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 以利用 Docker 的层缓存机制。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装 Composer 和依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> curl -sS https://getcomposer.org/installer <span class="p">|</span> php -- --install-dir<span class="o">=</span>/usr/local/bin --filename<span class="o">=</span>composer <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装 Composer 和依赖</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> curl -sS https://getcomposer.org/installer <span class="p">|</span> php -- --install-dir<span class="o">=</span>/usr/local/bin --filename<span class="o">=</span>composer <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阶段 2：生产环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.4-fpm AS production</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 2：生产环境</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.4-fpm</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">production</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 仅安装生产环境所需的运行时库</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># libfcgi-bin 和 procps 是 php-fpm-healthcheck 脚本所需的</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libpq-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libicu-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libzip-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libfcgi-bin <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    procps <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 仅安装生产环境所需的运行时库</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># libfcgi-bin 和 procps 是 php-fpm-healthcheck 脚本所需的</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libpq-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libicu-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libzip-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libfcgi-bin <span class="se">\
+</span></span></span><span class="line"><span class="cl">    procps <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 下载并安装 php-fpm 健康检查脚本</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> curl -o /usr/local/bin/php-fpm-healthcheck <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    https://raw.githubusercontent.com/renatomefi/php-fpm-healthcheck/master/php-fpm-healthcheck <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> chmod +x /usr/local/bin/php-fpm-healthcheck<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 下载并安装 php-fpm 健康检查脚本</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> curl -o /usr/local/bin/php-fpm-healthcheck <span class="se">\
+</span></span></span><span class="line"><span class="cl">    https://raw.githubusercontent.com/renatomefi/php-fpm-healthcheck/master/php-fpm-healthcheck <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> chmod +x /usr/local/bin/php-fpm-healthcheck<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制初始化脚本</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./docker/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> chmod +x /usr/local/bin/entrypoint.sh<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制初始化脚本</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./docker/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chmod +x /usr/local/bin/entrypoint.sh<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制初始 storage 结构</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./storage /var/www/storage-init<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制初始 storage 结构</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./storage /var/www/storage-init<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从 builder 阶段复制 PHP 扩展和库</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/bin/docker-php-ext-* /usr/local/bin/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从 builder 阶段复制 PHP 扩展和库</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/bin/docker-php-ext-* /usr/local/bin/<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 使用推荐的 PHP 生产环境配置</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># PHP 提供开发和生产环境配置。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 在此，我们将默认的 php.ini 替换为生产版本，</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 以在 live 环境中应用针对性能和安全优化的设置。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 使用推荐的 PHP 生产环境配置</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># PHP 提供开发和生产环境配置。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 在此，我们将默认的 php.ini 替换为生产版本，</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 以在 live 环境中应用针对性能和安全优化的设置。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 通过 sed 修改 zz-docker.conf 启用 PHP-FPM 状态页</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> sed -i <span class="s1">&#39;/\[www\]/a pm.status_path = /status&#39;</span> /usr/local/etc/php-fpm.d/zz-docker.conf<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 更新 variables_order 以包含 E（用于 ENV）</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#RUN sed -i &#39;s/variables_order = &#34;GPCS&#34;/variables_order = &#34;EGPCS&#34;/&#39; &#34;$PHP_INI_DIR/php.ini&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 通过 sed 修改 zz-docker.conf 启用 PHP-FPM 状态页</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> sed -i <span class="s1">&#39;/\[www\]/a pm.status_path = /status&#39;</span> /usr/local/etc/php-fpm.d/zz-docker.conf<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 更新 variables_order 以包含 E（用于 ENV）</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">#RUN sed -i &#39;s/variables_order = &#34;GPCS&#34;/variables_order = &#34;EGPCS&#34;/&#39; &#34;$PHP_INI_DIR/php.ini&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从构建阶段复制应用程序代码和依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /var/www /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从构建阶段复制应用程序代码和依赖</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /var/www /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 确保权限正确</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> chown -R www-data:www-data /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 确保权限正确</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chown -R www-data:www-data /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 切换到非特权用户运行应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> www-data</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非特权用户运行应用程序</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">www-data</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将默认命令更改为运行入口点脚本</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/usr/local/bin/entrypoint.sh&#34;</span><span class="p">]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将默认命令更改为运行入口点脚本</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/usr/local/bin/entrypoint.sh&#34;</span><span class="p">]</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露端口 9000 并启动 php-fpm 服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 9000</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;php-fpm&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口 9000 并启动 php-fpm 服务器</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">9000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;php-fpm&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1320,75 +1319,75 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 阶段 1：构建环境和 Composer 依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.4-cli AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.4-cli</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装 Laravel + MySQL/PostgreSQL 支持所需的系统依赖和 PHP 扩展</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 某些依赖仅在构建阶段为 PHP 扩展所需</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    curl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    unzip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libpq-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libonig-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libssl-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libxml2-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libcurl4-openssl-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libicu-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libzip-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> docker-php-ext-install -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pdo_mysql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pdo_pgsql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pgsql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    opcache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    intl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    zip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    bcmath <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    soap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> pecl install redis <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> docker-php-ext-enable redis <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装 Laravel + MySQL/PostgreSQL 支持所需的系统依赖和 PHP 扩展</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 某些依赖仅在构建阶段为 PHP 扩展所需</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
+</span></span></span><span class="line"><span class="cl">    curl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    unzip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libpq-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libonig-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libssl-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libxml2-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libcurl4-openssl-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libicu-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libzip-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> docker-php-ext-install -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pdo_mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pdo_pgsql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    pgsql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    opcache <span class="se">\
+</span></span></span><span class="line"><span class="cl">    intl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    zip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    bcmath <span class="se">\
+</span></span></span><span class="line"><span class="cl">    soap <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> pecl install redis <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> docker-php-ext-enable redis <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置容器内的工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置容器内的工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将整个 Laravel 应用程序代码复制到容器中</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将整个 Laravel 应用程序代码复制到容器中</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装 Composer 和依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> curl -sS https://getcomposer.org/installer <span class="p">|</span> php -- --install-dir<span class="o">=</span>/usr/local/bin --filename<span class="o">=</span>composer <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装 Composer 和依赖</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> curl -sS https://getcomposer.org/installer <span class="p">|</span> php -- --install-dir<span class="o">=</span>/usr/local/bin --filename<span class="o">=</span>composer <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阶段 2：生产环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.4-cli</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 2：生产环境</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.4-cli</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装运行时 php 扩展所需的客户端库</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libpq-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libicu-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    libzip-dev <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装运行时 php 扩展所需的客户端库</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libpq-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libicu-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    libzip-dev <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get autoremove -y <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从 builder 阶段复制 PHP 扩展和库</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/bin/docker-php-ext-* /usr/local/bin/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从 builder 阶段复制 PHP 扩展和库</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/local/bin/docker-php-ext-* /usr/local/bin/<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 使用 PHP 运行时参数的默认生产环境配置</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 使用 PHP 运行时参数的默认生产环境配置</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从构建阶段复制应用程序代码和依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /var/www /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从构建阶段复制应用程序代码和依赖</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /var/www /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 确保权限正确</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> chown -R www-data:www-data /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 确保权限正确</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chown -R www-data:www-data /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 切换到非特权用户运行应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> www-data</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非特权用户运行应用程序</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">www-data</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 默认命令：提供 bash shell 以允许运行任何命令</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;bash&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 默认命令：提供 bash shell 以允许运行任何命令</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;bash&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1434,46 +1433,46 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># docker/nginx/Dockerfile</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阶段 1：构建静态资源</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> debian AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 1：构建静态资源</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">debian</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装 Node.js 和构建工具</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    curl <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nodejs <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    npm <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装 Node.js 和构建工具</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends <span class="se">\
+</span></span></span><span class="line"><span class="cl">    curl <span class="se">\
+</span></span></span><span class="line"><span class="cl">    nodejs <span class="se">\
+</span></span></span><span class="line"><span class="cl">    npm <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制 Laravel 应用程序代码</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . /var/www<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制 Laravel 应用程序代码</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . /var/www<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装 Node.js 依赖并构建静态资源</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install <span class="o">&amp;&amp;</span> npm run build<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装 Node.js 依赖并构建静态资源</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm install <span class="o">&amp;&amp;</span> npm run build<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 阶段 2：Nginx 生产镜像</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> nginx:alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 2：Nginx 生产镜像</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制自定义 Nginx 配置</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 用针对 Laravel 应用程序优化的自定义配置替换默认 Nginx 配置。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./docker/nginx/nginx.conf /etc/nginx/nginx.conf<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制自定义 Nginx 配置</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 用针对 Laravel 应用程序优化的自定义配置替换默认 Nginx 配置。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./docker/nginx/nginx.conf /etc/nginx/nginx.conf<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 从 builder 阶段复制 Laravel 的公共静态资源</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 我们只需要 Laravel 应用程序中的 &#39;public&#39; 目录。</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># -----------------------------------------------------------</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /var/www/public /var/www/public<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 从 builder 阶段复制 Laravel 的公共静态资源</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 我们只需要 Laravel 应用程序中的 &#39;public&#39; 目录。</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># -----------------------------------------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder /var/www/public /var/www/public<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 将工作目录设置为 public 文件夹</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www/public</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 将工作目录设置为 public 文件夹</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www/public</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 暴露端口 80 并启动 Nginx</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 80</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;nginx&#34;</span><span class="p">,</span> <span class="s2">&#34;-g&#34;</span><span class="p">,</span> <span class="s2">&#34;daemon off;&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口 80 并启动 Nginx</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;nginx&#34;</span><span class="p">,</span> <span class="s2">&#34;-g&#34;</span><span class="p">,</span> <span class="s2">&#34;daemon off;&#34;</span><span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1628,7 +1627,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l">5s</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># 将服务附加到 &#39;laravel-production&#39; 网络。</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># -----------------------------------------------------------</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># 此自定义网络允许其中所有服务使用其服务名称作为主机名进行通信。</span><span class="w">
@@ -1636,7 +1635,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># -----------------------------------------------------------</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">laravel-production</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">volumes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">postgres-data-production</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">laravel-storage-production:</span></span></span></code></pre></div>
       
@@ -1930,7 +1929,7 @@ if (resultsLength > 5) {
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

@@ -413,19 +413,19 @@ $ docker compose watch
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> composer:lts as deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>composer.json,target<span class="o">=</span>composer.json <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>composer.lock,target<span class="o">=</span>composer.lock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    composer install --no-dev --no-interaction<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">composer:lts</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">deps</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>composer.json,target<span class="o">=</span>composer.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>composer.lock,target<span class="o">=</span>composer.lock <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
+</span></span></span><span class="line"><span class="cl">    composer install --no-dev --no-interaction<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.2-apache as final</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> docker-php-ext-install pdo pdo_mysql<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>deps app/vendor/ /var/www/html/vendor<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src /var/www/html<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> www-data</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.2-apache</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">final</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> docker-php-ext-install pdo pdo_mysql<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>deps app/vendor/ /var/www/html/vendor<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./src /var/www/html<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">www-data</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -470,33 +470,33 @@ $ docker compose watch
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> composer:lts as prod-deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.json,target<span class="o">=</span>composer.json <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.lock,target<span class="o">=</span>composer.lock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    composer install --no-dev --no-interaction<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">composer:lts</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">prod-deps</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.json,target<span class="o">=</span>composer.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.lock,target<span class="o">=</span>composer.lock <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
+</span></span></span><span class="line"><span class="cl">    composer install --no-dev --no-interaction<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> composer:lts as dev-deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.json,target<span class="o">=</span>composer.json <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.lock,target<span class="o">=</span>composer.lock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    composer install --no-interaction<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">composer:lts</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">dev-deps</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.json,target<span class="o">=</span>composer.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./composer.lock,target<span class="o">=</span>composer.lock <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
+</span></span></span><span class="line"><span class="cl">    composer install --no-interaction<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> php:8.2-apache as base</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> docker-php-ext-install pdo pdo_mysql<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src /var/www/html<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.2-apache</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">base</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> docker-php-ext-install pdo pdo_mysql<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./src /var/www/html<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> base as development</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./tests /var/www/html/tests<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-development&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>dev-deps app/vendor/ /var/www/html/vendor<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">development</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./tests /var/www/html/tests<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-development&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>dev-deps app/vendor/ /var/www/html/vendor<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> base as final</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>prod-deps app/vendor/ /var/www/html/vendor<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> www-data</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">final</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mv <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini-production&#34;</span> <span class="s2">&#34;</span><span class="nv">$PHP_INI_DIR</span><span class="s2">/php.ini&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>prod-deps app/vendor/ /var/www/html/vendor<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">www-data</span></span></span></code></pre></div>
       
     </div>
   </div>

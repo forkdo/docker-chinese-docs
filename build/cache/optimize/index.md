@@ -240,11 +240,11 @@ There are a few things to be aware of when using bind mounts in a build:
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> alpine:latest</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /work</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> touch foo.txt<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,target<span class="o">=</span>. ls<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> ls</span></span></code></pre></div>
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:latest</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/work</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> touch foo.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,target<span class="o">=</span>. ls<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> ls</span></span></code></pre></div>
       
     </div>
   </div>
@@ -476,7 +476,7 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/go/pkg/mod <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    go build -o /app/hello</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    go build -o /app/hello</span></span></code></pre></div>
       
     </div>
   </div>
@@ -520,8 +520,8 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/var/cache/apt,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/var/lib/apt,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  apt update <span class="o">&amp;&amp;</span> apt-get --no-install-recommends install -y gcc</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">  --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/var/lib/apt,sharing<span class="o">=</span>locked <span class="se">\
+</span></span></span><span class="line"><span class="cl">  apt update <span class="o">&amp;&amp;</span> apt-get --no-install-recommends install -y gcc</span></span></code></pre></div>
       
     </div>
   </div>
@@ -565,7 +565,7 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/pip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pip install -r requirements.txt</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    pip install -r requirements.txt</span></span></code></pre></div>
       
     </div>
   </div>
@@ -609,7 +609,7 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.gem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    bundle install</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    bundle install</span></span></code></pre></div>
       
     </div>
   </div>
@@ -653,9 +653,9 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/app/target/ <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/local/cargo/git/db <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/local/cargo/registry/ <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    cargo build</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/local/cargo/git/db <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/local/cargo/registry/ <span class="se">\
+</span></span></span><span class="line"><span class="cl">    cargo build</span></span></code></pre></div>
       
     </div>
   </div>
@@ -699,7 +699,7 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.nuget/packages <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    dotnet restore</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    dotnet restore</span></span></code></pre></div>
       
     </div>
   </div>
@@ -743,7 +743,7 @@ tool you're using. Here are a few examples:
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    composer install</span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    composer install</span></span></code></pre></div>
       
     </div>
   </div>

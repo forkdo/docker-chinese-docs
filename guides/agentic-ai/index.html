@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-10-03 09:46:25 &#43;0100 &#43;0100"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"智能体 AI 应用程序\"","description":"\"\"","url":"\/guides\/agentic-ai\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-10-03T09:46:25+01:00","description":"","headline":"智能体 AI 应用程序","isPartOf":{"@id":"/guides/","@type":"WebPage","name":"指南"},"keywords":"AI, Docker, Model, Runner, MCP, Toolkit, Docker, Offload, AI, agents, application, development","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"timeRequired":"PT30M","url":"/guides/agentic-ai/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/agentic-ai/","name":"智能体 AI 应用程序"},"position":2}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -657,7 +656,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -666,7 +665,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 指南"
+    data-pagefind-meta="breadcrumbs: / 指南"
     class="truncate"
     >智能体 AI 应用程序</span
   >
@@ -1343,7 +1342,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 添加您想使用的任何 MCP 服务器</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- --<span class="l">servers=duckduckgo</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">models</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">models</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gemma3</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># 启动 Docker Model Runner 时预拉取模型</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l">ai/gemma3:4B-Q4_0</span><span class="w">
@@ -1494,47 +1493,47 @@ if (resultsLength > 5) {
           </div>
           <div :class="{ 'h-32': collapse }">
             <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 使用 Python 3.11 slim 镜像作为基础</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> python:3.13-slim</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.13-slim</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">RUN</span> pip install uv<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 安装系统依赖</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> pyproject.toml uv.lock ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/uv <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nv">UV_COMPILE_BYTECODE</span><span class="o">=</span><span class="m">1</span> <span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    uv pip install --system .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 复制应用程序代码</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> agents/ ./agents/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> python -m compileall -q .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装系统依赖</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> pyproject.toml uv.lock ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/uv <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nv">UV_COMPILE_BYTECODE</span><span class="o">=</span><span class="m">1</span> <span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy <span class="se">\
+</span></span></span><span class="line"><span class="cl">    uv pip install --system .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 复制应用程序代码</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> agents/ ./agents/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> python -m compileall -q .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> &lt;&lt;EOF /entrypoint.sh<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#!/bin/sh</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span> -e<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> &lt;&lt;EOF /entrypoint.sh<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">#!/bin/sh</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="nb">set</span> -e<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">if</span> <span class="nb">test</span> -f /run/secrets/openai-api-key<span class="p">;</span> <span class="k">then</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">export</span> <span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="k">$(</span>cat /run/secrets/openai-api-key<span class="k">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">fi</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">test</span> -f /run/secrets/openai-api-key<span class="p">;</span> <span class="k">then</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="k">$(</span>cat /run/secrets/openai-api-key<span class="k">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">fi</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">if</span> <span class="nb">test</span> -n <span class="s2">&#34;\${OPENAI_API_KEY}&#34;</span><span class="p">;</span> <span class="k">then</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">echo</span> <span class="s2">&#34;Using OpenAI with \${OPENAI_MODEL_NAME}&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">else</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">echo</span> <span class="s2">&#34;Using Docker Model Runner with \${MODEL_RUNNER_MODEL}&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">export</span> <span class="nv">OPENAI_BASE_URL</span><span class="o">=</span><span class="se">\$</span><span class="o">{</span>MODEL_RUNNER_URL<span class="o">}</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">export</span> <span class="nv">OPENAI_MODEL_NAME</span><span class="o">=</span>openai/<span class="se">\$</span><span class="o">{</span>MODEL_RUNNER_MODEL<span class="o">}</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">export</span> <span class="nv">OPENAI_API_KEY</span><span class="o">=</span>cannot_be_empty<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">fi</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">exec</span> adk web --host 0.0.0.0 --port <span class="m">8080</span> --log_level DEBUG<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>EOF<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> chmod +x /entrypoint.sh<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">test</span> -n <span class="s2">&#34;\${OPENAI_API_KEY}&#34;</span><span class="p">;</span> <span class="k">then</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Using OpenAI with \${OPENAI_MODEL_NAME}&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">else</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Using Docker Model Runner with \${MODEL_RUNNER_MODEL}&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">OPENAI_BASE_URL</span><span class="o">=</span><span class="se">\$</span><span class="o">{</span>MODEL_RUNNER_URL<span class="o">}</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">OPENAI_MODEL_NAME</span><span class="o">=</span>openai/<span class="se">\$</span><span class="o">{</span>MODEL_RUNNER_MODEL<span class="o">}</span><span class="err">
+</span></span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">OPENAI_API_KEY</span><span class="o">=</span>cannot_be_empty<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">fi</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="nb">exec</span> adk web --host 0.0.0.0 --port <span class="m">8080</span> --log_level DEBUG<span class="err">
+</span></span></span><span class="line"><span class="cl">EOF<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chmod +x /entrypoint.sh<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 创建非 root 用户</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> useradd --create-home --shell /bin/bash app <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> chown -R app:app /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 创建非 root 用户</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> useradd --create-home --shell /bin/bash app <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> chown -R app:app /app<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">app</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;/entrypoint.sh&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;/entrypoint.sh&#34;</span> <span class="p">]</span></span></span></code></pre></div>
             <button
               @click="collapse = true"
               x-show="!collapse"
@@ -1818,7 +1817,7 @@ if (resultsLength > 5) {
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

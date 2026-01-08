@@ -59,7 +59,7 @@
   itemprop="datePublished"
   content="2025-01-14 22:54:01 &#43;0000 &#43;0000"
 />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"\"运行测试\"","description":"\"如何构建并运行 Java 测试\"","url":"\/guides\/java\/run-tests\/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-01-14T22:54:01Z","description":"如何构建并运行 Java 测试","headline":"运行测试","isPartOf":{"@id":"/guides/java/","@type":"WebPage","name":"Java"},"keywords":"Java, build, test","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/java/run-tests/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/java/","name":"Java"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/java/run-tests/","name":"运行测试"},"position":3}]}</script>
 
 
   
@@ -69,8 +69,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.e380f0fae3fdb432786c058dfab981ee275d7fe86e4cb26ade4ce863cd8933f9.css"
-            integrity="sha256-44Dw&#43;uP9tDJ4bAWN&#43;rmB7iddf&#43;huTLJq3kzoY82JM/k="
+            href="/css/style.529753db417912c0e1e1c3cd7815389ed072572170dac1bd236acf4ab284c49e.css"
+            integrity="sha256-UpdT20F5EsDh4cPNeBU4ntByVyFw2sG9I2rPSrKExJ4="
             crossorigin="anonymous"
           />
         
@@ -585,8 +585,7 @@ if (resultsLength > 5) {
     
       
         <li>
-          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">
-              <span class="icon-sm icon-svg pr-2"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M479.87-325q-5.87 0-10.87-2-5-2-10-7L308-485q-9-9.27-8.5-21.64.5-12.36 9.11-21.36 9.39-9 21.89-9t21.5 9l98 99v-341q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v341l99-99q8.8-9 20.9-8.5 12.1.5 21.49 9.5 8.61 9 8.61 21.5t-9 21.5L501-334q-5 5-10.13 7-5.14 2-11 2ZM220-160q-24 0-42-18t-18-42v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113h520v-113q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v113q0 24-18 42t-42 18H220Z"/></svg></span>Get started
+          <a class="hover:text-blue dark:hover:text-blue" href="/get-started/">Get started
           </a>
         </li>
       
@@ -808,7 +807,7 @@ if (resultsLength > 5) {
   
     
     <a href="/" class="link truncate"
-      >主页</a
+      ></a
     >
     <span>/</span>
     
@@ -822,7 +821,7 @@ if (resultsLength > 5) {
     >
     <span>/</span>
   <span
-    data-pagefind-meta="breadcrumbs:主页 / 指南 / Java"
+    data-pagefind-meta="breadcrumbs: / 指南 / Java"
     class="truncate"
     >运行测试</span
   >
@@ -1060,62 +1059,62 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> eclipse-temurin:21-jdk-jammy as base</span><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">COPY</span> --chmod<span class="o">=</span><span class="m">0755</span> mvnw mvnw<span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">COPY</span> .mvn/ .mvn/<span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21-jdk-jammy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">base</span><span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">COPY</span> --chmod<span class="o">=</span><span class="m">0755</span> mvnw mvnw<span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">COPY</span> .mvn/ .mvn/<span class="err">
 </span></span></span><span class="line hl"><span class="cl"><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> base as test</span><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src src/<span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
-</span></span></span><span class="line hl"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
-</span></span></span><span class="line hl"><span class="cl"><span class="se"></span>    ./mvnw test<span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">test</span><span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">COPY</span> ./src src/<span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
+</span></span></span><span class="line hl"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
+</span></span></span><span class="line hl"><span class="cl">    ./mvnw test<span class="err">
 </span></span></span><span class="line hl"><span class="cl"><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> base as deps</span><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
-</span></span></span><span class="line hl"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
-</span></span></span><span class="line hl"><span class="cl"><span class="se"></span>    ./mvnw dependency:go-offline -DskipTests<span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">deps</span><span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
+</span></span></span><span class="line hl"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
+</span></span></span><span class="line hl"><span class="cl">    ./mvnw dependency:go-offline -DskipTests<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> deps as package</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src src/<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    ./mvnw package -DskipTests <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    mv target/<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.artifactId -q -DforceStdout<span class="k">)</span>-<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.version -q -DforceStdout<span class="k">)</span>.jar target/app.jar<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">deps</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">package</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ./src src/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pom.xml,target<span class="o">=</span>pom.xml <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.m2 <span class="se">\
+</span></span></span><span class="line"><span class="cl">    ./mvnw package -DskipTests <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    mv target/<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.artifactId -q -DforceStdout<span class="k">)</span>-<span class="k">$(</span>./mvnw help:evaluate -Dexpression<span class="o">=</span>project.version -q -DforceStdout<span class="k">)</span>.jar target/app.jar<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> package as extract</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> java -Djarmode<span class="o">=</span>layertools -jar target/app.jar extract --destination target/extracted<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">package</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">extract</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> java -Djarmode<span class="o">=</span>layertools -jar target/app.jar extract --destination target/extracted<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> extract as development</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> cp -r /build/target/extracted/dependencies/. ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> cp -r /build/target/extracted/spring-boot-loader/. ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> cp -r /build/target/extracted/snapshot-dependencies/. ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> cp -r /build/target/extracted/application/. ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;-Dspring.profiles.active=postgres&#34;</span><span class="p">,</span> <span class="s2">&#34;org.springframework.boot.loader.launch.JarLauncher&#34;</span> <span class="p">]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">extract</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">development</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> cp -r /build/target/extracted/dependencies/. ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> cp -r /build/target/extracted/spring-boot-loader/. ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> cp -r /build/target/extracted/snapshot-dependencies/. ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> cp -r /build/target/extracted/application/. ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;-Dspring.profiles.active=postgres&#34;</span><span class="p">,</span> <span class="s2">&#34;org.springframework.boot.loader.launch.JarLauncher&#34;</span> <span class="p">]</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> eclipse-temurin:21-jre-jammy AS final</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21-jre-jammy</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
 </span></span><span class="line"><span class="cl"><span class="k">RUN</span> adduser <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --disabled-password <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --no-create-home <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    appuser<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">USER</span><span class="s"> appuser</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/dependencies/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/spring-boot-loader/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/snapshot-dependencies/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/application/ ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8080</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;-Dspring.profiles.active=postgres&#34;</span><span class="p">,</span> <span class="s2">&#34;org.springframework.boot.loader.launch.JarLauncher&#34;</span> <span class="p">]</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl">    --disabled-password <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --gecos <span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --home <span class="s2">&#34;/nonexistent&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --shell <span class="s2">&#34;/sbin/nologin&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --no-create-home <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --uid <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    appuser<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">appuser</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/dependencies/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/spring-boot-loader/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/snapshot-dependencies/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>extract build/target/extracted/application/ ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="s2">&#34;-Dspring.profiles.active=postgres&#34;</span><span class="p">,</span> <span class="s2">&#34;org.springframework.boot.loader.launch.JarLauncher&#34;</span> <span class="p">]</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -1195,8 +1194,8 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">...
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="m">15</span> 101.3 <span class="o">[</span>WARNING<span class="o">]</span> Tests run: 45, Failures: 0, Errors: 0, Skipped: <span class="m">2</span>
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="gp">#</span><span class="m">15</span> 101.3 <span class="o">[</span>WARNING<span class="o">]</span> Tests run: 45, Failures: 0, Errors: 0, Skipped: <span class="m">2</span>
 </span></span><span class="line"><span class="cl"><span class="gp">#</span><span class="m">15</span> 101.3 <span class="o">[</span>INFO<span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="gp">#</span><span class="m">15</span> 101.3 <span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
 </span></span><span class="line"><span class="cl"><span class="gp">#</span><span class="m">15</span> 101.3 <span class="o">[</span>INFO<span class="o">]</span> BUILD SUCCESS
@@ -1417,7 +1416,7 @@ if (resultsLength > 5) {
 </div>
 <div
   class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2025 Docker Inc. All rights reserved.</span>
+  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
 </div>
     </footer>
 

@@ -257,7 +257,7 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> 列出可用版本：
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> apt-cache madison docker-ce <span class="p">|</span> awk <span class="s1">&#39;{ print $3 }&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">5:29.1.3-1~raspbian.12~bookworm
+</span></span></span><span class="line"><span class="cl"><span class="go">5:29.1.3-1~raspbian.12~bookworm
 </span></span></span><span class="line"><span class="cl"><span class="go">5:29.1.2-1~raspbian.12~bookworm
 </span></span></span><span class="line"><span class="cl"><span class="go">...
 </span></span></span></code></pre></div>

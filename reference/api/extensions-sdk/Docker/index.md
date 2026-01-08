@@ -1,5 +1,12 @@
-# 接口: Docker
-
+# 
+title: "Interface: Docker"
+description: Docker extension API reference
+aliases:
+  - /desktop/extensions-sdk/dev/api/reference/interfaces/Docker/
+  - /extensions/extensions-sdk/dev/api/reference/interfaces/Docker/
+keywords: "Docker, extensions, sdk, API, reference"---
+title: "接口: Docker"
+description: Docker 扩展 API 参考---
 **`自版本`**
 
 0.2.0
@@ -29,12 +36,12 @@ const output = await ddClient.docker.cli.exec("volume", [
 }
 ```
 
-为方便起见，命令结果对象还包含一些方法，可根据输出格式轻松解析。请参阅 [ExecResult](ExecResult.md)。
+为方便起见，命令结果对象还包含根据输出格式轻松解析的方法。请参阅 [ExecResult](ExecResult.md)。
 
 ---
 
 将执行 Docker 命令的结果以流的形式输出。
-当命令输出过长，或者您需要以流的形式获取输出时，此功能非常有用。
+当命令输出过长，或者您需要以流的形式获取输出时，此方法非常有用。
 
 ```typescript
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
@@ -79,9 +86,9 @@ const containers = await ddClient.docker.listContainers();
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `options?` | `any` | （可选）。一个类似 `{ "all": true, "limit": 10, "size": true, "filters": JSON.stringify({ status: ["exited"] }), }` 的 JSON 对象。有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/engine/api/v1.41/#operation/ContainerList)。 |
+| `options?` | `any` | （可选）。一个类似 `{ "all": true, "limit": 10, "size": true, "filters": JSON.stringify({ status: ["exited"] }), }` 的 JSON 对象。有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/reference/api/engine/version/v1.52/#operation/ContainerList)。 |
 
-#### 返回值
+#### 返回
 
 `Promise`<`unknown`\>
 
@@ -101,8 +108,8 @@ const images = await ddClient.docker.listImages();
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `options?` | `any` | （可选）。一个类似 `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true * }` 的 JSON 对象。有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/engine/api/v1.41/#tag/Image)。 |
+| `options?` | `any` | （可选）。一个类似 `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true * }` 的 JSON 对象。有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image)。 |
 
-#### 返回值
+#### 返回
 
 `Promise`<`unknown`\>

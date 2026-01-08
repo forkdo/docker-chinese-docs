@@ -189,7 +189,7 @@ $ docker run -v .:/project:ro,rshared
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=&#34;$(pwd)&#34;/target,target=/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
@@ -237,7 +237,7 @@ $ docker run -v .:/project:ro,rshared
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v &#34;$(pwd)&#34;/target:/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
@@ -361,12 +361,12 @@ $ docker container rm -fv devtest
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name broken-container \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=/tmp,target=/usr \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">docker: Error response from daemon: oci runtime error: container_linux.go:262:
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">docker: Error response from daemon: oci runtime error: container_linux.go:262:
 </span></span></span><span class="line"><span class="cl"><span class="go">starting container process caused &#34;exec: \&#34;nginx\&#34;: executable file not found in $PATH&#34;.
 </span></span></span></code></pre></div>
       
@@ -412,12 +412,12 @@ $ docker container rm -fv devtest
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name broken-container \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v /tmp:/usr \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">docker: Error response from daemon: oci runtime error: container_linux.go:262:
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="go">docker: Error response from daemon: oci runtime error: container_linux.go:262:
 </span></span></span><span class="line"><span class="cl"><span class="go">starting container process caused &#34;exec: \&#34;nginx\&#34;: executable file not found in $PATH&#34;.
 </span></span></span></code></pre></div>
       
@@ -522,7 +522,7 @@ $ docker container rm broken-container
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=&#34;$(pwd)&#34;/target,target=/app,readonly \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
@@ -570,7 +570,7 @@ $ docker container rm broken-container
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v &#34;$(pwd)&#34;/target:/app:ro \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
@@ -725,7 +725,7 @@ $ docker container rm -fv devtest
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=&#34;$(pwd)&#34;/target,target=/app \
 </span></span></span></code></pre></div>
@@ -772,7 +772,7 @@ $ docker container rm -fv devtest
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  -it \
+</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
 </span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
 </span></span></span><span class="line"><span class="cl"><span class="go">  -v &#34;$(pwd)&#34;/target:/app \
 </span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
