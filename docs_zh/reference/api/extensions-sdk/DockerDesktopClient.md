@@ -1,15 +1,16 @@
 ---
-title: "接口：DockerDesktopClient"
-description: Docker 扩展 API 参考
-keywords: Docker, extensions, sdk, API, reference
-aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/DockerDesktopClient/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/DockerDesktopClient/
 ---
-
-Docker Desktop API 客户端 v0 和 v1 接口的混合体，
-出于向后兼容性原因提供。除非您正在处理
-旧版扩展，否则请改用 v1 类型。
+title: "Interface: DockerDesktopClient"
+description: Docker extension API reference
+aliases:
+  - /desktop/extensions-sdk/dev/api/reference/interfaces/DockerDesktopClient/
+  - /extensions/extensions-sdk/dev/api/reference/interfaces/DockerDesktopClient/
+keywords: "Docker, extensions, sdk, API, reference"---
+title: "接口：DockerDesktopClient"
+description: Docker 扩展 API 参考---
+Docker Desktop API 客户端 v0 和 v1 接口的集合，
+出于向后兼容性的原因提供。除非您正在使用
+旧版扩展，请改用 v1 类型。
 
 ## 属性
 
@@ -17,13 +18,12 @@ Docker Desktop API 客户端 v0 和 v1 接口的混合体，
 
 • `只读` **backend**: `undefined` \| [`BackendV0`](BackendV0.md)
 
-`window.ddClient.backend` 对象可用于与扩展元数据中
-vm 部分定义的后端进行通信。
+`window.ddClient.backend` 对象可用于与扩展元数据的 vm 部分中定义的后端进行通信。
 客户端已连接到后端。
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [extension](DockerDesktopClient.md#extension)。
+> 它将在未来的版本中被移除。请改用 [extension](DockerDesktopClient.md#extension)。
 
 #### 继承自
 
@@ -35,8 +35,7 @@ ___
 
 • `只读` **extension**: [`Extension`](Extension.md)
 
-`ddClient.extension` 对象可用于与扩展元数据中
-vm 部分定义的后端进行通信。
+`ddClient.extension` 对象可用于与扩展元数据的 vm 部分中定义的后端进行通信。
 客户端已连接到后端。
 
 #### 继承自
@@ -79,7 +78,7 @@ DockerDesktopClientV1.docker
 
 ▸ **listContainers**(`options`): `Promise`<`unknown`\>
 
-获取正在运行的容器列表（与 `docker ps` 相同）。
+获取正在运行的容器列表（等同于 `docker ps`）。
 
 默认情况下，这不会列出已停止的容器。
 您可以使用选项 `{"all": true}` 来列出所有正在运行和已停止的容器。
@@ -90,13 +89,13 @@ const containers = await window.ddClient.listContainers();
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [listContainers](Docker.md#listcontainers)。
+> 它将在未来的版本中被移除。请改用 [listContainers](Docker.md#listcontainers)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `options` | `never` | （可选）。类似 JSON 的 `{ "all": true, "limit": 10, "size": true, "filters": JSON.stringify({ status: ["exited"] }), }` 有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/engine/api/v1.41/#operation/ContainerList)。 |
+| `options` | `never` | （可选）一个 JSON 对象，如 `{ "all": true, "limit": 10, "size": true, "filters": JSON.stringify({ status: ["exited"] }), }` 有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/reference/api/engine/version/v1.52/#operation/ContainerList)。 |
 
 #### 返回值
 
@@ -122,13 +121,13 @@ const images = await window.ddClient.listImages();
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [listImages](Docker.md#listimages)。
+> 它将在未来的版本中被移除。请改用 [listImages](Docker.md#listimages)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `options` | `never` | （可选）。类似 JSON 的 `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true }` 有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/engine/api/v1.41/#tag/Image)。 |
+| `options` | `never` | （可选）一个 JSON 对象，如 `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true }` 有关不同属性的更多信息，请参阅 [Docker API 端点文档](https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image)。 |
 
 #### 返回值
 
@@ -153,7 +152,7 @@ window.ddClient.navigateToContainers();
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [viewContainers](NavigationIntents.md#viewcontainers)。
+> 它将在未来的版本中被移除。请改用 [viewContainers](NavigationIntents.md#viewcontainers)。
 
 #### 返回值
 
@@ -176,19 +175,19 @@ await window.ddClient.navigateToContainer(id);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。
+> 它将在未来的版本中被移除。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以在 `docker ps` 命令中使用 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`any`\>
 
-如果容器不存在，则 promise 会失败。
+如果容器不存在，Promise 将失败。
 
 #### 继承自
 
@@ -207,19 +206,19 @@ await window.ddClient.navigateToContainerLogs(id);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。
+> 它将在未来的版本中被移除。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以在 `docker ps` 命令中使用 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`any`\>
 
-如果容器不存在，则 promise 会失败。
+如果容器不存在，Promise 将失败。
 
 #### 继承自
 
@@ -238,19 +237,19 @@ await window.ddClient.navigateToContainerInspect(id);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。
+> 它将在未来的版本中被移除。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以在 `docker ps` 命令中使用 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`any`\>
 
-如果容器不存在，则 promise 会失败。
+如果容器不存在，Promise 将失败。
 
 #### 继承自
 
@@ -262,7 +261,7 @@ ___
 
 ▸ **navigateToContainerStats**(`id`): `Promise`<`any`\>
 
-导航到容器统计信息以查看 CPU、内存、磁盘读写和网络 I/O 使用情况。
+导航到容器统计信息，查看 CPU、内存、磁盘读写和网络 I/O 使用情况。
 
 ```typescript
 await window.ddClient.navigateToContainerStats(id);
@@ -270,19 +269,19 @@ await window.ddClient.navigateToContainerStats(id);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。
+> 它将在未来的版本中被移除。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以在 `docker ps` 命令中使用 `--no-trunc` 标志来显示完整的容器 ID。 |
+| `id` | `string` | 完整的容器 ID，例如 `46b57e400d801762e9e115734bf902a2450d89669d85881058a46136520aca28`。您可以使用 `docker ps` 命令的 `--no-trunc` 标志来显示完整的容器 ID。 |
 
 #### 返回值
 
 `Promise`<`any`\>
 
-如果容器不存在，则 promise 会失败。
+如果容器不存在，Promise 将失败。
 
 #### 继承自
 
@@ -301,7 +300,7 @@ await window.ddClient.navigateToImages(id);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [viewImages](NavigationIntents.md#viewimages)。
+> 它将在未来的版本中被移除。请改用 [viewImages](NavigationIntents.md#viewimages)。
 
 #### 返回值
 
@@ -326,7 +325,7 @@ await window.ddClient.navigateToImage(id, tag);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [viewImage](NavigationIntents.md#viewimage)。
+> 它将在未来的版本中被移除。请改用 [viewImage](NavigationIntents.md#viewimage)。
 
 #### 参数
 
@@ -339,7 +338,7 @@ await window.ddClient.navigateToImage(id, tag);
 
 `Promise`<`any`\>
 
-如果容器不存在，则 promise 会失败。
+如果容器不存在，Promise 将失败。
 
 #### 继承自
 
@@ -359,7 +358,7 @@ await window.ddClient.navigateToVolumes();
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [viewVolumes](NavigationIntents.md#viewvolumes)。
+> 它将在未来的版本中被移除。请改用 [viewVolumes](NavigationIntents.md#viewvolumes)。
 
 #### 返回值
 
@@ -383,7 +382,7 @@ window.ddClient.navigateToVolume(volume);
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [viewVolume](NavigationIntents.md#viewvolume)。
+> 它将在未来的版本中被移除。请改用 [viewVolume](NavigationIntents.md#viewvolume)。
 
 #### 参数
 
@@ -407,7 +406,7 @@ ___
 
 ▸ **execHostCmd**(`cmd`): `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
-在主机上调用二进制文件。该二进制文件通常随您的扩展一起提供，使用扩展元数据中的主机部分。请注意，扩展以用户访问权限运行，此 API 不限于扩展元数据主机部分中列出的二进制文件（某些扩展可能会在用户交互期间安装软件，并调用新安装的二进制文件，即使未在扩展元数据中列出）
+在主机上调用二进制文件。该二进制文件通常使用扩展元数据的 host 部分随您的扩展一起分发。请注意，扩展以用户访问权限运行，此 API 不限制于扩展元数据 host 部分中列出的二进制文件（某些扩展可能在用户交互期间安装软件，并调用新安装的二进制文件，即使它们未在扩展元数据中列出）
 
 ```typescript
 window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
@@ -417,7 +416,7 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [exec](ExtensionCli.md#exec)。
+> 它将在未来的版本中被移除。请改用 [exec](ExtensionCli.md#exec)。
 
 #### 参数
 
@@ -439,7 +438,7 @@ ___
 
 ▸ **spawnHostCmd**(`cmd`, `args`, `callback`): `void`
 
-在主机上调用扩展二进制文件并获取输出流。
+在您的主机上调用扩展二进制文件并获取输出流。
 
 ```typescript
 window.ddClient.spawnHostCmd(
@@ -447,7 +446,7 @@ window.ddClient.spawnHostCmd(
   [`arg1`, `arg2`],
   (data: any, err: any) => {
     console.log(data.stdout, data.stderr);
-    // 命令退出后，我们获取状态码
+    // 一旦命令退出，我们就会得到状态码
     if (data.code) {
       console.log(data.code);
     }
@@ -457,7 +456,7 @@ window.ddClient.spawnHostCmd(
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [exec](ExtensionCli.md#exec)。
+> 它将在未来的版本中被移除。请改用 [exec](ExtensionCli.md#exec)。
 
 #### 参数
 
@@ -465,7 +464,7 @@ window.ddClient.spawnHostCmd(
 | :------ | :------ | :------ |
 | `cmd` | `string` | 要执行的命令。 |
 | `args` | `string`[] | 要执行的命令的参数。 |
-| `callback` | (`data`: `any`, `error`: `any`) => `void` | 回调函数，用于监听命令输出数据和错误。 |
+| `callback` | (`data`: `any`, `error`: `any`) => `void` | 监听命令输出数据和错误的回调函数。 |
 
 #### 返回值
 
@@ -489,7 +488,7 @@ const output = await window.ddClient.execDockerCmd("info");
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [exec](DockerCommand.md#exec)。
+> 它将在未来的版本中被移除。请改用 [exec](DockerCommand.md#exec)。
 
 #### 参数
 
@@ -509,13 +508,13 @@ const output = await window.ddClient.execDockerCmd("info");
   "stdout": "..."
 }
 ```
-为方便起见，命令结果对象还具有根据输出格式轻松解析它的方法：
+为了方便起见，命令结果对象还具有方法，可以根据输出格式轻松解析它：
 
 - `output.lines(): string[]` 分割输出行。
 - `output.parseJsonObject(): any` 解析格式良好的 JSON 输出。
 - `output.parseJsonLines(): any[]` 将每个输出行解析为 JSON 对象。
 
-如果命令的输出太长，或者您需要将输出作为流获取，则可以使用
+如果命令的输出太长，或者您需要将输出作为流获取，您可以使用
  * spawnDockerCmd 函数：
 
 ```typescript
@@ -536,7 +535,7 @@ ___
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [exec](DockerCommand.md#exec)。
+> 它将在未来的版本中被移除。请改用 [exec](DockerCommand.md#exec)。
 
 #### 参数
 
@@ -568,7 +567,7 @@ window.ddClient.openExternal("https://docker.com");
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [openExternal](Host.md#openexternal)。
+> 它将在未来的版本中被移除。请改用 [openExternal](Host.md#openexternal)。
 
 #### 参数
 
@@ -586,27 +585,27 @@ DockerDesktopClientV0.openExternal
 
 ___
 
-## 提示消息方法
+## Toast 方法
 
 ### toastSuccess
 
 ▸ **toastSuccess**(`msg`): `void`
 
-显示成功类型的提示消息。
+显示成功类型的 toast 消息。
 
 ```typescript
 window.ddClient.toastSuccess("message");
 ```
 
->**Warning`**
+>**警告`**
 >
-> 将在未来版本中移除。请改用 [success](Toast.md#success)。
+> 它将在未来的版本中被移除。请改用 [success](Toast.md#success)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `msg` | `string` | 要在提示消息中显示的消息。 |
+| `msg` | `string` | 在 toast 中显示的消息。 |
 
 #### 返回值
 
@@ -622,7 +621,7 @@ ___
 
 ▸ **toastWarning**(`msg`): `void`
 
-显示警告类型的提示消息。
+显示警告类型的 toast 消息。
 
 ```typescript
 window.ddClient.toastWarning("message");
@@ -630,13 +629,13 @@ window.ddClient.toastWarning("message");
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [warning](Toast.md#warning)。
+> 它将在未来的版本中被移除。请改用 [warning](Toast.md#warning)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `msg` | `string` | 要在提示消息中显示的消息。 |
+| `msg` | `string` | 在 toast 中显示的消息。 |
 
 #### 返回值
 
@@ -652,7 +651,7 @@ ___
 
 ▸ **toastError**(`msg`): `void`
 
-显示错误类型的提示消息。
+显示错误类型的 toast 消息。
 
 ```typescript
 window.ddClient.toastError("message");
@@ -660,13 +659,13 @@ window.ddClient.toastError("message");
 
 > [!WARNING]
 >
-> 将在未来版本中移除。请改用 [error](Toast.md#error)。
+> 它将在未来的版本中被移除。请改用 [error](Toast.md#error)。
 
 #### 参数
 
 | 名称 | 类型 | 描述 |
 | :------ | :------ | :------ |
-| `msg` | `string` | 要在提示消息中显示的消息。 |
+| `msg` | `string` | 在 toast 中显示的消息。 |
 
 #### 返回值
 

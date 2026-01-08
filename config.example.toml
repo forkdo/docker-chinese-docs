@@ -1,9 +1,17 @@
-root_dir = "./docs" # 文档所在目录
-exclude_dir = "update-notes, node_modules" # 支持多个，用逗号分隔；留空 "" 表示不排除
-output_mode = "new_folder" # 或 "overwrite" 覆盖原文件，"new_folder" 新建文件夹
-output_dir = "docs_zh" # 最终翻译文档输出目录
-max_tokens = 8192   # 全局 max_tokens 配置，可根据文档大小调整
-log_file = "logs/translation.log" # 自定义日志路径（可省略，默认 translation.log）
+# 根目录 - 包含需要翻译的 Markdown 文件
+root_dir = "./docs"
+
+# 输出目录 - 翻译后的文件保存位置
+output_dir = "./docs_zh"
+
+# 输出模式: "overwrite" (覆盖原文件) 或 "new_folder" (保存到新文件夹)
+output_mode = "new_folder"
+
+# 排除的目录 (逗号分隔)
+exclude_dir = "node_modules,.git,_build"
+
+# 最大 token 数
+max_tokens = 99999
 
 # 系统提示词（支持多行，使用 """ 包裹）
 system_prompt = """

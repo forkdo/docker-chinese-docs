@@ -1,41 +1,37 @@
 ---
+---
 title: 提供反馈
 linkTitle: 反馈
 description: 如何与 DHI 团队互动
-keywords: software supply chain security, feedback, bugs, discussion, questions
 weight: 50
----
-
-我们致力于维护 Docker Hardened Images (DHI) 的质量、安全性和可靠性，
-为此创建了一个仓库作为联系点，以鼓励社区协作，
-共同改进 Hardened Images 生态系统。
+aliases:
+  - /dhi/about/feedback/
+keywords: "software supply chain security, feedback, bugs, discussion, questions"---
+我们致力于为 Docker Hardened Images (DHI) 保持质量、安全性和可靠性。为此，我们创建了一个仓库作为联系点，鼓励社区协作改进 Hardened Images 生态系统。
 
 ## 问题或讨论
 
-您可以使用 [GitHub Discussions
-board](https://github.com/orgs/docker-hardened-images/discussions) 与 DHI 团队交流以下事项：
+您可以使用 [GitHub 讨论区](https://github.com/orgs/docker-hardened-images/discussions) 与 DHI 团队进行以下方面的交流：
 
-- 关于 DHI 的一般性问题
+- 关于 DHI 的一般问题
 - 最佳实践和建议
-- 安全技巧和咨询
+- 安全提示和建议
 - 展示您的实现案例
 - 社区公告
 
 ## 报告错误或问题
 
-您可以[提交新 issue](https://github.com/docker-hardened-images/catalog/issues) 来反馈以下内容：
+您可以[提出新问题](https://github.com/docker-hardened-images/catalog/issues)来报告以下主题：
 
 - 错误报告
 - 功能请求
 - 文档改进
-- 安全漏洞（参见安全政策）
+- 安全漏洞（请参阅安全策略）
 
-我们鼓励您先搜索现有 issue，确认是否已被报告。
-DHI 团队会定期审查报告，并感谢您提供清晰、可操作的反馈。
+我们鼓励您首先搜索现有问题，查看是否已有相关报告。DHI 团队会定期审查报告，并感谢您提供的清晰、可操作的反馈。
 
 ## 负责任的安全披露
 
-在协调披露和修复完成前，禁止公开发布漏洞细节。
+在协调披露和解决问题之前，禁止发布漏洞的详细信息。
 
-如果您发现安全漏洞，请遵循 Docker 的[安全披露政策](https://www.docker.com/trust/vulnerability-disclosure-policy/)，
-负责任地报告漏洞。
+如果您发现了安全漏洞，请按照 Docker 的[安全披露政策](https://www.docker.com/trust/vulnerability-disclosure-policy/)负责任地进行报告。
