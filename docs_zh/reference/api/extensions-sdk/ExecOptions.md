@@ -1,10 +1,10 @@
 ---
-title: "Interface: ExecOptions"
+title: 'Interface: ExecOptions'
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecOptions/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecOptions/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/ExecOptions/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/ExecOptions/
 ---
 
 **`Since`**

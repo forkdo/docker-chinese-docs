@@ -1,5 +1,5 @@
 ---
-description: &desc 了解暂停 Docker Desktop Dashboard 的含义
+description: 了解暂停 Docker Desktop Dashboard 的含义
 keywords: Docker Desktop Dashboard, manage, containers, gui, dashboard, pause, user manual
 title: 暂停 Docker Desktop
 weight: 70

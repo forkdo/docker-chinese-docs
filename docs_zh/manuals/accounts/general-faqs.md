@@ -4,7 +4,8 @@ linkTitle: 帐户
 weight: 10
 description: 关于 Docker 帐户的常见问题
 keywords: onboarding, docker, teams, orgs, user accounts, organization accounts
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /docker-hub/general-faqs/
 - /docker-hub/onboarding-faqs/

@@ -3,11 +3,13 @@ description: 使用 Ollama 和 Docker 容器化 RAG 应用程序
 keywords: python, generative ai, genai, llm, ollama, rag, qdrant
 title: 使用 Ollama 和 Docker 构建 RAG 应用程序
 linkTitle: RAG Ollama 应用程序
-summary: |
-  本指南演示如何使用 Docker 部署检索增强生成 (RAG) 模型与 Ollama。
-tags: [ai]
+summary: '本指南演示如何使用 Docker 部署检索增强生成 (RAG) 模型与 Ollama。
+
+  '
+tags:
+- ai
 aliases:
-  - /guides/use-case/rag-ollama/
+- /guides/use-case/rag-ollama/
 params:
   time: 20 分钟
 ---

@@ -1,9 +1,9 @@
 ---
-title: "第二部分：发布"
+title: 第二部分：发布
 description: 发布扩展的一般步骤
 keywords: Docker, Extensions, sdk, publish
-aliases: 
- - /desktop/extensions-sdk/extensions/
+aliases:
+- /desktop/extensions-sdk/extensions/
 weight: 40
 ---
 

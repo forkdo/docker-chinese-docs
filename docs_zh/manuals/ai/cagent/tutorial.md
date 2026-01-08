@@ -1,7 +1,11 @@
 ---
 title: 构建编码代理
 description: 创建一个能够读取、写入并验证项目代码更改的编码代理
-keywords: [cagent, 教程, 编码代理, AI 助手]
+keywords:
+- cagent
+- 教程
+- 编码代理
+- AI 助手
 weight: 30
 ---
 

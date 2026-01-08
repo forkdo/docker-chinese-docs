@@ -30,8 +30,7 @@ grid:
   icon: settings
   link: /admin/organization/general-settings/
 - title: SSO 和 SCIM
-  description: '为您的组织设置[单点登录](/security/for-admins/single-sign-on/)
-    和 [SCIM](/security/for-admins/provisioning/scim/)。
+  description: '为您的组织设置[单点登录](/security/for-admins/single-sign-on/) 和 [SCIM](/security/for-admins/provisioning/scim/)。
 
     '
   icon: key

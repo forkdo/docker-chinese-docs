@@ -3,31 +3,32 @@ title: 强化版 Docker Desktop
 linkTitle: 强化版 Docker Desktop
 description: 在不影响生产力的前提下，帮助组织机构保护开发者环境的安全特性
 keywords: security, hardened desktop, enhanced container isolation, registry access management, settings management, admins, docker desktop, image access management, air-gapped containers
-tags: [admin]
+tags:
+- admin
 aliases:
- - /desktop/hardened-desktop/
- - /security/for-admins/hardened-desktop/
+- /desktop/hardened-desktop/
+- /security/for-admins/hardened-desktop/
 grid:
-  - title: "设置管理"
-    description: 了解设置管理如何保护开发者的工作流程。
-    icon: shield_locked
-    link: /enterprise/security/hardened-desktop/settings-management/
-  - title: "增强型容器隔离"
-    description: 了解增强型容器隔离如何防范容器攻击。
-    icon: "security"
-    link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-  - title: "注册表访问管理"
-    description: 控制开发者在使用 Docker Desktop 时可以访问的注册表。
-    icon: "home_storage"
-    link: /enterprise/security/hardened-desktop/registry-access-management/
-  - title: "镜像访问管理"
-    description: 控制开发者可以从 Docker Hub 拉取的镜像。
-    icon: "photo_library"
-    link: /enterprise/security/hardened-desktop/image-access-management/
-  - title: "气隙容器"
-    description: 限制容器访问不需要的网络资源。
-    icon: "vpn_lock"
-    link: /enterprise/security/hardened-desktop/air-gapped-containers/
+- title: 设置管理
+  description: 了解设置管理如何保护开发者的工作流程。
+  icon: shield_locked
+  link: /enterprise/security/hardened-desktop/settings-management/
+- title: 增强型容器隔离
+  description: 了解增强型容器隔离如何防范容器攻击。
+  icon: security
+  link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
+- title: 注册表访问管理
+  description: 控制开发者在使用 Docker Desktop 时可以访问的注册表。
+  icon: home_storage
+  link: /enterprise/security/hardened-desktop/registry-access-management/
+- title: 镜像访问管理
+  description: 控制开发者可以从 Docker Hub 拉取的镜像。
+  icon: photo_library
+  link: /enterprise/security/hardened-desktop/image-access-management/
+- title: 气隙容器
+  description: 限制容器访问不需要的网络资源。
+  icon: vpn_lock
+  link: /enterprise/security/hardened-desktop/air-gapped-containers/
 weight: 60
 ---
 

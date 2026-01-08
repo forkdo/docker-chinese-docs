@@ -4,7 +4,7 @@ weight: 10
 description: 设置您的 Shell，以获取 Docker 命令和标志的自动补全功能
 keywords: cli, shell, fish, bash, zsh, completion, options
 aliases:
-  - /config/completion/
+- /config/completion/
 ---
 
 您可以使用 `docker completion` 命令为 Docker CLI 生成 Shell 补全脚本。当您在终端中输入命令并按下 `<Tab>` 键时，该补全脚本可为您提供命令、标志以及 Docker 对象（例如容器和卷名称）的单词补全功能。

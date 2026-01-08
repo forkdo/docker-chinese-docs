@@ -1,7 +1,13 @@
 ---
 title: 共享代理
 description: 通过 OCI 仓库分发代理配置
-keywords: [cagent, oci, registry, docker hub, sharing, distribution]
+keywords:
+- cagent
+- oci
+- registry
+- docker hub
+- sharing
+- distribution
 weight: 50
 ---
 

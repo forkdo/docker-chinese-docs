@@ -4,7 +4,7 @@ weight: 10
 description: 手动启动 Docker 守护进程
 keywords: docker, daemon, configuration, troubleshooting
 aliases:
-  - /config/daemon/start/
+- /config/daemon/start/
 ---
 
 本页介绍如何手动或使用操作系统实用程序启动守护进程。

@@ -5,3 +5,4 @@ service: redis
 aliases:
 - /samples/redis/
 ---
+

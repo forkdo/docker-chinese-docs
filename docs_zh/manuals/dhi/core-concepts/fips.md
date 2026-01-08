@@ -1,5 +1,5 @@
 ---
-title: 'FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>'
+title: FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 linkTitle: FIPS
 description: 了解 Docker Hardened Images 如何通过经验证的加密模块支持 FIPS 140，以帮助组织满足合规要求。
 keywords: docker fips, fips 140 images, fips docker images, docker compliance, secure container images

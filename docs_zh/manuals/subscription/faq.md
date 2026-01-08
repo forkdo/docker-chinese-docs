@@ -3,7 +3,8 @@ title: 订阅常见问题
 linkTitle: 常见问题
 description: 关于 Docker 订阅和计费的常见问题
 keywords: subscription faqs, docker billing, subscription transfer, academic pricing, docker programs
-tags: [FAQ]
+tags:
+- FAQ
 weight: 50
 ---
 

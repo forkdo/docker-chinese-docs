@@ -1,7 +1,6 @@
 ---
 description: 在本详细指南中，开启 Docker WSL 2 后端，并使用最佳实践、GPU 支持等功能开始工作。
-keywords: wsl, wsl2, installing wsl2, wsl installation, docker wsl2, wsl docker, wsl2
-  tech preview, wsl install docker, install docker wsl, how to install docker in wsl
+keywords: wsl, wsl2, installing wsl2, wsl installation, docker wsl2, wsl docker, wsl2 tech preview, wsl install docker, install docker wsl, how to install docker in wsl
 title: Windows 上的 Docker Desktop WSL 2 后端
 linkTitle: WSL
 weight: 120

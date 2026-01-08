@@ -3,14 +3,12 @@ title: MCP 模式
 linkTitle: MCP
 description: 将 cagent 代理作为工具暴露给 Claude Desktop 和 Claude Code 等 MCP 客户端
 keywords:
-  [
-    cagent,
-    mcp,
-    model context protocol,
-    claude desktop,
-    claude code,
-    integration,
-  ]
+- cagent
+- mcp
+- model context protocol
+- claude desktop
+- claude code
+- integration
 weight: 50
 ---
 

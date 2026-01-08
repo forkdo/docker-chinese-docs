@@ -4,9 +4,9 @@ keywords: docker, upgrade, daemon, dockerd, live-restore, daemonless container
 title: 实时恢复
 weight: 40
 aliases:
-  - /config/containers/live-restore/
-  - /engine/admin/live-restore/
-  - /engine/containers/live-restore/
+- /config/containers/live-restore/
+- /engine/admin/live-restore/
+- /engine/containers/live-restore/
 ---
 
 默认情况下，当 Docker 守护进程终止时，它会关闭正在运行的容器。

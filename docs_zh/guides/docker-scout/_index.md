@@ -1,23 +1,26 @@
 ---
 title: 使用 Docker Scout 保障您的软件供应链安全
 linkTitle: Docker Scout
-summary: |
-  通过自动化漏洞检测和修复来增强容器安全性。
-description: |
-  了解如何使用 Docker Scout 通过自动化漏洞检测和修复来增强容器安全性，确保合规性，并保护您的开发工作流。
-tags: [product-demo]
+summary: '通过自动化漏洞检测和修复来增强容器安全性。
+
+  '
+description: '了解如何使用 Docker Scout 通过自动化漏洞检测和修复来增强容器安全性，确保合规性，并保护您的开发工作流。
+
+  '
+tags:
+- product-demo
 aliases:
-  - /learning-paths/docker-scout/
+- /learning-paths/docker-scout/
 params:
   image: images/learning-paths/scout.png
   time: 20 minutes
   resource_links:
-    - title: Docker Scout overview
-      url: /scout/
-    - title: Docker Scout quickstart
-      url: /scout/quickstart/
-    - title: Install Docker Scout
-      url: /scout/install/
+  - title: Docker Scout overview
+    url: /scout/
+  - title: Docker Scout quickstart
+    url: /scout/quickstart/
+  - title: Install Docker Scout
+    url: /scout/install/
 ---
 
 当容器镜像存在安全隐患时，可能会产生重大风险。约 60% 的组织报告称在一年内至少经历过一次安全漏洞或漏洞事件，[导致业务中断][CSA]。这些事件通常会导致相当长的停机时间，44% 的受影响公司每次事件的停机时间超过一小时。财务影响巨大，[数据泄露的平均成本达到 445 万美元][IBM]。这突显了保持强大容器安全措施的至关重要性。

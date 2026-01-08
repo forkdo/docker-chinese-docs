@@ -3,8 +3,8 @@ description: 了解如何在 Docker Engine 中使用 Google Cloud Logging 驱动
 keywords: gcplogs, google, docker, logging, driver
 title: Google Cloud Logging 驱动
 aliases:
-  - /engine/admin/logging/gcplogs/
-  - /config/containers/logging/gcplogs/
+- /engine/admin/logging/gcplogs/
+- /config/containers/logging/gcplogs/
 ---
 
 Google Cloud Logging 驱动将容器日志发送到

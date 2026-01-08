@@ -2,11 +2,12 @@
 description: 组织内确保 Docker Desktop 正常运行所需的域名 URL 列表。
 keywords: Docker Desktop, allowlist, allow list, 防火墙, 认证 URL, 分析
 title: Docker Desktop 允许列表
-tags: [admin]
+tags:
+- admin
 linkTitle: 允许列表
 weight: 100
 aliases:
-  - /desktop/allow-list/
+- /desktop/allow-list/
 ---
 
 {{< summary-bar feature_name="Allow list" >}}

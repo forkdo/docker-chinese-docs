@@ -3,8 +3,8 @@ linkTitle: 配置文件
 title: 学习在 Docker Compose 中使用配置文件
 description: 了解配置文件
 keywords: compose, compose specification, profiles, compose file reference
-aliases: 
- - /compose/compose-file/15-profiles/
+aliases:
+- /compose/compose-file/15-profiles/
 weight: 120
 ---
 

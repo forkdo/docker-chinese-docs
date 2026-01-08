@@ -5,8 +5,7 @@ weight: 50
 keywords: containerd, snapshotters, image store, docker engine
 description: 了解 containerd 镜像存储
 aliases:
-  - /storage/containerd/
-
+- /storage/containerd/
 ---
 
 containerd 镜像存储是 Docker Engine 29.0 及更高版本在全新安装时的默认存储后端。如果您是从早期版本升级而来，守护进程将继续使用传统的 graph 驱动程序（overlay2），直到您启用 containerd 镜像存储为止。

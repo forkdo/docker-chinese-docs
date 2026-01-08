@@ -1,6 +1,5 @@
 ---
-description:
-  Docker Scout 可与运行时环境集成，为您提供软件供应链的实时洞察。
+description: Docker Scout 可与运行时环境集成，为您提供软件供应链的实时洞察。
 keywords: supply chain, security, streams, environments, workloads, deployments
 title: 将 Docker Scout 与环境集成
 ---

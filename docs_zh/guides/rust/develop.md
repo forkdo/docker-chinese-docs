@@ -5,8 +5,8 @@ weight: 20
 keywords: rust, local, development, run,
 description: 学习如何在本地开发你的 Rust 应用程序。
 aliases:
-  - /language/rust/develop/
-  - /guides/language/rust/develop/
+- /language/rust/develop/
+- /guides/language/rust/develop/
 ---
 
 ## 先决条件

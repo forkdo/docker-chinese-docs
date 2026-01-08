@@ -5,3 +5,4 @@ service: rails
 aliases:
 - /samples/rails/
 ---
+

@@ -4,12 +4,12 @@ linkTitle: 示例
 description: 使用 Go 和 Python SDK 以及使用 curl 的 HTTP API 执行特定 Docker 操作的示例。
 keywords: developing, api, sdk, developers, rest, curl, python, go
 aliases:
-  - /engine/api/getting-started/
-  - /engine/api/client-libraries/
-  - /engine/reference/api/remote_api_client_libraries/
-  - /reference/api/remote_api_client_libraries/
-  - /develop/sdk/examples/
-  - /engine/api/sdk/examples/
+- /engine/api/getting-started/
+- /engine/api/client-libraries/
+- /engine/reference/api/remote_api_client_libraries/
+- /reference/api/remote_api_client_libraries/
+- /develop/sdk/examples/
+- /engine/api/sdk/examples/
 ---
 
 在您

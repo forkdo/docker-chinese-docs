@@ -5,12 +5,12 @@ description: 排除 Docker 单点登录配置和身份验证的常见问题
 toc_max: 2
 tags:
 - Troubleshooting
-keywords: sso troubleshooting, single sign-on errors, authentication issues, identity
-  provider problems
+keywords: sso troubleshooting, single sign-on errors, authentication issues, identity provider problems
 aliases:
 - /security/for-admins/single-sign-on/troubleshoot/
 - /security/troubleshoot/troubleshoot-sso/
 ---
+
 本页介绍常见的单点登录 (SSO) 错误及其解决方案。问题可能源于您的身份提供商 (IdP) 配置或 Docker 设置。
 
 ## 检查错误

@@ -2,18 +2,17 @@
 title: 手册
 description: 通过本系列用户指南，了解如何安装、设置、配置和使用 Docker 产品
 keywords: docker, docs, manuals, products, user guides, how-to
-# hard-code the URL of this page
 url: /manuals/
 layout: wide
 params:
   icon: description
   sidebar:
     groups:
-      - Open source
-      - AI
-      - Products
-      - Platform
-      - Enterprise
+    - Open source
+    - AI
+    - Products
+    - Platform
+    - Enterprise
   notoc: true
   open-source:
   - title: Docker Build

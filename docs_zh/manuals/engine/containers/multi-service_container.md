@@ -4,11 +4,11 @@ keywords: docker, supervisor, process management
 title: 在容器中运行多个进程
 weight: 20
 aliases:
-  - /articles/using_supervisord/
-  - /engine/admin/multi-service_container/
-  - /engine/admin/using_supervisord/
-  - /engine/articles/using_supervisord/
-  - /config/containers/multi-service_container/
+- /articles/using_supervisord/
+- /engine/admin/multi-service_container/
+- /engine/admin/using_supervisord/
+- /engine/articles/using_supervisord/
+- /config/containers/multi-service_container/
 ---
 
 容器的主要运行进程是 `Dockerfile` 末尾的 `ENTRYPOINT` 和/或 `CMD`。最佳实践是通过每个容器运行一个服务来分离关注点。该服务可能会分叉成多个进程（例如，Apache Web 服务器会启动多个工作进程）。拥有多个进程是可以的，但为了充分利用 Docker 的优势，应避免一个容器负责应用程序的多个方面。您可以使用用户定义的网络和共享卷来连接多个容器。

@@ -5,6 +5,7 @@ title: Docker Hub 上的不可变标签
 linkTitle: 不可变标签
 weight: 11
 ---
+
 {{< summary-bar feature_name="Immutable tags" >}}
 
 不可变标签提供了一种确保特定镜像版本在发布到 Docker Hub 后保持不变的方法。此功能通过防止意外覆盖重要镜像版本，帮助维护容器部署的一致性和可靠性。

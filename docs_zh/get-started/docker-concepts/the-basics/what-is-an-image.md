@@ -4,8 +4,8 @@ weight: 20
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 什么是镜像
 aliases:
-  - /guides/docker-concepts/the-basics/what-is-an-image/
-  - /get-started/run-docker-hub-images/
+- /guides/docker-concepts/the-basics/what-is-an-image/
+- /get-started/run-docker-hub-images/
 ---
 
 {{< youtube-embed NyvT9REqLe4 >}}

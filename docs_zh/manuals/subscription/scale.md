@@ -1,6 +1,6 @@
 ---
 title: 扩展您的订阅
-description: &desc 为您的订阅扩展 Docker Build Cloud 和 Testcontainers Cloud 的使用量
+description: 为您的订阅扩展 Docker Build Cloud 和 Testcontainers Cloud 的使用量
 keywords: 扩展订阅, docker build cloud 分钟数, testcontainers cloud 分钟数, 使用量扩展
 weight: 17
 ---

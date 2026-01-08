@@ -5,11 +5,11 @@ weight: 10
 keywords: node.js, node, containerize, initialize
 description: 了解如何使用 Docker 容器化 Node.js 应用，通过创建优化的、生产就绪的镜像，并遵循性能、安全性和可扩展性的最佳实践。
 aliases:
-  - /get-started/nodejs/build-images/
-  - /language/nodejs/build-images/
-  - /language/nodejs/run-containers/
-  - /language/nodejs/containerize/
-  - /guides/language/nodejs/containerize/
+- /get-started/nodejs/build-images/
+- /language/nodejs/build-images/
+- /language/nodejs/run-containers/
+- /language/nodejs/containerize/
+- /guides/language/nodejs/containerize/
 ---
 
 ## 前提条件

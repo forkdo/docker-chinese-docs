@@ -1,10 +1,11 @@
 ---
 title: 使用 Traefik 进行 HTTP 路由
-description: &desc 使用 Traefik 轻松在多个容器或非容器化工作负载之间路由流量
+description: 使用 Traefik 轻松在多个容器或非容器化工作负载之间路由流量
 keywords: traefik, container-supported development
 linktitle: 使用 Traefik 进行 HTTP 路由
-summary: *desc
-tags: [networking]
+summary: 使用 Traefik 轻松在多个容器或非容器化工作负载之间路由流量
+tags:
+- networking
 params:
   time: 20 minutes
 ---

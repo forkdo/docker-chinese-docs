@@ -7,7 +7,7 @@ params:
   sidebar:
     group: Products
 aliases:
- - /desktop/extensions/
+- /desktop/extensions/
 ---
 
 Docker 扩展让您可以在 Docker Desktop 中使用第三方工具来扩展其功能。

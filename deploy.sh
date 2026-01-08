@@ -82,7 +82,7 @@ incremental_update() {
 
     # 调用 aitr 进行翻译
     if command -v aitr &> /dev/null; then
-        aitr --input translate_list.txt --list --output translated
+        aitr --input "$TRANSLATE_LIST" --list --output translated
         cp -r "translated/${ROOT_DIR}/"* "${OUTPUT_DIR}"/
     else
         echo "aitr 未安装，跳过构建步骤。"

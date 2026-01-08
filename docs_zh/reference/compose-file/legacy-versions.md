@@ -1,12 +1,12 @@
 ---
 title: 旧版本
-description:
+description: null
 keywords: fig, composition, compose, versions, upgrading, docker, version 3, docker compose 3
 aliases:
- - /compose/compose-file/compose-versioning/
- - /compose/compose-file/compose-file-v3/
- - /compose/compose-file/compose-file-v2/
- - /compose/compose-file/legacy-versions/
+- /compose/compose-file/compose-versioning/
+- /compose/compose-file/compose-file-v3/
+- /compose/compose-file/compose-file-v2/
+- /compose/compose-file/legacy-versions/
 ---
 
 Compose 文件参考的旧版本已迁移至 [Compose 仓库的 V1 分支](https://github.com/docker/compose/tree/v1/docs)。这些版本已不再进行主动维护。

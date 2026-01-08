@@ -3,12 +3,15 @@ title: 构建命名实体识别应用
 linkTitle: 命名实体识别
 keywords: nlp, 自然语言处理, 命名实体识别, python, spacy, ner
 description: 了解如何使用 Python、spaCy 和 Docker 构建并运行命名实体识别应用。
-summary: |
-  本指南介绍如何使用 Docker 容器化命名实体识别 (NER) 模型。
-tags: [ai]
-languages: [python]
+summary: '本指南介绍如何使用 Docker 容器化命名实体识别 (NER) 模型。
+
+  '
+tags:
+- ai
+languages:
+- python
 aliases:
-  - /guides/use-case/nlp/named-entity-recognition/
+- /guides/use-case/nlp/named-entity-recognition/
 params:
   time: 20 分钟
 ---

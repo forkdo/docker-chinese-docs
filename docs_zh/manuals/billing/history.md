@@ -4,7 +4,7 @@ weight: 40
 description: 了解如何查看发票和账单历史记录
 keywords: payments, billing, subscription, invoices, renewals, invoice management, billing administration, pay invoice
 aliases:
-    - /billing/core-billing/history/
+- /billing/core-billing/history/
 ---
 
 了解如何查看和支付发票、查看账单历史记录以及核实账单续订日期。所有月度和年度订阅都会在订阅期结束时使用您的默认支付方式自动续订。

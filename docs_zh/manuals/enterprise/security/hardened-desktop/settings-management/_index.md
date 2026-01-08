@@ -1,12 +1,13 @@
 ---
 description: 了解 Settings Management 的工作原理、适用对象及其带来的优势
 keywords: Settings Management, rootless, docker desktop, hardened desktop, admin control, enterprise
-tags: [admin]
+tags:
+- admin
 title: Settings Management
 linkTitle: Settings Management
 aliases:
- - /desktop/hardened-desktop/settings-management/
- - /security/for-admins/hardened-desktop/settings-management/
+- /desktop/hardened-desktop/settings-management/
+- /security/for-admins/hardened-desktop/settings-management/
 weight: 10
 ---
 

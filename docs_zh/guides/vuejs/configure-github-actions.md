@@ -4,7 +4,6 @@ linkTitle: 使用 GitHub Actions 自动化构建
 weight: 60
 keywords: CI/CD, GitHub( Actions), Vue.js
 description: 了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。
-
 ---
 
 ## 前提条件

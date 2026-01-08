@@ -2,11 +2,12 @@
 title: 构建并推送你的第一个镜像
 keywords: concepts, container, docker desktop
 description: 本概念页将教你如何构建并推送你的第一个镜像
-summary: |
-  学习如何构建你的第一个 Docker 镜像，这是将你的应用容器化的关键一步。我们将指导你完成创建镜像仓库、构建镜像并将其推送到 Docker Hub 的过程。这样你就可以轻松地在团队内部分享你的镜像。
+summary: '学习如何构建你的第一个 Docker 镜像，这是将你的应用容器化的关键一步。我们将指导你完成创建镜像仓库、构建镜像并将其推送到 Docker Hub 的过程。这样你就可以轻松地在团队内部分享你的镜像。
+
+  '
 weight: 3
-aliases: 
- - /guides/getting-started/build-and-push-first-image/
+aliases:
+- /guides/getting-started/build-and-push-first-image/
 ---
 
 {{< youtube-embed 7ge1s5nAa34 >}}

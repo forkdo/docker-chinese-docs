@@ -1,13 +1,12 @@
 ---
 title: 持久化数据库
 weight: 50
-linkTitle: "第 4 部分：持久化数据库"
-keywords: 入门, 设置, 导向, 快速入门, 简介, 概念, 容器,
-  docker desktop
+linkTitle: 第 4 部分：持久化数据库
+keywords: 入门, 设置, 导向, 快速入门, 简介, 概念, 容器, docker desktop
 description: 在应用程序中实现数据库持久化
 aliases:
- - /get-started/05_persisting_data/
- - /guides/workshop/05_persisting_data/
+- /get-started/05_persisting_data/
+- /guides/workshop/05_persisting_data/
 ---
 
 如果你没有注意到，每次启动容器时，你的待办事项列表都是空的。为什么会这样？在本部分中，你将深入了解容器的工作原理。

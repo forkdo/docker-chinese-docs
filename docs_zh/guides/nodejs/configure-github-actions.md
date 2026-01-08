@@ -5,8 +5,8 @@ weight: 50
 keywords: CI/CD, GitHub Actions, Node.js, Docker
 description: 了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。
 aliases:
-  - /language/nodejs/configure-ci-cd/
-  - /guides/language/nodejs/configure-ci-cd/
+- /language/nodejs/configure-ci-cd/
+- /guides/language/nodejs/configure-ci-cd/
 ---
 
 ## 先决条件

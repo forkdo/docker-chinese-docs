@@ -5,7 +5,7 @@ description: 使用 Docker Admin Console 在整个组织内配置和强制执行
 keywords: admin console, settings management, policy configuration, enterprise controls, docker desktop
 weight: 20
 aliases:
- - /security/for-admins/hardened-desktop/settings-management/configure-admin-console/
+- /security/for-admins/hardened-desktop/settings-management/configure-admin-console/
 ---
 
 {{< summary-bar feature_name="Admin Console" >}}

@@ -5,3 +5,4 @@ service: go
 aliases:
 - /samples/go/
 ---
+

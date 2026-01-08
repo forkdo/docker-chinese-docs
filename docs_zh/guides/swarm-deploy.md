@@ -3,12 +3,14 @@ title: 部署到 Swarm
 keywords: swarm, swarm services, stacks
 description: 学习如何在 Docker Swarm 上描述和部署一个简单的应用。
 aliases:
-  - /get-started/part4/
-  - /get-started/swarm-deploy/
-  - /guides/deployment-orchestration/swarm-deploy/
-summary: |
-  &desc 发现如何使用 Docker Swarm 部署和管理 Docker 容器。
-tags: [deploy]
+- /get-started/part4/
+- /get-started/swarm-deploy/
+- /guides/deployment-orchestration/swarm-deploy/
+summary: '&desc 发现如何使用 Docker Swarm 部署和管理 Docker 容器。
+
+  '
+tags:
+- deploy
 params:
   time: 10 minutes
 ---

@@ -4,7 +4,6 @@ linkTitle: 运行测试
 weight: 40
 keywords: vue.js, vue, test, vitest
 description: 了解如何在容器中运行 Vue.js 测试。
-
 ---
 
 ## 先决条件

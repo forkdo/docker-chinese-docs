@@ -3,8 +3,8 @@ description: 了解 Docker 赞助的开源计划及其运作方式
 title: Docker 赞助的开源计划
 keywords: docker hub, hub, insights, analytics, open source, Docker sponsored, program
 aliases:
-  - /docker-hub/dsos-program/
-  - /trusted-content/dsos-program/
+- /docker-hub/dsos-program/
+- /trusted-content/dsos-program/
 ---
 
 [Docker 赞助的开源镜像](https://hub.docker.com/search?badges=open_source)由 Docker 通过该计划赞助的开源项目发布和维护。

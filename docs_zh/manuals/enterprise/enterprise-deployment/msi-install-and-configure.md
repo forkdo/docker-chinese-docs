@@ -2,14 +2,15 @@
 title: MSI 安装程序
 description: 了解如何使用 MSI 安装程序。同时探索其他配置选项。
 keywords: msi, windows, docker desktop, install, deploy, configure, admin, mdm
-tags: [admin]
+tags:
+- admin
 weight: 10
 aliases:
- - /desktop/install/msi/install-and-configure/
- - /desktop/setup/install/msi/install-and-configure/
- - /desktop/install/msi/
- - /desktop/setup/install/msi/
- - /desktop/setup/install/enterprise-deployment/msi-install-and-configure/
+- /desktop/install/msi/install-and-configure/
+- /desktop/setup/install/msi/install-and-configure/
+- /desktop/install/msi/
+- /desktop/setup/install/msi/
+- /desktop/setup/install/enterprise-deployment/msi-install-and-configure/
 ---
 
 {{< summary-bar feature_name="MSI installer" >}}

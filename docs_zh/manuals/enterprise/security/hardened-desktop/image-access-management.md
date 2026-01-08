@@ -2,13 +2,14 @@
 title: 镜像访问管理
 description: 通过镜像访问管理控制开发者可以访问哪些 Docker Hub 镜像，以增强供应链安全
 keywords: 镜像访问管理, docker official images, verified publisher, 供应链安全, docker business
-tags: [admin]
+tags:
+- admin
 aliases:
- - /docker-hub/image-access-management/
- - /desktop/hardened-desktop/image-access-management/
- - /admin/organization/image-access/
- - /security/for-admins/image-access-management/
- - /security/for-admins/hardened-desktop/image-access-management/
+- /docker-hub/image-access-management/
+- /desktop/hardened-desktop/image-access-management/
+- /admin/organization/image-access/
+- /security/for-admins/image-access-management/
+- /security/for-admins/hardened-desktop/image-access-management/
 weight: 40
 ---
 

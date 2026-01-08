@@ -1,7 +1,6 @@
 ---
 description: 链接到 GitHub 和 BitBucket
-keywords: Docker, docker, registry, accounts, plans, Dockerfile, Docker Hub, trusted,
-  builds, trusted builds, automated builds, GitHub
+keywords: Docker, docker, registry, accounts, plans, Dockerfile, Docker Hub, trusted, builds, trusted builds, automated builds, GitHub
 title: 配置从 GitHub 和 BitBucket 的自动构建
 linkTitle: 链接账户
 weight: 20

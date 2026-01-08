@@ -5,7 +5,7 @@ weight: 30
 description: 使用 Docker Build Cloud 加速您的 CI 流水线
 keywords: build, cloud build, ci, gha, gitlab, buildkite, jenkins, circle ci
 aliases:
-  - /build/cloud/ci/
+- /build/cloud/ci/
 ---
 
 在 CI 中使用 Docker Build Cloud 可以加速您的构建流水线，从而减少等待时间和上下文切换。您可以照常控制 CI 工作流，并将构建执行委托给 Docker Build Cloud。

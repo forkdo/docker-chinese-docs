@@ -1,7 +1,12 @@
 ---
 title: RAG
 description: RAG 如何为 cagent 智能体提供代码库和文档的访问能力
-keywords: [cagent, rag, retrieval, embeddings, semantic search]
+keywords:
+- cagent
+- rag
+- retrieval
+- embeddings
+- semantic search
 weight: 70
 ---
 

@@ -2,11 +2,12 @@
 title: 获取 Docker Desktop
 keywords: concepts, container, docker desktop
 description: 本概念页面将指导您下载 Docker Desktop 并在 Windows、Mac 和 Linux 上进行安装
-summary: |
-  启动并运行 Docker Desktop 是开发者迈入容器化领域的首要关键步骤，它提供了一个无缝且用户友好的界面来管理 Docker 容器。Docker Desktop 简化了在容器中构建、共享和运行应用程序的过程，确保了不同环境之间的一致性。
+summary: '启动并运行 Docker Desktop 是开发者迈入容器化领域的首要关键步骤，它提供了一个无缝且用户友好的界面来管理 Docker 容器。Docker Desktop 简化了在容器中构建、共享和运行应用程序的过程，确保了不同环境之间的一致性。
+
+  '
 weight: 1
 aliases:
- - /getting-started/get-docker-desktop/
+- /getting-started/get-docker-desktop/
 ---
 
 {{< youtube-embed C2bPVhiNU-0 >}}

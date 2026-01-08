@@ -14,8 +14,10 @@ aliases:
 本页面说明了当环境变量在多个位置定义时，Docker Compose 如何确定其最终值。
 
 优先级顺序（从高到低）如下：
-1. 使用 [`docker compose run -e` 在 CLI 中设置](set-environment-variables.md#set-environment-variables-with-docker-compose-run---env)。
-2. 使用 `environment` 或 `env_file` 属性设置，但其值来自[ shell ](variable-interpolation.md#substitute-from-the-shell) 或环境文件的插值（可以是默认的 [`.env` 文件](variable-interpolation.md#env-file)，或使用 CLI 中的 [`--env-file` 参数](variable-interpolation.md#substitute-with---env-file)）。
+1. 使用 [`docker compose run -e` 在 CLI 中设置](set-environment-variables.md#set-environment-variables-with-docker-compose-run
+---env)。
+2. 使用 `environment` 或 `env_file` 属性设置，但其值来自[ shell ](variable-interpolation.md#substitute-from-the-shell) 或环境文件的插值（可以是默认的 [`.env` 文件](variable-interpolation.md#env-file)，或使用 CLI 中的 [`--env-file` 参数](variable-interpolation.md#substitute-with
+---env-file)）。
 3. 仅在 Compose 文件中使用 [`environment` 属性](set-environment-variables.md#use-the-environment-attribute) 设置。
 4. 在 Compose 文件中使用 [`env_file` 属性](set-environment-variables.md#use-the-env_file-attribute)。
 5. 在容器镜像的 [ENV 指令](/reference/dockerfile.md#env) 中设置。

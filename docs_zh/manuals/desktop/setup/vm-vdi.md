@@ -4,8 +4,8 @@ keywords: nested virtualization, Docker Desktop, windows, VM, VDI environment
 title: 在 VM 或 VDI 环境中运行适用于 Windows 的 Docker Desktop
 linkTitle: VM 或 VDI 环境
 aliases:
-  - /desktop/nested-virtualization/
-  - /desktop/vm-vdi/
+- /desktop/nested-virtualization/
+- /desktop/vm-vdi/
 weight: 30
 ---
 

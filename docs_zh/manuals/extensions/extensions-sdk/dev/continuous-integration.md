@@ -2,8 +2,8 @@
 title: 持续集成 (CI)
 description: 自动测试和验证您的扩展。
 keywords: Docker, Extensions, sdk, CI, test, regression
-aliases: 
- - /desktop/extensions-sdk/dev/continuous-integration/
+aliases:
+- /desktop/extensions-sdk/dev/continuous-integration/
 weight: 20
 ---
 

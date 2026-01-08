@@ -3,11 +3,13 @@ title: 部署和编排
 keywords: 编排, 部署, kubernetes, swarm,
 description: 了解 Docker 的基础知识并安装 Docker Desktop。
 aliases:
-  - /get-started/orchestration/
-  - /guides/deployment-orchestration/orchestration/
-summary: |
-  使用 Docker 探索容器编排的基础知识。
-tags: [deploy]
+- /get-started/orchestration/
+- /guides/deployment-orchestration/orchestration/
+summary: '使用 Docker 探索容器编排的基础知识。
+
+  '
+tags:
+- deploy
 params:
   time: 10 分钟
 ---

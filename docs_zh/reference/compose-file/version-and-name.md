@@ -6,6 +6,7 @@ keywords: compose, compose specification, services, compose file reference
 aliases:
 - /compose/compose-file/04-version-and-name/
 ---
+
 ## 版本顶级元素（已弃用）
 
 > [!IMPORTANT]

@@ -3,7 +3,7 @@ title: 导航
 description: Docker 扩展 API
 keywords: Docker, extensions, sdk, API
 aliases:
- - /desktop/extensions-sdk/dev/api/dashboard-routes-navigation/
+- /desktop/extensions-sdk/dev/api/dashboard-routes-navigation/
 ---
 
 `ddClient.desktopUI.navigate` 可用于导航至 Docker Desktop 的特定界面，例如容器选项卡、镜像选项卡或特定容器的日志。

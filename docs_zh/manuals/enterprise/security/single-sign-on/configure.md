@@ -4,13 +4,13 @@ linkTitle: 配置
 description: 了解如何为您的组织或公司配置单点登录。
 keywords: configure, sso, docker hub, hub, docker admin, admin, security
 aliases:
-  - /docker-hub/domains/
-  - /docker-hub/sso-connection/
-  - /docker-hub/enforcing-sso/
-  - /single-sign-on/configure/
-  - /admin/company/settings/sso-configuration/
-  - /admin/organization/security-settings/sso-configuration/
-  - /security/for-admins/single-sign-on/configure/
+- /docker-hub/domains/
+- /docker-hub/sso-connection/
+- /docker-hub/enforcing-sso/
+- /single-sign-on/configure/
+- /admin/company/settings/sso-configuration/
+- /admin/organization/security-settings/sso-configuration/
+- /security/for-admins/single-sign-on/configure/
 ---
 
 {{< summary-bar feature_name="SSO" >}}

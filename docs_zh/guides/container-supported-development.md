@@ -1,11 +1,14 @@
 ---
-title: "借助容器支持的开发实现更快速的开发与测试"
+title: 借助容器支持的开发实现更快速的开发与测试
 linkTitle: 容器支持的开发
-summary: |
-  容器并非只能用于你的应用。学习如何运行应用所依赖的服务和其他调试工具，以增强你的开发环境。
-description: |
-  在本地开发流程中使用容器，实现更快速的开发和测试……即使你的主应用并未运行在容器中。
-tags: [app-dev]
+summary: '容器并非只能用于你的应用。学习如何运行应用所依赖的服务和其他调试工具，以增强你的开发环境。
+
+  '
+description: '在本地开发流程中使用容器，实现更快速的开发和测试……即使你的主应用并未运行在容器中。
+
+  '
+tags:
+- app-dev
 params:
   image: images/learning-paths/container-supported-development.png
   time: 20 分钟

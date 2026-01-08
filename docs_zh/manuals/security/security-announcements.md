@@ -3,8 +3,11 @@ description: Docker 安全公告
 keywords: Docker, CVE, 安全, 通知, Log4J 2, Log4Shell, Text4Shell, 公告
 title: Docker 安全公告
 linkTitle: 安全公告
-outputs: ["HTML", "markdown", "RSS"]
-type: "security-announcements"
+outputs:
+- HTML
+- markdown
+- RSS
+type: security-announcements
 weight: 80
 toc_min: 1
 toc_max: 2

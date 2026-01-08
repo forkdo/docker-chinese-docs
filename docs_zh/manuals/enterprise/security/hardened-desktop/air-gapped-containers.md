@@ -3,9 +3,9 @@ title: 气隙容器
 description: 使用自定义代理规则和网络限制，通过气隙容器控制容器网络访问
 keywords: 气隙容器, 网络安全, 代理配置, 容器隔离, docker desktop
 aliases:
- - /desktop/hardened-desktop/settings-management/air-gapped-containers/
- - /desktop/hardened-desktop/air-gapped-containers/
- - /security/for-admins/hardened-desktop/air-gapped-containers/
+- /desktop/hardened-desktop/settings-management/air-gapped-containers/
+- /desktop/hardened-desktop/air-gapped-containers/
+- /security/for-admins/hardened-desktop/air-gapped-containers/
 ---
 
 {{< summary-bar feature_name="Air-gapped containers" >}}

@@ -2,8 +2,8 @@
 title: 构建多架构扩展
 description: 创建扩展的第三步。
 keywords: Docker, Extensions, sdk, build, multi-arch
-aliases: 
- - /desktop/extensions-sdk/extensions/multi-arch/
+aliases:
+- /desktop/extensions-sdk/extensions/multi-arch/
 ---
 
 强烈建议，您的扩展至少应支持以下架构：

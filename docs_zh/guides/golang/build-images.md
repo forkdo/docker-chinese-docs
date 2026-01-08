@@ -5,9 +5,9 @@ weight: 5
 keywords: 容器, 镜像, go, golang, dockerfiles, 编码, 构建, 推送, 运行
 description: 学习如何通过编写 Dockerfile 来构建您的第一个 Docker 镜像
 aliases:
-  - /get-started/golang/build-images/
-  - /language/golang/build-images/
-  - /guides/language/golang/build-images/
+- /get-started/golang/build-images/
+- /language/golang/build-images/
+- /guides/language/golang/build-images/
 ---
 
 ## 概述

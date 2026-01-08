@@ -3,13 +3,14 @@ title: 下一步
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 探索分步指南，帮助你理解核心 Docker 概念、构建镜像以及运行容器。
 aliases:
- - /guides/getting-started/whats-next/
-summary: |
-  现在你已经设置好了 Docker Desktop，使用容器进行了开发，并构建和推送了你的第一个镜像，
+- /guides/getting-started/whats-next/
+summary: '现在你已经设置好了 Docker Desktop，使用容器进行了开发，并构建和推送了你的第一个镜像，
+
   你已经准备好迈出下一步，深入了解容器是什么以及它的工作原理。
+
+  '
 notoc: true
 weight: 4
-
 the-basics:
 - title: 什么是容器？
   description: 学习如何运行你的第一个容器。
@@ -23,7 +24,6 @@ the-basics:
 - title: 什么是 Docker Compose？
   description: 更好地理解 Docker Compose。
   link: /get-started/docker-concepts/the-basics/what-is-docker-compose/
-
 building-images:
 - title: 理解镜像层
   description: 了解容器镜像的层。
@@ -40,7 +40,6 @@ building-images:
 - title: 多阶段构建
   description: 更好地理解多阶段构建及其优势。
   link: /get-started/docker-concepts/building-images/multi-stage-builds/
-
 running-containers:
 - title: 发布端口
   description: 理解在 Docker 中发布和暴露端口的重要性。

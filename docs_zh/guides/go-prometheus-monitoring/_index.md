@@ -2,10 +2,12 @@
 description: 使用 Prometheus 和 Grafana 容器化 Golang 应用并进行监控。
 keywords: golang, prometheus, grafana, monitoring, containerize
 title: 使用 Prometheus 和 Grafana 监控 Golang 应用
-summary: |
-  学习如何容器化 Golang 应用并使用 Prometheus 和 Grafana 进行监控。
+summary: '学习如何容器化 Golang 应用并使用 Prometheus 和 Grafana 进行监控。
+
+  '
 linkTitle: 使用 Prometheus 和 Grafana 监控
-languages: [go]
+languages:
+- go
 params:
   time: 45 minutes
 ---

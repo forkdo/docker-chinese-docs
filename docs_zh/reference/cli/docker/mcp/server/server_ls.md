@@ -4,7 +4,7 @@ datafile: docker_mcp_server_list
 title: docker mcp server list
 layout: cli
 aliases:
-  - /reference/cli/docker/mcp/server/list/
+- /reference/cli/docker/mcp/server/list/
 ---
 
 <!--

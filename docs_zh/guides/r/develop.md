@@ -5,8 +5,8 @@ weight: 20
 keywords: R, local, development
 description: 了解如何在本地开发 R 应用程序。
 aliases:
-  - /language/r/develop/
-  - /guides/language/r/develop/
+- /language/r/develop/
+- /guides/language/r/develop/
 ---
 
 ## 先决条件

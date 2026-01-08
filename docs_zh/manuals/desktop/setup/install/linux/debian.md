@@ -1,7 +1,6 @@
 ---
 description: 在 Debian 上安装 Docker Desktop 的说明
-keywords: debian, install, uninstall, upgrade, update, linux, desktop, docker desktop,
-  docker desktop for linux, dd4l
+keywords: debian, install, uninstall, upgrade, update, linux, desktop, docker desktop, docker desktop for linux, dd4l
 title: 在 Debian 上安装 Docker Desktop
 linkTitle: Debian
 weight: 20

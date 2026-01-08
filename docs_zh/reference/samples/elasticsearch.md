@@ -5,3 +5,4 @@ service: elk
 aliases:
 - /samples/elasticsearch/
 ---
+

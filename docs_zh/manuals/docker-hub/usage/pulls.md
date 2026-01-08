@@ -5,8 +5,8 @@ title: Docker Hub 拉取使用情况和限制
 linkTitle: 拉取
 weight: 10
 aliases:
-  - /docker-hub/usage/storage/
-  - /docker-hub/usage/repositories/
+- /docker-hub/usage/storage/
+- /docker-hub/usage/repositories/
 ---
 
 未认证用户和 Docker Personal 用户在 Docker Hub 上受 6 小时拉取速率限制。相比之下，Docker Pro、Team 和 Business 用户则享有无限拉取速率。

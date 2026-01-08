@@ -4,7 +4,6 @@ linkTitle: 测试部署
 weight: 60
 keywords: deploy, kubernetes, vue, vue.js
 description: 了解如何本地部署以测试和调试 Kubernetes 部署
-
 ---
 
 ## 先决条件

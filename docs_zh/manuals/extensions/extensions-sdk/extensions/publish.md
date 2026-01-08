@@ -2,8 +2,8 @@
 title: 在 Marketplace 中发布
 description: Docker 扩展分发
 keywords: Docker, extensions, publish
-aliases: 
- - /desktop/extensions-sdk/extensions/publish/
+aliases:
+- /desktop/extensions-sdk/extensions/publish/
 weight: 50
 ---
 

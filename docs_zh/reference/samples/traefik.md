@@ -5,3 +5,4 @@ service: traefik
 aliases:
 - /samples/traefik/
 ---
+

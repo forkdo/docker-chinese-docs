@@ -4,10 +4,10 @@ linkTitle: 验证
 description: 扩展创建过程的第三步
 keywords: Docker, Extensions, sdk, validate, install
 aliases:
- - /desktop/extensions-sdk/extensions/validation/
- - /desktop/extensions-sdk/build/build-install/
- - /desktop/extensions-sdk/dev/cli/build-test-install-extension/
- - /desktop/extensions-sdk/extensions/validate/
+- /desktop/extensions-sdk/extensions/validation/
+- /desktop/extensions-sdk/build/build-install/
+- /desktop/extensions-sdk/dev/cli/build-test-install-extension/
+- /desktop/extensions-sdk/extensions/validate/
 weight: 20
 ---
 

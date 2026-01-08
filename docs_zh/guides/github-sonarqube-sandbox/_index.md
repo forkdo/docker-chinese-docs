@@ -3,17 +3,18 @@ title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
 linkTitle: 构建 AI 驱动的代码质量工作流
 summary: 使用 E2B 沙盒与 Docker 的 MCP 目录构建 AI 驱动的代码质量工作流，实现 GitHub 和 SonarQube 的自动化集成。
 description: 学习如何创建带有 MCP 服务器的 E2B 沙盒，使用 SonarQube 分析代码质量，并通过 GitHub 生成质量门禁拉取请求——所有操作均可通过与 Claude 的自然语言交互完成。
-tags: [devops]
+tags:
+- devops
 params:
   time: 40 分钟
-  image:
+  image: null
   resource_links:
-    - title: E2B Documentation
-      url: https://e2b.dev/docs
-    - title: Docker MCP Catalog
-      url: https://hub.docker.com/mcp
-    - title: Sandboxes
-      url: https://docs.docker.com/ai/mcp-catalog-and-toolkit/sandboxes/
+  - title: E2B Documentation
+    url: https://e2b.dev/docs
+  - title: Docker MCP Catalog
+    url: https://hub.docker.com/mcp
+  - title: Sandboxes
+    url: https://docs.docker.com/ai/mcp-catalog-and-toolkit/sandboxes/
 ---
 
 本指南演示如何使用 [E2B 沙盒](https://e2b.dev/docs) 和 Docker 的 MCP 目录构建 AI 驱动的代码质量工作流。您将创建一个系统，该系统使用 SonarQube 自动分析 GitHub 仓库中的代码质量问题，然后生成包含修复方案的拉取请求。

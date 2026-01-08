@@ -66,9 +66,11 @@ Github authentication
 JSON Web Token
 "": xxxxxxx.xxxxxxxx.xxxxxxxx
 Private Key
-"": -----BEGIN DSA PRIVATE KEY-----
+"": -----BEGIN DSA PRIVATE KEY
+-----
 xxxxx
------END DSA PRIVATE KEY-----
+-----END DSA PRIVATE KEY
+-----
 Are you ok to publish these sensitive data? [y/N]:y
 
 you are about to publish environment variables within your OCI artifact.

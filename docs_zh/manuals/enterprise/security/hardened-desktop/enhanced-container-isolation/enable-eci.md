@@ -1,7 +1,7 @@
 ---
 title: 启用增强型容器隔离
 linkTitle: 启用 ECI
-description: &desc 在 Docker Desktop 中启用增强型容器隔离以保护容器安全
+description: 在 Docker Desktop 中启用增强型容器隔离以保护容器安全
 keywords: enhanced container isolation, enable eci, container security, docker desktop setup
 weight: 15
 ---

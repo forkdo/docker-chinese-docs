@@ -3,14 +3,15 @@ title: React.js 语言特定指南
 linkTitle: React.js
 description: 使用 Docker 容器化并开发 React.js 应用
 keywords: getting started, React.js, react.js, docker, language, Dockerfile
-summary: |
-  本指南介绍如何使用 Docker 容器化 React.js 应用程序。
+summary: '本指南介绍如何使用 Docker 容器化 React.js 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
-languages: [js]
+languages:
+- js
 params:
   time: 20 分钟
-
 ---
 
 React.js 语言特定指南将向您展示如何使用 Docker 容器化 React.js 应用程序，并遵循创建高效、生产就绪容器的最佳实践。

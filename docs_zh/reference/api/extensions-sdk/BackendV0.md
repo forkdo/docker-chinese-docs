@@ -1,10 +1,10 @@
 ---
-title: "接口: BackendV0"
+title: '接口: BackendV0'
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/BackendV0/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/BackendV0/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/BackendV0/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/BackendV0/
 ---
 
 ## 容器方法

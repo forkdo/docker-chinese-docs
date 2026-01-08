@@ -3,7 +3,7 @@ description: 了解创建扩展的过程。
 title: 构建和发布流程
 keyword: Docker Extensions, sdk, build, create, publish
 aliases:
- - /desktop/extensions-sdk/process/
+- /desktop/extensions-sdk/process/
 weight: 10
 ---
 

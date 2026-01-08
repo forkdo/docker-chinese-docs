@@ -1,18 +1,15 @@
 ---
-description:
-  了解如何创建、管理和使用卷（volumes）而非绑定挂载（bind mounts）来持久化 Docker 生成和使用的数据。
+description: 了解如何创建、管理和使用卷（volumes）而非绑定挂载（bind mounts）来持久化 Docker 生成和使用的数据。
 title: 卷（Volumes）
 weight: 10
-keywords:
-  docker compose volumes, docker volumes, docker compose volume, docker volume
-  mount, docker mount volume, docker volume create, docker volume location
+keywords: docker compose volumes, docker volumes, docker compose volume, docker volume mount, docker mount volume, docker volume create, docker volume location
 aliases:
-  - /userguide/dockervolumes/
-  - /engine/tutorials/dockervolumes/
-  - /engine/userguide/dockervolumes/
-  - /engine/admin/volumes/volumes/
-  - /storage/volumes/
-  - /engine/admin/volumes/backing-up/
+- /userguide/dockervolumes/
+- /engine/tutorials/dockervolumes/
+- /engine/userguide/dockervolumes/
+- /engine/admin/volumes/volumes/
+- /storage/volumes/
+- /engine/admin/volumes/backing-up/
 ---
 
 卷是由 Docker 创建和管理的容器持久化数据存储机制。你可以使用 `docker volume create` 命令显式创建卷，也可以在创建容器或服务时由 Docker 自动创建。
@@ -52,7 +49,8 @@ aliases:
 
 如果将一个**空卷**挂载到容器中已存在文件或目录的目录中，这些文件或目录默认会被传播（复制）到卷中。类似地，如果启动容器时指定了一个尚不存在的卷，Docker 会为你创建一个空卷。这是预填充其他容器所需数据的好方法。
 
-要防止 Docker 将容器的已有文件复制到空卷中，请使用 `volume-nocopy` 选项，参见 [--mount 选项](#options-for---mount)。
+要防止 Docker 将容器的已有文件复制到空卷中，请使用 `volume-nocopy` 选项，参见 [--mount 选项](#options-for
+---mount)。
 
 ## 命名卷与匿名卷
 

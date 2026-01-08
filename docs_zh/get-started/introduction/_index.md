@@ -2,17 +2,19 @@
 title: 介绍
 keywords: get started, getting started, how to get started
 weight: 30
-description: |
-  开始使用 Docker。你将了解 Docker Desktop、使用 Docker 进行开发，以及如何构建和推送你的第一个镜像。
-summary: |
-  开启全面的学习路径，深入了解 Docker 和容器化技术，从基础概念和安装流程开始。通过实践练习，掌握 Docker 基本命令、镜像创建和容器编排。
+description: '开始使用 Docker。你将了解 Docker Desktop、使用 Docker 进行开发，以及如何构建和推送你的第一个镜像。
+
+  '
+summary: '开启全面的学习路径，深入了解 Docker 和容器化技术，从基础概念和安装流程开始。通过实践练习，掌握 Docker 基本命令、镜像创建和容器编排。
+
+  '
 layout: series
 params:
   skill: Beginner
   time: 15 minutes
   prereq: None
 aliases:
-  - /guides/getting-started/
+- /guides/getting-started/
 ---
 
 ## 关于本系列

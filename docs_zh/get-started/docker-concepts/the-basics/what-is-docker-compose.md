@@ -4,8 +4,8 @@ weight: 40
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 什么是 Docker Compose？
 aliases:
- - /guides/walkthroughs/multi-container-apps/
- - /guides/docker-concepts/the-basics/what-is-docker-compose/
+- /guides/walkthroughs/multi-container-apps/
+- /guides/docker-concepts/the-basics/what-is-docker-compose/
 ---
 
 {{< youtube-embed xhcUIK4fGtY >}}

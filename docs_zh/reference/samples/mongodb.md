@@ -5,3 +5,4 @@ service: mongodb
 aliases:
 - /samples/mongodb/
 ---
+

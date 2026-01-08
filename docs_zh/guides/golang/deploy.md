@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, go, local, development
 description: 了解如何部署你的 Go 应用程序
 aliases:
-  - /language/golang/deploy/
-  - /guides/language/golang/deploy/
+- /language/golang/deploy/
+- /guides/language/golang/deploy/
 ---
 
 ## 先决条件

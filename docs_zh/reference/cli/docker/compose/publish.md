@@ -4,8 +4,8 @@ datafile: docker_compose_publish
 title: docker compose publish
 layout: cli
 aliases:
- - /reference/cli/docker/compose/alpha/publish/
- - /engine/reference/commandline/compose_alpha_publish/
+- /reference/cli/docker/compose/alpha/publish/
+- /engine/reference/commandline/compose_alpha_publish/
 ---
 
 <!--

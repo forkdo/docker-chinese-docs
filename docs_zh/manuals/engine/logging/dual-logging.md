@@ -1,12 +1,13 @@
 ---
-description: >
-  了解如何在使用第三方日志记录解决方案时在本地读取容器日志。
-keywords: >
-  docker, logging, driver, dual logging, dual logging, cache, ring-buffer,
-  configuration
+description: '了解如何在使用第三方日志记录解决方案时在本地读取容器日志。
+
+  '
+keywords: 'docker, logging, driver, dual logging, dual logging, cache, ring-buffer, configuration
+
+  '
 title: 将 docker logs 与远程日志记录驱动程序结合使用
 aliases:
-  - /config/containers/logging/dual-logging/
+- /config/containers/logging/dual-logging/
 ---
 
 ## 概述

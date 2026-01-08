@@ -3,9 +3,9 @@ title: Docker Scout 中的策略评估入门
 linkTitle: 策略评估
 weight: 70
 keywords: scout, supply chain, vulnerabilities, packages, cves, policy
-description: |
-  Docker Scout 中的策略让您能够为制品定义供应链规则和阈值，
-  并跟踪您的制品随时间推移相对于这些要求的表现
+description: 'Docker Scout 中的策略让您能够为制品定义供应链规则和阈值，
+
+  并跟踪您的制品随时间推移相对于这些要求的表现'
 ---
 
 在软件供应链管理中，维护制品的安全性和可靠性是重中之重。Docker Scout 中的策略评估在现有分析功能的基础上引入了一层控制。它让您能够为制品定义供应链规则，并帮助您跟踪您的制品随时间推移相对于这些规则和阈值的表现。

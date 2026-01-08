@@ -1,13 +1,13 @@
 ---
 title: 使用 bind mounts
 weight: 60
-linkTitle: "第 5 部分：使用 bind mounts"
-keywords: 'get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop'
+linkTitle: 第 5 部分：使用 bind mounts
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop
 description: 在我们的应用程序中使用 bind mounts
 aliases:
- - /guides/walkthroughs/access-local-folder/
- - /get-started/06_bind_mounts/
- - /guides/workshop/06_bind_mounts/
+- /guides/walkthroughs/access-local-folder/
+- /get-started/06_bind_mounts/
+- /guides/workshop/06_bind_mounts/
 ---
 
 在[第 4 部分](./05_persisting_data.md)中，您使用了卷挂载来持久化数据库中的数据。当您需要一个持久化的位置来存储应用程序数据时，卷挂载是一个很好的选择。

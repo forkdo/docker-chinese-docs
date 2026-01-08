@@ -1,10 +1,10 @@
 ---
-linkTitle: 卷 
+linkTitle: 卷
 title: 在 Docker Compose 中定义和管理卷
 description: 使用顶层 volumes 元素控制卷的声明方式以及在服务之间的共享方式。
 keywords: compose, compose specification, volumes, compose file reference
-aliases: 
- - /compose/compose-file/07-volumes/
+aliases:
+- /compose/compose-file/07-volumes/
 weight: 40
 ---
 

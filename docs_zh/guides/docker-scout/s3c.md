@@ -3,7 +3,7 @@ title: 软件供应链安全
 description: 了解软件供应链安全（S3C）、其含义及其重要性。
 keywords: docker scout, secure, software, supply, chain, security, sssc, sscs, s3c
 aliases:
-  - /scout/concepts/s3c/
+- /scout/concepts/s3c/
 weight: 30
 ---
 

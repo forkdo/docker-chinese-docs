@@ -5,7 +5,7 @@ weight: 10
 keywords: python, local, development, generative ai, genai, llm, rag, ollama
 description: 学习如何在本地开发生成式 RAG 应用。
 aliases:
-  - /guides/use-case/rag-ollama/develop/
+- /guides/use-case/rag-ollama/develop/
 ---
 
 ## 先决条件

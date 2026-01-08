@@ -3,9 +3,9 @@ description: 了解如何使用 Go 模板格式化日志输出
 keywords: docker, logging, driver, syslog, Fluentd, gelf, journald
 title: 自定义日志驱动输出
 aliases:
-  - /engine/reference/logging/log_tags/
-  - /engine/admin/logging/log_tags/
-  - /config/containers/logging/log_tags/
+- /engine/reference/logging/log_tags/
+- /engine/admin/logging/log_tags/
+- /config/containers/logging/log_tags/
 ---
 
 `tag` 日志选项用于指定标识容器日志消息的标签格式。默认情况下，系统使用容器 ID 的前 12 个字符。要覆盖此行为，请指定 `tag` 选项：

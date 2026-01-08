@@ -3,14 +3,16 @@ title: Node.js 语言专属指南
 linkTitle: Node.js
 description: 使用 Docker 容器化并开发 Node.js 应用
 keywords: getting started, node, node.js
-summary: |
-  本指南介绍如何使用 Docker 容器化 Node.js 应用程序。
+summary: '本指南介绍如何使用 Docker 容器化 Node.js 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /language/nodejs/
-  - /guides/language/nodejs/
-languages: [js]
+- /language/nodejs/
+- /guides/language/nodejs/
+languages:
+- js
 tags: []
 params:
   time: 20 minutes

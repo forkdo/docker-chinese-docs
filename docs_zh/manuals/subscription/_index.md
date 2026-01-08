@@ -9,7 +9,7 @@ params:
 grid_subscriptions:
 - title: 比较 Docker 订阅
   description: 访问定价页面，查看不同 Docker 订阅包含的内容。
-  link: "https://www.docker.com/pricing/"
+  link: https://www.docker.com/pricing/
   icon: feature_search
 - title: 设置您的订阅
   description: 开始设置个人或组织订阅。

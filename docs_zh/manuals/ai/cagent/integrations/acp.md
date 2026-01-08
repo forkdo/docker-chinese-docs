@@ -2,7 +2,14 @@
 linkTitle: ACP
 title: ACP 集成
 description: 将你的编辑器或 IDE 配置为使用 cagent 代理作为编程助手
-keywords: [cagent, acp, editor, ide, neovim, zed, integration]
+keywords:
+- cagent
+- acp
+- editor
+- ide
+- neovim
+- zed
+- integration
 weight: 40
 ---
 

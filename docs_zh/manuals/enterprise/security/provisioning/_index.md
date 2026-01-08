@@ -5,20 +5,20 @@ title: 配置用户
 linkTitle: 配置
 weight: 20
 aliases:
- - /security/for-admins/provisioning/
+- /security/for-admins/provisioning/
 grid:
-  - title: "即时 (JIT) 配置"
-    description: "设置首次登录时自动创建用户。适用于设置要求简单的较小团队。"
-    icon: "schedule"
-    link: "just-in-time/"
-  - title: "SCIM 配置"
-    description: "在您的 IdP 和 Docker 之间启用持续的用户数据同步。适用于大型组织。"
-    icon: "sync"
-    link: "scim/"
-  - title: "组映射"
-    description: "使用 IdP 组配置基于角色的访问控制。适用于严格的访问控制要求。"
-    icon: "group"
-    link: "group-mapping/"
+- title: 即时 (JIT) 配置
+  description: 设置首次登录时自动创建用户。适用于设置要求简单的较小团队。
+  icon: schedule
+  link: just-in-time/
+- title: SCIM 配置
+  description: 在您的 IdP 和 Docker 之间启用持续的用户数据同步。适用于大型组织。
+  icon: sync
+  link: scim/
+- title: 组映射
+  description: 使用 IdP 组配置基于角色的访问控制。适用于严格的访问控制要求。
+  icon: group
+  link: group-mapping/
 ---
 
 {{< summary-bar feature_name="SSO" >}}

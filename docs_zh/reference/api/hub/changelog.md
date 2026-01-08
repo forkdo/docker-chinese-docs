@@ -7,7 +7,7 @@ weight: 2
 toc_min: 1
 toc_max: 2
 aliases:
-  - /reference/api/hub/latest-changelog/
+- /reference/api/hub/latest-changelog/
 ---
 
 在这里，您可以了解 Docker Service API 的最新变更、新功能、错误修复和已知问题。

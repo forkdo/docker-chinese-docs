@@ -4,8 +4,8 @@ title: 绑定挂载
 weight: 20
 keywords: storage, persistence, data persistence, mounts, bind mounts
 aliases:
-  - /engine/admin/volumes/bind-mounts/
-  - /storage/bind-mounts/
+- /engine/admin/volumes/bind-mounts/
+- /storage/bind-mounts/
 ---
 
 当您使用绑定挂载时，主机上的文件或目录会从主机挂载到容器中。相比之下，当您使用卷时，会在主机上的 Docker 存储目录中创建一个新目录，Docker 会管理该目录的内容。

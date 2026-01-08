@@ -4,7 +4,7 @@ keywords: Docker Extensions, Docker Desktop, Linux, Mac, Windows,
 title: 非 Marketplace 扩展
 weight: 20
 aliases:
- - /desktop/extensions/non-marketplace/
+- /desktop/extensions/non-marketplace/
 ---
 
 ## 安装未在 Marketplace 中提供的扩展

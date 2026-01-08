@@ -1,9 +1,7 @@
 ---
 title: Docker 工作坊概览
 linkTitle: Docker 工作坊
-keywords: docker basics, how to start a docker container, container settings, setup
-  docker, how to setup docker, setting up docker, docker container guide, how to get
-  started with docker
+keywords: docker basics, how to start a docker container, container settings, setup docker, how to setup docker, setting up docker, docker container guide, how to get started with docker
 description: 在本工作坊中学习 Docker 基础知识。你将了解容器、镜像，以及如何将你的第一个应用容器化。
 aliases:
 - /guides/get-started/

@@ -1,10 +1,10 @@
 ---
-title: "接口：ExecProcess"
+title: 接口：ExecProcess
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecProcess/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecProcess/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/ExecProcess/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/ExecProcess/
 ---
 
 **`Since`**

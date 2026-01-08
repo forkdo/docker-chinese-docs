@@ -3,28 +3,28 @@ title: Docker Engine API
 description: 了解如何使用您选择的语言通过 Docker Engine API 和 SDK 进行开发。
 keywords: developing, api, Docker Engine API, API versions, SDK versions
 aliases:
-  - /reference/api/docker_remote_api/
-  - /reference/api/docker_remote_api_v1.0/
-  - /reference/api/docker_remote_api_v1.1/
-  - /reference/api/docker_remote_api_v1.2/
-  - /reference/api/docker_remote_api_v1.3/
-  - /reference/api/docker_remote_api_v1.4/
-  - /reference/api/docker_remote_api_v1.5/
-  - /reference/api/docker_remote_api_v1.6/
-  - /reference/api/docker_remote_api_v1.7/
-  - /reference/api/docker_remote_api_v1.8/
-  - /reference/api/docker_remote_api_v1.9/
-  - /reference/api/docker_remote_api_v1.10/
-  - /reference/api/docker_remote_api_v1.11/
-  - /reference/api/docker_remote_api_v1.12/
-  - /reference/api/docker_remote_api_v1.13/
-  - /reference/api/docker_remote_api_v1.14/
-  - /reference/api/docker_remote_api_v1.15/
-  - /reference/api/docker_remote_api_v1.16/
-  - /reference/api/docker_remote_api_v1.17/
-  - /engine/reference/api/
-  - /engine/reference/api/docker_remote_api/
-  - /engine/api/
+- /reference/api/docker_remote_api/
+- /reference/api/docker_remote_api_v1.0/
+- /reference/api/docker_remote_api_v1.1/
+- /reference/api/docker_remote_api_v1.2/
+- /reference/api/docker_remote_api_v1.3/
+- /reference/api/docker_remote_api_v1.4/
+- /reference/api/docker_remote_api_v1.5/
+- /reference/api/docker_remote_api_v1.6/
+- /reference/api/docker_remote_api_v1.7/
+- /reference/api/docker_remote_api_v1.8/
+- /reference/api/docker_remote_api_v1.9/
+- /reference/api/docker_remote_api_v1.10/
+- /reference/api/docker_remote_api_v1.11/
+- /reference/api/docker_remote_api_v1.12/
+- /reference/api/docker_remote_api_v1.13/
+- /reference/api/docker_remote_api_v1.14/
+- /reference/api/docker_remote_api_v1.15/
+- /reference/api/docker_remote_api_v1.16/
+- /reference/api/docker_remote_api_v1.17/
+- /engine/reference/api/
+- /engine/reference/api/docker_remote_api/
+- /engine/api/
 ---
 
 Docker 提供了一个用于与 Docker 守护进程交互的 API（称为 Docker Engine API），以及用于 Go 和 Python 的 SDK。这些 SDK 让您可以高效地构建和扩展 Docker 应用和解决方案。如果 Go 或 Python 不适合您，您可以直接使用 Docker Engine API。

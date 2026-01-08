@@ -1,11 +1,12 @@
 ---
 title: 过滤命令
 weight: 30
-description: |
-  在 CLI 中使用过滤功能，选择性地包含与定义的模式匹配的资源。
+description: '在 CLI 中使用过滤功能，选择性地包含与定义的模式匹配的资源。
+
+  '
 keywords: cli, filter, commands, output, include, exclude
 aliases:
-  - /config/filter/
+- /config/filter/
 ---
 
 您可以使用 `--filter` 标志来限定命令的作用范围。使用过滤时，命令仅包含与指定模式匹配的条目。

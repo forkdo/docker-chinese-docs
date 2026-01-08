@@ -2,10 +2,11 @@
 description: 查找 Docker Desktop 的已知问题
 keywords: mac, troubleshooting, known issues, Docker Desktop
 title: 已知问题
-tags: [ Troubleshooting ]
+tags:
+- Troubleshooting
 weight: 20
 aliases:
- - /desktop/troubleshoot/known-issues/
+- /desktop/troubleshoot/known-issues/
 ---
 
 {{< tabs >}}

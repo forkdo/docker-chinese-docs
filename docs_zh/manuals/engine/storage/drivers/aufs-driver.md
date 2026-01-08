@@ -4,7 +4,7 @@ keywords: '容器, 存储, 驱动程序, AUFS '
 title: AUFS 存储驱动程序
 sitemap: false
 aliases:
-  - /storage/storagedriver/aufs-driver/
+- /storage/storagedriver/aufs-driver/
 ---
 
 > **已弃用**

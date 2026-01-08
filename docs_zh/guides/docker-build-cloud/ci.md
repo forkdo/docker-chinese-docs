@@ -1,5 +1,5 @@
 ---
-title: "演示：在 CI 中使用 Docker Build Cloud"
+title: 演示：在 CI 中使用 Docker Build Cloud
 description: 了解如何在 CI 中使用 Docker Build Cloud 更快地构建您的应用程序。
 weight: 30
 ---

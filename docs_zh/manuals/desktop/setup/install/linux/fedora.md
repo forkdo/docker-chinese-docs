@@ -1,7 +1,6 @@
 ---
 description: 在 Fedora 上安装 Docker Desktop 的说明
-keywords: fedora, rpm, 更新安装, 卸载, 升级, 更新, linux, desktop,
-  docker desktop, docker desktop for linux, dd4l
+keywords: fedora, rpm, 更新安装, 卸载, 升级, 更新, linux, desktop, docker desktop, docker desktop for linux, dd4l
 title: 在 Fedora 上安装 Docker Desktop
 linkTitle: Fedora
 weight: 30

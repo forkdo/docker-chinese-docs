@@ -3,8 +3,8 @@ title: 多容器应用
 weight: 5
 keywords: 概念, build, images, container, docker desktop
 description: 本概念页面将向你介绍多容器应用的重要性，以及它与单容器应用的区别
-aliases: 
- - /guides/docker-concepts/running-containers/multi-container-applications/
+aliases:
+- /guides/docker-concepts/running-containers/multi-container-applications/
 ---
 
 {{< youtube-embed 1jUwR6F9hvM >}}

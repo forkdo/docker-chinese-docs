@@ -5,3 +5,4 @@ service: minecraft
 aliases:
 - /samples/minecraft/
 ---
+

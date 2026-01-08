@@ -1,21 +1,22 @@
 ---
 title: 角色与权限
 linkTitle: 角色与权限
-description: &desc 使用 Docker 的角色系统控制对内容、注册表和组织管理的访问权限
+description: 使用 Docker 的角色系统控制对内容、注册表和组织管理的访问权限
 keywords: roles, permissions, custom roles, core roles, access control, organization management, docker hub, admin console, security
-tags: [admin]
+tags:
+- admin
 aliases:
-  - /admin/organization/roles/
-  - /security/for-admins/roles-and-permissions/
+- /admin/organization/roles/
+- /security/for-admins/roles-and-permissions/
 grid:
-  - title: "核心角色"
-    description: 了解 Docker 内置的 Member、Editor 和 Owner 角色及其预定义权限。
-    icon: "admin_panel_settings"
-    link: /enterprise/security/roles-and-permissions/core-roles/
-  - title: "自定义角色"
-    description: 创建符合组织特定需求的定制化权限组合。
-    icon: "tune"
-    link: /enterprise/security/roles-and-permissions/custom-roles/
+- title: 核心角色
+  description: 了解 Docker 内置的 Member、Editor 和 Owner 角色及其预定义权限。
+  icon: admin_panel_settings
+  link: /enterprise/security/roles-and-permissions/core-roles/
+- title: 自定义角色
+  description: 创建符合组织特定需求的定制化权限组合。
+  icon: tune
+  link: /enterprise/security/roles-and-permissions/custom-roles/
 weight: 40
 ---
 

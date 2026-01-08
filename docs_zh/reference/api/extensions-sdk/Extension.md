@@ -1,10 +1,10 @@
 ---
-title: "接口: Extension"
+title: '接口: Extension'
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/Extension/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/Extension/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/Extension/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/Extension/
 ---
 
 **`Since`**

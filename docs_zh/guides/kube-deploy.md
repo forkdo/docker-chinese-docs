@@ -3,11 +3,13 @@ title: 部署到 Kubernetes
 keywords: kubernetes, pods, deployments, kubernetes services
 description: 了解如何在 Kubernetes 上描述和部署一个简单的应用程序。
 aliases:
-  - /get-started/kube-deploy/
-  - /guides/deployment-orchestration/kube-deploy/
-summary: |
-  了解如何使用 Kubernetes 部署和编排 Docker 容器。
-tags: [deploy]
+- /get-started/kube-deploy/
+- /guides/deployment-orchestration/kube-deploy/
+summary: '了解如何使用 Kubernetes 部署和编排 Docker 容器。
+
+  '
+tags:
+- deploy
 params:
   time: 10 分钟
 ---

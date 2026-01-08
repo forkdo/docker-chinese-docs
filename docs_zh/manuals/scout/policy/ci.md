@@ -1,8 +1,10 @@
 ---
 title: 在 CI 中评估策略合规性
-description: |
-  配置你的持续集成流水线，当镜像的策略评估结果比基线更差时
+description: '配置你的持续集成流水线，当镜像的策略评估结果比基线更差时
+
   使流水线失败
+
+  '
 keywords: scout, supply chain, policy, ci
 ---
 

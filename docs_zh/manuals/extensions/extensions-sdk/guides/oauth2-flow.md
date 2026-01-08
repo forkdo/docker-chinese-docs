@@ -3,8 +3,8 @@ title: 身份验证
 description: Docker 扩展 OAuth 2.0 流程
 keywords: Docker, extensions, sdk, OAuth 2.0
 aliases:
- - /desktop/extensions-sdk/dev/oauth2-flow/
- - /desktop/extensions-sdk/guides/oauth2-flow/
+- /desktop/extensions-sdk/dev/oauth2-flow/
+- /desktop/extensions-sdk/guides/oauth2-flow/
 ---
 
 > [!NOTE]

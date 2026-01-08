@@ -33,7 +33,7 @@ grid_core:
   link: /billing/3d-secure/
   icon: wallet
 aliases:
-  - /billing/docker-hub-pricing/
+- /billing/docker-hub-pricing/
 ---
 
 使用本部分中的资源来管理 Docker 订阅的账单和支付。

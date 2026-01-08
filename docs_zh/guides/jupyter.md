@@ -3,12 +3,15 @@ description: 使用 JupyterLab 和 Docker 运行、开发和共享数据科学�
 keywords: getting started, jupyter, notebook, python, jupyterlab, data science
 title: 使用 JupyterLab 进行数据科学
 toc_max: 2
-summary: |
-  使用 Docker 运行 Jupyter notebook。
-tags: [data-science]
-languages: [python]
+summary: '使用 Docker 运行 Jupyter notebook。
+
+  '
+tags:
+- data-science
+languages:
+- python
 aliases:
-  - /guides/use-case/jupyter/
+- /guides/use-case/jupyter/
 params:
   time: 20 minutes
 ---

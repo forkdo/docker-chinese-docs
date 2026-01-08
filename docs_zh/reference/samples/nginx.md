@@ -5,3 +5,4 @@ service: nginx
 aliases:
 - /samples/nginx/
 ---
+

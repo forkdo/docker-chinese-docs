@@ -4,8 +4,8 @@ weight: 3
 keywords: concepts, build, images, container, docker desktop
 description: 本概念页面将向您介绍 Docker 中数据持久化的重要性
 aliases:
- - /guides/walkthroughs/persist-data/
- - /guides/docker-concepts/running-containers/persisting-container-data/
+- /guides/walkthroughs/persist-data/
+- /guides/docker-concepts/running-containers/persisting-container-data/
 ---
 
 {{< youtube-embed 10_2BjqB_Ls >}}

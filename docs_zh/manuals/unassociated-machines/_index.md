@@ -6,8 +6,8 @@ sitemap: false
 pagefind_exclude: true
 noindex: true
 params:
-    sidebar:
-        group: Enterprise
+  sidebar:
+    group: Enterprise
 ---
 
 {{% restricted title="关于未关联的机器" %}}

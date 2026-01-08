@@ -9,7 +9,7 @@ params:
       text: Beta
     group: AI
 aliases:
- - /desktop/features/gordon/
+- /desktop/features/gordon/
 ---
 
 {{< summary-bar feature_name="Ask Gordon" >}}

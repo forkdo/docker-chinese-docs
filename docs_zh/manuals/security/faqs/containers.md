@@ -4,7 +4,8 @@ linkTitle: Container
 description: 关于 Docker 容器安全性和隔离性的常见问题
 keywords: container security, docker desktop isolation, enhanced container isolation, file sharing
 weight: 20
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /faq/security/containers/
 ---

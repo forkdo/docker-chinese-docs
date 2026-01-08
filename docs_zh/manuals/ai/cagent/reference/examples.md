@@ -1,7 +1,10 @@
 ---
 title: 示例
 description: 从 agent 示例中获取灵感
-keywords: [ai, agent, cagent]
+keywords:
+- ai
+- agent
+- cagent
 weight: 40
 ---
 

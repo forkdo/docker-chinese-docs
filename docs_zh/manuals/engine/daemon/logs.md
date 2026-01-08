@@ -3,7 +3,7 @@ title: 读取守护程序日志
 description: 如何读取 Docker 守护程序日志并使用 SIGUSR1 强制生成堆栈跟踪以进行调试
 keywords: docker, daemon, configuration, troubleshooting, logging, debug, stack trace, SIGUSR1, signal, goroutine dump, crash diagnostics
 aliases:
-  - /config/daemon/logs/
+- /config/daemon/logs/
 ---
 
 守护程序日志可以帮助你诊断问题。根据操作系统配置和使用的日志子系统，日志可能保存在以下几个位置之一：

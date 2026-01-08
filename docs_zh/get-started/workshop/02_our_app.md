@@ -1,18 +1,22 @@
 ---
 title: 容器化应用程序
 weight: 20
-linkTitle: "第 1 部分：容器化应用程序"
-keywords: |
-  dockerfile 示例, 容器化应用程序, 运行 docker file, 运行
+linkTitle: 第 1 部分：容器化应用程序
+keywords: 'dockerfile 示例, 容器化应用程序, 运行 docker file, 运行
+
   docker file, 如何运行 dockerfile, dockerfile 示例, 如何创建 docker 容器,
+
   创建 dockerfile, 简单 dockerfile, 创建容器
-description: |
-  按照本分步指南，学习如何使用 Docker 创建和运行容器化应用程序
+
+  '
+description: '按照本分步指南，学习如何使用 Docker 创建和运行容器化应用程序
+
+  '
 aliases:
-  - /get-started/part2/
-  - /get-started/02_our_app/
-  - /guides/workshop/02_our_app/
-  - /guides/walkthroughs/containerize-your-app/
+- /get-started/part2/
+- /get-started/02_our_app/
+- /guides/workshop/02_our_app/
+- /guides/walkthroughs/containerize-your-app/
 ---
 
 在本指南的剩余部分，您将使用一个运行在 Node.js 上的简单待办事项列表管理器。如果您不熟悉 Node.js，也不必担心。本指南不需要任何 JavaScript 前期经验。

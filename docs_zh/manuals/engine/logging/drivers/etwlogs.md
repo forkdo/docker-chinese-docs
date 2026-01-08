@@ -3,8 +3,8 @@ description: 学习如何在 Docker Engine 中使用 ETW（Event Tracing for Win
 keywords: ETW, docker, logging, driver
 title: ETW 日志驱动程序
 aliases:
-  - /engine/admin/logging/etwlogs/
-  - /config/containers/logging/etwlogs/
+- /engine/admin/logging/etwlogs/
+- /config/containers/logging/etwlogs/
 ---
 
 Event Tracing for Windows (ETW) 日志驱动程序将容器日志作为 ETW 事件转发。

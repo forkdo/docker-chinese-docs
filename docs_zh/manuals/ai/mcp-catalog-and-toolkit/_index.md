@@ -11,30 +11,30 @@ weight: 10
 description: 了解 Docker Hub 上的 Docker MCP 目录
 keywords: Docker, ai, mcp servers, ai agents, extension, docker desktop, llm, docker hub
 grid:
- - title: 开始使用 MCP Toolkit
-   description: 了解如何快速安装和使用 MCP Toolkit 来设置服务器和客户端。
-   icon: explore
-   link: /ai/mcp-catalog-and-toolkit/get-started/
- - title: MCP Catalog
-   description: 了解 MCP Catalog 的优势、使用方法以及如何做出贡献。
-   icon: hub
-   link: /ai/mcp-catalog-and-toolkit/catalog/
- - title: MCP Toolkit
-   description: 了解用于管理 MCP 服务器和客户端的 MCP Toolkit。
-   icon: /icons/toolkit.svg
-   link: /ai/mcp-catalog-and-toolkit/toolkit/
- - title: Dynamic MCP
-   description: 使用自然语言按需发现并添加 MCP 服务器。
-   icon: search
-   link: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
- - title: MCP Gateway
-   description: 了解为 MCP Toolkit 提供支持的底层技术。
-   icon: developer_board
-   link: /ai/mcp-catalog-and-toolkit/mcp-gateway/
- - title: Docker Hub MCP server
-   description: 探索用于搜索镜像、管理仓库等的 Docker Hub 服务器。
-   icon: device_hub
-   link: /ai/mcp-catalog-and-toolkit/hub-mcp/
+- title: 开始使用 MCP Toolkit
+  description: 了解如何快速安装和使用 MCP Toolkit 来设置服务器和客户端。
+  icon: explore
+  link: /ai/mcp-catalog-and-toolkit/get-started/
+- title: MCP Catalog
+  description: 了解 MCP Catalog 的优势、使用方法以及如何做出贡献。
+  icon: hub
+  link: /ai/mcp-catalog-and-toolkit/catalog/
+- title: MCP Toolkit
+  description: 了解用于管理 MCP 服务器和客户端的 MCP Toolkit。
+  icon: /icons/toolkit.svg
+  link: /ai/mcp-catalog-and-toolkit/toolkit/
+- title: Dynamic MCP
+  description: 使用自然语言按需发现并添加 MCP 服务器。
+  icon: search
+  link: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
+- title: MCP Gateway
+  description: 了解为 MCP Toolkit 提供支持的底层技术。
+  icon: developer_board
+  link: /ai/mcp-catalog-and-toolkit/mcp-gateway/
+- title: Docker Hub MCP server
+  description: 探索用于搜索镜像、管理仓库等的 Docker Hub 服务器。
+  icon: device_hub
+  link: /ai/mcp-catalog-and-toolkit/hub-mcp/
 ---
 
 {{< summary-bar feature_name="Docker MCP Catalog and Toolkit" >}}

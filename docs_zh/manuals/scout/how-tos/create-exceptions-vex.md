@@ -3,7 +3,7 @@ title: 使用 VEX 创建例外
 description: 使用 VEX 文档为镜像中的漏洞创建例外。
 keywords: Docker, vulnerability, exception, create, VEX
 aliases:
-  - /scout/guides/vex/
+- /scout/guides/vex/
 ---
 
 Vulnerability Exploitability eXchange (VEX) 是一种标准格式，用于记录软件包或产品上下文中的漏洞。Docker Scout 支持 VEX 文档来为镜像中的漏洞创建[例外](/manuals/scout/explore/exceptions.md)。

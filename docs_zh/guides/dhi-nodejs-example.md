@@ -1,16 +1,18 @@
 ---
 title: 将 Node.js 应用迁移到 DHI
-summary: |
-  示例展示如何将 Node.js 应用程序迁移到 Docker Hardened Images
+summary: '示例展示如何将 Node.js 应用程序迁移到 Docker Hardened Images
+
+  '
 type: redirect
 target: /dhi/migration/examples/node/
-tags: [dhi]
-
+tags:
+- dhi
 params:
   time: 10 分钟
   featured: true
   image: /images/guides/dhi-examples-nodejs.webp
 ---
+
 # 将 Node.js 应用迁移到 Docker Hardened Images
 
 本指南将引导您完成将 Node.js 应用程序迁移到 Docker Hardened Images (DHI) 的过程。DHI 提供了增强的安全性和合规性功能，同时保持与标准 Docker 镜像的兼容性。

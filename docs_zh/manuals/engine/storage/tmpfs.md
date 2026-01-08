@@ -4,8 +4,8 @@ title: tmpfs 挂载
 weight: 30
 keywords: storage, persistence, data persistence, tmpfs
 aliases:
-  - /engine/admin/volumes/tmpfs/
-  - /storage/tmpfs/
+- /engine/admin/volumes/tmpfs/
+- /storage/tmpfs/
 ---
 
 [Volumes](volumes.md) 和 [bind mounts](bind-mounts.md) 允许你在主机和容器之间共享文件，以便在容器停止后仍能保留数据。

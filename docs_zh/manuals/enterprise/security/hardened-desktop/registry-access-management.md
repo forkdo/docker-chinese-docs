@@ -2,13 +2,14 @@
 title: 注册表访问管理
 description: 使用注册表访问管理控制对已批准容器注册表的访问，确保 Docker Desktop 安全使用
 keywords: registry access management, container registry, security controls, docker business, admin controls
-tags: [admin]
+tags:
+- admin
 aliases:
- - /desktop/hardened-desktop/registry-access-management/
- - /admin/organization/registry-access/
- - /docker-hub/registry-access-management/
- - /security/for-admins/registry-access-management/
- - /security/for-admins/hardened-desktop/registry-access-management/
+- /desktop/hardened-desktop/registry-access-management/
+- /admin/organization/registry-access/
+- /docker-hub/registry-access-management/
+- /security/for-admins/registry-access-management/
+- /security/for-admins/hardened-desktop/registry-access-management/
 weight: 30
 ---
 

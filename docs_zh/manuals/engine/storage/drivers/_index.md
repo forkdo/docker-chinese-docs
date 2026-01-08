@@ -4,9 +4,9 @@ keywords: container, storage, driver, btrfs, overlayfs, vfs, zfs, containerd
 title: 存储驱动程序
 weight: 40
 aliases:
-  - /storage/storagedriver/imagesandcontainers/
-  - /storage/storagedriver/
-  - /engine/userguide/storagedriver/imagesandcontainers/
+- /storage/storagedriver/imagesandcontainers/
+- /storage/storagedriver/
+- /engine/userguide/storagedriver/imagesandcontainers/
 ---
 
 > [!NOTE]

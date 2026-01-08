@@ -3,7 +3,8 @@ description: Docker Desktop for Linux 的常见问题解答
 keywords: desktop, linux, faqs
 title: Docker Desktop for Linux 常见问题解答
 linkTitle: Linux
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /desktop/linux/space/
 - /desktop/faqs/linuxfaqs/

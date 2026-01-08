@@ -24,9 +24,9 @@ grid_admins:
   description: 控制开发者可以从 Docker Hub 拉取的镜像。
   icon: photo_library
   link: /enterprise/security/hardened-desktop/image-access-management/
-- title: "气隙容器"
+- title: 气隙容器
   description: 限制容器访问不需要的网络资源。
-  icon: "vpn_lock"
+  icon: vpn_lock
   link: /enterprise/security/hardened-desktop/air-gapped-containers/
 - title: 强制登录
   description: 为您的团队和组织成员配置登录。

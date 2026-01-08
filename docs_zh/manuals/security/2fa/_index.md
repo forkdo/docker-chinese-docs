@@ -5,10 +5,10 @@ description: 在您的 Docker 账户上启用或禁用双因素认证，以增�
 keywords: two-factor authentication, 2FA, docker hub security, account security, TOTP, authenticator app, disable 2FA
 weight: 20
 aliases:
- - /docker-hub/2fa/
- - /security/2fa/disable-2fa/
- - /security/for-developers/2fa/
- - /security/for-developers/2fa/disable-2fa/
+- /docker-hub/2fa/
+- /security/2fa/disable-2fa/
+- /security/for-developers/2fa/
+- /security/for-developers/2fa/disable-2fa/
 ---
 
 双因素认证 (2FA) 为您的 Docker 账户增加了一层重要的安全保护，它要求在登录时除了密码之外，还需要一个独特的安全码。即使您的密码被泄露，这也能防止未经授权的访问。

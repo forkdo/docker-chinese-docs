@@ -3,8 +3,8 @@ linkTitle: 合并
 title: 合并 Compose 文件
 description: 了解 Docker Compose 如何合并多个文件并解决冲突
 keywords: compose, compose specification, merge, compose file reference
-aliases: 
- - /compose/compose-file/13-merge/
+aliases:
+- /compose/compose-file/13-merge/
 weight: 100
 ---
 

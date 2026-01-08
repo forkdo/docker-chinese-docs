@@ -1,10 +1,11 @@
 ---
 title: 替代容器运行时
-description: |
-  Docker Engine 默认使用 runc 作为容器运行时，但您可以通过 CLI 或配置守护进程来指定替代运行时。
+description: 'Docker Engine 默认使用 runc 作为容器运行时，但您可以通过 CLI 或配置守护进程来指定替代运行时。
+
+  '
 keywords: engine, runtime, containerd, runtime v2, shim
 aliases:
-  - /engine/alternative-runtimes/
+- /engine/alternative-runtimes/
 ---
 
 Docker Engine 使用 containerd 管理容器生命周期，包括创建、启动和停止容器。默认情况下，containerd 使用 runc 作为其容器运行时。

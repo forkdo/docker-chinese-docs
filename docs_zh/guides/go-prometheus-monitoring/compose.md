@@ -1,7 +1,7 @@
 ---
 title: 使用 Docker Compose 连接服务
 linkTitle: 使用 Docker Compose 连接服务
-weight: 30 #
+weight: 30
 keywords: go, golang, prometheus, grafana, containerize, monitor
 description: 了解如何使用 Docker Compose 连接服务，以通过 Prometheus 和 Grafana 监控 Golang 应用程序。
 ---

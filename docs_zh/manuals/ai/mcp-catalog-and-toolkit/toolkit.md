@@ -5,8 +5,8 @@ description: 使用 MCP Toolkit 设置 MCP 服务器和 MCP 客户端。
 keywords: Docker MCP Toolkit, MCP server, MCP client, AI agents
 weight: 30
 aliases:
-  - /desktop/features/gordon/mcp/gordon-mcp-server/
-  - /ai/gordon/mcp/gordon-mcp-server/
+- /desktop/features/gordon/mcp/gordon-mcp-server/
+- /ai/gordon/mcp/gordon-mcp-server/
 ---
 
 {{< summary-bar feature_name="Docker MCP Toolkit" >}}

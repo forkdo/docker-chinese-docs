@@ -3,9 +3,9 @@ title: 扩展 API 参考
 linkTitle: 扩展 API
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
-aliases: 
- - /desktop/extensions-sdk/dev/api/reference/README/
- - /extensions/extensions-sdk/dev/api/reference/README/
+aliases:
+- /desktop/extensions-sdk/dev/api/reference/README/
+- /extensions/extensions-sdk/dev/api/reference/README/
 ---
 
 ## 仪表板接口

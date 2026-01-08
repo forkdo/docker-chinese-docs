@@ -4,12 +4,12 @@ keywords: dockerd, daemon, configuration, proxy, networking, http_proxy, https_p
 title: 守护进程代理配置
 weight: 30
 aliases:
-  - /articles/host_integration/
-  - /articles/systemd/
-  - /engine/admin/systemd/
-  - /engine/articles/systemd/
-  - /config/daemon/systemd/
-  - /config/daemon/proxy/
+- /articles/host_integration/
+- /articles/systemd/
+- /engine/admin/systemd/
+- /engine/articles/systemd/
+- /config/daemon/systemd/
+- /config/daemon/proxy/
 ---
 
 <a name="httphttps-proxy"><!-- included for deep-links to old section --></a>

@@ -4,8 +4,7 @@ keywords: Docker Hub, limit, usage
 title: Docker Hub 使用情况和限制
 linkTitle: 使用情况和限制
 weight: 30
-aliases:
-  /docker-hub/download-rate-limit/
+aliases: /docker-hub/download-rate-limit/
 ---
 
 下表概述了每种用户类型的包含使用情况和限制，需遵守合理使用原则：

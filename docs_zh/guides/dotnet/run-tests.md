@@ -5,8 +5,8 @@ weight: 30
 keywords: .NET, test
 description: 了解如何在容器中运行 .NET 测试。
 aliases:
-  - /language/dotnet/run-tests/
-  - /guides/language/dotnet/run-tests/
+- /language/dotnet/run-tests/
+- /guides/language/dotnet/run-tests/
 ---
 
 ## 先决条件

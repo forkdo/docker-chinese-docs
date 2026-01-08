@@ -4,8 +4,8 @@ linkTitle: Metadata
 description: Docker 扩展元数据
 keywords: Docker, extensions, sdk, metadata
 aliases:
- - /desktop/extensions-sdk/extensions/METADATA
- - /desktop/extensions-sdk/architecture/metadata/
+- /desktop/extensions-sdk/extensions/METADATA
+- /desktop/extensions-sdk/architecture/metadata/
 ---
 
 ## metadata.json 文件

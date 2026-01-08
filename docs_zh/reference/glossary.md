@@ -1,6 +1,6 @@
 ---
 title: 术语表
-description: &desc Docker 相关术语词汇表
+description: Docker 相关术语词汇表
 keywords: glossary, docker, terms, definitions
 notoc: true
 layout: glossary

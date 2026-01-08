@@ -1,14 +1,13 @@
 ---
 title: Macvlan 网络驱动
-description:
-  关于如何使用 Macvlan 让容器在网络中表现为物理设备的全部内容
+description: 关于如何使用 Macvlan 让容器在网络中表现为物理设备的全部内容
 keywords: network, macvlan, standalone
 aliases:
-  - /config/containers/macvlan/
-  - /engine/userguide/networking/get-started-macvlan/
-  - /network/macvlan/
-  - /network/drivers/macvlan/
-  - /engine/network/tutorials/macvlan/
+- /config/containers/macvlan/
+- /engine/userguide/networking/get-started-macvlan/
+- /network/macvlan/
+- /network/drivers/macvlan/
+- /engine/network/tutorials/macvlan/
 ---
 
 某些应用程序（尤其是传统应用程序或监控网络流量的应用程序）需要直接连接到物理网络。在这种情况下，您可以使用 `macvlan` 网络驱动为每个容器的虚拟网络接口分配一个 MAC 地址，使其看起来像是直接连接到物理网络的物理网络接口。此时，您需要指定 Docker 主机上的一个物理接口用于 Macvlan，以及网络的子网和网关。您甚至可以使用不同的物理网络接口来隔离 Macvlan 网络。

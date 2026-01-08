@@ -5,7 +5,7 @@ weight: 10
 keywords: python, generative ai, genai, llm, neo4j, ollama, containerize, initialize, langchain, openai
 description: 了解如何容器化生成式 AI (GenAI) 应用程序。
 aliases:
-  - /guides/use-case/genai-pdf-bot/containerize/
+- /guides/use-case/genai-pdf-bot/containerize/
 ---
 
 ## 先决条件

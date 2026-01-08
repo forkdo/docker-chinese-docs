@@ -1,12 +1,16 @@
 ---
 title: 使用 Docker Buildx Bake 掌握多平台构建、测试等
 linkTitle: 掌握 Docker Buildx Bake
-description: >
-  学习如何使用 Buildx Bake 管理简单和复杂的构建配置。
-summary: >
-  学习使用 Buildx Bake 通过声明式配置自动化 Docker 构建和测试。
-tags: [devops]
-languages: [go]
+description: '学习如何使用 Buildx Bake 管理简单和复杂的构建配置。
+
+  '
+summary: '学习使用 Buildx Bake 通过声明式配置自动化 Docker 构建和测试。
+
+  '
+tags:
+- devops
+languages:
+- go
 params:
   time: 30 分钟
   image: /images/guides/bake.webp

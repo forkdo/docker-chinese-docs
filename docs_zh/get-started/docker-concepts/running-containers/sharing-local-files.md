@@ -2,9 +2,9 @@
 title: 与容器共享本地文件
 weight: 4
 keywords: concepts, images, container, docker desktop
-description: &desc 本概念页面将向您介绍 Docker 中可用的各种存储选项及其常见用途。
-aliases: 
- - /guides/docker-concepts/running-containers/sharing-local-files/
+description: 本概念页面将向您介绍 Docker 中可用的各种存储选项及其常见用途。
+aliases:
+- /guides/docker-concepts/running-containers/sharing-local-files/
 ---
 
 {{< youtube-embed 2dAzsVg3Dek >}}

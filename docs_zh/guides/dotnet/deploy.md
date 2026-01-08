@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, .net, local, development
 description: 了解如何部署应用程序
 aliases:
-  - /language/dotnet/deploy/
-  - /guides/language/dotnet/deploy/
+- /language/dotnet/deploy/
+- /guides/language/dotnet/deploy/
 ---
 
 ## 先决条件

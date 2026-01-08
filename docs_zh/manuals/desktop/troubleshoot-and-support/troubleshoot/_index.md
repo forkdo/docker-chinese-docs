@@ -1,22 +1,22 @@
 ---
-description:
-  了解如何诊断和排查 Docker Desktop 问题，以及如何查看日志。
+description: 了解如何诊断和排查 Docker Desktop 问题，以及如何查看日志。
 keywords: Linux, Mac, Windows, troubleshooting, logs, issues, Docker Desktop
 toc_max: 2
 title: 排查 Docker Desktop 问题
 linkTitle: 排查和诊断
 aliases:
-  - /desktop/linux/troubleshoot/
-  - /desktop/mac/troubleshoot/
-  - /desktop/windows/troubleshoot/
-  - /docker-for-mac/troubleshoot/
-  - /mackit/troubleshoot/
-  - /windows/troubleshoot/
-  - /docker-for-win/troubleshoot/
-  - /docker-for-windows/troubleshoot/
-  - /desktop/troubleshoot/overview/
-  - /desktop/troubleshoot/
-tags: [Troubleshooting]
+- /desktop/linux/troubleshoot/
+- /desktop/mac/troubleshoot/
+- /desktop/windows/troubleshoot/
+- /docker-for-mac/troubleshoot/
+- /mackit/troubleshoot/
+- /windows/troubleshoot/
+- /docker-for-win/troubleshoot/
+- /docker-for-windows/troubleshoot/
+- /desktop/troubleshoot/overview/
+- /desktop/troubleshoot/
+tags:
+- Troubleshooting
 weight: 10
 ---
 

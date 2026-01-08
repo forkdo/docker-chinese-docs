@@ -7,8 +7,8 @@ params:
   sidebar:
     group: Products
 aliases:
-  - /build/cloud/faq/
-  - /build/cloud/
+- /build/cloud/faq/
+- /build/cloud/
 ---
 
 {{< summary-bar feature_name="Docker Build Cloud" >}}

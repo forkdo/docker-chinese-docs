@@ -4,8 +4,8 @@ title: 存储
 weight: 20
 keywords: storage, persistence, data persistence, volumes, mounts, bind mounts, tmpfs
 aliases:
-  - /engine/admin/volumes/
-  - /storage/
+- /engine/admin/volumes/
+- /storage/
 ---
 
 Docker 存储涵盖两个不同的概念：

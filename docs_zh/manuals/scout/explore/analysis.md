@@ -1,11 +1,10 @@
 ---
 title: Docker Scout 镜像分析
-description:
-  Docker Scout 镜像分析提供镜像构成及其所含漏洞的详细视图
+description: Docker Scout 镜像分析提供镜像构成及其所含漏洞的详细视图
 keywords: scout, scanning, vulnerabilities, supply chain, security, analysis
 aliases:
-  - /scout/advanced-image-analysis/
-  - /scout/image-analysis/
+- /scout/advanced-image-analysis/
+- /scout/image-analysis/
 ---
 
 当您为仓库启用镜像分析时，

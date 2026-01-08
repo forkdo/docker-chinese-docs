@@ -4,7 +4,7 @@ linkTitle: Organization access tokens
 description: Create and manage organization access tokens to securely authenticate automated systems and CI/CD pipelines with Docker Hub
 keywords: organization access tokens, OAT, docker hub security, programmatic access, automation
 aliases:
- - /security/for-admins/access-tokens/
+- /security/for-admins/access-tokens/
 ---
 
 {{< summary-bar feature_name="OATs" >}}

@@ -2,8 +2,8 @@
 title: Docker
 description: Docker 扩展 API
 keywords: Docker, extensions, sdk, API
-aliases: 
- - /desktop/extensions-sdk/dev/api/docker/
+aliases:
+- /desktop/extensions-sdk/dev/api/docker/
 ---
 
 ## Docker 对象

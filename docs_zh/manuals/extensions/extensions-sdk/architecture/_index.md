@@ -3,8 +3,8 @@ title: 扩展架构
 linkTitle: 架构
 description: Docker 扩展架构
 keywords: Docker, extensions, sdk, metadata
-aliases: 
- - /desktop/extensions-sdk/architecture/
+aliases:
+- /desktop/extensions-sdk/architecture/
 weight: 50
 ---
 

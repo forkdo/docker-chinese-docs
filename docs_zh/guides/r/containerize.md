@@ -5,11 +5,10 @@ weight: 10
 keywords: R, 容器化, 初始化
 description: 了解如何容器化 R 应用程序。
 aliases:
-  - /language/R/build-images/
-  - /language/R/run-containers/
-  - /language/r/容器化/
-  - /guides/language/r/容器化/
-
+- /language/R/build-images/
+- /language/R/run-containers/
+- /language/r/容器化/
+- /guides/language/r/容器化/
 ---
 
 ## 先决条件

@@ -3,7 +3,7 @@ title: 扩展 UI API
 description: Docker 扩展开发概述
 keywords: Docker, extensions, sdk, development
 aliases:
- - /desktop/extensions-sdk/dev/api/overview/
+- /desktop/extensions-sdk/dev/api/overview/
 ---
 
 扩展 UI 运行在沙盒环境中，无法访问任何

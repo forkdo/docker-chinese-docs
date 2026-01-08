@@ -3,7 +3,7 @@ title: Docker CLI 的 OpenTelemetry
 description: 了解如何为 Docker 命令行捕获 OpenTelemetry 指标
 keywords: otel, opentelemetry, telemetry, traces, tracing, metrics, logs
 aliases:
-  - /config/otel/
+- /config/otel/
 ---
 
 {{< summary-bar feature_name="Docker CLI OpenTelemetry" >}}

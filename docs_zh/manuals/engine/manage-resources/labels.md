@@ -3,8 +3,8 @@ description: 了解标签（labels），一种用于管理 Docker 对象元数�
 keywords: labels, metadata, docker, annotations
 title: Docker 对象标签
 aliases:
-  - /engine/userguide/labels-custom-metadata/
-  - /config/labels-custom-metadata/
+- /engine/userguide/labels-custom-metadata/
+- /config/labels-custom-metadata/
 ---
 
 标签（Labels）是一种向 Docker 对象应用元数据的机制，这些对象包括：

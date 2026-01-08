@@ -4,13 +4,13 @@ keywords: what is a docker, docker daemon, why use docker, docker architecture, 
 title: 什么是 Docker？
 weight: 20
 aliases:
- - /introduction/understanding-docker/
- - /engine/userguide/basics/
- - /engine/introduction/understanding-docker/
- - /engine/understanding-docker/
- - /engine/docker-overview/
- - /get-started/overview/
- - /guides/docker-overview/
+- /introduction/understanding-docker/
+- /engine/userguide/basics/
+- /engine/introduction/understanding-docker/
+- /engine/understanding-docker/
+- /engine/docker-overview/
+- /get-started/overview/
+- /guides/docker-overview/
 ---
 
 Docker 是一个用于开发、交付和运行应用程序的开放平台。

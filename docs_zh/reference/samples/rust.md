@@ -5,3 +5,4 @@ service: rust
 aliases:
 - /samples/rust/
 ---
+

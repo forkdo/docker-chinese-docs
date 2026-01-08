@@ -5,3 +5,4 @@ service: wireguard
 aliases:
 - /samples/wireguard/
 ---
+

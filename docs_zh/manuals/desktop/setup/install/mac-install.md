@@ -14,7 +14,6 @@ aliases:
 - /desktop/mac/apple-silicon/
 - /desktop/install/mac-install/
 - /desktop/install/mac/
-
 ---
 
 > **Docker Desktop 条款**

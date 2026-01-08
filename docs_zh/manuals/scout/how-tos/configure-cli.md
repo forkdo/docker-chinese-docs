@@ -4,7 +4,7 @@ linkTitle: Docker Scout 环境变量
 description: 使用这些环境变量配置 Docker Scout CLI 命令的行为
 keywords: scout, supply chain, cli, environment, variables, env, vars, configure
 aliases:
-  - /scout/env-vars/
+- /scout/env-vars/
 ---
 
 以下环境变量可用于配置 Docker Scout CLI 命令，以及对应的 `docker/scout-cli` 容器镜像：

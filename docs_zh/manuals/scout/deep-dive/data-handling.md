@@ -1,12 +1,14 @@
 ---
 description: Docker Scout 如何处理镜像元数据
-keywords: |
-  scout, scanning, supply chain, security, purl, sbom, provenance, environment,
+keywords: 'scout, scanning, supply chain, security, purl, sbom, provenance, environment,
+
   materials, config, ports, labels, os, registry, timestamp, digest, layers,
+
   architecture, license, dependencies, base image
+
+  '
 title: Docker Scout 中的数据收集与存储
-aliases:
-  /scout/data-handling/
+aliases: /scout/data-handling/
 ---
 
 Docker Scout 的镜像分析通过收集您分析的容器镜像的元数据来工作。这些元数据存储在 Docker Scout 平台上。

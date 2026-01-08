@@ -2,13 +2,16 @@
 title: 使用容器进行开发
 keywords: concepts, build, images, container, docker desktop
 description: 本概念页面将指导您如何使用容器进行开发
-summary: |
-  学习如何运行您的第一个容器，通过 Docker 的强大功能获得实践经验。
+summary: '学习如何运行您的第一个容器，通过 Docker 的强大功能获得实践经验。
+
   我们将介绍如何在容器化环境中对后端和前端代码进行实时更改，
+
   确保无缝集成和测试。
+
+  '
 weight: 2
 aliases:
- - /guides/getting-started/develop-with-containers/
+- /guides/getting-started/develop-with-containers/
 ---
 
 {{< youtube-embed D0SDBrS3t9I >}}

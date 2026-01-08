@@ -3,8 +3,8 @@ title: 快速入门
 description: 快速构建扩展的指南
 keywords: quickstart, extensions
 aliases:
- - desktop/extensions-sdk/tutorials/initialize/
- - /desktop/extensions-sdk/quickstart/
+- desktop/extensions-sdk/tutorials/initialize/
+- /desktop/extensions-sdk/quickstart/
 weight: 20
 ---
 

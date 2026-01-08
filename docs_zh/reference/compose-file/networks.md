@@ -4,7 +4,7 @@ title: 在 Docker Compose 中定义和管理网络
 description: 了解如何使用 Docker Compose 中的顶层 networks 元素来配置和控制网络。
 keywords: compose, compose 规范, networks, compose 文件参考
 aliases:
- - /compose/compose-file/06-networks/
+- /compose/compose-file/06-networks/
 weight: 30
 ---
 

@@ -1,10 +1,12 @@
 ---
 title: 在开发环境中启动时使用架构和数据预填充数据库
-linktitle: 预填充数据库  
-description: &desc 在开发环境中启动时使用架构和数据预填充数据库
+linktitle: 预填充数据库
+description: 在开发环境中启动时使用架构和数据预填充数据库
 keywords: 预填充, 数据库, postgres, 容器支持的开发
-summary: *desc
-tags: [app-dev, databases]
+summary: 在开发环境中启动时使用架构和数据预填充数据库
+tags:
+- app-dev
+- databases
 params:
   time: 20 分钟
 ---

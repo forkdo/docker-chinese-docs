@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, kubernetes, python
 description: 学习如何使用 Kubernetes 进行本地开发
 aliases:
-  - /language/python/deploy/
-  - /guides/language/python/deploy/
+- /language/python/deploy/
+- /guides/language/python/deploy/
 ---
 
 ## 前提条件

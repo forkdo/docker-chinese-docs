@@ -1,9 +1,9 @@
 ---
 title: 使用 Docker secrets 管理敏感数据
 description: 如何安全地存储、检索和使用 Docker 服务的敏感数据
-keywords: swarm, secrets, credentials, sensitive strings, sensitive data, security,
-  encryption, encryption at rest
-tags: [Secrets]
+keywords: swarm, secrets, credentials, sensitive strings, sensitive data, security, encryption, encryption at rest
+tags:
+- Secrets
 ---
 
 ## 关于 secrets

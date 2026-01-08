@@ -1,10 +1,10 @@
 ---
-title: "接口: Exec"
+title: '接口: Exec'
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
-aliases: 
- - /desktop/extensions-sdk/dev/api/reference/interfaces/Exec/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/Exec/
+aliases:
+- /desktop/extensions-sdk/dev/api/reference/interfaces/Exec/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/Exec/
 ---
 
 ## 可调用类型

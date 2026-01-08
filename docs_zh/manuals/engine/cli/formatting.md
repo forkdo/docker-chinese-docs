@@ -4,8 +4,8 @@ keywords: format, formatting, output, templates, log
 title: 格式化命令和日志输出
 weight: 40
 aliases:
-  - /engine/admin/formatting/
-  - /config/formatting/
+- /engine/admin/formatting/
+- /config/formatting/
 ---
 
 Docker 支持 [Go templates](https://golang.org/pkg/text/template/)，您可以用它来操作某些命令和日志驱动的输出格式。

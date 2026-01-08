@@ -1,10 +1,10 @@
 ---
-title: "接口：Host"
+title: 接口：Host
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
-aliases: 
- - /desktop/extensions-sdk/dev/api/reference/interfaces/Host/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/Host/
+aliases:
+- /desktop/extensions-sdk/dev/api/reference/interfaces/Host/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/Host/
 ---
 
 **`Since`**

@@ -2,11 +2,13 @@
 description: 了解如何在本地容器化数据库中运行、连接和持久化数据。
 keywords: database, mysql
 title: 使用容器化数据库
-summary: |
-  了解如何有效地将数据库作为容器运行和管理。
-tags: [databases]
+summary: '了解如何有效地将数据库作为容器运行和管理。
+
+  '
+tags:
+- databases
 aliases:
-  - /guides/use-case/databases/
+- /guides/use-case/databases/
 params:
   time: 20 minutes
 ---

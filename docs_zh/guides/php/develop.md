@@ -5,8 +5,8 @@ weight: 20
 keywords: php, development
 description: 了解如何使用容器在本地开发您的 PHP 应用程序。
 aliases:
-  - /language/php/develop/
-  - /guides/language/php/develop/
+- /language/php/develop/
+- /guides/language/php/develop/
 ---
 
 ## 先决条件

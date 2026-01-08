@@ -4,12 +4,12 @@ linktitle: 功能
 description: Docker Hardened Images 为每个应用提供完全透明、最小攻击面和企业级安全——免费且开源。
 weight: 5
 aliases:
-  - /dhi/features/secure/
-  - /dhi/features/integration/
-  - /dhi/features/support/
-  - /dhi/features/patching/
-  - /dhi/features/flexible/
-  - /dhi/features/helm/
+- /dhi/features/secure/
+- /dhi/features/integration/
+- /dhi/features/support/
+- /dhi/features/patching/
+- /dhi/features/flexible/
+- /dhi/features/helm/
 ---
 
 Docker Hardened Images (DHI) 是由 Docker 维护的、最小的、安全的、可用于生产环境的容器基础镜像和应用镜像。DHI 旨在减少漏洞并简化合规性，可轻松集成到您现有的基于 Docker 的工作流中，几乎或完全无需重新配置。

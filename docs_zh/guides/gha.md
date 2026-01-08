@@ -1,10 +1,12 @@
 ---
 title: 使用 Docker 的 GitHub Actions 入门
 linkTitle: GitHub Actions 和 Docker
-summary: |
-  了解如何使用 GitHub Actions 自动构建和推送镜像。
+summary: '了解如何使用 GitHub Actions 自动构建和推送镜像。
+
+  '
 params:
-  tags: [devops]
+  tags:
+  - devops
   time: 10 分钟
 ---
 

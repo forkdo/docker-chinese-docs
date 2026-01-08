@@ -9,6 +9,7 @@ keywords: compose, orchestration, environment, env file, environment variables
 aliases:
 - /compose/environment-variables/best-practices/
 ---
+
 #### 安全地处理敏感信息
 
 谨慎在环境变量中包含敏感数据。考虑使用 [Secrets](../use-secrets.md) 来管理敏感信息。

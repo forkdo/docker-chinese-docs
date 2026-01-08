@@ -4,7 +4,7 @@ datafile: docker_mcp_tools_ls
 title: docker mcp tools ls
 layout: cli
 aliases:
-  - /reference/cli/docker/mcp/tools/list/
+- /reference/cli/docker/mcp/tools/list/
 ---
 
 <!--

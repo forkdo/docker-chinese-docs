@@ -1,6 +1,6 @@
 ---
 title: Registry 认证
-description: "指定了 Docker Registry v2 的认证方式"
+description: 指定了 Docker Registry v2 的认证方式
 keywords: registry, images, tags, repository, distribution, Bearer authentication, advanced
 ---
 

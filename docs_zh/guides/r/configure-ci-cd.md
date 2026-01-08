@@ -5,8 +5,8 @@ weight: 40
 keywords: ci/cd, github actions, R, shiny
 description: 了解如何使用 GitHub Actions 为您的 R 应用程序配置 CI/CD。
 aliases:
-  - /language/r/configure-ci-cd/
-  - /guides/language/r/configure-ci-cd/
+- /language/r/configure-ci-cd/
+- /guides/language/r/configure-ci-cd/
 ---
 
 ## 先决条件

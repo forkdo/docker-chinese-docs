@@ -4,7 +4,7 @@ weight: 10
 description: 了解如何创建组织。
 keywords: docker 组织, organization, 创建组织, docker 团队, docker 管理控制台, 组织管理
 aliases:
-  - /docker-hub/orgs/
+- /docker-hub/orgs/
 ---
 
 {{< summary-bar feature_name="Admin orgs" >}}

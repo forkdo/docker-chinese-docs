@@ -1,5 +1,5 @@
 ---
-title: '管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>'
+title: 管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 linktitle: 管理镜像和 charts
 description: 了解如何在您的组织中管理已镜像和自定义的 Docker Hardened Images。
 keywords: manage docker hardened images, custom hardened images

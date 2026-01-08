@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, kubernetes, R
 description: 了解如何使用 Kubernetes 在本地开发
 aliases:
-  - /language/r/deploy/
-  - /guides/language/r/deploy/
+- /language/r/deploy/
+- /guides/language/r/deploy/
 ---
 
 ## 前置条件

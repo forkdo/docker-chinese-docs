@@ -1,10 +1,10 @@
 ---
-title: "接口：HttpService"
+title: 接口：HttpService
 description: Docker 扩展 API 参考文档
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/HttpService/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/HttpService/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/HttpService/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/HttpService/
 ---
 
 **`自版本`**

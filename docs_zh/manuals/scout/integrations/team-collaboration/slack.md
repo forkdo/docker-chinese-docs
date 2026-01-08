@@ -1,8 +1,9 @@
 ---
 title: 将 Docker Scout 与 Slack 集成
 linkTitle: Slack
-description: |
-  将 Docker Scout 与 Slack 集成，以在 Slack 频道中接收关于漏洞和策略合规性的实时更新
+description: '将 Docker Scout 与 Slack 集成，以在 Slack 频道中接收关于漏洞和策略合规性的实时更新
+
+  '
 keywords: scout, team collaboration, slack, notifications, updates
 ---
 

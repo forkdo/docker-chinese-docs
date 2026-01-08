@@ -1,7 +1,14 @@
 ---
 title: 集成
 description: 将 cagent 代理连接到编辑器、MCP 客户端和其他代理
-keywords: [cagent, integration, acp, mcp, a2a, editor, protocol]
+keywords:
+- cagent
+- integration
+- acp
+- mcp
+- a2a
+- editor
+- protocol
 weight: 60
 ---
 

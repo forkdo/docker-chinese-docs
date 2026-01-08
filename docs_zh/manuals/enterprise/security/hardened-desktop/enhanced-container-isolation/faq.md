@@ -5,8 +5,8 @@ description: 关于增强型容器隔离的常见问题
 keywords: enhanced container isolation, faq, troubleshooting, docker desktop
 toc_max: 2
 aliases:
- - /desktop/hardened-desktop/enhanced-container-isolation/faq/
- - /security/for-admins/hardened-desktop/enhanced-container-isolation/faq/
+- /desktop/hardened-desktop/enhanced-container-isolation/faq/
+- /security/for-admins/hardened-desktop/enhanced-container-isolation/faq/
 weight: 40
 ---
 

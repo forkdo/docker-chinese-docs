@@ -3,9 +3,11 @@ description: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
 keywords: pgadmin, container-supported development
 title: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
 linktitle: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
-summary: |
-  探索如何将 pgAdmin 添加到您的开发堆栈中，并尽可能让您的队友轻松浏览 PostgreSQL 数据库。
-tags: [databases]
+summary: '探索如何将 pgAdmin 添加到您的开发堆栈中，并尽可能让您的队友轻松浏览 PostgreSQL 数据库。
+
+  '
+tags:
+- databases
 params:
   time: 10 minutes
 ---

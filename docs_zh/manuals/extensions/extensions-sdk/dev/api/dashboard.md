@@ -3,7 +3,7 @@ title: 仪表板
 description: Docker 扩展 API
 keywords: Docker, extensions, sdk, API
 aliases:
- - /desktop/extensions-sdk/dev/api/dashboard/
+- /desktop/extensions-sdk/dev/api/dashboard/
 ---
 
 ## 用户通知

@@ -1,7 +1,12 @@
 ---
 title: 最佳实践
 description: 构建高效 cagent 代理的模式与技术
-keywords: [cagent, 最佳实践, 模式, 代理设计, 优化]
+keywords:
+- cagent
+- 最佳实践
+- 模式
+- 代理设计
+- 优化
 weight: 40
 ---
 

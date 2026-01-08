@@ -4,7 +4,6 @@ linkTitle: 测试你的部署
 weight: 60
 keywords: deploy, kubernetes, angular
 description: 学习如何在本地部署以测试和调试你的 Kubernetes 部署
-
 ---
 
 ## 先决条件

@@ -7,6 +7,7 @@ keywords: wsl, docker desktop, best practices
 aliases:
 - /desktop/wsl/best-practices/
 ---
+
 - 始终使用最新版本的 WSL。至少必须使用 WSL 2.1.5 版本，否则 Docker Desktop 可能无法按预期工作。测试、开发和文档均基于最新的内核版本。较旧版本的 WSL 可能导致：
     - Docker Desktop 定期挂起或在升级时挂起
     - 通过 SCCM 部署失败

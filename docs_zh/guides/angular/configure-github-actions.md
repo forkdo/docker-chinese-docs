@@ -4,7 +4,6 @@ linkTitle: 使用 GitHub Actions 自动化构建
 weight: 60
 keywords: CI/CD, GitHub( Actions), Angular
 description: 了解如何为 Angular 应用程序配置基于 GitHub Actions 的 CI/CD。
-
 ---
 
 ## 先决条件

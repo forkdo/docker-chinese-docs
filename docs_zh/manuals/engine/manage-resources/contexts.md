@@ -3,7 +3,7 @@ title: Docker contexts
 description: 了解如何使用上下文从单个客户端管理多个守护进程
 keywords: engine, context, cli, daemons, remote
 aliases:
-  - /engine/context/working-with-contexts/
+- /engine/context/working-with-contexts/
 ---
 
 ## 简介

@@ -3,6 +3,7 @@ build:
   render: never
 title: 源代码管理
 ---
+
 # 源代码管理
 
 在现代软件开发中，源代码管理（Source Control 或 Version Control）是不可或缺的实践。它帮助团队协作、追踪变更、维护历史记录，并在需要时回滚到之前的版本。对于使用 Traefik 的项目，源代码管理同样重要，因为它不仅管理应用代码，还管理配置文件、Docker Compose 文件、Kubernetes Manifests 等。

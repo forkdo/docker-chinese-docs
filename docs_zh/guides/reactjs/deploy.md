@@ -4,7 +4,6 @@ linkTitle: 测试您的部署
 weight: 60
 keywords: deploy, kubernetes, react, react.js
 description: 了解如何在本地部署以测试和调试您的 Kubernetes 部署
-
 ---
 
 ## 先决条件

@@ -5,7 +5,7 @@ weight: 20
 description: 如何配置 Docker 客户端 CLI 以使用代理服务器
 keywords: network, networking, proxy, client
 aliases:
-  - /network/proxy/
+- /network/proxy/
 ---
 
 本文介绍如何通过容器中的环境变量配置 Docker CLI 以使用代理。

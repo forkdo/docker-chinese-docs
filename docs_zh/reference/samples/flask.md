@@ -5,3 +5,4 @@ service: flask
 aliases:
 - /samples/flask/
 ---
+

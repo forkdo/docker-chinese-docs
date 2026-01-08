@@ -2,11 +2,12 @@
 title: 构建、标记和发布镜像
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 本概念页面将指导您如何构建、标记镜像，并将其发布到 Docker Hub 或其他任何注册中心
-summary: |
-  构建、标记和发布 Docker 镜像是容器化工作流程中的关键步骤。在本指南中，您将学习如何创建 Docker 镜像，如何使用唯一标识符标记这些镜像，以及如何将镜像发布到公共注册中心。
+summary: '构建、标记和发布 Docker 镜像是容器化工作流程中的关键步骤。在本指南中，您将学习如何创建 Docker 镜像，如何使用唯一标识符标记这些镜像，以及如何将镜像发布到公共注册中心。
+
+  '
 weight: 3
-aliases: 
- - /guides/docker-concepts/building-images/build-tag-and-publish-an-image/
+aliases:
+- /guides/docker-concepts/building-images/build-tag-and-publish-an-image/
 ---
 
 {{< youtube-embed chiiGLlYRlY >}}

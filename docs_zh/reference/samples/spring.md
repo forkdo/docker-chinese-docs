@@ -5,3 +5,4 @@ service: spring
 aliases:
 - /samples/spring/
 ---
+

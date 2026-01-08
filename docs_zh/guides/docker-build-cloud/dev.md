@@ -1,5 +1,5 @@
 ---
-title: "演示：在开发中设置并使用 Docker Build Cloud"
+title: 演示：在开发中设置并使用 Docker Build Cloud
 description: 了解如何使用 Docker Build Cloud 进行本地构建。
 weight: 20
 ---

@@ -3,7 +3,8 @@ description: 适用于所有平台的 Docker Desktop 常见问题解答
 keywords: desktop, mac, windows, faqs
 title: Docker Desktop 通用常见问题解答
 linkTitle: 通用
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /mackit/faqs/
 - /docker-for-mac/faqs/

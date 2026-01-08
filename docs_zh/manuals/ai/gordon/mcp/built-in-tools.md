@@ -3,7 +3,7 @@ title: Gordon 中的内置工具
 description: 使用和配置 Gordon 的内置工具，用于 Docker、Kubernetes、安全性和开发工作流
 keywords: ai, mcp, gordon, docker, kubernetes, security, developer tools, toolbox, configuration, usage
 aliases:
- - /desktop/features/gordon/mcp/built-in-tools/
+- /desktop/features/gordon/mcp/built-in-tools/
 ---
 
 Gordon 包含一个集成的工具箱，可让您访问系统工具和功能。这些工具扩展了 Gordon 的功能，使您能够与 Docker Engine、Kubernetes、Docker Scout 安全扫描以及其他开发人员实用程序进行交互。本文档描述了可用的工具、如何配置它们以及使用模式。

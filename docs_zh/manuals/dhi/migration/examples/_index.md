@@ -5,18 +5,18 @@ weight: 40
 keywords: migration examples, dhi, docker hardened images
 params:
   grid_examples:
-    - title: Go
-      description: 通过实际示例和最佳实践，了解如何将 Go 应用程序迁移到 Docker Hardened Images。
-      icon: code
-      link: /dhi/migration/examples/go/
-    - title: Python
-      description: 通过实际示例和最佳实践，了解如何将 Python 应用程序迁移到 Docker Hardened Images。
-      icon: code
-      link: /dhi/migration/examples/python/
-    - title: Node.js
-      description: 通过实际示例和最佳实践，了解如何将 Node.js 应用程序迁移到 Docker Hardened Images。
-      icon: code
-      link: /dhi/migration/examples/node/
+  - title: Go
+    description: 通过实际示例和最佳实践，了解如何将 Go 应用程序迁移到 Docker Hardened Images。
+    icon: code
+    link: /dhi/migration/examples/go/
+  - title: Python
+    description: 通过实际示例和最佳实践，了解如何将 Python 应用程序迁移到 Docker Hardened Images。
+    icon: code
+    link: /dhi/migration/examples/python/
+  - title: Node.js
+    description: 通过实际示例和最佳实践，了解如何将 Node.js 应用程序迁移到 Docker Hardened Images。
+    icon: code
+    link: /dhi/migration/examples/node/
 ---
 
 本节提供针对常见编程语言和框架的详细迁移示例。

@@ -3,7 +3,7 @@ description: 了解如何优化 device mapper 驱动程序的使用。
 keywords: container, storage, driver, device mapper
 title: Device Mapper 存储驱动程序（已弃用）
 aliases:
-  - /storage/storagedriver/device-mapper-driver/
+- /storage/storagedriver/device-mapper-driver/
 ---
 
 > **已弃用**

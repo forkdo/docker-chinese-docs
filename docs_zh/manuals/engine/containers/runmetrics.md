@@ -4,11 +4,11 @@ keywords: docker, metrics, CPU, memory, disk, IO, run, runtime, stats
 title: 运行时指标
 weight: 50
 aliases:
-  - /articles/runmetrics/
-  - /engine/articles/run_metrics/
-  - /engine/articles/runmetrics/
-  - /engine/admin/runmetrics/
-  - /config/containers/runmetrics/
+- /articles/runmetrics/
+- /engine/articles/run_metrics/
+- /engine/articles/runmetrics/
+- /engine/admin/runmetrics/
+- /config/containers/runmetrics/
 ---
 
 ## Docker stats

@@ -4,8 +4,8 @@ weight: 10
 description: 了解如何为容器选择合适的存储驱动程序。
 keywords: container, storage, driver, btrfs, zfs, overlay, overlay2, containerd
 aliases:
-  - /storage/storagedriver/selectadriver/
-  - /storage/storagedriver/select-storage-driver/
+- /storage/storagedriver/selectadriver/
+- /storage/storagedriver/select-storage-driver/
 ---
 
 理想情况下，写入容器可写层的数据非常少，您应该使用 Docker 卷来写入数据。但是，某些工作负载要求能够写入容器的可写层。这就是存储驱动程序的用武之地。

@@ -5,5 +5,6 @@ title: Docker Verified Publisher API 参考文档
 linkTitle: 最新版本
 weight: 1
 aliases:
-  - /reference/api/hub/dvp/
+- /reference/api/hub/dvp/
 ---
+

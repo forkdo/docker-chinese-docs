@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用 json-file 日志驱动
 keywords: json-file, docker, logging, driver
 title: JSON File 日志驱动
 aliases:
-  - /engine/reference/logging/json-file/
-  - /engine/admin/logging/json-file/
-  - /config/containers/logging/json-file/
+- /engine/reference/logging/json-file/
+- /engine/admin/logging/json-file/
+- /config/containers/logging/json-file/
 ---
 
 默认情况下，Docker 会捕获所有容器的标准输出（和标准错误），并使用 JSON 格式将它们写入文件。JSON 格式使用其来源（`stdout` 或 `stderr`）和时间戳注释每一行。每个日志文件仅包含关于一个容器的信息。

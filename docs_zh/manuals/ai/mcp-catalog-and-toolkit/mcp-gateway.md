@@ -1,10 +1,10 @@
 ---
 title: MCP Gateway
-description: "Docker 的 MCP Gateway 通过容器化的 MCP 服务器，为 AI 工具提供安全、集中且可扩展的编排，赋能开发者、运维人员和安全团队。"
+description: Docker 的 MCP Gateway 通过容器化的 MCP 服务器，为 AI 工具提供安全、集中且可扩展的编排，赋能开发者、运维人员和安全团队。
 keywords: MCP Gateway
 weight: 40
 aliases:
-  - /ai/mcp-gateway/
+- /ai/mcp-gateway/
 ---
 
 MCP Gateway 是 Docker 用于编排 Model Context Protocol (MCP) 服务器的开源解决方案。它充当客户端与服务器之间的集中式代理，管理配置、凭证和访问控制。

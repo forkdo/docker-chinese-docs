@@ -3,14 +3,16 @@ title: Go 语言专用指南
 linkTitle: Go
 description: 使用 Docker 容器化 Go 应用程序
 keywords: docker, getting started, go, golang, language, dockerfile
-summary: |
-  本指南将教你如何使用 Docker 容器化 Go 应用程序。
+summary: '本指南将教你如何使用 Docker 容器化 Go 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /language/golang/
-  - /guides/language/golang/
-languages: [go]
+- /language/golang/
+- /guides/language/golang/
+languages:
+- go
 params:
   time: 30 分钟
 ---

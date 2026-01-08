@@ -2,10 +2,12 @@
 title: 使用 Docker 构建和运行智能体 AI 应用程序
 linktitle: 智能体 AI 应用程序
 keywords: AI, Docker, Model Runner, MCP Toolkit, Docker Offload, AI agents, application development
-summary: |
-  了解如何使用 Docker Model Runner、MCP Toolkit 和 Docker Offload 创建 AI 智能体应用程序。
+summary: '了解如何使用 Docker Model Runner、MCP Toolkit 和 Docker Offload 创建 AI 智能体应用程序。
+
+  '
 params:
-  tags: [AI]
+  tags:
+  - AI
   time: 30 minutes
 ---
 

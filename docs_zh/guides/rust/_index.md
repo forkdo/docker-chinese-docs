@@ -3,14 +3,16 @@ title: Rust 语言专属指南
 linkTitle: Rust
 description: 使用 Docker 容器化 Rust 应用
 keywords: Docker, getting started, Rust, language
-summary: |
-  本指南介绍如何使用 Docker 容器化 Rust 应用程序。
+summary: '本指南介绍如何使用 Docker 容器化 Rust 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /language/rust/
-  - /guides/language/rust/
-languages: [rust]
+- /language/rust/
+- /guides/language/rust/
+languages:
+- rust
 params:
   time: 20 分钟
 ---

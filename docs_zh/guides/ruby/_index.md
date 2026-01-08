@@ -3,15 +3,18 @@ title: Ruby on Rails 语言特定指南
 linkTitle: Ruby
 description: 使用 Docker 容器化 Ruby on Rails 应用
 keywords: Docker, getting started, ruby, language
-summary: |
-  本指南介绍了如何使用 Docker 容器化 Ruby on Rails 应用程序。
+summary: '本指南介绍了如何使用 Docker 容器化 Ruby on Rails 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /language/ruby/
-  - /guides/language/ruby/
-languages: [ruby]
-tags: [frameworks]
+- /language/ruby/
+- /guides/language/ruby/
+languages:
+- ruby
+tags:
+- frameworks
 params:
   time: 20 分钟
 ---

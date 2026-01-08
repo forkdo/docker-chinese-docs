@@ -1,10 +1,10 @@
 ---
-title: "接口: RequestConfigV0"
+title: '接口: RequestConfigV0'
 description: Docker extension API reference
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/RequestConfigV0/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/RequestConfigV0/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/RequestConfigV0/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/RequestConfigV0/
 ---
 
 ## 属性 (Properties)

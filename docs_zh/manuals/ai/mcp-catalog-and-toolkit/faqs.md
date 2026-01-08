@@ -3,7 +3,8 @@ title: 安全常见问题解答
 linkTitle: 安全常见问题解答
 description: 与 MCP 目录和工具包安全性相关的常见问题
 keywords: MCP, Toolkit, MCP server, MCP client, security, faq
-tags: [FAQ]
+tags:
+- FAQ
 weight: 70
 ---
 

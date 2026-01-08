@@ -5,8 +5,8 @@ weight: 40
 keywords: php, CI/CD
 description: 了解如何为您的 PHP 应用程序配置 CI/CD
 aliases:
-  - /language/php/configure-ci-cd/
-  - /guides/language/php/configure-ci-cd/
+- /language/php/configure-ci-cd/
+- /guides/language/php/configure-ci-cd/
 ---
 
 ## 先决条件

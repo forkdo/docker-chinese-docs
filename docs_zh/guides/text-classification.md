@@ -3,12 +3,15 @@ title: 构建文本识别应用
 linkTitle: 文本分类
 keywords: nlp, 自然语言处理, 情感分析, python, nltk, scikit-learn, 文本分类
 description: 学习如何使用 Python、NLTK、scikit-learn 和 Docker 构建并运行文本识别应用。
-summary: |
-  本指南详细介绍如何使用 Docker 容器化文本分类模型。
-tags: [ai]
-languages: [python]
+summary: '本指南详细介绍如何使用 Docker 容器化文本分类模型。
+
+  '
+tags:
+- ai
+languages:
+- python
 aliases:
-  - /guides/use-case/nlp/text-classification/
+- /guides/use-case/nlp/text-classification/
 params:
   time: 20 分钟
 ---

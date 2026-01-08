@@ -3,14 +3,16 @@ title: Python 语言专属指南
 linkTitle: Python
 description: 使用 Docker 容器化 Python 应用
 keywords: Docker, 入门, Python, 语言
-summary: |
-  本指南解释了如何使用 Docker 容器化 Python 应用。
+summary: '本指南解释了如何使用 Docker 容器化 Python 应用。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /language/python/
-  - /guides/language/python/
-languages: [python]
+- /language/python/
+- /guides/language/python/
+languages:
+- python
 tags: []
 params:
   time: 20 分钟

@@ -2,12 +2,14 @@
 title: 理解镜像层
 keywords: concepts, build, images, container, docker desktop
 description: 本概念页将向您介绍容器镜像的层。
-summary: |
-  您是否曾想过镜像是如何工作的？本指南将帮助您理解镜像层——容器镜像的
+summary: '您是否曾想过镜像是如何工作的？本指南将帮助您理解镜像层——容器镜像的
+
   基本构建块。您将全面了解层是如何被创建、堆叠和利用，以确保容器的高效和优化。
+
+  '
 weight: 1
-aliases: 
- - /guides/docker-concepts/building-images/understanding-image-layers/
+aliases:
+- /guides/docker-concepts/building-images/understanding-image-layers/
 ---
 
 {{< youtube-embed wJwqtAkmtQA >}}

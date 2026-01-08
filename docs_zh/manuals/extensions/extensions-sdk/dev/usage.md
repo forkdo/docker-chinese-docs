@@ -3,8 +3,8 @@ title: CLI 参考
 description: Docker 扩展 CLI
 keywords: Docker, extensions, sdk, CLI
 aliases:
- - /desktop/extensions-sdk/dev/cli/usage/
- - /desktop/extensions-sdk/dev/usage/
+- /desktop/extensions-sdk/dev/cli/usage/
+- /desktop/extensions-sdk/dev/usage/
 weight: 30
 ---
 

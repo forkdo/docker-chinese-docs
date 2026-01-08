@@ -4,7 +4,8 @@ linkTitle: Compose 中的机密信息
 weight: 60
 description: 了解如何在 Docker Compose 中安全管理运行时和构建时的机密信息。
 keywords: secrets, compose, security, environment variables, docker secrets, secure Docker builds, sensitive data in containers
-tags: [Secrets]
+tags:
+- Secrets
 aliases:
 - /compose/use-secrets/
 ---

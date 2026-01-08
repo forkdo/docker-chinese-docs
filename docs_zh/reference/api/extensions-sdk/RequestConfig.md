@@ -1,10 +1,10 @@
 ---
-title: "接口：RequestConfig"
+title: 接口：RequestConfig
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/RequestConfig/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/RequestConfig/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/RequestConfig/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/RequestConfig/
 ---
 
 **`Since`**

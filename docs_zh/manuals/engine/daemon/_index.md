@@ -5,27 +5,27 @@ title: Docker 守护进程配置概述
 linkTitle: 守护进程
 weight: 60
 aliases:
-  - /articles/chef/
-  - /articles/configuring/
-  - /articles/dsc/
-  - /articles/puppet/
-  - /config/thirdparty/
-  - /config/thirdparty/ansible/
-  - /config/thirdparty/chef/
-  - /config/thirdparty/dsc/
-  - /config/thirdparty/puppet/
-  - /engine/admin/
-  - /engine/admin/ansible/
-  - /engine/admin/chef/
-  - /engine/admin/configuring/
-  - /engine/admin/dsc/
-  - /engine/admin/puppet/
-  - /engine/articles/chef/
-  - /engine/articles/configuring/
-  - /engine/articles/dsc/
-  - /engine/articles/puppet/
-  - /engine/userguide/
-  - /config/daemon/
+- /articles/chef/
+- /articles/configuring/
+- /articles/dsc/
+- /articles/puppet/
+- /config/thirdparty/
+- /config/thirdparty/ansible/
+- /config/thirdparty/chef/
+- /config/thirdparty/dsc/
+- /config/thirdparty/puppet/
+- /engine/admin/
+- /engine/admin/ansible/
+- /engine/admin/chef/
+- /engine/admin/configuring/
+- /engine/admin/dsc/
+- /engine/admin/puppet/
+- /engine/articles/chef/
+- /engine/articles/configuring/
+- /engine/articles/dsc/
+- /engine/articles/puppet/
+- /engine/userguide/
+- /config/daemon/
 ---
 
 本页介绍如何自定义 Docker 守护进程 `dockerd`。

@@ -1,13 +1,12 @@
 ---
 title: 镜像构建最佳实践
 weight: 90
-linkTitle: "第 8 部分：镜像构建最佳实践"
-keywords: 入门，设置，概述，快速开始，简介，概念，容器，
-  Docker Desktop
+linkTitle: 第 8 部分：镜像构建最佳实践
+keywords: 入门，设置，概述，快速开始，简介，概念，容器， Docker Desktop
 description: 为您的应用程序构建镜像的技巧
 aliases:
- - /get-started/09_image_best/
- - /guides/workshop/09_image_best/
+- /get-started/09_image_best/
+- /guides/workshop/09_image_best/
 ---
 
 ## 镜像分层

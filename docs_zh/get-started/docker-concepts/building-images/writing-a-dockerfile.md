@@ -2,15 +2,20 @@
 title: 编写 Dockerfile
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 本概念页面将指导您如何使用 Dockerfile 创建镜像。
-summary: |
-  掌握 Dockerfile 实践对于有效利用容器技术至关重要，
+summary: '掌握 Dockerfile 实践对于有效利用容器技术至关重要，
+
   这能提升应用程序的可靠性，并支持 DevOps 和
+
   CI/CD 方法论。在本指南中，您将学习如何编写 Dockerfile、
+
   如何定义基础镜像以及设置指令，包括安装软件
+
   和复制必要的文件。
+
+  '
 weight: 2
-aliases: 
- - /guides/docker-concepts/building-images/writing-a-dockerfile/
+aliases:
+- /guides/docker-concepts/building-images/writing-a-dockerfile/
 ---
 
 {{< youtube-embed Jx8zoIhiP4c >}}

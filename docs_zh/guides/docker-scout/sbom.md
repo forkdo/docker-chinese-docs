@@ -3,7 +3,7 @@ title: 软件物料清单
 description: 了解软件物料清单（SBOM）以及 Docker Scout 如何使用它。
 keywords: scout, sbom, software bill of materials, analysis, composition
 aliases:
-  - /scout/concepts/sbom/
+- /scout/concepts/sbom/
 weight: 40
 ---
 

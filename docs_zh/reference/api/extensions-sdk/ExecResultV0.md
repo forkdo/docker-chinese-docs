@@ -1,10 +1,10 @@
 ---
-title: "Interface: ExecResultV0"
+title: 'Interface: ExecResultV0'
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/ExecResultV0/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/ExecResultV0/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/ExecResultV0/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/ExecResultV0/
 ---
 
 ## 属性

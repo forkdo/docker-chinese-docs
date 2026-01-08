@@ -9,44 +9,35 @@ params:
     badge:
       color: violet
       text: Early Access
-
 grid:
-
 - title: 快速入门
   description: 只需几个步骤即可启动并运行 Docker Offload。
   icon: rocket_launch
   link: /offload/quickstart/
-
 - title: 关于
   description: 了解 Docker Offload 及其工作原理。
   icon: info
   link: /offload/about/
-
 - title: 配置
   description: 设置和自定义你的云构建环境。
   icon: tune
   link: /offload/configuration/
-
 - title: 使用和计费
   description: 了解 Docker Offload 的使用和计费，以及如何监控你的云资源。
   icon: monitor_heart
   link: /offload/usage/
-
 - title: 优化
   description: 提高 Docker Offload 的性能和成本效益。
   icon: speed
   link: /offload/optimize/
-
 - title: 故障排除
   description: 了解如何排查 Docker Offload 的问题。
   icon: bug_report
   link: /offload/troubleshoot/
-
 - title: 反馈
   description: 提供关于 Docker Offload 的反馈。
   icon: feedback
   link: /offload/feedback/
-
 aliases:
 - /harmonia/
 ---

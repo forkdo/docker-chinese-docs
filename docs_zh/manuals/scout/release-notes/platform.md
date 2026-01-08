@@ -8,6 +8,7 @@ keywords: docker scout, release notes, changelog, features, changes, delta, new,
 aliases:
 - /scout/release-notes/
 ---
+
 <!-- vale Docker.We = NO -->
 
 本页面包含有关 Docker Scout 版本中的新功能、改进、已知问题和错误修复的信息。这些发布说明涵盖了 Docker Scout 平台，包括仪表盘。有关 CLI 发布说明，请参阅 [Docker Scout CLI 发布说明](./cli.md)。

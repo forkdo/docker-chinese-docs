@@ -5,3 +5,4 @@ service: mariadb
 aliases:
 - /samples/mariadb/
 ---
+

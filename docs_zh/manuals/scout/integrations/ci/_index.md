@@ -1,7 +1,6 @@
 ---
 description: 如何在持续集成流水线中设置 Docker Scout
-keywords: scanning, vulnerabilities, Hub, 供应链, 安全, ci, 持续集成,
-  github actions, gitlab
+keywords: scanning, vulnerabilities, Hub, 供应链, 安全, ci, 持续集成, github actions, gitlab
 title: 在持续集成中使用 Docker Scout
 linkTitle: 持续集成
 aliases:

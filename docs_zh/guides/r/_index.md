@@ -3,14 +3,16 @@ title: R 语言专属指南
 linkTitle: R
 description: 使用 Docker 容器化 R 应用
 keywords: Docker, getting started, R, language
-summary: |
-  本指南详细介绍如何使用 Docker 容器化 R 应用程序。
+summary: '本指南详细介绍如何使用 Docker 容器化 R 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /languages/r/
-  - /guides/languages/r/
-languages: [r]
+- /languages/r/
+- /guides/languages/r/
+languages:
+- r
 params:
   time: 10 minutes
 ---

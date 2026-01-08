@@ -2,8 +2,7 @@
 description: 详细介绍 Docker Scout 分析背后的咨询数据库和 CVE 到软件包的匹配服务。
 keywords: scout, scanning, analysis, vulnerabilities, Hub, supply chain, security, packages, repositories, ecosystem
 title: 咨询数据库来源和匹配服务
-aliases:
-  /scout/advisory-db-sources/
+aliases: /scout/advisory-db-sources/
 ---
 
 可靠的信息来源对于 Docker Scout 准确评估您的软件制品至关重要。鉴于行业中的来源和方法多种多样，漏洞评估结果出现差异是不可避免的。本文档描述了 Docker Scout 咨询数据库及其 CVE 到软件包的匹配方法，以应对这些差异。

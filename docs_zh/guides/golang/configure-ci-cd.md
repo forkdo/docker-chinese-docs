@@ -5,8 +5,8 @@ weight: 40
 keywords: go, CI/CD, local, development
 description: 了解如何为您的 Go 应用程序配置 CI/CD
 aliases:
-  - /language/golang/configure-ci-cd/
-  - /guides/language/golang/configure-ci-cd/
+- /language/golang/configure-ci-cd/
+- /guides/language/golang/configure-ci-cd/
 ---
 
 ## 先决条件

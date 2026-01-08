@@ -5,8 +5,8 @@ description: 了解在 Microsoft Dev Box 中设置 Docker Desktop 的优势和�
 keywords: desktop, docker, windows, microsoft dev box
 weight: 60
 aliases:
- - /desktop/features/dev-box/
- - /desktop/setup/install/enterprise-deployment/dev-box/
+- /desktop/features/dev-box/
+- /desktop/setup/install/enterprise-deployment/dev-box/
 ---
 
 Docker Desktop 作为预配置镜像在 Microsoft Azure Marketplace 中提供，可与 Microsoft Dev Box 配合使用，使开发人员能够在云中快速设置一致的开发环境。

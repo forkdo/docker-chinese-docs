@@ -5,8 +5,8 @@ weight: 30
 keywords: php, test
 description: 了解如何在容器中运行 PHP 测试。
 aliases:
-  - /language/php/run-tests/
-  - /guides/language/php/run-tests/
+- /language/php/run-tests/
+- /guides/language/php/run-tests/
 ---
 
 ## 前提条件

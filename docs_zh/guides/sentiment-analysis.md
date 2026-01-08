@@ -3,12 +3,15 @@ title: 构建一个情感分析应用
 linkTitle: 情感分析
 keywords: nlp, natural language processing, sentiment analysis, python, nltk
 description: 了解如何使用 Python、NLTK 和 Docker 构建并运行一个情感分析应用。
-summary: |
-  本指南演示了如何使用 Docker 对情感分析模型进行容器化。
-tags: [ai]
-languages: [python]
+summary: '本指南演示了如何使用 Docker 对情感分析模型进行容器化。
+
+  '
+tags:
+- ai
+languages:
+- python
 aliases:
-  - /guides/use-case/nlp/sentiment-analysis/
+- /guides/use-case/nlp/sentiment-analysis/
 params:
   time: 20 分钟
 ---

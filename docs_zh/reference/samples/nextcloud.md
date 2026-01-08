@@ -5,6 +5,7 @@ service: nextcloud
 aliases:
 - /samples/nexcloud/
 ---
+
 # Nextcloud 示例
 
 这些示例旨在帮助你快速启动并运行 Nextcloud。它们使用 Docker Compose，因此你应该在系统上安装 Docker 和 Docker Compose。

@@ -2,8 +2,8 @@
 title: 扩展
 description: 在 Docker Compose 中使用扩展定义和复用自定义片段
 keywords: compose, compose specification, extensions, compose file reference
-aliases: 
- - /compose/compose-file/11-extension/
+aliases:
+- /compose/compose-file/11-extension/
 weight: 80
 ---
 

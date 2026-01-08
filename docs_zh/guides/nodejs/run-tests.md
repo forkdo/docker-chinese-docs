@@ -5,8 +5,8 @@ weight: 30
 keywords: node.js, node, test
 description: 学习如何在容器中运行 Node.js 测试。
 aliases:
-  - /language/nodejs/run-tests/
-  - /guides/language/nodejs/run-tests/
+- /language/nodejs/run-tests/
+- /guides/language/nodejs/run-tests/
 ---
 
 ## 先决条件

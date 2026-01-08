@@ -1,8 +1,10 @@
 ---
 title: Docker 官方镜像
-description: |
-  本文介绍了 Docker 官方镜像（Docker Official Images）是如何创建的，
+description: '本文介绍了 Docker 官方镜像（Docker Official Images）是如何创建的，
+
   以及如何参与贡献或提供反馈。
+
+  '
 keywords: docker official images, doi, contributing, upstream, open source
 aliases:
 - /trusted-content/official-images/contributing/

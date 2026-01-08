@@ -3,10 +3,13 @@ description: 如何使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用
 keywords: LocalStack, container-supported development
 title: 使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
 linktitle: 使用 LocalStack 进行 AWS 开发
-summary: |
-  本指南介绍如何使用 Docker 运行 LocalStack，这是一个本地 AWS 云堆栈模拟器。
-tags: [cloud-services]
-languages: [js]
+summary: '本指南介绍如何使用 Docker 运行 LocalStack，这是一个本地 AWS 云堆栈模拟器。
+
+  '
+tags:
+- cloud-services
+languages:
+- js
 params:
   time: 20 分钟
 ---

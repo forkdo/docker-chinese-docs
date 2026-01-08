@@ -2,24 +2,25 @@
 title: 掌握用户和访问管理
 summary: 在确保安全性和效率的同时，简化 Docker 中的用户访问。
 description: 一份关于使用 SSO 和活动日志等工具管理角色、配置用户以及优化 Docker 访问的指南。
-tags: [admin]
+tags:
+- admin
 params:
   featured: false
   time: 20 分钟
-  image:
+  image: null
   resource_links:
-    - title: Docker 管理概述
-      url: /admin/
-    - title: 单点登录
-      url: /security/for-admins/single-sign-on/
-    - title: 纳入您的组织
-      url: /admin/organization/onboard/
-    - title: 角色和权限
-      url: /security/for-admins/roles-and-permissions/
-    - title: 洞察
-      url: /admin/organization/insights/
-    - title: 活动日志
-      url: /admin/organization/activity-logs/
+  - title: Docker 管理概述
+    url: /admin/
+  - title: 单点登录
+    url: /security/for-admins/single-sign-on/
+  - title: 纳入您的组织
+    url: /admin/organization/onboard/
+  - title: 角色和权限
+    url: /security/for-admins/roles-and-permissions/
+  - title: 洞察
+    url: /admin/organization/insights/
+  - title: 活动日志
+    url: /admin/organization/activity-logs/
 ---
 
 管理角色和权限是确保 Docker 环境安全，同时实现轻松协作和运营效率的关键。本指南引导 IT 管理员了解用户和访问管理的基础知识，提供分配角色、配置用户以及使用活动日志和 Insights 等工具来监控和优化 Docker 使用情况的策略。

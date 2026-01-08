@@ -4,7 +4,6 @@ linkTitle: 开发你的应用
 weight: 30
 keywords: angular, development, node
 description: 学习如何使用容器在本地开发你的 Angular 应用。
-
 ---
 
 ## 先决条件

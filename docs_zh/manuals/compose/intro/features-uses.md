@@ -3,7 +3,7 @@ description: 了解 Docker Compose 在容器化应用程序开发和部署中的
 keywords: docker compose, compose use cases, compose benefits, container orchestration, development environments, testing containers, yaml file
 title: 为什么使用 Compose？
 weight: 20
-aliases: 
+aliases:
 - /compose/features-uses/
 ---
 

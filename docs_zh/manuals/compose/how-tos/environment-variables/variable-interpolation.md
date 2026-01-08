@@ -109,9 +109,11 @@ services:
    >
    > 在容器环境中将 `.env` 文件中的变量用作环境变量时，请注意[环境变量优先级](envvars-precedence.md)。
 
-- 你可以将 `.env` 文件放在项目目录根目录以外的位置，然后使用 CLI 中的 [`--env-file` 选项](#substitute-with---env-file)，以便 Compose 可以导航到它。
+- 你可以将 `.env` 文件放在项目目录根目录以外的位置，然后使用 CLI 中的 [`--env-file` 选项](#substitute-with
+---env-file)，以便 Compose 可以导航到它。
 
-- 如果使用 [`--env-file`](#substitute-with---env-file) 进行替换，你的 `.env` 文件可能会被另一个 `.env` 文件覆盖。
+- 如果使用 [`--env-file`](#substitute-with
+---env-file) 进行替换，你的 `.env` 文件可能会被另一个 `.env` 文件覆盖。
 
 > [!IMPORTANT]
 >

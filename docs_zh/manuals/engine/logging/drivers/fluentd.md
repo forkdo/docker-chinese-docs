@@ -3,10 +3,10 @@ description: 了解如何使用 fluentd 日志驱动
 keywords: Fluentd, docker, logging, driver
 title: Fluentd 日志驱动
 aliases:
-  - /engine/reference/logging/fluentd/
-  - /reference/logging/fluentd/
-  - /engine/admin/logging/fluentd/
-  - /config/containers/logging/fluentd/
+- /engine/reference/logging/fluentd/
+- /reference/logging/fluentd/
+- /engine/admin/logging/fluentd/
+- /config/containers/logging/fluentd/
 ---
 
 `fluentd` 日志驱动将容器日志作为结构化日志数据发送到 [Fluentd](https://www.fluentd.org) 收集器。然后，用户可以使用 Fluentd 的各种[输出插件](https://www.fluentd.org/plugins)将这些日志写入各种目的地。

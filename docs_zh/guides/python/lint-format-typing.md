@@ -5,7 +5,7 @@ weight: 25
 keywords: Python, linting, formatting, type checking, ruff, pyright
 description: 了解如何为您的 Python 应用程序设置代码检查、格式化和类型检查。
 aliases:
-  - /language/python/lint-format-typing/
+- /language/python/lint-format-typing/
 ---
 
 ## 前提条件

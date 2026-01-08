@@ -1,8 +1,6 @@
 ---
 description: 查找用于定义多容器应用程序的最新推荐 Docker Compose 文件格式版本。
-keywords: docker compose file, docker compose yml, docker compose reference, docker
-  compose cmd, docker compose user, docker compose image, yaml spec, docker compose
-  syntax, yaml specification, docker compose specification
+keywords: docker compose file, docker compose yml, docker compose reference, docker compose cmd, docker compose user, docker compose image, yaml spec, docker compose syntax, yaml specification, docker compose specification
 title: Compose 文件参考
 toc_max: 4
 toc_min: 1
@@ -32,10 +30,10 @@ grid:
   icon: lock
   link: /reference/compose-file/secrets/
 aliases:
- - /compose/yaml/
- - /compose/compose-file/compose-file-v1/
- - /compose/compose-file/
- - /compose/reference/overview/
+- /compose/yaml/
+- /compose/compose-file/compose-file-v1/
+- /compose/compose-file/
+- /compose/reference/overview/
 ---
 
 >**刚接触 Docker Compose？**

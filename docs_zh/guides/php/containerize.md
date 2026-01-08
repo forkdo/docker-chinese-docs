@@ -5,8 +5,8 @@ weight: 10
 keywords: php, containerize, initialize, apache, composer
 description: 了解如何容器化 PHP 应用。
 aliases:
-  - /language/php/containerize/
-  - /guides/language/php/containerize/
+- /language/php/containerize/
+- /guides/language/php/containerize/
 ---
 
 ## 前置条件

@@ -4,8 +4,8 @@ weight: 30
 description: 指定容器的运行时选项
 keywords: docker, daemon, configuration, runtime
 aliases:
-  - /engine/admin/resource_constraints/
-  - /config/containers/resource_constraints/
+- /engine/admin/resource_constraints/
+- /config/containers/resource_constraints/
 ---
 
 默认情况下，容器没有资源限制，可以使用主机内核调度器允许的任意数量的给定资源。Docker 提供了多种方法来控制容器可以使用的内存量或 CPU 量，通过设置 `docker run` 命令的运行时配置标志来实现。本节详细介绍了何时应设置此类限制以及设置它们可能产生的影响。

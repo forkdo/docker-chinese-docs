@@ -3,8 +3,8 @@ title: 覆盖容器默认设置
 weight: 2
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 本概念页面将指导您如何使用 `docker run` 命令覆盖容器的默认设置。
-aliases: 
- - /guides/docker-concepts/running-containers/overriding-container-defaults/
+aliases:
+- /guides/docker-concepts/running-containers/overriding-container-defaults/
 ---
 
 {{< youtube-embed PFszWK3BB8I >}}

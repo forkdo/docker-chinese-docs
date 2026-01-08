@@ -3,7 +3,7 @@ title: Docker 设计原则
 description: Docker 扩展设计
 keywords: Docker, extensions, design
 aliases:
- - /desktop/extensions-sdk/design/design-principles/
+- /desktop/extensions-sdk/design/design-principles/
 weight: 20
 ---
 

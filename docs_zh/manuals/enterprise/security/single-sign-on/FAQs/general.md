@@ -4,7 +4,8 @@ keywords: Docker, Docker Hub, SSO FAQs, single sign-on, administration, security
 title: 通用 SSO 常见问题
 linkTitle: 通用
 weight: 10
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /single-sign-on/faqs/
 - /faq/security/single-sign-on/faqs/

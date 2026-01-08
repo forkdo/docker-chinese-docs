@@ -5,8 +5,8 @@ weight: 40
 keywords: .net, CI/CD
 description: 了解如何为你的 .NET 应用程序配置 CI/CD
 aliases:
-  - /language/dotnet/configure-ci-cd/
-  - /guides/language/dotnet/configure-ci-cd/
+- /language/dotnet/configure-ci-cd/
+- /guides/language/dotnet/configure-ci-cd/
 ---
 
 ## 前提条件

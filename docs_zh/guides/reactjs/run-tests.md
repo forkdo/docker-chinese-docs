@@ -4,7 +4,6 @@ linkTitle: 运行你的测试
 weight: 40
 keywords: react.js, react, test, vitest
 description: 了解如何在容器中运行 React.js 测试。
-
 ---
 
 ## 前置条件

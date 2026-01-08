@@ -1,7 +1,6 @@
 ---
 description: 如何设置和使用证书来验证注册表访问
-keywords: Usage, registry, repository, client, root, certificate, docker, apache,
-  ssl, tls, documentation, examples, articles, tutorials
+keywords: Usage, registry, repository, client, root, certificate, docker, apache, ssl, tls, documentation, examples, articles, tutorials
 title: 使用证书验证仓库客户端
 aliases:
 - /articles/certificates/

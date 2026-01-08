@@ -5,9 +5,9 @@ description: 使用 admin-settings.json 文件配置和强制执行 Docker Deskt
 keywords: 管理控制, 设置管理, 配置, 企业, docker desktop, json 文件
 weight: 10
 aliases:
- - /desktop/hardened-desktop/settings-management/configure/
- - /security/for-admins/hardened-desktop/settings-management/configure/
- - /security/for-admins/hardened-desktop/settings-management/configure-json-file/
+- /desktop/hardened-desktop/settings-management/configure/
+- /security/for-admins/hardened-desktop/settings-management/configure/
+- /security/for-admins/hardened-desktop/settings-management/configure-json-file/
 ---
 
 {{< summary-bar feature_name="Hardened Docker Desktop" >}}

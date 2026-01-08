@@ -5,10 +5,10 @@ weight: 10
 keywords: python, flask, containerize, initialize
 description: 学习如何将 Python 应用程序容器化。
 aliases:
-  - /language/python/build-images/
-  - /language/python/run-containers/
-  - /language/python/containerize/
-  - /guides/language/python/containerize/
+- /language/python/build-images/
+- /language/python/run-containers/
+- /language/python/containerize/
+- /guides/language/python/containerize/
 ---
 
 ## 先决条件

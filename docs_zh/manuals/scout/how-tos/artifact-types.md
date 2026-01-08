@@ -1,11 +1,13 @@
 ---
 title: 将 Scout 与不同类型的制品配合使用
-description: |
-  某些 Docker Scout 命令支持镜像引用前缀，
+description: '某些 Docker Scout 命令支持镜像引用前缀，
+
   用于控制要分析的镜像或文件的位置。
+
+  '
 keywords: scout, vulnerabilities, analyze, analysis, cli, packages, sbom, cve, security, local, source, code, supply chain
 aliases:
-  - /scout/image-prefix/
+- /scout/image-prefix/
 ---
 
 某些 Docker Scout CLI 命令支持使用前缀来指定要分析的制品的位置或类型。

@@ -32,7 +32,7 @@ grid:
   icon: note_add
   link: /docker-hub/release-notes
 aliases:
-  - /docker-hub/overview/
+- /docker-hub/overview/
 ---
 
 Docker Hub 简化了开发流程，它拥有世界上最大的容器注册表，用于存储、管理和共享 Docker 镜像。通过与您的工具无缝集成，它提高了生产力，并确保容器化应用程序的可靠部署、分发和访问。它还为开发者提供预构建镜像和资源，以加速开发工作流。

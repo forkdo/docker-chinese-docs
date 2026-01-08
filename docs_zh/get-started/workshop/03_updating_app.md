@@ -1,13 +1,12 @@
 ---
 title: 更新应用程序
 weight: 30
-linkTitle: "第2部分：更新应用程序"
-keywords: get started, setup, orientation, quickstart, intro, concepts, containers,
-  docker desktop
+linkTitle: 第2部分：更新应用程序
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop
 description: 对应用程序进行更改
 aliases:
- - /get-started/03_updating_app/
- - /guides/workshop/03_updating_app/
+- /get-started/03_updating_app/
+- /guides/workshop/03_updating_app/
 ---
 
 在[第1部分](./02_our_app.md)中，你已经将一个待办事项应用程序容器化。在本部分中，你将更新应用程序和镜像。你还将学习如何停止和删除容器。

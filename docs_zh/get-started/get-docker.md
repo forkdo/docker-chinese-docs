@@ -4,10 +4,10 @@ keywords: install docker, docker download, download docker, docker installation,
 title: 获取 Docker
 weight: 10
 aliases:
- - /install/
- - /install/overview/
- - /installation/
- - /get-docker/
+- /install/
+- /install/overview/
+- /installation/
+- /get-docker/
 ---
 
 Docker 是一个用于开发、交付和运行应用程序的开源平台。

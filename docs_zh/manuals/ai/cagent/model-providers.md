@@ -1,7 +1,14 @@
 ---
 title: 模型提供商
 description: 获取 API 密钥并为 cagent 配置云模型提供商
-keywords: [cagent, 模型提供商, api 密钥, anthropic, openai, google, gemini]
+keywords:
+- cagent
+- 模型提供商
+- api 密钥
+- anthropic
+- openai
+- google
+- gemini
 weight: 10
 ---
 

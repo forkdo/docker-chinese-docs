@@ -1,11 +1,14 @@
 ---
 title: 使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩
-description: &desc 学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。
+description: 学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。
 keywords: OpenTelemetry, observability, tracing
 linktitle: 使用 OpenTelemetry 对 JS 应用进行插桩
-summary: *desc
-tags: [app-dev, observability]
-languages: [js]
+summary: 学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。
+tags:
+- app-dev
+- observability
+languages:
+- js
 params:
   time: 10 分钟
 ---

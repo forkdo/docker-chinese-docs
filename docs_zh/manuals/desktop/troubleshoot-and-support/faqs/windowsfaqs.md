@@ -3,7 +3,8 @@ description: Docker Desktop for Windows 的常见问题解答
 keywords: desktop, windows, faqs
 title: Docker Desktop for Windows 的常见问题解答
 linkTitle: Windows
-tags: [FAQ]
+tags:
+- FAQ
 weight: 30
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: '使用 Docker Hardened Images 的扩展生命周期支持 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>'
+title: 使用 Docker Hardened Images 的扩展生命周期支持 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 linktitle: 使用扩展生命周期支持
 description: 了解如何将扩展生命周期支持与 Docker Hardened Images 结合使用。
 weight: 39

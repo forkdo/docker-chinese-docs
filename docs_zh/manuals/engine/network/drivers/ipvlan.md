@@ -1,11 +1,10 @@
 ---
 title: IPvlan 网络驱动
-description:
-  有关使用 IPvlan 让容器在网络中显示为物理机器的所有信息
+description: 有关使用 IPvlan 让容器在网络中显示为物理机器的所有信息
 keywords: network, ipvlan, l2, l3, standalone
 aliases:
-  - /network/ipvlan/
-  - /network/drivers/ipvlan/
+- /network/ipvlan/
+- /network/drivers/ipvlan/
 ---
 
 IPvlan 驱动让用户完全控制 IPv4 和 IPv6 地址分配。VLAN 驱动在此基础上更进一步，让操作员完全控制第 2 层 VLAN 标记，甚至包括对底层网络集成感兴趣的用户的 IPvlan L3 路由。对于抽象物理约束的覆盖（overlay）部署，请参阅 [多主机覆盖](overlay.md) 驱动。

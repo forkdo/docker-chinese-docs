@@ -4,7 +4,7 @@ linkTitle: 设置参考
 description: 所有 Docker Desktop 设置和配置选项的完整参考
 keywords: docker desktop settings, configuration reference, admin controls, settings management
 aliases:
- - /security/for-admins/hardened-desktop/settings-management/settings-reference/
+- /security/for-admins/hardened-desktop/settings-management/settings-reference/
 ---
 
 本参考文档记录了所有 Docker Desktop 设置和配置选项。使用此文档可以了解不同配置方法和平台上的设置行为。其组织结构与 Docker Desktop GUI 相匹配。

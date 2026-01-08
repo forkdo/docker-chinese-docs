@@ -3,14 +3,16 @@ title: PHP 语言专属指南
 linkTitle: PHP
 description: 使用 Docker 容器化和开发 PHP 应用
 keywords: getting started, php, composer
-summary: |
-  本指南介绍如何使用 Docker 容器化 PHP 应用。
+summary: '本指南介绍如何使用 Docker 容器化 PHP 应用。
+
+  '
 toc_min: 1
 toc_max: 2
 aliases:
-  - /language/php/
-  - /guides/language/php/
-languages: [php]
+- /language/php/
+- /guides/language/php/
+languages:
+- php
 params:
   time: 20 分钟
 ---

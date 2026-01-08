@@ -3,27 +3,28 @@ title: 使用 Docker 为您的公司奠定成功基础
 linkTitle: 管理员设置
 summary: 通过简化工作流程、标准化开发环境并确保公司内部平稳部署，充分利用 Docker。
 description: 了解如何为您的公司完成设置并利用所有 Docker 产品和功能。
-tags: [admin]
+tags:
+- admin
 params:
   time: 20 分钟
-  image:
+  image: null
   resource_links:
-    - title: Docker 管理概览
-      url: /admin/
-    - title: 单点登录 (SSO)
-      url: /security/for-admins/single-sign-on/
-    - title: 强制登录
-      url: /security/for-admins/enforce-sign-in/
-    - title: 角色与权限
-      url: /security/for-admins/roles-and-permissions/
-    - title: 设置管理
-      url: /security/for-admins/hardened-desktop/settings-management/
-    - title: 注册表访问管理
-      url: /security/for-admins/hardened-desktop/registry-access-management/
-    - title: 镜像访问管理
-      url: /security/for-admins/hardened-desktop/image-access-management/
-    - title: Docker 订阅信息
-      url: "https://www.docker.com/pricing/"
+  - title: Docker 管理概览
+    url: /admin/
+  - title: 单点登录 (SSO)
+    url: /security/for-admins/single-sign-on/
+  - title: 强制登录
+    url: /security/for-admins/enforce-sign-in/
+  - title: 角色与权限
+    url: /security/for-admins/roles-and-permissions/
+  - title: 设置管理
+    url: /security/for-admins/hardened-desktop/settings-management/
+  - title: 注册表访问管理
+    url: /security/for-admins/hardened-desktop/registry-access-management/
+  - title: 镜像访问管理
+    url: /security/for-admins/hardened-desktop/image-access-management/
+  - title: Docker 订阅信息
+    url: https://www.docker.com/pricing/
 ---
 
 Docker 的工具提供了一个可扩展、安全的平台，使您的开发人员能够更快地创建、交付和运行应用程序。作为管理员，您可以简化工作流程、标准化开发环境，并确保整个组织的平稳部署。

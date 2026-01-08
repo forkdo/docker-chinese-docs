@@ -1,13 +1,12 @@
 ---
 title: 多容器应用
 weight: 70
-linkTitle: "第 6 部分：多容器应用"
-keywords: get started, setup, orientation, quickstart, intro, concepts, containers,
-  docker desktop
+linkTitle: 第 6 部分：多容器应用
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop
 description: 在应用程序中使用多个容器
 aliases:
- - /get-started/07_multi_container/
- - /guides/workshop/07_multi_container/
+- /get-started/07_multi_container/
+- /guides/workshop/07_multi_container/
 ---
 
 到目前为止，你一直在使用单容器应用。但是，现在你将向应用程序栈中添加 MySQL。经常会出现这样的问题——“MySQL 应该在哪里运行？是安装在同一个容器中，还是单独运行？”一般来说，每个容器应该只做一件事并把它做好。以下是分开运行容器的几个原因：

@@ -4,7 +4,7 @@ keywords: Docker Hub, Hub, trusted content
 title: 可信内容
 weight: 100
 aliases:
- - /trusted-content/
+- /trusted-content/
 ---
 
 Docker 的可信内容计划确保容器镜像符合最高的安全性、质量和可靠性标准。这些计划为发布者和贡献者提供了机会，让他们可以与全球数百万开发者分享其镜像，同时获得关于其内容使用情况的宝贵洞察。通过参与这些计划，您可以提升内容的可见性、建立信誉，并获得工具来优化其在容器生态系统中的影响力。

@@ -1,11 +1,10 @@
 ---
 title: 如何备份和恢复 Docker Desktop 数据
 linkTitle: 备份和恢复数据
-keywords: Docker Desktop, backup, restore, migration, reinstall, containers, images,
-  volumes
+keywords: Docker Desktop, backup, restore, migration, reinstall, containers, images, volumes
 weight: 20
 aliases:
- - /desktop/backup-and-restore/
+- /desktop/backup-and-restore/
 ---
 
 使用此流程可以备份和恢复您的镜像和容器数据。这在您需要重置虚拟机磁盘、将 Docker 环境迁移到新计算机，或从 Docker Desktop 更新或安装失败中恢复时非常有用。

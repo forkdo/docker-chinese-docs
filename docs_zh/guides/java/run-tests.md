@@ -8,6 +8,7 @@ aliases:
 - /language/java/run-tests/
 - /guides/language/java/run-tests/
 ---
+
 ## 前提条件
 
 完成本指南的所有前几节，从 [容器化 Java 应用程序](containerize.md) 开始。

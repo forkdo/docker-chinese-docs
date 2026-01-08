@@ -5,11 +5,11 @@ description: 排查使用 SCIM 和即时 (JIT) 配置时常见的用户配置问
 toc_max: 2
 tags:
 - Troubleshooting
-keywords: SCIM troubleshooting, user provisioning, JIT provisioning, group mapping,
-  attribute conflicts
+keywords: SCIM troubleshooting, user provisioning, JIT provisioning, group mapping, attribute conflicts
 aliases:
 - /security/troubleshoot/troubleshoot-provisioning/
 ---
+
 本文档帮助排查使用 SCIM 和即时 (JIT) 配置时常见的用户配置问题，包括用户角色、属性以及意外的账户行为。
 
 ## SCIM 属性值被覆盖或忽略

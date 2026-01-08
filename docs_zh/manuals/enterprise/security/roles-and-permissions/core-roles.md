@@ -3,9 +3,9 @@ title: 核心角色
 description: 通过组织中的角色来控制对内容、注册表和组织管理的访问权限。
 keywords: members, teams, organization, company, roles, access, docker hub, admin console, security, permissions
 aliases:
-  - /docker-hub/roles-and-permissions/
-  - /security/for-admins/roles-and-permissions/
-  - /enterprise/security/roles-and-permissions/
+- /docker-hub/roles-and-permissions/
+- /security/for-admins/roles-and-permissions/
+- /enterprise/security/roles-and-permissions/
 ---
 
 {{< summary-bar feature_name="General admin" >}}

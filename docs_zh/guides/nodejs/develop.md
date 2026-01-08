@@ -5,9 +5,9 @@ weight: 30
 keywords: node, node.js, development
 description: 了解如何使用容器在本地开发 Node.js 应用程序。
 aliases:
-  - /get-started/nodejs/develop/
-  - /language/nodejs/develop/
-  - /guides/language/nodejs/develop/
+- /get-started/nodejs/develop/
+- /language/nodejs/develop/
+- /guides/language/nodejs/develop/
 ---
 
 ## 先决条件

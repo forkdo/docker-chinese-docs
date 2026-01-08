@@ -2,11 +2,12 @@
 title: 使用构建缓存
 keywords: concepts, build, images, container, docker desktop
 description: 本概念页面将向您介绍构建缓存、哪些更改会使缓存失效以及如何有效使用构建缓存。
-summary: |
-  通过有效利用构建缓存，您可以重用先前构建的结果并跳过不必要的步骤，从而实现更快的构建。为了最大化缓存使用率并避免资源密集型和耗时的重新构建，理解缓存失效的工作原理至关重要。在本指南中，您将学习如何高效地使用 Docker 构建缓存，以简化 Docker 镜像开发和持续集成工作流。
+summary: '通过有效利用构建缓存，您可以重用先前构建的结果并跳过不必要的步骤，从而实现更快的构建。为了最大化缓存使用率并避免资源密集型和耗时的重新构建，理解缓存失效的工作原理至关重要。在本指南中，您将学习如何高效地使用 Docker 构建缓存，以简化 Docker 镜像开发和持续集成工作流。
+
+  '
 weight: 4
-aliases: 
- - /guides/docker-concepts/building-images/using-the-build-cache/
+aliases:
+- /guides/docker-concepts/building-images/using-the-build-cache/
 ---
 
 {{< youtube-embed Ri6jMknjprY >}}

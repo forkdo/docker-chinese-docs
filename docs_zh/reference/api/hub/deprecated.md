@@ -5,7 +5,7 @@ title: 已弃用的 Docker Hub API 端点
 linkTitle: 已弃用
 weight: 3
 aliases:
-    - /docker-hub/api/deprecated/
+- /docker-hub/api/deprecated/
 ---
 
 本页概述了 Docker Hub API 中已弃用的端点。

@@ -5,9 +5,9 @@ weight: 40
 keywords: ci/cd, github actions, python, flask
 description: 了解如何为 Python 应用程序配置基于 GitHub Actions 的 CI/CD。
 aliases:
-  - /language/python/configure-ci-cd/
-  - /guides/language/python/configure-ci-cd/
-  - /guides/python/configure-ci-cd/
+- /language/python/configure-ci-cd/
+- /guides/language/python/configure-ci-cd/
+- /guides/python/configure-ci-cd/
 ---
 
 ## 先决条件

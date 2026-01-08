@@ -1,7 +1,7 @@
 ---
 title: 构建应用程序
 linkTitle: 了解应用程序
-weight: 10 #
+weight: 10
 keywords: go, golang, prometheus, grafana, containerize, monitor
 description: 学习如何创建一个 Golang 服务器来向 Prometheus 注册指标。
 ---

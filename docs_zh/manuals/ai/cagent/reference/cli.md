@@ -2,7 +2,12 @@
 title: CLI 参考
 linkTitle: CLI
 description: cagent 命令行界面的完整参考
-keywords: [ai, agent, cagent, cli, command line]
+keywords:
+- ai
+- agent
+- cagent
+- cli
+- command line
 weight: 30
 ---
 

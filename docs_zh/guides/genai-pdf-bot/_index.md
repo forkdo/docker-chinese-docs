@@ -2,11 +2,13 @@
 title: PDF 分析与对话
 description: 使用 Docker 容器化生成式人工智能 (GenAI) 应用
 keywords: python, generative ai, genai, llm, neo4j, ollama, langchain
-summary: |
-  了解如何使用 Docker 和生成式人工智能构建 PDF 机器人，用于解析 PDF 文档并生成响应。
-tags: [ai]
+summary: '了解如何使用 Docker 和生成式人工智能构建 PDF 机器人，用于解析 PDF 文档并生成响应。
+
+  '
+tags:
+- ai
 aliases:
-  - /guides/use-case/genai-pdf-bot/
+- /guides/use-case/genai-pdf-bot/
 params:
   time: 20 minutes
 ---

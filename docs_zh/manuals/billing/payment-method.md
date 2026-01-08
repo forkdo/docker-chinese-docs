@@ -4,7 +4,7 @@ weight: 20
 description: 了解如何在 Docker Hub 中添加或更新支付方式
 keywords: payments, billing, subscription, supported payment methods, failed payments, add credit card, bank transfer, Stripe Link, payment failure
 aliases:
-    - /billing/core-billing/payment-method/
+- /billing/core-billing/payment-method/
 ---
 
 本文介绍如何为您的个人账户或组织添加或更新支付方式。

@@ -5,9 +5,9 @@ title: 查看容器日志
 linkTitle: 日志和指标
 weight: 70
 aliases:
-  - /engine/admin/logging/
-  - /engine/admin/logging/view_container_logs/
-  - /config/containers/logging/
+- /engine/admin/logging/
+- /engine/admin/logging/view_container_logs/
+- /config/containers/logging/
 ---
 
 `docker logs` 命令显示正在运行的容器记录的信息。`docker service logs` 命令显示服务中所有容器记录的信息。记录的信息以及日志的格式几乎完全取决于容器的端点命令。

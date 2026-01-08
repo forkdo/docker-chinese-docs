@@ -1,6 +1,6 @@
 ---
 title: Docker Desktop for Mac 的虚拟机管理器
-linkTitle: 虚拟机管理器 
+linkTitle: 虚拟机管理器
 keywords: virtualization software, resource allocation, mac, docker desktop, vm monitoring, vm performance, apple silicon
 description: 了解 Docker Desktop for Mac 的虚拟机管理器 (VMM) 选项，包括适用于 Apple Silicon 的新版 Docker VMM，可提供更强的性能和效率
 weight: 110

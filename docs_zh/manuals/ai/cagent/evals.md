@@ -1,7 +1,11 @@
 ---
 title: 评估 (Evals)
 description: 使用保存的对话测试您的代理
-keywords: [cagent, evaluations, testing, evals]
+keywords:
+- cagent
+- evaluations
+- testing
+- evals
 weight: 80
 ---
 

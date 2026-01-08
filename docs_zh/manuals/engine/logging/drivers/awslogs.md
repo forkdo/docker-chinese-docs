@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用 Amazon CloudWatch Logs 日�
 keywords: AWS, Amazon, CloudWatch, 日志, 驱动
 title: Amazon CloudWatch Logs 日志驱动
 aliases:
-  - /engine/reference/logging/awslogs/
-  - /engine/admin/logging/awslogs/
-  - /config/containers/logging/awslogs/
+- /engine/reference/logging/awslogs/
+- /engine/admin/logging/awslogs/
+- /config/containers/logging/awslogs/
 ---
 
 `awslogs` 日志驱动将容器日志发送到 [Amazon CloudWatch Logs](https://aws.amazon.com/cloudwatch/details/#log-monitoring)。

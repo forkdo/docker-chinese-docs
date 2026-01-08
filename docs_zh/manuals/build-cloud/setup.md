@@ -5,7 +5,7 @@ weight: 10
 description: 如何开始使用 Docker Build Cloud
 keywords: build, cloud build
 aliases:
-  - /build/cloud/setup/
+- /build/cloud/setup/
 ---
 
 在开始使用 Docker Build Cloud 之前，您必须先将构建器添加到本地环境中。

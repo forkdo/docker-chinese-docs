@@ -1,9 +1,11 @@
 ---
 title: 证明
 keywords: build, attestations, sbom, provenance, metadata
-description: |
-  介绍 Docker Build 中的 SBOM 和来源证明，
+description: '介绍 Docker Build 中的 SBOM 和来源证明，
+
   它们是什么以及为何存在
+
+  '
 weight: 50
 ---
 

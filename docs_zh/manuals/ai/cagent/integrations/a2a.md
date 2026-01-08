@@ -2,7 +2,12 @@
 title: A2A 模式
 linkTitle: A2A
 description: 通过 Agent-to-Agent 协议暴露 cagent 代理
-keywords: [cagent, a2a, agent-to-agent, multi-agent, protocol]
+keywords:
+- cagent
+- a2a
+- agent-to-agent
+- multi-agent
+- protocol
 weight: 40
 ---
 

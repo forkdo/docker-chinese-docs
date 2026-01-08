@@ -2,8 +2,8 @@
 title: 片段
 description: 使用 YAML 锚点和片段复用配置
 keywords: compose, compose specification, fragments, compose file reference
-aliases: 
- - /compose/compose-file/10-fragments/
+aliases:
+- /compose/compose-file/10-fragments/
 weight: 70
 ---
 

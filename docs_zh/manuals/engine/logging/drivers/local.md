@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用本地日志记录驱动程�
 keywords: local, docker, logging, driver, file
 title: 本地文件日志记录驱动程序
 aliases:
-  - /engine/reference/logging/local/
-  - /engine/admin/logging/local/
-  - /config/containers/logging/local/
+- /engine/reference/logging/local/
+- /engine/admin/logging/local/
+- /config/containers/logging/local/
 ---
 
 `local` 日志记录驱动程序捕获容器的 stdout/stderr 输出，并将其写入针对性能和磁盘使用进行优化的内部存储中。

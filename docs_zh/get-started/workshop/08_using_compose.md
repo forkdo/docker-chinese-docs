@@ -1,13 +1,12 @@
 ---
 title: 使用 Docker Compose
 weight: 80
-linkTitle: "Part 7: Use Docker Compose"
-keywords: get started, setup, orientation, quickstart, intro, concepts, containers,
-  docker desktop
+linkTitle: 'Part 7: Use Docker Compose'
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop
 description: 使用 Docker Compose 构建多容器应用
 aliases:
- - /get-started/08_using_compose/
- - /guides/workshop/08_using_compose/
+- /get-started/08_using_compose/
+- /guides/workshop/08_using_compose/
 ---
 
 [Docker Compose](/manuals/compose/_index.md) 是一个帮助你定义和共享多容器应用的工具。使用 Compose，你可以创建一个 YAML 文件来定义服务，然后通过单条命令启动或停止所有服务。

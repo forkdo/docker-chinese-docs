@@ -3,7 +3,7 @@ description: 了解如何优化 Btrfs 驱动程序的使用。
 keywords: container, storage, driver, Btrfs
 title: BTRFS 存储驱动
 aliases:
-  - /storage/storagedriver/btrfs-driver/
+- /storage/storagedriver/btrfs-driver/
 ---
 
 > [!IMPORTANT]

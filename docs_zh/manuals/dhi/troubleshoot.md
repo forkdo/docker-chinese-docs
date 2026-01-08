@@ -4,9 +4,9 @@ description: 解决构建、运行或调试 Docker Hardened Images 时的常见�
 weight: 40
 tags:
 - Troubleshooting
-keywords: troubleshoot hardened image, docker debug container, non-root permission
-  issue, missing shell error, no package manager
+keywords: troubleshoot hardened image, docker debug container, non-root permission issue, missing shell error, no package manager
 ---
+
 以下是迁移到或使用 Docker Hardened Images (DHIs) 时可能遇到的常见问题，以及推荐的解决方案。
 
 ## 常规调试

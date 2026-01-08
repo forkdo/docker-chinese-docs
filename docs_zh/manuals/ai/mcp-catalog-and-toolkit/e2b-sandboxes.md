@@ -3,7 +3,7 @@ title: E2B 沙盒
 description: 专为 AI 智能体设计的基于云的安全沙盒，内置 Docker MCP Gateway 集成
 keywords: E2B, 云沙盒, MCP Gateway, AI 智能体, MCP Catalog
 aliases:
-  - /ai/mcp-catalog-and-toolkit/sandboxes/
+- /ai/mcp-catalog-and-toolkit/sandboxes/
 ---
 
 Docker 已与 [E2B](https://e2b.dev/) 达成合作，后者是为 AI 智能体提供安全云沙盒的供应商。通过此次合作，每个 E2B 沙盒均可直接访问 Docker 的 [MCP Catalog](https://hub.docker.com/mcp)，该目录汇集了来自 GitHub、Notion 和 Stripe 等发布者的 200 多款工具。

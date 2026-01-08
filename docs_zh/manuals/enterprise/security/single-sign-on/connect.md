@@ -4,7 +4,7 @@ linkTitle: 连接
 description: 连接 Docker 与您的身份提供商，测试配置，并启用强制策略
 keywords: 配置 sso, 设置 sso, docker sso 设置, docker 身份提供商, sso 强制策略, docker hub, 安全
 aliases:
- - /security/for-admins/single-sign-on/connect/
+- /security/for-admins/single-sign-on/connect/
 ---
 
 {{< summary-bar feature_name="SSO" >}}
@@ -130,7 +130,9 @@ Docker 支持任何兼容 SAML 2.0 或 OIDC 的身份提供商。本指南为最
 
     > [!IMPORTANT]
     >
-    > 请复制整个证书，包括 `----BEGIN CERTIFICATE----` 和 `----END CERTIFICATE----` 行。
+    > 请复制整个证书，包括 `----BEGIN CERTIFICATE
+----` 和 `----END CERTIFICATE
+----` 行。
 1. 返回 Docker Admin Console。
 1. 粘贴 **SAML Sign-in URL** 和 **x509 Certificate** 的值。
 1. （可选）选择默认团队。
@@ -146,7 +148,9 @@ Docker 支持任何兼容 SAML 2.0 或 OIDC 的身份提供商。本指南为最
 
     > [!IMPORTANT]
     >
-    > 请复制整个证书，包括 `----BEGIN CERTIFICATE----` 和 `----END CERTIFICATE----` 行。
+    > 请复制整个证书，包括 `----BEGIN CERTIFICATE
+----` 和 `----END CERTIFICATE
+----` 行。
 1. 返回 Docker Admin Console。
 1. 粘贴 **Login URL** 和 **Certificate (Base64)** 的值。
 1. （可选）选择默认团队。

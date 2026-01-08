@@ -2,8 +2,8 @@
 title: 分享你的扩展
 description: 使用分享链接分享你的扩展
 keywords: Docker, extensions, share
-aliases: 
- - /desktop/extensions-sdk/extensions/share/
+aliases:
+- /desktop/extensions-sdk/extensions/share/
 weight: 40
 ---
 

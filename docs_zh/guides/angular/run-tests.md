@@ -4,7 +4,6 @@ linkTitle: 运行测试
 weight: 40
 keywords: angular, test, jasmine
 description: 学习如何在容器中运行 Angular 测试。
-
 ---
 
 ## 先决条件

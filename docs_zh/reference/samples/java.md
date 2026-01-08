@@ -5,3 +5,4 @@ service: java
 aliases:
 - /samples/java/
 ---
+

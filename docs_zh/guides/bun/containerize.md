@@ -5,7 +5,7 @@ weight: 10
 keywords: bun, containerize, initialize
 description: 了解如何容器化 Bun 应用程序。
 aliases:
-  - /language/bun/containerize/
+- /language/bun/containerize/
 ---
 
 ## 先决条件

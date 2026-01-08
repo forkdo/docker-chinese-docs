@@ -3,10 +3,11 @@ title: 在 Windows 上通过 Microsoft Store 安装 Docker Desktop
 linkTitle: MS Store
 description: 通过 Microsoft Store 安装适用于 Windows 的 Docker Desktop。了解其更新行为和限制。
 keywords: microsoft store, windows, docker desktop, install, deploy, configure, admin, mdm, intune, winget
-tags: [admin]
+tags:
+- admin
 weight: 30
-aliases: 
- - /desktop/setup/install/enterprise-deployment/ms-store/
+aliases:
+- /desktop/setup/install/enterprise-deployment/ms-store/
 ---
 
 您可以通过 [Microsoft 应用商店](https://apps.microsoft.com/detail/xp8cbj40xlbwkx?hl=en-GB&gl=GB) 部署适用于 Windows 的 Docker Desktop。

@@ -4,7 +4,6 @@ linkTitle: 开发您的应用
 weight: 30
 keywords: vuejs, development, node
 description: 了解如何在本地使用容器开发 Vue.js 应用程序。
-
 ---
 
 ## 前提条件

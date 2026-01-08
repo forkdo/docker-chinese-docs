@@ -2,46 +2,49 @@
 title: Docker Scout
 weight: 40
 keywords: scout, supply chain, vulnerabilities, packages, cves, scan, analysis, analyze
-description: 
-  全面了解 Docker Scout，主动提升您的软件供应链安全性
+description: 全面了解 Docker Scout，主动提升您的软件供应链安全性
 aliases:
-  - /engine/scan/
+- /engine/scan/
 params:
   sidebar:
     group: Products
 grid:
-  - title: 快速入门
-    link: /scout/quickstart/
-    description: 了解 Docker Scout 的功能以及如何使用。
-    icon: explore
-  - title: 镜像分析
-    link: /scout/image-analysis/
-    description: 揭示并深入探究镜像的组成。
-    icon: radar
-  - title: 建议数据库
-    link: /scout/advisory-db-sources/
-    description: 了解 Docker Scout 使用的信息来源。
-    icon: database
-  - title: 集成
-    description: |
-      将 Docker Scout 与您的 CI、注册表和其他第三方服务连接。
-    link: /scout/integrations/
-    icon: multiple_stop
-  - title: 仪表板
-    link: /scout/dashboard/
-    description: |
-      Docker Scout 的 Web 界面。
-    icon: dashboard
-  - title: 策略
-    link: /scout/policy/
-    description: |
-      确保您的制品符合供应链最佳实践。
-    icon: policy
-  - title: 升级
-    link: /subscription/change/
-    description: |
-      个人订阅最多包含 1 个仓库。升级以获得更多。
-    icon: upgrade
+- title: 快速入门
+  link: /scout/quickstart/
+  description: 了解 Docker Scout 的功能以及如何使用。
+  icon: explore
+- title: 镜像分析
+  link: /scout/image-analysis/
+  description: 揭示并深入探究镜像的组成。
+  icon: radar
+- title: 建议数据库
+  link: /scout/advisory-db-sources/
+  description: 了解 Docker Scout 使用的信息来源。
+  icon: database
+- title: 集成
+  description: '将 Docker Scout 与您的 CI、注册表和其他第三方服务连接。
+
+    '
+  link: /scout/integrations/
+  icon: multiple_stop
+- title: 仪表板
+  link: /scout/dashboard/
+  description: 'Docker Scout 的 Web 界面。
+
+    '
+  icon: dashboard
+- title: 策略
+  link: /scout/policy/
+  description: '确保您的制品符合供应链最佳实践。
+
+    '
+  icon: policy
+- title: 升级
+  link: /subscription/change/
+  description: '个人订阅最多包含 1 个仓库。升级以获得更多。
+
+    '
+  icon: upgrade
 ---
 
 容器镜像由层（layers）和软件包组成，这些都可能存在漏洞。

@@ -5,7 +5,7 @@ weight: 40
 description: 远程构建与本地构建不同。本文介绍如何针对远程构建器进行优化。
 keywords: build, cloud build, optimize, remote, local, cloud
 aliases:
-  - /build/cloud/optimization/
+- /build/cloud/optimization/
 ---
 
 Docker Build Cloud 在远程运行你的构建，而不是在你调用构建的机器上。

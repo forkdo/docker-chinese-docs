@@ -5,9 +5,9 @@ weight: 30
 keywords: build, go, golang, test
 description: 如何在容器中构建并运行 Go 测试
 aliases:
-  - /get-started/golang/run-tests/
-  - /language/golang/run-tests/
-  - /guides/language/golang/run-tests/
+- /get-started/golang/run-tests/
+- /language/golang/run-tests/
+- /guides/language/golang/run-tests/
 ---
 
 ## 前提条件

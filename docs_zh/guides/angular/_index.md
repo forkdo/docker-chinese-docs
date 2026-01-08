@@ -3,14 +3,15 @@ title: Angular 语言专用指南
 linkTitle: Angular
 description: 使用 Docker 容器化并开发 Angular 应用
 keywords: getting started, angular, docker, language, Dockerfile
-summary: |
-  本指南介绍如何使用 Docker 容器化 Angular 应用程序。
+summary: '本指南介绍如何使用 Docker 容器化 Angular 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
-languages: [js]
+languages:
+- js
 params:
   time: 20 分钟
-
 ---
 
 Angular 语言专用指南向您展示如何使用 Docker 容器化 Angular 应用程序，并遵循创建高效、生产就绪容器的最佳实践。

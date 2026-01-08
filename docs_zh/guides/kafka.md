@@ -3,12 +3,15 @@ description: 使用 Kafka 和 Docker 开发事件驱动型应用程序
 keywords: kafka, container-supported development
 title: 使用 Kafka 和 Docker 开发事件驱动型应用程序
 linktitle: 基于 Kafka 的事件驱动应用
-summary: |
-  本指南介绍如何在 Docker 容器中运行 Apache Kafka。
-tags: [distributed-systems]
-languages: [js]
+summary: '本指南介绍如何在 Docker 容器中运行 Apache Kafka。
+
+  '
+tags:
+- distributed-systems
+languages:
+- js
 aliases:
-  - /guides/use-case/kafka/
+- /guides/use-case/kafka/
 params:
   time: 20 minutes
 ---

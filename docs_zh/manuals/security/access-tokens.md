@@ -1,12 +1,12 @@
 ---
 title: 个人访问令牌
 linkTitle: 个人访问令牌
-description: &desc 创建和管理个人 Docker 访问令牌，以实现安全的 CLI 认证和自动化
+description: 创建和管理个人 Docker 访问令牌，以实现安全的 CLI 认证和自动化
 keywords: 个人访问令牌, PAT, docker cli authentication, docker hub security, programmatic access
 weight: 10
 aliases:
- - /docker-hub/access-tokens/
- - /security/for-developers/access-tokens/
+- /docker-hub/access-tokens/
+- /security/for-developers/access-tokens/
 ---
 
 个人访问令牌 (PAT) 为 Docker CLI 认证提供了一种比密码更安全的替代方案。使用 PAT 对自动化系统、CI/CD 流水线以及开发工具进行认证，而无需暴露您的 Docker Hub 密码。

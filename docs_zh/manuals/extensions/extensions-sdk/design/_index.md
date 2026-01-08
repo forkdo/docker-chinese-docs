@@ -4,9 +4,9 @@ linkTitle: 设计与 UI 样式
 description: Docker 扩展设计
 keywords: Docker, extensions, design
 aliases:
- - /desktop/extensions-sdk/design/design-overview/
- - /desktop/extensions-sdk/design/overview/
- - /desktop/extensions-sdk/design/
+- /desktop/extensions-sdk/design/design-overview/
+- /desktop/extensions-sdk/design/overview/
+- /desktop/extensions-sdk/design/
 weight: 60
 ---
 

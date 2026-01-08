@@ -3,7 +3,8 @@ description: 所有平台常见的 Docker Desktop 问题解答
 keywords: desktop, mac, windows, faqs
 title: Docker Desktop 版本发布常见问题
 linkTitle: 版本发布
-tags: [FAQ]
+tags:
+- FAQ
 ---
 
 ### 新版本发布的频率如何？

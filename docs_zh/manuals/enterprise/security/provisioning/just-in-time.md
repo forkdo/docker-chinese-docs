@@ -5,7 +5,7 @@ title: 即时配置 (JIT)
 linkTitle: 即时配置 (JIT)
 weight: 10
 aliases:
- - /security/for-admins/provisioning/just-in-time/
+- /security/for-admins/provisioning/just-in-time/
 ---
 
 {{< summary-bar feature_name="SSO" >}}

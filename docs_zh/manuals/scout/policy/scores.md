@@ -1,8 +1,10 @@
 ---
 title: Docker Scout 健康评分
-description: |
-  Docker Scout 健康评分提供对 Docker Hub 镜像的供应链评估，
+description: 'Docker Scout 健康评分提供对 Docker Hub 镜像的供应链评估，
+
   根据各种安全策略对其进行从 A 到 F 的评级。
+
+  '
 keywords: scout, health scores, evaluation, checks, grades, docker hub
 ---
 

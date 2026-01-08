@@ -1,10 +1,10 @@
 ---
-title: "接口: SpawnOptions"
+title: '接口: SpawnOptions'
 description: Docker 扩展 API 参考
 keywords: Docker, 扩展, sdk, API, 参考
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/SpawnOptions/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/SpawnOptions/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/SpawnOptions/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/SpawnOptions/
 ---
 
 **`Since`**

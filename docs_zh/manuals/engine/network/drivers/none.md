@@ -3,8 +3,8 @@ title: none 网络驱动
 description: 如何使用 none 驱动隔离容器的网络栈
 keywords: network, none, standalone
 aliases:
-  - /network/none/
-  - /network/drivers/none/
+- /network/none/
+- /network/drivers/none/
 ---
 
 如果您想完全隔离容器的网络栈，可以在启动容器时使用 `--network none` 标志。在容器内部，只会创建环回设备。

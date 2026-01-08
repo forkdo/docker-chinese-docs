@@ -5,9 +5,9 @@ weight: 10
 keywords: 入门, go, golang, 运行, 容器
 description: 学习如何以容器形式运行镜像。
 aliases:
-  - /get-started/golang/run-containers/
-  - /language/golang/run-containers/
-  - /guides/language/golang/run-containers/
+- /get-started/golang/run-containers/
+- /language/golang/run-containers/
+- /guides/language/golang/run-containers/
 ---
 
 ## 前提条件

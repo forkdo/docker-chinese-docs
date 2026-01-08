@@ -2,10 +2,11 @@
 title: 使用 Jamf Pro 部署
 description: 使用 Jamf Pro 部署适用于 Mac 的 Docker Desktop
 keywords: jamf, mac, docker desktop, deploy, mdm, enterprise, administrator, pkg
-tags: [admin]
+tags:
+- admin
 weight: 50
-aliases: 
- - /desktop/setup/install/enterprise-deployment/use-jamf-pro/
+aliases:
+- /desktop/setup/install/enterprise-deployment/use-jamf-pro/
 ---
 
 {{< summary-bar feature_name="Jamf Pro" >}}

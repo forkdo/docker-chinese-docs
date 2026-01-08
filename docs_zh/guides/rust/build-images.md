@@ -5,8 +5,8 @@ weight: 5
 keywords: rust, build, images, dockerfile
 description: 了解如何构建您的第一个 Rust Docker 镜像
 aliases:
-  - /language/rust/build-images/
-  - /guides/language/rust/build-images/
+- /language/rust/build-images/
+- /guides/language/rust/build-images/
 ---
 
 ## 先决条件

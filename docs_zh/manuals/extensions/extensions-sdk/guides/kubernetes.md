@@ -4,8 +4,8 @@ linkTitle: 与 Kubernetes 交互
 description: 如何从扩展连接到 Kubernetes 集群
 keywords: Docker, Extensions, sdk, Kubernetes
 aliases:
- - /desktop/extensions-sdk/dev/kubernetes/
- - /desktop/extensions-sdk/guides/kubernetes/
+- /desktop/extensions-sdk/dev/kubernetes/
+- /desktop/extensions-sdk/guides/kubernetes/
 ---
 
 Extensions SDK 不提供任何直接与 Docker Desktop 管理的 Kubernetes 集群或其他使用 KinD 等工具创建的集群进行交互的 API 方法。不过，本页面提供了一种方法，让您可以通过其他 SDK API 从扩展中间接与 Kubernetes 集群进行交互。

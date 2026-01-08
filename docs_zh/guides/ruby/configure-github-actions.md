@@ -5,9 +5,9 @@ weight: 20
 keywords: ci/cd, github actions, ruby, flask
 description: 了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。
 aliases:
-  - /language/ruby/configure-ci-cd/
-  - /guides/language/ruby/configure-ci-cd/
-  - /guides/ruby/configure-ci-cd/
+- /language/ruby/configure-ci-cd/
+- /guides/language/ruby/configure-ci-cd/
+- /guides/ruby/configure-ci-cd/
 ---
 
 ## 先决条件

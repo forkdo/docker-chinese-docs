@@ -1,11 +1,14 @@
 ---
 title: 使用 WireMock 在开发和测试中模拟 API 服务
-description: &desc 使用 WireMock 在开发和测试中模拟 API 服务
+description: 使用 WireMock 在开发和测试中模拟 API 服务
 keywords: WireMock, container-supported development
 linktitle: 使用 WireMock 模拟 API 服务
-summary: *desc
-tags: [app-dev, distributed-systems]
-languages: [js]
+summary: 使用 WireMock 在开发和测试中模拟 API 服务
+tags:
+- app-dev
+- distributed-systems
+languages:
+- js
 params:
   time: 20 分钟
 ---

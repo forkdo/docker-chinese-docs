@@ -1,4 +1,4 @@
---- 
+---
 title: 使用 Docker 的 AI 助手进行迁移
 linktitle: AI 辅助迁移
 description: 使用 Docker 的 AI 助手自动将您的 Dockerfile 迁移至 Docker 强化镜像 (DHI)

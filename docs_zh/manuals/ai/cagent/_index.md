@@ -8,7 +8,10 @@ params:
     badge:
       color: violet
       text: Experimental
-keywords: [ai, agent, cagent]
+keywords:
+- ai
+- agent
+- cagent
 ---
 
 {{< summary-bar feature_name="cagent" >}}

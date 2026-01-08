@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用 Splunk 日志记录驱动�
 keywords: splunk, docker, logging, driver
 title: Splunk 日志记录驱动程序
 aliases:
-  - /engine/reference/logging/splunk/
-  - /engine/admin/logging/splunk/
-  - /config/containers/logging/splunk/
+- /engine/reference/logging/splunk/
+- /engine/admin/logging/splunk/
+- /config/containers/logging/splunk/
 ---
 
 `splunk` 日志记录驱动程序将容器日志发送到 Splunk Enterprise 和 Splunk Cloud 中的

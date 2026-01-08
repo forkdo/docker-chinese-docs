@@ -4,10 +4,10 @@ keywords: containers, restart, policies, automation, administration
 title: 自动启动容器
 weight: 10
 aliases:
-  - /engine/articles/host_integration/
-  - /engine/admin/host_integration/
-  - /engine/admin/start-containers-automatically/
-  - /config/containers/start-containers-automatically/
+- /engine/articles/host_integration/
+- /engine/admin/host_integration/
+- /engine/admin/start-containers-automatically/
+- /config/containers/start-containers-automatically/
 ---
 
 Docker 提供了[重启策略](/reference/cli/docker/container/run.md#restart)，用于控制容器在退出时或 Docker 重启时是否自动启动。重启策略会按照正确的顺序启动相关联的容器。Docker 建议您使用重启策略，避免使用进程管理器来启动容器。

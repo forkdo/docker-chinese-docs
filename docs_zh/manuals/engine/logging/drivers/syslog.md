@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用 syslog 日志驱动程序
 keywords: syslog, docker, logging, driver
 title: Syslog 日志驱动程序
 aliases:
-  - /engine/reference/logging/syslog/
-  - /engine/admin/logging/syslog/
-  - /config/containers/logging/syslog/
+- /engine/reference/logging/syslog/
+- /engine/admin/logging/syslog/
+- /config/containers/logging/syslog/
 ---
 
 `syslog` 日志驱动程序将日志路由到 `syslog` 服务器。`syslog` 协议使用原始字符串作为日志消息，并支持有限的元数据集。syslog 消息必须按照特定格式进行格式化才能有效。从有效消息中，接收方可以提取以下信息：

@@ -1,7 +1,6 @@
 ---
 description: 探索学习中心并了解登录 Docker Desktop 的好处
-keywords: Docker Dashboard, manage, containers, gui, dashboard, images, user manual,
-  learning center, guide, sign in
+keywords: Docker Dashboard, manage, containers, gui, dashboard, images, user manual, learning center, guide, sign in
 title: 登录 Docker Desktop
 linkTitle: 登录
 weight: 40

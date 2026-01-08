@@ -3,7 +3,8 @@ title: 计费常见问题
 linkTitle: 常见问题
 description: 与计费相关的常见问题
 keywords: 计费, 续订, 付款, 常见问题
-tags: [FAQ]
+tags:
+- FAQ
 weight: 60
 ---
 

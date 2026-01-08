@@ -4,7 +4,7 @@ datafile: docker_mcp_feature_ls
 title: docker mcp feature ls
 layout: cli
 aliases:
-  - /reference/cli/docker/mcp/feature/list/
+- /reference/cli/docker/mcp/feature/list/
 ---
 
 <!--

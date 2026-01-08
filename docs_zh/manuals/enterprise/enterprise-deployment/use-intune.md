@@ -2,12 +2,13 @@
 title: 使用 Intune 部署
 description: 使用 Microsoft 基于云的设备管理工具 Intune 来部署 Docker Desktop
 keywords: microsoft, windows, docker desktop, deploy, mdm, enterprise, administrator, mac, pkg, dmg
-tags: [admin]
+tags:
+- admin
 weight: 40
 aliases:
- - /desktop/install/msi/use-intune/
- - /desktop/setup/install/msi/use-intune/
- - /desktop/setup/install/enterprise-deployment/use-intune/
+- /desktop/install/msi/use-intune/
+- /desktop/setup/install/msi/use-intune/
+- /desktop/setup/install/enterprise-deployment/use-intune/
 ---
 
 {{< summary-bar feature_name="Intune" >}}

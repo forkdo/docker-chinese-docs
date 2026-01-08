@@ -1,7 +1,6 @@
 ---
 description: 为 Docker Hub 镜像设置本地镜像仓库
-keywords: registry, on-prem, images, tags, repository, distribution, mirror, Hub,
-  recipe, advanced
+keywords: registry, on-prem, images, tags, repository, distribution, mirror, Hub, recipe, advanced
 title: 镜像 Docker Hub 官方镜像库
 linkTitle: 镜像
 weight: 80

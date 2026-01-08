@@ -4,7 +4,8 @@ keywords: Docker 安全性, 常见问题, 身份验证, SSO, 漏洞报告, 会�
 title: 通用安全常见问题解答
 linkTitle: 通用
 weight: 10
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /faq/security/general/
 ---

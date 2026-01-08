@@ -5,8 +5,8 @@ weight: 20
 keywords: .net, development
 description: 了解如何使用容器在本地开发你的 .NET 应用程序。
 aliases:
-  - /language/dotnet/develop/
-  - /guides/language/dotnet/develop/
+- /language/dotnet/develop/
+- /guides/language/dotnet/develop/
 ---
 
 ## 先决条件

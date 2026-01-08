@@ -3,12 +3,14 @@ title: 企业部署常见问题
 linkTitle: 常见问题
 description: 大规模部署 Docker Desktop 的常见问题解答
 keywords: msi, deploy, docker desktop, faqs, pkg, mdm, jamf, intune, windows, mac, enterprise, admin
-tags: [FAQ, admin]
+tags:
+- FAQ
+- admin
 weight: 70
 aliases:
- - /desktop/install/msi/faq/
- - /desktop/setup/install/msi/faq/
- - /desktop/setup/install/enterprise-deployment/faq/
+- /desktop/install/msi/faq/
+- /desktop/setup/install/msi/faq/
+- /desktop/setup/install/enterprise-deployment/faq/
 ---
 
 ## MSI

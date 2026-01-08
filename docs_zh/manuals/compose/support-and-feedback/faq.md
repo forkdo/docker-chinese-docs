@@ -4,7 +4,8 @@ keywords: docker compose 常见问题, docker compose 问题, docker-compose 与
 title: Docker Compose 常见问题解答
 linkTitle: 常见问题
 weight: 10
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /compose/faq/
 ---

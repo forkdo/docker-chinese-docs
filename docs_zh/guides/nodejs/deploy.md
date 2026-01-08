@@ -5,8 +5,8 @@ weight: 50
 keywords: 部署, kubernetes, node, node.js, 生产环境
 description: 学习如何使用生产就绪的配置将容器化的 Node.js 应用部署到 Kubernetes
 aliases:
-  - /language/nodejs/deploy/
-  - /guides/language/nodejs/deploy/
+- /language/nodejs/deploy/
+- /guides/language/nodejs/deploy/
 ---
 
 ## 前置条件

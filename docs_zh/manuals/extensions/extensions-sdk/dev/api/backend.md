@@ -2,8 +2,8 @@
 title: 扩展后端
 description: Docker 扩展 API
 keywords: Docker, extensions, sdk, API
-aliases: 
- - /desktop/extensions-sdk/dev/api/backend/
+aliases:
+- /desktop/extensions-sdk/dev/api/backend/
 ---
 
 `ddClient.extension.vm` 对象可用于与扩展元数据中 [vm 部分](../../architecture/metadata.md#vm-section) 定义的后端进行通信。

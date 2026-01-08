@@ -3,10 +3,10 @@ description: 使用 Prometheus 收集 Docker 指标
 keywords: prometheus, metrics
 title: 使用 Prometheus 收集 Docker 指标
 aliases:
-  - /engine/admin/prometheus/
-  - /config/thirdparty/monitoring/
-  - /config/thirdparty/prometheus/
-  - /config/daemon/prometheus/
+- /engine/admin/prometheus/
+- /config/thirdparty/monitoring/
+- /config/thirdparty/prometheus/
+- /config/daemon/prometheus/
 ---
 
 [Prometheus](https://prometheus.io/) 是一个开源的系统监控和告警工具包。您可以将 Docker 配置为 Prometheus 的目标。

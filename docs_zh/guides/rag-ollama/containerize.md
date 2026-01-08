@@ -5,7 +5,7 @@ weight: 10
 keywords: python, 生成式 ai, genai, llm, ollama, 容器化, 初始化, qdrant
 description: 了解如何容器化 RAG 应用程序。
 aliases:
-  - /guides/use-case/rag-ollama/containerize/
+- /guides/use-case/rag-ollama/containerize/
 ---
 
 ## 概述

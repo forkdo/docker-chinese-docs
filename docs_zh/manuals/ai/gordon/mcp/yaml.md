@@ -3,7 +3,7 @@ title: 使用 YAML 配置 MCP 服务器
 description: 在 Gordon 中使用 MCP 服务器
 keywords: ai, mcp, gordon, yaml, configuration, docker compose, mcp servers, extensibility
 aliases:
- - /desktop/features/gordon/mcp/yaml/
+- /desktop/features/gordon/mcp/yaml/
 ---
 
 Docker 与 Anthropic 合作，为 MCP 服务器的[参考实现](https://github.com/modelcontextprotocol/servers/)提供容器镜像。这些镜像在 Docker Hub 的 [mcp 命名空间](https://hub.docker.com/u/mcp)下提供。

@@ -3,7 +3,7 @@ description: 了解如何优化 ZFS 驱动程序的使用。
 keywords: 'container, storage, driver, ZFS '
 title: ZFS 存储驱动程序
 aliases:
-  - /storage/storagedriver/zfs-driver/
+- /storage/storagedriver/zfs-driver/
 ---
 
 ZFS 是一个下一代文件系统，支持许多高级存储技术，如卷管理、快照、校验和、压缩和去重、复制等。

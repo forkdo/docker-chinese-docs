@@ -1,5 +1,5 @@
 ---
-title: '自定义 Docker 强化镜像或图表 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>'
+title: 自定义 Docker 强化镜像或图表 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 linkTitle: 自定义镜像或图表
 weight: 25
 keywords: hardened images, DHI, customize, certificate, artifact, helm chart

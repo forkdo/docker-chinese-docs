@@ -1,10 +1,9 @@
 ---
-description: &desc
-  通过配置 Docker 监听 IP 地址、端口以及 Unix 套接字，可以允许 Docker 接受来自远程主机的请求。
+description: 通过配置 Docker 监听 IP 地址、端口以及 Unix 套接字，可以允许 Docker 接受来自远程主机的请求。
 keywords: configuration, daemon, remote access, engine
 title: 配置 Docker 守护进程的远程访问
 aliases:
-  - /config/daemon/remote-access/
+- /config/daemon/remote-access/
 ---
 
 默认情况下，Docker 守护进程通过监听 Unix 套接字来接受来自本地客户端的请求。你可以通过配置 Docker 监听 IP 地址和端口，以及 Unix 套接字，使其能够接受来自远程客户端的请求。

@@ -2,8 +2,8 @@
 title: Compose 部署规范
 description: 了解 Compose 部署规范
 keywords: compose, compose specification, compose file reference, compose deploy specification
-aliases: 
- - /compose/compose-file/deploy/
+aliases:
+- /compose/compose-file/deploy/
 weight: 140
 ---
 

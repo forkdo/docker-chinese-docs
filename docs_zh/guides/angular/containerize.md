@@ -4,7 +4,6 @@ linkTitle: 容器化
 weight: 10
 keywords: angular, node, image, initialize, build
 description: 了解如何使用 Docker 容器化 Angular 应用程序，通过最佳实践创建优化的、生产就绪的镜像，以提升性能、安全性和可扩展性。
-
 ---
 
 ## 前提条件

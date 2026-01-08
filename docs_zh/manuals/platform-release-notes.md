@@ -7,7 +7,9 @@ weight: 60
 params:
   sidebar:
     group: Platform
-tags: [Release notes, admin]
+tags:
+- Release notes
+- admin
 ---
 
 此页面详细介绍了 Docker Home、管理控制台、账单、安全和订阅功能的新特性、增强功能、已知问题和错误修复。

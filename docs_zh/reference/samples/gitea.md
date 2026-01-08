@@ -5,3 +5,4 @@ service: gitea
 aliases:
 - /samples/gitea/
 ---
+

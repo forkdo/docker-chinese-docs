@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, php, local, development
 description: 了解如何部署您的应用程序
 aliases:
-  - /language/php/deploy/
-  - /guides/language/php/deploy/
+- /language/php/deploy/
+- /guides/language/php/deploy/
 ---
 
 ## 先决条件

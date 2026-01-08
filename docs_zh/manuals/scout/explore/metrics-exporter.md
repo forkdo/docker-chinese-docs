@@ -1,10 +1,11 @@
 ---
 title: Docker Scout 指标导出器
-description: |
-  了解如何使用 Prometheus 从 Docker Scout 中抓取数据，以 Grafana 创建自定义的漏洞和策略仪表板
+description: '了解如何使用 Prometheus 从 Docker Scout 中抓取数据，以 Grafana 创建自定义的漏洞和策略仪表板
+
+  '
 keywords: scout, exporter, prometheus, grafana, metrics, dashboard, api, compose
 aliases:
-  - /scout/metrics-exporter/
+- /scout/metrics-exporter/
 ---
 
 Docker Scout 公开一个指标 HTTP 端点，允许您使用 Prometheus 或 Datadog 从 Docker Scout 抓取漏洞和策略数据。通过此功能，您可以创建自托管的 Docker Scout 仪表板，用于可视化供应链指标。

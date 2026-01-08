@@ -4,7 +4,8 @@ linkTitle: Company
 weight: 30
 description: 公司常见问题
 keywords: Docker, Docker Hub, SSO 常见问题, 单点登录, 公司, 管理, 公司管理
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /docker-hub/company-faqs/
 - /faq/admin/company-faqs/

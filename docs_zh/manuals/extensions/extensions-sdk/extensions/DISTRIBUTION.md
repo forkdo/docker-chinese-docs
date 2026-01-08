@@ -2,8 +2,8 @@
 title: 打包并发布您的扩展
 description: Docker 扩展分发
 keywords: Docker, extensions, sdk, distribution
-aliases: 
- - /desktop/extensions-sdk/extensions/DISTRIBUTION/
+aliases:
+- /desktop/extensions-sdk/extensions/DISTRIBUTION/
 weight: 30
 ---
 

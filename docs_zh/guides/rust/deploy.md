@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, kubernetes, rust
 description: 了解如何使用 Kubernetes 在本地测试你的 Rust 部署
 aliases:
-  - /language/rust/deploy/
-  - /guides/language/rust/deploy/
+- /language/rust/deploy/
+- /guides/language/rust/deploy/
 ---
 
 ## 先决条件

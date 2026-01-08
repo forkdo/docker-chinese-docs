@@ -2,10 +2,12 @@
 description: 使用 Docker 容器化并开发 Bun 应用程序。
 keywords: 入门, bun
 title: Bun 语言特定指南
-summary: |
-  学习如何使用 Bun 运行时容器化 JavaScript 应用程序。
+summary: '学习如何使用 Bun 运行时容器化 JavaScript 应用程序。
+
+  '
 linkTitle: Bun
-languages: [js]
+languages:
+- js
 tags: []
 params:
   time: 10 分钟

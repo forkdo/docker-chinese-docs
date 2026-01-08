@@ -4,8 +4,8 @@ linkTitle: 安全性
 description: 扩展安全模型的各个方面
 keywords: Docker, extensions, sdk, security
 aliases:
- - /desktop/extensions-sdk/guides/security/
- - /desktop/extensions-sdk/architecture/security/
+- /desktop/extensions-sdk/guides/security/
+- /desktop/extensions-sdk/architecture/security/
 ---
 
 ## 扩展功能

@@ -3,7 +3,8 @@ title: SSO 身份提供程序常见问题解答
 linkTitle: 身份提供程序
 description: 有关 Docker SSO 和身份提供程序配置的常见问题解答
 keywords: identity providers, SSO IdP, SAML, Azure AD, Entra ID, certificate management
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /single-sign-on/idp-faqs/
 - /faq/security/single-sign-on/idp-faqs/

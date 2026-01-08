@@ -1,10 +1,12 @@
 ---
 title: Azure Pipelines 与 Docker 入门
 linkTitle: Azure Pipelines 和 Docker
-summary: |
-  了解如何使用 Azure Pipelines 自动构建和推送 Docker 镜像。
+summary: '了解如何使用 Azure Pipelines 自动构建和推送 Docker 镜像。
+
+  '
 params:
-  tags: [devops]
+  tags:
+  - devops
   time: 10 minutes
 ---
 

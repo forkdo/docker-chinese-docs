@@ -4,10 +4,10 @@ linkTitle: 增强容器隔离
 description: 增强容器隔离（ECI）通过防止恶意容器危害 Docker Desktop 或主机系统，为 Docker Desktop 提供额外的安全保护
 keywords: enhanced container isolation, container security, sysbox runtime, linux user namespaces, hardened desktop
 aliases:
- - /desktop/hardened-desktop/enhanced-container-isolation/
- - /security/for-admins/hardened-desktop/enhanced-container-isolation/
- - /security/hardened-desktop/enhanced-container-isolation/how-eci-works
- - /security/hardened-desktop/enhanced-container-isolation/features-benefits
+- /desktop/hardened-desktop/enhanced-container-isolation/
+- /security/for-admins/hardened-desktop/enhanced-container-isolation/
+- /security/hardened-desktop/enhanced-container-isolation/how-eci-works
+- /security/hardened-desktop/enhanced-container-isolation/features-benefits
 weight: 10
 ---
 

@@ -1,11 +1,10 @@
 ---
 description: 找到适合您的反馈方式
-keywords: Feedback, Docker Desktop, Linux, Mac, Windows, Dev Environments, Extensions,
-  Community forum, bugs, problems, issues
+keywords: Feedback, Docker Desktop, Linux, Mac, Windows, Dev Environments, Extensions, Community forum, bugs, problems, issues
 title: 提供反馈
 weight: 40
 aliases:
- - /desktop/feedback/
+- /desktop/feedback/
 ---
 
 您可以通过多种方式对 Docker Desktop 或其功能提供反馈。

@@ -1,7 +1,8 @@
 ---
 title: 管理漏洞例外
-description: |
-  例外允许您为漏洞如何影响您的制品提供额外的上下文和文档，并提供抑制不适用漏洞的能力
+description: '例外允许您为漏洞如何影响您的制品提供额外的上下文和文档，并提供抑制不适用漏洞的能力
+
+  '
 keywords: scout, cves, suppress, vex, exceptions
 ---
 

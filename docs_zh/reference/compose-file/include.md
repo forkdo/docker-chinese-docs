@@ -4,7 +4,7 @@ title: 使用 include 模块化 Compose 文件
 description: 使用 include 顶级元素引用外部 Compose 文件
 keywords: compose, compose specification, include, compose file reference
 aliases:
- - /compose/compose-file/14-include/
+- /compose/compose-file/14-include/
 weight: 110
 ---
 

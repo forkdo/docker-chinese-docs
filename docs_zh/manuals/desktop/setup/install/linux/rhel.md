@@ -1,8 +1,6 @@
 ---
 description: 在 RHEL 上安装 Docker Desktop 的说明
-keywords: red hat, red hat enterprise linux, rhel, rpm,
-  update install, uninstall, upgrade, update, linux,
-  desktop, docker desktop, docker desktop for linux, dd4l
+keywords: red hat, red hat enterprise linux, rhel, rpm, update install, uninstall, upgrade, update, linux, desktop, docker desktop, docker desktop for linux, dd4l
 title: 在 RHEL 上安装 Docker Desktop
 linkTitle: RHEL
 download-url-base: https://download.docker.com/linux/rhel

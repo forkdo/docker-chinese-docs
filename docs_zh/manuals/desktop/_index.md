@@ -8,18 +8,22 @@ params:
     group: Products
 grid:
 - title: 安装 Docker Desktop
-  description: |
-    在 [Mac](/desktop/setup/install/mac-install/)、
+  description: '在 [Mac](/desktop/setup/install/mac-install/)、
+
     [Windows](/desktop/setup/install/windows-install/) 或
+
     [Linux](/desktop/setup/install/linux/) 上安装 Docker Desktop。
+
+    '
   icon: download
 - title: 了解 Docker Desktop
   description: 掌握 Docker Desktop 的使用方法。
   icon: feature_search
   link: /desktop/use-desktop/
 - title: 探索其主要功能
-  description: |
-    查找有关 [Networking](/desktop/features/networking/)、[Docker VMM](/desktop/features/vmm/)、[WSL](/desktop/features/wsl/) 等功能的信息。
+  description: '查找有关 [Networking](/desktop/features/networking/)、[Docker VMM](/desktop/features/vmm/)、[WSL](/desktop/features/wsl/) 等功能的信息。
+
+    '
   icon: category
 - title: 查看发行说明
   description: 了解新功能、改进和错误修复。

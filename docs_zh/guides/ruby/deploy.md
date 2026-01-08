@@ -5,8 +5,8 @@ weight: 50
 keywords: 部署, kubernetes, ruby
 description: 了解如何使用 Kubernetes 进行本地开发
 aliases:
-  - /language/ruby/deploy/
-  - /guides/language/ruby/deploy/
+- /language/ruby/deploy/
+- /guides/language/ruby/deploy/
 ---
 
 ## 前提条件

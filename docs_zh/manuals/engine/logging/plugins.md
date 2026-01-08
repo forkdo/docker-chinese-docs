@@ -3,9 +3,9 @@ description: 了解日志记录驱动插件，用于扩展和自定义 Docker �
 title: 使用日志记录驱动插件
 keywords: logging, driver, plugins, monitoring
 aliases:
-  - /engine/admin/logging/plugins/
-  - /engine/reference/logging/plugins/
-  - /config/containers/logging/plugins/
+- /engine/admin/logging/plugins/
+- /engine/reference/logging/plugins/
+- /config/containers/logging/plugins/
 ---
 
 Docker 日志记录插件允许您扩展和自定义 Docker 的日志记录功能，超越[内置日志记录驱动程序](configure.md)的功能。日志记录服务提供商可以[实现他们自己的插件](/manuals/engine/extend/plugins_logging.md)，并使其在 Docker Hub 或私有注册表中可用。本主题展示该日志记录服务的用户如何配置 Docker 来使用该插件。

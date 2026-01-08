@@ -5,7 +5,7 @@ title: Docker Extensions 的设置与反馈
 linkTitle: 设置与反馈
 weight: 40
 aliases:
- - /desktop/extensions/settings-feedback/
+- /desktop/extensions/settings-feedback/
 ---
 
 ## 设置

@@ -3,12 +3,15 @@ title: 构建语言翻译应用程序
 linkTitle: 语言翻译
 keywords: nlp, natural language processing, text summarization, python, language translation, googletrans
 description: 学习如何使用 Python、Googletrans 和 Docker 构建并运行语言翻译应用程序。
-summary: |
-  本指南演示如何使用 Docker 部署语言翻译模型以执行自然语言处理（NLP）任务。
-tags: [ai]
-languages: [python]
+summary: '本指南演示如何使用 Docker 部署语言翻译模型以执行自然语言处理（NLP）任务。
+
+  '
+tags:
+- ai
+languages:
+- python
 aliases:
-  - /guides/use-case/nlp/language-translation/
+- /guides/use-case/nlp/language-translation/
 params:
   time: 20 分钟
 ---

@@ -5,3 +5,4 @@ service: prometheus
 aliases:
 - /samples/prometheus/
 ---
+

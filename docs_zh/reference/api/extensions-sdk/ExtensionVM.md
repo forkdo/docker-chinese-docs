@@ -1,10 +1,10 @@
 ---
-title: "接口: ExtensionVM"
+title: '接口: ExtensionVM'
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/ExtensionVM/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/ExtensionVM/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/ExtensionVM/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/ExtensionVM/
 ---
 
 **`Since`**

@@ -1,7 +1,6 @@
 ---
 description: 在基于 Arch 的发行版上安装 Docker Desktop 包的说明。主要面向希望在各种基于 Arch 的发行版上试用 Docker Desktop 的开发者。
-keywords: Arch Linux, 安装, 卸载, 升级, 更新, linux, 桌面, docker
-  desktop, docker desktop for linux, dd4l
+keywords: Arch Linux, 安装, 卸载, 升级, 更新, linux, 桌面, docker desktop, docker desktop for linux, dd4l
 title: 在基于 Arch 的发行版上安装 Docker Desktop
 linkTitle: Arch
 aliases:

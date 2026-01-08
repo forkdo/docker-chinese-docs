@@ -3,8 +3,8 @@ title: 发布和暴露端口
 keywords: concepts, build, images, container, docker desktop
 description: 本概念页面将向您介绍在 Docker 中发布和暴露端口的重要性
 weight: 1
-aliases: 
- - /guides/docker-concepts/running-containers/publishing-ports/
+aliases:
+- /guides/docker-concepts/running-containers/publishing-ports/
 ---
 
 {{< youtube-embed 9JnqOmJ96ds >}}

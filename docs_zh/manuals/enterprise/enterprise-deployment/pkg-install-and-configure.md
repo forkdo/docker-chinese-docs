@@ -2,10 +2,11 @@
 title: PKG 安装程序
 description: 了解如何使用 PKG 安装程序。同时探索其他配置选项。
 keywords: pkg, mac, docker desktop, install, deploy, configure, admin, mdm
-tags: [admin]
+tags:
+- admin
 weight: 20
 aliases:
- - /desktop/setup/install/enterprise-deployment/pkg-install-and-configure/
+- /desktop/setup/install/enterprise-deployment/pkg-install-and-configure/
 ---
 
 {{< summary-bar feature_name="PKG installer" >}}

@@ -5,3 +5,4 @@ service: mysql
 aliases:
 - /samples/mysql/
 ---
+

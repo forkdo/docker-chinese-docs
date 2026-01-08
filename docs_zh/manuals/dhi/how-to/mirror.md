@@ -1,5 +1,5 @@
 ---
-title: '镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>'
+title: 镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 linktitle: 镜像仓库
 description: 了解如何将镜像镜像到您组织的命名空间，并可选择将其推送到另一个私有注册中心。
 weight: 20

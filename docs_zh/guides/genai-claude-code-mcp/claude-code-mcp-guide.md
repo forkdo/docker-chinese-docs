@@ -2,12 +2,15 @@
 description: 了解如何使用 Claude Code 与 Docker MCP Toolkit，通过 Docker Hub MCP 服务器从自然语言生成生产就绪的 Docker Compose 文件。
 keywords: mcp, model context protocol, docker, docker desktop, claude code, docker hub, compose, automation
 title: 使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件
-summary: |
-  本指南展示了如何将 Claude Code 连接到 Docker MCP Toolkit，使其能够搜索 Docker Hub 镜像，并通过自然语言生成完整的 Docker Compose 堆栈。
+summary: '本指南展示了如何将 Claude Code 连接到 Docker MCP Toolkit，使其能够搜索 Docker Hub 镜像，并通过自然语言生成完整的 Docker Compose 堆栈。
+
   您将启用 Docker Hub MCP 服务器，连接 Claude Code，验证 MCP 访问权限，并通过对话式提示创建一个 Node.js + PostgreSQL 堆栈。
-tags: [ai]
+
+  '
+tags:
+- ai
 aliases:
-  - /guides/use-case/genai-claude-code-mcp/
+- /guides/use-case/genai-claude-code-mcp/
 params:
   time: 15 分钟
 ---

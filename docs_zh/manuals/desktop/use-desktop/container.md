@@ -1,5 +1,5 @@
 ---
-description: &desc 通过 Docker Dashboard 的“容器”视图了解您可以执行的操作
+description: 通过 Docker Dashboard 的“容器”视图了解您可以执行的操作
 keywords: Docker Dashboard, manage, containers, gui, dashboard, images, user manual
 title: 探索 Docker Desktop 中的“容器”视图
 linkTitle: 容器

@@ -4,7 +4,7 @@ keywords: Docker Extensions, Docker Desktop, Linux, Mac, Windows, Marketplace
 title: Marketplace 扩展
 weight: 10
 aliases:
- - /desktop/extensions/marketplace/
+- /desktop/extensions/marketplace/
 ---
 
 Extensions Marketplace 中提供两种类型的扩展：

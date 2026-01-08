@@ -4,7 +4,8 @@ keywords: hub, troubleshoot
 title: 排查 Docker Hub 问题
 linkTitle: 排查
 weight: 60
-tags: [Troubleshooting]
+tags:
+- Troubleshooting
 toc_max: 2
 ---
 

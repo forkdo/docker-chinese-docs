@@ -3,8 +3,8 @@ title: 扩展镜像标签
 linkTitle: 添加标签
 description: Docker 扩展标签
 keywords: Docker, extensions, sdk, labels
-aliases: 
- - /desktop/extensions-sdk/extensions/labels/
+aliases:
+- /desktop/extensions-sdk/extensions/labels/
 weight: 10
 ---
 

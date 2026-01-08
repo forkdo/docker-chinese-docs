@@ -4,6 +4,7 @@ datafile: docker_desktop_restart
 title: docker desktop restart
 layout: cli
 ---
+
 # docker desktop restart
 
 ```text

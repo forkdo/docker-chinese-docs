@@ -5,3 +5,4 @@ service: fastapi
 aliases:
 - /samples/fastapi/
 ---
+

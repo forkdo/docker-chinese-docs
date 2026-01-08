@@ -5,9 +5,9 @@ weight: 20
 keywords: 入门, go, golang, 本地, 开发
 description: 了解如何在本地开发你的应用。
 aliases:
-  - /get-started/golang/develop/
-  - /language/golang/develop/
-  - /guides/language/golang/develop/
+- /get-started/golang/develop/
+- /language/golang/develop/
+- /guides/language/golang/develop/
 ---
 
 ## 前置要求

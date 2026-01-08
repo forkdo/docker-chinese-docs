@@ -3,17 +3,19 @@ title: Vue.js 语言专用指南
 linkTitle: Vue.js
 description: 使用 Docker 容器化并开发 Vue.js 应用程序
 keywords: 入门, vue, vuejs docker, 语言, Dockerfile
-summary: |
-  本指南介绍如何使用 Docker 容器化 Vue.js 应用程序。
+summary: '本指南介绍如何使用 Docker 容器化 Vue.js 应用程序。
+
+  '
 toc_min: 1
 toc_max: 2
-languages: [js]
-tags: [frameworks]
+languages:
+- js
+tags:
+- frameworks
 aliases:
-  - /frameworks/vue/
+- /frameworks/vue/
 params:
   time: 20 分钟
-
 ---
 
 Vue.js 语言专用指南向您展示如何使用 Docker 容器化 Vue.js 应用程序，遵循创建高效、生产就绪容器的最佳实践。

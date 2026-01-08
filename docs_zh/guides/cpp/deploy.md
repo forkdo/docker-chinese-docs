@@ -5,8 +5,8 @@ weight: 50
 keywords: deploy, kubernetes, c++
 description: 了解如何使用 Kubernetes 进行本地开发
 aliases:
-  - /language/cpp/deploy/
-  - /guides/language/cpp/deploy/
+- /language/cpp/deploy/
+- /guides/language/cpp/deploy/
 ---
 
 ## 前置条件

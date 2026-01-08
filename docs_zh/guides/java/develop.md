@@ -8,6 +8,7 @@ aliases:
 - /language/java/develop/
 - /guides/language/java/develop/
 ---
+
 ## 先决条件
 
 请先完成[容器化您的应用](containerize.md)中的步骤，将您的应用容器化。

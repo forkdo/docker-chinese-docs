@@ -5,7 +5,7 @@ description: 使用合规性报告仪表板跟踪和监控用户对 Docker Deskt
 keywords: settings management, compliance reporting, admin console, policy enforcement, docker desktop
 weight: 30
 aliases:
- - /security/for-admins/hardened-desktop/settings-management/compliance-reporting/
+- /security/for-admins/hardened-desktop/settings-management/compliance-reporting/
 ---
 
 {{< summary-bar feature_name="Compliance reporting" >}}

@@ -2,7 +2,12 @@
 title: 工具集参考
 linkTitle: 工具集
 description: cagent 工具集及其功能的完整参考
-keywords: [ai, agent, cagent, tools, toolsets]
+keywords:
+- ai
+- agent
+- cagent
+- tools
+- toolsets
 weight: 20
 ---
 

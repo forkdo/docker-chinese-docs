@@ -3,7 +3,8 @@ title: SSO 强制执行常见问题
 linkTitle: 强制执行
 description: 有关 Docker 单点登录强制执行及其对用户影响的常见问题解答
 keywords: SSO 强制执行, 单点登录, 个人访问令牌, CLI 身份验证, 访客用户
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /single-sign-on/enforcement-faqs/
 - /faq/security/single-sign-on/enforcement-faqs/

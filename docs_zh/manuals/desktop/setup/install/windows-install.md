@@ -1,8 +1,6 @@
 ---
 description: 开始使用 Docker for Windows。本指南涵盖了系统要求、下载位置以及如何安装和更新的说明。
-keywords: docker for windows, docker windows, docker desktop for windows, docker on
-  windows, install docker windows, install docker on windows, docker windows 10, docker
-  run on windows, installing docker for windows, windows containers, wsl, hyper-v
+keywords: docker for windows, docker windows, docker desktop for windows, docker on windows, install docker windows, install docker on windows, docker windows 10, docker run on windows, installing docker for windows, windows containers, wsl, hyper-v
 title: 在 Windows 上安装 Docker Desktop
 linkTitle: Windows
 weight: 30

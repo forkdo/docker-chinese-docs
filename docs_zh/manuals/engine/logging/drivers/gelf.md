@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用 Graylog 扩展格式 (GELF)
 keywords: graylog, gelf, logging, driver
 title: Graylog 扩展格式日志驱动程序
 aliases:
-  - /engine/reference/logging/gelf/
-  - /engine/admin/logging/gelf/
-  - /config/containers/logging/gelf/
+- /engine/reference/logging/gelf/
+- /engine/admin/logging/gelf/
+- /config/containers/logging/gelf/
 ---
 
 `gelf` 日志驱动程序是一种便捷的格式，[Graylog](https://www.graylog.org/)、[Logstash](https://www.elastic.co/products/logstash) 和 [Fluentd](https://www.fluentd.org) 等多种工具都能理解这种格式。许多工具都使用这种格式。

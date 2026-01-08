@@ -4,7 +4,6 @@ linkTitle: 容器化
 weight: 10
 keywords: react.js, node, image, initialize, build
 description: 了解如何通过创建优化的、生产就绪的镜像，使用 Docker 容器化 React.js 应用程序，涵盖性能、安全性和可扩展性的最佳实践。
-
 ---
 
 ## 先决条件

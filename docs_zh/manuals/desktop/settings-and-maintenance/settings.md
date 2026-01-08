@@ -1,14 +1,13 @@
 ---
 description: 了解并更改 Docker Desktop 的设置
-keywords: settings, preferences, proxy, file sharing, resources, kubernetes, Docker
-  Desktop, Linux, Mac, Windows
+keywords: settings, preferences, proxy, file sharing, resources, kubernetes, Docker Desktop, Linux, Mac, Windows
 title: 更改 Docker Desktop 设置
 linkTitle: 更改设置
 aliases:
- - /desktop/settings/mac/
- - /desktop/settings/windows/
- - /desktop/settings/linux/
- - /desktop/settings/
+- /desktop/settings/mac/
+- /desktop/settings/windows/
+- /desktop/settings/linux/
+- /desktop/settings/
 weight: 10
 ---
 

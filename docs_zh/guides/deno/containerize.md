@@ -5,7 +5,7 @@ weight: 10
 keywords: deno, containerize, initialize
 description: 了解如何将 Deno 应用程序容器化。
 aliases:
-  - /language/deno/containerize/
+- /language/deno/containerize/
 ---
 
 ## 先决条件

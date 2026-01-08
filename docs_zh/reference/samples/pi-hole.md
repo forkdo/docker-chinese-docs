@@ -5,3 +5,4 @@ service: pi-hole
 aliases:
 - /samples/pi-hole/
 ---
+

@@ -3,7 +3,8 @@ title: SSO 用户管理常见问题解答
 linkTitle: 用户管理
 description: 关于使用 Docker 单点登录管理用户的常见问题解答
 keywords: SSO 用户管理, 用户配置, SCIM, 即时配置, 组织成员
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /single-sign-on/users-faqs/
 - /faq/security/single-sign-on/users-faqs/

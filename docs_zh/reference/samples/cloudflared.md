@@ -5,3 +5,4 @@ service: cloudflared
 aliases:
 - /samples/cloudflared/
 ---
+

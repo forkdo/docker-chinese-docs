@@ -5,9 +5,9 @@ linkTitle: macOS 应用损坏对话框
 weight: 30
 tags:
 - Troubleshooting
-keywords: docker desktop mac, damaged app, move to trash, gatekeeper, installation
-  issues, troubleshooting
+keywords: docker desktop mac, damaged app, move to trash, gatekeeper, installation issues, troubleshooting
 ---
+
 ## 错误信息
 
 当您尝试打开 Docker Desktop 时，macOS 会显示以下对话框：

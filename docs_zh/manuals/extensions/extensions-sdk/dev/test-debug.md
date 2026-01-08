@@ -3,8 +3,8 @@ title: 测试与调试
 description: 测试与调试您的扩展。
 keywords: Docker, Extensions, sdk, preview, update, Chrome DevTools
 aliases:
- - /desktop/extensions-sdk/build/test-debug/
- - /desktop/extensions-sdk/dev/test-debug/
+- /desktop/extensions-sdk/build/test-debug/
+- /desktop/extensions-sdk/dev/test-debug/
 weight: 10
 ---
 

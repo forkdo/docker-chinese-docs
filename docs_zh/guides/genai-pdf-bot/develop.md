@@ -5,7 +5,7 @@ weight: 20
 keywords: python, local, development, generative ai, genai, llm, neo4j, ollama, langchain, openai
 description: 学习如何在本地开发您的生成式 AI (GenAI) 应用程序。
 aliases:
-  - /guides/use-case/genai-pdf-bot/develop/
+- /guides/use-case/genai-pdf-bot/develop/
 ---
 
 ## 先决条件

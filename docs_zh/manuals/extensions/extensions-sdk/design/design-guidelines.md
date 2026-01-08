@@ -3,8 +3,8 @@ title: Docker 扩展的设计指南
 linkTitle: 指南
 description: Docker 扩展设计
 keywords: Docker, extensions, design
-aliases: 
- - /desktop/extensions-sdk/design/design-guidelines/
+aliases:
+- /desktop/extensions-sdk/design/design-guidelines/
 weight: 10
 ---
 

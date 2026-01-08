@@ -8,6 +8,7 @@ aliases:
 - /language/java/deploy/
 - /guides/language/java/deploy/
 ---
+
 ## 前提条件
 
 - 完成本指南的所有先前部分，从[容器化你的应用](containerize.md)开始。

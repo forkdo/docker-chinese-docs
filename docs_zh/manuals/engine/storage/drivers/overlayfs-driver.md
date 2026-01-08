@@ -3,7 +3,7 @@ description: 了解如何优化 OverlayFS 驱动程序的使用。
 keywords: container, storage, driver, OverlayFS, overlay2, overlay
 title: OverlayFS 存储驱动程序
 aliases:
-  - /storage/storagedriver/overlayfs-driver/
+- /storage/storagedriver/overlayfs-driver/
 ---
 
 OverlayFS 是一种联合文件系统。
@@ -102,12 +102,18 @@ OverlayFS 将两个目录叠加在单个 Linux 主机上，并将它们呈现为
 $ ls -l /var/lib/docker/overlay2
 
 total 24
-drwx------ 5 root root 4096 Jun 20 07:36 223c2864175491657d238e2664251df13b63adb8d050924fd1bfcdb278b866f7
-drwx------ 3 root root 4096 Jun 20 07:36 3a36935c9df35472229c57f4a27105a136f5e4dbef0f87905b2e506e494e348b
-drwx------ 5 root root 4096 Jun 20 07:36 4e9fa83caff3e8f4cc83693fa407a4a9fac9573deaf481506c102d484dd1e6a1
-drwx------ 5 root root 4096 Jun 20 07:36 e8876a226237217ec61c4baf238a32992291d059fdac95ed6303bdff3f59cff5
-drwx------ 5 root root 4096 Jun 20 07:36 eca1e4e1694283e001f200a667bb3cb40853cf2d1b12c29feda7422fed78afed
-drwx------ 2 root root 4096 Jun 20 07:36 l
+drwx
+------ 5 root root 4096 Jun 20 07:36 223c2864175491657d238e2664251df13b63adb8d050924fd1bfcdb278b866f7
+drwx
+------ 3 root root 4096 Jun 20 07:36 3a36935c9df35472229c57f4a27105a136f5e4dbef0f87905b2e506e494e348b
+drwx
+------ 5 root root 4096 Jun 20 07:36 4e9fa83caff3e8f4cc83693fa407a4a9fac9573deaf481506c102d484dd1e6a1
+drwx
+------ 5 root root 4096 Jun 20 07:36 e8876a226237217ec61c4baf238a32992291d059fdac95ed6303bdff3f59cff5
+drwx
+------ 5 root root 4096 Jun 20 07:36 eca1e4e1694283e001f200a667bb3cb40853cf2d1b12c29feda7422fed78afed
+drwx
+------ 2 root root 4096 Jun 20 07:36 l
 ```
 
 新的 `l`（小写 `L`）目录包含缩短的层标识符作为符号链接。这些标识符用于避免达到 `mount` 命令参数的页面大小限制。

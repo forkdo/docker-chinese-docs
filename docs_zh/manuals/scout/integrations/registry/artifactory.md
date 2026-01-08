@@ -4,7 +4,7 @@ keywords: docker scout, artifactory, integration, image analysis, security, cves
 title: 将 Docker Scout 与 Artifactory 容器注册表集成
 linkTitle: Artifactory 容器注册表
 aliases:
-  - /scout/artifactory/
+- /scout/artifactory/
 ---
 
 {{% experimental %}}

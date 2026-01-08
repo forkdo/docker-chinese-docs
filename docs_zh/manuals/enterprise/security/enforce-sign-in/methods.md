@@ -3,9 +3,10 @@ title: 配置登录强制执行
 linkTitle: 配置
 description: 使用注册表项、配置文件、plist 文件或 registry.json 文件为 Docker Desktop 配置登录强制执行
 keywords: authentication, registry.json, configure, enforce sign-in, docker desktop, security, .plist, registry key, mac, windows, linux
-tags: [admin]
+tags:
+- admin
 aliases:
- - /security/for-admins/enforce-sign-in/methods/
+- /security/for-admins/enforce-sign-in/methods/
 ---
 
 {{< summary-bar feature_name="Enforce sign-in" >}}

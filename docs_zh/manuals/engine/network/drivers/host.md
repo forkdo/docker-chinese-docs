@@ -3,9 +3,9 @@ title: Host 网络驱动
 description: 关于在 Docker 主机网络上暴露容器的全部内容
 keywords: network, host, standalone, host mode networking
 aliases:
-  - /network/host/
-  - /network/drivers/host/
-  - /engine/network/tutorials/host/
+- /network/host/
+- /network/drivers/host/
+- /engine/network/tutorials/host/
 ---
 
 如果你为容器使用 `host` 网络模式，该容器的网络栈不会与 Docker 主机隔离（容器共享主机的网络命名空间），并且容器不会获得自己分配的 IP 地址。例如，如果你运行一个绑定到端口 80 的容器，并使用 `host` 网络，那么容器的应用程序在主机 IP 地址的端口 80 上可用。

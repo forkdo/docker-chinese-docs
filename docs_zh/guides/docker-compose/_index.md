@@ -1,29 +1,32 @@
 ---
 title: 使用 Docker Compose 定义和运行多容器应用程序
 linkTitle: Docker Compose
-summary: |
-  简化定义、配置和运行多容器
+summary: '简化定义、配置和运行多容器
+
   Docker 应用程序的过程。
+
+  '
 description: 了解如何使用 Docker Compose 定义和运行多容器 Docker 应用程序。
-tags: [product-demo]
+tags:
+- product-demo
 aliases:
-  - /learning-paths/docker-compose/
+- /learning-paths/docker-compose/
 params:
   image: images/learning-paths/compose.png
   time: 10 minutes
   resource_links:
-    - title: Docker Compose CLI 概述
-      url: /compose/reference/
-    - title: Docker Compose 概述
-      url: /compose/
-    - title: Compose 的工作原理
-      url: /compose/intro/compose-application-model/
-    - title: 在 Compose 中使用配置集
-      url: /compose/how-tos/profiles/
-    - title: 使用 Compose 控制启动和关闭顺序
-      url: /compose/how-tos/startup-order/
-    - title: Compose 构建规范
-      url: /compose/compose-file/build/
+  - title: Docker Compose CLI 概述
+    url: /compose/reference/
+  - title: Docker Compose 概述
+    url: /compose/
+  - title: Compose 的工作原理
+    url: /compose/intro/compose-application-model/
+  - title: 在 Compose 中使用配置集
+    url: /compose/how-tos/profiles/
+  - title: 使用 Compose 控制启动和关闭顺序
+    url: /compose/how-tos/startup-order/
+  - title: Compose 构建规范
+    url: /compose/compose-file/build/
 ---
 
 开发者在处理多容器 Docker 应用程序时会面临挑战，包括复杂的配置、依赖项管理以及维护一致的环境。网络、资源分配、数据持久化、日志记录和监控增加了难度。安全问题和故障排除问题进一步使过程复杂化，需要有效的工具和实践来实现高效管理。

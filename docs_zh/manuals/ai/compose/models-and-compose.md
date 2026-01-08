@@ -4,8 +4,8 @@ linkTitle: 在 Compose 中使用 AI 模型
 description: 学习如何使用 models 顶层元素在 Docker Compose 应用程序中定义和使用 AI 模型
 keywords: compose, docker compose, models, ai, machine learning, cloud providers, specification
 aliases:
-  - /compose/how-tos/model-runner/
-  - /ai/compose/model-runner/
+- /compose/how-tos/model-runner/
+- /ai/compose/model-runner/
 weight: 10
 params:
   sidebar:

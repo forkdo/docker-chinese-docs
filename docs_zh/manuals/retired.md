@@ -1,72 +1,73 @@
 ---
 title: 已弃用和停用的 Docker 产品和功能
 linkTitle: 已弃用的产品和功能
-description: |
-  探索已弃用和停用的 Docker 功能、产品和开源项目，包括已过渡工具和已归档计划的详细信息。
+description: '探索已弃用和停用的 Docker 功能、产品和开源项目，包括已过渡工具和已归档计划的详细信息。
+
+  '
 params:
   sidebar:
     group: Products
 aliases:
-  - /cloud/
-  - /cloud/aci-compose-features/
-  - /cloud/aci-container-features/
-  - /cloud/aci-integration/
-  - /cloud/ecs-architecture/
-  - /cloud/ecs-compose-examples/
-  - /cloud/ecs-compose-features/
-  - /cloud/ecs-integration/
-  - /engine/context/aci-integration/
-  - /engine/context/ecs-integration/
-  - /machine/
-  - /machine/drivers/hyper-v/
-  - /machine/get-started/
-  - /machine/install-machine/
-  - /machine/overview/
-  - /registry/
-  - /registry/compatibility/
-  - /registry/configuration/
-  - /registry/deploying/
-  - /registry/deprecated/
-  - /registry/garbage-collection/
-  - /registry/help/
-  - /registry/insecure/
-  - /registry/introduction/
-  - /registry/notifications/
-  - /registry/recipes/
-  - /registry/recipes/apache/
-  - /registry/recipes/nginx/
-  - /registry/recipes/osx-setup-guide/
-  - /registry/spec/
-  - /registry/spec/api/
-  - /registry/spec/auth/
-  - /registry/spec/auth/jwt/
-  - /registry/spec/auth/oauth/
-  - /registry/spec/auth/scope/
-  - /registry/spec/auth/token/
-  - /registry/spec/deprecated-schema-v1/
-  - /registry/spec/implementations/
-  - /registry/spec/json/
-  - /registry/spec/manifest-v2-1/
-  - /registry/spec/manifest-v2-2/
-  - /registry/spec/menu/
-  - /registry/storage-drivers/
-  - /registry/storage-drivers/azure/
-  - /registry/storage-drivers/filesystem/
-  - /registry/storage-drivers/gcs/
-  - /registry/storage-drivers/inmemory/
-  - /registry/storage-drivers/oss/
-  - /registry/storage-drivers/s3/
-  - /registry/storage-drivers/swift/
-  - /toolbox/
-  - /toolbox/overview/
-  - /toolbox/toolbox_install_mac/
-  - /toolbox/toolbox_install_windows/
-  - /desktop/features/dev-environments/
-  - /desktop/features/dev-environments/create-dev-env/
-  - /desktop/features/dev-environments/set-up/
-  - /desktop/features/dev-environments/share/
-  - /desktop/features/dev-environments/dev-cli/
-  - /desktop/dev-environments/
+- /cloud/
+- /cloud/aci-compose-features/
+- /cloud/aci-container-features/
+- /cloud/aci-integration/
+- /cloud/ecs-architecture/
+- /cloud/ecs-compose-examples/
+- /cloud/ecs-compose-features/
+- /cloud/ecs-integration/
+- /engine/context/aci-integration/
+- /engine/context/ecs-integration/
+- /machine/
+- /machine/drivers/hyper-v/
+- /machine/get-started/
+- /machine/install-machine/
+- /machine/overview/
+- /registry/
+- /registry/compatibility/
+- /registry/configuration/
+- /registry/deploying/
+- /registry/deprecated/
+- /registry/garbage-collection/
+- /registry/help/
+- /registry/insecure/
+- /registry/introduction/
+- /registry/notifications/
+- /registry/recipes/
+- /registry/recipes/apache/
+- /registry/recipes/nginx/
+- /registry/recipes/osx-setup-guide/
+- /registry/spec/
+- /registry/spec/api/
+- /registry/spec/auth/
+- /registry/spec/auth/jwt/
+- /registry/spec/auth/oauth/
+- /registry/spec/auth/scope/
+- /registry/spec/auth/token/
+- /registry/spec/deprecated-schema-v1/
+- /registry/spec/implementations/
+- /registry/spec/json/
+- /registry/spec/manifest-v2-1/
+- /registry/spec/manifest-v2-2/
+- /registry/spec/menu/
+- /registry/storage-drivers/
+- /registry/storage-drivers/azure/
+- /registry/storage-drivers/filesystem/
+- /registry/storage-drivers/gcs/
+- /registry/storage-drivers/inmemory/
+- /registry/storage-drivers/oss/
+- /registry/storage-drivers/s3/
+- /registry/storage-drivers/swift/
+- /toolbox/
+- /toolbox/overview/
+- /toolbox/toolbox_install_mac/
+- /toolbox/toolbox_install_windows/
+- /desktop/features/dev-environments/
+- /desktop/features/dev-environments/create-dev-env/
+- /desktop/features/dev-environments/set-up/
+- /desktop/features/dev-environments/share/
+- /desktop/features/dev-environments/dev-cli/
+- /desktop/dev-environments/
 ---
 
 本文档概述了已弃用、停用或已过渡的 Docker 功能、产品和开源项目。

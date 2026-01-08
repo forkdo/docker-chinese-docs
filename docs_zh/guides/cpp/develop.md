@@ -5,8 +5,8 @@ weight: 20
 keywords: C++, 本地, 开发
 description: 了解如何在本地开发您的 C++ 应用程序。
 aliases:
-  - /language/cpp/develop/
-  - /guides/language/cpp/develop/
+- /language/cpp/develop/
+- /guides/language/cpp/develop/
 ---
 
 ## 先决条件

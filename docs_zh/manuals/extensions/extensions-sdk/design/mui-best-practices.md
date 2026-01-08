@@ -2,8 +2,8 @@
 title: MUI 最佳实践
 description: 使用 MUI 以最大限度地兼容 Docker Desktop 的指南
 keywords: Docker, extensions, mui, theme, theming, material-ui, material
-aliases: 
- - /desktop/extensions-sdk/design/mui-best-practices/
+aliases:
+- /desktop/extensions-sdk/design/mui-best-practices/
 ---
 
 本文假设您正在遵循我们的推荐做法，使用我们的 [Material UI 主题](https://www.npmjs.com/package/@docker/docker-mui-theme)。

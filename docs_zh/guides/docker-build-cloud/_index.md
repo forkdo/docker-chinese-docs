@@ -1,25 +1,28 @@
 ---
-title: "Docker Build Cloud: 通过快速、多架构构建来收回您的时间"
+title: 'Docker Build Cloud: 通过快速、多架构构建来收回您的时间'
 linkTitle: Docker Build Cloud
-description: |
-  了解如何使用 Docker Build Cloud 在云中构建和部署 Docker 镜像。
-summary: |
-  利用基于云的资源、共享团队缓存和原生多架构支持，使应用程序的构建速度提升高达 39 倍。
-tags: [product-demo]
+description: '了解如何使用 Docker Build Cloud 在云中构建和部署 Docker 镜像。
+
+  '
+summary: '利用基于云的资源、共享团队缓存和原生多架构支持，使应用程序的构建速度提升高达 39 倍。
+
+  '
+tags:
+- product-demo
 aliases:
-  - /learning-paths/docker-build-cloud/
+- /learning-paths/docker-build-cloud/
 params:
   image: images/learning-paths/build-cloud.png
   time: 10 minutes
   resource_links:
-    - title: Product page
-      url: https://www.docker.com/products/build-cloud/
-    - title: Docker Build Cloud overview
-      url: /build-cloud/
-    - title: Subscriptions and features
-      url: "https://www.docker.com/pricing/"
-    - title: Using Docker Build Cloud
-      url: /build-cloud/usage/
+  - title: Product page
+    url: https://www.docker.com/products/build-cloud/
+  - title: Docker Build Cloud overview
+    url: /build-cloud/
+  - title: Subscriptions and features
+    url: https://www.docker.com/pricing/
+  - title: Using Docker Build Cloud
+    url: /build-cloud/usage/
 ---
 
 <!-- vale Vale.Spelling = NO -->

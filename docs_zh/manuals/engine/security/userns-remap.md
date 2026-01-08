@@ -130,20 +130,30 @@ $ dockerd --userns-remap="testuser:testuser"
     ```console
     $ sudo ls -ld /var/lib/docker/231072.231072/
 
-    drwx------ 11 231072 231072 11 Jun 21 21:19 /var/lib/docker/231072.231072/
+    drwx
+------ 11 231072 231072 11 Jun 21 21:19 /var/lib/docker/231072.231072/
 
     $ sudo ls -l /var/lib/docker/231072.231072/
 
     total 14
-    drwx------ 5 231072 231072 5 Jun 21 21:19 aufs
-    drwx------ 3 231072 231072 3 Jun 21 21:21 containers
-    drwx------ 3 root   root   3 Jun 21 21:19 image
-    drwxr-x--- 3 root   root   3 Jun 21 21:19 network
-    drwx------ 4 root   root   4 Jun 21 21:19 plugins
-    drwx------ 2 root   root   2 Jun 21 21:19 swarm
-    drwx------ 2 231072 231072 2 Jun 21 21:21 tmp
-    drwx------ 2 root   root   2 Jun 21 21:19 trust
-    drwx------ 2 231072 231072 3 Jun 21 21:19 volumes
+    drwx
+------ 5 231072 231072 5 Jun 21 21:19 aufs
+    drwx
+------ 3 231072 231072 3 Jun 21 21:21 containers
+    drwx
+------ 3 root   root   3 Jun 21 21:19 image
+    drwxr-x
+--- 3 root   root   3 Jun 21 21:19 network
+    drwx
+------ 4 root   root   4 Jun 21 21:19 plugins
+    drwx
+------ 2 root   root   2 Jun 21 21:19 swarm
+    drwx
+------ 2 231072 231072 2 Jun 21 21:21 tmp
+    drwx
+------ 2 root   root   2 Jun 21 21:19 trust
+    drwx
+------ 2 231072 231072 3 Jun 21 21:19 volumes
     ```
 
     您的目录列表可能有一些差异，特别是如果您使用的容器存储驱动与 `aufs` 不同。

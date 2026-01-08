@@ -3,7 +3,7 @@ title: Compose 开发规范
 description: 了解 Compose 开发规范
 keywords: compose, compose specification, compose file reference, compose develop specification
 aliases:
- - /compose/compose-file/develop/
+- /compose/compose-file/develop/
 weight: 150
 ---
 

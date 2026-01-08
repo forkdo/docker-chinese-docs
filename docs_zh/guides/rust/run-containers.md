@@ -5,8 +5,8 @@ weight: 10
 keywords: rust, run, image, container,
 description: 学习如何以容器方式运行你的 Rust 镜像。
 aliases:
-  - /language/rust/run-containers/
-  - /guides/language/rust/run-containers/
+- /language/rust/run-containers/
+- /guides/language/rust/run-containers/
 ---
 
 ## 前置条件

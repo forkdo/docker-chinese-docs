@@ -3,7 +3,7 @@ title: Secrets
 description: 探索 secrets 顶级元素可以拥有的所有属性。
 keywords: compose, compose specification, secrets, compose file reference
 aliases:
- - /compose/compose-file/09-secrets/
+- /compose/compose-file/09-secrets/
 weight: 60
 ---
 

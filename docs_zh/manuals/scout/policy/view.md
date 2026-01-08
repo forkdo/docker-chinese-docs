@@ -1,7 +1,8 @@
 ---
 title: 查看 Docker Scout 策略状态
-description: |
-  Docker Scout 仪表板和 `docker scout policy` 命令可用于查看镜像的策略状态。
+description: 'Docker Scout 仪表板和 `docker scout policy` 命令可用于查看镜像的策略状态。
+
+  '
 keywords: scout, policy, status, vulnerabilities, supply chain, cves, licenses
 ---
 

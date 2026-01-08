@@ -4,9 +4,7 @@ linkTitle: 容器化
 weight: 10
 keywords: vue.js, vue, js, node, image, initialize, build
 description: 了解如何使用 Docker 容器化 Vue.js 应用程序，通过遵循最佳实践创建一个针对性能、安全性和可扩展性进行优化的、可用于生产的镜像。
-
 ---
-
 
 ## 先决条件
 

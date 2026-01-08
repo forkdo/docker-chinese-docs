@@ -1,14 +1,13 @@
 ---
 title: 共享应用程序
 weight: 40
-linkTitle: "Part 3: Share the application"
-keywords: get started, setup, orientation, quickstart, intro, concepts, containers,
-  docker desktop, docker hub, sharing
+linkTitle: 'Part 3: Share the application'
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop, docker hub, sharing
 description: 分享你为示例应用程序构建的镜像，以便你可以在其他地方运行它，其他开发者也可以使用它
 aliases:
- - /get-started/part3/
- - /get-started/04_sharing_app/
- - /guides/workshop/04_sharing_app/
+- /get-started/part3/
+- /get-started/04_sharing_app/
+- /guides/workshop/04_sharing_app/
 ---
 
 现在你已经构建了一个镜像，你可以共享它。要共享 Docker 镜像，你必须使用 Docker 注册表。默认注册表是 Docker Hub，你使用的所有镜像都来自这里。

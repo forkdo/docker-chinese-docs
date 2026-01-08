@@ -2,12 +2,15 @@
 description: 了解如何在 TensorFlow.js Web 应用程序中部署预训练模型以执行人脸检测。
 keywords: tensorflow.js, machine learning, ml, mediapipe, blazeface, face detection
 title: 使用 TensorFlow.js 进行人脸检测
-summary: |
-  本指南介绍如何在 Docker 容器中运行 TensorFlow.js。
-tags: [ai]
-languages: [js]
+summary: '本指南介绍如何在 Docker 容器中运行 TensorFlow.js。
+
+  '
+tags:
+- ai
+languages:
+- js
 aliases:
-  - /guides/use-case/tensorflowjs/
+- /guides/use-case/tensorflowjs/
 params:
   time: 20 分钟
 ---

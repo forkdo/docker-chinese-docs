@@ -2,13 +2,15 @@
 title: .NET 语言特定指南
 linkTitle: C# (.NET)
 description: 使用 Docker 容器化并开发 .NET 应用
-summary: |
-  学习如何使用 Docker 容器化 .NET 应用程序。
+summary: '学习如何使用 Docker 容器化 .NET 应用程序。
+
+  '
 keywords: getting started, .net
 aliases:
-  - /language/dotnet/
-  - /guides/language/dotnet/
-languages: [c-sharp]
+- /language/dotnet/
+- /guides/language/dotnet/
+languages:
+- c-sharp
 params:
   time: 20 minutes
   toc_min: 1

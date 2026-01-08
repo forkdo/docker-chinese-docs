@@ -3,9 +3,9 @@ title: 恢复您的 Docker 账户
 description: 恢复您的 Docker 账户并管理双因素身份验证恢复代码
 keywords: 账户恢复, 双因素身份验证, 2FA, 恢复代码, docker hub 安全
 aliases:
- - /docker-hub/2fa/recover-hub-account/
- - /security/for-developers/2fa/recover-hub-account/
- - /security/2fa/new-recovery-code/
+- /docker-hub/2fa/recover-hub-account/
+- /security/for-developers/2fa/recover-hub-account/
+- /security/2fa/new-recovery-code/
 weight: 20
 ---
 

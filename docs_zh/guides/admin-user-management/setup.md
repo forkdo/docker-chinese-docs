@@ -1,6 +1,6 @@
 ---
 title: 在 Docker 中设置角色和权限
-description: &desc 通过角色和团队安全地管理 Docker 中的访问和协作的指南。
+description: 通过角色和团队安全地管理 Docker 中的访问和协作的指南。
 keywords: Docker roles, permissions management, access control, IT administration, team collaboration, least privilege, security, Docker Teams, role-based access
 weight: 10
 ---

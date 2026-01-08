@@ -2,8 +2,8 @@
 title: 插值
 description: 使用插值语法在 Docker Compose 文件中替换环境变量。
 keywords: compose, compose specification, interpolation, compose file reference
-aliases: 
- - /compose/compose-file/12-interpolation/
+aliases:
+- /compose/compose-file/12-interpolation/
 weight: 90
 ---
 

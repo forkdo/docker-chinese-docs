@@ -2,7 +2,12 @@
 title: 配置文件参考
 linkTitle: 配置文件
 description: cagent YAML 配置文件格式的完整参考
-keywords: [ai, agent, cagent, configuration, yaml]
+keywords:
+- ai
+- agent
+- cagent
+- configuration
+- yaml
 weight: 10
 ---
 

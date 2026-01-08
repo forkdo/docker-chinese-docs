@@ -3,7 +3,8 @@ title: SSO 域常见问题
 linkTitle: 域
 description: 有关 Docker 单点登录的域验证和管理的常见问题
 keywords: SSO domains, domain verification, DNS, TXT records, single sign-on
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /single-sign-on/domain-faqs/
 - /faq/security/single-sign-on/domain-faqs/

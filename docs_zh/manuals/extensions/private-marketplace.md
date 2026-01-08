@@ -2,11 +2,12 @@
 description: 如何配置和使用 Docker Extensions 的私有市场
 keywords: Docker Extensions, Docker Desktop, Linux, Mac, Windows, Marketplace, private, security, admin
 title: 为扩展配置私有市场
-tags: [admin]
+tags:
+- admin
 linkTitle: 配置私有市场
 weight: 30
 aliases:
- - /desktop/extensions/private-marketplace/
+- /desktop/extensions/private-marketplace/
 ---
 
 {{< summary-bar feature_name="Private marketplace" >}}

@@ -3,9 +3,11 @@ title: 在 GenAI 中利用 RAG 教授新知识
 linkTitle: 在 GenAI 中利用 RAG
 description: 本指南将引导您完成设置和使用集成检索增强生成（RAG）系统与图数据库的 GenAI 栈。学习如何将 Neo4j 等图数据库与 AI 模型集成，以获得更准确、上下文感知更强的响应。
 keywords: Docker, GenAI, 检索增强生成, RAG, 图数据库, Neo4j, AI, LLM
-summary: |
-  本指南解释了如何使用检索增强生成（RAG）和 Neo4j 设置 GenAI 栈，涵盖核心概念、部署步骤和案例研究。还包括针对优化 AI 在实时数据上性能的故障排除提示。
-tags: [ai]
+summary: '本指南解释了如何使用检索增强生成（RAG）和 Neo4j 设置 GenAI 栈，涵盖核心概念、部署步骤和案例研究。还包括针对优化 AI 在实时数据上性能的故障排除提示。
+
+  '
+tags:
+- ai
 params:
   time: 35 分钟
 ---

@@ -2,11 +2,12 @@
 title: 多阶段构建
 keywords: 概念, 构建, 镜像, 容器, docker desktop
 description: 本概念页面将为您介绍多阶段构建的目的及其优势
-summary: |
-  通过将构建环境与最终运行环境分离，您可以显著减小镜像体积并缩小攻击面。在本指南中，您将掌握多阶段构建的强大功能，以创建精简高效的 Docker 镜像，这对于最小化开销和增强生产环境中的部署至关重要。
+summary: '通过将构建环境与最终运行环境分离，您可以显著减小镜像体积并缩小攻击面。在本指南中，您将掌握多阶段构建的强大功能，以创建精简高效的 Docker 镜像，这对于最小化开销和增强生产环境中的部署至关重要。
+
+  '
 weight: 5
-aliases: 
- - /guides/docker-concepts/building-images/multi-stage-builds/
+aliases:
+- /guides/docker-concepts/building-images/multi-stage-builds/
 ---
 
 {{< youtube-embed vR185cjwxZ8 >}}

@@ -3,14 +3,14 @@ description: 了解如何为 Docker 守护进程配置日志驱动程序
 keywords: docker, logging, driver
 title: 配置日志驱动程序
 aliases:
-  - /config/containers/logging/logentries/
-  - /engine/reference/logging/overview/
-  - /engine/reference/logging/
-  - /engine/admin/reference/logging/
-  - /engine/admin/logging/logentries/
-  - /engine/admin/logging/overview/
-  - /config/containers/logging/configure/
-  - /config/containers/
+- /config/containers/logging/logentries/
+- /engine/reference/logging/overview/
+- /engine/reference/logging/
+- /engine/admin/reference/logging/
+- /engine/admin/logging/logentries/
+- /engine/admin/logging/overview/
+- /config/containers/logging/configure/
+- /config/containers/
 ---
 
 Docker 提供了多种日志记录机制，帮助您获取正在运行的容器和服务的信息。这些机制被称为日志驱动程序。每个 Docker 守护进程都有一个默认的日志驱动程序，除非您将其配置为使用不同的日志驱动程序（简称日志驱动），否则每个容器都会使用该默认驱动程序。

@@ -1,10 +1,10 @@
 ---
-title: "Interface: Toast"
+title: 'Interface: Toast'
 description: Docker extension API reference
 keywords: Docker, extensions, sdk, API, reference
 aliases:
- - /desktop/extensions-sdk/dev/api/reference/interfaces/Toast/
- - /extensions/extensions-sdk/dev/api/reference/interfaces/Toast/
+- /desktop/extensions-sdk/dev/api/reference/interfaces/Toast/
+- /extensions/extensions-sdk/dev/api/reference/interfaces/Toast/
 ---
 
 Toasts 提供对用户的简短通知。

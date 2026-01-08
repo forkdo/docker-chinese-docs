@@ -6,7 +6,7 @@ keywords: enhanced container isolation, limitations, wsl, hyper-v, kubernetes, d
 toc_max: 3
 weight: 30
 aliases:
- - /security/for-admins/hardened-desktop/enhanced-container-isolation/limitations/
+- /security/for-admins/hardened-desktop/enhanced-container-isolation/limitations/
 ---
 
 {{< summary-bar feature_name="Hardened Docker Desktop" >}}

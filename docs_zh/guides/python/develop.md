@@ -5,10 +5,10 @@ weight: 15
 keywords: python, local, development
 description: 了解如何在本地开发 Python 应用程序。
 aliases:
-  - /language/python/develop/
-  - /guides/language/python/develop/
+- /language/python/develop/
+- /guides/language/python/develop/
 ---
- 
+
 ## 先决条件
 
 完成[容器化 Python 应用程序](containerize.md)。

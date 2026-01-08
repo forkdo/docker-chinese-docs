@@ -5,8 +5,8 @@ weight: 40
 keywords: rust, CI/CD, local, development
 description: 了解如何为您的应用程序配置 CI/CD
 aliases:
-  - /language/rust/configure-ci-cd/
-  - /guides/language/rust/configure-ci-cd/
+- /language/rust/configure-ci-cd/
+- /guides/language/rust/configure-ci-cd/
 ---
 
 ## 先决条件

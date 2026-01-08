@@ -4,8 +4,8 @@ linkTitle: 配置高级设置
 description: 为增强容器隔离配置 Docker 套接字异常和高级设置
 keywords: 增强容器隔离, docker socket, 配置, testcontainers, 管理设置
 aliases:
- - /desktop/hardened-desktop/enhanced-container-isolation/config/
- - /security/for-admins/hardened-desktop/enhanced-container-isolation/config/
+- /desktop/hardened-desktop/enhanced-container-isolation/config/
+- /security/for-admins/hardened-desktop/enhanced-container-isolation/config/
 weight: 20
 ---
 

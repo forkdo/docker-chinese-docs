@@ -5,9 +5,9 @@ weight: 10
 description: 了解如何使用 Docker Engine SDK 以您选择的语言自动化 Docker 任务
 keywords: developing, sdk, Docker Engine SDKs, install SDKs, SDK versions
 aliases:
-  - /develop/sdk/
-  - /engine/api/sdks/
-  - /engine/api/sdk/
+- /develop/sdk/
+- /engine/api/sdks/
+- /engine/api/sdk/
 ---
 
 Docker 提供了一个用于与 Docker 守护进程交互的 API（称为 Docker Engine API），以及用于 Go 和 Python 的 SDK。这些 SDK 让您可以高效地构建和扩展 Docker 应用程序和解决方案。如果 Go 或 Python 不适合您，您可以直接使用 Docker Engine API。

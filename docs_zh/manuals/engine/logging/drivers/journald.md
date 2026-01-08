@@ -3,9 +3,9 @@ description: 了解如何在 Docker Engine 中使用 Journald 日志驱动
 keywords: journald, systemd-journald, docker, logging, driver
 title: Journald 日志驱动
 aliases:
-  - /engine/reference/logging/journald/
-  - /engine/admin/logging/journald/
-  - /config/containers/logging/journald/
+- /engine/reference/logging/journald/
+- /engine/admin/logging/journald/
+- /config/containers/logging/journald/
 ---
 
 `journald` 日志驱动将容器日志发送到

@@ -2,10 +2,12 @@
 description: 使用 Docker 容器化和开发 Deno 应用程序。
 keywords: getting started, deno
 title: Deno 语言特定指南
-summary: |
-  学习如何使用 Docker 通过 Deno 运行时容器化 JavaScript 应用程序。
+summary: '学习如何使用 Docker 通过 Deno 运行时容器化 JavaScript 应用程序。
+
+  '
 linkTitle: Deno
-languages: [js]
+languages:
+- js
 tags: []
 params:
   time: 10 分钟

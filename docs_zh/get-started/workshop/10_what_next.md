@@ -1,13 +1,12 @@
 ---
 title: Docker 工作坊之后该做什么
 weight: 100
-linkTitle: "第 9 部分：下一步"
-keywords: get started, setup, orientation, quickstart, intro, concepts, containers,
-  docker desktop
+linkTitle: 第 9 部分：下一步
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop
 description: 确保您对自己的应用程序接下来可以做什么有更多想法
 aliases:
- - /get-started/11_what_next/
- - /guides/workshop/10_what_next/
+- /get-started/11_what_next/
+- /guides/workshop/10_what_next/
 ---
 
 虽然您已经完成了工作坊，但关于容器仍有许多内容需要学习。

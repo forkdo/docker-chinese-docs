@@ -3,8 +3,8 @@ title: 从扩展后端使用 Docker socket
 linkTitle: 使用 Docker socket
 description: Docker 扩展元数据
 keywords: Docker, extensions, sdk, metadata
-aliases: 
- - /desktop/extensions-sdk/guides/use-docker-socket-from-backend/
+aliases:
+- /desktop/extensions-sdk/guides/use-docker-socket-from-backend/
 ---
 
 扩展可以通过 SDK 直接从前端调用 Docker 命令。

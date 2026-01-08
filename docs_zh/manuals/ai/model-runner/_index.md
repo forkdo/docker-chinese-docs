@@ -8,8 +8,8 @@ weight: 30
 description: 了解如何使用 Docker Model Runner 管理和运行 AI 模型。
 keywords: Docker, ai, model runner, docker desktop, docker engine, llm, openai, llama.cpp, vllm, cpu, nvidia, cuda, amd, rocm, vulkan
 aliases:
-  - /desktop/features/model-runner/
-  - /model-runner/
+- /desktop/features/model-runner/
+- /model-runner/
 ---
 
 {{< summary-bar feature_name="Docker Model Runner" >}}

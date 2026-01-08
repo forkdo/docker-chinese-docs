@@ -5,8 +5,8 @@ weight: 40
 keywords: ruby, local, development
 description: 学习如何在本地开发你的 Ruby on Rails 应用程序。
 aliases:
-  - /language/ruby/develop/
-  - /guides/language/ruby/develop/
+- /language/ruby/develop/
+- /guides/language/ruby/develop/
 ---
 
 ## 先决条件

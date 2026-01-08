@@ -5,7 +5,6 @@ description: 了解 Docker Hardened Images 如何使用无发行版变体来最�
 keywords: distroless container image, minimal docker image, secure base image, no shell container, reduced attack surface
 ---
 
-
 极简镜像（有时称为无发行版镜像）是去除了不必要组件（如包管理器、Shell，甚至底层操作系统发行版）的容器镜像。Docker Hardened Images (DHI) 采用这种极简方法，以减少漏洞并确保安全的软件交付。[Docker Official Images](../../docker-hub/image-library/trusted-content.md#docker-official-images) 和 [Docker Verified Publisher Images](../../docker-hub/image-library/trusted-content.md#verified-publisher-images) 也遵循类似的极简主义和安全性最佳实践，但为了确保更广泛用例的兼容性，它们可能不会削减得如此彻底。
 
 ## 什么是极简或无发行版镜像？

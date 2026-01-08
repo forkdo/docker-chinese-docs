@@ -5,7 +5,7 @@ weight: 20
 description: 使用 Buildx CLI 客户端调用云构建
 keywords: build, cloud build, usage, cli, buildx, client
 aliases:
-  - /build/cloud/usage/
+- /build/cloud/usage/
 ---
 
 要使用 Docker Build Cloud 进行构建，请调用构建命令并使用 `--builder` 标志指定构建器的名称。

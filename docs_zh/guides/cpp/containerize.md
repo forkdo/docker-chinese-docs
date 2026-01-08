@@ -5,8 +5,8 @@ weight: 10
 keywords: C++, 容器化, 初始化
 description: 了解如何使用 Docker Compose 构建并运行 C++ 应用程序。
 aliases:
-  - /language/cpp/containerize/
-  - /guides/language/cpp/containerize/
+- /language/cpp/containerize/
+- /guides/language/cpp/containerize/
 ---
 
 ## 前提条件

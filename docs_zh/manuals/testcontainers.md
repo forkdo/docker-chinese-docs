@@ -2,8 +2,7 @@
 title: Testcontainers
 weight: 40
 description: 了解如何在您首选的编程语言中以编程方式使用 Testcontainers 运行容器。
-keywords: docker APIs, docker, testcontainers documentation, testcontainers, testcontainers oss, testcontainers oss documentation,
-  docker compose, docker-compose, java, golang, go
+keywords: docker APIs, docker, testcontainers documentation, testcontainers, testcontainers oss, testcontainers oss documentation, docker compose, docker-compose, java, golang, go
 params:
   sidebar:
     group: 开源项目

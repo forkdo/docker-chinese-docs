@@ -4,11 +4,12 @@ linkTitle: 强制登录
 description: 要求用户登录 Docker Desktop 以访问组织权益和安全功能
 toc_max: 2
 keywords: authentication, registry.json, configure, enforce sign-in, docker desktop, security, .plist, registry key, mac, windows, organization
-tags: [admin]
+tags:
+- admin
 aliases:
- - /security/for-admins/configure-sign-in/
- - /docker-hub/configure-sign-in/
- - /security/for-admins/enforce-sign-in/
+- /security/for-admins/configure-sign-in/
+- /docker-hub/configure-sign-in/
+- /security/for-admins/enforce-sign-in/
 weight: 30
 ---
 

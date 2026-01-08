@@ -3,12 +3,15 @@ title: 构建文本摘要应用
 linkTitle: 文本摘要
 keywords: nlp, 自然语言处理, 文本摘要, python, bert extractive summarizer
 description: 了解如何使用 Python、Bert Extractive Summarizer 和 Docker 构建并运行文本摘要应用。
-summary: |
-  本指南介绍如何使用 Docker 容器化文本摘要模型。
-tags: [ai]
-languages: [python]
+summary: '本指南介绍如何使用 Docker 容器化文本摘要模型。
+
+  '
+tags:
+- ai
+languages:
+- python
 aliases:
-  - /guides/use-case/nlp/text-summarization/
+- /guides/use-case/nlp/text-summarization/
 params:
   time: 20 minutes
 ---

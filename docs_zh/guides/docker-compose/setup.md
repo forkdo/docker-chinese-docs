@@ -1,5 +1,5 @@
 ---
-title: "演示：设置和使用 Docker Compose"
+title: 演示：设置和使用 Docker Compose
 description: 了解如何开始使用 Docker Compose。
 weight: 20
 ---

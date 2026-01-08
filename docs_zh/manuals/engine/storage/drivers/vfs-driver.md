@@ -3,7 +3,7 @@ description: 了解如何优化 VFS 驱动的使用。
 keywords: container, storage, driver, vfs
 title: VFS 存储驱动
 aliases:
-  - /storage/storagedriver/vfs-driver/
+- /storage/storagedriver/vfs-driver/
 ---
 
 VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目录，不支持写时复制（copy-on-write）。要创建新层，需要对其上一层执行“深度复制”。这会导致性能低于其他存储驱动，并且占用更多磁盘空间。不过，它很稳健、稳定，可在任何环境中运行。在测试环境中，它还可用于验证其他存储后端。

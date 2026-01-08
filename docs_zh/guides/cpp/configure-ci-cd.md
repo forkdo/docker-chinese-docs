@@ -5,8 +5,8 @@ weight: 40
 keywords: ci/cd, github actions, c++, shiny
 description: 了解如何为 C++ 应用程序配置 GitHub Actions 的 CI/CD。
 aliases:
-  - /language/cpp/configure-ci-cd/
-  - /guides/language/cpp/configure-ci-cd/
+- /language/cpp/configure-ci-cd/
+- /guides/language/cpp/configure-ci-cd/
 ---
 
 ## 先决条件

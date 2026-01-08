@@ -3,12 +3,12 @@ title: Overlay 网络驱动
 description: 关于使用 overlay 网络的全部内容
 keywords: network, overlay, user-defined, swarm, service
 aliases:
-  - /config/containers/overlay/
-  - /engine/userguide/networking/overlay-security-model/
-  - /network/overlay/
-  - /network/drivers/overlay/
-  - /engine/network/tutorials/overlay/
-  - /engine/userguide/networking/get-started-overlay/
+- /config/containers/overlay/
+- /engine/userguide/networking/overlay-security-model/
+- /network/overlay/
+- /network/drivers/overlay/
+- /engine/network/tutorials/overlay/
+- /engine/userguide/networking/get-started-overlay/
 ---
 
 `overlay` 网络驱动在多个 Docker 守护进程主机之间创建分布式网络。该网络位于（覆盖）主机特定网络之上，允许连接到它的容器在启用加密时安全通信。Docker 透明地处理每个数据包的路由，将其发送到正确的 Docker 守护进程主机和目标容器。

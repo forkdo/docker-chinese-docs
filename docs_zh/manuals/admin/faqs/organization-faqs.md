@@ -4,7 +4,8 @@ linkTitle: 组织
 weight: 20
 keywords: Docker, Docker Hub, SSO FAQs, single sign-on, organizations, administration, Admin Console, members, organization management, manage orgs
 title: 关于组织的常见问题解答
-tags: [FAQ]
+tags:
+- FAQ
 aliases:
 - /docker-hub/organization-faqs/
 - /faq/admin/organization-faqs/

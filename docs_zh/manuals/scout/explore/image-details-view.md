@@ -3,7 +3,7 @@ title: 镜像详情视图
 keywords: scout, supply chain, vulnerabilities, packages, cves, image, tag, scan, analysis, analyze
 description: Docker Scout 镜像详情视图可分析镜像，展示其层级结构、各层、软件包和漏洞
 aliases:
-  - /scout/image-details-view
+- /scout/image-details-view
 ---
 
 镜像详情视图展示了 Docker Scout 分析的细目。您可以从 Docker Scout Dashboard、Docker Desktop 的 **Images** 视图以及 Docker Hub 上的镜像标签页面访问镜像视图。镜像详情展示了镜像层级结构（基础镜像）、镜像层、软件包和漏洞的细目。

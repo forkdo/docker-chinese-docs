@@ -4,7 +4,7 @@ weight: 90
 description: 如何在 Docker Desktop 中运行 Wasm 工作负载
 keywords: Docker, WebAssembly, wasm, containerd, engine
 toc_max: 3
-aliases: 
+aliases:
 - /desktop/wasm/
 params:
   sidebar:

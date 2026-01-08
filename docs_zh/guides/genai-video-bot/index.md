@@ -3,11 +3,13 @@ title: GenAI 视频转录与对话
 linkTitle: 视频转录与对话
 description: 探索一个使用 Docker、OpenAI 和 Pinecone 的生成式人工智能视频分析应用。
 keywords: python, generative ai, genai, llm, whisper, pinecone, openai, whisper
-summary: |
-  了解如何使用 Docker 构建并部署一个生成式人工智能视频分析与转录机器人。
-tags: [ai]
+summary: '了解如何使用 Docker 构建并部署一个生成式人工智能视频分析与转录机器人。
+
+  '
+tags:
+- ai
 aliases:
-  - /guides/use-case/genai-video-bot/
+- /guides/use-case/genai-video-bot/
 params:
   time: 20 分钟
 ---
