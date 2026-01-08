@@ -114,7 +114,11 @@ copy_docs_zh() {
         git clone https://github.com/docker/docs.git docsite
     fi
     patch_hugo_layouts
-    cp -r docs_zh/* docsite/content
+    if [[ -d "translated/docs" ]]; then
+        echo "使用 translated/docs 的文档覆盖 docs_zh"
+        cp -r translated/docs/* docs_zh/
+    fi
+    cp -r docs_zh/* docsite/content/
 }
 
 # 本地测试
@@ -146,8 +150,8 @@ usage() {
   -c --copy      复制 docs_zh
   -b --build     构建网站
   -i --incremental   增量更新
-  -r --start     本地测试
-  -s --hugo      安装 Hugo extended（linux-amd64）
+  -s --start     本地测试
+  -x --hugo      安装 Hugo extended（linux-amd64）
   -t --translate  调用翻译脚本
   -h --help      显示此帮助信息
 
@@ -173,7 +177,7 @@ main() {
                 incremental_update
                 shift
                 ;;
-            -s|--hugo)
+            -x|--hugo)
                 install_hugo
                 shift
                 ;;
@@ -181,7 +185,7 @@ main() {
                 build_site
                 shift
                 ;;
-            -r|--start)
+            -s|--start)
                 start_dev
                 shift
                 ;;

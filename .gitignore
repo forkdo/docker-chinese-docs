@@ -4,6 +4,7 @@
 build/
 docsite/
 translated/
+tmp/
 
 **.log
 **.txt
