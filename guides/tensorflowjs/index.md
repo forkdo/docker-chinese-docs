@@ -1,4 +1,22 @@
-# 使用 TensorFlow.js 进行人脸检测
+---
+title: 使用 TensorFlow.js 进行人脸检测
+url: /guides/tensorflowjs/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 TensorFlow.js 进行人脸检测
+    url: /guides/tensorflowjs/
+next:
+  title: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
+  url: /guides/pgadmin/
+prev:
+  title: 使用 Traefik 进行 HTTP 路由
+  url: /guides/traefik/
+---
+
 
 本指南介绍如何将 TensorFlow.js 与 Docker 无缝集成以执行人脸检测。在本指南中，您将了解如何：
 
@@ -102,141 +120,85 @@ CPU 后端使用纯 JavaScript 执行，利用设备的中央处理单元 (CPU)�
 - dat.GUI，用于创建图形界面以实时与应用程序的设置（例如切换 TensorFlow.js 后端）进行交互。
 - Stats.min.js，用于显示性能指标（如 FPS）以监控应用程序运行期间的效率。
 
+**index.html**
 
 
 
+```html
+<style>
+  body {
+    margin: 25px;
+  }
 
+  .true {
+    color: green;
+  }
 
-<div
-  id="indexhtml"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
->
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      index.html
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'PHN0eWxlPgogIGJvZHkgewogICAgbWFyZ2luOiAyNXB4OwogIH0KCiAgLnRydWUgewogICAgY29sb3I6IGdyZWVuOwogIH0KCiAgLmZhbHNlIHsKICAgIGNvbG9yOiByZWQ7CiAgfQoKICAjbWFpbiB7CiAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICBtYXJnaW46IDUwcHggMDsKICB9CgogIGNhbnZhcyB7CiAgICBwb3NpdGlvbjogYWJzb2x1dGU7CiAgICB0b3A6IDA7CiAgICBsZWZ0OiAwOwogIH0KCiAgI2Rlc2NyaXB0aW9uIHsKICAgIG1hcmdpbi10b3A6IDIwcHg7CiAgICB3aWR0aDogNjAwcHg7CiAgfQoKICAjZGVzY3JpcHRpb24tdGl0bGUgewogICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICBmb250LXNpemU6IDE4cHg7CiAgfQo8L3N0eWxlPgoKPGJvZHk&#43;CiAgPGRpdiBpZD0ibWFpbiI&#43;CiAgICA8dmlkZW8KICAgICAgaWQ9InZpZGVvIgogICAgICBwbGF5c2lubGluZQogICAgICBzdHlsZT0iCiAgICAgIC13ZWJraXQtdHJhbnNmb3JtOiBzY2FsZVgoLTEpOwogICAgICB0cmFuc2Zvcm06IHNjYWxlWCgtMSk7CiAgICAgIHdpZHRoOiBhdXRvOwogICAgICBoZWlnaHQ6IGF1dG87CiAgICAgICIKICAgID48L3ZpZGVvPgogICAgPGNhbnZhcyBpZD0ib3V0cHV0Ij48L2NhbnZhcz4KICAgIDx2aWRlbwogICAgICBpZD0idmlkZW8iCiAgICAgIHBsYXlzaW5saW5lCiAgICAgIHN0eWxlPSIKICAgICAgLXdlYmtpdC10cmFuc2Zvcm06IHNjYWxlWCgtMSk7CiAgICAgIHRyYW5zZm9ybTogc2NhbGVYKC0xKTsKICAgICAgdmlzaWJpbGl0eTogaGlkZGVuOwogICAgICB3aWR0aDogYXV0bzsKICAgICAgaGVpZ2h0OiBhdXRvOwogICAgICAiCiAgICA&#43;PC92aWRlbz4KICA8L2Rpdj4KPC9ib2R5Pgo8c2NyaXB0IHNyYz0iaHR0cHM6Ly91bnBrZy5jb20vQHRlbnNvcmZsb3cvdGZqcy1jb3JlQDIuMS4wL2Rpc3QvdGYtY29yZS5qcyI&#43;PC9zY3JpcHQ&#43;CjxzY3JpcHQgc3JjPSJodHRwczovL3VucGtnLmNvbS9AdGVuc29yZmxvdy90ZmpzLWNvbnZlcnRlckAyLjEuMC9kaXN0L3RmLWNvbnZlcnRlci5qcyI&#43;PC9zY3JpcHQ&#43;Cgo8c2NyaXB0IHNyYz0iaHR0cHM6Ly91bnBrZy5jb20vQHRlbnNvcmZsb3cvdGZqcy1iYWNrZW5kLXdlYmdsQDIuMS4wL2Rpc3QvdGYtYmFja2VuZC13ZWJnbC5qcyI&#43;PC9zY3JpcHQ&#43;CjxzY3JpcHQgc3JjPSJodHRwczovL3VucGtnLmNvbS9AdGVuc29yZmxvdy90ZmpzLWJhY2tlbmQtY3B1QDIuMS4wL2Rpc3QvdGYtYmFja2VuZC1jcHUuanMiPjwvc2NyaXB0Pgo8c2NyaXB0IHNyYz0iLi90Zi1iYWNrZW5kLXdhc20uanMiPjwvc2NyaXB0PgoKPHNjcmlwdCBzcmM9Imh0dHBzOi8vdW5wa2cuY29tL0B0ZW5zb3JmbG93LW1vZGVscy9ibGF6ZWZhY2VAMC4wLjUvZGlzdC9ibGF6ZWZhY2UuanMiPjwvc2NyaXB0Pgo8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvZGF0LWd1aS8wLjcuNi9kYXQuZ3VpLm1pbi5qcyI&#43;PC9zY3JpcHQ&#43;CjxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9zdGF0cy5qcy9yMTYvU3RhdHMubWluLmpzIj48L3NjcmlwdD4KPHNjcmlwdCBzcmM9Ii4vaW5kZXguanMiPjwvc2NyaXB0Pg==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">body</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nc">true</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nc">false</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">#</span><span class="nn">main</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nt">canvas</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">#</span><span class="nn">description</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">600</span><span class="kt">px</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">#</span><span class="nn">description-title</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">video</span>
-</span></span><span class="line"><span class="cl">      <span class="na">id</span><span class="o">=</span><span class="s">&#34;video&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="na">playsinline</span>
-</span></span><span class="line"><span class="cl">      <span class="na">style</span><span class="o">=</span><span class="s">&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s">      -webkit-transform: scaleX(-1);
-</span></span></span><span class="line"><span class="cl"><span class="s">      transform: scaleX(-1);
-</span></span></span><span class="line"><span class="cl"><span class="s">      width: auto;
-</span></span></span><span class="line"><span class="cl"><span class="s">      height: auto;
-</span></span></span><span class="line"><span class="cl"><span class="s">      &#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&gt;&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;output&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">video</span>
-</span></span><span class="line"><span class="cl">      <span class="na">id</span><span class="o">=</span><span class="s">&#34;video&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="na">playsinline</span>
-</span></span><span class="line"><span class="cl">      <span class="na">style</span><span class="o">=</span><span class="s">&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s">      -webkit-transform: scaleX(-1);
-</span></span></span><span class="line"><span class="cl"><span class="s">      transform: scaleX(-1);
-</span></span></span><span class="line"><span class="cl"><span class="s">      visibility: hidden;
-</span></span></span><span class="line"><span class="cl"><span class="s">      width: auto;
-</span></span></span><span class="line"><span class="cl"><span class="s">      height: auto;
-</span></span></span><span class="line"><span class="cl"><span class="s">      &#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&gt;&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/@tensorflow/tfjs-core@2.1.0/dist/tf-core.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/@tensorflow/tfjs-converter@2.1.0/dist/tf-converter.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/@tensorflow/tfjs-backend-cpu@2.1.0/dist/tf-backend-cpu.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./tf-backend-wasm.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/@tensorflow-models/blazeface@0.0.5/dist/blazeface.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./index.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
-      
-    </div>
+  .false {
+    color: red;
+  }
+
+  #main {
+    position: relative;
+    margin: 50px 0;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #description {
+    margin-top: 20px;
+    width: 600px;
+  }
+
+  #description-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+</style>
+
+<body>
+  <div id="main">
+    <video
+      id="video"
+      playsinline
+      style="
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      width: auto;
+      height: auto;
+      "
+    ></video>
+    <canvas id="output"></canvas>
+    <video
+      id="video"
+      playsinline
+      style="
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      visibility: hidden;
+      width: auto;
+      height: auto;
+      "
+    ></video>
   </div>
-</div>
+</body>
+<script src="https://unpkg.com/@tensorflow/tfjs-core@2.1.0/dist/tf-core.js"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-converter@2.1.0/dist/tf-converter.js"></script>
 
-  </div>
-</div>
+<script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-backend-cpu@2.1.0/dist/tf-backend-cpu.js"></script>
+<script src="./tf-backend-wasm.js"></script>
+
+<script src="https://unpkg.com/@tensorflow-models/blazeface@0.0.5/dist/blazeface.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+<script src="./index.js"></script>
+```
+
 
 
 
@@ -249,197 +211,141 @@ CPU 后端使用纯 JavaScript 执行，利用设备的中央处理单元 (CPU)�
 - setupCamera 函数：使用 MediaDevices Web API 初始化用户的网络摄像头。它配置视频流不包含音频并使用前置摄像头 (facingMode: 'user')。一旦视频元数据加载完毕，它就会解析带有视频元素的 promise，然后用于人脸检测。
 - BlazeFace：此应用程序的核心是 renderPrediction 函数，该函数使用 BlazeFace 模型执行实时人脸检测，这是一种用于检测图像中人脸的轻量级模型。该函数在每个动画帧上调用 model.estimateFaces 以从视频源检测人脸。对于每个检测到的人脸，它会在视频上叠加的画布上绘制一个红色矩形框和蓝色的人脸特征点。
 
+**index.js**
 
 
 
+```javascript
+const stats = new Stats();
+stats.showPanel(0);
+document.body.prepend(stats.domElement);
 
+let model, ctx, videoWidth, videoHeight, video, canvas;
 
-<div
-  id="indexjs"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
->
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      index.js
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'Y29uc3Qgc3RhdHMgPSBuZXcgU3RhdHMoKTsKc3RhdHMuc2hvd1BhbmVsKDApOwpkb2N1bWVudC5ib2R5LnByZXBlbmQoc3RhdHMuZG9tRWxlbWVudCk7CgpsZXQgbW9kZWwsIGN0eCwgdmlkZW9XaWR0aCwgdmlkZW9IZWlnaHQsIHZpZGVvLCBjYW52YXM7Cgpjb25zdCBzdGF0ZSA9IHsKICBiYWNrZW5kOiAid2FzbSIsCn07Cgpjb25zdCBndWkgPSBuZXcgZGF0LkdVSSgpOwpndWkKICAuYWRkKHN0YXRlLCAiYmFja2VuZCIsIFsid2FzbSIsICJ3ZWJnbCIsICJjcHUiXSkKICAub25DaGFuZ2UoYXN5bmMgKGJhY2tlbmQpID0&#43;IHsKICAgIGF3YWl0IHRmLnNldEJhY2tlbmQoYmFja2VuZCk7CiAgICBhZGRGbGFnTGFibGVzKCk7CiAgfSk7Cgphc3luYyBmdW5jdGlvbiBhZGRGbGFnTGFibGVzKCkgewogIGlmICghZG9jdW1lbnQucXVlcnlTZWxlY3RvcigiI3NpbWRfc3VwcG9ydGVkIikpIHsKICAgIGNvbnN0IHNpbWRTdXBwb3J0TGFiZWwgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJkaXYiKTsKICAgIHNpbWRTdXBwb3J0TGFiZWwuaWQgPSAic2ltZF9zdXBwb3J0ZWQiOwogICAgc2ltZFN1cHBvcnRMYWJlbC5zdHlsZSA9ICJmb250LXdlaWdodDogYm9sZCI7CiAgICBjb25zdCBzaW1kU3VwcG9ydGVkID0gYXdhaXQgdGYuZW52KCkuZ2V0QXN5bmMoIldBU01fSEFTX1NJTURfU1VQUE9SVCIpOwogICAgc2ltZFN1cHBvcnRMYWJlbC5pbm5lckhUTUwgPSBgU0lNRCBzdXBwb3J0ZWQ6IDxzcGFuIGNsYXNzPSR7c2ltZFN1cHBvcnRlZH0&#43;JHtzaW1kU3VwcG9ydGVkfTxzcGFuPmA7CiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCIjZGVzY3JpcHRpb24iKS5hcHBlbmRDaGlsZChzaW1kU3VwcG9ydExhYmVsKTsKICB9CgogIGlmICghZG9jdW1lbnQucXVlcnlTZWxlY3RvcigiI3RocmVhZHNfc3VwcG9ydGVkIikpIHsKICAgIGNvbnN0IHRocmVhZFN1cHBvcnRMYWJlbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImRpdiIpOwogICAgdGhyZWFkU3VwcG9ydExhYmVsLmlkID0gInRocmVhZHNfc3VwcG9ydGVkIjsKICAgIHRocmVhZFN1cHBvcnRMYWJlbC5zdHlsZSA9ICJmb250LXdlaWdodDogYm9sZCI7CiAgICBjb25zdCB0aHJlYWRzU3VwcG9ydGVkID0gYXdhaXQgdGYKICAgICAgLmVudigpCiAgICAgIC5nZXRBc3luYygiV0FTTV9IQVNfTVVMVElUSFJFQURfU1VQUE9SVCIpOwogICAgdGhyZWFkU3VwcG9ydExhYmVsLmlubmVySFRNTCA9IGBUaHJlYWRzIHN1cHBvcnRlZDogPHNwYW4gY2xhc3M9JHt0aHJlYWRzU3VwcG9ydGVkfT4ke3RocmVhZHNTdXBwb3J0ZWR9PC9zcGFuPmA7CiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCIjZGVzY3JpcHRpb24iKS5hcHBlbmRDaGlsZCh0aHJlYWRTdXBwb3J0TGFiZWwpOwogIH0KfQoKYXN5bmMgZnVuY3Rpb24gc2V0dXBDYW1lcmEoKSB7CiAgdmlkZW8gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgidmlkZW8iKTsKCiAgY29uc3Qgc3RyZWFtID0gYXdhaXQgbmF2aWdhdG9yLm1lZGlhRGV2aWNlcy5nZXRVc2VyTWVkaWEoewogICAgYXVkaW86IGZhbHNlLAogICAgdmlkZW86IHsgZmFjaW5nTW9kZTogInVzZXIiIH0sCiAgfSk7CiAgdmlkZW8uc3JjT2JqZWN0ID0gc3RyZWFtOwoKICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUpID0&#43;IHsKICAgIHZpZGVvLm9ubG9hZGVkbWV0YWRhdGEgPSAoKSA9PiB7CiAgICAgIHJlc29sdmUodmlkZW8pOwogICAgfTsKICB9KTsKfQoKY29uc3QgcmVuZGVyUHJlZGljdGlvbiA9IGFzeW5jICgpID0&#43;IHsKICBzdGF0cy5iZWdpbigpOwoKICBjb25zdCByZXR1cm5UZW5zb3JzID0gZmFsc2U7CiAgY29uc3QgZmxpcEhvcml6b250YWwgPSB0cnVlOwogIGNvbnN0IGFubm90YXRlQm94ZXMgPSB0cnVlOwogIGNvbnN0IHByZWRpY3Rpb25zID0gYXdhaXQgbW9kZWwuZXN0aW1hdGVGYWNlcygKICAgIHZpZGVvLAogICAgcmV0dXJuVGVuc29ycywKICAgIGZsaXBIb3Jpem9udGFsLAogICAgYW5ub3RhdGVCb3hlcywKICApOwoKICBpZiAocHJlZGljdGlvbnMubGVuZ3RoID4gMCkgewogICAgY3R4LmNsZWFyUmVjdCgwLCAwLCBjYW52YXMud2lkdGgsIGNhbnZhcy5oZWlnaHQpOwoKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgcHJlZGljdGlvbnMubGVuZ3RoOyBpKyspIHsKICAgICAgaWYgKHJldHVyblRlbnNvcnMpIHsKICAgICAgICBwcmVkaWN0aW9uc1tpXS50b3BMZWZ0ID0gcHJlZGljdGlvbnNbaV0udG9wTGVmdC5hcnJheVN5bmMoKTsKICAgICAgICBwcmVkaWN0aW9uc1tpXS5ib3R0b21SaWdodCA9IHByZWRpY3Rpb25zW2ldLmJvdHRvbVJpZ2h0LmFycmF5U3luYygpOwogICAgICAgIGlmIChhbm5vdGF0ZUJveGVzKSB7CiAgICAgICAgICBwcmVkaWN0aW9uc1tpXS5sYW5kbWFya3MgPSBwcmVkaWN0aW9uc1tpXS5sYW5kbWFya3MuYXJyYXlTeW5jKCk7CiAgICAgICAgfQogICAgICB9CgogICAgICBjb25zdCBzdGFydCA9IHByZWRpY3Rpb25zW2ldLnRvcExlZnQ7CiAgICAgIGNvbnN0IGVuZCA9IHByZWRpY3Rpb25zW2ldLmJvdHRvbVJpZ2h0OwogICAgICBjb25zdCBzaXplID0gW2VuZFswXSAtIHN0YXJ0WzBdLCBlbmRbMV0gLSBzdGFydFsxXV07CiAgICAgIGN0eC5maWxsU3R5bGUgPSAicmdiYSgyNTUsIDAsIDAsIDAuNSkiOwogICAgICBjdHguZmlsbFJlY3Qoc3RhcnRbMF0sIHN0YXJ0WzFdLCBzaXplWzBdLCBzaXplWzFdKTsKCiAgICAgIGlmIChhbm5vdGF0ZUJveGVzKSB7CiAgICAgICAgY29uc3QgbGFuZG1hcmtzID0gcHJlZGljdGlvbnNbaV0ubGFuZG1hcmtzOwoKICAgICAgICBjdHguZmlsbFN0eWxlID0gImJsdWUiOwogICAgICAgIGZvciAobGV0IGogPSAwOyBqIDwgbGFuZG1hcmtzLmxlbmd0aDsgaisrKSB7CiAgICAgICAgICBjb25zdCB4ID0gbGFuZG1hcmtzW2pdWzBdOwogICAgICAgICAgY29uc3QgeSA9IGxhbmRtYXJrc1tqXVsxXTsKICAgICAgICAgIGN0eC5maWxsUmVjdCh4LCB5LCA1LCA1KTsKICAgICAgICB9CiAgICAgIH0KICAgIH0KICB9CgogIHN0YXRzLmVuZCgpOwoKICByZXF1ZXN0QW5pbWF0aW9uRnJhbWUocmVuZGVyUHJlZGljdGlvbik7Cn07Cgpjb25zdCBzZXR1cFBhZ2UgPSBhc3luYyAoKSA9PiB7CiAgYXdhaXQgdGYuc2V0QmFja2VuZChzdGF0ZS5iYWNrZW5kKTsKICBhZGRGbGFnTGFibGVzKCk7CiAgYXdhaXQgc2V0dXBDYW1lcmEoKTsKICB2aWRlby5wbGF5KCk7CgogIHZpZGVvV2lkdGggPSB2aWRlby52aWRlb1dpZHRoOwogIHZpZGVvSGVpZ2h0ID0gdmlkZW8udmlkZW9IZWlnaHQ7CiAgdmlkZW8ud2lkdGggPSB2aWRlb1dpZHRoOwogIHZpZGVvLmhlaWdodCA9IHZpZGVvSGVpZ2h0OwoKICBjYW52YXMgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgib3V0cHV0Iik7CiAgY2FudmFzLndpZHRoID0gdmlkZW9XaWR0aDsKICBjYW52YXMuaGVpZ2h0ID0gdmlkZW9IZWlnaHQ7CiAgY3R4ID0gY2FudmFzLmdldENvbnRleHQoIjJkIik7CiAgY3R4LmZpbGxTdHlsZSA9ICJyZ2JhKDI1NSwgMCwgMCwgMC41KSI7CgogIG1vZGVsID0gYXdhaXQgYmxhemVmYWNlLmxvYWQoKTsKCiAgcmVuZGVyUHJlZGljdGlvbigpOwp9OwoKc2V0dXBQYWdlKCk7', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">stats</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stats</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="nx">stats</span><span class="p">.</span><span class="nx">showPanel</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">stats</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">videoWidth</span><span class="p">,</span> <span class="nx">videoHeight</span><span class="p">,</span> <span class="nx">video</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">backend</span><span class="o">:</span> <span class="s2">&#34;wasm&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">gui</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dat</span><span class="p">.</span><span class="nx">GUI</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="nx">gui</span>
-</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="s2">&#34;backend&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;wasm&#34;</span><span class="p">,</span> <span class="s2">&#34;webgl&#34;</span><span class="p">,</span> <span class="s2">&#34;cpu&#34;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">onChange</span><span class="p">(</span><span class="kr">async</span> <span class="p">(</span><span class="nx">backend</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">await</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">setBackend</span><span class="p">(</span><span class="nx">backend</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">addFlagLables</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="p">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">addFlagLables</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;#simd_supported&#34;</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">simdSupportLabel</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">simdSupportLabel</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="s2">&#34;simd_supported&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">simdSupportLabel</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="s2">&#34;font-weight: bold&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">simdSupported</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">env</span><span class="p">().</span><span class="nx">getAsync</span><span class="p">(</span><span class="s2">&#34;WASM_HAS_SIMD_SUPPORT&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">simdSupportLabel</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="sb">`SIMD supported: &lt;span class=</span><span class="si">${</span><span class="nx">simdSupported</span><span class="si">}</span><span class="sb">&gt;</span><span class="si">${</span><span class="nx">simdSupported</span><span class="si">}</span><span class="sb">&lt;span&gt;`</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;#description&#34;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">simdSupportLabel</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;#threads_supported&#34;</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">threadSupportLabel</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">threadSupportLabel</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="s2">&#34;threads_supported&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">threadSupportLabel</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="s2">&#34;font-weight: bold&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">threadsSupported</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">tf</span>
-</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">env</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="s2">&#34;WASM_HAS_MULTITHREAD_SUPPORT&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">threadSupportLabel</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="sb">`Threads supported: &lt;span class=</span><span class="si">${</span><span class="nx">threadsSupported</span><span class="si">}</span><span class="sb">&gt;</span><span class="si">${</span><span class="nx">threadsSupported</span><span class="si">}</span><span class="sb">&lt;/span&gt;`</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;#description&#34;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">threadSupportLabel</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">setupCamera</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">video</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;video&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">stream</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">audio</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">video</span><span class="o">:</span> <span class="p">{</span> <span class="nx">facingMode</span><span class="o">:</span> <span class="s2">&#34;user&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="p">});</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">video</span><span class="p">.</span><span class="nx">srcObject</span> <span class="o">=</span> <span class="nx">stream</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">video</span><span class="p">.</span><span class="nx">onloadedmetadata</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">resolve</span><span class="p">(</span><span class="nx">video</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">};</span>
-</span></span><span class="line"><span class="cl">  <span class="p">});</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">renderPrediction</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">stats</span><span class="p">.</span><span class="nx">begin</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">returnTensors</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">flipHorizontal</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">annotateBoxes</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">predictions</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">model</span><span class="p">.</span><span class="nx">estimateFaces</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">video</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">returnTensors</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">flipHorizontal</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">annotateBoxes</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">predictions</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">predictions</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="nx">returnTensors</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">topLeft</span> <span class="o">=</span> <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">topLeft</span><span class="p">.</span><span class="nx">arraySync</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">bottomRight</span> <span class="o">=</span> <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">bottomRight</span><span class="p">.</span><span class="nx">arraySync</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">annotateBoxes</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">landmarks</span> <span class="o">=</span> <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">landmarks</span><span class="p">.</span><span class="nx">arraySync</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">start</span> <span class="o">=</span> <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">topLeft</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">end</span> <span class="o">=</span> <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">bottomRight</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="p">[</span><span class="nx">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">end</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]];</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">&#34;rgba(255, 0, 0, 0.5)&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="nx">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">start</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="nx">annotateBoxes</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">landmarks</span> <span class="o">=</span> <span class="nx">predictions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">landmarks</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">&#34;blue&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">landmarks</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="kr">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">landmarks</span><span class="p">[</span><span class="nx">j</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">          <span class="kr">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">landmarks</span><span class="p">[</span><span class="nx">j</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">stats</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">renderPrediction</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">setupPage</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">await</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">setBackend</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">backend</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">addFlagLables</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">await</span> <span class="nx">setupCamera</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">videoWidth</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">videoWidth</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">videoHeight</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">videoHeight</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">video</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">videoWidth</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">video</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">videoHeight</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;output&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">videoWidth</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">videoHeight</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&#34;2d&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">&#34;rgba(255, 0, 0, 0.5)&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">model</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">blazeface</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">renderPrediction</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">setupPage</span><span class="p">();</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+const state = {
+  backend: "wasm",
+};
 
-  </div>
-</div>
+const gui = new dat.GUI();
+gui
+  .add(state, "backend", ["wasm", "webgl", "cpu"])
+  .onChange(async (backend) => {
+    await tf.setBackend(backend);
+    addFlagLables();
+  });
+
+async function addFlagLables() {
+  if (!document.querySelector("#simd_supported")) {
+    const simdSupportLabel = document.createElement("div");
+    simdSupportLabel.id = "simd_supported";
+    simdSupportLabel.style = "font-weight: bold";
+    const simdSupported = await tf.env().getAsync("WASM_HAS_SIMD_SUPPORT");
+    simdSupportLabel.innerHTML = `SIMD supported: <span class=${simdSupported}>${simdSupported}<span>`;
+    document.querySelector("#description").appendChild(simdSupportLabel);
+  }
+
+  if (!document.querySelector("#threads_supported")) {
+    const threadSupportLabel = document.createElement("div");
+    threadSupportLabel.id = "threads_supported";
+    threadSupportLabel.style = "font-weight: bold";
+    const threadsSupported = await tf
+      .env()
+      .getAsync("WASM_HAS_MULTITHREAD_SUPPORT");
+    threadSupportLabel.innerHTML = `Threads supported: <span class=${threadsSupported}>${threadsSupported}</span>`;
+    document.querySelector("#description").appendChild(threadSupportLabel);
+  }
+}
+
+async function setupCamera() {
+  video = document.getElementById("video");
+
+  const stream = await navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: { facingMode: "user" },
+  });
+  video.srcObject = stream;
+
+  return new Promise((resolve) => {
+    video.onloadedmetadata = () => {
+      resolve(video);
+    };
+  });
+}
+
+const renderPrediction = async () => {
+  stats.begin();
+
+  const returnTensors = false;
+  const flipHorizontal = true;
+  const annotateBoxes = true;
+  const predictions = await model.estimateFaces(
+    video,
+    returnTensors,
+    flipHorizontal,
+    annotateBoxes,
+  );
+
+  if (predictions.length > 0) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < predictions.length; i++) {
+      if (returnTensors) {
+        predictions[i].topLeft = predictions[i].topLeft.arraySync();
+        predictions[i].bottomRight = predictions[i].bottomRight.arraySync();
+        if (annotateBoxes) {
+          predictions[i].landmarks = predictions[i].landmarks.arraySync();
+        }
+      }
+
+      const start = predictions[i].topLeft;
+      const end = predictions[i].bottomRight;
+      const size = [end[0] - start[0], end[1] - start[1]];
+      ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
+      ctx.fillRect(start[0], start[1], size[0], size[1]);
+
+      if (annotateBoxes) {
+        const landmarks = predictions[i].landmarks;
+
+        ctx.fillStyle = "blue";
+        for (let j = 0; j < landmarks.length; j++) {
+          const x = landmarks[j][0];
+          const y = landmarks[j][1];
+          ctx.fillRect(x, y, 5, 5);
+        }
+      }
+    }
+  }
+
+  stats.end();
+
+  requestAnimationFrame(renderPrediction);
+};
+
+const setupPage = async () => {
+  await tf.setBackend(state.backend);
+  addFlagLables();
+  await setupCamera();
+  video.play();
+
+  videoWidth = video.videoWidth;
+  videoHeight = video.videoHeight;
+  video.width = videoWidth;
+  video.height = videoHeight;
+
+  canvas = document.getElementById("output");
+  canvas.width = videoWidth;
+  canvas.height = videoHeight;
+  ctx = canvas.getContext("2d");
+  ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
+
+  model = await blazeface.load();
+
+  renderPrediction();
+};
+
+setupPage();
+```
+
 
 
 

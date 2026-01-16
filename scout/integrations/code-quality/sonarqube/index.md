@@ -1,4 +1,20 @@
-# 将 Docker Scout 与 SonarQube 集成
+---
+title: 将 Docker Scout 与 SonarQube 集成
+url: /scout/integrations/code-quality/sonarqube/
+parent:
+  title: 将 Docker Scout 与其他系统集成
+  url: /scout/integrations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 将 Docker Scout 与其他系统集成
+    url: /scout/integrations/
+  - title: 将 Docker Scout 与 SonarQube 集成
+    url: /scout/integrations/code-quality/sonarqube/
+---
+
 
 SonarQube 集成功能使 Docker Scout 能够通过策略评估展示 SonarQube 质量门禁检查，具体位于新的 [SonarQube 质量门禁策略](/manuals/scout/policy/_index.md#sonarqube-quality-gates-policy) 下。
 

@@ -1,4 +1,28 @@
-# 持续集成 (CI)
+---
+title: 持续集成 (CI)
+url: /extensions/extensions-sdk/dev/continuous-integration/
+parent:
+  title: 
+  url: /extensions/extensions-sdk/dev/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 
+    url: /extensions/extensions-sdk/dev/
+  - title: 持续集成 (CI)
+    url: /extensions/extensions-sdk/dev/continuous-integration/
+next:
+  title: 测试与调试
+  url: /extensions/extensions-sdk/dev/test-debug/
+prev:
+  title: CLI 参考
+  url: /extensions/extensions-sdk/dev/usage/
+---
+
 
 为了帮助验证您的扩展并确保其功能正常，扩展 SDK 提供了工具来帮助您为扩展设置持续集成。
 

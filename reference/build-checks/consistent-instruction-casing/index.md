@@ -1,4 +1,21 @@
-# ConsistentInstructionCasing
+---
+title: ConsistentInstructionCasing
+url: /reference/build-checks/consistent-instruction-casing/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: ConsistentInstructionCasing
+    url: /reference/build-checks/consistent-instruction-casing/
+prev:
+  title: CopyIgnoredFile
+  url: /reference/build-checks/copy-ignored-file/
+---
+
 
 ## Output
 

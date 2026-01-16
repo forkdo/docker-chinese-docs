@@ -1,4 +1,24 @@
-# 在容器中运行 React.js 测试
+---
+title: 在容器中运行 React.js 测试
+url: /guides/reactjs/run-tests/
+parent:
+  title: React.js 语言特定指南
+  url: /guides/reactjs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: React.js 语言特定指南
+    url: /guides/reactjs/
+  - title: 在容器中运行 React.js 测试
+    url: /guides/reactjs/run-tests/
+next:
+  title: 使用容器进行 React.js 开发
+  url: /guides/reactjs/develop/
+prev:
+  title: 使用 GitHub Actions 自动化构建
+  url: /guides/reactjs/configure-github-actions/
+---
+
 
 ## 前置条件
 

@@ -1,4 +1,26 @@
-# SSO 域常见问题
+---
+title: SSO 域常见问题
+url: /enterprise/security/single-sign-on/faqs/domain-faqs/
+parent:
+  title: 单点登录概述
+  url: /enterprise/security/single-sign-on/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 企业级安全
+    url: /enterprise/security/
+  - title: 单点登录概述
+    url: /enterprise/security/single-sign-on/
+  - title: SSO 域常见问题
+    url: /enterprise/security/single-sign-on/faqs/domain-faqs/
+next:
+  title: 通用 SSO 常见问题
+  url: /enterprise/security/single-sign-on/faqs/general/
+prev:
+  title: SSO 强制执行常见问题
+  url: /enterprise/security/single-sign-on/faqs/enforcement-faqs/
+---
+
 
 ## 我可以添加子域吗？
 

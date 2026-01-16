@@ -1,4 +1,28 @@
-# Manage tags and labels with GitHub Actions
+---
+title: Manage tags and labels with GitHub Actions
+url: /build/ci/github-actions/manage-tags-labels/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Manage tags and labels with GitHub Actions
+    url: /build/ci/github-actions/manage-tags-labels/
+next:
+  title: Share built image between jobs with GitHub Actions
+  url: /build/ci/github-actions/share-image-jobs/
+prev:
+  title: Test before push with GitHub Actions
+  url: /build/ci/github-actions/test-before-push/
+---
+
 
 If you want an "automatic" tag management and [OCI Image Format Specification](https://github.com/opencontainers/image-spec/blob/master/annotations.md)
 for labels, you can do it in a dedicated setup step. The following workflow

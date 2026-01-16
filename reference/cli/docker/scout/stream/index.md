@@ -1,7 +1,97 @@
-# docker scout stream
+---
+title: docker scout stream
+url: /reference/cli/docker/scout/stream/
+parent:
+  title: docker scout
+  url: /reference/cli/docker/scout/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker scout
+    url: /reference/cli/docker/scout/
+  - title: docker scout stream
+    url: /reference/cli/docker/scout/stream/
+next:
+  title: docker scout sbom
+  url: /reference/cli/docker/scout/sbom/
+prev:
+  title: docker scout version
+  url: /reference/cli/docker/scout/version/
+---
+
+**Description:** Manage streams (experimental)
+
+**Usage:** `docker scout stream [STREAM] [IMAGE]`
+
+
 
 <!--
 本页面由 Docker 源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题：
 
 https://github.com/docker/scout-cli
 -->
+
+> [!WARNING]
+> **Deprecated**
+>
+> This command is deprecated. It may be removed in a future Docker version.
+
+
+> [!NOTE]
+> **Experimental**
+>
+> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
+
+
+
+
+
+## Description
+
+The `docker scout stream` command lists the deployment streams and records an image to it.
+
+Once recorded, streams can be referred to by their name, eg. in the `docker scout compare` command using `--to-stream`.
+
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--org` |  |  Namespace of the Docker organization |
+| `-o`, `--output` |  |  Write the report to a file |
+| `--platform` |  |  Platform of image to record |
+
+
+
+## Examples
+
+### List existing streams
+
+```console
+$ %[1]s %[2]s
+prod-cluster-123
+stage-cluster-234
+```
+
+### List images of a stream
+
+```console
+$ %[1]s %[2]s prod-cluster-123
+namespace/repo:tag@sha256:9a4df4fadc9bbd44c345e473e0688c2066a6583d4741679494ba9228cfd93e1b
+namespace/other-repo:tag@sha256:0001d6ce124855b0a158569c584162097fe0ca8d72519067c2c8e3ce407c580f
+```
+
+### Record an image to a stream, for a specific platform
+
+```console
+$ %[1]s %[2]s stage-cluster-234 namespace/repo:stage-latest --platform linux/amd64
+✓ Pulled
+✓ Successfully recorded namespace/repo:stage-latest in stream stage-cluster-234
+```
+
+
+

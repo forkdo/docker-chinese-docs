@@ -1,36 +1,23 @@
-# 自定义角色
+---
+title: 自定义角色
+url: /enterprise/security/roles-and-permissions/custom-roles/
+parent:
+  title: 角色与权限
+  url: /enterprise/security/roles-and-permissions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 企业级安全
+    url: /enterprise/security/
+  - title: 角色与权限
+    url: /enterprise/security/roles-and-permissions/
+  - title: 自定义角色
+    url: /enterprise/security/roles-and-permissions/custom-roles/
+next:
+  title: 核心角色
+  url: /enterprise/security/roles-and-permissions/core-roles/
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">For:</span>
-        <span>Administrators</span>
-        
-          <span class="icon-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M693-80q-78 0-133-55.5T505-267q0-78 55-133.5T693-456q77 0 132.5 55.5T881-267q0 76-55.5 131.5T693-80ZM160-522v-197q0-19 11-34.5t28-22.5l260-97q11-4 21-4t21 4l260 97q17 7 28 22.5t11 34.5v190q0 14-11 21.5t-24 2.5q-17-5-35.5-8t-36.5-3q-103 0-175.5 73T445-267q0 40 13.5 79t38.5 71q10 13 2.5 26T478-82q-69-20-122-51.5T251-237q-43-60-67-132.5T160-522Zm531 252q26 0 44-19t18-45q0-26-18-44t-44-18q-26 0-45 18t-19 44q0 26 19 45t45 19Zm-1 125q28 0 53-11t43-31q4-5 2.5-11t-6.5-8q-22-10-45-15.5t-47-5.5q-24 0-47 5t-45 16q-5 2-7 8t2 11q18 21 43.5 31.5T690-145Z"/></svg>
-          </span>
-        
-      </div>
-    
-  </div>
 
 
 
@@ -78,105 +65,40 @@
 
 ## 分配自定义角色
 
+**Individual users**
 
 
 
+1. 登录 [Docker Home](https://app.docker.com)。
+2. 选择 **Members**（成员）。
+3. 找到要分配自定义角色的成员，然后选择 **Actions menu**（操作菜单）。
+4. 在下拉菜单中，选择 **Change role**（更改角色）。
+5. 在 **Select a role**（选择角色）下拉菜单中，选择您的自定义角色。
+6. 选择 **Save**（保存）。
+
+**Bulk users**
 
 
 
+1. 登录 [Docker Home](https://app.docker.com)。
+2. 选择 **Members**（成员）。
+3. 使用用户名列中的复选框选择所有要分配自定义角色的用户。
+4. 选择 **Change role**（更改角色）。
+5. 在 **Select a role**（选择角色）下拉菜单中，选择您的自定义角色或核心角色。
+6. 选择 **Save**（保存）。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Individual-users' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Individual-users' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Individual-users'"
-        
-      >
-        Individual users
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Bulk-users' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Bulk-users'"
-        
-      >
-        Bulk users
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Teams' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Teams'"
-        
-      >
-        Teams
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Individual-users' && 'hidden'"
-      >
-        <ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a>。</li>
-<li>选择 <strong>Members</strong>（成员）。</li>
-<li>找到要分配自定义角色的成员，然后选择 <strong>Actions menu</strong>（操作菜单）。</li>
-<li>在下拉菜单中，选择 <strong>Change role</strong>（更改角色）。</li>
-<li>在 <strong>Select a role</strong>（选择角色）下拉菜单中，选择您的自定义角色。</li>
-<li>选择 <strong>Save</strong>（保存）。</li>
-</ol>
+**Teams**
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Bulk-users' && 'hidden'"
-      >
-        <ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a>。</li>
-<li>选择 <strong>Members</strong>（成员）。</li>
-<li>使用用户名列中的复选框选择所有要分配自定义角色的用户。</li>
-<li>选择 <strong>Change role</strong>（更改角色）。</li>
-<li>在 <strong>Select a role</strong>（选择角色）下拉菜单中，选择您的自定义角色或核心角色。</li>
-<li>选择 <strong>Save</strong>（保存）。</li>
-</ol>
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Teams' && 'hidden'"
-      >
-        <ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a>。</li>
-<li>选择 <strong>Teams</strong>（团队）。</li>
-<li>找到要分配自定义角色的团队，然后选择 <strong>Actions menu</strong>（操作菜单）。</li>
-<li>选择 <strong>Assign role</strong>（分配角色）。</li>
-<li>选择您的自定义角色，然后选择 <strong>Assign</strong>（分配）。</li>
-</ol>
-<p>角色列将更新为新分配的角色。</p>
 
-      </div>
-    
-  </div>
-</div>
+1. 登录 [Docker Home](https://app.docker.com)。
+2. 选择 **Teams**（团队）。
+3. 找到要分配自定义角色的团队，然后选择 **Actions menu**（操作菜单）。
+4. 选择 **Assign role**（分配角色）。
+5. 选择您的自定义角色，然后选择 **Assign**（分配）。
+
+角色列将更新为新分配的角色。
+
 
 
 ## 查看角色分配
@@ -191,104 +113,38 @@
 
 ## 重新分配自定义角色
 
+**Individual users**
 
 
 
+1. 登录 [Docker Home](https://app.docker.com)。
+2. 选择 **Members**（成员）。
+3. 找到要重新分配的成员，然后选择 **Actions menu**（操作菜单）。
+4. 选择 **Change role**（更改角色）。
+5. 在 **Select a role**（选择角色）下拉菜单中，选择新角色。
+6. 选择 **Save**（保存）。
+
+**Bulk users**
 
 
 
+1. 登录 [Docker Home](https://app.docker.com)。
+2. 选择 **Members**（成员）。
+3. 使用用户名列中的复选框选择所有要重新分配的用户。
+4. 选择 **Change role**（更改角色）。
+5. 在 **Select a role**（选择角色）下拉菜单中，选择新角色。
+6. 选择 **Save**（保存）。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Individual-users' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Individual-users' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Individual-users'"
-        
-      >
-        Individual users
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Bulk-users' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Bulk-users'"
-        
-      >
-        Bulk users
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Teams' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Teams'"
-        
-      >
-        Teams
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Individual-users' && 'hidden'"
-      >
-        <ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a>。</li>
-<li>选择 <strong>Members</strong>（成员）。</li>
-<li>找到要重新分配的成员，然后选择 <strong>Actions menu</strong>（操作菜单）。</li>
-<li>选择 <strong>Change role</strong>（更改角色）。</li>
-<li>在 <strong>Select a role</strong>（选择角色）下拉菜单中，选择新角色。</li>
-<li>选择 <strong>Save</strong>（保存）。</li>
-</ol>
+**Teams**
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Bulk-users' && 'hidden'"
-      >
-        <ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a>。</li>
-<li>选择 <strong>Members</strong>（成员）。</li>
-<li>使用用户名列中的复选框选择所有要重新分配的用户。</li>
-<li>选择 <strong>Change role</strong>（更改角色）。</li>
-<li>在 <strong>Select a role</strong>（选择角色）下拉菜单中，选择新角色。</li>
-<li>选择 <strong>Save</strong>（保存）。</li>
-</ol>
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Teams' && 'hidden'"
-      >
-        <ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a>。</li>
-<li>选择 <strong>Teams</strong>（团队）。</li>
-<li>找到团队，然后选择 <strong>Actions menu</strong>（操作菜单）。</li>
-<li>选择 <strong>Change role</strong>（更改角色）。</li>
-<li>在弹出窗口中，从下拉菜单中选择一个角色，然后选择 <strong>Save</strong>（保存）。</li>
-</ol>
 
-      </div>
-    
-  </div>
-</div>
+1. 登录 [Docker Home](https://app.docker.com)。
+2. 选择 **Teams**（团队）。
+3. 找到团队，然后选择 **Actions menu**（操作菜单）。
+4. 选择 **Change role**（更改角色）。
+5. 在弹出窗口中，从下拉菜单中选择一个角色，然后选择 **Save**（保存）。
+
 
 
 ## 删除自定义角色

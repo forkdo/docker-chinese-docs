@@ -1,4 +1,24 @@
-# 为 Bun 开发使用容器
+---
+title: 为 Bun 开发使用容器
+url: /guides/bun/develop/
+parent:
+  title: Bun 语言特定指南
+  url: /guides/bun/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Bun 语言特定指南
+    url: /guides/bun/
+  - title: 为 Bun 开发使用容器
+    url: /guides/bun/develop/
+next:
+  title: 容器化 Bun 应用程序
+  url: /guides/bun/containerize/
+prev:
+  title: 为你的 Bun 应用程序配置 CI/CD
+  url: /guides/bun/configure-ci-cd/
+---
+
 
 ## 先决条件
 

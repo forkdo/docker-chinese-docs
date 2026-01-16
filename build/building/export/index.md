@@ -1,4 +1,24 @@
-# Export binaries
+---
+title: Export binaries
+url: /build/building/export/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Export binaries
+    url: /build/building/export/
+next:
+  title: Multi-platform builds
+  url: /build/building/multi-platform/
+prev:
+  title: Container Device Interface (CDI)
+  url: /build/building/cdi/
+---
+
 
 Did you know that you can use Docker to build your application to standalone
 binaries? Sometimes, you don’t want to package and distribute your application

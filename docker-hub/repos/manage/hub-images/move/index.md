@@ -1,4 +1,28 @@
-# 在仓库之间移动镜像
+---
+title: 在仓库之间移动镜像
+url: /docker-hub/repos/manage/hub-images/move/
+parent:
+  title: 镜像管理
+  url: /docker-hub/repos/manage/hub-images/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 镜像管理
+    url: /docker-hub/repos/manage/hub-images/
+  - title: 在仓库之间移动镜像
+    url: /docker-hub/repos/manage/hub-images/move/
+next:
+  title: 将镜像推送到仓库
+  url: /docker-hub/repos/manage/hub-images/push/
+prev:
+  title: 批量迁移镜像
+  url: /docker-hub/repos/manage/hub-images/bulk-migrate/
+---
+
 
 整合和组织不同仓库中的 Docker 镜像可以简化您的工作流程，无论您是在管理个人项目还是为组织做贡献。本主题介绍如何在 Docker Hub 仓库之间移动镜像，确保您的内容在正确的账户或命名空间下保持可访问性和组织性。
 

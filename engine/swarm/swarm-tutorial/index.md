@@ -1,4 +1,45 @@
-# Swarm 模式入门
+---
+title: Swarm 模式入门
+url: /engine/swarm/swarm-tutorial/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: Swarm 模式入门
+    url: /engine/swarm/swarm-tutorial/
+children:
+  - title: 创建 swarm
+    url: /engine/swarm/swarm-tutorial/create-swarm/
+    description: 初始化 swarm
+  - title: 向 swarm 添加节点
+    url: /engine/swarm/swarm-tutorial/add-nodes/
+    description: 向 swarm 添加节点
+  - title: 将服务部署到 swarm
+    url: /engine/swarm/swarm-tutorial/deploy-service/
+    description: 将服务部署到 swarm
+  - title: 在 swarm 上检查服务
+    url: /engine/swarm/swarm-tutorial/inspect-service/
+    description: 检查应用程序
+  - title: 扩展 Swarm 中的服务
+    url: /engine/swarm/swarm-tutorial/scale-service/
+    description: 扩展 Swarm 中运行的服务
+  - title: 删除在 swarm 上运行的服务
+    url: /engine/swarm/swarm-tutorial/delete-service/
+    description: 从 swarm 中删除服务
+  - title: 对服务应用滚动更新
+    url: /engine/swarm/swarm-tutorial/rolling-update/
+    description: 在 swarm 上对服务应用滚动更新
+  - title: 将 swarm 中的节点设置为排空状态
+    url: /engine/swarm/swarm-tutorial/drain-node/
+    description: 将 swarm 中的节点设置为排空状态
+---
+
 
 本教程向您介绍 Docker Engine Swarm 模式的各项功能。在开始之前，您可能需要先熟悉[关键概念](../key-concepts.md)。
 
@@ -71,23 +112,5 @@ iptables -I INPUT -m udp --dport 4789 -m policy --dir in --pol none -j DROP
 
 接下来，您将创建一个 swarm。
 
-
-<a class="button not-prose" href="/engine/swarm/swarm-tutorial/create-swarm/">创建 swarm</a>
-
-
-- [创建 swarm](/engine/swarm/swarm-tutorial/create-swarm/)
-
-- [向 swarm 添加节点](/engine/swarm/swarm-tutorial/add-nodes/)
-
-- [将服务部署到 swarm](/engine/swarm/swarm-tutorial/deploy-service/)
-
-- [在 swarm 上检查服务](/engine/swarm/swarm-tutorial/inspect-service/)
-
-- [扩展 Swarm 中的服务](/engine/swarm/swarm-tutorial/scale-service/)
-
-- [删除在 swarm 上运行的服务](/engine/swarm/swarm-tutorial/delete-service/)
-
-- [对服务应用滚动更新](/engine/swarm/swarm-tutorial/rolling-update/)
-
-- [将 swarm 中的节点设置为排空状态](/engine/swarm/swarm-tutorial/drain-node/)
+[创建 swarm](create-swarm.md)
 

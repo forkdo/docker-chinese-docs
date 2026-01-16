@@ -1,4 +1,23 @@
-# Optimize cache usage in builds
+---
+title: Optimize cache usage in builds
+url: /build/cache/optimize/
+parent:
+  title: Docker build cache
+  url: /build/cache/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Docker build cache
+    url: /build/cache/
+  - title: Optimize cache usage in builds
+    url: /build/cache/optimize/
+next:
+  title: Build garbage collection
+  url: /build/cache/garbage-collection/
+---
+
 
 When building with Docker, a layer is reused from the build cache if the
 instruction and the files it depends on hasn't changed since it was previously
@@ -145,170 +164,43 @@ There are a few things to be aware of when using bind mounts in a build:
   are hidden by the mounted files. The original contents are restored after the
   `RUN` instruction is done.
 
-  
+  **Example**
 
 
 
+For example, given a build context with only a `Dockerfile` in it:
 
-<div
-  id="example"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
->
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      Example
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    <p>For example, given a build context with only a <code>Dockerfile</code> in it:</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'LgrilJTilIDilIAgRG9ja2VyZmlsZQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">.
-</span></span><span class="line"><span class="cl">└── Dockerfile</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>And a Dockerfile that mounts the current directory into the build container:</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'RlJPTSBhbHBpbmU6bGF0ZXN0CldPUktESVIgL3dvcmsKUlVOIHRvdWNoIGZvby50eHQKUlVOIC0tbW91bnQ9dHlwZT1iaW5kLHRhcmdldD0uIGxzClJVTiBscw==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:latest</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/work</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> touch foo.txt<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,target<span class="o">=</span>. ls<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> ls</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>The first <code>ls</code> command with the bind mount shows the contents of the mounted
-directory. The second <code>ls</code> lists the contents of the original build context.</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-    <div class="flex w-full items-center gap-2">
-      <div
-        class="flex items-center gap-2.5 rounded bg-gray-100 px-2 py-0.5 dark:bg-gray-800"
-      >
-        <div class="font-normal text-gray-500 dark:text-gray-200">
-          Build log
-        </div>
-      </div>
-    </div>
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IzggW3N0YWdlLTAgMy81XSBSVU4gdG91Y2ggZm9vLnR4dAojOCBET05FIDAuMXMKCiM5IFtzdGFnZS0wIDQvNV0gUlVOIC0tbW91bnQ9dGFyZ2V0PS4gbHMgLTEKIzkgMC4wNDAgRG9ja2VyZmlsZQojOSBET05FIDAuMHMKCiMxMCBbc3RhZ2UtMCA1LzVdIFJVTiBscyAtMQojMTAgMC4wNDYgZm9vLnR4dAojMTAgRE9ORSAwLjFz', copying: false }"
-        class="
-          -top-10
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">#8 [stage-0 3/5] RUN touch foo.txt
-</span></span><span class="line"><span class="cl">#8 DONE 0.1s
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#9 [stage-0 4/5] RUN --mount=target=. ls -1
-</span></span><span class="line"><span class="cl">#9 0.040 Dockerfile
-</span></span><span class="line"><span class="cl">#9 DONE 0.0s
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#10 [stage-0 5/5] RUN ls -1
-</span></span><span class="line"><span class="cl">#10 0.046 foo.txt
-</span></span><span class="line"><span class="cl">#10 DONE 0.1s</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+```plaintext
+.
+└── Dockerfile
+```
 
-  </div>
-</div>
+And a Dockerfile that mounts the current directory into the build container:
+
+```dockerfile
+FROM alpine:latest
+WORKDIR /work
+RUN touch foo.txt
+RUN --mount=type=bind,target=. ls
+RUN ls
+```
+
+The first `ls` command with the bind mount shows the contents of the mounted
+directory. The second `ls` lists the contents of the original build context.
+
+```plaintext {title="Build log"}
+#8 [stage-0 3/5] RUN touch foo.txt
+#8 DONE 0.1s
+
+#9 [stage-0 4/5] RUN --mount=target=. ls -1
+#9 0.040 Dockerfile
+#9 DONE 0.0s
+
+#10 [stage-0 5/5] RUN ls -1
+#10 0.046 foo.txt
+#10 DONE 0.1s
+```
+
 
 
 
@@ -344,415 +236,72 @@ How you specify cache mounts depends on the build tool you're using. If you're
 unsure how to specify cache mounts, refer to the documentation for the build
 tool you're using. Here are a few examples:
 
+**Go**
 
 
 
+```dockerfile
+RUN --mount=type=cache,target=/go/pkg/mod \
+    go build -o /app/hello
+```
+
+**Apt**
 
 
 
+```dockerfile
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,target=/var/lib/apt,sharing=locked \
+  apt update && apt-get --no-install-recommends install -y gcc
+```
 
-<div
-  class="tabs"
+**Python**
+
+
+
+```dockerfile
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r requirements.txt
+```
+
+**Ruby**
+
+
+
+```dockerfile
+RUN --mount=type=cache,target=/root/.gem \
+    bundle install
+```
+
+**Rust**
+
+
+
+```dockerfile
+RUN --mount=type=cache,target=/app/target/ \
+    --mount=type=cache,target=/usr/local/cargo/git/db \
+    --mount=type=cache,target=/usr/local/cargo/registry/ \
+    cargo build
+```
+
+**.NET**
+
+
+
+```dockerfile
+RUN --mount=type=cache,target=/root/.nuget/packages \
+    dotnet restore
+```
+
+**PHP**
+
   
-    x-data="{ selected: 'Go' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Go' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Go'"
-        
-      >
-        Go
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Apt' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Apt'"
-        
-      >
-        Apt
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Python' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Python'"
-        
-      >
-        Python
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Ruby' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Ruby'"
-        
-      >
-        Ruby
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Rust' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Rust'"
-        
-      >
-        Rust
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '.NET' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '.NET'"
-        
-      >
-        .NET
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'PHP' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'PHP'"
-        
-      >
-        PHP
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Go' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L2dvL3BrZy9tb2QgXAogICAgZ28gYnVpbGQgLW8gL2FwcC9oZWxsbw==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/go/pkg/mod <span class="se">\
-</span></span></span><span class="line"><span class="cl">    go build -o /app/hello</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Apt' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Zhci9jYWNoZS9hcHQsc2hhcmluZz1sb2NrZWQgXAogIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Zhci9saWIvYXB0LHNoYXJpbmc9bG9ja2VkIFwKICBhcHQgdXBkYXRlICYmIGFwdC1nZXQgLS1uby1pbnN0YWxsLXJlY29tbWVuZHMgaW5zdGFsbCAteSBnY2M=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/var/cache/apt,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl">  --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/var/lib/apt,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl">  apt update <span class="o">&amp;&amp;</span> apt-get --no-install-recommends install -y gcc</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+```dockerfile
+RUN --mount=type=cache,target=/tmp/cache \
+    composer install
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Python' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Jvb3QvLmNhY2hlL3BpcCBcCiAgICBwaXAgaW5zdGFsbCAtciByZXF1aXJlbWVudHMudHh0', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/pip <span class="se">\
-</span></span></span><span class="line"><span class="cl">    pip install -r requirements.txt</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Ruby' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Jvb3QvLmdlbSBcCiAgICBidW5kbGUgaW5zdGFsbA==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.gem <span class="se">\
-</span></span></span><span class="line"><span class="cl">    bundle install</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Rust' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L2FwcC90YXJnZXQvIFwKICAgIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Vzci9sb2NhbC9jYXJnby9naXQvZGIgXAogICAgLS1tb3VudD10eXBlPWNhY2hlLHRhcmdldD0vdXNyL2xvY2FsL2NhcmdvL3JlZ2lzdHJ5LyBcCiAgICBjYXJnbyBidWlsZA==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/app/target/ <span class="se">\
-</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/local/cargo/git/db <span class="se">\
-</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/local/cargo/registry/ <span class="se">\
-</span></span></span><span class="line"><span class="cl">    cargo build</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '.NET' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Jvb3QvLm51Z2V0L3BhY2thZ2VzIFwKICAgIGRvdG5ldCByZXN0b3Jl', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.nuget/packages <span class="se">\
-</span></span></span><span class="line"><span class="cl">    dotnet restore</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'PHP' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'UlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3RtcC9jYWNoZSBcCiAgICBjb21wb3NlciBpbnN0YWxs', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/tmp/cache <span class="se">\
-</span></span></span><span class="line"><span class="cl">    composer install</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 
 
 It's important that you read the documentation for the build tool you're using

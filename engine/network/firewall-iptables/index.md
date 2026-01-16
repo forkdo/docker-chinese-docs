@@ -1,4 +1,23 @@
-# Docker 与 iptables
+---
+title: Docker 与 iptables
+url: /engine/network/firewall-iptables/
+parent:
+  title: 网络概述
+  url: /engine/network/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 网络概述
+    url: /engine/network/
+  - title: Docker 与 iptables
+    url: /engine/network/firewall-iptables/
+prev:
+  title: Docker 与 nftables
+  url: /engine/network/firewall-nftables/
+---
+
 
 Docker 为桥接网络在主机的网络命名空间中创建 iptables 规则。对于桥接和其他网络类型，DNS 的 iptables 规则也会在容器的网络命名空间中创建。
 

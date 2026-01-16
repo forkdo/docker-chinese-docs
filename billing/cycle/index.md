@@ -1,4 +1,24 @@
-# 更改账单周期
+---
+title: 更改账单周期
+url: /billing/cycle/
+parent:
+  title: 管理账单和支付
+  url: /billing/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 管理账单和支付
+    url: /billing/
+  - title: 更改账单周期
+    url: /billing/cycle/
+next:
+  title: 提交免税证明
+  url: /billing/tax-certificate/
+prev:
+  title: 计费常见问题
+  url: /billing/faqs/
+---
+
 
 购买订阅时，您可以在月度或年度账单周期之间进行选择。如果您当前是月度账单周期，可以选择切换到年度账单周期。
 
@@ -22,245 +42,76 @@
 
 ## 将个人账户更改为年度周期
 
+**Docker subscription**
 
 
 
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-subscription' }"
-  
-  aria-role="tabpanel"
+> [!IMPORTANT]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-subscription'"
-        
-      >
-        Docker subscription
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Legacy-Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Legacy-Docker-subscription'"
-        
-      >
-        Legacy Docker subscription
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-subscription' && 'hidden'"
-      >
-        
+> 订阅升级或更改不支持通过发票付款。
 
-  
+更改账单周期的步骤：
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您的组织。
+2. 选择 **Billing**（账单）。
+3. 在计划和用量页面上，选择 **Switch to annual billing**（切换到年度账单）。
+4. 验证您的账单信息。
+5. 选择 **Continue to payment**（继续付款）。
+6. 验证付款信息并选择 **Upgrade subscription**（升级订阅）。
 
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>订阅升级或更改不支持通过发票付款。</p>
-    </div>
-  </blockquote>
+> [!NOTE]
+>
+> 如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅[验证银行账户](manuals/billing/payment-method.md#verify-a-bank-account)。
 
-<p>更改账单周期的步骤：</p>
-<ol>
-<li>登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您的组织。</li>
-<li>选择 <strong>Billing</strong>（账单）。</li>
-<li>在计划和用量页面上，选择 <strong>Switch to annual billing</strong>（切换到年度账单）。</li>
-<li>验证您的账单信息。</li>
-<li>选择 <strong>Continue to payment</strong>（继续付款）。</li>
-<li>验证付款信息并选择 <strong>Upgrade subscription</strong>（升级订阅）。</li>
-</ol>
+计划和用量页面现在将显示您的新年度计划详细信息。
+
+**Legacy Docker subscription**
 
 
-  
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+请按照以下步骤将旧版 Docker 订阅从月度切换到年度账单周期：
 
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
-    </div>
-  </blockquote>
+1. 登录 [Docker Hub](https://hub.docker.com)。
+2. 选择您的组织，然后选择 **Billing**（账单）。
+3. 在 **Plan**（计划）选项卡的右下角，选择 **Switch to annual billing**（切换到年度账单）。
+4. 查看 **Change to an Annual subscription**（更改为年度订阅）页面上显示的信息，然后选择 **Accept Terms and Purchase**（接受条款并购买）进行确认。
 
-<p>计划和用量页面现在将显示您的新年度计划详细信息。</p>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Legacy-Docker-subscription' && 'hidden'"
-      >
-        <p>请按照以下步骤将旧版 Docker 订阅从月度切换到年度账单周期：</p>
-<ol>
-<li>登录 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</li>
-<li>选择您的组织，然后选择 <strong>Billing</strong>（账单）。</li>
-<li>在 <strong>Plan</strong>（计划）选项卡的右下角，选择 <strong>Switch to annual billing</strong>（切换到年度账单）。</li>
-<li>查看 <strong>Change to an Annual subscription</strong>（更改为年度订阅）页面上显示的信息，然后选择 <strong>Accept Terms and Purchase</strong>（接受条款并购买）进行确认。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## 将组织更改为年度周期
 
 您必须是组织所有者才能更改付款信息。
 
+**Docker subscription**
 
 
 
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-subscription' }"
-  
-  aria-role="tabpanel"
+> [!IMPORTANT]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-subscription'"
-        
-      >
-        Docker subscription
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Legacy-Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Legacy-Docker-subscription'"
-        
-      >
-        Legacy Docker subscription
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-subscription' && 'hidden'"
-      >
-        
+> 订阅升级或更改不支持通过发票付款。
 
-  
+请按照以下步骤将组织的 Docker 订阅从月度切换到年度账单周期：
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您的组织。
+2. 选择 **Billing**（账单）。
+3. 在计划和用量页面上，选择 **Switch to annual billing**（切换到年度账单）。
+4. 验证您的账单信息。
+5. 选择 **Continue to payment**（继续付款）。
+6. 验证付款信息并选择 **Upgrade subscription**（升级订阅）。
 
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>订阅升级或更改不支持通过发票付款。</p>
-    </div>
-  </blockquote>
+> [!NOTE]
+>
+> 如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅[验证银行账户](manuals/billing/payment-method.md#verify-a-bank-account)。
 
-<p>请按照以下步骤将组织的 Docker 订阅从月度切换到年度账单周期：</p>
-<ol>
-<li>登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您的组织。</li>
-<li>选择 <strong>Billing</strong>（账单）。</li>
-<li>在计划和用量页面上，选择 <strong>Switch to annual billing</strong>（切换到年度账单）。</li>
-<li>验证您的账单信息。</li>
-<li>选择 <strong>Continue to payment</strong>（继续付款）。</li>
-<li>验证付款信息并选择 <strong>Upgrade subscription</strong>（升级订阅）。</li>
-</ol>
+**Legacy Docker subscription**
 
 
-  
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+请按照以下步骤将旧版 Docker 组织订阅从月度切换到年度账单周期：
 
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果您选择使用美国银行账户付款，则必须验证该账户。有关更多信息，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行账户</a>。</p>
-    </div>
-  </blockquote>
+1. 登录 [Docker Hub](https://hub.docker.com)。
+2. 选择您的组织，然后选择 **Billing**（账单）。
+3. 选择 **Switch to annual billing**（切换到年度账单）。
+4. 查看 **Change to an Annual subscription**（更改为年度订阅）页面上显示的信息，然后选择 **Accept Terms and Purchase**（接受条款并购买）进行确认。
 
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Legacy-Docker-subscription' && 'hidden'"
-      >
-        <p>请按照以下步骤将旧版 Docker 组织订阅从月度切换到年度账单周期：</p>
-<ol>
-<li>登录 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</li>
-<li>选择您的组织，然后选择 <strong>Billing</strong>（账单）。</li>
-<li>选择 <strong>Switch to annual billing</strong>（切换到年度账单）。</li>
-<li>查看 <strong>Change to an Annual subscription</strong>（更改为年度订阅）页面上显示的信息，然后选择 <strong>Accept Terms and Purchase</strong>（接受条款并购买）进行确认。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 

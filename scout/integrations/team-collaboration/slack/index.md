@@ -1,4 +1,22 @@
-# 将 Docker Scout 与 Slack 集成
+---
+title: 将 Docker Scout 与 Slack 集成
+url: /scout/integrations/team-collaboration/slack/
+parent:
+  title: 
+  url: /scout/integrations/team-collaboration/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 将 Docker Scout 与其他系统集成
+    url: /scout/integrations/
+  - title: 
+    url: /scout/integrations/team-collaboration/
+  - title: 将 Docker Scout 与 Slack 集成
+    url: /scout/integrations/team-collaboration/slack/
+---
+
 
 您可以通过创建 Slack Webhook 并将其添加到 Docker Scout 仪表板，从而将 Docker Scout 与 Slack 集成。当新的漏洞被披露并影响您一个或多个镜像时，Docker Scout 会通知您。
 

@@ -1,4 +1,24 @@
-# Docker Engine 17.06 发布说明
+---
+title: Docker Engine 17.06 发布说明
+url: /engine/release-notes/17.06/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 17.06 发布说明
+    url: /engine/release-notes/17.06/
+next:
+  title: Docker Engine 17.05 发行说明
+  url: /engine/release-notes/17.05/
+prev:
+  title: Docker Engine 17.07 版本说明
+  url: /engine/release-notes/17.07/
+---
+
 
 ## 17.06.2-ce
 2017-09-05

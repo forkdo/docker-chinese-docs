@@ -1,4 +1,24 @@
-# 使用容器进行 .NET 开发
+---
+title: 使用容器进行 .NET 开发
+url: /guides/dotnet/develop/
+parent:
+  title: .NET 语言特定指南
+  url: /guides/dotnet/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: .NET 语言特定指南
+    url: /guides/dotnet/
+  - title: 使用容器进行 .NET 开发
+    url: /guides/dotnet/develop/
+next:
+  title: 容器化 .NET 应用程序
+  url: /guides/dotnet/containerize/
+prev:
+  title: 在容器中运行 .NET 测试
+  url: /guides/dotnet/run-tests/
+---
+
 
 ## 先决条件
 

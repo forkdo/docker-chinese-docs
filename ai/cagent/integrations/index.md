@@ -1,4 +1,28 @@
-# 集成
+---
+title: 集成
+url: /ai/cagent/integrations/
+parent:
+  title: cagent
+  url: /ai/cagent/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+  - title: 集成
+    url: /ai/cagent/integrations/
+children:
+  - title: A2A 模式
+    url: /ai/cagent/integrations/a2a/
+    description: 通过 Agent-to-Agent 协议暴露 cagent 代理
+  - title: ACP 集成
+    url: /ai/cagent/integrations/acp/
+    description: 将你的编辑器或 IDE 配置为使用 cagent 代理作为编程助手
+  - title: MCP 模式
+    url: /ai/cagent/integrations/mcp/
+    description: 将 cagent 代理作为工具暴露给 Claude Desktop 和 Claude Code 等 MCP 客户端
+---
+
 
 cagent 代理可以根据您的使用方式集成到不同的环境中。每种集成类型都有其特定的用途。
 
@@ -35,10 +59,3 @@ cagent 代理可以根据您的使用方式集成到不同的环境中。每种�
 如果您希望在编码时将代理嵌入编辑器，请选择 ACP。
 如果您希望 Claude Desktop（或其他 MCP 客户端）能够将您的专用代理作为工具调用，请选择 MCP。
 如果您正在构建需要通过 HTTP 互相调用的多代理系统，请选择 A2A。
-
-- [A2A 模式](/ai/cagent/integrations/a2a/)
-
-- [ACP 集成](/ai/cagent/integrations/acp/)
-
-- [MCP 模式](/ai/cagent/integrations/mcp/)
-

@@ -1,4 +1,26 @@
-# Docker Desktop 的资源节省模式
+---
+title: Docker Desktop 的资源节省模式
+url: /desktop/use-desktop/resource-saver/
+parent:
+  title: 探索 Docker Desktop
+  url: /desktop/use-desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 探索 Docker Desktop
+    url: /desktop/use-desktop/
+  - title: Docker Desktop 的资源节省模式
+    url: /desktop/use-desktop/resource-saver/
+next:
+  title: 探索 Kubernetes 视图
+  url: /desktop/use-desktop/kubernetes/
+prev:
+  title: 暂停 Docker Desktop
+  url: /desktop/use-desktop/pause/
+---
+
 
 资源节省模式通过在没有容器运行一段时间后自动停止 Docker Desktop Linux 虚拟机，可显著降低主机上 Docker Desktop 的 CPU 和内存使用率，降幅可达 2 GB 或更多。默认时间为 5 分钟，但您可以根据需要进行调整。
 

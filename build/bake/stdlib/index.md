@@ -1,4 +1,26 @@
-# Bake standard library functions
+---
+title: Bake standard library functions
+url: /build/bake/stdlib/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Bake standard library functions
+    url: /build/bake/stdlib/
+next:
+  title: Bake file reference
+  url: /build/bake/reference/
+prev:
+  title: Building with Bake from a Compose file
+  url: /build/bake/compose-file/
+---
+
 
 <!---MARKER_STDLIB_START-->
 

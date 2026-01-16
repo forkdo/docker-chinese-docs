@@ -1,4 +1,24 @@
-# Docker 对象标签
+---
+title: Docker 对象标签
+url: /engine/manage-resources/labels/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker 对象标签
+    url: /engine/manage-resources/labels/
+next:
+  title: Docker contexts
+  url: /engine/manage-resources/contexts/
+prev:
+  title: 清理未使用的 Docker 对象
+  url: /engine/manage-resources/pruning/
+---
+
 
 标签（Labels）是一种向 Docker 对象应用元数据的机制，这些对象包括：
 

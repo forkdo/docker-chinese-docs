@@ -1,4 +1,32 @@
-# Docker 扩展
+---
+title: Docker 扩展
+url: /extensions/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+children:
+  - title: Marketplace 扩展
+    url: /extensions/marketplace/
+    description: 扩展
+  - title: 非 Marketplace 扩展
+    url: /extensions/non-marketplace/
+    description: 扩展
+  - title: 为扩展配置私有市场
+    url: /extensions/private-marketplace/
+    description: 如何配置和使用 Docker Extensions 的私有市场
+  - title: Docker Extensions 的设置与反馈
+    url: /extensions/settings-feedback/
+    description: 扩展
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+    description: Docker 扩展 SDK 文档总索引
+---
+
 
 Docker 扩展让您可以在 Docker Desktop 中使用第三方工具来扩展其功能。
 
@@ -16,14 +44,3 @@ Docker 扩展让您可以在 Docker Desktop 中使用第三方工具来扩展其
 要了解更多关于 Docker 扩展的信息，我们推荐观看 DockerCon 2022 的视频演示：
 
 <iframe width="750" height="315" src="https://www.youtube.com/embed/3rAGXS8pszQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-- [Marketplace 扩展](/extensions/marketplace/)
-
-- [非 Marketplace 扩展](/extensions/non-marketplace/)
-
-- [为扩展配置私有市场](/extensions/private-marketplace/)
-
-- [Docker Extensions 的设置与反馈](/extensions/settings-feedback/)
-
-- [扩展 SDK 概览](/extensions/extensions-sdk/)
-

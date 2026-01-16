@@ -1,4 +1,24 @@
-# MCP Gateway
+---
+title: MCP Gateway
+url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
+parent:
+  title: Docker MCP Catalog and Toolkit
+  url: /ai/mcp-catalog-and-toolkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker MCP Catalog and Toolkit
+    url: /ai/mcp-catalog-and-toolkit/
+  - title: MCP Gateway
+    url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
+next:
+  title: 动态 MCP
+  url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
+prev:
+  title: Docker Hub MCP 服务器
+  url: /ai/mcp-catalog-and-toolkit/hub-mcp/
+---
+
 
 MCP Gateway 是 Docker 用于编排 Model Context Protocol (MCP) 服务器的开源解决方案。它充当客户端与服务器之间的集中式代理，管理配置、凭证和访问控制。
 

@@ -1,4 +1,24 @@
-# 学习在 Docker Compose 中使用配置文件
+---
+title: 学习在 Docker Compose 中使用配置文件
+url: /reference/compose-file/profiles/
+parent:
+  title: Compose 文件参考
+  url: /reference/compose-file/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Compose 文件参考
+    url: /reference/compose-file/
+  - title: 学习在 Docker Compose 中使用配置文件
+    url: /reference/compose-file/profiles/
+next:
+  title: 模型
+  url: /reference/compose-file/models/
+prev:
+  title: Compose Build 规范
+  url: /reference/compose-file/build/
+---
+
 
 通过配置文件，您可以定义一组活动的配置文件，以便针对各种用途和环境调整 Compose 应用程序模型。
 

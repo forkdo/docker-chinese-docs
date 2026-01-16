@@ -1,4 +1,26 @@
-# 将节点加入到一个 swarm 中
+---
+title: 将节点加入到一个 swarm 中
+url: /engine/swarm/join-nodes/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 将节点加入到一个 swarm 中
+    url: /engine/swarm/join-nodes/
+next:
+  title: 将服务部署到 swarm
+  url: /engine/swarm/services/
+prev:
+  title: 管理 swarm 中的节点
+  url: /engine/swarm/manage-nodes/
+---
+
 
 当您初次创建一个 swarm 时，您会将单个 Docker Engine 置于 Swarm 模式。为了充分利用 Swarm 模式，您可以将节点添加到该 swarm 中：
 

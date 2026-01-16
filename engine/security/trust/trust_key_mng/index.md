@@ -1,4 +1,25 @@
-# 管理内容信任的密钥
+---
+title: 管理内容信任的密钥
+url: /engine/security/trust/trust_key_mng/
+parent:
+  title: Docker 中的内容信任
+  url: /engine/security/trust/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 安全
+    url: /engine/security/
+  - title: Docker 中的内容信任
+    url: /engine/security/trust/
+  - title: 管理内容信任的密钥
+    url: /engine/security/trust/trust_key_mng/
+next:
+  title: 在内容信任沙盒中进行操作
+  url: /engine/security/trust/trust_sandbox/
+---
+
 
 通过密钥管理镜像标签的信任。Docker 的内容信任使用了五种不同类型的密钥：
 

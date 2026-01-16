@@ -1,4 +1,24 @@
-# Docker Engine version 28 release notes
+---
+title: Docker Engine version 28 release notes
+url: /engine/release-notes/28/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine version 28 release notes
+    url: /engine/release-notes/28/
+next:
+  title: Docker Engine 27 版本发行说明
+  url: /engine/release-notes/27/
+prev:
+  title: Docker Engine 29 版本发布说明
+  url: /engine/release-notes/29/
+---
+
 
 本页描述了 Docker Engine 版本 28 的最新更改、新增功能、已知问题和修复。
 

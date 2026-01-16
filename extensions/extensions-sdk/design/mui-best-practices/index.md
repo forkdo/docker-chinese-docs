@@ -1,4 +1,25 @@
-# MUI 最佳实践
+---
+title: MUI 最佳实践
+url: /extensions/extensions-sdk/design/mui-best-practices/
+parent:
+  title: Docker 扩展的 UI 样式概览
+  url: /extensions/extensions-sdk/design/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: Docker 扩展的 UI 样式概览
+    url: /extensions/extensions-sdk/design/
+  - title: MUI 最佳实践
+    url: /extensions/extensions-sdk/design/mui-best-practices/
+next:
+  title: Docker 设计原则
+  url: /extensions/extensions-sdk/design/design-principles/
+---
+
 
 本文假设您正在遵循我们的推荐做法，使用我们的 [Material UI 主题](https://www.npmjs.com/package/@docker/docker-mui-theme)。
 遵循以下步骤可以最大限度地兼容 Docker Desktop，并减少您作为扩展作者所需的工作量。这些内容应被视为对 [UI 样式概览](index.md) 中非 MUI 特定指南的补充。

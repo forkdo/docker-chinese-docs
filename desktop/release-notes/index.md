@@ -1,81 +1,91 @@
-# Docker Desktop 发行说明
+---
+title: Docker Desktop 发行说明
+url: /desktop/release-notes/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop 发行说明
+    url: /desktop/release-notes/
+next:
+  title: 修复 Mac 上的 Docker Desktop 启动问题
+  url: /desktop/cert-revoke-solution/
+---
 
-
-<button
-  onclick="window.open('\/desktop\/release-notes\/index.xml', '_blank')"
-  data-heap-id="rss-subscribe-button"
-  class="inline-flex items-center gap-2 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-900 py-2 px-3 text-sm transition-colors"
->
-  <span class="icon-svg text-base leading-none">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M195-120q-31 0-53-22t-22-53q0-31 22-53t53-22q31 0 53 22t22 53q0 31-22 53t-53 22Zm560 0q-20 0-32.5-14T708-168q-9-109-54-203T537-537q-72-72-166-117t-203-54q-20-2-34-14.5T120-755q0-20 15-32.5t35-10.5q127 9 236.5 60.5T601-601q85 85 136.5 194.5T798-170q2 20-10.5 35T755-120Zm-258 0q-19 0-32.5-13.5T449-167q-8-57-32-106t-62-87q-38-38-85.5-63.5T166-457q-19-3-32.5-16T120-505q0-19 13.5-32t31.5-11q75 8 139.5 40.5T419-424q50 51 81.5 117.5T540-165q2 19-11 32t-32 13Z"/></svg>
-  </span>
-  <div class="leading-tight">
-    <div class="text-base">Subscribe to Docker Desktop RSS feed</div>
-  </div>
-</button>
 
 <!-- vale off -->
 
-此页面包含有关 Docker Desktop 版本中的新功能、改进、已知问题和错误修复的信息。
+本页包含有关 Docker Desktop 版本中的新功能、改进、已知问题和错误修复的信息。
 
-版本会逐步推出以确保质量控制。如果最新版本尚未对您可用，请稍等片刻——更新通常在发布日期后的一周内变得可用。
+版本会逐步推出以确保质量控制。如果您还无法获取最新版本，请耐心等待 —— 更新通常会在发布日期后的一周内提供。
 
-发布日期超过 6 个月的旧版 Docker Desktop 不再提供下载。以前的发行说明可在我们的[文档仓库](https://github.com/docker/docs/tree/main/content/manuals/desktop/previous-versions)中找到。
+发布时间超过 6 个月的 Docker Desktop 旧版本将不再提供下载。之前的发行说明可以在我们的 [文档仓库](https://github.com/docker/docs/tree/main/content/manuals/desktop/previous-versions) 中找到。
 
-更多常见问题解答，请参阅 [FAQs](/manuals/desktop/troubleshoot-and-support/faqs/releases.md)。
+有关更多常见问题，请参阅 [常见问题解答 (FAQs)](/manuals/desktop/troubleshoot-and-support/faqs/releases.md)。
+
+## 4.56.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-01-12</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/214940/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/214940/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/214940/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/214940/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/214940/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/214940/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/214940/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新功能
+
+- Docker Desktop 现在包含 Docker Compose v5，它引入了一个新的官方 Go SDK。该 SDK 提供了一个全面的 API，允许您将 Compose 功能直接集成到您的应用程序中，使您能够加载、验证和管理多容器环境，而无需依赖 Compose CLI。更多信息，请参阅 [Compose SDK 文档](/manuals/compose/compose-sdk.md)。
+
+### 更新
+
+- [containerd v2.2.1](https://github.com/containerd/containerd/releases/tag/v2.2.1)
+- [Docker Compose v5.0.0](https://github.com/docker/compose/releases/tag/v5.0.0)
+- [cagent v1.18.6](https://github.com/docker/cagent/releases/tag/v1.18.6)
+
+### 错误修复和增强
+
+#### 所有平台
+
+- 修复了在容器启动后立即没有 IP 地址时，文件共享测试中的 panic 问题。
+- 通过 `ExtraDNSEntries` 配置字段，增加了对 LinuxKit VM 中自定义 DNS 条目的支持。
+
+#### Windows
+
+- 修复了 Windows 上的一个错误，该错误导致删除状态目录失败，因为日志文件仍处于打开状态。
+- 修复了 Microsoft Store 安装程序错误地宣传新更新的问题。
+- 通过将 QEMU 从 8.1.5 升级到 10.0.4，修复了在 `ubuntu:22.04` ARM64 容器中运行 `/sbin/ldconfig` 时发生的崩溃问题。这解决了在 [docker/for-win#15004](https://github.com/docker/for-win/issues/15004) 中报告的已知问题。
+
+  > [!NOTE]
+  >
+  > 在 ARM64 仿真下运行时，一些使用旧版 Go 版本构建的 `amd64` Go 二进制文件可能仍然会段错误。为避免这种情况，请使用 Go 1.25.4 或更高版本重新构建受影响的二进制文件。有关详细信息，请参阅 [golang/go#69255](https://github.com/golang/go/issues/69255) 和相应的 [Go 提交](https://github.com/golang/go/commit/bf95b767394eb5643265f44c7b98bdbb85b897ce)。
+
+#### Linux
+
+- 修复了 Linux 主机上 Kubernetes `hostPath` 卷挂载失败的问题。修复了 [docker/desktop-linux#12](https://github.com/docker/desktop-linux/issues/12)。
 
 ## 4.55.0
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-12-16</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/213807/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/213807/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/213807/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/213807/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/213807/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/213807/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/213807/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/213807/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/213807/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/213807/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/213807/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/213807/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/213807/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/213807/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/213807/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/213807/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/213807/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/213807/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/213807/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 更新
@@ -101,53 +111,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-12-04</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/212467/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/212467/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/212467/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/212467/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/212467/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/212467/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/212467/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/212467/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/212467/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/212467/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/212467/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/212467/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/212467/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -176,53 +147,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-27</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/211793/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/211793/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/211793/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/211793/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/211793/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/211793/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/211793/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/211793/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/211793/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/211793/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/211793/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/211793/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/211793/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 错误修复和增强功能
@@ -240,53 +172,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-20</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/210994/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/210994/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/210994/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/210994/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/210994/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/210994/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/210994/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/210994/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/210994/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/210994/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/210994/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/210994/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/210994/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -323,53 +216,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-13</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/210443/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/210443/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/210443/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/210443/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/210443/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/210443/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/210443/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/210443/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/210443/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/210443/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/210443/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/210443/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/210443/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -392,53 +246,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-06</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/209931/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/209931/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/209931/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/209931/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/209931/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/209931/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/209931/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/209931/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/209931/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/209931/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/209931/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/209931/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/209931/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -465,53 +280,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-10-23</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/208700/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/208700/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/208700/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/208700/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/208700/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/208700/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/208700/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/208700/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/208700/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/208700/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/208700/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/208700/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/208700/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/208700/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/208700/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/208700/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/208700/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/208700/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/208700/docker-desktop-x86_64.pkg.tar.zst)
 
 
 > [!IMPORTANT]
@@ -553,53 +329,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-10-09</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/207573/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/207573/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/207573/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/207573/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/207573/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/207573/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/207573/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/207573/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/207573/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/207573/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/207573/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/207573/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/207573/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-x86_64.pkg.tar.zst)
 
 
 > [!IMPORTANT]
@@ -640,53 +377,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-09-25</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/206054/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/206054/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/206054/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/206054/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/206054/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/206054/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/206054/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/206054/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/206054/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/206054/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/206054/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/206054/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/206054/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/206054/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/206054/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/206054/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/206054/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/206054/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/206054/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 安全
@@ -734,53 +432,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-09-11</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/204649/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/204649/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/204649/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/204649/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/204649/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/204649/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/204649/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/204649/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/204649/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/204649/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/204649/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/204649/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/204649/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -819,53 +478,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-28</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/203075/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/203075/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/203075/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/203075/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/203075/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/203075/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/203075/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/203075/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/203075/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/203075/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/203075/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/203075/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/203075/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -904,53 +524,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-20</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/202357/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/202357/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/202357/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/202357/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/202357/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/202357/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/202357/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/202357/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/202357/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/202357/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/202357/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/202357/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/202357/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 安全
@@ -966,53 +547,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-15</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/202017/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/202017/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/202017/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/202017/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/202017/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/202017/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/202017/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/202017/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/202017/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/202017/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/202017/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/202017/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/202017/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 错误修复和增强功能
@@ -1024,53 +566,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-13</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/201842/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/201842/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/201842/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/201842/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/201842/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/201842/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/201842/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/201842/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/201842/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/201842/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/201842/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/201842/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/201842/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/201842/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/201842/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/201842/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/201842/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/201842/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/201842/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 错误修复和增强功能
@@ -1090,53 +593,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-07</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/201307/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/201307/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/201307/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/201307/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/201307/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/201307/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/201307/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/201307/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/201307/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/201307/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/201307/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/201307/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/201307/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -1203,53 +667,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-07-15</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/199162/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/199162/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/199162/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/199162/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/199162/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/199162/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/199162/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/199162/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/199162/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/199162/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/199162/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/199162/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/199162/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 升级
@@ -1263,53 +688,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-07-04</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/198352/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/198352/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/198352/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/198352/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/198352/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/198352/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/198352/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/198352/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/198352/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/198352/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/198352/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/198352/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/198352/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 错误修复和增强功能
@@ -1324,53 +710,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-07-03</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/198134/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/198134/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/198134/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/198134/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/198134/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/198134/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/198134/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/198134/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/198134/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/198134/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/198134/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/198134/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/198134/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -1429,53 +776,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-06-18</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/196648/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/196648/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/196648/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/196648/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/196648/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/196648/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/196648/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/196648/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/196648/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/196648/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/196648/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/196648/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/196648/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/196648/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/196648/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/196648/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/196648/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/196648/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/196648/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 升级
@@ -1503,53 +811,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-06-04</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/195023/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/195023/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/195023/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Early Access</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/195023/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/195023/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/195023/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/195023/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/195023/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/195023/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/195023/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/195023/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/195023/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/195023/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/195023/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/195023/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/195023/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/195023/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/195023/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/195023/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -1623,53 +892,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-05-06</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/191736/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/191736/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/191736/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/191736/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/191736/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/191736/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/191736/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/191736/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/191736/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/191736/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/191736/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/191736/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/191736/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/191736/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/191736/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/191736/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/191736/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/191736/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/191736/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 错误修复和增强功能
@@ -1683,53 +913,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-04-30</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/191279/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/191279/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/191279/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/191279/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/191279/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/191279/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/191279/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/191279/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/191279/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/191279/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/191279/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/191279/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/191279/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/191279/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/191279/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/191279/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/191279/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/191279/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/191279/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 错误修复和增强功能
@@ -1747,53 +938,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-04-28</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/190950/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/190950/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/190950/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/190950/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/190950/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/190950/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/190950/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/190950/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/190950/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/190950/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/190950/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/190950/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/190950/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/190950/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/190950/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/190950/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/190950/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/190950/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/190950/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -1859,53 +1011,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-03-31</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/187762/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/187762/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/187762/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/187762/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/187762/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/187762/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/187762/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/187762/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/187762/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/187762/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/187762/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/187762/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/187762/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/187762/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/187762/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/187762/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/187762/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/187762/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/187762/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -1956,53 +1069,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-03-05</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/184744/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/184744/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/184744/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/184744/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/184744/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/184744/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/184744/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/184744/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/184744/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/184744/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/184744/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/184744/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/184744/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/184744/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/184744/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/184744/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/184744/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/184744/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/184744/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -2417,53 +1491,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2024-10-09</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/170107/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/170107/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/170107/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/170107/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/170107/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/170107/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/170107/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/170107/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/170107/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/170107/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/170107/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/170107/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/170107/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/170107/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/170107/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/170107/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/170107/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/170107/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/170107/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 升级
@@ -2497,26 +1532,9 @@
 <em class="text-gray-400 italic dark:text-gray-500">2024-09-05</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/166053/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/166053/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/166053/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/166053/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  </div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/166053/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/166053/Docker%20Desktop%20Installer.exe)
 
 
 ### 错误修复和增强功能
@@ -2619,53 +1637,14 @@
 <em class="text-gray-400 italic dark:text-gray-500">2024-07-25</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-   <ul>  
-      <li>
-        <a rel="noopener"
-           href="https://desktop.docker.com/win/main/amd64/160616/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows</a>
-        (<a rel="noopener"
-            href="https://desktop.docker.com/win/main/amd64/160616/checksums.txt">checksum</a>)
-      </li>
-    
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/win/main/arm64/160616/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-windows">Windows ARM Beta</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/win/main/arm64/160616/checksums.txt">checksum</a>)
-        </li>
-    
-      </ul>  
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/160616/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/160616/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/160616/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/160616/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    
-      <ul>
-        <li>
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/160616/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Debian</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/160616/docker-desktop-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">RPM</a>
-          -
-          <a rel="noopener"
-             href="https://desktop.docker.com/linux/main/amd64/160616/docker-desktop-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64">Arch</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/linux/main/amd64/160616/checksums.txt">checksum</a>)
-        </li>
-      </ul></div>
-</blockquote>
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/160616/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Beta](https://desktop.docker.com/win/main/arm64/160616/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/160616/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/160616/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/160616/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/160616/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/160616/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新功能
@@ -2741,23 +1720,9 @@
 <em class="text-gray-400 italic dark:text-gray-500">2025-01-09</em>
 
 
-<blockquote  class="not-prose download-links">
-  <p class="font-semibold mb-1">Download Docker Desktop</p>
-  <div class="download-links-subcontainer">
-      <ul>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/arm64/179691/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64">Mac with Apple chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/arm64/179691/checksums.txt">checksum</a>)
-        </li>
-        <li>
-          <a rel="noopener" href="https://desktop.docker.com/mac/main/amd64/179691/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64">Mac with Intel chip</a>
-          (<a rel="noopener"
-              href="https://desktop.docker.com/mac/main/amd64/179691/checksums.txt">checksum</a>)
-        </li>
-      </ul>
-    </div>
-</blockquote>
+Download Docker Desktop:
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/179691/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/179691/Docker.dmg)
 
 
 ### 错误修复和增强功能

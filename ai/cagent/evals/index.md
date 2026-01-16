@@ -1,4 +1,21 @@
-# 评估 (Evals)
+---
+title: 评估 (Evals)
+url: /ai/cagent/evals/
+parent:
+  title: cagent
+  url: /ai/cagent/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+  - title: 评估 (Evals)
+    url: /ai/cagent/evals/
+next:
+  title: RAG
+  url: /ai/cagent/rag/
+---
+
 
 评估 (evals) 帮助您跟踪代理行为随时间的变化。
 当您将对话保存为评估后，可以稍后重放它，以查看代理的响应是否不同。评估衡量的是一致性，而不是正确性——它们告诉您行为是否发生了变化，而不是判断其对错。

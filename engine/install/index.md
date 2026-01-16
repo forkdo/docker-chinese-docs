@@ -1,4 +1,46 @@
-# 安装 Docker Engine
+---
+title: 安装 Docker Engine
+url: /engine/install/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 安装 Docker Engine
+    url: /engine/install/
+children:
+  - title: 在 Ubuntu 上安装 Docker Engine
+    url: /engine/install/ubuntu/
+    description: 在 Ubuntu 上使用 Docker Engine 快速启动您的客户端服务器应用程序。本指南详细介绍了在 Ubuntu 上安装 Docker Engine 的先决条件和多种方法。
+  - title: 在 Debian 上安装 Docker Engine
+    url: /engine/install/debian/
+    description: 了解如何在 Debian 上安装 Docker Engine。这些说明涵盖了不同的安装方法、如何卸载以及后续步骤。
+  - title: 在 RHEL 上安装 Docker Engine
+    url: /engine/install/rhel/
+    description: 了解如何在 RHEL 上安装 Docker Engine。本文涵盖不同的安装方法、如何卸载以及后续步骤。
+  - title: 在 Fedora 上安装 Docker Engine
+    url: /engine/install/fedora/
+    description: 了解如何在 Fedora 上安装 Docker Engine。这些说明涵盖了不同的安装方法、如何卸载以及后续步骤。
+  - title: 在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine
+    url: /engine/install/raspberry-pi-os/
+    description: 了解如何在 32 位 Raspberry Pi OS 系统上安装 Docker Engine。这些说明涵盖了不同的安装方法、如何卸载以及后续步骤。请注意，32 位支持将在 Docker Engine v29 及更高版本中被弃用。
+  - title: 在 CentOS 上安装 Docker Engine
+    url: /engine/install/centos/
+    description: 了解如何在 CentOS 上安装 Docker Engine。这些说明涵盖了不同的安装方法、如何卸载以及后续步骤。
+  - title: Docker Engine 在 SLES (s390x) 上
+    url: /engine/install/sles/
+    description: 关于 Docker Engine 在 SLES 上的可用性信息。Docker 软件包不再适用于 SLES s390x 架构。
+  - title: 通过二进制文件安装 Docker Engine
+    url: /engine/install/binaries/
+    description: 了解如何以二进制文件的形式安装 Docker。这些说明最适合用于测试目的。
+  - title: Docker Engine 的 Linux 安装后步骤
+    url: /engine/install/linux-postinstall/
+    description: 查找针对 Linux 用户的 Docker Engine 推荐安装后步骤，包括如何将 Docker 作为非 root 用户运行等内容。
+---
+
 
 本节介绍如何在 Linux 上安装 Docker Engine，也称为 Docker CE。Docker Engine 也可通过 Docker Desktop 在 Windows、macOS 和 Linux 上使用。有关如何安装 Docker Desktop 的说明，请参阅：[Docker Desktop 概述](/manuals/desktop/_index.md)。
 
@@ -63,22 +105,3 @@ Docker Engine 是一个开源项目，由 Moby 项目维护者和社区成员提
 ## 开始使用
 
 设置 Docker 后，您可以通过[使用 Docker 入门](/get-started/introduction/_index.md)学习基础知识。
-
-- [在 Ubuntu 上安装 Docker Engine](/engine/install/ubuntu/)
-
-- [在 Debian 上安装 Docker Engine](/engine/install/debian/)
-
-- [在 RHEL 上安装 Docker Engine](/engine/install/rhel/)
-
-- [在 Fedora 上安装 Docker Engine](/engine/install/fedora/)
-
-- [在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine](/engine/install/raspberry-pi-os/)
-
-- [在 CentOS 上安装 Docker Engine](/engine/install/centos/)
-
-- [Docker Engine 在 SLES (s390x) 上](/engine/install/sles/)
-
-- [通过二进制文件安装 Docker Engine](/engine/install/binaries/)
-
-- [Docker Engine 的 Linux 安装后步骤](/engine/install/linux-postinstall/)
-

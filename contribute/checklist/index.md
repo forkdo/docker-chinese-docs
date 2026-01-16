@@ -1,4 +1,22 @@
-# 写作清单
+---
+title: 写作清单
+url: /contribute/checklist/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: 写作清单
+    url: /contribute/checklist/
+next:
+  title: 内容中的 UI 元素
+  url: /contribute/ui/
+prev:
+  title: 编写 Docker 使用指南的规范
+  url: /contribute/guides/
+---
+
 
 使用此清单，以清晰、有帮助且与 Docker 文档其余部分保持一致的方式进行沟通。
 

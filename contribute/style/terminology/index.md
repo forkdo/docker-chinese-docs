@@ -1,4 +1,22 @@
-# Docker 术语
+---
+title: Docker 术语
+url: /contribute/style/terminology/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: Docker 术语
+    url: /contribute/style/terminology/
+next:
+  title: 推荐词汇表
+  url: /contribute/style/recommended-words/
+prev:
+  title: 语音与语调
+  url: /contribute/style/voice-tone/
+---
+
 
 #### `compose.yaml`
 

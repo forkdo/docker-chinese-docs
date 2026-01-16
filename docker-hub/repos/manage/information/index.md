@@ -1,4 +1,23 @@
-# 仓库信息
+---
+title: 仓库信息
+url: /docker-hub/repos/manage/information/
+parent:
+  title: 仓库
+  url: /docker-hub/repos/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 仓库信息
+    url: /docker-hub/repos/manage/information/
+prev:
+  title: 访问管理
+  url: /docker-hub/repos/manage/access/
+---
+
 
 每个仓库可以包含描述、概述和分类，以帮助用户理解其用途和使用方法。添加清晰的仓库信息可确保其他人能够找到您的镜像并有效地使用它们。
 

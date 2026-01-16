@@ -1,4 +1,24 @@
-# 为 Node.js 开发使用容器
+---
+title: 为 Node.js 开发使用容器
+url: /guides/nodejs/develop/
+parent:
+  title: Node.js 语言专属指南
+  url: /guides/nodejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Node.js 语言专属指南
+    url: /guides/nodejs/
+  - title: 为 Node.js 开发使用容器
+    url: /guides/nodejs/develop/
+next:
+  title: 容器化 Node.js 应用
+  url: /guides/nodejs/containerize/
+prev:
+  title: 在容器中运行 Node.js 测试
+  url: /guides/nodejs/run-tests/
+---
+
 
 ## 先决条件
 

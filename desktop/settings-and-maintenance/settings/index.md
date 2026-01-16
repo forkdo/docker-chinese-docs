@@ -1,23 +1,28 @@
-# 更改 Docker Desktop 设置
+---
+title: 更改 Docker Desktop 设置
+url: /desktop/settings-and-maintenance/settings/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 更改 Docker Desktop 设置
+    url: /desktop/settings-and-maintenance/settings/
+prev:
+  title: 如何备份和恢复 Docker Desktop 数据
+  url: /desktop/settings-and-maintenance/backup-and-restore/
+---
+
 
 要导航到 **Settings**，有两种方式：
 
 - 选择 Docker 菜单 
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src="../../images/whale-x.svg"
-  alt="whale menu"
-  
-  class="inline my-0 not-prose"
-/>
-，然后选择 **Settings**
+![whale menu](../images/whale-x.svg)，然后选择 **Settings**
 - 从 Docker Desktop 仪表板中选择 **Settings** 图标。
 
 您也可以找到 `settings-store.json` 文件（或 Docker Desktop 4.34 及更早版本的 `settings.json`）：
@@ -46,51 +51,21 @@
 
 - **Enable Docker Debug by default**。选中此项后，在访问集成终端时默认使用 Docker Debug。更多信息请参阅 [Explore containers](/manuals/desktop/use-desktop/container.md#integrated-terminal)。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Mac only
-</span>
-
+- \[Mac only\]
 **Include VM in Time Machine backups**。选择此项可备份 Docker Desktop 虚拟机。默认情况下此选项关闭。
 
 - **Use containerd for pulling and storing images**。启用 containerd 镜像存储。这带来了新功能，如通过延迟拉取镜像提高容器启动性能，以及使用 Docker 运行 Wasm 应用的能力。更多信息请参阅 [containerd image store](/manuals/desktop/features/containerd.md)。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Windows only
-</span>
-
+- \[Windows only\]
 **Expose daemon on tcp://localhost:2375 without TLS**。选中此项可启用旧版客户端连接 Docker 守护进程。必须谨慎使用此选项，因为不使用 TLS 暴露守护进程可能导致远程代码执行攻击。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Windows only
-</span>
-
+- \[Windows only\]
 **Use the WSL 2 based engine**。WSL 2 提供比 Hyper-V 后端更好的性能。更多信息请参阅 [Docker Desktop WSL 2 backend](/manuals/desktop/features/wsl/_index.md)。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Windows only
-</span>
-
+- \[Windows only\]
 **Add the `*.docker.internal` names to the host's `/etc/hosts` file (Password required)**。允许您从主机和容器中解析 `*.docker.internal` DNS 名称。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Mac only
-</span>
-
+- \[Mac only\]
  **Choose Virtual Machine Manager (VMM)**。选择用于创建和管理 Docker Desktop Linux VM 的虚拟机管理器。
   - 选择 **Docker VMM** 以获得最新且性能最佳的 Hypervisor/虚拟机管理器。此选项仅在运行 macOS 12.5 或更高版本的 Apple Silicon Mac 上可用，目前处于 Beta 阶段。
     > [!TIP]
@@ -100,25 +75,13 @@
 
    更多信息请参阅 [Virtual Machine Manager](/manuals/desktop/features/vmm.md)。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Mac only
-</span>
-
+- \[Mac only\]
 **Choose file sharing implementation for your containers**。选择是否要使用 **VirtioFS**、**gRPC FUSE** 或 **osxfs (Legacy)** 来共享文件。VirtioFS 仅在 macOS 12.5 及更高版本上可用，默认启用。
     > [!TIP]
     >
     > 使用 VirtioFS 实现快速文件共享。VirtioFS 将文件系统操作完成时间减少了 [多达 98%](https://github.com/docker/roadmap/issues/7#issuecomment-1044452206)。它是 Docker VMM 支持的唯一文件共享实现。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Mac only
-</span>
-
+- \[Mac only\]
 **Use Rosetta for x86_64/amd64 emulation on Apple Silicon**。在 Apple Silicon 上启用 Rosetta 以加速 x86/AMD64 二进制仿真。只有当您选择 **Apple Virtualization framework** 作为虚拟机管理器且运行 macOS 13 或更高版本时，此选项才可用。
 
 - **Send usage statistics**。选择此项可让 Docker Desktop 发送诊断信息、崩溃报告和使用数据。这些信息有助于 Docker 改进和排查应用程序问题。清除复选框可选择退出。Docker 可能会定期提示您提供更多信息。
@@ -134,13 +97,7 @@
 
 - **Enable background SBOM indexing**。启用此选项后，Docker Scout 会自动分析您构建或拉取的镜像。
 
-- 
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >Mac only
-</span>
-
+- \[Mac only\]
 **Automatically check configuration**。定期检查您的配置以确保其他应用程序未对其进行意外更改。
 
   Docker Desktop 会检查安装期间配置的设置是否被外部应用程序（如 Orbstack）更改。Docker Desktop 检查：

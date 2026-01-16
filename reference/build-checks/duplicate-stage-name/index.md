@@ -1,4 +1,24 @@
-# DuplicateStageName
+---
+title: DuplicateStageName
+url: /reference/build-checks/duplicate-stage-name/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: DuplicateStageName
+    url: /reference/build-checks/duplicate-stage-name/
+next:
+  title: CopyIgnoredFile
+  url: /reference/build-checks/copy-ignored-file/
+prev:
+  title: ExposeInvalidFormat
+  url: /reference/build-checks/expose-invalid-format/
+---
+
 
 ## Output
 

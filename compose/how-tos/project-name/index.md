@@ -1,4 +1,21 @@
-# 指定项目名称
+---
+title: 指定项目名称
+url: /compose/how-tos/project-name/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 指定项目名称
+    url: /compose/how-tos/project-name/
+prev:
+  title: 在 Compose 中使用配置集
+  url: /compose/how-tos/profiles/
+---
+
 
 默认情况下，Compose 会根据存放 Compose 文件的目录名称来分配项目名称。您可以通过多种方法覆盖此设置。
 

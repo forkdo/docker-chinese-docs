@@ -1,4 +1,26 @@
-# 访问管理
+---
+title: 访问管理
+url: /docker-hub/repos/manage/access/
+parent:
+  title: 仓库
+  url: /docker-hub/repos/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 访问管理
+    url: /docker-hub/repos/manage/access/
+next:
+  title: 仓库信息
+  url: /docker-hub/repos/manage/information/
+prev:
+  title: 镜像安全洞察
+  url: /docker-hub/repos/manage/vulnerability-scanning/
+---
+
 
 在本主题中，了解可用于管理对仓库访问的功能。包括可见性、协作者、角色、团队和组织访问令牌。
 
@@ -94,49 +116,6 @@
 组织可以使用 OATs。OATs 允许您为令牌分配细粒度的仓库访问权限。有关更多详细信息，请参阅 [组织访问令牌](/manuals/enterprise/security/access-tokens.md)。
 
 ## 受控分发
-
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Early Access
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M263-465q26-69 64.5-130.5T415-712l-77-15q-20-4-39.5 2T265-705L129-568q-11 11-8 26.5t17 21.5l125 55Zm580-398q-109-8-206.5 37.5T461-702q-50 50-88.5 106.5T309-473q-4 10-4 20t8 18l135 135q8 8 18 8t20-4q66-24 122.5-63T715-448q78-78 124-175.5T877-830q-1-6-3.5-11.5T866-852q-5-5-10.5-7.5T843-863ZM586-573q-20-20-20-49.5t20-49.5q20-20 49.5-20t49.5 20q20 20 20 49.5T685-573q-20 20-49.5 20T586-573ZM479-250l54 125q6 15 22 17.5t27-8.5l136-136q14-14 20-33.5t2-39.5l-14-77q-55 49-116.5 87.5T479-250Zm-317-68q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-48 48-113.5 57T87-74q9-66 18.5-131.5T162-318Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 

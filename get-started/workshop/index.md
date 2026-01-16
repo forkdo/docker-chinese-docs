@@ -1,4 +1,45 @@
-# Docker 工作坊概览
+---
+title: Docker 工作坊概览
+url: /get-started/workshop/
+parent:
+  title: 开始使用
+  url: /get-started/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: Docker 工作坊概览
+    url: /get-started/workshop/
+children:
+  - title: 容器化应用程序
+    url: /get-started/workshop/02_our_app/
+    description: 按照本分步指南，学习如何使用 Docker 创建和运行容器化应用程序
+
+  - title: 更新应用程序
+    url: /get-started/workshop/03_updating_app/
+    description: 对应用程序进行更改
+  - title: 共享应用程序
+    url: /get-started/workshop/04_sharing_app/
+    description: 分享你为示例应用程序构建的镜像，以便你可以在其他地方运行它，其他开发者也可以使用它
+  - title: 持久化数据库
+    url: /get-started/workshop/05_persisting_data/
+    description: 在应用程序中实现数据库持久化
+  - title: 使用 bind mounts
+    url: /get-started/workshop/06_bind_mounts/
+    description: 在我们的应用程序中使用 bind mounts
+  - title: 多容器应用
+    url: /get-started/workshop/07_multi_container/
+    description: 在应用程序中使用多个容器
+  - title: 使用 Docker Compose
+    url: /get-started/workshop/08_using_compose/
+    description: 使用 Docker Compose 构建多容器应用
+  - title: 镜像构建最佳实践
+    url: /get-started/workshop/09_image_best/
+    description: 为您的应用程序构建镜像的技巧
+  - title: Docker 工作坊之后该做什么
+    url: /get-started/workshop/10_what_next/
+    description: 确保您对自己的应用程序接下来可以做什么有更多想法
+---
+
 
 这个 45 分钟的工作坊包含分步指导，帮助你开始使用 Docker。本工作坊将向你展示如何：
 
@@ -32,25 +73,5 @@
 
 接下来，你将容器化一个简单的应用，并动手实践这些概念。
 
-
-<a class="button not-prose" href="/get-started/workshop/02_our_app/">容器化一个应用</a>
-
-
-- [容器化应用程序](/get-started/workshop/02_our_app/)
-
-- [更新应用程序](/get-started/workshop/03_updating_app/)
-
-- [共享应用程序](/get-started/workshop/04_sharing_app/)
-
-- [持久化数据库](/get-started/workshop/05_persisting_data/)
-
-- [使用 bind mounts](/get-started/workshop/06_bind_mounts/)
-
-- [多容器应用](/get-started/workshop/07_multi_container/)
-
-- [使用 Docker Compose](/get-started/workshop/08_using_compose/)
-
-- [镜像构建最佳实践](/get-started/workshop/09_image_best/)
-
-- [Docker 工作坊之后该做什么](/get-started/workshop/10_what_next/)
+[容器化一个应用](02_our_app.md)
 

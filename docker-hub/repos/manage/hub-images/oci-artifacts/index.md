@@ -1,4 +1,28 @@
-# Docker Hub 上的软件制品
+---
+title: Docker Hub 上的软件制品
+url: /docker-hub/repos/manage/hub-images/oci-artifacts/
+parent:
+  title: 镜像管理
+  url: /docker-hub/repos/manage/hub-images/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 镜像管理
+    url: /docker-hub/repos/manage/hub-images/
+  - title: Docker Hub 上的软件制品
+    url: /docker-hub/repos/manage/hub-images/oci-artifacts/
+next:
+  title: 镜像管理
+  url: /docker-hub/repos/manage/hub-images/manage/
+prev:
+  title: 将镜像推送到仓库
+  url: /docker-hub/repos/manage/hub-images/push/
+---
+
 
 您可以使用 Docker Hub 存储任何类型的软件制品，而不仅仅是容器镜像。软件制品是指在软件开发过程中产生的、有助于软件创建、维护或理解的任何项目。Docker Hub 通过利用镜像清单 (image manifest) 中的 config 属性来支持 OCI 制品。
 

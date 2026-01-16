@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/deploy/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/deploy/
+next:
+  title: 
+  url: /includes/compose/watch/
+prev:
+  title: 
+  url: /includes/desktop-license-update/
+---
+
 现在我们已经配置好了 CI/CD 流水线，接下来让我们看看如何部署应用程序。Docker 支持将容器部署到 Azure ACI 和 AWS ECS。如果你已经在 Docker Desktop 中启用了 Kubernetes，也可以将应用程序部署到 Kubernetes。
 
 ## Docker 与 Azure ACI

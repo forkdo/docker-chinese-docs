@@ -1,36 +1,25 @@
-# 角色与权限
+---
+title: 角色与权限
+url: /enterprise/security/roles-and-permissions/
+parent:
+  title: 企业级安全
+  url: /enterprise/security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 企业级安全
+    url: /enterprise/security/
+  - title: 角色与权限
+    url: /enterprise/security/roles-and-permissions/
+children:
+  - title: 核心角色
+    url: /enterprise/security/roles-and-permissions/core-roles/
+    description: 通过组织中的角色来控制对内容、注册表和组织管理的访问权限。
+  - title: 自定义角色
+    url: /enterprise/security/roles-and-permissions/custom-roles/
+    description: 使用自定义角色为您的组织创建量身定制的权限集
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">For:</span>
-        <span>Administrators</span>
-        
-          <span class="icon-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M693-80q-78 0-133-55.5T505-267q0-78 55-133.5T693-456q77 0 132.5 55.5T881-267q0 76-55.5 131.5T693-80ZM160-522v-197q0-19 11-34.5t28-22.5l260-97q11-4 21-4t21 4l260 97q17 7 28 22.5t11 34.5v190q0 14-11 21.5t-24 2.5q-17-5-35.5-8t-36.5-3q-103 0-175.5 73T445-267q0 40 13.5 79t38.5 71q10 13 2.5 26T478-82q-69-20-122-51.5T251-237q-43-60-67-132.5T160-522Zm531 252q26 0 44-19t18-45q0-26-18-44t-44-18q-26 0-45 18t-19 44q0 26 19 45t45 19Zm-1 125q28 0 53-11t43-31q4-5 2.5-11t-6.5-8q-22-10-45-15.5t-47-5.5q-24 0-47 5t-45 16q-5 2-7 8t2 11q18 21 43.5 31.5T690-145Z"/></svg>
-          </span>
-        
-      </div>
-    
-  </div>
 
 
 
@@ -84,70 +73,4 @@ Docker 提供两种角色类型以满足不同的组织需求：
 
 选择最适合您组织需求的角色类型：
 
-
-<div
-  class="not-prose md:grid-cols-2 xl:grid-cols-3 grid grid-cols-1 gap-4 mb-6"
->
-  
-  
-    
-    <div class="card">
-  
-    <a href="/enterprise/security/roles-and-permissions/core-roles/" class="card-link">
-  
-    <div class="card-header">
-      
-      
-      <div class="card-icon">
-        
-          <span class="card-img svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M693-80q-78 0-133-55.5T505-267q0-78 55-133.5T693-456q77 0 132.5 55.5T881-267q0 76-55.5 131.5T693-80ZM160-522v-197q0-19 11-34.5t28-22.5l260-97q11-4 21-4t21 4l260 97q17 7 28 22.5t11 34.5v190q0 14-11 21.5t-24 2.5q-17-5-35.5-8t-36.5-3q-103 0-175.5 73T445-267q0 40 13.5 79t38.5 71q10 13 2.5 26T478-82q-69-20-122-51.5T251-237q-43-60-67-132.5T160-522Zm531 252q26 0 44-19t18-45q0-26-18-44t-44-18q-26 0-45 18t-19 44q0 26 19 45t45 19Zm-1 125q28 0 53-11t43-31q4-5 2.5-11t-6.5-8q-22-10-45-15.5t-47-5.5q-24 0-47 5t-45 16q-5 2-7 8t2 11q18 21 43.5 31.5T690-145Z"/></svg>
-          </span>
-        
-      </div>
-      
-      <h3 class="card-title">核心角色</h3>
-    </div>
-    <div class="card-content">
-      <p class="card-description">了解 Docker 内置的 Member、Editor 和 Owner 角色及其预定义权限。</p>
-    </div>
-  
-    </a>
-  
-</div>
-
-  
-    
-    <div class="card">
-  
-    <a href="/enterprise/security/roles-and-permissions/custom-roles/" class="card-link">
-  
-    <div class="card-header">
-      
-      
-      <div class="card-icon">
-        
-          <span class="card-img svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M456.82-120q-12.82 0-21.32-8.63-8.5-8.62-8.5-21.37v-165q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v53h323q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H487v52q0 12.75-8.68 21.37-8.67 8.63-21.5 8.63ZM150-202q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h187q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm186.82-166q-12.82 0-21.32-8.63-8.5-8.62-8.5-21.37v-52H150q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h157v-54q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v166q0 12.75-8.68 21.37-8.67 8.63-21.5 8.63ZM457-450q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h353q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H457Zm165.82-165q-12.82 0-21.32-8.63-8.5-8.62-8.5-21.37v-165q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v52h157q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H653v53q0 12.75-8.68 21.37-8.67 8.63-21.5 8.63ZM150-698q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h353q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"/></svg>
-          </span>
-        
-      </div>
-      
-      <h3 class="card-title">自定义角色</h3>
-    </div>
-    <div class="card-content">
-      <p class="card-description">创建符合组织特定需求的定制化权限组合。</p>
-    </div>
-  
-    </a>
-  
-</div>
-
-  
-</div>
-
-
-- [核心角色](/enterprise/security/roles-and-permissions/core-roles/)
-
-- [自定义角色](/enterprise/security/roles-and-permissions/custom-roles/)
 

@@ -1,4 +1,23 @@
-# Amazon CloudWatch Logs 日志驱动
+---
+title: Amazon CloudWatch Logs 日志驱动
+url: /engine/logging/drivers/awslogs/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: Amazon CloudWatch Logs 日志驱动
+    url: /engine/logging/drivers/awslogs/
+prev:
+  title: ETW 日志驱动程序
+  url: /engine/logging/drivers/etwlogs/
+---
+
 
 `awslogs` 日志驱动将容器日志发送到 [Amazon CloudWatch Logs](https://aws.amazon.com/cloudwatch/details/#log-monitoring)。
 日志条目可以通过 [AWS 管理控制台](https://console.aws.amazon.com/cloudwatch/home#logs:) 或 [AWS SDK 和命令行工具](https://docs.aws.amazon.com/cli/latest/reference/logs/index.html) 检索。

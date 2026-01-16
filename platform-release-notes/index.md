@@ -1,4 +1,22 @@
-# Docker Home、管理控制台、账单、安全和订阅功能的发布说明
+---
+title: Docker Home、管理控制台、账单、安全和订阅功能的发布说明
+url: /platform-release-notes/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Home、管理控制台、账单、安全和订阅功能的发布说明
+    url: /platform-release-notes/
+next:
+  title: Testcontainers
+  url: /testcontainers/
+prev:
+  title: Testcontainers Cloud
+  url: /tcc/
+---
+
 
 此页面详细介绍了 Docker Home、管理控制台、账单、安全和订阅功能的新特性、增强功能、已知问题和错误修复。
 

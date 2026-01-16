@@ -1,19 +1,23 @@
-# Docker 安全公告
+---
+title: Docker 安全公告
+url: /security/security-announcements/
+parent:
+  title: 开发者安全
+  url: /security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 开发者安全
+    url: /security/
+  - title: Docker 安全公告
+    url: /security/security-announcements/
+next:
+  title: 个人访问令牌
+  url: /security/access-tokens/
+---
 
 
 
-<button
-  onclick="window.open('\/security\/security-announcements\/index.xml', '_blank')"
-  data-heap-id="rss-subscribe-button"
-  class="inline-flex items-center gap-2 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-900 py-2 px-3 text-sm transition-colors"
->
-  <span class="icon-svg text-base leading-none">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M195-120q-31 0-53-22t-22-53q0-31 22-53t53-22q31 0 53 22t22 53q0 31-22 53t-53 22Zm560 0q-20 0-32.5-14T708-168q-9-109-54-203T537-537q-72-72-166-117t-203-54q-20-2-34-14.5T120-755q0-20 15-32.5t35-10.5q127 9 236.5 60.5T601-601q85 85 136.5 194.5T798-170q2 20-10.5 35T755-120Zm-258 0q-19 0-32.5-13.5T449-167q-8-57-32-106t-62-87q-38-38-85.5-63.5T166-457q-19-3-32.5-16T120-505q0-19 13.5-32t31.5-11q75 8 139.5 40.5T419-424q50 51 81.5 117.5T540-165q2 19-11 32t-32 13Z"/></svg>
-  </span>
-  <div class="leading-tight">
-    <div class="text-base">订阅安全 RSS 源</div>
-  </div>
-</button>
 
 ## Docker Desktop 4.54.0 安全更新：CVE-2025-13743
 

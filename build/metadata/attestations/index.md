@@ -1,7 +1,32 @@
-# Build attestations
+---
+title: Build attestations
+url: /build/metadata/attestations/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Build attestations
+    url: /build/metadata/attestations/
+children:
+  - title: Image attestation storage
+    url: /build/metadata/attestations/attestation-storage/
+  - title: Provenance attestations
+    url: /build/metadata/attestations/slsa-provenance/
+    description: Provenance build attestations describe how and where your image was built.
 
-<div id="youtube-player-qOzcycbTs4o" data-video-id="qOzcycbTs4o" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+  - title: SBOM attestations
+    url: /build/metadata/attestations/sbom/
+    description: SBOM attestations describe what software artifacts an image contains and the artifacts used to create the image.
+
+  - title: SLSA definitions
+    url: /build/metadata/attestations/slsa-definitions/
+---
+
+
 
 
 Build attestations describe how an image was built, and what it contains. The
@@ -242,13 +267,4 @@ Learn more about the available attestation types and how to use them:
 
 - [Provenance](slsa-provenance.md)
 - [SBOM](sbom.md)
-
-
-- [Image attestation storage](/build/metadata/attestations/attestation-storage/)
-
-- [Provenance attestations](/build/metadata/attestations/slsa-provenance/)
-
-- [SBOM attestations](/build/metadata/attestations/sbom/)
-
-- [SLSA definitions](/build/metadata/attestations/slsa-definitions/)
 

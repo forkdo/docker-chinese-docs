@@ -1,4 +1,21 @@
-# 测试你的 Bun 部署
+---
+title: 测试你的 Bun 部署
+url: /guides/bun/deploy/
+parent:
+  title: Bun 语言特定指南
+  url: /guides/bun/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Bun 语言特定指南
+    url: /guides/bun/
+  - title: 测试你的 Bun 部署
+    url: /guides/bun/deploy/
+next:
+  title: 为你的 Bun 应用程序配置 CI/CD
+  url: /guides/bun/configure-ci-cd/
+---
+
 
 ## 先决条件
 

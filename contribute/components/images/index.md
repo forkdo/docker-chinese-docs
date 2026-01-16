@@ -1,4 +1,19 @@
-# Images
+---
+title: Images
+url: /contribute/components/images/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: Images
+    url: /contribute/components/images/
+prev:
+  title: Videos
+  url: /contribute/components/videos/
+---
+
 
 ## 示例
 

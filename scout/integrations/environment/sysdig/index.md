@@ -1,4 +1,25 @@
-# 将 Docker Scout 与 Sysdig 集成
+---
+title: 将 Docker Scout 与 Sysdig 集成
+url: /scout/integrations/environment/sysdig/
+parent:
+  title: 将 Docker Scout 与环境集成
+  url: /scout/integrations/environment/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 将 Docker Scout 与其他系统集成
+    url: /scout/integrations/
+  - title: 将 Docker Scout 与环境集成
+    url: /scout/integrations/environment/
+  - title: 将 Docker Scout 与 Sysdig 集成
+    url: /scout/integrations/environment/sysdig/
+prev:
+  title: 通过 CLI 进行通用环境集成
+  url: /scout/integrations/environment/cli/
+---
+
 
 
 
@@ -14,8 +35,7 @@ Sysdig Agent 捕获容器工作负载的镜像。Docker Scout 与 Sysdig API 集
 >
 > Sysdig 为 Docker 用户提供免费试用，以体验新的 Docker Scout 集成。
 >
-> 
-<a class="button not-prose" href="https://sysdig.com/free-trial-for-docker-customers/">注册</a>
+> [注册](https://sysdig.com/free-trial-for-docker-customers/)
 
 
 每个 Sysdig 集成都映射到一个环境。启用 Sysdig 集成时，您需要为该集群指定环境名称，例如 `production` 或 `staging`。Docker Scout 将集群中的镜像分配给相应的环境。这使您可以使用环境筛选器查看特定环境的漏洞状态和策略合规性。

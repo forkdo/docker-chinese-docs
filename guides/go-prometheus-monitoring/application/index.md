@@ -1,4 +1,21 @@
-# 构建应用程序
+---
+title: 构建应用程序
+url: /guides/go-prometheus-monitoring/application/
+parent:
+  title: 使用 Prometheus 和 Grafana 监控 Golang 应用
+  url: /guides/go-prometheus-monitoring/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Prometheus 和 Grafana 监控 Golang 应用
+    url: /guides/go-prometheus-monitoring/
+  - title: 构建应用程序
+    url: /guides/go-prometheus-monitoring/application/
+prev:
+  title: 容器化一个 Golang 应用
+  url: /guides/go-prometheus-monitoring/containerize/
+---
+
 
 ## 先决条件
 

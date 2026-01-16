@@ -1,4 +1,26 @@
-# Swarm 任务状态
+---
+title: Swarm 任务状态
+url: /engine/swarm/how-swarm-mode-works/swarm-task-states/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: Swarm 任务状态
+    url: /engine/swarm/how-swarm-mode-works/swarm-task-states/
+next:
+  title: 服务的工作原理
+  url: /engine/swarm/how-swarm-mode-works/services/
+prev:
+  title: 使用公钥基础设施 (PKI) 管理 swarm 安全性
+  url: /engine/swarm/how-swarm-mode-works/pki/
+---
+
 
 Docker 允许您创建服务，而服务可以启动任务。服务是对期望状态的描述，而任务则执行具体的工作。在 Swarm 中，工作按以下顺序进行调度：
 

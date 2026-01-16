@@ -1,4 +1,23 @@
-# 合并 Compose 文件
+---
+title: 合并 Compose 文件
+url: /compose/how-tos/multiple-compose-files/merge/
+parent:
+  title: 使用多个 Compose 文件
+  url: /compose/how-tos/multiple-compose-files/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 使用多个 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/
+  - title: 合并 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/merge/
+prev:
+  title: 扩展你的 Compose 文件
+  url: /compose/how-tos/multiple-compose-files/extends/
+---
+
 
 Docker Compose 允许你合并和覆盖一组 Compose 文件，以创建一个复合的 Compose 文件。
 

@@ -1,4 +1,26 @@
-# Splunk 日志记录驱动程序
+---
+title: Splunk 日志记录驱动程序
+url: /engine/logging/drivers/splunk/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: Splunk 日志记录驱动程序
+    url: /engine/logging/drivers/splunk/
+next:
+  title: JSON File 日志驱动
+  url: /engine/logging/drivers/json-file/
+prev:
+  title: Syslog 日志驱动程序
+  url: /engine/logging/drivers/syslog/
+---
+
 
 `splunk` 日志记录驱动程序将容器日志发送到 Splunk Enterprise 和 Splunk Cloud 中的
 [HTTP 事件收集器](https://dev.splunk.com/enterprise/docs/devtools/httpeventcollector/)。
@@ -87,300 +109,79 @@ $ docker run \
 
 日志记录驱动程序有三种消息传递格式：`inline`（默认）、`json` 和 `raw`。
 
+**Inline**
 
 
 
+默认格式是 `inline`，其中每条日志消息都作为字符串嵌入。例如：
+
+```json
+{
+  "attrs": {
+    "env1": "val1",
+    "label1": "label1"
+  },
+  "tag": "MyImage/MyContainer",
+  "source": "stdout",
+  "line": "my message"
+}
+```
+
+```json
+{
+  "attrs": {
+    "env1": "val1",
+    "label1": "label1"
+  },
+  "tag": "MyImage/MyContainer",
+  "source": "stdout",
+  "line": "{\"foo\": \"bar\"}"
+}
+```
+
+**JSON**
 
 
 
+要将消息格式化为 `json` 对象，请设置 `--log-opt splunk-format=json`。驱动程序会尝试将每一行解析为 JSON 对象，并将其作为嵌入对象发送。如果无法解析消息，则以 `inline` 格式发送。例如：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Inline' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Inline' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Inline'"
-        
-      >
-        Inline
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'JSON' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'JSON'"
-        
-      >
-        JSON
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Raw' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Raw'"
-        
-      >
-        Raw
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Inline' && 'hidden'"
-      >
-        <p>默认格式是 <code>inline</code>，其中每条日志消息都作为字符串嵌入。例如：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJhdHRycyI6IHsKICAgICJlbnYxIjogInZhbDEiLAogICAgImxhYmVsMSI6ICJsYWJlbDEiCiAgfSwKICAidGFnIjogIk15SW1hZ2UvTXlDb250YWluZXIiLAogICJzb3VyY2UiOiAic3Rkb3V0IiwKICAibGluZSI6ICJteSBtZXNzYWdlIgp9', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;attrs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;env1&#34;</span><span class="p">:</span> <span class="s2">&#34;val1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;label1&#34;</span><span class="p">:</span> <span class="s2">&#34;label1&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tag&#34;</span><span class="p">:</span> <span class="s2">&#34;MyImage/MyContainer&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;stdout&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;line&#34;</span><span class="p">:</span> <span class="s2">&#34;my message&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJhdHRycyI6IHsKICAgICJlbnYxIjogInZhbDEiLAogICAgImxhYmVsMSI6ICJsYWJlbDEiCiAgfSwKICAidGFnIjogIk15SW1hZ2UvTXlDb250YWluZXIiLAogICJzb3VyY2UiOiAic3Rkb3V0IiwKICAibGluZSI6ICJ7XCJmb29cIjogXCJiYXJcIn0iCn0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;attrs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;env1&#34;</span><span class="p">:</span> <span class="s2">&#34;val1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;label1&#34;</span><span class="p">:</span> <span class="s2">&#34;label1&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tag&#34;</span><span class="p">:</span> <span class="s2">&#34;MyImage/MyContainer&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;stdout&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;line&#34;</span><span class="p">:</span> <span class="s2">&#34;{\&#34;foo\&#34;: \&#34;bar\&#34;}&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+```json
+{
+  "attrs": {
+    "env1": "val1",
+    "label1": "label1"
+  },
+  "tag": "MyImage/MyContainer",
+  "source": "stdout",
+  "line": "my message"
+}
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'JSON' && 'hidden'"
-      >
-        <p>要将消息格式化为 <code>json</code> 对象，请设置 <code>--log-opt splunk-format=json</code>。驱动程序会尝试将每一行解析为 JSON 对象，并将其作为嵌入对象发送。如果无法解析消息，则以 <code>inline</code> 格式发送。例如：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJhdHRycyI6IHsKICAgICJlbnYxIjogInZhbDEiLAogICAgImxhYmVsMSI6ICJsYWJlbDEiCiAgfSwKICAidGFnIjogIk15SW1hZ2UvTXlDb250YWluZXIiLAogICJzb3VyY2UiOiAic3Rkb3V0IiwKICAibGluZSI6ICJteSBtZXNzYWdlIgp9', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;attrs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;env1&#34;</span><span class="p">:</span> <span class="s2">&#34;val1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;label1&#34;</span><span class="p">:</span> <span class="s2">&#34;label1&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tag&#34;</span><span class="p">:</span> <span class="s2">&#34;MyImage/MyContainer&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;stdout&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;line&#34;</span><span class="p">:</span> <span class="s2">&#34;my message&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJhdHRycyI6IHsKICAgICJlbnYxIjogInZhbDEiLAogICAgImxhYmVsMSI6ICJsYWJlbDEiCiAgfSwKICAidGFnIjogIk15SW1hZ2UvTXlDb250YWluZXIiLAogICJzb3VyY2UiOiAic3Rkb3V0IiwKICAibGluZSI6IHsKICAgICJmb28iOiAiYmFyIgogIH0KfQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;attrs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;env1&#34;</span><span class="p">:</span> <span class="s2">&#34;val1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;label1&#34;</span><span class="p">:</span> <span class="s2">&#34;label1&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tag&#34;</span><span class="p">:</span> <span class="s2">&#34;MyImage/MyContainer&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;stdout&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;line&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;foo&#34;</span><span class="p">:</span> <span class="s2">&#34;bar&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+```json
+{
+  "attrs": {
+    "env1": "val1",
+    "label1": "label1"
+  },
+  "tag": "MyImage/MyContainer",
+  "source": "stdout",
+  "line": {
+    "foo": "bar"
+  }
+}
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Raw' && 'hidden'"
-      >
-        <p>要将消息格式化为 <code>raw</code>，请设置 <code>--log-opt splunk-format=raw</code>。属性（环境变量和标签）和标签会作为前缀添加到消息中。例如：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'TXlJbWFnZS9NeUNvbnRhaW5lciBlbnYxPXZhbDEgbGFiZWwxPWxhYmVsMSBteSBtZXNzYWdlCk15SW1hZ2UvTXlDb250YWluZXIgZW52MT12YWwxIGxhYmVsMT1sYWJlbDEgeyJmb28iOiAiYmFyIn0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">MyImage/MyContainer env1=val1 label1=label1 my message
-</span></span></span><span class="line"><span class="cl"><span class="go">MyImage/MyContainer env1=val1 label1=label1 {&#34;foo&#34;: &#34;bar&#34;}
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+**Raw**
 
-      </div>
-    
-  </div>
-</div>
+
+
+要将消息格式化为 `raw`，请设置 `--log-opt splunk-format=raw`。属性（环境变量和标签）和标签会作为前缀添加到消息中。例如：
+
+```console
+MyImage/MyContainer env1=val1 label1=label1 my message
+MyImage/MyContainer env1=val1 label1=label1 {"foo": "bar"}
+```
+
 
 
 ## 高级选项

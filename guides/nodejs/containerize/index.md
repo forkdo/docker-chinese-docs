@@ -1,4 +1,21 @@
-# 容器化 Node.js 应用
+---
+title: 容器化 Node.js 应用
+url: /guides/nodejs/containerize/
+parent:
+  title: Node.js 语言专属指南
+  url: /guides/nodejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Node.js 语言专属指南
+    url: /guides/nodejs/
+  - title: 容器化 Node.js 应用
+    url: /guides/nodejs/containerize/
+prev:
+  title: 为 Node.js 开发使用容器
+  url: /guides/nodejs/develop/
+---
+
 
 ## 前提条件
 
@@ -307,415 +324,302 @@ ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 >
 > 官方 Node.js Docker 镜像：https://hub.docker.com/_/node
 
+**使用 Docker Hardened Images**
+
+
+Docker Hardened Images (DHIs) 可在 [Docker Hub](https://hub.docker.com/hardened-images/catalog/dhi/node) 上用于 Node.js。与使用 Docker 官方镜像不同，您必须首先将 Node.js 镜像镜像到您的组织中，然后将其用作基础镜像。请按照 [DHI 快速入门](/dhi/get-started/) 中的说明为 Node.js 创建镜像仓库。
+
+镜像仓库必须以 `dhi-` 开头，例如：`FROM <your-namespace>/dhi-node:<tag>`。在下面的 Dockerfile 中，`FROM` 指令使用 `<your-namespace>/dhi-node:24-alpine3.22-dev` 作为基础镜像。
+
+```dockerfile
+# ========================================
+# 优化的多阶段 Dockerfile
+# Node.js TypeScript 应用 (使用 DHI)
+# ========================================
+
+FROM <your-namespace>/dhi-node:24-alpine3.22-dev AS base
+
+# 设置工作目录
+WORKDIR /app
+
+# 创建非 root 用户以提高安全性
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 -G nodejs && \
+    chown -R nodejs:nodejs /app
+
+# ========================================
+# 依赖阶段
+# ========================================
+FROM base AS deps
+
+# 复制包文件
+COPY package*.json ./
+
+# 安装生产依赖项
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci --omit=dev && \
+    npm cache clean --force
+
+# 设置正确的所有权
+RUN chown -R nodejs:nodejs /app
+
+# ========================================
+# 构建依赖阶段
+# ========================================
+FROM base AS build-deps
+
+# 复制包文件
+COPY package*.json ./
+
+# 安装所有依赖项并进行构建优化
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci --no-audit --no-fund && \
+    npm cache clean --force
+
+# 创建必要的目录并设置权限
+RUN mkdir -p /app/node_modules/.vite && \
+    chown -R nodejs:nodejs /app
+
+# ========================================
+# 构建阶段
+# ========================================
+FROM build-deps AS build
+
+# 仅复制构建所需的文件（遵循 .dockerignore）
+COPY --chown=nodejs:nodejs . .
+
+# 构建应用程序
+RUN npm run build
+
+# 设置正确的所有权
+RUN chown -R nodejs:nodejs /app
+
+# ========================================
+# 开发阶段
+# ========================================
+FROM build-deps AS development
+
+# 设置环境
+ENV NODE_ENV=development \
+    NPM_CONFIG_LOGLEVEL=warn
+
+# 复制源文件
+COPY . .
+
+# 确保所有目录具有正确的权限
+RUN mkdir -p /app/node_modules/.vite && \
+    chown -R nodejs:nodejs /app && \
+    chmod -R 755 /app
+
+# 切换到非 root 用户
+USER nodejs
+
+# 暴露端口
+EXPOSE 3000 5173 9229
+
+# 启动开发服务器
+CMD ["npm", "run", "dev:docker"]
+
+# ========================================
+# 生产阶段
+# ========================================
+FROM <your-namespace>/dhi-node:24-alpine3.22-dev AS production
+
+# 设置工作目录
+WORKDIR /app
+
+# 创建非 root 用户以提高安全性
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 -G nodejs && \
+    chown -R nodejs:nodejs /app
+
+# 设置优化的环境变量
+ENV NODE_ENV=production \
+    NODE_OPTIONS="--max-old-space-size=256 --no-warnings" \
+    NPM_CONFIG_LOGLEVEL=silent
+
+# 从 deps 阶段复制生产依赖项
+COPY --from=deps --chown=nodejs:nodejs /app/node_modules ./node_modules
+COPY --from=deps --chown=nodejs:nodejs /app/package*.json ./
+# 从 build 阶段复制构建好的应用程序
+COPY --from=build --chown=nodejs:nodejs /app/dist ./dist
+
+# 切换到非 root 用户以提高安全性
+USER nodejs
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动生产服务器
+CMD ["node", "dist/server.js"]
+
+# ========================================
+# 测试阶段
+# ========================================
+FROM build-deps AS test
+
+# 设置环境
+ENV NODE_ENV=test \
+    CI=true
+
+# 复制源文件
+COPY --chown=nodejs:nodejs . .
+
+# 切换到非 root 用户
+USER nodejs
+
+# 运行带覆盖率的测试
+CMD ["npm", "run", "test:coverage"]
+```
+
+**使用 Docker 官方镜像**
 
 
 
+现在您需要创建一个生产就绪的多阶段 Dockerfile。用以下优化配置替换生成的 Dockerfile：
 
+```dockerfile
+# ========================================
+# 优化的多阶段 Dockerfile
+# Node.js TypeScript 应用
+# ========================================
 
+ARG NODE_VERSION=24.11.1-alpine
+FROM node:${NODE_VERSION} AS base
 
+# 设置工作目录
+WORKDIR /app
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%BD%BF%E7%94%A8-Docker-Hardened-Images' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BD%BF%E7%94%A8-Docker-Hardened-Images' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BD%BF%E7%94%A8-Docker-Hardened-Images'"
-        
-      >
-        使用 Docker Hardened Images
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BD%BF%E7%94%A8-Docker-%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BD%BF%E7%94%A8-Docker-%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F'"
-        
-      >
-        使用 Docker 官方镜像
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BD%BF%E7%94%A8-Docker-Hardened-Images' && 'hidden'"
-      >
-        <p>Docker Hardened Images (DHIs) 可在 <a class="link" href="https://hub.docker.com/hardened-images/catalog/dhi/node" rel="noopener">Docker Hub</a> 上用于 Node.js。与使用 Docker 官方镜像不同，您必须首先将 Node.js 镜像镜像到您的组织中，然后将其用作基础镜像。请按照 
-  <a class="link" href="/dhi/get-started/">DHI 快速入门</a> 中的说明为 Node.js 创建镜像仓库。</p>
-<p>镜像仓库必须以 <code>dhi-</code> 开头，例如：<code>FROM &lt;your-namespace&gt;/dhi-node:&lt;tag&gt;</code>。在下面的 Dockerfile 中，<code>FROM</code> 指令使用 <code>&lt;your-namespace&gt;/dhi-node:24-alpine3.22-dev</code> 作为基础镜像。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5LyY5YyW55qE5aSa6Zi25q61IERvY2tlcmZpbGUKIyBOb2RlLmpzIFR5cGVTY3JpcHQg5bqU55SoICjkvb/nlKggREhJKQojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KCkZST00gPHlvdXItbmFtZXNwYWNlPi9kaGktbm9kZToyNC1hbHBpbmUzLjIyLWRldiBBUyBiYXNlCgojIOiuvue9ruW3peS9nOebruW9lQpXT1JLRElSIC9hcHAKCiMg5Yib5bu66Z2eIHJvb3Qg55So5oi35Lul5o&#43;Q6auY5a6J5YWo5oCnClJVTiBhZGRncm91cCAtZyAxMDAxIC1TIG5vZGVqcyAmJiBcCiAgICBhZGR1c2VyIC1TIG5vZGVqcyAtdSAxMDAxIC1HIG5vZGVqcyAmJiBcCiAgICBjaG93biAtUiBub2RlanM6bm9kZWpzIC9hcHAKCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIOS&#43;nei1lumYtuautQojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KRlJPTSBiYXNlIEFTIGRlcHMKCiMg5aSN5Yi25YyF5paH5Lu2CkNPUFkgcGFja2FnZSouanNvbiAuLwoKIyDlronoo4XnlJ/kuqfkvp3otZbpobkKUlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L3Jvb3QvLm5wbSxzaGFyaW5nPWxvY2tlZCBcCiAgICBucG0gY2kgLS1vbWl0PWRldiAmJiBcCiAgICBucG0gY2FjaGUgY2xlYW4gLS1mb3JjZQoKIyDorr7nva7mraPnoa7nmoTmiYDmnInmnYMKUlVOIGNob3duIC1SIG5vZGVqczpub2RlanMgL2FwcAoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5p6E5bu65L6d6LWW6Zi25q61CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpGUk9NIGJhc2UgQVMgYnVpbGQtZGVwcwoKIyDlpI3liLbljIXmlofku7YKQ09QWSBwYWNrYWdlKi5qc29uIC4vCgojIOWuieijheaJgOacieS&#43;nei1lumhueW5tui/m&#43;ihjOaehOW7uuS8mOWMlgpSVU4gLS1tb3VudD10eXBlPWNhY2hlLHRhcmdldD0vcm9vdC8ubnBtLHNoYXJpbmc9bG9ja2VkIFwKICAgIG5wbSBjaSAtLW5vLWF1ZGl0IC0tbm8tZnVuZCAmJiBcCiAgICBucG0gY2FjaGUgY2xlYW4gLS1mb3JjZQoKIyDliJvlu7rlv4XopoHnmoTnm67lvZXlubborr7nva7mnYPpmZAKUlVOIG1rZGlyIC1wIC9hcHAvbm9kZV9tb2R1bGVzLy52aXRlICYmIFwKICAgIGNob3duIC1SIG5vZGVqczpub2RlanMgL2FwcAoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5p6E5bu66Zi25q61CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpGUk9NIGJ1aWxkLWRlcHMgQVMgYnVpbGQKCiMg5LuF5aSN5Yi25p6E5bu65omA6ZyA55qE5paH5Lu277yI6YG15b6qIC5kb2NrZXJpZ25vcmXvvIkKQ09QWSAtLWNob3duPW5vZGVqczpub2RlanMgLiAuCgojIOaehOW7uuW6lOeUqOeoi&#43;W6jwpSVU4gbnBtIHJ1biBidWlsZAoKIyDorr7nva7mraPnoa7nmoTmiYDmnInmnYMKUlVOIGNob3duIC1SIG5vZGVqczpub2RlanMgL2FwcAoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5byA5Y&#43;R6Zi25q61CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpGUk9NIGJ1aWxkLWRlcHMgQVMgZGV2ZWxvcG1lbnQKCiMg6K6&#43;572u546v5aKDCkVOViBOT0RFX0VOVj1kZXZlbG9wbWVudCBcCiAgICBOUE1fQ09ORklHX0xPR0xFVkVMPXdhcm4KCiMg5aSN5Yi25rqQ5paH5Lu2CkNPUFkgLiAuCgojIOehruS/neaJgOacieebruW9leWFt&#43;acieato&#43;ehrueahOadg&#43;mZkApSVU4gbWtkaXIgLXAgL2FwcC9ub2RlX21vZHVsZXMvLnZpdGUgJiYgXAogICAgY2hvd24gLVIgbm9kZWpzOm5vZGVqcyAvYXBwICYmIFwKICAgIGNobW9kIC1SIDc1NSAvYXBwCgojIOWIh&#43;aNouWIsOmdniByb290IOeUqOaItwpVU0VSIG5vZGVqcwoKIyDmmrTpnLLnq6/lj6MKRVhQT1NFIDMwMDAgNTE3MyA5MjI5CgojIOWQr&#43;WKqOW8gOWPkeacjeWKoeWZqApDTUQgWyJucG0iLCAicnVuIiwgImRldjpkb2NrZXIiXQoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg55Sf5Lqn6Zi25q61CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpGUk9NIDx5b3VyLW5hbWVzcGFjZT4vZGhpLW5vZGU6MjQtYWxwaW5lMy4yMi1kZXYgQVMgcHJvZHVjdGlvbgoKIyDorr7nva7lt6XkvZznm67lvZUKV09SS0RJUiAvYXBwCgojIOWIm&#43;W7uumdniByb290IOeUqOaIt&#43;S7peaPkOmrmOWuieWFqOaApwpSVU4gYWRkZ3JvdXAgLWcgMTAwMSAtUyBub2RlanMgJiYgXAogICAgYWRkdXNlciAtUyBub2RlanMgLXUgMTAwMSAtRyBub2RlanMgJiYgXAogICAgY2hvd24gLVIgbm9kZWpzOm5vZGVqcyAvYXBwCgojIOiuvue9ruS8mOWMlueahOeOr&#43;Wig&#43;WPmOmHjwpFTlYgTk9ERV9FTlY9cHJvZHVjdGlvbiBcCiAgICBOT0RFX09QVElPTlM9Ii0tbWF4LW9sZC1zcGFjZS1zaXplPTI1NiAtLW5vLXdhcm5pbmdzIiBcCiAgICBOUE1fQ09ORklHX0xPR0xFVkVMPXNpbGVudAoKIyDku44gZGVwcyDpmLbmrrXlpI3liLbnlJ/kuqfkvp3otZbpobkKQ09QWSAtLWZyb209ZGVwcyAtLWNob3duPW5vZGVqczpub2RlanMgL2FwcC9ub2RlX21vZHVsZXMgLi9ub2RlX21vZHVsZXMKQ09QWSAtLWZyb209ZGVwcyAtLWNob3duPW5vZGVqczpub2RlanMgL2FwcC9wYWNrYWdlKi5qc29uIC4vCiMg5LuOIGJ1aWxkIOmYtuauteWkjeWItuaehOW7uuWlveeahOW6lOeUqOeoi&#43;W6jwpDT1BZIC0tZnJvbT1idWlsZCAtLWNob3duPW5vZGVqczpub2RlanMgL2FwcC9kaXN0IC4vZGlzdAoKIyDliIfmjaLliLDpnZ4gcm9vdCDnlKjmiLfku6Xmj5Dpq5jlronlhajmgKcKVVNFUiBub2RlanMKCiMg5pq06Zyy56uv5Y&#43;jCkVYUE9TRSAzMDAwCgojIOWQr&#43;WKqOeUn&#43;S6p&#43;acjeWKoeWZqApDTUQgWyJub2RlIiwgImRpc3Qvc2VydmVyLmpzIl0KCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIOa1i&#43;ivlemYtuautQojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KRlJPTSBidWlsZC1kZXBzIEFTIHRlc3QKCiMg6K6&#43;572u546v5aKDCkVOViBOT0RFX0VOVj10ZXN0IFwKICAgIENJPXRydWUKCiMg5aSN5Yi25rqQ5paH5Lu2CkNPUFkgLS1jaG93bj1ub2RlanM6bm9kZWpzIC4gLgoKIyDliIfmjaLliLDpnZ4gcm9vdCDnlKjmiLcKVVNFUiBub2RlanMKCiMg6L&#43;Q6KGM5bim6KaG55uW546H55qE5rWL6K&#43;VCkNNRCBbIm5wbSIsICJydW4iLCAidGVzdDpjb3ZlcmFnZSJd', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 优化的多阶段 Dockerfile</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># Node.js TypeScript 应用 (使用 DHI)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">&lt;your-namespace&gt;/dhi-node:24-alpine3.22-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">base</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 创建非 root 用户以提高安全性</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> addgroup -g <span class="m">1001</span> -S nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    adduser -S nodejs -u <span class="m">1001</span> -G nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 依赖阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 复制包文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 安装生产依赖项</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.npm,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm ci --omit<span class="o">=</span>dev <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm cache clean --force<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置正确的所有权</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建依赖阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build-deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 复制包文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 安装所有依赖项并进行构建优化</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.npm,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm ci --no-audit --no-fund <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm cache clean --force<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 创建必要的目录并设置权限</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mkdir -p /app/node_modules/.vite <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">build-deps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 仅复制构建所需的文件（遵循 .dockerignore）</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --chown<span class="o">=</span>nodejs:nodejs . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm run build<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置正确的所有权</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 开发阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">build-deps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">development</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>development <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">NPM_CONFIG_LOGLEVEL</span><span class="o">=</span>warn
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 复制源文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 确保所有目录具有正确的权限</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mkdir -p /app/node_modules/.vite <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chmod -R <span class="m">755</span> /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nodejs</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span> <span class="m">5173</span> <span class="m">9229</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 启动开发服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;dev:docker&#34;</span><span class="p">]</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 生产阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">&lt;your-namespace&gt;/dhi-node:24-alpine3.22-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">production</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 创建非 root 用户以提高安全性</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> addgroup -g <span class="m">1001</span> -S nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    adduser -S nodejs -u <span class="m">1001</span> -G nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置优化的环境变量</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s2">&#34;--max-old-space-size=256 --no-warnings&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">NPM_CONFIG_LOGLEVEL</span><span class="o">=</span>silent<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 从 deps 阶段复制生产依赖项</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>deps --chown<span class="o">=</span>nodejs:nodejs /app/node_modules ./node_modules<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>deps --chown<span class="o">=</span>nodejs:nodejs /app/package*.json ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 从 build 阶段复制构建好的应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build --chown<span class="o">=</span>nodejs:nodejs /app/dist ./dist<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户以提高安全性</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nodejs</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 启动生产服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;dist/server.js&#34;</span><span class="p">]</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 测试阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">build-deps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">test</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span><span class="nb">test</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">CI</span><span class="o">=</span><span class="nb">true</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 复制源文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --chown<span class="o">=</span>nodejs:nodejs . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nodejs</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 运行带覆盖率的测试</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;test:coverage&#34;</span><span class="p">]</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+# 创建非 root 用户以提高安全性
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 -G nodejs && \
+    chown -R nodejs:nodejs /app
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BD%BF%E7%94%A8-Docker-%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F' && 'hidden'"
-      >
-        <p>现在您需要创建一个生产就绪的多阶段 Dockerfile。用以下优化配置替换生成的 Dockerfile：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5LyY5YyW55qE5aSa6Zi25q61IERvY2tlcmZpbGUKIyBOb2RlLmpzIFR5cGVTY3JpcHQg5bqU55SoCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQoKQVJHIE5PREVfVkVSU0lPTj0yNC4xMS4xLWFscGluZQpGUk9NIG5vZGU6JHtOT0RFX1ZFUlNJT059IEFTIGJhc2UKCiMg6K6&#43;572u5bel5L2c55uu5b2VCldPUktESVIgL2FwcAoKIyDliJvlu7rpnZ4gcm9vdCDnlKjmiLfku6Xmj5Dpq5jlronlhajmgKcKUlVOIGFkZGdyb3VwIC1nIDEwMDEgLVMgbm9kZWpzICYmIFwKICAgIGFkZHVzZXIgLVMgbm9kZWpzIC11IDEwMDEgLUcgbm9kZWpzICYmIFwKICAgIGNob3duIC1SIG5vZGVqczpub2RlanMgL2FwcAoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5L6d6LWW6Zi25q61CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpGUk9NIGJhc2UgQVMgZGVwcwoKIyDlpI3liLbljIXmlofku7YKQ09QWSBwYWNrYWdlKi5qc29uIC4vCgojIOWuieijheeUn&#43;S6p&#43;S&#43;nei1lumhuQpSVU4gLS1tb3VudD10eXBlPWNhY2hlLHRhcmdldD0vcm9vdC8ubnBtLHNoYXJpbmc9bG9ja2VkIFwKICAgIG5wbSBjaSAtLW9taXQ9ZGV2ICYmIFwKICAgIG5wbSBjYWNoZSBjbGVhbiAtLWZvcmNlCgojIOiuvue9ruato&#43;ehrueahOaJgOacieadgwpSVU4gY2hvd24gLVIgbm9kZWpzOm5vZGVqcyAvYXBwCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDmnoTlu7rkvp3otZbpmLbmrrUKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkZST00gYmFzZSBBUyBidWlsZC1kZXBzCgojIOWkjeWItuWMheaWh&#43;S7tgpDT1BZIHBhY2thZ2UqLmpzb24gLi8KCiMg5a6J6KOF5omA5pyJ5L6d6LWW6aG55bm26L&#43;b6KGM5p6E5bu65LyY5YyWClJVTiAtLW1vdW50PXR5cGU9Y2FjaGUsdGFyZ2V0PS9yb290Ly5ucG0sc2hhcmluZz1sb2NrZWQgXAogICAgbnBtIGNpIC0tbm8tYXVkaXQgLS1uby1mdW5kICYmIFwKICAgIG5wbSBjYWNoZSBjbGVhbiAtLWZvcmNlCgojIOWIm&#43;W7uuW/heimgeeahOebruW9leW5tuiuvue9ruadg&#43;mZkApSVU4gbWtkaXIgLXAgL2FwcC9ub2RlX21vZHVsZXMvLnZpdGUgJiYgXAogICAgY2hvd24gLVIgbm9kZWpzOm5vZGVqcyAvYXBwCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDmnoTlu7rpmLbmrrUKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkZST00gYnVpbGQtZGVwcyBBUyBidWlsZAoKIyDku4XlpI3liLbmnoTlu7rmiYDpnIDnmoTmlofku7bvvIjpgbXlvqogLmRvY2tlcmlnbm9yZe&#43;8iQpDT1BZIC0tY2hvd249bm9kZWpzOm5vZGVqcyAuIC4KCiMg5p6E5bu65bqU55So56iL5bqPClJVTiBucG0gcnVuIGJ1aWxkCgojIOiuvue9ruato&#43;ehrueahOaJgOacieadgwpSVU4gY2hvd24gLVIgbm9kZWpzOm5vZGVqcyAvYXBwCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDlvIDlj5HpmLbmrrUKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkZST00gYnVpbGQtZGVwcyBBUyBkZXZlbG9wbWVudAoKIyDorr7nva7njq/looMKRU5WIE5PREVfRU5WPWRldmVsb3BtZW50IFwKICAgIE5QTV9DT05GSUdfTE9HTEVWRUw9d2FybgoKIyDlpI3liLbmupDmlofku7YKQ09QWSAuIC4KCiMg56Gu5L&#43;d5omA5pyJ55uu5b2V5YW35pyJ5q2j56Gu55qE5p2D6ZmQClJVTiBta2RpciAtcCAvYXBwL25vZGVfbW9kdWxlcy8udml0ZSAmJiBcCiAgICBjaG93biAtUiBub2RlanM6bm9kZWpzIC9hcHAgJiYgXAogICAgY2htb2QgLVIgNzU1IC9hcHAKCiMg5YiH5o2i5Yiw6Z2eIHJvb3Qg55So5oi3ClVTRVIgbm9kZWpzCgojIOaatOmcsuerr&#43;WPowpFWFBPU0UgMzAwMCA1MTczIDkyMjkKCiMg5ZCv5Yqo5byA5Y&#43;R5pyN5Yqh5ZmoCkNNRCBbIm5wbSIsICJydW4iLCAiZGV2OmRvY2tlciJdCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDnlJ/kuqfpmLbmrrUKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkFSRyBOT0RFX1ZFUlNJT049MjQuMTEuMS1hbHBpbmUKRlJPTSBub2RlOiR7Tk9ERV9WRVJTSU9OfSBBUyBwcm9kdWN0aW9uCgojIOiuvue9ruW3peS9nOebruW9lQpXT1JLRElSIC9hcHAKCiMg5Yib5bu66Z2eIHJvb3Qg55So5oi35Lul5o&#43;Q6auY5a6J5YWo5oCnClJVTiBhZGRncm91cCAtZyAxMDAxIC1TIG5vZGVqcyAmJiBcCiAgICBhZGR1c2VyIC1TIG5vZGVqcyAtdSAxMDAxIC1HIG5vZGVqcyAmJiBcCiAgICBjaG93biAtUiBub2RlanM6bm9kZWpzIC9hcHAKCiMg6K6&#43;572u5LyY5YyW55qE546v5aKD5Y&#43;Y6YePCkVOViBOT0RFX0VOVj1wcm9kdWN0aW9uIFwKICAgIE5PREVfT1BUSU9OUz0iLS1tYXgtb2xkLXNwYWNlLXNpemU9MjU2IC0tbm8td2FybmluZ3MiIFwKICAgIE5QTV9DT05GSUdfTE9HTEVWRUw9c2lsZW50CgojIOS7jiBkZXBzIOmYtuauteWkjeWItueUn&#43;S6p&#43;S&#43;nei1lumhuQpDT1BZIC0tZnJvbT1kZXBzIC0tY2hvd249bm9kZWpzOm5vZGVqcyAvYXBwL25vZGVfbW9kdWxlcyAuL25vZGVfbW9kdWxlcwpDT1BZIC0tZnJvbT1kZXBzIC0tY2hvd249bm9kZWpzOm5vZGVqcyAvYXBwL3BhY2thZ2UqLmpzb24gLi8KIyDku44gYnVpbGQg6Zi25q615aSN5Yi25p6E5bu65aW955qE5bqU55So56iL5bqPCkNPUFkgLS1mcm9tPWJ1aWxkIC0tY2hvd249bm9kZWpzOm5vZGVqcyAvYXBwL2Rpc3QgLi9kaXN0CgojIOWIh&#43;aNouWIsOmdniByb290IOeUqOaIt&#43;S7peaPkOmrmOWuieWFqOaApwpVU0VSIG5vZGVqcwoKIyDmmrTpnLLnq6/lj6MKRVhQT1NFIDMwMDAKCiMg5ZCv5Yqo55Sf5Lqn5pyN5Yqh5ZmoCkNNRCBbIm5vZGUiLCAiZGlzdC9zZXJ2ZXIuanMiXQoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5rWL6K&#43;V6Zi25q61CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpGUk9NIGJ1aWxkLWRlcHMgQVMgdGVzdAoKIyDorr7nva7njq/looMKRU5WIE5PREVfRU5WPXRlc3QgXAogICAgQ0k9dHJ1ZQoKIyDlpI3liLbmupDmlofku7YKQ09QWSAtLWNob3duPW5vZGVqczpub2RlanMgLiAuCgojIOWIh&#43;aNouWIsOmdniByb290IOeUqOaItwpVU0VSIG5vZGVqcwoKIyDov5DooYzluKbopobnm5bnjofnmoTmtYvor5UKQ01EIFsibnBtIiwgInJ1biIsICJ0ZXN0OmNvdmVyYWdlIl0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 优化的多阶段 Dockerfile</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># Node.js TypeScript 应用</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">NODE_VERSION</span><span class="o">=</span><span class="m">24</span>.11.1-alpine<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">node:${NODE_VERSION</span><span class="o">}</span> AS base<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 创建非 root 用户以提高安全性</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> addgroup -g <span class="m">1001</span> -S nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    adduser -S nodejs -u <span class="m">1001</span> -G nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 依赖阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 复制包文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 安装生产依赖项</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.npm,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm ci --omit<span class="o">=</span>dev <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm cache clean --force<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置正确的所有权</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建依赖阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build-deps</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 复制包文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> package*.json ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 安装所有依赖项并进行构建优化</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.npm,sharing<span class="o">=</span>locked <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm ci --no-audit --no-fund <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm cache clean --force<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 创建必要的目录并设置权限</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mkdir -p /app/node_modules/.vite <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">build-deps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 仅复制构建所需的文件（遵循 .dockerignore）</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --chown<span class="o">=</span>nodejs:nodejs . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm run build<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置正确的所有权</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 开发阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">build-deps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">development</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>development <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">NPM_CONFIG_LOGLEVEL</span><span class="o">=</span>warn
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 复制源文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 确保所有目录具有正确的权限</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> mkdir -p /app/node_modules/.vite <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chmod -R <span class="m">755</span> /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nodejs</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span> <span class="m">5173</span> <span class="m">9229</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 启动开发服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;dev:docker&#34;</span><span class="p">]</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 生产阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">NODE_VERSION</span><span class="o">=</span><span class="m">24</span>.11.1-alpine<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">node:${NODE_VERSION</span><span class="o">}</span> AS production<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置工作目录</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 创建非 root 用户以提高安全性</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> addgroup -g <span class="m">1001</span> -S nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    adduser -S nodejs -u <span class="m">1001</span> -G nodejs <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    chown -R nodejs:nodejs /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置优化的环境变量</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s2">&#34;--max-old-space-size=256 --no-warnings&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">NPM_CONFIG_LOGLEVEL</span><span class="o">=</span>silent<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 从 deps 阶段复制生产依赖项</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>deps --chown<span class="o">=</span>nodejs:nodejs /app/node_modules ./node_modules<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>deps --chown<span class="o">=</span>nodejs:nodejs /app/package*.json ./<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 从 build 阶段复制构建好的应用程序</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build --chown<span class="o">=</span>nodejs:nodejs /app/dist ./dist<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户以提高安全性</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nodejs</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 暴露端口</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 启动生产服务器</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;dist/server.js&#34;</span><span class="p">]</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 测试阶段</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># ========================================</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">build-deps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">test</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 设置环境</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span><span class="nb">test</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    <span class="nv">CI</span><span class="o">=</span><span class="nb">true</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 复制源文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --chown<span class="o">=</span>nodejs:nodejs . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 切换到非 root 用户</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nodejs</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 运行带覆盖率的测试</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;test:coverage&#34;</span><span class="p">]</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+# ========================================
+# 依赖阶段
+# ========================================
+FROM base AS deps
 
-      </div>
-    
-  </div>
-</div>
+# 复制包文件
+COPY package*.json ./
+
+# 安装生产依赖项
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci --omit=dev && \
+    npm cache clean --force
+
+# 设置正确的所有权
+RUN chown -R nodejs:nodejs /app
+
+# ========================================
+# 构建依赖阶段
+# ========================================
+FROM base AS build-deps
+
+# 复制包文件
+COPY package*.json ./
+
+# 安装所有依赖项并进行构建优化
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci --no-audit --no-fund && \
+    npm cache clean --force
+
+# 创建必要的目录并设置权限
+RUN mkdir -p /app/node_modules/.vite && \
+    chown -R nodejs:nodejs /app
+
+# ========================================
+# 构建阶段
+# ========================================
+FROM build-deps AS build
+
+# 仅复制构建所需的文件（遵循 .dockerignore）
+COPY --chown=nodejs:nodejs . .
+
+# 构建应用程序
+RUN npm run build
+
+# 设置正确的所有权
+RUN chown -R nodejs:nodejs /app
+
+# ========================================
+# 开发阶段
+# ========================================
+FROM build-deps AS development
+
+# 设置环境
+ENV NODE_ENV=development \
+    NPM_CONFIG_LOGLEVEL=warn
+
+# 复制源文件
+COPY . .
+
+# 确保所有目录具有正确的权限
+RUN mkdir -p /app/node_modules/.vite && \
+    chown -R nodejs:nodejs /app && \
+    chmod -R 755 /app
+
+# 切换到非 root 用户
+USER nodejs
+
+# 暴露端口
+EXPOSE 3000 5173 9229
+
+# 启动开发服务器
+CMD ["npm", "run", "dev:docker"]
+
+# ========================================
+# 生产阶段
+# ========================================
+ARG NODE_VERSION=24.11.1-alpine
+FROM node:${NODE_VERSION} AS production
+
+# 设置工作目录
+WORKDIR /app
+
+# 创建非 root 用户以提高安全性
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 -G nodejs && \
+    chown -R nodejs:nodejs /app
+
+# 设置优化的环境变量
+ENV NODE_ENV=production \
+    NODE_OPTIONS="--max-old-space-size=256 --no-warnings" \
+    NPM_CONFIG_LOGLEVEL=silent
+
+# 从 deps 阶段复制生产依赖项
+COPY --from=deps --chown=nodejs:nodejs /app/node_modules ./node_modules
+COPY --from=deps --chown=nodejs:nodejs /app/package*.json ./
+# 从 build 阶段复制构建好的应用程序
+COPY --from=build --chown=nodejs:nodejs /app/dist ./dist
+
+# 切换到非 root 用户以提高安全性
+USER nodejs
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动生产服务器
+CMD ["node", "dist/server.js"]
+
+# ========================================
+# 测试阶段
+# ========================================
+FROM build-deps AS test
+
+# 设置环境
+ENV NODE_ENV=test \
+    CI=true
+
+# 复制源文件
+COPY --chown=nodejs:nodejs . .
+
+# 切换到非 root 用户
+USER nodejs
+
+# 运行带覆盖率的测试
+CMD ["npm", "run", "test:coverage"]
+```
 
 
 此 Dockerfile 的主要特点：

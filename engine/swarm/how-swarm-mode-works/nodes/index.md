@@ -1,4 +1,23 @@
-# 节点的工作原理
+---
+title: 节点的工作原理
+url: /engine/swarm/how-swarm-mode-works/nodes/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 节点的工作原理
+    url: /engine/swarm/how-swarm-mode-works/nodes/
+prev:
+  title: 服务的工作原理
+  url: /engine/swarm/how-swarm-mode-works/services/
+---
+
 
 Swarm 模式允许你创建一个或多个 Docker 引擎的集群，称为 swarm。swarm 由一个或多个节点组成：运行 Docker 引擎的物理或虚拟机。
 

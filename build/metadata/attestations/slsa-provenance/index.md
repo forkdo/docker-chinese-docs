@@ -1,4 +1,26 @@
-# Provenance attestations
+---
+title: Provenance attestations
+url: /build/metadata/attestations/slsa-provenance/
+parent:
+  title: Build attestations
+  url: /build/metadata/attestations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Build attestations
+    url: /build/metadata/attestations/
+  - title: Provenance attestations
+    url: /build/metadata/attestations/slsa-provenance/
+next:
+  title: Image attestation storage
+  url: /build/metadata/attestations/attestation-storage/
+prev:
+  title: SBOM attestations
+  url: /build/metadata/attestations/sbom/
+---
+
 
 The provenance attestations include facts about the build process, including
 details such as:

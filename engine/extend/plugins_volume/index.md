@@ -1,4 +1,26 @@
-# Docker volume plugins
+---
+title: Docker volume plugins
+url: /engine/extend/plugins_volume/
+parent:
+  title: Docker Engine managed plugin system
+  url: /engine/extend/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine managed plugin system
+    url: /engine/extend/
+  - title: Docker volume plugins
+    url: /engine/extend/plugins_volume/
+next:
+  title: Docker Plugin API
+  url: /engine/extend/plugin_api/
+prev:
+  title: Plugin Config Version 1 of Plugin V2
+  url: /engine/extend/config/
+---
+
 
 Docker Engine volume plugins enable Engine deployments to be integrated with
 external storage systems such as Amazon EBS, and enable data volumes to persist

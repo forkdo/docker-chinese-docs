@@ -1,4 +1,21 @@
-# Docker Scout 快速入门
+---
+title: Docker Scout 快速入门
+url: /scout/quickstart/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: Docker Scout 快速入门
+    url: /scout/quickstart/
+next:
+  title: 安装 Docker Scout
+  url: /scout/install/
+---
+
 
 Docker Scout 会分析镜像内容，并生成详细的报告，列出检测到的软件包和漏洞。
 它还能为你提供修复建议，帮助你解决镜像分析中发现的问题。

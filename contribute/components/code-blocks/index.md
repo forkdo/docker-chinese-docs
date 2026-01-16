@@ -1,4 +1,22 @@
-# 代码块
+---
+title: 代码块
+url: /contribute/components/code-blocks/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: 代码块
+    url: /contribute/components/code-blocks/
+next:
+  title: Videos
+  url: /contribute/components/videos/
+prev:
+  title: 列表
+  url: /contribute/components/lists/
+---
+
 
 Rouge 提供了许多不同的代码块“提示”。如果省略提示，它会尝试猜测，有时可能会猜错。以下是我们经常使用的几个提示。
 

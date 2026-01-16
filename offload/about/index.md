@@ -1,4 +1,24 @@
-# 关于 Docker Offload
+---
+title: 关于 Docker Offload
+url: /offload/about/
+parent:
+  title: Docker Offload
+  url: /offload/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Offload
+    url: /offload/
+  - title: 关于 Docker Offload
+    url: /offload/about/
+next:
+  title: Docker Offload 快速开始
+  url: /offload/quickstart/
+prev:
+  title: 配置 Docker Offload
+  url: /offload/configuration/
+---
+
 
 Docker Offload 是一项完全托管的服务，用于使用您已熟悉的 Docker 工具（包括 Docker Desktop、Docker CLI 和 Docker Compose）在云端构建和运行容器。它将您的本地开发工作流扩展到可扩展的、由云驱动的环境中，使开发者即使在虚拟桌面基础设施 (VDI) 环境或不支持嵌套虚拟化的系统中也能高效工作。
 

@@ -1,4 +1,24 @@
-# 在生产环境中使用 Compose
+---
+title: 在生产环境中使用 Compose
+url: /compose/how-tos/production/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 在生产环境中使用 Compose
+    url: /compose/how-tos/production/
+next:
+  title: 为 Docker Compose 服务启用 GPU 访问
+  url: /compose/how-tos/gpu-support/
+prev:
+  title: 将 Docker Compose 应用程序打包为 OCI 工件进行部署
+  url: /compose/how-tos/oci-artifact/
+---
+
 
 当您在开发过程中使用 Compose 定义应用程序时，您可以使用此定义在不同的环境（如 CI、预发布和生产环境）中运行您的应用程序。
 

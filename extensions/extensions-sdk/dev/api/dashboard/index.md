@@ -1,4 +1,30 @@
-# 仪表板
+---
+title: 仪表板
+url: /extensions/extensions-sdk/dev/api/dashboard/
+parent:
+  title: 扩展 API
+  url: /extensions/extensions-sdk/dev/api/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 
+    url: /extensions/extensions-sdk/dev/
+  - title: 扩展 API
+    url: /extensions/extensions-sdk/dev/api/
+  - title: 仪表板
+    url: /extensions/extensions-sdk/dev/api/dashboard/
+next:
+  title: Docker
+  url: /extensions/extensions-sdk/dev/api/docker/
+prev:
+  title: 导航
+  url: /extensions/extensions-sdk/dev/api/dashboard-routes-navigation/
+---
+
 
 ## 用户通知
 

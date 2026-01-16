@@ -1,4 +1,21 @@
-# Docker Hub 发布说明
+---
+title: Docker Hub 发布说明
+url: /docker-hub/release-notes/
+parent:
+  title: Docker Hub
+  url: /docker-hub/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: Docker Hub 发布说明
+    url: /docker-hub/release-notes/
+next:
+  title: 排查 Docker Hub 问题
+  url: /docker-hub/troubleshoot/
+---
+
 
 在此处，您可以了解每个 Docker Hub 版本的最新变更、新功能、错误修复和已知问题。
 

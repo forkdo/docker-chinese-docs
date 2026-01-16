@@ -1,7 +1,23 @@
-# 与容器共享本地文件
+---
+title: 与容器共享本地文件
+url: /get-started/docker-concepts/running-containers/sharing-local-files/
+parent:
+  title: 开始使用
+  url: /get-started/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 与容器共享本地文件
+    url: /get-started/docker-concepts/running-containers/sharing-local-files/
+next:
+  title: 持久化容器数据
+  url: /get-started/docker-concepts/running-containers/persisting-container-data/
+prev:
+  title: 多容器应用
+  url: /get-started/docker-concepts/running-containers/multi-container-applications/
+---
 
-<div id="youtube-player-2dAzsVg3Dek" data-video-id="2dAzsVg3Dek" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 
@@ -126,138 +142,23 @@ $ docker run -v HOST-DIRECTORY:/CONTAINER-DIRECTORY:rw nginx
 
 4. 是时候运行容器了。`--mount` 和 `-v` 示例会产生相同的结果。除非您在运行第一个容器后删除 `my_site` 容器，否则不能同时运行两者。
 
+   **`-v`**
+
+
+
+   ```console
+   $ docker run -d --name my_site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:2.4
+   ```
+
+   **`--mount`**
+
+
+
+   ```console
+   $ docker run -d --name my_site -p 8080:80 --mount type=bind,source=./,target=/usr/local/apache2/htdocs/ httpd:2.4
+   ```
+
    
-
-
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: '-v' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '-v' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '-v'"
-        
-      >
-        <code>-v</code>
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '--mount' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '--mount'"
-        
-      >
-        <code>--mount</code>
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '-v' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIC0tbmFtZSBteV9zaXRlIC1wIDgwODA6ODAgLXYgLjovdXNyL2xvY2FsL2FwYWNoZTIvaHRkb2NzLyBodHRwZDoyLjQ=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d --name my_site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:2.4
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '--mount' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIC0tbmFtZSBteV9zaXRlIC1wIDgwODA6ODAgLS1tb3VudCB0eXBlPWJpbmQsc291cmNlPS4vLHRhcmdldD0vdXNyL2xvY2FsL2FwYWNoZTIvaHRkb2NzLyBodHRwZDoyLjQ=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d --name my_site -p 8080:80 --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>./,target<span class="o">=</span>/usr/local/apache2/htdocs/ httpd:2.4
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
 
 
    > [!TIP]  
@@ -308,6 +209,5 @@ $ docker run -v HOST-DIRECTORY:/CONTAINER-DIRECTORY:rw nginx
 
 现在您已经学会了如何与容器共享本地文件，是时候学习多容器应用了。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/running-containers/multi-container-applications/">多容器应用</a>
+[多容器应用](Multi-container applications)
 

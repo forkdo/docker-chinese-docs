@@ -1,4 +1,26 @@
-# 通过二进制文件安装 Docker Engine
+---
+title: 通过二进制文件安装 Docker Engine
+url: /engine/install/binaries/
+parent:
+  title: 安装 Docker Engine
+  url: /engine/install/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 安装 Docker Engine
+    url: /engine/install/
+  - title: 通过二进制文件安装 Docker Engine
+    url: /engine/install/binaries/
+next:
+  title: Docker Engine 在 SLES (s390x) 上
+  url: /engine/install/sles/
+prev:
+  title: Docker Engine 的 Linux 安装后步骤
+  url: /engine/install/linux-postinstall/
+---
+
 
 > [!重要]
 >

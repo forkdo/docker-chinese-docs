@@ -1,4 +1,24 @@
-# 使用 VEX 创建例外
+---
+title: 使用 VEX 创建例外
+url: /scout/how-tos/create-exceptions-vex/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 使用 VEX 创建例外
+    url: /scout/how-tos/create-exceptions-vex/
+next:
+  title: 使用 GUI 创建例外
+  url: /scout/how-tos/create-exceptions-gui/
+prev:
+  title: 将 Scout 与不同类型的制品配合使用
+  url: /scout/how-tos/artifact-types/
+---
+
 
 Vulnerability Exploitability eXchange (VEX) 是一种标准格式，用于记录软件包或产品上下文中的漏洞。Docker Scout 支持 VEX 文档来为镜像中的漏洞创建[例外](/manuals/scout/explore/exceptions.md)。
 

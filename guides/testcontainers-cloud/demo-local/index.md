@@ -1,7 +1,27 @@
-# 通过 Docker 设置 Testcontainers Cloud
+---
+title: 通过 Docker 设置 Testcontainers Cloud
+url: /guides/testcontainers-cloud/demo-local/
+parent:
+  title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
 
-<div id="youtube-player-7c3xLAG560U" data-video-id="7c3xLAG560U" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+  url: /guides/testcontainers-cloud/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
+
+    url: /guides/testcontainers-cloud/
+  - title: 通过 Docker 设置 Testcontainers Cloud
+    url: /guides/testcontainers-cloud/demo-local/
+next:
+  title: 为什么选择 Testcontainers Cloud？
+  url: /guides/testcontainers-cloud/why/
+prev:
+  title: 在 CI 流水线中配置 Testcontainers Cloud
+  url: /guides/testcontainers-cloud/demo-ci/
+---
+
+
 
 
 本演示展示了通过 Docker 设置 Testcontainers Cloud 的过程，使其能够使用 Testcontainers Desktop 应用程序在您的本地开发环境中工作。在本演练结束时，您将成功启动并运行 Testcontainers Cloud by Docker，准备将容器管理从本地机器卸载到云端，以实现更高效的测试。

@@ -1,4 +1,21 @@
-# 咨询数据库来源和匹配服务
+---
+title: 咨询数据库来源和匹配服务
+url: /scout/deep-dive/advisory-db-sources/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 咨询数据库来源和匹配服务
+    url: /scout/deep-dive/advisory-db-sources/
+next:
+  title: Docker Scout 中的数据收集与存储
+  url: /scout/deep-dive/data-handling/
+---
+
 
 可靠的信息来源对于 Docker Scout 准确评估您的软件制品至关重要。鉴于行业中的来源和方法多种多样，漏洞评估结果出现差异是不可避免的。本文档描述了 Docker Scout 咨询数据库及其 CVE 到软件包的匹配方法，以应对这些差异。
 

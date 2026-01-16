@@ -1,4 +1,24 @@
-# 测试你的 C++ 部署
+---
+title: 测试你的 C++ 部署
+url: /guides/cpp/deploy/
+parent:
+  title: C++ 语言专用指南
+  url: /guides/cpp/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: C++ 语言专用指南
+    url: /guides/cpp/
+  - title: 测试你的 C++ 部署
+    url: /guides/cpp/deploy/
+next:
+  title: 为 C++ 应用程序配置 CI/CD
+  url: /guides/cpp/configure-ci-cd/
+prev:
+  title: C++ Docker 镜像的供应链安全
+  url: /guides/cpp/security/
+---
+
 
 ## 前置条件
 

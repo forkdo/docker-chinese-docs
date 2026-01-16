@@ -1,4 +1,24 @@
-# 镜像构建最佳实践
+---
+title: 镜像构建最佳实践
+url: /get-started/workshop/09_image_best/
+parent:
+  title: Docker 工作坊概览
+  url: /get-started/workshop/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: Docker 工作坊概览
+    url: /get-started/workshop/
+  - title: 镜像构建最佳实践
+    url: /get-started/workshop/09_image_best/
+next:
+  title: 使用 Docker Compose
+  url: /get-started/workshop/08_using_compose/
+prev:
+  title: Docker 工作坊之后该做什么
+  url: /get-started/workshop/10_what_next/
+---
+
 
 ## 镜像分层
 
@@ -178,6 +198,5 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 在下一节中，您将学习可以用来继续学习容器的其他资源。
 
-
-<a class="button not-prose" href="/get-started/workshop/10_what_next/">下一步</a>
+[下一步](10_what_next.md)
 

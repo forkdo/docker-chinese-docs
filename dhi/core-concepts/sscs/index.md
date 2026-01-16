@@ -1,4 +1,26 @@
-# 软件供应链安全
+---
+title: 软件供应链安全
+url: /dhi/core-concepts/sscs/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 软件供应链安全
+    url: /dhi/core-concepts/sscs/
+next:
+  title: 证明
+  url: /dhi/core-concepts/attestations/
+prev:
+  title: 镜像摘要
+  url: /dhi/core-concepts/digests/
+---
+
 
 ## 什么是软件供应链安全 (SSCS)？
 

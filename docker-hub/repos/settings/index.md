@@ -1,4 +1,23 @@
-# 仓库个人设置
+---
+title: 仓库个人设置
+url: /docker-hub/repos/settings/
+parent:
+  title: 仓库
+  url: /docker-hub/repos/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 仓库个人设置
+    url: /docker-hub/repos/settings/
+next:
+  title: 删除仓库
+  url: /docker-hub/repos/delete/
+---
+
 
 对于您的账户，您可以为仓库设置个人偏好，包括默认仓库隐私设置和自动构建通知。
 

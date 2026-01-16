@@ -1,4 +1,22 @@
-# 使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
+---
+title: 使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
+url: /guides/localstack/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
+    url: /guides/localstack/
+next:
+  title: 使用 JupyterLab 进行数据科学
+  url: /guides/jupyter/
+prev:
+  title: 使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩
+  url: /guides/opentelemetry/
+---
+
 
 在现代应用程序开发中，在将云应用程序部署到生产环境之前进行本地测试，有助于您更快速、更自信地交付产品。这种方法涉及在本地模拟服务、尽早发现并修复问题，以及快速迭代，而无需承担成本或面对完整云环境的复杂性。像 [LocalStack](https://www.localstack.cloud/) 这样的工具在此过程中变得非常宝贵，它使您能够模拟 AWS 服务并将应用程序容器化，以获得一致且隔离的测试环境。
 

@@ -1,4 +1,21 @@
-# 清理未使用的 Docker 对象
+---
+title: 清理未使用的 Docker 对象
+url: /engine/manage-resources/pruning/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 清理未使用的 Docker 对象
+    url: /engine/manage-resources/pruning/
+next:
+  title: Docker 对象标签
+  url: /engine/manage-resources/labels/
+---
+
 
 Docker 采用保守的方法来清理未使用的对象（通常称为“垃圾回收”），例如镜像、容器、卷和网络。除非您明确要求 Docker 这样做，否则这些对象通常不会被移除。这可能导致 Docker 占用额外的磁盘空间。针对每种类型的对象，Docker 都提供了一个 `prune` 命令。此外，您可以使用 `docker system prune` 一次清理多种类型的对象。本主题将展示如何使用这些 `prune` 命令。
 

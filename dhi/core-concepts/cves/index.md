@@ -1,4 +1,26 @@
-# 常见漏洞和暴露 (CVE)
+---
+title: 常见漏洞和暴露 (CVE)
+url: /dhi/core-concepts/cves/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 常见漏洞和暴露 (CVE)
+    url: /dhi/core-concepts/cves/
+next:
+  title: CIS 基准
+  url: /dhi/core-concepts/cis/
+prev:
+  title: FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
+  url: /dhi/core-concepts/fips/
+---
+
 
 ## 什么是 CVE？
 

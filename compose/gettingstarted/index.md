@@ -1,4 +1,21 @@
-# Docker Compose 快速入门
+---
+title: Docker Compose 快速入门
+url: /compose/gettingstarted/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Docker Compose 快速入门
+    url: /compose/gettingstarted/
+prev:
+  title: 使用 Compose SDK
+  url: /compose/compose-sdk/
+---
+
 
 本教程旨在通过引导您开发一个基本的 Python Web 应用程序，来介绍 Docker Compose 的基本概念。
 
@@ -81,44 +98,21 @@
    CMD ["flask", "run", "--debug"]
    ```
 
-   
+   **理解 Dockerfile**
 
 
 
+这会告诉 Docker 执行以下操作：
 
-<div
-  id="理解-dockerfile"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
->
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      理解 Dockerfile
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    <p>这会告诉 Docker 执行以下操作：</p>
-<ul>
-<li>从 Python 3.10 镜像开始构建一个镜像。</li>
-<li>将工作目录设置为 <code>/code</code>。</li>
-<li>设置 <code>flask</code> 命令使用的环境变量。</li>
-<li>安装 gcc 和其他依赖项</li>
-<li>复制 <code>requirements.txt</code> 并安装 Python 依赖项。</li>
-<li>为镜像添加元数据，描述容器正在监听 5000 端口</li>
-<li>将项目中的当前目录 <code>.</code> 复制到镜像中的工作目录 <code>.</code>。</li>
-<li>将容器的默认命令设置为 <code>flask run --debug</code>。</li>
-</ul>
-  </div>
-</div>
+* 从 Python 3.10 镜像开始构建一个镜像。
+* 将工作目录设置为 `/code`。
+* 设置 `flask` 命令使用的环境变量。
+* 安装 gcc 和其他依赖项
+* 复制 `requirements.txt` 并安装 Python 依赖项。
+* 为镜像添加元数据，描述容器正在监听 5000 端口
+* 将项目中的当前目录 `.` 复制到镜像中的工作目录 `.`。
+* 将容器的默认命令设置为 `flask run --debug`。
+
 
 
 

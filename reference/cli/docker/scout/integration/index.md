@@ -1,4 +1,27 @@
-# docker scout integration
+---
+title: docker scout integration
+url: /reference/cli/docker/scout/integration/
+parent:
+  title: docker scout
+  url: /reference/cli/docker/scout/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker scout
+    url: /reference/cli/docker/scout/
+  - title: docker scout integration
+    url: /reference/cli/docker/scout/integration/
+---
+
+**Description:** Commands to list, configure, and delete Docker Scout integrations
+
+
+
+
 
 <!--
 此页面是自动从 Docker 的源代码生成的。如果您想
@@ -12,9 +35,25 @@ https://github.com/docker/scout-cli
 
 
 
-- [docker scout integration configure](/reference/cli/docker/scout/integration/configure/)
 
-- [docker scout integration delete](/reference/cli/docker/scout/integration/delete/)
 
-- [docker scout integration list](/reference/cli/docker/scout/integration/list/)
+
+
+## Description
+
+Commands to list, configure, and delete Docker Scout integrations
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker scout integration configure`](/reference/cli/docker/scout/integration/configure/) | Configure or update a new integration configuration |
+| [`docker scout integration delete`](/reference/cli/docker/scout/integration/delete/) | Delete a new integration configuration |
+| [`docker scout integration list`](/reference/cli/docker/scout/integration/list/) | List integrations which can be installed |
+
 

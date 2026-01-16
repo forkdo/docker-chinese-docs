@@ -1,4 +1,24 @@
-# CLI 参考
+---
+title: CLI 参考
+url: /ai/cagent/reference/cli/
+parent:
+  title: cagent
+  url: /ai/cagent/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+  - title: CLI 参考
+    url: /ai/cagent/reference/cli/
+next:
+  title: 工具集参考
+  url: /ai/cagent/reference/toolsets/
+prev:
+  title: 示例
+  url: /ai/cagent/reference/examples/
+---
+
 
 用于运行、管理和部署 AI 代理的命令行界面。
 

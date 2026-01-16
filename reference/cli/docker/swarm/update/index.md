@@ -1,4 +1,30 @@
-# docker swarm update
+---
+title: docker swarm update
+url: /reference/cli/docker/swarm/update/
+parent:
+  title: docker swarm
+  url: /reference/cli/docker/swarm/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker swarm
+    url: /reference/cli/docker/swarm/
+  - title: docker swarm update
+    url: /reference/cli/docker/swarm/update/
+next:
+  title: docker swarm unlock-key
+  url: /reference/cli/docker/swarm/unlock-key/
+---
+
+**Description:** Update the swarm
+
+**Usage:** `docker swarm update [OPTIONS]`
+
+
 
 <!--
 本页内容由 Docker 源代码自动生成。如果您希望
@@ -7,3 +33,44 @@
 
 https://github.com/docker/cli
 -->
+
+
+
+
+
+
+**Orchestrator:** Swarm
+
+## Description
+
+Updates a swarm with new parameter values.
+
+> [!NOTE]
+> This is a cluster management command, and must be executed on a swarm
+> manager node. To learn about managers and workers, refer to the
+> [Swarm mode section](/engine/swarm/) in the
+> documentation.
+
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--autolock` |  |  Change manager autolocking setting (true|false) |
+| `--cert-expiry` | `2160h0m0s` |  Validity period for node certificates (ns|us|ms|s|m|h) |
+| `--dispatcher-heartbeat` | `5s` |  Dispatcher heartbeat period (ns|us|ms|s|m|h) |
+| `--external-ca` |  |  Specifications of one or more certificate signing endpoints |
+| `--max-snapshots` |  | API 1.25+ Number of additional Raft snapshots to retain |
+| `--snapshot-interval` | `10000` | API 1.25+ Number of log entries between Raft snapshots |
+| `--task-history-limit` | `5` |  Task history retention limit |
+
+
+
+## Examples
+
+```console
+$ docker swarm update --cert-expiry 720h
+```
+
+
+

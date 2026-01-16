@@ -1,4 +1,26 @@
-# Docker log driver plugins
+---
+title: Docker log driver plugins
+url: /engine/extend/plugins_logging/
+parent:
+  title: Docker Engine managed plugin system
+  url: /engine/extend/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine managed plugin system
+    url: /engine/extend/
+  - title: Docker log driver plugins
+    url: /engine/extend/plugins_logging/
+next:
+  title: Access authorization plugin
+  url: /engine/extend/plugins_authorization/
+prev:
+  title: Docker network driver plugins
+  url: /engine/extend/plugins_network/
+---
+
 
 This document describes logging driver plugins for Docker.
 

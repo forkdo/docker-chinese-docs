@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/root-errors/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/root-errors/
+next:
+  title: 
+  url: /includes/open-terminal/
+prev:
+  title: 
+  url: /includes/swarm-compose-compat/
+---
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？

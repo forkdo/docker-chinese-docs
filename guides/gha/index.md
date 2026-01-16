@@ -1,4 +1,22 @@
-# 使用 Docker 的 GitHub Actions 入门
+---
+title: 使用 Docker 的 GitHub Actions 入门
+url: /guides/gha/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker 的 GitHub Actions 入门
+    url: /guides/gha/
+next:
+  title: Azure Pipelines 与 Docker 入门
+  url: /guides/azure-pipelines/
+prev:
+  title: 从 Docker 官方镜像迁移到 DHI
+  url: /guides/dhi-from-doi/
+---
+
 
 本指南介绍如何使用 Docker 和 GitHub Actions 构建 CI 流水线。您将学习如何使用 Docker 官方 GitHub Actions 将应用程序构建为 Docker 镜像并推送到 Docker Hub。在本指南结束时，您将拥有一个简单且功能完整的 GitHub Actions 配置，可用于 Docker 构建。您可以直接使用该配置，也可以根据需要进一步扩展。
 

@@ -1,4 +1,26 @@
-# Using Bake with additional contexts
+---
+title: Using Bake with additional contexts
+url: /build/bake/contexts/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Using Bake with additional contexts
+    url: /build/bake/contexts/
+next:
+  title: Matrix targets
+  url: /build/bake/matrices/
+prev:
+  title: Bake file reference
+  url: /build/bake/reference/
+---
+
 
 In addition to the main `context` key that defines the build context, each
 target can also define additional named contexts with a map defined with key

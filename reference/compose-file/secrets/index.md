@@ -1,4 +1,24 @@
-# Secrets
+---
+title: Secrets
+url: /reference/compose-file/secrets/
+parent:
+  title: Compose 文件参考
+  url: /reference/compose-file/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Compose 文件参考
+    url: /reference/compose-file/
+  - title: Secrets
+    url: /reference/compose-file/secrets/
+next:
+  title: Configs 顶级元素
+  url: /reference/compose-file/configs/
+prev:
+  title: 片段
+  url: /reference/compose-file/fragments/
+---
+
 
 Secrets 是 [Configs](configs.md) 的一种变体，专注于敏感数据，并针对此用途有特定的约束。
 

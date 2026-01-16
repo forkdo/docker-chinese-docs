@@ -1,4 +1,24 @@
-# Docker Engine 20.10 发布说明
+---
+title: Docker Engine 20.10 发布说明
+url: /engine/release-notes/20.10/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 20.10 发布说明
+    url: /engine/release-notes/20.10/
+next:
+  title: Docker Engine 19.03 发行说明
+  url: /engine/release-notes/19.03/
+prev:
+  title: Docker Engine 23.0 发布说明
+  url: /engine/release-notes/23.0/
+---
+
 
 本文档描述了 Docker Engine 20.10 版本的最新变更、新增内容、已知问题和修复。
 

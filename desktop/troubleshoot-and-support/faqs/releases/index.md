@@ -1,4 +1,21 @@
-# Docker Desktop 版本发布常见问题
+---
+title: Docker Desktop 版本发布常见问题
+url: /desktop/troubleshoot-and-support/faqs/releases/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop 版本发布常见问题
+    url: /desktop/troubleshoot-and-support/faqs/releases/
+next:
+  title: Docker Desktop for Linux 常见问题解答
+  url: /desktop/troubleshoot-and-support/faqs/linuxfaqs/
+---
+
 
 ### 新版本发布的频率如何？
 

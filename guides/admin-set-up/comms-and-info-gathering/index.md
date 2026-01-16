@@ -1,4 +1,21 @@
-# 沟通与信息收集
+---
+title: 沟通与信息收集
+url: /guides/admin-set-up/comms-and-info-gathering/
+parent:
+  title: 使用 Docker 为您的公司奠定成功基础
+  url: /guides/admin-set-up/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker 为您的公司奠定成功基础
+    url: /guides/admin-set-up/
+  - title: 沟通与信息收集
+    url: /guides/admin-set-up/comms-and-info-gathering/
+prev:
+  title: 最终确定计划并开始设置
+  url: /guides/admin-set-up/finalize-plans-and-setup/
+---
+
 
 ## 与开发人员及IT团队沟通
 

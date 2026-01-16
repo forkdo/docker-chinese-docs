@@ -1,4 +1,25 @@
-# docker context
+---
+title: docker context
+url: /reference/cli/docker/context/
+parent:
+  title: docker
+  url: /reference/cli/docker/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker context
+    url: /reference/cli/docker/context/
+---
+
+**Description:** Manage contexts
+
+**Usage:** `docker context`
+
+
 
 <!--
 This page is automatically generated from Docker's source code. If you want to
@@ -8,21 +29,34 @@ in the source repository on GitHub:
 https://github.com/docker/cli
 -->
 
-- [docker context create](/reference/cli/docker/context/create/)
 
-- [docker context export](/reference/cli/docker/context/export/)
 
-- [docker context import](/reference/cli/docker/context/import/)
 
-- [docker context inspect](/reference/cli/docker/context/inspect/)
 
-- [docker context ls](/reference/cli/docker/context/ls/)
 
-- [docker context rm](/reference/cli/docker/context/rm/)
 
-- [docker context show](/reference/cli/docker/context/show/)
 
-- [docker context update](/reference/cli/docker/context/update/)
+## Description
 
-- [docker context use](/reference/cli/docker/context/use/)
+Manage contexts.
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker context create`](/reference/cli/docker/context/create/) | Create a context |
+| [`docker context export`](/reference/cli/docker/context/export/) | Export a context to a tar archive FILE or a tar stream on STDOUT. |
+| [`docker context import`](/reference/cli/docker/context/import/) | Import a context from a tar or zip file |
+| [`docker context inspect`](/reference/cli/docker/context/inspect/) | Display detailed information on one or more contexts |
+| [`docker context ls`](/reference/cli/docker/context/ls/) | List contexts |
+| [`docker context rm`](/reference/cli/docker/context/rm/) | Remove one or more contexts |
+| [`docker context show`](/reference/cli/docker/context/show/) | Print the name of the current context |
+| [`docker context update`](/reference/cli/docker/context/update/) | Update a context |
+| [`docker context use`](/reference/cli/docker/context/use/) | Set the current docker context |
+
 

@@ -1,4 +1,23 @@
-# 旧版容器链接
+---
+title: 旧版容器链接
+url: /engine/network/links/
+parent:
+  title: 网络概述
+  url: /engine/network/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 网络概述
+    url: /engine/network/
+  - title: 旧版容器链接
+    url: /engine/network/links/
+next:
+  title: 在 Docker 中使用 CA 证书
+  url: /engine/network/ca-certs/
+---
+
 
 > [!WARNING]
 >

@@ -1,4 +1,26 @@
-# 将 docker logs 与远程日志记录驱动程序结合使用
+---
+title: 将 docker logs 与远程日志记录驱动程序结合使用
+url: /engine/logging/dual-logging/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: 将 docker logs 与远程日志记录驱动程序结合使用
+    url: /engine/logging/dual-logging/
+next:
+  title: 使用日志记录驱动插件
+  url: /engine/logging/plugins/
+prev:
+  title: 自定义日志驱动输出
+  url: /engine/logging/log_tags/
+---
+
 
 ## 概述
 

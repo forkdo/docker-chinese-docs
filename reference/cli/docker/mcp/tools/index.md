@@ -1,4 +1,35 @@
-# 
+---
+title: 
+url: /reference/cli/docker/mcp/tools/
+parent:
+  title: docker mcp
+  url: /reference/cli/docker/mcp/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker mcp
+    url: /reference/cli/docker/mcp/
+  - title: 
+    url: /reference/cli/docker/mcp/tools/
+children:
+  - title: docker mcp tools call
+    url: /reference/cli/docker/mcp/tools/tools_call/
+  - title: docker mcp tools count
+    url: /reference/cli/docker/mcp/tools/tools_count/
+  - title: docker mcp tools disable
+    url: /reference/cli/docker/mcp/tools/tools_disable/
+  - title: docker mcp tools enable
+    url: /reference/cli/docker/mcp/tools/tools_enable/
+  - title: docker mcp tools inspect
+    url: /reference/cli/docker/mcp/tools/tools_inspect/
+  - title: docker mcp tools ls
+    url: /reference/cli/docker/mcp/tools/tools_ls/
+---
+
 datafolder: mcp-cli
 datafile: docker_mcp_tools
 title: docker mcp tools
@@ -13,16 +44,3 @@ https://github.com/docker/mcp-gateway
 -->
 
 **注意**：根据您的要求，我保留了原始的 YAML frontmatter 和 HTML 注释块。由于原始内容中没有需要翻译的字符串值（除了注释中的英文文本，但注释本身不需要翻译），因此输出与输入完全一致。如果 frontmatter 中有需要翻译的字符串值，我会按照规则进行翻译。
-
-- [docker mcp tools call](/reference/cli/docker/mcp/tools/tools_call/)
-
-- [docker mcp tools count](/reference/cli/docker/mcp/tools/tools_count/)
-
-- [docker mcp tools disable](/reference/cli/docker/mcp/tools/tools_disable/)
-
-- [docker mcp tools enable](/reference/cli/docker/mcp/tools/tools_enable/)
-
-- [docker mcp tools inspect](/reference/cli/docker/mcp/tools/tools_inspect/)
-
-- [docker mcp tools ls](/reference/cli/docker/mcp/tools/tools_ls/)
-

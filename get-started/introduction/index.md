@@ -1,4 +1,29 @@
-# 介绍
+---
+title: 介绍
+url: /get-started/introduction/
+parent:
+  title: 开始使用
+  url: /get-started/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 介绍
+    url: /get-started/introduction/
+children:
+  - title: 获取 Docker Desktop
+    url: /get-started/introduction/get-docker-desktop/
+    description: 本概念页面将指导您下载 Docker Desktop 并在 Windows、Mac 和 Linux 上进行安装
+  - title: 使用容器进行开发
+    url: /get-started/introduction/develop-with-containers/
+    description: 本概念页面将指导您如何使用容器进行开发
+  - title: 构建并推送你的第一个镜像
+    url: /get-started/introduction/build-and-push-first-image/
+    description: 本概念页将教你如何构建并推送你的第一个镜像
+  - title: 下一步
+    url: /get-started/introduction/whats-next/
+    description: 探索分步指南，帮助你理解核心 Docker 概念、构建镜像以及运行容器。
+---
+
 
 ## 关于本系列
 
@@ -10,12 +35,3 @@
 - 运行你的第一个容器
 - 构建你的第一个镜像
 - 在 Docker Hub 上发布你的镜像
-
-- [获取 Docker Desktop](/get-started/introduction/get-docker-desktop/)
-
-- [使用容器进行开发](/get-started/introduction/develop-with-containers/)
-
-- [构建并推送你的第一个镜像](/get-started/introduction/build-and-push-first-image/)
-
-- [下一步](/get-started/introduction/whats-next/)
-

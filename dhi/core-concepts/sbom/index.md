@@ -1,4 +1,26 @@
-# 软件物料清单 (SBOM)
+---
+title: 软件物料清单 (SBOM)
+url: /dhi/core-concepts/sbom/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 软件物料清单 (SBOM)
+    url: /dhi/core-concepts/sbom/
+next:
+  title: Docker Hardened Images 中的 glibc 和 musl 支持
+  url: /dhi/core-concepts/glibc-musl/
+prev:
+  title: 软件制品供应链安全等级 (SLSA)
+  url: /dhi/core-concepts/slsa/
+---
+
 
 ## 什么是 SBOM？
 

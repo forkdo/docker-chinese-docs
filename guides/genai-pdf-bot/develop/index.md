@@ -1,4 +1,21 @@
-# 使用容器进行生成式 AI 开发
+---
+title: 使用容器进行生成式 AI 开发
+url: /guides/genai-pdf-bot/develop/
+parent:
+  title: PDF 分析与对话
+  url: /guides/genai-pdf-bot/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: PDF 分析与对话
+    url: /guides/genai-pdf-bot/
+  - title: 使用容器进行生成式 AI 开发
+    url: /guides/genai-pdf-bot/develop/
+next:
+  title: 容器化生成式 AI 应用程序
+  url: /guides/genai-pdf-bot/containerize/
+---
+
 
 ## 先决条件
 
@@ -88,333 +105,122 @@
 
 为您的 LLM 服务选择以下选项之一。
 
+**在容器中运行 Ollama**
 
 
 
+在容器中运行 Ollama 时，您应该有一个支持 CUDA 的 GPU。虽然您可以在没有支持 GPU 的容器中运行 Ollama，但性能可能不可接受。只有 Linux 和 Windows 11 支持容器的 GPU 访问。
+
+要在容器中运行 Ollama 并提供 GPU 访问：
+
+1. 安装先决条件。
+   - 对于 Linux 上的 Docker Engine，安装 [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit)。
+   - 对于 Windows 10/11 上的 Docker Desktop，安装最新的 [NVIDIA 驱动程序](https://www.nvidia.com/Download/index.aspx)，并确保您使用的是 [WSL2 后端](/manuals/desktop/features/wsl/_index.md#turn-on-docker-desktop-wsl-2)
+2. 在 `compose.yaml` 中添加 Ollama 服务和卷。以下是
+   更新后的 `compose.yaml`：
+
+   ```yaml {hl_lines=["24-38"]}
+   services:
+     server:
+       build:
+         context: .
+       ports:
+         - 8000:8000
+       env_file:
+         - .env
+       depends_on:
+         database:
+           condition: service_healthy
+     database:
+       image: neo4j:5.11
+       ports:
+         - "7474:7474"
+         - "7687:7687"
+       environment:
+         - NEO4J_AUTH=${NEO4J_USERNAME}/${NEO4J_PASSWORD}
+       healthcheck:
+         test:
+           [
+             "CMD-SHELL",
+             "wget --no-verbose --tries=1 --spider localhost:7474 || exit 1",
+           ]
+         interval: 5s
+         timeout: 3s
+         retries: 5
+     ollama:
+       image: ollama/ollama:latest
+       ports:
+         - "11434:11434"
+       volumes:
+         - ollama_volume:/root/.ollama
+       deploy:
+         resources:
+           reservations:
+             devices:
+               - driver: nvidia
+                 count: all
+                 capabilities: [gpu]
+   volumes:
+     ollama_volume:
+   ```
+
+   > [!NOTE]
+   >
+   > 有关 Compose 指令的更多详细信息，请参阅 [使用 Docker Compose 启用 GPU 访问](/manuals/compose/how-tos/gpu-support.md)。
+
+3. 在 `compose.yaml` 文件中添加 ollama-pull 服务。此服务使用
+   `docker/genai:ollama-pull` 镜像，基于 GenAI Stack 的
+   [pull_model.Dockerfile](https://github.com/docker/genai-stack/blob/main/pull_model.Dockerfile)。
+   该服务将自动为您的 Ollama 容器拉取模型。以下是 `compose.yaml` 文件的更新部分：
+
+   ```yaml {hl_lines=["12-17"]}
+   services:
+     server:
+       build:
+         context: .
+       ports:
+         - 8000:8000
+       env_file:
+         - .env
+       depends_on:
+         database:
+           condition: service_healthy
+         ollama-pull:
+           condition: service_completed_successfully
+     ollama-pull:
+       image: docker/genai:ollama-pull
+       env_file:
+         - .env
+     # ...
+   ```
+
+**在容器外运行 Ollama**
 
 
 
+要在容器外运行 Ollama：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8C-Ollama' }"
-  
-  aria-role="tabpanel"
+1. [安装](https://github.com/jmorganca/ollama) 并在您的主机上运行 Ollama。
+2. 在 `.env` 文件中更新 `OLLAMA_BASE_URL` 值为
+   `http://host.docker.internal:11434`。
+3. 使用以下命令将模型拉取到 Ollama。
+   ```console
+   $ ollama pull llama2
+   ```
+
+**使用 OpenAI**
+
+
+
+> [!IMPORTANT]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8C-Ollama' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8C-Ollama'"
-        
-      >
-        在容器中运行 Ollama
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E5%9C%A8%E5%AE%B9%E5%99%A8%E5%A4%96%E8%BF%90%E8%A1%8C-Ollama' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E5%9C%A8%E5%AE%B9%E5%99%A8%E5%A4%96%E8%BF%90%E8%A1%8C-Ollama'"
-        
-      >
-        在容器外运行 Ollama
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BD%BF%E7%94%A8-OpenAI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BD%BF%E7%94%A8-OpenAI'"
-        
-      >
-        使用 OpenAI
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8C-Ollama' && 'hidden'"
-      >
-        <p>在容器中运行 Ollama 时，您应该有一个支持 CUDA 的 GPU。虽然您可以在没有支持 GPU 的容器中运行 Ollama，但性能可能不可接受。只有 Linux 和 Windows 11 支持容器的 GPU 访问。</p>
-<p>要在容器中运行 Ollama 并提供 GPU 访问：</p>
-<ol>
-<li>
-<p>安装先决条件。</p>
-<ul>
-<li>对于 Linux 上的 Docker Engine，安装 <a class="link" href="https://github.com/NVIDIA/nvidia-container-toolkit" rel="noopener">NVIDIA Container Toolkit</a>。</li>
-<li>对于 Windows 10/11 上的 Docker Desktop，安装最新的 <a class="link" href="https://www.nvidia.com/Download/index.aspx" rel="noopener">NVIDIA 驱动程序</a>，并确保您使用的是 
-    
-  
-  <a class="link" href="/desktop/features/wsl/#turn-on-docker-desktop-wsl-2">WSL2 后端</a></li>
-</ul>
-</li>
-<li>
-<p>在 <code>compose.yaml</code> 中添加 Ollama 服务和卷。以下是
-更新后的 <code>compose.yaml</code>：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'c2VydmljZXM6CiAgc2VydmVyOgogICAgYnVpbGQ6CiAgICAgIGNvbnRleHQ6IC4KICAgIHBvcnRzOgogICAgICAtIDgwMDA6ODAwMAogICAgZW52X2ZpbGU6CiAgICAgIC0gLmVudgogICAgZGVwZW5kc19vbjoKICAgICAgZGF0YWJhc2U6CiAgICAgICAgY29uZGl0aW9uOiBzZXJ2aWNlX2hlYWx0aHkKICBkYXRhYmFzZToKICAgIGltYWdlOiBuZW80ajo1LjExCiAgICBwb3J0czoKICAgICAgLSAiNzQ3NDo3NDc0IgogICAgICAtICI3Njg3Ojc2ODciCiAgICBlbnZpcm9ubWVudDoKICAgICAgLSBORU80Sl9BVVRIPSR7TkVPNEpfVVNFUk5BTUV9LyR7TkVPNEpfUEFTU1dPUkR9CiAgICBoZWFsdGhjaGVjazoKICAgICAgdGVzdDoKICAgICAgICBbCiAgICAgICAgICAiQ01ELVNIRUxMIiwKICAgICAgICAgICJ3Z2V0IC0tbm8tdmVyYm9zZSAtLXRyaWVzPTEgLS1zcGlkZXIgbG9jYWxob3N0Ojc0NzQgfHwgZXhpdCAxIiwKICAgICAgICBdCiAgICAgIGludGVydmFsOiA1cwogICAgICB0aW1lb3V0OiAzcwogICAgICByZXRyaWVzOiA1CiAgb2xsYW1hOgogICAgaW1hZ2U6IG9sbGFtYS9vbGxhbWE6bGF0ZXN0CiAgICBwb3J0czoKICAgICAgLSAiMTE0MzQ6MTE0MzQiCiAgICB2b2x1bWVzOgogICAgICAtIG9sbGFtYV92b2x1bWU6L3Jvb3QvLm9sbGFtYQogICAgZGVwbG95OgogICAgICByZXNvdXJjZXM6CiAgICAgICAgcmVzZXJ2YXRpb25zOgogICAgICAgICAgZGV2aWNlczoKICAgICAgICAgICAgLSBkcml2ZXI6IG52aWRpYQogICAgICAgICAgICAgIGNvdW50OiBhbGwKICAgICAgICAgICAgICBjYXBhYmlsaXRpZXM6IFtncHVdCnZvbHVtZXM6CiAgb2xsYW1hX3ZvbHVtZTo=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8000</span><span class="p">:</span><span class="m">8000</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">.env</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">service_healthy</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">neo4j:5.11</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7474:7474&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7687:7687&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">NEO4J_AUTH=${NEO4J_USERNAME}/${NEO4J_PASSWORD}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">[</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s2">&#34;CMD-SHELL&#34;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s2">&#34;wget --no-verbose --tries=1 --spider localhost:7474 || exit 1&#34;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="p">]</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l">5s</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l">3s</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">  </span><span class="nt">ollama</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">ollama/ollama:latest</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;11434:11434&#34;</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="l">ollama_volume:/root/.ollama</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">resources</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">reservations</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span><span class="nt">devices</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span>- <span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">nvidia</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">gpu]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">ollama_volume:</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+> 使用 OpenAI 需要 [OpenAI 账户](https://platform.openai.com/login)。OpenAI 是第三方托管服务，可能会产生费用。
 
+1. 在 `.env` 文件中更新 `LLM` 值为
+   `gpt-3.5`。
+2. 取消注释并更新 `.env` 文件中的 `OPENAI_API_KEY` 值
+   为您的 [OpenAI API 密钥](https://help.openai.com/en/articles/4936850-where-do-i-find-my-api-key)。
 
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>有关 Compose 指令的更多详细信息，请参阅 
-    
-  
-  <a class="link" href="/compose/how-tos/gpu-support/">使用 Docker Compose 启用 GPU 访问</a>。</p>
-    </div>
-  </blockquote>
-
-</li>
-<li>
-<p>在 <code>compose.yaml</code> 文件中添加 ollama-pull 服务。此服务使用
-<code>docker/genai:ollama-pull</code> 镜像，基于 GenAI Stack 的
-<a class="link" href="https://github.com/docker/genai-stack/blob/main/pull_model.Dockerfile" rel="noopener">pull_model.Dockerfile</a>。
-该服务将自动为您的 Ollama 容器拉取模型。以下是 <code>compose.yaml</code> 文件的更新部分：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'c2VydmljZXM6CiAgc2VydmVyOgogICAgYnVpbGQ6CiAgICAgIGNvbnRleHQ6IC4KICAgIHBvcnRzOgogICAgICAtIDgwMDA6ODAwMAogICAgZW52X2ZpbGU6CiAgICAgIC0gLmVudgogICAgZGVwZW5kc19vbjoKICAgICAgZGF0YWJhc2U6CiAgICAgICAgY29uZGl0aW9uOiBzZXJ2aWNlX2hlYWx0aHkKICAgICAgb2xsYW1hLXB1bGw6CiAgICAgICAgY29uZGl0aW9uOiBzZXJ2aWNlX2NvbXBsZXRlZF9zdWNjZXNzZnVsbHkKICBvbGxhbWEtcHVsbDoKICAgIGltYWdlOiBkb2NrZXIvZ2VuYWk6b2xsYW1hLXB1bGwKICAgIGVudl9maWxlOgogICAgICAtIC5lbnYKICAjIC4uLg==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8000</span><span class="p">:</span><span class="m">8000</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">.env</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">service_healthy</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">ollama-pull</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">service_completed_successfully</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">  </span><span class="nt">ollama-pull</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker/genai:ollama-pull</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="l">.env</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># ...</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-</ol>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E5%9C%A8%E5%AE%B9%E5%99%A8%E5%A4%96%E8%BF%90%E8%A1%8C-Ollama' && 'hidden'"
-      >
-        <p>要在容器外运行 Ollama：</p>
-<ol>
-<li><a class="link" href="https://github.com/jmorganca/ollama" rel="noopener">安装</a> 并在您的主机上运行 Ollama。</li>
-<li>在 <code>.env</code> 文件中更新 <code>OLLAMA_BASE_URL</code> 值为
-<code>http://host.docker.internal:11434</code>。</li>
-<li>使用以下命令将模型拉取到 Ollama。
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBvbGxhbWEgcHVsbCBsbGFtYTI=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ollama pull llama2
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-</ol>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BD%BF%E7%94%A8-OpenAI' && 'hidden'"
-      >
-        
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>使用 OpenAI 需要 <a class="link" href="https://platform.openai.com/login" rel="noopener">OpenAI 账户</a>。OpenAI 是第三方托管服务，可能会产生费用。</p>
-    </div>
-  </blockquote>
-
-<ol>
-<li>在 <code>.env</code> 文件中更新 <code>LLM</code> 值为
-<code>gpt-3.5</code>。</li>
-<li>取消注释并更新 <code>.env</code> 文件中的 <code>OPENAI_API_KEY</code> 值
-为您的 <a class="link" href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-api-key" rel="noopener">OpenAI API 密钥</a>。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## 运行您的 GenAI 应用程序

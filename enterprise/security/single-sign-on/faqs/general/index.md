@@ -1,4 +1,23 @@
-# 通用 SSO 常见问题
+---
+title: 通用 SSO 常见问题
+url: /enterprise/security/single-sign-on/faqs/general/
+parent:
+  title: 单点登录概述
+  url: /enterprise/security/single-sign-on/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 企业级安全
+    url: /enterprise/security/
+  - title: 单点登录概述
+    url: /enterprise/security/single-sign-on/
+  - title: 通用 SSO 常见问题
+    url: /enterprise/security/single-sign-on/faqs/general/
+prev:
+  title: SSO 域常见问题
+  url: /enterprise/security/single-sign-on/faqs/domain-faqs/
+---
+
 
 ## Docker 支持哪些 SSO 流程？
 

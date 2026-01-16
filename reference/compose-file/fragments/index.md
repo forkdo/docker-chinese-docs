@@ -1,4 +1,24 @@
-# 片段
+---
+title: 片段
+url: /reference/compose-file/fragments/
+parent:
+  title: Compose 文件参考
+  url: /reference/compose-file/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Compose 文件参考
+    url: /reference/compose-file/
+  - title: 片段
+    url: /reference/compose-file/fragments/
+next:
+  title: Secrets
+  url: /reference/compose-file/secrets/
+prev:
+  title: 扩展
+  url: /reference/compose-file/extension/
+---
+
 
 
 

@@ -1,4 +1,23 @@
-# Remote Bake file definition
+---
+title: Remote Bake file definition
+url: /build/bake/remote-definition/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Remote Bake file definition
+    url: /build/bake/remote-definition/
+next:
+  title: Overriding configurations
+  url: /build/bake/overrides/
+---
+
 
 You can build Bake files directly from a remote Git repository or HTTPS URL:
 

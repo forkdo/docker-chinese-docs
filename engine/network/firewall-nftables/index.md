@@ -1,4 +1,26 @@
-# Docker 与 nftables
+---
+title: Docker 与 nftables
+url: /engine/network/firewall-nftables/
+parent:
+  title: 网络概述
+  url: /engine/network/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 网络概述
+    url: /engine/network/
+  - title: Docker 与 nftables
+    url: /engine/network/firewall-nftables/
+next:
+  title: Docker 与 iptables
+  url: /engine/network/firewall-iptables/
+prev:
+  title: 数据包过滤与防火墙
+  url: /engine/network/packet-filtering-firewalls/
+---
+
 
 > [!WARNING]
 >

@@ -1,4 +1,28 @@
-# 内容信任的委托
+---
+title: 内容信任的委托
+url: /engine/security/trust/trust_delegation/
+parent:
+  title: Docker 中的内容信任
+  url: /engine/security/trust/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 安全
+    url: /engine/security/
+  - title: Docker 中的内容信任
+    url: /engine/security/trust/
+  - title: 内容信任的委托
+    url: /engine/security/trust/trust_delegation/
+next:
+  title: 使用内容信任实现自动化
+  url: /engine/security/trust/trust_automation/
+prev:
+  title: 在内容信任沙盒中进行操作
+  url: /engine/security/trust/trust_sandbox/
+---
+
 
 Docker 内容信任 (DCT) 中的委托（Delegations）允许你控制谁可以以及谁不可以签署镜像标签。委托将拥有一对私钥和公钥。一个委托可以包含多对密钥和贡献者，以便 a) 允许多个用户成为委托的一部分，以及 b) 支持密钥轮换。
 

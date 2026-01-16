@@ -1,4 +1,24 @@
-# 优化 Docker Offload 使用
+---
+title: 优化 Docker Offload 使用
+url: /offload/optimize/
+parent:
+  title: Docker Offload
+  url: /offload/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Offload
+    url: /offload/
+  - title: 优化 Docker Offload 使用
+    url: /offload/optimize/
+next:
+  title: Docker Offload 使用与计费
+  url: /offload/usage/
+prev:
+  title: 故障排除 Docker Offload
+  url: /offload/troubleshoot/
+---
+
 
 Docker Offload 会在远程构建和运行您的容器，而不是在您调用命令的机器上。这意味着文件必须通过网络从您的本地系统传输到云端。
 

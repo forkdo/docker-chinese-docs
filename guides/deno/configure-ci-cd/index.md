@@ -1,4 +1,24 @@
-# 为您的 Deno 应用程序配置 CI/CD
+---
+title: 为您的 Deno 应用程序配置 CI/CD
+url: /guides/deno/configure-ci-cd/
+parent:
+  title: Deno 语言特定指南
+  url: /guides/deno/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Deno 语言特定指南
+    url: /guides/deno/
+  - title: 为您的 Deno 应用程序配置 CI/CD
+    url: /guides/deno/configure-ci-cd/
+next:
+  title: 在容器中进行 Deno 开发
+  url: /guides/deno/develop/
+prev:
+  title: 测试你的 Deno 部署
+  url: /guides/deno/deploy/
+---
+
 
 ## 先决条件
 

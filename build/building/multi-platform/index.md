@@ -1,4 +1,24 @@
-# Multi-platform builds
+---
+title: Multi-platform builds
+url: /build/building/multi-platform/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Multi-platform builds
+    url: /build/building/multi-platform/
+next:
+  title: Build secrets
+  url: /build/building/secrets/
+prev:
+  title: Export binaries
+  url: /build/building/export/
+---
+
 
 A multi-platform build refers to a single build invocation that targets
 multiple different operating system or CPU architecture combinations. When
@@ -60,150 +80,38 @@ to load the multi-platform images you build into your Docker Engine image
 store. But you can push them to a container registry directly with `docker
 build --push`.
 
+**containerd image store**
 
 
 
+The steps for enabling the containerd image store depends on whether you're
+using Docker Desktop or Docker Engine standalone:
+
+- If you're using Docker Desktop, enable the containerd image store in the
+  [Docker Desktop settings](/manuals/desktop/features/containerd.md).
+
+- If you're using Docker Engine standalone, enable the containerd image store
+  using the [daemon configuration file](/manuals/engine/storage/containerd.md).
+
+**Custom builder**
 
 
 
+To create a custom builder, use the `docker buildx create` command to create a
+builder that uses the `docker-container` driver.
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'containerd-image-store' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'containerd-image-store' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'containerd-image-store'"
-        
-      >
-        containerd image store
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Custom-builder' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Custom-builder'"
-        
-      >
-        Custom builder
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'containerd-image-store' && 'hidden'"
-      >
-        <p>The steps for enabling the containerd image store depends on whether you're
-using Docker Desktop or Docker Engine standalone:</p>
-<ul>
-<li>
-<p>If you're using Docker Desktop, enable the containerd image store in the
+```console
+$ docker buildx create \
+  --name container-builder \
+  --driver docker-container \
+  --bootstrap --use
+```
 
-    
-  
-  <a class="link" href="/desktop/features/containerd/">Docker Desktop settings</a>.</p>
-</li>
-<li>
-<p>If you're using Docker Engine standalone, enable the containerd image store
-using the 
-    
-  
-  <a class="link" href="/engine/storage/containerd/">daemon configuration file</a>.</p>
-</li>
-</ul>
+> [!NOTE]
+> Builds with the `docker-container` driver aren't automatically loaded to your
+> Docker Engine image store. For more information, see [Build
+> drivers](/manuals/build/builders/drivers/_index.md).
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Custom-builder' && 'hidden'"
-      >
-        <p>To create a custom builder, use the <code>docker buildx create</code> command to create a
-builder that uses the <code>docker-container</code> driver.</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgYnVpbGR4IGNyZWF0ZSBcCiAgLS1uYW1lIGNvbnRhaW5lci1idWlsZGVyIFwKICAtLWRyaXZlciBkb2NrZXItY29udGFpbmVyIFwKICAtLWJvb3RzdHJhcCAtLXVzZQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker buildx create <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name container-builder \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --driver docker-container \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --bootstrap --use
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>Builds with the <code>docker-container</code> driver aren't automatically loaded to your
-Docker Engine image store. For more information, see 
-    
-  
-  <a class="link" href="/build/builders/drivers/">Build
-drivers</a>.</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-  </div>
-</div>
 
 
 If you're using Docker Engine standalone and you need to build multi-platform
@@ -523,221 +431,61 @@ Steps:
      `TARGETOS` and `TARGETARCH`. The Go compiler uses these variables to do
      cross-compilation.
 
+   **Updated Dockerfile**
+
+
+
+   ```dockerfile
+   # syntax=docker/dockerfile:1
+   FROM --platform=$BUILDPLATFORM golang:alpine AS build
+   ARG TARGETOS
+   ARG TARGETARCH
+   WORKDIR /app
+   ADD https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .
+   RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o server .
    
+   FROM alpine
+   COPY --from=build /app/server /server
+   ENTRYPOINT ["/server"]
+   ```
+
+   **Old Dockerfile**
 
 
 
+   ```dockerfile
+   # syntax=docker/dockerfile:1
+   FROM golang:alpine AS build
+   WORKDIR /app
+   ADD https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .
+   RUN go build -o server .
+   
+   FROM alpine
+   COPY --from=build /app/server /server
+   ENTRYPOINT ["/server"]
+   ```
+
+   **Diff**
 
 
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Updated-Dockerfile' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Updated-Dockerfile' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Updated-Dockerfile'"
-        
-      >
-        Updated Dockerfile
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Old-Dockerfile' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Old-Dockerfile'"
-        
-      >
-        Old Dockerfile
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Diff' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Diff'"
-        
-      >
-        Diff
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Updated-Dockerfile' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IyBzeW50YXg9ZG9ja2VyL2RvY2tlcmZpbGU6MQpGUk9NIC0tcGxhdGZvcm09JEJVSUxEUExBVEZPUk0gZ29sYW5nOmFscGluZSBBUyBidWlsZApBUkcgVEFSR0VUT1MKQVJHIFRBUkdFVEFSQ0gKV09SS0RJUiAvYXBwCkFERCBodHRwczovL2dpdGh1Yi5jb20vZHZka3NuL2J1aWxkbWUuZ2l0I2ViNjI3OWUwYWQ4YTEwMDAzNzE4NjU2YzY4Njc1MzliZDk0MjZhZDggLgpSVU4gR09PUz0ke1RBUkdFVE9TfSBHT0FSQ0g9JHtUQVJHRVRBUkNIfSBnbyBidWlsZCAtbyBzZXJ2ZXIgLgoKRlJPTSBhbHBpbmUKQ09QWSAtLWZyb209YnVpbGQgL2FwcC9zZXJ2ZXIgL3NlcnZlcgpFTlRSWVBPSU5UIFsiL3NlcnZlciJd', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=$BUILDPLATFORM</span> golang:alpine AS build<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> TARGETOS<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> TARGETARCH<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span> https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> <span class="nv">GOOS</span><span class="o">=</span><span class="si">${</span><span class="nv">TARGETOS</span><span class="si">}</span> <span class="nv">GOARCH</span><span class="o">=</span><span class="si">${</span><span class="nv">TARGETARCH</span><span class="si">}</span> go build -o server .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build /app/server /server<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/server&#34;</span><span class="p">]</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+   ```diff
+   # syntax=docker/dockerfile:1
+   -FROM golang:alpine AS build
+   +FROM --platform=$BUILDPLATFORM golang:alpine AS build
+   +ARG TARGETOS
+   +ARG TARGETARCH
+   WORKDIR /app
+   ADD https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .
+   -RUN go build -o server .
+   +RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o server .
+   
+   FROM alpine
+   COPY --from=build /app/server /server
+   ENTRYPOINT ["/server"]
+   ```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Old-Dockerfile' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IyBzeW50YXg9ZG9ja2VyL2RvY2tlcmZpbGU6MQpGUk9NIGdvbGFuZzphbHBpbmUgQVMgYnVpbGQKV09SS0RJUiAvYXBwCkFERCBodHRwczovL2dpdGh1Yi5jb20vZHZka3NuL2J1aWxkbWUuZ2l0I2ViNjI3OWUwYWQ4YTEwMDAzNzE4NjU2YzY4Njc1MzliZDk0MjZhZDggLgpSVU4gZ28gYnVpbGQgLW8gc2VydmVyIC4KCkZST00gYWxwaW5lCkNPUFkgLS1mcm9tPWJ1aWxkIC9hcHAvc2VydmVyIC9zZXJ2ZXIKRU5UUllQT0lOVCBbIi9zZXJ2ZXIiXQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">golang:alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span> https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> go build -o server .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build /app/server /server<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/server&#34;</span><span class="p">]</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Diff' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IyBzeW50YXg9ZG9ja2VyL2RvY2tlcmZpbGU6MQotRlJPTSBnb2xhbmc6YWxwaW5lIEFTIGJ1aWxkCitGUk9NIC0tcGxhdGZvcm09JEJVSUxEUExBVEZPUk0gZ29sYW5nOmFscGluZSBBUyBidWlsZAorQVJHIFRBUkdFVE9TCitBUkcgVEFSR0VUQVJDSApXT1JLRElSIC9hcHAKQUREIGh0dHBzOi8vZ2l0aHViLmNvbS9kdmRrc24vYnVpbGRtZS5naXQjZWI2Mjc5ZTBhZDhhMTAwMDM3MTg2NTZjNjg2NzUzOWJkOTQyNmFkOCAuCi1SVU4gZ28gYnVpbGQgLW8gc2VydmVyIC4KK1JVTiBHT09TPSR7VEFSR0VUT1N9IEdPQVJDSD0ke1RBUkdFVEFSQ0h9IGdvIGJ1aWxkIC1vIHNlcnZlciAuCgpGUk9NIGFscGluZQpDT1BZIC0tZnJvbT1idWlsZCAvYXBwL3NlcnZlciAvc2VydmVyCkVOVFJZUE9JTlQgWyIvc2VydmVyIl0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"># syntax=docker/dockerfile:1
-</span></span><span class="line"><span class="cl"><span class="gd">-FROM golang:alpine AS build
-</span></span></span><span class="line"><span class="cl"><span class="gi">+FROM --platform=$BUILDPLATFORM golang:alpine AS build
-</span></span></span><span class="line"><span class="cl"><span class="gi">+ARG TARGETOS
-</span></span></span><span class="line"><span class="cl"><span class="gi">+ARG TARGETARCH
-</span></span></span><span class="line"><span class="cl">WORKDIR /app
-</span></span><span class="line"><span class="cl">ADD https://github.com/dvdksn/buildme.git#eb6279e0ad8a10003718656c6867539bd9426ad8 .
-</span></span><span class="line"><span class="cl"><span class="gd">-RUN go build -o server .
-</span></span></span><span class="line"><span class="cl"><span class="gi">+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o server .
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">FROM alpine
-</span></span><span class="line"><span class="cl">COPY --from=build /app/server /server
-</span></span><span class="line"><span class="cl">ENTRYPOINT [&#34;/server&#34;]
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
+   
 
 4. Build the image for `linux/amd64` and `linux/arm64`:
 

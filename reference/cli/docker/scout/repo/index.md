@@ -1,4 +1,27 @@
-# docker scout repo
+---
+title: docker scout repo
+url: /reference/cli/docker/scout/repo/
+parent:
+  title: docker scout
+  url: /reference/cli/docker/scout/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker scout
+    url: /reference/cli/docker/scout/
+  - title: docker scout repo
+    url: /reference/cli/docker/scout/repo/
+---
+
+**Description:** Commands to list, enable, and disable Docker Scout on repositories
+
+
+
+
 
 <!--
 此页面内容自动从 Docker 的源代码生成。如果您想修改此处显示的文本，
@@ -7,9 +30,28 @@
 https://github.com/docker/scout-cli
 -->
 
-- [docker scout repo disable](/reference/cli/docker/scout/repo/disable/)
 
-- [docker scout repo enable](/reference/cli/docker/scout/repo/enable/)
 
-- [docker scout repo list](/reference/cli/docker/scout/repo/list/)
+
+
+
+
+
+## Description
+
+Commands to list, enable, and disable Docker Scout on repositories
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker scout repo disable`](/reference/cli/docker/scout/repo/disable/) | Disable Docker Scout |
+| [`docker scout repo enable`](/reference/cli/docker/scout/repo/enable/) | Enable Docker Scout |
+| [`docker scout repo list`](/reference/cli/docker/scout/repo/list/) | List Docker Scout repositories |
+
 

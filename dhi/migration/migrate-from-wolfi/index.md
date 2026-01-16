@@ -1,4 +1,23 @@
-# 从 Wolfi 迁移
+---
+title: 从 Wolfi 迁移
+url: /dhi/migration/migrate-from-wolfi/
+parent:
+  title: 迁移
+  url: /dhi/migration/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 迁移
+    url: /dhi/migration/
+  - title: 从 Wolfi 迁移
+    url: /dhi/migration/migrate-from-wolfi/
+next:
+  title: 从 Ubuntu 迁移
+  url: /dhi/migration/migrate-from-ubuntu/
+---
+
 
 本指南帮助您从基于 Wolfi 的镜像迁移到 Docker 加固镜像 (DHI)。通常来说，迁移过程非常简单，因为 Wolfi 与 Alpine 类似，而 DHI 提供基于 Alpine 的加固镜像。
 

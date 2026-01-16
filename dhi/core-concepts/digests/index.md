@@ -1,4 +1,26 @@
-# 镜像摘要
+---
+title: 镜像摘要
+url: /dhi/core-concepts/digests/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 镜像摘要
+    url: /dhi/core-concepts/digests/
+next:
+  title: 软件供应链安全
+  url: /dhi/core-concepts/sscs/
+prev:
+  title: 镜像溯源
+  url: /dhi/core-concepts/provenance/
+---
+
 
 ## 什么是 Docker 镜像摘要？
 

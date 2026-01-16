@@ -1,7 +1,25 @@
-# 构建、标记和发布镜像
+---
+title: 构建、标记和发布镜像
+url: /get-started/docker-concepts/building-images/build-tag-and-publish-an-image/
+parent:
+  title: 构建镜像
+  url: /get-started/docker-concepts/building-images/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 构建镜像
+    url: /get-started/docker-concepts/building-images/
+  - title: 构建、标记和发布镜像
+    url: /get-started/docker-concepts/building-images/build-tag-and-publish-an-image/
+next:
+  title: 编写 Dockerfile
+  url: /get-started/docker-concepts/building-images/writing-a-dockerfile/
+prev:
+  title: 使用构建缓存
+  url: /get-started/docker-concepts/building-images/using-the-build-cache/
+---
 
-<div id="youtube-player-chiiGLlYRlY" data-video-id="chiiGLlYRlY" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 解释
@@ -112,104 +130,25 @@ docker push my-username/my-image
 
    如果您有 Git，可以克隆示例应用程序的仓库。否则，您可以下载示例应用程序。选择以下选项之一。
 
+   **使用 git 克隆**
+
+
+
+   在终端中使用以下命令克隆示例应用程序仓库。
+
+   ```console
+   $ git clone https://github.com/docker/getting-started-todo-app
+   ```
+   **下载**
+
+
+
+   下载源代码并解压。
+
+   [下载源代码](https://github.com/docker/getting-started-todo-app/raw/cd61f824da7a614a8298db503eed6630eeee33a3/app.zip)
+
+
    
-
-
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%BD%BF%E7%94%A8-git-%E5%85%8B%E9%9A%86' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BD%BF%E7%94%A8-git-%E5%85%8B%E9%9A%86' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BD%BF%E7%94%A8-git-%E5%85%8B%E9%9A%86'"
-        
-      >
-        使用 git 克隆
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%B8%8B%E8%BD%BD' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%B8%8B%E8%BD%BD'"
-        
-      >
-        下载
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BD%BF%E7%94%A8-git-%E5%85%8B%E9%9A%86' && 'hidden'"
-      >
-        <p>在终端中使用以下命令克隆示例应用程序仓库。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL2RvY2tlci9nZXR0aW5nLXN0YXJ0ZWQtdG9kby1hcHA=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> git clone https://github.com/docker/getting-started-todo-app
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%B8%8B%E8%BD%BD' && 'hidden'"
-      >
-        <p>下载源代码并解压。</p>
-<p><a class="button not-prose" href="https://github.com/docker/getting-started-todo-app/raw/cd61f824da7a614a8298db503eed6630eeee33a3/app.zip">下载源代码</a></p>
-
-      </div>
-    
-  </div>
-</div>
-
 
 
 2. [下载并安装](https://www.docker.com/products/docker-desktop/) Docker Desktop。
@@ -300,6 +239,5 @@ docker push my-username/my-image
 
 现在您已经了解了如何构建和发布镜像，是时候学习如何使用 Docker 构建缓存来加速构建过程了。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/building-images/using-the-build-cache/">使用构建缓存</a>
+[使用构建缓存](using-the-build-cache)
 

@@ -1,4 +1,26 @@
-# Docker 的 AppArmor 安全配置文件
+---
+title: Docker 的 AppArmor 安全配置文件
+url: /engine/security/apparmor/
+parent:
+  title: Docker Engine 安全
+  url: /engine/security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 安全
+    url: /engine/security/
+  - title: Docker 的 AppArmor 安全配置文件
+    url: /engine/security/apparmor/
+next:
+  title: Docker 安全非事件
+  url: /engine/security/non-events/
+prev:
+  title: Docker 的 Seccomp 安全配置文件
+  url: /engine/security/seccomp/
+---
+
 
 AppArmor (Application Armor) 是一种 Linux 安全模块，用于保护操作系统及其应用程序免受安全威胁。使用时，系统管理员需要将 AppArmor 安全配置文件与每个程序关联。Docker 期望找到已加载并强制执行的 AppArmor 策略。
 

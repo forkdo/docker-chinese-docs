@@ -1,4 +1,24 @@
-# 管理 Docker 账户
+---
+title: 管理 Docker 账户
+url: /accounts/manage-account/
+parent:
+  title: Docker 账户
+  url: /accounts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 账户
+    url: /accounts/
+  - title: 管理 Docker 账户
+    url: /accounts/manage-account/
+next:
+  title: Docker 帐户常见问题
+  url: /accounts/general-faqs/
+prev:
+  title: 停用 Docker 账户
+  url: /accounts/deactivate-user-account/
+---
+
 
 您可以使用 Docker Home 集中管理您的 Docker 账户，包括管理和安全设置。
 

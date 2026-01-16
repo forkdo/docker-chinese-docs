@@ -1,22 +1,36 @@
-# 动态 MCP
+---
+title: 动态 MCP
+url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
+parent:
+  title: Docker MCP Catalog and Toolkit
+  url: /ai/mcp-catalog-and-toolkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker MCP Catalog and Toolkit
+    url: /ai/mcp-catalog-and-toolkit/
+  - title: 动态 MCP
+    url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
+next:
+  title: Docker MCP Toolkit
+  url: /ai/mcp-catalog-and-toolkit/toolkit/
+prev:
+  title: MCP Gateway
+  url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
+---
+
 
 Dynamic MCP 使 AI 代理能够在对话过程中按需发现并添加 MCP 服务器，无需手动配置。在启动代理会话之前，无需预先配置每个 MCP 服务器，客户端可以搜索 [MCP 目录](/manuals/ai/mcp-catalog-and-toolkit/catalog.md) 并根据需要添加服务器。
 
 当您将 MCP 客户端连接到 [MCP 工具包](/manuals/ai/mcp-catalog-and-toolkit/toolkit.md) 时，此功能会自动启用。网关提供了一组基础工具，供代理在运行时用于发现和管理服务器。
 
-<div class="px-4 border-l-2 border-l-magenta-light dark:border-l-magenta-dark">
-  <p class="not-prose flex gap-2 items-center text-magenta-light dark:text-magenta-dark">
-    <span class="icon-svg pb-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg>
-    </span>
-    <strong>Experimental</strong>
-  </p>
-  
+> **Experimental**
+>
+> 
 
 Dynamic MCP 是早期开发阶段的实验性功能。欢迎您尝试并探索其功能，但您可能会遇到意外行为或限制。欢迎通过 [GitHub 问题](https://github.com/docker/mcp-gateway/issues) 提交错误报告，以及通过 [GitHub 讨论](https://github.com/docker/mcp-gateway/discussions) 提出一般性问题和功能请求。
 
 
-</div>
 
 
 ## 工作原理

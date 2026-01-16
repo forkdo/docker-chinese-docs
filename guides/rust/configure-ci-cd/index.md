@@ -1,4 +1,24 @@
-# 为您的 Rust 应用程序配置 CI/CD
+---
+title: 为您的 Rust 应用程序配置 CI/CD
+url: /guides/rust/configure-ci-cd/
+parent:
+  title: Rust 语言专属指南
+  url: /guides/rust/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Rust 语言专属指南
+    url: /guides/rust/
+  - title: 为您的 Rust 应用程序配置 CI/CD
+    url: /guides/rust/configure-ci-cd/
+next:
+  title: 开发你的 Rust 应用程序
+  url: /guides/rust/develop/
+prev:
+  title: 测试你的 Rust 部署
+  url: /guides/rust/deploy/
+---
+
 
 ## 先决条件
 

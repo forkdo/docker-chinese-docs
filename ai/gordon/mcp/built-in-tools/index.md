@@ -1,4 +1,23 @@
-# Gordon 中的内置工具
+---
+title: Gordon 中的内置工具
+url: /ai/gordon/mcp/built-in-tools/
+parent:
+  title: Model Context Protocol (MCP)
+  url: /ai/gordon/mcp/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Ask Gordon
+    url: /ai/gordon/
+  - title: Model Context Protocol (MCP)
+    url: /ai/gordon/mcp/
+  - title: Gordon 中的内置工具
+    url: /ai/gordon/mcp/built-in-tools/
+prev:
+  title: 使用 YAML 配置 MCP 服务器
+  url: /ai/gordon/mcp/yaml/
+---
+
 
 Gordon 包含一个集成的工具箱，可让您访问系统工具和功能。这些工具扩展了 Gordon 的功能，使您能够与 Docker Engine、Kubernetes、Docker Scout 安全扫描以及其他开发人员实用程序进行交互。本文档描述了可用的工具、如何配置它们以及使用模式。
 

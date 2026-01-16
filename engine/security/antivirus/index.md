@@ -1,4 +1,23 @@
-# 杀毒软件与 Docker
+---
+title: 杀毒软件与 Docker
+url: /engine/security/antivirus/
+parent:
+  title: Docker Engine 安全
+  url: /engine/security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 安全
+    url: /engine/security/
+  - title: 杀毒软件与 Docker
+    url: /engine/security/antivirus/
+next:
+  title: 保护 Docker 守护进程套接字
+  url: /engine/security/protect-access/
+---
+
 
 当杀毒软件扫描 Docker 使用的文件时，这些文件可能会以某种方式被锁定，从而导致 Docker 命令挂起。
 

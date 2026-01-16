@@ -1,4 +1,26 @@
-# 管理 swarm 服务网络
+---
+title: 管理 swarm 服务网络
+url: /engine/swarm/networking/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 管理 swarm 服务网络
+    url: /engine/swarm/networking/
+next:
+  title: 管理 swarm 中的节点
+  url: /engine/swarm/manage-nodes/
+prev:
+  title: 管理和维护 Docker Engine 集群
+  url: /engine/swarm/admin_guide/
+---
+
 
 本页面介绍 swarm 服务的网络。
 

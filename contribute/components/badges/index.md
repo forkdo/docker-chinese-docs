@@ -1,65 +1,41 @@
-# 徽章
+---
+title: 徽章
+url: /contribute/components/badges/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: 徽章
+    url: /contribute/components/badges/
+next:
+  title: 图标
+  url: /contribute/components/icons/
+prev:
+  title: 折叠面板
+  url: /contribute/components/accordions/
+---
+
 
 ### 示例
 
+\[蓝色徽章\]
 
+\[琥珀色徽章\]
 
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >蓝色徽章
-</span>
+\[红色徽章\]
 
+\[绿色徽章\]
 
+\[紫色徽章\]
 
-
-<span
-  class="not-prose bg-amber-500 dark:bg-amber-400 rounded-sm px-1 text-xs text-white"
-  >琥珀色徽章
-</span>
-
-
-
-
-<span
-  class="not-prose bg-red-500 dark:bg-red-400 rounded-sm px-1 text-xs text-white"
-  >红色徽章
-</span>
-
-
-
-
-<span
-  class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >绿色徽章
-</span>
-
-
-
-
-<span
-  class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >紫色徽章
-</span>
-
-
-
-
-<span
-  class="not-prose bg-gray-500 dark:bg-gray-400 rounded-sm px-1 text-xs text-white"
-  >灰色徽章
-</span>
-
+\[灰色徽章\]
 
 
 您还可以将徽章设置为链接。
 
-[
-
-<span
-  class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white"
-  >带链接的徽章
-</span>
-
+[\[带链接的徽章\]
 ](../_index.md)
 
 ### 使用指南

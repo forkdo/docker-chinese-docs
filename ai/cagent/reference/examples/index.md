@@ -1,4 +1,21 @@
-# 示例
+---
+title: 示例
+url: /ai/cagent/reference/examples/
+parent:
+  title: cagent
+  url: /ai/cagent/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+  - title: 示例
+    url: /ai/cagent/reference/examples/
+next:
+  title: CLI 参考
+  url: /ai/cagent/reference/cli/
+---
+
 
 从以下 agent 示例中获取灵感。
 更多示例请参阅 [cagent GitHub 仓库](https://github.com/docker/cagent/tree/main/examples)。

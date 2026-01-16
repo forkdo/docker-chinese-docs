@@ -1,4 +1,21 @@
-# 测试你的 Rust 部署
+---
+title: 测试你的 Rust 部署
+url: /guides/rust/deploy/
+parent:
+  title: Rust 语言专属指南
+  url: /guides/rust/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Rust 语言专属指南
+    url: /guides/rust/
+  - title: 测试你的 Rust 部署
+    url: /guides/rust/deploy/
+next:
+  title: 为您的 Rust 应用程序配置 CI/CD
+  url: /guides/rust/configure-ci-cd/
+---
+
 
 ## 先决条件
 

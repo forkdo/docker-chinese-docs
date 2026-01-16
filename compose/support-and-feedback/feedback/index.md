@@ -1,4 +1,21 @@
-# 提供反馈
+---
+title: 提供反馈
+url: /compose/support-and-feedback/feedback/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 提供反馈
+    url: /compose/support-and-feedback/feedback/
+next:
+  title: Docker Compose 常见问题解答
+  url: /compose/support-and-feedback/faq/
+---
+
 
 您可以通过多种方式为 Docker Compose 提供反馈。
 

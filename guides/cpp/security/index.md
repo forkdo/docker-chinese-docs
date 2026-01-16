@@ -1,4 +1,21 @@
-# C++ Docker 镜像的供应链安全
+---
+title: C++ Docker 镜像的供应链安全
+url: /guides/cpp/security/
+parent:
+  title: C++ 语言专用指南
+  url: /guides/cpp/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: C++ 语言专用指南
+    url: /guides/cpp/
+  - title: C++ Docker 镜像的供应链安全
+    url: /guides/cpp/security/
+next:
+  title: 测试你的 C++ 部署
+  url: /guides/cpp/deploy/
+---
+
 
 ## 先决条件
 

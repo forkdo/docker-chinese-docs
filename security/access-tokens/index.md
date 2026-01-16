@@ -1,4 +1,21 @@
-# 个人访问令牌
+---
+title: 个人访问令牌
+url: /security/access-tokens/
+parent:
+  title: 开发者安全
+  url: /security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 开发者安全
+    url: /security/
+  - title: 个人访问令牌
+    url: /security/access-tokens/
+prev:
+  title: Docker 安全公告
+  url: /security/security-announcements/
+---
+
 
 个人访问令牌 (PAT) 为 Docker CLI 认证提供了一种比密码更安全的替代方案。使用 PAT 对自动化系统、CI/CD 流水线以及开发工具进行认证，而无需暴露您的 Docker Hub 密码。
 

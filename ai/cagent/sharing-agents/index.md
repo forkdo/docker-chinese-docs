@@ -1,4 +1,24 @@
-# 共享代理
+---
+title: 共享代理
+url: /ai/cagent/sharing-agents/
+parent:
+  title: cagent
+  url: /ai/cagent/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+  - title: 共享代理
+    url: /ai/cagent/sharing-agents/
+next:
+  title: 最佳实践
+  url: /ai/cagent/best-practices/
+prev:
+  title: RAG
+  url: /ai/cagent/rag/
+---
+
 
 将你的代理推送到仓库中，并通过名称共享。你的队友可以引用 `agentcatalog/security-expert`，而不需要到处复制 YAML 文件，也不需要询问你代理配置的位置。
 

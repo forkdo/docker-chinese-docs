@@ -1,4 +1,27 @@
-# 将 Docker Scout 与环境集成
+---
+title: 将 Docker Scout 与环境集成
+url: /scout/integrations/environment/
+parent:
+  title: 将 Docker Scout 与其他系统集成
+  url: /scout/integrations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 将 Docker Scout 与其他系统集成
+    url: /scout/integrations/
+  - title: 将 Docker Scout 与环境集成
+    url: /scout/integrations/environment/
+children:
+  - title: 将 Docker Scout 与 Sysdig 集成
+    url: /scout/integrations/environment/sysdig/
+    description: 使用 Sysdig 将您的运行时环境与 Docker Scout 集成
+  - title: 通过 CLI 进行通用环境集成
+    url: /scout/integrations/environment/cli/
+    description: 使用 CLI 客户端将您的运行时环境与 Docker Scout 集成
+---
+
 
 您可以将 Docker Scout 与您的运行时环境集成，并获取正在运行的工作负载的洞察信息。这为您提供了已部署工件安全状态的实时视图。
 
@@ -78,8 +101,3 @@ docker/scout-demo-service:main@sha256:ef08dca54c4f371e7ea090914f503982e890ec81d2
 ### 不匹配的镜像标签
 
 当您在 **Images** 选项卡上选择一个环境时，列表中的标签代表用于部署镜像的标签。标签是可变的，这意味着您可以更改标签引用的镜像摘要。如果 Docker Scout 检测到某个标签引用了过时的摘要，则会在镜像名称旁边显示一个警告图标。
-
-- [将 Docker Scout 与 Sysdig 集成](/scout/integrations/environment/sysdig/)
-
-- [通过 CLI 进行通用环境集成](/scout/integrations/environment/cli/)
-

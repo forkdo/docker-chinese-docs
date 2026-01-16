@@ -1,4 +1,21 @@
-# Docker Hardened Images 快速开始
+---
+title: Docker Hardened Images 快速开始
+url: /dhi/get-started/
+parent:
+  title: Docker Hardened Images
+  url: /dhi/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: Docker Hardened Images 快速开始
+    url: /dhi/get-started/
+prev:
+  title: Docker Hardened Images 功能
+  url: /dhi/features/
+---
+
 
 本指南将通过一个真实示例，向你展示如何从零开始运行 Docker Hardened Image（DHI）。最后，你将对比 DHI 与标准 Docker 镜像的差异，从而更好地理解它们的区别。虽然示例使用了特定镜像，但这些步骤适用于任何 DHI。
 

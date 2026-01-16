@@ -1,4 +1,22 @@
-# 格式指南
+---
+title: 格式指南
+url: /contribute/style/formatting/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: 格式指南
+    url: /contribute/style/formatting/
+next:
+  title: 语法和文体
+  url: /contribute/style/grammar/
+prev:
+  title: 推荐词汇表
+  url: /contribute/style/recommended-words/
+---
+
 
 ## 标题和子标题
 

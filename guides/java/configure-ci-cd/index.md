@@ -1,4 +1,24 @@
-# 为 Java 应用程序配置 CI/CD
+---
+title: 为 Java 应用程序配置 CI/CD
+url: /guides/java/configure-ci-cd/
+parent:
+  title: Java 语言专属指南
+  url: /guides/java/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Java 语言专属指南
+    url: /guides/java/
+  - title: 为 Java 应用程序配置 CI/CD
+    url: /guides/java/configure-ci-cd/
+next:
+  title: 运行 Java 测试
+  url: /guides/java/run-tests/
+prev:
+  title: 测试你的 Java 部署
+  url: /guides/java/deploy/
+---
+
 
 ## 先决条件
 

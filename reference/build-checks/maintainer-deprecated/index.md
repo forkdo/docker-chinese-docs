@@ -1,4 +1,24 @@
-# MaintainerDeprecated
+---
+title: MaintainerDeprecated
+url: /reference/build-checks/maintainer-deprecated/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: MaintainerDeprecated
+    url: /reference/build-checks/maintainer-deprecated/
+next:
+  title: LegacyKeyValueFormat
+  url: /reference/build-checks/legacy-key-value-format/
+prev:
+  title: MultipleInstructionsDisallowed
+  url: /reference/build-checks/multiple-instructions-disallowed/
+---
+
 
 ## Output
 

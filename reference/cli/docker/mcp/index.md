@@ -1,4 +1,25 @@
-# docker mcp
+---
+title: docker mcp
+url: /reference/cli/docker/mcp/
+parent:
+  title: docker
+  url: /reference/cli/docker/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker mcp
+    url: /reference/cli/docker/mcp/
+---
+
+
+
+
+
+
 
 <!--
 本页面内容由 Docker 源代码自动生成。如果您希望
@@ -8,25 +29,32 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [](/reference/cli/docker/mcp/tools/)
 
-- [docker mcp catalog](/reference/cli/docker/mcp/catalog/)
 
-- [docker mcp client](/reference/cli/docker/mcp/client/)
 
-- [docker mcp config](/reference/cli/docker/mcp/config/)
 
-- [docker mcp gateway](/reference/cli/docker/mcp/gateway/)
 
-- [docker mcp oauth](/reference/cli/docker/mcp/oauth/)
 
-- [docker mcp policy](/reference/cli/docker/mcp/policy/)
 
-- [docker mcp secret](/reference/cli/docker/mcp/secrets/)
 
-- [docker mcp server](/reference/cli/docker/mcp/server/)
 
-- [docker mcp version](/reference/cli/docker/mcp/version/)
 
-- [docker mcp 功能](/reference/cli/docker/mcp/feature/)
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker mcp catalog`](/reference/cli/docker/mcp/catalog/) | Manage MCP server catalogs |
+| [`docker mcp client`](/reference/cli/docker/mcp/client/) | Manage MCP clients |
+| [`docker mcp config`](/reference/cli/docker/mcp/config/) | Manage the configuration |
+| [`docker mcp gateway`](/reference/cli/docker/mcp/gateway/) | Manage the MCP Server gateway |
+| [`docker mcp oauth`](/reference/cli/docker/mcp/oauth/) | <no value> |
+| [`docker mcp policy`](/reference/cli/docker/mcp/policy/) | Manage secret policies |
+| [`docker mcp secret`](/reference/cli/docker/mcp/secrets/) | Manage secrets |
+| [`docker mcp server`](/reference/cli/docker/mcp/server/) | Manage servers |
+| [`docker mcp version`](/reference/cli/docker/mcp/version/) | Show the version information |
+| [`docker mcp 功能`](/reference/cli/docker/mcp/feature/) | Manage experimental features |
+
 

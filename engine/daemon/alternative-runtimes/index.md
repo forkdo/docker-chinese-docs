@@ -1,4 +1,26 @@
-# 替代容器运行时
+---
+title: 替代容器运行时
+url: /engine/daemon/alternative-runtimes/
+parent:
+  title: Docker 守护进程配置概述
+  url: /engine/daemon/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker 守护进程配置概述
+    url: /engine/daemon/
+  - title: 替代容器运行时
+    url: /engine/daemon/alternative-runtimes/
+next:
+  title: 使用 Prometheus 收集 Docker 指标
+  url: /engine/daemon/prometheus/
+prev:
+  title: 读取守护程序日志
+  url: /engine/daemon/logs/
+---
+
 
 Docker Engine 使用 containerd 管理容器生命周期，包括创建、启动和停止容器。默认情况下，containerd 使用 runc 作为其容器运行时。
 
@@ -131,49 +153,6 @@ $ docker run --rm --runtime youki hello-world
 ```
 
 ### Wasmtime
-
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Experimental
-          
-            
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 

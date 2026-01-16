@@ -1,4 +1,26 @@
-# 在 Compose 文件中使用插值设置、使用和管理变量
+---
+title: 在 Compose 文件中使用插值设置、使用和管理变量
+url: /compose/how-tos/environment-variables/variable-interpolation/
+parent:
+  title: Compose 中的环境变量
+  url: /compose/how-tos/environment-variables/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Compose 中的环境变量
+    url: /compose/how-tos/environment-variables/
+  - title: 在 Compose 文件中使用插值设置、使用和管理变量
+    url: /compose/how-tos/environment-variables/variable-interpolation/
+next:
+  title: 在 Docker Compose 中配置预定义环境变量
+  url: /compose/how-tos/environment-variables/envvars/
+prev:
+  title: Docker Compose 中处理环境变量的最佳实践
+  url: /compose/how-tos/environment-variables/best-practices/
+---
+
 
 Compose 文件可以使用变量来提供更大的灵活性。如果你想在镜像标签之间快速切换以测试多个版本，或者想将卷源调整到你的本地环境，你不需要每次都编辑 Compose 文件，只需设置变量即可在运行时将值插入到你的 Compose 文件中。
 

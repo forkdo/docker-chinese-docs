@@ -1,4 +1,26 @@
-# 使用 Docker 加固镜像（DHI）Helm chart
+---
+title: 使用 Docker 加固镜像（DHI）Helm chart
+url: /dhi/how-to/helm/
+parent:
+  title: 操作指南
+  url: /dhi/how-to/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 操作指南
+    url: /dhi/how-to/
+  - title: 使用 Docker 加固镜像（DHI）Helm chart
+    url: /dhi/how-to/helm/
+next:
+  title: 在 Kubernetes 中使用 Docker Hardened 镜像
+  url: /dhi/how-to/k8s/
+prev:
+  title: 管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
+  url: /dhi/how-to/manage/
+---
+
 
 Docker 加固镜像（Docker Hardened Image，简称 DHI）chart 是由 Docker 提供的 [Helm chart](https://helm.sh/docs/)，基于上游源码构建，专为与 Docker 加固镜像兼容而设计。这些 chart 以 OCI 制品的形式在 Docker Hub 上的 DHI 目录中提供。更多详情，请参阅 [Docker 加固镜像 chart](/dhi/features/helm/)。
 

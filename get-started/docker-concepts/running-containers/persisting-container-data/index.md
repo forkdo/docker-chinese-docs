@@ -1,7 +1,23 @@
-# 持久化容器数据
+---
+title: 持久化容器数据
+url: /get-started/docker-concepts/running-containers/persisting-container-data/
+parent:
+  title: 开始使用
+  url: /get-started/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 持久化容器数据
+    url: /get-started/docker-concepts/running-containers/persisting-container-data/
+next:
+  title: 覆盖容器默认设置
+  url: /get-started/docker-concepts/running-containers/overriding-container-defaults/
+prev:
+  title: 与容器共享本地文件
+  url: /get-started/docker-concepts/running-containers/sharing-local-files/
+---
 
-<div id="youtube-player-10_2BjqB_Ls" data-video-id="10_2BjqB_Ls" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 说明
@@ -163,6 +179,5 @@ $ docker rm -f new-db
 
 现在您已经了解了如何持久化容器数据，是时候学习如何与容器共享本地文件了。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/running-containers/sharing-local-files/">与容器共享本地文件</a>
+[与容器共享本地文件](sharing-local-files)
 

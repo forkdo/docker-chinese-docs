@@ -1,4 +1,22 @@
-# GenAI 视频转录与对话
+---
+title: GenAI 视频转录与对话
+url: /guides/genai-video-bot/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: GenAI 视频转录与对话
+    url: /guides/genai-video-bot/
+next:
+  title: 使用 Docker 构建和运行智能体 AI 应用程序
+  url: /guides/agentic-ai/
+prev:
+  title: 构建语言翻译应用程序
+  url: /guides/language-translation/
+---
+
 
 ## 概述
 

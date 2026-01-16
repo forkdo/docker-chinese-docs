@@ -1,4 +1,25 @@
-# Docker 扩展的设计指南
+---
+title: Docker 扩展的设计指南
+url: /extensions/extensions-sdk/design/design-guidelines/
+parent:
+  title: Docker 扩展的 UI 样式概览
+  url: /extensions/extensions-sdk/design/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: Docker 扩展的 UI 样式概览
+    url: /extensions/extensions-sdk/design/
+  - title: Docker 扩展的设计指南
+    url: /extensions/extensions-sdk/design/design-guidelines/
+prev:
+  title: Docker 设计原则
+  url: /extensions/extensions-sdk/design/design-principles/
+---
+
 
 在 Docker，我们的目标是构建能够融入用户现有工作流程的工具，而不是要求他们采用新的工作流程。我们强烈建议您在创建扩展时遵循这些指南。我们将根据这些要求来审核并批准您在 Marketplace 的发布。
 

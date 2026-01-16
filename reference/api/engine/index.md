@@ -1,4 +1,25 @@
-# Docker Engine API
+---
+title: Docker Engine API
+url: /reference/api/engine/
+parent:
+  title: 参考文档
+  url: /reference/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Docker Engine API
+    url: /reference/api/engine/
+children:
+  - title: 使用 Docker Engine SDK 进行开发
+    url: /reference/api/engine/sdk/
+    description: 了解如何使用 Docker Engine SDK 以您选择的语言自动化 Docker 任务
+  - title: 
+    url: /reference/api/engine/latest/
+  - title: Engine API version history
+    url: /reference/api/engine/version-history/
+    description: Documentation of changes that have been made to Engine API.
+---
+
 
 Docker 提供了一个用于与 Docker 守护进程交互的 API（称为 Docker Engine API），以及用于 Go 和 Python 的 SDK。这些 SDK 让您可以高效地构建和扩展 Docker 应用和解决方案。如果 Go 或 Python 不适合您，您可以直接使用 Docker Engine API。
 
@@ -115,10 +136,3 @@ v1.44 之前的 API 版本已弃用。您可以在 GitHub 上的代码仓库中�
 - [API 版本 1.24–1.43 的文档](https://github.com/moby/moby/tree/28.x/docs/api)。
 - [API 版本 1.18–1.23 的文档](https://github.com/moby/moby/tree/v25.0.0/docs/api)。
 - [API 版本 1.17 及更早版本的文档](https://github.com/moby/moby/tree/v1.9.1/docs/reference/api)。
-
-- [使用 Docker Engine SDK 进行开发](/reference/api/engine/sdk/)
-
-- [](/reference/api/engine/latest/)
-
-- [Engine API version history](/reference/api/engine/version-history/)
-

@@ -1,58 +1,29 @@
-# Docker 沙盒
+---
+title: Docker 沙盒
+url: /ai/sandboxes/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 沙盒
+    url: /ai/sandboxes/
+children:
+  - title: Docker Sandbox 快速入门
+    url: /ai/sandboxes/get-started/
+    description: 在隔离的沙箱环境中运行 Claude Code。包含先决条件和基本命令的快速设置指南。
+  - title: 配置 Claude Code
+    url: /ai/sandboxes/claude-code/
+    description: 了解如何配置 Claude Code 身份验证、传递 CLI 选项，以及使用 Docker 自定义沙盒代理环境。
+  - title: 高级配置
+    url: /ai/sandboxes/advanced-config/
+    description: Docker访问、卷挂载、环境变量、自定义模板和沙箱管理。
+  - title: 故障排除
+    url: /ai/sandboxes/troubleshooting/
+    description: 解决在本地为代理创建沙箱时的常见问题。
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Experimental
-          
-            
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Desktop 
-    
-  
-  <a class="link" href="/desktop/release-notes/#4500">4.50</a> or later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-  </div>
 
 
 
@@ -111,12 +82,3 @@ Docker 沙盒是一项实验性功能。功能和设置可能会发生变化。
 ## 开始使用
 
 前往[入门指南](get-started.md)运行您的第一个沙盒代理。
-
-- [Docker Sandbox 快速入门](/ai/sandboxes/get-started/)
-
-- [配置 Claude Code](/ai/sandboxes/claude-code/)
-
-- [高级配置](/ai/sandboxes/advanced-config/)
-
-- [故障排除](/ai/sandboxes/troubleshooting/)
-

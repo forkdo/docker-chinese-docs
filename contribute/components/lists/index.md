@@ -1,4 +1,22 @@
-# 列表
+---
+title: 列表
+url: /contribute/components/lists/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: 列表
+    url: /contribute/components/lists/
+next:
+  title: 代码块
+  url: /contribute/components/code-blocks/
+prev:
+  title: 卡片
+  url: /contribute/components/cards/
+---
+
 
 ## 示例
 

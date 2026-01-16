@@ -1,4 +1,28 @@
-# 配置从 GitHub 和 BitBucket 的自动构建
+---
+title: 配置从 GitHub 和 BitBucket 的自动构建
+url: /docker-hub/repos/manage/builds/link-source/
+parent:
+  title: 自动构建
+  url: /docker-hub/repos/manage/builds/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 自动构建
+    url: /docker-hub/repos/manage/builds/
+  - title: 配置从 GitHub 和 BitBucket 的自动构建
+    url: /docker-hub/repos/manage/builds/link-source/
+next:
+  title: 设置自动化构建
+  url: /docker-hub/repos/manage/builds/setup/
+prev:
+  title: 自动化仓库测试
+  url: /docker-hub/repos/manage/builds/automated-testing/
+---
+
 
 > [!NOTE]
 >

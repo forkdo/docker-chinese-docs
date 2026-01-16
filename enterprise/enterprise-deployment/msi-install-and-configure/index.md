@@ -1,60 +1,21 @@
-# MSI 安装程序
+---
+title: MSI 安装程序
+url: /enterprise/enterprise-deployment/msi-install-and-configure/
+parent:
+  title: 部署 Docker Desktop
+  url: /enterprise/enterprise-deployment/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 部署 Docker Desktop
+    url: /enterprise/enterprise-deployment/
+  - title: MSI 安装程序
+    url: /enterprise/enterprise-deployment/msi-install-and-configure/
+prev:
+  title: PKG 安装程序
+  url: /enterprise/enterprise-deployment/pkg-install-and-configure/
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Subscription:</span>
-        
-          <span>Business</span>
-          <span class="icon-svg">
-            
-            
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M80-180v-600q0-24.75 17.63-42.38Q115.25-840 140-840h270q24.75 0 42.38 17.62Q470-804.75 470-780v105h350q24.75 0 42.38 17.62Q880-639.75 880-615v435q0 24.75-17.62 42.37Q844.75-120 820-120H140q-24.75 0-42.37-17.63Q80-155.25 80-180Zm60 0h105v-105H140v105Zm0-165h105v-105H140v105Zm0-165h105v-105H140v105Zm0-165h105v-105H140v105Zm165 495h105v-105H305v105Zm0-165h105v-105H305v105Zm0-165h105v-105H305v105Zm0-165h105v-105H305v105Zm165 495h350v-435H470v105h80v60h-80v105h80v60h-80v105Zm185-270v-60h60v60h-60Zm0 165v-60h60v60h-60Z"/></svg>
-            
-          </span>
-        
-      </div>
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Desktop 
-    
-  
-  <a class="link" href="/desktop/release-notes/#4320">4.32</a> and later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">For:</span>
-        <span>Administrators</span>
-        
-          <span class="icon-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M693-80q-78 0-133-55.5T505-267q0-78 55-133.5T693-456q77 0 132.5 55.5T881-267q0 76-55.5 131.5T693-80ZM160-522v-197q0-19 11-34.5t28-22.5l260-97q11-4 21-4t21 4l260 97q17 7 28 22.5t11 34.5v190q0 14-11 21.5t-24 2.5q-17-5-35.5-8t-36.5-3q-103 0-175.5 73T445-267q0 40 13.5 79t38.5 71q10 13 2.5 26T478-82q-69-20-122-51.5T251-237q-43-60-67-132.5T160-522Zm531 252q26 0 44-19t18-45q0-26-18-44t-44-18q-26 0-45 18t-19 44q0 26 19 45t45 19Zm-1 125q28 0 53-11t43-31q4-5 2.5-11t-6.5-8q-22-10-45-15.5t-47-5.5q-24 0-47 5t-45 16q-5 2-7 8t2 11q18 21 43.5 31.5T690-145Z"/></svg>
-          </span>
-        
-      </div>
-    
-  </div>
 
 
 
@@ -277,101 +238,22 @@ MSI 安装程序仅收集与安装相关的匿名使用统计数据。这是为�
 
 ### 如何选择退出
 
+**从 GUI**
 
 
 
+当您从默认安装程序 GUI 安装 Docker Desktop 时，选择 **Welcome** 对话框左下角的 **Disable analytics** 复选框。
+
+**从命令行**
 
 
 
+当您从命令行安装 Docker Desktop 时，使用 `DISABLEANALYTICS` 属性。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%BB%8E-GUI' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BB%8E-GUI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BB%8E-GUI'"
-        
-      >
-        从 GUI
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BB%8E%E5%91%BD%E4%BB%A4%E8%A1%8C' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BB%8E%E5%91%BD%E4%BB%A4%E8%A1%8C'"
-        
-      >
-        从命令行
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BB%8E-GUI' && 'hidden'"
-      >
-        <p>当您从默认安装程序 GUI 安装 Docker Desktop 时，选择 <strong>Welcome</strong> 对话框左下角的 <strong>Disable analytics</strong> 复选框。</p>
+```powershell
+msiexec /i "win\msi\bin\en-US\DockerDesktop.msi" /L*V ".\msi.log" DISABLEANALYTICS=1
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BB%8E%E5%91%BD%E4%BB%A4%E8%A1%8C' && 'hidden'"
-      >
-        <p>当您从命令行安装 Docker Desktop 时，使用 <code>DISABLEANALYTICS</code> 属性。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'bXNpZXhlYyAvaSAid2luXG1zaVxiaW5cZW4tVVNcRG9ja2VyRGVza3RvcC5tc2kiIC9MKlYgIi5cbXNpLmxvZyIgRElTQUJMRUFOQUxZVElDUz0x', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">msiexec</span> <span class="p">/</span><span class="n">i</span> <span class="s2">&#34;win\msi\bin\en-US\DockerDesktop.msi&#34;</span> <span class="p">/</span><span class="n">L</span><span class="p">*</span><span class="n">V</span> <span class="s2">&#34;.\msi.log&#34;</span> <span class="n">DISABLEANALYTICS</span><span class="p">=</span><span class="mf">1</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 持久性

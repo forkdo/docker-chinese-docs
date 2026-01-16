@@ -1,4 +1,21 @@
-# 为什么使用 Docker Compose？
+---
+title: 为什么使用 Docker Compose？
+url: /guides/docker-compose/why/
+parent:
+  title: 使用 Docker Compose 定义和运行多容器应用程序
+  url: /guides/docker-compose/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Compose 定义和运行多容器应用程序
+    url: /guides/docker-compose/
+  - title: 为什么使用 Docker Compose？
+    url: /guides/docker-compose/why/
+prev:
+  title: 演示：设置和使用 Docker Compose
+  url: /guides/docker-compose/setup/
+---
+
 
 Docker Compose 是定义和运行多容器 Docker 应用程序的重要工具。Docker Compose 简化了 Docker 体验，通过使用 YAML 文件配置应用程序服务，使开发者能够更轻松地创建、管理和部署应用程序。
 
@@ -10,8 +27,6 @@ Docker Compose 提供多项优势：
 - 简化开发工作流，减少设置时间。
 - 确保每个服务都在自己的容器中运行，避免冲突。
 
-<div id="youtube-player-2EqarOM2V4U" data-video-id="2EqarOM2V4U" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 <div id="compose-lp-survey-anchor"></div>

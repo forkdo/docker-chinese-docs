@@ -1,4 +1,18 @@
-# 
+---
+title: 
+url: /desktop/enterprise/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 
+    url: /desktop/enterprise/
+---
+
 title: Docker Desktop Enterprise
 description: Docker Desktop Enterprise
 keywords: Docker Desktop Enterprise
@@ -21,4 +35,3 @@ Docker Desktop Enterprise (DDE) 已被弃用，不再处于积极开发阶段。
 如果您是现有的 DDE 客户，请使用我们的[支持表单](https://hub.docker.com/support/desktop/)请求过渡到我们新的[订阅计划](https://www.docker.com/pricing)之一。
 
 如果您希望大规模部署 Docker Desktop，请通过 [pricingquestions@docker.com](mailto:pricingquestions@docker.com) 联系我们。
-

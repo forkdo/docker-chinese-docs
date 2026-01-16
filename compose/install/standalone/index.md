@@ -1,4 +1,26 @@
-# 安装独立的 Docker Compose（旧版）
+---
+title: 安装独立的 Docker Compose（旧版）
+url: /compose/install/standalone/
+parent:
+  title: Docker Compose 安装概述
+  url: /compose/install/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Docker Compose 安装概述
+    url: /compose/install/
+  - title: 安装独立的 Docker Compose（旧版）
+    url: /compose/install/standalone/
+next:
+  title: 安装 Docker Compose 插件
+  url: /compose/install/linux/
+prev:
+  title: 卸载 Docker Compose
+  url: /compose/install/uninstall/
+---
+
 
 > [!WARNING]
 >

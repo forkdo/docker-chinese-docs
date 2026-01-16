@@ -1,4 +1,21 @@
-# 自动补全
+---
+title: 自动补全
+url: /engine/cli/completion/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 自动补全
+    url: /engine/cli/completion/
+prev:
+  title: 在 Docker CLI 中使用代理服务器
+  url: /engine/cli/proxy/
+---
+
 
 您可以使用 `docker completion` 命令为 Docker CLI 生成 Shell 补全脚本。当您在终端中输入命令并按下 `<Tab>` 键时，该补全脚本可为您提供命令、标志以及 Docker 对象（例如容器和卷名称）的单词补全功能。
 

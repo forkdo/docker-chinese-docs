@@ -1,219 +1,74 @@
-# 问题排查
+---
+title: 问题排查
+url: /engine/security/rootless/troubleshoot/
+parent:
+  title: 无 root 模式
+  url: /engine/security/rootless/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 安全
+    url: /engine/security/
+  - title: 无 root 模式
+    url: /engine/security/rootless/
+  - title: 问题排查
+    url: /engine/security/rootless/troubleshoot/
+next:
+  title: 使用技巧
+  url: /engine/security/rootless/tips/
+---
+
 
 ### 各发行版的特定提示
 
+**Ubuntu**
 
 
+- Ubuntu 24.04 及更高版本默认启用了受限的非特权用户命名空间，这会阻止非特权进程创建用户命名空间，除非配置了 AppArmor 配置文件以允许程序使用非特权用户命名空间。
+
+  如果您使用 deb 包（`apt-get install docker-ce-rootless-extras`）安装 `docker-ce-rootless-extras`，那么 `rootlesskit` 的 AppArmor 配置文件已经包含在 `apparmor` deb 包中。使用此安装方法时，您无需手动添加任何 AppArmor 配置。但是，如果您使用[安装脚本](https://get.docker.com/rootless)安装 rootless 额外组件，则必须为 `rootlesskit` 手动添加 AppArmor 配置文件：
+
+  1. 为当前登录用户创建并安装 AppArmor 配置文件：
+
+     ```console
+     $ filename=$(echo $HOME/bin/rootlesskit | sed -e 's@^/@@' -e 's@/@.@g')
+     $ [ ! -z "${filename}" ] && sudo cat <<EOF > /etc/apparmor.d/${filename}
+     abi <abi/4.0>,
+     include <tunables/global>
+
+     "$HOME/bin/rootlesskit" flags=(unconfined) {
+       userns,
+
+       include if exists <local/${filename}>
+     }
+     EOF
+     ```
+  2. 重启 AppArmor。
+
+     ```console
+     $ systemctl restart apparmor.service
+     ```
+
+**Arch Linux**
 
 
+- 将 `kernel.unprivileged_userns_clone=1` 添加到 `/etc/sysctl.conf`（或 `/etc/sysctl.d`）并运行 `sudo sysctl --system`
+**openSUSE and SLES**
 
 
+- 需要运行 `sudo modprobe ip_tables iptable_mangle iptable_nat iptable_filter`。
+  根据配置的不同，其他发行版可能也需要此操作。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Ubuntu' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Ubuntu' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Ubuntu'"
-        
-      >
-        Ubuntu
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Arch-Linux' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Arch-Linux'"
-        
-      >
-        Arch Linux
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'openSUSE-and-SLES' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'openSUSE-and-SLES'"
-        
-      >
-        openSUSE and SLES
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'CentOS-RHEL-and-Fedora' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'CentOS-RHEL-and-Fedora'"
-        
-      >
-        CentOS, RHEL, and Fedora
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Ubuntu' && 'hidden'"
-      >
-        <ul>
-<li>
-<p>Ubuntu 24.04 及更高版本默认启用了受限的非特权用户命名空间，这会阻止非特权进程创建用户命名空间，除非配置了 AppArmor 配置文件以允许程序使用非特权用户命名空间。</p>
-<p>如果您使用 deb 包（<code>apt-get install docker-ce-rootless-extras</code>）安装 <code>docker-ce-rootless-extras</code>，那么 <code>rootlesskit</code> 的 AppArmor 配置文件已经包含在 <code>apparmor</code> deb 包中。使用此安装方法时，您无需手动添加任何 AppArmor 配置。但是，如果您使用<a class="link" href="https://get.docker.com/rootless" rel="noopener">安装脚本</a>安装 rootless 额外组件，则必须为 <code>rootlesskit</code> 手动添加 AppArmor 配置文件：</p>
-<ol>
-<li>
-<p>为当前登录用户创建并安装 AppArmor 配置文件：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBmaWxlbmFtZT0kKGVjaG8gJEhPTUUvYmluL3Jvb3RsZXNza2l0IHwgc2VkIC1lICdzQF4vQEAnIC1lICdzQC9ALkBnJykKJCBbICEgLXogIiR7ZmlsZW5hbWV9IiBdICYmIHN1ZG8gY2F0IDw8RU9GID4gL2V0Yy9hcHBhcm1vci5kLyR7ZmlsZW5hbWV9CmFiaSA8YWJpLzQuMD4sCmluY2x1ZGUgPHR1bmFibGVzL2dsb2JhbD4KCiIkSE9NRS9iaW4vcm9vdGxlc3NraXQiIGZsYWdzPSh1bmNvbmZpbmVkKSB7CiAgdXNlcm5zLAoKICBpbmNsdWRlIGlmIGV4aXN0cyA8bG9jYWwvJHtmaWxlbmFtZX0&#43;Cn0KRU9G', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$HOME</span>/bin/rootlesskit <span class="p">|</span> sed -e <span class="s1">&#39;s@^/@@&#39;</span> -e <span class="s1">&#39;s@/@.@g&#39;</span><span class="k">)</span>
-</span></span><span class="line"><span class="cl"><span class="gp">$</span> <span class="o">[</span> ! -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> sudo cat &lt;&lt;EOF &gt; /etc/apparmor.d/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
-</span></span><span class="line"><span class="cl"><span class="go">abi &lt;abi/4.0&gt;,
-</span></span></span><span class="line"><span class="cl"><span class="go">include &lt;tunables/global&gt;
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="go">&#34;$HOME/bin/rootlesskit&#34; flags=(unconfined) {
-</span></span></span><span class="line"><span class="cl"><span class="go">  userns,
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="go">  include if exists &lt;local/${filename}&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">}
-</span></span></span><span class="line"><span class="cl"><span class="go">EOF
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-<li>
-<p>重启 AppArmor。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzeXN0ZW1jdGwgcmVzdGFydCBhcHBhcm1vci5zZXJ2aWNl', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> systemctl restart apparmor.service
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-</ol>
-</li>
-</ul>
+- 已知在 openSUSE 15 和 SLES 15 上可用。
+**CentOS, RHEL, and Fedora**
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Arch-Linux' && 'hidden'"
-      >
-        <ul>
-<li>将 <code>kernel.unprivileged_userns_clone=1</code> 添加到 <code>/etc/sysctl.conf</code>（或 <code>/etc/sysctl.d</code>）并运行 <code>sudo sysctl --system</code></li>
-</ul>
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'openSUSE-and-SLES' && 'hidden'"
-      >
-        <ul>
-<li>
-<p>需要运行 <code>sudo modprobe ip_tables iptable_mangle iptable_nat iptable_filter</code>。
-根据配置的不同，其他发行版可能也需要此操作。</p>
-</li>
-<li>
-<p>已知在 openSUSE 15 和 SLES 15 上可用。</p>
-</li>
-</ul>
+- 对于 RHEL 8 及类似发行版，建议安装 `fuse-overlayfs`。运行 `sudo dnf install -y fuse-overlayfs`。
+  在 RHEL 9 及类似发行版上，不需要此步骤。
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'CentOS-RHEL-and-Fedora' && 'hidden'"
-      >
-        <ul>
-<li>
-<p>对于 RHEL 8 及类似发行版，建议安装 <code>fuse-overlayfs</code>。运行 <code>sudo dnf install -y fuse-overlayfs</code>。
-在 RHEL 9 及类似发行版上，不需要此步骤。</p>
-</li>
-<li>
-<p>您可能需要运行 <code>sudo dnf install -y iptables</code>。</p>
-</li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
+- 您可能需要运行 `sudo dnf install -y iptables`。
 
 
 ## 已知限制

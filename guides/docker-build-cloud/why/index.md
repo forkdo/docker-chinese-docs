@@ -1,4 +1,21 @@
-# 为什么选择 Docker Build Cloud？
+---
+title: 为什么选择 Docker Build Cloud？
+url: /guides/docker-build-cloud/why/
+parent:
+  title: Docker Build Cloud: 通过快速、多架构构建来收回您的时间
+  url: /guides/docker-build-cloud/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Docker Build Cloud: 通过快速、多架构构建来收回您的时间
+    url: /guides/docker-build-cloud/
+  - title: 为什么选择 Docker Build Cloud？
+    url: /guides/docker-build-cloud/why/
+prev:
+  title: 演示：在开发中设置并使用 Docker Build Cloud
+  url: /guides/docker-build-cloud/dev/
+---
+
 
 Docker Build Cloud 是一项服务，可让您在本地和 CI 中更快地构建容器镜像。
 构建在针对您的工作负载优化配置的云基础设施上运行，无需任何配置。
@@ -13,8 +30,6 @@ Docker Build Cloud 相比本地构建提供了多项优势：
 您无需担心管理构建器或基础设施 — 只需连接到您的构建器并开始构建即可。
 分配给组织的每个云构建器都完全隔离到单个 Amazon EC2 实例，具有用于构建缓存的专用 EBS 卷和传输中加密。这意味着云构建器之间没有共享的进程或数据。
 
-<div id="youtube-player-8AqKhEO2PQA" data-video-id="8AqKhEO2PQA" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 <div id="dbc-lp-survey-anchor"></div>

@@ -1,4 +1,21 @@
-# 企业部署常见问题
+---
+title: 企业部署常见问题
+url: /enterprise/enterprise-deployment/faq/
+parent:
+  title: 部署 Docker Desktop
+  url: /enterprise/enterprise-deployment/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 部署 Docker Desktop
+    url: /enterprise/enterprise-deployment/
+  - title: 企业部署常见问题
+    url: /enterprise/enterprise-deployment/faq/
+next:
+  title: Microsoft Dev Box 中的 Docker Desktop
+  url: /enterprise/enterprise-deployment/dev-box/
+---
+
 
 ## MSI
 

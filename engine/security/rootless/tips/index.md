@@ -1,154 +1,64 @@
-# 使用技巧
+---
+title: 使用技巧
+url: /engine/security/rootless/tips/
+parent:
+  title: 无 root 模式
+  url: /engine/security/rootless/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 安全
+    url: /engine/security/
+  - title: 无 root 模式
+    url: /engine/security/rootless/
+  - title: 使用技巧
+    url: /engine/security/rootless/tips/
+prev:
+  title: 问题排查
+  url: /engine/security/rootless/troubleshoot/
+---
+
 
 ## 高级用法
 
 ### 守护进程
 
+**使用 systemd（强烈推荐）**
 
 
 
+systemd 单元文件安装在 `~/.config/systemd/user/docker.service`。
+
+使用 `systemctl --user` 管理守护进程的生命周期：
+
+```console
+$ systemctl --user start docker
+```
+
+要在系统启动时启动守护进程，请启用 systemd 服务和 lingering：
+
+```console
+$ systemctl --user enable docker
+$ sudo loginctl enable-linger $(whoami)
+```
+
+将 Rootless Docker 作为 systemd 全局服务（`/etc/systemd/system/docker.service`）运行不受支持，即使使用 `User=` 指令也是如此。
+
+**不使用 systemd**
 
 
 
+要直接运行守护进程而不使用 systemd，您需要运行 `dockerd-rootless.sh` 而不是 `dockerd`。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%BD%BF%E7%94%A8-systemd%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BD%BF%E7%94%A8-systemd%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BD%BF%E7%94%A8-systemd%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90'"
-        
-      >
-        使用 systemd（强烈推荐）
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%B8%8D%E4%BD%BF%E7%94%A8-systemd' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%B8%8D%E4%BD%BF%E7%94%A8-systemd'"
-        
-      >
-        不使用 systemd
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BD%BF%E7%94%A8-systemd%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90' && 'hidden'"
-      >
-        <p>systemd 单元文件安装在 <code>~/.config/systemd/user/docker.service</code>。</p>
-<p>使用 <code>systemctl --user</code> 管理守护进程的生命周期：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzeXN0ZW1jdGwgLS11c2VyIHN0YXJ0IGRvY2tlcg==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> systemctl --user start docker
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>要在系统启动时启动守护进程，请启用 systemd 服务和 lingering：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzeXN0ZW1jdGwgLS11c2VyIGVuYWJsZSBkb2NrZXIKJCBzdWRvIGxvZ2luY3RsIGVuYWJsZS1saW5nZXIgJCh3aG9hbWkp', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> systemctl --user <span class="nb">enable</span> docker
-</span></span><span class="line"><span class="cl"><span class="gp">$</span> sudo loginctl enable-linger <span class="k">$(</span>whoami<span class="k">)</span>
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>将 Rootless Docker 作为 systemd 全局服务（<code>/etc/systemd/system/docker.service</code>）运行不受支持，即使使用 <code>User=</code> 指令也是如此。</p>
+必须设置以下环境变量：
+- `$HOME`：主目录
+- `$XDG_RUNTIME_DIR`：仅由预期用户访问的临时目录，例如 `~/.docker/run`。
+  该目录应在每次主机关闭时被移除。
+  该目录可以位于 tmpfs 上，但不应在 `/tmp` 下。
+  将此目录定位在 `/tmp` 下可能容易受到 TOCTOU 攻击。
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%B8%8D%E4%BD%BF%E7%94%A8-systemd' && 'hidden'"
-      >
-        <p>要直接运行守护进程而不使用 systemd，您需要运行 <code>dockerd-rootless.sh</code> 而不是 <code>dockerd</code>。</p>
-<p>必须设置以下环境变量：</p>
-<ul>
-<li><code>$HOME</code>：主目录</li>
-<li><code>$XDG_RUNTIME_DIR</code>：仅由预期用户访问的临时目录，例如 <code>~/.docker/run</code>。
-该目录应在每次主机关闭时被移除。
-该目录可以位于 tmpfs 上，但不应在 <code>/tmp</code> 下。
-将此目录定位在 <code>/tmp</code> 下可能容易受到 TOCTOU 攻击。</li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
 
 
 重要的是要注意目录路径：

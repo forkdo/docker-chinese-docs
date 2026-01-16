@@ -1,4 +1,28 @@
-# Cache management with GitHub Actions
+---
+title: Cache management with GitHub Actions
+url: /build/ci/github-actions/cache/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Cache management with GitHub Actions
+    url: /build/ci/github-actions/cache/
+next:
+  title: Configuring your GitHub Actions builder
+  url: /build/ci/github-actions/configure-builder/
+prev:
+  title: Copy image between registries with GitHub Actions
+  url: /build/ci/github-actions/copy-image-registries/
+---
+
 
 This page contains examples on using the cache storage backends with GitHub
 Actions.
@@ -79,49 +103,6 @@ jobs:
 ## GitHub cache
 
 ### Cache backend API
-
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Experimental
-          
-            
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 

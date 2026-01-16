@@ -1,4 +1,25 @@
-# 扩展镜像标签
+---
+title: 扩展镜像标签
+url: /extensions/extensions-sdk/extensions/labels/
+parent:
+  title: 第二部分：发布
+  url: /extensions/extensions-sdk/extensions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 第二部分：发布
+    url: /extensions/extensions-sdk/extensions/
+  - title: 扩展镜像标签
+    url: /extensions/extensions-sdk/extensions/labels/
+prev:
+  title: 验证您的扩展
+  url: /extensions/extensions-sdk/extensions/validate/
+---
+
 
 扩展使用镜像标签来提供额外信息，例如标题、描述、截图等。
 

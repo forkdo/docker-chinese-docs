@@ -1,4 +1,26 @@
-# 掌握用户和访问管理
+---
+title: 掌握用户和访问管理
+url: /guides/admin-user-management/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 掌握用户和访问管理
+    url: /guides/admin-user-management/
+children:
+  - title: 在 Docker 中设置角色和权限
+    url: /guides/admin-user-management/setup/
+    description: 通过角色和团队安全地管理 Docker 中的访问和协作的指南。
+  - title: 在 Docker 中上手并管理角色与权限
+    url: /guides/admin-user-management/onboard/
+    description: 了解如何在 Docker 中管理角色、邀请成员，并实施可扩展的访问控制，以实现安全高效的协作。
+  - title: 监控与洞察
+    url: /guides/admin-user-management/audit-and-monitor/
+    description: 使用活动日志和洞察功能跟踪用户操作、团队工作流和组织趋势，以提升 Docker 中的安全性和生产力。
+---
+
 
 管理角色和权限是确保 Docker 环境安全，同时实现轻松协作和运营效率的关键。本指南引导 IT 管理员了解用户和访问管理的基础知识，提供分配角色、配置用户以及使用活动日志和 Insights 等工具来监控和优化 Docker 使用情况的策略。
 
@@ -22,10 +44,3 @@
 - Okta
 - Entra ID SAML 2.0
 - Azure Connect (OIDC)
-
-- [在 Docker 中设置角色和权限](/guides/admin-user-management/setup/)
-
-- [在 Docker 中上手并管理角色与权限](/guides/admin-user-management/onboard/)
-
-- [监控与洞察](/guides/admin-user-management/audit-and-monitor/)
-

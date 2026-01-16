@@ -1,4 +1,30 @@
-# 扩展 UI API
+---
+title: 扩展 UI API
+url: /extensions/extensions-sdk/dev/api/overview/
+parent:
+  title: 扩展 API
+  url: /extensions/extensions-sdk/dev/api/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 
+    url: /extensions/extensions-sdk/dev/
+  - title: 扩展 API
+    url: /extensions/extensions-sdk/dev/api/
+  - title: 扩展 UI API
+    url: /extensions/extensions-sdk/dev/api/overview/
+next:
+  title: 导航
+  url: /extensions/extensions-sdk/dev/api/dashboard-routes-navigation/
+prev:
+  title: 扩展后端
+  url: /extensions/extensions-sdk/dev/api/backend/
+---
+
 
 扩展 UI 运行在沙盒环境中，无法访问任何
 electron 或 nodejs API。

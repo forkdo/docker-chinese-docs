@@ -1,23 +1,33 @@
-# 归档或取消归档仓库
+---
+title: 归档或取消归档仓库
+url: /docker-hub/repos/archive/
+parent:
+  title: 仓库
+  url: /docker-hub/repos/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 归档或取消归档仓库
+    url: /docker-hub/repos/archive/
+next:
+  title: 创建仓库
+  url: /docker-hub/repos/create/
+prev:
+  title: 删除仓库
+  url: /docker-hub/repos/delete/
+---
+
 
 您可以在 Docker Hub 上归档仓库，将其标记为只读状态，并表明该仓库已不再积极维护。这有助于防止在工作流中使用过时或不受支持的镜像。归档的仓库也可以根据需要取消归档。
 
 Docker Hub 会在 [**仓库**页面](https://hub.docker.com/repositories/) 上通过显示图标 (
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src=".././images/outdated-icon.webp"
-  alt="outdated icon"
-  
-  class="inline my-0 not-prose"
-/>
-) 来突出显示超过一年未更新的仓库。请考虑检查这些突出显示的仓库，并在必要时将其归档。
+![outdated icon](./images/outdated-icon.webp)) 来突出显示超过一年未更新的仓库。请考虑检查这些突出显示的仓库，并在必要时将其归档。
 
 当仓库被归档时，会发生以下情况：
 

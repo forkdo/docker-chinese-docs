@@ -1,7 +1,25 @@
-# Docker Scout demo
+---
+title: Docker Scout demo
+url: /guides/docker-scout/demo/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: Docker Scout demo
+    url: /guides/docker-scout/demo/
+next:
+  title: 为什么选择 Docker Scout？
+  url: /guides/docker-scout/why/
+prev:
+  title: 软件供应链安全
+  url: /guides/docker-scout/s3c/
+---
 
-<div id="youtube-player-TkLwJ0p46W8" data-video-id="TkLwJ0p46W8" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 Docker Scout 拥有强大的功能，能够增强容器化应用程序的安全性，并确保稳健的软件供应链。

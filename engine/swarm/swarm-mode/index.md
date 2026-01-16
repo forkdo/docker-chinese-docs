@@ -1,4 +1,26 @@
-# 在 Swarm 模式下运行 Docker Engine
+---
+title: 在 Swarm 模式下运行 Docker Engine
+url: /engine/swarm/swarm-mode/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 在 Swarm 模式下运行 Docker Engine
+    url: /engine/swarm/swarm-mode/
+next:
+  title: 使用集群模式路由网格
+  url: /engine/swarm/ingress/
+prev:
+  title: 将堆栈部署到 Swarm
+  url: /engine/swarm/stack-deploy/
+---
+
 
 首次安装并开始使用 Docker Engine 时，默认情况下 Swarm 模式是禁用的。启用 Swarm 模式后，您将使用通过 `docker service` 命令管理的服务概念。
 

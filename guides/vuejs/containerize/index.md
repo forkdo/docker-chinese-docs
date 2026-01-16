@@ -1,4 +1,21 @@
-# 容器化 Vue.js 应用程序
+---
+title: 容器化 Vue.js 应用程序
+url: /guides/vuejs/containerize/
+parent:
+  title: Vue.js 语言专用指南
+  url: /guides/vuejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Vue.js 语言专用指南
+    url: /guides/vuejs/
+  - title: 容器化 Vue.js 应用程序
+    url: /guides/vuejs/containerize/
+prev:
+  title: 使用容器进行 Vue.js 开发
+  url: /guides/vuejs/develop/
+---
+
 
 ## 先决条件
 

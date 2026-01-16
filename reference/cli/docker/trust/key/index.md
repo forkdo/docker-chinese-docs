@@ -1,4 +1,27 @@
-# docker trust key
+---
+title: docker trust key
+url: /reference/cli/docker/trust/key/
+parent:
+  title: docker trust
+  url: /reference/cli/docker/trust/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker trust
+    url: /reference/cli/docker/trust/
+  - title: docker trust key
+    url: /reference/cli/docker/trust/key/
+---
+
+**Description:** Manage keys for signing Docker images
+
+**Usage:** `docker trust key`
+
+
 
 <!--
 此页面是自动生成自 Docker 的源代码。如果您想
@@ -8,7 +31,27 @@
 https://github.com/docker/cli
 -->
 
-- [docker trust key generate](/reference/cli/docker/trust/key/generate/)
 
-- [docker trust key load](/reference/cli/docker/trust/key/load/)
+
+
+
+
+
+
+## Description
+
+Manage keys for signing Docker images
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker trust key generate`](/reference/cli/docker/trust/key/generate/) | Generate and load a signing key-pair |
+| [`docker trust key load`](/reference/cli/docker/trust/key/load/) | Load a private key file for signing |
+
 

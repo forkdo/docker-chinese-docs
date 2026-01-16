@@ -1,47 +1,24 @@
-# Docker MCP Toolkit
+---
+title: Docker MCP Toolkit
+url: /ai/mcp-catalog-and-toolkit/toolkit/
+parent:
+  title: Docker MCP Catalog and Toolkit
+  url: /ai/mcp-catalog-and-toolkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker MCP Catalog and Toolkit
+    url: /ai/mcp-catalog-and-toolkit/
+  - title: Docker MCP Toolkit
+    url: /ai/mcp-catalog-and-toolkit/toolkit/
+next:
+  title: Docker MCP 目录
+  url: /ai/mcp-catalog-and-toolkit/catalog/
+prev:
+  title: 动态 MCP
+  url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Beta
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M360-360H217q-18 0-26.5-16t2.5-31l338-488q8-11 20-15t24 1q12 5 19 16t5 24l-39 309h176q19 0 27 17t-4 32L388-66q-8 10-20.5 13T344-55q-11-5-17.5-16T322-95l38-265Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 
@@ -94,224 +71,48 @@ Docker MCP Toolkit 结合了被动和主动措施，以减少攻击面并确保�
 
 #### 使用 OAuth 授权服务器
 
+**Docker Desktop**
 
 
 
+1. 在 Docker Desktop 中，转到 **MCP Toolkit** 并选择 **Catalog** 选项卡。
+2. 找到并添加需要 OAuth 的 MCP 服务器。
+3. 在服务器的 **Configuration** 选项卡中，选择 **OAuth** 身份验证方法。按照链接开始 OAuth 授权。
+4. 您的浏览器将打开该服务的授权页面。按照屏幕上的说明完成身份验证。
+5. 身份验证完成后返回 Docker Desktop。
+
+在 **OAuth** 选项卡中查看所有已授权的服务。要撤销访问权限，请选择要断开连接的服务旁边的 **Revoke**。
+
+**CLI**
 
 
 
+启用 MCP 服务器：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-Desktop' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Desktop' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-Desktop'"
-        
-      >
-        Docker Desktop
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'CLI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'CLI'"
-        
-      >
-        CLI
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Desktop' && 'hidden'"
-      >
-        <ol>
-<li>在 Docker Desktop 中，转到 <strong>MCP Toolkit</strong> 并选择 <strong>Catalog</strong> 选项卡。</li>
-<li>找到并添加需要 OAuth 的 MCP 服务器。</li>
-<li>在服务器的 <strong>Configuration</strong> 选项卡中，选择 <strong>OAuth</strong> 身份验证方法。按照链接开始 OAuth 授权。</li>
-<li>您的浏览器将打开该服务的授权页面。按照屏幕上的说明完成身份验证。</li>
-<li>身份验证完成后返回 Docker Desktop。</li>
-</ol>
-<p>在 <strong>OAuth</strong> 选项卡中查看所有已授权的服务。要撤销访问权限，请选择要断开连接的服务旁边的 <strong>Revoke</strong>。</p>
+```console
+$ docker mcp server enable github-official
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'CLI' && 'hidden'"
-      >
-        <p>启用 MCP 服务器：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgbWNwIHNlcnZlciBlbmFibGUgZ2l0aHViLW9mZmljaWFs', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker mcp server <span class="nb">enable</span> github-official
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>如果服务器需要 OAuth，请授权连接：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgbWNwIG9hdXRoIGF1dGhvcml6ZSBnaXRodWI=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker mcp oauth authorize github
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>您的浏览器将打开授权页面。完成身份验证过程，然后返回您的终端。</p>
-<p>查看已授权的服务：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgbWNwIG9hdXRoIGxz', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker mcp oauth ls
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>撤销对某项服务的访问权限：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgbWNwIG9hdXRoIHJldm9rZSBnaXRodWI=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker mcp oauth revoke github
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+如果服务器需要 OAuth，请授权连接：
 
-      </div>
-    
-  </div>
-</div>
+```console
+$ docker mcp oauth authorize github
+```
+
+您的浏览器将打开授权页面。完成身份验证过程，然后返回您的终端。
+
+查看已授权的服务：
+
+```console
+$ docker mcp oauth ls
+```
+
+撤销对某项服务的访问权限：
+
+```console
+$ docker mcp oauth revoke github
+```
+
 
 
 ## 使用示例
@@ -353,220 +154,47 @@ Docker MCP Toolkit 结合了被动和主动措施，以减少攻击面并确保�
 
 1. 要启用 MCP Toolkit：
 
-   
+   **全局启用**
 
 
 
+   1. 在 Visual Studio Code 的用户 `mcp.json` 中插入以下内容：
+
+      ```json
+      "mcp": {
+       "servers": {
+         "MCP_DOCKER": {
+           "command": "docker",
+           "args": [
+             "mcp",
+             "gateway",
+             "run"
+           ],
+           "type": "stdio"
+         }
+       }
+      }
+      ```
+
+   **为特定项目启用**
 
 
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E5%85%A8%E5%B1%80%E5%90%AF%E7%94%A8' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E5%85%A8%E5%B1%80%E5%90%AF%E7%94%A8' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E5%85%A8%E5%B1%80%E5%90%AF%E7%94%A8'"
-        
+   1. 在您的终端中，导航到您的项目文件夹。
+   1. 运行：
+
+      ```bash
+      docker mcp client connect vscode
+      ```
+
+      > [!NOTE]
+      > 此命令在当前目录中创建一个 `.vscode/mcp.json` 文件。由于这是一个用户特定的文件，请将其添加到您的 `.gitignore` 文件中，以防止将其提交到仓库。
       >
-        全局启用
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%B8%BA%E7%89%B9%E5%AE%9A%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%B8%BA%E7%89%B9%E5%AE%9A%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8'"
-        
-      >
-        为特定项目启用
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E5%85%A8%E5%B1%80%E5%90%AF%E7%94%A8' && 'hidden'"
-      >
-        <ol>
-<li>
-<p>在 Visual Studio Code 的用户 <code>mcp.json</code> 中插入以下内容：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'Im1jcCI6IHsKICJzZXJ2ZXJzIjogewogICAiTUNQX0RPQ0tFUiI6IHsKICAgICAiY29tbWFuZCI6ICJkb2NrZXIiLAogICAgICJhcmdzIjogWwogICAgICAgIm1jcCIsCiAgICAgICAiZ2F0ZXdheSIsCiAgICAgICAicnVuIgogICAgIF0sCiAgICAgInR5cGUiOiAic3RkaW8iCiAgIH0KIH0KfQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;mcp&#34;</span><span class="err">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&#34;servers&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&#34;MCP_DOCKER&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;docker&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">       <span class="s2">&#34;mcp&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="s2">&#34;gateway&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="s2">&#34;run&#34;</span>
-</span></span><span class="line"><span class="cl">     <span class="p">],</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;stdio&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-</ol>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%B8%BA%E7%89%B9%E5%AE%9A%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8' && 'hidden'"
-      >
-        <ol>
-<li>
-<p>在您的终端中，导航到您的项目文件夹。</p>
-</li>
-<li>
-<p>运行：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ZG9ja2VyIG1jcCBjbGllbnQgY29ubmVjdCB2c2NvZGU=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker mcp client connect vscode</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
+      > ```console
+      > echo ".vscode/mcp.json" >> .gitignore
+      > ```
 
   
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>此命令在当前目录中创建一个 <code>.vscode/mcp.json</code> 文件。由于这是一个用户特定的文件，请将其添加到您的 <code>.gitignore</code> 文件中，以防止将其提交到仓库。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ZWNobyAiLnZzY29kZS9tY3AuanNvbiIgPj4gLmdpdGlnbm9yZQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo &#34;.vscode/mcp.json&#34; &gt;&gt; .gitignore
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-    </div>
-  </blockquote>
-
-</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
-
 
 1. 在 Visual Studio Code 中，打开一个新的聊天并选择 **Agent** 模式：
 

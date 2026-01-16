@@ -1,4 +1,23 @@
-# MCP 模式
+---
+title: MCP 模式
+url: /ai/cagent/integrations/mcp/
+parent:
+  title: 集成
+  url: /ai/cagent/integrations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+  - title: 集成
+    url: /ai/cagent/integrations/
+  - title: MCP 模式
+    url: /ai/cagent/integrations/mcp/
+next:
+  title: ACP 集成
+  url: /ai/cagent/integrations/acp/
+---
+
 
 当您以 MCP 模式运行 cagent 时，您的代理会作为工具出现在 Claude Desktop
 和其他 MCP 客户端中。您无需切换到终端来运行您的安全代理，而是直接要求

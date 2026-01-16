@@ -1,4 +1,21 @@
-# Multi-stage builds
+---
+title: Multi-stage builds
+url: /build/building/multi-stage/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Multi-stage builds
+    url: /build/building/multi-stage/
+prev:
+  title: Build variables
+  url: /build/building/variables/
+---
+
 
 Multi-stage builds are useful to anyone who has struggled to optimize
 Dockerfiles while keeping them easy to read and maintain.

@@ -1,4 +1,28 @@
-# Push to multiple registries with GitHub Actions
+---
+title: Push to multiple registries with GitHub Actions
+url: /build/ci/github-actions/push-multi-registries/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Push to multiple registries with GitHub Actions
+    url: /build/ci/github-actions/push-multi-registries/
+next:
+  title: Named contexts with GitHub Actions
+  url: /build/ci/github-actions/named-contexts/
+prev:
+  title: Reproducible builds with GitHub Actions
+  url: /build/ci/github-actions/reproducible-builds/
+---
+
 
 The following workflow will connect you to Docker Hub and GitHub Container
 Registry, and push the image to both registries:

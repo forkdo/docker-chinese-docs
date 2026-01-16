@@ -1,4 +1,24 @@
-# Builders
+---
+title: Builders
+url: /build/builders/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Builders
+    url: /build/builders/
+children:
+  - title: Build drivers
+    url: /build/builders/drivers/
+    description: Build drivers are configurations for how and where the BuildKit backend runs.
+  - title: Manage builders
+    url: /build/builders/manage/
+---
+
 
 A builder is a BuildKit daemon that you can use to run your builds. BuildKit
 is the build engine that solves the build steps in a Dockerfile to produce a
@@ -102,9 +122,4 @@ builder](#selected-builder) configuration is interpreted correctly.
   see [Manage builders](./manage.md)
 - To learn about different types of builders,
   see [Build drivers](drivers/_index.md)
-
-
-- [Build drivers](/build/builders/drivers/)
-
-- [Manage builders](/build/builders/manage/)
 

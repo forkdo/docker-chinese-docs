@@ -1,4 +1,39 @@
-# Docker Scout 中的策略评估入门
+---
+title: Docker Scout 中的策略评估入门
+url: /scout/policy/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: Docker Scout 中的策略评估入门
+    url: /scout/policy/
+children:
+  - title: Docker Scout 健康评分
+    url: /scout/policy/scores/
+    description: Docker Scout 健康评分提供对 Docker Hub 镜像的供应链评估，
+根据各种安全策略对其进行从 A 到 F 的评级。
+
+  - title: 使用 Docker Scout 进行修复
+    url: /scout/policy/remediation/
+    description: 了解 Docker Scout 如何通过修复功能自动帮助您提升软件质量
+  - title: 在 CI 中评估策略合规性
+    url: /scout/policy/ci/
+    description: 配置你的持续集成流水线，当镜像的策略评估结果比基线更差时
+使流水线失败
+
+  - title: 查看 Docker Scout 策略状态
+    url: /scout/policy/view/
+    description: Docker Scout 仪表板和 `docker scout policy` 命令可用于查看镜像的策略状态。
+
+  - title: 配置策略
+    url: /scout/policy/configure/
+    description: 了解如何在 Docker Scout 中配置、禁用或删除策略
+---
+
 
 在软件供应链管理中，维护制品的安全性和可靠性是重中之重。Docker Scout 中的策略评估在现有分析功能的基础上引入了一层控制。它让您能够为制品定义供应链规则，并帮助您跟踪您的制品随时间推移相对于这些规则和阈值的表现。
 
@@ -154,148 +189,35 @@ RUN echo "Hi"
 
 以下 Dockerfile 片段展示了符合规定和不符合规定的镜像之间的区别。
 
+**不符合规定**
 
 
 
+```dockerfile
+FROM alpine AS builder
+COPY Makefile ./src /
+RUN make build
+
+FROM alpine AS runtime
+COPY --from=builder bin/production /app
+ENTRYPOINT ["/app/production"]
+```
+
+**符合规定**
 
 
 
+```dockerfile {hl_lines=7}
+FROM alpine AS builder
+COPY Makefile ./src /
+RUN make build
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%B8%8D%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%B8%8D%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%B8%8D%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A'"
-        
-      >
-        不符合规定
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A'"
-        
-      >
-        符合规定
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%B8%8D%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'RlJPTSBhbHBpbmUgQVMgYnVpbGRlcgpDT1BZIE1ha2VmaWxlIC4vc3JjIC8KUlVOIG1ha2UgYnVpbGQKCkZST00gYWxwaW5lIEFTIHJ1bnRpbWUKQ09QWSAtLWZyb209YnVpbGRlciBiaW4vcHJvZHVjdGlvbiAvYXBwCkVOVFJZUE9JTlQgWyIvYXBwL3Byb2R1Y3Rpb24iXQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> Makefile ./src /<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> make build<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">runtime</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder bin/production /app<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/app/production&#34;</span><span class="p">]</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+FROM alpine AS runtime
+COPY --from=builder bin/production /app
+USER nonroot
+ENTRYPOINT ["/app/production"]
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E7%AC%A6%E5%90%88%E8%A7%84%E5%AE%9A' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'RlJPTSBhbHBpbmUgQVMgYnVpbGRlcgpDT1BZIE1ha2VmaWxlIC4vc3JjIC8KUlVOIG1ha2UgYnVpbGQKCkZST00gYWxwaW5lIEFTIHJ1bnRpbWUKQ09QWSAtLWZyb209YnVpbGRlciBiaW4vcHJvZHVjdGlvbiAvYXBwClVTRVIgbm9ucm9vdApFTlRSWVBPSU5UIFsiL2FwcC9wcm9kdWN0aW9uIl0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> Makefile ./src /<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> make build<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">runtime</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>builder bin/production /app<span class="err">
-</span></span></span><span class="line hl"><span class="cl"><span class="k">USER</span><span class="w"> </span><span class="s">nonroot</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/app/production&#34;</span><span class="p">]</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 批准的基础镜像
@@ -382,14 +304,3 @@ Docker Scout 使用[来源证明](/manuals/build/metadata/attestations/slsa-prov
 - 您使用的版本有多个标签，但并非所有标签都已过时
 
 为确保 Docker Scout 始终了解您的基础镜像，您可以在构建时附加[来源证明](/manuals/build/metadata/attestations/slsa-provenance.md)。Docker Scout 使用来源证明来找出基础镜像版本。
-
-- [Docker Scout 健康评分](/scout/policy/scores/)
-
-- [使用 Docker Scout 进行修复](/scout/policy/remediation/)
-
-- [在 CI 中评估策略合规性](/scout/policy/ci/)
-
-- [查看 Docker Scout 策略状态](/scout/policy/view/)
-
-- [配置策略](/scout/policy/configure/)
-

@@ -1,4 +1,21 @@
-# 停用 Docker 账户
+---
+title: 停用 Docker 账户
+url: /accounts/deactivate-user-account/
+parent:
+  title: Docker 账户
+  url: /accounts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 账户
+    url: /accounts/
+  - title: 停用 Docker 账户
+    url: /accounts/deactivate-user-account/
+next:
+  title: 管理 Docker 账户
+  url: /accounts/manage-account/
+---
+
 
 了解如何停用个人 Docker 账户，包括停用账户所需的前提条件。
 

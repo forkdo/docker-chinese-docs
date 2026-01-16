@@ -1,4 +1,23 @@
-# 从扩展与 Kubernetes 交互
+---
+title: 从扩展与 Kubernetes 交互
+url: /extensions/extensions-sdk/guides/kubernetes/
+parent:
+  title: 扩展 SDK 概览
+  url: /extensions/extensions-sdk/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 从扩展与 Kubernetes 交互
+    url: /extensions/extensions-sdk/guides/kubernetes/
+prev:
+  title: 从扩展后端使用 Docker socket
+  url: /extensions/extensions-sdk/guides/use-docker-socket-from-backend/
+---
+
 
 Extensions SDK 不提供任何直接与 Docker Desktop 管理的 Kubernetes 集群或其他使用 KinD 等工具创建的集群进行交互的 API 方法。不过，本页面提供了一种方法，让您可以通过其他 SDK API 从扩展中间接与 Kubernetes 集群进行交互。
 

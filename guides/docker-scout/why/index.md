@@ -1,7 +1,22 @@
-# 为什么选择 Docker Scout？
+---
+title: 为什么选择 Docker Scout？
+url: /guides/docker-scout/why/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: 为什么选择 Docker Scout？
+    url: /guides/docker-scout/why/
+prev:
+  title: Docker Scout demo
+  url: /guides/docker-scout/demo/
+---
 
-<div id="youtube-player--omsQ7Uqyc4" data-video-id="-omsQ7Uqyc4" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 组织面临数据泄露带来的重大挑战，包括财务损失、运营中断以及对品牌声誉和客户信任的长期损害。Docker Scout 解决了关键问题，例如识别不安全的容器镜像、防止安全漏洞，以及降低因漏洞导致运营停机的风险。

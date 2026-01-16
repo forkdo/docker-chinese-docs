@@ -1,4 +1,28 @@
-# Kubernetes driver
+---
+title: Kubernetes driver
+url: /build/builders/drivers/kubernetes/
+parent:
+  title: Build drivers
+  url: /build/builders/drivers/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Builders
+    url: /build/builders/
+  - title: Build drivers
+    url: /build/builders/drivers/
+  - title: Kubernetes driver
+    url: /build/builders/drivers/kubernetes/
+next:
+  title: Docker driver
+  url: /build/builders/drivers/docker/
+prev:
+  title: Remote driver
+  url: /build/builders/drivers/remote/
+---
+
 
 The Kubernetes driver lets you connect your local development or CI
 environments to builders in a Kubernetes cluster to allow access to more

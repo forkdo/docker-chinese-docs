@@ -1,4 +1,23 @@
-# Image and registry exporters
+---
+title: Image and registry exporters
+url: /build/exporters/image-registry/
+parent:
+  title: Exporters overview
+  url: /build/exporters/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Exporters overview
+    url: /build/exporters/
+  - title: Image and registry exporters
+    url: /build/exporters/image-registry/
+prev:
+  title: Local and tar exporters
+  url: /build/exporters/local-tar/
+---
+
 
 The `image` exporter outputs the build result into a container image format. The
 `registry` exporter is identical, but it automatically pushes the result by

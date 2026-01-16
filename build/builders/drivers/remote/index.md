@@ -1,4 +1,25 @@
-# Remote driver
+---
+title: Remote driver
+url: /build/builders/drivers/remote/
+parent:
+  title: Build drivers
+  url: /build/builders/drivers/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Builders
+    url: /build/builders/
+  - title: Build drivers
+    url: /build/builders/drivers/
+  - title: Remote driver
+    url: /build/builders/drivers/remote/
+next:
+  title: Kubernetes driver
+  url: /build/builders/drivers/kubernetes/
+---
+
 
 The Buildx remote driver allows for more complex custom build workloads,
 allowing you to connect to externally managed BuildKit instances. This is useful

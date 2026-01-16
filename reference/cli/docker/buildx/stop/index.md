@@ -1,4 +1,33 @@
-# docker buildx stop
+---
+title: docker buildx stop
+url: /reference/cli/docker/buildx/stop/
+parent:
+  title: docker buildx
+  url: /reference/cli/docker/buildx/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker buildx
+    url: /reference/cli/docker/buildx/
+  - title: docker buildx stop
+    url: /reference/cli/docker/buildx/stop/
+next:
+  title: docker buildx rm
+  url: /reference/cli/docker/buildx/rm/
+prev:
+  title: docker buildx use
+  url: /reference/cli/docker/buildx/use/
+---
+
+**Description:** Stop builder instance
+
+**Usage:** `docker buildx stop [NAME]`
+
+
 
 <!--
 本页内容由 Docker 源代码自动生成。如果您希望
@@ -7,3 +36,27 @@
 
 https://github.com/docker/buildx
 -->
+
+
+
+
+
+
+
+
+## Description
+
+Stops the specified or current builder. This does not prevent buildx build to
+restart the builder. The implementation of stop depends on the driver.
+
+
+
+
+## Examples
+
+### Override the configured builder instance (--builder) {#builder}
+
+Same as [`buildx --builder`](/reference/cli/docker/buildx/#builder).
+
+
+

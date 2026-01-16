@@ -1,4 +1,18 @@
-# Annotations
+---
+title: Annotations
+url: /build/metadata/annotations/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Annotations
+    url: /build/metadata/annotations/
+---
+
 
 <!-- vale Docker.Spacing = NO -->
 

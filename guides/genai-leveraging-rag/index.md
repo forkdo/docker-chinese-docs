@@ -1,4 +1,22 @@
-# 在 GenAI 中利用 RAG 教授新知识
+---
+title: 在 GenAI 中利用 RAG 教授新知识
+url: /guides/genai-leveraging-rag/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 在 GenAI 中利用 RAG 教授新知识
+    url: /guides/genai-leveraging-rag/
+next:
+  title: 在 Docker 中使用 Zscaler
+  url: /guides/zscaler/
+prev:
+  title: 使用 Kafka 和 Docker 开发事件驱动型应用程序
+  url: /guides/kafka/
+---
+
 
 ## 简介
 

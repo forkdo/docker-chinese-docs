@@ -1,4 +1,27 @@
-# 
+---
+title: 
+url: /reference/cli/docker/mcp/server/server_inspect/
+parent:
+  title: docker mcp server
+  url: /reference/cli/docker/mcp/server/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker mcp
+    url: /reference/cli/docker/mcp/
+  - title: docker mcp server
+    url: /reference/cli/docker/mcp/server/
+  - title: 
+    url: /reference/cli/docker/mcp/server/server_inspect/
+prev:
+  title: docker mcp server disable
+  url: /reference/cli/docker/mcp/server/server_disable/
+---
+
 datafolder: mcp-cli
 datafile: docker_mcp_server_inspect
 title: docker mcp server inspect

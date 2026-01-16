@@ -1,4 +1,24 @@
-# 为你的 Bun 应用程序配置 CI/CD
+---
+title: 为你的 Bun 应用程序配置 CI/CD
+url: /guides/bun/configure-ci-cd/
+parent:
+  title: Bun 语言特定指南
+  url: /guides/bun/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Bun 语言特定指南
+    url: /guides/bun/
+  - title: 为你的 Bun 应用程序配置 CI/CD
+    url: /guides/bun/configure-ci-cd/
+next:
+  title: 为 Bun 开发使用容器
+  url: /guides/bun/develop/
+prev:
+  title: 测试你的 Bun 部署
+  url: /guides/bun/deploy/
+---
+
 
 ## 先决条件
 

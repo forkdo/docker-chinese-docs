@@ -1,4 +1,23 @@
-# Build cache invalidation
+---
+title: Build cache invalidation
+url: /build/cache/invalidation/
+parent:
+  title: Docker build cache
+  url: /build/cache/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Docker build cache
+    url: /build/cache/
+  - title: Build cache invalidation
+    url: /build/cache/invalidation/
+prev:
+  title: Build garbage collection
+  url: /build/cache/garbage-collection/
+---
+
 
 When building an image, Docker steps through the instructions in your
 Dockerfile, executing each in the order specified. For each instruction, the

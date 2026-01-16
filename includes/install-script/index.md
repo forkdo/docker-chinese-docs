@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/install-script/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/install-script/
+next:
+  title: 
+  url: /includes/hub-categories/
+prev:
+  title: 
+  url: /includes/open-terminal/
+---
+
 ### 使用便捷脚本安装
 
 Docker 提供了一个便捷脚本，位于 [https://get.docker.com/](https://get.docker.com/)，用于以非交互方式将 Docker 安装到开发环境中。该便捷脚本不推荐用于生产环境，但对于创建符合您需求的配置脚本很有用。另请参阅[使用仓库安装](#install-using-the-repository)步骤，了解使用软件包仓库进行安装的相关步骤。该脚本的源代码是开源的，您可以在 GitHub 上的 [`docker-install` 仓库](https://github.com/docker/docker-install) 中找到它。

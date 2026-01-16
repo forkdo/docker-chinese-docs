@@ -1,4 +1,22 @@
-# Docker Desktop 网络
+---
+title: Docker Desktop 网络
+url: /desktop/features/networking/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop 网络
+    url: /desktop/features/networking/
+children:
+  - title: 探索 Docker Desktop 上的网络操作指南
+    url: /desktop/features/networking/networking-how-tos/
+    description: 了解如何在 Docker Desktop 中连接容器到主机、跨容器连接，或通过代理和 VPN 进行连接。
+---
+
 
 本文档介绍 Docker Desktop 如何在容器、虚拟机和主机之间路由网络流量和文件 I/O，以及这种行为对防火墙和端点保护工具的可见性。
 
@@ -88,6 +106,3 @@ Crowdstrike 和类似工具可以观察通过后端进程传递的所有流量�
 | 容器读取主机文件 | 是 | 访问由 `com.docker.backend` 处理 | 
 | 容器写入主机文件 | 是 | 同一进程执行写入 | 
 | 容器访问其自己的文件系统层 | 否 | 仅存在于虚拟机内部 |
-
-- [探索 Docker Desktop 上的网络操作指南](/desktop/features/networking/networking-how-tos/)
-

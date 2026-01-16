@@ -1,4 +1,23 @@
-# Swarm 模式中的 Raft 共识
+---
+title: Swarm 模式中的 Raft 共识
+url: /engine/swarm/raft/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: Swarm 模式中的 Raft 共识
+    url: /engine/swarm/raft/
+prev:
+  title: Swarm 模式关键概念
+  url: /engine/swarm/key-concepts/
+---
+
 
 当 Docker 引擎在 Swarm 模式下运行时，管理器节点会实现 [Raft 共识算法](http://thesecretlivesofdata.com/raft/) 来管理全局集群状态。
 

@@ -1,4 +1,24 @@
-# 故障排除 Docker Offload
+---
+title: 故障排除 Docker Offload
+url: /offload/troubleshoot/
+parent:
+  title: Docker Offload
+  url: /offload/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Offload
+    url: /offload/
+  - title: 故障排除 Docker Offload
+    url: /offload/troubleshoot/
+next:
+  title: 优化 Docker Offload 使用
+  url: /offload/optimize/
+prev:
+  title: 提供反馈
+  url: /offload/feedback/
+---
+
 
 Docker Offload 需要满足以下条件：
 

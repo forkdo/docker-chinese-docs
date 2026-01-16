@@ -1,4 +1,24 @@
-# Docker Desktop 许可协议
+---
+title: Docker Desktop 许可协议
+url: /subscription/desktop-license/
+parent:
+  title: 订阅
+  url: /subscription/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 订阅
+    url: /subscription/
+  - title: Docker Desktop 许可协议
+    url: /subscription/desktop-license/
+next:
+  title: 更改您的订阅
+  url: /subscription/change/
+prev:
+  title: 订阅常见问题
+  url: /subscription/faq/
+---
+
 
 Docker Desktop 根据 [Docker 订阅服务协议](https://www.docker.com/legal/docker-subscription-service-agreement) 进行授权。当您下载并安装 Docker Desktop 时，系统会要求您同意这些条款。
 

@@ -1,4 +1,25 @@
-# docker plugin
+---
+title: docker plugin
+url: /reference/cli/docker/plugin/
+parent:
+  title: docker
+  url: /reference/cli/docker/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker plugin
+    url: /reference/cli/docker/plugin/
+---
+
+**Description:** Manage plugins
+
+**Usage:** `docker plugin`
+
+
 
 <!--
 此页面是自动从 Docker 的源代码生成的。如果您想
@@ -8,23 +29,36 @@
 https://github.com/docker/cli
 -->
 
-- [docker plugin create](/reference/cli/docker/plugin/create/)
 
-- [docker plugin disable](/reference/cli/docker/plugin/disable/)
 
-- [docker plugin enable](/reference/cli/docker/plugin/enable/)
 
-- [docker plugin inspect](/reference/cli/docker/plugin/inspect/)
 
-- [docker plugin install](/reference/cli/docker/plugin/install/)
 
-- [docker plugin ls](/reference/cli/docker/plugin/ls/)
 
-- [docker plugin push](/reference/cli/docker/plugin/push/)
 
-- [docker plugin rm](/reference/cli/docker/plugin/rm/)
+## Description
 
-- [docker plugin set](/reference/cli/docker/plugin/set/)
+Manage plugins.
 
-- [docker plugin upgrade](/reference/cli/docker/plugin/upgrade/)
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker plugin create`](/reference/cli/docker/plugin/create/) | Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+ |
+| [`docker plugin disable`](/reference/cli/docker/plugin/disable/) | Disable a plugin |
+| [`docker plugin enable`](/reference/cli/docker/plugin/enable/) | Enable a plugin |
+| [`docker plugin inspect`](/reference/cli/docker/plugin/inspect/) | Display detailed information on one or more plugins |
+| [`docker plugin install`](/reference/cli/docker/plugin/install/) | Install a plugin |
+| [`docker plugin ls`](/reference/cli/docker/plugin/ls/) | List plugins |
+| [`docker plugin push`](/reference/cli/docker/plugin/push/) | Push a plugin to a registry |
+| [`docker plugin rm`](/reference/cli/docker/plugin/rm/) | Remove one or more plugins |
+| [`docker plugin set`](/reference/cli/docker/plugin/set/) | Change settings for a plugin |
+| [`docker plugin upgrade`](/reference/cli/docker/plugin/upgrade/) | Upgrade an existing plugin |
+
 

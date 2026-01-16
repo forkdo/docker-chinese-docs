@@ -1,4 +1,21 @@
-# 通用安全常见问题解答
+---
+title: 通用安全常见问题解答
+url: /security/faqs/general/
+parent:
+  title: 开发者安全
+  url: /security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 开发者安全
+    url: /security/
+  - title: 通用安全常见问题解答
+    url: /security/faqs/general/
+prev:
+  title: 容器安全常见问题
+  url: /security/faqs/containers/
+---
+
 
 ## 如何报告漏洞？
 

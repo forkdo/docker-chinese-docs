@@ -1,84 +1,48 @@
-# Compose 的工作原理
+---
+title: Compose 的工作原理
+url: /compose/intro/compose-application-model/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Compose 的工作原理
+    url: /compose/intro/compose-application-model/
+prev:
+  title: 为什么使用 Compose？
+  url: /compose/intro/features-uses/
+---
+
 
 使用 Docker Compose，您需要使用 YAML 配置文件（称为 [Compose 文件](#the-compose-file)）来配置应用程序的服务，然后使用 [Compose CLI](#cli) 从配置中创建并启动所有服务。
 
 Compose 文件，或 `compose.yaml` 文件，遵循 [Compose 规范](/reference/compose-file/_index.md) 提供的规则来定义多容器应用程序。这是正式 [Compose 规范](https://github.com/compose-spec/compose-spec) 的 Docker Compose 实现。
 
+**Compose 应用模型**
 
 
 
+应用程序的计算组件被定义为 [服务](/reference/compose-file/services.md)。服务是一个抽象概念，在平台上通过运行相同的容器镜像和配置，一次或多次实现。
 
+服务通过 [网络](/reference/compose-file/networks.md) 相互通信。在 Compose 规范中，网络是建立连接在一起的服务中的容器之间 IP 路由的平台能力抽象。
 
-<div
-  id="compose-应用模型"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
+服务将持久数据存储并共享到 [卷](/reference/compose-file/volumes.md) 中。规范将这种持久数据描述为具有全局选项的高级文件系统挂载。
+
+某些服务需要依赖于运行时或平台的配置数据。为此，规范定义了一个专用的 [configs](/reference/compose-file/configs.md) 概念。在容器内部，configs 的行为类似于卷——它们作为文件挂载。然而，提供敏感数据的平台特定资源足够特殊，值得在 Compose 规范中拥有一个独立的概念和定义。
+
+[secret](/reference/compose-file/secrets.md) 是配置数据的一种特定形式，用于不应在不考虑安全的情况下暴露的敏感数据。Secrets 作为挂载到其容器中的文件对服务可用，但提供敏感数据的平台特定资源足够特殊，值得在 Compose 规范中拥有一个独立的概念和定义。
+
+> [!NOTE]
 >
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      Compose 应用模型
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    <p>应用程序的计算组件被定义为 
-    
-  
-  <a class="link" href="/reference/compose-file/services/">服务</a>。服务是一个抽象概念，在平台上通过运行相同的容器镜像和配置，一次或多次实现。</p>
-<p>服务通过 
-    
-  
-  <a class="link" href="/reference/compose-file/networks/">网络</a> 相互通信。在 Compose 规范中，网络是建立连接在一起的服务中的容器之间 IP 路由的平台能力抽象。</p>
-<p>服务将持久数据存储并共享到 
-    
-  
-  <a class="link" href="/reference/compose-file/volumes/">卷</a> 中。规范将这种持久数据描述为具有全局选项的高级文件系统挂载。</p>
-<p>某些服务需要依赖于运行时或平台的配置数据。为此，规范定义了一个专用的 
-    
-  
-  <a class="link" href="/reference/compose-file/configs/">configs</a> 概念。在容器内部，configs 的行为类似于卷——它们作为文件挂载。然而，提供敏感数据的平台特定资源足够特殊，值得在 Compose 规范中拥有一个独立的概念和定义。</p>
-<p>
-    
-  
-  <a class="link" href="/reference/compose-file/secrets/">secret</a> 是配置数据的一种特定形式，用于不应在不考虑安全的情况下暴露的敏感数据。Secrets 作为挂载到其容器中的文件对服务可用，但提供敏感数据的平台特定资源足够特殊，值得在 Compose 规范中拥有一个独立的概念和定义。</p>
+> 使用卷、configs 和 secrets，您可以在顶级进行简单声明，然后在服务级别添加更多平台特定信息。
 
+项目是平台上应用程序规范的单个部署。项目的名称通过顶级 [`name`](/reference/compose-file/version-and-name.md) 属性设置，用于将资源分组在一起，并将它们与其他应用程序或具有不同参数的同一 Compose 指定应用程序的其他安装隔离。如果您在平台上创建资源，必须使用项目前缀资源名称并设置标签 `com.docker.compose.project`。
 
-  
+Compose 提供了一种方法，让您设置自定义项目名称并覆盖此名称，这样相同的 `compose.yaml` 文件可以在同一基础设施上部署两次，无需更改，只需传递不同的名称即可。
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>使用卷、configs 和 secrets，您可以在顶级进行简单声明，然后在服务级别添加更多平台特定信息。</p>
-    </div>
-  </blockquote>
-
-<p>项目是平台上应用程序规范的单个部署。项目的名称通过顶级 
-    
-  
-  <a class="link" href="/reference/compose-file/version-and-name/"><code>name</code></a> 属性设置，用于将资源分组在一起，并将它们与其他应用程序或具有不同参数的同一 Compose 指定应用程序的其他安装隔离。如果您在平台上创建资源，必须使用项目前缀资源名称并设置标签 <code>com.docker.compose.project</code>。</p>
-<p>Compose 提供了一种方法，让您设置自定义项目名称并覆盖此名称，这样相同的 <code>compose.yaml</code> 文件可以在同一基础设施上部署两次，无需更改，只需传递不同的名称即可。</p>
-
-  </div>
-</div>
 
  
 

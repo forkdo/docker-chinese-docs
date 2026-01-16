@@ -1,4 +1,26 @@
-# 软件制品供应链安全等级 (SLSA)
+---
+title: 软件制品供应链安全等级 (SLSA)
+url: /dhi/core-concepts/slsa/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 软件制品供应链安全等级 (SLSA)
+    url: /dhi/core-concepts/slsa/
+next:
+  title: 软件物料清单 (SBOM)
+  url: /dhi/core-concepts/sbom/
+prev:
+  title: 安全软件开发生命周期
+  url: /dhi/core-concepts/ssdlc/
+---
+
 
 ## 什么是 SLSA？
 

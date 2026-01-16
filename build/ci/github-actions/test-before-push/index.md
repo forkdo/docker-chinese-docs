@@ -1,4 +1,28 @@
-# Test before push with GitHub Actions
+---
+title: Test before push with GitHub Actions
+url: /build/ci/github-actions/test-before-push/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Test before push with GitHub Actions
+    url: /build/ci/github-actions/test-before-push/
+next:
+  title: Manage tags and labels with GitHub Actions
+  url: /build/ci/github-actions/manage-tags-labels/
+prev:
+  title: Update Docker Hub description with GitHub Actions
+  url: /build/ci/github-actions/update-dockerhub-desc/
+---
+
 
 In some cases, you might want to validate that the image works as expected
 before pushing it. The following workflow implements several steps to achieve

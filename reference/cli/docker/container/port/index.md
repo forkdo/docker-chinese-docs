@@ -1,4 +1,33 @@
-# docker container port
+---
+title: docker container port
+url: /reference/cli/docker/container/port/
+parent:
+  title: docker container
+  url: /reference/cli/docker/container/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker container
+    url: /reference/cli/docker/container/
+  - title: docker container port
+    url: /reference/cli/docker/container/port/
+next:
+  title: docker container pause
+  url: /reference/cli/docker/container/pause/
+prev:
+  title: docker container prune
+  url: /reference/cli/docker/container/prune/
+---
+
+**Description:** List port mappings or a specific mapping for the container
+
+**Usage:** `docker container port CONTAINER [PRIVATE_PORT[/PROTO]]`
+
+**Aliases:** `docker port`
 
 <!--
 此页面是自动生成自 Docker 的源代码。如果您想
@@ -7,3 +36,51 @@
 
 https://github.com/docker/cli
 -->
+
+
+
+
+
+
+
+
+## Description
+
+List port mappings or a specific mapping for the container
+
+
+
+
+## Examples
+
+### Show all mapped ports
+
+You can find out all the ports mapped by not specifying a `PRIVATE_PORT`, or
+just a specific mapping:
+
+```console
+$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                                            NAMES
+b650456536c7        busybox:latest      top                 54 minutes ago      Up 54 minutes       0.0.0.0:1234->9876/tcp, 0.0.0.0:4321->7890/tcp   test
+
+$ docker port test
+
+7890/tcp -> 0.0.0.0:4321
+9876/tcp -> 0.0.0.0:1234
+
+$ docker port test 7890/tcp
+
+0.0.0.0:4321
+
+$ docker port test 7890/udp
+
+2014/06/24 11:53:36 Error: No public port '7890/udp' published for test
+
+$ docker port test 7890
+
+0.0.0.0:4321
+```
+
+
+

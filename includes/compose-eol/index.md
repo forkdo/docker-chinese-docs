@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/compose-eol/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/compose-eol/
+next:
+  title: 
+  url: /includes/buildx-v0.10-disclaimer/
+prev:
+  title: 
+  url: /includes/compose/build/
+---
+
 > [!IMPORTANT]
 >
 > Docker 的文档引用并描述了 Compose V2 的功能。

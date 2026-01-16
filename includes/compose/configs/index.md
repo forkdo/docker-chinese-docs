@@ -1,2 +1,20 @@
-# 
+---
+title: 
+url: /includes/compose/configs/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/compose/configs/
+next:
+  title: 
+  url: /includes/compose/build/
+prev:
+  title: 
+  url: /includes/compose/configure-watch/
+---
+
 配置使服务能够调整其行为，而无需重新构建 Docker 镜像。与卷类似，配置会以文件形式挂载到容器的文件系统中。在 Linux 容器中，挂载点在容器内的默认位置为 `/<config-name>`；在 Windows 容器中，则为 `C:\<config-name>`。

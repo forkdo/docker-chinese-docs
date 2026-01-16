@@ -1,4 +1,24 @@
-# 管理漏洞例外
+---
+title: 管理漏洞例外
+url: /scout/explore/exceptions/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 管理漏洞例外
+    url: /scout/explore/exceptions/
+next:
+  title: 仪表板
+  url: /scout/explore/dashboard/
+prev:
+  title: 镜像详情视图
+  url: /scout/explore/image-details-view/
+---
+
 
 容器镜像中发现的漏洞有时需要额外的上下文。
 仅仅因为镜像包含一个有漏洞的软件包，并不意味着该漏洞可被利用。Docker Scout 中的**例外**允许您确认已接受的风险或解决镜像分析中的误报。
@@ -31,131 +51,26 @@ Docker Scout 仪表板中漏洞页面的 **Exceptions** 选项卡列出了您组
 
 要查看特定镜像标签的所有例外：
 
+**Docker Scout Dashboard**
 
 
 
+1. 转到 [Images 页面](https://scout.docker.com/reports/images)。
+2. 选择您要检查的标签。
+3. 打开 **Exceptions** 选项卡。
+
+**Docker Desktop**
 
 
 
+1. 在 Docker Desktop 中打开 **Images** 视图。
+2. 打开 **Hub** 选项卡。
+3. 选择您要检查的标签。
+4. 打开 **Exceptions** 选项卡。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-Scout-Dashboard' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Scout-Dashboard' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-Scout-Dashboard'"
-        
-      >
-        Docker Scout Dashboard
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Desktop' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-Desktop'"
-        
-      >
-        Docker Desktop
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Scout-Dashboard' && 'hidden'"
-      >
-        <ol>
-<li>转到 <a class="link" href="https://scout.docker.com/reports/images" rel="noopener">Images 页面</a>。</li>
-<li>选择您要检查的标签。</li>
-<li>打开 <strong>Exceptions</strong> 选项卡。</li>
-</ol>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Desktop' && 'hidden'"
-      >
-        <ol>
-<li>在 Docker Desktop 中打开 <strong>Images</strong> 视图。</li>
-<li>打开 <strong>Hub</strong> 选项卡。</li>
-<li>选择您要检查的标签。</li>
-<li>打开 <strong>Exceptions</strong> 选项卡。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 在 CLI 中查看例外
-
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Experimental
-          
-            
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Scout CLI 
-    
-  
-  <a class="link" href="/scout/release-notes/cli/#1150">1.15.0</a> and later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-  </div>
 
 
 

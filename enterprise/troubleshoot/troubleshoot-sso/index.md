@@ -1,4 +1,19 @@
-# 故障排除单点登录
+---
+title: 故障排除单点登录
+url: /enterprise/troubleshoot/troubleshoot-sso/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 故障排除单点登录
+    url: /enterprise/troubleshoot/troubleshoot-sso/
+next:
+  title: 排查配置问题
+  url: /enterprise/troubleshoot/troubleshoot-provisioning/
+---
+
 
 本页介绍常见的单点登录 (SSO) 错误及其解决方案。问题可能源于您的身份提供商 (IdP) 配置或 Docker 设置。
 

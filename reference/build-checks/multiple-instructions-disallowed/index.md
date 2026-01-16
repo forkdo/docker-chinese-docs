@@ -1,4 +1,24 @@
-# MultipleInstructionsDisallowed
+---
+title: MultipleInstructionsDisallowed
+url: /reference/build-checks/multiple-instructions-disallowed/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: MultipleInstructionsDisallowed
+    url: /reference/build-checks/multiple-instructions-disallowed/
+next:
+  title: MaintainerDeprecated
+  url: /reference/build-checks/maintainer-deprecated/
+prev:
+  title: NoEmptyContinuation
+  url: /reference/build-checks/no-empty-continuation/
+---
+
 
 ## Output
 

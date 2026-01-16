@@ -1,4 +1,26 @@
-# 删除仓库
+---
+title: 删除仓库
+url: /docker-hub/repos/delete/
+parent:
+  title: 仓库
+  url: /docker-hub/repos/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 删除仓库
+    url: /docker-hub/repos/delete/
+next:
+  title: 归档或取消归档仓库
+  url: /docker-hub/repos/archive/
+prev:
+  title: 仓库个人设置
+  url: /docker-hub/repos/settings/
+---
+
 
 > [!WARNING]
 >

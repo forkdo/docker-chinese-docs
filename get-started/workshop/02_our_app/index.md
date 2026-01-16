@@ -1,4 +1,21 @@
-# 容器化应用程序
+---
+title: 容器化应用程序
+url: /get-started/workshop/02_our_app/
+parent:
+  title: Docker 工作坊概览
+  url: /get-started/workshop/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: Docker 工作坊概览
+    url: /get-started/workshop/
+  - title: 容器化应用程序
+    url: /get-started/workshop/02_our_app/
+prev:
+  title: 更新应用程序
+  url: /get-started/workshop/03_updating_app/
+---
+
 
 在本指南的剩余部分，您将使用一个运行在 Node.js 上的简单待办事项列表管理器。如果您不熟悉 Node.js，也不必担心。本指南不需要任何 JavaScript 前期经验。
 
@@ -97,186 +114,31 @@
 
 如果您快速查看一下您的容器，您应该会看到至少一个正在运行的容器，该容器使用 `getting-started` 镜像并位于端口 `3000` 上。要查看您的容器，您可以使用 CLI 或 Docker Desktop 的图形界面。
 
+**CLI**
 
 
 
+在终端中运行 `docker ps` 命令以列出您的容器。
+
+```console
+$ docker ps
+```
+
+应该会出现类似以下的输出。
+
+```console
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
+df784548666d        getting-started     "docker-entrypoint.s…"   2 minutes ago       Up 2 minutes        127.0.0.1:3000->3000/tcp   priceless_mcclintock
+```
+
+**Docker Desktop**
 
 
 
+在 Docker Desktop 中，选择 **Containers** 选项卡以查看您的容器列表。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'CLI' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'CLI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'CLI'"
-        
-      >
-        CLI
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Desktop' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-Desktop'"
-        
-      >
-        Docker Desktop
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'CLI' && 'hidden'"
-      >
-        <p>在终端中运行 <code>docker ps</code> 命令以列出您的容器。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcHM=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker ps
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>应该会出现类似以下的输出。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'Q09OVEFJTkVSIElEICAgICAgICBJTUFHRSAgICAgICAgICAgICAgIENPTU1BTkQgICAgICAgICAgICAgICAgICBDUkVBVEVEICAgICAgICAgICAgIFNUQVRVUyAgICAgICAgICAgICAgUE9SVFMgICAgICAgICAgICAgICAgICAgICAgTkFNRVMKZGY3ODQ1NDg2NjZkICAgICAgICBnZXR0aW5nLXN0YXJ0ZWQgICAgICJkb2NrZXItZW50cnlwb2ludC5z4oCmIiAgIDIgbWludXRlcyBhZ28gICAgICAgVXAgMiBtaW51dGVzICAgICAgICAxMjcuMC4wLjE6MzAwMC0&#43;MzAwMC90Y3AgICBwcmljZWxlc3NfbWNjbGludG9jaw==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-</span></span></span><span class="line"><span class="cl"><span class="go">df784548666d        getting-started     &#34;docker-entrypoint.s…&#34;   2 minutes ago       Up 2 minutes        127.0.0.1:3000-&gt;3000/tcp   priceless_mcclintock
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+![Docker Desktop 正在运行 get-started 容器](images/dashboard-two-containers.webp)
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Desktop' && 'hidden'"
-      >
-        <p>在 Docker Desktop 中，选择 <strong>Containers</strong> 选项卡以查看您的容器列表。</p>
-
-  
-  
-    
-
-
-
-
-
-
-
-
-<figure
-  x-data="{ zoom: false }"
-  @click="zoom = ! zoom"
-  class="cursor-pointer hover:opacity-90"
->
-  <img
-    loading="lazy"
-    src="/get-started/workshop/images/dashboard-two-containers.webp"
-    alt="Docker Desktop 正在运行 get-started 容器"
-    
-    
-    class="mx-auto rounded-sm"
-  />
-  
-  <template x-teleport="body">
-    <div
-      x-show="zoom"
-      @click="zoom = false"
-      x-transition.opacity.duration.250ms
-      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
-    >
-      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
-      </button>
-      <img
-        loading="lazy"
-        class="max-h-full max-w-full rounded-sm"
-        src="/get-started/workshop/images/dashboard-two-containers.webp"
-        alt="Docker Desktop 正在运行 get-started 容器"
-      />
-    </div>
-  </template>
-</figure>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## 总结
@@ -292,6 +154,5 @@
 
 接下来，您将对应用程序进行修改，并学习如何使用新镜像更新正在运行的应用程序。在此过程中，您将学习一些其他有用的命令。
 
-
-<a class="button not-prose" href="/get-started/workshop/03_updating_app/">更新应用程序</a>
+[更新应用程序](03_updating_app.md)
 

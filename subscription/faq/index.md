@@ -1,4 +1,24 @@
-# 订阅常见问题
+---
+title: 订阅常见问题
+url: /subscription/faq/
+parent:
+  title: 订阅
+  url: /subscription/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 订阅
+    url: /subscription/
+  - title: 订阅常见问题
+    url: /subscription/faq/
+next:
+  title: Docker Desktop 许可协议
+  url: /subscription/desktop-license/
+prev:
+  title: 
+  url: /subscription/details/
+---
+
 
 有关 Docker 订阅的更多信息，请参阅 [Docker 订阅概述](_index.md)。
 

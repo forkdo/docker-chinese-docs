@@ -1,4 +1,24 @@
-# Compose 中的网络
+---
+title: Compose 中的网络
+url: /compose/how-tos/networking/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Compose 中的网络
+    url: /compose/how-tos/networking/
+next:
+  title: 在 Docker Compose 中安全管理机密信息
+  url: /compose/how-tos/use-secrets/
+prev:
+  title: 为 Docker Compose 服务启用 GPU 访问
+  url: /compose/how-tos/gpu-support/
+---
+
 
 默认情况下，Compose 会为你的应用设置一个单独的
 [network](/reference/cli/docker/network/create.md)。该服务的每个容器都会加入这个默认网络，既可以被该网络上的其他容器访问，也可以通过服务名称被其他容器发现。

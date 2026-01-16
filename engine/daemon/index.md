@@ -1,4 +1,47 @@
-# Docker 守护进程配置概述
+---
+title: Docker 守护进程配置概述
+url: /engine/daemon/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker 守护进程配置概述
+    url: /engine/daemon/
+children:
+  - title: 启动守护进程
+    url: /engine/daemon/start/
+    description: 手动启动 Docker 守护进程
+  - title: 使用 IPv6 网络
+    url: /engine/daemon/ipv6/
+    description: 如何在 Docker 守护进程中启用 IPv6 支持
+  - title: 守护进程代理配置
+    url: /engine/daemon/proxy/
+    description: 了解如何配置 Docker 守护进程使用 HTTP 代理
+  - title: 实时恢复
+    url: /engine/daemon/live-restore/
+    description: 了解如何在守护进程不可用时保持容器运行
+  - title: Docker 守护进程故障排除
+    url: /engine/daemon/troubleshoot/
+    description: 了解如何排查 Docker 守护进程中的错误和配置问题
+  - title: 使用 Prometheus 收集 Docker 指标
+    url: /engine/daemon/prometheus/
+    description: 使用 Prometheus 收集 Docker 指标
+  - title: 替代容器运行时
+    url: /engine/daemon/alternative-runtimes/
+    description: Docker Engine 默认使用 runc 作为容器运行时，但您可以通过 CLI 或配置守护进程来指定替代运行时。
+
+  - title: 读取守护程序日志
+    url: /engine/daemon/logs/
+    description: 如何读取 Docker 守护程序日志并使用 SIGUSR1 强制生成堆栈跟踪以进行调试
+  - title: 配置 Docker 守护进程的远程访问
+    url: /engine/daemon/remote-access/
+    description: 通过配置 Docker 监听 IP 地址、端口以及 Unix 套接字，可以允许 Docker 接受来自远程主机的请求。
+---
+
 
 本页介绍如何自定义 Docker 守护进程 `dockerd`。
 
@@ -92,22 +135,3 @@ root = "/mnt/containerd-data"
 - [配置存储驱动](/manuals/engine/storage/drivers/select-storage-driver.md)
 - [容器安全](/manuals/engine/security/_index.md)
 - [配置 Docker 守护进程使用代理](./proxy.md)
-
-- [启动守护进程](/engine/daemon/start/)
-
-- [使用 IPv6 网络](/engine/daemon/ipv6/)
-
-- [守护进程代理配置](/engine/daemon/proxy/)
-
-- [实时恢复](/engine/daemon/live-restore/)
-
-- [Docker 守护进程故障排除](/engine/daemon/troubleshoot/)
-
-- [使用 Prometheus 收集 Docker 指标](/engine/daemon/prometheus/)
-
-- [替代容器运行时](/engine/daemon/alternative-runtimes/)
-
-- [读取守护程序日志](/engine/daemon/logs/)
-
-- [配置 Docker 守护进程的远程访问](/engine/daemon/remote-access/)
-

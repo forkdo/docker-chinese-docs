@@ -1,4 +1,28 @@
-# Docker 赞助的开源计划
+---
+title: Docker 赞助的开源计划
+url: /docker-hub/repos/manage/trusted-content/dsos-program/
+parent:
+  title: 可信内容
+  url: /docker-hub/repos/manage/trusted-content/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 可信内容
+    url: /docker-hub/repos/manage/trusted-content/
+  - title: Docker 赞助的开源计划
+    url: /docker-hub/repos/manage/trusted-content/dsos-program/
+next:
+  title: Docker 官方镜像
+  url: /docker-hub/repos/manage/trusted-content/official-images/
+prev:
+  title: 洞察与分析
+  url: /docker-hub/repos/manage/trusted-content/insights-analytics/
+---
+
 
 [Docker 赞助的开源镜像](https://hub.docker.com/search?badges=open_source)由 Docker 通过该计划赞助的开源项目发布和维护。
 
@@ -41,19 +65,7 @@ DSOS 组织可以在 Docker Hub 上为各个仓库上传自定义图片。
    (
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src="../../../../images/upload_logo_sm.png"
-  alt="相机图标"
-  
-  class="inline my-0 not-prose"
-/>
-)。
+![相机图标](../../../images/upload_logo_sm.png))。
 4. 在打开的对话框中，选择要上传的 PNG 图片以将其设置为仓库 Logo。
 
 #### 移除 Logo
@@ -61,19 +73,7 @@ DSOS 组织可以在 Docker Hub 上为各个仓库上传自定义图片。
 选择 **清除** 按钮 (
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src="../../../../images/clear_logo_sm.png"
-  alt="清除按钮"
-  
-  class="inline my-0 not-prose"
-/>
-) 以移除 Logo。
+![清除按钮](../../../images/clear_logo_sm.png)) 以移除 Logo。
 
 移除 Logo 后，如果已设置组织 Logo，则仓库将默认使用该 Logo；如果未设置，则使用以下默认 Logo。
 

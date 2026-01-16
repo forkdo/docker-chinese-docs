@@ -1,4 +1,23 @@
-# 优化 Docker Hub 使用的最佳实践
+---
+title: 优化 Docker Hub 使用的最佳实践
+url: /docker-hub/usage/manage/
+parent:
+  title: Docker Hub 使用情况和限制
+  url: /docker-hub/usage/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: Docker Hub 使用情况和限制
+    url: /docker-hub/usage/
+  - title: 优化 Docker Hub 使用的最佳实践
+    url: /docker-hub/usage/manage/
+next:
+  title: Docker Hub 拉取使用情况和限制
+  url: /docker-hub/usage/pulls/
+---
+
 
 请按照以下步骤帮助个人和组织优化和管理 Docker Hub 的使用：
 

@@ -1,16 +1,22 @@
-# 管理未关联的机器
+---
+title: 管理未关联的机器
+url: /unassociated-machines/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 管理未关联的机器
+    url: /unassociated-machines/
+---
 
-<div class="px-4 border-l-2 border-l-magenta-light dark:border-l-magenta-dark">
-  <p class="not-prose flex gap-2 items-center text-magenta-light dark:text-magenta-dark">
-    <span class="icon-svg pb-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M263-465q26-69 64.5-130.5T415-712l-77-15q-20-4-39.5 2T265-705L129-568q-11 11-8 26.5t17 21.5l125 55Zm580-398q-109-8-206.5 37.5T461-702q-50 50-88.5 106.5T309-473q-4 10-4 20t8 18l135 135q8 8 18 8t20-4q66-24 122.5-63T715-448q78-78 124-175.5T877-830q-1-6-3.5-11.5T866-852q-5-5-10.5-7.5T843-863ZM586-573q-20-20-20-49.5t20-49.5q20-20 49.5-20t49.5 20q20 20 20 49.5T685-573q-20 20-49.5 20T586-573ZM479-250l54 125q6 15 22 17.5t27-8.5l136-136q14-14 20-33.5t2-39.5l-14-77q-55 49-116.5 87.5T479-250Zm-317-68q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-48 48-113.5 57T87-74q9-66 18.5-131.5T162-318Z"/></svg>
-    </span>
-    <strong>关于未关联的机器</strong>
-  </p>
-  
+
+> **关于未关联的机器**
+>
+> 
 未关联的机器是一项私有功能，可能并非对所有账户都可用。
 
-</div>
 
 
 Docker 管理员可以识别、查看和管理可能属于其组织但当前未链接到用户账户的 Docker Desktop 机器。此自助服务功能可帮助您了解整个组织中 Docker Desktop 的使用情况，并简化用户入职流程，无需 IT 人员介入。
@@ -161,4 +167,3 @@ Docker 使用遥测数据来识别哪些机器可能属于您的组织：
 1. 在弹出模态框中，选择**关闭登录要求**以确认。
 
 单个机器的**登录要求**状态将更新为**否**。
-

@@ -1,4 +1,26 @@
-# Local and tar exporters
+---
+title: Local and tar exporters
+url: /build/exporters/local-tar/
+parent:
+  title: Exporters overview
+  url: /build/exporters/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Exporters overview
+    url: /build/exporters/
+  - title: Local and tar exporters
+    url: /build/exporters/local-tar/
+next:
+  title: Image and registry exporters
+  url: /build/exporters/image-registry/
+prev:
+  title: OCI and Docker exporters
+  url: /build/exporters/oci-docker/
+---
+
 
 The `local` and `tar` exporters output the root filesystem of the build result
 into a local directory. They're useful for producing artifacts that aren't

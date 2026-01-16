@@ -1,4 +1,28 @@
-# 对服务应用滚动更新
+---
+title: 对服务应用滚动更新
+url: /engine/swarm/swarm-tutorial/rolling-update/
+parent:
+  title: Swarm 模式入门
+  url: /engine/swarm/swarm-tutorial/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: Swarm 模式入门
+    url: /engine/swarm/swarm-tutorial/
+  - title: 对服务应用滚动更新
+    url: /engine/swarm/swarm-tutorial/rolling-update/
+next:
+  title: 删除在 swarm 上运行的服务
+  url: /engine/swarm/swarm-tutorial/delete-service/
+prev:
+  title: 将 swarm 中的节点设置为排空状态
+  url: /engine/swarm/swarm-tutorial/drain-node/
+---
+
 
 在教程的上一步中，你[扩展了](scale-service.md)服务的实例数量。在本部分教程中，你将基于 Redis 7.4.0 容器标签部署一个服务。然后，你将使用滚动更新将服务升级到使用 Redis 7.4.1 容器镜像。
 
@@ -122,6 +146,5 @@
 
 接下来，你将学习如何在 swarm 中排空（drain）一个节点。
 
-
-<a class="button not-prose" href="/engine/swarm/swarm-tutorial/drain-node/">排空节点</a>
+[排空节点](drain-node.md)
 

@@ -1,4 +1,22 @@
-# Docker 的产品发布生命周期
+---
+title: Docker 的产品发布生命周期
+url: /release-lifecycle/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 的产品发布生命周期
+    url: /release-lifecycle/
+next:
+  title: Testcontainers Cloud
+  url: /tcc/
+prev:
+  title: 已弃用和停用的 Docker 产品和功能
+  url: /retired/
+---
+
 
 本文详细介绍了 Docker 的产品发布生命周期以及 Docker 如何定义每个阶段。此外，还提供了有关产品退役流程的信息。功能和产品可能会经历部分或所有这些阶段。
 

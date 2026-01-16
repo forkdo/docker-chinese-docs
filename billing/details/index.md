@@ -1,4 +1,24 @@
-# 管理您的账单信息
+---
+title: 管理您的账单信息
+url: /billing/details/
+parent:
+  title: 管理账单和支付
+  url: /billing/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 管理账单和支付
+    url: /billing/
+  - title: 管理您的账单信息
+    url: /billing/details/
+next:
+  title: 添加或更新支付方式
+  url: /billing/payment-method/
+prev:
+  title: Docker 计费使用 3D Secure 身份验证
+  url: /billing/3d-secure/
+---
+
 
 您可以更新个人账户或组织的账单信息。当您更新账单信息时，这些更改将应用于未来的账单发票。您为账单账户提供的电子邮件地址是 Docker 发送所有发票和其他账单相关通信的位置。
 
@@ -21,149 +41,42 @@
 
 ### 个人账户
 
+**Docker subscription**
 
 
 
+要更新您的账单信息：
+
+1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择 **Billing**。
+1. 从左侧导航中选择 **Billing information**。
+1. 在您的账单信息卡片上，选择 **Change**。
+1. 更新您的账单联系人和账单地址信息。
+1. 可选。要添加或更新增值税号（VAT ID），请选中 **I'm purchasing as a business** 复选框并输入您的税务 ID。
+
+    > [!IMPORTANT]
+    >
+    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
+
+1. 选择 **Update**。
+
+**Legacy Docker subscription**
 
 
 
+要更新您的账单信息：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-subscription' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-subscription'"
-        
-      >
-        Docker subscription
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Legacy-Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Legacy-Docker-subscription'"
-        
-      >
-        Legacy Docker subscription
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单信息：</p>
-<ol>
-<li>
-<p>登录到 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您的组织。</p>
-</li>
-<li>
-<p>选择 <strong>Billing</strong>。</p>
-</li>
-<li>
-<p>从左侧导航中选择 <strong>Billing information</strong>。</p>
-</li>
-<li>
-<p>在您的账单信息卡片上，选择 <strong>Change</strong>。</p>
-</li>
-<li>
-<p>更新您的账单联系人和账单地址信息。</p>
-</li>
-<li>
-<p>可选。要添加或更新增值税号（VAT ID），请选中 <strong>I'm purchasing as a business</strong> 复选框并输入您的税务 ID。</p>
+1. 登录到 [Docker Hub](https://hub.docker.com)。
+1. 选择您的组织，然后选择 **Billing**。
+1. 选择 **Billing Address** 并输入您的更新后的账单信息。
+1. 可选。要添加或更新增值税号（VAT ID），请输入您的 **Tax ID/VAT**。
 
+    > [!IMPORTANT]
+    >
+    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
 
-  
+1. 选择 **Submit**。
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 <code>DE123456789</code>。</p>
-    </div>
-  </blockquote>
-
-</li>
-<li>
-<p>选择 <strong>Update</strong>。</p>
-</li>
-</ol>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Legacy-Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单信息：</p>
-<ol>
-<li>
-<p>登录到 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</p>
-</li>
-<li>
-<p>选择您的组织，然后选择 <strong>Billing</strong>。</p>
-</li>
-<li>
-<p>选择 <strong>Billing Address</strong> 并输入您的更新后的账单信息。</p>
-</li>
-<li>
-<p>可选。要添加或更新增值税号（VAT ID），请输入您的 <strong>Tax ID/VAT</strong>。</p>
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 <code>DE123456789</code>。</p>
-    </div>
-  </blockquote>
-
-</li>
-<li>
-<p>选择 <strong>Submit</strong>。</p>
-</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 组织
@@ -172,149 +85,42 @@
 >
 > 您必须是组织所有者才能更改账单信息。
 
+**Docker subscription**
 
 
 
+要更新您的账单信息：
+
+1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择 **Billing**。
+1. 从左侧导航中选择 **Billing information**。
+1. 在您的账单信息卡片上，选择 **Change**。
+1. 更新您的账单联系人和账单地址信息。
+1. 可选。要添加或更新增值税号（VAT ID），请选中 **I'm purchasing as a business** 复选框并输入您的税务 ID。
+
+    > [!IMPORTANT]
+    >
+    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
+
+1. 选择 **Update**。
+
+**Legacy Docker subscription**
 
 
 
+要更新您的账单信息：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-subscription' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-subscription'"
-        
-      >
-        Docker subscription
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Legacy-Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Legacy-Docker-subscription'"
-        
-      >
-        Legacy Docker subscription
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单信息：</p>
-<ol>
-<li>
-<p>登录到 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您的组织。</p>
-</li>
-<li>
-<p>选择 <strong>Billing</strong>。</p>
-</li>
-<li>
-<p>从左侧导航中选择 <strong>Billing information</strong>。</p>
-</li>
-<li>
-<p>在您的账单信息卡片上，选择 <strong>Change</strong>。</p>
-</li>
-<li>
-<p>更新您的账单联系人和账单地址信息。</p>
-</li>
-<li>
-<p>可选。要添加或更新增值税号（VAT ID），请选中 <strong>I'm purchasing as a business</strong> 复选框并输入您的税务 ID。</p>
+1. 登录到 [Docker Hub](https://hub.docker.com)。
+1. 选择您的组织，然后选择 **Billing**。
+1. 选择 **Billing Address**。
+1. 可选。要添加或更新增值税号（VAT ID），请输入您的 **Tax ID/VAT**。
 
+    > [!IMPORTANT]
+    >
+    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
 
-  
+1. 选择 **Submit**。
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 <code>DE123456789</code>。</p>
-    </div>
-  </blockquote>
-
-</li>
-<li>
-<p>选择 <strong>Update</strong>。</p>
-</li>
-</ol>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Legacy-Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单信息：</p>
-<ol>
-<li>
-<p>登录到 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</p>
-</li>
-<li>
-<p>选择您的组织，然后选择 <strong>Billing</strong>。</p>
-</li>
-<li>
-<p>选择 <strong>Billing Address</strong>。</p>
-</li>
-<li>
-<p>可选。要添加或更新增值税号（VAT ID），请输入您的 <strong>Tax ID/VAT</strong>。</p>
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 <code>DE123456789</code>。</p>
-    </div>
-  </blockquote>
-
-</li>
-<li>
-<p>选择 <strong>Submit</strong>。</p>
-</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## 更新您的账单邮箱地址
@@ -329,155 +135,57 @@ Docker 会发送以下与账单相关的电子邮件：
 
 ### 个人账户
 
+**Docker subscription**
 
 
 
+要更新您的账单邮箱地址：
+
+1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择 **Billing**。
+1. 从左侧导航中选择 **Billing information**。
+1. 在您的账单信息卡片上，选择 **Change**。
+1. 更新您的账单联系人信息并选择 **Update**。
+
+**Legacy Docker subscription**
 
 
 
+要更新您的账单邮箱地址：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-subscription' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-subscription'"
-        
-      >
-        Docker subscription
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Legacy-Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Legacy-Docker-subscription'"
-        
-      >
-        Legacy Docker subscription
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单邮箱地址：</p>
-<ol>
-<li>登录到 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您的组织。</li>
-<li>选择 <strong>Billing</strong>。</li>
-<li>从左侧导航中选择 <strong>Billing information</strong>。</li>
-<li>在您的账单信息卡片上，选择 <strong>Change</strong>。</li>
-<li>更新您的账单联系人信息并选择 <strong>Update</strong>。</li>
-</ol>
+1. 登录到 [Docker Hub](https://hub.docker.com)。
+1. 选择您的组织，然后选择 **Billing**。
+1. 选择 **Billing Address**。
+1. 在 **Billing contact** 部分更新邮箱地址。
+1. 选择 **Submit**。
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Legacy-Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单邮箱地址：</p>
-<ol>
-<li>登录到 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</li>
-<li>选择您的组织，然后选择 <strong>Billing</strong>。</li>
-<li>选择 <strong>Billing Address</strong>。</li>
-<li>在 <strong>Billing contact</strong> 部分更新邮箱地址。</li>
-<li>选择 <strong>Submit</strong>。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 组织
 
+**Docker subscription**
 
 
 
+要更新您的账单邮箱地址：
+
+1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
+1. 选择 **Billing**。
+1. 从左侧导航中选择 **Billing information**。
+1. 在您的账单信息卡片上，选择 **Change**。
+1. 更新您的账单联系人信息并选择 **Update**。
+
+**Legacy Docker subscription**
 
 
 
+要更新您的账单邮箱地址：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-subscription' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-subscription'"
-        
-      >
-        Docker subscription
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Legacy-Docker-subscription' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Legacy-Docker-subscription'"
-        
-      >
-        Legacy Docker subscription
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单邮箱地址：</p>
-<ol>
-<li>登录到 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您的组织。</li>
-<li>选择 <strong>Billing</strong>。</li>
-<li>从左侧导航中选择 <strong>Billing information</strong>。</li>
-<li>在您的账单信息卡片上，选择 <strong>Change</strong>。</li>
-<li>更新您的账单联系人信息并选择 <strong>Update</strong>。</li>
-</ol>
+1. 登录到 [Docker Hub](https://hub.docker.com)。
+1. 选择您的组织，然后选择 **Billing**。
+1. 选择组织名称。
+1. 选择 **Billing Address**。
+1. 在 **Billing contact** 部分更新邮箱地址。
+1. 选择 **Submit**。
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Legacy-Docker-subscription' && 'hidden'"
-      >
-        <p>要更新您的账单邮箱地址：</p>
-<ol>
-<li>登录到 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</li>
-<li>选择您的组织，然后选择 <strong>Billing</strong>。</li>
-<li>选择组织名称。</li>
-<li>选择 <strong>Billing Address</strong>。</li>
-<li>在 <strong>Billing contact</strong> 部分更新邮箱地址。</li>
-<li>选择 <strong>Submit</strong>。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 

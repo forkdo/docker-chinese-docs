@@ -1,4 +1,24 @@
-# CopyIgnoredFile
+---
+title: CopyIgnoredFile
+url: /reference/build-checks/copy-ignored-file/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: CopyIgnoredFile
+    url: /reference/build-checks/copy-ignored-file/
+next:
+  title: ConsistentInstructionCasing
+  url: /reference/build-checks/consistent-instruction-casing/
+prev:
+  title: DuplicateStageName
+  url: /reference/build-checks/duplicate-stage-name/
+---
+
 
 > [!NOTE]
 > This check is experimental and is not enabled by default. To enable it, see

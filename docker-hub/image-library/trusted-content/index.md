@@ -1,4 +1,26 @@
-# 可信内容
+---
+title: 可信内容
+url: /docker-hub/image-library/trusted-content/
+parent:
+  title: 内容库
+  url: /docker-hub/image-library/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 内容库
+    url: /docker-hub/image-library/
+  - title: 可信内容
+    url: /docker-hub/image-library/trusted-content/
+next:
+  title: Docker Hub 搜索
+  url: /docker-hub/image-library/search/
+prev:
+  title: Docker Hub 目录
+  url: /docker-hub/image-library/catalogs/
+---
+
 
 Docker Hub 的可信内容提供了一系列经过精心挑选的高质量、安全的镜像，旨在让开发者对所依赖资源的可靠性和安全性充满信心。这些镜像稳定、定期更新，并遵循行业最佳实践，是构建和部署应用程序的坚实基础。Docker Hub 的可信内容包括 Docker Official Images、已验证发布者镜像（Verified Publisher images）以及 Docker 赞助的开源软件镜像（Docker-Sponsored Open Source Software images）。
 

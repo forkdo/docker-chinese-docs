@@ -1,7 +1,22 @@
-# 多阶段构建
+---
+title: 多阶段构建
+url: /get-started/docker-concepts/building-images/multi-stage-builds/
+parent:
+  title: 构建镜像
+  url: /get-started/docker-concepts/building-images/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 构建镜像
+    url: /get-started/docker-concepts/building-images/
+  - title: 多阶段构建
+    url: /get-started/docker-concepts/building-images/multi-stage-builds/
+next:
+  title: 使用构建缓存
+  url: /get-started/docker-concepts/building-images/using-the-build-cache/
+---
 
-<div id="youtube-player-vR185cjwxZ8" data-video-id="vR185cjwxZ8" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 解释

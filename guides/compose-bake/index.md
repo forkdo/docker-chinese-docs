@@ -1,4 +1,22 @@
-# 使用 Bake 构建 Compose 项目
+---
+title: 使用 Bake 构建 Compose 项目
+url: /guides/compose-bake/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Bake 构建 Compose 项目
+    url: /guides/compose-bake/
+next:
+  title: 从 Wolfi 迁移到 DHI
+  url: /guides/dhi-from-wolfi/
+prev:
+  title: 使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件
+  url: /guides/genai-claude-code-mcp/claude-code-mcp-guide/
+---
+
 
 本指南探讨如何使用 Bake 为包含多个服务的 Docker Compose 项目构建镜像。
 

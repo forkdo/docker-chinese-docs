@@ -1,7 +1,25 @@
-# 使用构建缓存
+---
+title: 使用构建缓存
+url: /get-started/docker-concepts/building-images/using-the-build-cache/
+parent:
+  title: 构建镜像
+  url: /get-started/docker-concepts/building-images/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 构建镜像
+    url: /get-started/docker-concepts/building-images/
+  - title: 使用构建缓存
+    url: /get-started/docker-concepts/building-images/using-the-build-cache/
+next:
+  title: 构建、标记和发布镜像
+  url: /get-started/docker-concepts/building-images/build-tag-and-publish-an-image/
+prev:
+  title: 多阶段构建
+  url: /get-started/docker-concepts/building-images/multi-stage-builds/
+---
 
-<div id="youtube-player-Ri6jMknjprY" data-video-id="Ri6jMknjprY" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 解释
@@ -310,6 +328,5 @@ CMD ["node", "./src/index.js"]
 
 现在您已经了解了如何有效使用 Docker 构建缓存，您可以开始学习多阶段构建。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/building-images/multi-stage-builds/">多阶段构建</a>
+[多阶段构建](multi-stage-builds)
 

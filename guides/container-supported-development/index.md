@@ -1,4 +1,22 @@
-# 借助容器支持的开发实现更快速的开发与测试
+---
+title: 借助容器支持的开发实现更快速的开发与测试
+url: /guides/container-supported-development/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 借助容器支持的开发实现更快速的开发与测试
+    url: /guides/container-supported-development/
+next:
+  title: 使用 Kafka 和 Docker 开发事件驱动型应用程序
+  url: /guides/kafka/
+prev:
+  title: 将 Go 应用迁移到 DHI
+  url: /guides/dhi-go-example/
+---
+
 
 容器提供了一种一致的方式来跨不同环境构建、共享和运行应用。虽然容器通常用于将你的应用容器化，但它们也使得运行开发所需的关键服务变得异常简单。你可以轻松启动自己的数据库，而无需安装或连接到远程数据库。但这还只是冰山一角。
 
@@ -30,16 +48,12 @@
 
 容器支持的开发是指使用容器来增强开发环境，方法是运行应用所依赖的各种服务的本地实例或模拟器。一旦开始使用容器，就可以轻松添加额外的服务来可视化或排查服务中的问题。
 
-<div id="youtube-player-pNcrto_wGi0" data-video-id="pNcrto_wGi0" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 ### 演示：在本地运行数据库
 
 通过容器支持的开发，可以轻松在本地运行数据库。在本演示中，你将看到如何做到这一点，以及如何将非容器化应用连接到数据库。
 
-<div id="youtube-player-VieWeXOwKLU" data-video-id="VieWeXOwKLU" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 > [!TIP]
@@ -52,8 +66,6 @@
 
 本演示将展示如何使用 WireMock 轻松开发和测试应用，包括 API 的各种错误状态。
 
-<div id="youtube-player-VXSmX6f8vo0" data-video-id="VXSmX6f8vo0" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 > [!TIP]
@@ -66,8 +78,6 @@
 
 通过容器支持的开发，你可以在开发和测试期间运行这些服务的本地实例，从而无需复杂的设置。在本演示中，你将看到 LocalStack 如何让开发者能够完全在本地工作站上开发和测试应用。
 
-<div id="youtube-player-JtwUMvR5xlY" data-video-id="JtwUMvR5xlY" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 > [!TIP]
@@ -78,8 +88,6 @@
 
 一旦开始在开发环境中使用容器，就可以轻松添加额外的容器来可视化数据库或消息队列的内容、填充文档存储或事件发布者。在本演示中，你将看到其中的一些示例，以及如何将多个容器连接在一起，使测试变得更加容易。
 
-<div id="youtube-player-TCZX15aKSu4" data-video-id="TCZX15aKSu4" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
 
 
 <div id="lp-survey-anchor"></div>

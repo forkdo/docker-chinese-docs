@@ -1,4 +1,26 @@
-# 数据包过滤与防火墙
+---
+title: 数据包过滤与防火墙
+url: /engine/network/packet-filtering-firewalls/
+parent:
+  title: 网络概述
+  url: /engine/network/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 网络概述
+    url: /engine/network/
+  - title: 数据包过滤与防火墙
+    url: /engine/network/packet-filtering-firewalls/
+next:
+  title: Docker 与 nftables
+  url: /engine/network/firewall-nftables/
+prev:
+  title: 端口发布与映射
+  url: /engine/network/port-publishing/
+---
+
 
 在 Linux 上，Docker 会创建防火墙规则以实现网络隔离、[端口发布](./port-publishing.md)和过滤。
 

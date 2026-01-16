@@ -1,4 +1,23 @@
-# 使用公钥基础设施 (PKI) 管理 swarm 安全性
+---
+title: 使用公钥基础设施 (PKI) 管理 swarm 安全性
+url: /engine/swarm/how-swarm-mode-works/pki/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 使用公钥基础设施 (PKI) 管理 swarm 安全性
+    url: /engine/swarm/how-swarm-mode-works/pki/
+next:
+  title: Swarm 任务状态
+  url: /engine/swarm/how-swarm-mode-works/swarm-task-states/
+---
+
 
 Docker 内置的 Swarm 模式公钥基础设施 (PKI) 系统
 使得安全部署容器编排系统变得简单。Swarm 中的节点

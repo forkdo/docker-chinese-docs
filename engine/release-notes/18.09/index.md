@@ -1,4 +1,24 @@
-# Docker Engine 18.09 发行说明
+---
+title: Docker Engine 18.09 发行说明
+url: /engine/release-notes/18.09/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 18.09 发行说明
+    url: /engine/release-notes/18.09/
+next:
+  title: Docker Engine 18.06 发行说明
+  url: /engine/release-notes/18.06/
+prev:
+  title: Docker Engine 19.03 发行说明
+  url: /engine/release-notes/19.03/
+---
+
 
 > **注意：**
 >

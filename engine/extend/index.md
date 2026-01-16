@@ -1,4 +1,40 @@
-# Docker Engine managed plugin system
+---
+title: Docker Engine managed plugin system
+url: /engine/extend/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine managed plugin system
+    url: /engine/extend/
+children:
+  - title: Access authorization plugin
+    url: /engine/extend/plugins_authorization/
+    description: How to create authorization plugins to manage access control to your Docker daemon.
+  - title: Docker log driver plugins
+    url: /engine/extend/plugins_logging/
+    description: Log driver plugins.
+  - title: Docker network driver plugins
+    url: /engine/extend/plugins_network/
+    description: Network driver plugins.
+  - title: Docker Plugin API
+    url: /engine/extend/plugin_api/
+    description: How to write Docker plugins extensions 
+  - title: Docker volume plugins
+    url: /engine/extend/plugins_volume/
+    description: How to manage data with external volume plugins
+  - title: Plugin Config Version 1 of Plugin V2
+    url: /engine/extend/config/
+    description: How to develop and use a plugin with the managed plugin system
+  - title: Use Docker Engine plugins
+    url: /engine/extend/legacy_plugins/
+    description: How to add additional functionality to Docker with plugins extensions
+---
+
 
 - [Installing and using a plugin](index.md#installing-and-using-a-plugin)
 - [Developing a plugin](index.md#developing-a-plugin)
@@ -262,19 +298,4 @@ When using curl 7.5 and above, the URL should be of the form
 plugin is installed and `APICall` is the call to the plugin API.
 
 For example, `http://localhost/VolumeDriver.List`
-
-
-- [Access authorization plugin](/engine/extend/plugins_authorization/)
-
-- [Docker log driver plugins](/engine/extend/plugins_logging/)
-
-- [Docker network driver plugins](/engine/extend/plugins_network/)
-
-- [Docker Plugin API](/engine/extend/plugin_api/)
-
-- [Docker volume plugins](/engine/extend/plugins_volume/)
-
-- [Plugin Config Version 1 of Plugin V2](/engine/extend/config/)
-
-- [Use Docker Engine plugins](/engine/extend/legacy_plugins/)
 

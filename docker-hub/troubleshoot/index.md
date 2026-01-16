@@ -1,4 +1,24 @@
-# 排查 Docker Hub 问题
+---
+title: 排查 Docker Hub 问题
+url: /docker-hub/troubleshoot/
+parent:
+  title: Docker Hub
+  url: /docker-hub/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 排查 Docker Hub 问题
+    url: /docker-hub/troubleshoot/
+next:
+  title: 服务账户
+  url: /docker-hub/service-accounts/
+prev:
+  title: Docker Hub 发布说明
+  url: /docker-hub/release-notes/
+---
+
 
 如果您在使用 Docker Hub 时遇到问题，请参考以下解决方案。
 

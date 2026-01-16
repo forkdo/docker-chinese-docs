@@ -1,4 +1,25 @@
-# 扩展元数据
+---
+title: 扩展元数据
+url: /extensions/extensions-sdk/architecture/metadata/
+parent:
+  title: 扩展架构
+  url: /extensions/extensions-sdk/architecture/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 扩展架构
+    url: /extensions/extensions-sdk/architecture/
+  - title: 扩展元数据
+    url: /extensions/extensions-sdk/architecture/metadata/
+prev:
+  title: 扩展安全性
+  url: /extensions/extensions-sdk/architecture/security/
+---
+
 
 ## metadata.json 文件
 

@@ -1,4 +1,25 @@
-# Docker Hub 使用情况和限制
+---
+title: Docker Hub 使用情况和限制
+url: /docker-hub/usage/
+parent:
+  title: Docker Hub
+  url: /docker-hub/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: Docker Hub 使用情况和限制
+    url: /docker-hub/usage/
+children:
+  - title: Docker Hub 拉取使用情况和限制
+    url: /docker-hub/usage/pulls/
+    description: 了解 Docker Hub 的拉取使用情况和限制。
+  - title: 优化 Docker Hub 使用的最佳实践
+    url: /docker-hub/usage/manage/
+    description: 了解如何优化和管理您的 Docker Hub 使用情况。
+---
+
 
 下表概述了每种用户类型的包含使用情况和限制，需遵守合理使用原则：
 
@@ -22,8 +43,3 @@
 Docker Hub 设有滥用速率限制，以保护应用程序和基础设施。此限制适用于对 Hub 属性的所有请求，包括网页、API 和镜像拉取。该限制按每个 IPv4 地址或每个 IPv6 /64 子网应用，虽然限制会根据负载和其他因素随时间变化，但大致为每分钟数千次请求。滥用限制平等适用于所有用户，无论账户级别如何。
 
 您可以通过查看错误代码来区分拉取速率限制和滥用速率限制。滥用限制会返回简单的 `429 Too Many Requests` 响应。而拉取限制会返回包含指向文档链接的更详细错误消息。
-
-- [Docker Hub 拉取使用情况和限制](/docker-hub/usage/pulls/)
-
-- [优化 Docker Hub 使用的最佳实践](/docker-hub/usage/manage/)
-

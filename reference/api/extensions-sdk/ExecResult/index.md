@@ -1,4 +1,21 @@
-# 
+---
+title: 
+url: /reference/api/extensions-sdk/ExecResult/
+parent:
+  title: 扩展 API 参考
+  url: /reference/api/extensions-sdk/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: 扩展 API 参考
+    url: /reference/api/extensions-sdk/
+  - title: 
+    url: /reference/api/extensions-sdk/ExecResult/
+prev:
+  title: Interface: ExecOptions
+  url: /reference/api/extensions-sdk/ExecOptions/
+---
+
 title: "接口: ExecResult"
 description: Docker 扩展 API 参考
 keywords: Docker, extensions, sdk, API, reference

@@ -1,4 +1,24 @@
-# 更新应用程序
+---
+title: 更新应用程序
+url: /get-started/workshop/03_updating_app/
+parent:
+  title: Docker 工作坊概览
+  url: /get-started/workshop/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: Docker 工作坊概览
+    url: /get-started/workshop/
+  - title: 更新应用程序
+    url: /get-started/workshop/03_updating_app/
+next:
+  title: 容器化应用程序
+  url: /get-started/workshop/02_our_app/
+prev:
+  title: 共享应用程序
+  url: /get-started/workshop/04_sharing_app/
+---
+
 
 在[第1部分](./02_our_app.md)中，你已经将一个待办事项应用程序容器化。在本部分中，你将更新应用程序和镜像。你还将学习如何停止和删除容器。
 
@@ -38,226 +58,44 @@ docker: Error response from daemon: driver failed programming external connectiv
 
 要删除容器，首先需要停止它。一旦停止，你就可以将其删除。你可以使用CLI或Docker Desktop的图形界面删除旧容器。选择你最习惯的方式。
 
+**CLI**
 
 
 
+### 使用CLI删除容器
 
+1. 使用 `docker ps` 命令获取容器的ID。
 
+   ```console
+   $ docker ps
+   ```
 
+2. 使用 `docker stop` 命令停止容器。将 `<the-container-id>` 替换为 `docker ps` 中的ID。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'CLI' }"
-  
-  aria-role="tabpanel"
+   ```console
+   $ docker stop <the-container-id>
+   ```
+
+3. 容器停止后，使用 `docker rm` 命令将其删除。
+
+   ```console
+   $ docker rm <the-container-id>
+   ```
+
+> [!NOTE]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'CLI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'CLI'"
-        
-      >
-        CLI
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Desktop' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-Desktop'"
-        
-      >
-        Docker Desktop
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'CLI' && 'hidden'"
-      >
-        
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="使用cli删除容器">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8cli%e5%88%a0%e9%99%a4%e5%ae%b9%e5%99%a8">
-    使用CLI删除容器
-  </a>
-</h3>
+> 你可以通过在 `docker rm` 命令中添加 `force` 标志来一次性停止并删除容器。例如：`docker rm -f <the-container-id>`
 
-<ol>
-<li>
-<p>使用 <code>docker ps</code> 命令获取容器的ID。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcHM=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker ps
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-<li>
-<p>使用 <code>docker stop</code> 命令停止容器。将 <code>&lt;the-container-id&gt;</code> 替换为 <code>docker ps</code> 中的ID。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgc3RvcCA8dGhlLWNvbnRhaW5lci1pZD4=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker stop &lt;the-container-id&gt;
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-<li>
-<p>容器停止后，使用 <code>docker rm</code> 命令将其删除。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcm0gPHRoZS1jb250YWluZXItaWQ&#43;', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker rm &lt;the-container-id&gt;
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-</ol>
+**Docker Desktop**
 
 
-  
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+### 使用Docker Desktop删除容器
 
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>你可以通过在 <code>docker rm</code> 命令中添加 <code>force</code> 标志来一次性停止并删除容器。例如：<code>docker rm -f &lt;the-container-id&gt;</code></p>
-    </div>
-  </blockquote>
+1. 打开Docker Desktop，进入**Containers**视图。
+2. 在**Actions**列中，选择要删除容器的垃圾桶图标。
+3. 在确认对话框中，选择**Delete forever**。
 
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Desktop' && 'hidden'"
-      >
-        
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="使用docker-desktop删除容器">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8docker-desktop%e5%88%a0%e9%99%a4%e5%ae%b9%e5%99%a8">
-    使用Docker Desktop删除容器
-  </a>
-</h3>
-
-<ol>
-<li>打开Docker Desktop，进入<strong>Containers</strong>视图。</li>
-<li>在<strong>Actions</strong>列中，选择要删除容器的垃圾桶图标。</li>
-<li>在确认对话框中，选择<strong>Delete forever</strong>。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 启动更新后的应用程序容器
@@ -281,6 +119,5 @@ docker: Error response from daemon: driver failed programming external connectiv
 
 接下来，你将学习如何与他人共享镜像。
 
-
-<a class="button not-prose" href="/get-started/workshop/04_sharing_app/">共享应用程序</a>
+[共享应用程序](04_sharing_app.md)
 

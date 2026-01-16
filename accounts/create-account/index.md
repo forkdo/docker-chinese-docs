@@ -1,4 +1,21 @@
-# 创建 Docker 账户
+---
+title: 创建 Docker 账户
+url: /accounts/create-account/
+parent:
+  title: Docker 账户
+  url: /accounts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 账户
+    url: /accounts/
+  - title: 创建 Docker 账户
+    url: /accounts/create-account/
+prev:
+  title: Docker 帐户常见问题
+  url: /accounts/general-faqs/
+---
+
 
 您可以通过邮箱地址或使用 Google 或 GitHub 账户注册一个免费的 Docker 账户。创建唯一的 Docker ID 后，您可以访问所有 Docker 产品，包括 Docker Hub、Docker Desktop 和 Docker Scout。
 

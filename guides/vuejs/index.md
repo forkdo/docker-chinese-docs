@@ -1,4 +1,32 @@
-# Vue.js 语言专用指南
+---
+title: Vue.js 语言专用指南
+url: /guides/vuejs/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Vue.js 语言专用指南
+    url: /guides/vuejs/
+children:
+  - title: 容器化 Vue.js 应用程序
+    url: /guides/vuejs/containerize/
+    description: 了解如何使用 Docker 容器化 Vue.js 应用程序，通过遵循最佳实践创建一个针对性能、安全性和可扩展性进行优化的、可用于生产的镜像。
+  - title: 使用容器进行 Vue.js 开发
+    url: /guides/vuejs/develop/
+    description: 了解如何使用容器在本地开发您的 Vue.js 应用程序。
+  - title: 在容器中运行 Vue.js 测试
+    url: /guides/vuejs/run-tests/
+    description: 了解如何在容器中运行 Vue.js 测试。
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/vuejs/configure-github-actions/
+    description: 了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。
+  - title: 测试 Vue.js 部署
+    url: /guides/vuejs/deploy/
+    description: 了解如何本地部署以测试和调试 Kubernetes 部署
+---
+
 
 Vue.js 语言专用指南向您展示如何使用 Docker 容器化 Vue.js 应用程序，遵循创建高效、生产就绪容器的最佳实践。
 
@@ -34,14 +62,3 @@ Vue.js 语言专用指南向您展示如何使用 Docker 容器化 Vue.js 应用
 - 了解 Docker 核心概念，例如镜像、容器和 Dockerfile。如果您是 Docker 新手，请从 [Docker 基础](/get-started/docker-concepts/the-basics/what-is-a-container.md) 指南开始。
 
 完成 Vue.js 入门模块后，您将完全准备好使用本指南中详细介绍的示例和最佳实践来容器化您自己的 Vue.js 应用程序。
-
-- [容器化 Vue.js 应用程序](/guides/vuejs/containerize/)
-
-- [使用容器进行 Vue.js 开发](/guides/vuejs/develop/)
-
-- [在容器中运行 Vue.js 测试](/guides/vuejs/run-tests/)
-
-- [使用 GitHub Actions 自动化构建](/guides/vuejs/configure-github-actions/)
-
-- [测试 Vue.js 部署](/guides/vuejs/deploy/)
-

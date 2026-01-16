@@ -1,4 +1,21 @@
-# Docker Compose 的历史和发展
+---
+title: Docker Compose 的历史和发展
+url: /compose/intro/history/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Docker Compose 的历史和发展
+    url: /compose/intro/history/
+next:
+  title: 为什么使用 Compose？
+  url: /compose/intro/features-uses/
+---
+
 
 本页提供：
  - Docker Compose CLI 的发展简史

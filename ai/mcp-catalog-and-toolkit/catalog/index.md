@@ -1,47 +1,24 @@
-# Docker MCP 目录
+---
+title: Docker MCP 目录
+url: /ai/mcp-catalog-and-toolkit/catalog/
+parent:
+  title: Docker MCP Catalog and Toolkit
+  url: /ai/mcp-catalog-and-toolkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker MCP Catalog and Toolkit
+    url: /ai/mcp-catalog-and-toolkit/
+  - title: Docker MCP 目录
+    url: /ai/mcp-catalog-and-toolkit/catalog/
+next:
+  title: Docker MCP Toolkit 入门指南
+  url: /ai/mcp-catalog-and-toolkit/get-started/
+prev:
+  title: Docker MCP Toolkit
+  url: /ai/mcp-catalog-and-toolkit/toolkit/
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Beta
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M360-360H217q-18 0-26.5-16t2.5-31l338-488q8-11 20-15t24 1q12 5 19 16t5 24l-39 309h176q19 0 27 17t-4 32L388-66q-8 10-20.5 13T344-55q-11-5-17.5-16T322-95l38-265Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 
@@ -90,19 +67,7 @@ Docker MCP 目录支持本地和远程服务器部署，每种类型都针对不
 本地 MCP 服务器是作为容器化应用程序在您的机器上直接运行的应用。所有本地服务器均由 Docker 构建并进行数字签名，通过经过验证的来源和完整性提供增强的安全性。这些服务器作为容器在您的本地环境中运行，下载后无需互联网连接即可运行。本地服务器显示 Docker 图标 
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src="../../../desktop/images/whale-x.svg"
-  alt="docker whale icon"
-  
-  class="inline my-0 not-prose"
-/>
- 以表明其由 Docker 构建。
+![docker whale icon](../../desktop/images/whale-x.svg) 以表明其由 Docker 构建。
 
 本地服务器提供可预测的性能、完全的数据隐私，并独立于外部服务的可用性。它们适用于开发工作流、敏感数据处理以及需要离线功能的场景。
 

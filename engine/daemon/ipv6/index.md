@@ -1,4 +1,26 @@
-# 使用 IPv6 网络
+---
+title: 使用 IPv6 网络
+url: /engine/daemon/ipv6/
+parent:
+  title: Docker 守护进程配置概述
+  url: /engine/daemon/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker 守护进程配置概述
+    url: /engine/daemon/
+  - title: 使用 IPv6 网络
+    url: /engine/daemon/ipv6/
+next:
+  title: 启动守护进程
+  url: /engine/daemon/start/
+prev:
+  title: 守护进程代理配置
+  url: /engine/daemon/proxy/
+---
+
 
 IPv6 仅支持运行在 Linux 主机上的 Docker 守护进程。
 

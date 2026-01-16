@@ -1,4 +1,24 @@
-# 修复 Mac 上的 Docker Desktop 启动问题
+---
+title: 修复 Mac 上的 Docker Desktop 启动问题
+url: /desktop/cert-revoke-solution/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 修复 Mac 上的 Docker Desktop 启动问题
+    url: /desktop/cert-revoke-solution/
+next:
+  title: 卸载 Docker Desktop
+  url: /desktop/uninstall/
+prev:
+  title: Docker Desktop 发行说明
+  url: /desktop/release-notes/
+---
+
 
 本指南提供了解决近期影响部分 macOS 用户使用 Docker Desktop 问题的步骤。该问题可能导致 Docker Desktop 无法启动，在某些情况下还可能触发不准确的恶意软件警告。有关该事件的更多详细信息，请参阅[博客文章](https://www.docker.com/blog/incident-update-docker-desktop-for-mac/)。
 

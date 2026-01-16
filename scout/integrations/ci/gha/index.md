@@ -1,4 +1,28 @@
-# 将 Docker Scout 与 GitHub Actions 集成
+---
+title: 将 Docker Scout 与 GitHub Actions 集成
+url: /scout/integrations/ci/gha/
+parent:
+  title: 在持续集成中使用 Docker Scout
+  url: /scout/integrations/ci/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 将 Docker Scout 与其他系统集成
+    url: /scout/integrations/
+  - title: 在持续集成中使用 Docker Scout
+    url: /scout/integrations/ci/
+  - title: 将 Docker Scout 与 GitHub Actions 集成
+    url: /scout/integrations/ci/gha/
+next:
+  title: 将 Docker Scout 与 Circle CI 集成
+  url: /scout/integrations/ci/circle-ci/
+prev:
+  title: 将 Docker Scout 与 GitLab CI/CD 集成
+  url: /scout/integrations/ci/gitlab/
+---
+
 
 以下示例展示了如何使用 GitHub Actions 设置 Docker Scout 工作流。该操作由拉取请求触发，构建镜像并使用 Docker Scout 将新版本与生产环境中运行的该镜像版本进行比较。
 

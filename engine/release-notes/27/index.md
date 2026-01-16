@@ -1,4 +1,24 @@
-# Docker Engine 27 版本发行说明
+---
+title: Docker Engine 27 版本发行说明
+url: /engine/release-notes/27/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 27 版本发行说明
+    url: /engine/release-notes/27/
+next:
+  title: Docker Engine 26.1 发布说明
+  url: /engine/release-notes/26.1/
+prev:
+  title: Docker Engine version 28 release notes
+  url: /engine/release-notes/28/
+---
+
 
 本页面描述了 Docker Engine 27 版本的最新变更、新增功能、已知问题和修复。
 
@@ -262,17 +282,11 @@ Docker Engine 27.2 版本的发行说明。
 
 ##### `docker image ls` 的多平台支持
 
-<div class="px-4 border-l-2 border-l-magenta-light dark:border-l-magenta-dark">
-  <p class="not-prose flex gap-2 items-center text-magenta-light dark:text-magenta-dark">
-    <span class="icon-svg pb-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg>
-    </span>
-    <strong>Experimental</strong>
-  </p>
-  
+> **Experimental**
+>
+> 
 此功能处于实验阶段，可能会在任何时候发生更改，且没有任何向后兼容性。
 
-</div>
 
 
 启用 containerd 镜像存储后，`docker image ls` 命令（或简写 `docker images`）现在支持 `--tree` 标志，该标志现在可以显示镜像是否为多平台镜像。
@@ -285,17 +299,11 @@ Docker Engine 27.2 版本的发行说明。
 
   仅当请求同时将 `manifests` 查询参数设置为 `true` 时，才会填充新字段。
 
-  <div class="px-4 border-l-2 border-l-magenta-light dark:border-l-magenta-dark">
-  <p class="not-prose flex gap-2 items-center text-magenta-light dark:text-magenta-dark">
-    <span class="icon-svg pb-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg>
-    </span>
-    <strong>Experimental</strong>
-  </p>
-  
+  > **Experimental**
+>
+> 
 此功能处于实验阶段，可能会在任何时候发生更改，且没有任何向后兼容性。
 
-</div>
 
 
 #### 错误修复和增强功能

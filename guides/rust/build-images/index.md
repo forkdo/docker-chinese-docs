@@ -1,4 +1,21 @@
-# 构建您的 Rust 镜像
+---
+title: 构建您的 Rust 镜像
+url: /guides/rust/build-images/
+parent:
+  title: Rust 语言专属指南
+  url: /guides/rust/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Rust 语言专属指南
+    url: /guides/rust/
+  - title: 构建您的 Rust 镜像
+    url: /guides/rust/build-images/
+prev:
+  title: 以容器方式运行你的 Rust 镜像
+  url: /guides/rust/run-containers/
+---
+
 
 ## 先决条件
 

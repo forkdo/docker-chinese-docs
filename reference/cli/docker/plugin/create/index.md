@@ -1,7 +1,81 @@
-# docker plugin create
+---
+title: docker plugin create
+url: /reference/cli/docker/plugin/create/
+parent:
+  title: docker plugin
+  url: /reference/cli/docker/plugin/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker plugin
+    url: /reference/cli/docker/plugin/
+  - title: docker plugin create
+    url: /reference/cli/docker/plugin/create/
+prev:
+  title: docker plugin disable
+  url: /reference/cli/docker/plugin/disable/
+---
+
+**Description:** Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+
+
+**Usage:** `docker plugin create [OPTIONS] PLUGIN PLUGIN-DATA-DIR`
+
+
 
 <!--
 此页面由 Docker 源代码自动生成。如果您想对这里显示的文本提出修改建议，请在 GitHub 上的源仓库中提交工单或拉取请求：
 
 https://github.com/docker/cli
 -->
+
+
+
+
+
+
+
+
+## Description
+
+Creates a plugin. Before creating the plugin, prepare the plugin's root
+filesystem as well as the [config.json](/engine/extend/config/).
+
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--compress` |  |  Compress the context using gzip |
+
+
+
+## Examples
+
+The following example shows how to create a sample `plugin`.
+
+```console
+$ ls -ls /home/pluginDir
+
+total 4
+4 -rw-r--r--  1 root root 431 Nov  7 01:40 config.json
+0 drwxr-xr-x 19 root root 420 Nov  7 01:40 rootfs
+
+$ docker plugin create plugin /home/pluginDir
+
+plugin
+
+$ docker plugin ls
+
+ID              NAME            DESCRIPTION                  ENABLED
+672d8144ec02    plugin:latest   A sample plugin for Docker   false
+```
+
+The plugin can subsequently be enabled for local use or pushed to the public registry.
+
+
+

@@ -1,34 +1,28 @@
-# Compose Bridge 概述
+---
+title: Compose Bridge 概述
+url: /compose/bridge/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Compose Bridge 概述
+    url: /compose/bridge/
+children:
+  - title: 使用默认的 Compose Bridge 转换
+    url: /compose/bridge/usage/
+    description: 了解如何使用默认的 Compose Bridge 转换将 Compose 文件转换为 Kubernetes 清单文件
+  - title: 自定义 Compose Bridge
+    url: /compose/bridge/customize/
+    description: 了解如何使用 Go 模板和 Compose 扩展来自定义 Compose Bridge 转换
+  - title: 在 Compose Bridge 中使用 Docker Model Runner
+    url: /compose/bridge/use-model-runner/
+    description: 如何将 Docker Model Runner 与 Compose Bridge 结合使用，以实现一致的部署
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Desktop 4.43.0 and later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-  </div>
 
 
 
@@ -61,10 +55,3 @@ Compose Bridge 还支持通过 Docker Model Runner 使用 LLM 的应用程序。
 
 - [使用 Compose Bridge](usage.md)
 - [探索如何自定义 Compose Bridge](customize.md)
-
-- [使用默认的 Compose Bridge 转换](/compose/bridge/usage/)
-
-- [自定义 Compose Bridge](/compose/bridge/customize/)
-
-- [在 Compose Bridge 中使用 Docker Model Runner](/compose/bridge/use-model-runner/)
-

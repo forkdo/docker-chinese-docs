@@ -1,4 +1,19 @@
-# 语音与语调
+---
+title: 语音与语调
+url: /contribute/style/voice-tone/
+parent:
+  title: 为 Docker 文档做贡献
+  url: /contribute/
+breadcrumbs:
+  - title: 为 Docker 文档做贡献
+    url: /contribute/
+  - title: 语音与语调
+    url: /contribute/style/voice-tone/
+next:
+  title: Docker 术语
+  url: /contribute/style/terminology/
+---
+
 
 ## 语音
 

@@ -1,4 +1,24 @@
-# 更改您的订阅
+---
+title: 更改您的订阅
+url: /subscription/change/
+parent:
+  title: 订阅
+  url: /subscription/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 订阅
+    url: /subscription/
+  - title: 更改您的订阅
+    url: /subscription/change/
+next:
+  title: 管理订阅席位
+  url: /subscription/manage-seats/
+prev:
+  title: Docker Desktop 许可协议
+  url: /subscription/desktop-license/
+---
+
 
 
 
@@ -20,94 +40,28 @@
 
 当您升级 Docker 订阅时，您将立即获得新订阅层级中的所有功能和权益。有关详细的功能信息，请参阅 [Docker 定价](https://www.docker.com/pricing)。
 
+**Docker 订阅**
 
 
 
+要升级您的订阅：
 
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您要升级的组织。
+2. 选择 **Billing**（账单）。
+3. （可选）如果您要从免费的 Personal 订阅升级到 Team 订阅并希望保留您的用户名，请[将您的用户帐户转换为组织](../admin/organization/convert-account.md)。
+4. 选择 **Upgrade**（升级）。
+5. 按照屏幕上的说明完成升级。
 
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-%E8%AE%A2%E9%98%85' }"
-  
-  aria-role="tabpanel"
+> [!NOTE]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-%E8%AE%A2%E9%98%85' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-%E8%AE%A2%E9%98%85'"
-        
-      >
-        Docker 订阅
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E6%97%A7%E7%89%88-Docker-%E8%AE%A2%E9%98%85' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E6%97%A7%E7%89%88-Docker-%E8%AE%A2%E9%98%85'"
-        
-      >
-        旧版 Docker 订阅
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-%E8%AE%A2%E9%98%85' && 'hidden'"
-      >
-        <p>要升级您的订阅：</p>
-<ol>
-<li>登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您要升级的组织。</li>
-<li>选择 <strong>Billing</strong>（账单）。</li>
-<li>（可选）如果您要从免费的 Personal 订阅升级到 Team 订阅并希望保留您的用户名，请<a class="link" href="/admin/organization/convert-account/">将您的用户帐户转换为组织</a>。</li>
-<li>选择 <strong>Upgrade</strong>（升级）。</li>
-<li>按照屏幕上的说明完成升级。</li>
-</ol>
+> 如果您选择使用美国银行帐户付款，则必须验证该帐户。有关更多信息，请参阅[验证银行帐户](manuals/billing/payment-method.md#verify-a-bank-account)。
+
+**旧版 Docker 订阅**
 
 
-  
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+要将您的旧版 Docker 订阅升级为包含所有工具访问权限的新版 Docker 订阅，请联系 [Docker 销售团队](https://www.docker.com/pricing/contact-sales/)。
 
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果您选择使用美国银行帐户付款，则必须验证该帐户。有关更多信息，请参阅<a class="link" href="/billing/payment-method/#verify-a-bank-account">验证银行帐户</a>。</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E6%97%A7%E7%89%88-Docker-%E8%AE%A2%E9%98%85' && 'hidden'"
-      >
-        <p>要将您的旧版 Docker 订阅升级为包含所有工具访问权限的新版 Docker 订阅，请联系 <a class="link" href="https://www.docker.com/pricing/contact-sales/" rel="noopener">Docker 销售团队</a>。</p>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## 降级您的订阅
@@ -124,129 +78,44 @@
 
 有关每个层级的功能限制，请参阅 [Docker 定价](https://www.docker.com/pricing)。
 
+**Docker 订阅**
 
 
 
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Docker-%E8%AE%A2%E9%98%85' }"
-  
-  aria-role="tabpanel"
+> [!IMPORTANT]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-%E8%AE%A2%E9%98%85' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-%E8%AE%A2%E9%98%85'"
-        
-      >
-        Docker 订阅
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E6%97%A7%E7%89%88-Docker-%E8%AE%A2%E9%98%85' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E6%97%A7%E7%89%88-Docker-%E8%AE%A2%E9%98%85'"
-        
-      >
-        旧版 Docker 订阅
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-%E8%AE%A2%E9%98%85' && 'hidden'"
-      >
-        
+> 如果您拥有通过销售协助购买的 Docker Business 订阅，请联系您的客户经理以降级您的订阅。
 
-  
+要降级您的订阅：
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您要降级的组织。
+2. 选择 **Billing**（账单）。
+3. 选择操作图标，然后选择 **Cancel subscription**（取消订阅）。
+4. 填写反馈调查以继续取消。
 
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果您拥有通过销售协助购买的 Docker Business 订阅，请联系您的客户经理以降级您的订阅。</p>
-    </div>
-  </blockquote>
+**旧版 Docker 订阅**
 
-<p>要降级您的订阅：</p>
-<ol>
-<li>登录 <a class="link" href="https://app.docker.com/" rel="noopener">Docker Home</a> 并选择您要降级的组织。</li>
-<li>选择 <strong>Billing</strong>（账单）。</li>
-<li>选择操作图标，然后选择 <strong>Cancel subscription</strong>（取消订阅）。</li>
-<li>填写反馈调查以继续取消。</li>
-</ol>
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E6%97%A7%E7%89%88-Docker-%E8%AE%A2%E9%98%85' && 'hidden'"
-      >
-        
 
-  
+> [!IMPORTANT]
+>
+> 如果您拥有通过销售协助购买的 Docker Business 订阅，请联系您的客户经理以降级您的订阅。
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+要降级您的旧版 Docker 订阅：
 
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果您拥有通过销售协助购买的 Docker Business 订阅，请联系您的客户经理以降级您的订阅。</p>
-    </div>
-  </blockquote>
+1. 登录 [Docker Hub](https://hub.docker.com/billing)。
+2. 选择您要降级的组织，然后选择 **Billing**（账单）。
+3. 要降级，您必须导航到升级计划页面。选择 **Upgrade**（升级）。
+4. 在升级页面上，在 **Free Team** 计划卡片中选择 **Downgrade**（降级）。
+5. 按照屏幕上的说明完成降级。
 
-<p>要降级您的旧版 Docker 订阅：</p>
-<ol>
-<li>登录 <a class="link" href="https://hub.docker.com/billing" rel="noopener">Docker Hub</a>。</li>
-<li>选择您要降级的组织，然后选择 <strong>Billing</strong>（账单）。</li>
-<li>要降级，您必须导航到升级计划页面。选择 <strong>Upgrade</strong>（升级）。</li>
-<li>在升级页面上，在 <strong>Free Team</strong> 计划卡片中选择 <strong>Downgrade</strong>（降级）。</li>
-<li>按照屏幕上的说明完成降级。</li>
-</ol>
-<p>要降级您的 Docker Build Cloud 订阅：</p>
-<ol>
-<li>登录 <a class="link" href="https://app.docker.com" rel="noopener">Docker Home</a> 并选择 <strong>Build Cloud</strong>。</li>
-<li>选择 <strong>Account settings</strong>（帐户设置），然后选择 <strong>Downgrade</strong>（降级）。</li>
-<li>要确认降级，请在文本字段中输入 <strong>DOWNGRADE</strong>，然后选择 <strong>Yes, continue</strong>（是，继续）。</li>
-<li>帐户设置页面将更新一个通知栏，告知您的降级日期（下一个计费周期开始时）。</li>
-</ol>
+要降级您的 Docker Build Cloud 订阅：
 
-      </div>
-    
-  </div>
-</div>
+1. 登录 [Docker Home](https://app.docker.com) 并选择 **Build Cloud**。
+2. 选择 **Account settings**（帐户设置），然后选择 **Downgrade**（降级）。
+3. 要确认降级，请在文本字段中输入 **DOWNGRADE**，然后选择 **Yes, continue**（是，继续）。
+4. 帐户设置页面将更新一个通知栏，告知您的降级日期（下一个计费周期开始时）。
+
 
 
 ## 订阅暂停政策

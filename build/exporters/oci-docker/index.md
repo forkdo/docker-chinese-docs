@@ -1,4 +1,23 @@
-# OCI and Docker exporters
+---
+title: OCI and Docker exporters
+url: /build/exporters/oci-docker/
+parent:
+  title: Exporters overview
+  url: /build/exporters/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Exporters overview
+    url: /build/exporters/
+  - title: OCI and Docker exporters
+    url: /build/exporters/oci-docker/
+next:
+  title: Local and tar exporters
+  url: /build/exporters/local-tar/
+---
+
 
 The `oci` exporter outputs the build result into an
 [OCI image layout](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)

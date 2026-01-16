@@ -1,4 +1,19 @@
-# 
+---
+title: 
+url: /reference/api/dvp/deprecated/
+parent:
+  title: 参考文档
+  url: /reference/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: 
+    url: /reference/api/dvp/deprecated/
+next:
+  title: Docker 认证发布者 API 更新日志
+  url: /reference/api/dvp/changelog/
+---
+
 description: 已弃用的 Docker Verified Publisher API 端点
 keywords: deprecated
 title: 已弃用的 Docker Verified Publisher API 端点

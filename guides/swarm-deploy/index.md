@@ -1,4 +1,22 @@
-# 部署到 Swarm
+---
+title: 部署到 Swarm
+url: /guides/swarm-deploy/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 部署到 Swarm
+    url: /guides/swarm-deploy/
+next:
+  title: 部署到 Kubernetes
+  url: /guides/kube-deploy/
+prev:
+  title: 部署和编排
+  url: /guides/orchestration/
+---
+
 
 
 

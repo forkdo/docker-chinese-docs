@@ -1,4 +1,24 @@
-# 使用 GitHub Actions 自动化构建
+---
+title: 使用 GitHub Actions 自动化构建
+url: /guides/reactjs/configure-github-actions/
+parent:
+  title: React.js 语言特定指南
+  url: /guides/reactjs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: React.js 语言特定指南
+    url: /guides/reactjs/
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/reactjs/configure-github-actions/
+next:
+  title: 在容器中运行 React.js 测试
+  url: /guides/reactjs/run-tests/
+prev:
+  title: 测试您的 React.js 部署
+  url: /guides/reactjs/deploy/
+---
+
 
 ## 先决条件
 

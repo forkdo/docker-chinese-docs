@@ -1,4 +1,24 @@
-# 为 Docker Compose 服务启用 GPU 访问
+---
+title: 为 Docker Compose 服务启用 GPU 访问
+url: /compose/how-tos/gpu-support/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 为 Docker Compose 服务启用 GPU 访问
+    url: /compose/how-tos/gpu-support/
+next:
+  title: Compose 中的网络
+  url: /compose/how-tos/networking/
+prev:
+  title: 在生产环境中使用 Compose
+  url: /compose/how-tos/production/
+---
+
 
 如果 Docker 主机包含 GPU 设备且 Docker 守护进程已相应配置，则 Compose 服务可以定义 GPU 设备预留。为此，请确保您已安装[先决条件](/manuals/engine/containers/resource_constraints.md#gpu)，如果尚未安装的话。
 

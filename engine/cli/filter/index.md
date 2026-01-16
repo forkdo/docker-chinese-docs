@@ -1,4 +1,24 @@
-# 过滤命令
+---
+title: 过滤命令
+url: /engine/cli/filter/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 过滤命令
+    url: /engine/cli/filter/
+next:
+  title: 在 Docker CLI 中使用代理服务器
+  url: /engine/cli/proxy/
+prev:
+  title: 格式化命令和日志输出
+  url: /engine/cli/formatting/
+---
+
 
 您可以使用 `--filter` 标志来限定命令的作用范围。使用过滤时，命令仅包含与指定模式匹配的条目。
 

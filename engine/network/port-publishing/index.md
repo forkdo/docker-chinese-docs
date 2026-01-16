@@ -1,4 +1,26 @@
-# 端口发布与映射
+---
+title: 端口发布与映射
+url: /engine/network/port-publishing/
+parent:
+  title: 网络概述
+  url: /engine/network/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 网络概述
+    url: /engine/network/
+  - title: 端口发布与映射
+    url: /engine/network/port-publishing/
+next:
+  title: 数据包过滤与防火墙
+  url: /engine/network/packet-filtering-firewalls/
+prev:
+  title: 在 Docker 中使用 CA 证书
+  url: /engine/network/ca-certs/
+---
+
 
 默认情况下，对于 IPv4 和 IPv6，Docker 守护进程会阻止访问未发布的端口。发布的容器端口会映射到主机 IP 地址。为此，它使用防火墙规则来执行网络地址转换 (NAT)、端口地址转换 (PAT) 和伪装。
 

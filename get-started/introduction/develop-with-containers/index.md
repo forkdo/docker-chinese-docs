@@ -1,7 +1,25 @@
-# 使用容器进行开发
+---
+title: 使用容器进行开发
+url: /get-started/introduction/develop-with-containers/
+parent:
+  title: 介绍
+  url: /get-started/introduction/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 介绍
+    url: /get-started/introduction/
+  - title: 使用容器进行开发
+    url: /get-started/introduction/develop-with-containers/
+next:
+  title: 获取 Docker Desktop
+  url: /get-started/introduction/get-docker-desktop/
+prev:
+  title: 构建并推送你的第一个镜像
+  url: /get-started/introduction/build-and-push-first-image/
+---
 
-<div id="youtube-player-D0SDBrS3t9I" data-video-id="D0SDBrS3t9I" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 解释
@@ -146,6 +164,5 @@ Docker Desktop 实现了这一切以及更多功能。一旦您开始用容器�
 
 应用程序更新后，您就可以学习如何将其打包为容器镜像并推送到注册表，特别是 Docker Hub。
 
-
-<a class="button not-prose" href="/get-started/introduction/build-and-push-first-image/">构建并推送您的第一个镜像</a>
+[构建并推送您的第一个镜像](build-and-push-first-image)
 

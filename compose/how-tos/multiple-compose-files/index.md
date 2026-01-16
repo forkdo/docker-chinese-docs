@@ -1,4 +1,28 @@
-# 使用多个 Compose 文件
+---
+title: 使用多个 Compose 文件
+url: /compose/how-tos/multiple-compose-files/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 使用多个 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/
+children:
+  - title: 合并 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/merge/
+    description: 了解如何合并 Compose 文件
+  - title: 扩展你的 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/extends/
+    description: 了解如何使用 Docker Compose 的 extends 属性在文件和项目之间重用服务配置。
+  - title: Include
+    url: /compose/how-tos/multiple-compose-files/include/
+    description: 如何使用 Docker Compose 的 include 顶级元素
+---
+
 
 本节包含关于处理多个 Compose 文件的方法的信息。
 
@@ -10,10 +34,3 @@ Docker Compose 提供了另外两个选项来在处理多个 Compose 文件时�
 
 - 通过引用另一个 Compose 文件并选择你想要在自己应用程序中使用的部分，来[扩展一个 Compose 文件](extends.md)，并能够覆盖某些属性。
 - 直接在你的 Compose 文件中[包含其他 Compose 文件](include.md)。
-
-- [合并 Compose 文件](/compose/how-tos/multiple-compose-files/merge/)
-
-- [扩展你的 Compose 文件](/compose/how-tos/multiple-compose-files/extends/)
-
-- [Include](/compose/how-tos/multiple-compose-files/include/)
-

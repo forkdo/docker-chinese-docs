@@ -1,7 +1,86 @@
-# docker trust key load
+---
+title: docker trust key load
+url: /reference/cli/docker/trust/key/load/
+parent:
+  title: docker trust key
+  url: /reference/cli/docker/trust/key/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker trust
+    url: /reference/cli/docker/trust/
+  - title: docker trust key
+    url: /reference/cli/docker/trust/key/
+  - title: docker trust key load
+    url: /reference/cli/docker/trust/key/load/
+next:
+  title: docker trust key generate
+  url: /reference/cli/docker/trust/key/generate/
+---
+
+**Description:** Load a private key file for signing
+
+**Usage:** `docker trust key load [OPTIONS] KEYFILE`
+
+
 
 <!--
 此页面由 Docker 的源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
 
 https://github.com/docker/cli
 -->
+
+
+
+
+
+
+
+
+## Description
+
+`docker trust key load` adds private keys to the local Docker trust keystore.
+
+To add a signer to a repository use `docker trust signer add`.
+
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--name` | `signer` |  Name for the loaded key |
+
+
+
+## Examples
+
+### Load a single private key
+
+For a private key `alice.pem` with permissions `-rw-------`
+
+```console
+$ docker trust key load alice.pem
+
+Loading key from "alice.pem"...
+Enter passphrase for new signer key with ID f8097df:
+Repeat passphrase for new signer key with ID f8097df:
+Successfully imported key from alice.pem
+```
+
+To specify a name use the `--name` flag:
+
+```console
+$ docker trust key load --name alice-key alice.pem
+
+Loading key from "alice.pem"...
+Enter passphrase for new alice-key key with ID f8097df:
+Repeat passphrase for new alice-key key with ID f8097df:
+Successfully imported key from alice.pem
+```
+
+
+

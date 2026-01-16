@@ -1,4 +1,24 @@
-# 使用 Docker Compose 连接服务
+---
+title: 使用 Docker Compose 连接服务
+url: /guides/go-prometheus-monitoring/compose/
+parent:
+  title: 使用 Prometheus 和 Grafana 监控 Golang 应用
+  url: /guides/go-prometheus-monitoring/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Prometheus 和 Grafana 监控 Golang 应用
+    url: /guides/go-prometheus-monitoring/
+  - title: 使用 Docker Compose 连接服务
+    url: /guides/go-prometheus-monitoring/compose/
+next:
+  title: 容器化一个 Golang 应用
+  url: /guides/go-prometheus-monitoring/containerize/
+prev:
+  title: 开发你的应用程序
+  url: /guides/go-prometheus-monitoring/develop/
+---
+
 
 现在您已经将 Golang 应用程序容器化，接下来将使用 Docker Compose 将您的服务连接在一起。您将把 Golang 应用程序、Prometheus 和 Grafana 服务连接起来，以便使用 Prometheus 和 Grafana 监控 Golang 应用程序。
 

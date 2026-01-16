@@ -1,7 +1,25 @@
-# 软件物料清单
+---
+title: 软件物料清单
+url: /guides/docker-scout/sbom/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: 软件物料清单
+    url: /guides/docker-scout/sbom/
+next:
+  title: 软件供应链安全
+  url: /guides/docker-scout/s3c/
+prev:
+  title: 证明
+  url: /guides/docker-scout/attestations/
+---
 
-<div id="youtube-player-PbS4y7C7h4A" data-video-id="PbS4y7C7h4A" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 物料清单（BOM）是制造产品所需的材料、零件及其数量的列表。例如，计算机的 BOM 可能会列出主板、CPU、RAM、电源、存储设备、机箱和其他组件，以及构建计算机所需的每种组件的数量。

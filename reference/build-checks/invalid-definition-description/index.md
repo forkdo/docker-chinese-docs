@@ -1,4 +1,24 @@
-# InvalidDefinitionDescription
+---
+title: InvalidDefinitionDescription
+url: /reference/build-checks/invalid-definition-description/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: InvalidDefinitionDescription
+    url: /reference/build-checks/invalid-definition-description/
+next:
+  title: InvalidDefaultArgInFrom
+  url: /reference/build-checks/invalid-default-arg-in-from/
+prev:
+  title: JSONArgsRecommended
+  url: /reference/build-checks/json-args-recommended/
+---
+
 
 > [!NOTE]
 > This check is experimental and is not enabled by default. To enable it, see

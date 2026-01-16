@@ -1,4 +1,26 @@
-# 管理 swarm 中的节点
+---
+title: 管理 swarm 中的节点
+url: /engine/swarm/manage-nodes/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 管理 swarm 中的节点
+    url: /engine/swarm/manage-nodes/
+next:
+  title: 将节点加入到一个 swarm 中
+  url: /engine/swarm/join-nodes/
+prev:
+  title: 管理 swarm 服务网络
+  url: /engine/swarm/networking/
+---
+
 
 作为 swarm 管理生命周期的一部分，您可能需要：
 

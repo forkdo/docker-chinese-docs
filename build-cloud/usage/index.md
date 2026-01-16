@@ -1,4 +1,24 @@
-# 使用 Docker Build Cloud
+---
+title: 使用 Docker Build Cloud
+url: /build-cloud/usage/
+parent:
+  title: Docker Build Cloud
+  url: /build-cloud/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build Cloud
+    url: /build-cloud/
+  - title: 使用 Docker Build Cloud
+    url: /build-cloud/usage/
+next:
+  title: Docker Build Cloud 设置
+  url: /build-cloud/setup/
+prev:
+  title: 在 CI 中使用 Docker Build Cloud
+  url: /build-cloud/ci/
+---
+
 
 要使用 Docker Build Cloud 进行构建，请调用构建命令并使用 `--builder` 标志指定构建器的名称。
 
@@ -10,159 +30,26 @@ $ docker buildx build --builder cloud-<ORG>-<BUILDER_NAME> --tag <IMAGE> .
 
 如果您希望使用 Docker Build Cloud 而无需每次都指定 `--builder` 标志，可以将其设置为默认构建器。
 
+**CLI**
 
 
 
+运行以下命令：
+
+```console
+$ docker buildx use cloud-<ORG>-<BUILDER_NAME> --global
+```
+
+**Docker Desktop**
 
 
 
+1. 打开 Docker Desktop 设置并导航至 **Builders** 选项卡。
+2. 在 **Available builders** 下找到云构建器。
+3. 打开下拉菜单并选择 **Use**。
 
-<div
-  class="tabs"
-  
-    
-      x-data="{ selected: 'CLI' }"
-    
-    @tab-select.window="$event.detail.group === 'ui' ? selected =
-    $event.detail.name : null"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'CLI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'ui', name:
-          'CLI'})"
-        
-      >
-        CLI
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Desktop' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'ui', name:
-          'Docker-Desktop'})"
-        
-      >
-        Docker Desktop
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'CLI' && 'hidden'"
-      >
-        <p>运行以下命令：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgYnVpbGR4IHVzZSBjbG91ZC08T1JHPi08QlVJTERFUl9OQU1FPiAtLWdsb2JhbA==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker buildx use cloud-&lt;ORG&gt;-&lt;BUILDER_NAME&gt; --global
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+   ![使用 Docker Desktop GUI 选择云构建器作为默认构建器](/build/images/set-default-builder-gui.webp)
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Desktop' && 'hidden'"
-      >
-        <ol>
-<li>
-<p>打开 Docker Desktop 设置并导航至 <strong>Builders</strong> 选项卡。</p>
-</li>
-<li>
-<p>在 <strong>Available builders</strong> 下找到云构建器。</p>
-</li>
-<li>
-<p>打开下拉菜单并选择 <strong>Use</strong>。</p>
-
-
-
-
-
-
-
-
-<figure
-  x-data="{ zoom: false }"
-  @click="zoom = ! zoom"
-  class="cursor-pointer hover:opacity-90"
->
-  <img
-    loading="lazy"
-    src="/build/images/set-default-builder-gui.webp"
-    alt="使用 Docker Desktop GUI 选择云构建器作为默认构建器"
-    
-    
-    class="mx-auto rounded-sm"
-  />
-  
-  <template x-teleport="body">
-    <div
-      x-show="zoom"
-      @click="zoom = false"
-      x-transition.opacity.duration.250ms
-      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
-    >
-      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
-      </button>
-      <img
-        loading="lazy"
-        class="max-h-full max-w-full rounded-sm"
-        src="/build/images/set-default-builder-gui.webp"
-        alt="使用 Docker Desktop GUI 选择云构建器作为默认构建器"
-      />
-    </div>
-  </template>
-</figure>
-</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 使用 `docker buildx use` 更改默认构建器仅会更改 `docker buildx build` 命令的默认构建器。`docker build` 命令仍然使用 `default` 构建器，除非您显式指定 `--builder` 标志。

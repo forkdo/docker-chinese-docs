@@ -1,4 +1,28 @@
-# 在 Marketplace 中发布
+---
+title: 在 Marketplace 中发布
+url: /extensions/extensions-sdk/extensions/publish/
+parent:
+  title: 第二部分：发布
+  url: /extensions/extensions-sdk/extensions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 第二部分：发布
+    url: /extensions/extensions-sdk/extensions/
+  - title: 在 Marketplace 中发布
+    url: /extensions/extensions-sdk/extensions/publish/
+next:
+  title: 分享你的扩展
+  url: /extensions/extensions-sdk/extensions/share/
+prev:
+  title: 构建多架构扩展
+  url: /extensions/extensions-sdk/extensions/multi-arch/
+---
+
 
 ## 将您的扩展提交到 Marketplace
 

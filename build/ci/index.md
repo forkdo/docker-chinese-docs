@@ -1,4 +1,22 @@
-# Continuous integration with Docker
+---
+title: Continuous integration with Docker
+url: /build/ci/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+children:
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+    description: Docker maintains a set of official GitHub Actions for building Docker images.
+---
+
 
 Continuous Integration (CI) is the part of the development process where you're
 looking to get your code changes merged with the main branch of the project. At
@@ -50,7 +68,4 @@ Docker maintains a set of official GitHub Actions that you can use to build,
 annotate, and push container images on the GitHub Actions platform. See
 [Introduction to GitHub Actions](github-actions/_index.md) to learn more and
 get started.
-
-
-- [Docker Build GitHub Actions](/build/ci/github-actions/)
 

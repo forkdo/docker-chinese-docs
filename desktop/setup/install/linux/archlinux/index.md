@@ -1,47 +1,26 @@
-# 在基于 Arch 的发行版上安装 Docker Desktop
+---
+title: 在基于 Arch 的发行版上安装 Docker Desktop
+url: /desktop/setup/install/linux/archlinux/
+parent:
+  title: 在 Linux 上安装 Docker Desktop
+  url: /desktop/setup/install/linux/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 在 Linux 上安装 Docker Desktop
+    url: /desktop/setup/install/linux/
+  - title: 在基于 Arch 的发行版上安装 Docker Desktop
+    url: /desktop/setup/install/linux/archlinux/
+next:
+  title: 在 Fedora 上安装 Docker Desktop
+  url: /desktop/setup/install/linux/fedora/
+prev:
+  title: 在 RHEL 上安装 Docker Desktop
+  url: /desktop/setup/install/linux/rhel/
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Experimental
-          
-            
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 
@@ -60,7 +39,7 @@
 1. [在 Linux 上安装 Docker 客户端二进制文件](/manuals/engine/install/binaries.md#install-daemon-and-client-binaries-on-linux)。Linux 的 Docker 客户端静态二进制文件可作为 `docker` 获得。您可以使用：
 
    ```console
-   $ wget https://download.docker.com/linux/static/stable/x86_64/docker-29.1.3.tgz -qO- | tar xvfz - docker/docker --strip-components=1
+   $ wget https://download.docker.com/linux/static/stable/x86_64/docker-29.1.4.tgz -qO- | tar xvfz - docker/docker --strip-components=1
    $ sudo cp -rp ./docker /usr/local/bin/ && rm -r ./docker
    ```
 

@@ -1,4 +1,26 @@
-# 将服务部署到 swarm
+---
+title: 将服务部署到 swarm
+url: /engine/swarm/services/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 将服务部署到 swarm
+    url: /engine/swarm/services/
+next:
+  title: 将堆栈部署到 Swarm
+  url: /engine/swarm/stack-deploy/
+prev:
+  title: 将节点加入到一个 swarm 中
+  url: /engine/swarm/join-nodes/
+---
+
 
 Swarm 服务使用声明式模型，这意味着您需要定义服务的期望状态，并依赖 Docker 来维护该状态。该状态包括（但不限于）以下信息：
 

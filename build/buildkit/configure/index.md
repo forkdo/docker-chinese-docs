@@ -1,4 +1,26 @@
-# Configure BuildKit
+---
+title: Configure BuildKit
+url: /build/buildkit/configure/
+parent:
+  title: BuildKit
+  url: /build/buildkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: BuildKit
+    url: /build/buildkit/
+  - title: Configure BuildKit
+    url: /build/buildkit/configure/
+next:
+  title: buildkitd.toml
+  url: /build/buildkit/toml-configuration/
+prev:
+  title: Custom Dockerfile syntax
+  url: /build/buildkit/frontend/
+---
+
 
 If you create a `docker-container` or `kubernetes` builder with Buildx, you can
 apply a custom [BuildKit configuration](toml-configuration.md) by passing the
@@ -143,7 +165,7 @@ in BuildKit as an example. Feel free to include your own CNI configuration.
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-ARG BUILDKIT_VERSION=v0.26.0
+ARG BUILDKIT_VERSION=v0.26.3
 ARG CNI_VERSION=v1.0.1
 
 FROM --platform=$BUILDPLATFORM alpine AS cni-plugins

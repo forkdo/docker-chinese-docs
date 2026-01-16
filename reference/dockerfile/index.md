@@ -1,4 +1,19 @@
-# Dockerfile reference
+---
+title: Dockerfile reference
+url: /reference/dockerfile/
+parent:
+  title: 参考文档
+  url: /reference/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Dockerfile reference
+    url: /reference/dockerfile/
+prev:
+  title: 术语表
+  url: /reference/glossary/
+---
+
 
 Docker can build images automatically by reading the instructions from a
 Dockerfile. A Dockerfile is a text document that contains all the commands a

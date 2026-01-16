@@ -1,4 +1,45 @@
-# 存储驱动程序
+---
+title: 存储驱动程序
+url: /engine/storage/drivers/
+parent:
+  title: 存储
+  url: /engine/storage/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 存储
+    url: /engine/storage/
+  - title: 存储驱动程序
+    url: /engine/storage/drivers/
+children:
+  - title: 选择存储驱动程序
+    url: /engine/storage/drivers/select-storage-driver/
+    description: 了解如何为容器选择合适的存储驱动程序。
+  - title: AUFS 存储驱动程序
+    url: /engine/storage/drivers/aufs-driver/
+    description: 了解如何优化 AUFS 驱动程序的使用。
+  - title: BTRFS 存储驱动
+    url: /engine/storage/drivers/btrfs-driver/
+    description: 了解如何优化 Btrfs 驱动程序的使用。
+  - title: Device Mapper 存储驱动程序（已弃用）
+    url: /engine/storage/drivers/device-mapper-driver/
+    description: 了解如何优化 device mapper 驱动程序的使用。
+  - title: OverlayFS 存储驱动程序
+    url: /engine/storage/drivers/overlayfs-driver/
+    description: 了解如何优化 OverlayFS 驱动程序的使用。
+  - title: VFS 存储驱动
+    url: /engine/storage/drivers/vfs-driver/
+    description: 了解如何优化 VFS 驱动的使用。
+  - title: windowsfilter 存储驱动程序
+    url: /engine/storage/drivers/windowsfilter-driver/
+    description: 了解 windowsfilter 存储驱动程序
+  - title: ZFS 存储驱动程序
+    url: /engine/storage/drivers/zfs-driver/
+    description: 了解如何优化 ZFS 驱动程序的使用。
+---
+
 
 > [!NOTE]
 > Docker Engine 29.0 及更高版本在全新安装时默认使用
@@ -377,102 +418,30 @@ Btrfs、ZFS 和其他驱动程序处理写时复制的方式不同。您可以�
    
    上面的输出显示所有容器共享镜像的只读层（7.75MB），但没有数据写入容器的文件系统，因此容器没有使用额外的存储空间。
 
-   
+   **高级：容器使用的元数据和日志存储**
 
 
 
-
-<div
-  id="高级容器使用的元数据和日志存储"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
+> [!NOTE]
 >
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      高级：容器使用的元数据和日志存储
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    
+> 此步骤需要 Linux 机器，在 Docker Desktop 上不起作用，因为它需要访问 Docker 守护进程的文件存储。
 
-  
+虽然 `docker ps` 的输出提供了有关容器可写层消耗的磁盘空间的信息，但它不包括有关为每个容器存储的元数据和日志文件的信息。
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+通过探索 Docker 守护进程的存储位置（默认为 `/var/lib/docker/`）可以获得更多详细信息。
 
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>此步骤需要 Linux 机器，在 Docker Desktop 上不起作用，因为它需要访问 Docker 守护进程的文件存储。</p>
-    </div>
-  </blockquote>
+```console
+$ sudo du -sh /var/lib/docker/containers/*
 
-<p>虽然 <code>docker ps</code> 的输出提供了有关容器可写层消耗的磁盘空间的信息，但它不包括有关为每个容器存储的元数据和日志文件的信息。</p>
-<p>通过探索 Docker 守护进程的存储位置（默认为 <code>/var/lib/docker/</code>）可以获得更多详细信息。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzdWRvIGR1IC1zaCAvdmFyL2xpYi9kb2NrZXIvY29udGFpbmVycy8qCgozNksgIC92YXIvbGliL2RvY2tlci9jb250YWluZXJzLzNlZDNjMWExMDQzMGUwOWYyNTM3MDQxMTY5NjViMDFjYTkyMDIwMmQ1MmYzYmYzODFmYmI4MzNiOGFlMzU2YmMKMzZLICAvdmFyL2xpYi9kb2NrZXIvY29udGFpbmVycy80MGViZGQ3NjM0MTYyZWI0MmJkYjFiYTc2YTM5NTA5NTUyN2U5YzBhYTQwMzQ4ZTZjMzI1YmQwYWEyODk0MjNjCjM2SyAgL3Zhci9saWIvZG9ja2VyL2NvbnRhaW5lcnMvOTM5YjNiZjllN2VjZTI0YmNmZmVjNTdkOTc0YzkzOWRhMmJkY2M2YTUwNzdiNTQ1OWM4OTdjMWUyZmEzN2EzOQozNksgIC92YXIvbGliL2RvY2tlci9jb250YWluZXJzL2E1ZmYzMmUyYjU1MTE2OGI5NDk4ODcwZmFmMTZjOWNkMGFmODIwZWRmOGE1YzE1N2Y3YjgwZGE1OWQwMWExMDcKMzZLICAvdmFyL2xpYi9kb2NrZXIvY29udGFpbmVycy9jZGRhZTMxYzMxNGZiYWIzZjdlYWJlYjliMjY3MzM4MzgxODdhYmM5YTJlZDUzZjk3YmQ1YjA0Y2Q3OTg0YTVh', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo du -sh /var/lib/docker/containers/*
-</span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/3ed3c1a10430e09f253704116965b01ca920202d52f3bf381fbb833b8ae356bc
-</span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/40ebdd7634162eb42bdb1ba76a395095527e9c0aa40348e6c325bd0aa289423c
-</span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/939b3bf9e7ece24bcffec57d974c939da2bdcc6a5077b5459c897c1e2fa37a39
-</span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/a5ff32e2b551168b9498870faf16c9cd0af820edf8a5c157f7b80da59d01a107
-</span></span></span><span class="line"><span class="cl"><span class="go">36K  /var/lib/docker/containers/cddae31c314fbab3f7eabeb9b26733838187abc9a2ed53f97bd5b04cd7984a5a
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>这些容器中的每一个在文件系统上仅占用 36k 的空间。</p>
+36K  /var/lib/docker/containers/3ed3c1a10430e09f253704116965b01ca920202d52f3bf381fbb833b8ae356bc
+36K  /var/lib/docker/containers/40ebdd7634162eb42bdb1ba76a395095527e9c0aa40348e6c325bd0aa289423c
+36K  /var/lib/docker/containers/939b3bf9e7ece24bcffec57d974c939da2bdcc6a5077b5459c897c1e2fa37a39
+36K  /var/lib/docker/containers/a5ff32e2b551168b9498870faf16c9cd0af820edf8a5c157f7b80da59d01a107
+36K  /var/lib/docker/containers/cddae31c314fbab3f7eabeb9b26733838187abc9a2ed53f97bd5b04cd7984a5a
+```
 
-  </div>
-</div>
+这些容器中的每一个在文件系统上仅占用 36k 的空间。
+
 
 
 
@@ -510,20 +479,3 @@ Btrfs、ZFS 和其他驱动程序处理写时复制的方式不同。您可以�
 
 * [卷](../volumes.md)
 * [选择存储驱动程序](select-storage-driver.md)
-
-- [选择存储驱动程序](/engine/storage/drivers/select-storage-driver/)
-
-- [AUFS 存储驱动程序](/engine/storage/drivers/aufs-driver/)
-
-- [BTRFS 存储驱动](/engine/storage/drivers/btrfs-driver/)
-
-- [Device Mapper 存储驱动程序（已弃用）](/engine/storage/drivers/device-mapper-driver/)
-
-- [OverlayFS 存储驱动程序](/engine/storage/drivers/overlayfs-driver/)
-
-- [VFS 存储驱动](/engine/storage/drivers/vfs-driver/)
-
-- [windowsfilter 存储驱动程序](/engine/storage/drivers/windowsfilter-driver/)
-
-- [ZFS 存储驱动程序](/engine/storage/drivers/zfs-driver/)
-

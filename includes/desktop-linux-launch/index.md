@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/desktop-linux-launch/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/desktop-linux-launch/
+next:
+  title: 
+  url: /includes/desktop-license-update/
+prev:
+  title: 
+  url: /includes/dev-envs-changing/
+---
+
 要启动 Docker Desktop for Linux：
 
 1.  在您的 Gnome/KDE 桌面中找到 Docker Desktop 应用程序。

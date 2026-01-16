@@ -1,4 +1,22 @@
-# 为您的 Docker 账户启用双因素认证
+---
+title: 为您的 Docker 账户启用双因素认证
+url: /security/2fa/
+parent:
+  title: 开发者安全
+  url: /security/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 开发者安全
+    url: /security/
+  - title: 为您的 Docker 账户启用双因素认证
+    url: /security/2fa/
+children:
+  - title: 恢复您的 Docker 账户
+    url: /security/2fa/recover-hub-account/
+    description: 恢复您的 Docker 账户并管理双因素身份验证恢复代码
+---
+
 
 双因素认证 (2FA) 为您的 Docker 账户增加了一层重要的安全保护，它要求在登录时除了密码之外，还需要一个独特的安全码。即使您的密码被泄露，这也能防止未经授权的访问。
 
@@ -46,6 +64,3 @@
 3. 选择 **2FA**。
 4. 输入您的密码，然后选择 **Confirm**（确认）。
 5. 选择 **Disable 2FA**（禁用 2FA）。
-
-- [恢复您的 Docker 账户](/security/2fa/recover-hub-account/)
-

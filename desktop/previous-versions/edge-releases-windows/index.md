@@ -1,4 +1,24 @@
-# Docker Desktop for Windows Edge 版本发布说明
+---
+title: Docker Desktop for Windows Edge 版本发布说明
+url: /desktop/previous-versions/edge-releases-windows/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop for Windows Edge 版本发布说明
+    url: /desktop/previous-versions/edge-releases-windows/
+next:
+  title: Docker Desktop for Mac Edge release notes
+  url: /desktop/previous-versions/edge-releases-mac/
+prev:
+  title: Docker for Windows 2.x 发布说明
+  url: /desktop/previous-versions/2.x-windows/
+---
+
 
 此页面包含 Docker Desktop Edge 版本的相关信息。Edge 版本可让您抢先体验我们的最新功能。请注意，部分功能可能仍处于实验阶段，甚至可能永远不会进入稳定版发布。
 

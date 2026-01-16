@@ -1,4 +1,28 @@
-# Configuring your GitHub Actions builder
+---
+title: Configuring your GitHub Actions builder
+url: /build/ci/github-actions/configure-builder/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Configuring your GitHub Actions builder
+    url: /build/ci/github-actions/configure-builder/
+next:
+  title: GitHub Actions build summary
+  url: /build/ci/github-actions/build-summary/
+prev:
+  title: Cache management with GitHub Actions
+  url: /build/ci/github-actions/cache/
+---
+
 
 This page contains instructions on configuring your BuildKit instances when
 using our [Setup Buildx Action](https://github.com/docker/setup-buildx-action).

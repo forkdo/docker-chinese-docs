@@ -1,4 +1,24 @@
-# 持久化数据库
+---
+title: 持久化数据库
+url: /get-started/workshop/05_persisting_data/
+parent:
+  title: Docker 工作坊概览
+  url: /get-started/workshop/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: Docker 工作坊概览
+    url: /get-started/workshop/
+  - title: 持久化数据库
+    url: /get-started/workshop/05_persisting_data/
+next:
+  title: 共享应用程序
+  url: /get-started/workshop/04_sharing_app/
+prev:
+  title: 使用 bind mounts
+  url: /get-started/workshop/06_bind_mounts/
+---
+
 
 如果你没有注意到，每次启动容器时，你的待办事项列表都是空的。为什么会这样？在本部分中，你将深入了解容器的工作原理。
 
@@ -54,278 +74,68 @@
 
 你可以使用 CLI 或 Docker Desktop 的图形界面来创建卷并启动容器。
 
+**CLI**
 
 
 
+1. 使用 `docker volume create` 命令创建卷。
+
+   ```console
+   $ docker volume create todo-db
+   ```
+
+2. 再次使用 `docker rm -f <id>` 停止并移除待办事项应用容器，因为它仍在运行且未使用持久卷。
+
+3. 启动待办事项应用容器，但添加 `--mount` 选项以指定卷挂载。给卷一个名称，并将其挂载到容器中的 `/etc/todos`，这会捕获在该路径下创建的所有文件。
+
+   ```console
+   $ docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+   ```
+
+   > [!NOTE]
+   >
+   > 如果你使用 Git Bash，必须为此命令使用不同的语法。
+   >
+   > ```console
+   > $ docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=//etc/todos getting-started
+   > ```
+   >
+   > 有关 Git Bash 语法差异的更多详细信息，请参阅
+   > [使用 Git Bash](/desktop/troubleshoot-and-support/troubleshoot/topics/#docker-commands-failing-in-git-bash)。
+
+
+**Docker Desktop**
 
 
 
+创建卷：
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'CLI' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'CLI' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'CLI'"
-        
-      >
-        CLI
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Docker-Desktop' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Docker-Desktop'"
-        
-      >
-        Docker Desktop
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'CLI' && 'hidden'"
-      >
-        <ol>
-<li>
-<p>使用 <code>docker volume create</code> 命令创建卷。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgdm9sdW1lIGNyZWF0ZSB0b2RvLWRi', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker volume create todo-db
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-<li>
-<p>再次使用 <code>docker rm -f &lt;id&gt;</code> 停止并移除待办事项应用容器，因为它仍在运行且未使用持久卷。</p>
-</li>
-<li>
-<p>启动待办事项应用容器，但添加 <code>--mount</code> 选项以指定卷挂载。给卷一个名称，并将其挂载到容器中的 <code>/etc/todos</code>，这会捕获在该路径下创建的所有文件。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kcCAxMjcuMC4wLjE6MzAwMDozMDAwIC0tbW91bnQgdHlwZT12b2x1bWUsc3JjPXRvZG8tZGIsdGFyZ2V0PS9ldGMvdG9kb3MgZ2V0dGluZy1zdGFydGVk', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -dp 127.0.0.1:3000:3000 --mount <span class="nv">type</span><span class="o">=</span>volume,src<span class="o">=</span>todo-db,target<span class="o">=</span>/etc/todos getting-started
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+1. 在 Docker Desktop 中选择 **Volumes**。
+2. 在 **Volumes** 中，选择 **Create**。
+3. 指定 `todo-db` 作为卷名称，然后选择 **Create**。
 
+停止并移除应用容器：
 
-  
+1. 在 Docker Desktop 中选择 **Containers**。
+2. 在容器的 **Actions** 列中选择 **Delete**。
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+启动挂载了卷的待办事项应用容器：
 
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果你使用 Git Bash，必须为此命令使用不同的语法。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kcCAxMjcuMC4wLjE6MzAwMDozMDAwIC0tbW91bnQgdHlwZT12b2x1bWUsc3JjPXRvZG8tZGIsdGFyZ2V0PS8vZXRjL3RvZG9zIGdldHRpbmctc3RhcnRlZA==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -dp 127.0.0.1:3000:3000 --mount <span class="nv">type</span><span class="o">=</span>volume,src<span class="o">=</span>todo-db,target<span class="o">=</span>//etc/todos getting-started
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>有关 Git Bash 语法差异的更多详细信息，请参阅
+1. 选择 Docker Desktop 顶部的搜索框。
+2. 在搜索窗口中，选择 **Images** 选项卡。
+3. 在搜索框中，指定镜像名称 `getting-started`。
 
-  <a class="link" href="/desktop/troubleshoot-and-support/troubleshoot/topics/#docker-commands-failing-in-git-bash">使用 Git Bash</a>。</p>
-    </div>
-  </blockquote>
+   > [!TIP]
+   >
+   > 使用搜索过滤器过滤镜像，仅显示 **Local images**。
 
-</li>
-</ol>
+4. 选择你的镜像，然后选择 **Run**。
+5. 选择 **Optional settings**。
+6. 在 **Host port** 中，指定端口，例如 `3000`。
+7. 在 **Host path** 中，指定卷的名称 `todo-db`。
+8. 在 **Container path** 中，指定 `/etc/todos`。
+9. 选择 **Run**。
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Docker-Desktop' && 'hidden'"
-      >
-        <p>创建卷：</p>
-<ol>
-<li>在 Docker Desktop 中选择 <strong>Volumes</strong>。</li>
-<li>在 <strong>Volumes</strong> 中，选择 <strong>Create</strong>。</li>
-<li>指定 <code>todo-db</code> 作为卷名称，然后选择 <strong>Create</strong>。</li>
-</ol>
-<p>停止并移除应用容器：</p>
-<ol>
-<li>在 Docker Desktop 中选择 <strong>Containers</strong>。</li>
-<li>在容器的 <strong>Actions</strong> 列中选择 <strong>Delete</strong>。</li>
-</ol>
-<p>启动挂载了卷的待办事项应用容器：</p>
-<ol>
-<li>
-<p>选择 Docker Desktop 顶部的搜索框。</p>
-</li>
-<li>
-<p>在搜索窗口中，选择 <strong>Images</strong> 选项卡。</p>
-</li>
-<li>
-<p>在搜索框中，指定镜像名称 <code>getting-started</code>。</p>
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-tip admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_5432_1749" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="1" width="17" height="22">
-<path d="M9.93896 22H14.939M10.439 10H14.439M12.439 10L12.439 16M15.439 15.3264C17.8039 14.2029 19.439 11.7924 19.439 9C19.439 5.13401 16.305 2 12.439 2C8.57297 2 5.43896 5.13401 5.43896 9C5.43896 11.7924 7.07402 14.2029 9.43896 15.3264V16C9.43896 16.9319 9.43896 17.3978 9.59121 17.7654C9.79419 18.2554 10.1835 18.6448 10.6736 18.8478C11.0411 19 11.5071 19 12.439 19C13.3708 19 13.8368 19 14.2043 18.8478C14.6944 18.6448 15.0837 18.2554 15.2867 17.7654C15.439 17.3978 15.439 16.9319 15.439 16V15.3264Z" stroke="#6C7E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</mask>
-<g mask="url(#mask0_5432_1749)">
-<rect width="24" height="24" fill="currentColor" fill-opacity="0.8"/>
-</g>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Tip
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>使用搜索过滤器过滤镜像，仅显示 <strong>Local images</strong>。</p>
-    </div>
-  </blockquote>
-
-</li>
-<li>
-<p>选择你的镜像，然后选择 <strong>Run</strong>。</p>
-</li>
-<li>
-<p>选择 <strong>Optional settings</strong>。</p>
-</li>
-<li>
-<p>在 <strong>Host port</strong> 中，指定端口，例如 <code>3000</code>。</p>
-</li>
-<li>
-<p>在 <strong>Host path</strong> 中，指定卷的名称 <code>todo-db</code>。</p>
-</li>
-<li>
-<p>在 <strong>Container path</strong> 中，指定 <code>/etc/todos</code>。</p>
-</li>
-<li>
-<p>选择 <strong>Run</strong>。</p>
-</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ### 验证数据是否持久化
@@ -382,6 +192,5 @@ $ docker volume inspect todo-db
 
 接下来，你将学习如何使用绑定挂载更高效地开发你的应用。
 
-
-<a class="button not-prose" href="/get-started/workshop/06_bind_mounts/">使用绑定挂载</a>
+[使用绑定挂载](06_bind_mounts.md)
 

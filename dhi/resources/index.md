@@ -1,4 +1,21 @@
-# Docker Hardened Images 资源
+---
+title: Docker Hardened Images 资源
+url: /dhi/resources/
+parent:
+  title: Docker Hardened Images
+  url: /dhi/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: Docker Hardened Images 资源
+    url: /dhi/resources/
+next:
+  title: 故障排除
+  url: /dhi/troubleshoot/
+---
+
 
 本页面提供了与 Docker Hardened Images (DHI) 相关的其他资源链接，包括博客文章、Docker Hub 资源和 GitHub 仓库。
 

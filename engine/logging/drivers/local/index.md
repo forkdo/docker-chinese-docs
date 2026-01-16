@@ -1,4 +1,23 @@
-# 本地文件日志记录驱动程序
+---
+title: 本地文件日志记录驱动程序
+url: /engine/logging/drivers/local/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: 本地文件日志记录驱动程序
+    url: /engine/logging/drivers/local/
+next:
+  title: Syslog 日志驱动程序
+  url: /engine/logging/drivers/syslog/
+---
+
 
 `local` 日志记录驱动程序捕获容器的 stdout/stderr 输出，并将其写入针对性能和磁盘使用进行优化的内部存储中。
 

@@ -1,4 +1,24 @@
-# 共享应用程序
+---
+title: 共享应用程序
+url: /get-started/workshop/04_sharing_app/
+parent:
+  title: Docker 工作坊概览
+  url: /get-started/workshop/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: Docker 工作坊概览
+    url: /get-started/workshop/
+  - title: 共享应用程序
+    url: /get-started/workshop/04_sharing_app/
+next:
+  title: 更新应用程序
+  url: /get-started/workshop/03_updating_app/
+prev:
+  title: 持久化数据库
+  url: /get-started/workshop/05_persisting_data/
+---
+
 
 现在你已经构建了一个镜像，你可以共享它。要共享 Docker 镜像，你必须使用 Docker 注册表。默认注册表是 Docker Hub，你使用的所有镜像都来自这里。
 
@@ -122,6 +142,5 @@
 
 在下一节中，你将学习如何在容器化应用程序中持久化数据。
 
-
-<a class="button not-prose" href="/get-started/workshop/05_persisting_data/">Persist the DB</a>
+[Persist the DB](05_persisting_data.md)
 

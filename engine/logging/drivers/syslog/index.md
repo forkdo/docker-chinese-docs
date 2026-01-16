@@ -1,4 +1,26 @@
-# Syslog 日志驱动程序
+---
+title: Syslog 日志驱动程序
+url: /engine/logging/drivers/syslog/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: Syslog 日志驱动程序
+    url: /engine/logging/drivers/syslog/
+next:
+  title: Splunk 日志记录驱动程序
+  url: /engine/logging/drivers/splunk/
+prev:
+  title: 本地文件日志记录驱动程序
+  url: /engine/logging/drivers/local/
+---
+
 
 `syslog` 日志驱动程序将日志路由到 `syslog` 服务器。`syslog` 协议使用原始字符串作为日志消息，并支持有限的元数据集。syslog 消息必须按照特定格式进行格式化才能有效。从有效消息中，接收方可以提取以下信息：
 

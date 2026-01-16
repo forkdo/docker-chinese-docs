@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/gordondhi/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/gordondhi/
+next:
+  title: 
+  url: /includes/extensions-form/
+prev:
+  title: 
+  url: /includes/guides-get-docker/
+---
+
 1. 确保 Gordon 已[启用](/manuals/ai/gordon.md#enable-ask-gordon)。
 1. 在 Gordon 的工具箱中，确保 Gordon 的 [Developer MCP Toolkit 已启用](/manuals/ai/gordon/mcp/built-in-tools.md#configuration)。
 1. 在终端中，导航到包含您的 Dockerfile 的目录。

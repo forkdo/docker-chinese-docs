@@ -1,4 +1,26 @@
-# 在 RHEL 上安装 Docker Engine
+---
+title: 在 RHEL 上安装 Docker Engine
+url: /engine/install/rhel/
+parent:
+  title: 安装 Docker Engine
+  url: /engine/install/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 安装 Docker Engine
+    url: /engine/install/
+  - title: 在 RHEL 上安装 Docker Engine
+    url: /engine/install/rhel/
+next:
+  title: 在 Debian 上安装 Docker Engine
+  url: /engine/install/debian/
+prev:
+  title: 在 Fedora 上安装 Docker Engine
+  url: /engine/install/fedora/
+---
+
 
 要开始在 RHEL 上使用 Docker Engine，请确保你[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)操作。
 
@@ -66,187 +88,47 @@ $ sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/dock
 
 1. 安装 Docker 包。
 
+   **最新版本**
+
+
+
+   要安装最新版本，请运行：
+
+   ```console
+   $ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
+
+   如果提示接受 GPG 密钥，请验证指纹是否匹配 `060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35`，如果匹配则接受。
+
+   此命令安装 Docker，但不会启动 Docker。它还会创建一个 `docker` 组，但默认情况下不会将任何用户添加到该组。
+
+   **特定版本**
+
+
+
+   要安装特定版本，首先列出仓库中可用的版本：
+
+   ```console
+   $ dnf list docker-ce --showduplicates | sort -r
+
+   docker-ce.x86_64    3:29.1.4-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.1.3-1.el9    docker-ce-stable
+   <...>
+   ```
+
+   返回的列表取决于启用的仓库，并且特定于你的 RHEL 版本（在此示例中由 `.el9` 后缀指示）。
+
+   通过其完全限定的包名安装特定版本，包名是包名（`docker-ce`）加上版本字符串（第 2 列），用连字符（`-`）分隔。例如，`docker-ce-3:29.1.4-1.el9`。
+
+   将 `<VERSION_STRING>` 替换为所需版本，然后运行以下命令进行安装：
+
+   ```console
+   $ sudo dnf install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
+
+   此命令安装 Docker，但不会启动 Docker。它还会创建一个 `docker` 组，但默认情况下不会将任何用户添加到该组。
+
    
-
-
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC'"
-        
-      >
-        最新版本
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC'"
-        
-      >
-        特定版本
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC' && 'hidden'"
-      >
-        <p>要安装最新版本，请运行：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzdWRvIGRuZiBpbnN0YWxsIGRvY2tlci1jZSBkb2NrZXItY2UtY2xpIGNvbnRhaW5lcmQuaW8gZG9ja2VyLWJ1aWxkeC1wbHVnaW4gZG9ja2VyLWNvbXBvc2UtcGx1Z2lu', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>如果提示接受 GPG 密钥，请验证指纹是否匹配 <code>060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35</code>，如果匹配则接受。</p>
-<p>此命令安装 Docker，但不会启动 Docker。它还会创建一个 <code>docker</code> 组，但默认情况下不会将任何用户添加到该组。</p>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC' && 'hidden'"
-      >
-        <p>要安装特定版本，首先列出仓库中可用的版本：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkbmYgbGlzdCBkb2NrZXItY2UgLS1zaG93ZHVwbGljYXRlcyB8IHNvcnQgLXIKCmRvY2tlci1jZS54ODZfNjQgICAgMzoyOS4xLjMtMS5lbDkgICAgZG9ja2VyLWNlLXN0YWJsZQpkb2NrZXItY2UueDg2XzY0ICAgIDM6MjkuMS4yLTEuZWw5ICAgIGRvY2tlci1jZS1zdGFibGUKPC4uLj4=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dnf list docker-ce --showduplicates <span class="p">|</span> sort -r
-</span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="go">docker-ce.x86_64    3:29.1.3-1.el9    docker-ce-stable
-</span></span></span><span class="line"><span class="cl"><span class="go">docker-ce.x86_64    3:29.1.2-1.el9    docker-ce-stable
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;...&gt;
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>返回的列表取决于启用的仓库，并且特定于你的 RHEL 版本（在此示例中由 <code>.el9</code> 后缀指示）。</p>
-<p>通过其完全限定的包名安装特定版本，包名是包名（<code>docker-ce</code>）加上版本字符串（第 2 列），用连字符（<code>-</code>）分隔。例如，<code>docker-ce-3:29.1.3-1.el9</code>。</p>
-<p>将 <code>&lt;VERSION_STRING&gt;</code> 替换为所需版本，然后运行以下命令进行安装：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzdWRvIGRuZiBpbnN0YWxsIGRvY2tlci1jZS08VkVSU0lPTl9TVFJJTkc&#43;IGRvY2tlci1jZS1jbGktPFZFUlNJT05fU1RSSU5HPiBjb250YWluZXJkLmlvIGRvY2tlci1idWlsZHgtcGx1Z2luIGRvY2tlci1jb21wb3NlLXBsdWdpbg==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo dnf install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io docker-buildx-plugin docker-compose-plugin
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>此命令安装 Docker，但不会启动 Docker。它还会创建一个 <code>docker</code> 组，但默认情况下不会将任何用户添加到该组。</p>
-
-      </div>
-    
-  </div>
-</div>
-
 
 2. 启动 Docker Engine。
 

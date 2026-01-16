@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/swarm-mode/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/swarm-mode/
+next:
+  title: 
+  url: /includes/swarm-compose-compat/
+prev:
+  title: 
+  url: /includes/tax-compliance/
+---
+
 > [!NOTE]
 >
 > Swarm 模式是用于管理 Docker 守护进程集群的高级功能。

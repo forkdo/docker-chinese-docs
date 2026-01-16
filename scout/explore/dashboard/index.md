@@ -1,4 +1,24 @@
-# 仪表板
+---
+title: 仪表板
+url: /scout/explore/dashboard/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 仪表板
+    url: /scout/explore/dashboard/
+next:
+  title: Docker Scout 镜像分析
+  url: /scout/explore/analysis/
+prev:
+  title: 管理漏洞例外
+  url: /scout/explore/exceptions/
+---
+
 
 [Docker Scout 仪表板](https://scout.docker.com/)可帮助您与团队共享组织中镜像的分析结果。开发人员现在可以查看 Docker Hub 上所有镜像的安全状态概览，并随时获取修复建议。它可帮助安全、合规和运维等角色的团队成员了解需要重点关注的漏洞和问题。
 

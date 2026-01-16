@@ -1,4 +1,61 @@
-# Swarm 模式
+---
+title: Swarm 模式
+url: /engine/swarm/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+children:
+  - title: Swarm 模式中的 Raft 共识
+    url: /engine/swarm/raft/
+    description: Swarm 模式中的 Raft 共识算法
+  - title: Swarm 模式入门
+    url: /engine/swarm/swarm-tutorial/
+    description: Docker Engine Swarm 模式入门教程
+  - title: Swarm 模式关键概念
+    url: /engine/swarm/key-concepts/
+    description: 介绍 Docker Engine swarm 模式的关键概念
+  - title: 使用 Docker Configs 存储配置数据
+    url: /engine/swarm/configs/
+    description: 如何将配置数据与运行时分离
+  - title: 使用 Docker secrets 管理敏感数据
+    url: /engine/swarm/secrets/
+    description: 如何安全地存储、检索和使用 Docker 服务的敏感数据
+  - title: 使用集群模式路由网格
+    url: /engine/swarm/ingress/
+    description: 使用路由网格将服务发布到集群外部
+  - title: 在 Swarm 模式下运行 Docker Engine
+    url: /engine/swarm/swarm-mode/
+    description: 在 Swarm 模式下运行 Docker Engine
+  - title: 将堆栈部署到 Swarm
+    url: /engine/swarm/stack-deploy/
+    description: 如何将堆栈部署到 Swarm
+  - title: 将服务部署到 swarm
+    url: /engine/swarm/services/
+    description: 将服务部署到 swarm
+  - title: 将节点加入到一个 swarm 中
+    url: /engine/swarm/join-nodes/
+    description: 将 worker 和 manager 节点加入到一个 swarm 中
+  - title: 管理 swarm 中的节点
+    url: /engine/swarm/manage-nodes/
+    description: 管理 swarm 中的现有节点
+  - title: 管理 swarm 服务网络
+    url: /engine/swarm/networking/
+    description: 使用 swarm 模式的覆盖网络功能
+  - title: 管理和维护 Docker Engine 集群
+    url: /engine/swarm/admin_guide/
+    description: 管理节点管理指南
+  - title: 锁定 Swarm 以保护其加密密钥
+    url: /engine/swarm/swarm_manager_locking/
+    description: 自动锁定 Swarm 管理节点以保护加密密钥
+---
+
 
 
 
@@ -71,32 +128,3 @@ Swarm 中的每个节点都强制执行 TLS 双向身份验证和加密，以保
   * [service scale](/reference/cli/docker/service/scale.md)
   * [service ps](/reference/cli/docker/service/ps.md)
   * [service update](/reference/cli/docker/service/update.md)
-
-- [Swarm 模式中的 Raft 共识](/engine/swarm/raft/)
-
-- [Swarm 模式入门](/engine/swarm/swarm-tutorial/)
-
-- [Swarm 模式关键概念](/engine/swarm/key-concepts/)
-
-- [使用 Docker Configs 存储配置数据](/engine/swarm/configs/)
-
-- [使用 Docker secrets 管理敏感数据](/engine/swarm/secrets/)
-
-- [使用集群模式路由网格](/engine/swarm/ingress/)
-
-- [在 Swarm 模式下运行 Docker Engine](/engine/swarm/swarm-mode/)
-
-- [将堆栈部署到 Swarm](/engine/swarm/stack-deploy/)
-
-- [将服务部署到 swarm](/engine/swarm/services/)
-
-- [将节点加入到一个 swarm 中](/engine/swarm/join-nodes/)
-
-- [管理 swarm 中的节点](/engine/swarm/manage-nodes/)
-
-- [管理 swarm 服务网络](/engine/swarm/networking/)
-
-- [管理和维护 Docker Engine 集群](/engine/swarm/admin_guide/)
-
-- [锁定 Swarm 以保护其加密密钥](/engine/swarm/swarm_manager_locking/)
-

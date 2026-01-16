@@ -1,4 +1,26 @@
-# 漏洞可利用性交换 (VEX)
+---
+title: 漏洞可利用性交换 (VEX)
+url: /dhi/core-concepts/vex/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 漏洞可利用性交换 (VEX)
+    url: /dhi/core-concepts/vex/
+next:
+  title: STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
+  url: /dhi/core-concepts/stig/
+prev:
+  title: 不可变基础设施
+  url: /dhi/core-concepts/immutability/
+---
+
 
 ## 什么是 VEX？
 

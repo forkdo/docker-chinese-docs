@@ -1,4 +1,24 @@
-# Docker 计费使用 3D Secure 身份验证
+---
+title: Docker 计费使用 3D Secure 身份验证
+url: /billing/3d-secure/
+parent:
+  title: 管理账单和支付
+  url: /billing/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 管理账单和支付
+    url: /billing/
+  - title: Docker 计费使用 3D Secure 身份验证
+    url: /billing/3d-secure/
+next:
+  title: 管理您的账单信息
+  url: /billing/details/
+prev:
+  title: 发票和账单历史记录
+  url: /billing/history/
+---
+
 
 Docker 支持 3D Secure (3DS)，这是某些信用卡支付所需的额外身份验证层。如果您的银行或发卡机构要求 3DS，您可能需要在支付完成前验证您的身份。
 

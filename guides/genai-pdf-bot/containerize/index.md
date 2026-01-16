@@ -1,4 +1,21 @@
-# 容器化生成式 AI 应用程序
+---
+title: 容器化生成式 AI 应用程序
+url: /guides/genai-pdf-bot/containerize/
+parent:
+  title: PDF 分析与对话
+  url: /guides/genai-pdf-bot/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: PDF 分析与对话
+    url: /guides/genai-pdf-bot/
+  - title: 容器化生成式 AI 应用程序
+    url: /guides/genai-pdf-bot/containerize/
+prev:
+  title: 使用容器进行生成式 AI 开发
+  url: /guides/genai-pdf-bot/develop/
+---
+
 
 ## 先决条件
 

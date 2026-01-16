@@ -1,4 +1,26 @@
-# 查看 Docker Scout 策略状态
+---
+title: 查看 Docker Scout 策略状态
+url: /scout/policy/view/
+parent:
+  title: Docker Scout 中的策略评估入门
+  url: /scout/policy/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: Docker Scout 中的策略评估入门
+    url: /scout/policy/
+  - title: 查看 Docker Scout 策略状态
+    url: /scout/policy/view/
+next:
+  title: 在 CI 中评估策略合规性
+  url: /scout/policy/ci/
+prev:
+  title: 配置策略
+  url: /scout/policy/configure/
+---
+
 
 您可以从 [Docker Scout 仪表板](#dashboard) 或使用 [CLI](#cli) 跟踪制品的策略状态。
 

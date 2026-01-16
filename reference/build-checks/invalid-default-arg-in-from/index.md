@@ -1,4 +1,24 @@
-# InvalidDefaultArgInFrom
+---
+title: InvalidDefaultArgInFrom
+url: /reference/build-checks/invalid-default-arg-in-from/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: InvalidDefaultArgInFrom
+    url: /reference/build-checks/invalid-default-arg-in-from/
+next:
+  title: FromPlatformFlagConstDisallowed
+  url: /reference/build-checks/from-platform-flag-const-disallowed/
+prev:
+  title: InvalidDefinitionDescription
+  url: /reference/build-checks/invalid-definition-description/
+---
+
 
 ## Output
 

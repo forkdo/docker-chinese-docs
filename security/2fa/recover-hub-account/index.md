@@ -1,4 +1,20 @@
-# 恢复您的 Docker 账户
+---
+title: 恢复您的 Docker 账户
+url: /security/2fa/recover-hub-account/
+parent:
+  title: 为您的 Docker 账户启用双因素认证
+  url: /security/2fa/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 开发者安全
+    url: /security/
+  - title: 为您的 Docker 账户启用双因素认证
+    url: /security/2fa/
+  - title: 恢复您的 Docker 账户
+    url: /security/2fa/recover-hub-account/
+---
+
 
 本文档介绍如何恢复您的 Docker 账户以及如何管理双因素身份验证的恢复代码。
 

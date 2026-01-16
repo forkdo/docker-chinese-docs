@@ -1,4 +1,24 @@
-# StageNameCasing
+---
+title: StageNameCasing
+url: /reference/build-checks/stage-name-casing/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: StageNameCasing
+    url: /reference/build-checks/stage-name-casing/
+next:
+  title: SecretsUsedInArgOrEnv
+  url: /reference/build-checks/secrets-used-in-arg-or-env/
+prev:
+  title: UndefinedArgInFrom
+  url: /reference/build-checks/undefined-arg-in-from/
+---
+
 
 ## Output
 

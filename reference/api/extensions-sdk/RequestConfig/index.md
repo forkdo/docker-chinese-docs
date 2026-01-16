@@ -1,4 +1,24 @@
-# 接口：RequestConfig
+---
+title: 接口：RequestConfig
+url: /reference/api/extensions-sdk/RequestConfig/
+parent:
+  title: 扩展 API 参考
+  url: /reference/api/extensions-sdk/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: 扩展 API 参考
+    url: /reference/api/extensions-sdk/
+  - title: 接口：RequestConfig
+    url: /reference/api/extensions-sdk/RequestConfig/
+next:
+  title: 接口：HttpService
+  url: /reference/api/extensions-sdk/HttpService/
+prev:
+  title: 接口：ServiceError
+  url: /reference/api/extensions-sdk/ServiceError/
+---
+
 
 **`Since`**
 

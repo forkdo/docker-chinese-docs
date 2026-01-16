@@ -1,4 +1,24 @@
-# 旧版本发行说明
+---
+title: 旧版本发行说明
+url: /desktop/previous-versions/archive-mac/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 旧版本发行说明
+    url: /desktop/previous-versions/archive-mac/
+next:
+  title: Docker for Windows 3.x 发行说明
+  url: /desktop/previous-versions/3.x-windows/
+prev:
+  title: 旧版本发行说明
+  url: /desktop/previous-versions/archive-windows/
+---
+
 
 本页包含 Docker Desktop for Mac 旧版本的发行说明。
 

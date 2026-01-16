@@ -1,4 +1,18 @@
-# 提供反馈
+---
+title: 提供反馈
+url: /desktop/troubleshoot-and-support/feedback/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 提供反馈
+    url: /desktop/troubleshoot-and-support/feedback/
+---
+
 
 您可以通过多种方式对 Docker Desktop 或其功能提供反馈。
 

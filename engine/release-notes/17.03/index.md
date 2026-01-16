@@ -1,4 +1,24 @@
-# Docker Engine 17.03 发布说明
+---
+title: Docker Engine 17.03 发布说明
+url: /engine/release-notes/17.03/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 17.03 发布说明
+    url: /engine/release-notes/17.03/
+next:
+  title: Docker Engine 历史版本
+  url: /engine/release-notes/prior-releases/
+prev:
+  title: Docker Engine 17.04 发行说明
+  url: /engine/release-notes/17.04/
+---
+
 
 ## 17.03.3-ce
 2018-08-30

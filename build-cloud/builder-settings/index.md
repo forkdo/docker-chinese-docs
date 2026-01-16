@@ -1,4 +1,24 @@
-# Builder settings
+---
+title: Builder settings
+url: /build-cloud/builder-settings/
+parent:
+  title: Docker Build Cloud
+  url: /build-cloud/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build Cloud
+    url: /build-cloud/
+  - title: Builder settings
+    url: /build-cloud/builder-settings/
+next:
+  title: 优化云端构建
+  url: /build-cloud/optimization/
+prev:
+  title: Docker Build Cloud 发布说明
+  url: /build-cloud/release-notes/
+---
+
 
 Docker Build Cloud 中的 **Builder 设置** 页面允许你为组织中的云构建器配置磁盘分配、私有资源访问和防火墙设置。这些配置有助于优化存储、启用对私有注册表的访问，并保护出站网络流量。
 

@@ -1,4 +1,23 @@
-# 在容器环境中设置环境变量
+---
+title: 在容器环境中设置环境变量
+url: /compose/how-tos/environment-variables/set-environment-variables/
+parent:
+  title: Compose 中的环境变量
+  url: /compose/how-tos/environment-variables/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Compose 中的环境变量
+    url: /compose/how-tos/environment-variables/
+  - title: 在容器环境中设置环境变量
+    url: /compose/how-tos/environment-variables/set-environment-variables/
+prev:
+  title: Docker Compose 中的环境变量优先级
+  url: /compose/how-tos/environment-variables/envvars-precedence/
+---
+
 
 在服务配置中明确指定之前，容器的环境变量不会被设置。使用 Compose，您可以通过 Compose 文件以两种方式为容器设置环境变量。
 

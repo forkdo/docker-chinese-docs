@@ -1,4 +1,21 @@
-# 设置您的订阅
+---
+title: 设置您的订阅
+url: /subscription/setup/
+parent:
+  title: 订阅
+  url: /subscription/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 订阅
+    url: /subscription/
+  - title: 设置您的订阅
+    url: /subscription/setup/
+prev:
+  title: 扩展您的订阅
+  url: /subscription/scale/
+---
+
 
 Docker 订阅为个人开发者、团队和企业级业务提供各种功能和权益。本页介绍如何为个人账户和组织设置订阅。
 

@@ -1,4 +1,24 @@
-# 服务账户
+---
+title: 服务账户
+url: /docker-hub/service-accounts/
+parent:
+  title: Docker Hub
+  url: /docker-hub/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 服务账户
+    url: /docker-hub/service-accounts/
+next:
+  title: Docker Hub 快速入门
+  url: /docker-hub/quickstart/
+prev:
+  title: 排查 Docker Hub 问题
+  url: /docker-hub/troubleshoot/
+---
+
 
 
 

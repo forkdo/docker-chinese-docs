@@ -1,4 +1,28 @@
-# 验证您的扩展
+---
+title: 验证您的扩展
+url: /extensions/extensions-sdk/extensions/validate/
+parent:
+  title: 第二部分：发布
+  url: /extensions/extensions-sdk/extensions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 第二部分：发布
+    url: /extensions/extensions-sdk/extensions/
+  - title: 验证您的扩展
+    url: /extensions/extensions-sdk/extensions/validate/
+next:
+  title: 扩展镜像标签
+  url: /extensions/extensions-sdk/extensions/labels/
+prev:
+  title: 打包并发布您的扩展
+  url: /extensions/extensions-sdk/extensions/DISTRIBUTION/
+---
+
 
 在分享或发布扩展之前，请先对其进行验证。验证扩展可确保扩展：
 

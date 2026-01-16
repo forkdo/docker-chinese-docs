@@ -1,4 +1,18 @@
-# OpenTelemetry support
+---
+title: OpenTelemetry support
+url: /build/debug/opentelemetry/
+parent:
+  title: Docker Build
+  url: /build/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: OpenTelemetry support
+    url: /build/debug/opentelemetry/
+---
+
 
 Both Buildx and BuildKit support [OpenTelemetry](https://opentelemetry.io/).
 

@@ -1,4 +1,24 @@
-# 登录 Docker Desktop
+---
+title: 登录 Docker Desktop
+url: /desktop/setup/sign-in/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 登录 Docker Desktop
+    url: /desktop/setup/sign-in/
+next:
+  title: 在 VM 或 VDI 环境中运行适用于 Windows 的 Docker Desktop
+  url: /desktop/setup/vm-vdi/
+prev:
+  title: Docker Desktop 允许列表
+  url: /desktop/setup/allow-list/
+---
+
 
 Docker 推荐使用 Docker Dashboard 右上角的 **Sign in** 选项进行登录。
 

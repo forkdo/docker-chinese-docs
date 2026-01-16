@@ -1,4 +1,21 @@
-# 测试您的 PHP 部署
+---
+title: 测试您的 PHP 部署
+url: /guides/php/deploy/
+parent:
+  title: PHP 语言专属指南
+  url: /guides/php/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: PHP 语言专属指南
+    url: /guides/php/
+  - title: 测试您的 PHP 部署
+    url: /guides/php/deploy/
+next:
+  title: 为您的 PHP 应用程序配置 CI/CD
+  url: /guides/php/configure-ci-cd/
+---
+
 
 ## 先决条件
 

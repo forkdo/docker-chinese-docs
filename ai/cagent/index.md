@@ -1,47 +1,41 @@
-# cagent
+---
+title: cagent
+url: /ai/cagent/
+parent:
+  title: 手册
+  url: /manuals/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: cagent
+    url: /ai/cagent/
+children:
+  - title: 模型提供商
+    url: /ai/cagent/model-providers/
+    description: 获取 API 密钥并为 cagent 配置云模型提供商
+  - title: 使用 Docker Model Runner 运行本地模型
+    url: /ai/cagent/local-models/
+    description: 使用 Docker Model Runner 在本地运行 AI 模型 - 无需 API 密钥
+  - title: 构建编码代理
+    url: /ai/cagent/tutorial/
+    description: 创建一个能够读取、写入并验证项目代码更改的编码代理
+  - title: 最佳实践
+    url: /ai/cagent/best-practices/
+    description: 构建高效 cagent 代理的模式与技术
+  - title: 共享代理
+    url: /ai/cagent/sharing-agents/
+    description: 通过 OCI 仓库分发代理配置
+  - title: 集成
+    url: /ai/cagent/integrations/
+    description: 将 cagent 代理连接到编辑器、MCP 客户端和其他代理
+  - title: RAG
+    url: /ai/cagent/rag/
+    description: RAG 如何为 cagent 智能体提供代码库和文档的访问能力
+  - title: 评估 (Evals)
+    url: /ai/cagent/evals/
+    description: 使用保存的对话测试您的代理
+---
 
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-      
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Availability:</span>
-        <span>
-          Experimental
-          
-            
-          
-            
-          
-            
-              <span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg></span>
-            
-          
-            
-          
-            
-          
-        </span>
-      </div>
-    
-
-    
-
-    
-  </div>
 
 
 
@@ -178,20 +172,3 @@ $ cagent pull myusername/debugger
 - 阅读完整的 [配置
   参考](https://github.com/docker/cagent?tab=readme-ov-file#-configuration-reference)
   <!-- TODO: move to this site/repo -->
-
-- [模型提供商](/ai/cagent/model-providers/)
-
-- [使用 Docker Model Runner 运行本地模型](/ai/cagent/local-models/)
-
-- [构建编码代理](/ai/cagent/tutorial/)
-
-- [最佳实践](/ai/cagent/best-practices/)
-
-- [共享代理](/ai/cagent/sharing-agents/)
-
-- [集成](/ai/cagent/integrations/)
-
-- [RAG](/ai/cagent/rag/)
-
-- [评估 (Evals)](/ai/cagent/evals/)
-

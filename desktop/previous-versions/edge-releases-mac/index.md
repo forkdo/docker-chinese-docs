@@ -1,4 +1,24 @@
-# Docker Desktop for Mac Edge release notes
+---
+title: Docker Desktop for Mac Edge release notes
+url: /desktop/previous-versions/edge-releases-mac/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop for Mac Edge release notes
+    url: /desktop/previous-versions/edge-releases-mac/
+next:
+  title: Docker Desktop for Mac 3.x 发布说明
+  url: /desktop/previous-versions/3.x-mac/
+prev:
+  title: Docker Desktop for Windows Edge 版本发布说明
+  url: /desktop/previous-versions/edge-releases-windows/
+---
+
 
 This page contains information about Docker Desktop Edge releases. Edge releases give you early access to our newest features. Note that some of the features may be experimental, and some of them may not ever reach the Stable release.
 

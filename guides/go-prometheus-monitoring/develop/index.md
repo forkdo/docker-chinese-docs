@@ -1,4 +1,21 @@
-# 开发你的应用程序
+---
+title: 开发你的应用程序
+url: /guides/go-prometheus-monitoring/develop/
+parent:
+  title: 使用 Prometheus 和 Grafana 监控 Golang 应用
+  url: /guides/go-prometheus-monitoring/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Prometheus 和 Grafana 监控 Golang 应用
+    url: /guides/go-prometheus-monitoring/
+  - title: 开发你的应用程序
+    url: /guides/go-prometheus-monitoring/develop/
+next:
+  title: 使用 Docker Compose 连接服务
+  url: /guides/go-prometheus-monitoring/compose/
+---
+
 
 在上一节中，你已经了解了如何使用 Docker Compose 将服务连接在一起。在本节中，你将学习如何使用 Docker 开发 Golang 应用程序。你还将了解如何使用 Docker Compose Watch 在代码发生更改时自动重建镜像。最后，你将测试应用程序并使用 Prometheus 作为数据源在 Grafana 中可视化指标。
 

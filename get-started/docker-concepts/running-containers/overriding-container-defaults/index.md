@@ -1,7 +1,23 @@
-# 覆盖容器默认设置
+---
+title: 覆盖容器默认设置
+url: /get-started/docker-concepts/running-containers/overriding-container-defaults/
+parent:
+  title: 开始使用
+  url: /get-started/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 覆盖容器默认设置
+    url: /get-started/docker-concepts/running-containers/overriding-container-defaults/
+next:
+  title: 发布和暴露端口
+  url: /get-started/docker-concepts/running-containers/publishing-ports/
+prev:
+  title: 持久化容器数据
+  url: /get-started/docker-concepts/running-containers/persisting-container-data/
+---
 
-<div id="youtube-player-PFszWK3BB8I" data-video-id="PFszWK3BB8I" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 解释
@@ -200,6 +216,5 @@ $ docker run -e POSTGRES_PASSWORD=secret postgres docker-entrypoint.sh -h localh
 
 现在您已经了解了如何覆盖容器默认设置，是时候学习如何持久化容器数据了。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/running-containers/persisting-container-data/">持久化容器数据</a>
+[持久化容器数据](persisting-container-data)
 

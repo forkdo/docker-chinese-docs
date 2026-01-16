@@ -1,4 +1,23 @@
-# 探索 Docker 硬化镜像
+---
+title: 探索 Docker 硬化镜像
+url: /dhi/how-to/explore/
+parent:
+  title: 操作指南
+  url: /dhi/how-to/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 操作指南
+    url: /dhi/how-to/
+  - title: 探索 Docker 硬化镜像
+    url: /dhi/how-to/explore/
+prev:
+  title: 镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
+  url: /dhi/how-to/mirror/
+---
+
 
 Docker 硬化镜像 (DHI) 是一套经过筛选的安全、生产就绪的容器镜像。本页介绍如何探索可用的 DHI 仓库、查看镜像元数据、检查变体详情以及理解所提供的安全证明。利用这些信息来评估并为您的应用程序选择合适的镜像变体。
 

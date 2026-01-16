@@ -1,4 +1,28 @@
-# Validating build configuration with GitHub Actions
+---
+title: Validating build configuration with GitHub Actions
+url: /build/ci/github-actions/checks/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Validating build configuration with GitHub Actions
+    url: /build/ci/github-actions/checks/
+next:
+  title: Add SBOM and provenance attestations with GitHub Actions
+  url: /build/ci/github-actions/attestations/
+prev:
+  title: Using secrets with GitHub Actions
+  url: /build/ci/github-actions/secrets/
+---
+
 
 [Build checks](/manuals/build/checks.md) let you validate your `docker build`
 configuration without actually running the build.

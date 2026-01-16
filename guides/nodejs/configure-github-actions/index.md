@@ -1,4 +1,24 @@
-# 使用 GitHub Actions 自动化构建
+---
+title: 使用 GitHub Actions 自动化构建
+url: /guides/nodejs/configure-github-actions/
+parent:
+  title: Node.js 语言专属指南
+  url: /guides/nodejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Node.js 语言专属指南
+    url: /guides/nodejs/
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/nodejs/configure-github-actions/
+next:
+  title: 在容器中运行 Node.js 测试
+  url: /guides/nodejs/run-tests/
+prev:
+  title: 部署你的 Node.js 应用
+  url: /guides/nodejs/deploy/
+---
+
 
 ## 先决条件
 

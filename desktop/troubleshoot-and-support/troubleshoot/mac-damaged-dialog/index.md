@@ -1,4 +1,23 @@
-# 修复 macOS 上“Docker.app 已损坏，无法打开”的问题
+---
+title: 修复 macOS 上“Docker.app 已损坏，无法打开”的问题
+url: /desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/
+parent:
+  title: 排查 Docker Desktop 问题
+  url: /desktop/troubleshoot-and-support/troubleshoot/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 排查 Docker Desktop 问题
+    url: /desktop/troubleshoot-and-support/troubleshoot/
+  - title: 修复 macOS 上“Docker.app 已损坏，无法打开”的问题
+    url: /desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/
+next:
+  title: 已知问题
+  url: /desktop/troubleshoot-and-support/troubleshoot/known-issues/
+---
+
 
 ## 错误信息
 

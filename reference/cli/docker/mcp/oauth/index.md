@@ -1,4 +1,27 @@
-# docker mcp oauth
+---
+title: docker mcp oauth
+url: /reference/cli/docker/mcp/oauth/
+parent:
+  title: docker mcp
+  url: /reference/cli/docker/mcp/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker mcp
+    url: /reference/cli/docker/mcp/
+  - title: docker mcp oauth
+    url: /reference/cli/docker/mcp/oauth/
+---
+
+
+
+
+
+
 
 <!--
 此页面由 Docker 的源代码自动生成。如果您想
@@ -8,9 +31,25 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp oauth authorize](/reference/cli/docker/mcp/oauth/oauth_authorize/)
 
-- [docker mcp oauth ls](/reference/cli/docker/mcp/oauth/oauth_ls/)
 
-- [docker mcp oauth revoke](/reference/cli/docker/mcp/oauth/oauth_revoke/)
+
+
+
+
+
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker mcp oauth authorize`](/reference/cli/docker/mcp/oauth/oauth_authorize/) | Authorize the specified OAuth app. |
+| [`docker mcp oauth ls`](/reference/cli/docker/mcp/oauth/oauth_ls/) | List available OAuth apps. |
+| [`docker mcp oauth revoke`](/reference/cli/docker/mcp/oauth/oauth_revoke/) | Revoke the specified OAuth app. |
+
 

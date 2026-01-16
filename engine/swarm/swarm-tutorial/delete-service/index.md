@@ -1,4 +1,28 @@
-# 删除在 swarm 上运行的服务
+---
+title: 删除在 swarm 上运行的服务
+url: /engine/swarm/swarm-tutorial/delete-service/
+parent:
+  title: Swarm 模式入门
+  url: /engine/swarm/swarm-tutorial/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: Swarm 模式入门
+    url: /engine/swarm/swarm-tutorial/
+  - title: 删除在 swarm 上运行的服务
+    url: /engine/swarm/swarm-tutorial/delete-service/
+next:
+  title: 扩展 Swarm 中的服务
+  url: /engine/swarm/swarm-tutorial/scale-service/
+prev:
+  title: 对服务应用滚动更新
+  url: /engine/swarm/swarm-tutorial/rolling-update/
+---
+
 
 教程的剩余步骤不再使用 `helloworld` 服务，因此现在您可以将该服务从 swarm 中删除。
 
@@ -41,6 +65,5 @@
 
 接下来，您将设置一个新服务并应用滚动更新。
 
-
-<a class="button not-prose" href="/engine/swarm/swarm-tutorial/rolling-update/">应用滚动更新</a>
+[应用滚动更新](rolling-update.md)
 

@@ -1,4 +1,23 @@
-# buildkitd.toml
+---
+title: buildkitd.toml
+url: /build/buildkit/toml-configuration/
+parent:
+  title: BuildKit
+  url: /build/buildkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: BuildKit
+    url: /build/buildkit/
+  - title: buildkitd.toml
+    url: /build/buildkit/toml-configuration/
+prev:
+  title: Configure BuildKit
+  url: /build/buildkit/configure/
+---
+
 
 The TOML file used to configure the buildkitd daemon settings has a short
 list of global settings followed by a series of sections for specific areas

@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/open-terminal/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/open-terminal/
+next:
+  title: 
+  url: /includes/install-script/
+prev:
+  title: 
+  url: /includes/root-errors/
+---
+
 > [!TIP]
 >
 > 要运行 Docker 命令，您必须使用终端。根据您的操作系统，可以通过以下方式打开终端：

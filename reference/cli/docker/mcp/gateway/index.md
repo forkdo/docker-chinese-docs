@@ -1,4 +1,27 @@
-# docker mcp gateway
+---
+title: docker mcp gateway
+url: /reference/cli/docker/mcp/gateway/
+parent:
+  title: docker mcp
+  url: /reference/cli/docker/mcp/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker mcp
+    url: /reference/cli/docker/mcp/
+  - title: docker mcp gateway
+    url: /reference/cli/docker/mcp/gateway/
+---
+
+**Description:** Manage the MCP Server gateway
+
+
+
+
 
 <!--
 此页面由 Docker 的源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
@@ -6,5 +29,26 @@
 https://github.com/docker/mcp-gateway
 -->
 
-- [docker mcp gateway run](/reference/cli/docker/mcp/gateway/gateway_run/)
+
+
+
+
+
+
+
+## Description
+
+Manage the MCP Server gateway
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker mcp gateway run`](/reference/cli/docker/mcp/gateway/gateway_run/) | Run the gateway |
+
 

@@ -1,4 +1,22 @@
-# 使用 Kafka 和 Docker 开发事件驱动型应用程序
+---
+title: 使用 Kafka 和 Docker 开发事件驱动型应用程序
+url: /guides/kafka/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Kafka 和 Docker 开发事件驱动型应用程序
+    url: /guides/kafka/
+next:
+  title: 在 GenAI 中利用 RAG 教授新知识
+  url: /guides/genai-leveraging-rag/
+prev:
+  title: 借助容器支持的开发实现更快速的开发与测试
+  url: /guides/container-supported-development/
+---
+
 
 随着微服务的兴起，事件驱动架构变得越来越流行。
 [Apache Kafka](https://kafka.apache.org/) 是一个分布式事件流平台，通常是这些架构的核心。不幸的是，为开发环境搭建和部署自己的 Kafka 实例通常很棘手。幸运的是，Docker 和容器让这一切变得容易得多。

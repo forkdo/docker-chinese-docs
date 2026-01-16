@@ -1,4 +1,27 @@
-# 
+---
+title: 
+url: /reference/cli/docker/mcp/catalog/catalog_bootstrap/
+parent:
+  title: docker mcp catalog
+  url: /reference/cli/docker/mcp/catalog/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker mcp
+    url: /reference/cli/docker/mcp/
+  - title: docker mcp catalog
+    url: /reference/cli/docker/mcp/catalog/
+  - title: 
+    url: /reference/cli/docker/mcp/catalog/catalog_bootstrap/
+prev:
+  title: docker mcp catalog add
+  url: /reference/cli/docker/mcp/catalog/catalog_add/
+---
+
 datafolder: mcp-cli
 datafile: docker_mcp_catalog_bootstrap
 title: docker mcp catalog bootstrap

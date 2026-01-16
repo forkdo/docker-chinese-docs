@@ -1,7 +1,23 @@
-# 什么是镜像仓库？
+---
+title: 什么是镜像仓库？
+url: /get-started/docker-concepts/the-basics/what-is-a-registry/
+parent:
+  title: 开始使用
+  url: /get-started/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 什么是镜像仓库？
+    url: /get-started/docker-concepts/the-basics/what-is-a-registry/
+next:
+  title: 什么是镜像？
+  url: /get-started/docker-concepts/the-basics/what-is-an-image/
+prev:
+  title: 什么是 Docker Compose？
+  url: /get-started/docker-concepts/the-basics/what-is-docker-compose/
+---
 
-<div id="youtube-player-2WDl10Wv5rs" data-video-id="2WDl10Wv5rs" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 说明
@@ -157,6 +173,5 @@ _镜像仓库_ 是存储和管理容器镜像的集中化位置，而 _镜像仓
 
 现在您已经理解了容器和镜像的基础知识，可以开始学习 Docker Compose。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/the-basics/what-is-docker-compose/">什么是 Docker Compose？</a>
+[什么是 Docker Compose？](what-is-Docker-Compose)
 

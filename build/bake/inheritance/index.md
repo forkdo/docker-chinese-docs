@@ -1,4 +1,26 @@
-# Inheritance in Bake
+---
+title: Inheritance in Bake
+url: /build/bake/inheritance/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Inheritance in Bake
+    url: /build/bake/inheritance/
+next:
+  title: Bake targets
+  url: /build/bake/targets/
+prev:
+  title: Variables in Bake
+  url: /build/bake/variables/
+---
+
 
 Targets can inherit attributes from other targets, using the `inherits`
 attribute. For example, imagine that you have a target that builds a Docker

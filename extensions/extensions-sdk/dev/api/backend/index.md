@@ -1,4 +1,27 @@
-# 扩展后端
+---
+title: 扩展后端
+url: /extensions/extensions-sdk/dev/api/backend/
+parent:
+  title: 扩展 API
+  url: /extensions/extensions-sdk/dev/api/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 
+    url: /extensions/extensions-sdk/dev/
+  - title: 扩展 API
+    url: /extensions/extensions-sdk/dev/api/
+  - title: 扩展后端
+    url: /extensions/extensions-sdk/dev/api/backend/
+next:
+  title: 扩展 UI API
+  url: /extensions/extensions-sdk/dev/api/overview/
+---
+
 
 `ddClient.extension.vm` 对象可用于与扩展元数据中 [vm 部分](../../architecture/metadata.md#vm-section) 定义的后端进行通信。
 

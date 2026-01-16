@@ -1,4 +1,21 @@
-# 在 Docker 中设置角色和权限
+---
+title: 在 Docker 中设置角色和权限
+url: /guides/admin-user-management/setup/
+parent:
+  title: 掌握用户和访问管理
+  url: /guides/admin-user-management/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 掌握用户和访问管理
+    url: /guides/admin-user-management/
+  - title: 在 Docker 中设置角色和权限
+    url: /guides/admin-user-management/setup/
+prev:
+  title: 在 Docker 中上手并管理角色与权限
+  url: /guides/admin-user-management/onboard/
+---
+
 
 通过正确的配置，您可以确保开发人员能够轻松访问必要的资源，同时防止未经授权的访问。本页将指导您识别 Docker 用户，以便在 Docker 组织中高效分配订阅席位，并根据组织结构分配角色。
 

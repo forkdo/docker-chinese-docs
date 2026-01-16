@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/compose/extension/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/compose/extension/
+next:
+  title: 
+  url: /includes/compose/deploy/
+prev:
+  title: 
+  url: /includes/compose/fragments/
+---
+
 我们首先分析待翻译的文本内容，这是一段关于 Docker Compose 配置文件中扩展功能（Extensions）的技术说明。原文包含两个段落和一个代码块（虽然没有实际代码块，但有代码片段 `x-` 和 `Compose` 等技术术语）。
 
 接下来，我们逐句处理翻译：

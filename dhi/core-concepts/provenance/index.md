@@ -1,4 +1,23 @@
-# 镜像溯源
+---
+title: 镜像溯源
+url: /dhi/core-concepts/provenance/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 镜像溯源
+    url: /dhi/core-concepts/provenance/
+next:
+  title: 镜像摘要
+  url: /dhi/core-concepts/digests/
+---
+
 
 ## 什么是镜像溯源？
 

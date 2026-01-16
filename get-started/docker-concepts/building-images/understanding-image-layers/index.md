@@ -1,7 +1,22 @@
-# 理解镜像层
+---
+title: 理解镜像层
+url: /get-started/docker-concepts/building-images/understanding-image-layers/
+parent:
+  title: 构建镜像
+  url: /get-started/docker-concepts/building-images/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 构建镜像
+    url: /get-started/docker-concepts/building-images/
+  - title: 理解镜像层
+    url: /get-started/docker-concepts/building-images/understanding-image-layers/
+prev:
+  title: 编写 Dockerfile
+  url: /get-started/docker-concepts/building-images/writing-a-dockerfile/
+---
 
-<div id="youtube-player-wJwqtAkmtQA" data-video-id="wJwqtAkmtQA" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 说明
@@ -199,6 +214,5 @@
 
 正如前面所暗示的，大多数镜像构建并不使用 `docker container commit`。相反，您将使用 Dockerfile，它会为您自动执行这些步骤。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/building-images/writing-a-dockerfile/">编写 Dockerfile</a>
+[编写 Dockerfile](writing-a-dockerfile)
 

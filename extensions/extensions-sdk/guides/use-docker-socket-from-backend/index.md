@@ -1,4 +1,26 @@
-# 从扩展后端使用 Docker socket
+---
+title: 从扩展后端使用 Docker socket
+url: /extensions/extensions-sdk/guides/use-docker-socket-from-backend/
+parent:
+  title: 扩展 SDK 概览
+  url: /extensions/extensions-sdk/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 从扩展后端使用 Docker socket
+    url: /extensions/extensions-sdk/guides/use-docker-socket-from-backend/
+next:
+  title: 从扩展与 Kubernetes 交互
+  url: /extensions/extensions-sdk/guides/kubernetes/
+prev:
+  title: 调用主机二进制文件
+  url: /extensions/extensions-sdk/guides/invoke-host-binaries/
+---
+
 
 扩展可以通过 SDK 直接从前端调用 Docker 命令。
 

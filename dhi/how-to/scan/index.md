@@ -1,4 +1,26 @@
-# 扫描 Docker Hardened Images
+---
+title: 扫描 Docker Hardened Images
+url: /dhi/how-to/scan/
+parent:
+  title: 操作指南
+  url: /dhi/how-to/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 操作指南
+    url: /dhi/how-to/
+  - title: 扫描 Docker Hardened Images
+    url: /dhi/how-to/scan/
+next:
+  title: 验证 Docker Hardened 镜像或图表
+  url: /dhi/how-to/verify/
+prev:
+  title: 使用策略强制执行 Docker Hardened Image 用法
+  url: /dhi/how-to/policies/
+---
+
 
 Docker Hardened Images (DHIs) 默认设计为安全，但与任何容器镜像一样，作为漏洞管理流程的一部分，定期扫描它们非常重要。
 

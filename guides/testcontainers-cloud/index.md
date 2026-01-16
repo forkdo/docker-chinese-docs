@@ -1,4 +1,30 @@
-# 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
+---
+title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
+
+url: /guides/testcontainers-cloud/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
+
+    url: /guides/testcontainers-cloud/
+children:
+  - title: 为什么选择 Testcontainers Cloud？
+    url: /guides/testcontainers-cloud/why/
+    description: 了解 Docker 提供的 Testcontainers Cloud 如何帮助您优化集成测试。
+  - title: 通过 Docker 设置 Testcontainers Cloud
+    url: /guides/testcontainers-cloud/demo-local/
+    description: 在本地开发环境中通过 Docker 设置 Testcontainers Cloud。
+  - title: 在 CI 流水线中配置 Testcontainers Cloud
+    url: /guides/testcontainers-cloud/demo-ci/
+    description: 使用 Testcontainers Cloud 与 GitHub Workflows，在 CI 流水线中实现自动化测试。
+  - title: 常见挑战与问题
+    url: /guides/testcontainers-cloud/common-questions/
+    description: 探索与 Docker Testcontainers Cloud 相关的常见挑战与问题。
+---
 
 
 Testcontainers Cloud 是一种基于云的解决方案，旨在简化和增强使用 Testcontainers 运行集成测试的过程。Testcontainers 是一个开源框架，允许开发者轻松启动容器化的依赖项，例如数据库、消息代理以及测试所需的其他服务。通过将基于 Testcontainers 的服务管理转移到云端，Testcontainers Cloud 优化了性能，减少了本地机器或 CI 服务器上的资源限制，并确保了测试环境的一致性。对于处理复杂分布式系统的团队来说，这种解决方案尤其有益，因为它允许进行可扩展、隔离且可靠的测试，而无需承担在本地管理容器的典型开销。
@@ -21,12 +47,3 @@ Docker Pro、Team 和 Business 订阅包含 Testcontainers Cloud 运行时分钟
 - 将基于容器的自动化测试集成到 CI/CD 流程中以进行持续测试的 DevOps 团队。
 - 寻求可扩展且一致的测试环境以进行全面集成和端到端测试的 QA 团队。
 - 需要可靠、容器化的测试环境来测试微服务和数据库的开发人员。
-
-- [为什么选择 Testcontainers Cloud？](/guides/testcontainers-cloud/why/)
-
-- [通过 Docker 设置 Testcontainers Cloud](/guides/testcontainers-cloud/demo-local/)
-
-- [在 CI 流水线中配置 Testcontainers Cloud](/guides/testcontainers-cloud/demo-ci/)
-
-- [常见挑战与问题](/guides/testcontainers-cloud/common-questions/)
-

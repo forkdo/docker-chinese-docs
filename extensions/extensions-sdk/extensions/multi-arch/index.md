@@ -1,4 +1,25 @@
-# 构建多架构扩展
+---
+title: 构建多架构扩展
+url: /extensions/extensions-sdk/extensions/multi-arch/
+parent:
+  title: 第二部分：发布
+  url: /extensions/extensions-sdk/extensions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 第二部分：发布
+    url: /extensions/extensions-sdk/extensions/
+  - title: 构建多架构扩展
+    url: /extensions/extensions-sdk/extensions/multi-arch/
+next:
+  title: 在 Marketplace 中发布
+  url: /extensions/extensions-sdk/extensions/publish/
+---
+
 
 强烈建议，您的扩展至少应支持以下架构：
 

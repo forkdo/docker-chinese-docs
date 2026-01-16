@@ -1,4 +1,26 @@
-# Docker Engine 在 SLES (s390x) 上
+---
+title: Docker Engine 在 SLES (s390x) 上
+url: /engine/install/sles/
+parent:
+  title: 安装 Docker Engine
+  url: /engine/install/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 安装 Docker Engine
+    url: /engine/install/
+  - title: Docker Engine 在 SLES (s390x) 上
+    url: /engine/install/sles/
+next:
+  title: 在 CentOS 上安装 Docker Engine
+  url: /engine/install/centos/
+prev:
+  title: 通过二进制文件安装 Docker Engine
+  url: /engine/install/binaries/
+---
+
 
 ## Docker Engine 不再适用于 SLES
 

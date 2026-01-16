@@ -1,4 +1,21 @@
-# 测试你的 Angular 部署
+---
+title: 测试你的 Angular 部署
+url: /guides/angular/deploy/
+parent:
+  title: Angular 语言专用指南
+  url: /guides/angular/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Angular 语言专用指南
+    url: /guides/angular/
+  - title: 测试你的 Angular 部署
+    url: /guides/angular/deploy/
+next:
+  title: 使用 GitHub Actions 自动化构建
+  url: /guides/angular/configure-github-actions/
+---
+
 
 ## 先决条件
 

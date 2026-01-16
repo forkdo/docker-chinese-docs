@@ -1,7 +1,25 @@
-# 证明
+---
+title: 证明
+url: /guides/docker-scout/attestations/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: 证明
+    url: /guides/docker-scout/attestations/
+next:
+  title: 软件物料清单
+  url: /guides/docker-scout/sbom/
+prev:
+  title: 修复
+  url: /guides/docker-scout/remediation/
+---
 
-<div id="youtube-player-qOzcycbTs4o" data-video-id="qOzcycbTs4o" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 [构建证明](/manuals/build/metadata/attestations/_index.md) 提供了有关镜像构建方式及其内容的详细信息。这些证明由 BuildKit 在构建时生成，作为元数据附加到最终镜像上，使您能够检查镜像的来源、创建者和内容。这些信息有助于您对镜像的安全性和对供应链的影响做出明智决策。

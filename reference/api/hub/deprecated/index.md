@@ -1,4 +1,21 @@
-# 已弃用的 Docker Hub API 端点
+---
+title: 已弃用的 Docker Hub API 端点
+url: /reference/api/hub/deprecated/
+parent:
+  title: Docker Hub API
+  url: /reference/api/hub/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Docker Hub API
+    url: /reference/api/hub/
+  - title: 已弃用的 Docker Hub API 端点
+    url: /reference/api/hub/deprecated/
+next:
+  title: Docker Hub API 变更日志
+  url: /reference/api/hub/changelog/
+---
+
 
 本页概述了 Docker Hub API 中已弃用的端点。
 

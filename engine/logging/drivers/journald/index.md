@@ -1,4 +1,26 @@
-# Journald 日志驱动
+---
+title: Journald 日志驱动
+url: /engine/logging/drivers/journald/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: Journald 日志驱动
+    url: /engine/logging/drivers/journald/
+next:
+  title: Graylog 扩展格式日志驱动程序
+  url: /engine/logging/drivers/gelf/
+prev:
+  title: JSON File 日志驱动
+  url: /engine/logging/drivers/json-file/
+---
+
 
 `journald` 日志驱动将容器日志发送到
 [`systemd` journal](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html)。

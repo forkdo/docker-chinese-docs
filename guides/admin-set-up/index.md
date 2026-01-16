@@ -1,4 +1,29 @@
-# 使用 Docker 为您的公司奠定成功基础
+---
+title: 使用 Docker 为您的公司奠定成功基础
+url: /guides/admin-set-up/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker 为您的公司奠定成功基础
+    url: /guides/admin-set-up/
+children:
+  - title: 沟通与信息收集
+    url: /guides/admin-set-up/comms-and-info-gathering/
+    description: 从关键利益相关者处收集公司需求，并与开发人员沟通。
+  - title: 最终确定计划并开始设置
+    url: /guides/admin-set-up/finalize-plans-and-setup/
+    description: 与 MDM 团队协作分发配置并设置 SSO 和 Docker 产品试用。
+  - title: 测试
+    url: /guides/admin-set-up/testing/
+    description: 测试您的 Docker 设置。
+  - title: 部署您的 Docker 设置
+    url: /guides/admin-set-up/deploy/
+    description: 在整个公司范围内部署您的 Docker 设置。
+---
+
 
 Docker 的工具提供了一个可扩展、安全的平台，使您的开发人员能够更快地创建、交付和运行应用程序。作为管理员，您可以简化工作流程、标准化开发环境，并确保整个组织的平稳部署。
 
@@ -46,12 +71,3 @@ Docker 的工具提供了一个可扩展、安全的平台，使您的开发人�
 - Entra ID SAML 2.0
 - Azure Connect (OIDC)
 - 像 Intune 这样的 MDM 解决方案
-
-- [沟通与信息收集](/guides/admin-set-up/comms-and-info-gathering/)
-
-- [最终确定计划并开始设置](/guides/admin-set-up/finalize-plans-and-setup/)
-
-- [测试](/guides/admin-set-up/testing/)
-
-- [部署您的 Docker 设置](/guides/admin-set-up/deploy/)
-

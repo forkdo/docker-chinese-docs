@@ -1,4 +1,24 @@
-# 使用 GitHub Actions 自动化构建
+---
+title: 使用 GitHub Actions 自动化构建
+url: /guides/python/configure-github-actions/
+parent:
+  title: Python 语言专属指南
+  url: /guides/python/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Python 语言专属指南
+    url: /guides/python/
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/python/configure-github-actions/
+next:
+  title: Python 的代码检查、格式化与类型检查
+  url: /guides/python/lint-format-typing/
+prev:
+  title: 测试您的 Python 部署
+  url: /guides/python/deploy/
+---
+
 
 ## 先决条件
 

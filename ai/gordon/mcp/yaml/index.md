@@ -1,4 +1,23 @@
-# 使用 YAML 配置 MCP 服务器
+---
+title: 使用 YAML 配置 MCP 服务器
+url: /ai/gordon/mcp/yaml/
+parent:
+  title: Model Context Protocol (MCP)
+  url: /ai/gordon/mcp/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Ask Gordon
+    url: /ai/gordon/
+  - title: Model Context Protocol (MCP)
+    url: /ai/gordon/mcp/
+  - title: 使用 YAML 配置 MCP 服务器
+    url: /ai/gordon/mcp/yaml/
+next:
+  title: Gordon 中的内置工具
+  url: /ai/gordon/mcp/built-in-tools/
+---
+
 
 Docker 与 Anthropic 合作，为 MCP 服务器的[参考实现](https://github.com/modelcontextprotocol/servers/)提供容器镜像。这些镜像在 Docker Hub 的 [mcp 命名空间](https://hub.docker.com/u/mcp)下提供。
 

@@ -1,7 +1,25 @@
-# 修复
+---
+title: 修复
+url: /guides/docker-scout/remediation/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: 修复
+    url: /guides/docker-scout/remediation/
+next:
+  title: 证明
+  url: /guides/docker-scout/attestations/
+prev:
+  title: 常见挑战与问题
+  url: /guides/docker-scout/common-questions/
+---
 
-<div id="youtube-player-jM9zLBf8M-8" data-video-id="jM9zLBf8M-8" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 Docker Scout 的[修复功能](/manuals/scout/policy/remediation.md)

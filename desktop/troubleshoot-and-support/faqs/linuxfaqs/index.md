@@ -1,4 +1,24 @@
-# Docker Desktop for Linux 常见问题解答
+---
+title: Docker Desktop for Linux 常见问题解答
+url: /desktop/troubleshoot-and-support/faqs/linuxfaqs/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop for Linux 常见问题解答
+    url: /desktop/troubleshoot-and-support/faqs/linuxfaqs/
+next:
+  title: Docker Desktop for Windows 的常见问题解答
+  url: /desktop/troubleshoot-and-support/faqs/windowsfaqs/
+prev:
+  title: Docker Desktop 版本发布常见问题
+  url: /desktop/troubleshoot-and-support/faqs/releases/
+---
+
 
 ### 为什么 Docker Desktop for Linux 要运行一个虚拟机 (VM)？
 
@@ -28,149 +48,41 @@ Docker Desktop for Linux 运行虚拟机 (VM) 的原因如下：
 
 Docker Desktop for Linux 使用 [VirtioFS](https://virtio-fs.gitlab.io/) 作为默认（也是目前唯一的）机制来启用主机和 Docker Desktop 虚拟机之间的文件共享。
 
+**Docker Desktop 4.34 及更早版本的附加信息**
 
 
 
+为了不使用提升的权限，同时又不必要地限制对共享文件的操作，Docker Desktop 在用户命名空间（参见 `user_namespaces(7)`）内运行文件共享服务 (`virtiofsd`)，并配置了 UID 和 GID 映射。因此，Docker Desktop 依赖于主机的配置，以允许当前用户使用从属 ID 委托。为此，`/etc/subuid`（参见 `subuid(5)`）和 `/etc/subgid`（参见 `subgid(5)`）必须存在。Docker Desktop 仅支持通过文件配置的从属 ID 委托。Docker Desktop 将当前用户 ID 和 GID 映射到容器中的 0。它使用 `/etc/subuid` 和 `/etc/subgid` 中对应当前用户的第一条记录来设置容器中大于 0 的 ID 的映射。
 
+| 容器中的 ID | 主机上的 ID                                                                       |
+| --------------- | -------------------------------------------------------------------------------- |
+| 0 (root)        | 运行 Docker Desktop 的用户 ID (例如 1000)                                            |
+| 1               | 0 + `/etc/subuid`/`/etc/subgid` 中指定的 ID 范围的起始值 (例如 100000) |
+| 2               | 1 + `/etc/subuid`/`/etc/subgid` 中指定的 ID 范围的起始值 (例如 100001) |
+| 3               | 2 + `/etc/subuid`/`/etc/subgid` 中指定的 ID 范围的起始值 (例如 100002) |
+| ...             | ...                                                                              |
 
-<div
-  id="docker-desktop-434-及更早版本的附加信息"
-  x-data="{ open: false }"
-  class="my-6 rounded-sm border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-900"
->
-  <button
-    class="not-prose flex w-full justify-between px-4 py-2"
-    x-on:click="open = ! open"
-  >
-    <div class=" flex items-center gap-2">
-      Docker Desktop 4.34 及更早版本的附加信息
-    </div>
-    <span :class="{ 'hidden' : !open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg></span
-    >
-    <span :class="{ 'hidden' : open }" class="icon-svg"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg></span
-    >
-  </button>
-  <div x-show="open" x-collapse class="px-4">
-    <p>为了不使用提升的权限，同时又不必要地限制对共享文件的操作，Docker Desktop 在用户命名空间（参见 <code>user_namespaces(7)</code>）内运行文件共享服务 (<code>virtiofsd</code>)，并配置了 UID 和 GID 映射。因此，Docker Desktop 依赖于主机的配置，以允许当前用户使用从属 ID 委托。为此，<code>/etc/subuid</code>（参见 <code>subuid(5)</code>）和 <code>/etc/subgid</code>（参见 <code>subgid(5)</code>）必须存在。Docker Desktop 仅支持通过文件配置的从属 ID 委托。Docker Desktop 将当前用户 ID 和 GID 映射到容器中的 0。它使用 <code>/etc/subuid</code> 和 <code>/etc/subgid</code> 中对应当前用户的第一条记录来设置容器中大于 0 的 ID 的映射。</p>
-<table>
-  <thead>
-      <tr>
-          <th>容器中的 ID</th>
-          <th>主机上的 ID</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>0 (root)</td>
-          <td>运行 Docker Desktop 的用户 ID (例如 1000)</td>
-      </tr>
-      <tr>
-          <td>1</td>
-          <td>0 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100000)</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>1 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100001)</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>2 + <code>/etc/subuid</code>/<code>/etc/subgid</code> 中指定的 ID 范围的起始值 (例如 100002)</td>
-      </tr>
-      <tr>
-          <td>...</td>
-          <td>...</td>
-      </tr>
-  </tbody>
-</table>
-<p>如果 <code>/etc/subuid</code> 和 <code>/etc/subgid</code> 不存在，则需要创建它们。两者都应包含以下格式的条目：
-<code>&lt;用户名&gt;:&lt;ID 范围起始值&gt;:&lt;ID 范围大小&gt;</code>。例如，要允许当前用户使用从 100000 到 165535 的 ID：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBncmVwICIkVVNFUiIgL2V0Yy9zdWJ1aWQgPj4gL2Rldi9udWxsIDImPjEgfHwgKGVjaG8gIiRVU0VSOjEwMDAwMDo2NTUzNiIgfCBzdWRvIHRlZSAtYSAvZXRjL3N1YnVpZCkKJCBncmVwICIkVVNFUiIgL2V0Yy9zdWJnaWQgPj4gL2Rldi9udWxsIDImPjEgfHwgKGVjaG8gIiRVU0VSOjEwMDAwMDo2NTUzNiIgfCBzdWRvIHRlZSAtYSAvZXRjL3N1YmdpZCk=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> grep <span class="s2">&#34;</span><span class="nv">$USER</span><span class="s2">&#34;</span> /etc/subuid &gt;&gt; /dev/null 2<span class="p">&amp;</span>&gt;1 <span class="o">||</span> <span class="o">(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$USER</span><span class="s2">:100000:65536&#34;</span> <span class="p">|</span> sudo tee -a /etc/subuid<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="gp">$</span> grep <span class="s2">&#34;</span><span class="nv">$USER</span><span class="s2">&#34;</span> /etc/subgid &gt;&gt; /dev/null 2<span class="p">&amp;</span>&gt;1 <span class="o">||</span> <span class="o">(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$USER</span><span class="s2">:100000:65536&#34;</span> <span class="p">|</span> sudo tee -a /etc/subgid<span class="o">)</span>
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>要验证配置是否已正确创建，请检查其内容：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBlY2hvICRVU0VSCmV4YW1wbGV1c2VyCiQgY2F0IC9ldGMvc3VidWlkCmV4YW1wbGV1c2VyOjEwMDAwMDo2NTUzNgokIGNhdCAvZXRjL3N1YmdpZApleGFtcGxldXNlcjoxMDAwMDA6NjU1MzY=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> <span class="nv">$USER</span>
-</span></span><span class="line"><span class="cl"><span class="go">exampleuser
-</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/subuid
-</span></span><span class="line"><span class="cl"><span class="go">exampleuser:100000:65536
-</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/subgid
-</span></span><span class="line"><span class="cl"><span class="go">exampleuser:100000:65536
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>在这种情况下，如果在 Docker Desktop 容器内将共享文件 <code>chown</code> 给一个 UID 为 1000 的用户，它在主机上显示为由一个 UID 为 100999 的用户拥有。这会产生一个不利的副作用，即阻止在主机上轻松访问此类文件。通过创建一个具有新 GID 的组并将我们的用户添加到该组中，或者通过为与 Docker Desktop 虚拟机共享的文件夹设置递归 ACL（参见 <code>setfacl(1)</code>），可以解决此问题。</p>
+如果 `/etc/subuid` 和 `/etc/subgid` 不存在，则需要创建它们。两者都应包含以下格式的条目：
+`<用户名>:<ID 范围起始值>:<ID 范围大小>`。例如，要允许当前用户使用从 100000 到 165535 的 ID：
 
-  </div>
-</div>
+```console
+$ grep "$USER" /etc/subuid >> /dev/null 2&>1 || (echo "$USER:100000:65536" | sudo tee -a /etc/subuid)
+$ grep "$USER" /etc/subgid >> /dev/null 2&>1 || (echo "$USER:100000:65536" | sudo tee -a /etc/subgid)
+```
+
+要验证配置是否已正确创建，请检查其内容：
+
+```console
+$ echo $USER
+exampleuser
+$ cat /etc/subuid
+exampleuser:100000:65536
+$ cat /etc/subgid
+exampleuser:100000:65536
+```
+
+在这种情况下，如果在 Docker Desktop 容器内将共享文件 `chown` 给一个 UID 为 1000 的用户，它在主机上显示为由一个 UID 为 100999 的用户拥有。这会产生一个不利的副作用，即阻止在主机上轻松访问此类文件。通过创建一个具有新 GID 的组并将我们的用户添加到该组中，或者通过为与 Docker Desktop 虚拟机共享的文件夹设置递归 ACL（参见 `setfacl(1)`），可以解决此问题。
+
 
 
 

@@ -1,4 +1,24 @@
-# ExposeProtoCasing
+---
+title: ExposeProtoCasing
+url: /reference/build-checks/expose-proto-casing/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: ExposeProtoCasing
+    url: /reference/build-checks/expose-proto-casing/
+next:
+  title: ExposeInvalidFormat
+  url: /reference/build-checks/expose-invalid-format/
+prev:
+  title: FromAsCasing
+  url: /reference/build-checks/from-as-casing/
+---
+
 
 ## Output
 

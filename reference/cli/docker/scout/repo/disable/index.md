@@ -1,4 +1,32 @@
-# docker scout repo disable
+---
+title: docker scout repo disable
+url: /reference/cli/docker/scout/repo/disable/
+parent:
+  title: docker scout repo
+  url: /reference/cli/docker/scout/repo/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker scout
+    url: /reference/cli/docker/scout/
+  - title: docker scout repo
+    url: /reference/cli/docker/scout/repo/
+  - title: docker scout repo disable
+    url: /reference/cli/docker/scout/repo/disable/
+prev:
+  title: docker scout repo enable
+  url: /reference/cli/docker/scout/repo/enable/
+---
+
+**Description:** Disable Docker Scout
+
+**Usage:** `docker scout repo disable [REPOSITORY]`
+
+
 
 <!--
 此页面是自动生成自 Docker 的源代码。如果您想
@@ -7,3 +35,57 @@
 
 https://github.com/docker/scout-cli
 -->
+
+
+
+
+
+
+
+
+## Description
+
+The docker scout repo disable command disables Docker Scout on repositories.
+
+
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--all` |  |  Disable all repositories of the organization. Can not be used with --filter.<br> |
+| `--filter` |  |  Regular expression to filter repositories by name |
+| `--integration` |  |  Name of the integration to use for enabling an image |
+| `--org` |  |  Namespace of the Docker organization |
+| `--registry` |  |  Container Registry |
+
+
+
+## Examples
+
+### Disable a specific repository
+
+```console
+$ docker scout repo disable my/repository
+```
+
+### Disable all repositories of the organization
+
+```console
+$ docker scout repo disable --all
+```
+
+### Disable some repositories based on a filter
+
+```console
+$ docker scout repo disable --filter namespace/backend
+```
+
+### Disable a repository from a specific registry
+
+```console
+$ docker scout repo disable my/repository --registry 123456.dkr.ecr.us-east-1.amazonaws.com
+```
+
+
+

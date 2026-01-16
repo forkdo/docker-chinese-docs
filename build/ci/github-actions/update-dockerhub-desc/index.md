@@ -1,4 +1,25 @@
-# Update Docker Hub description with GitHub Actions
+---
+title: Update Docker Hub description with GitHub Actions
+url: /build/ci/github-actions/update-dockerhub-desc/
+parent:
+  title: Docker Build GitHub Actions
+  url: /build/ci/github-actions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Continuous integration with Docker
+    url: /build/ci/
+  - title: Docker Build GitHub Actions
+    url: /build/ci/github-actions/
+  - title: Update Docker Hub description with GitHub Actions
+    url: /build/ci/github-actions/update-dockerhub-desc/
+next:
+  title: Test before push with GitHub Actions
+  url: /build/ci/github-actions/test-before-push/
+---
+
 
 You can update the Docker Hub repository description using a third party action
 called [Docker Hub Description](https://github.com/peter-evans/dockerhub-description)

@@ -1,4 +1,24 @@
-# 使用 GitHub Actions 自动化构建
+---
+title: 使用 GitHub Actions 自动化构建
+url: /guides/vuejs/configure-github-actions/
+parent:
+  title: Vue.js 语言专用指南
+  url: /guides/vuejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Vue.js 语言专用指南
+    url: /guides/vuejs/
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/vuejs/configure-github-actions/
+next:
+  title: 在容器中运行 Vue.js 测试
+  url: /guides/vuejs/run-tests/
+prev:
+  title: 测试 Vue.js 部署
+  url: /guides/vuejs/deploy/
+---
+
 
 ## 前提条件
 

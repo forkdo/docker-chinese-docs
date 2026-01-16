@@ -1,4 +1,24 @@
-# 接口：DockerDesktopClient
+---
+title: 接口：DockerDesktopClient
+url: /reference/api/extensions-sdk/DockerDesktopClient/
+parent:
+  title: 扩展 API 参考
+  url: /reference/api/extensions-sdk/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: 扩展 API 参考
+    url: /reference/api/extensions-sdk/
+  - title: 接口：DockerDesktopClient
+    url: /reference/api/extensions-sdk/DockerDesktopClient/
+next:
+  title: 接口：DockerCommand
+  url: /reference/api/extensions-sdk/DockerCommand/
+prev:
+  title: 接口：ExecProcess
+  url: /reference/api/extensions-sdk/ExecProcess/
+---
+
 
 Docker Desktop API 客户端的 v0 和 v1 接口的集合，出于向后兼容性原因而提供。除非你正在使用旧版扩展，否则请使用 v1 类型。
 

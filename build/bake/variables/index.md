@@ -1,4 +1,26 @@
-# Variables in Bake
+---
+title: Variables in Bake
+url: /build/bake/variables/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Variables in Bake
+    url: /build/bake/variables/
+next:
+  title: Inheritance in Bake
+  url: /build/bake/inheritance/
+prev:
+  title: Expression evaluation in Bake
+  url: /build/bake/expressions/
+---
+
 
 You can define and use variables in a Bake file to set attribute values,
 interpolate them into other values, and perform arithmetic operations.

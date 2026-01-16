@@ -1,4 +1,30 @@
-# Docker 扩展的 UI 样式概览
+---
+title: Docker 扩展的 UI 样式概览
+url: /extensions/extensions-sdk/design/
+parent:
+  title: 扩展 SDK 概览
+  url: /extensions/extensions-sdk/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: Docker 扩展的 UI 样式概览
+    url: /extensions/extensions-sdk/design/
+children:
+  - title: Docker 扩展的设计指南
+    url: /extensions/extensions-sdk/design/design-guidelines/
+    description: Docker 扩展设计
+  - title: Docker 设计原则
+    url: /extensions/extensions-sdk/design/design-principles/
+    description: Docker 扩展设计
+  - title: MUI 最佳实践
+    url: /extensions/extensions-sdk/design/mui-best-practices/
+    description: 使用 MUI 以最大限度地兼容 Docker Desktop 的指南
+---
+
 
 我们的设计系统是一套持续演进的设计规范，旨在确保 Docker 系列产品间的视觉一致性，并满足 [AA 级无障碍标准](https://www.w3.org/WAI/WCAG2AA-Conformance)。我们已向扩展开发者开放了其中部分内容，包括基础样式（颜色、排版）和组件文档。请参阅：[Docker 扩展样式指南](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771)。
 
@@ -43,10 +69,3 @@ Docker Desktop 的 UI 使用 React 和 [MUI](https://mui.com/)（基于 Material
 
 - 查看我们的 [MUI 最佳实践](mui-best-practices.md)。
 - 了解如何 [发布您的扩展程序](../extensions/_index.md)。
-
-- [Docker 扩展的设计指南](/extensions/extensions-sdk/design/design-guidelines/)
-
-- [Docker 设计原则](/extensions/extensions-sdk/design/design-principles/)
-
-- [MUI 最佳实践](/extensions/extensions-sdk/design/mui-best-practices/)
-

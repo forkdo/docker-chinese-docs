@@ -1,4 +1,23 @@
-# SLSA definitions
+---
+title: SLSA definitions
+url: /build/metadata/attestations/slsa-definitions/
+parent:
+  title: Build attestations
+  url: /build/metadata/attestations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Build attestations
+    url: /build/metadata/attestations/
+  - title: SLSA definitions
+    url: /build/metadata/attestations/slsa-definitions/
+next:
+  title: SBOM attestations
+  url: /build/metadata/attestations/sbom/
+---
+
 
 BuildKit supports the [creation of SLSA Provenance](./slsa-provenance.md) for
 builds that it runs.

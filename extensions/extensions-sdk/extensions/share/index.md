@@ -1,4 +1,28 @@
-# 分享你的扩展
+---
+title: 分享你的扩展
+url: /extensions/extensions-sdk/extensions/share/
+parent:
+  title: 第二部分：发布
+  url: /extensions/extensions-sdk/extensions/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 第二部分：发布
+    url: /extensions/extensions-sdk/extensions/
+  - title: 分享你的扩展
+    url: /extensions/extensions-sdk/extensions/share/
+next:
+  title: 打包并发布您的扩展
+  url: /extensions/extensions-sdk/extensions/DISTRIBUTION/
+prev:
+  title: 在 Marketplace 中发布
+  url: /extensions/extensions-sdk/extensions/publish/
+---
+
 
 一旦你的扩展镜像在 Docker Hub 上可访问，任何有权限访问该镜像的人都可以安装此扩展。
 

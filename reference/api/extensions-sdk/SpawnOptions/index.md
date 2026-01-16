@@ -1,4 +1,24 @@
-# 接口: SpawnOptions
+---
+title: 接口: SpawnOptions
+url: /reference/api/extensions-sdk/SpawnOptions/
+parent:
+  title: 扩展 API 参考
+  url: /reference/api/extensions-sdk/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: 扩展 API 参考
+    url: /reference/api/extensions-sdk/
+  - title: 接口: SpawnOptions
+    url: /reference/api/extensions-sdk/SpawnOptions/
+next:
+  title: 接口: RequestConfigV0
+  url: /reference/api/extensions-sdk/RequestConfigV0/
+prev:
+  title: 接口：DesktopUI
+  url: /reference/api/extensions-sdk/DesktopUI/
+---
+
 
 **`Since`**
 

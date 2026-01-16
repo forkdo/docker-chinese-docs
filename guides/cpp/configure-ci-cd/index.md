@@ -1,4 +1,24 @@
-# 为 C++ 应用程序配置 CI/CD
+---
+title: 为 C++ 应用程序配置 CI/CD
+url: /guides/cpp/configure-ci-cd/
+parent:
+  title: C++ 语言专用指南
+  url: /guides/cpp/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: C++ 语言专用指南
+    url: /guides/cpp/
+  - title: 为 C++ 应用程序配置 CI/CD
+    url: /guides/cpp/configure-ci-cd/
+next:
+  title: 使用容器进行 C++ 开发
+  url: /guides/cpp/develop/
+prev:
+  title: 测试你的 C++ 部署
+  url: /guides/cpp/deploy/
+---
+
 
 ## 先决条件
 

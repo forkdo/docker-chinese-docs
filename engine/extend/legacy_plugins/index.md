@@ -1,4 +1,23 @@
-# Use Docker Engine plugins
+---
+title: Use Docker Engine plugins
+url: /engine/extend/legacy_plugins/
+parent:
+  title: Docker Engine managed plugin system
+  url: /engine/extend/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine managed plugin system
+    url: /engine/extend/
+  - title: Use Docker Engine plugins
+    url: /engine/extend/legacy_plugins/
+next:
+  title: Plugin Config Version 1 of Plugin V2
+  url: /engine/extend/config/
+---
+
 
 This document describes the Docker Engine plugins generally available in Docker
 Engine. To view information on plugins managed by Docker,

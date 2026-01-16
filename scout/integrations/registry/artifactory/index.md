@@ -1,20 +1,36 @@
-# 将 Docker Scout 与 Artifactory 容器注册表集成
+---
+title: 将 Docker Scout 与 Artifactory 容器注册表集成
+url: /scout/integrations/registry/artifactory/
+parent:
+  title: 将 Docker Scout 与其他系统集成
+  url: /scout/integrations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: 将 Docker Scout 与其他系统集成
+    url: /scout/integrations/
+  - title: 将 Docker Scout 与 Artifactory 容器注册表集成
+    url: /scout/integrations/registry/artifactory/
+next:
+  title: 将 Docker Scout 与 Amazon ECR 集成
+  url: /scout/integrations/registry/ecr/
+prev:
+  title: 将 Docker Scout 与 Azure Container Registry 集成
+  url: /scout/integrations/registry/acr/
+---
 
-<div class="px-4 border-l-2 border-l-magenta-light dark:border-l-magenta-dark">
-  <p class="not-prose flex gap-2 items-center text-magenta-light dark:text-magenta-dark">
-    <span class="icon-svg pb-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M172-120q-41.78 0-59.39-39T124-230l248-280v-270h-52q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h320q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-52v270l248 280q29 32 11.39 71T788-120H172Z"/></svg>
-    </span>
-    <strong>Experimental</strong>
-  </p>
-  
+
+> **Experimental**
+>
+> 
 
 `docker scout watch` 命令是实验性功能。
 
 实验性功能旨在用于测试和收集反馈，因为其功能或设计可能会在版本更新之间发生变更，恕不另行通知，或者可能会在未来的版本中完全移除。
 
 
-</div>
 
 
 将 Docker Scout 与 JFrog Artifactory 集成，可让您对 Artifactory 中的镜像进行索引和分析。该集成由一个长期运行的 `docker scout watch` 进程提供支持。它会从您选择的仓库中提取镜像（可选择性过滤），接收来自 Artifactory 的 Webhook 回调，并将镜像数据推送到 Docker Scout。您可以在 Docker Scout 仪表板或通过 `docker scout` CLI 查看结果。

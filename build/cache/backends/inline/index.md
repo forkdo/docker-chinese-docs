@@ -1,4 +1,28 @@
-# Inline cache
+---
+title: Inline cache
+url: /build/cache/backends/inline/
+parent:
+  title: Cache storage backends
+  url: /build/cache/backends/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Docker build cache
+    url: /build/cache/
+  - title: Cache storage backends
+    url: /build/cache/backends/
+  - title: Inline cache
+    url: /build/cache/backends/inline/
+next:
+  title: GitHub Actions cache
+  url: /build/cache/backends/gha/
+prev:
+  title: Local cache
+  url: /build/cache/backends/local/
+---
+
 
 The `inline` cache storage backend is the simplest way to get an external cache
 and is easy to get started using if you're already building and pushing an

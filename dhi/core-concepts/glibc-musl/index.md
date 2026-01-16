@@ -1,4 +1,26 @@
-# Docker Hardened Images 中的 glibc 和 musl 支持
+---
+title: Docker Hardened Images 中的 glibc 和 musl 支持
+url: /dhi/core-concepts/glibc-musl/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: Docker Hardened Images 中的 glibc 和 musl 支持
+    url: /dhi/core-concepts/glibc-musl/
+next:
+  title: FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
+  url: /dhi/core-concepts/fips/
+prev:
+  title: 软件物料清单 (SBOM)
+  url: /dhi/core-concepts/sbom/
+---
+
 
 Docker Hardened Images (DHI) 的构建优先考虑安全性，同时不牺牲与更广泛的开源和企业软件生态系统的兼容性。这种兼容性的一个关键方面是对常见 Linux 标准库的支持：`glibc` 和 `musl`。
 

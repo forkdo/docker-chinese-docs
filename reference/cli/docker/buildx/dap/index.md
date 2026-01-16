@@ -1,4 +1,27 @@
-# docker buildx dap
+---
+title: docker buildx dap
+url: /reference/cli/docker/buildx/dap/
+parent:
+  title: docker buildx
+  url: /reference/cli/docker/buildx/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker buildx
+    url: /reference/cli/docker/buildx/
+  - title: docker buildx dap
+    url: /reference/cli/docker/buildx/dap/
+---
+
+**Description:** Start debug adapter protocol compatible debugger
+
+
+
+
 
 <!--
 此页面是自动从 Docker 的源代码生成的。如果您想
@@ -8,7 +31,31 @@
 https://github.com/docker/buildx
 -->
 
-- [docker buildx dap attach](/reference/cli/docker/buildx/dap/attach/)
 
-- [docker buildx dap build](/reference/cli/docker/buildx/dap/build/)
+
+> [!NOTE]
+> **Experimental**
+>
+> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
+
+
+
+
+
+## Description
+
+Start debug adapter protocol compatible debugger
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker buildx dap attach`](/reference/cli/docker/buildx/dap/attach/) | Attach to a container created by the dap evaluate request |
+| [`docker buildx dap build`](/reference/cli/docker/buildx/dap/build/) | Start a build |
+
 

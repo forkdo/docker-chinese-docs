@@ -1,4 +1,26 @@
-# Fluentd 日志驱动
+---
+title: Fluentd 日志驱动
+url: /engine/logging/drivers/fluentd/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: Fluentd 日志驱动
+    url: /engine/logging/drivers/fluentd/
+next:
+  title: ETW 日志驱动程序
+  url: /engine/logging/drivers/etwlogs/
+prev:
+  title: Google Cloud Logging 驱动
+  url: /engine/logging/drivers/gcplogs/
+---
+
 
 `fluentd` 日志驱动将容器日志作为结构化日志数据发送到 [Fluentd](https://www.fluentd.org) 收集器。然后，用户可以使用 Fluentd 的各种[输出插件](https://www.fluentd.org/plugins)将这些日志写入各种目的地。
 

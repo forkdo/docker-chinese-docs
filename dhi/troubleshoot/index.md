@@ -1,4 +1,24 @@
-# 故障排除
+---
+title: 故障排除
+url: /dhi/troubleshoot/
+parent:
+  title: Docker Hardened Images
+  url: /dhi/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 故障排除
+    url: /dhi/troubleshoot/
+next:
+  title: Docker Hardened Images 功能
+  url: /dhi/features/
+prev:
+  title: Docker Hardened Images 资源
+  url: /dhi/resources/
+---
+
 
 以下是迁移到或使用 Docker Hardened Images (DHIs) 时可能遇到的常见问题，以及推荐的解决方案。
 

@@ -1,4 +1,26 @@
-# 探索 Docker Desktop 中的 Images 视图
+---
+title: 探索 Docker Desktop 中的 Images 视图
+url: /desktop/use-desktop/images/
+parent:
+  title: 探索 Docker Desktop
+  url: /desktop/use-desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 探索 Docker Desktop
+    url: /desktop/use-desktop/
+  - title: 探索 Docker Desktop 中的 Images 视图
+    url: /desktop/use-desktop/images/
+next:
+  title: 探索 Docker Desktop 中的“容器”视图
+  url: /desktop/use-desktop/container/
+prev:
+  title: 在 Docker Desktop 中探索卷视图
+  url: /desktop/use-desktop/volumes/
+---
+
 
 **镜像**视图会显示您的 Docker 镜像列表，并允许您将镜像作为容器运行、从 Docker Hub 拉取镜像的最新版本以及检查镜像。它还会显示镜像漏洞的摘要。此外，**镜像**视图还包含清理选项，用于从磁盘上删除不需要的镜像以回收空间。如果您已登录，您还可以看到您和您的组织在 Docker Hub 上共享的镜像。更多信息，请参阅 [探索您的镜像](images.md)。
 

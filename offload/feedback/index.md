@@ -1,4 +1,21 @@
-# 提供反馈
+---
+title: 提供反馈
+url: /offload/feedback/
+parent:
+  title: Docker Offload
+  url: /offload/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Offload
+    url: /offload/
+  - title: 提供反馈
+    url: /offload/feedback/
+next:
+  title: 故障排除 Docker Offload
+  url: /offload/troubleshoot/
+---
+
 
 有多种方式可以为您提供 Docker Offload 的反馈。
 

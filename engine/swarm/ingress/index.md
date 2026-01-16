@@ -1,4 +1,26 @@
-# 使用集群模式路由网格
+---
+title: 使用集群模式路由网格
+url: /engine/swarm/ingress/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 使用集群模式路由网格
+    url: /engine/swarm/ingress/
+next:
+  title: 使用 Docker secrets 管理敏感数据
+  url: /engine/swarm/secrets/
+prev:
+  title: 在 Swarm 模式下运行 Docker Engine
+  url: /engine/swarm/swarm-mode/
+---
+
 
 Docker Engine 集群模式可以轻松地为服务发布端口，使其对集群外部的资源可用。所有节点都参与 ingress 路由网格。路由网格使集群中的每个节点都能接受发布端口上的连接，即使该节点上没有运行任何任务。路由网格会将所有进入发布端口的请求路由到可用节点上的活动容器。
 

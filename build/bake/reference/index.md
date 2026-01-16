@@ -1,4 +1,26 @@
-# Bake file reference
+---
+title: Bake file reference
+url: /build/bake/reference/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Bake file reference
+    url: /build/bake/reference/
+next:
+  title: Using Bake with additional contexts
+  url: /build/bake/contexts/
+prev:
+  title: Bake standard library functions
+  url: /build/bake/stdlib/
+---
+
 
 The Bake file is a file for defining workflows that you run using `docker buildx bake`.
 

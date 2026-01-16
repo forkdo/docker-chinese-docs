@@ -1,4 +1,25 @@
-# docker builder
+---
+title: docker builder
+url: /reference/cli/docker/builder/
+parent:
+  title: docker
+  url: /reference/cli/docker/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker builder
+    url: /reference/cli/docker/builder/
+---
+
+**Description:** Manage builds
+
+**Usage:** `docker builder`
+
+
 
 <!--
 此页面由 Docker 源代码自动生成。如果您希望修改此处显示的文本，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
@@ -6,5 +27,26 @@
 https://github.com/docker/cli
 -->
 
-- [docker builder prune](/reference/cli/docker/builder/prune/)
+
+
+
+
+
+
+
+## Description
+
+Manage builds
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker builder prune`](/reference/cli/docker/builder/prune/) | Remove build cache |
+
 

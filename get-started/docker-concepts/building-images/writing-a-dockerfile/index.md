@@ -1,7 +1,25 @@
-# 编写 Dockerfile
+---
+title: 编写 Dockerfile
+url: /get-started/docker-concepts/building-images/writing-a-dockerfile/
+parent:
+  title: 构建镜像
+  url: /get-started/docker-concepts/building-images/
+breadcrumbs:
+  - title: 开始使用
+    url: /get-started/
+  - title: 构建镜像
+    url: /get-started/docker-concepts/building-images/
+  - title: 编写 Dockerfile
+    url: /get-started/docker-concepts/building-images/writing-a-dockerfile/
+next:
+  title: 理解镜像层
+  url: /get-started/docker-concepts/building-images/understanding-image-layers/
+prev:
+  title: 构建、标记和发布镜像
+  url: /get-started/docker-concepts/building-images/build-tag-and-publish-an-image/
+---
 
-<div id="youtube-player-Jx8zoIhiP4c" data-video-id="Jx8zoIhiP4c" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 ## 解释
@@ -143,6 +161,5 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
 现在您已经创建了 Dockerfile 并学习了基础知识，是时候学习构建、标记和推送镜像了。
 
-
-<a class="button not-prose" href="/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/">构建、标记和发布镜像</a>
+[构建、标记和发布镜像](build-tag-and-publish-an-image)
 

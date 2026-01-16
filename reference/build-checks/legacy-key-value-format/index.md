@@ -1,4 +1,24 @@
-# LegacyKeyValueFormat
+---
+title: LegacyKeyValueFormat
+url: /reference/build-checks/legacy-key-value-format/
+parent:
+  title: Build checks
+  url: /reference/build-checks/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Build checks
+    url: /reference/build-checks/
+  - title: LegacyKeyValueFormat
+    url: /reference/build-checks/legacy-key-value-format/
+next:
+  title: JSONArgsRecommended
+  url: /reference/build-checks/json-args-recommended/
+prev:
+  title: MaintainerDeprecated
+  url: /reference/build-checks/maintainer-deprecated/
+---
+
 
 ## Output
 

@@ -1,4 +1,23 @@
-# Docker Engine 的 Linux 安装后步骤
+---
+title: Docker Engine 的 Linux 安装后步骤
+url: /engine/install/linux-postinstall/
+parent:
+  title: 安装 Docker Engine
+  url: /engine/install/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 安装 Docker Engine
+    url: /engine/install/
+  - title: Docker Engine 的 Linux 安装后步骤
+    url: /engine/install/linux-postinstall/
+next:
+  title: 通过二进制文件安装 Docker Engine
+  url: /engine/install/binaries/
+---
+
 
 这些可选的安装后步骤说明了如何配置 Linux 主机，使其更好地与 Docker 配合使用。
 

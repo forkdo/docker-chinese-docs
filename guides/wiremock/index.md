@@ -1,4 +1,22 @@
-# 使用 WireMock 在开发和测试中模拟 API 服务
+---
+title: 使用 WireMock 在开发和测试中模拟 API 服务
+url: /guides/wiremock/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 WireMock 在开发和测试中模拟 API 服务
+    url: /guides/wiremock/
+next:
+  title: 使用 Traefik 进行 HTTP 路由
+  url: /guides/traefik/
+prev:
+  title: 使用容器化数据库
+  url: /guides/databases/
+---
+
 
 在本地开发和测试过程中，你的应用依赖远程 API 的情况非常常见。网络问题、速率限制，甚至 API 提供商的停机都可能阻碍你的开发进度。这会显著降低你的工作效率，并使测试变得更加困难。这时，WireMock 就派上用场了。
 

@@ -1,4 +1,24 @@
-# 使用 GitHub Actions 自动化构建
+---
+title: 使用 GitHub Actions 自动化构建
+url: /guides/ruby/configure-github-actions/
+parent:
+  title: Ruby on Rails 语言特定指南
+  url: /guides/ruby/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Ruby on Rails 语言特定指南
+    url: /guides/ruby/
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/ruby/configure-github-actions/
+next:
+  title: 容器化 Ruby on Rails 应用程序
+  url: /guides/ruby/containerize/
+prev:
+  title: 使用容器进行 Ruby on Rails 开发
+  url: /guides/ruby/develop/
+---
+
 
 ## 先决条件
 

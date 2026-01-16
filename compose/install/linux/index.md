@@ -1,4 +1,23 @@
-# 安装 Docker Compose 插件
+---
+title: 安装 Docker Compose 插件
+url: /compose/install/linux/
+parent:
+  title: Docker Compose 安装概述
+  url: /compose/install/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Docker Compose 安装概述
+    url: /compose/install/
+  - title: 安装 Docker Compose 插件
+    url: /compose/install/linux/
+prev:
+  title: 安装独立的 Docker Compose（旧版）
+  url: /compose/install/standalone/
+---
+
 
 本页包含如何在 Linux 上从命令行安装 Docker Compose 插件的说明。
 

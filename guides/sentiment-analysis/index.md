@@ -1,4 +1,22 @@
-# 构建一个情感分析应用
+---
+title: 构建一个情感分析应用
+url: /guides/sentiment-analysis/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 构建一个情感分析应用
+    url: /guides/sentiment-analysis/
+next:
+  title: 将 Python 应用迁移到 DHI
+  url: /guides/dhi-python-example/
+prev:
+  title: 使用 Docker Buildx Bake 掌握多平台构建、测试等
+  url: /guides/bake/
+---
+
 
 ## 概述
 

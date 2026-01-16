@@ -1,4 +1,19 @@
-# 
+---
+title: 
+url: /includes/tax-compliance/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/tax-compliance/
+next:
+  title: 
+  url: /includes/swarm-mode/
+---
+
 > [!重要]
 >
 > 对于美国客户，Docker 已于 2024 年 7 月 1 日开始征收销售税。

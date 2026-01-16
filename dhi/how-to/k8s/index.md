@@ -1,4 +1,26 @@
-# 在 Kubernetes 中使用 Docker Hardened 镜像
+---
+title: 在 Kubernetes 中使用 Docker Hardened 镜像
+url: /dhi/how-to/k8s/
+parent:
+  title: 操作指南
+  url: /dhi/how-to/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 操作指南
+    url: /dhi/how-to/
+  - title: 在 Kubernetes 中使用 Docker Hardened 镜像
+    url: /dhi/how-to/k8s/
+next:
+  title: 使用 Docker Hardened Image
+  url: /dhi/how-to/use/
+prev:
+  title: 使用 Docker 加固镜像（DHI）Helm chart
+  url: /dhi/how-to/helm/
+---
+
 
 ## 认证
 

@@ -1,4 +1,24 @@
-# 在容器中运行 Angular 测试
+---
+title: 在容器中运行 Angular 测试
+url: /guides/angular/run-tests/
+parent:
+  title: Angular 语言专用指南
+  url: /guides/angular/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Angular 语言专用指南
+    url: /guides/angular/
+  - title: 在容器中运行 Angular 测试
+    url: /guides/angular/run-tests/
+next:
+  title: 使用容器进行 Angular 开发
+  url: /guides/angular/develop/
+prev:
+  title: 使用 GitHub Actions 自动化构建
+  url: /guides/angular/configure-github-actions/
+---
+
 
 ## 先决条件
 

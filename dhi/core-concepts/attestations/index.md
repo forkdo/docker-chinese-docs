@@ -1,4 +1,26 @@
-# 证明
+---
+title: 证明
+url: /dhi/core-concepts/attestations/
+parent:
+  title: 核心概念
+  url: /dhi/core-concepts/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 核心概念
+    url: /dhi/core-concepts/
+  - title: 证明
+    url: /dhi/core-concepts/attestations/
+next:
+  title: 极简或无发行版镜像
+  url: /dhi/core-concepts/distroless/
+prev:
+  title: 软件供应链安全
+  url: /dhi/core-concepts/sscs/
+---
+
 
 Docker Hardened Images (DHIs) 和 Helm chart 包含全面的签名安全证明，用于验证镜像的构建过程、内容和安全状况。这些证明是安全软件供应链实践的核心部分，有助于用户验证镜像是否可信且符合策略。
 

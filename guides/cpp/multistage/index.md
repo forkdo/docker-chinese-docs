@@ -1,4 +1,21 @@
-# 为您的 C++ 应用程序创建多阶段构建
+---
+title: 为您的 C++ 应用程序创建多阶段构建
+url: /guides/cpp/multistage/
+parent:
+  title: C++ 语言专用指南
+  url: /guides/cpp/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: C++ 语言专用指南
+    url: /guides/cpp/
+  - title: 为您的 C++ 应用程序创建多阶段构建
+    url: /guides/cpp/multistage/
+prev:
+  title: 容器化 C++ 应用程序
+  url: /guides/cpp/containerize/
+---
+
 
 ## 前提条件
 

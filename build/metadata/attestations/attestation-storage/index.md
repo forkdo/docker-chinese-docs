@@ -1,4 +1,23 @@
-# Image attestation storage
+---
+title: Image attestation storage
+url: /build/metadata/attestations/attestation-storage/
+parent:
+  title: Build attestations
+  url: /build/metadata/attestations/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Build attestations
+    url: /build/metadata/attestations/
+  - title: Image attestation storage
+    url: /build/metadata/attestations/attestation-storage/
+prev:
+  title: Provenance attestations
+  url: /build/metadata/attestations/slsa-provenance/
+---
+
 
 Buildkit supports creating and attaching attestations to build artifacts. These
 attestations can provide valuable information from the build process,

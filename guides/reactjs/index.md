@@ -1,4 +1,32 @@
-# React.js 语言特定指南
+---
+title: React.js 语言特定指南
+url: /guides/reactjs/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: React.js 语言特定指南
+    url: /guides/reactjs/
+children:
+  - title: 为 React.js 应用程序创建容器
+    url: /guides/reactjs/containerize/
+    description: 通过使用 Docker 创建优化、生产就绪的镜像，了解如何使用最佳实践为 React.js 应用程序创建容器，从而提高性能、安全性和可扩展性。
+  - title: 使用容器进行 React.js 开发
+    url: /guides/reactjs/develop/
+    description: 了解如何使用容器在本地开发您的 React.js 应用程序。
+  - title: 在容器中运行 React.js 测试
+    url: /guides/reactjs/run-tests/
+    description: 了解如何在容器中运行 React.js 测试。
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/reactjs/configure-github-actions/
+    description: 学习如何为你的 React.js 应用程序配置基于 GitHub Actions 的 CI/CD。
+  - title: 测试您的 React.js 部署
+    url: /guides/reactjs/deploy/
+    description: 了解如何在本地部署以测试和调试您的 Kubernetes 部署
+---
+
 
 React.js 语言特定指南将向您展示如何使用 Docker 容器化 React.js 应用程序，并遵循创建高效、生产就绪容器的最佳实践。
 
@@ -35,14 +63,3 @@ React.js 语言特定指南将向您展示如何使用 Docker 容器化 React.js
 - 了解 Docker 概念，例如镜像、容器和 Dockerfile。如果您是 Docker 新手，请从 [Docker 基础知识](/get-started/docker-concepts/the-basics/what-is-a-container.md) 指南开始。
 
 完成 React.js 入门模块后，您就可以使用本指南中提供的示例和说明来容器化您自己的 React.js 应用程序了。
-
-- [容器化 React.js 应用程序](/guides/reactjs/containerize/)
-
-- [使用容器进行 React.js 开发](/guides/reactjs/develop/)
-
-- [在容器中运行 React.js 测试](/guides/reactjs/run-tests/)
-
-- [使用 GitHub Actions 自动化构建](/guides/reactjs/configure-github-actions/)
-
-- [测试您的 React.js 部署](/guides/reactjs/deploy/)
-

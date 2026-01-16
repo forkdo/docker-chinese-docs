@@ -1,4 +1,24 @@
-# DMR 示例
+---
+title: DMR 示例
+url: /ai/model-runner/examples/
+parent:
+  title: Docker Model Runner
+  url: /ai/model-runner/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Model Runner
+    url: /ai/model-runner/
+  - title: DMR 示例
+    url: /ai/model-runner/examples/
+next:
+  title: 配置选项
+  url: /ai/model-runner/configuration/
+prev:
+  title: IDE 与工具集成
+  url: /ai/model-runner/ide-integrations/
+---
+
 
 请查看一些使用 Docker Model Runner 的完整工作流示例。
 

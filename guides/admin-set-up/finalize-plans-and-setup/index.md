@@ -1,4 +1,24 @@
-# 最终确定计划并开始设置
+---
+title: 最终确定计划并开始设置
+url: /guides/admin-set-up/finalize-plans-and-setup/
+parent:
+  title: 使用 Docker 为您的公司奠定成功基础
+  url: /guides/admin-set-up/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker 为您的公司奠定成功基础
+    url: /guides/admin-set-up/
+  - title: 最终确定计划并开始设置
+    url: /guides/admin-set-up/finalize-plans-and-setup/
+next:
+  title: 沟通与信息收集
+  url: /guides/admin-set-up/comms-and-info-gathering/
+prev:
+  title: 测试
+  url: /guides/admin-set-up/testing/
+---
+
 
 ## 将最终确定的设置文件发送给 MDM 团队
 

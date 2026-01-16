@@ -1,4 +1,24 @@
-# Docker Desktop for Windows 的常见问题解答
+---
+title: Docker Desktop for Windows 的常见问题解答
+url: /desktop/troubleshoot-and-support/faqs/windowsfaqs/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop for Windows 的常见问题解答
+    url: /desktop/troubleshoot-and-support/faqs/windowsfaqs/
+next:
+  title: Docker Desktop for Mac 常见问题解答
+  url: /desktop/troubleshoot-and-support/faqs/macfaqs/
+prev:
+  title: Docker Desktop for Linux 常见问题解答
+  url: /desktop/troubleshoot-and-support/faqs/linuxfaqs/
+---
+
 
 ### 我可以同时使用 VirtualBox 和 Docker Desktop 吗？
 

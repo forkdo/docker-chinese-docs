@@ -1,4 +1,25 @@
-# 测试与调试
+---
+title: 测试与调试
+url: /extensions/extensions-sdk/dev/test-debug/
+parent:
+  title: 
+  url: /extensions/extensions-sdk/dev/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: 
+    url: /extensions/extensions-sdk/dev/
+  - title: 测试与调试
+    url: /extensions/extensions-sdk/dev/test-debug/
+prev:
+  title: 持续集成 (CI)
+  url: /extensions/extensions-sdk/dev/continuous-integration/
+---
+
 
 为了改善开发者体验，Docker Desktop 提供了一系列工具来帮助您测试和调试您的扩展。
 

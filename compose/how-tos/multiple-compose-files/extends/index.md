@@ -1,4 +1,26 @@
-# 扩展你的 Compose 文件
+---
+title: 扩展你的 Compose 文件
+url: /compose/how-tos/multiple-compose-files/extends/
+parent:
+  title: 使用多个 Compose 文件
+  url: /compose/how-tos/multiple-compose-files/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: 使用多个 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/
+  - title: 扩展你的 Compose 文件
+    url: /compose/how-tos/multiple-compose-files/extends/
+next:
+  title: 合并 Compose 文件
+  url: /compose/how-tos/multiple-compose-files/merge/
+prev:
+  title: Include
+  url: /compose/how-tos/multiple-compose-files/include/
+---
+
 
 Docker Compose 的 [`extends` 属性](/reference/compose-file/services.md#extends)
 允许你在不同文件之间，甚至完全不同的项目之间共享通用配置。

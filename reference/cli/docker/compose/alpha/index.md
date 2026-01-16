@@ -1,4 +1,27 @@
-# docker compose alpha
+---
+title: docker compose alpha
+url: /reference/cli/docker/compose/alpha/
+parent:
+  title: docker compose
+  url: /reference/cli/docker/compose/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker compose
+    url: /reference/cli/docker/compose/
+  - title: docker compose alpha
+    url: /reference/cli/docker/compose/alpha/
+---
+
+**Description:** Experimental commands
+
+
+
+
 
 <!--
 抱歉，本页面的内容是自动从 Docker 源代码生成的。如果您想修改此处显示的文本，
@@ -6,9 +29,33 @@
 https://github.com/docker/compose
 -->
 
-- [docker compose alpha dry-run](/reference/cli/docker/compose/alpha/dry-run/)
 
-- [docker compose alpha scale](/reference/cli/docker/compose/alpha/scale/)
 
-- [docker compose alpha viz](/reference/cli/docker/compose/alpha/viz/)
+> [!NOTE]
+> **Experimental**
+>
+> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
+
+
+
+
+
+## Description
+
+Experimental commands
+
+
+
+
+
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker compose alpha dry-run`](/reference/cli/docker/compose/alpha/dry-run/) | EXPERIMENTAL - Dry run command allow you to test a command without applying changes
+ |
+| [`docker compose alpha scale`](/reference/cli/docker/compose/alpha/scale/) | Scale services |
+| [`docker compose alpha viz`](/reference/cli/docker/compose/alpha/viz/) | EXPERIMENTAL - Generate a graphviz graph from your compose file |
+
 

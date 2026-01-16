@@ -1,4 +1,26 @@
-# 在 Docker Compose 中配置预定义环境变量
+---
+title: 在 Docker Compose 中配置预定义环境变量
+url: /compose/how-tos/environment-variables/envvars/
+parent:
+  title: Compose 中的环境变量
+  url: /compose/how-tos/environment-variables/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Compose 中的环境变量
+    url: /compose/how-tos/environment-variables/
+  - title: 在 Docker Compose 中配置预定义环境变量
+    url: /compose/how-tos/environment-variables/envvars/
+next:
+  title: Docker Compose 中的环境变量优先级
+  url: /compose/how-tos/environment-variables/envvars-precedence/
+prev:
+  title: 在 Compose 文件中使用插值设置、使用和管理变量
+  url: /compose/how-tos/environment-variables/variable-interpolation/
+---
+
 
 Docker Compose 包含多个预定义环境变量。它还继承了常见的 Docker CLI 环境变量，例如 `DOCKER_HOST` 和 `DOCKER_CONTEXT`。有关详细信息，请参阅 [Docker CLI 环境变量参考](/reference/cli/docker/#environment-variables)。
 
@@ -175,36 +197,6 @@ COMPOSE_ENV_FILES=.env.envfile1,.env.envfile2
 
 
 
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Compose <a class="link" href="https://github.com/docker/compose/releases/tag/v2.36.0" rel="noopener">2.36.0</a> and later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-  </div>
-
-
-
 定义进度输出的类型（如果未使用 `--progress`）。
 
 支持的值为 `auto`、`tty`、`plain`、`json` 和 `quiet`。
@@ -216,36 +208,6 @@ COMPOSE_ENV_FILES=.env.envfile1,.env.envfile2
 
 
 
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Compose <a class="link" href="https://github.com/docker/compose/releases/tag/v2.26.0" rel="noopener">2.26.0</a> and later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-  </div>
-
-
-
 启用后，Compose 会显示一个导航菜单，您可以在其中选择在 Docker Desktop 中打开 Compose 堆栈、开启 [`watch` 模式](../file-watch.md) 或使用 [Docker Debug](/reference/cli/docker/debug.md)。
 
 - 支持的值：
@@ -254,36 +216,6 @@ COMPOSE_ENV_FILES=.env.envfile1,.env.envfile2
 - 默认值：如果您通过 Docker Desktop 获取 Docker Compose，则为 `1`，否则默认值为 `0`
 
 #### COMPOSE\_EXPERIMENTAL
-
-
-
-
-
-  
-  
-  
-  
-
-
-  <div
-    class="not-prose summary-bar"
-  >
-    
-
-    
-
-    
-      <div class="flex flex-wrap gap-1">
-        <span class="font-bold">Requires:</span>
-        <span>Docker Compose <a class="link" href="https://github.com/docker/compose/releases/tag/v2.26.0" rel="noopener">2.26.0</a> and later</span>
-        <span class="icon-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M140-240q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h367q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H140v480h680v-109q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v109q0 24-18 42t-42 18H652l39 38q5 5 7 10.54 2 5.55 2 11.46v30q0 12.75-8.62 21.37Q682.75-120 670-120H290q-12.75 0-21.37-8.63Q260-137.25 260-150v-31q0-5.57 2-10.78 2-5.22 7-10.22l38-38H140Zm457-221v-349q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v349l100-99q9-8 21.1-8.5 12.1-.5 20.9 8.5 9 9 9 21t-9 21L627-346 455-518q-9-9-9-21t9-21q9-9 21-9t21 9l100 99Z"/></svg>
-        </span>
-      </div>
-    
-
-    
-  </div>
 
 
 

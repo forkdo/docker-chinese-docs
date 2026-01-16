@@ -1,4 +1,21 @@
-# Docker Scout CLI 发布说明
+---
+title: Docker Scout CLI 发布说明
+url: /scout/release-notes/cli/
+parent:
+  title: Docker Scout
+  url: /scout/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Scout
+    url: /scout/
+  - title: Docker Scout CLI 发布说明
+    url: /scout/release-notes/cli/
+prev:
+  title: Docker Scout 发布说明
+  url: /scout/release-notes/platform/
+---
+
 
 此页面包含有关 Docker Scout [CLI 插件](https://github.com/docker/scout-cli/) 和 `docker/scout-action` [GitHub Action](https://github.com/docker/scout-action) 的新功能、改进、已知问题和错误修复的信息。
 

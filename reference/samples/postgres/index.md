@@ -1,4 +1,24 @@
-# PostgreSQL 示例
+---
+title: PostgreSQL 示例
+url: /reference/samples/postgres/
+parent:
+  title: 示例概览
+  url: /reference/samples/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: 示例概览
+    url: /reference/samples/
+  - title: PostgreSQL 示例
+    url: /reference/samples/postgres/
+next:
+  title: Portainer 示例
+  url: /reference/samples/portainer/
+prev:
+  title: Prometheus 示例
+  url: /reference/samples/prometheus/
+---
+
 
 # PostgreSQL 示例
 

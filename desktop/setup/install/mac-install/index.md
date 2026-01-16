@@ -1,4 +1,21 @@
-# 在 Mac 上安装 Docker Desktop
+---
+title: 在 Mac 上安装 Docker Desktop
+url: /desktop/setup/install/mac-install/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 在 Mac 上安装 Docker Desktop
+    url: /desktop/setup/install/mac-install/
+prev:
+  title: 了解 Mac 上 Docker Desktop 的权限要求
+  url: /desktop/setup/install/mac-permission-requirements/
+---
+
 
 > **Docker Desktop 条款**
 >
@@ -6,157 +23,43 @@
 
 此页面提供了适用于 Mac 的 Docker Desktop 的下载链接、系统要求以及分步安装说明。
 
+[适用于 Apple 芯片的 Mac 的 Docker Desktop](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64)
 
-<a class="button not-prose" href="https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-arm64">适用于 Apple 芯片的 Mac 的 Docker Desktop</a>
-
-
-<a class="button not-prose" href="https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-amd64">适用于 Intel 芯片的 Mac 的 Docker Desktop</a>
+[适用于 Intel 芯片的 Mac 的 Docker Desktop](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64)
 
 
 *有关校验和，请参阅[发行说明](/manuals/desktop/release-notes.md)。*
 
 ## 系统要求
 
+**搭载 Intel 芯片的 Mac**
 
 
 
+- 受支持的 macOS 版本。
+
+  > [!重要]
+  >
+  > Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。
+
+- 至少 4 GB 内存。
+
+**搭载 Apple 芯片的 Mac**
 
 
 
+- 受支持的 macOS 版本。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E6%90%AD%E8%BD%BD-Intel-%E8%8A%AF%E7%89%87%E7%9A%84-Mac' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E6%90%AD%E8%BD%BD-Intel-%E8%8A%AF%E7%89%87%E7%9A%84-Mac' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E6%90%AD%E8%BD%BD-Intel-%E8%8A%AF%E7%89%87%E7%9A%84-Mac'"
-        
-      >
-        搭载 Intel 芯片的 Mac
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E6%90%AD%E8%BD%BD-Apple-%E8%8A%AF%E7%89%87%E7%9A%84-Mac' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E6%90%AD%E8%BD%BD-Apple-%E8%8A%AF%E7%89%87%E7%9A%84-Mac'"
-        
-      >
-        搭载 Apple 芯片的 Mac
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E6%90%AD%E8%BD%BD-Intel-%E8%8A%AF%E7%89%87%E7%9A%84-Mac' && 'hidden'"
-      >
-        <ul>
-<li>
-<p>受支持的 macOS 版本。</p>
+  > [!重要]
+  >
+  > Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。
 
+- 至少 4 GB 内存。
+- 为了获得最佳体验，建议安装 Rosetta 2。Rosetta 2 不再是严格必需项，但某些可选命令行工具在使用 Darwin/AMD64 时仍需要 Rosetta 2。请参阅[已知问题](/manuals/desktop/troubleshoot-and-support/troubleshoot/known-issues.md)。要从命令行手动安装 Rosetta 2，请运行以下命令：
 
-  
-
-<blockquote
-  
-  class="admonition not-prose">
-  <p>[!重要]</p>
-<p>Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。</p>
-
-  </blockquote>
-
-</li>
-<li>
-<p>至少 4 GB 内存。</p>
-</li>
-</ul>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E6%90%AD%E8%BD%BD-Apple-%E8%8A%AF%E7%89%87%E7%9A%84-Mac' && 'hidden'"
-      >
-        <ul>
-<li>
-<p>受支持的 macOS 版本。</p>
-
-
-  
-
-<blockquote
-  
-  class="admonition not-prose">
-  <p>[!重要]</p>
-<p>Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。</p>
-
-  </blockquote>
-
-</li>
-<li>
-<p>至少 4 GB 内存。</p>
-</li>
-<li>
-<p>为了获得最佳体验，建议安装 Rosetta 2。Rosetta 2 不再是严格必需项，但某些可选命令行工具在使用 Darwin/AMD64 时仍需要 Rosetta 2。请参阅
-    
-  
-  <a class="link" href="/desktop/troubleshoot-and-support/troubleshoot/known-issues/">已知问题</a>。要从命令行手动安装 Rosetta 2，请运行以下命令：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBzb2Z0d2FyZXVwZGF0ZSAtLWluc3RhbGwtcm9zZXR0YQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> softwareupdate --install-rosetta
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-</li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
+   ```console
+   $ softwareupdate --install-rosetta
+   ```
 
 
 > **在安装或更新之前**

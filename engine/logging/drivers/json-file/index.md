@@ -1,4 +1,26 @@
-# JSON File 日志驱动
+---
+title: JSON File 日志驱动
+url: /engine/logging/drivers/json-file/
+parent:
+  title: 查看容器日志
+  url: /engine/logging/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 查看容器日志
+    url: /engine/logging/
+  - title: JSON File 日志驱动
+    url: /engine/logging/drivers/json-file/
+next:
+  title: Journald 日志驱动
+  url: /engine/logging/drivers/journald/
+prev:
+  title: Splunk 日志记录驱动程序
+  url: /engine/logging/drivers/splunk/
+---
+
 
 默认情况下，Docker 会捕获所有容器的标准输出（和标准错误），并使用 JSON 格式将它们写入文件。JSON 格式使用其来源（`stdout` 或 `stderr`）和时间戳注释每一行。每个日志文件仅包含关于一个容器的信息。
 

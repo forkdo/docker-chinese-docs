@@ -1,4 +1,24 @@
-# 扩展您的订阅
+---
+title: 扩展您的订阅
+url: /subscription/scale/
+parent:
+  title: 订阅
+  url: /subscription/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: 订阅
+    url: /subscription/
+  - title: 扩展您的订阅
+    url: /subscription/scale/
+next:
+  title: 设置您的订阅
+  url: /subscription/setup/
+prev:
+  title: 管理订阅席位
+  url: /subscription/manage-seats/
+---
+
 
 Docker 订阅允许您根据需求增长扩展使用量。所有付费 Docker 订阅都包含 Docker Build Cloud 构建分钟数和 Testcontainers Cloud 运行分钟数的基础额度，您可以通过额外容量进行补充。
 您可以扩展以下使用量：

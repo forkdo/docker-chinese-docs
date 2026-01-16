@@ -1,4 +1,26 @@
-# 管理和维护 Docker Engine 集群
+---
+title: 管理和维护 Docker Engine 集群
+url: /engine/swarm/admin_guide/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 管理和维护 Docker Engine 集群
+    url: /engine/swarm/admin_guide/
+next:
+  title: 管理 swarm 服务网络
+  url: /engine/swarm/networking/
+prev:
+  title: 锁定 Swarm 以保护其加密密钥
+  url: /engine/swarm/swarm_manager_locking/
+---
+
 
 当您运行一个 Docker Engine 集群时，管理节点是管理该集群和存储集群状态的关键组件。为了正确地部署和维护集群，理解管理节点的一些关键特性非常重要。
 

@@ -1,4 +1,24 @@
-# Docker Engine 24.0 发行说明
+---
+title: Docker Engine 24.0 发行说明
+url: /engine/release-notes/24.0/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Docker Engine 24.0 发行说明
+    url: /engine/release-notes/24.0/
+next:
+  title: Docker Engine 23.0 发布说明
+  url: /engine/release-notes/23.0/
+prev:
+  title: Docker Engine 25.0 发布说明
+  url: /engine/release-notes/25.0/
+---
+
 
 本页面描述了 Docker Engine 24.0 版本的最新变更、新增功能、已知问题和修复。
 

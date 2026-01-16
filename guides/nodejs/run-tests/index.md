@@ -1,4 +1,24 @@
-# 在容器中运行 Node.js 测试
+---
+title: 在容器中运行 Node.js 测试
+url: /guides/nodejs/run-tests/
+parent:
+  title: Node.js 语言专属指南
+  url: /guides/nodejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Node.js 语言专属指南
+    url: /guides/nodejs/
+  - title: 在容器中运行 Node.js 测试
+    url: /guides/nodejs/run-tests/
+next:
+  title: 为 Node.js 开发使用容器
+  url: /guides/nodejs/develop/
+prev:
+  title: 使用 GitHub Actions 自动化构建
+  url: /guides/nodejs/configure-github-actions/
+---
+
 
 ## 先决条件
 

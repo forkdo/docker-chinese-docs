@@ -1,4 +1,32 @@
-# Node.js 语言专属指南
+---
+title: Node.js 语言专属指南
+url: /guides/nodejs/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Node.js 语言专属指南
+    url: /guides/nodejs/
+children:
+  - title: 容器化 Node.js 应用
+    url: /guides/nodejs/containerize/
+    description: 了解如何使用 Docker 容器化 Node.js 应用，通过创建优化的、生产就绪的镜像，并遵循性能、安全性和可扩展性的最佳实践。
+  - title: 为 Node.js 开发使用容器
+    url: /guides/nodejs/develop/
+    description: 了解如何使用容器在本地开发 Node.js 应用程序。
+  - title: 在容器中运行 Node.js 测试
+    url: /guides/nodejs/run-tests/
+    description: 学习如何在容器中运行 Node.js 测试。
+  - title: 使用 GitHub Actions 自动化构建
+    url: /guides/nodejs/configure-github-actions/
+    description: 了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。
+  - title: 部署你的 Node.js 应用
+    url: /guides/nodejs/deploy/
+    description: 学习如何使用生产就绪的配置将容器化的 Node.js 应用部署到 Kubernetes
+---
+
 
 [Node.js](https://nodejs.org/en) 是一个用于构建 Web 应用程序的 JavaScript 运行时。本指南将展示如何容器化一个包含 React 前端和 PostgreSQL 数据库的 TypeScript Node.js 应用程序。
 
@@ -38,14 +66,3 @@
 - 熟悉用于后端 API 开发的 [Express.js](https://expressjs.com/)。
 
 完成 Node.js 入门模块后，你就可以使用本指南提供的示例和说明来容器化你自己的 Node.js 应用程序了。
-
-- [容器化 Node.js 应用](/guides/nodejs/containerize/)
-
-- [为 Node.js 开发使用容器](/guides/nodejs/develop/)
-
-- [在容器中运行 Node.js 测试](/guides/nodejs/run-tests/)
-
-- [使用 GitHub Actions 自动化构建](/guides/nodejs/configure-github-actions/)
-
-- [部署你的 Node.js 应用](/guides/nodejs/deploy/)
-

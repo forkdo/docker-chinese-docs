@@ -1,4 +1,26 @@
-# 在 WSL 上使用自定义内核
+---
+title: 在 WSL 上使用自定义内核
+url: /desktop/features/wsl/custom-kernels/
+parent:
+  title: Windows 上的 Docker Desktop WSL 2 后端
+  url: /desktop/features/wsl/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Windows 上的 Docker Desktop WSL 2 后端
+    url: /desktop/features/wsl/
+  - title: 在 WSL 上使用自定义内核
+    url: /desktop/features/wsl/custom-kernels/
+next:
+  title: 使用 WSL
+  url: /desktop/features/wsl/use-wsl/
+prev:
+  title: 最佳实践
+  url: /desktop/features/wsl/best-practices/
+---
+
 
 Docker Desktop 依赖于 Microsoft 分发的默认 WSL 2 Linux 内核中内置的若干内核特性。因此，在 WSL 2 上为 Docker Desktop 使用自定义内核并未得到官方支持，并且可能导致 Docker Desktop 启动或运行时出现问题。
 

@@ -1,4 +1,26 @@
-# 在 Docker 中使用 CA 证书
+---
+title: 在 Docker 中使用 CA 证书
+url: /engine/network/ca-certs/
+parent:
+  title: 网络概述
+  url: /engine/network/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 网络概述
+    url: /engine/network/
+  - title: 在 Docker 中使用 CA 证书
+    url: /engine/network/ca-certs/
+next:
+  title: 端口发布与映射
+  url: /engine/network/port-publishing/
+prev:
+  title: 旧版容器链接
+  url: /engine/network/links/
+---
+
 
 > [!CAUTION]
 > 在生产容器中使用中间人 (MITM) CA 证书时，应遵循最佳实践。如果证书泄露，攻击者可能会拦截敏感数据、欺骗受信任的服务或执行中间人攻击。在继续操作之前，请咨询您的安全团队。
@@ -25,116 +47,40 @@
 
 选择是使用 Microsoft 管理控制台 (MMC) 还是 Web 浏览器安装证书。
 
+**MMC**
 
 
 
+1. 下载 MITM 代理软件的 CA 证书。
+2. 打开 Microsoft 管理控制台 (`mmc.exe`)。
+3. 在 MMC 中添加 **证书管理单元 (Certificates Snap-In)**。
+   1. 选择 **文件 (File)** → **添加/删除管理单元 (Add/Remove Snap-in)**，然后选择 **证书 (Certificates)** → **添加 > (Add >)**。
+   2. 选择 **计算机帐户 (Computer Account)**，然后选择 **下一步 (Next)**。
+   3. 选择 **本地计算机 (Local computer)**，然后选择 **完成 (Finish)**。
+4. 导入 CA 证书：
+   1. 在 MMC 中，展开 **证书(本地计算机) (Certificates (Local Computer))**。
+   2. 展开 **受信任的根证书颁发机构 (Trusted Root Certification Authorities)** 部分。
+   3. 右键单击 **证书 (Certificates)**，选择 **所有任务 (All Tasks)** 和 **导入... (Import…)**。
+   4. 按照提示导入您的 CA 证书。
+5. 选择 **完成 (Finish)**，然后选择 **关闭 (Close)**。
+6. 启动 Docker Desktop 并验证 `docker pull` 是否成功（假设 Docker Desktop 已配置为使用 MITM 代理服务器）。
+
+> [!NOTE]
+> 根据使用的 SDK 和/或运行时/框架，除了将 CA 证书添加到操作系统的信任存储之外，可能还需要采取进一步的步骤。
+
+**Web browser**
 
 
 
+1. 下载 MITM 代理软件的 CA 证书。
+2. 打开您的 Web 浏览器，转到 **设置 (Settings)** 并打开 **管理证书 (Manage certificates)**。
+3. 选择 **受信任的根证书颁发机构 (Trusted Root Certification Authorities)** 选项卡。
+4. 选择 **导入 (Import)**，然后浏览找到下载的 CA 证书。
+5. 选择 **打开 (Open)**，然后选择 **将所有证书放入下列存储区 (Place all certificates in the following store)**。
+6. 确保选中 **受信任的根证书颁发机构 (Trusted Root Certification Authorities)**，然后选择 **下一步 (Next)**。
+7. 选择 **完成 (Finish)**，然后选择 **关闭 (Close)**。
+8. 启动 Docker Desktop 并验证 `docker pull` 是否成功（假设 Docker Desktop 已配置为使用 MITM 代理服务器）。
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'MMC' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'MMC' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'MMC'"
-        
-      >
-        MMC
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Web-browser' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Web-browser'"
-        
-      >
-        Web browser
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'MMC' && 'hidden'"
-      >
-        <ol>
-<li>下载 MITM 代理软件的 CA 证书。</li>
-<li>打开 Microsoft 管理控制台 (<code>mmc.exe</code>)。</li>
-<li>在 MMC 中添加 <strong>证书管理单元 (Certificates Snap-In)</strong>。
-<ol>
-<li>选择 <strong>文件 (File)</strong> → <strong>添加/删除管理单元 (Add/Remove Snap-in)</strong>，然后选择 <strong>证书 (Certificates)</strong> → <strong>添加 &gt; (Add &gt;)</strong>。</li>
-<li>选择 <strong>计算机帐户 (Computer Account)</strong>，然后选择 <strong>下一步 (Next)</strong>。</li>
-<li>选择 <strong>本地计算机 (Local computer)</strong>，然后选择 <strong>完成 (Finish)</strong>。</li>
-</ol>
-</li>
-<li>导入 CA 证书：
-<ol>
-<li>在 MMC 中，展开 <strong>证书(本地计算机) (Certificates (Local Computer))</strong>。</li>
-<li>展开 <strong>受信任的根证书颁发机构 (Trusted Root Certification Authorities)</strong> 部分。</li>
-<li>右键单击 <strong>证书 (Certificates)</strong>，选择 <strong>所有任务 (All Tasks)</strong> 和 <strong>导入... (Import…)</strong>。</li>
-<li>按照提示导入您的 CA 证书。</li>
-</ol>
-</li>
-<li>选择 <strong>完成 (Finish)</strong>，然后选择 <strong>关闭 (Close)</strong>。</li>
-<li>启动 Docker Desktop 并验证 <code>docker pull</code> 是否成功（假设 Docker Desktop 已配置为使用 MITM 代理服务器）。</li>
-</ol>
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>根据使用的 SDK 和/或运行时/框架，除了将 CA 证书添加到操作系统的信任存储之外，可能还需要采取进一步的步骤。</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Web-browser' && 'hidden'"
-      >
-        <ol>
-<li>下载 MITM 代理软件的 CA 证书。</li>
-<li>打开您的 Web 浏览器，转到 <strong>设置 (Settings)</strong> 并打开 <strong>管理证书 (Manage certificates)</strong>。</li>
-<li>选择 <strong>受信任的根证书颁发机构 (Trusted Root Certification Authorities)</strong> 选项卡。</li>
-<li>选择 <strong>导入 (Import)</strong>，然后浏览找到下载的 CA 证书。</li>
-<li>选择 <strong>打开 (Open)</strong>，然后选择 <strong>将所有证书放入下列存储区 (Place all certificates in the following store)</strong>。</li>
-<li>确保选中 <strong>受信任的根证书颁发机构 (Trusted Root Certification Authorities)</strong>，然后选择 <strong>下一步 (Next)</strong>。</li>
-<li>选择 <strong>完成 (Finish)</strong>，然后选择 <strong>关闭 (Close)</strong>。</li>
-<li>启动 Docker Desktop 并验证 <code>docker pull</code> 是否成功（假设 Docker Desktop 已配置为使用 MITM 代理服务器）。</li>
-</ol>
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## 将 CA 证书添加到 Linux 镜像和容器

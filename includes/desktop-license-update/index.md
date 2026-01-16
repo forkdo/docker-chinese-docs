@@ -1,4 +1,22 @@
-# 
+---
+title: 
+url: /includes/desktop-license-update/
+parent:
+  title: 
+  url: /includes/
+breadcrumbs:
+  - title: 
+    url: /includes/
+  - title: 
+    url: /includes/desktop-license-update/
+next:
+  title: 
+  url: /includes/deploy/
+prev:
+  title: 
+  url: /includes/desktop-linux-launch/
+---
+
 以下是关键点的总结：
 
 - Docker Desktop 对小企业（员工少于 250 人 AND 年收入低于 1000 万美元）、个人使用、教育用途以及非商业开源项目是免费的。

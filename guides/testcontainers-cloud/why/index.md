@@ -1,7 +1,24 @@
-# 为什么选择 Testcontainers Cloud？
+---
+title: 为什么选择 Testcontainers Cloud？
+url: /guides/testcontainers-cloud/why/
+parent:
+  title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
 
-<div id="youtube-player-6dRRlk5Vd0E" data-video-id="6dRRlk5Vd0E" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+  url: /guides/testcontainers-cloud/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
+
+    url: /guides/testcontainers-cloud/
+  - title: 为什么选择 Testcontainers Cloud？
+    url: /guides/testcontainers-cloud/why/
+prev:
+  title: 通过 Docker 设置 Testcontainers Cloud
+  url: /guides/testcontainers-cloud/demo-local/
+---
+
+
 
 
 Testcontainers Cloud 是一个功能强大的基于云的解决方案，旨在通过将容器管理转移到云端来优化 Testcontainers 的集成测试。它帮助开发人员和团队克服传统本地和基于 CI 测试的限制，确保环境一致性、更快的测试执行和可扩展的工作流程。无论您是 Testcontainers 的新手，还是希望增强现有设置，Testcontainers Cloud 都提供了一种无缝的方式来管理容器化测试，提高开发管道中的效率和可靠性。

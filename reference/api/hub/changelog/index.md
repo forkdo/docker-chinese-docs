@@ -1,4 +1,24 @@
-# Docker Hub API 变更日志
+---
+title: Docker Hub API 变更日志
+url: /reference/api/hub/changelog/
+parent:
+  title: Docker Hub API
+  url: /reference/api/hub/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Docker Hub API
+    url: /reference/api/hub/
+  - title: Docker Hub API 变更日志
+    url: /reference/api/hub/changelog/
+next:
+  title: Docker Hub API 参考
+  url: /reference/api/hub/latest/
+prev:
+  title: 已弃用的 Docker Hub API 端点
+  url: /reference/api/hub/deprecated/
+---
+
 
 在这里，您可以了解 Docker Service API 的最新变更、新功能、错误修复和已知问题。
 

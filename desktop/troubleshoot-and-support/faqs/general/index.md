@@ -1,4 +1,21 @@
-# Docker Desktop 通用常见问题解答
+---
+title: Docker Desktop 通用常见问题解答
+url: /desktop/troubleshoot-and-support/faqs/general/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop 通用常见问题解答
+    url: /desktop/troubleshoot-and-support/faqs/general/
+prev:
+  title: Docker Desktop for Mac 常见问题解答
+  url: /desktop/troubleshoot-and-support/faqs/macfaqs/
+---
+
 
 ### 我可以在离线状态下使用 Docker Desktop 吗？
 
@@ -89,185 +106,34 @@ Docker Desktop 不支持直接传递 USB 设备。但是，您可以使用 USB o
 
 Docker Desktop 仅在安装时需要管理员权限。安装完成后，运行它不需要管理员权限。但是，要让非管理员用户运行 Docker Desktop，必须使用特定的安装程序标志进行安装，并满足某些先决条件，这些条件因平台而异。
 
+**Mac**
 
 
 
+要在 Mac 上无需管理员权限运行 Docker Desktop，请通过命令行安装并传递 `—user=<userid>` 安装程序标志：
+
+```console
+$ /Applications/Docker.app/Contents/MacOS/install --user=<userid>
+```
+
+然后，您可以使用指定的用户 ID 登录到您的计算机并启动 Docker Desktop。
+
+> [!NOTE]
+> 
+> 在启动 Docker Desktop 之前，如果 `~/Library/Group Containers/group.com.docker/` 目录中已存在 `settings-store.json` 文件（对于 Docker Desktop 4.34 及更早版本为 `settings.json`），当您选择**完成**时，会出现一个**完成 Docker Desktop 设置**窗口，提示需要管理员权限。为避免这种情况，请确保在启动应用程序之前删除之前安装遗留下来的 `settings-store.json` 文件（对于 Docker Desktop 4.34 及更早版本为 `settings.json`）。
+
+**Windows**
 
 
 
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Mac' }"
-  
-  aria-role="tabpanel"
+> [!NOTE]
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Mac' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Mac'"
-        
-      >
-        Mac
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Windows' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Windows'"
-        
-      >
-        Windows
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Mac' && 'hidden'"
-      >
-        <p>要在 Mac 上无需管理员权限运行 Docker Desktop，请通过命令行安装并传递 <code>—user=&lt;userid&gt;</code> 安装程序标志：</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCAvQXBwbGljYXRpb25zL0RvY2tlci5hcHAvQ29udGVudHMvTWFjT1MvaW5zdGFsbCAtLXVzZXI9PHVzZXJpZD4=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> /Applications/Docker.app/Contents/MacOS/install --user<span class="o">=</span>&lt;userid&gt;
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>然后，您可以使用指定的用户 ID 登录到您的计算机并启动 Docker Desktop。</p>
+> 如果您使用的是 WSL 2 后端，请首先确保您满足 WSL 2 的[最低版本要求](/manuals/desktop/features/wsl/best-practices.md)。否则，请先更新 WSL 2。
 
+要在 Windows 上无需管理员权限运行 Docker Desktop，请通过命令行安装并传递 `—always-run-service` 安装程序标志。
 
-  
+```console
+$ "Docker Desktop Installer.exe" install —always-run-service
+```
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>在启动 Docker Desktop 之前，如果 <code>~/Library/Group Containers/group.com.docker/</code> 目录中已存在 <code>settings-store.json</code> 文件（对于 Docker Desktop 4.34 及更早版本为 <code>settings.json</code>），当您选择<strong>完成</strong>时，会出现一个<strong>完成 Docker Desktop 设置</strong>窗口，提示需要管理员权限。为避免这种情况，请确保在启动应用程序之前删除之前安装遗留下来的 <code>settings-store.json</code> 文件（对于 Docker Desktop 4.34 及更早版本为 <code>settings.json</code>）。</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Windows' && 'hidden'"
-      >
-        
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>如果您使用的是 WSL 2 后端，请首先确保您满足 WSL 2 的
-    
-  
-  <a class="link" href="/desktop/features/wsl/best-practices/">最低版本要求</a>。否则，请先更新 WSL 2。</p>
-    </div>
-  </blockquote>
-
-<p>要在 Windows 上无需管理员权限运行 Docker Desktop，请通过命令行安装并传递 <code>—always-run-service</code> 安装程序标志。</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCAiRG9ja2VyIERlc2t0b3AgSW5zdGFsbGVyLmV4ZSIgaW5zdGFsbCDigJRhbHdheXMtcnVuLXNlcnZpY2U=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="s2">&#34;Docker Desktop Installer.exe&#34;</span> install —always-run-service
-</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 

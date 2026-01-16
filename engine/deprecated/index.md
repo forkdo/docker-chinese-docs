@@ -1,4 +1,18 @@
-# Deprecated Docker Engine features
+---
+title: Deprecated Docker Engine features
+url: /engine/deprecated/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Deprecated Docker Engine features
+    url: /engine/deprecated/
+---
+
 
 <!-- This file is maintained within the docker/cli GitHub
      repository at https://github.com/docker/cli/. Make all

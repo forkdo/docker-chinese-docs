@@ -1,4 +1,22 @@
-# 构建命名实体识别应用
+---
+title: 构建命名实体识别应用
+url: /guides/named-entity-recognition/
+parent:
+  title: Docker 指南
+  url: /guides/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 构建命名实体识别应用
+    url: /guides/named-entity-recognition/
+next:
+  title: 使用容器化数据库
+  url: /guides/databases/
+prev:
+  title: 在 Docker 中使用 Zscaler
+  url: /guides/zscaler/
+---
+
 
 ## 概述
 

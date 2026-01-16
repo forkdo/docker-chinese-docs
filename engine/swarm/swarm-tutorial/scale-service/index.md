@@ -1,4 +1,28 @@
-# 扩展 Swarm 中的服务
+---
+title: 扩展 Swarm 中的服务
+url: /engine/swarm/swarm-tutorial/scale-service/
+parent:
+  title: Swarm 模式入门
+  url: /engine/swarm/swarm-tutorial/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: Swarm 模式入门
+    url: /engine/swarm/swarm-tutorial/
+  - title: 扩展 Swarm 中的服务
+    url: /engine/swarm/swarm-tutorial/scale-service/
+next:
+  title: 在 swarm 上检查服务
+  url: /engine/swarm/swarm-tutorial/inspect-service/
+prev:
+  title: 删除在 swarm 上运行的服务
+  url: /engine/swarm/swarm-tutorial/delete-service/
+---
+
 
 在将[部署服务](deploy-service.md)到 Swarm 之后，就可以使用 Docker CLI 来扩展服务中的容器数量。服务中运行的容器称为任务。
 
@@ -48,6 +72,5 @@
 
 在本教程的这一点上，您已完成 `helloworld` 服务的操作。接下来，您将删除该服务。
 
-
-<a class="button not-prose" href="/engine/swarm/swarm-tutorial/delete-service/">删除服务</a>
+[删除服务](delete-service.md)
 

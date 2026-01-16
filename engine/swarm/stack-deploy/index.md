@@ -1,4 +1,26 @@
-# 将堆栈部署到 Swarm
+---
+title: 将堆栈部署到 Swarm
+url: /engine/swarm/stack-deploy/
+parent:
+  title: Swarm 模式
+  url: /engine/swarm/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: Swarm 模式
+    url: /engine/swarm/
+  - title: 将堆栈部署到 Swarm
+    url: /engine/swarm/stack-deploy/
+next:
+  title: 在 Swarm 模式下运行 Docker Engine
+  url: /engine/swarm/swarm-mode/
+prev:
+  title: 将服务部署到 swarm
+  url: /engine/swarm/services/
+---
+
 
 当 Docker Engine 在 swarm 模式下运行时，您可以使用 `docker stack deploy` 将完整的应用程序堆栈部署到 swarm。`deploy` 命令接受以 [Compose 文件](/reference/compose-file/legacy-versions.md) 形式描述的堆栈。
 

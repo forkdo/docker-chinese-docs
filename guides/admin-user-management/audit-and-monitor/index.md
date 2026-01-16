@@ -1,4 +1,21 @@
-# 监控与洞察
+---
+title: 监控与洞察
+url: /guides/admin-user-management/audit-and-monitor/
+parent:
+  title: 掌握用户和访问管理
+  url: /guides/admin-user-management/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 掌握用户和访问管理
+    url: /guides/admin-user-management/
+  - title: 监控与洞察
+    url: /guides/admin-user-management/audit-and-monitor/
+next:
+  title: 在 Docker 中上手并管理角色与权限
+  url: /guides/admin-user-management/onboard/
+---
+
 
 活动日志和洞察是 Docker 中用于用户和访问管理的实用工具。它们提供对用户操作、团队工作流和组织趋势的可见性，有助于增强安全性、确保合规性并提高生产力。
 

@@ -1,4 +1,21 @@
-# Docker Compose 常见问题解答
+---
+title: Docker Compose 常见问题解答
+url: /compose/support-and-feedback/faq/
+parent:
+  title: Docker Compose
+  url: /compose/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Compose
+    url: /compose/
+  - title: Docker Compose 常见问题解答
+    url: /compose/support-and-feedback/faq/
+prev:
+  title: 提供反馈
+  url: /compose/support-and-feedback/feedback/
+---
+
 
 ### `docker compose` 和 `docker-compose` 有什么区别？
 

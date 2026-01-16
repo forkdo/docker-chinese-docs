@@ -1,4 +1,33 @@
-# docker context update
+---
+title: docker context update
+url: /reference/cli/docker/context/update/
+parent:
+  title: docker context
+  url: /reference/cli/docker/context/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker context
+    url: /reference/cli/docker/context/
+  - title: docker context update
+    url: /reference/cli/docker/context/update/
+next:
+  title: docker context show
+  url: /reference/cli/docker/context/show/
+prev:
+  title: docker context use
+  url: /reference/cli/docker/context/use/
+---
+
+**Description:** Update a context
+
+**Usage:** `docker context update [OPTIONS] CONTEXT`
+
+
 
 <!--
 This page is automatically generated from Docker's source code. If you want to
@@ -7,3 +36,39 @@ in the source repository on GitHub:
 
 https://github.com/docker/cli
 -->
+
+
+
+
+
+
+
+
+## Description
+
+Updates an existing `context`.
+See [context create](/reference/cli/docker/context/create/).
+
+
+## Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--description` |  |  Description of the context |
+| `--docker` |  |  set the docker endpoint |
+
+
+
+## Examples
+
+### Update an existing context
+
+```console
+$ docker context update \
+    --description "some description" \
+    --docker "host=tcp://myserver:2376,ca=~/ca-file,cert=~/cert-file,key=~/key-file" \
+    my-context
+```
+
+
+

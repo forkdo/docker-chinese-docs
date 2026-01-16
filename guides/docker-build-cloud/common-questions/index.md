@@ -1,4 +1,21 @@
-# 常见挑战与问题
+---
+title: 常见挑战与问题
+url: /guides/docker-build-cloud/common-questions/
+parent:
+  title: Docker Build Cloud: 通过快速、多架构构建来收回您的时间
+  url: /guides/docker-build-cloud/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Docker Build Cloud: 通过快速、多架构构建来收回您的时间
+    url: /guides/docker-build-cloud/
+  - title: 常见挑战与问题
+    url: /guides/docker-build-cloud/common-questions/
+next:
+  title: 演示：在 CI 中使用 Docker Build Cloud
+  url: /guides/docker-build-cloud/ci/
+---
+
 
 ### Docker Build Cloud 是独立产品还是 Docker Desktop 的一部分？
 

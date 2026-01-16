@@ -1,4 +1,24 @@
-# Docker Hub MCP 服务器
+---
+title: Docker Hub MCP 服务器
+url: /ai/mcp-catalog-and-toolkit/hub-mcp/
+parent:
+  title: Docker MCP Catalog and Toolkit
+  url: /ai/mcp-catalog-and-toolkit/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker MCP Catalog and Toolkit
+    url: /ai/mcp-catalog-and-toolkit/
+  - title: Docker Hub MCP 服务器
+    url: /ai/mcp-catalog-and-toolkit/hub-mcp/
+next:
+  title: MCP Gateway
+  url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
+prev:
+  title: 安全常见问题解答
+  url: /ai/mcp-catalog-and-toolkit/faqs/
+---
+
 
 Docker Hub MCP 服务器是一个模型上下文协议（MCP）服务器，它通过 Docker Hub API 接口，使 LLM 能够访问丰富的镜像元数据，从而实现智能内容发现和仓库管理。
 
@@ -29,163 +49,48 @@ Docker Hub MCP 服务器是一个模型上下文协议（MCP）服务器，它�
 
 1. 将 Docker Hub MCP 服务器配置添加到您的 `claude_desktop_config.json`：
 
+   **仅用于公共仓库**
+
+
+
+   ```json
+   {
+     "mcpServers": {
+       "docker-hub": {
+         "command": "node",
+         "args": ["/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js", "--transport=stdio"]
+       }
+     }
+   }
+   ```
+
+   其中：
+   - `/FULL/PATH/TO/YOUR/docker-hub-mcp-server` 是您克隆仓库的完整路径
+
+   **用于需要身份验证的访问**
+
+
+
+   ```json
+   {
+     "mcpServers": {
+       "docker-hub": {
+         "command": "node",
+         "args": ["/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js", "--transport=stdio", "--username=YOUR_DOCKER_HUB_USERNAME"],
+         "env": {
+           "HUB_PAT_TOKEN": "YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN"
+         }
+       }
+     }
+   }
+   ```
+
+   其中：
+   - `YOUR_DOCKER_HUB_USERNAME` 是您的 Docker Hub 用户名。
+   - `YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN` 是 Docker Hub 个人访问令牌。
+   - `/FULL/PATH/TO/YOUR/docker-hub-mcp-server` 是您克隆仓库的完整路径。
+
    
-
-
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93'"
-        
-      >
-        仅用于公共仓库
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E7%94%A8%E4%BA%8E%E9%9C%80%E8%A6%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%AE%BF%E9%97%AE' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E7%94%A8%E4%BA%8E%E9%9C%80%E8%A6%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%AE%BF%E9%97%AE'"
-        
-      >
-        用于需要身份验证的访问
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJtY3BTZXJ2ZXJzIjogewogICAgImRvY2tlci1odWIiOiB7CiAgICAgICJjb21tYW5kIjogIm5vZGUiLAogICAgICAiYXJncyI6IFsiL0ZVTEwvUEFUSC9UTy9ZT1VSL2RvY2tlci1odWItbWNwLXNlcnZlci9kaXN0L2luZGV4LmpzIiwgIi0tdHJhbnNwb3J0PXN0ZGlvIl0KICAgIH0KICB9Cn0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;mcpServers&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;docker-hub&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js&#34;</span><span class="p">,</span> <span class="s2">&#34;--transport=stdio&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>其中：</p>
-<ul>
-<li><code>/FULL/PATH/TO/YOUR/docker-hub-mcp-server</code> 是您克隆仓库的完整路径</li>
-</ul>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E7%94%A8%E4%BA%8E%E9%9C%80%E8%A6%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%AE%BF%E9%97%AE' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJtY3BTZXJ2ZXJzIjogewogICAgImRvY2tlci1odWIiOiB7CiAgICAgICJjb21tYW5kIjogIm5vZGUiLAogICAgICAiYXJncyI6IFsiL0ZVTEwvUEFUSC9UTy9ZT1VSL2RvY2tlci1odWItbWNwLXNlcnZlci9kaXN0L2luZGV4LmpzIiwgIi0tdHJhbnNwb3J0PXN0ZGlvIiwgIi0tdXNlcm5hbWU9WU9VUl9ET0NLRVJfSFVCX1VTRVJOQU1FIl0sCiAgICAgICJlbnYiOiB7CiAgICAgICAgIkhVQl9QQVRfVE9LRU4iOiAiWU9VUl9ET0NLRVJfSFVCX1BFUlNPTkFMX0FDQ0VTU19UT0tFTiIKICAgICAgfQogICAgfQogIH0KfQ==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;mcpServers&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;docker-hub&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js&#34;</span><span class="p">,</span> <span class="s2">&#34;--transport=stdio&#34;</span><span class="p">,</span> <span class="s2">&#34;--username=YOUR_DOCKER_HUB_USERNAME&#34;</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;env&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;HUB_PAT_TOKEN&#34;</span><span class="p">:</span> <span class="s2">&#34;YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>其中：</p>
-<ul>
-<li><code>YOUR_DOCKER_HUB_USERNAME</code> 是您的 Docker Hub 用户名。</li>
-<li><code>YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN</code> 是 Docker Hub 个人访问令牌。</li>
-<li><code>/FULL/PATH/TO/YOUR/docker-hub-mcp-server</code> 是您克隆仓库的完整路径。</li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
-
 
 2. 保存配置文件并完全重启 Claude Desktop 以使更改生效。
 
@@ -193,164 +98,49 @@ Docker Hub MCP 服务器是一个模型上下文协议（MCP）服务器，它�
 
 1. 将 Docker Hub MCP 服务器配置添加到 Visual Studio Code 的用户设置（JSON）文件中。您可以通过打开 `命令面板` 并输入 `Preferences: Open User Settings (JSON)` 来完成此操作。
 
+   **仅用于公共仓库**
+
+
+
+   ```json
+   {
+     "mcpServers": {
+       "docker-hub": {
+         "command": "node",
+         "args": ["/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js", "--transport=stdio"]
+       }
+     }
+   }
+   ```
+
+   其中：
+   - `/FULL/PATH/TO/YOUR/docker-hub-mcp-server` 是您克隆仓库的完整路径
+
+   **用于需要身份验证的访问**
+
+
+
+   ```json
+   {
+     "mcpServers": {
+       "docker-hub": {
+         "command": "node",
+         "args": ["/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js", "--transport=stdio"],
+         "env": {
+           "HUB_USERNAME": "YOUR_DOCKER_HUB_USERNAME",
+           "HUB_PAT_TOKEN": "YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN"
+         }
+       }
+     }
+   }
+   ```
+
+   其中：
+   - `YOUR_DOCKER_HUB_USERNAME` 是您的 Docker Hub 用户名。
+   - `YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN` 是 Docker Hub 个人访问令牌。
+   - `/FULL/PATH/TO/YOUR/docker-hub-mcp-server` 是您克隆仓库的完整路径。
+
    
-
-
-
-
-
-
-<div
-  class="tabs"
-  
-    x-data="{ selected: '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93'"
-        
-      >
-        仅用于公共仓库
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '%E7%94%A8%E4%BA%8E%E9%9C%80%E8%A6%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%AE%BF%E9%97%AE' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '%E7%94%A8%E4%BA%8E%E9%9C%80%E8%A6%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%AE%BF%E9%97%AE'"
-        
-      >
-        用于需要身份验证的访问
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E4%BB%85%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%93%E5%BA%93' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJtY3BTZXJ2ZXJzIjogewogICAgImRvY2tlci1odWIiOiB7CiAgICAgICJjb21tYW5kIjogIm5vZGUiLAogICAgICAiYXJncyI6IFsiL0ZVTEwvUEFUSC9UTy9ZT1VSL2RvY2tlci1odWItbWNwLXNlcnZlci9kaXN0L2luZGV4LmpzIiwgIi0tdHJhbnNwb3J0PXN0ZGlvIl0KICAgIH0KICB9Cn0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;mcpServers&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;docker-hub&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js&#34;</span><span class="p">,</span> <span class="s2">&#34;--transport=stdio&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>其中：</p>
-<ul>
-<li><code>/FULL/PATH/TO/YOUR/docker-hub-mcp-server</code> 是您克隆仓库的完整路径</li>
-</ul>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '%E7%94%A8%E4%BA%8E%E9%9C%80%E8%A6%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%9A%84%E8%AE%BF%E9%97%AE' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'ewogICJtY3BTZXJ2ZXJzIjogewogICAgImRvY2tlci1odWIiOiB7CiAgICAgICJjb21tYW5kIjogIm5vZGUiLAogICAgICAiYXJncyI6IFsiL0ZVTEwvUEFUSC9UTy9ZT1VSL2RvY2tlci1odWItbWNwLXNlcnZlci9kaXN0L2luZGV4LmpzIiwgIi0tdHJhbnNwb3J0PXN0ZGlvIl0sCiAgICAgICJlbnYiOiB7CiAgICAgICAgIkhVQl9VU0VSTkFNRSI6ICJZT1VSX0RPQ0tFUl9IVUJfVVNFUk5BTUUiLAogICAgICAgICJIVUJfUEFUX1RPS0VOIjogIllPVVJfRE9DS0VSX0hVQl9QRVJTT05BTF9BQ0NFU1NfVE9LRU4iCiAgICAgIH0KICAgIH0KICB9Cn0=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;mcpServers&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;docker-hub&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js&#34;</span><span class="p">,</span> <span class="s2">&#34;--transport=stdio&#34;</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;env&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;HUB_USERNAME&#34;</span><span class="p">:</span> <span class="s2">&#34;YOUR_DOCKER_HUB_USERNAME&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;HUB_PAT_TOKEN&#34;</span><span class="p">:</span> <span class="s2">&#34;YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-<p>其中：</p>
-<ul>
-<li><code>YOUR_DOCKER_HUB_USERNAME</code> 是您的 Docker Hub 用户名。</li>
-<li><code>YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN</code> 是 Docker Hub 个人访问令牌。</li>
-<li><code>/FULL/PATH/TO/YOUR/docker-hub-mcp-server</code> 是您克隆仓库的完整路径。</li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
-
 
 2. 打开 `命令面板` 并输入 `MCP: List Servers`。
 3. 选择 `docker-hub`，然后选择 `Start Server`。

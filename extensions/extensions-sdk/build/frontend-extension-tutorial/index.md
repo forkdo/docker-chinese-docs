@@ -1,4 +1,26 @@
-# Create an advanced frontend extension
+---
+title: Create an advanced frontend extension
+url: /extensions/extensions-sdk/build/frontend-extension-tutorial/
+parent:
+  title: 扩展 SDK 概览
+  url: /extensions/extensions-sdk/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker 扩展
+    url: /extensions/
+  - title: 扩展 SDK 概览
+    url: /extensions/extensions-sdk/
+  - title: Create an advanced frontend extension
+    url: /extensions/extensions-sdk/build/frontend-extension-tutorial/
+next:
+  title: Create a simple extension
+  url: /extensions/extensions-sdk/build/minimal-frontend-extension/
+prev:
+  title: Add a backend to your extension
+  url: /extensions/extensions-sdk/build/backend-extension-tutorial/
+---
+
 
 To start creating your extension, you first need a directory with files which range from the extension’s source code to the required extension-specific files. This page provides information on how to set up an extension with a more advanced frontend.
 
@@ -52,251 +74,72 @@ Once the extension is created, you need to configure the `Dockerfile` to build t
 that are used to populate the extension's card in the Marketplace. Here is an example of a `Dockerfile` for a React
 extension:
 
+**React**
 
 
 
+```Dockerfile
+# syntax=docker/dockerfile:1
+FROM --platform=$BUILDPLATFORM node:18.9-alpine3.15 AS client-builder
+WORKDIR /ui
+# cache packages in layer
+COPY ui/package.json /ui/package.json
+COPY ui/package-lock.json /ui/package-lock.json
+RUN --mount=type=cache,target=/usr/src/app/.npm \
+    npm set cache /usr/src/app/.npm && \
+    npm ci
+# install
+COPY ui /ui
+RUN npm run build
 
+FROM alpine
+LABEL org.opencontainers.image.title="My extension" \
+    org.opencontainers.image.description="Your Desktop Extension Description" \
+    org.opencontainers.image.vendor="Awesome Inc." \
+    com.docker.desktop.extension.api.version="0.3.3" \
+    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" \
+    com.docker.extension.screenshots="" \
+    com.docker.extension.detailed-description="" \
+    com.docker.extension.publisher-url="" \
+    com.docker.extension.additional-urls="" \
+    com.docker.extension.changelog=""
 
+COPY metadata.json .
+COPY docker.svg .
+COPY --from=client-builder /ui/build ui
 
-
-<div
-  class="tabs"
-  
-    
-      x-data="{ selected: 'React' }"
-    
-    @tab-select.window="$event.detail.group === 'framework' ? selected =
-    $event.detail.name : null"
-  
-  aria-role="tabpanel"
+```
+> Note
 >
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'React' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'React'})"
-        
-      >
-        React
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Vue' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'Vue'})"
-        
-      >
-        Vue
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Angular' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'Angular'})"
-        
-      >
-        Angular
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Svelte' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'Svelte'})"
-        
-      >
-        Svelte
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'React' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+> In the example Dockerfile, you can see that the image label `com.docker.desktop.extension.icon` is set to an icon URL. The Extensions Marketplace displays this icon without installing the extension. The Dockerfile also includes `COPY docker.svg .` to copy an icon file inside the image. This second icon file is used to display the extension UI in the Dashboard, once the extension is installed.
+
+**Vue**
+
+
+
+> [!IMPORTANT]
 >
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'IyBzeW50YXg9ZG9ja2VyL2RvY2tlcmZpbGU6MQpGUk9NIC0tcGxhdGZvcm09JEJVSUxEUExBVEZPUk0gbm9kZToxOC45LWFscGluZTMuMTUgQVMgY2xpZW50LWJ1aWxkZXIKV09SS0RJUiAvdWkKIyBjYWNoZSBwYWNrYWdlcyBpbiBsYXllcgpDT1BZIHVpL3BhY2thZ2UuanNvbiAvdWkvcGFja2FnZS5qc29uCkNPUFkgdWkvcGFja2FnZS1sb2NrLmpzb24gL3VpL3BhY2thZ2UtbG9jay5qc29uClJVTiAtLW1vdW50PXR5cGU9Y2FjaGUsdGFyZ2V0PS91c3Ivc3JjL2FwcC8ubnBtIFwKICAgIG5wbSBzZXQgY2FjaGUgL3Vzci9zcmMvYXBwLy5ucG0gJiYgXAogICAgbnBtIGNpCiMgaW5zdGFsbApDT1BZIHVpIC91aQpSVU4gbnBtIHJ1biBidWlsZAoKRlJPTSBhbHBpbmUKTEFCRUwgb3JnLm9wZW5jb250YWluZXJzLmltYWdlLnRpdGxlPSJNeSBleHRlbnNpb24iIFwKICAgIG9yZy5vcGVuY29udGFpbmVycy5pbWFnZS5kZXNjcmlwdGlvbj0iWW91ciBEZXNrdG9wIEV4dGVuc2lvbiBEZXNjcmlwdGlvbiIgXAogICAgb3JnLm9wZW5jb250YWluZXJzLmltYWdlLnZlbmRvcj0iQXdlc29tZSBJbmMuIiBcCiAgICBjb20uZG9ja2VyLmRlc2t0b3AuZXh0ZW5zaW9uLmFwaS52ZXJzaW9uPSIwLjMuMyIgXAogICAgY29tLmRvY2tlci5kZXNrdG9wLmV4dGVuc2lvbi5pY29uPSJodHRwczovL3d3dy5kb2NrZXIuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIyLzAzL01vYnktbG9nby5wbmciIFwKICAgIGNvbS5kb2NrZXIuZXh0ZW5zaW9uLnNjcmVlbnNob3RzPSIiIFwKICAgIGNvbS5kb2NrZXIuZXh0ZW5zaW9uLmRldGFpbGVkLWRlc2NyaXB0aW9uPSIiIFwKICAgIGNvbS5kb2NrZXIuZXh0ZW5zaW9uLnB1Ymxpc2hlci11cmw9IiIgXAogICAgY29tLmRvY2tlci5leHRlbnNpb24uYWRkaXRpb25hbC11cmxzPSIiIFwKICAgIGNvbS5kb2NrZXIuZXh0ZW5zaW9uLmNoYW5nZWxvZz0iIgoKQ09QWSBtZXRhZGF0YS5qc29uIC4KQ09QWSBkb2NrZXIuc3ZnIC4KQ09QWSAtLWZyb209Y2xpZW50LWJ1aWxkZXIgL3VpL2J1aWxkIHVp', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=$BUILDPLATFORM</span> node:18.9-alpine3.15 AS client-builder<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/ui</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># cache packages in layer</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ui/package.json /ui/package.json<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ui/package-lock.json /ui/package-lock.json<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/usr/src/app/.npm <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm <span class="nb">set</span> cache /usr/src/app/.npm <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    npm ci<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># install</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> ui /ui<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> npm run build<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">LABEL</span> org.opencontainers.image.title<span class="o">=</span><span class="s2">&#34;My extension&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    org.opencontainers.image.description<span class="o">=</span><span class="s2">&#34;Your Desktop Extension Description&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    org.opencontainers.image.vendor<span class="o">=</span><span class="s2">&#34;Awesome Inc.&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.desktop.extension.api.version<span class="o">=</span><span class="s2">&#34;0.3.3&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.desktop.extension.icon<span class="o">=</span><span class="s2">&#34;https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.extension.screenshots<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.extension.detailed-description<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.extension.publisher-url<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.extension.additional-urls<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl">    com.docker.extension.changelog<span class="o">=</span><span class="s2">&#34;&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> metadata.json .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> docker.svg .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>client-builder /ui/build ui</span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+> We don't have a working Dockerfile for Vue yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Vue)
+> and let us know if you'd like a Dockerfile for Vue.
+
+**Angular**
 
 
-  
 
-<blockquote
-  
-  class="admonition not-prose">
-  <p>Note</p>
-<p>In the example Dockerfile, you can see that the image label <code>com.docker.desktop.extension.icon</code> is set to an icon URL. The Extensions Marketplace displays this icon without installing the extension. The Dockerfile also includes <code>COPY docker.svg .</code> to copy an icon file inside the image. This second icon file is used to display the extension UI in the Dashboard, once the extension is installed.</p>
+> [!IMPORTANT]
+>
+> We don't have a working Dockerfile for Angular yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Angular)
+> and let us know if you'd like a Dockerfile for Angular.
 
-  </blockquote>
+**Svelte**
 
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Vue' && 'hidden'"
-      >
-        
 
-  
+> [!IMPORTANT]
+>
+> We don't have a working Dockerfile for Svelte yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Svelte)
+> and let us know if you'd like a Dockerfile for Svelte.
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>We don't have a working Dockerfile for Vue yet. <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&amp;entry.1333218187=Vue" rel="noopener">Fill out the form</a>
-and let us know if you'd like a Dockerfile for Vue.</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Angular' && 'hidden'"
-      >
-        
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>We don't have a working Dockerfile for Angular yet. <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&amp;entry.1333218187=Angular" rel="noopener">Fill out the form</a>
-and let us know if you'd like a Dockerfile for Angular.</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Svelte' && 'hidden'"
-      >
-        
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>We don't have a working Dockerfile for Svelte yet. <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&amp;entry.1333218187=Svelte" rel="noopener">Fill out the form</a>
-and let us know if you'd like a Dockerfile for Svelte.</p>
-    </div>
-  </blockquote>
-
-
-      </div>
-    
-  </div>
-</div>
 
 
 ## Configure the metadata file
@@ -371,330 +214,118 @@ npm install @docker/extension-api-client-types --save-dev
 For example, you can use the `docker.cli.exec` function to get the list of all the containers via the `docker ps --all`
 command and display the result in a table.
 
+**React**
 
 
 
+Replace the `ui/src/App.tsx` file with the following code:
 
+```tsx
 
+// ui/src/App.tsx
+import React, { useEffect } from 'react';
+import {
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography
+} from "@mui/material";
+import { createDockerDesktopClient } from "@docker/extension-api-client";
 
+//obtain docker desktop extension client
+const ddClient = createDockerDesktopClient();
 
-<div
-  class="tabs"
-  
-    
-      x-data="{ selected: 'React' }"
-    
-    @tab-select.window="$event.detail.group === 'framework' ? selected =
-    $event.detail.name : null"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'React' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'React'})"
-        
-      >
-        React
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Vue' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'Vue'})"
-        
-      >
-        Vue
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Angular' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'Angular'})"
-        
-      >
-        Angular
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Svelte' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="$dispatch('tab-select', { group: 'framework', name:
-          'Svelte'})"
-        
-      >
-        Svelte
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'React' && 'hidden'"
-      >
-        <p>Replace the <code>ui/src/App.tsx</code> file with the following code:</p>
-<div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'Ci8vIHVpL3NyYy9BcHAudHN4CmltcG9ydCBSZWFjdCwgeyB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7CiAgUGFwZXIsCiAgU3RhY2ssCiAgVGFibGUsCiAgVGFibGVCb2R5LAogIFRhYmxlQ2VsbCwKICBUYWJsZUNvbnRhaW5lciwKICBUYWJsZUhlYWQsCiAgVGFibGVSb3csCiAgVHlwb2dyYXBoeQp9IGZyb20gIkBtdWkvbWF0ZXJpYWwiOwppbXBvcnQgeyBjcmVhdGVEb2NrZXJEZXNrdG9wQ2xpZW50IH0gZnJvbSAiQGRvY2tlci9leHRlbnNpb24tYXBpLWNsaWVudCI7CgovL29idGFpbiBkb2NrZXIgZGVza3RvcCBleHRlbnNpb24gY2xpZW50CmNvbnN0IGRkQ2xpZW50ID0gY3JlYXRlRG9ja2VyRGVza3RvcENsaWVudCgpOwoKZXhwb3J0IGZ1bmN0aW9uIEFwcCgpIHsKICBjb25zdCBbY29udGFpbmVycywgc2V0Q29udGFpbmVyc10gPSBSZWFjdC51c2VTdGF0ZTxhbnlbXT4oW10pOwoKICB1c2VFZmZlY3QoKCkgPT4gewogICAgLy8gTGlzdCBhbGwgY29udGFpbmVycwogICAgZGRDbGllbnQuZG9ja2VyLmNsaS5leGVjKCdwcycsIFsnLS1hbGwnLCAnLS1mb3JtYXQnLCAnInt7anNvbiAufX0iJ10pLnRoZW4oKHJlc3VsdCkgPT4gewogICAgICAvLyByZXN1bHQucGFyc2VKc29uTGluZXMoKSBwYXJzZXMgdGhlIG91dHB1dCBvZiB0aGUgY29tbWFuZCBpbnRvIGFuIGFycmF5IG9mIG9iamVjdHMKICAgICAgc2V0Q29udGFpbmVycyhyZXN1bHQucGFyc2VKc29uTGluZXMoKSk7CiAgICB9KTsKICB9LCBbXSk7CgogIHJldHVybiAoCiAgICA8U3RhY2s&#43;CiAgICAgIDxUeXBvZ3JhcGh5IGRhdGEtdGVzdGlkPSJoZWFkaW5nIiB2YXJpYW50PSJoMyIgcm9sZT0idGl0bGUiPgogICAgICAgIENvbnRhaW5lciBsaXN0CiAgICAgIDwvVHlwb2dyYXBoeT4KICAgICAgPFR5cG9ncmFwaHkKICAgICAgZGF0YS10ZXN0aWQ9InN1YmhlYWRpbmciCiAgICAgIHZhcmlhbnQ9ImJvZHkxIgogICAgICBjb2xvcj0idGV4dC5zZWNvbmRhcnkiCiAgICAgIHN4PXt7IG10OiAyIH19CiAgICA&#43;CiAgICAgIFNpbXBsZSBsaXN0IG9mIGNvbnRhaW5lcnMgdXNpbmcgRG9ja2VyIEV4dGVuc2lvbnMgU0RLLgogICAgICA8L1R5cG9ncmFwaHk&#43;CiAgICAgIDxUYWJsZUNvbnRhaW5lciBzeD17e210OjJ9fT4KICAgICAgICA8VGFibGU&#43;CiAgICAgICAgICA8VGFibGVIZWFkPgogICAgICAgICAgICA8VGFibGVSb3c&#43;CiAgICAgICAgICAgICAgPFRhYmxlQ2VsbD5Db250YWluZXIgaWQ8L1RhYmxlQ2VsbD4KICAgICAgICAgICAgICA8VGFibGVDZWxsPkltYWdlPC9UYWJsZUNlbGw&#43;CiAgICAgICAgICAgICAgPFRhYmxlQ2VsbD5Db21tYW5kPC9UYWJsZUNlbGw&#43;CiAgICAgICAgICAgICAgPFRhYmxlQ2VsbD5DcmVhdGVkPC9UYWJsZUNlbGw&#43;CiAgICAgICAgICAgICAgPFRhYmxlQ2VsbD5TdGF0dXM8L1RhYmxlQ2VsbD4KICAgICAgICAgICAgPC9UYWJsZVJvdz4KICAgICAgICAgIDwvVGFibGVIZWFkPgogICAgICAgICAgPFRhYmxlQm9keT4KICAgICAgICAgICAge2NvbnRhaW5lcnMubWFwKChjb250YWluZXIpID0&#43;ICgKICAgICAgICAgICAgICA8VGFibGVSb3cKICAgICAgICAgICAgICAgIGtleT17Y29udGFpbmVyLklEfQogICAgICAgICAgICAgICAgc3g9e3sgJyY6bGFzdC1jaGlsZCB0ZCwgJjpsYXN0LWNoaWxkIHRoJzogeyBib3JkZXI6IDAgfSB9fQogICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgIDxUYWJsZUNlbGw&#43;e2NvbnRhaW5lci5JRH08L1RhYmxlQ2VsbD4KICAgICAgICAgICAgICAgIDxUYWJsZUNlbGw&#43;e2NvbnRhaW5lci5JbWFnZX08L1RhYmxlQ2VsbD4KICAgICAgICAgICAgICAgIDxUYWJsZUNlbGw&#43;e2NvbnRhaW5lci5Db21tYW5kfTwvVGFibGVDZWxsPgogICAgICAgICAgICAgICAgPFRhYmxlQ2VsbD57Y29udGFpbmVyLkNyZWF0ZWRBdH08L1RhYmxlQ2VsbD4KICAgICAgICAgICAgICAgIDxUYWJsZUNlbGw&#43;e2NvbnRhaW5lci5TdGF0dXN9PC9UYWJsZUNlbGw&#43;CiAgICAgICAgICAgICAgPC9UYWJsZVJvdz4KICAgICAgICAgICAgKSl9CiAgICAgICAgICA8L1RhYmxlQm9keT4KICAgICAgICA8L1RhYmxlPgogICAgICA8L1RhYmxlQ29udGFpbmVyPgogICAgPC9TdGFjaz4KICApOwp9', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// ui/src/App.tsx
-</span></span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Paper</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Stack</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Table</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">TableBody</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">TableCell</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">TableContainer</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">TableHead</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">TableRow</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Typography</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@mui/material&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createDockerDesktopClient</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@docker/extension-api-client&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//obtain docker desktop extension client
-</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ddClient</span> <span class="o">=</span> <span class="nx">createDockerDesktopClient</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">App() {</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">containers</span><span class="p">,</span> <span class="nx">setContainers</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">&lt;</span><span class="nt">any</span><span class="err">[]</span><span class="p">&gt;([]);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// List all containers
-</span></span></span><span class="line"><span class="cl">    <span class="nx">ddClient</span><span class="p">.</span><span class="nx">docker</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;--all&#39;</span><span class="p">,</span> <span class="s1">&#39;--format&#39;</span><span class="p">,</span> <span class="s1">&#39;&#34;{{json .}}&#34;&#39;</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="c1">// result.parseJsonLines() parses the output of the command into an array of objects
-</span></span></span><span class="line"><span class="cl">      <span class="nx">setContainers</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">parseJsonLines</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">    <span class="p">});</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">[]);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Stack</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">Typography</span> <span class="na">data-testid</span><span class="o">=</span><span class="s">&#34;heading&#34;</span> <span class="na">variant</span><span class="o">=</span><span class="s">&#34;h3&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">Container</span> <span class="nx">list</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">Typography</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">Typography</span>
-</span></span><span class="line"><span class="cl">      <span class="na">data-testid</span><span class="o">=</span><span class="s">&#34;subheading&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="na">variant</span><span class="o">=</span><span class="s">&#34;body1&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="na">color</span><span class="o">=</span><span class="s">&#34;text.secondary&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="na">sx</span><span class="o">=</span><span class="p">{{</span> <span class="nx">mt</span>: <span class="kt">2</span> <span class="p">}}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">Simple</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">containers</span> <span class="nx">using</span> <span class="nx">Docker</span> <span class="nx">Extensions</span> <span class="nx">SDK</span><span class="p">.</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">Typography</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">TableContainer</span> <span class="na">sx</span><span class="o">=</span><span class="p">{{</span><span class="nx">mt</span>:<span class="kt">2</span><span class="p">}}&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">Table</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">TableHead</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">TableRow</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;</span><span class="nx">Container</span> <span class="nx">id</span><span class="p">&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;</span><span class="nx">Image</span><span class="p">&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;</span><span class="nx">Command</span><span class="p">&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;</span><span class="nx">Created</span><span class="p">&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;</span><span class="nx">Status</span><span class="p">&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">&lt;/</span><span class="nt">TableRow</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">          <span class="p">&lt;/</span><span class="nt">TableHead</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">TableBody</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="nx">containers</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">container</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;</span><span class="nt">TableRow</span>
-</span></span><span class="line"><span class="cl">                <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">container</span><span class="p">.</span><span class="nx">ID</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">                <span class="na">sx</span><span class="o">=</span><span class="p">{{</span> <span class="s1">&#39;&amp;:last-child td, &amp;:last-child th&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">border</span>: <span class="kt">0</span> <span class="p">}</span> <span class="p">}}</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;{</span><span class="nx">container</span><span class="p">.</span><span class="nx">ID</span><span class="p">}&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;{</span><span class="nx">container</span><span class="p">.</span><span class="nx">Image</span><span class="p">}&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;{</span><span class="nx">container</span><span class="p">.</span><span class="nx">Command</span><span class="p">}&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;{</span><span class="nx">container</span><span class="p">.</span><span class="nx">CreatedAt</span><span class="p">}&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">TableCell</span><span class="p">&gt;{</span><span class="nx">container</span><span class="p">.</span><span class="nx">Status</span><span class="p">}&lt;/</span><span class="nt">TableCell</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">              <span class="p">&lt;/</span><span class="nt">TableRow</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">))}</span>
-</span></span><span class="line"><span class="cl">          <span class="p">&lt;/</span><span class="nt">TableBody</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">Table</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">TableContainer</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">Stack</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+export function App() {
+  const [containers, setContainers] = React.useState<any[]>([]);
 
-  
-  
-    
+  useEffect(() => {
+    // List all containers
+    ddClient.docker.cli.exec('ps', ['--all', '--format', '"{{json .}}"']).then((result) => {
+      // result.parseJsonLines() parses the output of the command into an array of objects
+      setContainers(result.parseJsonLines());
+    });
+  }, []);
 
-
-
-
-
-
-
-
-<figure
-  x-data="{ zoom: false }"
-  @click="zoom = ! zoom"
-  class="cursor-pointer hover:opacity-90"
->
-  <img
-    loading="lazy"
-    src="/extensions/extensions-sdk/build/images/react-extension.png"
-    alt="Screenshot of the container list."
-    
-    
-    class="mx-auto rounded-sm"
-  />
-  
-  <template x-teleport="body">
-    <div
-      x-show="zoom"
-      @click="zoom = false"
-      x-transition.opacity.duration.250ms
-      class="fixed inset-0 z-20 flex items-center justify-center bg-black/100 p-6"
+  return (
+    <Stack>
+      <Typography data-testid="heading" variant="h3" role="title">
+        Container list
+      </Typography>
+      <Typography
+      data-testid="subheading"
+      variant="body1"
+      color="text.secondary"
+      sx={{ mt: 2 }}
     >
-      <button class="icon-svg fixed top-6 right-8 z-30 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg>
-      </button>
-      <img
-        loading="lazy"
-        class="max-h-full max-w-full rounded-sm"
-        src="/extensions/extensions-sdk/build/images/react-extension.png"
-        alt="Screenshot of the container list."
-      />
-    </div>
-  </template>
-</figure>
+      Simple list of containers using Docker Extensions SDK.
+      </Typography>
+      <TableContainer sx={{mt:2}}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Container id</TableCell>
+              <TableCell>Image</TableCell>
+              <TableCell>Command</TableCell>
+              <TableCell>Created</TableCell>
+              <TableCell>Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {containers.map((container) => (
+              <TableRow
+                key={container.ID}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell>{container.ID}</TableCell>
+                <TableCell>{container.Image}</TableCell>
+                <TableCell>{container.Command}</TableCell>
+                <TableCell>{container.CreatedAt}</TableCell>
+                <TableCell>{container.Status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Stack>
+  );
+}
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Vue' && 'hidden'"
-      >
-        
+```
 
-  
+![Screenshot of the container list.](images/react-extension.png)
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>We don't have an example for Vue yet. <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&amp;entry.1333218187=Vue" rel="noopener">Fill out the form</a>
-and let us know if you'd like a sample with Vue.</p>
-    </div>
-  </blockquote>
+**Vue**
 
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Angular' && 'hidden'"
-      >
-        
 
-  
+> [!IMPORTANT]
+>
+> We don't have an example for Vue yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Vue)
+> and let us know if you'd like a sample with Vue.
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>We don't have an example for Angular yet. <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&amp;entry.1333218187=Angular" rel="noopener">Fill out the form</a>
-and let us know if you'd like a sample with Angular.</p>
-    </div>
-  </blockquote>
+**Angular**
 
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Svelte' && 'hidden'"
-      >
-        
 
-  
+> [!IMPORTANT]
+>
+> We don't have an example for Angular yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Angular)
+> and let us know if you'd like a sample with Angular.
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>We don't have an example for Svelte yet. <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&amp;entry.1333218187=Svelte" rel="noopener">Fill out the form</a>
-and let us know if you'd like a sample with Svelte.</p>
-    </div>
-  </blockquote>
+**Svelte**
 
 
-      </div>
-    
-  </div>
-</div>
+
+> [!IMPORTANT]
+>
+> We don't have an example for Svelte yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Svelte)
+> and let us know if you'd like a sample with Svelte.
+
 
 
 ## Policies enforced for the front-end code

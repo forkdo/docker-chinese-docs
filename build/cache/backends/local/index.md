@@ -1,4 +1,28 @@
-# Local cache
+---
+title: Local cache
+url: /build/cache/backends/local/
+parent:
+  title: Cache storage backends
+  url: /build/cache/backends/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Docker build cache
+    url: /build/cache/
+  - title: Cache storage backends
+    url: /build/cache/backends/
+  - title: Local cache
+    url: /build/cache/backends/local/
+next:
+  title: Inline cache
+  url: /build/cache/backends/inline/
+prev:
+  title: Registry cache
+  url: /build/cache/backends/registry/
+---
+
 
 The `local` cache store is a simple cache option that stores your cache as files
 in a directory on your filesystem, using an

@@ -1,4 +1,21 @@
-# 了解 Windows 的权限要求
+---
+title: 了解 Windows 的权限要求
+url: /desktop/setup/install/windows-permission-requirements/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 了解 Windows 的权限要求
+    url: /desktop/setup/install/windows-permission-requirements/
+next:
+  title: 在 Windows 上安装 Docker Desktop
+  url: /desktop/setup/install/windows-install/
+---
+
 
 本页包含有关在 Windows 上运行和安装 Docker Desktop 的权限要求、特权辅助进程 `com.docker.service` 的功能以及采用此方法的原因等信息。
 

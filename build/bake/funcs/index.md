@@ -1,4 +1,26 @@
-# Functions
+---
+title: Functions
+url: /build/bake/funcs/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Functions
+    url: /build/bake/funcs/
+next:
+  title: Expression evaluation in Bake
+  url: /build/bake/expressions/
+prev:
+  title: Matrix targets
+  url: /build/bake/matrices/
+---
+
 
 HCL functions are great for when you need to manipulate values in your build
 configuration in more complex ways than just concatenation or interpolation.

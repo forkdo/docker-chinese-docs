@@ -1,4 +1,21 @@
-# 部署你的 Node.js 应用
+---
+title: 部署你的 Node.js 应用
+url: /guides/nodejs/deploy/
+parent:
+  title: Node.js 语言专属指南
+  url: /guides/nodejs/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Node.js 语言专属指南
+    url: /guides/nodejs/
+  - title: 部署你的 Node.js 应用
+    url: /guides/nodejs/deploy/
+next:
+  title: 使用 GitHub Actions 自动化构建
+  url: /guides/nodejs/configure-github-actions/
+---
+
 
 ## 前置条件
 

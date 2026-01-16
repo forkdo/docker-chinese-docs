@@ -1,4 +1,26 @@
-# 绑定挂载
+---
+title: 绑定挂载
+url: /engine/storage/bind-mounts/
+parent:
+  title: 存储
+  url: /engine/storage/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 存储
+    url: /engine/storage/
+  - title: 绑定挂载
+    url: /engine/storage/bind-mounts/
+next:
+  title: 卷（Volumes）
+  url: /engine/storage/volumes/
+prev:
+  title: tmpfs 挂载
+  url: /engine/storage/tmpfs/
+---
+
 
 当您使用绑定挂载时，主机上的文件或目录会从主机挂载到容器中。相比之下，当您使用卷时，会在主机上的 Docker 存储目录中创建一个新目录，Docker 会管理该目录的内容。
 
@@ -112,145 +134,30 @@ $ docker run -v .:/project:ro,rshared
 
 以下 `--mount` 和 `-v` 示例产生相同的结果。除非在运行第一个示例后移除了 `devtest` 容器，否则您无法同时运行它们。
 
+**`--mount`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name devtest \
+  --mount type=bind,source="$(pwd)"/target,target=/app \
+  nginx:latest
+```
+
+**`-v`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name devtest \
+  -v "$(pwd)"/target:/app \
+  nginx:latest
+```
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '--mount' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '--mount' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '--mount'"
-        
-      >
-        <code>--mount</code>
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '-v' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '-v'"
-        
-      >
-        <code>-v</code>
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '--mount' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBkZXZ0ZXN0IFwKICAtLW1vdW50IHR5cGU9YmluZCxzb3VyY2U9IiQocHdkKSIvdGFyZ2V0LHRhcmdldD0vYXBwIFwKICBuZ2lueDpsYXRlc3Q=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=&#34;$(pwd)&#34;/target,target=/app \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '-v' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBkZXZ0ZXN0IFwKICAtdiAiJChwd2QpIi90YXJnZXQ6L2FwcCBcCiAgbmdpbng6bGF0ZXN0', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
-</span></span></span><span class="line"><span class="cl"><span class="go">  -v &#34;$(pwd)&#34;/target:/app \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 
 
 使用 `docker inspect devtest` 来验证绑定挂载是否已正确创建。查找 `Mounts` 部分：
@@ -284,151 +191,36 @@ $ docker container rm -fv devtest
 
 `--mount` 和 `-v` 示例的最终结果相同。
 
+**`--mount`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name broken-container \
+  --mount type=bind,source=/tmp,target=/usr \
+  nginx:latest
+
+docker: Error response from daemon: oci runtime error: container_linux.go:262:
+starting container process caused "exec: \"nginx\": executable file not found in $PATH".
+```
+
+**`-v`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name broken-container \
+  -v /tmp:/usr \
+  nginx:latest
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '--mount' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '--mount' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '--mount'"
-        
-      >
-        <code>--mount</code>
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '-v' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '-v'"
-        
-      >
-        <code>-v</code>
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '--mount' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBicm9rZW4tY29udGFpbmVyIFwKICAtLW1vdW50IHR5cGU9YmluZCxzb3VyY2U9L3RtcCx0YXJnZXQ9L3VzciBcCiAgbmdpbng6bGF0ZXN0Cgpkb2NrZXI6IEVycm9yIHJlc3BvbnNlIGZyb20gZGFlbW9uOiBvY2kgcnVudGltZSBlcnJvcjogY29udGFpbmVyX2xpbnV4LmdvOjI2MjoKc3RhcnRpbmcgY29udGFpbmVyIHByb2Nlc3MgY2F1c2VkICJleGVjOiBcIm5naW54XCI6IGV4ZWN1dGFibGUgZmlsZSBub3QgZm91bmQgaW4gJFBBVEgiLg==', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name broken-container \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=/tmp,target=/usr \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="go">docker: Error response from daemon: oci runtime error: container_linux.go:262:
-</span></span></span><span class="line"><span class="cl"><span class="go">starting container process caused &#34;exec: \&#34;nginx\&#34;: executable file not found in $PATH&#34;.
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
+docker: Error response from daemon: oci runtime error: container_linux.go:262:
+starting container process caused "exec: \"nginx\": executable file not found in $PATH".
+```
 
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '-v' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBicm9rZW4tY29udGFpbmVyIFwKICAtdiAvdG1wOi91c3IgXAogIG5naW54OmxhdGVzdAoKZG9ja2VyOiBFcnJvciByZXNwb25zZSBmcm9tIGRhZW1vbjogb2NpIHJ1bnRpbWUgZXJyb3I6IGNvbnRhaW5lcl9saW51eC5nbzoyNjI6CnN0YXJ0aW5nIGNvbnRhaW5lciBwcm9jZXNzIGNhdXNlZCAiZXhlYzogXCJuZ2lueFwiOiBleGVjdXRhYmxlIGZpbGUgbm90IGZvdW5kIGluICRQQVRIIi4=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name broken-container \
-</span></span></span><span class="line"><span class="cl"><span class="go">  -v /tmp:/usr \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="go">docker: Error response from daemon: oci runtime error: container_linux.go:262:
-</span></span></span><span class="line"><span class="cl"><span class="go">starting container process caused &#34;exec: \&#34;nginx\&#34;: executable file not found in $PATH&#34;.
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 
 
 容器已创建但未启动。将其移除：
@@ -445,145 +237,30 @@ $ docker container rm broken-container
 
 `--mount` 和 `-v` 示例的结果相同。
 
+**`--mount`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name devtest \
+  --mount type=bind,source="$(pwd)"/target,target=/app,readonly \
+  nginx:latest
+```
+
+**`-v`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name devtest \
+  -v "$(pwd)"/target:/app:ro \
+  nginx:latest
+```
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '--mount' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '--mount' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '--mount'"
-        
-      >
-        <code>--mount</code>
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '-v' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '-v'"
-        
-      >
-        <code>-v</code>
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '--mount' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBkZXZ0ZXN0IFwKICAtLW1vdW50IHR5cGU9YmluZCxzb3VyY2U9IiQocHdkKSIvdGFyZ2V0LHRhcmdldD0vYXBwLHJlYWRvbmx5IFwKICBuZ2lueDpsYXRlc3Q=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=&#34;$(pwd)&#34;/target,target=/app,readonly \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '-v' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBkZXZ0ZXN0IFwKICAtdiAiJChwd2QpIi90YXJnZXQ6L2FwcDpybyBcCiAgbmdpbng6bGF0ZXN0', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
-</span></span></span><span class="line"><span class="cl"><span class="go">  -v &#34;$(pwd)&#34;/target:/app:ro \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 
 
 使用 `docker inspect devtest` 来验证绑定挂载是否已正确创建。查找 `Mounts` 部分：
@@ -648,142 +325,25 @@ $ docker container rm -fv devtest
 
 `--mount` 和 `-v` 示例的结果相同。
 
+**`--mount`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name devtest \
+  --mount type=bind,source="$(pwd)"/target,target=/app \
+**`-v`**
 
 
 
+```console
+$ docker run -d \
+  -it \
+  --name devtest \
+  -v "$(pwd)"/target:/app \
+  nginx:latest
+```
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: '--mount' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === '--mount' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '--mount'"
-        
-      >
-        <code>--mount</code>
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === '-v' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = '-v'"
-        
-      >
-        <code>-v</code>
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '--mount' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBkZXZ0ZXN0IFwKICAtLW1vdW50IHR5cGU9YmluZCxzb3VyY2U9IiQocHdkKSIvdGFyZ2V0LHRhcmdldD0vYXBwIFw=', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --mount type=bind,source=&#34;$(pwd)&#34;/target,target=/app \
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== '-v' && 'hidden'"
-      >
-        <div
-  data-pagefind-ignore
-  x-data
-  x-ref="root"
-  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
->
-  
-  <div class="relative w-full">
-    
-    
-    <div class="syntax-light dark:syntax-dark not-prose w-full">
-      <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIFwKICAtaXQgXAogIC0tbmFtZSBkZXZ0ZXN0IFwKICAtdiAiJChwd2QpIi90YXJnZXQ6L2FwcCBcCiAgbmdpbng6bGF0ZXN0', copying: false }"
-        class="
-          top-1
-         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
-        title="copy"
-        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
-      copying = true;
-      setTimeout(() => copying = false, 2000);"
-      >
-        <span
-          :class="{ 'group-hover:block' : !copying }"
-          class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
-        >
-        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
-        >
-      </button>
-      
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -it \
-</span></span></span><span class="line"><span class="cl"><span class="go">  --name devtest \
-</span></span></span><span class="line"><span class="cl"><span class="go">  -v &#34;$(pwd)&#34;/target:/app \
-</span></span></span><span class="line"><span class="cl"><span class="go">  nginx:latest
-</span></span></span></code></pre></div>
-      
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
 

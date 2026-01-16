@@ -1,1005 +1,1969 @@
-# Docker Engine API v1.48 参考文档
+---
+title: Docker Engine API v1.48 参考文档
+url: /reference/api/engine/version/v1.48/
+parent:
+  title: Docker Engine API
+  url: /reference/api/engine/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: Docker Engine API
+    url: /reference/api/engine/
+  - title: Docker Engine API v1.48 参考文档
+    url: /reference/api/engine/version/v1.48/
+next:
+  title: Docker Engine API v1.47 参考文档
+  url: /reference/api/engine/version/v1.47/
+prev:
+  title: Docker Engine API v1.49 参考文档
+  url: /reference/api/engine/version/v1.49/
+openapi_spec: /reference/api/engine/version/v1.48.yaml
+---
 
-[查看源码](https://github.com/moby/moby/blob/v27.2.0/api/swagger.yaml)
+<p><a class="link" href="https://github.com/moby/moby/blob/v27.2.0/api/swagger.yaml" rel="noopener">查看源码</a></p>
 
-## 概述
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="概述">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a6%82%e8%bf%b0">
+    概述
+  </a>
+</h2>
 
-本文档描述了 Docker Engine API。
+<p>本文档描述了 Docker Engine API。</p>
+<p>Docker Engine API 是与 Docker 守护进程通信的接口。更多关于 Docker 的信息，请访问 <a class="link" href="https://docs.docker.com" rel="noopener">Docker</a>。</p>
+<p>默认情况下，Docker 守护进程监听 Unix 套接字，该套接字还提供 Docker Engine API。在使用 Docker 命令行客户端时，客户端默认通过此套接字与 Docker 守护进程通信。您还可以使用 curl 命令与 Docker Engine API 进行交互。</p>
+<p>Docker Engine API 是可能变化的未版本化 API。请使用指定版本的 Docker Engine API。</p>
+<p>此文档是 Docker Engine API 的参考文档。</p>
+<p>Docker Engine API 是 RESTful API，它使用 JSON 通过 Unix 套接字或网络接口进行通信。</p>
+<p>Docker Engine API 总是向后兼容的，您无需更改 Docker 客户端即可与较新版本的 Docker 通信。Docker 实现了自己的 API，不使用标准 Dockerfile 格式或 OCI 映像格式，并且不与任何其他库共享代码。</p>
 
-Docker Engine API 是与 Docker 守护进程通信的接口。更多关于 Docker 的信息，请访问 [Docker](https://docs.docker.com)。
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="版本化">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96">
+    版本化
+  </a>
+</h2>
 
-默认情况下，Docker 守护进程监听 Unix 套接字，该套接字还提供 Docker Engine API。在使用 Docker 命令行客户端时，客户端默认通过此套接字与 Docker 守护进程通信。您还可以使用 curl 命令与 Docker Engine API 进行交互。
+<p>Docker Engine API 使用 <a class="link" href="https://docs.docker.com/engine/api/version-history/" rel="noopener">API 版本</a> 进行版本控制。API 版本与 Docker Engine 版本不同，不应混为一谈。</p>
+<p>请使用指定版本的 Docker Engine API。Docker Engine API 是可能变化的未版本化 API。如果您不使用指定版本的 API，可能会导致互操作性问题。</p>
+<p>要查看 Docker 客户端和守护进程支持的 API 版本，请运行 <code>docker version</code> 命令。</p>
 
-Docker Engine API 是可能变化的未版本化 API。请使用指定版本的 Docker Engine API。
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="通过-http-使用-docker-engine-api">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%80%9a%e8%bf%87-http-%e4%bd%bf%e7%94%a8-docker-engine-api">
+    通过 HTTP 使用 Docker Engine API
+  </a>
+</h2>
 
-此文档是 Docker Engine API 的参考文档。
-
-Docker Engine API 是 RESTful API，它使用 JSON 通过 Unix 套接字或网络接口进行通信。
-
-Docker Engine API 总是向后兼容的，您无需更改 Docker 客户端即可与较新版本的 Docker 通信。Docker 实现了自己的 API，不使用标准 Dockerfile 格式或 OCI 映像格式，并且不与任何其他库共享代码。
-
-## 版本化
-
-Docker Engine API 使用 [API 版本](https://docs.docker.com/engine/api/version-history/) 进行版本控制。API 版本与 Docker Engine 版本不同，不应混为一谈。
-
-请使用指定版本的 Docker Engine API。Docker Engine API 是可能变化的未版本化 API。如果您不使用指定版本的 API，可能会导致互操作性问题。
-
-要查看 Docker 客户端和守护进程支持的 API 版本，请运行 `docker version` 命令。
-
-## 通过 HTTP 使用 Docker Engine API
-
-Docker 客户端可以与 Docker 守护进程通信，方法是通过 `HTTP 客户端` 向 Docker 守护进程监听的 Unix 套接字或端口发出请求，然后读取 HTTP 响应。
-
-Unix 套接字 URL 使用 `http+unix` 方案。
-
-您可以通过 `http+unix` 方案 URL 访问 Unix 套接字，该 URL 是 URL 编码的路径到 Unix 套接字文件。例如，`/var/run/docker.sock` 的 URL 编码是 `http%3A%2F%2Fvar%2Frun%2Fdocker.sock`。
-
-`http+unix` URL 作为 HTTP 请求的主机标头发送。
-
-例如，要通过 Unix 套接字向 `/info` 发出 `GET http://localhost/info` 请求：
-
-```
-GET /info HTTP/1.1
-Host: http://var/run/docker.sock
-```
-
-或者，如果您配置 Docker 守护进程在主机的 2376 端口上监听：
-
-```
-GET /info HTTP/1.1
-Host: localhost:2376
-```
-
-要以编程方式制作 HTTP 请求，您必须禁用 HTTPS。Docker Engine Go 客户端演示了如何通过 HTTP 与 Docker 守护进程通信。
-
-使用 cURL 时，您必须使用 `--unix-socket` 标志或禁用 HTTPS 使用 `-k` 或 `--insecure` 标志。
-
-> **警告**
+<p>Docker 客户端可以与 Docker 守护进程通信，方法是通过 <code>HTTP 客户端</code> 向 Docker 守护进程监听的 Unix 套接字或端口发出请求，然后读取 HTTP 响应。</p>
+<p>Unix 套接字 URL 使用 <code>http+unix</code> 方案。</p>
+<p>您可以通过 <code>http+unix</code> 方案 URL 访问 Unix 套接字，该 URL 是 URL 编码的路径到 Unix 套接字文件。例如，<code>/var/run/docker.sock</code> 的 URL 编码是 <code>http%3A%2F%2Fvar%2Frun%2Fdocker.sock</code>。</p>
+<p><code>http+unix</code> URL 作为 HTTP 请求的主机标头发送。</p>
+<p>例如，要通过 Unix 套接字向 <code>/info</code> 发出 <code>GET http://localhost/info</code> 请求：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
 >
-> 仅在您配置 Docker 守护进程在主机的端口上监听时使用 `-k` 或 `--insecure` 标志。Docker 不会阻止您的请求，如果您的主机被劫持，可能会危及您的主机。有关详细信息，请参阅 [Docker 守护进程攻击面](https://docs.docker.com/engine/security/#docker-daemon-attack-surface)。
-
-使用 cURL 通过 Unix 套接字：
-
-```bash
-$ curl --unix-socket /var/run/docker.sock http://localhost/version
-```
-
-使用 cURL 通过端口：
-
-```bash
-$ curl -k https://localhost:2376/version
-```
-
-使用 Go 通过 Unix 套接字：
-
-```go
-cli := &http.Client{
-    Transport: &http.Transport{
-        DialContext: func(_ context.Context, _, _ string) (net.Conn, error) {
-            return net.Dial("unix", "/var/run/docker.sock")
-        },
-    },
-}
-
-req, err := http.NewRequest("GET", "http://localhost/version", nil)
-if err != nil {
-    panic(err)
-}
-
-resp, err := cli.Do(req)
-if err != nil {
-    panic(err)
-}
-
-// resp contains the response from the daemon.
-```
-
-使用 Go 通过端口：
-
-```go
-cli := &http.Client{
-    Transport: &http.Transport{},
-}
-
-req, err := http.NewRequest("GET", "https://localhost:2376/version", nil)
-if err != nil {
-    panic(err)
-}
-
-resp, err := cli.Do(req)
-if err != nil {
-    panic(err)
-}
-
-// resp contains the response from the daemon.
-```
-
-## Dockerfile 指令
-
-### Dockerfile 指令
-
-返回 Dockerfile 指令列表。
-
-**状态码：**
-
-- **200** – 成功
-- **500** – 服务器错误
-
-### Dockerfile 指令
-
-返回 Dockerfile 指令列表。
-
-**状态码：**
-
-- **200** – 成功
-- **500** – 服务器错误
-
-## 构建
-
-### 构建镜像
-
-`POST /build`
-
-构建镜像。
-
-> **注意**
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'R0VUIC9pbmZvIEhUVFAvMS4xCkhvc3Q6IGh0dHA6Ly92YXIvcnVuL2RvY2tlci5zb2Nr', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /info HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: http://var/run/docker.sock</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>或者，如果您配置 Docker 守护进程在主机的 2376 端口上监听：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
 >
-> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'R0VUIC9pbmZvIEhUVFAvMS4xCkhvc3Q6IGxvY2FsaG9zdDoyMzc2', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /info HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: localhost:2376</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>要以编程方式制作 HTTP 请求，您必须禁用 HTTPS。Docker Engine Go 客户端演示了如何通过 HTTP 与 Docker 守护进程通信。</p>
+<p>使用 cURL 时，您必须使用 <code>--unix-socket</code> 标志或禁用 HTTPS 使用 <code>-k</code> 或 <code>--insecure</code> 标志。</p>
 
-**查询参数：**
 
-- **t** – 镜像的可选名称。
-- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
-- **q** – 保持安静，仅向客户端发送错误。
-- **nocache** – 不使用缓存。
-- **pull** – 总是尝试拉取所有镜像的较新版本。
-- **rm** – 构建成功后删除中间容器。
-- **forcerm** – 始终删除中间容器，除非构建失败。
-- **memory** – 内存限制
-- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
-- **cpushares** – CPU 份额（相对权重）。
-- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
-- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
-- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
-- **shmsize** – `/dev/shm` 的大小，以字节为单位。
-- **squash** – 将构建过程中的所有图层压缩成一个图层。
-- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
-- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
-- **platform** – 构建镜像的目标平台。
-- **target** – 构建时目标阶段的名称。
-- **outputs** – 输出配置。格式：`type=docker,dest=-`
+  
 
-**请求体：**
+<blockquote
+  
+  class="admonition not-prose">
+  <p><strong>警告</strong></p>
+<p>仅在您配置 Docker 守护进程在主机的端口上监听时使用 <code>-k</code> 或 <code>--insecure</code> 标志。Docker 不会阻止您的请求，如果您的主机被劫持，可能会危及您的主机。有关详细信息，请参阅 <a class="link" href="https://docs.docker.com/engine/security/#docker-daemon-attack-surface" rel="noopener">Docker 守护进程攻击面</a>。</p>
 
-构建上下文 `"Content-type:" "application/x-tar"`
+  </blockquote>
 
-可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
-
-**示例请求：**
-
-```
-POST /v1.48/build HTTP/1.1
-Content-Type: application/x-tar
-
-[...tar contents...]
-```
-
-**响应体：**
-
-流，格式为：
-
-```
-{"stream": "Step 1/2..."}
-{"stream": "..."}
-{"error": "Error...", "errorDetail": {"message": "Error..."}}
-{"stream": "Successfully built 50f0e01f88b2\n"}
-```
-
-**状态码：**
-
-- **200** – 构建上下文已接受，流已开始。
-- **204** – 构建成功，没有流。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 检查构建
-
-`POST /build/prune`
-
-删除未使用的构建缓存。
-
-**查询参数：**
-
-- **keep-storage** – 要保留的构建缓存的字节数。默认全部删除。
-- **filter** – 用于过滤结果的值（例如，`'until=24h'`）。
-
-**状态码：**
-
-- **200** – 成功
-- **500** – 服务器错误
-
-### 检查构建
-
-`GET /build/prune`
-
-返回要删除的构建缓存的大小。
-
-**查询参数：**
-
-- **filter** – 用于过滤结果的值（例如，`'until=24h'`）。
-
-**状态码：**
-
-- **200** – 成功
-- **500** – 服务器错误
-
-## 镜像
-
-### 列出镜像
-
-`GET /images/json`
-
-返回 Docker 守护进程中存储的镜像列表。
-
-**查询参数：**
-
-- **all** – 显示所有镜像。仅显示顶层镜像的默认值为 false。
-- **filters** – JSON 编码的值映射，用于按条件过滤结果。
-
-  可用的过滤器：
-  - `dangling=true`
-  - `label=key` 或 `label="key=value"` 的镜像必须包含标签，或具有指定值的标签。
-  - `before` 接受镜像名称或标签，或短镜像 ID。例如，`before=nginx:latest`、`before=nginx:1.13.0` 或 `before=a24bb4013296`。结果集会扩展为包括在引用镜像之前创建的所有镜像。
-  - `reference` 根据提供的模式过滤镜像。例如，`reference=nginx:*`。
-  - `shared-size` 接受镜像名称、标签、短镜像 ID 或完整镜像 ID。例如，`shared-size=nginx:latest`、`shared-size=nginx:1.13.0`、`shared-size=a24bb4013296` 或 `shared-size=sha256:983488c45c22ec896af1253453fad4404f816023cee5037c8177f8ca2c5d9424`。结果集会扩展到包括与引用镜像共享图层的所有镜像。
-  - `size` 接受镜像名称、标签、短镜像 ID 或完整镜像 ID。例如，`size=nginx:latest`、`size=nginx:1.13.0`、`size=a24bb4013296` 或 `size=sha256:983488c45c22ec896af1253453fad4404f816023cee5037c8177f8ca2c5d9424`。结果集会扩展到包括与引用镜像具有相同大小的所有镜像。
-
-- **digests** – 仅在 API >= 1.25 时可用。如果设置为 `true`，则为每个镜像返回摘要。
-- **shared-size** – 仅在 API >= 1.30 时可用。如果设置为 `true`，则为每个镜像返回共享大小。
-
-**状态码：**
-
-- **200** – 成功
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 构建镜像
-
-`POST /build`
-
-构建镜像。
-
-> **注意**
+<p>使用 cURL 通过 Unix 套接字：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
 >
-> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
-
-**查询参数：**
-
-- **t** – 镜像的可选名称。
-- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
-- **q** – 保持安静，仅向客户端发送错误。
-- **nocache** – 不使用缓存。
-- **pull** – 总是尝试拉取所有镜像的较新版本。
-- **rm** – 构建成功后删除中间容器。
-- **forcerm** – 始终删除中间容器，除非构建失败。
-- **memory** – 内存限制
-- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
-- **cpushares** – CPU 份额（相对权重）。
-- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
-- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
-- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
-- **shmsize** – `/dev/shm` 的大小，以字节为单位。
-- **squash** – 将构建过程中的所有图层压缩成一个图层。
-- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
-- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
-- **platform** – 构建镜像的目标平台。
-- **target** – 构建时目标阶段的名称。
-- **outputs** – 输出配置。格式：`type=docker,dest=-`
-
-**请求体：**
-
-构建上下文 `"Content-type:" "application/x-tar"`
-
-可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
-
-**示例请求：**
-
-```
-POST /v1.48/build HTTP/1.1
-Content-Type: application/x-tar
-
-[...tar contents...]
-```
-
-**响应体：**
-
-流，格式为：
-
-```
-{"stream": "Step 1/2..."}
-{"stream": "..."}
-{"error": "Error...", "errorDetail": {"message": "Error..."}}
-{"stream": "Successfully built 50f0e01f88b2\n"}
-```
-
-**状态码：**
-
-- **200** – 构建上下文已接受，流已开始。
-- **204** – 构建成功，没有流。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 创建镜像
-
-`POST /images/create`
-
-从 Docker 守护进程的镜像库中拉取镜像或从 tarball 中导入。
-
-**查询参数：**
-
-- **fromImage** – 使用 `image[:tag]`、`image[@digest]` 或 `algo:digest` 指定要拉取的镜像。当同时指定时，`fromImage` 优先于 `fromSrc`。
-- **fromSrc** – 源 tarball 的 ID。可以是从构建 API 返回的 ID、本地文件（`fromSrc=image.tar`）或远程 URL（`fromSrc=-` 表示 STDIN）。当同时指定时，`fromImage` 优先于 `fromSrc`。
-- **repo** – 镜像的存储库。
-- **tag** – 镜像的标签。
-- **message** – 导入时要包含的消息。
-- **platform** – 如果可以使用多个平台，则用于拉取镜像的平台。
-- **changes** – 应用于从 `fromSrc` 创建的容器的 `Dockerfile` 指令列表。
-- **outputMode** – 仅在 API >= 1.47 时可用。如果设置为 `auto`，则在从 tarball 导入时返回镜像 ID。
-
-**请求头：**
-
-如果从 tarball 导入，`Content-Type` 应该是 `application/x-tar`.
-
-**示例请求：**
-
-```
-POST /v1.48/images/create?fromImage=alpine:latest HTTP/1.1
-```
-
-**示例请求：**
-
-```
-POST /v1.48/images/create?fromSrc=-&repo=hello-world HTTP/1.1
-Content-Type: application/x-tar
-
-[...tar content...]
-```
-
-**示例请求：**
-
-```
-POST /v1.48/images/create?fromImage=alpine:latest&platform=arm%2Fv7 HTTP/1.1
-```
-
-**响应体：**
-
-```
-{"status": "Pulling..."}
-{"status": "Pulling", "progress": "1 B/ 100B", "progressDetail": {"current": 1, "total": 100}}
-{"error": "Invalid..."}
-...
-{"status": "Pull complete"}
-```
-
-**状态码：**
-
-- **200** – 没有错误。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 检查镜像
-
-`GET /images/{name}/json`
-
-返回关于单个镜像的信息。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**查询参数：**
-
-- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 获取镜像
-
-`GET /images/{name}/get`
-
-获取镜像的 tarball，可以是单个镜像或仓库。
-
-如果名称是镜像 ID，则会将镜像的 tarball 作为流返回。
-
-如果名称是镜像名称或名称和标签，则会将仓库的 tarball 作为流返回，其中包含所有具有该名称和标签的所有镜像。
-
-下载多个镜像时，流的格式与 `docker save` 的输出相同。
-
-**路径参数：**
-
-- **name** – 要检索的镜像或仓库的名称或 ID。
-
-**查询参数：**
-
-- **allTags** – 如果存在，则除了镜像 ID 之外，还会下载具有 `name` 的所有镜像。
-
-**示例请求：**
-
-```
-GET /v1.48/images/example%2F2048:latest/get HTTP/1.1
-```
-
-**响应头：**
-
-```
-Content-Type: application/x-tar
-```
-
-**状态码：**
-
-- **200** – 请求成功，镜像作为 tar 流返回。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/x-tar
-
-### 获取镜像的所有图层
-
-`GET /images/get`
-
-获取一个或多个镜像的所有图层的 tarball。
-
-对于每个镜像，会有一个 tar 包含图层。
-
-**查询参数：**
-
-- **names** – 要检索的镜像的名称或 ID。
-
-**示例请求：**
-
-```
-GET /v1.48/images/get?names=someImage&names=example%2F2048:latest&names=alpine:3.5 HTTP/1.1
-```
-
-**响应头：**
-
-```
-Content-Type: application/x-tar
-```
-
-**状态码：**
-
-- **200** – 请求成功，镜像作为 tar 流返回。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/x-tar
-
-### 加载镜像
-
-`POST /images/load`
-
-将镜像加载到 Docker 守护进程中。
-
-**查询参数：**
-
-- **quiet** – 仅在 API >= 1.23 时可用。
-- **stream** – 仅在 API >= 1.47 时可用。如果设置为 `true`，则在加载 tarball 时将响应作为流返回。
-
-**请求头：**
-
-`Content-Type` 应该是 `application/x-tar`.
-
-**示例请求：**
-
-```
-POST /v1.48/images/load?quiet=0 HTTP/1.1
-Content-Type: application/x-tar
-Content-Length: 9857
-[...tar contents...]
-```
-
-**示例请求：**
-
-```
-POST /v1.48/images/load?stream=true HTTP/1.1
-Content-Type: application/x-tar
-Content-Length: 9857
-[...tar contents...]
-```
-
-**响应体：**
-
-```
-{"stream": "Loading layer"}
-{"stream": "..."}
-{"error": "Error...", "errorDetail": {"message": "Error..."}}
-{"stream": "Loading complete"}
-```
-
-**状态码：**
-
-- **200** – 没有错误。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 删除镜像
-
-`DELETE /images/{name}`
-
-删除一个或多个镜像。
-
-**路径参数：**
-
-- **name** – 要删除的镜像的名称或 ID。
-
-**查询参数：**
-
-- **force** – 强制删除镜像
-- **noprune** – 不删除未标记的父镜像
-
-**状态码：**
-
-- **200** – 镜像已成功删除。
-- **404** – 镜像未找到
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 搜索 Docker Hub
-
-`GET /images/search`
-
-搜索 Docker Hub 或守护进程配置的注册表。
-
-> **注意**
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92ZXJzaW9u', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ curl --unix-socket /var/run/docker.sock http://localhost/version</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>使用 cURL 通过端口：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
 >
-> 使用此端点搜索注册表 2.0+（如 Docker Hub）仅在守护进程配置为使用注册表 2.0+ 时有效。
-
-**查询参数：**
-
-- **term** – 要搜索的术语。
-- **limit** – 搜索结果的最大数量。
-- **filters** – JSON 编码的值映射，用于按条件过滤结果。
-
-  可用的过滤器：
-  - `is-automated=true`
-  - `is-official=true`
-  - `stars=N`
-
-**状态码：**
-
-- **200** – 没有错误。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 构建镜像
-
-`POST /build`
-
-构建镜像。
-
-> **注意**
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'JCBjdXJsIC1rIGh0dHBzOi8vbG9jYWxob3N0OjIzNzYvdmVyc2lvbg==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ curl -k https://localhost:2376/version</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>使用 Go 通过 Unix 套接字：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
 >
-> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
-
-**查询参数：**
-
-- **t** – 镜像的可选名称。
-- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
-- **q** – 保持安静，仅向客户端发送错误。
-- **nocache** – 不使用缓存。
-- **pull** – 总是尝试拉取所有镜像的较新版本。
-- **rm** – 构建成功后删除中间容器。
-- **forcerm** – 始终删除中间容器，除非构建失败。
-- **memory** – 内存限制
-- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
-- **cpushares** – CPU 份额（相对权重）。
-- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
-- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
-- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
-- **shmsize** – `/dev/shm` 的大小，以字节为单位。
-- **squash** – 将构建过程中的所有图层压缩成一个图层。
-- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
-- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
-- **platform** – 构建镜像的目标平台。
-- **target** – 构建时目标阶段的名称。
-- **outputs** – 输出配置。格式：`type=docker,dest=-`
-
-**请求体：**
-
-构建上下文 `"Content-type:" "application/x-tar"`
-
-可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
-
-**示例请求：**
-
-```
-POST /v1.48/build HTTP/1.1
-Content-Type: application/x-tar
-
-[...tar contents...]
-```
-
-**响应体：**
-
-流，格式为：
-
-```
-{"stream": "Step 1/2..."}
-{"stream": "..."}
-{"error": "Error...", "errorDetail": {"message": "Error..."}}
-{"stream": "Successfully built 50f0e01f88b2\n"}
-```
-
-**状态码：**
-
-- **200** – 构建上下文已接受，流已开始。
-- **204** – 构建成功，没有流。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 构建镜像
-
-`POST /build`
-
-构建镜像。
-
-> **注意**
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'Y2xpIDo9ICZodHRwLkNsaWVudHsKICAgIFRyYW5zcG9ydDogJmh0dHAuVHJhbnNwb3J0ewogICAgICAgIERpYWxDb250ZXh0OiBmdW5jKF8gY29udGV4dC5Db250ZXh0LCBfLCBfIHN0cmluZykgKG5ldC5Db25uLCBlcnJvcikgewogICAgICAgICAgICByZXR1cm4gbmV0LkRpYWwoInVuaXgiLCAiL3Zhci9ydW4vZG9ja2VyLnNvY2siKQogICAgICAgIH0sCiAgICB9LAp9CgpyZXEsIGVyciA6PSBodHRwLk5ld1JlcXVlc3QoIkdFVCIsICJodHRwOi8vbG9jYWxob3N0L3ZlcnNpb24iLCBuaWwpCmlmIGVyciAhPSBuaWwgewogICAgcGFuaWMoZXJyKQp9CgpyZXNwLCBlcnIgOj0gY2xpLkRvKHJlcSkKaWYgZXJyICE9IG5pbCB7CiAgICBwYW5pYyhlcnIpCn0KCi8vIHJlc3AgY29udGFpbnMgdGhlIHJlc3BvbnNlIGZyb20gdGhlIGRhZW1vbi4=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">cli</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Transport</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nx">DialContext</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">_</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="s">&#34;unix&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;/var/run/docker.sock&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;GET&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;http://localhost/version&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cli</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// resp contains the response from the daemon.</span></span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p>使用 Go 通过端口：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
 >
-> 此端点仅在 API >= 1.31 时可用。它在较旧的 API 版本中使用 `/commit`。
-
-**查询参数：**
-
-- **t** – 镜像的可选名称。
-- **remote** – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。
-- **q** – 保持安静，仅向客户端发送错误。
-- **nocache** – 不使用缓存。
-- **pull** – 总是尝试拉取所有镜像的较新版本。
-- **rm** – 构建成功后删除中间容器。
-- **forcerm** – 始终删除中间容器，除非构建失败。
-- **memory** – 内存限制
-- **memswap** – 总内存（内存 + swap），设置 `-1` 以启用无限制交换。
-- **cpushares** – CPU 份额（相对权重）。
-- **cpusetcpus** – 允许执行的 CPU（0-3, 0,1）。
-- **cpusetmems** – 允许执行的内存节点（MEM,0-3, 0,1）。
-- **buildargs** – JSON 映射的字符串对 `{"Arg1": "Value1", "Arg2": "Value2" }`. 查看 [使用构建时变量](https://docs.docker.com/engine/reference/builder/#arg) 了解详细信息。
-- **shmsize** – `/dev/shm` 的大小，以字节为单位。
-- **squash** – 将构建过程中的所有图层压缩成一个图层。
-- **labels** – JSON 映射的字符串对。查看 [标签](https://docs.docker.com/config/labels-custom-metadata/) 了解详细信息。
-- **networkmode** – 默认为 `default` 的网络模式。支持的标准值为：`bridge`、`host`、`none`、`container:<name|id>` 和 `default`。
-- **platform** – 构建镜像的目标平台。
-- **target** – 构建时目标阶段的名称。
-- **outputs** – 输出配置。格式：`type=docker,dest=-`
-
-**请求体：**
-
-构建上下文 `"Content-type:" "application/x-tar"`
-
-可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。
-
-**示例请求：**
-
-```
-POST /v1.48/build HTTP/1.1
-Content-Type: application/x-tar
-
-[...tar contents...]
-```
-
-**响应体：**
-
-流，格式为：
-
-```
-{"stream": "Step 1/2..."}
-{"stream": "..."}
-{"error": "Error...", "errorDetail": {"message": "Error..."}}
-{"stream": "Successfully built 50f0e01f88b2\n"}
-```
-
-**状态码：**
-
-- **200** – 构建上下文已接受，流已开始。
-- **204** – 构建成功，没有流。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 标记镜像
-
-`POST /images/{name}/tag`
-
-将镜像标记到仓库中。
-
-**路径参数：**
-
-- **name** – 要标记的镜像的名称或 ID。
-
-**查询参数：**
-
-- **repo** – 镜像的存储库。
-- **tag** – 镜像的可选标签。
-
-**状态码：**
-
-- **201** – 镜像已成功标记。
-- **400** – 错误参数
-- **404** – 镜像未找到
-- **409** – 标签已存在，无错误
-- **500** – 服务器错误
-
-### 检查镜像
-
-`GET /images/{name}/json`
-
-返回关于单个镜像的信息。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**查询参数：**
-
-- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 获取镜像的构建历史
-
-`GET /images/{name}/history`
-
-返回镜像的历史。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 推送镜像
-
-`POST /images/{name}/push`
-
-将镜像推送到仓库。
-
-如果图像名称仅指定图像 ID，Docker 守护进程将返回错误。
-
-**路径参数：**
-
-- **name** – 要推送的镜像的名称。
-
-**查询参数：**
-
-- **tag** – 要推送的镜像的标签。
-
-**请求头：**
-
-如果图像已经通过身份验证，则应设置 `X-Registry-Auth`。
-
-**示例请求：**
-
-```
-POST /v1.48/images/test:latest/push HTTP/1.1
-X-Registry-Auth: eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6ImFzZGYiLCJzZXJ2ZXIh/4=
-Content-Type: application/octet-stream
-Content-Length: 0
-```
-
-**状态码：**
-
-- **200** – 没有错误。
-- **404** – 镜像不存在。
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/octet-stream
-
-### 删除镜像
-
-`DELETE /images/{name}`
-
-删除一个或多个镜像。
-
-**路径参数：**
-
-- **name** – 要删除的镜像的名称或 ID。
-
-**查询参数：**
-
-- **force** – 强制删除镜像
-- **noprune** – 不删除未标记的父镜像
-
-**状态码：**
-
-- **200** – 镜像已成功删除。
-- **404** – 镜像未找到
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 检查镜像
-
-`GET /images/{name}/json`
-
-返回关于单个镜像的信息。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**查询参数：**
-
-- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 检查镜像
-
-`GET /images/{name}/json`
-
-返回关于单个镜像的信息。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**查询参数：**
-
-- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 获取镜像的构建历史
-
-`GET /images/{name}/history`
-
-返回镜像的历史。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 检查镜像
-
-`GET /images/{name}/json`
-
-返回关于单个镜像的信息。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**查询参数：**
-
-- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 获取镜像的构建历史
-
-`GET /images/{name}/history`
-
-返回镜像的历史。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500** – 服务器错误
-
-**生产者：**
-
-- application/json
-
-### 检查镜像
-
-`GET /images/{name}/json`
-
-返回关于单个镜像的信息。
-
-**路径参数：**
-
-- **name** – 要检查的镜像的名称或 ID。
-
-**查询参数：**
-
-- **size** – 仅在 API >= 1.29 时可用。如果设置为 `true`，则在响应中包含镜像的大小。
-
-**状态码：**
-
-- **200** – 成功
-- **404** – 镜像不存在
-- **500**
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'Y2xpIDo9ICZodHRwLkNsaWVudHsKICAgIFRyYW5zcG9ydDogJmh0dHAuVHJhbnNwb3J0e30sCn0KCnJlcSwgZXJyIDo9IGh0dHAuTmV3UmVxdWVzdCgiR0VUIiwgImh0dHBzOi8vbG9jYWxob3N0OjIzNzYvdmVyc2lvbiIsIG5pbCkKaWYgZXJyICE9IG5pbCB7CiAgICBwYW5pYyhlcnIpCn0KCnJlc3AsIGVyciA6PSBjbGkuRG8ocmVxKQppZiBlcnIgIT0gbmlsIHsKICAgIHBhbmljKGVycikKfQoKLy8gcmVzcCBjb250YWlucyB0aGUgcmVzcG9uc2UgZnJvbSB0aGUgZGFlbW9uLg==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">cli</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Transport</span><span class="p">{},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;GET&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;https://localhost:2376/version&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cli</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// resp contains the response from the daemon.</span></span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="dockerfile-指令">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#dockerfile-%e6%8c%87%e4%bb%a4">
+    Dockerfile 指令
+  </a>
+</h2>
+
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="dockerfile-指令-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#dockerfile-%e6%8c%87%e4%bb%a4-1">
+    Dockerfile 指令
+  </a>
+</h3>
+
+<p>返回 Dockerfile 指令列表。</p>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="dockerfile-指令-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#dockerfile-%e6%8c%87%e4%bb%a4-2">
+    Dockerfile 指令
+  </a>
+</h3>
+
+<p>返回 Dockerfile 指令列表。</p>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="构建">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9e%84%e5%bb%ba">
+    构建
+  </a>
+</h2>
+
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="构建镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f">
+    构建镜像
+  </a>
+</h3>
+
+<p><code>POST /build</code></p>
+<p>构建镜像。</p>
+
+
+  
+
+<blockquote
+  
+  class="admonition not-prose">
+  <p><strong>注意</strong></p>
+<p>此端点仅在 API &gt;= 1.31 时可用。它在较旧的 API 版本中使用 <code>/commit</code>。</p>
+
+  </blockquote>
+
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>t</strong> – 镜像的可选名称。</li>
+<li><strong>remote</strong> – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。</li>
+<li><strong>q</strong> – 保持安静，仅向客户端发送错误。</li>
+<li><strong>nocache</strong> – 不使用缓存。</li>
+<li><strong>pull</strong> – 总是尝试拉取所有镜像的较新版本。</li>
+<li><strong>rm</strong> – 构建成功后删除中间容器。</li>
+<li><strong>forcerm</strong> – 始终删除中间容器，除非构建失败。</li>
+<li><strong>memory</strong> – 内存限制</li>
+<li><strong>memswap</strong> – 总内存（内存 + swap），设置 <code>-1</code> 以启用无限制交换。</li>
+<li><strong>cpushares</strong> – CPU 份额（相对权重）。</li>
+<li><strong>cpusetcpus</strong> – 允许执行的 CPU（0-3, 0,1）。</li>
+<li><strong>cpusetmems</strong> – 允许执行的内存节点（MEM,0-3, 0,1）。</li>
+<li><strong>buildargs</strong> – JSON 映射的字符串对 <code>{&quot;Arg1&quot;: &quot;Value1&quot;, &quot;Arg2&quot;: &quot;Value2&quot; }</code>. 查看 <a class="link" href="https://docs.docker.com/engine/reference/builder/#arg" rel="noopener">使用构建时变量</a> 了解详细信息。</li>
+<li><strong>shmsize</strong> – <code>/dev/shm</code> 的大小，以字节为单位。</li>
+<li><strong>squash</strong> – 将构建过程中的所有图层压缩成一个图层。</li>
+<li><strong>labels</strong> – JSON 映射的字符串对。查看 <a class="link" href="https://docs.docker.com/config/labels-custom-metadata/" rel="noopener">标签</a> 了解详细信息。</li>
+<li><strong>networkmode</strong> – 默认为 <code>default</code> 的网络模式。支持的标准值为：<code>bridge</code>、<code>host</code>、<code>none</code>、<code>container:&lt;name|id&gt;</code> 和 <code>default</code>。</li>
+<li><strong>platform</strong> – 构建镜像的目标平台。</li>
+<li><strong>target</strong> – 构建时目标阶段的名称。</li>
+<li><strong>outputs</strong> – 输出配置。格式：<code>type=docker,dest=-</code></li>
+</ul>
+<p><strong>请求体：</strong></p>
+<p>构建上下文 <code>&quot;Content-type:&quot; &quot;application/x-tar&quot;</code></p>
+<p>可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvYnVpbGQgSFRUUC8xLjEKQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcgoKWy4uLnRhciBjb250ZW50cy4uLl0=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/build HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[...tar contents...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应体：</strong></p>
+<p>流，格式为：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJzdHJlYW0iOiAiU3RlcCAxLzIuLi4ifQp7InN0cmVhbSI6ICIuLi4ifQp7ImVycm9yIjogIkVycm9yLi4uIiwgImVycm9yRGV0YWlsIjogeyJtZXNzYWdlIjogIkVycm9yLi4uIn19Cnsic3RyZWFtIjogIlN1Y2Nlc3NmdWxseSBidWlsdCA1MGYwZTAxZjg4YjJcbiJ9', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Step 1/2...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;error&#34;: &#34;Error...&#34;, &#34;errorDetail&#34;: {&#34;message&#34;: &#34;Error...&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Successfully built 50f0e01f88b2\n&#34;}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 构建上下文已接受，流已开始。</li>
+<li><strong>204</strong> – 构建成功，没有流。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查构建">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e6%9e%84%e5%bb%ba">
+    检查构建
+  </a>
+</h3>
+
+<p><code>POST /build/prune</code></p>
+<p>删除未使用的构建缓存。</p>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>keep-storage</strong> – 要保留的构建缓存的字节数。默认全部删除。</li>
+<li><strong>filter</strong> – 用于过滤结果的值（例如，<code>'until=24h'</code>）。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查构建-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e6%9e%84%e5%bb%ba-1">
+    检查构建
+  </a>
+</h3>
+
+<p><code>GET /build/prune</code></p>
+<p>返回要删除的构建缓存的大小。</p>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>filter</strong> – 用于过滤结果的值（例如，<code>'until=24h'</code>）。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%95%9c%e5%83%8f">
+    镜像
+  </a>
+</h2>
+
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="列出镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%88%97%e5%87%ba%e9%95%9c%e5%83%8f">
+    列出镜像
+  </a>
+</h3>
+
+<p><code>GET /images/json</code></p>
+<p>返回 Docker 守护进程中存储的镜像列表。</p>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li>
+<p><strong>all</strong> – 显示所有镜像。仅显示顶层镜像的默认值为 false。</p>
+</li>
+<li>
+<p><strong>filters</strong> – JSON 编码的值映射，用于按条件过滤结果。</p>
+<p>可用的过滤器：</p>
+<ul>
+<li><code>dangling=true</code></li>
+<li><code>label=key</code> 或 <code>label=&quot;key=value&quot;</code> 的镜像必须包含标签，或具有指定值的标签。</li>
+<li><code>before</code> 接受镜像名称或标签，或短镜像 ID。例如，<code>before=nginx:latest</code>、<code>before=nginx:1.13.0</code> 或 <code>before=a24bb4013296</code>。结果集会扩展为包括在引用镜像之前创建的所有镜像。</li>
+<li><code>reference</code> 根据提供的模式过滤镜像。例如，<code>reference=nginx:*</code>。</li>
+<li><code>shared-size</code> 接受镜像名称、标签、短镜像 ID 或完整镜像 ID。例如，<code>shared-size=nginx:latest</code>、<code>shared-size=nginx:1.13.0</code>、<code>shared-size=a24bb4013296</code> 或 <code>shared-size=sha256:983488c45c22ec896af1253453fad4404f816023cee5037c8177f8ca2c5d9424</code>。结果集会扩展到包括与引用镜像共享图层的所有镜像。</li>
+<li><code>size</code> 接受镜像名称、标签、短镜像 ID 或完整镜像 ID。例如，<code>size=nginx:latest</code>、<code>size=nginx:1.13.0</code>、<code>size=a24bb4013296</code> 或 <code>size=sha256:983488c45c22ec896af1253453fad4404f816023cee5037c8177f8ca2c5d9424</code>。结果集会扩展到包括与引用镜像具有相同大小的所有镜像。</li>
+</ul>
+</li>
+<li>
+<p><strong>digests</strong> – 仅在 API &gt;= 1.25 时可用。如果设置为 <code>true</code>，则为每个镜像返回摘要。</p>
+</li>
+<li>
+<p><strong>shared-size</strong> – 仅在 API &gt;= 1.30 时可用。如果设置为 <code>true</code>，则为每个镜像返回共享大小。</p>
+</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="构建镜像-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f-1">
+    构建镜像
+  </a>
+</h3>
+
+<p><code>POST /build</code></p>
+<p>构建镜像。</p>
+
+
+  
+
+<blockquote
+  
+  class="admonition not-prose">
+  <p><strong>注意</strong></p>
+<p>此端点仅在 API &gt;= 1.31 时可用。它在较旧的 API 版本中使用 <code>/commit</code>。</p>
+
+  </blockquote>
+
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>t</strong> – 镜像的可选名称。</li>
+<li><strong>remote</strong> – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。</li>
+<li><strong>q</strong> – 保持安静，仅向客户端发送错误。</li>
+<li><strong>nocache</strong> – 不使用缓存。</li>
+<li><strong>pull</strong> – 总是尝试拉取所有镜像的较新版本。</li>
+<li><strong>rm</strong> – 构建成功后删除中间容器。</li>
+<li><strong>forcerm</strong> – 始终删除中间容器，除非构建失败。</li>
+<li><strong>memory</strong> – 内存限制</li>
+<li><strong>memswap</strong> – 总内存（内存 + swap），设置 <code>-1</code> 以启用无限制交换。</li>
+<li><strong>cpushares</strong> – CPU 份额（相对权重）。</li>
+<li><strong>cpusetcpus</strong> – 允许执行的 CPU（0-3, 0,1）。</li>
+<li><strong>cpusetmems</strong> – 允许执行的内存节点（MEM,0-3, 0,1）。</li>
+<li><strong>buildargs</strong> – JSON 映射的字符串对 <code>{&quot;Arg1&quot;: &quot;Value1&quot;, &quot;Arg2&quot;: &quot;Value2&quot; }</code>. 查看 <a class="link" href="https://docs.docker.com/engine/reference/builder/#arg" rel="noopener">使用构建时变量</a> 了解详细信息。</li>
+<li><strong>shmsize</strong> – <code>/dev/shm</code> 的大小，以字节为单位。</li>
+<li><strong>squash</strong> – 将构建过程中的所有图层压缩成一个图层。</li>
+<li><strong>labels</strong> – JSON 映射的字符串对。查看 <a class="link" href="https://docs.docker.com/config/labels-custom-metadata/" rel="noopener">标签</a> 了解详细信息。</li>
+<li><strong>networkmode</strong> – 默认为 <code>default</code> 的网络模式。支持的标准值为：<code>bridge</code>、<code>host</code>、<code>none</code>、<code>container:&lt;name|id&gt;</code> 和 <code>default</code>。</li>
+<li><strong>platform</strong> – 构建镜像的目标平台。</li>
+<li><strong>target</strong> – 构建时目标阶段的名称。</li>
+<li><strong>outputs</strong> – 输出配置。格式：<code>type=docker,dest=-</code></li>
+</ul>
+<p><strong>请求体：</strong></p>
+<p>构建上下文 <code>&quot;Content-type:&quot; &quot;application/x-tar&quot;</code></p>
+<p>可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvYnVpbGQgSFRUUC8xLjEKQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcgoKWy4uLnRhciBjb250ZW50cy4uLl0=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/build HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[...tar contents...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应体：</strong></p>
+<p>流，格式为：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJzdHJlYW0iOiAiU3RlcCAxLzIuLi4ifQp7InN0cmVhbSI6ICIuLi4ifQp7ImVycm9yIjogIkVycm9yLi4uIiwgImVycm9yRGV0YWlsIjogeyJtZXNzYWdlIjogIkVycm9yLi4uIn19Cnsic3RyZWFtIjogIlN1Y2Nlc3NmdWxseSBidWlsdCA1MGYwZTAxZjg4YjJcbiJ9', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Step 1/2...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;error&#34;: &#34;Error...&#34;, &#34;errorDetail&#34;: {&#34;message&#34;: &#34;Error...&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Successfully built 50f0e01f88b2\n&#34;}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 构建上下文已接受，流已开始。</li>
+<li><strong>204</strong> – 构建成功，没有流。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="创建镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%88%9b%e5%bb%ba%e9%95%9c%e5%83%8f">
+    创建镜像
+  </a>
+</h3>
+
+<p><code>POST /images/create</code></p>
+<p>从 Docker 守护进程的镜像库中拉取镜像或从 tarball 中导入。</p>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>fromImage</strong> – 使用 <code>image[:tag]</code>、<code>image[@digest]</code> 或 <code>algo:digest</code> 指定要拉取的镜像。当同时指定时，<code>fromImage</code> 优先于 <code>fromSrc</code>。</li>
+<li><strong>fromSrc</strong> – 源 tarball 的 ID。可以是从构建 API 返回的 ID、本地文件（<code>fromSrc=image.tar</code>）或远程 URL（<code>fromSrc=-</code> 表示 STDIN）。当同时指定时，<code>fromImage</code> 优先于 <code>fromSrc</code>。</li>
+<li><strong>repo</strong> – 镜像的存储库。</li>
+<li><strong>tag</strong> – 镜像的标签。</li>
+<li><strong>message</strong> – 导入时要包含的消息。</li>
+<li><strong>platform</strong> – 如果可以使用多个平台，则用于拉取镜像的平台。</li>
+<li><strong>changes</strong> – 应用于从 <code>fromSrc</code> 创建的容器的 <code>Dockerfile</code> 指令列表。</li>
+<li><strong>outputMode</strong> – 仅在 API &gt;= 1.47 时可用。如果设置为 <code>auto</code>，则在从 tarball 导入时返回镜像 ID。</li>
+</ul>
+<p><strong>请求头：</strong></p>
+<p>如果从 tarball 导入，<code>Content-Type</code> 应该是 <code>application/x-tar</code>.</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvaW1hZ2VzL2NyZWF0ZT9mcm9tSW1hZ2U9YWxwaW5lOmxhdGVzdCBIVFRQLzEuMQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/images/create?fromImage=alpine:latest HTTP/1.1</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvaW1hZ2VzL2NyZWF0ZT9mcm9tU3JjPS0mcmVwbz1oZWxsby13b3JsZCBIVFRQLzEuMQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL3gtdGFyCgpbLi4udGFyIGNvbnRlbnQuLi5d', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/images/create?fromSrc=-&amp;repo=hello-world HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[...tar content...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvaW1hZ2VzL2NyZWF0ZT9mcm9tSW1hZ2U9YWxwaW5lOmxhdGVzdCZwbGF0Zm9ybT1hcm0lMkZ2NyBIVFRQLzEuMQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/images/create?fromImage=alpine:latest&amp;platform=arm%2Fv7 HTTP/1.1</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应体：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJzdGF0dXMiOiAiUHVsbGluZy4uLiJ9Cnsic3RhdHVzIjogIlB1bGxpbmciLCAicHJvZ3Jlc3MiOiAiMSBCLyAxMDBCIiwgInByb2dyZXNzRGV0YWlsIjogeyJjdXJyZW50IjogMSwgInRvdGFsIjogMTAwfX0KeyJlcnJvciI6ICJJbnZhbGlkLi4uIn0KLi4uCnsic3RhdHVzIjogIlB1bGwgY29tcGxldGUifQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{&#34;status&#34;: &#34;Pulling...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;status&#34;: &#34;Pulling&#34;, &#34;progress&#34;: &#34;1 B/ 100B&#34;, &#34;progressDetail&#34;: {&#34;current&#34;: 1, &#34;total&#34;: 100}}
+</span></span><span class="line"><span class="cl">{&#34;error&#34;: &#34;Invalid...&#34;}
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">{&#34;status&#34;: &#34;Pull complete&#34;}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 没有错误。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e9%95%9c%e5%83%8f">
+    检查镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/json</code></p>
+<p>返回关于单个镜像的信息。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>size</strong> – 仅在 API &gt;= 1.29 时可用。如果设置为 <code>true</code>，则在响应中包含镜像的大小。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="获取镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%8e%b7%e5%8f%96%e9%95%9c%e5%83%8f">
+    获取镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/get</code></p>
+<p>获取镜像的 tarball，可以是单个镜像或仓库。</p>
+<p>如果名称是镜像 ID，则会将镜像的 tarball 作为流返回。</p>
+<p>如果名称是镜像名称或名称和标签，则会将仓库的 tarball 作为流返回，其中包含所有具有该名称和标签的所有镜像。</p>
+<p>下载多个镜像时，流的格式与 <code>docker save</code> 的输出相同。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检索的镜像或仓库的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>allTags</strong> – 如果存在，则除了镜像 ID 之外，还会下载具有 <code>name</code> 的所有镜像。</li>
+</ul>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'R0VUIC92MS40OC9pbWFnZXMvZXhhbXBsZSUyRjIwNDg6bGF0ZXN0L2dldCBIVFRQLzEuMQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /v1.48/images/example%2F2048:latest/get HTTP/1.1</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应头：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'Q29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcg==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Content-Type: application/x-tar</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 请求成功，镜像作为 tar 流返回。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/x-tar</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="获取镜像的所有图层">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%8e%b7%e5%8f%96%e9%95%9c%e5%83%8f%e7%9a%84%e6%89%80%e6%9c%89%e5%9b%be%e5%b1%82">
+    获取镜像的所有图层
+  </a>
+</h3>
+
+<p><code>GET /images/get</code></p>
+<p>获取一个或多个镜像的所有图层的 tarball。</p>
+<p>对于每个镜像，会有一个 tar 包含图层。</p>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>names</strong> – 要检索的镜像的名称或 ID。</li>
+</ul>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'R0VUIC92MS40OC9pbWFnZXMvZ2V0P25hbWVzPXNvbWVJbWFnZSZuYW1lcz1leGFtcGxlJTJGMjA0ODpsYXRlc3QmbmFtZXM9YWxwaW5lOjMuNSBIVFRQLzEuMQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /v1.48/images/get?names=someImage&amp;names=example%2F2048:latest&amp;names=alpine:3.5 HTTP/1.1</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应头：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'Q29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcg==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Content-Type: application/x-tar</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 请求成功，镜像作为 tar 流返回。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/x-tar</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="加载镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8a%a0%e8%bd%bd%e9%95%9c%e5%83%8f">
+    加载镜像
+  </a>
+</h3>
+
+<p><code>POST /images/load</code></p>
+<p>将镜像加载到 Docker 守护进程中。</p>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>quiet</strong> – 仅在 API &gt;= 1.23 时可用。</li>
+<li><strong>stream</strong> – 仅在 API &gt;= 1.47 时可用。如果设置为 <code>true</code>，则在加载 tarball 时将响应作为流返回。</li>
+</ul>
+<p><strong>请求头：</strong></p>
+<p><code>Content-Type</code> 应该是 <code>application/x-tar</code>.</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvaW1hZ2VzL2xvYWQ/cXVpZXQ9MCBIVFRQLzEuMQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL3gtdGFyCkNvbnRlbnQtTGVuZ3RoOiA5ODU3ClsuLi50YXIgY29udGVudHMuLi5d', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/images/load?quiet=0 HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">Content-Length: 9857
+</span></span><span class="line"><span class="cl">[...tar contents...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvaW1hZ2VzL2xvYWQ/c3RyZWFtPXRydWUgSFRUUC8xLjEKQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcgpDb250ZW50LUxlbmd0aDogOTg1NwpbLi4udGFyIGNvbnRlbnRzLi4uXQ==', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/images/load?stream=true HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">Content-Length: 9857
+</span></span><span class="line"><span class="cl">[...tar contents...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应体：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJzdHJlYW0iOiAiTG9hZGluZyBsYXllciJ9Cnsic3RyZWFtIjogIi4uLiJ9CnsiZXJyb3IiOiAiRXJyb3IuLi4iLCAiZXJyb3JEZXRhaWwiOiB7Im1lc3NhZ2UiOiAiRXJyb3IuLi4ifX0KeyJzdHJlYW0iOiAiTG9hZGluZyBjb21wbGV0ZSJ9', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Loading layer&#34;}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;error&#34;: &#34;Error...&#34;, &#34;errorDetail&#34;: {&#34;message&#34;: &#34;Error...&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Loading complete&#34;}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 没有错误。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="删除镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%88%a0%e9%99%a4%e9%95%9c%e5%83%8f">
+    删除镜像
+  </a>
+</h3>
+
+<p><code>DELETE /images/{name}</code></p>
+<p>删除一个或多个镜像。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要删除的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>force</strong> – 强制删除镜像</li>
+<li><strong>noprune</strong> – 不删除未标记的父镜像</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 镜像已成功删除。</li>
+<li><strong>404</strong> – 镜像未找到</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="搜索-docker-hub">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%90%9c%e7%b4%a2-docker-hub">
+    搜索 Docker Hub
+  </a>
+</h3>
+
+<p><code>GET /images/search</code></p>
+<p>搜索 Docker Hub 或守护进程配置的注册表。</p>
+
+
+  
+
+<blockquote
+  
+  class="admonition not-prose">
+  <p><strong>注意</strong></p>
+<p>使用此端点搜索注册表 2.0+（如 Docker Hub）仅在守护进程配置为使用注册表 2.0+ 时有效。</p>
+
+  </blockquote>
+
+<p><strong>查询参数：</strong></p>
+<ul>
+<li>
+<p><strong>term</strong> – 要搜索的术语。</p>
+</li>
+<li>
+<p><strong>limit</strong> – 搜索结果的最大数量。</p>
+</li>
+<li>
+<p><strong>filters</strong> – JSON 编码的值映射，用于按条件过滤结果。</p>
+<p>可用的过滤器：</p>
+<ul>
+<li><code>is-automated=true</code></li>
+<li><code>is-official=true</code></li>
+<li><code>stars=N</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 没有错误。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="构建镜像-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f-2">
+    构建镜像
+  </a>
+</h3>
+
+<p><code>POST /build</code></p>
+<p>构建镜像。</p>
+
+
+  
+
+<blockquote
+  
+  class="admonition not-prose">
+  <p><strong>注意</strong></p>
+<p>此端点仅在 API &gt;= 1.31 时可用。它在较旧的 API 版本中使用 <code>/commit</code>。</p>
+
+  </blockquote>
+
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>t</strong> – 镜像的可选名称。</li>
+<li><strong>remote</strong> – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。</li>
+<li><strong>q</strong> – 保持安静，仅向客户端发送错误。</li>
+<li><strong>nocache</strong> – 不使用缓存。</li>
+<li><strong>pull</strong> – 总是尝试拉取所有镜像的较新版本。</li>
+<li><strong>rm</strong> – 构建成功后删除中间容器。</li>
+<li><strong>forcerm</strong> – 始终删除中间容器，除非构建失败。</li>
+<li><strong>memory</strong> – 内存限制</li>
+<li><strong>memswap</strong> – 总内存（内存 + swap），设置 <code>-1</code> 以启用无限制交换。</li>
+<li><strong>cpushares</strong> – CPU 份额（相对权重）。</li>
+<li><strong>cpusetcpus</strong> – 允许执行的 CPU（0-3, 0,1）。</li>
+<li><strong>cpusetmems</strong> – 允许执行的内存节点（MEM,0-3, 0,1）。</li>
+<li><strong>buildargs</strong> – JSON 映射的字符串对 <code>{&quot;Arg1&quot;: &quot;Value1&quot;, &quot;Arg2&quot;: &quot;Value2&quot; }</code>. 查看 <a class="link" href="https://docs.docker.com/engine/reference/builder/#arg" rel="noopener">使用构建时变量</a> 了解详细信息。</li>
+<li><strong>shmsize</strong> – <code>/dev/shm</code> 的大小，以字节为单位。</li>
+<li><strong>squash</strong> – 将构建过程中的所有图层压缩成一个图层。</li>
+<li><strong>labels</strong> – JSON 映射的字符串对。查看 <a class="link" href="https://docs.docker.com/config/labels-custom-metadata/" rel="noopener">标签</a> 了解详细信息。</li>
+<li><strong>networkmode</strong> – 默认为 <code>default</code> 的网络模式。支持的标准值为：<code>bridge</code>、<code>host</code>、<code>none</code>、<code>container:&lt;name|id&gt;</code> 和 <code>default</code>。</li>
+<li><strong>platform</strong> – 构建镜像的目标平台。</li>
+<li><strong>target</strong> – 构建时目标阶段的名称。</li>
+<li><strong>outputs</strong> – 输出配置。格式：<code>type=docker,dest=-</code></li>
+</ul>
+<p><strong>请求体：</strong></p>
+<p>构建上下文 <code>&quot;Content-type:&quot; &quot;application/x-tar&quot;</code></p>
+<p>可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvYnVpbGQgSFRUUC8xLjEKQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcgoKWy4uLnRhciBjb250ZW50cy4uLl0=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/build HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[...tar contents...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应体：</strong></p>
+<p>流，格式为：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJzdHJlYW0iOiAiU3RlcCAxLzIuLi4ifQp7InN0cmVhbSI6ICIuLi4ifQp7ImVycm9yIjogIkVycm9yLi4uIiwgImVycm9yRGV0YWlsIjogeyJtZXNzYWdlIjogIkVycm9yLi4uIn19Cnsic3RyZWFtIjogIlN1Y2Nlc3NmdWxseSBidWlsdCA1MGYwZTAxZjg4YjJcbiJ9', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Step 1/2...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;error&#34;: &#34;Error...&#34;, &#34;errorDetail&#34;: {&#34;message&#34;: &#34;Error...&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Successfully built 50f0e01f88b2\n&#34;}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 构建上下文已接受，流已开始。</li>
+<li><strong>204</strong> – 构建成功，没有流。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="构建镜像-3">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f-3">
+    构建镜像
+  </a>
+</h3>
+
+<p><code>POST /build</code></p>
+<p>构建镜像。</p>
+
+
+  
+
+<blockquote
+  
+  class="admonition not-prose">
+  <p><strong>注意</strong></p>
+<p>此端点仅在 API &gt;= 1.31 时可用。它在较旧的 API 版本中使用 <code>/commit</code>。</p>
+
+  </blockquote>
+
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>t</strong> – 镜像的可选名称。</li>
+<li><strong>remote</strong> – 远程 Git 仓库的 URL，如果空字符串则从 STDIN 读取上下文。</li>
+<li><strong>q</strong> – 保持安静，仅向客户端发送错误。</li>
+<li><strong>nocache</strong> – 不使用缓存。</li>
+<li><strong>pull</strong> – 总是尝试拉取所有镜像的较新版本。</li>
+<li><strong>rm</strong> – 构建成功后删除中间容器。</li>
+<li><strong>forcerm</strong> – 始终删除中间容器，除非构建失败。</li>
+<li><strong>memory</strong> – 内存限制</li>
+<li><strong>memswap</strong> – 总内存（内存 + swap），设置 <code>-1</code> 以启用无限制交换。</li>
+<li><strong>cpushares</strong> – CPU 份额（相对权重）。</li>
+<li><strong>cpusetcpus</strong> – 允许执行的 CPU（0-3, 0,1）。</li>
+<li><strong>cpusetmems</strong> – 允许执行的内存节点（MEM,0-3, 0,1）。</li>
+<li><strong>buildargs</strong> – JSON 映射的字符串对 <code>{&quot;Arg1&quot;: &quot;Value1&quot;, &quot;Arg2&quot;: &quot;Value2&quot; }</code>. 查看 <a class="link" href="https://docs.docker.com/engine/reference/builder/#arg" rel="noopener">使用构建时变量</a> 了解详细信息。</li>
+<li><strong>shmsize</strong> – <code>/dev/shm</code> 的大小，以字节为单位。</li>
+<li><strong>squash</strong> – 将构建过程中的所有图层压缩成一个图层。</li>
+<li><strong>labels</strong> – JSON 映射的字符串对。查看 <a class="link" href="https://docs.docker.com/config/labels-custom-metadata/" rel="noopener">标签</a> 了解详细信息。</li>
+<li><strong>networkmode</strong> – 默认为 <code>default</code> 的网络模式。支持的标准值为：<code>bridge</code>、<code>host</code>、<code>none</code>、<code>container:&lt;name|id&gt;</code> 和 <code>default</code>。</li>
+<li><strong>platform</strong> – 构建镜像的目标平台。</li>
+<li><strong>target</strong> – 构建时目标阶段的名称。</li>
+<li><strong>outputs</strong> – 输出配置。格式：<code>type=docker,dest=-</code></li>
+</ul>
+<p><strong>请求体：</strong></p>
+<p>构建上下文 <code>&quot;Content-type:&quot; &quot;application/x-tar&quot;</code></p>
+<p>可以通过将 Dockerfile 作为 tar 存档传递给 Docker 守护进程来构建 Docker 镜像。存档应该包含构建 Docker 镜像所需的所有文件。注意：在 Docker 1.0.1 版本之前，构建过程将递归地将所有文件发送到守护进程。</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvYnVpbGQgSFRUUC8xLjEKQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi94LXRhcgoKWy4uLnRhciBjb250ZW50cy4uLl0=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/build HTTP/1.1
+</span></span><span class="line"><span class="cl">Content-Type: application/x-tar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[...tar contents...]</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>响应体：</strong></p>
+<p>流，格式为：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'eyJzdHJlYW0iOiAiU3RlcCAxLzIuLi4ifQp7InN0cmVhbSI6ICIuLi4ifQp7ImVycm9yIjogIkVycm9yLi4uIiwgImVycm9yRGV0YWlsIjogeyJtZXNzYWdlIjogIkVycm9yLi4uIn19Cnsic3RyZWFtIjogIlN1Y2Nlc3NmdWxseSBidWlsdCA1MGYwZTAxZjg4YjJcbiJ9', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Step 1/2...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;...&#34;}
+</span></span><span class="line"><span class="cl">{&#34;error&#34;: &#34;Error...&#34;, &#34;errorDetail&#34;: {&#34;message&#34;: &#34;Error...&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;stream&#34;: &#34;Successfully built 50f0e01f88b2\n&#34;}</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 构建上下文已接受，流已开始。</li>
+<li><strong>204</strong> – 构建成功，没有流。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="标记镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a0%87%e8%ae%b0%e9%95%9c%e5%83%8f">
+    标记镜像
+  </a>
+</h3>
+
+<p><code>POST /images/{name}/tag</code></p>
+<p>将镜像标记到仓库中。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要标记的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>repo</strong> – 镜像的存储库。</li>
+<li><strong>tag</strong> – 镜像的可选标签。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>201</strong> – 镜像已成功标记。</li>
+<li><strong>400</strong> – 错误参数</li>
+<li><strong>404</strong> – 镜像未找到</li>
+<li><strong>409</strong> – 标签已存在，无错误</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查镜像-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e9%95%9c%e5%83%8f-1">
+    检查镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/json</code></p>
+<p>返回关于单个镜像的信息。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>size</strong> – 仅在 API &gt;= 1.29 时可用。如果设置为 <code>true</code>，则在响应中包含镜像的大小。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="获取镜像的构建历史">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%8e%b7%e5%8f%96%e9%95%9c%e5%83%8f%e7%9a%84%e6%9e%84%e5%bb%ba%e5%8e%86%e5%8f%b2">
+    获取镜像的构建历史
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/history</code></p>
+<p>返回镜像的历史。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="推送镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%8e%a8%e9%80%81%e9%95%9c%e5%83%8f">
+    推送镜像
+  </a>
+</h3>
+
+<p><code>POST /images/{name}/push</code></p>
+<p>将镜像推送到仓库。</p>
+<p>如果图像名称仅指定图像 ID，Docker 守护进程将返回错误。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要推送的镜像的名称。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>tag</strong> – 要推送的镜像的标签。</li>
+</ul>
+<p><strong>请求头：</strong></p>
+<p>如果图像已经通过身份验证，则应设置 <code>X-Registry-Auth</code>。</p>
+<p><strong>示例请求：</strong></p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'UE9TVCAvdjEuNDgvaW1hZ2VzL3Rlc3Q6bGF0ZXN0L3B1c2ggSFRUUC8xLjEKWC1SZWdpc3RyeS1BdXRoOiBleUoxYzJWeWJtRnRaU0k2SW5SbGMzUWlMQ0p3WVhOemQyOXlaQ0k2SW1GelpHWWlMQ0p6WlhKMlpYSWgvND0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0KQ29udGVudC1MZW5ndGg6IDA=', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">POST /v1.48/images/test:latest/push HTTP/1.1
+</span></span><span class="line"><span class="cl">X-Registry-Auth: eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6ImFzZGYiLCJzZXJ2ZXIh/4=
+</span></span><span class="line"><span class="cl">Content-Type: application/octet-stream
+</span></span><span class="line"><span class="cl">Content-Length: 0</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 没有错误。</li>
+<li><strong>404</strong> – 镜像不存在。</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/octet-stream</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="删除镜像-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%88%a0%e9%99%a4%e9%95%9c%e5%83%8f-1">
+    删除镜像
+  </a>
+</h3>
+
+<p><code>DELETE /images/{name}</code></p>
+<p>删除一个或多个镜像。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要删除的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>force</strong> – 强制删除镜像</li>
+<li><strong>noprune</strong> – 不删除未标记的父镜像</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 镜像已成功删除。</li>
+<li><strong>404</strong> – 镜像未找到</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查镜像-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e9%95%9c%e5%83%8f-2">
+    检查镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/json</code></p>
+<p>返回关于单个镜像的信息。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>size</strong> – 仅在 API &gt;= 1.29 时可用。如果设置为 <code>true</code>，则在响应中包含镜像的大小。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查镜像-3">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e9%95%9c%e5%83%8f-3">
+    检查镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/json</code></p>
+<p>返回关于单个镜像的信息。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>size</strong> – 仅在 API &gt;= 1.29 时可用。如果设置为 <code>true</code>，则在响应中包含镜像的大小。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="获取镜像的构建历史-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%8e%b7%e5%8f%96%e9%95%9c%e5%83%8f%e7%9a%84%e6%9e%84%e5%bb%ba%e5%8e%86%e5%8f%b2-1">
+    获取镜像的构建历史
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/history</code></p>
+<p>返回镜像的历史。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查镜像-4">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e9%95%9c%e5%83%8f-4">
+    检查镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/json</code></p>
+<p>返回关于单个镜像的信息。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>size</strong> – 仅在 API &gt;= 1.29 时可用。如果设置为 <code>true</code>，则在响应中包含镜像的大小。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="获取镜像的构建历史-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%8e%b7%e5%8f%96%e9%95%9c%e5%83%8f%e7%9a%84%e6%9e%84%e5%bb%ba%e5%8e%86%e5%8f%b2-2">
+    获取镜像的构建历史
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/history</code></p>
+<p>返回镜像的历史。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong> – 服务器错误</li>
+</ul>
+<p><strong>生产者：</strong></p>
+<ul>
+<li>application/json</li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="检查镜像-5">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a3%80%e6%9f%a5%e9%95%9c%e5%83%8f-5">
+    检查镜像
+  </a>
+</h3>
+
+<p><code>GET /images/{name}/json</code></p>
+<p>返回关于单个镜像的信息。</p>
+<p><strong>路径参数：</strong></p>
+<ul>
+<li><strong>name</strong> – 要检查的镜像的名称或 ID。</li>
+</ul>
+<p><strong>查询参数：</strong></p>
+<ul>
+<li><strong>size</strong> – 仅在 API &gt;= 1.29 时可用。如果设置为 <code>true</code>，则在响应中包含镜像的大小。</li>
+</ul>
+<p><strong>状态码：</strong></p>
+<ul>
+<li><strong>200</strong> – 成功</li>
+<li><strong>404</strong> – 镜像不存在</li>
+<li><strong>500</strong></li>
+</ul>
+
+
+**OpenAPI Specification:** [Docker Engine API v1.48 参考文档 API Spec](/reference/api/engine/version/v1.48.yaml)
+
+This page provides interactive API documentation. For the machine-readable OpenAPI specification, see the link above.

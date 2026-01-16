@@ -1,4 +1,21 @@
-# 常见挑战与问题
+---
+title: 常见挑战与问题
+url: /guides/docker-scout/common-questions/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: 常见挑战与问题
+    url: /guides/docker-scout/common-questions/
+next:
+  title: 修复
+  url: /guides/docker-scout/remediation/
+---
+
 
 <!-- vale Docker.HeadingLength = NO -->
 

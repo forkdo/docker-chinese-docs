@@ -1,4 +1,21 @@
-# Docker Desktop for Windows 中的 GPU 支持
+---
+title: Docker Desktop for Windows 中的 GPU 支持
+url: /desktop/features/gpu/
+parent:
+  title: Docker Desktop
+  url: /desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: Docker Desktop for Windows 中的 GPU 支持
+    url: /desktop/features/gpu/
+prev:
+  title: 在 Docker Desktop 中使用 USB/IP
+  url: /desktop/features/usbip/
+---
+
 
 > [!NOTE]
 >

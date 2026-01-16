@@ -1,4 +1,31 @@
-# 仓库
+---
+title: 仓库
+url: /docker-hub/repos/
+parent:
+  title: Docker Hub
+  url: /docker-hub/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+children:
+  - title: 创建仓库
+    url: /docker-hub/repos/create/
+    description: 了解如何在 Docker Hub 上创建仓库
+  - title: 归档或取消归档仓库
+    url: /docker-hub/repos/archive/
+    description: 了解如何在 Docker Hub 上归档或取消归档仓库
+  - title: 删除仓库
+    url: /docker-hub/repos/delete/
+    description: 了解如何删除 Docker Hub 上的仓库
+  - title: 仓库个人设置
+    url: /docker-hub/repos/settings/
+    description: 了解 Docker Hub 中的个人仓库设置
+---
+
 
 Docker Hub 仓库是容器镜像的集合，使您能够公开或私下存储、管理和共享 Docker 镜像。每个仓库都作为一个专用空间，用于存储与特定应用程序、微服务或项目相关的镜像。仓库中的内容通过标签进行组织，这些标签代表同一应用程序的不同版本，允许用户在需要时拉取正确的版本。
 
@@ -24,12 +51,3 @@ Docker Hub 仓库是容器镜像的集合，使您能够公开或私下存储、
 - [归档](./archive.md) 过时或不受支持的仓库。
 - [删除](./delete.md) 仓库。
 - [管理个人设置](./settings.md)：对于您的帐户，您可以为仓库设置个人偏好，包括默认仓库隐私和自动构建通知。
-
-- [创建仓库](/docker-hub/repos/create/)
-
-- [归档或取消归档仓库](/docker-hub/repos/archive/)
-
-- [删除仓库](/docker-hub/repos/delete/)
-
-- [仓库个人设置](/docker-hub/repos/settings/)
-

@@ -1,7 +1,25 @@
-# 软件供应链安全
+---
+title: 软件供应链安全
+url: /guides/docker-scout/s3c/
+parent:
+  title: 使用 Docker Scout 保障您的软件供应链安全
+  url: /guides/docker-scout/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: 使用 Docker Scout 保障您的软件供应链安全
+    url: /guides/docker-scout/
+  - title: 软件供应链安全
+    url: /guides/docker-scout/s3c/
+next:
+  title: Docker Scout demo
+  url: /guides/docker-scout/demo/
+prev:
+  title: 软件物料清单
+  url: /guides/docker-scout/sbom/
+---
 
-<div id="youtube-player-YzNK6E7APv0" data-video-id="YzNK6E7APv0" class="youtube-video aspect-video h-fit w-full py-2">
-</div>
+
 
 
 术语“软件供应链”指的是从开发到部署和维护的软件开发和交付的端到端过程。软件供应链安全，简称“S3C”，是保护供应链组件和流程的实践。

@@ -1,4 +1,26 @@
-# Overriding configurations
+---
+title: Overriding configurations
+url: /build/bake/overrides/
+parent:
+  title: Bake
+  url: /build/bake/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Build
+    url: /build/
+  - title: Bake
+    url: /build/bake/
+  - title: Overriding configurations
+    url: /build/bake/overrides/
+next:
+  title: Building with Bake from a Compose file
+  url: /build/bake/compose-file/
+prev:
+  title: Remote Bake file definition
+  url: /build/bake/remote-definition/
+---
+
 
 Bake supports loading build definitions from files, but sometimes you need even
 more flexibility to configure these definitions. For example, you might want to

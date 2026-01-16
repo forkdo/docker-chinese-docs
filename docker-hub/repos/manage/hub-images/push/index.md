@@ -1,4 +1,28 @@
-# 将镜像推送到仓库
+---
+title: 将镜像推送到仓库
+url: /docker-hub/repos/manage/hub-images/push/
+parent:
+  title: 镜像管理
+  url: /docker-hub/repos/manage/hub-images/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 镜像管理
+    url: /docker-hub/repos/manage/hub-images/
+  - title: 将镜像推送到仓库
+    url: /docker-hub/repos/manage/hub-images/push/
+next:
+  title: Docker Hub 上的软件制品
+  url: /docker-hub/repos/manage/hub-images/oci-artifacts/
+prev:
+  title: 在仓库之间移动镜像
+  url: /docker-hub/repos/manage/hub-images/move/
+---
+
 
 要向 Docker Hub 上的仓库添加内容，您需要先为您的 Docker 镜像打上标签，然后将其推送到您的仓库。此过程可让您与他人共享镜像或在不同的环境中使用它们。
 

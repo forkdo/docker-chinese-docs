@@ -1,4 +1,26 @@
-# 在 Docker Desktop 中探索卷视图
+---
+title: 在 Docker Desktop 中探索卷视图
+url: /desktop/use-desktop/volumes/
+parent:
+  title: 探索 Docker Desktop
+  url: /desktop/use-desktop/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Desktop
+    url: /desktop/
+  - title: 探索 Docker Desktop
+    url: /desktop/use-desktop/
+  - title: 在 Docker Desktop 中探索卷视图
+    url: /desktop/use-desktop/volumes/
+next:
+  title: 探索 Docker Desktop 中的 Images 视图
+  url: /desktop/use-desktop/images/
+prev:
+  title: 探索 Docker Desktop 中的构建视图
+  url: /desktop/use-desktop/builds/
+---
+
 
 Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删除、克隆、清空、导出和导入 [Docker 卷](/manuals/engine/storage/volumes.md)。您还可以浏览卷中的文件和文件夹，并查看哪些容器正在使用它们。
 
@@ -94,77 +116,28 @@ Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删�
 4. 选择 **Quick export**（快速导出）。
 5. 选择是将卷导出到 **Local or Hub storage**（本地或 Hub 存储）还是 **External cloud storage**（外部云存储），然后根据您的选择指定以下附加详细信息。
 
+   **Local or Hub storage**
+
+
    
+   - **Local file**（本地文件）：指定文件名并选择文件夹。
+   - **Local image**（本地镜像）：选择要将内容导出到的本地镜像。镜像中的任何现有数据都将被导出的内容替换。
+   - **New image**（新镜像）：指定新镜像的名称。
+   - **Registry**（注册表）：指定 Docker Hub 仓库。
+
+   **External cloud storage**
 
 
 
+   您必须拥有 [Docker Business 订阅](https://www.docker.com/pricing/)才能导出到外部云提供商。
 
+   选择您的云提供商，然后指定上传到存储的 URL。请参阅以下针对您的云提供商的文档以了解如何获取 URL。
 
+   - Amazon Web Services: [使用 AWS SDK 创建 Amazon S3 的预签名 URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example_s3_Scenario_PresignedUrl_section.html)
+   - Microsoft Azure: [生成 SAS 令牌和 URL](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/generate-sas-token)
+   - Google Cloud: [创建用于上传对象的签名 URL](https://cloud.google.com/storage/docs/access-control/signing-urls-with-helpers#upload-object)
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Local-or-Hub-storage' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Local-or-Hub-storage' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Local-or-Hub-storage'"
-        
-      >
-        Local or Hub storage
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'External-cloud-storage' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'External-cloud-storage'"
-        
-      >
-        External cloud storage
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Local-or-Hub-storage' && 'hidden'"
-      >
-        <ul>
-<li><strong>Local file</strong>（本地文件）：指定文件名并选择文件夹。</li>
-<li><strong>Local image</strong>（本地镜像）：选择要将内容导出到的本地镜像。镜像中的任何现有数据都将被导出的内容替换。</li>
-<li><strong>New image</strong>（新镜像）：指定新镜像的名称。</li>
-<li><strong>Registry</strong>（注册表）：指定 Docker Hub 仓库。</li>
-</ul>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'External-cloud-storage' && 'hidden'"
-      >
-        <p>您必须拥有 <a class="link" href="https://www.docker.com/pricing/" rel="noopener">Docker Business 订阅</a>才能导出到外部云提供商。</p>
-<p>选择您的云提供商，然后指定上传到存储的 URL。请参阅以下针对您的云提供商的文档以了解如何获取 URL。</p>
-<ul>
-<li>Amazon Web Services: <a class="link" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example_s3_Scenario_PresignedUrl_section.html" rel="noopener">使用 AWS SDK 创建 Amazon S3 的预签名 URL</a></li>
-<li>Microsoft Azure: <a class="link" href="https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/generate-sas-token" rel="noopener">生成 SAS 令牌和 URL</a></li>
-<li>Google Cloud: <a class="link" href="https://cloud.google.com/storage/docs/access-control/signing-urls-with-helpers#upload-object" rel="noopener">创建用于上传对象的签名 URL</a></li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
-
+   
 
 6. 选择 **Save**（保存）。
 
@@ -182,77 +155,28 @@ Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删�
 
 6. 选择是将卷导出到 **Local or Hub storage**（本地或 Hub 存储）还是 **External cloud storage**（外部云存储），然后根据您的选择指定以下附加详细信息。
    
+   **Local or Hub storage**
+
+
    
+   - **Local file**（本地文件）：指定文件名并选择文件夹。
+   - **Local image**（本地镜像）：选择要将内容导出到的本地镜像。镜像中的任何现有数据都将被导出的内容替换。
+   - **New image**（新镜像）：指定新镜像的名称。
+   - **Registry**（注册表）：指定 Docker Hub 仓库。
+
+   **External cloud storage**
 
 
 
+   您必须拥有 [Docker Business 订阅](https://www.docker.com/pricing/)才能导出到外部云提供商。
 
+   选择您的云提供商，然后指定上传到存储的 URL。请参阅以下针对您的云提供商的文档以了解如何获取 URL。
 
+   - Amazon Web Services: [使用 AWS SDK 创建 Amazon S3 的预签名 URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example_s3_Scenario_PresignedUrl_section.html)
+   - Microsoft Azure: [生成 SAS 令牌和 URL](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/generate-sas-token)
+   - Google Cloud: [创建用于上传对象的签名 URL](https://cloud.google.com/storage/docs/access-control/signing-urls-with-helpers#upload-object)
 
-<div
-  class="tabs"
-  
-    x-data="{ selected: 'Local-or-Hub-storage' }"
-  
-  aria-role="tabpanel"
->
-  <div aria-role="tablist" class="tablist">
-    
-      <button
-        class="tab-item"
-        :class="selected === 'Local-or-Hub-storage' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'Local-or-Hub-storage'"
-        
-      >
-        Local or Hub storage
-      </button>
-    
-      <button
-        class="tab-item"
-        :class="selected === 'External-cloud-storage' &&
-          'border-blue border-b-4 dark:border-b-blue-600'"
-        
-          @click="selected = 'External-cloud-storage'"
-        
-      >
-        External cloud storage
-      </button>
-    
-  </div>
-  <div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'Local-or-Hub-storage' && 'hidden'"
-      >
-        <ul>
-<li><strong>Local file</strong>（本地文件）：指定文件名并选择文件夹。</li>
-<li><strong>Local image</strong>（本地镜像）：选择要将内容导出到的本地镜像。镜像中的任何现有数据都将被导出的内容替换。</li>
-<li><strong>New image</strong>（新镜像）：指定新镜像的名称。</li>
-<li><strong>Registry</strong>（注册表）：指定 Docker Hub 仓库。</li>
-</ul>
-
-      </div>
-    
-      <div
-        aria-role="tab"
-        :class="selected !== 'External-cloud-storage' && 'hidden'"
-      >
-        <p>您必须拥有 <a class="link" href="https://www.docker.com/pricing/" rel="noopener">Docker Business 订阅</a>才能导出到外部云提供商。</p>
-<p>选择您的云提供商，然后指定上传到存储的 URL。请参阅以下针对您的云提供商的文档以了解如何获取 URL。</p>
-<ul>
-<li>Amazon Web Services: <a class="link" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example_s3_Scenario_PresignedUrl_section.html" rel="noopener">使用 AWS SDK 创建 Amazon S3 的预签名 URL</a></li>
-<li>Microsoft Azure: <a class="link" href="https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/generate-sas-token" rel="noopener">生成 SAS 令牌和 URL</a></li>
-<li>Google Cloud: <a class="link" href="https://cloud.google.com/storage/docs/access-control/signing-urls-with-helpers#upload-object" rel="noopener">创建用于上传对象的签名 URL</a></li>
-</ul>
-
-      </div>
-    
-  </div>
-</div>
-
+   
 
 7. 选择 **Save**（保存）。
 

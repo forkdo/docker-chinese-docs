@@ -1,4 +1,24 @@
-# 格式化命令和日志输出
+---
+title: 格式化命令和日志输出
+url: /engine/cli/formatting/
+parent:
+  title: Docker Engine
+  url: /engine/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Engine
+    url: /engine/
+  - title: 格式化命令和日志输出
+    url: /engine/cli/formatting/
+next:
+  title: 过滤命令
+  url: /engine/cli/filter/
+prev:
+  title: Docker CLI 的 OpenTelemetry
+  url: /engine/cli/otel/
+---
+
 
 Docker 支持 [Go templates](https://golang.org/pkg/text/template/)，您可以用它来操作某些命令和日志驱动的输出格式。
 

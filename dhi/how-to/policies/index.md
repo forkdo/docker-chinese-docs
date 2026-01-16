@@ -1,4 +1,26 @@
-# 使用策略强制执行 Docker Hardened Image 用法
+---
+title: 使用策略强制执行 Docker Hardened Image 用法
+url: /dhi/how-to/policies/
+parent:
+  title: 操作指南
+  url: /dhi/how-to/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hardened Images
+    url: /dhi/
+  - title: 操作指南
+    url: /dhi/how-to/
+  - title: 使用策略强制执行 Docker Hardened Image 用法
+    url: /dhi/how-to/policies/
+next:
+  title: 扫描 Docker Hardened Images
+  url: /dhi/how-to/scan/
+prev:
+  title: 调试 Docker Hardened Image 容器
+  url: /dhi/how-to/debug/
+---
+
 
 当您拥有 Docker Hardened Images 企业订阅时，镜像 Docker Hardened Image (DHI) 仓库会自动启用 [Docker Scout](/scout/)，无需额外设置即可开始强制执行镜像的安全性和合规性策略。使用 Docker Scout 策略，您可以定义并应用规则，以确保只有经过批准且安全的镜像（例如基于 DHI 的镜像）在您的环境中使用。
 

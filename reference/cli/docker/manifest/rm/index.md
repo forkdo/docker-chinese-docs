@@ -1,4 +1,30 @@
-# docker manifest rm
+---
+title: docker manifest rm
+url: /reference/cli/docker/manifest/rm/
+parent:
+  title: docker manifest
+  url: /reference/cli/docker/manifest/
+breadcrumbs:
+  - title: 参考文档
+    url: /reference/
+  - title: CLI 参考
+    url: /reference/cli/
+  - title: docker
+    url: /reference/cli/docker/
+  - title: docker manifest
+    url: /reference/cli/docker/manifest/
+  - title: docker manifest rm
+    url: /reference/cli/docker/manifest/rm/
+next:
+  title: docker manifest push
+  url: /reference/cli/docker/manifest/push/
+---
+
+**Description:** Delete one or more manifest lists from local storage
+
+**Usage:** `docker manifest rm MANIFEST_LIST [MANIFEST_LIST...]`
+
+
 
 <!--
 此页面是自动生成自 Docker 的源代码。如果您想
@@ -7,3 +33,25 @@
 
 https://github.com/docker/cli
 -->
+
+
+
+> [!NOTE]
+> **Experimental**
+>
+> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
+
+
+
+
+
+## Description
+
+Delete one or more manifest lists from local storage
+
+
+
+
+
+
+

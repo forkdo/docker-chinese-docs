@@ -1,4 +1,24 @@
-# 为您的 Go 应用程序配置 CI/CD
+---
+title: 为您的 Go 应用程序配置 CI/CD
+url: /guides/golang/configure-ci-cd/
+parent:
+  title: Go 语言专用指南
+  url: /guides/golang/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: Go 语言专用指南
+    url: /guides/golang/
+  - title: 为您的 Go 应用程序配置 CI/CD
+    url: /guides/golang/configure-ci-cd/
+next:
+  title: 使用 Go test 运行测试
+  url: /guides/golang/run-tests/
+prev:
+  title: 测试你的 Go 部署
+  url: /guides/golang/deploy/
+---
+
 
 ## 先决条件
 

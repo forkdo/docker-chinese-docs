@@ -1,4 +1,24 @@
-# 为您的 R 应用程序配置 CI/CD
+---
+title: 为您的 R 应用程序配置 CI/CD
+url: /guides/r/configure-ci-cd/
+parent:
+  title: R 语言专属指南
+  url: /guides/r/
+breadcrumbs:
+  - title: Docker 指南
+    url: /guides/
+  - title: R 语言专属指南
+    url: /guides/r/
+  - title: 为您的 R 应用程序配置 CI/CD
+    url: /guides/r/configure-ci-cd/
+next:
+  title: 使用容器进行 R 开发
+  url: /guides/r/develop/
+prev:
+  title: 测试你的 R 部署
+  url: /guides/r/deploy/
+---
+
 
 ## 先决条件
 

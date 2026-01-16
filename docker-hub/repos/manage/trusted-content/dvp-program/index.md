@@ -1,4 +1,25 @@
-# Docker Verified Publisher Program
+---
+title: Docker Verified Publisher Program
+url: /docker-hub/repos/manage/trusted-content/dvp-program/
+parent:
+  title: 可信内容
+  url: /docker-hub/repos/manage/trusted-content/
+breadcrumbs:
+  - title: 手册
+    url: /manuals/
+  - title: Docker Hub
+    url: /docker-hub/
+  - title: 仓库
+    url: /docker-hub/repos/
+  - title: 可信内容
+    url: /docker-hub/repos/manage/trusted-content/
+  - title: Docker Verified Publisher Program
+    url: /docker-hub/repos/manage/trusted-content/dvp-program/
+prev:
+  title: Docker 官方镜像
+  url: /docker-hub/repos/manage/trusted-content/official-images/
+---
+
 
 [Docker Verified Publisher
 Program](https://hub.docker.com/search?badges=verified_publisher) 提供由 Docker 验证的商业发布者发布的高质量镜像。
@@ -100,19 +121,7 @@ Docker 与验证发布者合作开展联合营销活动，包括博客文章、�
 3. 选择上传徽标按钮，该按钮由一个相机图标 (
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src="../../../../images/upload_logo_sm.png"
-  alt="camera icon"
-  
-  class="inline my-0 not-prose"
-/>
-) 表示，该图标覆盖在当前仓库徽标上。
+![camera icon](../../../images/upload_logo_sm.png)) 表示，该图标覆盖在当前仓库徽标上。
 4. 在打开的对话框中，选择您要上传的 PNG 图像，将其设置为仓库的徽标。
 
 ### 移除徽标
@@ -120,19 +129,7 @@ Docker 与验证发布者合作开展联合营销活动，包括博客文章、�
 选择 **Clear** 按钮 (
 
 
-
-
-  
-
-
-<img
-  loading="lazy"
-  src="../../../../images/clear_logo_sm.png"
-  alt="clear button"
-  
-  class="inline my-0 not-prose"
-/>
-) 以移除徽标。
+![clear button](../../../images/clear_logo_sm.png)) 以移除徽标。
 
 移除徽标后，仓库将默认使用组织徽标（如果已设置），或者使用以下默认徽标（如果未设置）。
 
