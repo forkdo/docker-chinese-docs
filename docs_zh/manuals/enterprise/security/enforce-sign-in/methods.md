@@ -1,37 +1,36 @@
 ---
 title: 配置登录强制执行
 linkTitle: 配置
-description: 使用注册表项、配置文件、plist 文件或 registry.json 文件为 Docker Desktop 配置登录强制执行
+description: 使用注册表项、配置配置文件、plist 文件或 registry.json 文件为 Docker Desktop 配置登录强制执行
 keywords: authentication, registry.json, configure, enforce sign-in, docker desktop, security, .plist, registry key, mac, windows, linux
-tags:
-- admin
+tags: [admin]
 aliases:
-- /security/for-admins/enforce-sign-in/methods/
+ - /security/for-admins/enforce-sign-in/methods/
 ---
 
 {{< summary-bar feature_name="Enforce sign-in" >}}
 
-您可以通过多种方法强制执行 Docker Desktop 的登录。请选择最适合您组织的基础设施和安全要求的方法。
+您可以使用多种方法强制执行 Docker Desktop 的登录。请根据您组织的基础设施和安全要求选择最适合的方法。
 
 ## 选择您的方法
 
 | 方法 | 平台 |
 |:-------|:---------|
 | 注册表项 | 仅限 Windows |
-| 配置文件 | 仅限 macOS |
+| 配置配置文件 | 仅限 macOS |
 | `plist` 文件 | 仅限 macOS |
 | `registry.json` | 所有平台 |
 
 > [!TIP]
 >
-> 对于 macOS，配置文件提供了最高的安全性，因为它们受到 Apple 系统完整性保护 (SIP) 的保护。
+> 对于 macOS，配置配置文件提供最高的安全性，因为它们受到 Apple 系统完整性保护 (SIP) 的保护。
 
 ## Windows：注册表项方法
 
 {{< tabs >}}
 {{< tab name="手动设置" >}}
 
-要手动配置注册表项方法：
+手动配置注册表项方法：
 
 1. 创建注册表项：
 
@@ -41,21 +40,22 @@ aliases:
 1. 创建一个多字符串值名称 `allowedOrgs`。
 1. 使用您的组织名称作为字符串数据：
    - 仅使用小写字母
-   - 每行添加一个组织
-   - 请勿使用空格或逗号作为分隔符
+   - 每个组织单独一行
+   - 不要使用空格或逗号作为分隔符
 1. 重启 Docker Desktop。
 1. 验证 Docker Desktop 中是否出现 `Sign in required!` 提示。
 
 > [!IMPORTANT]
 >
-> 您可以在 Docker Desktop 4.36 及更高版本中添加多个组织。在 4.35 及更早版本中，添加多个组织会导致登录强制执行静默失败。
+> Docker Desktop 4.36 及更高版本支持添加多个组织。
+> 使用 4.35 及更早版本时，添加多个组织会导致登录强制执行静默失败。
 
 {{< /tab >}}
 {{< tab name="组策略部署" >}}
 
-使用组策略在您的组织内部署注册表项：
+使用组策略在您的组织中部署注册表项：
 
-1. 使用所需的键结构创建注册表脚本。
+1. 创建一个包含所需键结构的注册表脚本。
 1. 在组策略管理中，创建或编辑一个 GPO。
 1. 导航到 **计算机配置** > **首选项** > **Windows 设置** > **注册表**。
 1. 右键单击 **注册表** > **新建** > **注册表项**。
@@ -64,33 +64,32 @@ aliases:
    - 路径：`HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Docker\Docker Desktop`
    - 值名称：`allowedOrgs`
    - 值数据：您的组织名称
-1. 将 GPO 链接到目标组织单位 (OU)。
-1. 使用 `gpupdate/force` 在小范围用户组中进行测试。
-1. 验证后在整个组织内部署。
+1. 将 GPO 链接到目标组织单位。
+1. 使用 `gpupdate/force` 在小组中进行测试。
+1. 验证后在整个组织范围内部署。
 
 {{< /tab >}}
 {{< /tabs >}}
 
-## macOS：配置文件方法（推荐）
+## macOS：配置配置文件方法（推荐）
 
 {{< summary-bar feature_name="Config profiles" >}}
 
-配置文件为 macOS 提供了最安全的强制执行方法，因为它们受到 Apple 系统完整性保护的保护。
+配置配置文件为 macOS 提供最安全的强制执行方法，因为它们受到 Apple 系统完整性保护的保护。
 
-该有效负载是一个键值对的字典。Docker Desktop 支持以下键：
+载荷是一个键值对的字典。Docker Desktop 支持以下键：
 
 - `allowedOrgs`：在一个字符串中设置组织列表，每个组织用分号分隔。
 
 在 Docker Desktop 4.48 及更高版本中，还支持以下键：
 
-- `overrideProxyHTTP`：设置用于传出 HTTP 请求的 HTTP 代理 URL。
-- `overrideProxyHTTPS`：设置用于传出 HTTPS 请求的 HTTP 代理 URL。
-- `overrideProxyExclude`：绕过指定主机和域的代理设置。使用逗号分隔的列表。
+- `overrideProxyHTTP`：设置必须用于传出 HTTP 请求的 HTTP 代理 URL。
+- `overrideProxyHTTPS`：设置必须用于传出 HTTPS 请求的 HTTP 代理 URL。
+- `overrideProxyExclude`：绕过指定主机和域名的代理设置。使用逗号分隔的列表。
 - `overrideProxyPAC`：设置 PAC 文件所在的文件路径。它优先于所选代理上的远程 PAC 文件。
 - `overrideProxyEmbeddedPAC`：设置内存中 PAC 文件的内容。它优先于 `overrideProxyPAC`。
 
-通过配置文件覆盖至少一个代理设置将自动锁定这些设置，因为它们由 macOS 管理。
-
+通过配置配置文件覆盖至少一个代理设置将自动锁定这些设置，因为它们由 macOS 管理。
 
 1. 创建一个名为 `docker.mobileconfig` 的文件，并包含以下内容：
    ```xml
@@ -141,15 +140,15 @@ aliases:
    </plist>
    ```
 1. 替换占位符：
-   - 将 `com.yourcompany.docker.config` 更改为您的公司标识符
+   - 将 `com.yourcompany.docker.config` 更改为您公司的标识符
    - 将 `Your Company Name` 替换为您的组织名称
    - 将 `PayloadUUID` 替换为随机生成的 UUID
-   - 用您的组织名称（用分号分隔）更新 `allowedOrgs` 的值
+   - 使用您的组织名称（用分号分隔）更新 `allowedOrgs` 值
    - 将 `company.proxy:port` 替换为 http/https 代理服务器主机（或 IP 地址）和端口
 1. 使用您的 MDM 解决方案部署配置文件。
-1. 在 **系统设置** > **通用** > **VPN 与设备管理** 下的 **设备（托管）** 中验证配置文件是否存在。确保配置文件以正确的名称和设置列出。
+1. 验证配置文件是否出现在 **系统设置** > **通用** > **设备管理** 下的 **设备（受管理）** 中。确保配置文件以正确的名称和设置列出。
 
-一些 MDM 解决方案允许您将有效负载指定为纯键值设置字典，而无需完整的 `.mobileconfig` 包装器：
+一些 MDM 解决方案允许您将载荷指定为键值设置的纯字典，而无需完整的 `.mobileconfig` 包装器：
 
 ```xml
 <dict>
@@ -164,7 +163,7 @@ aliases:
 
 ## macOS：plist 文件方法
 
-对于 Docker Desktop 4.32 及更高版本的 macOS，请使用此替代方法。
+对于 macOS 和 Docker Desktop 4.32 及更高版本，请使用此替代方法。
 
 {{< tabs >}}
 {{< tab name="手动创建" >}}
@@ -191,12 +190,12 @@ aliases:
 {{< /tab >}}
 {{< tab name="Shell 脚本部署" >}}
 
-创建并部署一个脚本，用于在整个组织内分发：
+创建并部署一个用于组织范围分发的脚本：
 
 ```bash
 #!/bin/bash
 
-# 如果目录不存在则创建
+# 如果目录不存在则创建目录
 sudo mkdir -p "/Library/Application Support/com.docker.docker"
 
 # 写入 plist 文件
@@ -207,7 +206,7 @@ sudo chmod 644 "/Library/Application Support/com.docker.docker/desktop.plist"
 sudo chown root:admin "/Library/Application Support/com.docker.docker/desktop.plist"
 ```
 
-使用 SSH、远程支持工具或您首选的部署方法来部署此脚本。
+使用 SSH、远程支持工具或您首选的部署方法部署此脚本。
 
 {{< /tab >}}
 {{< /tabs >}}
@@ -218,7 +217,7 @@ registry.json 方法适用于所有平台，并提供灵活的部署选项。
 
 ### 文件位置
 
-在相应的位置创建 `registry.json` 文件：
+在适当的位置创建 `registry.json` 文件（UTF-8 无 BOM）：
 
 | 平台 | 位置 |
 | --- | --- |
@@ -232,7 +231,7 @@ registry.json 方法适用于所有平台，并提供灵活的部署选项。
 {{< tab name="手动创建" >}}
 
 1. 确保用户是您 Docker 组织的成员。
-1. 在适合您平台的位置创建 `registry.json` 文件。
+1. 在您平台的适当位置创建 `registry.json` 文件。
 1. 添加此内容，将组织名称替换为您自己的：
       ```json
       {
@@ -245,13 +244,13 @@ registry.json 方法适用于所有平台，并提供灵活的部署选项。
 
 > [!TIP]
 >
-> 如果用户在强制执行登录后无法启动 Docker Desktop，
-他们可能需要更新到最新版本。
+> 如果用户在强制执行登录后启动 Docker Desktop 有问题，
+> 他们可能需要更新到最新版本。
 
 {{< /tab >}}
 {{< tab name="命令行设置" >}}
 
-#### Windows (以管理员身份运行 PowerShell)
+#### Windows（以管理员身份运行 PowerShell）
 
 ```shell
 Set-Content /ProgramData/DockerDesktop/registry.json '{"allowedOrgs":["myorg1","myorg2"]}'
@@ -274,7 +273,7 @@ echo '{"allowedOrgs":["myorg1","myorg2"]}' | sudo tee /usr/share/docker-desktop/
 {{< /tab >}}
 {{< tab name="安装时设置" >}}
 
-在安装 Docker Desktop 期间创建 registry.json 文件：
+在 Docker Desktop 安装期间创建 registry.json 文件：
 
 #### Windows
 
@@ -302,20 +301,20 @@ sudo hdiutil detach /Volumes/Docker
 当同一系统上存在多种配置方法时，Docker Desktop 使用以下优先级顺序：
 
 1. 注册表项（仅限 Windows）
-2. 配置文件（仅限 macOS）
+2. 配置配置文件（仅限 macOS）
 3. plist 文件（仅限 macOS）
 4. registry.json 文件
 
 > [!IMPORTANT]
 >
-> Docker Desktop 4.36 及更高版本支持在单个配置中设置多个组织。早期版本（4.35 及以下）在指定多个组织时会静默失败。
+> Docker Desktop 4.36 及更高版本支持在单个配置中指定多个组织。早期版本（4.35 及以下）在指定多个组织时会静默失败。
 
-## 登录强制执行问题排查
+## 故障排除登录强制执行
 
 如果登录强制执行不起作用：
 
 - 验证文件位置和权限
-- 检查组织名称是否使用了小写字母
-- 重启 Docker Desktop 或重启系统
+- 检查组织名称是否使用小写字母
+- 重启 Docker Desktop 或重新启动系统
 - 确认用户是指定组织的成员
 - 将 Docker Desktop 更新到最新版本

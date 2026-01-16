@@ -40,8 +40,9 @@ incremental_update() {
         git init
         git remote add upstream https://github.com/docker/docs.git
     fi
+    git reset --hard
     git fetch upstream main
-    git checkout upstream/main -- content
+    git merge upstream/main
     popd
 
     cp -r docsite/content .
@@ -91,11 +92,11 @@ incremental_update() {
 
 merge_config() {
     if [[ -f config.example.toml ]]; then
-        sed '/providers/,$d' ./config.example.toml | tee config.toml
+        sed '/providers/,$d' ./config.example.toml | tee config.toml > /dev/null
     fi
 
     if [[ -f aitr.toml ]]; then
-        sed -n '/logging/,$p' aitr.toml | tee -a config.toml
+        sed -n '/logging/,$p' aitr.toml | tee -a config.toml > /dev/null
     fi
 }
 

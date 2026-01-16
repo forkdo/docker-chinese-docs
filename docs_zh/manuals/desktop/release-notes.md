@@ -15,20 +15,54 @@ aliases:
 - /desktop/linux/release-notes/
 - /mackit/release-notes/
 weight: 220
-outputs: ["HTML", "markdown", "RSS"]
-type: "desktop-release"
 ---
-{{< rss-button feed="/desktop/release-notes/index.xml" text="Subscribe to Docker Desktop RSS feed" >}}
 
 <!-- vale off -->
 
-此页面包含有关 Docker Desktop 版本中的新功能、改进、已知问题和错误修复的信息。
+本页包含有关 Docker Desktop 版本中的新功能、改进、已知问题和错误修复的信息。
 
-版本会逐步推出以确保质量控制。如果最新版本尚未对您可用，请稍等片刻——更新通常在发布日期后的一周内变得可用。
+版本会逐步推出以确保质量控制。如果您还无法获取最新版本，请耐心等待 —— 更新通常会在发布日期后的一周内提供。
 
-发布日期超过 6 个月的旧版 Docker Desktop 不再提供下载。以前的发行说明可在我们的[文档仓库](https://github.com/docker/docs/tree/main/content/manuals/desktop/previous-versions)中找到。
+发布时间超过 6 个月的 Docker Desktop 旧版本将不再提供下载。之前的发行说明可以在我们的 [文档仓库](https://github.com/docker/docs/tree/main/content/manuals/desktop/previous-versions) 中找到。
 
-更多常见问题解答，请参阅 [FAQs](/manuals/desktop/troubleshoot-and-support/faqs/releases.md)。
+有关更多常见问题，请参阅 [常见问题解答 (FAQs)](/manuals/desktop/troubleshoot-and-support/faqs/releases.md)。
+
+## 4.56.0
+
+{{< release-date date="2026-01-12" >}}
+
+{{< desktop-install-v2 all=true win_arm_release="Early Access" version="4.56.0" build_path="/214940/" >}}
+
+### 新功能
+
+- Docker Desktop 现在包含 Docker Compose v5，它引入了一个新的官方 Go SDK。该 SDK 提供了一个全面的 API，允许您将 Compose 功能直接集成到您的应用程序中，使您能够加载、验证和管理多容器环境，而无需依赖 Compose CLI。更多信息，请参阅 [Compose SDK 文档](/manuals/compose/compose-sdk.md)。
+
+### 更新
+
+- [containerd v2.2.1](https://github.com/containerd/containerd/releases/tag/v2.2.1)
+- [Docker Compose v5.0.0](https://github.com/docker/compose/releases/tag/v5.0.0)
+- [cagent v1.18.6](https://github.com/docker/cagent/releases/tag/v1.18.6)
+
+### 错误修复和增强
+
+#### 所有平台
+
+- 修复了在容器启动后立即没有 IP 地址时，文件共享测试中的 panic 问题。
+- 通过 `ExtraDNSEntries` 配置字段，增加了对 LinuxKit VM 中自定义 DNS 条目的支持。
+
+#### Windows
+
+- 修复了 Windows 上的一个错误，该错误导致删除状态目录失败，因为日志文件仍处于打开状态。
+- 修复了 Microsoft Store 安装程序错误地宣传新更新的问题。
+- 通过将 QEMU 从 8.1.5 升级到 10.0.4，修复了在 `ubuntu:22.04` ARM64 容器中运行 `/sbin/ldconfig` 时发生的崩溃问题。这解决了在 [docker/for-win#15004](https://github.com/docker/for-win/issues/15004) 中报告的已知问题。
+
+  > [!NOTE]
+  >
+  > 在 ARM64 仿真下运行时，一些使用旧版 Go 版本构建的 `amd64` Go 二进制文件可能仍然会段错误。为避免这种情况，请使用 Go 1.25.4 或更高版本重新构建受影响的二进制文件。有关详细信息，请参阅 [golang/go#69255](https://github.com/golang/go/issues/69255) 和相应的 [Go 提交](https://github.com/golang/go/commit/bf95b767394eb5643265f44c7b98bdbb85b897ce)。
+
+#### Linux
+
+- 修复了 Linux 主机上 Kubernetes `hostPath` 卷挂载失败的问题。修复了 [docker/desktop-linux#12](https://github.com/docker/desktop-linux/issues/12)。
 
 ## 4.55.0
 
