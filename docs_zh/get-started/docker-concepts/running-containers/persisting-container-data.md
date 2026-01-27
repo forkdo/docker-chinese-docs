@@ -4,23 +4,23 @@ weight: 3
 keywords: concepts, build, images, container, docker desktop
 description: 本概念页面将向您介绍 Docker 中数据持久化的重要性
 aliases:
-- /guides/walkthroughs/persist-data/
-- /guides/docker-concepts/running-containers/persisting-container-data/
+ - /guides/walkthroughs/persist-data/
+ - /guides/docker-concepts/running-containers/persisting-container-data/
 ---
 
 {{< youtube-embed 10_2BjqB_Ls >}}
 
 ## 说明
 
-容器启动时会使用镜像提供的文件和配置。每个容器都可以创建、修改和删除文件，且不会影响其他容器。当容器被删除时，这些文件更改也会被删除。
+容器启动时，会使用镜像提供的文件和配置。每个容器都可以创建、修改和删除文件，且不会影响其他容器。当容器被删除时，这些文件更改也会被删除。
 
-虽然容器的这种短暂特性非常有用，但当您希望持久化数据时，它会带来挑战。例如，如果您重启数据库容器，可能不希望从一个空的数据库开始。那么，如何持久化文件呢？
+虽然容器的这种短暂特性有其优势，但当您希望持久化数据时会带来挑战。例如，如果重启数据库容器，您可能不希望从一个空的数据库开始。那么，如何持久化文件呢？
 
 ### 容器卷
 
-卷是一种存储机制，它提供了在单个容器的生命周期之外持久化数据的能力。可以将其想象为从容器内部到容器外部提供快捷方式或符号链接。
+卷是一种存储机制，能够在单个容器的生命周期之外持久化数据。可以将其想象为从容器内部到容器外部的快捷方式或符号链接。
 
-例如，假设您创建一个名为 `log-data` 的卷。
+例如，假设您创建了一个名为 `log-data` 的卷。
 
 ```console
 $ docker volume create log-data
@@ -34,7 +34,7 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
 
 如果卷 `log-data` 不存在，Docker 会自动为您创建它。
 
-当容器运行时，它写入 `/logs` 文件夹的所有文件都将保存在此卷中，位于容器外部。如果您删除容器并使用相同的卷启动新容器，这些文件仍然存在。
+当容器运行时，它写入 `/logs` 文件夹的所有文件都会被保存在这个卷中，位于容器外部。如果删除容器并使用相同的卷启动新容器，这些文件仍然存在。
 
 > **使用卷共享文件**
 >
@@ -42,7 +42,7 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
 
 ### 管理卷
 
-卷拥有独立于容器的生命周期，根据您使用的数据类型和应用程序，卷可能会变得非常大。以下命令有助于管理卷：
+卷的生命周期独立于容器，并且根据您使用的数据类型和应用程序，可能会变得非常大。以下命令有助于管理卷：
 
 - `docker volume ls` - 列出所有卷
 - `docker volume rm <volume-name-or-id>` - 删除卷（仅在卷未附加到任何容器时有效）
@@ -56,7 +56,7 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
 
 1. [下载并安装](/get-started/get-docker/) Docker Desktop。
 
-2. 使用以下命令启动一个 [Postgres 镜像](https://hub.docker.com/_/postgres) 容器：
+2. 使用以下命令启动一个使用 [Postgres 镜像](https://hub.docker.com/_/postgres) 的容器：
 
     ```console
     $ docker run --name=db -e POSTGRES_PASSWORD=secret -d -v postgres_data:/var/lib/postgresql postgres:18
@@ -86,7 +86,7 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
     SELECT * FROM tasks;
     ```
 
-    您应该会得到类似以下的输出：
+    您应该得到类似以下的输出：
 
     ```text
      id | description
@@ -96,7 +96,7 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
     (2 rows)
     ```
 
-6. 运行以下命令退出 PostgreSQL shell：
+6. 通过运行以下命令退出 PostgreSQL shell：
 
     ```console
     \q
@@ -109,7 +109,7 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
     $ docker rm db
     ```
 
-8. 使用以下命令启动新容器，附加包含持久化数据的相同卷：
+8. 通过运行以下命令启动新容器，附加具有持久化数据的相同卷：
 
     ```console
     $ docker run --name=new-db -d -v postgres_data:/var/lib/postgresql postgres:18
@@ -125,27 +125,27 @@ $ docker run -d -p 80:80 -v log-data:/logs docker/welcome-to-docker
 
 ### 查看卷内容
 
-Docker Desktop 仪表板提供了查看任何卷内容的功能，以及导出、导入和克隆卷的功能。
+Docker Desktop Dashboard 提供了查看任何卷内容的功能，以及导出、导入、清空、删除和克隆卷的功能。
 
-1. 打开 Docker Desktop 仪表板并导航到 **Volumes** 视图。在此视图中，您应该能看到 **postgres_data** 卷。
+1. 打开 Docker Desktop Dashboard 并导航到 **Volumes** 视图。在此视图中，您应该能看到 **postgres_data** 卷。
 
 2. 选择 **postgres_data** 卷的名称。
 
-3. **Data** 选项卡显示卷的内容，并提供导航文件的功能。双击文件可以查看其内容并进行更改。
+3. **Stored Data** 标签页显示卷的内容，并提供浏览文件的功能。**Container in-use** 标签页显示使用该卷的容器名称、镜像名称、容器使用的端口号以及目标路径。目标路径是容器内访问卷中文件的路径。**Exports** 标签页允许您导出卷。双击文件可以查看其内容并进行修改。
 
 4. 右键单击任何文件可以保存或删除它。
 
 ### 删除卷
 
-在删除卷之前，必须确保它没有附加到任何容器。如果您尚未删除之前的容器，请使用以下命令（`-f` 会先停止容器，然后将其删除）：
+在删除卷之前，必须确保它没有附加到任何容器。如果您还没有删除之前的容器，请使用以下命令（`-f` 会先停止容器，然后删除它）：
 
 ```console
 $ docker rm -f new-db
 ```
 
-有多种方法可以删除卷，包括：
+有几种方法可以删除卷，包括：
 
-- 在 Docker Desktop 仪表板中选择卷上的 **Delete Volume** 选项。
+- 在 Docker Desktop Dashboard 中选择卷上的 **Delete Volume** 选项。
 - 使用 `docker volume rm` 命令：
 
     ```console
@@ -161,9 +161,9 @@ $ docker rm -f new-db
 
 以下资源将帮助您进一步了解卷：
 
-- [管理 Docker 中的数据](/engine/storage)
-- [卷](/engine/storage/volumes)
-- [卷挂载](/engine/containers/run/#volume-mounts)
+- [Manage data in Docker](/engine/storage)
+- [Volumes](/engine/storage/volumes)
+- [Volume mounts](/engine/containers/run/#volume-mounts)
 
 ## 下一步
 

@@ -1,13 +1,13 @@
 ---
 title: DMR REST API
-description: Reference documentation for the Docker Model Runner REST API endpoints, including OpenAI and Ollama compatibility.
+description: Reference documentation for the Docker Model Runner REST API endpoints, including OpenAI, Anthropic, and Ollama compatibility.
 weight: 30
-keywords: Docker, ai, model runner, rest api, openai, ollama, endpoints, documentation, cline, continue, cursor
+keywords: Docker, ai, model runner, rest api, openai, anthropic, ollama, endpoints, documentation, cline, continue, cursor
 ---
 
 Once Model Runner is enabled, new API endpoints are available. You can use
 these endpoints to interact with a model programmatically. Docker Model Runner
-provides compatibility with both OpenAI and Ollama API formats.
+provides compatibility with OpenAI, Anthropic, and Ollama API formats.
 
 ## Determine the base URL
 
@@ -54,6 +54,7 @@ When configuring third-party tools that expect OpenAI-compatible APIs, use these
 | Tool type | Base URL format |
 |-----------|-----------------|
 | OpenAI SDK / clients | `http://localhost:12434/engines/v1` |
+| Anthropic SDK / clients | `http://localhost:12434` |
 | Ollama-compatible clients | `http://localhost:12434` |
 
 See [IDE and tool integrations](ide-integrations.md) for specific configuration examples.
@@ -65,7 +66,9 @@ Docker Model Runner supports multiple API formats:
 | API | Description | Use case |
 |-----|-------------|----------|
 | [OpenAI API](#openai-compatible-api) | OpenAI-compatible chat completions, embeddings | Most AI frameworks and tools |
+| [Anthropic API](#anthropic-compatible-api) | Anthropic-compatible messages endpoint | Tools built for Claude |
 | [Ollama API](#ollama-compatible-api) | Ollama-compatible endpoints | Tools built for Ollama |
+| [Image Generation API](#image-generation-api-diffusers) | Diffusers-based image generation | Generating images from text prompts |
 | [DMR API](#dmr-native-endpoints) | Native Docker Model Runner endpoints | Model management |
 
 ## OpenAI-compatible API
@@ -132,6 +135,62 @@ Be aware of these differences when using DMR's OpenAI-compatible API:
 | Logprobs | Supported. |
 | Token counting | Uses the model's native token encoder, which may differ from OpenAI's. |
 
+## Anthropic-compatible API
+
+DMR provides [Anthropic Messages API](https://platform.claude.com/docs/en/api/messages) compatibility for tools and frameworks built for Claude.
+
+### Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/anthropic/v1/messages` | POST | [Create a message](https://platform.claude.com/docs/en/api/messages/create) |
+| `/anthropic/v1/messages/count_tokens` | POST | [Count tokens](https://docs.anthropic.com/en/api/messages-count-tokens) |
+
+### Supported parameters
+
+The following Anthropic API parameters are supported:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `model` | string | Required. The model identifier. |
+| `messages` | array | Required. The conversation messages. |
+| `max_tokens` | integer | Maximum tokens to generate. |
+| `temperature` | float | Sampling temperature (0.0-1.0). |
+| `top_p` | float | Nucleus sampling parameter. |
+| `top_k` | integer | Top-k sampling parameter. |
+| `stream` | Boolean | Enable streaming responses. |
+| `stop_sequences` | array | Custom stop sequences. |
+| `system` | string | System prompt. |
+
+### Example: Chat with Anthropic API
+
+```bash
+curl http://localhost:12434/v1/messages \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ai/smollm2",
+    "max_tokens": 1024,
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ]
+  }'
+```
+
+### Example: Streaming response
+
+```bash
+curl http://localhost:12434/v1/messages \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ai/smollm2",
+    "max_tokens": 1024,
+    "stream": true,
+    "messages": [
+      {"role": "user", "content": "Count from 1 to 10"}
+    ]
+  }'
+```
+
 ## Ollama-compatible API
 
 DMR also provides Ollama-compatible endpoints for tools and frameworks built for Ollama.
@@ -164,6 +223,63 @@ curl http://localhost:12434/api/chat \
 ```bash
 curl http://localhost:12434/api/tags
 ```
+
+## Image generation API (Diffusers)
+
+DMR supports image generation through the Diffusers backend, enabling you to generate
+images from text prompts using models like Stable Diffusion.
+
+> [!NOTE]
+> The Diffusers backend requires an NVIDIA GPU with CUDA support and is only
+> available on Linux (x86_64 and ARM64). See [Inference engines](inference-engines.md#diffusers)
+> for setup instructions.
+
+### Endpoint
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/engines/diffusers/v1/images/generations` | POST | Generate an image from a text prompt |
+
+### Supported parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `model` | string | Required. The model identifier (e.g., `stable-diffusion:Q4`). |
+| `prompt` | string | Required. The text description of the image to generate. |
+| `size` | string | Image dimensions in `WIDTHxHEIGHT` format (e.g., `512x512`). |
+
+### Response format
+
+The API returns a JSON response with the generated image encoded in base64:
+
+```json
+{
+  "data": [
+    {
+      "b64_json": "<base64-encoded-image-data>"
+    }
+  ]
+}
+```
+
+### Example: Generate an image
+
+```bash
+curl -s -X POST http://localhost:12434/engines/diffusers/v1/images/generations \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "stable-diffusion:Q4",
+    "prompt": "A picture of a nice cat",
+    "size": "512x512"
+  }' | jq -r '.data[0].b64_json' | base64 -d > image.png
+```
+
+This command:
+1. Sends a POST request to the Diffusers image generation endpoint
+2. Specifies the model, prompt, and output image size
+3. Extracts the base64-encoded image from the response using `jq`
+4. Decodes the base64 data and saves it as `image.png`
+
 
 ## DMR native endpoints
 
@@ -320,4 +436,4 @@ console.log(response.choices[0].message.content);
 
 - [IDE and tool integrations](ide-integrations.md) - Configure Cline, Continue, Cursor, and other tools
 - [Configuration options](configuration.md) - Adjust context size and runtime parameters
-- [Inference engines](inference-engines.md) - Learn about llama.cpp and vLLM options
+- [Inference engines](inference-engines.md) - Learn about llama.cpp, vLLM, and Diffusers options

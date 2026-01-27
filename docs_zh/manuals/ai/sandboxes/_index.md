@@ -1,5 +1,5 @@
 ---
-title: Docker 沙盒
+title: Docker 沙箱
 description: 在隔离环境中运行 AI 代理
 weight: 20
 params:
@@ -7,63 +7,74 @@ params:
     group: AI
     badge:
       color: violet
-      text: 实验性功能
+      text: Experimental
 ---
 
 {{< summary-bar feature_name="Docker Sandboxes" >}}
 
-Docker 沙盒可简化在本地机器上安全运行 AI 代理的过程。
-该功能专为使用 Claude Code 等编码代理进行开发的开发者设计，
-将代理与您的本地机器隔离，同时保留熟悉的开发体验。
-通过 Docker 沙盒，代理可以在容器化的工作区中执行命令、
-安装软件包和修改文件，该工作区会镜像您的本地目录。
-这让您在获得完整代理自主权的同时，也能确保安全性。
+Docker 沙箱让您可以在机器上的隔离环境中运行 AI 编程代理。如果您正在使用像 Claude Code 这样的代理进行开发，沙箱提供了一种安全的方式，既能赋予代理自主权，又不会危及您的系统安全。
+
+## 为何使用 Docker 沙箱
+
+AI 代理需要执行命令、安装软件包和测试代码。如果直接在主机上运行它们，意味着它们可以完全访问您的文件、进程和网络。Docker 沙箱将代理隔离在微虚拟机（microVM）中，每个微虚拟机都有自己的 Docker 守护进程。代理可以在其中启动测试容器并修改其环境，而不会影响您的主机。
+
+您将获得：
+
+- 代理自主权，同时避免主机系统风险
+- 专用的 Docker 守护进程，用于运行测试容器
+- 主机与沙箱之间的文件共享
+- 网络访问控制
+
+有关 Docker 沙箱与其他隔离编程代理方法的比较，请参阅[与其他方案的比较](./architecture.md#comparison-to-alternatives)。
+
+> [!NOTE]
+> 基于微虚拟机的沙箱需要 macOS 或 Windows（实验性支持）。Linux 用户可以使用基于传统容器的沙箱，需配合 [Docker Desktop 4.57](/desktop/release-notes/#4570) 使用。
+
+## 如何使用沙箱
+
+要创建并运行一个沙箱：
+
+```console
+$ docker sandbox run claude ~/my-project
+```
+
+此命令会为您的项目空间（`~/my-project`）创建一个沙箱，并在其中启动 Claude Code 代理。现在，代理可以在隔离的沙箱环境中处理您的代码、安装工具并运行容器。
 
 ## 工作原理
 
-当您运行 `docker sandbox run <agent>` 时：
+沙箱运行在带有专用 Docker 守护进程的轻量级微虚拟机中。每个沙箱都是完全隔离的——代理在虚拟机内运行，无法访问您的主机 Docker 守护进程、容器或项目空间之外的文件。
 
-1. Docker 从模板镜像创建容器，并将您当前的工作目录以相同路径挂载到容器中。
+您的项目目录会在主机和沙箱之间以相同的绝对路径同步，因此错误消息中的文件路径在两个环境中保持一致。
 
-2. Docker 会发现您的 Git `user.name` 和 `user.email` 配置，并将其注入容器，
-   以便代理所做的提交归属于您。
+沙箱不会出现在您主机上的 `docker ps` 命令输出中，因为它们是虚拟机，而不是容器。请使用 `docker sandbox ls` 命令查看它们。
 
-3. 首次运行时，系统会提示您进行身份验证。凭据会存储在 Docker 卷中，
-   并在后续的沙盒代理中重复使用。
+有关架构、隔离模型和网络的技术细节，请参阅[架构](architecture.md)。
 
-4. 代理在容器内启动，并启用了绕过权限。
+### 多个沙箱
 
-### 工作区挂载
+为不同的项目创建独立的沙箱：
 
-您的工作区目录会以相同的绝对路径（在 macOS 和 Linux 上）挂载到容器中。
-例如，主机上的 `/Users/alice/projects/myapp` 在容器中也是
-`/Users/alice/projects/myapp`。这意味着：
+```console
+$ docker sandbox run claude ~/project-a
+$ docker sandbox run claude ~/project-b
+```
 
-- 错误消息中的文件路径与主机匹配
-- 硬编码路径的脚本能按预期工作
-- 对工作区文件的更改在主机和容器上都立即可见
+每个沙箱都与其他沙箱完全隔离。沙箱会持续存在，直到您手动删除它们，因此已安装的软件包和配置会为该工作空间保留。
 
-### 每个工作区一个沙盒
+## 支持的代理
 
-Docker 强制每个工作区只能有一个沙盒。当您在同一目录下运行
-`docker sandbox run <agent>` 时，Docker 会复用现有的容器。
-这意味着状态（已安装的软件包、临时文件）会在该工作区的
-多次代理会话中持续保留。
+Docker 沙箱支持多种 AI 编程代理：
 
-> [!NOTE]
-> 要更改沙盒的配置（环境变量、挂载卷等），
-> 您需要先移除再重新创建它。详情请参见
-> [管理沙盒](advanced-config.md#managing-sandboxes)。
-
-## 发布状态
-
-Docker 沙盒是一项实验性功能。功能和设置可能会发生变化。
-
-请在 GitHub 上报告问题：
-- [Docker Desktop for Mac](https://github.com/docker/for-mac)
-- [Docker Desktop for Windows](https://github.com/docker/for-win)
-- [Docker Desktop for Linux](https://github.com/docker/desktop-linux)
+- **Claude Code** - Anthropic 的编程代理
+- **Codex** - OpenAI 的 Codex 代理（部分支持；开发中）
+- **Gemini** - Google 的 Gemini 代理（部分支持；开发中）
+- **cagent** - Docker 的 [cagent](/ai/cagent/)（部分支持；开发中）
+- **Kiro** - AWS 开发（部分支持；开发中）
 
 ## 开始使用
 
-前往[入门指南](get-started.md)运行您的第一个沙盒代理。
+请前往[入门指南](get-started.md)运行您的第一个沙箱代理。
+
+## 故障排除
+
+有关常见配置错误，请参阅[故障排除](./troubleshooting)，或在 [Docker Desktop 问题追踪器](https://github.com/docker/desktop-feedback) 上报告问题。

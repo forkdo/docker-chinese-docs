@@ -1,44 +1,44 @@
 ---
-title: 扫描 Docker Hardened Images
+title: 扫描 Docker 安全加固镜像
 linktitle: 扫描镜像
-description: 了解如何使用 Docker Scout、Grype 或 Trivy 扫描 Docker Hardened Images 的已知漏洞。
+description: 了解如何使用 Docker Scout、Grype、Trivy 或 Wiz 扫描 Docker 安全加固镜像中的已知漏洞。
 keywords: scan container image, docker scout cves, grype scanner, trivy container scanner, vex attestation
 weight: 46
 ---
 
-Docker Hardened Images (DHIs) 默认设计为安全，但与任何容器镜像一样，作为漏洞管理流程的一部分，定期扫描它们非常重要。
+Docker 安全加固镜像（Docker Hardened Images，简称 DHI）在设计上默认就是安全的，但与任何容器镜像一样，作为漏洞管理流程的一部分，定期扫描它们非常重要。
 
-您可以使用与标准镜像相同的工具（如 Docker Scout、Grype 和 Trivy）来扫描 DHIs。DHIs 遵循相同的格式和标准，以确保与您的安全工具兼容。在扫描镜像之前，必须将镜像同步到 Docker Hub 上的您的组织中。
+## 使用兼容 OpenVEX 的扫描器
 
-> [!NOTE]
->
-> 当您拥有 Docker Hardened Images Enterprise 订阅时，[Docker Scout](/manuals/scout/_index.md) 会自动启用，无需额外费用，适用于 Docker Hub 上所有同步的 Docker Hardened Image 仓库。您可以在组织的仓库中的 Docker Hub UI 下直接查看扫描结果。
+为了获得准确的漏洞评估，请使用支持 [VEX](/manuals/dhi/core-concepts/vex.md) 证明的扫描器。以下扫描器可以读取并应用 Docker 安全加固镜像中包含的 VEX 声明：
 
-> [!IMPORTANT]
->
-> 您必须通过 Docker Hardened Images 注册表 (`dhi.io`) 进行身份验证才能拉取镜像。登录时使用您的 Docker ID 凭据（与 Docker Hub 相同的用户名和密码）。如果您没有 Docker 账户，请[免费创建一个](../../accounts/create-account.md)。
->
-> 运行 `docker login dhi.io` 进行身份验证。
+- [Docker Scout](#docker-scout)：自动应用 VEX 声明，无需配置
+- [Trivy](#trivy)：通过 VEX Hub 或本地 VEX 文件支持 VEX
+- [Grype](#grype)：通过 `--vex` 标志支持 VEX
+- [Wiz](#wiz)：自动应用 VEX 声明，无需配置
+
+有关如何选择合适的扫描器以及了解支持 VEX 的扫描器与不支持 VEX 的扫描器之间的差异，请参阅[扫描器集成](/manuals/dhi/explore/scanner-integrations.md)。
 
 ## Docker Scout
 
-Docker Scout 已集成到 Docker Desktop 和 Docker CLI 中。它提供漏洞洞察、CVE 摘要以及直接链接到修复指导。
+Docker Scout 已集成到 Docker Desktop 和 Docker CLI 中。它提供漏洞洞察、CVE 摘要以及指向修复指南的直接链接。
 
 ### 使用 Docker Scout 扫描 DHI
 
-要使用 Docker Scout 扫描 Docker Hardened Image，请运行以下命令：
+要使用 Docker Scout 扫描 Docker 安全加固镜像，请运行以下命令：
 
 ```console
+$ docker login dhi.io
 $ docker scout cves dhi.io/<image>:<tag> --platform <platform>
 ```
 
 示例输出：
 
 ```plaintext
-    v 从证明中获取 SBOM，发现 101 个软件包
-    v 从证明中获取来源
-    v 从证明中获取 VEX 声明
-    v 未检测到易受攻击的软件包
+    v SBOM obtained from attestation, 101 packages found
+    v Provenance obtained from attestation
+    v VEX statements obtained from attestation
+    v No vulnerable package detected
     ...
 ```
 
@@ -46,14 +46,14 @@ $ docker scout cves dhi.io/<image>:<tag> --platform <platform>
 
 ### 在 CI/CD 中使用 Docker Scout 自动扫描 DHI
 
-将 Docker Scout 集成到您的 CI/CD 管道中，可以在构建过程中自动验证基于 Docker Hardened Images 构建的镜像是否没有已知漏洞。这种主动方法可确保您的镜像在整个开发生命周期中的安全完整性。
+将 Docker Scout 集成到 CI/CD 流水线中，使您能够在构建过程中自动验证从 Docker 安全加固镜像构建的镜像是否仍然没有已知漏洞。这种主动方法可确保在整个开发生命周期中镜像的持续安全完整性。
 
 #### GitHub Actions 工作流示例
 
-以下是一个使用 Docker Scout 构建和扫描镜像的 GitHub Actions 工作流示例：
+以下是一个示例 GitHub Actions 工作流，它构建镜像并使用 Docker Scout 扫描它：
 
 ```yaml {collapse="true"}
-name: DHI 漏洞扫描
+name: DHI Vulnerability Scan
 
 on:
   push:
@@ -75,23 +75,23 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: 检出仓库
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 设置 Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: 登录到 Docker Hub
+      - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: 构建 Docker 镜像
+      - name: Build Docker image
         run: |
           docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }} .
 
-      - name: 运行 Docker Scout CVE 扫描
+      - name: Run Docker Scout CVE scan
         uses: docker/scout-action@v1
         with:
           command: cves
@@ -100,63 +100,48 @@ jobs:
           exit-code: true
 ```
 
-`exit-code: true` 参数确保如果检测到任何严重或高严重性漏洞，工作流将失败，从而防止部署不安全的镜像。
+`exit-code: true` 参数确保如果检测到任何严重或高危漏洞，工作流将失败，从而防止部署不安全的镜像。
 
 有关在 CI 中使用 Docker Scout 的更多详细信息，请参阅[将 Docker Scout 与其他系统集成](/manuals/scout/integrations/_index.md)。
 
-### 将 Docker Scout 结果与其他扫描器比较
-
-其他扫描器报告的某些漏洞可能不会出现在 Docker Scout 结果中。这可能由以下几个原因造成：
-
-- 特定硬件漏洞：某些漏洞可能仅影响特定硬件架构（例如 Power10 处理器），与 Docker 镜像无关，因此 Docker Scout 不会报告。
-- VEX 声明过滤：Docker Scout 自动应用 VEX 声明来记录和抑制不适用于镜像的漏洞。如果您的扫描器不使用 VEX 声明，您可能会看到比 Docker Scout 结果更多的漏洞。
-- 临时漏洞标识符：Docker Scout 不会显示临时漏洞标识符（如 Debian 的 `TEMP-xxxxxxx`），因为它们不用于外部引用。
-
-虽然 Docker Scout 会自动处理此过滤，但您可以使用 [Grype 忽略规则](https://github.com/anchore/grype#specifying-matches-to-ignore) 在其配置文件 (`~/.grype.yaml`) 中或 [Trivy 策略例外](https://trivy.dev/v0.19.2/misconfiguration/policy/exceptions/) 使用 REGO 规则手动配置其他扫描器的类似过滤，以按 CVE ID、软件包名称、修复状态或其他条件过滤特定漏洞。您还可以按照 [使用 VEX 过滤已知不可利用的 CVE](#use-vex-to-filter-known-non-exploitable-cves) 中的描述在其他扫描器中使用 VEX 声明。
-
 ## Grype
 
-[Grype](https://github.com/anchore/grype) 是一个开源扫描器，用于检查容器镜像是否符合 NVD 和发行版公告等漏洞数据库。
+[Grype](https://github.com/anchore/grype) 是一个开源扫描器，用于根据 NVD 和发行版公告等漏洞数据库检查容器镜像。
 
 ### 使用 Grype 扫描 DHI
 
-安装 Grype 后，您可以通过拉取镜像并运行扫描命令来扫描 Docker Hardened Image：
+要使用 Grype 扫描带有 VEX 过滤的 Docker 安全加固镜像，请先导出 VEX 证明，然后使用 `--vex` 标志进行扫描：
 
 ```console
+$ docker login dhi.io
 $ docker pull dhi.io/<image>:<tag>
-$ grype dhi.io/<image>:<tag>
+$ docker scout vex get dhi.io/<image>:<tag> --output vex.json
+$ grype dhi.io/<image>:<tag> --vex vex.json
 ```
 
-示例输出：
+`--vex` 标志在扫描期间应用 VEX 声明，过滤掉已知的不可利用 CVE，以获得准确的结果。
 
-```plaintext
-NAME               INSTALLED              FIXED-IN     TYPE  VULNERABILITY     SEVERITY    EPSS%  RISK
-libperl5.36        5.36.0-7+deb12u2       (won't fix)  deb   CVE-2023-31484    High        79.45    1.1
-perl               5.36.0-7+deb12u2       (won't fix)  deb   CVE-2023-31484    High        79.45    1.1
-perl-base          5.36.0-7+deb12u2       (won't fix)  deb   CVE-2023-31484    High        79.45    1.1
-...
-```
-
-您应包含 `--vex` 标志以在扫描期间应用 VEX 声明，从而过滤掉已知不可利用的 CVE。有关更多信息，请参阅 [VEX 部分](#use-vex-to-filter-known-non-exploitable-cves)。
+有关导出 VEX 证明的更多信息，请参阅[导出 VEX 证明](#export-vex-attestations)。
 
 ## Trivy
 
-[Trivy](https://github.com/aquasecurity/trivy) 是一个用于容器和其他工件的开源漏洞扫描器。它检测操作系统软件包和应用程序依赖项中的漏洞。
+[Trivy](https://github.com/aquasecurity/trivy) 是一个用于容器和其他工件的开源漏洞扫描器。它可以检测操作系统包和应用程序依赖项中的漏洞。
 
 ### 使用 Trivy 扫描 DHI
 
-安装 Trivy 后，您可以通过拉取镜像并运行扫描命令来扫描 Docker Hardened Image：
+安装 Trivy 后，您可以通过拉取镜像并运行扫描命令来扫描 Docker 安全加固镜像：
 
 ```console
+$ docker login dhi.io
 $ docker pull dhi.io/<image>:<tag>
 $ trivy image --scanners vuln dhi.io/<image>:<tag>
 ```
 
-要使用 VEX 声明过滤漏洞，Trivy 支持多种方法。Docker 推荐使用 VEX Hub，它提供了从配置的仓库自动下载和应用 VEX 声明的无缝工作流。
+要使用 VEX 声明过滤漏洞，Trivy 支持多种方法。Docker 推荐使用 VEX Hub，它提供了一个无缝的工作流，用于自动下载并应用来自配置仓库的 VEX 声明。
 
 #### 使用 VEX Hub（推荐）
 
-配置 Trivy 从 VEX Hub 下载 Docker Hardened Images 公告仓库。运行以下命令设置 VEX 仓库：
+配置 Trivy 从 VEX Hub 下载 Docker 安全加固镜像公告仓库。运行以下命令来设置 VEX 仓库：
 
 ```console
 $ trivy vex repo init
@@ -176,9 +161,10 @@ $ trivy vex repo list
 $ trivy vex repo download
 ```
 
-设置 VEX Hub 后，您可以使用 VEX 过滤扫描 Docker Hardened Image：
+设置 VEX Hub 后，您可以使用 VEX 过滤扫描 Docker 安全加固镜像：
 
 ```console
+$ docker login dhi.io
 $ docker pull dhi.io/<image>:<tag>
 $ trivy image --scanners vuln --vex repo dhi.io/<image>:<tag>
 ```
@@ -192,27 +178,29 @@ $ trivy image --scanners vuln --vex repo dhi.io/python:3.13
 示例输出：
 
 ```plaintext
-报告摘要
+Report Summary
 
 ┌─────────────────────────────────────────────────────────────────────────────┬────────────┬─────────────────┐
-│                                   目标                                      │    类型    │  漏洞          │
+│                                   Target                                    │    Type    │ Vulnerabilities │
 ├─────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
 │ dhi.io/python:3.13 (debian 13.2)                                            │   debian   │        0        │
 ├─────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
 │ opt/python-3.13.11/lib/python3.13/site-packages/pip-25.3.dist-info/METADATA │ python-pkg │        0        │
 └─────────────────────────────────────────────────────────────────────────────┴────────────┴─────────────────┘
-图例：
-- '-': 未扫描
-- '0': 干净（未检测到安全发现）
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
 ```
 
-`--vex repo` 标志在扫描期间应用来自配置仓库的 VEX 声明，从而过滤掉已知不可利用的 CVE。
+`--vex repo` 标志会在扫描期间应用来自已配置仓库的 VEX 声明，
+从而过滤掉已知的不可利用 CVE。
 
 #### 使用本地 VEX 文件
 
-除了 VEX Hub，Trivy 还支持使用本地 VEX 文件进行漏洞过滤。您可以下载 Docker Hardened Images 提供的 VEX 证明并直接在 Trivy 中使用。
+除了 VEX Hub，Trivy 还支持使用本地 VEX 文件进行漏洞过滤。
+您可以下载 Docker Hardened Images 提供的 VEX 证明，并直接将其与 Trivy 配合使用。
 
-首先，下载镜像的 VEX 证明：
+首先，为您的镜像下载 VEX 证明：
 
 ```console
 $ docker scout vex get dhi.io/<image>:<tag> --output vex.json
@@ -224,17 +212,32 @@ $ docker scout vex get dhi.io/<image>:<tag> --output vex.json
 $ trivy image --scanners vuln --vex vex.json dhi.io/<image>:<tag>
 ```
 
-## 使用 VEX 过滤已知不可利用的 CVE
+## Wiz
 
-Docker Hardened Images 包含签名的 VEX（Vulnerability Exploitability eXchange）证明，用于识别与镜像运行时行为无关的漏洞。
+[Wiz](https://www.wiz.io/) 是一个云安全平台，包含容器镜像扫描功能，并支持 DHI VEX 证明。
+Wiz CLI 会自动从 Docker Hardened Images 获取 VEX 声明，以提供准确的漏洞评估。
 
-使用 Docker Scout 时，这些 VEX 声明会自动应用，无需手动配置。
+### 使用 Wiz CLI 扫描 DHI
+
+获取 Wiz 订阅并安装 Wiz CLI 后，您可以通过拉取镜像并运行扫描命令来扫描 Docker Hardened Image：
+
+```console
+$ docker login dhi.io
+$ docker pull dhi.io/<image>:<tag>
+$ wiz docker scan --image dhi.io/<image>:<tag>
+```
+
+## 导出 VEX 证明
+
+对于需要本地 VEX 文件的扫描器（如 Grype 或带本地文件的 Trivy），
+您可以从 Docker Hardened Images 导出 VEX 证明。
 
 > [!NOTE]
 >
-> 默认情况下，VEX 证明从 `registry.scout.docker.com` 获取。如果您的网络有出站限制，请确保可以访问此注册表。您也可以将证明同步到备用注册表。有关更多详细信息，请参阅[同步到第三方注册表](mirror.md#mirror-to-a-third-party-registry)。
+> 默认情况下，VEX 证明会从 `registry.scout.docker.com` 获取。如果您的网络有出站限制，请确保可以访问此注册表。
+> 您也可以将证明镜像到备用注册表。有关更多详细信息，请参阅[镜像到第三方注册表](mirror.md#mirror-to-a-third-party-registry)。
 
-要为支持该功能的工具手动创建 VEX 证明的 JSON 文件：
+将 VEX 证明导出到 JSON 文件：
 
 ```console
 $ docker scout vex get dhi.io/<image>:<tag> --output vex.json
@@ -244,18 +247,5 @@ $ docker scout vex get dhi.io/<image>:<tag> --output vex.json
 >
 > `docker scout vex get` 命令需要 [Docker Scout CLI](https://github.com/docker/scout-cli/) 1.18.3 或更高版本。
 >
-> 如果镜像存在于本地设备上，则必须在镜像名称前加上 `registry://`。例如，使用 `registry://docs/dhi-python:3.13` 而不是 `docs/dhi-python:3.13`。
-
-例如：
-
-```console
-$ docker scout vex get dhi.io/python:3.13 --output vex.json
-```
-
-这将创建一个包含指定镜像 VEX 声明的 `vex.json` 文件。然后，您可以将此文件与支持 VEX 的工具一起使用，以过滤掉已知不可利用的 CVE。
-
-例如，使用 Grype 时，可以使用 `--vex` 标志在扫描期间应用 VEX 声明：
-
-```console
-$ grype dhi.io/python:3.13 --vex vex.json
-```
+> 如果镜像在您的设备上本地存在，您必须在镜像名称前加上 `registry://` 前缀。例如，使用
+> `registry://docs/dhi-python:3.13` 而不是 `docs/dhi-python:3.13`。

@@ -1,49 +1,56 @@
 ---
 title: 镜像访问管理
-description: 通过镜像访问管理控制开发者可以访问哪些 Docker Hub 镜像，以增强供应链安全
-keywords: 镜像访问管理, docker official images, verified publisher, 供应链安全, docker business
-tags:
-- admin
+description: 通过镜像访问管理控制开发人员可以访问哪些 Docker Hub 镜像，以增强供应链安全性
+keywords: 镜像访问管理, docker 官方镜像, 已验证发布者, 供应链安全, docker 企业版, 允许列表
+tags: [admin]
 aliases:
-- /docker-hub/image-access-management/
-- /desktop/hardened-desktop/image-access-management/
-- /admin/organization/image-access/
-- /security/for-admins/image-access-management/
-- /security/for-admins/hardened-desktop/image-access-management/
+ - /docker-hub/image-access-management/
+ - /desktop/hardened-desktop/image-access-management/
+ - /admin/organization/image-access/
+ - /security/for-admins/image-access-management/
+ - /security/for-admins/hardened-desktop/image-access-management/
 weight: 40
 ---
 
 {{< summary-bar feature_name="Hardened Docker Desktop" >}}
 
-镜像访问管理允许管理员控制开发者可以从 Docker Hub 拉取哪些类型的镜像。这可以防止开发者意外使用不可信的社区镜像，从而给您的组织带来安全风险。
+镜像访问管理允许管理员控制开发人员可以从 Docker Hub 拉取哪些类型的镜像。这可以防止开发人员意外使用可能给组织带来安全风险的不可信社区镜像。
 
-通过镜像访问管理，您可以限制访问以下类型的镜像：
+通过镜像访问管理，您可以限制访问：
 
-- Docker Official Images：由 Docker 维护的精选镜像
-- Docker Verified Publisher Images：来自可信商业发布者的镜像
-- Organization images：您组织的私有仓库
-- Community images：来自个人开发者的公共镜像
+- Docker 官方镜像：由 Docker 维护的精选镜像
+- Docker 已验证发布者镜像：来自可信商业发布者的镜像
+- 组织镜像：组织的私有仓库
+- 社区镜像：来自个人开发人员的公共镜像
+
+您还可以使用仓库允许列表来批准绕过所有其他访问控制的具体仓库。
 
 ## 谁应该使用镜像访问管理？
 
-镜像访问管理通过确保开发者仅使用可信的容器镜像来帮助防止供应链攻击。例如，开发者在构建新应用程序时，可能会意外地将恶意社区镜像用作组件。镜像访问管理通过限制仅允许使用已批准的镜像类型来防止这种情况发生。
+镜像访问管理通过确保开发人员只使用可信容器镜像来帮助防止供应链攻击。例如，开发人员在构建新应用程序时可能会意外使用恶意社区镜像作为组件。镜像访问管理通过将访问限制为仅批准的镜像类型来防止这种情况。
 
 常见的安全场景包括：
 
-- 防止使用无人维护或恶意的社区镜像
-- 确保开发者仅使用经过审查的官方基础镜像
+- 防止使用未维护或恶意的社区镜像
+- 确保开发人员只使用经过审查的官方基础镜像
 - 控制对商业第三方镜像的访问
-- 在开发团队间保持一致的安全标准
+- 在整个开发团队中保持一致的安全标准
 
-## 前提条件
+在以下情况下使用仓库允许列表：
+
+- 授予对特定经过审查的社区镜像的访问权限
+- 允许不属于官方类别的重要第三方工具
+- 为特定业务需求提供对一般镜像访问策略的例外
+
+## 先决条件
 
 在配置镜像访问管理之前，您必须：
 
-- [强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)以确保用户使用您的组织身份进行身份验证
-- 使用[个人访问令牌 (PATs)](/manuals/security/access-tokens.md)进行身份验证（不支持组织访问令牌）
-- 拥有 Docker Business 订阅
+- [强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md) 以确保用户使用您的组织进行身份验证
+- 使用 [个人访问令牌 (PATs)](/manuals/security/access-tokens.md) 进行身份验证（不支持组织访问令牌）
+- 拥有 Docker 企业版订阅
 
-> [!IMPORTANT]
+> [!重要]
 >
 > 镜像访问管理仅在用户使用组织凭据登录 Docker Desktop 时生效。
 
@@ -51,56 +58,65 @@ weight: 40
 
 要配置镜像访问管理：
 
-1. 登录 [Docker Home](https://app.docker.com) 并从左上角的账户下拉菜单中选择您的组织。
-1. 选择 **Admin Console**，然后选择 **Image access**。
-1. 使用**切换开关**来启用镜像访问。
-1. 选择允许的镜像类型：
-    - **Organization images**：来自您组织的镜像（默认始终允许）。这些可以是由您组织内成员创建的公共或私有镜像。
-    - **Community images**：由各种用户贡献的、可能存在安全风险的镜像。此类别包括 Docker 赞助的开源镜像，默认处于关闭状态。
-    - **Docker Verified Publisher Images**：来自 Verified Publisher 计划中 Docker 合作伙伴的镜像，具备安全供应链资质。
-    - **Docker Official Images**：精选的 Docker 仓库，提供操作系统仓库、Dockerfile 最佳实践、即用型解决方案以及及时的安全更新。
+1. 登录 [Docker Home](https://app.docker.com) 并从左上角账户下拉菜单中选择您的组织。
+1. 选择 **管理控制台**，然后选择 **镜像访问**。
+1. 使用 **切换** 启用镜像访问。
+1. 选择要允许的镜像类型：
+    - **组织镜像**：来自您组织的镜像（默认始终允许）。这些可以是您组织内成员创建的公共或私有镜像。
+    - **社区镜像**：由各种用户贡献的镜像，可能带来安全风险。此类别包括 Docker 赞助的开源镜像，默认关闭。
+    - **Docker 已验证发布者镜像**：来自 Docker 合作伙伴计划中的已验证发布者的镜像，符合安全供应链要求。
+    - **Docker 官方镜像**：精选的 Docker 仓库，提供操作系统仓库、Dockerfile 最佳实践、即用型解决方案和及时的安全更新。
+    - **仓库允许列表**：应允许的具体仓库列表。在下一步中配置。
+1. 可选地，当上一步中启用 **仓库允许列表** 时，您可以在允许列表中添加或删除具体仓库：
+    - 要添加仓库，在 **仓库允许列表** 部分，选择 **添加仓库到允许列表** 并按照屏幕上的说明操作。
+    - 要删除仓库，在 **仓库允许列表** 部分，选择其旁边的垃圾桶图标。
 
-一旦应用限制，组织成员可以以只读格式查看权限页面。
+    允许列表中的仓库对所有组织成员都可访问，无论上一步中配置的镜像类型限制如何。
 
-> [!NOTE]
+一旦应用了限制，组织成员就可以以只读格式查看权限页面。
+
+> [!注意]
 >
-> 镜像访问管理默认关闭。组织所有者无论策略设置如何，都有权访问所有镜像。
+> 镜像访问管理默认关闭。组织所有者可以访问所有镜像，无论策略设置如何。
 
 ## 验证访问限制
 
-配置镜像访问管理后，请测试限制是否正常工作。
+配置镜像访问管理后，测试限制是否正常工作。
 
-当开发者拉取允许的镜像类型时：
+当开发人员拉取允许的镜像类型时：
 
 ```console
-$ docker pull nginx  # Docker Official Image
-# 如果允许使用 Docker Official Images，则拉取成功
+$ docker pull nginx  # Docker 官方镜像
+# 如果允许 Docker 官方镜像，则拉取成功
 ```
 
-当开发者拉取被阻止的镜像类型时：
+当开发人员拉取被阻止的镜像类型时：
 
 ```console
-$ docker pull someuser/custom-image  # Community image
+$ docker pull someuser/custom-image  # 社区镜像
 Error response from daemon: image access denied: community images not allowed
 ```
 
-镜像访问限制适用于所有 Docker Hub 操作，包括拉取、使用 `FROM` 指令的构建以及 Docker Compose 服务。
+镜像访问限制适用于所有 Docker Hub 操作，包括拉取、使用 `FROM` 指令构建和使用 Docker Compose 服务。
 
 ## 安全实施
 
-从最严格的策略开始，然后根据合法的业务需求逐步放宽：
+从最严格的策略开始，并根据合法的业务需求逐步扩展：
 
-1. 从以下开始：Docker Official Images 和 Organization images
-2. 根据需要添加：Docker Verified Publisher Images 用于商业工具
-3. 谨慎评估：Community images 仅用于特定的、经过审查的用例
+1. 从以下开始：Docker 官方镜像和组织镜像
+2. 如果需要添加：Docker 已验证发布者镜像用于商业工具
+3. 仔细评估：社区镜像仅用于特定、经过审查的用例
+4. 谨慎使用仓库允许列表：仅添加已通过组织安全审查流程彻底审查和批准的仓库
 
 其他安全建议包括：
 
-- 监控使用模式：审查开发者尝试拉取的镜像，识别对其他镜像类型的合法请求，定期审计已批准的镜像类别以确保其持续适用，并使用 Docker Desktop 分析来监控使用模式。
-- 分层安全控制：镜像访问管理与注册表访问管理结合使用效果最佳，前者控制开发者可以访问哪些注册表，后者在运行时保护容器安全，而设置管理则用于控制 Docker Desktop 配置。
+- 监控使用模式：审查开发人员尝试拉取的镜像，识别对额外镜像类型的合法请求，定期审计批准的镜像类别以保持相关性，并使用 Docker Desktop 分析来监控使用模式。
+- 定期审查仓库允许列表：定期审计允许列表中的仓库，确保它们仍然是必要和可信的，并删除任何不再需要或维护的仓库。
+- 分层安全控制：镜像访问管理与注册表访问管理结合使用效果最佳，以控制开发人员可以访问哪些注册表，增强容器隔离以在运行时保护容器，以及设置管理以控制 Docker Desktop 配置。
 
-## 范围和绕过注意事项
+## 范围和绕过考虑
 
-- 镜像访问管理仅控制对 Docker Hub 镜像的访问。来自其他注册表的镜像不受这些策略的影响。请使用[注册表访问管理](/manuals/enterprise/security/hardened-desktop/registry-access-management.md)来控制对其他注册表的访问。
-- 用户可能通过以下方式绕过镜像访问管理：退出 Docker Desktop 登录（如果未强制登录）、使用不受限制的其他注册表中的镜像，或使用注册表镜像或代理。请强制登录并结合注册表访问管理以实现全面控制。
-- 镜像限制适用于 Dockerfile `FROM` 指令，使用受限镜像的 Docker Compose 服务将无法启动，如果中间镜像受限，多阶段构建可能会受到影响，使用多种镜像类型的 CI/CD 流水线也可能受到影响。
+- 镜像访问管理仅控制对 Docker Hub 镜像的访问。来自其他注册表的镜像不受这些策略影响。使用 [注册表访问管理](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) 来控制对其他注册表的访问。
+- 用户可能通过退出 Docker Desktop（除非强制执行登录）、使用不受限制的来自其他注册表的镜像或使用注册表镜像或代理来绕过镜像访问管理。强制执行登录并结合注册表访问管理以实现全面控制。
+- 镜像限制适用于 Dockerfile `FROM` 指令，使用受限镜像的 Docker Compose 服务将失败，如果中间镜像受限，多阶段构建可能会受到影响，使用各种镜像类型的 CI/CD 管道可能会受到影响。
+---

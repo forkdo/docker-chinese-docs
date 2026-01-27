@@ -87,7 +87,7 @@ aitr
 ```
 
 ## 文档管理器
-- [Hugo](https://github.com/gohugoio/hugo) （已内置）
+- [Hugo](https://github.com/gohugoio/hugo)
 ```bash
 hugo build
 ```

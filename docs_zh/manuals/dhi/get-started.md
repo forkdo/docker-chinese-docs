@@ -1,37 +1,36 @@
 ---
-linktitle: 快速开始
-title: Docker Hardened Images 快速开始
-description: 通过快速开始指南探索并运行 Docker Hardened Image。
+linktitle: 快速入门
+title: Docker 加固镜像快速入门
+description: 按照快速入门指南探索并运行 Docker 加固镜像。
 weight: 2
 keywords: docker hardened images quickstart, run secure image
 ---
 
-本指南将通过一个真实示例，向你展示如何从零开始运行 Docker Hardened Image（DHI）。最后，你将对比 DHI 与标准 Docker 镜像的差异，从而更好地理解它们的区别。虽然示例使用了特定镜像，但这些步骤适用于任何 DHI。
+本指南通过一个真实示例，向您展示如何从零开始运行 Docker 加固镜像 (DHI)。最后，您将 DHI 与标准 Docker 镜像进行比较，以更好地理解两者之间的差异。虽然这些步骤以特定镜像为例，但它们适用于任何 DHI。
 
 > [!NOTE]
 >
-> Docker Hardened Images 对所有人免费提供，无需订阅，无使用限制，无厂商锁定。当你需要企业级功能（如 FIPS 或 STIG 合规变体、自定义能力或 SLA 支持）时，可升级至 DHI Enterprise 订阅。
+> Docker 加固镜像对所有人免费开放，无需订阅，无使用限制，也无厂商锁定。当您有企业功能需求（如 FIPS 或 STIG 合规变体、定制能力或 SLA 支持）时，可以升级到 DHI 企业版订阅。
 
 ## 步骤 1：查找要使用的镜像
 
-1. 访问 [Docker Hub](https://hub.docker.com/hardened-images/catalog) 中的 Hardened Images 目录并登录。
-2. 在左侧边栏中，选择 **Hardened Images**。如果你有 DHI Enterprise，请选择 **Hardened Images** > **Catalog**。
-3. 使用搜索框或筛选器查找镜像（例如 `python`、`node`、`golang`）。本指南以 Python 镜像为例。
-4. 选择 Python 仓库以查看其详细信息。
+1. 前往 [Docker Hub](https://hub.docker.com/hardened-images/catalog) 中的加固镜像目录。
+2. 使用搜索栏或筛选器查找镜像（例如 `python`、`node`、`golang`）。本指南以 Python 镜像为例。
+3. 选择 Python 仓库以查看其详细信息。
 
-继续下一步以拉取并运行镜像。如需深入了解镜像探索，请参阅 [探索 Docker Hardened Images](./how-to/explore.md)。
+继续下一步以拉取并运行镜像。要深入了解镜像探索，请参阅[探索 Docker 加固镜像](./how-to/explore.md)。
 
 ## 步骤 2：拉取并运行镜像
 
-你可以像拉取和运行任何其他 Docker 镜像一样拉取和运行 DHI。注意，Docker Hardened Images 旨在最小化和安全，因此它们可能不包含你期望在典型镜像中的所有工具或库。你可以在 [采用 DHIs 时的注意事项](./how-to/use.md#considerations-when-adopting-dhis) 中查看典型差异。
+您可以像使用其他 Docker 镜像一样拉取并运行 DHI。请注意，Docker 加固镜像设计为最小且安全，因此可能不包含典型镜像中您所期望的所有工具或库。您可以在[采用 DHI 时的注意事项](./how-to/use.md#considerations-when-adopting-dhis)中查看典型差异。
 
 > [!TIP]
 >
-> 在 DHI 目录的每个仓库页面上，选择 **Use this image** 即可找到拉取和扫描镜像的说明。
+> 在 DHI 目录的每个仓库页面中，您都可以通过选择**使用此镜像**找到拉取和扫描镜像的说明。
 
-以下示例演示了你可以运行 Python 镜像并执行简单的 Python 命令，就像使用任何其他 Docker 镜像一样：
+以下示例演示您可以运行 Python 镜像并执行简单的 Python 命令，就像使用任何其他 Docker 镜像一样：
 
-1. 打开终端，使用你的 Docker ID 凭据登录到 Docker Hardened Images 注册表。
+1. 打开终端并使用您的 Docker ID 凭据登录 Docker 加固镜像注册表。
 
    ```console
    $ docker login dhi.io
@@ -49,19 +48,19 @@ keywords: docker hardened images quickstart, run secure image
     $ docker run --rm dhi.io/python:3.13 python -c "print('Hello from DHI')"
     ```
 
-    此命令从 `python:3.13` 镜像启动一个容器，并运行一个简单的 Python 脚本，打印 `Hello from DHI`。
+    这将从 `python:3.13` 镜像启动一个容器，并运行一个简单的 Python 脚本，打印 `Hello from DHI`。
 
-如需深入了解镜像使用，请参阅：
+要深入了解镜像使用，请参阅：
 
-- [使用 Docker Hardened Image](./how-to/use.md) 了解一般用法
-- [在 Kubernetes 中使用](./how-to/k8s.md) 了解 Kubernetes 部署
-- [使用 Helm Chart](./how-to/helm.md) 了解使用 Helm 部署
+- [使用 Docker 加固镜像](./how-to/use.md)：了解一般用法
+- [在 Kubernetes 中使用](./how-to/k8s.md)：了解 Kubernetes 部署
+- [使用 Helm chart](./how-to/helm.md)：了解使用 Helm 部署
 
-## 步骤 3：与其他镜像对比
+## 步骤 3：与其他镜像比较
 
-你可以快速对比 DHIs 与其他镜像，以查看安全改进和差异。这种对比有助于你理解使用加固镜像的价值。
+您可以快速将 DHI 与其他镜像进行比较，以了解安全改进和差异。这种比较有助于您理解使用加固镜像的价值。
 
-运行以下命令，查看 Docker Hardened Image for Python 与 Docker Hub 上非加固的 Docker Official Image for Python 的摘要对比：
+运行以下命令，查看 Docker 加固 Python 镜像与 Docker Hub 上的非加固 Docker 官方 Python 镜像之间的摘要比较：
 
 ```console
 $ docker scout compare dhi.io/python:3.13 \
@@ -93,28 +92,28 @@ $ docker scout compare dhi.io/python:3.13 \
 
 > [!NOTE]
 >
-> 这是示例输出。你的结果可能因新发现的 CVE 和镜像更新而异。
+> 这是示例输出。您的结果可能因新发现的 CVE 和镜像更新而异。
 >
-> Docker 在 Docker Hardened Images 中保持接近零的 CVE。对于 DHI Enterprise 订阅，当发现新 CVE 时，将在行业领先的 SLA 时间范围内修复。了解有关 [SLA 支持的安全功能](./features.md#sla-backed-security) 的更多信息。
+> Docker 在 Docker 加固镜像中保持接近零 CVE。对于 DHI 企业版订阅，当发现新的 CVE 时，会在行业领先的 SLA 时间范围内修复这些 CVE。了解有关 [SLA 支持的安全功能](./features.md#sla-backed-security) 的更多信息。
 
-此对比显示 Docker Hardened Image：
+此比较显示 Docker 加固镜像：
 
-- 消除漏洞：移除了 1 个高危、5 个中危、141 个低危和 2 个未指定严重性的 CVE
+- 移除漏洞：1 个高危、5 个中危、141 个低危和 2 个未指定严重程度的 CVE 被移除
 - 减小体积：从 412 MB 减少到 35 MB（减少 91%）
-- 减少包数量：从 610 个包减少到 80 个（减少 87%）
+- 最小化软件包：从 610 个软件包减少到 80 个（减少 87%）
 
-如需深入了解镜像对比，请参阅 [对比 Docker Hardened Images](./how-to/compare.md)。
+要深入了解镜像比较，请参阅[比较 Docker 加固镜像](./how-to/compare.md)。
 
 ## 下一步
 
-你已成功拉取并运行了第一个 Docker Hardened Image。以下是继续探索的几种方式：
+您已拉取并运行了第一个 Docker 加固镜像。以下是继续操作的几种方式：
 
-- [将现有应用迁移到 DHIs](./migration/migrate-with-ai.md)：使用 Docker 的 AI 助手更新你的 Dockerfile，以使用 Docker Hardened Images 作为基础。
+- [将现有应用程序迁移到 DHI](./migration/migrate-with-ai.md)：使用 Docker 的 AI 助手更新您的 Dockerfile，以使用 Docker 加固镜像作为基础镜像。
 
-- [开始试用](https://hub.docker.com/hardened-images/start-free-trial)：探索 DHI Enterprise 订阅的优势，例如访问 FIPS 和 STIG 变体、自定义镜像以及 SLA 支持的更新。
+- [开始试用](https://hub.docker.com/hardened-images/start-free-trial)：探索 DHI 企业版订阅的优势，例如访问 FIPS 和 STIG 变体、定制镜像以及 SLA 支持的更新。
 
-- [镜像仓库](./how-to/mirror.md)：订阅 DHI Enterprise 或开始试用后，学习如何镜像 DHI 仓库以启用自定义、访问合规变体并获得 SLA 支持的更新。
+- [镜像仓库](./how-to/mirror.md)：在订阅 DHI 企业版或开始试用后，了解如何镜像 DHI 仓库以实现定制、访问合规变体并获得 SLA 支持的更新。
 
-- [验证 DHIs](./how-to/verify.md)：使用 Docker Scout 或 Cosign 等工具检查和验证签名证明（如 SBOM 和来源）。
+- [验证 DHI](./how-to/verify.md)：使用 [Docker Scout](/scout/) 或 Cosign 等工具检查和验证签名证明，例如 SBOM 和来源。
 
-- [扫描 DHIs](./how-to/scan.md)：使用 Docker Scout 或其他扫描器分析镜像以识别已知 CVE。
+- [扫描 DHI](./how-to/scan.md)：使用 Docker Scout 或其他扫描器分析镜像以识别已知 CVE。
