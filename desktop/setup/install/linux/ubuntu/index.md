@@ -1,22 +1,4 @@
----
-title: 在 Ubuntu 上安装 Docker Desktop
-url: /desktop/setup/install/linux/ubuntu/
-parent:
-  title: 在 Linux 上安装 Docker Desktop
-  url: /desktop/setup/install/linux/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 Linux 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/
-  - title: 在 Ubuntu 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/ubuntu/
-prev:
-  title: 在 Debian 上安装 Docker Desktop
-  url: /desktop/setup/install/linux/debian/
----
+# 在 Ubuntu 上安装 Docker Desktop
 
 
 > **Docker Desktop 条款**

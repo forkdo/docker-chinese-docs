@@ -6,7 +6,7 @@
 
 
   <title>
-    GitHub Actions 和 Docker | Docker Docs
+    GitHub Actions 与 Docker | Docker Docs
   </title>
 
 
@@ -18,11 +18,14 @@
 <link rel="canonical" href="/guides/gha/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
-<meta name="twitter:title" itemprop="title name" content="GitHub Actions 和 Docker" />
+<meta name="twitter:title" itemprop="title name" content="GitHub Actions 与 Docker" />
 <meta
   name="twitter:description"
   property="og:description"
@@ -38,13 +41,13 @@
   content="/images/thumbnail.webp"
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
-<meta property="og:title" content="GitHub Actions 和 Docker" />
+<meta property="og:title" content="GitHub Actions 与 Docker" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-07-18 07:49:29 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-07-18 07:49:29 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-07-18T07:49:29+01:00","description":"","headline":"GitHub Actions 和 Docker","isPartOf":{"@id":"/guides/","@type":"WebPage","name":"指南"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/gha/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/gha/","name":"GitHub Actions 和 Docker"},"position":2}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"","headline":"GitHub Actions 与 Docker","isPartOf":{"@id":"/guides/","@type":"WebPage","name":"指南"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/gha/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/gha/","name":"GitHub Actions 与 Docker"},"position":2}]}</script>
 <link rel="alternate" type="text/markdown" href="/guides/gha/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -617,7 +626,7 @@ if (resultsLength > 5) {
                 action: 'AskGordon',
                 ...(this.includePageContext && {
                   page_url: window.location.href,
-                  page_title: &#34;使用 Docker 的 GitHub Actions 入门&#34;
+                  page_title: &#34;使用 Docker 的 GitHub Actions 简介&#34;
                 })
               }
             }
@@ -1288,9 +1297,9 @@ if (resultsLength > 5) {
 
   <div class="flex flex-col gap-4 px-4 pt-2">
   <div class="font-semibold">
-    <a href="/guides/gha/">使用 Docker 的 GitHub Actions 入门</a>
+    <a href="/guides/gha/">使用 Docker 的 GitHub Actions 简介</a>
   </div>
-  <div>了解如何使用 GitHub Actions 自动构建和推送镜像。</div>
+  <div>了解如何使用 GitHub Actions 自动化镜像构建和推送。</div>
   <div class="space-y-4">
     <div class="flex flex-wrap gap-2">
         
@@ -1341,12 +1350,12 @@ if (resultsLength > 5) {
   <span
     data-pagefind-meta="breadcrumbs:首页 / 指南"
     class="truncate"
-    >GitHub Actions 和 Docker</span
+    >GitHub Actions 与 Docker</span
   >
 </nav>
 
     <div class="flex items-start justify-between">
-      <h1 data-pagefind-weight="10">使用 Docker 的 GitHub Actions 入门</h1>
+      <h1 data-pagefind-weight="10">使用 Docker 的 GitHub Actions 简介</h1>
       <div class="md-dropdown ml-auto hidden lg:block">
         <div class="ml-3 relative inline-block" x-data="{ open: false }" @click.outside="open = false">
   <div class="flex shadow rounded-sm overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -1487,8 +1496,8 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
-            >先决条件</a
+          <a class="link lg:no-underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"
+            >前提条件</a
           >
         </li>
         <li>
@@ -1497,23 +1506,23 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e9%85%8d%e7%bd%ae%e6%82%a8%e7%9a%84-github-%e4%bb%93%e5%ba%93"
-            >配置您的 GitHub 仓库</a
+          <a class="link lg:no-underline" href="#%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84-github-%e4%bb%93%e5%ba%93"
+            >配置你的 GitHub 仓库</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e8%ae%be%e7%bd%ae%e6%82%a8%e7%9a%84-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >设置您的 GitHub Actions 工作流</a
+          <a class="link lg:no-underline" href="#%e8%ae%be%e7%bd%ae%e4%bd%a0%e7%9a%84-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >设置你的 GitHub Actions 工作流</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e4%b8%ba%e6%a0%87%e7%ad%be%e5%92%8c%e6%b3%a8%e8%a7%a3%e6%8f%90%e5%8f%96%e5%85%83%e6%95%b0%e6%8d%ae"
-            >为标签和注解提取元数据</a
+          <a class="link lg:no-underline" href="#%e6%8f%90%e5%8f%96%e6%a0%87%e7%ad%be%e5%92%8c%e6%b3%a8%e8%a7%a3%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae"
+            >提取标签和注解的元数据</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%90%91%e6%82%a8%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%bf%9b%e8%a1%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81"
-            >向您的注册表进行身份验证</a
+          <a class="link lg:no-underline" href="#%e5%90%91%e4%bd%a0%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%bf%9b%e8%a1%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81"
+            >向你的注册表进行身份验证</a
           >
         </li>
         <li>
@@ -1522,13 +1531,13 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e8%af%81%e6%98%8e"
-            >证明</a
+          <a class="link lg:no-underline" href="#%e8%af%81%e6%98%8eattestations"
+            >证明（Attestations）</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%bb%93%e8%ae%ba"
-            >结论</a
+          <a class="link lg:no-underline" href="#%e6%80%bb%e7%bb%93"
+            >总结</a
           >
         </li>
         
@@ -1545,20 +1554,19 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>本指南介绍如何使用 Docker 和 GitHub Actions 构建 CI 流水线。您将学习如何使用 Docker 官方 GitHub Actions 将应用程序构建为 Docker 镜像并推送到 Docker Hub。在本指南结束时，您将拥有一个简单且功能完整的 GitHub Actions 配置，可用于 Docker 构建。您可以直接使用该配置，也可以根据需要进一步扩展。</p>
+    <p>本指南介绍了如何使用 Docker 和 GitHub Actions 构建 CI 流水线。你将学习如何使用 Docker 官方提供的 GitHub Actions 将你的应用程序构建为 Docker 镜像并推送到 Docker Hub。在本指南结束时，你将拥有一个简单且功能齐全的 GitHub Actions Docker 构建配置。你可以直接使用它，也可以根据需要进行扩展。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="先决条件">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6">
-    先决条件
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="前提条件">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6">
+    前提条件
   </a>
 </h2>
 
-<p>如果您想跟随本指南操作，请确保您具备以下条件：</p>
+<p>如果你想跟随本指南进行操作，请确保你具备以下条件：</p>
 <ul>
-<li>一个 Docker 账户。</li>
-<li>熟悉 Dockerfile。</li>
+<li>一个已验证的 Docker 账户。</li>
+<li>熟悉 Dockerfile。本指南假设你具备 Docker 概念的基础知识，但会提供在 GitHub Actions 工作流中使用 Docker 的说明。</li>
 </ul>
-<p>本指南假定您对 Docker 概念有基本的了解，但会提供在 GitHub Actions 工作流中使用 Docker 的说明。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="获取示例应用">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%8e%b7%e5%8f%96%e7%a4%ba%e4%be%8b%e5%ba%94%e7%94%a8">
@@ -1566,8 +1574,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>本指南与项目无关，假定您有一个包含 Dockerfile 的应用程序。</p>
-<p>如果您需要一个示例项目来跟随操作，可以使用<a class="link" href="https://github.com/dvdksn/rpg-name-generator.git" rel="noopener">这个示例应用程序</a>，它包含一个用于构建应用程序容器化版本的 Dockerfile。或者，您也可以使用自己的 GitHub 项目或从模板创建一个新仓库。</p>
+<p>本指南与项目无关，假设你有一个包含 Dockerfile 的应用程序。如果你需要一个示例项目来跟随操作，可以使用<a class="link" href="https://github.com/dvdksn/rpg-name-generator.git" rel="noopener">这个示例应用</a>，它包含一个用于构建应用容器化版本的 Dockerfile。或者，使用你自己的 GitHub 项目，或从模板创建一个新仓库。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1652,32 +1659,31 @@ if (resultsLength > 5) {
   </div>
 </div>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="配置您的-github-仓库">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%85%8d%e7%bd%ae%e6%82%a8%e7%9a%84-github-%e4%bb%93%e5%ba%93">
-    配置您的 GitHub 仓库
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="配置你的-github-仓库">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84-github-%e4%bb%93%e5%ba%93">
+    配置你的 GitHub 仓库
   </a>
 </h2>
 
-<p>本指南中的工作流会将您构建的镜像推送到 Docker Hub。为此，您必须在 GitHub Actions 工作流中使用 Docker 凭据（用户名和访问令牌）进行身份验证。</p>
-<p>有关如何创建 Docker 访问令牌的说明，请参阅
+<p>本指南中的工作流会将构建的镜像推送到 Docker Hub。为此，你必须在 GitHub Actions 工作流中使用你的 Docker 凭据（用户名和访问令牌）进行身份验证。有关如何创建 Docker 访问令牌的说明，请参阅
     
   
   <a class="link" href="/security/access-tokens/">创建和管理访问令牌</a>。</p>
-<p>准备好 Docker 凭据后，将这些凭据添加到您的 GitHub 仓库中，以便在 GitHub Actions 中使用：</p>
+<p>准备好 Docker 凭据后，将其添加到你的 GitHub 仓库，以便在 GitHub Actions 中使用：</p>
 <ol>
-<li>打开您仓库的 <strong>Settings</strong>（设置）。</li>
-<li>在 <strong>Security</strong>（安全性）下，转到 <strong>Secrets and variables &gt; Actions</strong>（机密和变量 &gt; Actions）。</li>
-<li>在 <strong>Secrets</strong>（机密）下，创建一个名为 <code>DOCKER_PASSWORD</code> 的新仓库机密，其中包含您的 Docker 访问令牌。</li>
-<li>接下来，在 <strong>Variables</strong>（变量）下，创建一个名为 <code>DOCKER_USERNAME</code> 的仓库变量，其中包含您的 Docker Hub 用户名。</li>
+<li>打开仓库的 <strong>Settings</strong>（设置）。</li>
+<li>在 <strong>Security</strong>（安全）下，转到 <strong>Secrets and variables &gt; Actions</strong>（机密和变量 &gt; Actions）。</li>
+<li>在 <strong>Secrets</strong>（机密）下，创建一个名为 <code>DOCKER_PASSWORD</code> 的新仓库机密，包含你的 Docker 访问令牌。</li>
+<li>接下来，在 <strong>Variables</strong>（变量）下，创建一个名为 <code>DOCKER_USERNAME</code> 的仓库变量，包含你的 Docker Hub 用户名。</li>
 </ol>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="设置您的-github-actions-工作流">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%ae%be%e7%bd%ae%e6%82%a8%e7%9a%84-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81">
-    设置您的 GitHub Actions 工作流
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="设置你的-github-actions-工作流">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%ae%be%e7%bd%ae%e4%bd%a0%e7%9a%84-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81">
+    设置你的 GitHub Actions 工作流
   </a>
 </h2>
 
-<p>GitHub Actions 工作流定义了一系列步骤，用于自动执行任务，例如在提交或拉取请求等触发器响应时构建和推送 Docker 镜像。在本指南中，工作流侧重于自动化 Docker 构建和测试，确保您的容器化应用程序在发布之前能够正常工作。</p>
+<p>GitHub Actions 工作流定义了一系列步骤，用于自动化任务（例如构建和推送 Docker 镜像），以响应提交或拉取请求等触发器。在本指南中，工作流侧重于自动化 Docker 构建和测试，确保你的容器化应用在发布前正常工作。</p>
 <p>在仓库的 <code>.github/workflows/</code> 目录中创建一个名为 <code>docker-ci.yml</code> 的文件。从基本的工作流配置开始：</p>
 <div
   data-pagefind-ignore
@@ -1721,16 +1727,16 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此配置会在推送到 main 分支和拉取请求时运行工作流。通过包含这两个触发器，您可以确保镜像在合并之前为拉取请求正确构建。</p>
+<p>此配置在推送到 main 分支以及发起拉取请求时运行工作流。通过包含这两个触发器，你可以确保镜像在合并前针对拉取请求正确构建。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="为标签和注解提取元数据">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%b8%ba%e6%a0%87%e7%ad%be%e5%92%8c%e6%b3%a8%e8%a7%a3%e6%8f%90%e5%8f%96%e5%85%83%e6%95%b0%e6%8d%ae">
-    为标签和注解提取元数据
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="提取标签和注解的元数据">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%8f%90%e5%8f%96%e6%a0%87%e7%ad%be%e5%92%8c%e6%b3%a8%e8%a7%a3%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae">
+    提取标签和注解的元数据
   </a>
 </h2>
 
-<p>对于工作流中的第一步，请使用 <code>docker/metadata-action</code> 为您的镜像生成元数据。此操作会提取有关 Git 仓库的信息，例如分支名称和提交 SHA，并生成镜像元数据，例如标签和注解。</p>
-<p>将以下 YAML 添加到您的工作流文件中：</p>
+<p>作为工作流的第一步，使用 <code>docker/metadata-action</code> 为你的镜像生成元数据。此操作会提取有关 Git 仓库的信息（例如分支名称和提交 SHA），并生成镜像元数据（例如标签和注解）。</p>
+<p>将以下 YAML 添加到你的工作流文件中：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1743,7 +1749,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'am9iczoKICBidWlsZDoKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IENoZWNrb3V0CiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAtIG5hbWU6IEV4dHJhY3QgRG9ja2VyIGltYWdlIG1ldGFkYXRhCiAgICAgICAgaWQ6IG1ldGEKICAgICAgICB1c2VzOiBkb2NrZXIvbWV0YWRhdGEtYWN0aW9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIGltYWdlczogJHt7IHZhcnMuRE9DS0VSX1VTRVJOQU1FIH19L215LWltYWdl', copying: false }"
+        x-data="{ code: 'am9iczoKICBidWlsZDoKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IENoZWNrb3V0CiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAoKICAgICAgLSBuYW1lOiBFeHRyYWN0IERvY2tlciBpbWFnZSBtZXRhZGF0YQogICAgICAgIGlkOiBtZXRhCiAgICAgICAgdXNlczogZG9ja2VyL21ldGFkYXRhLWFjdGlvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBpbWFnZXM6ICR7eyB2YXJzLkRPQ0tFUl9VU0VSTkFNRSB9fS9teS1pbWFnZQ==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -1768,6 +1774,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Extract Docker image metadata</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">meta</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/metadata-action@v5</span><span class="w">
@@ -1777,20 +1784,19 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>这些步骤会在构建和推送过程中为镜像准备用于标记和注解的元数据。</p>
+<p>这些步骤准备了在构建和推送过程中用于标记和注解镜像的元数据。</p>
 <ul>
-<li><strong>Checkout</strong> 步骤会克隆 Git 仓库。</li>
-<li><strong>Extract Docker image metadata</strong> 步骤会提取 Git 元数据，并为 Docker 构建生成镜像标签和注解。</li>
+<li><strong>Checkout</strong>（检出）步骤克隆 Git 仓库。</li>
+<li><strong>Extract Docker image metadata</strong>（提取 Docker 镜像元数据）步骤提取 Git 元数据，并为 Docker 构建生成镜像标签和注解。</li>
 </ul>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="向您的注册表进行身份验证">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%91%e6%82%a8%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%bf%9b%e8%a1%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81">
-    向您的注册表进行身份验证
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="向你的注册表进行身份验证">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%91%e4%bd%a0%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%bf%9b%e8%a1%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81">
+    向你的注册表进行身份验证
   </a>
 </h2>
 
-<p>在构建镜像之前，向您的注册表进行身份验证，以确保您可以将构建的镜像推送到注册表。</p>
-<p>要与 Docker Hub 进行身份验证，请将以下步骤添加到您的工作流中：</p>
+<p>在构建镜像之前，向你的注册表进行身份验证，以确保你可以将构建的镜像推送到注册表。要向 Docker Hub 进行身份验证，请将以下步骤添加到你的工作流中：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1831,7 +1837,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此步骤使用<a class="link" href="#configure-your-github-repository">在仓库设置中配置的 Docker 凭据</a>。</p>
+<p>此步骤使用<a class="link" href="#configure-your-github-repository">在仓库设置中配置的</a> Docker 凭据。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="构建并推送镜像">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9e%84%e5%bb%ba%e5%b9%b6%e6%8e%a8%e9%80%81%e9%95%9c%e5%83%8f">
@@ -1839,7 +1845,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>最后，构建最终的生产镜像并将其推送到您的注册表。以下配置会构建镜像并将其直接推送到注册表。</p>
+<p>最后，构建最终的生产镜像并将其推送到你的注册表。以下配置会构建镜像并直接推送到注册表。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1883,25 +1889,24 @@ if (resultsLength > 5) {
 </div>
 <p>在此配置中：</p>
 <ul>
-<li><code>push: ${{ github.event_name != 'pull_request' }}</code> 确保仅在事件不是拉取请求时才推送镜像。这样，工作流会为拉取请求构建和测试镜像，但仅为推送到 main 分支的提交推送镜像。</li>
+<li><code>push: ${{ github.event_name != 'pull_request' }}</code> 确保仅在事件不是拉取请求时才推送镜像。这样，工作流会为拉取请求构建和测试镜像，但仅在提交到 main 分支时才推送镜像。</li>
 <li><code>tags</code> 和 <code>annotations</code> 使用元数据操作的输出，自动为镜像应用一致的标签和
     
   
   <a class="link" href="/build/metadata/annotations/">注解</a>。</li>
 </ul>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="证明">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%af%81%e6%98%8e">
-    证明
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="证明attestations">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%af%81%e6%98%8eattestations">
+    证明（Attestations）
   </a>
 </h2>
 
-<p>SBOM（软件物料清单）和来源证明可以提高安全性和可追溯性，确保您的镜像符合现代软件供应链的要求。</p>
-<p>只需进行少量额外配置，您就可以配置 <code>docker/build-push-action</code> 在构建时为镜像生成软件物料清单 (SBOM) 和来源证明。</p>
-<p>要生成此额外元数据，您需要对工作流进行两项更改：</p>
+<p>SBOM（软件物料清单）和来源证明（provenance attestations）可以提高安全性和可追溯性，确保你的镜像满足现代软件供应链要求。只需少量额外配置，你就可以配置 <code>docker/build-push-action</code> 在构建时为镜像生成软件物料清单（SBOM）和来源证明。</p>
+<p>要生成这些额外的元数据，你需要对工作流进行两处更改：</p>
 <ul>
-<li>在构建步骤之前，添加一个使用 <code>docker/setup-buildx-action</code> 的步骤。此操作会使用默认客户端不支持的其他功能来配置您的 Docker 构建客户端。</li>
-<li>然后，更新 <strong>Build and push Docker image</strong> 步骤，以同时启用 SBOM 和来源证明。</li>
+<li>在构建步骤之前，添加一个使用 <code>docker/setup-buildx-action</code> 的步骤。此操作会使用默认客户端不支持的额外功能来配置你的 Docker 构建客户端。</li>
+<li>然后，更新 <strong>Build and push Docker image</strong>（构建并推送 Docker 镜像）步骤，以启用 SBOM 和来源证明。</li>
 </ul>
 <p>以下是更新后的代码片段：</p>
 <div
@@ -1916,7 +1921,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'ICAgICAgLSBuYW1lOiBTZXQgdXAgRG9ja2VyIEJ1aWxkeAogICAgICAgIHVzZXM6IGRvY2tlci9zZXR1cC1idWlsZHgtYWN0aW9uQHYzCiAgICAgIAogICAgICAtIG5hbWU6IEJ1aWxkIGFuZCBwdXNoIERvY2tlciBpbWFnZQogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBwdXNoOiAke3sgZ2l0aHViLmV2ZW50X25hbWUgIT0gJ3B1bGxfcmVxdWVzdCcgfX0KICAgICAgICAgIHRhZ3M6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMudGFncyB9fQogICAgICAgICAgYW5ub3RhdGlvbnM6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuYW5ub3RhdGlvbnMgfX0KICAgICAgICAgIHByb3ZlbmFuY2U6IHRydWUKICAgICAgICAgIHNib206IHRydWU=', copying: false }"
+        x-data="{ code: 'ICAgICAgLSBuYW1lOiBTZXQgdXAgRG9ja2VyIEJ1aWxkeAogICAgICAgIHVzZXM6IGRvY2tlci9zZXR1cC1idWlsZHgtYWN0aW9uQHYzCgogICAgICAtIG5hbWU6IEJ1aWxkIGFuZCBwdXNoIERvY2tlciBpbWFnZQogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBwdXNoOiAke3sgZ2l0aHViLmV2ZW50X25hbWUgIT0gJ3B1bGxfcmVxdWVzdCcgfX0KICAgICAgICAgIHRhZ3M6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMudGFncyB9fQogICAgICAgICAgYW5ub3RhdGlvbnM6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuYW5ub3RhdGlvbnMgfX0KICAgICAgICAgIHByb3ZlbmFuY2U6IHRydWUKICAgICAgICAgIHNib206IHRydWU=', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -1937,7 +1942,7 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Docker Buildx</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/setup-buildx-action@v3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and push Docker image</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
@@ -1955,13 +1960,13 @@ if (resultsLength > 5) {
   
   <a class="link" href="/build/metadata/attestations/">文档</a>。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="结论">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bb%93%e8%ae%ba">
-    结论
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="总结">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%80%bb%e7%bb%93">
+    总结
   </a>
 </h2>
 
-<p>通过前面部分概述的所有步骤，以下是完整的工作流配置：</p>
+<p>结合前面章节中概述的所有步骤，以下是完整的工作流配置：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1974,7 +1979,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'bmFtZTogQnVpbGQgYW5kIFB1c2ggRG9ja2VyIEltYWdlCgpvbjoKICBwdXNoOgogICAgYnJhbmNoZXM6CiAgICAgIC0gbWFpbgogIHB1bGxfcmVxdWVzdDoKCmpvYnM6CiAgYnVpbGQ6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVja291dAogICAgICAgIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKCiAgICAgIC0gbmFtZTogRXh0cmFjdCBEb2NrZXIgaW1hZ2UgbWV0YWRhdGEKICAgICAgICBpZDogbWV0YQogICAgICAgIHVzZXM6IGRvY2tlci9tZXRhZGF0YS1hY3Rpb25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgaW1hZ2VzOiAke3sgdmFycy5ET0NLRVJfVVNFUk5BTUUgfX0vbXktaW1hZ2UKCiAgICAgIC0gbmFtZTogTG9nIGluIHRvIERvY2tlciBIdWIKICAgICAgICB1c2VzOiBkb2NrZXIvbG9naW4tYWN0aW9uQHYzCiAgICAgICAgd2l0aDoKICAgICAgICAgIHVzZXJuYW1lOiAke3sgdmFycy5ET0NLRVJfVVNFUk5BTUUgfX0KICAgICAgICAgIHBhc3N3b3JkOiAke3sgc2VjcmV0cy5ET0NLRVJfUEFTU1dPUkQgfX0KCiAgICAgIC0gbmFtZTogU2V0IHVwIERvY2tlciBCdWlsZHgKICAgICAgICB1c2VzOiBkb2NrZXIvc2V0dXAtYnVpbGR4LWFjdGlvbkB2MwogICAgICAKICAgICAgLSBuYW1lOiBCdWlsZCBhbmQgcHVzaCBEb2NrZXIgaW1hZ2UKICAgICAgICB1c2VzOiBkb2NrZXIvYnVpbGQtcHVzaC1hY3Rpb25AdjYKICAgICAgICB3aXRoOgogICAgICAgICAgcHVzaDogJHt7IGdpdGh1Yi5ldmVudF9uYW1lICE9ICdwdWxsX3JlcXVlc3QnIH19CiAgICAgICAgICB0YWdzOiAke3sgc3RlcHMubWV0YS5vdXRwdXRzLnRhZ3MgfX0KICAgICAgICAgIGFubm90YXRpb25zOiAke3sgc3RlcHMubWV0YS5vdXRwdXRzLmFubm90YXRpb25zIH19CiAgICAgICAgICBwcm92ZW5hbmNlOiB0cnVlCiAgICAgICAgICBzYm9tOiB0cnVl', copying: false }"
+        x-data="{ code: 'bmFtZTogQnVpbGQgYW5kIFB1c2ggRG9ja2VyIEltYWdlCgpvbjoKICBwdXNoOgogICAgYnJhbmNoZXM6CiAgICAgIC0gbWFpbgogIHB1bGxfcmVxdWVzdDoKCmpvYnM6CiAgYnVpbGQ6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVja291dAogICAgICAgIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKCiAgICAgIC0gbmFtZTogRXh0cmFjdCBEb2NrZXIgaW1hZ2UgbWV0YWRhdGEKICAgICAgICBpZDogbWV0YQogICAgICAgIHVzZXM6IGRvY2tlci9tZXRhZGF0YS1hY3Rpb25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgaW1hZ2VzOiAke3sgdmFycy5ET0NLRVJfVVNFUk5BTUUgfX0vbXktaW1hZ2UKCiAgICAgIC0gbmFtZTogTG9nIGluIHRvIERvY2tlciBIdWIKICAgICAgICB1c2VzOiBkb2NrZXIvbG9naW4tYWN0aW9uQHYzCiAgICAgICAgd2l0aDoKICAgICAgICAgIHVzZXJuYW1lOiAke3sgdmFycy5ET0NLRVJfVVNFUk5BTUUgfX0KICAgICAgICAgIHBhc3N3b3JkOiAke3sgc2VjcmV0cy5ET0NLRVJfUEFTU1dPUkQgfX0KCiAgICAgIC0gbmFtZTogU2V0IHVwIERvY2tlciBCdWlsZHgKICAgICAgICB1c2VzOiBkb2NrZXIvc2V0dXAtYnVpbGR4LWFjdGlvbkB2MwoKICAgICAgLSBuYW1lOiBCdWlsZCBhbmQgcHVzaCBEb2NrZXIgaW1hZ2UKICAgICAgICB1c2VzOiBkb2NrZXIvYnVpbGQtcHVzaC1hY3Rpb25AdjYKICAgICAgICB3aXRoOgogICAgICAgICAgcHVzaDogJHt7IGdpdGh1Yi5ldmVudF9uYW1lICE9ICdwdWxsX3JlcXVlc3QnIH19CiAgICAgICAgICB0YWdzOiAke3sgc3RlcHMubWV0YS5vdXRwdXRzLnRhZ3MgfX0KICAgICAgICAgIGFubm90YXRpb25zOiAke3sgc3RlcHMubWV0YS5vdXRwdXRzLmFubm90YXRpb25zIH19CiAgICAgICAgICBwcm92ZW5hbmNlOiB0cnVlCiAgICAgICAgICBzYm9tOiB0cnVl', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -2022,7 +2027,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Docker Buildx</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/setup-buildx-action@v3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and push Docker image</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
@@ -2035,10 +2040,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此工作流实现了使用 GitHub Actions 构建和推送 Docker 镜像的最佳实践。此配置可以直接使用，也可以根据项目的需求扩展其他功能，例如
+<p>此工作流实现了使用 GitHub Actions 构建和推送 Docker 镜像的最佳实践。此配置可以按原样使用，也可以根据项目需求扩展其他功能，例如 
     
   
-  <a class="link" href="/build/building/multi-platform/">多平台</a>。</p>
+  <a class="link" href="/build/building/multi-platform/">multi-platform</a>。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="延伸阅读">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%bb%b6%e4%bc%b8%e9%98%85%e8%af%bb">
@@ -2050,15 +2055,15 @@ if (resultsLength > 5) {
 <li>在 
     
   
-  <a class="link" href="/build/ci/github-actions/">Docker Build GitHub Actions</a> 部分了解有关高级配置和示例的更多信息。</li>
-<li>对于更复杂的构建设置，您可能需要考虑 
+  <a class="link" href="/build/ci/github-actions/">Docker Build GitHub Actions</a> 部分了解更多高级配置和示例。</li>
+<li>对于更复杂的构建设置，你可以考虑使用 
     
   
-  <a class="link" href="/build/bake/">Bake</a>。（另请参阅
+  <a class="link" href="/build/bake/">Bake</a>。（另请参阅 
     
   
-  <a class="link" href="/guides/bake/">精通 Buildx Bake 指南</a>。）</li>
-<li>了解 Docker 托管的构建服务，旨在实现更快、多平台的构建，请参阅 
+  <a class="link" href="/guides/bake/">Mastering Buildx Bake guide</a>。）</li>
+<li>了解 Docker 的托管构建服务，该服务专为更快的多平台构建而设计，请参阅 
     
   
   <a class="link" href="/guides/docker-build-cloud/">Docker Build Cloud</a>。</li>
@@ -2120,8 +2125,8 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
-            >先决条件</a
+          <a class="link lg:no-underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"
+            >前提条件</a
           >
         </li>
         <li>
@@ -2130,23 +2135,23 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e9%85%8d%e7%bd%ae%e6%82%a8%e7%9a%84-github-%e4%bb%93%e5%ba%93"
-            >配置您的 GitHub 仓库</a
+          <a class="link lg:no-underline" href="#%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84-github-%e4%bb%93%e5%ba%93"
+            >配置你的 GitHub 仓库</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e8%ae%be%e7%bd%ae%e6%82%a8%e7%9a%84-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >设置您的 GitHub Actions 工作流</a
+          <a class="link lg:no-underline" href="#%e8%ae%be%e7%bd%ae%e4%bd%a0%e7%9a%84-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >设置你的 GitHub Actions 工作流</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e4%b8%ba%e6%a0%87%e7%ad%be%e5%92%8c%e6%b3%a8%e8%a7%a3%e6%8f%90%e5%8f%96%e5%85%83%e6%95%b0%e6%8d%ae"
-            >为标签和注解提取元数据</a
+          <a class="link lg:no-underline" href="#%e6%8f%90%e5%8f%96%e6%a0%87%e7%ad%be%e5%92%8c%e6%b3%a8%e8%a7%a3%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae"
+            >提取标签和注解的元数据</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%90%91%e6%82%a8%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%bf%9b%e8%a1%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81"
-            >向您的注册表进行身份验证</a
+          <a class="link lg:no-underline" href="#%e5%90%91%e4%bd%a0%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%bf%9b%e8%a1%8c%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81"
+            >向你的注册表进行身份验证</a
           >
         </li>
         <li>
@@ -2155,13 +2160,13 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e8%af%81%e6%98%8e"
-            >证明</a
+          <a class="link lg:no-underline" href="#%e8%af%81%e6%98%8eattestations"
+            >证明（Attestations）</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%bb%93%e8%ae%ba"
-            >结论</a
+          <a class="link lg:no-underline" href="#%e6%80%bb%e7%bb%93"
+            >总结</a
           >
         </li>
         
@@ -2189,9 +2194,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2206,7 +2213,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2221,7 +2228,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2236,7 +2243,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2251,7 +2258,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2267,26 +2274,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

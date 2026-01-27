@@ -1,25 +1,4 @@
----
-title: Docker 硬化镜像的构建方式
-url: /dhi/explore/build-process/
-parent:
-  title: 探索 Docker Hardened Images
-  url: /dhi/explore/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 探索 Docker Hardened Images
-    url: /dhi/explore/
-  - title: Docker 硬化镜像的构建方式
-    url: /dhi/explore/build-process/
-next:
-  title: 什么是加固镜像，为什么要使用它们？
-  url: /dhi/explore/what/
-prev:
-  title: Docker Hardened Images 可用类型
-  url: /dhi/explore/available/
----
+# Docker 硬化镜像的构建方式
 
 
 Docker 硬化镜像通过自动化流水线构建而成，该流水线监控上游源、应用安全更新并发布签名的制品。

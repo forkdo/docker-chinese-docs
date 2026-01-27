@@ -1,25 +1,4 @@
----
-title: 在基于 Arch 的发行版上安装 Docker Desktop
-url: /desktop/setup/install/linux/archlinux/
-parent:
-  title: 在 Linux 上安装 Docker Desktop
-  url: /desktop/setup/install/linux/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 Linux 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/
-  - title: 在基于 Arch 的发行版上安装 Docker Desktop
-    url: /desktop/setup/install/linux/archlinux/
-next:
-  title: 在 Fedora 上安装 Docker Desktop
-  url: /desktop/setup/install/linux/fedora/
-prev:
-  title: 在 RHEL 上安装 Docker Desktop
-  url: /desktop/setup/install/linux/rhel/
----
+# 在基于 Arch 的发行版上安装 Docker Desktop
 
 
 
@@ -39,7 +18,7 @@ prev:
 1. [在 Linux 上安装 Docker 客户端二进制文件](/manuals/engine/install/binaries.md#install-daemon-and-client-binaries-on-linux)。Linux 的 Docker 客户端静态二进制文件可作为 `docker` 获得。您可以使用：
 
    ```console
-   $ wget https://download.docker.com/linux/static/stable/x86_64/docker-29.1.4.tgz -qO- | tar xvfz - docker/docker --strip-components=1
+   $ wget https://download.docker.com/linux/static/stable/x86_64/docker-29.2.0.tgz -qO- | tar xvfz - docker/docker --strip-components=1
    $ sudo cp -rp ./docker /usr/local/bin/ && rm -r ./docker
    ```
 

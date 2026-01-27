@@ -1,20 +1,4 @@
----
-title: Docker Scout 中的数据收集与存储
-url: /scout/deep-dive/data-handling/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 中的数据收集与存储
-    url: /scout/deep-dive/data-handling/
-prev:
-  title: 咨询数据库来源和匹配服务
-  url: /scout/deep-dive/advisory-db-sources/
----
+# Docker Scout 中的数据收集与存储
 
 
 Docker Scout 的镜像分析通过收集您分析的容器镜像的元数据来工作。这些元数据存储在 Docker Scout 平台上。

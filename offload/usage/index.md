@@ -1,23 +1,4 @@
----
-title: Docker Offload 使用与计费
-url: /offload/usage/
-parent:
-  title: Docker Offload
-  url: /offload/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Offload
-    url: /offload/
-  - title: Docker Offload 使用与计费
-    url: /offload/usage/
-next:
-  title: 配置 Docker Offload
-  url: /offload/configuration/
-prev:
-  title: 优化 Docker Offload 使用
-  url: /offload/optimize/
----
+# Docker Offload 使用与计费
 
 
 

@@ -1,21 +1,4 @@
----
-title: docker compose alpha
-url: /reference/cli/docker/compose/alpha/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose alpha
-    url: /reference/cli/docker/compose/alpha/
----
+# docker compose alpha
 
 **Description:** Experimental commands
 

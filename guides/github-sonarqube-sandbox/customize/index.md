@@ -1,23 +1,4 @@
----
-title: 自定义代码质量检查工作流
-url: /guides/github-sonarqube-sandbox/customize/
-parent:
-  title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
-  url: /guides/github-sonarqube-sandbox/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
-    url: /guides/github-sonarqube-sandbox/
-  - title: 自定义代码质量检查工作流
-    url: /guides/github-sonarqube-sandbox/customize/
-next:
-  title: 构建代码质量检查工作流
-  url: /guides/github-sonarqube-sandbox/workflow/
-prev:
-  title: 故障排除代码质量工作流
-  url: /guides/github-sonarqube-sandbox/troubleshoot/
----
+# 自定义代码质量检查工作流
 
 
 现在您已经了解了如何在 E2B 沙箱中使用 GitHub 和 SonarQube 自动化代码质量工作流的基础知识，可以根据需要自定义工作流。

@@ -1,23 +1,4 @@
----
-title: 使用 Docker Build Cloud
-url: /build-cloud/usage/
-parent:
-  title: Docker Build Cloud
-  url: /build-cloud/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build Cloud
-    url: /build-cloud/
-  - title: 使用 Docker Build Cloud
-    url: /build-cloud/usage/
-next:
-  title: Docker Build Cloud 设置
-  url: /build-cloud/setup/
-prev:
-  title: 在 CI 中使用 Docker Build Cloud
-  url: /build-cloud/ci/
----
+# 使用 Docker Build Cloud
 
 
 要使用 Docker Build Cloud 进行构建，请调用构建命令并使用 `--builder` 标志指定构建器的名称。

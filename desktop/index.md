@@ -1,30 +1,4 @@
----
-title: Docker Desktop
-url: /desktop/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-children:
-  - title: 探索 Docker Desktop
-    url: /desktop/use-desktop/
-    description: 了解如何在 Docker Desktop 中使用 Docker Desktop Dashboard，包括快速搜索、Docker 菜单等
-  - title: 卸载 Docker Desktop
-    url: /desktop/uninstall/
-    description: 如何卸载 Docker Desktop
-  - title: 修复 Mac 上的 Docker Desktop 启动问题
-    url: /desktop/cert-revoke-solution/
-    description: 了解如何解决影响 macOS 用户使用 Docker Desktop 的近期问题，包括启动故障和误报的恶意软件警告，提供升级、补丁和变通方案。
-  - title: Docker Desktop 发行说明
-    url: /desktop/release-notes/
-    description: 查找适用于 Mac、Linux 和 Windows 的 Docker Desktop 发行说明。
-  - title: 
-    url: /desktop/enterprise/
----
+# Docker Desktop
 
 
 Docker Desktop 是一款适用于 Mac、Linux 或 Windows 环境的应用程序，只需点击一下即可完成安装，让您可以构建、共享和运行容器化应用程序及微服务。

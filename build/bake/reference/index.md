@@ -1,25 +1,4 @@
----
-title: Bake file reference
-url: /build/bake/reference/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Bake file reference
-    url: /build/bake/reference/
-next:
-  title: Using Bake with additional contexts
-  url: /build/bake/contexts/
-prev:
-  title: Bake standard library functions
-  url: /build/bake/stdlib/
----
+# Bake file reference
 
 
 The Bake file is a file for defining workflows that you run using `docker buildx bake`.
@@ -256,6 +235,7 @@ The following table shows the complete list of attributes that you can assign to
 | [`no-cache-filter`](#targetno-cache-filter)     | List    | Disable build cache for specific stages                              |
 | [`no-cache`](#targetno-cache)                   | Boolean | Disable build cache completely                                       |
 | [`output`](#targetoutput)                       | List    | Output destinations                                                  |
+| [`policy`](#targetpolicy)                       | List    | Policies to validate build sources and metadata                      |
 | [`platforms`](#targetplatforms)                 | List    | Target platforms                                                     |
 | [`pull`](#targetpull)                           | Boolean | Always pull images                                                   |
 | [`secret`](#targetsecret)                       | List    | Secrets to expose to the build                                       |
@@ -916,6 +896,21 @@ The following example configures the target to use a cache-only output,
 ```hcl
 target "default" {
   output = [{ type = "cacheonly" }]
+}
+```
+
+### `target.policy`
+
+Policies to validate build sources and metadata. Each entry uses the same keys
+as the `--policy` flag for `docker buildx build` (`filename`, `reset`,
+`disabled`, `strict`, `log-level`). Bake also automatically loads
+`Dockerfile.rego` alongside the target Dockerfile when present.
+
+```hcl
+target "default" {
+  policy = [
+    { filename = "extra.rego" },
+  ]
 }
 ```
 

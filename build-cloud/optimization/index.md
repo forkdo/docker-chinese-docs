@@ -1,23 +1,4 @@
----
-title: 优化云端构建
-url: /build-cloud/optimization/
-parent:
-  title: Docker Build Cloud
-  url: /build-cloud/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build Cloud
-    url: /build-cloud/
-  - title: 优化云端构建
-    url: /build-cloud/optimization/
-next:
-  title: 在 CI 中使用 Docker Build Cloud
-  url: /build-cloud/ci/
-prev:
-  title: Builder settings
-  url: /build-cloud/builder-settings/
----
+# 优化云端构建
 
 
 Docker Build Cloud 在远程运行你的构建，而不是在你调用构建的机器上。

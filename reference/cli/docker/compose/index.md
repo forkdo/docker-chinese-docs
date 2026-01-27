@@ -1,19 +1,4 @@
----
-title: docker compose
-url: /reference/cli/docker/compose/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
----
+# docker compose
 
 **Description:** Docker Compose
 

@@ -1,27 +1,4 @@
----
-title: docker service ps
-url: /reference/cli/docker/service/ps/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service ps
-    url: /reference/cli/docker/service/ps/
-next:
-  title: docker service ls
-  url: /reference/cli/docker/service/ls/
-prev:
-  title: docker service rm
-  url: /reference/cli/docker/service/rm/
----
+# docker service ps
 
 **Description:** List the tasks of one or more services
 

@@ -1,24 +1,4 @@
----
-title: docker network rm
-url: /reference/cli/docker/network/rm/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network rm
-    url: /reference/cli/docker/network/rm/
-next:
-  title: docker network prune
-  url: /reference/cli/docker/network/prune/
----
+# docker network rm
 
 **Description:** Remove one or more networks
 

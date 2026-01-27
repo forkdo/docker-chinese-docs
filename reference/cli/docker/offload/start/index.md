@@ -1,27 +1,4 @@
----
-title: docker offload start
-url: /reference/cli/docker/offload/start/
-parent:
-  title: docker offload
-  url: /reference/cli/docker/offload/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker offload
-    url: /reference/cli/docker/offload/
-  - title: docker offload start
-    url: /reference/cli/docker/offload/start/
-next:
-  title: 
-  url: /reference/cli/docker/offload/diagnose/
-prev:
-  title: docker offload status
-  url: /reference/cli/docker/offload/status/
----
+# docker offload start
 
 **Description:** Start a Docker Offload session
 

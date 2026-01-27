@@ -1,22 +1,4 @@
----
-title: buildkitd.toml
-url: /build/buildkit/toml-configuration/
-parent:
-  title: BuildKit
-  url: /build/buildkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: BuildKit
-    url: /build/buildkit/
-  - title: buildkitd.toml
-    url: /build/buildkit/toml-configuration/
-prev:
-  title: Configure BuildKit
-  url: /build/buildkit/configure/
----
+# buildkitd.toml
 
 
 The TOML file used to configure the buildkitd daemon settings has a short
@@ -230,5 +212,20 @@ provenanceEnvDir = "/etc/buildkit/provenance.d"
 [system]
   # how often buildkit scans for changes in the supported emulated platforms
   platformsCacheMaxAge = "1h"
+
+
+# optional signed cache configuration for GitHub Actions backend
+[ghacache.sign]
+# command that signs the payload in stdin and outputs the signature to stdout. Normally you want cosign to produce the signature bytes.
+cmd = ""
+[ghacache.verify]
+required = false
+[ghacache.verify.policy]
+timestampThreshold = 1
+tlogThreshold = 1
+# cetificate properties that need to match. Simple wildcards (*) are supported.
+certificateIssuer = ""
+subjectAlternativeName = ""
+buildSignerURI = ""
 ```
 

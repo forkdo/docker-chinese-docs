@@ -1,27 +1,4 @@
----
-title: docker checkpoint ls
-url: /reference/cli/docker/checkpoint/ls/
-parent:
-  title: docker checkpoint
-  url: /reference/cli/docker/checkpoint/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker checkpoint
-    url: /reference/cli/docker/checkpoint/
-  - title: docker checkpoint ls
-    url: /reference/cli/docker/checkpoint/ls/
-next:
-  title: docker checkpoint create
-  url: /reference/cli/docker/checkpoint/create/
-prev:
-  title: docker checkpoint rm
-  url: /reference/cli/docker/checkpoint/rm/
----
+# docker checkpoint ls
 
 **Description:** List checkpoints for a container
 

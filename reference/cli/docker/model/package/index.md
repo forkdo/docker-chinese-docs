@@ -1,27 +1,4 @@
----
-title: docker model package
-url: /reference/cli/docker/model/package/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model package
-    url: /reference/cli/docker/model/package/
-next:
-  title: docker model logs
-  url: /reference/cli/docker/model/logs/
-prev:
-  title: docker model pull
-  url: /reference/cli/docker/model/pull/
----
+# docker model package
 
 **Description:** Package a GGUF file, Safetensors directory, or existing model into a Docker model OCI artifact.
 

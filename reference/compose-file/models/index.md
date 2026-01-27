@@ -1,23 +1,4 @@
----
-title: 模型
-url: /reference/compose-file/models/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 模型
-    url: /reference/compose-file/models/
-next:
-  title: 使用 include 模块化 Compose 文件
-  url: /reference/compose-file/include/
-prev:
-  title: 学习在 Docker Compose 中使用配置文件
-  url: /reference/compose-file/profiles/
----
+# 模型
 
 
 

@@ -1,21 +1,4 @@
----
-title: docker builder prune
-url: /reference/cli/docker/builder/prune/
-parent:
-  title: docker builder
-  url: /reference/cli/docker/builder/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker builder
-    url: /reference/cli/docker/builder/
-  - title: docker builder prune
-    url: /reference/cli/docker/builder/prune/
----
+# docker builder prune
 
 **Description:** Remove build cache
 

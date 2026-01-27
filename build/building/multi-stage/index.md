@@ -1,20 +1,4 @@
----
-title: Multi-stage builds
-url: /build/building/multi-stage/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Multi-stage builds
-    url: /build/building/multi-stage/
-prev:
-  title: Build variables
-  url: /build/building/variables/
----
+# Multi-stage builds
 
 
 Multi-stage builds are useful to anyone who has struggled to optimize
@@ -32,7 +16,7 @@ and another where the binary gets copied from the first stage into the next stag
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM golang:1.24
+FROM golang:1.25
 WORKDIR /src
 COPY <<EOF ./main.go
 package main
@@ -77,7 +61,7 @@ Dockerfile are re-ordered later, the `COPY` doesn't break.
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM golang:1.24 AS build
+FROM golang:1.25 AS build
 WORKDIR /src
 COPY <<EOF /src/main.go
 package main

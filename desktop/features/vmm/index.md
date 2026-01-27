@@ -1,20 +1,4 @@
----
-title: Docker Desktop for Mac 的虚拟机管理器
-url: /desktop/features/vmm/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Docker Desktop for Mac 的虚拟机管理器
-    url: /desktop/features/vmm/
-next:
-  title: 使用 Docker Desktop CLI
-  url: /desktop/features/desktop-cli/
----
+# Docker Desktop for Mac 的虚拟机管理器
 
 
 Docker Desktop 支持多种虚拟机管理器 (VMM)，用于运行容器的 Linux 虚拟机。您可以根据系统架构（Intel 或 Apple Silicon）、性能需求和功能要求选择最合适的选项。本页概述了可用的选项。

@@ -1,23 +1,4 @@
----
-title: 软件物料清单
-url: /guides/docker-scout/sbom/
-parent:
-  title: 使用 Docker Scout 保障您的软件供应链安全
-  url: /guides/docker-scout/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Scout 保障您的软件供应链安全
-    url: /guides/docker-scout/
-  - title: 软件物料清单
-    url: /guides/docker-scout/sbom/
-next:
-  title: 软件供应链安全
-  url: /guides/docker-scout/s3c/
-prev:
-  title: 证明
-  url: /guides/docker-scout/attestations/
----
+# 软件物料清单
 
 
 

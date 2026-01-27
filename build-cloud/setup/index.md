@@ -1,20 +1,4 @@
----
-title: Docker Build Cloud 设置
-url: /build-cloud/setup/
-parent:
-  title: Docker Build Cloud
-  url: /build-cloud/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build Cloud
-    url: /build-cloud/
-  - title: Docker Build Cloud 设置
-    url: /build-cloud/setup/
-prev:
-  title: 使用 Docker Build Cloud
-  url: /build-cloud/usage/
----
+# Docker Build Cloud 设置
 
 
 在开始使用 Docker Build Cloud 之前，您必须先将构建器添加到本地环境中。

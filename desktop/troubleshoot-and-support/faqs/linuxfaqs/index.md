@@ -1,23 +1,4 @@
----
-title: Docker Desktop for Linux 常见问题解答
-url: /desktop/troubleshoot-and-support/faqs/linuxfaqs/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Docker Desktop for Linux 常见问题解答
-    url: /desktop/troubleshoot-and-support/faqs/linuxfaqs/
-next:
-  title: Docker Desktop for Windows 的常见问题解答
-  url: /desktop/troubleshoot-and-support/faqs/windowsfaqs/
-prev:
-  title: Docker Desktop 版本发布常见问题
-  url: /desktop/troubleshoot-and-support/faqs/releases/
----
+# Docker Desktop for Linux 常见问题解答
 
 
 ### 为什么 Docker Desktop for Linux 要运行一个虚拟机 (VM)？

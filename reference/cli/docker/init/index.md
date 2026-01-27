@@ -1,25 +1,4 @@
----
-title: docker init
-url: /reference/cli/docker/init/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker init
-    url: /reference/cli/docker/init/
-next:
-  title: docker info
-  url: 
-prev:
-  title: docker logout
-  url: /reference/cli/docker/logout/
----
+# docker init
 
 **Description:** Creates Docker-related starter files for your project
 

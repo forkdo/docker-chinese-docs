@@ -1,27 +1,4 @@
----
-title: docker service ls
-url: /reference/cli/docker/service/ls/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service ls
-    url: /reference/cli/docker/service/ls/
-next:
-  title: docker service logs
-  url: /reference/cli/docker/service/logs/
-prev:
-  title: docker service ps
-  url: /reference/cli/docker/service/ps/
----
+# docker service ls
 
 **Description:** List services
 

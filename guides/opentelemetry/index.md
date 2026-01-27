@@ -1,21 +1,4 @@
----
-title: 使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩
-url: /guides/opentelemetry/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩
-    url: /guides/opentelemetry/
-next:
-  title: 使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
-  url: /guides/localstack/
-prev:
-  title: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
-  url: /guides/pgadmin/
----
+# 使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩
 
 
 OpenTelemetry (OTel) 是一个开源的可观测性框架，提供了一组 API、SDK 和工具，用于从应用程序中收集遥测数据，例如指标（metrics）、日志（logs）和追踪（traces）。借助 OpenTelemetry，开发人员可以在生产环境或本地开发期间深入了解其服务的性能表现。

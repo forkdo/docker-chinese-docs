@@ -1,20 +1,4 @@
----
-title: Build context
-url: /build/concepts/context/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Build context
-    url: /build/concepts/context/
-next:
-  title: Dockerfile overview
-  url: /build/concepts/dockerfile/
----
+# Build context
 
 
 The `docker build` and `docker buildx build` commands build Docker images from
@@ -730,7 +714,7 @@ overriding it with a named context. For example, given the following
 Dockerfile:
 
 ```dockerfile
-FROM alpine:3.21
+FROM alpine:3.23
 ```
 
 If you want to force image reference to resolve to a different version, without
@@ -738,7 +722,7 @@ changing the Dockerfile, you can pass a context with the same name to the
 build. For example:
 
 ```console
-docker buildx build --build-context alpine:3.21=docker-image://alpine:edge .
+docker buildx build --build-context alpine:3.23=docker-image://alpine:edge .
 ```
 
 The `docker-image://` prefix marks the context as an image reference. The

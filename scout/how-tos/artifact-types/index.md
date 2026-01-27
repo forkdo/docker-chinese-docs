@@ -1,20 +1,4 @@
----
-title: 将 Scout 与不同类型的制品配合使用
-url: /scout/how-tos/artifact-types/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Scout 与不同类型的制品配合使用
-    url: /scout/how-tos/artifact-types/
-next:
-  title: 使用 VEX 创建例外
-  url: /scout/how-tos/create-exceptions-vex/
----
+# 将 Scout 与不同类型的制品配合使用
 
 
 某些 Docker Scout CLI 命令支持使用前缀来指定要分析的制品的位置或类型。

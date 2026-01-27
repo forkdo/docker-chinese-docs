@@ -1,27 +1,4 @@
----
-title: docker compose config
-url: /reference/cli/docker/compose/config/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose config
-    url: /reference/cli/docker/compose/config/
-next:
-  title: docker compose build
-  url: /reference/cli/docker/compose/build/
-prev:
-  title: docker compose cp
-  url: /reference/cli/docker/compose/cp/
----
+# docker compose config
 
 **Description:** Parse, resolve and render compose file in canonical format
 

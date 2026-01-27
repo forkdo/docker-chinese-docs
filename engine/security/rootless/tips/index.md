@@ -1,24 +1,4 @@
----
-title: 使用技巧
-url: /engine/security/rootless/tips/
-parent:
-  title: 无 root 模式
-  url: /engine/security/rootless/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: 无 root 模式
-    url: /engine/security/rootless/
-  - title: 使用技巧
-    url: /engine/security/rootless/tips/
-prev:
-  title: 问题排查
-  url: /engine/security/rootless/troubleshoot/
----
+# 使用技巧
 
 
 ## 高级用法

@@ -1,23 +1,4 @@
----
-title: 发票和账单历史记录
-url: /billing/history/
-parent:
-  title: 管理账单和支付
-  url: /billing/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理账单和支付
-    url: /billing/
-  - title: 发票和账单历史记录
-    url: /billing/history/
-next:
-  title: Docker 计费使用 3D Secure 身份验证
-  url: /billing/3d-secure/
-prev:
-  title: 提交免税证明
-  url: /billing/tax-certificate/
----
+# 发票和账单历史记录
 
 
 了解如何查看和支付发票、查看账单历史记录以及核实账单续订日期。所有月度和年度订阅都会在订阅期结束时使用您的默认支付方式自动续订。

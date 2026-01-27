@@ -1,23 +1,4 @@
----
-title: 接口: Exec
-url: /reference/api/extensions-sdk/Exec/
-parent:
-  title: 扩展 API 参考
-  url: /reference/api/extensions-sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 扩展 API 参考
-    url: /reference/api/extensions-sdk/
-  - title: 接口: Exec
-    url: /reference/api/extensions-sdk/Exec/
-next:
-  title: 接口: BackendV0
-  url: /reference/api/extensions-sdk/BackendV0/
-prev:
-  title: 接口: Extension
-  url: /reference/api/extensions-sdk/Extension/
----
+# 接口: Exec
 
 
 ## 可调用类型

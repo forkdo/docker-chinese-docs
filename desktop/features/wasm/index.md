@@ -1,23 +1,4 @@
----
-title: Wasm 工作负载
-url: /desktop/features/wasm/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Wasm 工作负载
-    url: /desktop/features/wasm/
-next:
-  title: containerd 镜像存储
-  url: /desktop/features/containerd/
-prev:
-  title: 使用 Docker Desktop CLI
-  url: /desktop/features/desktop-cli/
----
+# Wasm 工作负载
 
 
 

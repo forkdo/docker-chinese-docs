@@ -1,29 +1,4 @@
----
-title: docker mcp feature enable
-url: /reference/cli/docker/mcp/feature/feature_enable/
-parent:
-  title: docker mcp 功能
-  url: /reference/cli/docker/mcp/feature/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp 功能
-    url: /reference/cli/docker/mcp/feature/
-  - title: docker mcp feature enable
-    url: /reference/cli/docker/mcp/feature/feature_enable/
-next:
-  title: docker mcp feature disable
-  url: /reference/cli/docker/mcp/feature/feature_disable/
-prev:
-  title: docker mcp feature ls
-  url: /reference/cli/docker/mcp/feature/feature_ls/
----
+# docker mcp feature enable
 
 **Description:** Enable an experimental feature
 

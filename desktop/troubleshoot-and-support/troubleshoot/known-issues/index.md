@@ -1,25 +1,4 @@
----
-title: 已知问题
-url: /desktop/troubleshoot-and-support/troubleshoot/known-issues/
-parent:
-  title: 排查 Docker Desktop 问题
-  url: /desktop/troubleshoot-and-support/troubleshoot/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 排查 Docker Desktop 问题
-    url: /desktop/troubleshoot-and-support/troubleshoot/
-  - title: 已知问题
-    url: /desktop/troubleshoot-and-support/troubleshoot/known-issues/
-next:
-  title: Docker Desktop 故障排除主题
-  url: /desktop/troubleshoot-and-support/troubleshoot/topics/
-prev:
-  title: 修复 macOS 上“Docker.app 已损坏，无法打开”的问题
-  url: /desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/
----
+# 已知问题
 
 
 **适用于搭载 Intel 芯片的 Mac**

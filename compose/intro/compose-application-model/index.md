@@ -1,20 +1,4 @@
----
-title: Compose 的工作原理
-url: /compose/intro/compose-application-model/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose 的工作原理
-    url: /compose/intro/compose-application-model/
-prev:
-  title: 为什么使用 Compose？
-  url: /compose/intro/features-uses/
----
+# Compose 的工作原理
 
 
 使用 Docker Compose，您需要使用 YAML 配置文件（称为 [Compose 文件](#the-compose-file)）来配置应用程序的服务，然后使用 [Compose CLI](#cli) 从配置中创建并启动所有服务。

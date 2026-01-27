@@ -1,23 +1,4 @@
----
-title: 多容器应用
-url: /get-started/workshop/07_multi_container/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 多容器应用
-    url: /get-started/workshop/07_multi_container/
-next:
-  title: 使用 bind mounts
-  url: /get-started/workshop/06_bind_mounts/
-prev:
-  title: 使用 Docker Compose
-  url: /get-started/workshop/08_using_compose/
----
+# 多容器应用
 
 
 到目前为止，你一直在使用单容器应用。但是，现在你将向应用程序栈中添加 MySQL。经常会出现这样的问题——“MySQL 应该在哪里运行？是安装在同一个容器中，还是单独运行？”一般来说，每个容器应该只做一件事并把它做好。以下是分开运行容器的几个原因：

@@ -1,27 +1,4 @@
----
-title: 将服务部署到 swarm
-url: /engine/swarm/swarm-tutorial/deploy-service/
-parent:
-  title: Swarm 模式入门
-  url: /engine/swarm/swarm-tutorial/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: Swarm 模式入门
-    url: /engine/swarm/swarm-tutorial/
-  - title: 将服务部署到 swarm
-    url: /engine/swarm/swarm-tutorial/deploy-service/
-next:
-  title: 向 swarm 添加节点
-  url: /engine/swarm/swarm-tutorial/add-nodes/
-prev:
-  title: 在 swarm 上检查服务
-  url: /engine/swarm/swarm-tutorial/inspect-service/
----
+# 将服务部署到 swarm
 
 
 在[创建 swarm](create-swarm.md) 后，您可以将服务部署到 swarm。在本教程中，您还[添加了工作节点](add-nodes.md)，但这并非部署服务的必要条件。

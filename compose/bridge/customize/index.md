@@ -1,25 +1,4 @@
----
-title: 自定义 Compose Bridge
-url: /compose/bridge/customize/
-parent:
-  title: Compose Bridge 概述
-  url: /compose/bridge/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose Bridge 概述
-    url: /compose/bridge/
-  - title: 自定义 Compose Bridge
-    url: /compose/bridge/customize/
-next:
-  title: 使用默认的 Compose Bridge 转换
-  url: /compose/bridge/usage/
-prev:
-  title: 在 Compose Bridge 中使用 Docker Model Runner
-  url: /compose/bridge/use-model-runner/
----
+# 自定义 Compose Bridge
 
 
 

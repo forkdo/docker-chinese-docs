@@ -1,23 +1,4 @@
----
-title: 在 Docker Compose 中定义和管理网络
-url: /reference/compose-file/networks/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 在 Docker Compose 中定义和管理网络
-    url: /reference/compose-file/networks/
-next:
-  title: 在 Docker Compose 中定义服务
-  url: /reference/compose-file/services/
-prev:
-  title: 在 Docker Compose 中定义和管理卷
-  url: /reference/compose-file/volumes/
----
+# 在 Docker Compose 中定义和管理网络
 
 
 

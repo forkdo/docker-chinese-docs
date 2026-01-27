@@ -1,26 +1,4 @@
----
-title: docker scout repo disable
-url: /reference/cli/docker/scout/repo/disable/
-parent:
-  title: docker scout repo
-  url: /reference/cli/docker/scout/repo/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout repo
-    url: /reference/cli/docker/scout/repo/
-  - title: docker scout repo disable
-    url: /reference/cli/docker/scout/repo/disable/
-prev:
-  title: docker scout repo enable
-  url: /reference/cli/docker/scout/repo/enable/
----
+# docker scout repo disable
 
 **Description:** Disable Docker Scout
 

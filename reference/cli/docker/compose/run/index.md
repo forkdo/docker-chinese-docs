@@ -1,27 +1,4 @@
----
-title: docker compose run
-url: /reference/cli/docker/compose/run/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose run
-    url: /reference/cli/docker/compose/run/
-next:
-  title: docker compose rm
-  url: /reference/cli/docker/compose/rm/
-prev:
-  title: docker compose start
-  url: /reference/cli/docker/compose/start/
----
+# docker compose run
 
 **Description:** Run a one-off command on a service
 

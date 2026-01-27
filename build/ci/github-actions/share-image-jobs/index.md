@@ -1,27 +1,4 @@
----
-title: Share built image between jobs with GitHub Actions
-url: /build/ci/github-actions/share-image-jobs/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Share built image between jobs with GitHub Actions
-    url: /build/ci/github-actions/share-image-jobs/
-next:
-  title: Reproducible builds with GitHub Actions
-  url: /build/ci/github-actions/reproducible-builds/
-prev:
-  title: Manage tags and labels with GitHub Actions
-  url: /build/ci/github-actions/manage-tags-labels/
----
+# Share built image between jobs with GitHub Actions
 
 
 As each job is isolated in its own runner, you can't use your built image

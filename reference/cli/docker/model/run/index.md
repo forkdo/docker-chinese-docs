@@ -1,27 +1,4 @@
----
-title: docker model run
-url: /reference/cli/docker/model/run/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model run
-    url: /reference/cli/docker/model/run/
-next:
-  title: docker model rm
-  url: /reference/cli/docker/model/rm/
-prev:
-  title: docker model start-runner
-  url: /reference/cli/docker/model/start-runner/
----
+# docker model run
 
 **Description:** Run a model and interact with it using a submitted prompt or chat mode
 

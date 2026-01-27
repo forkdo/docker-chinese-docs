@@ -1,23 +1,4 @@
----
-title: 配置选项
-url: /ai/model-runner/configuration/
-parent:
-  title: Docker Model Runner
-  url: /ai/model-runner/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Model Runner
-    url: /ai/model-runner/
-  - title: 配置选项
-    url: /ai/model-runner/configuration/
-next:
-  title: DMR REST API
-  url: /ai/model-runner/api-reference/
-prev:
-  title: DMR 示例
-  url: /ai/model-runner/examples/
----
+# 配置选项
 
 
 Docker Model Runner 提供了多种配置选项来调整模型行为、内存使用和推理性能。本指南涵盖了关键设置及其应用方法。

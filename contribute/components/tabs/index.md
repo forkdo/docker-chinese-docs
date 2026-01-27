@@ -1,21 +1,4 @@
----
-title: 标签页 (Tabs)
-url: /contribute/components/tabs/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 标签页 (Tabs)
-    url: /contribute/components/tabs/
-next:
-  title: 提示框
-  url: /contribute/components/call-outs/
-prev:
-  title: 表格
-  url: /contribute/components/tables/
----
+# 标签页 (Tabs)
 
 
 标签页组件由两个短代码组成：

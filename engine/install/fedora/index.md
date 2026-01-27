@@ -1,25 +1,4 @@
----
-title: 在 Fedora 上安装 Docker Engine
-url: /engine/install/fedora/
-parent:
-  title: 安装 Docker Engine
-  url: /engine/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 安装 Docker Engine
-    url: /engine/install/
-  - title: 在 Fedora 上安装 Docker Engine
-    url: /engine/install/fedora/
-next:
-  title: 在 RHEL 上安装 Docker Engine
-  url: /engine/install/rhel/
-prev:
-  title: 在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine
-  url: /engine/install/raspberry-pi-os/
----
+# 在 Fedora 上安装 Docker Engine
 
 
 要在 Fedora 上开始使用 Docker Engine，请确保您[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)进行操作。
@@ -110,8 +89,8 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
    ```console
    $ dnf list docker-ce --showduplicates | sort -r
 
-   docker-ce.x86_64    3:29.1.4-1.fc41    docker-ce-stable
-   docker-ce.x86_64    3:29.1.3-1.fc41    docker-ce-stable
+   docker-ce.x86_64    3:29.2.0-1.fc41    docker-ce-stable
+   docker-ce.x86_64    3:29.1.5-1.fc41    docker-ce-stable
    <...>
    ```
 
@@ -119,7 +98,7 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
 
    通过其完全限定的软件包名称安装特定版本，即
    软件包名称 (`docker-ce`) 加上版本字符串（第 2 列），
-   用连字符 (`-`) 分隔。例如，`docker-ce-3:29.1.4-1.fc41`。
+   用连字符 (`-`) 分隔。例如，`docker-ce-3:29.2.0-1.fc41`。
 
    将 `<VERSION_STRING>` 替换为所需的版本，然后运行以下
    命令进行安装：

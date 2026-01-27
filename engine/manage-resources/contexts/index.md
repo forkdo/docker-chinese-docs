@@ -1,20 +1,4 @@
----
-title: Docker contexts
-url: /engine/manage-resources/contexts/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker contexts
-    url: /engine/manage-resources/contexts/
-prev:
-  title: Docker 对象标签
-  url: /engine/manage-resources/labels/
----
+# Docker contexts
 
 
 ## 简介

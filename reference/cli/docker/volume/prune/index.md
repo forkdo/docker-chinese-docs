@@ -1,27 +1,4 @@
----
-title: docker volume prune
-url: /reference/cli/docker/volume/prune/
-parent:
-  title: docker volume
-  url: /reference/cli/docker/volume/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker volume
-    url: /reference/cli/docker/volume/
-  - title: docker volume prune
-    url: /reference/cli/docker/volume/prune/
-next:
-  title: docker volume ls
-  url: /reference/cli/docker/volume/ls/
-prev:
-  title: docker volume rm
-  url: /reference/cli/docker/volume/rm/
----
+# docker volume prune
 
 **Description:** Remove unused local volumes
 

@@ -2,6 +2,12 @@
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
+        <loc>/get-started/docker-concepts/building-images/understanding-image-layers/</loc>
+        <lastmod>2026-01-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/get-started/docker-concepts/running-containers/publishing-ports/</loc>
         <lastmod>2024-10-22</lastmod>
         <changefreq>monthly</changefreq>
@@ -16,12 +22,6 @@
       <url>
         <loc>/reference/api/hub/latest/</loc>
         <lastmod>2025-07-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
-        <loc>/get-started/docker-concepts/building-images/understanding-image-layers/</loc>
-        <lastmod>2024-08-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -45,7 +45,7 @@
       </url>
       <url>
         <loc>/dhi/get-started/</loc>
-        <lastmod>2025-12-18</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -75,7 +75,7 @@
       </url>
       <url>
         <loc>/get-started/docker-concepts/running-containers/persisting-container-data/</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-01-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -87,7 +87,7 @@
       </url>
       <url>
         <loc>/get-started/introduction/build-and-push-first-image/</loc>
-        <lastmod>2025-11-03</lastmod>
+        <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -129,19 +129,19 @@
       </url>
       <url>
         <loc>/get-started/docker-concepts/running-containers/multi-container-applications/</loc>
-        <lastmod>2024-10-22</lastmod>
+        <lastmod>2026-01-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/get-started/docker-concepts/building-images/multi-stage-builds/</loc>
-        <lastmod>2025-09-04</lastmod>
+        <lastmod>2026-01-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/support/</loc>
-        <lastmod>2025-11-12</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -387,7 +387,7 @@
       </url>
       <url>
         <loc>/accounts/create-account/</loc>
-        <lastmod>2025-07-29</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -423,7 +423,7 @@
       </url>
       <url>
         <loc>/ai/compose/models-and-compose/</loc>
-        <lastmod>2026-01-06</lastmod>
+        <lastmod>2026-01-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -561,7 +561,7 @@
       </url>
       <url>
         <loc>/desktop/troubleshoot-and-support/troubleshoot/topics/</loc>
-        <lastmod>2025-08-15</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -579,7 +579,7 @@
       </url>
       <url>
         <loc>/docker-hub/quickstart/</loc>
-        <lastmod>2025-06-13</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -609,13 +609,13 @@
       </url>
       <url>
         <loc>/desktop/troubleshoot-and-support/troubleshoot/</loc>
-        <lastmod>2025-11-12</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/dhi/explore/</loc>
-        <lastmod>2026-01-06</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -963,7 +963,7 @@
       </url>
       <url>
         <loc>/ai/sandboxes/</loc>
-        <lastmod>2025-11-13</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1028,12 +1028,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/admin/organization/onboard/</loc>
-        <lastmod>2025-12-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc>/get-started/docker-overview/</loc>
         <lastmod>2025-12-17</lastmod>
         <changefreq>monthly</changefreq>
@@ -1041,7 +1035,7 @@
       </url>
       <url>
         <loc>/get-started/docker-concepts/the-basics/what-is-an-image/</loc>
-        <lastmod>2025-11-03</lastmod>
+        <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1077,7 +1071,7 @@
       </url>
       <url>
         <loc>/guides/ruby/configure-github-actions/</loc>
-        <lastmod>2025-11-03</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1102,6 +1096,12 @@
       <url>
         <loc>/compose/how-tos/lifecycle/</loc>
         <lastmod>2025-07-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/ai/sandboxes/get-started/</loc>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1256,12 +1256,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/ai/sandboxes/get-started/</loc>
-        <lastmod>2025-11-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc>/security/2fa/recover-hub-account/</loc>
         <lastmod>2025-08-15</lastmod>
         <changefreq>monthly</changefreq>
@@ -1390,6 +1384,12 @@
       <url>
         <loc>/admin/faqs/organization-faqs/</loc>
         <lastmod>2025-07-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/admin/organization/onboard/</loc>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1533,7 +1533,7 @@
       </url>
       <url>
         <loc>/ai/model-runner/api-reference/</loc>
-        <lastmod>2026-01-06</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1575,7 +1575,7 @@
       </url>
       <url>
         <loc>/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/</loc>
-        <lastmod>2025-11-12</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1587,7 +1587,7 @@
       </url>
       <url>
         <loc>/ai/model-runner/</loc>
-        <lastmod>2026-01-06</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1659,7 +1659,7 @@
       </url>
       <url>
         <loc>/get-started/docker-concepts/the-basics/what-is-a-registry/</loc>
-        <lastmod>2025-06-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -1707,7 +1707,7 @@
       </url>
       <url>
         <loc>/dhi/how-to/use/</loc>
-        <lastmod>2025-12-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2007,7 +2007,7 @@
       </url>
       <url>
         <loc>/ai/sandboxes/claude-code/</loc>
-        <lastmod>2025-11-05</lastmod>
+        <lastmod>2026-01-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2050,6 +2050,12 @@
       <url>
         <loc>/admin/organization/convert-account/</loc>
         <lastmod>2025-07-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/ai/sandboxes/workflows/</loc>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2223,7 +2229,7 @@
       </url>
       <url>
         <loc>/guides/python/configure-github-actions/</loc>
-        <lastmod>2025-11-03</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2348,6 +2354,12 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/dhi/explore/scanner-integrations/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc></loc>
         <lastmod>2024-09-03</lastmod>
         <changefreq>monthly</changefreq>
@@ -2355,7 +2367,7 @@
       </url>
       <url>
         <loc>/desktop/troubleshoot-and-support/feedback/</loc>
-        <lastmod>2025-07-24</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2415,7 +2427,7 @@
       </url>
       <url>
         <loc>/docker-hub/repos/manage/hub-images/move/</loc>
-        <lastmod>2025-11-25</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2481,73 +2493,67 @@
       </url>
       <url>
         <loc>/guides/bun/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/cpp/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/deno/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/dotnet/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/golang/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/java/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/php/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/r/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/rust/configure-ci-cd/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/enterprise/security/hardened-desktop/image-access-management/</loc>
-        <lastmod>2025-09-24</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/dhi/how-to/verify/</loc>
         <lastmod>2026-01-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
-        <loc>/ai/sandboxes/advanced-config/</loc>
-        <lastmod>2025-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2576,6 +2582,12 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/ai/sandboxes/templates/</loc>
+        <lastmod>2026-01-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/dhi/explore/test/</loc>
         <lastmod>2026-01-06</lastmod>
         <changefreq>monthly</changefreq>
@@ -2583,7 +2595,7 @@
       </url>
       <url>
         <loc>/dhi/how-to/scan/</loc>
-        <lastmod>2025-12-18</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2673,7 +2685,7 @@
       </url>
       <url>
         <loc>/guides/nodejs/configure-github-actions/</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2727,7 +2739,7 @@
       </url>
       <url>
         <loc>/ai/model-runner/inference-engines/</loc>
-        <lastmod>2026-01-06</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2744,8 +2756,14 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/ai/sandboxes/agents/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/ai/sandboxes/troubleshooting/</loc>
-        <lastmod>2025-11-05</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -2900,6 +2918,12 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/ai/sandboxes/network-policies/</loc>
+        <lastmod>2026-01-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/build/cache/</loc>
         <lastmod>2024-09-03</lastmod>
         <changefreq>monthly</changefreq>
@@ -2973,19 +2997,19 @@
       </url>
       <url>
         <loc>/guides/angular/configure-github-actions/</loc>
-        <lastmod>2025-05-28</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/reactjs/configure-github-actions/</loc>
-        <lastmod>2025-05-28</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/guides/vuejs/configure-github-actions/</loc>
-        <lastmod>2025-08-04</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -3020,12 +3044,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/platform-release-notes/</loc>
-        <lastmod>2025-12-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc>/engine/daemon/</loc>
         <lastmod>2025-11-13</lastmod>
         <changefreq>monthly</changefreq>
@@ -3050,6 +3068,12 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/ai/sandboxes/architecture/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/guides/angular/deploy/</loc>
         <lastmod>2025-11-13</lastmod>
         <changefreq>monthly</changefreq>
@@ -3070,6 +3094,12 @@
       <url>
         <loc></loc>
         <lastmod>2024-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/platform-release-notes/</loc>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -3398,6 +3428,12 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/ai/sandboxes/migration/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/desktop/setup/allow-list/</loc>
         <lastmod>2025-06-20</lastmod>
         <changefreq>monthly</changefreq>
@@ -3513,7 +3549,7 @@
       </url>
       <url>
         <loc>/desktop/release-notes/</loc>
-        <lastmod>2026-01-12</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -3525,13 +3561,13 @@
       </url>
       <url>
         <loc>/offload/feedback/</loc>
-        <lastmod>2025-07-25</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/dhi/resources/</loc>
-        <lastmod>2025-12-24</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -3957,7 +3993,7 @@
       </url>
       <url>
         <loc>/extensions/extensions-sdk/build/backend-extension-tutorial/</loc>
-        <lastmod>2024-10-25</lastmod>
+        <lastmod>2026-01-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4022,12 +4058,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/tags/api/</loc>
-        <lastmod>0001-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc></loc>
         <lastmod>2024-09-03</lastmod>
         <changefreq>monthly</changefreq>
@@ -4077,13 +4107,13 @@
       </url>
       <url>
         <loc>/build/bake/reference/</loc>
-        <lastmod>2025-11-12</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/build/bake/stdlib/</loc>
-        <lastmod>2025-11-12</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4113,7 +4143,7 @@
       </url>
       <url>
         <loc>/reference/build-checks/</loc>
-        <lastmod>2025-09-04</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4161,7 +4191,7 @@
       </url>
       <url>
         <loc>/build/buildkit/toml-configuration/</loc>
-        <lastmod>2025-11-03</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4203,7 +4233,7 @@
       </url>
       <url>
         <loc>/build/ci/github-actions/cache/</loc>
-        <lastmod>2025-08-20</lastmod>
+        <lastmod>2026-01-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4227,7 +4257,7 @@
       </url>
       <url>
         <loc>/scout/release-notes/cli/</loc>
-        <lastmod>2025-10-03</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4263,7 +4293,7 @@
       </url>
       <url>
         <loc>/reference/build-checks/copy-ignored-file/</loc>
-        <lastmod>2024-11-06</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -4318,12 +4348,6 @@
       <url>
         <loc>/extensions/extensions-sdk/dev/api/docker/</loc>
         <lastmod>2024-09-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
-        <loc>/tags/docker/</loc>
-        <lastmod>0001-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -5175,7 +5199,7 @@
       </url>
       <url>
         <loc>/reference/api/engine/</loc>
-        <lastmod>2025-12-12</lastmod>
+        <lastmod>2026-01-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -6026,6 +6050,42 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/reference/cli/docker/sandbox/create/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/create/cagent/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/create/codex/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/create/gemini/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/create/kiro/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/exec/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/reference/cli/docker/sandbox/inspect/</loc>
         <lastmod>2025-11-06</lastmod>
         <changefreq>monthly</changefreq>
@@ -6038,8 +6098,26 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/reference/cli/docker/sandbox/network/proxy/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/reset/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/reference/cli/docker/sandbox/run/</loc>
         <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/stop/</loc>
+        <lastmod>2026-01-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -6674,6 +6752,18 @@
         <priority>0.5</priority>
       </url>
       <url>
+        <loc>/reference/cli/docker/sandbox/network/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/cli/docker/sandbox/network/log/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
         <loc>/reference/cli/docker/login/</loc>
         <lastmod>2024-02-09</lastmod>
         <changefreq>monthly</changefreq>
@@ -6705,19 +6795,13 @@
       </url>
       <url>
         <loc>/reference/dockerfile/</loc>
-        <lastmod>2025-11-14</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/build/buildkit/dockerfile-release-notes/</loc>
         <lastmod>2026-01-08</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
-        <loc>/tags/documentation/</loc>
-        <lastmod>0001-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -6747,7 +6831,7 @@
       </url>
       <url>
         <loc>/reference/api/engine/version-history/</loc>
-        <lastmod>2025-11-10</lastmod>
+        <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -6903,7 +6987,7 @@
       </url>
       <url>
         <loc>/engine/release-notes/29/</loc>
-        <lastmod>2026-01-08</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -7005,7 +7089,7 @@
       </url>
       <url>
         <loc>/guides/gha/</loc>
-        <lastmod>2025-07-18</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -7054,12 +7138,6 @@
       <url>
         <loc>/engine/logging/drivers/gelf/</loc>
         <lastmod>2025-02-28</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
-        <loc>/tags/guide/</loc>
-        <lastmod>0001-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -7250,12 +7328,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/tags/manual/</loc>
-        <lastmod>0001-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc>/reference/samples/mariadb/</loc>
         <lastmod>2024-11-18</lastmod>
         <changefreq>monthly</changefreq>
@@ -7371,7 +7443,7 @@
       </url>
       <url>
         <loc>/build/cache/optimize/</loc>
-        <lastmod>2024-11-30</lastmod>
+        <lastmod>2026-01-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -7538,12 +7610,6 @@
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>/tags/reference/</loc>
-        <lastmod>0001-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
         <loc></loc>
         <lastmod>2025-05-23</lastmod>
         <changefreq>monthly</changefreq>
@@ -7636,12 +7702,6 @@
       <url>
         <loc>/reference/samples/</loc>
         <lastmod>2025-07-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      <url>
-        <loc>/tags/samples/</loc>
-        <lastmod>0001-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -7887,13 +7947,19 @@
       </url>
       <url>
         <loc>/reference/api/engine/version/v1.52/</loc>
-        <lastmod>2025-11-10</lastmod>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>/reference/api/engine/version/v1.53/</loc>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
         <loc>/dhi/core-concepts/vex/</loc>
-        <lastmod>2025-12-15</lastmod>
+        <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>
@@ -9183,7 +9249,7 @@
       </url>
       <url>
         <loc>/</loc>
-        <lastmod>2026-01-08</lastmod>
+        <lastmod>2025-12-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
       </url>

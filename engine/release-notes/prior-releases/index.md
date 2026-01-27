@@ -1,20 +1,4 @@
----
-title: Docker Engine 历史版本
-url: /engine/release-notes/prior-releases/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 历史版本
-    url: /engine/release-notes/prior-releases/
-prev:
-  title: Docker Engine 17.03 发布说明
-  url: /engine/release-notes/17.03/
----
+# Docker Engine 历史版本
 
 
 ## 1.13.1 (2017-02-08)

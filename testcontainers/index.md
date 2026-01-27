@@ -1,18 +1,4 @@
----
-title: Testcontainers
-url: /testcontainers/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Testcontainers
-    url: /testcontainers/
-prev:
-  title: Docker Home、管理控制台、账单、安全和订阅功能的发布说明
-  url: /platform-release-notes/
----
+# Testcontainers
 
 
 Testcontainers 是一组开源库，提供了简单且轻量级的 API，用于通过 Docker 容器封装的真实服务来引导本地开发和测试依赖项。

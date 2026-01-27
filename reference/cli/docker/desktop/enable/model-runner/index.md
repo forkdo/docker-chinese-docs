@@ -1,23 +1,4 @@
----
-title: docker desktop enable model-runner
-url: /reference/cli/docker/desktop/enable/model-runner/
-parent:
-  title: docker desktop enable
-  url: /reference/cli/docker/desktop/enable/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker desktop (Beta)
-    url: /reference/cli/docker/desktop/
-  - title: docker desktop enable
-    url: /reference/cli/docker/desktop/enable/
-  - title: docker desktop enable model-runner
-    url: /reference/cli/docker/desktop/enable/model-runner/
----
+# docker desktop enable model-runner
 
 **Description:** Manage Docker Model Runner settings
 

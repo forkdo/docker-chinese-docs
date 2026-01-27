@@ -18,7 +18,10 @@
 <link rel="canonical" href="/extensions/extensions-sdk/build/backend-extension-tutorial/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -44,7 +47,7 @@
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2024-10-25 06:35:47 &#43;0200 &#43;0200"
+  content="2026-01-22 15:28:53 &#43;0800 CST"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2024-10-25 06:35:47 &#43;0200 &#43;0200"
+  content="2026-01-22 15:28:53 &#43;0800 CST"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2024-10-25T06:35:47+02:00","description":"Learn how to add a backend to your extension.","headline":"Add a backend to your extension","keywords":"Docker, extensions, sdk, build","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/extensions/extensions-sdk/build/backend-extension-tutorial/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/extensions/","name":"Docker 扩展"},"position":2},{"@type":"ListItem","item":{"@id":"/extensions/extensions-sdk/","name":"扩展 SDK"},"position":3},{"@type":"ListItem","item":{"@id":"/extensions/extensions-sdk/build/backend-extension-tutorial/","name":"Add a backend to your extension"},"position":4}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-22T15:28:53+08:00","description":"Learn how to add a backend to your extension.","headline":"Add a backend to your extension","keywords":"Docker, extensions, sdk, build","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/extensions/extensions-sdk/build/backend-extension-tutorial/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/extensions/","name":"Docker 扩展"},"position":2},{"@type":"ListItem","item":{"@id":"/extensions/extensions-sdk/","name":"扩展 SDK"},"position":3},{"@type":"ListItem","item":{"@id":"/extensions/extensions-sdk/build/backend-extension-tutorial/","name":"Add a backend to your extension"},"position":4}]}</script>
 <link rel="alternate" type="text/markdown" href="/extensions/extensions-sdk/build/backend-extension-tutorial/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4764,10 +4773,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4807,10 +4816,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4838,11 +4847,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4859,6 +4900,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6248,10 +6337,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8889,18 +8978,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10640,10 +10725,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11638,10 +11723,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -13024,7 +13109,7 @@ backend service, and package the extension.</p>
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'IyBzeW50YXg9ZG9ja2VyL2RvY2tlcmZpbGU6MQpGUk9NIG5vZGU6MTcuNy1hbHBpbmUzLjE0IEFTIGNsaWVudC1idWlsZGVyCiMgLi4uIGJ1aWxkIGZyb250ZW5kIGFwcGxpY2F0aW9uCgojIEJ1aWxkIHRoZSBHbyBiYWNrZW5kCkZST00gZ29sYW5nOjEuMTctYWxwaW5lIEFTIGJ1aWxkZXIKRU5WIENHT19FTkFCTEVEPTAKV09SS0RJUiAvYmFja2VuZApDT1BZIHZtL2dvLiogLgpSVU4gLS1tb3VudD10eXBlPWNhY2hlLHRhcmdldD0vZ28vcGtnL21vZCBcCiAgICAtLW1vdW50PXR5cGU9Y2FjaGUsdGFyZ2V0PS9yb290Ly5jYWNoZS9nby1idWlsZCBcCiAgICBnbyBtb2QgZG93bmxvYWQKQ09QWSB2bS8uIC4KUlVOIC0tbW91bnQ9dHlwZT1jYWNoZSx0YXJnZXQ9L2dvL3BrZy9tb2QgXAogICAgLS1tb3VudD10eXBlPWNhY2hlLHRhcmdldD0vcm9vdC8uY2FjaGUvZ28tYnVpbGQgXAogICAgZ28gYnVpbGQgLXRyaW1wYXRoIC1sZGZsYWdzPSItcyAtdyIgLW8gYmluL3NlcnZpY2UKCkZST00gYWxwaW5lOjMuMTUKIyAuLi4gYWRkIGxhYmVscyBhbmQgY29weSB0aGUgZnJvbnRlbmQgYXBwbGljYXRpb24KCkNPUFkgLS1mcm9tPWJ1aWxkZXIgL2JhY2tlbmQvYmluL3NlcnZpY2UgLwpDTUQgL3NlcnZpY2UgLXNvY2tldCAvcnVuL2d1ZXN0LXNlcnZpY2VzL2V4dGVuc2lvbi1hbGx0aGV0aGluZ3MtZXh0ZW5zaW9uLnNvY2s=', copying: false }"
+        x-data="{ code: 'IyBzeW50YXg9ZG9ja2VyL2RvY2tlcmZpbGU6MQpGUk9NIG5vZGU6MTcuNy1hbHBpbmUzLjE0IEFTIGNsaWVudC1idWlsZGVyCiMgLi4uIGJ1aWxkIGZyb250ZW5kIGFwcGxpY2F0aW9uCgojIEJ1aWxkIHRoZSBHbyBiYWNrZW5kCkZST00gZ29sYW5nOjEuMTctYWxwaW5lIEFTIGJ1aWxkZXIKRU5WIENHT19FTkFCTEVEPTAKV09SS0RJUiAvYmFja2VuZApSVU4gLS1tb3VudD10eXBlPWNhY2hlLHRhcmdldD0vZ28vcGtnL21vZCBcCiAgICAtLW1vdW50PXR5cGU9Y2FjaGUsdGFyZ2V0PS9yb290Ly5jYWNoZS9nby1idWlsZCBcCiAgICAtLW1vdW50PXR5cGU9YmluZCxzb3VyY2U9dm0vLix0YXJnZXQ9LiBcCiAgICBnbyBidWlsZCAtdHJpbXBhdGggLWxkZmxhZ3M9Ii1zIC13IiAtbyBiaW4vc2VydmljZQoKRlJPTSBhbHBpbmU6My4xNQojIC4uLiBhZGQgbGFiZWxzIGFuZCBjb3B5IHRoZSBmcm9udGVuZCBhcHBsaWNhdGlvbgoKQ09QWSAtLWZyb209YnVpbGRlciAvYmFja2VuZC9iaW4vc2VydmljZSAvCkNNRCAvc2VydmljZSAtc29ja2V0IC9ydW4vZ3Vlc3Qtc2VydmljZXMvZXh0ZW5zaW9uLWFsbHRoZXRoaW5ncy1leHRlbnNpb24uc29jaw==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -13051,13 +13136,9 @@ backend service, and package the extension.</p>
 </span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">golang:1.17-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span>
 </span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/backend</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> vm/go.* .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/go/pkg/mod <span class="se">\
 </span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/go-build <span class="se">\
-</span></span></span><span class="line"><span class="cl">    go mod download<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> vm/. .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/go/pkg/mod <span class="se">\
-</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/go-build <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>vm/.,target<span class="o">=</span>. <span class="se">\
 </span></span></span><span class="line"><span class="cl">    go build -trimpath -ldflags<span class="o">=</span><span class="s2">&#34;-s -w&#34;</span> -o bin/service<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.15</span><span class="err">
@@ -13745,9 +13826,11 @@ call displayed.</p>
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13762,7 +13845,7 @@ call displayed.</p>
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13777,7 +13860,7 @@ call displayed.</p>
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13792,7 +13875,7 @@ call displayed.</p>
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13807,7 +13890,7 @@ call displayed.</p>
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13823,26 +13906,71 @@ call displayed.</p>
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

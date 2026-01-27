@@ -1,23 +1,4 @@
----
-title: 使用 Compose Watch
-url: /compose/how-tos/file-watch/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 使用 Compose Watch
-    url: /compose/how-tos/file-watch/
-next:
-  title: 控制 Compose 中的启动和关闭顺序
-  url: /compose/how-tos/startup-order/
-prev:
-  title: 构建依赖镜像
-  url: /compose/how-tos/dependent-images/
----
+# 使用 Compose Watch
 
 
 

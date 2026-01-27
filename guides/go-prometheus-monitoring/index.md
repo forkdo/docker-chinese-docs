@@ -1,28 +1,4 @@
----
-title: 使用 Prometheus 和 Grafana 监控 Golang 应用
-url: /guides/go-prometheus-monitoring/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Prometheus 和 Grafana 监控 Golang 应用
-    url: /guides/go-prometheus-monitoring/
-children:
-  - title: 构建应用程序
-    url: /guides/go-prometheus-monitoring/application/
-    description: 学习如何创建一个 Golang 服务器来向 Prometheus 注册指标。
-  - title: 容器化一个 Golang 应用
-    url: /guides/go-prometheus-monitoring/containerize/
-    description: 了解如何容器化一个 Golang 应用。
-  - title: 使用 Docker Compose 连接服务
-    url: /guides/go-prometheus-monitoring/compose/
-    description: 了解如何使用 Docker Compose 连接服务，以通过 Prometheus 和 Grafana 监控 Golang 应用程序。
-  - title: 开发你的应用程序
-    url: /guides/go-prometheus-monitoring/develop/
-    description: 学习如何使用 Docker 开发 Golang 应用程序。
----
+# 使用 Prometheus 和 Grafana 监控 Golang 应用
 
 
 本指南将教你如何容器化 Golang 应用并使用 Prometheus 和 Grafana 进行监控。

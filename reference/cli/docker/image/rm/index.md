@@ -1,27 +1,4 @@
----
-title: docker image rm
-url: /reference/cli/docker/image/rm/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image rm
-    url: /reference/cli/docker/image/rm/
-next:
-  title: docker image push
-  url: /reference/cli/docker/image/push/
-prev:
-  title: docker image save
-  url: /reference/cli/docker/image/save/
----
+# docker image rm
 
 **Description:** Remove one or more images
 

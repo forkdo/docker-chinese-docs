@@ -1,18 +1,4 @@
----
-title: 什么是 Docker Compose？
-url: /get-started/docker-concepts/the-basics/what-is-docker-compose/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 什么是 Docker Compose？
-    url: /get-started/docker-concepts/the-basics/what-is-docker-compose/
-next:
-  title: 什么是镜像仓库？
-  url: /get-started/docker-concepts/the-basics/what-is-a-registry/
----
+# 什么是 Docker Compose？
 
 
 

@@ -1,23 +1,4 @@
----
-title: Docker 帐户常见问题
-url: /accounts/general-faqs/
-parent:
-  title: Docker 账户
-  url: /accounts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 账户
-    url: /accounts/
-  - title: Docker 帐户常见问题
-    url: /accounts/general-faqs/
-next:
-  title: 创建 Docker 账户
-  url: /accounts/create-account/
-prev:
-  title: 管理 Docker 账户
-  url: /accounts/manage-account/
----
+# Docker 帐户常见问题
 
 
 ### 什么是 Docker ID？

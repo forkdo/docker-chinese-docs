@@ -1,19 +1,4 @@
----
-title: 配置登录强制执行
-url: /enterprise/security/enforce-sign-in/methods/
-parent:
-  title: 强制登录 Docker Desktop
-  url: /enterprise/security/enforce-sign-in/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强制登录 Docker Desktop
-    url: /enterprise/security/enforce-sign-in/
-  - title: 配置登录强制执行
-    url: /enterprise/security/enforce-sign-in/methods/
----
+# 配置登录强制执行
 
 
 

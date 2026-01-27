@@ -1,23 +1,4 @@
----
-title: 配置 Docker Offload
-url: /offload/configuration/
-parent:
-  title: Docker Offload
-  url: /offload/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Offload
-    url: /offload/
-  - title: 配置 Docker Offload
-    url: /offload/configuration/
-next:
-  title: 关于 Docker Offload
-  url: /offload/about/
-prev:
-  title: Docker Offload 使用与计费
-  url: /offload/usage/
----
+# 配置 Docker Offload
 
 
 

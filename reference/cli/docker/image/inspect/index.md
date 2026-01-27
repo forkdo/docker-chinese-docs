@@ -1,27 +1,4 @@
----
-title: docker image inspect
-url: /reference/cli/docker/image/inspect/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image inspect
-    url: /reference/cli/docker/image/inspect/
-next:
-  title: docker image import
-  url: /reference/cli/docker/image/import/
-prev:
-  title: docker image load
-  url: /reference/cli/docker/image/load/
----
+# docker image inspect
 
 **Description:** Display detailed information on one or more images
 

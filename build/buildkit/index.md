@@ -1,28 +1,4 @@
----
-title: BuildKit
-url: /build/buildkit/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: BuildKit
-    url: /build/buildkit/
-children:
-  - title: buildkitd.toml
-    url: /build/buildkit/toml-configuration/
-  - title: Configure BuildKit
-    url: /build/buildkit/configure/
-    description: Learn how to configure BuildKit for your builder.
-  - title: Custom Dockerfile syntax
-    url: /build/buildkit/frontend/
-    description: Dive deep into the Dockerfile frontend, and learn about custom frontends
-  - title: Dockerfile release notes
-    url: /build/buildkit/dockerfile-release-notes/
----
+# BuildKit
 
 
 ## Overview

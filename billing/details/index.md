@@ -1,23 +1,4 @@
----
-title: 管理您的账单信息
-url: /billing/details/
-parent:
-  title: 管理账单和支付
-  url: /billing/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理账单和支付
-    url: /billing/
-  - title: 管理您的账单信息
-    url: /billing/details/
-next:
-  title: 添加或更新支付方式
-  url: /billing/payment-method/
-prev:
-  title: Docker 计费使用 3D Secure 身份验证
-  url: /billing/3d-secure/
----
+# 管理您的账单信息
 
 
 您可以更新个人账户或组织的账单信息。当您更新账单信息时，这些更改将应用于未来的账单发票。您为账单账户提供的电子邮件地址是 Docker 发送所有发票和其他账单相关通信的位置。

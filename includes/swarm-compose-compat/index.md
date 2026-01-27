@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/swarm-compose-compat/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/swarm-compose-compat/
-next:
-  title: 
-  url: /includes/root-errors/
-prev:
-  title: 
-  url: /includes/swarm-mode/
----
+# 
 
 > [!NOTE]
 >

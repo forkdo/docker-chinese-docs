@@ -1,23 +1,4 @@
----
-title: 使用容器进行 Angular 开发
-url: /guides/angular/develop/
-parent:
-  title: Angular 语言专用指南
-  url: /guides/angular/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Angular 语言专用指南
-    url: /guides/angular/
-  - title: 使用容器进行 Angular 开发
-    url: /guides/angular/develop/
-next:
-  title: 容器化 Angular 应用程序
-  url: /guides/angular/containerize/
-prev:
-  title: 在容器中运行 Angular 测试
-  url: /guides/angular/run-tests/
----
+# 使用容器进行 Angular 开发
 
 
 ## 先决条件

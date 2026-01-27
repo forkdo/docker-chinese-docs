@@ -1,23 +1,4 @@
----
-title: Interface: OpenDialogResult
-url: /reference/api/extensions-sdk/OpenDialogResult/
-parent:
-  title: 扩展 API 参考
-  url: /reference/api/extensions-sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 扩展 API 参考
-    url: /reference/api/extensions-sdk/
-  - title: Interface: OpenDialogResult
-    url: /reference/api/extensions-sdk/OpenDialogResult/
-next:
-  title: Interface: ExtensionHost
-  url: /reference/api/extensions-sdk/ExtensionHost/
-prev:
-  title: Interface: Toast
-  url: /reference/api/extensions-sdk/Toast/
----
+# Interface: OpenDialogResult
 
 
 **`Since`**

@@ -1,25 +1,4 @@
----
-title: 调用主机二进制文件
-url: /extensions/extensions-sdk/guides/invoke-host-binaries/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 调用主机二进制文件
-    url: /extensions/extensions-sdk/guides/invoke-host-binaries/
-next:
-  title: 从扩展后端使用 Docker socket
-  url: /extensions/extensions-sdk/guides/use-docker-socket-from-backend/
-prev:
-  title: 身份验证
-  url: /extensions/extensions-sdk/guides/oauth2-flow/
----
+# 调用主机二进制文件
 
 
 在某些情况下，您的扩展可能需要调用主机上的某些命令。例如，您可能希望调用云提供商的 CLI 来创建新资源，或调用扩展提供的工具的 CLI，甚至运行主机上的 shell 脚本。

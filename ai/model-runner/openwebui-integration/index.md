@@ -1,23 +1,4 @@
----
-title: Open WebUI 集成
-url: /ai/model-runner/openwebui-integration/
-parent:
-  title: Docker Model Runner
-  url: /ai/model-runner/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Model Runner
-    url: /ai/model-runner/
-  - title: Open WebUI 集成
-    url: /ai/model-runner/openwebui-integration/
-next:
-  title: IDE 与工具集成
-  url: /ai/model-runner/ide-integrations/
-prev:
-  title: 推理引擎
-  url: /ai/model-runner/inference-engines/
----
+# Open WebUI 集成
 
 
 [Open WebUI](https://github.com/open-webui/open-webui) 是一个开源、自托管的 Web 界面，为本地 AI 模型提供类 ChatGPT 的体验。您可以将其连接到 Docker Model Runner，为您的模型获取一个精美的聊天界面。

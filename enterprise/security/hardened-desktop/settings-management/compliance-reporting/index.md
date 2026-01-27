@@ -1,27 +1,4 @@
----
-title: 桌面设置合规性报告
-url: /enterprise/security/hardened-desktop/settings-management/compliance-reporting/
-parent:
-  title: Settings Management
-  url: /enterprise/security/hardened-desktop/settings-management/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: Settings Management
-    url: /enterprise/security/hardened-desktop/settings-management/
-  - title: 桌面设置合规性报告
-    url: /enterprise/security/hardened-desktop/settings-management/compliance-reporting/
-next:
-  title: 使用 Admin Console 配置设置管理
-  url: /enterprise/security/hardened-desktop/settings-management/configure-admin-console/
-prev:
-  title: 设置参考
-  url: /enterprise/security/hardened-desktop/settings-management/settings-reference/
----
+# 桌面设置合规性报告
 
 
 

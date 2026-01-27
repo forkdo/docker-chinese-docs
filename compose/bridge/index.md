@@ -1,27 +1,4 @@
----
-title: Compose Bridge 概述
-url: /compose/bridge/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose Bridge 概述
-    url: /compose/bridge/
-children:
-  - title: 使用默认的 Compose Bridge 转换
-    url: /compose/bridge/usage/
-    description: 了解如何使用默认的 Compose Bridge 转换将 Compose 文件转换为 Kubernetes 清单文件
-  - title: 自定义 Compose Bridge
-    url: /compose/bridge/customize/
-    description: 了解如何使用 Go 模板和 Compose 扩展来自定义 Compose Bridge 转换
-  - title: 在 Compose Bridge 中使用 Docker Model Runner
-    url: /compose/bridge/use-model-runner/
-    description: 如何将 Docker Model Runner 与 Compose Bridge 结合使用，以实现一致的部署
----
+# Compose Bridge 概述
 
 
 

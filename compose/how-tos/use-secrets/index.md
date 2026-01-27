@@ -1,23 +1,4 @@
----
-title: 在 Docker Compose 中安全管理机密信息
-url: /compose/how-tos/use-secrets/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 在 Docker Compose 中安全管理机密信息
-    url: /compose/how-tos/use-secrets/
-next:
-  title: 构建依赖镜像
-  url: /compose/how-tos/dependent-images/
-prev:
-  title: Compose 中的网络
-  url: /compose/how-tos/networking/
----
+# 在 Docker Compose 中安全管理机密信息
 
 
 机密信息（Secret）是指任何不应通过网络传输或以未加密形式存储在 Dockerfile 或应用程序源代码中的数据片段，例如密码、证书或 API 密钥。

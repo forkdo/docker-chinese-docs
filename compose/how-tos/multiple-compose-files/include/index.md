@@ -1,22 +1,4 @@
----
-title: Include
-url: /compose/how-tos/multiple-compose-files/include/
-parent:
-  title: 使用多个 Compose 文件
-  url: /compose/how-tos/multiple-compose-files/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 使用多个 Compose 文件
-    url: /compose/how-tos/multiple-compose-files/
-  - title: Include
-    url: /compose/how-tos/multiple-compose-files/include/
-next:
-  title: 扩展你的 Compose 文件
-  url: /compose/how-tos/multiple-compose-files/extends/
----
+# Include
 
 
 

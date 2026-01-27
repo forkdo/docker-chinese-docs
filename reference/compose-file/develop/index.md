@@ -1,23 +1,4 @@
----
-title: Compose 开发规范
-url: /reference/compose-file/develop/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: Compose 开发规范
-    url: /reference/compose-file/develop/
-next:
-  title: Compose 部署规范
-  url: /reference/compose-file/deploy/
-prev:
-  title: 旧版本
-  url: /reference/compose-file/legacy-versions/
----
+# Compose 开发规范
 
 
 > [!NOTE] 

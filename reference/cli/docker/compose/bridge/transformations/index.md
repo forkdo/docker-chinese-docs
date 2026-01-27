@@ -1,23 +1,4 @@
----
-title: docker compose bridge 转换
-url: /reference/cli/docker/compose/bridge/transformations/
-parent:
-  title: docker compose bridge
-  url: /reference/cli/docker/compose/bridge/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose bridge
-    url: /reference/cli/docker/compose/bridge/
-  - title: docker compose bridge 转换
-    url: /reference/cli/docker/compose/bridge/transformations/
----
+# docker compose bridge 转换
 
 **Description:** Manage transformation images
 

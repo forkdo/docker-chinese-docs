@@ -1,32 +1,13 @@
----
-title: 为您的 Go 应用程序配置 CI/CD
-url: /guides/golang/configure-ci-cd/
-parent:
-  title: Go 语言专用指南
-  url: /guides/golang/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Go 语言专用指南
-    url: /guides/golang/
-  - title: 为您的 Go 应用程序配置 CI/CD
-    url: /guides/golang/configure-ci-cd/
-next:
-  title: 使用 Go test 运行测试
-  url: /guides/golang/run-tests/
-prev:
-  title: 测试你的 Go 部署
-  url: /guides/golang/deploy/
----
+# 为 Go 应用程序配置 CI/CD
 
 
 ## 先决条件
 
-完成本指南的前面部分，从 [构建您的 Go 镜像](build-images.md) 开始。您必须拥有 [GitHub](https://github.com/signup) 账户和 [Docker](https://hub.docker.com/signup) 账户才能完成本节内容。
+完成本指南的先前部分，从[构建 Go 镜像](build-images.md)开始。你必须拥有 [GitHub](https://github.com/signup) 账户和经过验证的 [Docker](https://hub.docker.com/signup) 账户才能完成本部分。
 
-## 概述
+## 概览
 
-在本节中，您将学习如何设置和使用 GitHub Actions 来构建您的 Docker 镜像并将其推送到 Docker Hub。您将完成以下步骤：
+在本部分中，你将学习如何设置和使用 GitHub Actions 将 Docker 镜像构建并推送到 Docker Hub。你需要完成以下步骤：
 
 1. 在 GitHub 上创建一个新仓库。
 2. 定义 GitHub Actions 工作流。
@@ -34,27 +15,25 @@ prev:
 
 ## 第一步：创建仓库
 
-创建一个 GitHub 仓库，配置 Docker Hub 凭据，并推送您的源代码。
+创建 GitHub 仓库，配置 Docker Hub 凭据，并推送源代码。
 
-1. 在 GitHub 上 [创建一个新仓库](https://github.com/new)。
+1. 在 GitHub 上[创建一个新仓库](https://github.com/new)。
 
-2. 打开仓库的 **Settings**（设置），然后转到 **Secrets and variables**（机密和变量）>
-   **Actions**。
+2. 打开仓库的 **Settings**，然后进入 **Secrets and variables** > **Actions**。
 
-3. 创建一个新的 **Repository variable**（仓库变量），名称为 `DOCKER_USERNAME`，值为您的 Docker ID。
+3. 创建一个名为 `DOCKER_USERNAME` 的新 **Repository variable**，并将你的 Docker ID 作为其值。
 
-4. 为 Docker Hub 创建一个新的 [Personal Access Token (PAT)](/manuals/security/access-tokens.md#create-an-access-token)。您可以将此令牌命名为 `docker-tutorial`。确保访问权限包括 Read and Write（读取和写入）。
+4. 为 Docker Hub 创建一个[个人访问令牌 (PAT)](/manuals/security/access-tokens.md#create-an-access-token)。你可以将此令牌命名为 `docker-tutorial`。确保访问权限包括读取和写入。
 
-5. 将 PAT 作为 **Repository secret**（仓库机密）添加到您的 GitHub 仓库中，名称为
-   `DOCKERHUB_TOKEN`。
+5. 将 PAT 作为 **Repository secret** 添加到你的 GitHub 仓库中，名称为 `DOCKERHUB_TOKEN`。
 
-6. 在您机器上的本地仓库中，运行以下命令将 origin 更改为您刚刚创建的仓库。确保将 `your-username` 更改为您的 GitHub 用户名，将 `your-repository` 更改为您创建的仓库名称。
+6. 在本地机器上的本地仓库中，运行以下命令将 origin 更改为你刚刚创建的仓库。确保将 `your-username` 更改为你的 GitHub 用户名，将 `your-repository` 更改为你创建的仓库名称。
 
    ```console
    $ git remote set-url origin https://github.com/your-username/your-repository.git
    ```
 
-7. 运行以下命令来暂存、提交并将您的本地仓库推送到 GitHub。
+7. 运行以下命令将本地仓库暂存、提交并推送到 GitHub。
 
    ```console
    $ git add -A
@@ -64,13 +43,13 @@ prev:
 
 ## 第二步：设置工作流
 
-设置您的 GitHub Actions 工作流，用于构建、测试镜像并将其推送到 Docker Hub。
+设置 GitHub Actions 工作流以构建、测试并将镜像推送到 Docker Hub。
 
-1. 转到您在 GitHub 上的仓库，然后选择 **Actions** 标签页。
+1. 转到 GitHub 上的仓库，然后选择 **Actions** 选项卡。
 
-2. 选择 **set up a workflow yourself**（自己设置工作流）。
+2. 选择 **set up a workflow yourself**。
 
-   这将带您到一个页面，用于在您的仓库中创建一个新的 GitHub actions 工作流文件，默认路径为 `.github/workflows/main.yml`。
+   这会将你带到一个页面，用于在仓库中创建新的 GitHub Actions 工作流文件，默认位于 `.github/workflows/main.yml`。
 
 3. 在编辑器窗口中，复制并粘贴以下 YAML 配置，然后提交更改。
 
@@ -109,28 +88,28 @@ prev:
 
 保存工作流文件并运行作业。
 
-1. 选择 **Commit changes...**（提交更改...）并将更改推送到 `main` 分支。
+1. 选择 **Commit changes...** 并将更改推送到 `main` 分支。
 
-   推送提交后，工作流会自动开始。
+   推送提交后，工作流会自动启动。
 
-2. 转到 **Actions** 标签页。它会显示工作流。
+2. 转到 **Actions** 选项卡。它会显示工作流。
 
-   选择工作流会显示所有步骤的明细。
+   选择工作流可以查看所有步骤的细分。
 
-3. 当工作流完成后，转到您的 [Docker Hub 上的仓库](https://hub.docker.com/repositories)。
+3. 工作流完成后，转到 [Docker Hub 上的仓库](https://hub.docker.com/repositories)。
 
-   如果您在该列表中看到新仓库，则表示 GitHub Actions 已成功将镜像推送到 Docker Hub。
+   如果你在该列表中看到新仓库，则表示 GitHub Actions 已成功将镜像推送到 Docker Hub。
 
 ## 总结
 
-在本节中，您学习了如何为您的应用程序设置 GitHub Actions 工作流。
+在本部分中，你学习了如何为应用程序设置 GitHub Actions 工作流。
 
 相关信息：
 
 - [GitHub Actions 简介](/guides/gha.md)
 - [Docker Build GitHub Actions](/manuals/build/ci/github-actions/_index.md)
-- [GitHub Actions 的工作流语法](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+- [GitHub Actions 工作流语法](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 
-## 下一步
+## 后续步骤
 
-接下来，学习如何在部署之前在 Kubernetes 上本地测试和调试您的工作负载。
+接下来，了解如何在部署之前在 Kubernetes 上本地测试和调试工作负载。

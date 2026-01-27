@@ -1,22 +1,4 @@
----
-title: Create a simple extension
-url: /extensions/extensions-sdk/build/minimal-frontend-extension/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: Create a simple extension
-    url: /extensions/extensions-sdk/build/minimal-frontend-extension/
-prev:
-  title: Create an advanced frontend extension
-  url: /extensions/extensions-sdk/build/frontend-extension-tutorial/
----
+# Create a simple extension
 
 
 To start creating your extension, you first need a directory with files which range from the extension’s source code to the required extension-specific files. This page provides information on how to set up a minimal frontend extension based on plain HTML.

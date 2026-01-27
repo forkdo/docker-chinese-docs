@@ -1,26 +1,4 @@
----
-title: 无 root 模式
-url: /engine/security/rootless/
-parent:
-  title: Docker Engine 安全
-  url: /engine/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: 无 root 模式
-    url: /engine/security/rootless/
-children:
-  - title: 使用技巧
-    url: /engine/security/rootless/tips/
-    description: Rootless 模式的使用技巧
-  - title: 问题排查
-    url: /engine/security/rootless/troubleshoot/
-    description: 排查 Rootless 模式的问题
----
+# 无 root 模式
 
 
 无 root 模式允许您以非 root 用户身份运行 Docker 守护进程和容器，从而减轻守护进程和容器运行时中潜在漏洞的影响。

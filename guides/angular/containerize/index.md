@@ -1,20 +1,4 @@
----
-title: 容器化 Angular 应用程序
-url: /guides/angular/containerize/
-parent:
-  title: Angular 语言专用指南
-  url: /guides/angular/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Angular 语言专用指南
-    url: /guides/angular/
-  - title: 容器化 Angular 应用程序
-    url: /guides/angular/containerize/
-prev:
-  title: 使用容器进行 Angular 开发
-  url: /guides/angular/develop/
----
+# 容器化 Angular 应用程序
 
 
 ## 先决条件

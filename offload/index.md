@@ -1,37 +1,4 @@
----
-title: Docker Offload
-url: /offload/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Offload
-    url: /offload/
-children:
-  - title: Docker Offload 快速开始
-    url: /offload/quickstart/
-    description: 了解如何使用 Docker Offload 在本地和 CI 中更快地构建和运行容器镜像。
-  - title: 关于 Docker Offload
-    url: /offload/about/
-    description: 了解 Docker Offload、其功能及工作原理。
-  - title: 配置 Docker Offload
-    url: /offload/configuration/
-    description: 了解如何为 Docker Offload 配置构建设置。
-  - title: Docker Offload 使用与计费
-    url: /offload/usage/
-    description: 了解 Docker Offload 的使用情况以及如何监控您的云资源。
-  - title: 优化 Docker Offload 使用
-    url: /offload/optimize/
-    description: 了解如何优化 Docker Offload 的使用。
-  - title: 故障排除 Docker Offload
-    url: /offload/troubleshoot/
-    description: 了解如何排查 Docker Offload 相关问题。
-  - title: 提供反馈
-    url: /offload/feedback/
-    description: 找到适合您的反馈方式
----
+# Docker Offload
 
 
 

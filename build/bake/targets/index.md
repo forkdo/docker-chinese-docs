@@ -1,25 +1,4 @@
----
-title: Bake targets
-url: /build/bake/targets/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Bake targets
-    url: /build/bake/targets/
-next:
-  title: Introduction to Bake
-  url: /build/bake/introduction/
-prev:
-  title: Inheritance in Bake
-  url: /build/bake/inheritance/
----
+# Bake targets
 
 
 A target in a Bake file represents a build invocation. It holds all the

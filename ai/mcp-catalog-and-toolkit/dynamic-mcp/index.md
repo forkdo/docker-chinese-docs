@@ -1,23 +1,4 @@
----
-title: 动态 MCP
-url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
-parent:
-  title: Docker MCP Catalog and Toolkit
-  url: /ai/mcp-catalog-and-toolkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-  - title: 动态 MCP
-    url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
-next:
-  title: Docker MCP Toolkit
-  url: /ai/mcp-catalog-and-toolkit/toolkit/
-prev:
-  title: MCP Gateway
-  url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
----
+# 动态 MCP
 
 
 Dynamic MCP 使 AI 代理能够在对话过程中按需发现并添加 MCP 服务器，无需手动配置。在启动代理会话之前，无需预先配置每个 MCP 服务器，客户端可以搜索 [MCP 目录](/manuals/ai/mcp-catalog-and-toolkit/catalog.md) 并根据需要添加服务器。

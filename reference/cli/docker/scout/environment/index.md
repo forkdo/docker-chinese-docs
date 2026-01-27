@@ -1,27 +1,4 @@
----
-title: docker scout environment
-url: /reference/cli/docker/scout/environment/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout environment
-    url: /reference/cli/docker/scout/environment/
-next:
-  title: docker scout enroll
-  url: /reference/cli/docker/scout/enroll/
-prev:
-  title: docker scout policy
-  url: /reference/cli/docker/scout/policy/
----
+# docker scout environment
 
 **Description:** Manage environments (experimental)
 

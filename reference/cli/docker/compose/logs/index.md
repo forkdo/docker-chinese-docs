@@ -1,27 +1,4 @@
----
-title: docker compose logs
-url: /reference/cli/docker/compose/logs/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose logs
-    url: /reference/cli/docker/compose/logs/
-next:
-  title: docker compose kill
-  url: /reference/cli/docker/compose/kill/
-prev:
-  title: docker compose ls
-  url: /reference/cli/docker/compose/ls/
----
+# docker compose logs
 
 **Description:** View output from containers
 

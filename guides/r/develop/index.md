@@ -1,23 +1,4 @@
----
-title: 使用容器进行 R 开发
-url: /guides/r/develop/
-parent:
-  title: R 语言专属指南
-  url: /guides/r/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: R 语言专属指南
-    url: /guides/r/
-  - title: 使用容器进行 R 开发
-    url: /guides/r/develop/
-next:
-  title: 容器化 R 应用程序
-  url: /guides/r/containerize/
-prev:
-  title: 为您的 R 应用程序配置 CI/CD
-  url: /guides/r/configure-ci-cd/
----
+# 使用容器进行 R 开发
 
 
 ## 先决条件

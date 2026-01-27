@@ -1,25 +1,4 @@
----
-title: Matrix targets
-url: /build/bake/matrices/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Matrix targets
-    url: /build/bake/matrices/
-next:
-  title: Functions
-  url: /build/bake/funcs/
-prev:
-  title: Using Bake with additional contexts
-  url: /build/bake/contexts/
----
+# Matrix targets
 
 
 A matrix strategy lets you fork a single target into multiple different

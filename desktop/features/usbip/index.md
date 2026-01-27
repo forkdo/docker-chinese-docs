@@ -1,23 +1,4 @@
----
-title: 在 Docker Desktop 中使用 USB/IP
-url: /desktop/features/usbip/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 Docker Desktop 中使用 USB/IP
-    url: /desktop/features/usbip/
-next:
-  title: Docker Desktop for Windows 中的 GPU 支持
-  url: /desktop/features/gpu/
-prev:
-  title: 同步文件共享
-  url: /desktop/features/synchronized-file-sharing/
----
+# 在 Docker Desktop 中使用 USB/IP
 
 
 

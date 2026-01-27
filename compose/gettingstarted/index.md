@@ -1,20 +1,4 @@
----
-title: Docker Compose 快速入门
-url: /compose/gettingstarted/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Docker Compose 快速入门
-    url: /compose/gettingstarted/
-prev:
-  title: 使用 Compose SDK
-  url: /compose/compose-sdk/
----
+# Docker Compose 快速入门
 
 
 本教程旨在通过引导您开发一个基本的 Python Web 应用程序，来介绍 Docker Compose 的基本概念。

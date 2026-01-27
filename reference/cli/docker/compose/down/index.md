@@ -1,27 +1,4 @@
----
-title: docker compose down
-url: /reference/cli/docker/compose/down/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose down
-    url: /reference/cli/docker/compose/down/
-next:
-  title: docker compose create
-  url: /reference/cli/docker/compose/create/
-prev:
-  title: docker compose events
-  url: /reference/cli/docker/compose/events/
----
+# docker compose down
 
 **Description:** Stop and remove containers, networks
 

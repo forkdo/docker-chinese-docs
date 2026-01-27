@@ -1,29 +1,4 @@
----
-title: 迁移示例
-url: /dhi/migration/examples/
-parent:
-  title: 迁移
-  url: /dhi/migration/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 迁移示例
-    url: /dhi/migration/examples/
-children:
-  - title: Go
-    url: /dhi/migration/examples/go/
-    description: 将 Go 应用程序迁移到 Docker 强化镜像
-  - title: Python
-    url: /dhi/migration/examples/python/
-    description: 将 Python 应用程序迁移到 Docker Hardened Images
-  - title: Node.js
-    url: /dhi/migration/examples/node/
-    description: 将 Node.js 应用程序迁移到 Docker Hardened Images
----
+# 迁移示例
 
 
 本节提供针对常见编程语言和框架的详细迁移示例。

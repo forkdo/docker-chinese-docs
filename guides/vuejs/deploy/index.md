@@ -1,20 +1,4 @@
----
-title: 测试 Vue.js 部署
-url: /guides/vuejs/deploy/
-parent:
-  title: Vue.js 语言专用指南
-  url: /guides/vuejs/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Vue.js 语言专用指南
-    url: /guides/vuejs/
-  - title: 测试 Vue.js 部署
-    url: /guides/vuejs/deploy/
-next:
-  title: 使用 GitHub Actions 自动化构建
-  url: /guides/vuejs/configure-github-actions/
----
+# 测试 Vue.js 部署
 
 
 ## 先决条件

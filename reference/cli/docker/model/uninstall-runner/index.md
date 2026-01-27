@@ -1,27 +1,4 @@
----
-title: docker model uninstall-runner
-url: /reference/cli/docker/model/uninstall-runner/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model uninstall-runner
-    url: /reference/cli/docker/model/uninstall-runner/
-next:
-  title: docker model tag
-  url: /reference/cli/docker/model/tag/
-prev:
-  title: docker model version
-  url: /reference/cli/docker/model/version/
----
+# docker model uninstall-runner
 
 **Description:** Uninstall Docker Model Runner (Docker Engine only)
 

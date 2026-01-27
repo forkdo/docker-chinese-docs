@@ -1,27 +1,4 @@
----
-title: docker compose cp
-url: /reference/cli/docker/compose/cp/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose cp
-    url: /reference/cli/docker/compose/cp/
-next:
-  title: docker compose config
-  url: /reference/cli/docker/compose/config/
-prev:
-  title: docker compose create
-  url: /reference/cli/docker/compose/create/
----
+# docker compose cp
 
 **Description:** Copy files/folders between a service container and the local filesystem
 

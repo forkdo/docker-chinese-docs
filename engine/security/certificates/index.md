@@ -1,25 +1,4 @@
----
-title: 使用证书验证仓库客户端
-url: /engine/security/certificates/
-parent:
-  title: Docker Engine 安全
-  url: /engine/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: 使用证书验证仓库客户端
-    url: /engine/security/certificates/
-next:
-  title: 使用用户命名空间隔离容器
-  url: /engine/security/userns-remap/
-prev:
-  title: 保护 Docker 守护进程套接字
-  url: /engine/security/protect-access/
----
+# 使用证书验证仓库客户端
 
 
 在[使用 HTTPS 运行 Docker](protect-access.md)中，您了解到默认情况下，Docker 通过非网络化的 Unix 套接字运行，必须启用 TLS 才能让 Docker 客户端和守护进程通过 HTTPS 安全通信。TLS 确保注册表端点的真实性以及与注册表之间的流量加密。

@@ -1,27 +1,4 @@
----
-title: docker container export
-url: /reference/cli/docker/container/export/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container export
-    url: /reference/cli/docker/container/export/
-next:
-  title: docker container exec
-  url: /reference/cli/docker/container/exec/
-prev:
-  title: docker container inspect
-  url: /reference/cli/docker/container/inspect/
----
+# docker container export
 
 **Description:** Export a container's filesystem as a tar archive
 

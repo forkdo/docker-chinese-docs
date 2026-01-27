@@ -1,23 +1,4 @@
----
-title: 使用 Docker Desktop CLI
-url: /desktop/features/desktop-cli/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 使用 Docker Desktop CLI
-    url: /desktop/features/desktop-cli/
-next:
-  title: Wasm 工作负载
-  url: /desktop/features/wasm/
-prev:
-  title: Docker Desktop for Mac 的虚拟机管理器
-  url: /desktop/features/vmm/
----
+# 使用 Docker Desktop CLI
 
 
 

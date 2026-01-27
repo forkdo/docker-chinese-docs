@@ -1,23 +1,6 @@
----
-title: Prometheus 示例
-url: /reference/samples/prometheus/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: Prometheus 示例
-    url: /reference/samples/prometheus/
-next:
-  title: PostgreSQL 示例
-  url: /reference/samples/postgres/
-prev:
-  title: Python 示例
-  url: /reference/samples/python/
----
+# Prometheus 示例
 
-
-
+| Name | Description |
+|------|-------------|
+| [Prometheus / Grafana](https://github.com/docker/awesome-compose/tree/master/prometheus-grafana) | A sample Prometheus and Grafana stack. |
+| [aspnet-monitoring](https://github.com/dockersamples/aspnet-monitoring) | Monitoring ASP.NET Fx applications in Windows Docker containers, using Prometheus. |

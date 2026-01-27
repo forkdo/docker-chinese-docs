@@ -1,27 +1,4 @@
----
-title: docker model install-runner
-url: /reference/cli/docker/model/install-runner/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model install-runner
-    url: /reference/cli/docker/model/install-runner/
-next:
-  title: docker model inspect
-  url: /reference/cli/docker/model/inspect/
-prev:
-  title: docker model list
-  url: /reference/cli/docker/model/list/
----
+# docker model install-runner
 
 **Description:** Install Docker Model Runner (Docker Engine only)
 

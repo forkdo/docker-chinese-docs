@@ -1,25 +1,4 @@
----
-title: Building with Bake from a Compose file
-url: /build/bake/compose-file/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Building with Bake from a Compose file
-    url: /build/bake/compose-file/
-next:
-  title: Bake standard library functions
-  url: /build/bake/stdlib/
-prev:
-  title: Overriding configurations
-  url: /build/bake/overrides/
----
+# Building with Bake from a Compose file
 
 
 Bake supports the [Compose file format](/reference/compose-file/_index.md)

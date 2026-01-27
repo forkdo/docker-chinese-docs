@@ -1,25 +1,4 @@
----
-title: 停用组织
-url: /admin/organization/deactivate-account/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 停用组织
-    url: /admin/organization/deactivate-account/
-next:
-  title: 创建和管理团队
-  url: /admin/organization/manage-a-team/
-prev:
-  title: 管理 Docker 产品
-  url: /admin/organization/manage-products/
----
+# 停用组织
 
 
 

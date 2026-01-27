@@ -1,25 +1,4 @@
----
-title: Docker Hardened Images 可用类型
-url: /dhi/explore/available/
-parent:
-  title: 探索 Docker Hardened Images
-  url: /dhi/explore/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 探索 Docker Hardened Images
-    url: /dhi/explore/
-  - title: Docker Hardened Images 可用类型
-    url: /dhi/explore/available/
-next:
-  title: Docker 硬化镜像的构建方式
-  url: /dhi/explore/build-process/
-prev:
-  title: Docker 强化镜像如何进行测试
-  url: /dhi/explore/test/
----
+# Docker Hardened Images 可用类型
 
 
 Docker Hardened Images (DHI) 是一个全面的安全加固容器镜像目录，旨在满足多样化的开发和生产需求。

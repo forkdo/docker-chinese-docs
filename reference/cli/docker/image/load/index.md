@@ -1,27 +1,4 @@
----
-title: docker image load
-url: /reference/cli/docker/image/load/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image load
-    url: /reference/cli/docker/image/load/
-next:
-  title: docker image inspect
-  url: /reference/cli/docker/image/inspect/
-prev:
-  title: docker image ls
-  url: /reference/cli/docker/image/ls/
----
+# docker image load
 
 **Description:** Load an image from a tar archive or STDIN
 

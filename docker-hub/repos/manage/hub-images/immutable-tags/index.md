@@ -1,27 +1,4 @@
----
-title: Docker Hub 上的不可变标签
-url: /docker-hub/repos/manage/hub-images/immutable-tags/
-parent:
-  title: 镜像管理
-  url: /docker-hub/repos/manage/hub-images/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/
-  - title: Docker Hub 上的不可变标签
-    url: /docker-hub/repos/manage/hub-images/immutable-tags/
-next:
-  title: Docker Hub 上的标签
-  url: /docker-hub/repos/manage/hub-images/tags/
-prev:
-  title: 镜像管理
-  url: /docker-hub/repos/manage/hub-images/manage/
----
+# Docker Hub 上的不可变标签
 
 
 

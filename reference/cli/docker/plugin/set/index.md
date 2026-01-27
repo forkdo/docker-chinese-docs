@@ -1,27 +1,4 @@
----
-title: docker plugin set
-url: /reference/cli/docker/plugin/set/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin set
-    url: /reference/cli/docker/plugin/set/
-next:
-  title: docker plugin rm
-  url: /reference/cli/docker/plugin/rm/
-prev:
-  title: docker plugin upgrade
-  url: /reference/cli/docker/plugin/upgrade/
----
+# docker plugin set
 
 **Description:** Change settings for a plugin
 

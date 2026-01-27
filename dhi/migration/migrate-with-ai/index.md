@@ -1,25 +1,4 @@
----
-title: 使用 Docker 的 AI 助手进行迁移
-url: /dhi/migration/migrate-with-ai/
-parent:
-  title: 迁移
-  url: /dhi/migration/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 使用 Docker 的 AI 助手进行迁移
-    url: /dhi/migration/migrate-with-ai/
-next:
-  title: 迁移清单
-  url: /dhi/migration/checklist/
-prev:
-  title: 从 Alpine 或 Debian 迁移
-  url: /dhi/migration/migrate-from-doi/
----
+# 使用 Docker 的 AI 助手进行迁移
 
 
 

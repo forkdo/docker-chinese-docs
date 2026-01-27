@@ -1,22 +1,4 @@
----
-title: 快速入门
-url: /extensions/extensions-sdk/quickstart/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 快速入门
-    url: /extensions/extensions-sdk/quickstart/
-next:
-  title: 构建和发布流程
-  url: /extensions/extensions-sdk/process/
----
+# 快速入门
 
 
 请按照本指南开始创建基本的 Docker 扩展。快速入门指南会自动为您生成样板文件。

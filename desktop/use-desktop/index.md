@@ -1,39 +1,4 @@
----
-title: 探索 Docker Desktop
-url: /desktop/use-desktop/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 探索 Docker Desktop
-    url: /desktop/use-desktop/
-children:
-  - title: 探索 Docker Desktop 中的“容器”视图
-    url: /desktop/use-desktop/container/
-    description: 通过 Docker Dashboard 的“容器”视图了解您可以执行的操作
-  - title: 探索 Docker Desktop 中的 Images 视图
-    url: /desktop/use-desktop/images/
-    description: 了解您可以使用 Docker Dashboard 中的 Images 视图执行哪些操作
-  - title: 在 Docker Desktop 中探索卷视图
-    url: /desktop/use-desktop/volumes/
-    description: 了解在 Docker 仪表板的卷视图中可以执行哪些操作
-  - title: 探索 Docker Desktop 中的构建视图
-    url: /desktop/use-desktop/builds/
-    description: 了解如何在 Docker Desktop 中使用构建视图
-  - title: 探索 Kubernetes 视图
-    url: /desktop/use-desktop/kubernetes/
-    description: 了解如何在 Docker Desktop 上部署到 Kubernetes
-  - title: Docker Desktop 的资源节省模式
-    url: /desktop/use-desktop/resource-saver/
-    description: 了解 Docker Desktop 资源节省模式及其配置方法
-  - title: 暂停 Docker Desktop
-    url: /desktop/use-desktop/pause/
-    description: 了解暂停 Docker Desktop Dashboard 的含义
----
+# 探索 Docker Desktop
 
 
 打开 Docker Desktop 时，会显示 Docker Desktop Dashboard。

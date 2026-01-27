@@ -1,25 +1,4 @@
----
-title: 镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-url: /dhi/how-to/mirror/
-parent:
-  title: 操作指南
-  url: /dhi/how-to/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 操作指南
-    url: /dhi/how-to/
-  - title: 镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-    url: /dhi/how-to/mirror/
-next:
-  title: 探索 Docker 硬化镜像
-  url: /dhi/how-to/explore/
-prev:
-  title: 自定义 Docker 加固镜像或 Helm chart <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-  url: /dhi/how-to/customize/
----
+# 镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 
 
 

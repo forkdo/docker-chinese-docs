@@ -1,27 +1,4 @@
----
-title: docker plugin disable
-url: /reference/cli/docker/plugin/disable/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin disable
-    url: /reference/cli/docker/plugin/disable/
-next:
-  title: docker plugin create
-  url: /reference/cli/docker/plugin/create/
-prev:
-  title: docker plugin enable
-  url: /reference/cli/docker/plugin/enable/
----
+# docker plugin disable
 
 **Description:** Disable a plugin
 

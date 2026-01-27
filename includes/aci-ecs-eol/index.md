@@ -1,18 +1,4 @@
----
-title: 
-url: /includes/aci-ecs-eol/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/aci-ecs-eol/
-prev:
-  title: 
-  url: /includes/buildx-v0.10-disclaimer/
----
+# 
 
 > [!IMPORTANT]
 >

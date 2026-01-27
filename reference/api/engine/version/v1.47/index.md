@@ -1,24 +1,4 @@
----
-title: Docker Engine API v1.47 参考文档
-url: /reference/api/engine/version/v1.47/
-parent:
-  title: Docker Engine API
-  url: /reference/api/engine/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Docker Engine API
-    url: /reference/api/engine/
-  - title: Docker Engine API v1.47 参考文档
-    url: /reference/api/engine/version/v1.47/
-next:
-  title: Docker Engine API v1.46 参考文档
-  url: /reference/api/engine/version/v1.46/
-prev:
-  title: Docker Engine API v1.48 参考文档
-  url: /reference/api/engine/version/v1.48/
-openapi_spec: /reference/api/engine/version/v1.47.yaml
----
+# Docker Engine API v1.47 参考文档
 
 
 <h1 class=" scroll-mt-20 flex items-center gap-2" id="docker-engine-api-v147">

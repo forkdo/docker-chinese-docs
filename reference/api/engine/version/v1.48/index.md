@@ -1,24 +1,4 @@
----
-title: Docker Engine API v1.48 参考文档
-url: /reference/api/engine/version/v1.48/
-parent:
-  title: Docker Engine API
-  url: /reference/api/engine/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Docker Engine API
-    url: /reference/api/engine/
-  - title: Docker Engine API v1.48 参考文档
-    url: /reference/api/engine/version/v1.48/
-next:
-  title: Docker Engine API v1.47 参考文档
-  url: /reference/api/engine/version/v1.47/
-prev:
-  title: Docker Engine API v1.49 参考文档
-  url: /reference/api/engine/version/v1.49/
-openapi_spec: /reference/api/engine/version/v1.48.yaml
----
+# Docker Engine API v1.48 参考文档
 
 <p><a class="link" href="https://github.com/moby/moby/blob/v27.2.0/api/swagger.yaml" rel="noopener">查看源码</a></p>
 

@@ -1,21 +1,4 @@
----
-title: docker scout attestation
-url: /reference/cli/docker/scout/attestation/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout attestation
-    url: /reference/cli/docker/scout/attestation/
----
+# docker scout attestation
 
 **Description:** Manage attestations on images
 

@@ -1,27 +1,4 @@
----
-title: docker system info
-url: /reference/cli/docker/system/info/
-parent:
-  title: docker system
-  url: /reference/cli/docker/system/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker system
-    url: /reference/cli/docker/system/
-  - title: docker system info
-    url: /reference/cli/docker/system/info/
-next:
-  title: docker system events
-  url: /reference/cli/docker/system/events/
-prev:
-  title: docker system prune
-  url: /reference/cli/docker/system/prune/
----
+# docker system info
 
 **Description:** Display system-wide information
 

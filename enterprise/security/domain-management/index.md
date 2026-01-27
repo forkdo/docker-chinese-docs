@@ -1,20 +1,4 @@
----
-title: 管理域名
-url: /enterprise/security/domain-management/
-parent:
-  title: 企业级安全
-  url: /enterprise/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 管理域名
-    url: /enterprise/security/domain-management/
-prev:
-  title: Organization access tokens
-  url: /enterprise/security/access-tokens/
----
+# 管理域名
 
 
 

@@ -1,27 +1,4 @@
----
-title: docker container rename
-url: /reference/cli/docker/container/rename/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container rename
-    url: /reference/cli/docker/container/rename/
-next:
-  title: docker container prune
-  url: /reference/cli/docker/container/prune/
-prev:
-  title: docker container restart
-  url: /reference/cli/docker/container/restart/
----
+# docker container rename
 
 **Description:** Rename a container
 

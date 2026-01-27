@@ -1,23 +1,4 @@
----
-title: 使用 bind mounts
-url: /get-started/workshop/06_bind_mounts/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 使用 bind mounts
-    url: /get-started/workshop/06_bind_mounts/
-next:
-  title: 持久化数据库
-  url: /get-started/workshop/05_persisting_data/
-prev:
-  title: 多容器应用
-  url: /get-started/workshop/07_multi_container/
----
+# 使用 bind mounts
 
 
 在[第 4 部分](./05_persisting_data.md)中，您使用了卷挂载来持久化数据库中的数据。当您需要一个持久化的位置来存储应用程序数据时，卷挂载是一个很好的选择。

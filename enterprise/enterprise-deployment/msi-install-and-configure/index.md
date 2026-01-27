@@ -1,20 +1,4 @@
----
-title: MSI 安装程序
-url: /enterprise/enterprise-deployment/msi-install-and-configure/
-parent:
-  title: 部署 Docker Desktop
-  url: /enterprise/enterprise-deployment/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 部署 Docker Desktop
-    url: /enterprise/enterprise-deployment/
-  - title: MSI 安装程序
-    url: /enterprise/enterprise-deployment/msi-install-and-configure/
-prev:
-  title: PKG 安装程序
-  url: /enterprise/enterprise-deployment/pkg-install-and-configure/
----
+# MSI 安装程序
 
 
 

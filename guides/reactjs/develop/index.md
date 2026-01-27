@@ -1,23 +1,4 @@
----
-title: 使用容器进行 React.js 开发
-url: /guides/reactjs/develop/
-parent:
-  title: React.js 语言特定指南
-  url: /guides/reactjs/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: React.js 语言特定指南
-    url: /guides/reactjs/
-  - title: 使用容器进行 React.js 开发
-    url: /guides/reactjs/develop/
-next:
-  title: 为 React.js 应用程序创建容器
-  url: /guides/reactjs/containerize/
-prev:
-  title: 在容器中运行 React.js 测试
-  url: /guides/reactjs/run-tests/
----
+# 使用容器进行 React.js 开发
 
 
 ## 前提条件

@@ -1,27 +1,4 @@
----
-title: docker container pause
-url: /reference/cli/docker/container/pause/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container pause
-    url: /reference/cli/docker/container/pause/
-next:
-  title: docker container ls
-  url: /reference/cli/docker/container/ls/
-prev:
-  title: docker container port
-  url: /reference/cli/docker/container/port/
----
+# docker container pause
 
 **Description:** Pause all processes within one or more containers
 

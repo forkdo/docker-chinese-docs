@@ -1,29 +1,4 @@
----
-title: docker mcp secret ls
-url: /reference/cli/docker/mcp/secrets/secret_ls/
-parent:
-  title: docker mcp secret
-  url: /reference/cli/docker/mcp/secrets/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp secret
-    url: /reference/cli/docker/mcp/secrets/
-  - title: docker mcp secret ls
-    url: /reference/cli/docker/mcp/secrets/secret_ls/
-next:
-  title: docker mcp secret export
-  url: /reference/cli/docker/mcp/secrets/secret_export/
-prev:
-  title: docker mcp secret rm
-  url: /reference/cli/docker/mcp/secrets/secret_rm/
----
+# docker mcp secret ls
 
 **Description:** List all secret names in Docker Desktop's secret store
 

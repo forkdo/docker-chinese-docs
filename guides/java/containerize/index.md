@@ -1,20 +1,4 @@
----
-title: 容器化 Java 应用程序
-url: /guides/java/containerize/
-parent:
-  title: Java 语言专属指南
-  url: /guides/java/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Java 语言专属指南
-    url: /guides/java/
-  - title: 容器化 Java 应用程序
-    url: /guides/java/containerize/
-prev:
-  title: 使用容器进行 Java 开发
-  url: /guides/java/develop/
----
+# 容器化 Java 应用程序
 
 
 ## 先决条件

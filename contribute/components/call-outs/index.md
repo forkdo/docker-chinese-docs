@@ -1,21 +1,4 @@
----
-title: 提示框
-url: /contribute/components/call-outs/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 提示框
-    url: /contribute/components/call-outs/
-next:
-  title: 按钮
-  url: /contribute/components/buttons/
-prev:
-  title: 标签页 (Tabs)
-  url: /contribute/components/tabs/
----
+# 提示框
 
 
 我们支持以下主要类别的提示框：

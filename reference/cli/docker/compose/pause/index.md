@@ -1,27 +1,4 @@
----
-title: docker compose pause
-url: /reference/cli/docker/compose/pause/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose pause
-    url: /reference/cli/docker/compose/pause/
-next:
-  title: docker compose ls
-  url: /reference/cli/docker/compose/ls/
-prev:
-  title: docker compose port
-  url: /reference/cli/docker/compose/port/
----
+# docker compose pause
 
 **Description:** Pause services
 

@@ -1,27 +1,4 @@
----
-title: docker scout version
-url: /reference/cli/docker/scout/version/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout version
-    url: /reference/cli/docker/scout/version/
-next:
-  title: docker scout stream
-  url: /reference/cli/docker/scout/stream/
-prev:
-  title: docker scout watch
-  url: /reference/cli/docker/scout/watch/
----
+# docker scout version
 
 **Description:** Show Docker Scout version information
 

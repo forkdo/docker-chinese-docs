@@ -1,25 +1,4 @@
----
-title: Docker 守护进程故障排除
-url: /engine/daemon/troubleshoot/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: Docker 守护进程故障排除
-    url: /engine/daemon/troubleshoot/
-next:
-  title: 实时恢复
-  url: /engine/daemon/live-restore/
-prev:
-  title: 使用 Prometheus 收集 Docker 指标
-  url: /engine/daemon/prometheus/
----
+# Docker 守护进程故障排除
 
 
 本页面介绍在遇到问题时，如何对守护进程进行故障排除和调试。

@@ -1,29 +1,4 @@
----
-title: docker mcp catalog show
-url: /reference/cli/docker/mcp/catalog/catalog_show/
-parent:
-  title: docker mcp catalog
-  url: /reference/cli/docker/mcp/catalog/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp catalog
-    url: /reference/cli/docker/mcp/catalog/
-  - title: docker mcp catalog show
-    url: /reference/cli/docker/mcp/catalog/catalog_show/
-next:
-  title: docker mcp catalog rm
-  url: /reference/cli/docker/mcp/catalog/catalog_rm/
-prev:
-  title: docker mcp catalog update
-  url: /reference/cli/docker/mcp/catalog/catalog_update/
----
+# docker mcp catalog show
 
 **Description:** Display catalog contents
 

@@ -1,24 +1,4 @@
----
-title: docker desktop restart
-url: /reference/cli/docker/desktop/restart/
-parent:
-  title: docker desktop (Beta)
-  url: /reference/cli/docker/desktop/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker desktop (Beta)
-    url: /reference/cli/docker/desktop/
-  - title: docker desktop restart
-    url: /reference/cli/docker/desktop/restart/
-prev:
-  title: docker desktop start
-  url: /reference/cli/docker/desktop/start/
----
+# docker desktop restart
 
 **Description:** Restart Docker Desktop
 

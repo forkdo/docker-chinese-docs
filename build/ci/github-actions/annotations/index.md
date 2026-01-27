@@ -1,24 +1,4 @@
----
-title: Add image annotations with GitHub Actions
-url: /build/ci/github-actions/annotations/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Add image annotations with GitHub Actions
-    url: /build/ci/github-actions/annotations/
-prev:
-  title: Add SBOM and provenance attestations with GitHub Actions
-  url: /build/ci/github-actions/attestations/
----
+# Add image annotations with GitHub Actions
 
 
 Annotations let you specify arbitrary metadata for OCI image components, such

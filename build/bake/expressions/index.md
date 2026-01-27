@@ -1,25 +1,4 @@
----
-title: Expression evaluation in Bake
-url: /build/bake/expressions/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Expression evaluation in Bake
-    url: /build/bake/expressions/
-next:
-  title: Variables in Bake
-  url: /build/bake/variables/
-prev:
-  title: Functions
-  url: /build/bake/funcs/
----
+# Expression evaluation in Bake
 
 
 Bake files in the HCL format support expression evaluation, which lets you

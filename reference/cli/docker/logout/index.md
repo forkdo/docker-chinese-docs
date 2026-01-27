@@ -1,25 +1,4 @@
----
-title: docker logout
-url: /reference/cli/docker/logout/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker logout
-    url: /reference/cli/docker/logout/
-next:
-  title: docker init
-  url: /reference/cli/docker/init/
-prev:
-  title: docker ps
-  url: 
----
+# docker logout
 
 **Description:** Log out from a registry
 

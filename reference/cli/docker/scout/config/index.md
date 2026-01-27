@@ -1,27 +1,4 @@
----
-title: docker scout config
-url: /reference/cli/docker/scout/config/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout config
-    url: /reference/cli/docker/scout/config/
-next:
-  title: docker scout compare
-  url: /reference/cli/docker/scout/compare/
-prev:
-  title: docker scout cves
-  url: /reference/cli/docker/scout/cves/
----
+# docker scout config
 
 **Description:** Manage Docker Scout configuration
 

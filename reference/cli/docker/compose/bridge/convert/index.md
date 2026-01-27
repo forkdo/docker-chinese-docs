@@ -1,23 +1,4 @@
----
-title: docker compose bridge convert
-url: /reference/cli/docker/compose/bridge/convert/
-parent:
-  title: docker compose bridge
-  url: /reference/cli/docker/compose/bridge/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose bridge
-    url: /reference/cli/docker/compose/bridge/
-  - title: docker compose bridge convert
-    url: /reference/cli/docker/compose/bridge/convert/
----
+# docker compose bridge convert
 
 **Description:** Convert compose files to Kubernetes manifests, Helm charts, or another model
 

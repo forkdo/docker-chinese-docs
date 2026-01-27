@@ -1,24 +1,4 @@
----
-title: CLI 参考
-url: /extensions/extensions-sdk/dev/usage/
-parent:
-  title: 
-  url: /extensions/extensions-sdk/dev/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 
-    url: /extensions/extensions-sdk/dev/
-  - title: CLI 参考
-    url: /extensions/extensions-sdk/dev/usage/
-next:
-  title: 持续集成 (CI)
-  url: /extensions/extensions-sdk/dev/continuous-integration/
----
+# CLI 参考
 
 
 Extensions CLI 是一个用于管理 Docker 扩展的开发工具。支持的操作包括安装、列出、删除和验证扩展。

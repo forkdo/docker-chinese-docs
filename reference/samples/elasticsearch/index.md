@@ -1,23 +1,5 @@
----
-title: Elasticsearch / Logstash / Kibana 示例
-url: /reference/samples/elasticsearch/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: Elasticsearch / Logstash / Kibana 示例
-    url: /reference/samples/elasticsearch/
-next:
-  title: Django 示例
-  url: /reference/samples/django/
-prev:
-  title: Express 示例
-  url: /reference/samples/express/
----
+# Elasticsearch / Logstash / Kibana 示例
 
-
-
+| Name | Description |
+|------|-------------|
+| [Elasticsearch / Logstash / Kibana](https://github.com/docker/awesome-compose/tree/master/elasticsearch-logstash-kibana) | A sample Elasticsearch, Logstash, and Kibana stack. |

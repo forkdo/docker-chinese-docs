@@ -1,22 +1,4 @@
----
-title: 配置 Docker 守护进程的远程访问
-url: /engine/daemon/remote-access/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 配置 Docker 守护进程的远程访问
-    url: /engine/daemon/remote-access/
-next:
-  title: 读取守护程序日志
-  url: /engine/daemon/logs/
----
+# 配置 Docker 守护进程的远程访问
 
 
 默认情况下，Docker 守护进程通过监听 Unix 套接字来接受来自本地客户端的请求。你可以通过配置 Docker 监听 IP 地址和端口，以及 Unix 套接字，使其能够接受来自远程客户端的请求。

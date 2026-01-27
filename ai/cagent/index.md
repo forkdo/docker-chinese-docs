@@ -1,40 +1,4 @@
----
-title: cagent
-url: /ai/cagent/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-children:
-  - title: 模型提供商
-    url: /ai/cagent/model-providers/
-    description: 获取 API 密钥并为 cagent 配置云模型提供商
-  - title: 使用 Docker Model Runner 运行本地模型
-    url: /ai/cagent/local-models/
-    description: 使用 Docker Model Runner 在本地运行 AI 模型 - 无需 API 密钥
-  - title: 构建编码代理
-    url: /ai/cagent/tutorial/
-    description: 创建一个能够读取、写入并验证项目代码更改的编码代理
-  - title: 最佳实践
-    url: /ai/cagent/best-practices/
-    description: 构建高效 cagent 代理的模式与技术
-  - title: 共享代理
-    url: /ai/cagent/sharing-agents/
-    description: 通过 OCI 仓库分发代理配置
-  - title: 集成
-    url: /ai/cagent/integrations/
-    description: 将 cagent 代理连接到编辑器、MCP 客户端和其他代理
-  - title: RAG
-    url: /ai/cagent/rag/
-    description: RAG 如何为 cagent 智能体提供代码库和文档的访问能力
-  - title: 评估 (Evals)
-    url: /ai/cagent/evals/
-    description: 使用保存的对话测试您的代理
----
+# cagent
 
 
 

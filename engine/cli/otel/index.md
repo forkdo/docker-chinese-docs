@@ -1,20 +1,4 @@
----
-title: Docker CLI 的 OpenTelemetry
-url: /engine/cli/otel/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker CLI 的 OpenTelemetry
-    url: /engine/cli/otel/
-next:
-  title: 格式化命令和日志输出
-  url: /engine/cli/formatting/
----
+# Docker CLI 的 OpenTelemetry
 
 
 

@@ -1,21 +1,4 @@
----
-title: docker desktop 引擎
-url: /reference/cli/docker/desktop/engine/
-parent:
-  title: docker desktop (Beta)
-  url: /reference/cli/docker/desktop/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker desktop (Beta)
-    url: /reference/cli/docker/desktop/
-  - title: docker desktop 引擎
-    url: /reference/cli/docker/desktop/engine/
----
+# docker desktop 引擎
 
 **Description:** Commands to list and switch containers (Windows only)
 

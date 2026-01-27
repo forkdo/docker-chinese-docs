@@ -1,24 +1,4 @@
----
-title: 将 Docker Scout 与 Jenkins 集成
-url: /scout/integrations/ci/jenkins/
-parent:
-  title: 在持续集成中使用 Docker Scout
-  url: /scout/integrations/ci/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 在持续集成中使用 Docker Scout
-    url: /scout/integrations/ci/
-  - title: 将 Docker Scout 与 Jenkins 集成
-    url: /scout/integrations/ci/jenkins/
-next:
-  title: 将 Docker Scout 与 GitLab CI/CD 集成
-  url: /scout/integrations/ci/gitlab/
----
+# 将 Docker Scout 与 Jenkins 集成
 
 
 您可以将以下 stage 和 steps 定义添加到 `Jenkinsfile` 中，以便在 Jenkins 流水线中运行 Docker Scout。该流水线需要一个包含用于向 Docker Hub 进行身份验证的用户名和密码的 `DOCKER_HUB` 凭据。它还需要为镜像和标签定义一个环境变量。

@@ -1,23 +1,6 @@
----
-title: Spark 示例
-url: /reference/samples/spark/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: Spark 示例
-    url: /reference/samples/spark/
-next:
-  title: Rust 示例
-  url: /reference/samples/rust/
-prev:
-  title: Spring Boot 示例
-  url: /reference/samples/spring/
----
+# Spark 示例
 
-
-
+| Name | Description |
+|------|-------------|
+| [Java Spark / MySQL](https://github.com/docker/awesome-compose/tree/master/sparkjava-mysql) | A sample Java application and a MySQL database. |
+| [Spark](https://github.com/docker/awesome-compose/tree/master/sparkjava) | A sample Spark application. |

@@ -1,22 +1,4 @@
----
-title: 注册表访问管理
-url: /enterprise/security/hardened-desktop/registry-access-management/
-parent:
-  title: 强化版 Docker Desktop
-  url: /enterprise/security/hardened-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: 注册表访问管理
-    url: /enterprise/security/hardened-desktop/registry-access-management/
-prev:
-  title: 镜像访问管理
-  url: /enterprise/security/hardened-desktop/image-access-management/
----
+# 注册表访问管理
 
 
 

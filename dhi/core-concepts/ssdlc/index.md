@@ -1,25 +1,4 @@
----
-title: 安全软件开发生命周期
-url: /dhi/core-concepts/ssdlc/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: 安全软件开发生命周期
-    url: /dhi/core-concepts/ssdlc/
-next:
-  title: 软件制品供应链安全等级 (SLSA)
-  url: /dhi/core-concepts/slsa/
-prev:
-  title: STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-  url: /dhi/core-concepts/stig/
----
+# 安全软件开发生命周期
 
 
 ## 什么是安全软件开发生命周期？

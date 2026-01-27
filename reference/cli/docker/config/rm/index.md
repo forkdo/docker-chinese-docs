@@ -1,24 +1,4 @@
----
-title: docker config rm
-url: /reference/cli/docker/config/rm/
-parent:
-  title: docker config
-  url: /reference/cli/docker/config/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker config
-    url: /reference/cli/docker/config/
-  - title: docker config rm
-    url: /reference/cli/docker/config/rm/
-next:
-  title: docker config ls
-  url: /reference/cli/docker/config/ls/
----
+# docker config rm
 
 **Description:** Remove one or more configs
 

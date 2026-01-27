@@ -1,24 +1,4 @@
----
-title: 增强型容器隔离常见问题解答
-url: /enterprise/security/hardened-desktop/enhanced-container-isolation/faq/
-parent:
-  title: 增强容器隔离
-  url: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: 增强容器隔离
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-  - title: 增强型容器隔离常见问题解答
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/faq/
-next:
-  title: 增强型容器隔离的限制
-  url: /enterprise/security/hardened-desktop/enhanced-container-isolation/limitations/
----
+# 增强型容器隔离常见问题解答
 
 
 

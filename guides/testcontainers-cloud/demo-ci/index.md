@@ -1,25 +1,4 @@
----
-title: 在 CI 流水线中配置 Testcontainers Cloud
-url: /guides/testcontainers-cloud/demo-ci/
-parent:
-  title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
-
-  url: /guides/testcontainers-cloud/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 精通 Testcontainers Cloud by Docker：利用容器简化集成测试
-
-    url: /guides/testcontainers-cloud/
-  - title: 在 CI 流水线中配置 Testcontainers Cloud
-    url: /guides/testcontainers-cloud/demo-ci/
-next:
-  title: 通过 Docker 设置 Testcontainers Cloud
-  url: /guides/testcontainers-cloud/demo-local/
-prev:
-  title: 常见挑战与问题
-  url: /guides/testcontainers-cloud/common-questions/
----
+# 在 CI 流水线中配置 Testcontainers Cloud
 
 
 

@@ -1,21 +1,4 @@
----
-title: docker compose bridge
-url: /reference/cli/docker/compose/bridge/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose bridge
-    url: /reference/cli/docker/compose/bridge/
----
+# docker compose bridge
 
 **Description:** Convert compose files into another model
 

@@ -1,27 +1,4 @@
----
-title: GitHub Actions cache
-url: /build/cache/backends/gha/
-parent:
-  title: Cache storage backends
-  url: /build/cache/backends/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-  - title: Cache storage backends
-    url: /build/cache/backends/
-  - title: GitHub Actions cache
-    url: /build/cache/backends/gha/
-next:
-  title: Azure Blob Storage cache
-  url: /build/cache/backends/azblob/
-prev:
-  title: Inline cache
-  url: /build/cache/backends/inline/
----
+# GitHub Actions cache
 
 
 

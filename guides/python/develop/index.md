@@ -1,23 +1,4 @@
----
-title: 使用容器进行 Python 开发
-url: /guides/python/develop/
-parent:
-  title: Python 语言专属指南
-  url: /guides/python/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Python 语言专属指南
-    url: /guides/python/
-  - title: 使用容器进行 Python 开发
-    url: /guides/python/develop/
-next:
-  title: 容器化 Python 应用程序
-  url: /guides/python/containerize/
-prev:
-  title: Python 的代码检查、格式化与类型检查
-  url: /guides/python/lint-format-typing/
----
+# 使用容器进行 Python 开发
 
 
 ## 先决条件

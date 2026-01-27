@@ -13,12 +13,15 @@
 <meta name="description" content="了解如何开始使用 Docker Hub" />
 <meta
   name="keywords"
-  content="Docker, Hub, 推送镜像, 拉取镜像, 仓库"
+  content="Docker, Hub, push, image, pull, image, repositories"
 />
 <link rel="canonical" href="/docker-hub/quickstart/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -44,7 +47,7 @@
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-06-13 07:44:43 &#43;0900 &#43;0900"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-06-13 07:44:43 &#43;0900 &#43;0900"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-06-13T07:44:43+09:00","description":"了解如何开始使用 Docker Hub","headline":"快速入门","isPartOf":{"@id":"/docker-hub/","@type":"WebPage","name":"Docker Hub"},"keywords":"Docker, Hub, 推送镜像, 拉取镜像, 仓库","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/docker-hub/quickstart/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/docker-hub/","name":"Docker Hub"},"position":2},{"@type":"ListItem","item":{"@id":"/docker-hub/quickstart/","name":"快速入门"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"了解如何开始使用 Docker Hub","headline":"快速入门","isPartOf":{"@id":"/docker-hub/","@type":"WebPage","name":"Docker Hub"},"keywords":"Docker, Hub, push, image, pull, image, repositories","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/docker-hub/quickstart/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/docker-hub/","name":"Docker Hub"},"position":2},{"@type":"ListItem","item":{"@id":"/docker-hub/quickstart/","name":"快速入门"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/docker-hub/quickstart/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4764,10 +4773,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4807,10 +4816,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4838,11 +4847,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4859,6 +4900,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6248,10 +6337,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8893,18 +8982,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10640,10 +10725,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11638,10 +11723,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -12335,23 +12420,23 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"
-            >前提条件</a
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
+            >先决条件</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f"
-            >步骤 1：在 Docker Hub 库中查找镜像</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-1-%e6%ad%a5%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f"
+            >第 1 步：在 Docker Hub 库中查找镜像</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-2%e4%bb%8e-docker-hub-%e6%8b%89%e5%8f%96%e5%b9%b6%e8%bf%90%e8%a1%8c%e9%95%9c%e5%83%8f"
-            >步骤 2：从 Docker Hub 拉取并运行镜像</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-2-%e6%ad%a5%e4%bb%8e-docker-hub-%e6%8b%89%e5%8f%96%e5%b9%b6%e8%bf%90%e8%a1%8c%e9%95%9c%e5%83%8f"
+            >第 2 步：从 Docker Hub 拉取并运行镜像</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-3%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-docker-hub"
-            >步骤 3：构建镜像并推送到 Docker Hub</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-3-%e6%ad%a5%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-docker-hub"
+            >第 3 步：构建镜像并推送到 Docker Hub</a
           >
         </li>
         <li>
@@ -12360,8 +12445,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4"
-            >后续步骤</a
+          <a class="link lg:no-underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5"
+            >下一步</a
           >
         </li>
   </ul>
@@ -12370,27 +12455,27 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>Docker Hub 提供了庞大的预构建镜像和资源库，能够加速开发工作流并减少设置时间。您可以基于 Docker Hub 的预构建镜像进行构建，然后使用仓库与您的团队或数百万其他开发者分享和分发您自己的镜像。</p>
-<p>本指南将指导您如何查找并运行预构建镜像。随后，您将学习创建自定义镜像并通过 Docker Hub 进行分享。</p>
+    <p>Docker Hub 提供了大量预构建的镜像和资源，可加快开发工作流程并减少设置时间。您可以基于 Docker Hub 中的预构建镜像进行构建，然后使用仓库与团队或数百万其他开发者共享和分发您自己的镜像。</p>
+<p>本指南将向您展示如何查找并运行预构建镜像。然后，指导您创建自定义镜像并通过 Docker Hub 共享。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="前提条件">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6">
-    前提条件
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="先决条件">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6">
+    先决条件
   </a>
 </h2>
 
 <ul>
 <li><a class="link" href="/get-started/get-docker/">下载并安装 Docker</a></li>
-<li><a class="link" href="https://app.docker.com/signup" rel="noopener">创建 Docker 账户</a></li>
+<li>已验证的 <a class="link" href="https://app.docker.com/signup" rel="noopener">Docker</a> 账户</li>
 </ul>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤-1在-docker-hub-库中查找镜像">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f">
-    步骤 1：在 Docker Hub 库中查找镜像
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="第-1-步在-docker-hub-库中查找镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-1-%e6%ad%a5%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f">
+    第 1 步：在 Docker Hub 库中查找镜像
   </a>
 </h2>
 
-<p>您可以在 Docker Hub 网站、Docker Desktop 仪表板中搜索内容，或者使用 CLI 进行搜索。</p>
+<p>您可以直接在 Docker Hub 中搜索内容，在 Docker Desktop 仪表板中搜索，或使用 CLI 搜索。</p>
 <p>要在 Docker Hub 上搜索或浏览内容：</p>
 
 
@@ -12451,19 +12536,19 @@ if (resultsLength > 5) {
         <ol>
 <li>
 <p>导航至 <a class="link" href="https://hub.docker.com/explore" rel="noopener">Docker Hub 探索页面</a>。</p>
-<p>在 <strong>Explore</strong> 页面上，您可以按目录或类别浏览，或者使用搜索功能快速找到内容。</p>
+<p>在 <strong>探索</strong> 页面上，您可以按目录或类别浏览，或使用搜索功能快速查找内容。</p>
 </li>
 <li>
-<p>在 <strong>Categories</strong> 下，选择 <strong>Web servers</strong>。</p>
-<p>结果显示后，您可以使用页面左侧的筛选器进一步筛选结果。</p>
+<p>在 <strong>类别</strong> 下，选择 <strong>Web 服务器</strong>。</p>
+<p>显示结果后，您可以使用页面左侧的筛选器进一步筛选结果。</p>
 </li>
 <li>
-<p>在筛选器中，选择 <strong>Docker Official Image</strong>。</p>
-<p>按可信内容筛选可确保您只看到由 Docker 和经验证的发布合作伙伴策划的高质量、安全的镜像。</p>
+<p>在筛选器中，选择 <strong>Docker 官方镜像</strong>。</p>
+<p>按可信内容筛选可确保您只看到由 Docker 精选和已验证发布合作伙伴提供的高质量、安全镜像。</p>
 </li>
 <li>
 <p>在结果中，选择 <strong>nginx</strong> 镜像。</p>
-<p>选择镜像将打开镜像页面，您可以在其中了解有关如何使用该镜像的更多信息。在该页面上，您还可以找到用于拉取镜像的 <code>docker pull</code> 命令。</p>
+<p>选择镜像将打开镜像页面，您可以在其中了解有关如何使用该镜像的更多信息。在页面上，您还会找到用于拉取镜像的 <code>docker pull</code> 命令。</p>
 </li>
 </ol>
 
@@ -12479,14 +12564,14 @@ if (resultsLength > 5) {
 </li>
 <li>
 <p>选择 <strong>Docker Hub</strong> 视图。</p>
-<p>在 <strong>Docker Hub</strong> 视图中，您可以按目录或类别浏览，或者使用搜索功能快速找到内容。</p>
+<p>在 <strong>Docker Hub</strong> 视图中，您可以按目录或类别浏览，或使用搜索功能快速查找内容。</p>
 </li>
 <li>
-<p>将搜索框留空，然后选择 <strong>Search</strong>。</p>
-<p>搜索结果将显示在搜索框旁边，现在还附带了额外的筛选器。</p>
+<p>保持搜索框为空，然后选择 <strong>搜索</strong>。</p>
+<p>搜索结果将显示出来，现在搜索框旁边还有额外的筛选器。</p>
 </li>
 <li>
-<p>选择搜索筛选器图标，然后选择 <strong>Docker Official Image</strong> 和 <strong>Web Servers</strong>。</p>
+<p>选择搜索筛选器图标，然后选择 <strong>Docker 官方镜像</strong> 和 <strong>Web 服务器</strong>。</p>
 </li>
 <li>
 <p>在结果中，选择 <strong>nginx</strong> 镜像。</p>
@@ -12525,7 +12610,7 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 <strong>&gt;_ Terminal</strong> 即可打开它。</p>
+      <p>Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 <strong>&gt;_ 终端</strong> 将其打开。</p>
     </div>
   </blockquote>
 
@@ -12579,15 +12664,15 @@ if (resultsLength > 5) {
   </div>
 </div>
 
-<p>现在您已经找到了镜像，是时候将其拉取并在您的设备上运行了。</p>
+<p>现在您已找到镜像，是时候将其拉取并运行到您的设备上了。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤-2从-docker-hub-拉取并运行镜像">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-2%e4%bb%8e-docker-hub-%e6%8b%89%e5%8f%96%e5%b9%b6%e8%bf%90%e8%a1%8c%e9%95%9c%e5%83%8f">
-    步骤 2：从 Docker Hub 拉取并运行镜像
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="第-2-步从-docker-hub-拉取并运行镜像">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-2-%e6%ad%a5%e4%bb%8e-docker-hub-%e6%8b%89%e5%8f%96%e5%b9%b6%e8%bf%90%e8%a1%8c%e9%95%9c%e5%83%8f">
+    第 2 步：从 Docker Hub 拉取并运行镜像
   </a>
 </h2>
 
-<p>您可以使用 CLI 或 Docker Desktop 仪表板运行来自 Docker Hub 的镜像。</p>
+<p>您可以使用 CLI 或 Docker Desktop 仪表板从 Docker Hub 运行镜像。</p>
 
 
 
@@ -12635,24 +12720,24 @@ if (resultsLength > 5) {
       >
         <ol>
 <li>
-<p>在 Docker Desktop 仪表板中，在 <strong>Docker Hub</strong> 视图中选择 <strong>nginx</strong> 镜像。更多详情，请参阅 <a class="link" href="#%e6%ad%a5%e9%aa%a4-1%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f">步骤 1：在 Docker Hub 库中查找镜像</a>。</p>
+<p>在 Docker Desktop 仪表板中，选择 <strong>Docker Hub</strong> 视图中的 <strong>nginx</strong> 镜像。有关更多详细信息，请参阅 <a class="link" href="#step-1-find-an-image-in-docker-hubs-library">第 1 步：在 Docker Hub 库中查找镜像</a>。</p>
 </li>
 <li>
-<p>在 <strong>nginx</strong> 屏幕上，选择 <strong>Run</strong>。</p>
-<p>如果镜像在您的设备上不存在，它会自动从 Docker Hub 拉取。拉取镜像可能需要几秒或几分钟，具体取决于您的连接速度。镜像拉取完成后，Docker Desktop 中会出现一个窗口，您可以在其中指定运行选项。</p>
+<p>在 <strong>nginx</strong> 屏幕上，选择 <strong>运行</strong>。</p>
+<p>如果镜像在您的设备上不存在，它会自动从 Docker Hub 拉取。根据您的连接速度，拉取镜像可能需要几秒钟或几分钟。镜像拉取完成后，Docker Desktop 中会出现一个窗口，您可以指定运行选项。</p>
 </li>
 <li>
-<p>在 <strong>Host port</strong> 选项中，指定 <code>8080</code>。</p>
+<p>在 <strong>主机端口</strong> 选项中，指定 <code>8080</code>。</p>
 </li>
 <li>
-<p>选择 <strong>Run</strong>。</p>
-<p>容器启动后，容器日志将显示出来。</p>
+<p>选择 <strong>运行</strong>。</p>
+<p>容器启动后，容器日志将出现。</p>
 </li>
 <li>
-<p>选择 <strong>8080:80</strong> 链接以打开服务器，或者在您的 Web 浏览器中访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a>。</p>
+<p>选择 <strong>8080:80</strong> 链接以打开服务器，或在 Web 浏览器中访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a>。</p>
 </li>
 <li>
-<p>在 Docker Desktop 仪表板中，选择 <strong>Stop</strong> 按钮以停止容器。</p>
+<p>在 Docker Desktop 仪表板中，选择 <strong>停止</strong> 按钮以停止容器。</p>
 </li>
 </ol>
 
@@ -12688,13 +12773,13 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 <strong>&gt;_ Terminal</strong> 即可打开它。</p>
+      <p>Docker Desktop 仪表板包含一个内置终端。在仪表板底部，选择 <strong>&gt;_ 终端</strong> 将其打开。</p>
     </div>
   </blockquote>
 
 </li>
 <li>
-<p>在您的终端中，运行以下命令以拉取并运行 Nginx 镜像。</p>
+<p>在终端中，运行以下命令以拉取并运行 Nginx 镜像。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12828,10 +12913,10 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a> 以查看默认的 Nginx 页面，并验证容器是否正在运行。</p>
+<p>访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a> 查看默认 Nginx 页面并验证容器是否正在运行。</p>
 </li>
 <li>
-<p>在终端中，按 <kdb>Ctrl+C</kbd> 停止容器。</p>
+<p>在终端中，按 <kbd>Ctrl+C</kbd> 停止容器。</p>
 </li>
 </ol>
 
@@ -12840,12 +12925,12 @@ if (resultsLength > 5) {
   </div>
 </div>
 
-<p>您现在已经运行了一个 Web 服务器，无需任何设置或配置。Docker Hub 提供对预构建、即用型容器镜像的即时访问，让您可以快速拉取和运行应用程序，而无需手动安装或配置软件。借助 Docker Hub 庞大的镜像库，您可以轻松地进行实验和部署应用程序，从而提高生产力，使尝试新工具、设置开发环境或在现有软件基础上构建变得更加容易。</p>
-<p>您还可以扩展来自 Docker Hub 的镜像，从而快速构建和定制您自己的镜像以满足特定需求。</p>
+<p>您现在无需任何设置或配置就运行了一个 Web 服务器。Docker Hub 提供对预构建、即用型容器镜像的即时访问，让您无需手动安装或配置软件即可快速拉取和运行应用程序。借助 Docker Hub 庞大的镜像库，您可以轻松实验和部署应用程序，提高生产力，并轻松试用新工具、设置开发环境或基于现有软件进行构建。</p>
+<p>您还可以扩展 Docker Hub 中的镜像，让您快速构建和自定义自己的镜像以满足特定需求。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤-3构建镜像并推送到-docker-hub">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-3%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-docker-hub">
-    步骤 3：构建镜像并推送到 Docker Hub
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="第-3-步构建镜像并推送到-docker-hub">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-3-%e6%ad%a5%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-docker-hub">
+    第 3 步：构建镜像并推送到 Docker Hub
   </a>
 </h2>
 
@@ -12892,10 +12977,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>这个 Dockerfile 扩展了来自 Docker Hub 的 Nginx 镜像，以创建一个简单的网站。只需几行代码，您就可以使用 Docker 轻松设置、定制和分享静态网站。</p>
+<p>此 Dockerfile 扩展了 Docker Hub 中的 Nginx 镜像以创建一个简单的网站。只需几行代码，您就可以使用 Docker 轻松设置、自定义和共享静态网站。</p>
 </li>
 <li>
-<p>运行以下命令以构建您的镜像。将 <code>&lt;YOUR-USERNAME&gt;</code> 替换为您的 Docker ID。</p>
+<p>运行以下命令来构建您的镜像。将 <code>&lt;YOUR-USERNAME&gt;</code> 替换为您的 Docker ID。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12933,7 +13018,9 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令构建您的镜像并为其打上标签，以便 Docker 了解要将其推送到 Docker Hub 中的哪个仓库。要了解有关该命令及其选项的更多信息，请参阅 <a class="link" href="/reference/cli/docker/buildx/build/"><code>docker build</code> CLI 参考</a>。运行命令后，您应该会看到类似以下的输出。</p>
+</li>
+</ol>
+<p>此命令会构建您的镜像并为其打标签，以便 Docker 知道将其推送到 Docker Hub 中的哪个仓库。要了解有关该命令及其选项的更多信息，请参阅 <a class="link" href="/reference/cli/docker/buildx/build/"><code>docker build</code> CLI 参考</a>。运行该命令后，您应该会看到类似以下的输出。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -13011,9 +13098,9 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-</li>
+<ol start="3">
 <li>
-<p>运行以下命令以测试您的镜像。将 <code>&lt;YOUR-USERNAME&gt;</code> 替换为您的 Docker ID。</p>
+<p>运行以下命令来测试您的镜像。将 <code>&lt;YOUR-USERNAME&gt;</code> 替换为您的 Docker ID。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -13053,13 +13140,13 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a> 以查看页面。您应该会看到 <code>Hello world from Docker!</code>。</p>
+<p>访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a> 查看页面。您应该会看到 <code>Hello world from Docker!</code>。</p>
 </li>
 <li>
-<p>在终端中，按 CTRL+C 停止容器。</p>
+<p>在终端中按 CTRL+C 停止容器。</p>
 </li>
 <li>
-<p>登录 Docker Desktop。在将镜像推送到 Docker Hub 之前，您必须先登录。</p>
+<p>登录 Docker Desktop。在将镜像推送到 Docker Hub 之前，您必须登录。</p>
 </li>
 <li>
 <p>运行以下命令将您的镜像推送到 Docker Hub。将 <code>&lt;YOUR-USERNAME&gt;</code> 替换为您的 Docker ID。</p>
@@ -13122,7 +13209,7 @@ if (resultsLength > 5) {
     </div>
   </blockquote>
 
-<p>该命令将镜像推送到 Docker Hub，并在镜像不存在时自动创建仓库。要了解有关该命令的更多信息，请参阅 <a class="link" href="/reference/cli/docker/image/push/"><code>docker push</code> CLI 参考</a>。运行命令后，您应该会看到类似以下的输出。</p>
+<p>该命令会将镜像推送到 Docker Hub，如果仓库不存在，则会自动创建。要了解有关该命令的更多信息，请参阅 <a class="link" href="/reference/cli/docker/image/push/"><code>docker push</code> CLI 参考</a>。运行该命令后，您应该会看到类似以下的输出。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -13201,7 +13288,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 </ol>
-<p>现在您已经创建了仓库并推送了镜像，是时候查看您的仓库并探索其选项了。</p>
+<p>现在您已经创建了一个仓库并推送了您的镜像，是时候查看您的仓库并探索其选项了。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤-4在-docker-hub-上查看您的仓库并探索选项">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-4%e5%9c%a8-docker-hub-%e4%b8%8a%e6%9f%a5%e7%9c%8b%e6%82%a8%e7%9a%84%e4%bb%93%e5%ba%93%e5%b9%b6%e6%8e%a2%e7%b4%a2%e9%80%89%e9%a1%b9">
@@ -13257,12 +13344,12 @@ if (resultsLength > 5) {
       >
         <ol>
 <li>
-<p>前往 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a> 并登录。</p>
-<p>登录后，您应该位于 <strong>Repositories</strong> 页面。如果没有，请前往 <a class="link" href="https://hub.docker.com/repositories/" rel="noopener"><strong>Repositories</strong></a> 页面。</p>
+<p>访问 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a> 并登录。</p>
+<p>登录后，您应该会进入 <strong>Repositories</strong> 页面。如果没有，请转到 <a class="link" href="https://hub.docker.com/repositories/" rel="noopener"><strong>Repositories</strong></a> 页面。</p>
 </li>
 <li>
 <p>找到 <strong>nginx-custom</strong> 仓库并选择该行。</p>
-<p>选择仓库后，您应该会看到更多关于您仓库的详细信息和选项。</p>
+<p>选择仓库后，您应该会看到有关该仓库的更多详细信息和选项。</p>
 </li>
 </ol>
 
@@ -13281,11 +13368,11 @@ if (resultsLength > 5) {
 </li>
 <li>
 <p>选择 <strong>Hub repositories</strong> 选项卡。</p>
-<p>将显示您的 Docker Hub 仓库列表。</p>
+<p>您的 Docker Hub 仓库列表将会显示。</p>
 </li>
 <li>
 <p>找到 <strong>nginx-custom</strong> 仓库，将鼠标悬停在该行上，然后选择 <strong>View in Hub</strong>。</p>
-<p>Docker Hub 将打开，您能够查看有关该镜像的更多详细信息。</p>
+<p>Docker Hub 将打开，您可以查看有关该镜像的更多详细信息。</p>
 </li>
 </ol>
 
@@ -13294,15 +13381,15 @@ if (resultsLength > 5) {
   </div>
 </div>
 
-<p>您现在已经验证了您的仓库存在于 Docker Hub 上，并且发现了更多关于它的选项。查看后续步骤以了解更多关于其中一些选项的信息。</p>
+<p>现在您已经验证了您的仓库存在于 Docker Hub 上，并且您已经发现了更多选项。查看下一步以了解有关这些选项的更多信息。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="后续步骤">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4">
-    后续步骤
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="下一步">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5">
+    下一步
   </a>
 </h2>
 
-<p>添加<a class="link" href="/docker-hub/repos/manage/information/">仓库信息</a>以帮助用户查找和使用您的镜像。</p>
+<p>添加<a class="link" href="/docker-hub/repos/manage/information/">仓库信息</a>以帮助用户找到并使用您的镜像。</p>
 
   </article>
   <div class="-mt-8 hidden min-w-48 flex-1 lg:block">
@@ -13360,23 +13447,23 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"
-            >前提条件</a
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
+            >先决条件</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f"
-            >步骤 1：在 Docker Hub 库中查找镜像</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-1-%e6%ad%a5%e5%9c%a8-docker-hub-%e5%ba%93%e4%b8%ad%e6%9f%a5%e6%89%be%e9%95%9c%e5%83%8f"
+            >第 1 步：在 Docker Hub 库中查找镜像</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-2%e4%bb%8e-docker-hub-%e6%8b%89%e5%8f%96%e5%b9%b6%e8%bf%90%e8%a1%8c%e9%95%9c%e5%83%8f"
-            >步骤 2：从 Docker Hub 拉取并运行镜像</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-2-%e6%ad%a5%e4%bb%8e-docker-hub-%e6%8b%89%e5%8f%96%e5%b9%b6%e8%bf%90%e8%a1%8c%e9%95%9c%e5%83%8f"
+            >第 2 步：从 Docker Hub 拉取并运行镜像</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-3%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-docker-hub"
-            >步骤 3：构建镜像并推送到 Docker Hub</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-3-%e6%ad%a5%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-docker-hub"
+            >第 3 步：构建镜像并推送到 Docker Hub</a
           >
         </li>
         <li>
@@ -13385,8 +13472,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4"
-            >后续步骤</a
+          <a class="link lg:no-underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5"
+            >下一步</a
           >
         </li>
   </ul>
@@ -13404,9 +13491,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13421,7 +13510,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13436,7 +13525,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13451,7 +13540,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13466,7 +13555,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13482,26 +13571,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

@@ -1,23 +1,4 @@
----
-title: 使用容器进行 Go 开发
-url: /guides/golang/develop/
-parent:
-  title: Go 语言专用指南
-  url: /guides/golang/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Go 语言专用指南
-    url: /guides/golang/
-  - title: 使用容器进行 Go 开发
-    url: /guides/golang/develop/
-next:
-  title: 以容器形式运行 Go 镜像
-  url: /guides/golang/run-containers/
-prev:
-  title: 使用 Go test 运行测试
-  url: /guides/golang/run-tests/
----
+# 使用容器进行 Go 开发
 
 
 ## 前置要求

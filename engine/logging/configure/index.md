@@ -1,22 +1,4 @@
----
-title: 配置日志驱动程序
-url: /engine/logging/configure/
-parent:
-  title: 查看容器日志
-  url: /engine/logging/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 查看容器日志
-    url: /engine/logging/
-  - title: 配置日志驱动程序
-    url: /engine/logging/configure/
-next:
-  title: 自定义日志驱动输出
-  url: /engine/logging/log_tags/
----
+# 配置日志驱动程序
 
 
 Docker 提供了多种日志记录机制，帮助您获取正在运行的容器和服务的信息。这些机制被称为日志驱动程序。每个 Docker 守护进程都有一个默认的日志驱动程序，除非您将其配置为使用不同的日志驱动程序（简称日志驱动），否则每个容器都会使用该默认驱动程序。

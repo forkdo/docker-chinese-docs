@@ -1,27 +1,4 @@
----
-title: Reproducible builds with GitHub Actions
-url: /build/ci/github-actions/reproducible-builds/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Reproducible builds with GitHub Actions
-    url: /build/ci/github-actions/reproducible-builds/
-next:
-  title: Push to multiple registries with GitHub Actions
-  url: /build/ci/github-actions/push-multi-registries/
-prev:
-  title: Share built image between jobs with GitHub Actions
-  url: /build/ci/github-actions/share-image-jobs/
----
+# Reproducible builds with GitHub Actions
 
 
 `SOURCE_DATE_EPOCH` is a [standardized environment variable][source_date_epoch]

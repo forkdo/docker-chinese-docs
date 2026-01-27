@@ -1,23 +1,4 @@
----
-title: Docker Engine 26.1 发布说明
-url: /engine/release-notes/26.1/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 26.1 发布说明
-    url: /engine/release-notes/26.1/
-next:
-  title: Docker Engine 26.0 发行说明
-  url: /engine/release-notes/26.0/
-prev:
-  title: Docker Engine 27 版本发行说明
-  url: /engine/release-notes/27/
----
+# Docker Engine 26.1 发布说明
 
 
 本页面介绍了 Docker Engine 版本 26.1 的最新变更、新增内容、已知问题和修复。

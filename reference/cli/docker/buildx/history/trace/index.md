@@ -1,26 +1,4 @@
----
-title: docker buildx history trace
-url: /reference/cli/docker/buildx/history/trace/
-parent:
-  title: docker buildx history
-  url: /reference/cli/docker/buildx/history/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx history
-    url: /reference/cli/docker/buildx/history/
-  - title: docker buildx history trace
-    url: /reference/cli/docker/buildx/history/trace/
-next:
-  title: docker buildx history rm
-  url: /reference/cli/docker/buildx/history/rm/
----
+# docker buildx history trace
 
 **Description:** Show the OpenTelemetry trace of a build record
 

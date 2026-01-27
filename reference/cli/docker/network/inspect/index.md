@@ -1,27 +1,4 @@
----
-title: docker network inspect
-url: /reference/cli/docker/network/inspect/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network inspect
-    url: /reference/cli/docker/network/inspect/
-next:
-  title: docker network disconnect
-  url: /reference/cli/docker/network/disconnect/
-prev:
-  title: docker network ls
-  url: /reference/cli/docker/network/ls/
----
+# docker network inspect
 
 **Description:** Display detailed information on one or more networks
 

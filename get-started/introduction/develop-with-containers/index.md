@@ -1,23 +1,4 @@
----
-title: 使用容器进行开发
-url: /get-started/introduction/develop-with-containers/
-parent:
-  title: 介绍
-  url: /get-started/introduction/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 介绍
-    url: /get-started/introduction/
-  - title: 使用容器进行开发
-    url: /get-started/introduction/develop-with-containers/
-next:
-  title: 获取 Docker Desktop
-  url: /get-started/introduction/get-docker-desktop/
-prev:
-  title: 构建并推送你的第一个镜像
-  url: /get-started/introduction/build-and-push-first-image/
----
+# 使用容器进行开发
 
 
 

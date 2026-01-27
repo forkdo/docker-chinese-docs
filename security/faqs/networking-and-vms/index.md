@@ -1,20 +1,4 @@
----
-title: 网络与虚拟机常见问题
-url: /security/faqs/networking-and-vms/
-parent:
-  title: 开发者安全
-  url: /security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 开发者安全
-    url: /security/
-  - title: 网络与虚拟机常见问题
-    url: /security/faqs/networking-and-vms/
-next:
-  title: 容器安全常见问题
-  url: /security/faqs/containers/
----
+# 网络与虚拟机常见问题
 
 
 ## 如何限制容器的互联网访问？

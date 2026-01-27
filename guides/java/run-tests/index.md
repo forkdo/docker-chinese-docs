@@ -1,23 +1,4 @@
----
-title: 运行 Java 测试
-url: /guides/java/run-tests/
-parent:
-  title: Java 语言专属指南
-  url: /guides/java/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Java 语言专属指南
-    url: /guides/java/
-  - title: 运行 Java 测试
-    url: /guides/java/run-tests/
-next:
-  title: 使用容器进行 Java 开发
-  url: /guides/java/develop/
-prev:
-  title: 为 Java 应用程序配置 CI/CD
-  url: /guides/java/configure-ci-cd/
----
+# 运行 Java 测试
 
 
 ## 前提条件

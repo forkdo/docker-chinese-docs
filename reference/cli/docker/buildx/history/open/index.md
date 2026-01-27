@@ -1,29 +1,4 @@
----
-title: docker buildx history open
-url: /reference/cli/docker/buildx/history/open/
-parent:
-  title: docker buildx history
-  url: /reference/cli/docker/buildx/history/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx history
-    url: /reference/cli/docker/buildx/history/
-  - title: docker buildx history open
-    url: /reference/cli/docker/buildx/history/open/
-next:
-  title: docker buildx history ls
-  url: /reference/cli/docker/buildx/history/ls/
-prev:
-  title: docker buildx history rm
-  url: /reference/cli/docker/buildx/history/rm/
----
+# docker buildx history open
 
 **Description:** Open a build record in Docker Desktop
 

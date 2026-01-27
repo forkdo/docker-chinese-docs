@@ -1,23 +1,4 @@
----
-title: Compose 中的网络
-url: /compose/how-tos/networking/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose 中的网络
-    url: /compose/how-tos/networking/
-next:
-  title: 在 Docker Compose 中安全管理机密信息
-  url: /compose/how-tos/use-secrets/
-prev:
-  title: 为 Docker Compose 服务启用 GPU 访问
-  url: /compose/how-tos/gpu-support/
----
+# Compose 中的网络
 
 
 默认情况下，Compose 会为你的应用设置一个单独的

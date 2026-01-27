@@ -1,25 +1,4 @@
----
-title: Docker 的 Seccomp 安全配置文件
-url: /engine/security/seccomp/
-parent:
-  title: Docker Engine 安全
-  url: /engine/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: Docker 的 Seccomp 安全配置文件
-    url: /engine/security/seccomp/
-next:
-  title: Docker 的 AppArmor 安全配置文件
-  url: /engine/security/apparmor/
-prev:
-  title: 使用用户命名空间隔离容器
-  url: /engine/security/userns-remap/
----
+# Docker 的 Seccomp 安全配置文件
 
 
 安全计算模式（`seccomp`）是 Linux 内核的一项功能。你可以使用它来限制容器内的操作。`seccomp()` 系统调用作用于调用进程的 seccomp 状态。你可以使用此功能来限制应用程序的访问。

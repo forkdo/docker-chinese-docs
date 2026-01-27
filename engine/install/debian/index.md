@@ -1,25 +1,4 @@
----
-title: 在 Debian 上安装 Docker Engine
-url: /engine/install/debian/
-parent:
-  title: 安装 Docker Engine
-  url: /engine/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 安装 Docker Engine
-    url: /engine/install/
-  - title: 在 Debian 上安装 Docker Engine
-    url: /engine/install/debian/
-next:
-  title: 在 Ubuntu 上安装 Docker Engine
-  url: /engine/install/ubuntu/
-prev:
-  title: 在 RHEL 上安装 Docker Engine
-  url: /engine/install/rhel/
----
+# 在 Debian 上安装 Docker Engine
 
 
 要在 Debian 上开始使用 Docker Engine，请确保您[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)操作。
@@ -140,15 +119,15 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
    ```console
    $ apt list --all-versions docker-ce
 
-   docker-ce/bookworm 5:29.1.4-1~debian.12~bookworm <arch>
-   docker-ce/bookworm 5:29.1.3-1~debian.12~bookworm <arch>
+   docker-ce/bookworm 5:29.2.0-1~debian.12~bookworm <arch>
+   docker-ce/bookworm 5:29.1.5-1~debian.12~bookworm <arch>
    ...
    ```
 
    选择所需的版本并安装：
 
    ```console
-   $ VERSION_STRING=5:29.1.4-1~debian.12~bookworm
+   $ VERSION_STRING=5:29.2.0-1~debian.12~bookworm
    $ sudo apt install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 

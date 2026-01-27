@@ -1,25 +1,4 @@
----
-title: 实时恢复
-url: /engine/daemon/live-restore/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 实时恢复
-    url: /engine/daemon/live-restore/
-next:
-  title: 守护进程代理配置
-  url: /engine/daemon/proxy/
-prev:
-  title: Docker 守护进程故障排除
-  url: /engine/daemon/troubleshoot/
----
+# 实时恢复
 
 
 默认情况下，当 Docker 守护进程终止时，它会关闭正在运行的容器。

@@ -1,27 +1,4 @@
----
-title: docker buildx stop
-url: /reference/cli/docker/buildx/stop/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx stop
-    url: /reference/cli/docker/buildx/stop/
-next:
-  title: docker buildx rm
-  url: /reference/cli/docker/buildx/rm/
-prev:
-  title: docker buildx use
-  url: /reference/cli/docker/buildx/use/
----
+# docker buildx stop
 
 **Description:** Stop builder instance
 

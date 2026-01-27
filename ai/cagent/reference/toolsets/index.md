@@ -1,23 +1,4 @@
----
-title: 工具集参考
-url: /ai/cagent/reference/toolsets/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 工具集参考
-    url: /ai/cagent/reference/toolsets/
-next:
-  title: 配置文件参考
-  url: /ai/cagent/reference/config/
-prev:
-  title: CLI 参考
-  url: /ai/cagent/reference/cli/
----
+# 工具集参考
 
 
 本文档介绍了 cagent 中可用的工具集及其各自的功能。工具赋予代理执行操作的能力——与文件交互、执行命令、访问外部资源以及管理状态。

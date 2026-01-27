@@ -1,20 +1,4 @@
----
-title: 容器化 RAG 应用程序
-url: /guides/rag-ollama/containerize/
-parent:
-  title: 使用 Ollama 和 Docker 构建 RAG 应用程序
-  url: /guides/rag-ollama/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Ollama 和 Docker 构建 RAG 应用程序
-    url: /guides/rag-ollama/
-  - title: 容器化 RAG 应用程序
-    url: /guides/rag-ollama/containerize/
-prev:
-  title: 使用容器进行 RAG 开发
-  url: /guides/rag-ollama/develop/
----
+# 容器化 RAG 应用程序
 
 
 ## 概述

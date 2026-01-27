@@ -1,21 +1,4 @@
----
-title: 使用 Traefik 进行 HTTP 路由
-url: /guides/traefik/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Traefik 进行 HTTP 路由
-    url: /guides/traefik/
-next:
-  title: 使用 TensorFlow.js 进行人脸检测
-  url: /guides/tensorflowjs/
-prev:
-  title: 使用 WireMock 在开发和测试中模拟 API 服务
-  url: /guides/wiremock/
----
+# 使用 Traefik 进行 HTTP 路由
 
 
 ## 简介

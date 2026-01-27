@@ -1,25 +1,4 @@
----
-title: 服务的工作原理
-url: /engine/swarm/how-swarm-mode-works/services/
-parent:
-  title: Swarm 模式
-  url: /engine/swarm/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: 服务的工作原理
-    url: /engine/swarm/how-swarm-mode-works/services/
-next:
-  title: 节点的工作原理
-  url: /engine/swarm/how-swarm-mode-works/nodes/
-prev:
-  title: Swarm 任务状态
-  url: /engine/swarm/how-swarm-mode-works/swarm-task-states/
----
+# 服务的工作原理
 
 
 当 Docker Engine 处于 Swarm 模式时，要部署一个应用程序镜像，你需要创建一个**服务 (service)**。通常情况下，服务是某个大型应用程序上下文中的微服务镜像。服务的示例可能包括 HTTP 服务器、数据库，或者你希望在分布式环境中运行的任何其他类型的可执行程序。

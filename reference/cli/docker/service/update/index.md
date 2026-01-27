@@ -1,24 +1,4 @@
----
-title: docker service update
-url: /reference/cli/docker/service/update/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service update
-    url: /reference/cli/docker/service/update/
-next:
-  title: docker service scale
-  url: /reference/cli/docker/service/scale/
----
+# docker service update
 
 **Description:** Update a service
 

@@ -1,22 +1,4 @@
----
-title: 配置单点登录
-url: /enterprise/security/single-sign-on/configure/
-parent:
-  title: 单点登录概述
-  url: /enterprise/security/single-sign-on/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 单点登录概述
-    url: /enterprise/security/single-sign-on/
-  - title: 配置单点登录
-    url: /enterprise/security/single-sign-on/configure/
-next:
-  title: 连接单点登录
-  url: /enterprise/security/single-sign-on/connect/
----
+# 配置单点登录
 
 
 

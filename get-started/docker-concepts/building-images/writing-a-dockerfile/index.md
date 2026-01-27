@@ -1,23 +1,4 @@
----
-title: 编写 Dockerfile
-url: /get-started/docker-concepts/building-images/writing-a-dockerfile/
-parent:
-  title: 构建镜像
-  url: /get-started/docker-concepts/building-images/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 构建镜像
-    url: /get-started/docker-concepts/building-images/
-  - title: 编写 Dockerfile
-    url: /get-started/docker-concepts/building-images/writing-a-dockerfile/
-next:
-  title: 理解镜像层
-  url: /get-started/docker-concepts/building-images/understanding-image-layers/
-prev:
-  title: 构建、标记和发布镜像
-  url: /get-started/docker-concepts/building-images/build-tag-and-publish-an-image/
----
+# 编写 Dockerfile
 
 
 

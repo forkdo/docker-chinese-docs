@@ -1,27 +1,4 @@
----
-title: Windows 上的 Docker Desktop WSL 2 后端
-url: /desktop/features/wsl/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Windows 上的 Docker Desktop WSL 2 后端
-    url: /desktop/features/wsl/
-children:
-  - title: 使用 WSL
-    url: /desktop/features/wsl/use-wsl/
-    description: 如何使用 Docker 和 WSL 2 进行开发，以及了解 WSL 的 GPU 支持
-  - title: 在 WSL 上使用自定义内核
-    url: /desktop/features/wsl/custom-kernels/
-    description: 在 WSL 2 上将自定义内核与 Docker Desktop 配合使用
-  - title: 最佳实践
-    url: /desktop/features/wsl/best-practices/
-    description: 在 WSL 2 中使用 Docker Desktop 的最佳实践
----
+# Windows 上的 Docker Desktop WSL 2 后端
 
 
 Windows Subsystem for Linux (WSL) 2 是由 Microsoft 构建的一个完整的 Linux 内核，它允许 Linux 发行版在无需管理虚拟机的情况下运行。在 WSL 2 上运行 Docker Desktop 时，用户可以利用 Linux 工作空间，并避免同时维护 Linux 和 Windows 构建脚本。此外，WSL 2 在文件系统共享和启动时间方面都有所改进。

@@ -1,20 +1,4 @@
----
-title: 容器化 Bun 应用程序
-url: /guides/bun/containerize/
-parent:
-  title: Bun 语言特定指南
-  url: /guides/bun/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Bun 语言特定指南
-    url: /guides/bun/
-  - title: 容器化 Bun 应用程序
-    url: /guides/bun/containerize/
-prev:
-  title: 为 Bun 开发使用容器
-  url: /guides/bun/develop/
----
+# 容器化 Bun 应用程序
 
 
 ## 先决条件

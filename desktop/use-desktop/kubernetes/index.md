@@ -1,25 +1,4 @@
----
-title: 探索 Kubernetes 视图
-url: /desktop/use-desktop/kubernetes/
-parent:
-  title: 探索 Docker Desktop
-  url: /desktop/use-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 探索 Docker Desktop
-    url: /desktop/use-desktop/
-  - title: 探索 Kubernetes 视图
-    url: /desktop/use-desktop/kubernetes/
-next:
-  title: 探索 Docker Desktop 中的构建视图
-  url: /desktop/use-desktop/builds/
-prev:
-  title: Docker Desktop 的资源节省模式
-  url: /desktop/use-desktop/resource-saver/
----
+# 探索 Kubernetes 视图
 
 
 Docker Desktop 包含一个独立的 Kubernetes 服务器和客户端，以及 Docker CLI 集成，使您能够直接在您的机器上进行本地 Kubernetes 开发和测试。

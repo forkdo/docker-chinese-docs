@@ -1,24 +1,4 @@
----
-title: docker container wait
-url: /reference/cli/docker/container/wait/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container wait
-    url: /reference/cli/docker/container/wait/
-next:
-  title: docker container update
-  url: /reference/cli/docker/container/update/
----
+# docker container wait
 
 **Description:** Block until one or more containers stop, then print their exit codes
 

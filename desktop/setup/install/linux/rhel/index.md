@@ -1,22 +1,4 @@
----
-title: 在 RHEL 上安装 Docker Desktop
-url: /desktop/setup/install/linux/rhel/
-parent:
-  title: 在 Linux 上安装 Docker Desktop
-  url: /desktop/setup/install/linux/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 Linux 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/
-  - title: 在 RHEL 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/rhel/
-next:
-  title: 在基于 Arch 的发行版上安装 Docker Desktop
-  url: /desktop/setup/install/linux/archlinux/
----
+# 在 RHEL 上安装 Docker Desktop
 
 
 > **Docker Desktop 条款**

@@ -1,18 +1,4 @@
----
-title: 在开发环境中启动时使用架构和数据预填充数据库
-url: /guides/pre-seeding/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 在开发环境中启动时使用架构和数据预填充数据库
-    url: /guides/pre-seeding/
-next:
-  title: 部署和编排
-  url: /guides/orchestration/
----
+# 在开发环境中启动时使用架构和数据预填充数据库
 
 
 在本地开发过程中，使用必要的数据和架构预填充数据库是增强开发和测试工作流的常见做法。通过模拟真实场景，这种做法有助于及早发现前端问题，确保数据库管理员和软件工程师之间的协调一致，并促进更顺畅的协作。预填充提供了诸如自信部署、跨环境一致性以及及早发现问题等好处，最终改进了整个开发过程。

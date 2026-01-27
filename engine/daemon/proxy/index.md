@@ -1,25 +1,4 @@
----
-title: 守护进程代理配置
-url: /engine/daemon/proxy/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 守护进程代理配置
-    url: /engine/daemon/proxy/
-next:
-  title: 使用 IPv6 网络
-  url: /engine/daemon/ipv6/
-prev:
-  title: 实时恢复
-  url: /engine/daemon/live-restore/
----
+# 守护进程代理配置
 
 
 <a name="httphttps-proxy"><!-- included for deep-links to old section --></a>

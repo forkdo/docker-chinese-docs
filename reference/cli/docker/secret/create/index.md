@@ -1,24 +1,4 @@
----
-title: docker secret create
-url: /reference/cli/docker/secret/create/
-parent:
-  title: docker secret
-  url: /reference/cli/docker/secret/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker secret
-    url: /reference/cli/docker/secret/
-  - title: docker secret create
-    url: /reference/cli/docker/secret/create/
-prev:
-  title: docker secret inspect
-  url: /reference/cli/docker/secret/inspect/
----
+# docker secret create
 
 **Description:** Create a secret from a file or STDIN as content
 

@@ -1,20 +1,4 @@
----
-title: 容器化 Ruby on Rails 应用程序
-url: /guides/ruby/containerize/
-parent:
-  title: Ruby on Rails 语言特定指南
-  url: /guides/ruby/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Ruby on Rails 语言特定指南
-    url: /guides/ruby/
-  - title: 容器化 Ruby on Rails 应用程序
-    url: /guides/ruby/containerize/
-prev:
-  title: 使用 GitHub Actions 自动化构建
-  url: /guides/ruby/configure-github-actions/
----
+# 容器化 Ruby on Rails 应用程序
 
 
 ## 先决条件

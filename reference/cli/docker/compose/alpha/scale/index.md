@@ -1,29 +1,4 @@
----
-title: docker compose alpha scale
-url: /reference/cli/docker/compose/alpha/scale/
-parent:
-  title: docker compose alpha
-  url: /reference/cli/docker/compose/alpha/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose alpha
-    url: /reference/cli/docker/compose/alpha/
-  - title: docker compose alpha scale
-    url: /reference/cli/docker/compose/alpha/scale/
-next:
-  title: docker compose alpha dry-run
-  url: /reference/cli/docker/compose/alpha/dry-run/
-prev:
-  title: docker compose alpha viz
-  url: /reference/cli/docker/compose/alpha/viz/
----
+# docker compose alpha scale
 
 **Description:** Scale services
 

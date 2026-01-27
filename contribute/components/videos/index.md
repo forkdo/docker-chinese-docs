@@ -1,21 +1,4 @@
----
-title: Videos
-url: /contribute/components/videos/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: Videos
-    url: /contribute/components/videos/
-next:
-  title: Images
-  url: /contribute/components/images/
-prev:
-  title: 代码块
-  url: /contribute/components/code-blocks/
----
+# Videos
 
 
 ## Video guidelines

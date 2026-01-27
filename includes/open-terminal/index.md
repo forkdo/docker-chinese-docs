@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/open-terminal/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/open-terminal/
-next:
-  title: 
-  url: /includes/install-script/
-prev:
-  title: 
-  url: /includes/root-errors/
----
+# 
 
 > [!TIP]
 >

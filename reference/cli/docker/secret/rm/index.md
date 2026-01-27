@@ -1,24 +1,4 @@
----
-title: docker secret rm
-url: /reference/cli/docker/secret/rm/
-parent:
-  title: docker secret
-  url: /reference/cli/docker/secret/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker secret
-    url: /reference/cli/docker/secret/
-  - title: docker secret rm
-    url: /reference/cli/docker/secret/rm/
-next:
-  title: docker secret ls
-  url: /reference/cli/docker/secret/ls/
----
+# docker secret rm
 
 **Description:** Remove one or more secrets
 

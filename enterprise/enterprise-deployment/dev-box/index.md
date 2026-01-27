@@ -1,23 +1,4 @@
----
-title: Microsoft Dev Box 中的 Docker Desktop
-url: /enterprise/enterprise-deployment/dev-box/
-parent:
-  title: 部署 Docker Desktop
-  url: /enterprise/enterprise-deployment/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 部署 Docker Desktop
-    url: /enterprise/enterprise-deployment/
-  - title: Microsoft Dev Box 中的 Docker Desktop
-    url: /enterprise/enterprise-deployment/dev-box/
-next:
-  title: 使用 Jamf Pro 部署
-  url: /enterprise/enterprise-deployment/use-jamf-pro/
-prev:
-  title: 企业部署常见问题
-  url: /enterprise/enterprise-deployment/faq/
----
+# Microsoft Dev Box 中的 Docker Desktop
 
 
 Docker Desktop 作为预配置镜像在 Microsoft Azure Marketplace 中提供，可与 Microsoft Dev Box 配合使用，使开发人员能够在云中快速设置一致的开发环境。

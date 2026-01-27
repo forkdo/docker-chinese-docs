@@ -1,23 +1,4 @@
----
-title: UndefinedVar
-url: /reference/build-checks/undefined-var/
-parent:
-  title: Build checks
-  url: /reference/build-checks/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-  - title: UndefinedVar
-    url: /reference/build-checks/undefined-var/
-next:
-  title: UndefinedArgInFrom
-  url: /reference/build-checks/undefined-arg-in-from/
-prev:
-  title: WorkdirRelativePath
-  url: /reference/build-checks/workdir-relative-path/
----
+# UndefinedVar
 
 
 ## Output

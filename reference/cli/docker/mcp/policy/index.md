@@ -1,21 +1,4 @@
----
-title: docker mcp policy
-url: /reference/cli/docker/mcp/policy/
-parent:
-  title: docker mcp
-  url: /reference/cli/docker/mcp/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp policy
-    url: /reference/cli/docker/mcp/policy/
----
+# docker mcp policy
 
 **Description:** Manage secret policies
 

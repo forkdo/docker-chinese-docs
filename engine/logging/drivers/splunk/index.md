@@ -1,25 +1,4 @@
----
-title: Splunk 日志记录驱动程序
-url: /engine/logging/drivers/splunk/
-parent:
-  title: 查看容器日志
-  url: /engine/logging/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 查看容器日志
-    url: /engine/logging/
-  - title: Splunk 日志记录驱动程序
-    url: /engine/logging/drivers/splunk/
-next:
-  title: JSON File 日志驱动
-  url: /engine/logging/drivers/json-file/
-prev:
-  title: Syslog 日志驱动程序
-  url: /engine/logging/drivers/syslog/
----
+# Splunk 日志记录驱动程序
 
 
 `splunk` 日志记录驱动程序将容器日志发送到 Splunk Enterprise 和 Splunk Cloud 中的

@@ -1,24 +1,4 @@
----
-title: 创建 swarm
-url: /engine/swarm/swarm-tutorial/create-swarm/
-parent:
-  title: Swarm 模式入门
-  url: /engine/swarm/swarm-tutorial/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: Swarm 模式入门
-    url: /engine/swarm/swarm-tutorial/
-  - title: 创建 swarm
-    url: /engine/swarm/swarm-tutorial/create-swarm/
-prev:
-  title: 向 swarm 添加节点
-  url: /engine/swarm/swarm-tutorial/add-nodes/
----
+# 创建 swarm
 
 
 完成[教程设置](index.md)步骤后，您就可以创建 swarm 了。请确保 Docker Engine 守护进程在主机上已启动。

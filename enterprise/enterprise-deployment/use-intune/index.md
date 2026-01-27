@@ -1,23 +1,4 @@
----
-title: 使用 Intune 部署
-url: /enterprise/enterprise-deployment/use-intune/
-parent:
-  title: 部署 Docker Desktop
-  url: /enterprise/enterprise-deployment/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 部署 Docker Desktop
-    url: /enterprise/enterprise-deployment/
-  - title: 使用 Intune 部署
-    url: /enterprise/enterprise-deployment/use-intune/
-next:
-  title: 在 Windows 上通过 Microsoft Store 安装 Docker Desktop
-  url: /enterprise/enterprise-deployment/ms-store/
-prev:
-  title: 使用 Jamf Pro 部署
-  url: /enterprise/enterprise-deployment/use-jamf-pro/
----
+# 使用 Intune 部署
 
 
 

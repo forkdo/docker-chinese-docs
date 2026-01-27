@@ -1,31 +1,4 @@
----
-title: Java 语言专属指南
-url: /guides/java/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Java 语言专属指南
-    url: /guides/java/
-children:
-  - title: 容器化 Java 应用程序
-    url: /guides/java/containerize/
-    description: 学习如何将 Java 应用程序容器化。
-  - title: 使用容器进行 Java 开发
-    url: /guides/java/develop/
-    description: 了解如何在本地开发您的应用。
-  - title: 运行 Java 测试
-    url: /guides/java/run-tests/
-    description: 如何构建并运行 Java 测试
-  - title: 为 Java 应用程序配置 CI/CD
-    url: /guides/java/configure-ci-cd/
-    description: 了解如何为 Java 应用程序配置 CI/CD
-  - title: 测试你的 Java 部署
-    url: /guides/java/deploy/
-    description: 学习如何在本地使用 Kubernetes 进行开发
----
+# Java 语言专属指南
 
 
 Java 入门指南将教你如何使用 Docker 创建容器化的 Spring Boot 应用程序。在本模块中，你将学习如何：

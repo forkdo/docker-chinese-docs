@@ -1,27 +1,4 @@
----
-title: VFS 存储驱动
-url: /engine/storage/drivers/vfs-driver/
-parent:
-  title: 存储驱动程序
-  url: /engine/storage/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: 存储驱动程序
-    url: /engine/storage/drivers/
-  - title: VFS 存储驱动
-    url: /engine/storage/drivers/vfs-driver/
-next:
-  title: OverlayFS 存储驱动程序
-  url: /engine/storage/drivers/overlayfs-driver/
-prev:
-  title: windowsfilter 存储驱动程序
-  url: /engine/storage/drivers/windowsfilter-driver/
----
+# VFS 存储驱动
 
 
 VFS 存储驱动不是联合文件系统。每一层都是磁盘上的一个目录，不支持写时复制（copy-on-write）。要创建新层，需要对其上一层执行“深度复制”。这会导致性能低于其他存储驱动，并且占用更多磁盘空间。不过，它很稳健、稳定，可在任何环境中运行。在测试环境中，它还可用于验证其他存储后端。

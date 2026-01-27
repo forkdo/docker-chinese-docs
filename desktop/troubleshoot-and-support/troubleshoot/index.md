@@ -1,89 +1,62 @@
----
-title: 排查 Docker Desktop 问题
-url: /desktop/troubleshoot-and-support/troubleshoot/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 排查 Docker Desktop 问题
-    url: /desktop/troubleshoot-and-support/troubleshoot/
-children:
-  - title: Docker Desktop 故障排除主题
-    url: /desktop/troubleshoot-and-support/troubleshoot/topics/
-    description: 探索 Docker Desktop 的常见故障排除主题
-  - title: 已知问题
-    url: /desktop/troubleshoot-and-support/troubleshoot/known-issues/
-    description: 查找 Docker Desktop 的已知问题
-  - title: 修复 macOS 上“Docker.app 已损坏，无法打开”的问题
-    url: /desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/
-    description: 修复 macOS 上出现的“Docker.app 已损坏，无法打开。您应该将它移到废纸篓”对话框问题
----
+# 排查 Docker Desktop 问题
 
 
 本页包含有关如何诊断和排查 Docker Desktop 问题的信息，以及如何查看日志。
 
-## 故障排查菜单
+## 排查菜单
 
-要导航到 **故障排查**，请执行以下任一操作：
+要导航到**排查**，请执行以下任一操作：
 
 - 选择 Docker 菜单 Docker 菜单 
 
 
-![whale menu](../../images/whale-x.svg)，然后选择 **故障排查**。
-- 选择 Docker 仪表板右上角附近的 **故障排查** 图标。
+![whale menu](../../images/whale-x.svg)，然后选择**排查**。
+- 选择 Docker Dashboard 右上角附近的**排查**图标。
 
-**故障排查** 菜单包含以下选项：
+**排查**菜单包含以下选项：
 
 - **重启 Docker Desktop**。
 
-- **重置 Kubernetes 集群**。选择此选项可删除所有堆栈和 Kubernetes 资源。有关更多信息，请参阅 [Kubernetes](/manuals/desktop/settings-and-maintenance/settings.md#kubernetes)。
+- **重置 Kubernetes 集群**。选择此选项将删除所有堆栈和 Kubernetes 资源。有关更多信息，请参阅 [Kubernetes](/manuals/desktop/settings-and-maintenance/settings.md#kubernetes)。
 
-- **清理/清除数据**。此选项会重置所有 Docker 数据，但不会重置为出厂默认设置。选择此选项会导致现有设置丢失。
+- **清理/清除数据**。此选项将重置所有 Docker 数据，但不会重置为出厂默认设置。选择此选项将导致现有设置丢失。
 
 - **重置为出厂默认设置**：选择此选项可将 Docker Desktop 上的所有选项重置为其初始状态，与首次安装 Docker Desktop 时相同。
 
-如果您是 Mac 或 Linux 用户，还可以选择从系统中 **卸载** Docker Desktop。
+如果您是 Mac 或 Linux 用户，还可以选择从系统中**卸载** Docker Desktop。
 
 ## 诊断
 
-> [!TIP]
+> [!提示]
 >
-> 如果在故障排查中找不到解决方案，请浏览 GitHub 仓库或创建新问题：
->
-> - [docker/for-mac](https://github.com/docker/for-mac/issues)
-> - [docker/for-win](https://github.com/docker/for-win/issues)
-> - [docker/desktop-linux](https://github.com/docker/desktop-linux/issues)
+> 如果在排查过程中未找到解决方案，请浏览 GitHub 仓库或在 [Docker Desktop 问题跟踪器](https://github.com/docker/desktop-feedback) 上创建新问题。
 
 ### 从应用内诊断
 
-1. 在 **故障排查** 中，选择 **获取支持**。这将打开应用内支持页面并开始收集诊断信息。
-2. 当诊断信息收集过程完成后，选择 **上传以获取诊断 ID**。
-3. 当诊断信息上传后，Docker Desktop 会打印一个诊断 ID。复制此 ID。
+1. 在**排查**中，选择**获取支持**。这将打开应用内支持页面并开始收集诊断信息。
+2. 当诊断信息收集过程完成后，选择**上传以获取诊断 ID**。
+3. 当诊断信息上传后，Docker Desktop 会打印一个诊断 ID。请复制此 ID。
 4. 使用您的诊断 ID 获取帮助：
-   - 如果您有付费 Docker 订阅，请选择 **联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到 **诊断 ID 字段**。然后，选择 **提交工单** 以请求 Docker Desktop 支持。
-     > [!NOTE]
+   - 如果您拥有付费 Docker 订阅，请选择**联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到**诊断 ID 字段**中。然后，选择**提交工单**以请求 Docker Desktop 支持。
+     > [!注意]
      >
      > 您必须登录 Docker Desktop 才能访问支持表单。有关 Docker Desktop 支持涵盖的内容，请参阅 [支持](/manuals/support/_index.md)。
-   - 如果您没有付费 Docker 订阅，请选择 **报告 Bug** 以在 GitHub 上打开新的 Docker Desktop 问题。填写所需信息，并确保添加您在步骤三中复制的诊断 ID。
+   - 如果您没有付费 Docker 订阅，请选择**报告 Bug** 以在 GitHub 上打开新的 Docker Desktop 问题。填写所需信息，并确保添加您在步骤三中复制的诊断 ID。
 
 ### 从错误消息诊断
 
-1. 当出现错误消息时，选择 **收集诊断信息**。
-2. 当诊断信息上传后，Docker Desktop 会打印一个诊断 ID。复制此 ID。
+1. 当出现错误消息时，选择**收集诊断信息**。
+2. 当诊断信息上传后，Docker Desktop 会打印一个诊断 ID。请复制此 ID。
 3. 使用您的诊断 ID 获取帮助：
-   - 如果您有付费 Docker 订阅，请选择 **联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到 **诊断 ID 字段**。然后，选择 **提交工单** 以请求 Docker Desktop 支持。
-     > [!NOTE]
+   - 如果您拥有付费 Docker 订阅，请选择**联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到**诊断 ID 字段**中。然后，选择**提交工单**以请求 Docker Desktop 支持。
+     > [!注意]
      >
      > 您必须登录 Docker Desktop 才能访问支持表单。有关 Docker Desktop 支持涵盖的内容，请参阅 [支持](/manuals/support/_index.md)。
-   - 如果您没有付费 Docker 订阅，您可以在 GitHub 上为 [Mac](https://github.com/docker/for-mac/issues)、[Windows](https://github.com/docker/for-win/issues) 或 [Linux](https://github.com/docker/for-linux/issues) 打开新的 Docker Desktop 问题。填写所需信息，并确保添加步骤二中打印的诊断 ID。
+   - 如果您没有付费 Docker 订阅，您可以在 GitHub 上打开新的 [Docker Desktop 问题](https://github.com/docker/desktop-feedback)。填写所需信息，并确保添加步骤二中打印的诊断 ID。
 
 ### 从终端诊断
 
-在某些情况下，自己运行诊断很有用，例如，如果 Docker Desktop 无法启动。
+在某些情况下，自行运行诊断很有用，例如当 Docker Desktop 无法启动时。
 
 **Windows**
 
@@ -183,23 +156,19 @@ $ unzip –l /tmp/<your-diagnostics-ID>.zip
 
 #### 使用您的诊断 ID 获取帮助
 
-如果您有付费 Docker 订阅，请选择 **联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到 **诊断 ID 字段**。然后，选择 **提交工单** 以请求 Docker Desktop 支持。
+如果您拥有付费 Docker 订阅，请选择**联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到**诊断 ID 字段**中。然后，选择**提交工单**以请求 Docker Desktop 支持。
 
-如果您没有付费 Docker 订阅，请在 GitHub 上创建问题：
-
-- [Linux 版](https://github.com/docker/desktop-linux/issues)
-- [Mac 版](https://github.com/docker/for-mac/issues)
-- [Windows 版](https://github.com/docker/for-win/issues)
+如果您没有付费 Docker 订阅，请在 [GitHub](https://github.com/docker/desktop-feedback) 上创建问题。
 
 ### 自诊断工具
 
-> [!IMPORTANT]
+> [!重要]
 >
-> 此工具已弃用。
+> 此工具已被弃用。
 
 ## 查看日志
 
-除了使用诊断选项提交日志外，您还可以自己浏览日志。
+除了使用诊断选项提交日志外，您还可以自行浏览日志。
 
 **Windows**
 
@@ -232,17 +201,17 @@ $ /usr/bin/log stream --style syslog --level=debug --color=always --predicate "$
 $ /usr/bin/log show --debug --info --style syslog --last 1d --predicate "$pred" >/tmp/logs.txt
 ```
 
-### 从控制台应用
+### 使用 Console 应用
 
-Mac 提供了一个名为 **控制台** 的内置日志查看器，您可以使用它来检查 Docker 日志。
+Mac 提供了一个名为 **Console** 的内置日志查看器，可用于检查 Docker 日志。
 
-控制台位于 `/Applications/Utilities`。您可以使用 Spotlight 搜索找到它。
+Console 位于 `/Applications/Utilities` 目录中。您可以通过 Spotlight 搜索来查找它。
 
-要读取 Docker 应用日志消息，请在控制台窗口搜索栏中键入 `docker` 并按 Enter。然后选择 `ANY` 以展开 `docker` 搜索条目旁边的下拉列表，并选择 `Process`。
+要读取 Docker 应用日志消息，请在 Console 窗口的搜索栏中输入 `docker` 并按回车键。然后选择 `ANY` 以展开 `docker` 搜索条目旁边的下拉列表，并选择 `Process`。
 
-![Mac 控制台搜索 Docker 应用](../../images/console.png)
+![Mac Console 搜索 Docker 应用](../../images/console.png)
 
-您可以使用控制台日志查询来搜索日志、以各种方式过滤结果并创建报告。
+您可以使用 Console 日志查询功能来搜索日志、以各种方式筛选结果，并创建报告。
 
 **Linux**
 
@@ -254,17 +223,17 @@ Mac 提供了一个名为 **控制台** 的内置日志查看器，您可以使�
 $ journalctl --user --unit=docker-desktop
 ```
 
-您还可以在 `$HOME/.docker/desktop/log/` 中找到 Docker Desktop 中包含的内部组件的日志。
+您还可以在 `$HOME/.docker/desktop/log/` 目录中找到 Docker Desktop 包含的内部组件的日志。
 
 
 
 ## 查看 Docker 守护进程日志
 
-请参阅 [读取守护进程日志](/manuals/engine/daemon/logs.md) 部分，了解如何查看 Docker 守护进程日志。
+请参阅[阅读守护进程日志](/manuals/engine/daemon/logs.md)部分，了解如何查看 Docker 守护进程日志。
 
 ## 更多资源
 
-- 查看特定的 [故障排查主题](topics.md)。
-- 查看 [已知问题](known-issues.md) 信息
-- [修复 macOS 上的 "Docker.app 已损坏" 问题](mac-damaged-dialog.md) - 解决 macOS 安装问题
+- 查看特定的[故障排除主题](topics.md)。
+- 查看[已知问题](known-issues.md)相关信息
+- [修复 macOS 上的 "Docker.app is damaged" 问题](mac-damaged-dialog.md) - 解决 macOS 安装问题
 - [获取 Docker 产品支持](/manuals/support/_index.md)

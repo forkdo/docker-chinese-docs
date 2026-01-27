@@ -1,27 +1,4 @@
----
-title: docker scout sbom
-url: /reference/cli/docker/scout/sbom/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout sbom
-    url: /reference/cli/docker/scout/sbom/
-next:
-  title: docker scout recommendations
-  url: /reference/cli/docker/scout/recommendations/
-prev:
-  title: docker scout stream
-  url: /reference/cli/docker/scout/stream/
----
+# docker scout sbom
 
 **Description:** Generate or display SBOM of an image
 

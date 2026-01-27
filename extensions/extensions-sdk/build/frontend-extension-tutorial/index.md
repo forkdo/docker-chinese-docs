@@ -1,25 +1,4 @@
----
-title: Create an advanced frontend extension
-url: /extensions/extensions-sdk/build/frontend-extension-tutorial/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: Create an advanced frontend extension
-    url: /extensions/extensions-sdk/build/frontend-extension-tutorial/
-next:
-  title: Create a simple extension
-  url: /extensions/extensions-sdk/build/minimal-frontend-extension/
-prev:
-  title: Add a backend to your extension
-  url: /extensions/extensions-sdk/build/backend-extension-tutorial/
----
+# Create an advanced frontend extension
 
 
 To start creating your extension, you first need a directory with files which range from the extension’s source code to the required extension-specific files. This page provides information on how to set up an extension with a more advanced frontend.

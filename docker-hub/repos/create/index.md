@@ -1,22 +1,4 @@
----
-title: 创建仓库
-url: /docker-hub/repos/create/
-parent:
-  title: 仓库
-  url: /docker-hub/repos/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 创建仓库
-    url: /docker-hub/repos/create/
-prev:
-  title: 归档或取消归档仓库
-  url: /docker-hub/repos/archive/
----
+# 创建仓库
 
 
 1. 登录 [Docker Hub](https://hub.docker.com)。

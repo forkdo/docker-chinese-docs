@@ -1,22 +1,4 @@
----
-title: 提供反馈
-url: /dhi/explore/feedback/
-parent:
-  title: 探索 Docker Hardened Images
-  url: /dhi/explore/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 探索 Docker Hardened Images
-    url: /dhi/explore/
-  - title: 提供反馈
-    url: /dhi/explore/feedback/
-next:
-  title: 了解 Docker Hardened Images 的角色和职责
-  url: /dhi/explore/responsibility/
----
+# 提供反馈
 
 
 为了维护 Docker Hardened Images (DHI) 的质量、安全性和可靠性，

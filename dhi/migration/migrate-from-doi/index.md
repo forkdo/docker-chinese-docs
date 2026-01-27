@@ -1,25 +1,4 @@
----
-title: 从 Alpine 或 Debian 迁移
-url: /dhi/migration/migrate-from-doi/
-parent:
-  title: 迁移
-  url: /dhi/migration/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 从 Alpine 或 Debian 迁移
-    url: /dhi/migration/migrate-from-doi/
-next:
-  title: 使用 Docker 的 AI 助手进行迁移
-  url: /dhi/migration/migrate-with-ai/
-prev:
-  title: 从 Ubuntu 迁移
-  url: /dhi/migration/migrate-from-ubuntu/
----
+# 从 Alpine 或 Debian 迁移
 
 
 Docker 强化镜像 (DHI) 提供基于 [Alpine 和基于 Debian 的变体](../explore/available.md)。在许多情况下，从基于这些发行版的其他镜像迁移，只需在 Dockerfile 中更改基础镜像即可。

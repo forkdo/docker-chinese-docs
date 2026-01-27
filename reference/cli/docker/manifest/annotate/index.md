@@ -1,24 +1,4 @@
----
-title: docker manifest annotate
-url: /reference/cli/docker/manifest/annotate/
-parent:
-  title: docker manifest
-  url: /reference/cli/docker/manifest/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker manifest
-    url: /reference/cli/docker/manifest/
-  - title: docker manifest annotate
-    url: /reference/cli/docker/manifest/annotate/
-prev:
-  title: docker manifest create
-  url: /reference/cli/docker/manifest/create/
----
+# docker manifest annotate
 
 **Description:** Add additional information to a local image manifest
 

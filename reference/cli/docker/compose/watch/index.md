@@ -1,24 +1,4 @@
----
-title: docker compose watch
-url: /reference/cli/docker/compose/watch/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose watch
-    url: /reference/cli/docker/compose/watch/
-next:
-  title: docker compose wait
-  url: /reference/cli/docker/compose/wait/
----
+# docker compose watch
 
 **Description:** Watch build context for service and rebuild/refresh containers when files are updated
 

@@ -1,23 +1,4 @@
----
-title: Build secrets
-url: /build/building/secrets/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Build secrets
-    url: /build/building/secrets/
-next:
-  title: Build variables
-  url: /build/building/variables/
-prev:
-  title: Multi-platform builds
-  url: /build/building/multi-platform/
----
+# Build secrets
 
 
 A build secret is any piece of sensitive information, such as a password or API

@@ -1,27 +1,4 @@
----
-title: Python
-url: /dhi/migration/examples/python/
-parent:
-  title: 迁移示例
-  url: /dhi/migration/examples/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 迁移示例
-    url: /dhi/migration/examples/
-  - title: Python
-    url: /dhi/migration/examples/python/
-next:
-  title: Go
-  url: /dhi/migration/examples/go/
-prev:
-  title: Node.js
-  url: /dhi/migration/examples/node/
----
+# Python
 
 
 本示例展示如何将 Python 应用程序迁移到 Docker Hardened Images。

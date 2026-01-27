@@ -1,23 +1,4 @@
----
-title: FromAsCasing
-url: /reference/build-checks/from-as-casing/
-parent:
-  title: Build checks
-  url: /reference/build-checks/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-  - title: FromAsCasing
-    url: /reference/build-checks/from-as-casing/
-next:
-  title: ExposeProtoCasing
-  url: /reference/build-checks/expose-proto-casing/
-prev:
-  title: FromPlatformFlagConstDisallowed
-  url: /reference/build-checks/from-platform-flag-const-disallowed/
----
+# FromAsCasing
 
 
 ## Output

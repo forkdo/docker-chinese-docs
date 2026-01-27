@@ -1,18 +1,4 @@
----
-title: 语法和文体
-url: /contribute/style/grammar/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 语法和文体
-    url: /contribute/style/grammar/
-prev:
-  title: 格式指南
-  url: /contribute/style/formatting/
----
+# 语法和文体
 
 
 Docker 文档应始终使用美式英语和美式语法编写。

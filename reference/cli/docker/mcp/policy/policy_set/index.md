@@ -1,26 +1,4 @@
----
-title: docker mcp policy set
-url: /reference/cli/docker/mcp/policy/policy_set/
-parent:
-  title: docker mcp policy
-  url: /reference/cli/docker/mcp/policy/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp policy
-    url: /reference/cli/docker/mcp/policy/
-  - title: docker mcp policy set
-    url: /reference/cli/docker/mcp/policy/policy_set/
-next:
-  title: docker mcp policy dump
-  url: /reference/cli/docker/mcp/policy/policy_dump/
----
+# docker mcp policy set
 
 **Description:** Set a policy for secret management in Docker Desktop
 

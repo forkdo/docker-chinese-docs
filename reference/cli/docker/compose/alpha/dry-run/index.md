@@ -1,26 +1,4 @@
----
-title: docker compose alpha dry-run
-url: /reference/cli/docker/compose/alpha/dry-run/
-parent:
-  title: docker compose alpha
-  url: /reference/cli/docker/compose/alpha/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose alpha
-    url: /reference/cli/docker/compose/alpha/
-  - title: docker compose alpha dry-run
-    url: /reference/cli/docker/compose/alpha/dry-run/
-prev:
-  title: docker compose alpha scale
-  url: /reference/cli/docker/compose/alpha/scale/
----
+# docker compose alpha dry-run
 
 **Description:** EXPERIMENTAL - Dry run command allow you to test a command without applying changes
 

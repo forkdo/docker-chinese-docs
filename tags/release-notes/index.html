@@ -18,7 +18,10 @@
 <link rel="canonical" href="/tags/release-notes/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -68,8 +71,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -498,12 +501,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1319,17 +1328,6 @@ if (resultsLength > 5) {
     >
       <a
         class="block w-full truncate py-2"
-        href="/tags/api/"
-        title="Api"
-      >
-        Api
-      </a>
-    </li>
-    <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
         href="/tags/app-dev/"
         title="应用开发"
       >
@@ -1429,28 +1427,6 @@ if (resultsLength > 5) {
     >
       <a
         class="block w-full truncate py-2"
-        href="/tags/docker/"
-        title="Docker"
-      >
-        Docker
-      </a>
-    </li>
-    <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
-        href="/tags/documentation/"
-        title="Documentation"
-      >
-        Documentation
-      </a>
-    </li>
-    <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
         href="/tags/faq/"
         title="常见问题"
       >
@@ -1466,28 +1442,6 @@ if (resultsLength > 5) {
         title="框架"
       >
         框架
-      </a>
-    </li>
-    <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
-        href="/tags/guide/"
-        title="Guide"
-      >
-        Guide
-      </a>
-    </li>
-    <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
-        href="/tags/manual/"
-        title="Manual"
-      >
-        Manual
       </a>
     </li>
     <li
@@ -1524,17 +1478,6 @@ if (resultsLength > 5) {
       </a>
     </li>
     <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
-        href="/tags/reference/"
-        title="Reference"
-      >
-        Reference
-      </a>
-    </li>
-    <li
       class="hover:text-blue 
         bg-gray-400 dark:bg-gray-800
        pl-4 hover:dark:text-blue-700"
@@ -1545,17 +1488,6 @@ if (resultsLength > 5) {
         title="发布说明"
       >
         发布说明
-      </a>
-    </li>
-    <li
-      class="hover:text-blue  pl-4 hover:dark:text-blue-700"
-    >
-      <a
-        class="block w-full truncate py-2"
-        href="/tags/samples/"
-        title="Samples"
-      >
-        Samples
       </a>
     </li>
     <li
@@ -1626,7 +1558,7 @@ if (resultsLength > 5) {
       <ul>
         
           <li>
-            <a href="/platform-release-notes/">Docker Home、管理控制台、账单、安全和订阅功能的发布说明</a>
+            <a href="/platform-release-notes/">Docker Home、管理控制台、计费、安全和订阅功能的版本说明</a>
           </li>
           <li>
             <a href="/desktop/release-notes/">Docker Desktop 发行说明</a>
@@ -1656,9 +1588,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1673,7 +1607,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1688,7 +1622,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1703,7 +1637,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1718,7 +1652,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1734,26 +1668,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

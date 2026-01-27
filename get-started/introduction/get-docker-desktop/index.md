@@ -1,20 +1,4 @@
----
-title: 获取 Docker Desktop
-url: /get-started/introduction/get-docker-desktop/
-parent:
-  title: 介绍
-  url: /get-started/introduction/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 介绍
-    url: /get-started/introduction/
-  - title: 获取 Docker Desktop
-    url: /get-started/introduction/get-docker-desktop/
-prev:
-  title: 使用容器进行开发
-  url: /get-started/introduction/develop-with-containers/
----
+# 获取 Docker Desktop
 
 
 

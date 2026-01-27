@@ -1,23 +1,4 @@
----
-title: 更改您的订阅
-url: /subscription/change/
-parent:
-  title: 订阅
-  url: /subscription/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 订阅
-    url: /subscription/
-  - title: 更改您的订阅
-    url: /subscription/change/
-next:
-  title: 管理订阅席位
-  url: /subscription/manage-seats/
-prev:
-  title: Docker Desktop 许可协议
-  url: /subscription/desktop-license/
----
+# 更改您的订阅
 
 
 

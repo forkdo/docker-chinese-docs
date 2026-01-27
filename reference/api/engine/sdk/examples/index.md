@@ -1,19 +1,4 @@
----
-title: 使用 Docker Engine SDK 和 Docker API 的示例
-url: /reference/api/engine/sdk/examples/
-parent:
-  title: 使用 Docker Engine SDK 进行开发
-  url: /reference/api/engine/sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Docker Engine API
-    url: /reference/api/engine/
-  - title: 使用 Docker Engine SDK 进行开发
-    url: /reference/api/engine/sdk/
-  - title: 使用 Docker Engine SDK 和 Docker API 的示例
-    url: /reference/api/engine/sdk/examples/
----
+# 使用 Docker Engine SDK 和 Docker API 的示例
 
 
 在您
@@ -114,15 +99,15 @@ print(client.containers.run("alpine", ["echo", "hello", "world"]))
 ```console
 $ curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
   -d '{"Image": "alpine", "Cmd": ["echo", "hello world"]}' \
-  -X POST http://localhost/v1.52/containers/create
+  -X POST http://localhost/v1.53/containers/create
 {"Id":"1c6594faf5","Warnings":null}
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/start
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/wait
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/wait
 {"StatusCode":0}
 
-$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.52/containers/1c6594faf5/logs?stdout=1"
+$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.53/containers/1c6594faf5/logs?stdout=1"
 hello world
 ```
 
@@ -132,7 +117,7 @@ hello world
 >
 > 前面的示例假设您使用的是 cURL 7.50.0 或更高版本。旧版本的 cURL 在使用套接字连接时使用了[非标准 URL 表示法](https://github.com/moby/moby/issues/17960)。
 >
-> 如果您使用的是旧版本的 cURL，请使用 `http:/<API version>/`，例如：`http:/v1.52/containers/1c6594faf5/start`。
+> 如果您使用的是旧版本的 cURL，请使用 `http:/<API version>/`，例如：`http:/v1.53/containers/1c6594faf5/start`。
 
 
 
@@ -206,10 +191,10 @@ print(container.id)
 ```console
 $ curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
   -d '{"Image": "bfirsh/reticulate-splines"}' \
-  -X POST http://localhost/v1.52/containers/create
+  -X POST http://localhost/v1.53/containers/create
 {"Id":"1c6594faf5","Warnings":null}
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/start
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
 ```
 
 
@@ -267,7 +252,7 @@ for container in client.containers.list():
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock http://localhost/v1.52/containers/json
+$ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
 [{
   "Id":"ae63e8b89a26f01f6b4b2c9a7817c31a1b6196acf560f66586fbc8809ffcd772",
   "Names":["/tender_wing"],
@@ -340,7 +325,7 @@ for container in client.containers.list():
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock http://localhost/v1.52/containers/json
+$ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
 [{
   "Id":"ae63e8b89a26f01f6b4b2c9a7817c31a1b6196acf560f66586fbc8809ffcd772",
   "Names":["/tender_wing"],
@@ -349,7 +334,7 @@ $ curl --unix-socket /var/run/docker.sock http://localhost/v1.52/containers/json
 }]
 
 $ curl --unix-socket /var/run/docker.sock \
-  -X POST http://localhost/v1.52/containers/ae63e8b89a26/stop
+  -X POST http://localhost/v1.53/containers/ae63e8b89a26/stop
 ```
 
 
@@ -408,7 +393,7 @@ print(container.logs())
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.52/containers/ca5f55cdb/logs?stdout=1"
+$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.53/containers/ca5f55cdb/logs?stdout=1"
 Reticulating spline 1...
 Reticulating spline 2...
 Reticulating spline 3...
@@ -471,7 +456,7 @@ for image in client.images.list():
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock http://localhost/v1.52/images/json
+$ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/images/json
 [{
   "Id":"sha256:31d9a31e1dd803470c5a151b8919ef1988ac3efd44281ac59d43ad623f275dcd",
   "ParentId":"sha256:ee4603260daafe1a8c2f3b78fd760922918ab2441cbb2853ed5c439e59c52f96",
@@ -536,7 +521,7 @@ print(image.id)
 
 ```console
 $ curl --unix-socket /var/run/docker.sock \
-  -X POST "http://localhost/v1.52/images/create?fromImage=alpine"
+  -X POST "http://localhost/v1.53/images/create?fromImage=alpine"
 {"status":"Pulling from library/alpine","id":"3.1"}
 {"status":"Pulling fs layer","progressDetail":{},"id":"8f13703509f7"}
 {"status":"Downloading","progressDetail":{"current":32768,"total":2244027},"progress":"[\u003e                                                  ] 32.77 kB/2.244 MB","id":"8f13703509f7"}
@@ -623,7 +608,7 @@ $ JSON=$(echo '{"username": "string", "password": "string", "serveraddress": "st
 
 $ curl --unix-socket /var/run/docker.sock \
   -H "Content-Type: application/tar"
-  -X POST "http://localhost/v1.52/images/create?fromImage=alpine"
+  -X POST "http://localhost/v1.53/images/create?fromImage=alpine"
   -H "X-Registry-Auth"
   -d "$JSON"
 {"status":"Pulling from library/alpine","id":"3.1"}
@@ -714,7 +699,7 @@ print(image.id)
 $ docker run -d alpine touch /helloworld
 0888269a9d584f0fa8fc96b3c0d8d57969ceea3a64acf47cd34eebb4744dbc52
 $ curl --unix-socket /var/run/docker.sock\
-  -X POST "http://localhost/v1.52/commit?container=0888269a9d&repo=helloworld"
+  -X POST "http://localhost/v1.53/commit?container=0888269a9d&repo=helloworld"
 {"Id":"sha256:6c86a5cd4b87f2771648ce619e319f3e508394b5bfc2cdbd2d60f59d52acda6c"}
 ```
 

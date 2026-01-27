@@ -1,25 +1,4 @@
----
-title: 在 CentOS 上安装 Docker Engine
-url: /engine/install/centos/
-parent:
-  title: 安装 Docker Engine
-  url: /engine/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 安装 Docker Engine
-    url: /engine/install/
-  - title: 在 CentOS 上安装 Docker Engine
-    url: /engine/install/centos/
-next:
-  title: 在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine
-  url: /engine/install/raspberry-pi-os/
-prev:
-  title: Docker Engine 在 SLES (s390x) 上
-  url: /engine/install/sles/
----
+# 在 CentOS 上安装 Docker Engine
 
 
 要在 CentOS 上开始使用 Docker Engine，请确保您[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)进行操作。
@@ -110,14 +89,14 @@ $ sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/do
    ```console
    $ dnf list docker-ce --showduplicates | sort -r
 
-   docker-ce.x86_64    3:29.1.4-1.el9    docker-ce-stable
-   docker-ce.x86_64    3:29.1.3-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.2.0-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.1.5-1.el9    docker-ce-stable
    <...>
    ```
 
    返回的列表取决于启用了哪些存储库，并且特定于您的 CentOS 版本（在此示例中由 `.el9` 后缀表示）。
 
-   通过其完全限定的包名安装特定版本，即包名 (`docker-ce`) 加上版本字符串（第 2 列），用连字符 (`-`) 分隔。例如，`docker-ce-3:29.1.4-1.el9`。
+   通过其完全限定的包名安装特定版本，即包名 (`docker-ce`) 加上版本字符串（第 2 列），用连字符 (`-`) 分隔。例如，`docker-ce-3:29.2.0-1.el9`。
 
    将 `<VERSION_STRING>` 替换为所需的版本，然后运行以下命令进行安装：
 

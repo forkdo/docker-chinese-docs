@@ -1,20 +1,4 @@
----
-title: 容器化 Node.js 应用
-url: /guides/nodejs/containerize/
-parent:
-  title: Node.js 语言专属指南
-  url: /guides/nodejs/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Node.js 语言专属指南
-    url: /guides/nodejs/
-  - title: 容器化 Node.js 应用
-    url: /guides/nodejs/containerize/
-prev:
-  title: 为 Node.js 开发使用容器
-  url: /guides/nodejs/develop/
----
+# 容器化 Node.js 应用
 
 
 ## 前提条件

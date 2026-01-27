@@ -1,27 +1,4 @@
----
-title: docker swarm unlock-key
-url: /reference/cli/docker/swarm/unlock-key/
-parent:
-  title: docker swarm
-  url: /reference/cli/docker/swarm/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker swarm
-    url: /reference/cli/docker/swarm/
-  - title: docker swarm unlock-key
-    url: /reference/cli/docker/swarm/unlock-key/
-next:
-  title: docker swarm unlock
-  url: /reference/cli/docker/swarm/unlock/
-prev:
-  title: docker swarm update
-  url: /reference/cli/docker/swarm/update/
----
+# docker swarm unlock-key
 
 **Description:** Manage the unlock key
 

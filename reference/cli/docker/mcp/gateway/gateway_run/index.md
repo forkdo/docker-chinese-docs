@@ -1,23 +1,4 @@
----
-title: docker mcp gateway run
-url: /reference/cli/docker/mcp/gateway/gateway_run/
-parent:
-  title: docker mcp gateway
-  url: /reference/cli/docker/mcp/gateway/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp gateway
-    url: /reference/cli/docker/mcp/gateway/
-  - title: docker mcp gateway run
-    url: /reference/cli/docker/mcp/gateway/gateway_run/
----
+# docker mcp gateway run
 
 **Description:** Run the gateway
 

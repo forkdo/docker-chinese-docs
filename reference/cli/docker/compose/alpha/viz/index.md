@@ -1,26 +1,4 @@
----
-title: docker compose alpha viz
-url: /reference/cli/docker/compose/alpha/viz/
-parent:
-  title: docker compose alpha
-  url: /reference/cli/docker/compose/alpha/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose alpha
-    url: /reference/cli/docker/compose/alpha/
-  - title: docker compose alpha viz
-    url: /reference/cli/docker/compose/alpha/viz/
-next:
-  title: docker compose alpha scale
-  url: /reference/cli/docker/compose/alpha/scale/
----
+# docker compose alpha viz
 
 **Description:** EXPERIMENTAL - Generate a graphviz graph from your compose file
 

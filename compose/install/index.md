@@ -1,27 +1,4 @@
----
-title: Docker Compose 安装概述
-url: /compose/install/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Docker Compose 安装概述
-    url: /compose/install/
-children:
-  - title: 安装 Docker Compose 插件
-    url: /compose/install/linux/
-    description: 分步指导如何在 Linux 上使用软件包仓库或手动方法安装 Docker Compose 插件。
-  - title: 安装独立的 Docker Compose（旧版）
-    url: /compose/install/standalone/
-    description: 有关在 Linux 和 Windows Server 上安装旧版 Docker Compose 独立工具的说明
-  - title: 卸载 Docker Compose
-    url: /compose/install/uninstall/
-    description: 如何卸载 Docker Compose
----
+# Docker Compose 安装概述
 
 
 本文总结了根据您的平台和需求，安装 Docker Compose 的不同方法。

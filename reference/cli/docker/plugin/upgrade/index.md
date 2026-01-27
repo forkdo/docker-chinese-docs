@@ -1,24 +1,4 @@
----
-title: docker plugin upgrade
-url: /reference/cli/docker/plugin/upgrade/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin upgrade
-    url: /reference/cli/docker/plugin/upgrade/
-next:
-  title: docker plugin set
-  url: /reference/cli/docker/plugin/set/
----
+# docker plugin upgrade
 
 **Description:** Upgrade an existing plugin
 

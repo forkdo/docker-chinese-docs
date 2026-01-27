@@ -1,22 +1,4 @@
----
-title: CIS 基准
-url: /dhi/core-concepts/cis/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: CIS 基准
-    url: /dhi/core-concepts/cis/
-prev:
-  title: 常见漏洞和暴露 (CVE)
-  url: /dhi/core-concepts/cves/
----
+# CIS 基准
 
 
 ## 什么是 CIS Docker 基准？

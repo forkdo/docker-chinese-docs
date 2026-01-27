@@ -1,23 +1,4 @@
----
-title: Docker Desktop for Mac 常见问题解答
-url: /desktop/troubleshoot-and-support/faqs/macfaqs/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Docker Desktop for Mac 常见问题解答
-    url: /desktop/troubleshoot-and-support/faqs/macfaqs/
-next:
-  title: Docker Desktop 通用常见问题解答
-  url: /desktop/troubleshoot-and-support/faqs/general/
-prev:
-  title: Docker Desktop for Windows 的常见问题解答
-  url: /desktop/troubleshoot-and-support/faqs/windowsfaqs/
----
+# Docker Desktop for Mac 常见问题解答
 
 
 ### 什么是 HyperKit？

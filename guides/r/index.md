@@ -1,28 +1,4 @@
----
-title: R 语言专属指南
-url: /guides/r/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: R 语言专属指南
-    url: /guides/r/
-children:
-  - title: 容器化 R 应用程序
-    url: /guides/r/containerize/
-    description: 了解如何容器化 R 应用程序。
-  - title: 使用容器进行 R 开发
-    url: /guides/r/develop/
-    description: 了解如何在本地开发 R 应用程序。
-  - title: 为您的 R 应用程序配置 CI/CD
-    url: /guides/r/configure-ci-cd/
-    description: 了解如何使用 GitHub Actions 为您的 R 应用程序配置 CI/CD。
-  - title: 测试你的 R 部署
-    url: /guides/r/deploy/
-    description: 了解如何使用 Kubernetes 在本地开发
----
+# R 语言专属指南
 
 
 本 R 语言专属指南将指导您如何使用 Docker 容器化 R 应用程序。通过本指南，您将学习如何：

@@ -1,25 +1,4 @@
----
-title: docker build (legacy builder)
-url: /reference/cli/docker/build-legacy/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker build (legacy builder)
-    url: /reference/cli/docker/build-legacy/
-next:
-  title: docker build
-  url: 
-prev:
-  title: docker debug
-  url: /reference/cli/docker/debug/
----
+# docker build (legacy builder)
 
 **Description:** Build an image from a Dockerfile
 

@@ -1,20 +1,4 @@
----
-title: Base images
-url: /build/building/base-images/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Base images
-    url: /build/building/base-images/
-next:
-  title: Building best practices
-  url: /build/building/best-practices/
----
+# Base images
 
 
 All Dockerfiles start from a base image.

@@ -1,25 +1,4 @@
----
-title: Bake standard library functions
-url: /build/bake/stdlib/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Bake standard library functions
-    url: /build/bake/stdlib/
-next:
-  title: Bake file reference
-  url: /build/bake/reference/
-prev:
-  title: Building with Bake from a Compose file
-  url: /build/bake/compose-file/
----
+# Bake standard library functions
 
 
 <!---MARKER_STDLIB_START-->
@@ -99,6 +78,7 @@ prev:
 | [`reverselist`](#reverselist)                       | Returns the given list with its elements in reverse order.                                                                                                                                                   |
 | [`rsadecrypt`](#rsadecrypt)                         | Decrypts an RSA-encrypted ciphertext.                                                                                                                                                                        |
 | [`sanitize`](#sanitize)                             | Replaces all non-alphanumeric characters with a underscore, leaving only characters that are valid for a Bake target name.                                                                                   |
+| [`semvercmp`](#semvercmp)                           | Returns true if version satisfies a constraint.                                                                                                                                                              |
 | [`sethaselement`](#sethaselement)                   | Returns true if the given set contains the given element, or false otherwise.                                                                                                                                |
 | [`setintersection`](#setintersection)               | Returns the intersection of all given sets.                                                                                                                                                                  |
 | [`setproduct`](#setproduct)                         | Calculates the cartesian product of two or more sets.                                                                                                                                                        |
@@ -133,9 +113,7 @@ prev:
 
 <!---MARKER_STDLIB_END-->
 
-## Examples
-
-### <a name="absolute"></a> `absolute`
+## `absolute`
 
 ```hcl
 # docker-bake.hcl
@@ -148,7 +126,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="add"></a> `add`
+## `add`
 
 ```hcl
 # docker-bake.hcl
@@ -161,7 +139,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="and"></a> `and`
+## `and`
 
 ```hcl
 # docker-bake.hcl
@@ -174,7 +152,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="base64decode"></a> `base64decode`
+## `base64decode`
 
 ```hcl
 # docker-bake.hcl
@@ -187,7 +165,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="base64encode"></a> `base64encode`
+## `base64encode`
 
 ```hcl
 # docker-bake.hcl
@@ -200,7 +178,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="basename"></a> `basename`
+## `basename`
 
 ```hcl
 # docker-bake.hcl
@@ -213,7 +191,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="bcrypt"></a> `bcrypt`
+## `bcrypt`
 
 ```hcl
 # docker-bake.hcl
@@ -226,7 +204,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="byteslen"></a> `byteslen`
+## `byteslen`
 
 ```hcl
 # docker-bake.hcl
@@ -239,7 +217,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="bytesslice"></a> `bytesslice`
+## `bytesslice`
 
 ```hcl
 # docker-bake.hcl
@@ -252,7 +230,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="can"></a> `can`
+## `can`
 
 ```hcl
 # docker-bake.hcl
@@ -265,7 +243,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="ceil"></a> `ceil`
+## `ceil`
 
 ```hcl
 # docker-bake.hcl
@@ -278,7 +256,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="chomp"></a> `chomp`
+## `chomp`
 
 ```hcl
 # docker-bake.hcl
@@ -291,7 +269,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="chunklist"></a> `chunklist`
+## `chunklist`
 
 ```hcl
 # docker-bake.hcl
@@ -304,7 +282,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="cidrhost"></a> `cidrhost`
+## `cidrhost`
 
 ```hcl
 # docker-bake.hcl
@@ -317,7 +295,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="cidrnetmask"></a> `cidrnetmask`
+## `cidrnetmask`
 
 ```hcl
 # docker-bake.hcl
@@ -330,7 +308,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="cidrsubnet"></a> `cidrsubnet`
+## `cidrsubnet`
 
 ```hcl
 # docker-bake.hcl
@@ -343,7 +321,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="cidrsubnets"></a> `cidrsubnets`
+## `cidrsubnets`
 
 ```hcl
 # docker-bake.hcl
@@ -356,7 +334,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="coalesce"></a> `coalesce`
+## `coalesce`
 
 ```hcl
 # docker-bake.hcl
@@ -369,7 +347,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="coalescelist"></a> `coalescelist`
+## `coalescelist`
 
 ```hcl
 # docker-bake.hcl
@@ -382,7 +360,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="compact"></a> `compact`
+## `compact`
 
 ```hcl
 # docker-bake.hcl
@@ -395,7 +373,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="concat"></a> `concat`
+## `concat`
 
 ```hcl
 # docker-bake.hcl
@@ -408,7 +386,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="contains"></a> `contains`
+## `contains`
 
 ```hcl
 # docker-bake.hcl
@@ -421,7 +399,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="convert"></a> `convert`
+## `convert`
 
 ```hcl
 # docker-bake.hcl
@@ -434,7 +412,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="csvdecode"></a> `csvdecode`
+## `csvdecode`
 
 ```hcl
 # docker-bake.hcl
@@ -447,7 +425,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="dirname"></a> `dirname`
+## `dirname`
 
 ```hcl
 # docker-bake.hcl
@@ -460,7 +438,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="distinct"></a> `distinct`
+## `distinct`
 
 ```hcl
 # docker-bake.hcl
@@ -473,7 +451,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="divide"></a> `divide`
+## `divide`
 
 ```hcl
 # docker-bake.hcl
@@ -486,7 +464,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="element"></a> `element`
+## `element`
 
 ```hcl
 # docker-bake.hcl
@@ -499,7 +477,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="equal"></a> `equal`
+## `equal`
 
 ```hcl
 # docker-bake.hcl
@@ -512,7 +490,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="flatten"></a> `flatten`
+## `flatten`
 
 ```hcl
 # docker-bake.hcl
@@ -525,7 +503,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="floor"></a> `floor`
+## `floor`
 
 ```hcl
 # docker-bake.hcl
@@ -538,7 +516,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="format"></a> `format`
+## `format`
 
 ```hcl
 # docker-bake.hcl
@@ -551,7 +529,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="formatdate"></a> `formatdate`
+## `formatdate`
 
 ```hcl
 # docker-bake.hcl
@@ -564,7 +542,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="formatlist"></a> `formatlist`
+## `formatlist`
 
 ```hcl
 # docker-bake.hcl
@@ -577,7 +555,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="greaterthan"></a> `greaterthan`
+## `greaterthan`
 
 ```hcl
 # docker-bake.hcl
@@ -590,7 +568,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="greaterthanorequalto"></a> `greaterthanorequalto`
+## `greaterthanorequalto`
 
 ```hcl
 # docker-bake.hcl
@@ -603,7 +581,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="hasindex"></a> `hasindex`
+## `hasindex`
 
 ```hcl
 # docker-bake.hcl
@@ -617,7 +595,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="homedir"></a> `homedir`
+## `homedir`
 
 ```hcl
 # docker-bake.hcl
@@ -630,7 +608,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="indent"></a> `indent`
+## `indent`
 
 ```hcl
 # docker-bake.hcl
@@ -644,7 +622,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="index"></a> `index`
+## `index`
 
 ```hcl
 # docker-bake.hcl
@@ -657,7 +635,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="indexof"></a> `indexof`
+## `indexof`
 
 ```hcl
 # docker-bake.hcl
@@ -670,7 +648,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="int"></a> `int`
+## `int`
 
 ```hcl
 # docker-bake.hcl
@@ -683,7 +661,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="join"></a> `join`
+## `join`
 
 ```hcl
 # docker-bake.hcl
@@ -696,7 +674,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="jsondecode"></a> `jsondecode`
+## `jsondecode`
 
 ```hcl
 # docker-bake.hcl
@@ -709,7 +687,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="jsonencode"></a> `jsonencode`
+## `jsonencode`
 
 ```hcl
 # docker-bake.hcl
@@ -722,7 +700,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="keys"></a> `keys`
+## `keys`
 
 ```hcl
 # docker-bake.hcl
@@ -736,7 +714,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="length"></a> `length`
+## `length`
 
 ```hcl
 # docker-bake.hcl
@@ -749,7 +727,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="lessthan"></a> `lessthan`
+## `lessthan`
 
 ```hcl
 # docker-bake.hcl
@@ -762,7 +740,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="lessthanorequalto"></a> `lessthanorequalto`
+## `lessthanorequalto`
 
 ```hcl
 # docker-bake.hcl
@@ -775,7 +753,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="log"></a> `log`
+## `log`
 
 ```hcl
 # docker-bake.hcl
@@ -788,7 +766,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="lookup"></a> `lookup`
+## `lookup`
 
 ```hcl
 # docker-bake.hcl
@@ -801,7 +779,7 @@ target "webapp-dev" {
   }
 }
 ```
-### <a name="lower"></a> `lower`
+## `lower`
 
 ```hcl
 # docker-bake.hcl
@@ -814,7 +792,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="max"></a> `max`
+## `max`
 
 ```hcl
 # docker-bake.hcl
@@ -827,7 +805,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="md5"></a> `md5`
+## `md5`
 
 ```hcl
 # docker-bake.hcl
@@ -840,7 +818,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="merge"></a> `merge`
+## `merge`
 
 ```hcl
 # docker-bake.hcl
@@ -853,7 +831,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="min"></a> `min`
+## `min`
 
 ```hcl
 # docker-bake.hcl
@@ -866,7 +844,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="modulo"></a> `modulo`
+## `modulo`
 
 ```hcl
 # docker-bake.hcl
@@ -879,7 +857,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="multiply"></a> `multiply`
+## `multiply`
 
 ```hcl
 # docker-bake.hcl
@@ -892,7 +870,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="negate"></a> `negate`
+## `negate`
 
 ```hcl
 # docker-bake.hcl
@@ -905,7 +883,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="not"></a> `not`
+## `not`
 
 ```hcl
 # docker-bake.hcl
@@ -918,7 +896,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="notequal"></a> `notequal`
+## `notequal`
 
 ```hcl
 # docker-bake.hcl
@@ -931,7 +909,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="or"></a> `or`
+## `or`
 
 ```hcl
 # docker-bake.hcl
@@ -944,7 +922,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="parseint"></a> `parseint`
+## `parseint`
 
 ```hcl
 # docker-bake.hcl
@@ -957,7 +935,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="pow"></a> `pow`
+## `pow`
 
 ```hcl
 # docker-bake.hcl
@@ -970,7 +948,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="range"></a> `range`
+## `range`
 
 ```hcl
 # docker-bake.hcl
@@ -983,7 +961,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="regex"></a> `regex`
+## `regex`
 
 ```hcl
 # docker-bake.hcl
@@ -996,7 +974,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="regex_replace"></a> `regex_replace`
+## `regex_replace`
 
 ```hcl
 # docker-bake.hcl
@@ -1009,7 +987,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="regexall"></a> `regexall`
+## `regexall`
 
 ```hcl
 # docker-bake.hcl
@@ -1022,7 +1000,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="replace"></a> `replace`
+## `replace`
 
 ```hcl
 # docker-bake.hcl
@@ -1035,7 +1013,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="reverse"></a> `reverse`
+## `reverse`
 
 ```hcl
 # docker-bake.hcl
@@ -1048,7 +1026,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="reverselist"></a> `reverselist`
+## `reverselist`
 
 ```hcl
 # docker-bake.hcl
@@ -1061,7 +1039,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="rsadecrypt"></a> `rsadecrypt`
+## `rsadecrypt`
 
 ```hcl
 # docker-bake.hcl
@@ -1074,7 +1052,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="sanitize"></a> `sanitize`
+## `sanitize`
 
 ```hcl
 # docker-bake.hcl
@@ -1087,7 +1065,32 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="sethaselement"></a> `sethaselement`
+## `semvercmp`
+
+This function checks if a semantic version fits within a set of constraints.
+See [Checking Version Constraints](https://github.com/Masterminds/semver?tab=readme-ov-file#checking-version-constraints)
+for details.
+
+```hcl
+# docker-bake.hcl
+variable "ALPINE_VERSION" {
+  default = "3.23"
+}
+
+target "webapp-dev" {
+  dockerfile = "Dockerfile.webapp"
+  platforms = semvercmp(ALPINE_VERSION, ">= 3.20") ? [
+    "linux/amd64",
+    "linux/arm64",
+    "linux/riscv64"
+  ] : [
+    "linux/amd64",
+    "linux/arm64"
+  ]
+}
+```
+
+## `sethaselement`
 
 ```hcl
 # docker-bake.hcl
@@ -1100,7 +1103,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="setintersection"></a> `setintersection`
+## `setintersection`
 
 ```hcl
 # docker-bake.hcl
@@ -1113,7 +1116,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="setproduct"></a> `setproduct`
+## `setproduct`
 
 ```hcl
 # docker-bake.hcl
@@ -1126,7 +1129,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="setsubtract"></a> `setsubtract`
+## `setsubtract`
 
 ```hcl
 # docker-bake.hcl
@@ -1139,7 +1142,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="setsymmetricdifference"></a> `setsymmetricdifference`
+## `setsymmetricdifference`
 
 ```hcl
 # docker-bake.hcl
@@ -1152,7 +1155,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="setunion"></a> `setunion`
+## `setunion`
 
 ```hcl
 # docker-bake.hcl
@@ -1165,7 +1168,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="sha1"></a> `sha1`
+## `sha1`
 
 ```hcl
 # docker-bake.hcl
@@ -1178,7 +1181,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="sha256"></a> `sha256`
+## `sha256`
 
 ```hcl
 # docker-bake.hcl
@@ -1191,7 +1194,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="sha512"></a> `sha512`
+## `sha512`
 
 ```hcl
 # docker-bake.hcl
@@ -1204,7 +1207,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="signum"></a> `signum`
+## `signum`
 
 ```hcl
 # docker-bake.hcl
@@ -1219,7 +1222,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="slice"></a> `slice`
+## `slice`
 
 ```hcl
 # docker-bake.hcl
@@ -1232,7 +1235,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="sort"></a> `sort`
+## `sort`
 
 ```hcl
 # docker-bake.hcl
@@ -1245,7 +1248,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="split"></a> `split`
+## `split`
 
 ```hcl
 # docker-bake.hcl
@@ -1258,7 +1261,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="strlen"></a> `strlen`
+## `strlen`
 
 ```hcl
 # docker-bake.hcl
@@ -1271,7 +1274,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="substr"></a> `substr`
+## `substr`
 
 ```hcl
 # docker-bake.hcl
@@ -1284,7 +1287,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="subtract"></a> `subtract`
+## `subtract`
 
 ```hcl
 # docker-bake.hcl
@@ -1297,7 +1300,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="timeadd"></a> `timeadd`
+## `timeadd`
 
 ```hcl
 # docker-bake.hcl
@@ -1310,7 +1313,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="timestamp"></a> `timestamp`
+## `timestamp`
 
 ```hcl
 # docker-bake.hcl
@@ -1323,7 +1326,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="title"></a> `title`
+## `title`
 
 ```hcl
 # docker-bake.hcl
@@ -1336,7 +1339,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="trim"></a> `trim`
+## `trim`
 
 ```hcl
 # docker-bake.hcl
@@ -1349,7 +1352,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="trimprefix"></a> `trimprefix`
+## `trimprefix`
 
 ```hcl
 # docker-bake.hcl
@@ -1362,7 +1365,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="trimspace"></a> `trimspace`
+## `trimspace`
 
 ```hcl
 # docker-bake.hcl
@@ -1375,7 +1378,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="trimsuffix"></a> `trimsuffix`
+## `trimsuffix`
 
 ```hcl
 # docker-bake.hcl
@@ -1388,7 +1391,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="try"></a> `try`
+## `try`
 
 ```hcl
 # docker-bake.hcl
@@ -1405,7 +1408,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="upper"></a> `upper`
+## `upper`
 
 ```hcl
 # docker-bake.hcl
@@ -1418,7 +1421,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="urlencode"></a> `urlencode`
+## `urlencode`
 
 ```hcl
 # docker-bake.hcl
@@ -1431,7 +1434,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="uuidv4"></a> `uuidv4`
+## `uuidv4`
 
 ```hcl
 # docker-bake.hcl
@@ -1444,7 +1447,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="uuidv5"></a> `uuidv5`
+## `uuidv5`
 
 ```hcl
 # docker-bake.hcl
@@ -1460,7 +1463,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="values"></a> `values`
+## `values`
 
 ```hcl
 # docker-bake.hcl
@@ -1473,7 +1476,7 @@ target "webapp-dev" {
 }
 ```
 
-### <a name="zipmap"></a> `zipmap`
+## `zipmap`
 
 ```hcl
 # docker-bake.hcl
@@ -1485,3 +1488,4 @@ target "webapp-dev" {
   }
 }
 ```
+

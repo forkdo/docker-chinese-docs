@@ -1,23 +1,4 @@
----
-title: 使用 Docker Compose 进行 Laravel 开发环境设置
-url: /guides/frameworks/laravel/development-setup/
-parent:
-  title: 使用 Docker Compose 开发和部署 Laravel 应用
-  url: /guides/frameworks/laravel/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Compose 开发和部署 Laravel 应用
-    url: /guides/frameworks/laravel/
-  - title: 使用 Docker Compose 进行 Laravel 开发环境设置
-    url: /guides/frameworks/laravel/development-setup/
-next:
-  title: 使用 Docker Compose 搭建 Laravel 生产环境
-  url: /guides/frameworks/laravel/production-setup/
-prev:
-  title: 在 Laravel 中使用 Docker 的常见问题
-  url: /guides/frameworks/laravel/common-questions/
----
+# 使用 Docker Compose 进行 Laravel 开发环境设置
 
 
 本指南演示如何使用 Docker 和 Docker Compose 为 Laravel 应用程序配置**开发**环境。它在 PHP-FPM 的生产镜像**之上**构建，然后添加了面向开发人员的功能——例如 Xdebug——以简化调试。通过基于已知的生产镜像构建开发容器，您可以保持两个环境紧密一致。

@@ -1,27 +1,4 @@
----
-title: docker model rm
-url: /reference/cli/docker/model/rm/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model rm
-    url: /reference/cli/docker/model/rm/
-next:
-  title: docker model restart-runner
-  url: /reference/cli/docker/model/restart-runner/
-prev:
-  title: docker model run
-  url: /reference/cli/docker/model/run/
----
+# docker model rm
 
 **Description:** Remove local models downloaded from Docker Hub
 

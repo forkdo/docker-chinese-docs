@@ -1,23 +1,4 @@
----
-title: 同步文件共享
-url: /desktop/features/synchronized-file-sharing/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 同步文件共享
-    url: /desktop/features/synchronized-file-sharing/
-next:
-  title: 在 Docker Desktop 中使用 USB/IP
-  url: /desktop/features/usbip/
-prev:
-  title: containerd 镜像存储
-  url: /desktop/features/containerd/
----
+# 同步文件共享
 
 
 

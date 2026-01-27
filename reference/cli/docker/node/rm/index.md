@@ -1,27 +1,4 @@
----
-title: docker node rm
-url: /reference/cli/docker/node/rm/
-parent:
-  title: docker node
-  url: /reference/cli/docker/node/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker node
-    url: /reference/cli/docker/node/
-  - title: docker node rm
-    url: /reference/cli/docker/node/rm/
-next:
-  title: docker node ps
-  url: /reference/cli/docker/node/ps/
-prev:
-  title: docker node update
-  url: /reference/cli/docker/node/update/
----
+# docker node rm
 
 **Description:** Remove one or more nodes from the swarm
 

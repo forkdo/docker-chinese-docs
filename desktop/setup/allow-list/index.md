@@ -1,20 +1,4 @@
----
-title: Docker Desktop 允许列表
-url: /desktop/setup/allow-list/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Docker Desktop 允许列表
-    url: /desktop/setup/allow-list/
-next:
-  title: 登录 Docker Desktop
-  url: /desktop/setup/sign-in/
----
+# Docker Desktop 允许列表
 
 
 

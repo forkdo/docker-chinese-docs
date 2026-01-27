@@ -1,27 +1,4 @@
----
-title: docker buildx create
-url: /reference/cli/docker/buildx/create/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx create
-    url: /reference/cli/docker/buildx/create/
-next:
-  title: docker buildx build
-  url: /reference/cli/docker/buildx/build/
-prev:
-  title: docker buildx du
-  url: /reference/cli/docker/buildx/du/
----
+# docker buildx create
 
 **Description:** Create a new builder instance
 

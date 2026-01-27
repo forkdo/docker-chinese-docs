@@ -1,27 +1,4 @@
----
-title: docker plugin rm
-url: /reference/cli/docker/plugin/rm/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin rm
-    url: /reference/cli/docker/plugin/rm/
-next:
-  title: docker plugin push
-  url: /reference/cli/docker/plugin/push/
-prev:
-  title: docker plugin set
-  url: /reference/cli/docker/plugin/set/
----
+# docker plugin rm
 
 **Description:** Remove one or more plugins
 

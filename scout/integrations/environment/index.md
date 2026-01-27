@@ -1,26 +1,4 @@
----
-title: 将 Docker Scout 与环境集成
-url: /scout/integrations/environment/
-parent:
-  title: 将 Docker Scout 与其他系统集成
-  url: /scout/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 将 Docker Scout 与环境集成
-    url: /scout/integrations/environment/
-children:
-  - title: 将 Docker Scout 与 Sysdig 集成
-    url: /scout/integrations/environment/sysdig/
-    description: 使用 Sysdig 将您的运行时环境与 Docker Scout 集成
-  - title: 通过 CLI 进行通用环境集成
-    url: /scout/integrations/environment/cli/
-    description: 使用 CLI 客户端将您的运行时环境与 Docker Scout 集成
----
+# 将 Docker Scout 与环境集成
 
 
 您可以将 Docker Scout 与您的运行时环境集成，并获取正在运行的工作负载的洞察信息。这为您提供了已部署工件安全状态的实时视图。

@@ -1,25 +1,4 @@
----
-title: SBOM attestations
-url: /build/metadata/attestations/sbom/
-parent:
-  title: Build attestations
-  url: /build/metadata/attestations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Build attestations
-    url: /build/metadata/attestations/
-  - title: SBOM attestations
-    url: /build/metadata/attestations/sbom/
-next:
-  title: Provenance attestations
-  url: /build/metadata/attestations/slsa-provenance/
-prev:
-  title: SLSA definitions
-  url: /build/metadata/attestations/slsa-definitions/
----
+# SBOM attestations
 
 
 SBOM attestations help ensure [software supply chain transparency](/guides/docker-scout/s3c.md) by verifying the software artifacts an image contains and the artifacts used to create the image. Metadata included in an [SBOM](/guides/docker-scout/sbom.md) for describing software artifacts may include:

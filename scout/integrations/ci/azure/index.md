@@ -1,24 +1,4 @@
----
-title: 将 Docker Scout 与 Microsoft Azure DevOps Pipelines 集成
-url: /scout/integrations/ci/azure/
-parent:
-  title: 在持续集成中使用 Docker Scout
-  url: /scout/integrations/ci/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 在持续集成中使用 Docker Scout
-    url: /scout/integrations/ci/
-  - title: 将 Docker Scout 与 Microsoft Azure DevOps Pipelines 集成
-    url: /scout/integrations/ci/azure/
-prev:
-  title: 将 Docker Scout 与 Circle CI 集成
-  url: /scout/integrations/ci/circle-ci/
----
+# 将 Docker Scout 与 Microsoft Azure DevOps Pipelines 集成
 
 
 以下示例在连接到 Azure DevOps 的仓库中运行，该仓库包含 Docker 镜像的定义和内容。当向主分支提交代码时，该流水线会被触发，构建镜像并使用 Docker Scout 创建 CVE 报告。

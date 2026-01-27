@@ -1,18 +1,4 @@
----
-title: 发布和暴露端口
-url: /get-started/docker-concepts/running-containers/publishing-ports/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 发布和暴露端口
-    url: /get-started/docker-concepts/running-containers/publishing-ports/
-prev:
-  title: 覆盖容器默认设置
-  url: /get-started/docker-concepts/running-containers/overriding-container-defaults/
----
+# 发布和暴露端口
 
 
 

@@ -1,22 +1,4 @@
----
-title: 在 Ubuntu 上安装 Docker Engine
-url: /engine/install/ubuntu/
-parent:
-  title: 安装 Docker Engine
-  url: /engine/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 安装 Docker Engine
-    url: /engine/install/
-  - title: 在 Ubuntu 上安装 Docker Engine
-    url: /engine/install/ubuntu/
-prev:
-  title: 在 Debian 上安装 Docker Engine
-  url: /engine/install/debian/
----
+# 在 Ubuntu 上安装 Docker Engine
 
 
 要在 Ubuntu 上使用 Docker Engine，请确保您[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)操作。
@@ -150,15 +132,15 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
    ```console
    $ apt list --all-versions docker-ce
 
-   docker-ce/noble 5:29.1.4-1~ubuntu.24.04~noble <arch>
-   docker-ce/noble 5:29.1.3-1~ubuntu.24.04~noble <arch>
+   docker-ce/noble 5:29.2.0-1~ubuntu.24.04~noble <arch>
+   docker-ce/noble 5:29.1.5-1~ubuntu.24.04~noble <arch>
    ...
    ```
 
    选择所需版本并安装：
 
    ```console
-   $ VERSION_STRING=5:29.1.4-1~ubuntu.24.04~noble
+   $ VERSION_STRING=5:29.2.0-1~ubuntu.24.04~noble
    $ sudo apt install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 

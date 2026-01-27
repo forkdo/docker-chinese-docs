@@ -1,27 +1,4 @@
----
-title: docker compose top
-url: /reference/cli/docker/compose/top/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose top
-    url: /reference/cli/docker/compose/top/
-next:
-  title: docker compose stop
-  url: /reference/cli/docker/compose/stop/
-prev:
-  title: docker compose unpause
-  url: /reference/cli/docker/compose/unpause/
----
+# docker compose top
 
 **Description:** Display the running processes
 

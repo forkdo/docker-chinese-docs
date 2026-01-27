@@ -1,22 +1,4 @@
----
-title: 即时配置 (JIT)
-url: /enterprise/security/provisioning/just-in-time/
-parent:
-  title: 配置用户
-  url: /enterprise/security/provisioning/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 配置用户
-    url: /enterprise/security/provisioning/
-  - title: 即时配置 (JIT)
-    url: /enterprise/security/provisioning/just-in-time/
-prev:
-  title: 组映射
-  url: /enterprise/security/provisioning/group-mapping/
----
+# 即时配置 (JIT)
 
 
 

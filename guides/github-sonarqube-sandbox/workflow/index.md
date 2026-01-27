@@ -1,20 +1,4 @@
----
-title: 构建代码质量检查工作流
-url: /guides/github-sonarqube-sandbox/workflow/
-parent:
-  title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
-  url: /guides/github-sonarqube-sandbox/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
-    url: /guides/github-sonarqube-sandbox/
-  - title: 构建代码质量检查工作流
-    url: /guides/github-sonarqube-sandbox/workflow/
-prev:
-  title: 自定义代码质量检查工作流
-  url: /guides/github-sonarqube-sandbox/customize/
----
+# 构建代码质量检查工作流
 
 
 在本节中，您将逐步构建一个完整的代码质量自动化工作流。您将从创建一个包含 GitHub 和 SonarQube MCP 服务器的 E2B 沙箱开始，然后逐步添加功能，直到拥有一个可投入生产的、能够分析代码质量并创建拉取请求的工作流。

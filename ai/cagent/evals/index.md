@@ -1,20 +1,4 @@
----
-title: 评估 (Evals)
-url: /ai/cagent/evals/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 评估 (Evals)
-    url: /ai/cagent/evals/
-next:
-  title: RAG
-  url: /ai/cagent/rag/
----
+# 评估 (Evals)
 
 
 评估 (evals) 帮助您跟踪代理行为随时间的变化。

@@ -1,23 +1,7 @@
----
-title: Spring Boot 示例
-url: /reference/samples/spring/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: Spring Boot 示例
-    url: /reference/samples/spring/
-next:
-  title: Spark 示例
-  url: /reference/samples/spark/
-prev:
-  title: Traefik 示例
-  url: /reference/samples/traefik/
----
+# Spring Boot 示例
 
-
-
+| Name | Description |
+|------|-------------|
+| [React / Spring / MySQL](https://github.com/docker/awesome-compose/tree/master/react-java-mysql) | A sample React application with a Spring backend and a MySQL database. |
+| [Spring / PostgreSQL](https://github.com/docker/awesome-compose/tree/master/spring-postgres) | A sample Java application with Spring framework and a Postgres database. |
+| [atsea-sample-shop-app](https://github.com/dockersamples/atsea-sample-shop-app) | A sample app that uses a Java Spring Boot backend connected to a database to display a fictitious art shop with a React front-end. |

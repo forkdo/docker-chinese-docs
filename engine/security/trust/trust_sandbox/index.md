@@ -1,27 +1,4 @@
----
-title: 在内容信任沙盒中进行操作
-url: /engine/security/trust/trust_sandbox/
-parent:
-  title: Docker 中的内容信任
-  url: /engine/security/trust/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: Docker 中的内容信任
-    url: /engine/security/trust/
-  - title: 在内容信任沙盒中进行操作
-    url: /engine/security/trust/trust_sandbox/
-next:
-  title: 内容信任的委托
-  url: /engine/security/trust/trust_delegation/
-prev:
-  title: 管理内容信任的密钥
-  url: /engine/security/trust/trust_key_mng/
----
+# 在内容信任沙盒中进行操作
 
 
 本文介绍如何设置和使用用于试验信任功能的沙盒。该沙盒允许您在本地配置和尝试信任操作，而不会影响您的生产镜像。

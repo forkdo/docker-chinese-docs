@@ -1,27 +1,4 @@
----
-title: GitHub Actions build summary
-url: /build/ci/github-actions/build-summary/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: GitHub Actions build summary
-    url: /build/ci/github-actions/build-summary/
-next:
-  title: Using secrets with GitHub Actions
-  url: /build/ci/github-actions/secrets/
-prev:
-  title: Configuring your GitHub Actions builder
-  url: /build/ci/github-actions/configure-builder/
----
+# GitHub Actions build summary
 
 
 Docker's GitHub Actions for building and pushing images generate a job summary

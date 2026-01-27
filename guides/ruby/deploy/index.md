@@ -1,20 +1,4 @@
----
-title: 测试您的 Ruby on Rails 部署
-url: /guides/ruby/deploy/
-parent:
-  title: Ruby on Rails 语言特定指南
-  url: /guides/ruby/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Ruby on Rails 语言特定指南
-    url: /guides/ruby/
-  - title: 测试您的 Ruby on Rails 部署
-    url: /guides/ruby/deploy/
-next:
-  title: 使用容器进行 Ruby on Rails 开发
-  url: /guides/ruby/develop/
----
+# 测试您的 Ruby on Rails 部署
 
 
 ## 前提条件

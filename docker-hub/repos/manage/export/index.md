@@ -1,22 +1,4 @@
----
-title: 将组织仓库导出为 CSV
-url: /docker-hub/repos/manage/export/
-parent:
-  title: 仓库
-  url: /docker-hub/repos/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 将组织仓库导出为 CSV
-    url: /docker-hub/repos/manage/export/
-next:
-  title: Webhooks
-  url: /docker-hub/repos/manage/webhooks/
----
+# 将组织仓库导出为 CSV
 
 
 本指南介绍如何从 Docker Hub 组织中导出所有仓库的完整列表，包括私有仓库。您将使用组织访问令牌 (OAT) 对 Docker Hub API 进行身份验证，并将仓库详细信息导出到 CSV 文件，以便用于报告或分析。

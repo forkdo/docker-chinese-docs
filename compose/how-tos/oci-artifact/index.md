@@ -1,23 +1,4 @@
----
-title: 将 Docker Compose 应用程序打包为 OCI 工件进行部署
-url: /compose/how-tos/oci-artifact/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 将 Docker Compose 应用程序打包为 OCI 工件进行部署
-    url: /compose/how-tos/oci-artifact/
-next:
-  title: 在生产环境中使用 Compose
-  url: /compose/how-tos/production/
-prev:
-  title: 使用提供者服务
-  url: /compose/how-tos/provider-services/
----
+# 将 Docker Compose 应用程序打包为 OCI 工件进行部署
 
 
 

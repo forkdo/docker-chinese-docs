@@ -1,22 +1,4 @@
----
-title: 卸载 Docker Compose
-url: /compose/install/uninstall/
-parent:
-  title: Docker Compose 安装概述
-  url: /compose/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Docker Compose 安装概述
-    url: /compose/install/
-  - title: 卸载 Docker Compose
-    url: /compose/install/uninstall/
-next:
-  title: 安装独立的 Docker Compose（旧版）
-  url: /compose/install/standalone/
----
+# 卸载 Docker Compose
 
 
 卸载 Docker Compose 的方式取决于其最初的安装方式。本指南涵盖以下卸载说明：

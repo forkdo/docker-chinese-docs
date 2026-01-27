@@ -1,27 +1,4 @@
----
-title: docker compose rm
-url: /reference/cli/docker/compose/rm/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose rm
-    url: /reference/cli/docker/compose/rm/
-next:
-  title: docker compose restart
-  url: /reference/cli/docker/compose/restart/
-prev:
-  title: docker compose run
-  url: /reference/cli/docker/compose/run/
----
+# docker compose rm
 
 **Description:** Removes stopped service containers
 

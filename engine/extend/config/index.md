@@ -1,25 +1,4 @@
----
-title: Plugin Config Version 1 of Plugin V2
-url: /engine/extend/config/
-parent:
-  title: Docker Engine managed plugin system
-  url: /engine/extend/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine managed plugin system
-    url: /engine/extend/
-  - title: Plugin Config Version 1 of Plugin V2
-    url: /engine/extend/config/
-next:
-  title: Docker volume plugins
-  url: /engine/extend/plugins_volume/
-prev:
-  title: Use Docker Engine plugins
-  url: /engine/extend/legacy_plugins/
----
+# Plugin Config Version 1 of Plugin V2
 
 
 This document outlines the format of the V0 plugin configuration.

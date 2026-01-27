@@ -1,18 +1,4 @@
----
-title: 什么是容器？
-url: /get-started/docker-concepts/the-basics/what-is-a-container/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 什么是容器？
-    url: /get-started/docker-concepts/the-basics/what-is-a-container/
-prev:
-  title: 什么是镜像？
-  url: /get-started/docker-concepts/the-basics/what-is-an-image/
----
+# 什么是容器？
 
 
 

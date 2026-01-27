@@ -1,23 +1,4 @@
----
-title: NoEmptyContinuation
-url: /reference/build-checks/no-empty-continuation/
-parent:
-  title: Build checks
-  url: /reference/build-checks/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-  - title: NoEmptyContinuation
-    url: /reference/build-checks/no-empty-continuation/
-next:
-  title: MultipleInstructionsDisallowed
-  url: /reference/build-checks/multiple-instructions-disallowed/
-prev:
-  title: RedundantTargetPlatform
-  url: /reference/build-checks/redundant-target-platform/
----
+# NoEmptyContinuation
 
 
 ## Output

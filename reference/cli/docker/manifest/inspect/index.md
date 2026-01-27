@@ -1,27 +1,4 @@
----
-title: docker manifest inspect
-url: /reference/cli/docker/manifest/inspect/
-parent:
-  title: docker manifest
-  url: /reference/cli/docker/manifest/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker manifest
-    url: /reference/cli/docker/manifest/
-  - title: docker manifest inspect
-    url: /reference/cli/docker/manifest/inspect/
-next:
-  title: docker manifest create
-  url: /reference/cli/docker/manifest/create/
-prev:
-  title: docker manifest push
-  url: /reference/cli/docker/manifest/push/
----
+# docker manifest inspect
 
 **Description:** Display an image manifest, or manifest list
 

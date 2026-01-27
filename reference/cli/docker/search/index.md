@@ -1,25 +1,4 @@
----
-title: docker search
-url: /reference/cli/docker/search/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker search
-    url: /reference/cli/docker/search/
-next:
-  title: docker run
-  url: 
-prev:
-  title: docker version
-  url: /reference/cli/docker/version/
----
+# docker search
 
 **Description:** Search Docker Hub for images
 

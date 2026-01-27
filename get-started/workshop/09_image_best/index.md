@@ -1,23 +1,4 @@
----
-title: 镜像构建最佳实践
-url: /get-started/workshop/09_image_best/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 镜像构建最佳实践
-    url: /get-started/workshop/09_image_best/
-next:
-  title: 使用 Docker Compose
-  url: /get-started/workshop/08_using_compose/
-prev:
-  title: Docker 工作坊之后该做什么
-  url: /get-started/workshop/10_what_next/
----
+# 镜像构建最佳实践
 
 
 ## 镜像分层

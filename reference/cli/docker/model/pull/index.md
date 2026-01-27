@@ -1,27 +1,4 @@
----
-title: docker model pull
-url: /reference/cli/docker/model/pull/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model pull
-    url: /reference/cli/docker/model/pull/
-next:
-  title: docker model package
-  url: /reference/cli/docker/model/package/
-prev:
-  title: docker model purge
-  url: /reference/cli/docker/model/purge/
----
+# docker model pull
 
 **Description:** Pull a model from Docker Hub or HuggingFace to your local environment
 

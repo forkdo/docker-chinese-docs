@@ -6,11 +6,11 @@
 
 
   <title>
-    理解镜像层 | Docker Docs
+    了解镜像层 | Docker Docs
   </title>
 
 
-<meta name="description" content="本概念页将向您介绍容器镜像的层。" />
+<meta name="description" content="本概念页面将向您介绍容器镜像的层。" />
 <meta
   name="keywords"
   content="concepts, build, images, container, docker, desktop"
@@ -18,16 +18,19 @@
 <link rel="canonical" href="/get-started/docker-concepts/building-images/understanding-image-layers/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
-<meta name="twitter:title" itemprop="title name" content="理解镜像层" />
+<meta name="twitter:title" itemprop="title name" content="了解镜像层" />
 <meta
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="本概念页将向您介绍容器镜像的层。"
+  content="本概念页面将向您介绍容器镜像的层。"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -38,13 +41,13 @@
   content="/images/thumbnail.webp"
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
-<meta property="og:title" content="理解镜像层" />
-<meta property="og:description" content="本概念页将向您介绍容器镜像的层。" />
+<meta property="og:title" content="了解镜像层" />
+<meta property="og:description" content="本概念页面将向您介绍容器镜像的层。" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2024-08-21 13:57:13 &#43;0200 &#43;0200"
+  content="2026-01-21 04:29:50 &#43;0530 &#43;0530"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2024-08-21 13:57:13 &#43;0200 &#43;0200"
+  content="2026-01-21 04:29:50 &#43;0530 &#43;0530"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2024-08-21T13:57:13+02:00","description":"本概念页将向您介绍容器镜像的层。","headline":"理解镜像层","isPartOf":{"@id":"/get-started/docker-concepts/building-images/","@type":"WebPage","name":"构建镜像"},"keywords":"concepts, build, images, container, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/building-images/understanding-image-layers/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/","name":"构建镜像"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/understanding-image-layers/","name":"理解镜像层"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-21T04:29:50+05:30","description":"本概念页面将向您介绍容器镜像的层。","headline":"了解镜像层","isPartOf":{"@id":"/get-started/docker-concepts/building-images/","@type":"WebPage","name":"构建镜像"},"keywords":"concepts, build, images, container, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/building-images/understanding-image-layers/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/","name":"构建镜像"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/understanding-image-layers/","name":"了解镜像层"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/get-started/docker-concepts/building-images/understanding-image-layers/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -617,7 +626,7 @@ if (resultsLength > 5) {
                 action: 'AskGordon',
                 ...(this.includePageContext && {
                   page_url: window.location.href,
-                  page_title: &#34;理解镜像层&#34;
+                  page_title: &#34;了解镜像层&#34;
                 })
               }
             }
@@ -1646,10 +1655,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/get-started/docker-concepts/building-images/understanding-image-layers/"
-        title="理解镜像层"
+        title="了解镜像层"
       >
         
-  理解镜像层
+  了解镜像层
 
       </a>
     </li>
@@ -1838,10 +1847,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/get-started/docker-concepts/running-containers/multi-container-applications/"
-        title="多容器应用"
+        title="多容器应用程序"
       >
         
-  多容器应用
+  多容器应用程序
 
       </a>
     </li>
@@ -2120,12 +2129,12 @@ if (resultsLength > 5) {
   <span
     data-pagefind-meta="breadcrumbs:首页 / 开始使用 / Docker 概念 / 构建镜像"
     class="truncate"
-    >理解镜像层</span
+    >了解镜像层</span
   >
 </nav>
 
     <div class="flex items-start justify-between">
-      <h1 data-pagefind-weight="10">理解镜像层</h1>
+      <h1 data-pagefind-weight="10">了解镜像层</h1>
       <div class="md-dropdown ml-auto hidden lg:block">
         <div class="ml-3 relative inline-block" x-data="{ open: false }" @click.outside="open = false">
   <div class="flex shadow rounded-sm overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -2278,14 +2287,14 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%b1%82%e7%9a%84%e5%a0%86%e5%8f%a0"
-            >层的堆叠</a
+          <a class="link lg:no-underline" href="#%e5%a0%86%e5%8f%a0%e5%b1%82"
+            >堆叠层</a
           >
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e8%af%95%e8%af%95"
-            >动手试试</a
+          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e5%ae%9e%e8%b7%b5"
+            >动手实践</a
           >
         </li>
         
@@ -2307,8 +2316,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4"
-            >后续步骤</a
+          <a class="link lg:no-underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5"
+            >下一步</a
           >
         </li>
   </ul>
@@ -2327,7 +2336,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>正如您在 <a class="link" href="/get-started/docker-concepts/the-basics/what-is-an-image/">什么是镜像？</a> 中所学到的，容器镜像由层组成。并且这些层一旦创建，就是不可变的。但这究竟意味着什么？这些层又是如何被用来创建容器可用的文件系统的呢？</p>
+<p>正如您在<a class="link" href="/get-started/docker-concepts/the-basics/what-is-an-image/">什么是镜像？</a>中所学到的，容器镜像由多个层组成。而每一层一旦创建，就是不可变的。但这究竟意味着什么？这些层又是如何被用来创建容器可以使用的文件系统的呢？</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="镜像层">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%95%9c%e5%83%8f%e5%b1%82">
@@ -2335,15 +2344,15 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>镜像中的每一层都包含一组文件系统变更——添加、删除或修改。让我们来看一个理论上的镜像：</p>
+<p>镜像中的每一层都包含一组文件系统变更——添加、删除或修改。让我们来看一个理论上的镜像示例：</p>
 <ol>
-<li>第一层添加了基本命令和一个包管理器，例如 <code>apt</code>。</li>
-<li>第二层安装了 Python 运行时和用于依赖管理的 <code>pip</code>。</li>
-<li>第三层复制了应用程序特定的 <code>requirements.txt</code> 文件。</li>
-<li>第四层安装了该应用程序的特定依赖项。</li>
-<li>第五层复制了应用程序的实际源代码。</li>
+<li>第一层添加基本命令和包管理器，例如 apt。</li>
+<li>第二层安装 Python 运行时和用于依赖管理的 pip。</li>
+<li>第三层复制应用程序特定的 requirements.txt 文件。</li>
+<li>第四层安装该应用程序特定的依赖项。</li>
+<li>第五层复制应用程序的实际源代码。</li>
 </ol>
-<p>这个例子可能看起来像这样：</p>
+<p>这个示例可能如下所示：</p>
 
   
   
@@ -2364,7 +2373,7 @@ if (resultsLength > 5) {
   <img
     loading="lazy"
     src="/get-started/docker-concepts/building-images/images/container_image_layers.webp"
-    alt="展示镜像层概念的流程图截图"
+    alt="显示镜像层概念的流程图截图"
     
     
     class="mx-auto
@@ -2386,12 +2395,12 @@ if (resultsLength > 5) {
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
         src="/get-started/docker-concepts/building-images/images/container_image_layers.webp"
-        alt="展示镜像层概念的流程图截图"
+        alt="显示镜像层概念的流程图截图"
       />
     </div>
   </template>
 </figure>
-<p>这样做的好处是它允许层在镜像之间被重用。例如，假设您想创建另一个 Python 应用程序。由于分层机制，您可以利用相同的 Python 基础镜像。这将使构建更快，并减少分发镜像所需的存储量和带宽量。镜像分层可能类似于下图：</p>
+<p>这种方式非常有益，因为它允许在不同镜像之间重复使用层。例如，假设您想创建另一个 Python 应用程序。由于分层机制，您可以复用相同的 Python 基础层。这将使构建速度更快，并减少分发镜像所需的存储空间和带宽。镜像分层可能如下所示：</p>
 
   
   
@@ -2412,7 +2421,7 @@ if (resultsLength > 5) {
   <img
     loading="lazy"
     src="/get-started/docker-concepts/building-images/images/container_image_layer_reuse.webp"
-    alt="展示镜像分层好处的流程图截图"
+    alt="显示镜像分层优势的流程图截图"
     
     
     class="mx-auto
@@ -2434,34 +2443,34 @@ if (resultsLength > 5) {
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
         src="/get-started/docker-concepts/building-images/images/container_image_layer_reuse.webp"
-        alt="展示镜像分层好处的流程图截图"
+        alt="显示镜像分层优势的流程图截图"
       />
     </div>
   </template>
 </figure>
-<p>层让您可以通过重用他人的基础镜像来扩展镜像，从而只需添加您的应用程序所需的数据。</p>
+<p>层使您能够通过复用他人的基础层来扩展他们的镜像，从而只添加您的应用程序所需的数据。</p>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="层的堆叠">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%b1%82%e7%9a%84%e5%a0%86%e5%8f%a0">
-    层的堆叠
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="堆叠层">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%a0%86%e5%8f%a0%e5%b1%82">
+    堆叠层
   </a>
 </h3>
 
-<p>分层是通过内容可寻址存储和联合文件系统实现的。虽然这会涉及一些技术细节，但其工作原理如下：</p>
+<p>分层是通过内容寻址存储和联合文件系统实现的。虽然这涉及一些技术细节，但其工作原理如下：</p>
 <ol>
-<li>每一层下载后，会被解压到主机文件系统上其各自的目录中。</li>
-<li>当您从一个镜像运行容器时，会创建一个联合文件系统，其中各层相互堆叠，形成一个全新的统一视图。</li>
-<li>当容器启动时，其根目录会使用 <code>chroot</code> 设置为这个统一目录的位置。</li>
+<li>每一层下载后，会被提取到主机文件系统上的独立目录中。</li>
+<li>当您从镜像运行容器时，会创建一个联合文件系统，其中各层被堆叠在一起，形成一个新的统一视图。</li>
+<li>容器启动时，其根目录被设置为该统一目录的位置，使用 <code>chroot</code> 实现。</li>
 </ol>
-<p>创建联合文件系统时，除了镜像层之外，还会为正在运行的容器专门创建一个目录。这允许容器进行文件系统更改，同时使原始镜像层保持不变。这使您能够从同一个底层镜像运行多个容器。</p>
+<p>在创建联合文件系统时，除了镜像层之外，还会专门为正在运行的容器创建一个目录。这使得容器可以进行文件系统变更，同时保持原始镜像层不被修改。这也使得您可以从同一个底层镜像运行多个容器。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="动手试试">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8a%a8%e6%89%8b%e8%af%95%e8%af%95">
-    动手试试
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="动手实践">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8a%a8%e6%89%8b%e5%ae%9e%e8%b7%b5">
+    动手实践
   </a>
 </h2>
 
-<p>在本实践指南中，您将使用 <a class="link" href="https://docs.docker.com/reference/cli/docker/container/commit/" rel="noopener"><code>docker container commit</code></a> 命令手动创建新的镜像层。请注意，您很少会以这种方式创建镜像，因为通常您会 <a class="link" href="/get-started/docker-concepts/building-images/writing-a-dockerfile/">使用 Dockerfile</a>。但这有助于您更容易地理解其工作原理。</p>
+<p>在本实践指南中，您将使用 <a class="link" href="https://docs.docker.com/reference/cli/docker/container/commit/" rel="noopener"><code>docker container commit</code></a> 命令手动创建新的镜像层。请注意，您很少会这样创建镜像，因为通常您会<a class="link" href="/get-started/docker-concepts/building-images/writing-a-dockerfile/">使用 Dockerfile</a>。但这种方式更容易理解其工作原理。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="创建基础镜像">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%88%9b%e5%bb%ba%e5%9f%ba%e7%a1%80%e9%95%9c%e5%83%8f">
@@ -2469,13 +2478,13 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>在第一步中，您将创建自己的基础镜像，以便在后续步骤中使用。</p>
+<p>在本步骤中，您将创建自己的基础镜像，然后在后续步骤中使用它。</p>
 <ol>
 <li>
 <p><a class="link" href="https://www.docker.com/products/docker-desktop/" rel="noopener">下载并安装</a> Docker Desktop。</p>
 </li>
 <li>
-<p>在终端中，运行以下命令来启动一个新容器：</p>
+<p>在终端中运行以下命令以启动新容器：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2513,7 +2522,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>镜像下载完成且容器启动后，您应该会看到一个全新的 shell 提示符。这是在您的容器内部运行的。它看起来类似于以下内容（容器 ID 会不同）：</p>
+<p>镜像下载完成且容器启动后，您应该会看到一个新的 shell 提示符。这表示您正在容器内部运行。它看起来类似于以下内容（容器 ID 会有所不同）：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2553,7 +2562,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>在容器内部，运行以下命令来安装 Node.js：</p>
+<p>在容器内部，运行以下命令以安装 Node.js：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2591,10 +2600,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>当此命令运行时，它会在容器内下载并安装 Node。在联合文件系统的上下文中，这些文件系统变更发生在该容器独有的目录内。</p>
+<p>当此命令运行时，它会在容器内部下载并安装 Node。在联合文件系统的上下文中，这些文件系统变更发生在该容器独有的目录中。</p>
 </li>
 <li>
-<p>通过运行以下命令来验证 Node 是否已安装：</p>
+<p>通过运行以下命令验证 Node 是否已安装：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2632,10 +2641,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>然后您应该在控制台中看到 “Hello world!” 出现。</p>
+<p>然后您应该在控制台中看到“Hello world!”的输出。</p>
 </li>
 <li>
-<p>现在您已经安装了 Node，可以准备将所做的更改保存为一个新的镜像层，并可以基于该层启动新容器或构建新镜像。为此，您将使用 <a class="link" href="https://docs.docker.com/reference/cli/docker/container/commit/" rel="noopener"><code>docker container commit</code></a> 命令。在新的终端中运行以下命令：</p>
+<p>现在您已经安装了 Node，可以准备将所做的更改保存为一个新的镜像层，从中可以启动新容器或构建新镜像。为此，您将使用 <a class="link" href="https://docs.docker.com/reference/cli/docker/container/commit/" rel="noopener"><code>docker container commit</code></a> 命令。在新的终端中运行以下命令：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2675,7 +2684,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>使用 <code>docker image history</code> 命令查看您镜像的层：</p>
+<p>使用 <code>docker image history</code> 命令查看镜像的层：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2713,7 +2722,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您将看到类似于以下的输出：</p>
+<p>您将看到类似于以下内容的输出：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2726,7 +2735,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'SU1BR0UgICAgICAgICAgQ1JFQVRFRCAgICAgICAgICBDUkVBVEVEIEJZICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTSVpFICAgICAgQ09NTUVOVApkNWMxZmNhMmNkYzQgICAxMCBzZWNvbmRzIGFnbyAgIC9iaW4vYmFzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEyNk1CICAgICBBZGQgbm9kZQoyYjdjYzA4ZGNkYmIgICA1IHdlZWtzIGFnbyAgICAgIC9iaW4vc2ggLWMgIyhub3ApICBDTUQgWyIvYmluL2Jhc2giXSAgICAgICAgICAgIDBCCjxtaXNzaW5nPiAgICAgIDUgd2Vla3MgYWdvICAgICAgL2Jpbi9zaCAtYyAjKG5vcCkgQUREIGZpbGU6MDdjZGJhYmY3ODI5NDJhZjDigKYgICA2OS4yTUIKPG1pc3Npbmc&#43;ICAgICAgNSB3ZWVrcyBhZ28gICAgICAvYmluL3NoIC1jICMobm9wKSAgTEFCRUwgb3JnLm9wZW5jb250YWluZXJzLuKApiAgIDBCCjxtaXNzaW5nPiAgICAgIDUgd2Vla3MgYWdvICAgICAgL2Jpbi9zaCAtYyAjKG5vcCkgIExBQkVMIG9yZy5vcGVuY29udGFpbmVycy7igKYgICAwQgo8bWlzc2luZz4gICAgICA1IHdlZWtzIGFnbyAgICAgIC9iaW4vc2ggLWMgIyhub3ApICBBUkcgTEFVTkNIUEFEX0JVSUxEX0FSQ0ggICAgIDBCCjxtaXNzaW5nPiAgICAgIDUgd2Vla3MgYWdvICAgICAgL2Jpbi9zaCAtYyAjKG5vcCkgIEFSRyBSRUxFQVNFICAgICAgICAgICAgICAgICAgMEI=', copying: false }"
+        x-data="{ code: 'SU1BR0UgICAgICAgICAgQ1JFQVRFRCAgICAgICAgICBDUkVBVEVEIEJZICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTSVpFICAgICAgQ09NTUVOVAo5ZTI3NDczNGJiMjUgICAxMCBzZWNvbmRzIGFnbyAgIC9iaW4vYmFzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDE1N01CICAgICBBZGQgbm9kZQpjZDFkYmE2NTFiMzAgICA3IGRheXMgYWdvICAgICAgIC9iaW4vc2ggLWMgIyhub3ApICBDTUQgWyIvYmluL2Jhc2giXSAgICAgICAgICAgIDBCCjxtaXNzaW5nPiAgICAgIDcgZGF5cyBhZ28gICAgICAgL2Jpbi9zaCAtYyAjKG5vcCkgQUREIGZpbGU6NjA4OWM2YmVkZTllY2E4ZWPigKYgICAxMTBNQgo8bWlzc2luZz4gICAgICA3IGRheXMgYWdvICAgICAgIC9iaW4vc2ggLWMgIyhub3ApICBMQUJFTCBvcmcub3BlbmNvbnRhaW5lcnMu4oCmICAgMEIKPG1pc3Npbmc&#43;ICAgICAgNyBkYXlzIGFnbyAgICAgICAvYmluL3NoIC1jICMobm9wKSAgTEFCRUwgb3JnLm9wZW5jb250YWluZXJzLuKApiAgIDBCCjxtaXNzaW5nPiAgICAgIDcgZGF5cyBhZ28gICAgICAgL2Jpbi9zaCAtYyAjKG5vcCkgIEFSRyBMQVVOQ0hQQURfQlVJTERfQVJDSCAgICAgMEIKPG1pc3Npbmc&#43;ICAgICAgNyBkYXlzIGFnbyAgICAgICAvYmluL3NoIC1jICMobm9wKSAgQVJHIFJFTEVBU0UgICAgICAgICAgICAgICAgICAwQg==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -2746,22 +2755,22 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
-</span></span></span><span class="line"><span class="cl"><span class="go">d5c1fca2cdc4   10 seconds ago   /bin/bash                                       126MB     Add node
-</span></span></span><span class="line"><span class="cl"><span class="go">2b7cc08dcdbb   5 weeks ago      /bin/sh -c #(nop)  CMD [&#34;/bin/bash&#34;]            0B
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      5 weeks ago      /bin/sh -c #(nop) ADD file:07cdbabf782942af0…   69.2MB
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      5 weeks ago      /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      5 weeks ago      /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      5 weeks ago      /bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH     0B
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      5 weeks ago      /bin/sh -c #(nop)  ARG RELEASE                  0B
+</span></span></span><span class="line"><span class="cl"><span class="go">9e274734bb25   10 seconds ago   /bin/bash                                       157MB     Add node
+</span></span></span><span class="line"><span class="cl"><span class="go">cd1dba651b30   7 days ago       /bin/sh -c #(nop)  CMD [&#34;/bin/bash&#34;]            0B
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      7 days ago       /bin/sh -c #(nop) ADD file:6089c6bede9eca8ec…   110MB
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      7 days ago       /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      7 days ago       /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      7 days ago       /bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH     0B
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;missing&gt;      7 days ago       /bin/sh -c #(nop)  ARG RELEASE                  0B
 </span></span></span></code></pre></div>
       
     </div>
   </div>
 </div>
-<p>请注意顶行的 “Add node” 注释。这一层包含了您刚刚安装的 Node.js。</p>
+<p>注意第一行的“Add node”注释。这一层包含了您刚刚安装的 Node.js。</p>
 </li>
 <li>
-<p>为了证明您的镜像已安装 Node，您可以使用这个新镜像启动一个新容器：</p>
+<p>为了证明您的镜像已安装 Node，您可以使用此新镜像启动一个新容器：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2799,10 +2808,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>这样，您应该在终端中得到 “Hello again” 的输出，表明 Node 已安装并正常工作。</p>
+<p>这样，您应该在终端中看到“Hello again”的输出，表明 Node 已安装并可正常工作。</p>
 </li>
 <li>
-<p>既然您已完成基础镜像的创建，就可以删除该容器了：</p>
+<p>现在您已完成基础镜像的创建，可以删除该容器：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2850,8 +2859,8 @@ if (resultsLength > 5) {
   
   class="admonition not-prose">
   <p><strong>基础镜像定义</strong></p>
-<p>基础镜像是构建其他镜像的基础。可以使用任何镜像作为基础镜像。但是，有些镜像是专门作为构建块创建的，为应用程序提供基础或起点。</p>
-<p>在本例中，您可能不会部署这个 <code>node-base</code> 镜像，因为它实际上还没有做任何事情。但它是您可用于其他构建的基础。</p>
+<p>基础镜像是构建其他镜像的基础。您可以使用任何镜像作为基础镜像。然而，有些镜像是专门创建为构建块的，为应用程序提供基础或起点。</p>
+<p>在本示例中，您可能不会部署这个 <code>node-base</code> 镜像，因为它实际上还没有做任何事情。但它是您可以用于其他构建的基础。</p>
 
   </blockquote>
 
@@ -2862,7 +2871,7 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>现在您有了一个基础镜像，可以扩展该镜像来构建更多镜像。</p>
+<p>现在您已经有了基础镜像，可以扩展该镜像以构建其他镜像。</p>
 <ol>
 <li>
 <p>使用新创建的 node-base 镜像启动一个新容器：</p>
@@ -2905,7 +2914,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>在此容器内部，运行以下命令来创建一个 Node 程序：</p>
+<p>在此容器内部，运行以下命令以创建一个 Node 程序：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2943,7 +2952,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>要运行此 Node 程序，您可以使用以下命令并看到消息打印在屏幕上：</p>
+<p>要运行此 Node 程序，您可以使用以下命令并在屏幕上看到打印的消息：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2983,7 +2992,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>在另一个终端中，运行以下命令将此容器的更改保存为新镜像：</p>
+<p>在另一个终端中，运行以下命令以将此容器的更改保存为一个新镜像：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3021,10 +3030,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令不仅创建了一个名为 <code>sample-app</code> 的新镜像，还向镜像添加了额外的配置，以设置启动容器时的默认命令。在本例中，您将其设置为自动运行 <code>node app.js</code>。</p>
+<p>此命令不仅创建了一个名为 <code>sample-app</code> 的新镜像，还为镜像添加了额外配置，以设置在启动容器时的默认命令。在本例中，您将其设置为自动运行 <code>node app.js</code>。</p>
 </li>
 <li>
-<p>在容器外部的终端中，运行以下命令查看更新后的层：</p>
+<p>在容器外部的终端中，运行以下命令以查看更新后的层：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3062,7 +3071,9 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>然后您会看到类似于以下的输出。请注意，顶层注释是 “Add app”，下一层是 “Add node”：</p>
+</li>
+</ol>
+<p>然后，您将看到类似以下的输出。请注意，最顶层的注释显示“Add app”，而下一层显示“Add node”：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3108,9 +3119,9 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-</li>
+<ol start="5">
 <li>
-<p>最后，使用全新的镜像启动一个新容器。由于您指定了默认命令，因此可以使用以下命令：</p>
+<p>最后，使用全新的镜像启动一个新容器。由于您已指定了默认命令，因此可以使用以下命令：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3148,10 +3159,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您应该在终端中看到您的问候语出现，它来自您的 Node 程序。</p>
+<p>您应该会在终端中看到来自 Node 程序的问候语。</p>
 </li>
 <li>
-<p>既然您已完成了容器的操作，就可以使用以下命令将它们删除：</p>
+<p>现在您已经完成了容器的使用，可以使用以下命令将其删除：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3206,13 +3217,13 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/cli/docker/container/commit/"><code>docker container commit</code></a></li>
 </ul>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="后续步骤">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4">
-    后续步骤
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="下一步">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5">
+    下一步
   </a>
 </h2>
 
-<p>正如前面所暗示的，大多数镜像构建并不使用 <code>docker container commit</code>。相反，您将使用 Dockerfile，它会为您自动执行这些步骤。</p>
+<p>如前所述，大多数镜像构建不会使用 <code>docker container commit</code>。相反，您将使用 Dockerfile 来自动执行这些步骤。</p>
 
 <a class="button not-prose" href="/get-started/docker-concepts/building-images/writing-a-dockerfile/">编写 Dockerfile</a>
 
@@ -3285,14 +3296,14 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%b1%82%e7%9a%84%e5%a0%86%e5%8f%a0"
-            >层的堆叠</a
+          <a class="link lg:no-underline" href="#%e5%a0%86%e5%8f%a0%e5%b1%82"
+            >堆叠层</a
           >
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e8%af%95%e8%af%95"
-            >动手试试</a
+          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e5%ae%9e%e8%b7%b5"
+            >动手实践</a
           >
         </li>
         
@@ -3314,8 +3325,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4"
-            >后续步骤</a
+          <a class="link lg:no-underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5"
+            >下一步</a
           >
         </li>
   </ul>
@@ -3333,9 +3344,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3350,7 +3363,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3365,7 +3378,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3380,7 +3393,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3395,7 +3408,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3411,26 +3424,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

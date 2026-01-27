@@ -1,20 +1,4 @@
----
-title: Docker MCP Toolkit 入门指南
-url: /ai/mcp-catalog-and-toolkit/get-started/
-parent:
-  title: Docker MCP Catalog and Toolkit
-  url: /ai/mcp-catalog-and-toolkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-  - title: Docker MCP Toolkit 入门指南
-    url: /ai/mcp-catalog-and-toolkit/get-started/
-prev:
-  title: Docker MCP 目录
-  url: /ai/mcp-catalog-and-toolkit/catalog/
----
+# Docker MCP Toolkit 入门指南
 
 
 

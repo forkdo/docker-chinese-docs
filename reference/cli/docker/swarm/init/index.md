@@ -1,27 +1,4 @@
----
-title: docker swarm init
-url: /reference/cli/docker/swarm/init/
-parent:
-  title: docker swarm
-  url: /reference/cli/docker/swarm/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker swarm
-    url: /reference/cli/docker/swarm/
-  - title: docker swarm init
-    url: /reference/cli/docker/swarm/init/
-next:
-  title: docker swarm ca
-  url: /reference/cli/docker/swarm/ca/
-prev:
-  title: docker swarm join
-  url: /reference/cli/docker/swarm/join/
----
+# docker swarm init
 
 **Description:** Initialize a swarm
 

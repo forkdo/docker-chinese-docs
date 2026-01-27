@@ -1,33 +1,4 @@
----
-title: 强化版 Docker Desktop
-url: /enterprise/security/hardened-desktop/
-parent:
-  title: 企业级安全
-  url: /enterprise/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-children:
-  - title: Settings Management
-    url: /enterprise/security/hardened-desktop/settings-management/
-    description: 了解 Settings Management 的工作原理、适用对象及其带来的优势
-  - title: 增强容器隔离
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-    description: 增强容器隔离（ECI）通过防止恶意容器危害 Docker Desktop 或主机系统，为 Docker Desktop 提供额外的安全保护
-  - title: 注册表访问管理
-    url: /enterprise/security/hardened-desktop/registry-access-management/
-    description: 使用注册表访问管理控制对已批准容器注册表的访问，确保 Docker Desktop 安全使用
-  - title: 镜像访问管理
-    url: /enterprise/security/hardened-desktop/image-access-management/
-    description: 通过镜像访问管理控制开发者可以访问哪些 Docker Hub 镜像，以增强供应链安全
-  - title: 气隙容器
-    url: /enterprise/security/hardened-desktop/air-gapped-containers/
-    description: 使用自定义代理规则和网络限制，通过气隙容器控制容器网络访问
----
+# 强化版 Docker Desktop
 
 
 

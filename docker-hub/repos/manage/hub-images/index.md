@@ -1,41 +1,4 @@
----
-title: 镜像管理
-url: /docker-hub/repos/manage/hub-images/
-parent:
-  title: 仓库
-  url: /docker-hub/repos/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/
-children:
-  - title: Docker Hub 上的标签
-    url: /docker-hub/repos/manage/hub-images/tags/
-    description: 了解如何在 Docker Hub 上管理仓库标签。
-  - title: Docker Hub 上的不可变标签
-    url: /docker-hub/repos/manage/hub-images/immutable-tags/
-    description: 了解不可变标签以及它们如何帮助维护 Docker Hub 上的镜像版本一致性。
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/manage/
-    description: 了解如何删除镜像标签。
-  - title: Docker Hub 上的软件制品
-    url: /docker-hub/repos/manage/hub-images/oci-artifacts/
-    description: 您可以使用 Docker Hub 存储打包为 OCI 制品的软件制品。
-  - title: 将镜像推送到仓库
-    url: /docker-hub/repos/manage/hub-images/push/
-    description: 了解如何向 Docker Hub 上的仓库添加内容。
-  - title: 在仓库之间移动镜像
-    url: /docker-hub/repos/manage/hub-images/move/
-    description: 了解如何在仓库之间移动镜像。
-  - title: 批量迁移镜像
-    url: /docker-hub/repos/manage/hub-images/bulk-migrate/
-    description: 学习如何使用脚本和自动化在组织之间迁移多个 Docker 镜像和标签。
----
+# 镜像管理
 
 
 Docker Hub 提供了强大的功能来管理和组织您的仓库内容，确保您的镜像和制品可访问、版本可控且易于共享。本节涵盖关键的镜像管理任务，包括标记、推送镜像、在仓库之间传输镜像以及支持的软件制品。

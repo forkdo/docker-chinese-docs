@@ -1,25 +1,4 @@
----
-title: ACP 集成
-url: /ai/cagent/integrations/acp/
-parent:
-  title: 集成
-  url: /ai/cagent/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 集成
-    url: /ai/cagent/integrations/
-  - title: ACP 集成
-    url: /ai/cagent/integrations/acp/
-next:
-  title: A2A 模式
-  url: /ai/cagent/integrations/a2a/
-prev:
-  title: MCP 模式
-  url: /ai/cagent/integrations/mcp/
----
+# ACP 集成
 
 
 通过代理客户端协议（Agent Client Protocol，ACP）在你的编辑器中直接运行 cagent 代理。你的代理将获得编辑器文件系统上下文的访问权限，并能在你工作时读取和修改文件。编辑器负责文件操作，而 cagent 提供 AI 能力。

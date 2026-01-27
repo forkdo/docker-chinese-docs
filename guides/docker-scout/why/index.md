@@ -1,20 +1,4 @@
----
-title: 为什么选择 Docker Scout？
-url: /guides/docker-scout/why/
-parent:
-  title: 使用 Docker Scout 保障您的软件供应链安全
-  url: /guides/docker-scout/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Scout 保障您的软件供应链安全
-    url: /guides/docker-scout/
-  - title: 为什么选择 Docker Scout？
-    url: /guides/docker-scout/why/
-prev:
-  title: Docker Scout demo
-  url: /guides/docker-scout/demo/
----
+# 为什么选择 Docker Scout？
 
 
 

@@ -1,38 +1,4 @@
----
-title: 第二部分：发布
-url: /extensions/extensions-sdk/extensions/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 第二部分：发布
-    url: /extensions/extensions-sdk/extensions/
-children:
-  - title: 扩展镜像标签
-    url: /extensions/extensions-sdk/extensions/labels/
-    description: Docker 扩展标签
-  - title: 验证您的扩展
-    url: /extensions/extensions-sdk/extensions/validate/
-    description: 扩展创建过程的第三步
-  - title: 打包并发布您的扩展
-    url: /extensions/extensions-sdk/extensions/DISTRIBUTION/
-    description: Docker 扩展分发
-  - title: 分享你的扩展
-    url: /extensions/extensions-sdk/extensions/share/
-    description: 使用分享链接分享你的扩展
-  - title: 在 Marketplace 中发布
-    url: /extensions/extensions-sdk/extensions/publish/
-    description: Docker 扩展分发
-  - title: 构建多架构扩展
-    url: /extensions/extensions-sdk/extensions/multi-arch/
-    description: 创建扩展的第三步。
----
+# 第二部分：发布
 
 
 本节介绍如何让您的扩展更可用、更显眼，以便用户能够发现它并一键安装。

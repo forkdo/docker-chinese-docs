@@ -1,27 +1,4 @@
----
-title: docker compose version
-url: /reference/cli/docker/compose/version/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose version
-    url: /reference/cli/docker/compose/version/
-next:
-  title: docker compose up
-  url: /reference/cli/docker/compose/up/
-prev:
-  title: docker compose volumes
-  url: /reference/cli/docker/compose/volumes/
----
+# docker compose version
 
 **Description:** Show the Docker Compose version information
 

@@ -1,27 +1,4 @@
----
-title: Cache management with GitHub Actions
-url: /build/ci/github-actions/cache/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Cache management with GitHub Actions
-    url: /build/ci/github-actions/cache/
-next:
-  title: Configuring your GitHub Actions builder
-  url: /build/ci/github-actions/configure-builder/
-prev:
-  title: Copy image between registries with GitHub Actions
-  url: /build/ci/github-actions/copy-image-registries/
----
+# Cache management with GitHub Actions
 
 
 This page contains examples on using the cache storage backends with GitHub
@@ -217,13 +194,16 @@ Example Dockerfile in `build/package/Dockerfile`
 FROM golang:1.21.1-alpine as base-build
 
 WORKDIR /build
-RUN go env -w GOMODCACHE=/root/.cache/go-build
 
-COPY go.mod go.sum ./
-RUN --mount=type=cache,target=/root/.cache/go-build go mod download
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=bind,source=go.mod,target=go.mod \
+    --mount=type=bind,source=go.sum,target=go.sum \
+    go mod download
 
-COPY ./src ./
-RUN --mount=type=cache,target=/root/.cache/go-build go build -o /bin/app /build/src
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    --mount=type=bind,target=. \
+    go build -o /bin/app ./src
 ...
 ```
 

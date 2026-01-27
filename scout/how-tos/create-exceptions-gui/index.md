@@ -1,23 +1,4 @@
----
-title: 使用 GUI 创建例外
-url: /scout/how-tos/create-exceptions-gui/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 使用 GUI 创建例外
-    url: /scout/how-tos/create-exceptions-gui/
-next:
-  title: 使用环境变量配置 Docker Scout
-  url: /scout/how-tos/configure-cli/
-prev:
-  title: 使用 VEX 创建例外
-  url: /scout/how-tos/create-exceptions-vex/
----
+# 使用 GUI 创建例外
 
 
 Docker Scout Dashboard 和 Docker Desktop 提供了用户友好的界面，用于为容器镜像中发现的[例外](/manuals/scout/explore/exceptions.md)创建例外。例外可让您确认已接受的风险或解决镜像分析中的误报。

@@ -1,24 +1,4 @@
----
-title: docker swarm ca
-url: /reference/cli/docker/swarm/ca/
-parent:
-  title: docker swarm
-  url: /reference/cli/docker/swarm/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker swarm
-    url: /reference/cli/docker/swarm/
-  - title: docker swarm ca
-    url: /reference/cli/docker/swarm/ca/
-prev:
-  title: docker swarm init
-  url: /reference/cli/docker/swarm/init/
----
+# docker swarm ca
 
 **Description:** Display and rotate the root CA
 

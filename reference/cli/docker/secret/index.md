@@ -1,19 +1,4 @@
----
-title: docker secret
-url: /reference/cli/docker/secret/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker secret
-    url: /reference/cli/docker/secret/
----
+# docker secret
 
 **Description:** Manage Swarm secrets
 

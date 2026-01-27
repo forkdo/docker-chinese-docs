@@ -1,23 +1,4 @@
----
-title: 修复
-url: /guides/docker-scout/remediation/
-parent:
-  title: 使用 Docker Scout 保障您的软件供应链安全
-  url: /guides/docker-scout/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Scout 保障您的软件供应链安全
-    url: /guides/docker-scout/
-  - title: 修复
-    url: /guides/docker-scout/remediation/
-next:
-  title: 证明
-  url: /guides/docker-scout/attestations/
-prev:
-  title: 常见挑战与问题
-  url: /guides/docker-scout/common-questions/
----
+# 修复
 
 
 

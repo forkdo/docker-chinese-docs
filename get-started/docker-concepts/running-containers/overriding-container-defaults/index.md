@@ -1,21 +1,4 @@
----
-title: 覆盖容器默认设置
-url: /get-started/docker-concepts/running-containers/overriding-container-defaults/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 覆盖容器默认设置
-    url: /get-started/docker-concepts/running-containers/overriding-container-defaults/
-next:
-  title: 发布和暴露端口
-  url: /get-started/docker-concepts/running-containers/publishing-ports/
-prev:
-  title: 持久化容器数据
-  url: /get-started/docker-concepts/running-containers/persisting-container-data/
----
+# 覆盖容器默认设置
 
 
 

@@ -10,7 +10,7 @@
   </title>
 
 
-<meta name="description" content="了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。" />
+<meta name="description" content="了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD 流程。" />
 <meta
   name="keywords"
   content="CI/CD, GitHub, Actions, Node.js, Docker"
@@ -18,7 +18,10 @@
 <link rel="canonical" href="/guides/nodejs/configure-github-actions/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。"
+  content="了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD 流程。"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="使用 GitHub Actions 自动化构建" />
-<meta property="og:description" content="了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。" />
+<meta property="og:description" content="了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD 流程。" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-12-03 10:26:30 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-12-03 10:26:30 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-12-03T10:26:30+01:00","description":"了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。","headline":"使用 GitHub Actions 自动化构建","isPartOf":{"@id":"/guides/nodejs/","@type":"WebPage","name":"Node.js"},"keywords":"CI/CD, GitHub, Actions, Node.js, Docker","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/nodejs/configure-github-actions/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/nodejs/","name":"Node.js"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/nodejs/configure-github-actions/","name":"使用 GitHub Actions 自动化构建"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD 流程。","headline":"使用 GitHub Actions 自动化构建","isPartOf":{"@id":"/guides/nodejs/","@type":"WebPage","name":"Node.js"},"keywords":"CI/CD, GitHub, Actions, Node.js, Docker","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/nodejs/configure-github-actions/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/nodejs/","name":"Node.js"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/nodejs/configure-github-actions/","name":"使用 GitHub Actions 自动化构建"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/guides/nodejs/configure-github-actions/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1686,8 +1695,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5"
-            >下一步</a
+          <a class="link lg:no-underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4"
+            >后续步骤</a
           >
         </li>
   </ul>
@@ -1703,11 +1712,11 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>完成本指南的所有先前部分，从 <a class="link" href="/guides/nodejs/containerize/">容器化 Node.js 应用程序</a> 开始。</p>
+<p>完成本指南从<a class="link" href="/guides/nodejs/containerize/">容器化 Node.js 应用程序</a>开始的所有先前章节。</p>
 <p>你还必须拥有：</p>
 <ul>
 <li>一个 <a class="link" href="https://github.com/signup" rel="noopener">GitHub</a> 账户。</li>
-<li>一个 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker Hub</a> 账户。</li>
+<li>一个经过验证的 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker Hub</a> 账户。</li>
 </ul>
 <hr>
 
@@ -1720,7 +1729,7 @@ if (resultsLength > 5) {
 <p>在本节中，你将使用 <a class="link" href="https://docs.github.com/en/actions" rel="noopener">GitHub Actions</a> 设置一个 <strong>CI/CD 流水线</strong>，以自动执行以下操作：</p>
 <ul>
 <li>在 Docker 容器内构建你的 Node.js 应用程序。</li>
-<li>运行单元测试和集成测试，确保你的应用程序符合严格的代码质量标准。</li>
+<li>运行单元测试和集成测试，并确保你的应用程序符合可靠的代码质量标准。</li>
 <li>执行安全扫描和漏洞评估。</li>
 <li>将生产就绪的镜像推送到 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</li>
 </ul>
@@ -1732,7 +1741,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>为了使 GitHub Actions 能够构建并推送 Docker 镜像，你需要将 Docker Hub 凭据安全地存储在新的 GitHub 仓库中。</p>
+<p>为了启用 GitHub Actions 构建和推送 Docker 镜像，你需要将 Docker Hub 凭据安全地存储在新的 GitHub 仓库中。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-1将你的-github-仓库连接到-docker-hub">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%b0%86%e4%bd%a0%e7%9a%84-github-%e4%bb%93%e5%ba%93%e8%bf%9e%e6%8e%a5%e5%88%b0-docker-hub">
@@ -1742,34 +1751,34 @@ if (resultsLength > 5) {
 
 <ol>
 <li>
-<p>从 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a> 创建个人访问令牌 (PAT)。</p>
+<p>从 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a> 创建一个个人访问令牌 (PAT)。</p>
 <ol>
-<li>从你的 Docker Hub 账户中，进入 <strong>账户设置 → 安全</strong>。</li>
+<li>从你的 Docker Hub 账户，进入 <strong>账户设置 → 安全</strong>。</li>
 <li>生成一个具有 <strong>读/写</strong> 权限的新访问令牌。</li>
 <li>将其命名为类似 <code>docker-nodejs-sample</code> 的名称。</li>
-<li>复制并保存该令牌 — 在步骤 4 中会用到。</li>
+<li>复制并保存该令牌 —— 你将在步骤 4 中需要它。</li>
 </ol>
 </li>
 <li>
 <p>在 <a class="link" href="https://hub.docker.com/repositories/" rel="noopener">Docker Hub</a> 中创建一个仓库。</p>
 <ol>
-<li>从你的 Docker Hub 账户中，选择 <strong>创建仓库</strong>。</li>
-<li>对于仓库名称，使用描述性的名称 — 例如：<code>nodejs-sample</code>。</li>
-<li>创建完成后，复制并保存仓库名称 — 在步骤 4 中会用到。</li>
+<li>从你的 Docker Hub 账户，选择 <strong>创建仓库</strong>。</li>
+<li>对于仓库名称，请使用具有描述性的名称 —— 例如：<code>nodejs-sample</code>。</li>
+<li>创建完成后，复制并保存仓库名称 —— 你将在步骤 4 中需要它。</li>
 </ol>
 </li>
 <li>
 <p>为你的 Node.js 项目创建一个新的 <a class="link" href="https://github.com/new" rel="noopener">GitHub 仓库</a>。</p>
 </li>
 <li>
-<p>将 Docker Hub 凭据添加为 GitHub 仓库密钥。</p>
+<p>将 Docker Hub 凭据添加为 GitHub 仓库机密。</p>
 <p>在你新创建的 GitHub 仓库中：</p>
 <ol>
 <li>
-<p>从 <strong>设置</strong> 中，进入 <strong>密钥和变量 → Actions → 新建仓库密钥</strong>。</p>
+<p>从 <strong>设置</strong>，进入 <strong>机密和变量 → 操作 → 新建仓库机密</strong>。</p>
 </li>
 <li>
-<p>添加以下密钥：</p>
+<p>添加以下机密：</p>
 </li>
 </ol>
 <div class="overflow-x-auto">
@@ -1805,11 +1814,11 @@ if (resultsLength > 5) {
     </tbody>
   </table>
 </div>
-<p>这些密钥允许 GitHub Actions 在自动化工作流期间安全地认证 Docker Hub。</p>
+<p>这些机密让 GitHub Actions 在自动化工作流期间能够安全地与 Docker Hub 进行身份验证。</p>
 </li>
 <li>
 <p>将你的本地项目连接到 GitHub。</p>
-<p>通过从项目根目录运行以下命令，将你的本地项目 <code>docker-nodejs-sample</code> 链接到刚刚创建的 GitHub 仓库：</p>
+<p>通过从项目根目录运行以下命令，将你的本地项目 <code>docker-nodejs-sample</code> 链接到你刚创建的 GitHub 仓库：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1851,25 +1860,15 @@ if (resultsLength > 5) {
 
   
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<blockquote
+  
+  class="admonition not-prose">
+  <p>[!重要]
+将 <code>{your-username}</code> 和 <code>{your-repository}</code> 替换为你的实际 GitHub 用户名和仓库名称。</p>
 
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>将 <code>{your-username}</code> 和 <code>{your-repository}</code> 替换为你的实际 GitHub 用户名和仓库名称。</p>
-    </div>
   </blockquote>
 
-<p>要确认你的本地项目是否正确连接到远程 GitHub 仓库，请运行：</p>
+<p>要确认你的本地项目已正确连接到远程 GitHub 仓库，请运行：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1949,11 +1948,11 @@ if (resultsLength > 5) {
 <p>这确认了你的本地仓库已正确链接，并准备好将源代码推送到 GitHub。</p>
 </li>
 <li>
-<p>将你的源代码推送到 GitHub。</p>
-<p>按照以下步骤将你的本地项目提交并推送到 GitHub 仓库：</p>
+<p>将源代码推送到 GitHub。</p>
+<p>按照以下步骤将本地项目提交并推送到你的 GitHub 仓库：</p>
 <ol>
 <li>
-<p>将所有文件暂存以进行提交。</p>
+<p>暂存所有文件以进行提交。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1991,7 +1990,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令暂存所有更改 — 包括新增、修改和删除的文件 — 为提交做准备。</p>
+<p>此命令暂存所有更改 —— 包括新建、修改和删除的文件 —— 为提交做准备。</p>
 </li>
 <li>
 <p>提交你的更改。</p>
@@ -2032,7 +2031,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令创建一个提交，快照暂存的更改，并附带描述性消息。</p>
+<p>此命令创建一个提交，快照暂存的更改并附带描述性消息。</p>
 </li>
 <li>
 <p>将代码推送到 <code>main</code> 分支。</p>
@@ -2073,38 +2072,28 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令将你的本地提交推送到远程 GitHub 仓库的 <code>main</code> 分支，并设置上游分支。</p>
+<p>此命令将本地提交推送到远程 GitHub 仓库的 <code>main</code> 分支，并设置上游分支。</p>
 </li>
 </ol>
 </li>
 </ol>
-<p>完成后，你的代码将在 GitHub 上可用，并且你配置的任何 GitHub Actions 工作流将自动运行。</p>
+<p>完成后，你的代码将在 GitHub 上可用，并且你配置的任何 GitHub Actions 工作流都将自动运行。</p>
 
 
   
 
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>了解有关本步骤中使用的 Git 命令的更多信息：</p>
+<blockquote
+  
+  class="admonition not-prose">
+  <p>[!注意]<br>
+了解本步骤中使用的 Git 命令的更多信息：</p>
 <ul>
-<li><a class="link" href="https://git-scm.com/docs/git-add" rel="noopener">Git add</a> – 暂存更改（新增、修改、删除）以进行提交</li>
+<li><a class="link" href="https://git-scm.com/docs/git-add" rel="noopener">Git add</a> – 暂存更改（新建、修改、删除）以进行提交</li>
 <li><a class="link" href="https://git-scm.com/docs/git-commit" rel="noopener">Git commit</a> – 保存暂存更改的快照</li>
-<li><a class="link" href="https://git-scm.com/docs/git-push" rel="noopener">Git push</a> – 将本地提交上传到 GitHub 仓库</li>
+<li><a class="link" href="https://git-scm.com/docs/git-push" rel="noopener">Git push</a> – 将本地提交上传到你的 GitHub 仓库</li>
 <li><a class="link" href="https://git-scm.com/docs/git-remote" rel="noopener">Git remote</a> – 查看和管理远程仓库 URL</li>
 </ul>
-    </div>
+
   </blockquote>
 
 <hr>
@@ -2115,14 +2104,14 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>现在你将创建一个 GitHub Actions 工作流，该工作流构建你的 Docker 镜像，运行测试，并将镜像推送到 Docker Hub。</p>
+<p>现在，你将创建一个 GitHub Actions 工作流，用于构建 Docker 镜像、运行测试并将镜像推送到 Docker Hub。</p>
 <ol>
 <li>
-<p>从 GitHub 上的仓库中，选择顶部菜单中的 <strong>Actions</strong> 选项卡。</p>
+<p>在 GitHub 上的仓库中，选择顶部菜单中的 <strong>Actions</strong> 选项卡。</p>
 </li>
 <li>
-<p>当提示时，选择 <strong>Set up a workflow yourself</strong>。</p>
-<p>这将打开一个内联编辑器以创建新的工作流文件。默认情况下，它将保存到：
+<p>出现提示时，选择 <strong>Set up a workflow yourself</strong>。</p>
+<p>这将打开一个内联编辑器来创建新的工作流文件。默认情况下，它将保存到：
 <code>.github/workflows/main.yml</code></p>
 </li>
 <li>
@@ -2141,7 +2130,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'bmFtZTogQ0kvQ0Qg4oCTIE5vZGUuanMgQXBwbGljYXRpb24gd2l0aCBEb2NrZXIKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczogW21haW5dCiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgdHlwZXM6IFtvcGVuZWQsIHN5bmNocm9uaXplLCByZW9wZW5lZF0KCmpvYnM6CiAgdGVzdDoKICAgIG5hbWU6IFJ1biBOb2RlLmpzIFRlc3RzCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CgogICAgc2VydmljZXM6CiAgICAgIHBvc3RncmVzOgogICAgICAgIGltYWdlOiBwb3N0Z3JlczoxOC1hbHBpbmUKICAgICAgICBlbnY6CiAgICAgICAgICBQT1NUR1JFU19EQjogdG9kb2FwcF90ZXN0CiAgICAgICAgICBQT1NUR1JFU19VU0VSOiBwb3N0Z3JlcwogICAgICAgICAgUE9TVEdSRVNfUEFTU1dPUkQ6IHBvc3RncmVzCiAgICAgICAgb3B0aW9uczogPi0KICAgICAgICAgIC0taGVhbHRoLWNtZCBwZ19pc3JlYWR5CiAgICAgICAgICAtLWhlYWx0aC1pbnRlcnZhbCAxMHMKICAgICAgICAgIC0taGVhbHRoLXRpbWVvdXQgNXMKICAgICAgICAgIC0taGVhbHRoLXJldHJpZXMgNQogICAgICAgIHBvcnRzOgogICAgICAgICAgLSA1NDMyOjU0MzIKCiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVja291dCBjb2RlCiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAoKICAgICAgLSBuYW1lOiBTZXQgdXAgRG9ja2VyIEJ1aWxkeAogICAgICAgIHVzZXM6IGRvY2tlci9zZXR1cC1idWlsZHgtYWN0aW9uQHYzCgogICAgICAtIG5hbWU6IENhY2hlIG5wbSBkZXBlbmRlbmNpZXMKICAgICAgICB1c2VzOiBhY3Rpb25zL2NhY2hlQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIHBhdGg6IH4vLm5wbQogICAgICAgICAga2V5OiAke3sgcnVubmVyLm9zIH19LW5wbS0ke3sgaGFzaEZpbGVzKCcqKi9wYWNrYWdlLWxvY2suanNvbicpIH19CiAgICAgICAgICByZXN0b3JlLWtleXM6ICR7eyBydW5uZXIub3MgfX0tbnBtLQoKICAgICAgLSBuYW1lOiBCdWlsZCB0ZXN0IGltYWdlCiAgICAgICAgdXNlczogZG9ja2VyL2J1aWxkLXB1c2gtYWN0aW9uQHY2CiAgICAgICAgd2l0aDoKICAgICAgICAgIGNvbnRleHQ6IC4KICAgICAgICAgIHRhcmdldDogdGVzdAogICAgICAgICAgdGFnczogbm9kZWpzLWFwcC10ZXN0OmxhdGVzdAogICAgICAgICAgcGxhdGZvcm1zOiBsaW51eC9hbWQ2NAogICAgICAgICAgbG9hZDogdHJ1ZQogICAgICAgICAgY2FjaGUtZnJvbTogdHlwZT1sb2NhbCxzcmM9L3RtcC8uYnVpbGR4LWNhY2hlCiAgICAgICAgICBjYWNoZS10bzogdHlwZT1sb2NhbCxkZXN0PS90bXAvLmJ1aWxkeC1jYWNoZSxtb2RlPW1heAoKICAgICAgLSBuYW1lOiBSdW4gdGVzdHMgaW5zaWRlIGNvbnRhaW5lcgogICAgICAgIHJ1bjogfAogICAgICAgICAgZG9ja2VyIHJ1biAtLXJtIFwKICAgICAgICAgICAgLS1uZXR3b3JrIGhvc3QgXAogICAgICAgICAgICAtZSBOT0RFX0VOVj10ZXN0IFwKICAgICAgICAgICAgLWUgUE9TVEdSRVNfSE9TVD1sb2NhbGhvc3QgXAogICAgICAgICAgICAtZSBQT1NUR1JFU19QT1JUPTU0MzIgXAogICAgICAgICAgICAtZSBQT1NUR1JFU19EQj10b2RvYXBwX3Rlc3QgXAogICAgICAgICAgICAtZSBQT1NUR1JFU19VU0VSPXBvc3RncmVzIFwKICAgICAgICAgICAgLWUgUE9TVEdSRVNfUEFTU1dPUkQ9cG9zdGdyZXMgXAogICAgICAgICAgICBub2RlanMtYXBwLXRlc3Q6bGF0ZXN0CiAgICAgICAgZW52OgogICAgICAgICAgQ0k6IHRydWUKICAgICAgICB0aW1lb3V0LW1pbnV0ZXM6IDEwCgogIGJ1aWxkLWFuZC1wdXNoOgogICAgbmFtZTogQnVpbGQgYW5kIFB1c2ggRG9ja2VyIEltYWdlCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBuZWVkczogdGVzdAoKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IENoZWNrb3V0IGNvZGUKICAgICAgICB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CgogICAgICAtIG5hbWU6IFNldCB1cCBEb2NrZXIgQnVpbGR4CiAgICAgICAgdXNlczogZG9ja2VyL3NldHVwLWJ1aWxkeC1hY3Rpb25AdjMKCiAgICAgIC0gbmFtZTogQ2FjaGUgRG9ja2VyIGxheWVycwogICAgICAgIHVzZXM6IGFjdGlvbnMvY2FjaGVAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgcGF0aDogL3RtcC8uYnVpbGR4LWNhY2hlCiAgICAgICAgICBrZXk6ICR7eyBydW5uZXIub3MgfX0tYnVpbGR4LSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICByZXN0b3JlLWtleXM6ICR7eyBydW5uZXIub3MgfX0tYnVpbGR4LQoKICAgICAgLSBuYW1lOiBFeHRyYWN0IG1ldGFkYXRhCiAgICAgICAgaWQ6IG1ldGEKICAgICAgICBydW46IHwKICAgICAgICAgIGVjaG8gIlJFUE9fTkFNRT0ke0dJVEhVQl9SRVBPU0lUT1JZIyMqL30iID4&#43;ICIkR0lUSFVCX09VVFBVVCIKICAgICAgICAgIGVjaG8gIlNIT1JUX1NIQT0ke0dJVEhVQl9TSEE6Ojd9IiA&#43;PiAiJEdJVEhVQl9PVVRQVVQiCgogICAgICAtIG5hbWU6IExvZyBpbiB0byBEb2NrZXIgSHViCiAgICAgICAgdXNlczogZG9ja2VyL2xvZ2luLWFjdGlvbkB2MwogICAgICAgIHdpdGg6CiAgICAgICAgICB1c2VybmFtZTogJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19CiAgICAgICAgICBwYXNzd29yZDogJHt7IHNlY3JldHMuRE9DS0VSSFVCX1RPS0VOIH19CgogICAgICAtIG5hbWU6IEJ1aWxkIGFuZCBwdXNoIG11bHRpLWFyY2ggcHJvZHVjdGlvbiBpbWFnZQogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBjb250ZXh0OiAuCiAgICAgICAgICB0YXJnZXQ6IHByb2R1Y3Rpb24KICAgICAgICAgIHB1c2g6IHRydWUKICAgICAgICAgIHBsYXRmb3JtczogbGludXgvYW1kNjQsbGludXgvYXJtNjQKICAgICAgICAgIHRhZ3M6IHwKICAgICAgICAgICAgJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19LyR7eyBzZWNyZXRzLkRPQ0tFUkhVQl9QUk9KRUNUX05BTUUgfX06bGF0ZXN0CiAgICAgICAgICAgICR7eyBzZWNyZXRzLkRPQ0tFUl9VU0VSTkFNRSB9fS8ke3sgc2VjcmV0cy5ET0NLRVJIVUJfUFJPSkVDVF9OQU1FIH19OiR7eyBzdGVwcy5tZXRhLm91dHB1dHMuU0hPUlRfU0hBIH19CiAgICAgICAgICBjYWNoZS1mcm9tOiB0eXBlPWxvY2FsLHNyYz0vdG1wLy5idWlsZHgtY2FjaGUKICAgICAgICAgIGNhY2hlLXRvOiB0eXBlPWxvY2FsLGRlc3Q9L3RtcC8uYnVpbGR4LWNhY2hlLG1vZGU9bWF4', copying: false }"
+        x-data="{ code: 'bmFtZTogQ0kvQ0Qg4oCTIE5vZGUuanMgQXBwbGljYXRpb24gd2l0aCBEb2NrZXIKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczogW21haW5dCiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgdHlwZXM6IFtvcGVuZWQsIHN5bmNocm9uaXplLCByZW9wZW5lZF0KCmpvYnM6CiAgdGVzdDoKICAgIG5hbWU6IFJ1biBOb2RlLmpzIFRlc3RzCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CgogICAgc2VydmljZXM6CiAgICAgIHBvc3RncmVzOgogICAgICAgIGltYWdlOiBwb3N0Z3JlczoxOC1hbHBpbmUKICAgICAgICBlbnY6CiAgICAgICAgICBQT1NUR1JFU19EQjogdG9kb2FwcF90ZXN0CiAgICAgICAgICBQT1NUR1JFU19VU0VSOiBwb3N0Z3JlcwogICAgICAgICAgUE9TVEdSRVNfUEFTU1dPUkQ6IHBvc3RncmVzCiAgICAgICAgb3B0aW9uczogPi0KICAgICAgICAgIC0taGVhbHRoLWNtZCBwZ19pc3JlYWR5CiAgICAgICAgICAtLWhlYWx0aC1pbnRlcnZhbCAxMHMKICAgICAgICAgIC0taGVhbHRoLXRpbWVvdXQgNXMKICAgICAgICAgIC0taGVhbHRoLXJldHJpZXMgNQogICAgICAgIHBvcnRzOgogICAgICAgICAgLSA1NDMyOjU0MzIKCiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVja291dCBjb2RlCiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAoKICAgICAgLSBuYW1lOiBTZXQgdXAgRG9ja2VyIEJ1aWxkeAogICAgICAgIHVzZXM6IGRvY2tlci9zZXR1cC1idWlsZHgtYWN0aW9uQHYzCgogICAgICAtIG5hbWU6IENhY2hlIG5wbSBkZXBlbmRlbmNpZXMKICAgICAgICB1c2VzOiBhY3Rpb25zL2NhY2hlQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIHBhdGg6IH4vLm5wbQogICAgICAgICAga2V5OiAke3sgcnVubmVyLm9zIH19LW5wbS0ke3sgaGFzaEZpbGVzKCcqKi9wYWNrYWdlLWxvY2suanNvbicpIH19CiAgICAgICAgICByZXN0b3JlLWtleXM6ICR7eyBydW5uZXIub3MgfX0tbnBtLQoKICAgICAgLSBuYW1lOiBCdWlsZCB0ZXN0IGltYWdlCiAgICAgICAgdXNlczogZG9ja2VyL2J1aWxkLXB1c2gtYWN0aW9uQHY2CiAgICAgICAgd2l0aDoKICAgICAgICAgIGNvbnRleHQ6IC4KICAgICAgICAgIHRhcmdldDogdGVzdAogICAgICAgICAgdGFnczogbm9kZWpzLWFwcC10ZXN0OmxhdGVzdAogICAgICAgICAgcGxhdGZvcm1zOiBsaW51eC9hbWQ2NAogICAgICAgICAgbG9hZDogdHJ1ZQogICAgICAgICAgY2FjaGUtZnJvbTogdHlwZT1sb2NhbCxzcmM9L3RtcC8uYnVpbGR4LWNhY2hlCiAgICAgICAgICBjYWNoZS10bzogdHlwZT1sb2NhbCxkZXN0PS90bXAvLmJ1aWxkeC1jYWNoZSxtb2RlPW1heAoKICAgICAgLSBuYW1lOiBSdW4gdGVzdHMgaW5zaWRlIGNvbnRhaW5lcgogICAgICAgIHJ1bjogfAogICAgICAgICAgZG9ja2VyIHJ1biAtLXJtIFwKICAgICAgICAgICAgLS1uZXR3b3JrIGhvc3QgXAogICAgICAgICAgICAtZSBOT0RFX0VOVj10ZXN0IFwKICAgICAgICAgICAgLWUgUE9TVEdSRVNfSE9TVD1sb2NhbGhvc3QgXAogICAgICAgICAgICAtZSBQT1NUR1JFU19QT1JUPTU0MzIgXAogICAgICAgICAgICAtZSBQT1NUR1JFU19EQj10b2RvYXBwX3Rlc3QgXAogICAgICAgICAgICAtZSBQT1NUR1JFU19VU0VSPXBvc3RncmVzIFwKICAgICAgICAgICAgLWUgUE9TVEdSRVNfUEFTU1dPUkQ9cG9zdGdyZXMgXAogICAgICAgICAgICBub2RlanMtYXBwLXRlc3Q6bGF0ZXN0CiAgICAgICAgZW52OgogICAgICAgICAgQ0k6IHRydWUKICAgICAgICB0aW1lb3V0LW1pbnV0ZXM6IDEwCgogIGJ1aWxkLWFuZC1wdXNoOgogICAgbmFtZTogQnVpbGQgYW5kIFB1c2ggRG9ja2VyIEltYWdlCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBuZWVkczogdGVzdAoKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IENoZWNrb3V0IGNvZGUKICAgICAgICB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CgogICAgICAtIG5hbWU6IFNldCB1cCBEb2NrZXIgQnVpbGR4CiAgICAgICAgdXNlczogZG9ja2VyL3NldHVwLWJ1aWxkeC1hY3Rpb25AdjMKCiAgICAgIC0gbmFtZTogQ2FjaGUgRG9ja2VyIGxheWVycwogICAgICAgIHVzZXM6IGFjdGlvbnMvY2FjaGVAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgcGF0aDogL3RtcC8uYnVpbGR4LWNhY2hlCiAgICAgICAgICBrZXk6ICR7eyBydW5uZXIub3MgfX0tYnVpbGR4LSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICByZXN0b3JlLWtleXM6ICR7eyBydW5uZXIub3MgfX0tYnVpbGR4LQoKICAgICAgLSBuYW1lOiBFeHRyYWN0IG1ldGFkYXRhCiAgICAgICAgaWQ6IG1ldGEKICAgICAgICBydW46IHwKICAgICAgICAgIGVjaG8gIlJFUE9fTkFNRT0ke0dJVEhVQl9SRVBPU0lUT1JZIyMqL30iID4&#43;ICIkR0lUSFVCX09VVFBVVCIKICAgICAgICAgIGVjaG8gIlNIT1JUX1NIQT0ke0dJVEhVQl9TSEE6Ojd9IiA&#43;PiAiJEdJVEhVQl9PVVRQVVQiCgotIG5hbWU6IOeZu&#43;W9leWIsCBEb2NrZXIgSHViCiAgICAgICAgdXNlczogZG9ja2VyL2xvZ2luLWFjdGlvbkB2MwogICAgICAgIHdpdGg6CiAgICAgICAgICB1c2VybmFtZTogJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19CiAgICAgICAgICBwYXNzd29yZDogJHt7IHNlY3JldHMuRE9DS0VSSFVCX1RPS0VOIH19CgogICAgICAtIG5hbWU6IOaehOW7uuW5tuaOqOmAgeWkmuaetuaehOeUn&#43;S6p&#43;mVnOWDjwogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBjb250ZXh0OiAuCiAgICAgICAgICB0YXJnZXQ6IHByb2R1Y3Rpb24KICAgICAgICAgIHB1c2g6IHRydWUKICAgICAgICAgIHBsYXRmb3JtczogbGludXgvYW1kNjQsbGludXgvYXJtNjQKICAgICAgICAgIHRhZ3M6IHwKICAgICAgICAgICAgJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19LyR7eyBzZWNyZXRzLkRPQ0tFUkhVQl9QUk9KRUNUX05BTUUgfX06bGF0ZXN0CiAgICAgICAgICAgICR7eyBzZWNyZXRzLkRPQ0tFUl9VU0VSTkFNRSB9fS8ke3sgc2VjcmV0cy5ET0NLRVJIVUJfUFJPSkVDVF9OQU1FIH19OiR7eyBzdGVwcy5tZXRhLm91dHB1dHMuU0hPUlRfU0hBIH19CiAgICAgICAgICBjYWNoZS1mcm9tOiB0eXBlPWxvY2FsLHNyYz0vdG1wLy5idWlsZHgtY2FjaGUKICAgICAgICAgIGNhY2hlLXRvOiB0eXBlPWxvY2FsLGRlc3Q9L3RtcC8uYnVpbGR4LWNhY2hlLG1vZGU9bWF4', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -2254,13 +2243,13 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;REPO_NAME=${GITHUB_REPOSITORY##*/}&#34; &gt;&gt; &#34;$GITHUB_OUTPUT&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;SHORT_SHA=${GITHUB_SHA::7}&#34; &gt;&gt; &#34;$GITHUB_OUTPUT&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Log in to Docker Hub</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">登录到 Docker Hub</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/login-action@v3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKER_USERNAME }}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKERHUB_TOKEN }}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and push multi-arch production image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">构建并推送多架构生产镜像</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
@@ -2276,16 +2265,16 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此工作流为你的 Node.js 应用程序执行以下任务：</p>
+<p>此工作流为您的 Node.js 应用程序执行以下任务：</p>
 <ul>
-<li>在每次对 <code>main</code> 分支的 <code>push</code> 或 <code>pull request</code> 时触发。</li>
+<li>在每次向 <code>main</code> 分支推送（<code>push</code>）或创建拉取请求（<code>pull request</code>）时触发。</li>
 <li>使用 <code>test</code> 阶段构建测试 Docker 镜像。</li>
 <li>在容器化环境中运行测试。</li>
 <li>如果任何测试失败，则停止工作流。</li>
-<li>缓存 Docker 构建层和 npm 依赖项以加快运行速度。</li>
-<li>使用 GitHub 密钥与 Docker Hub 进行身份验证。</li>
+<li>缓存 Docker 构建层和 npm 依赖项，以加快后续运行速度。</li>
+<li>使用 GitHub Secrets 进行 Docker Hub 身份验证。</li>
 <li>使用 <code>production</code> 阶段构建镜像。</li>
-<li>使用 <code>latest</code> 和短 SHA 标签标记并将镜像推送到 Docker Hub。</li>
+<li>使用 <code>latest</code> 和短 SHA 标签将镜像标记并推送到 Docker Hub。</li>
 </ul>
 
 
@@ -2320,30 +2309,30 @@ if (resultsLength > 5) {
 <p>添加工作流文件后，触发 CI/CD 流程。</p>
 <ol>
 <li>
-<p>提交并推送你的工作流文件</p>
-<p>从 GitHub 编辑器中，选择 <strong>Commit changes…</strong>。</p>
+<p>提交并推送您的工作流文件</p>
+<p>在 GitHub 编辑器中，选择 <strong>Commit changes…</strong>（提交更改…）。</p>
 <ul>
-<li>此推送会自动触发 GitHub Actions 流水线。</li>
+<li>此次推送将自动触发 GitHub Actions 流水线。</li>
 </ul>
 </li>
 <li>
 <p>监控工作流执行</p>
 <ol>
-<li>从你的 GitHub 仓库中，进入 <strong>Actions</strong> 选项卡。</li>
-<li>选择工作流运行以跟踪每个步骤：<strong>test</strong>、<strong>build</strong>、<strong>security</strong>，以及（如果成功）<strong>push</strong> 和 <strong>deploy</strong>。</li>
+<li>在您的 GitHub 仓库中，转到 <strong>Actions</strong>（操作）选项卡。</li>
+<li>选择工作流运行，以跟踪每个步骤：<strong>test</strong>（测试）、<strong>build</strong>（构建）、<strong>security</strong>（安全），以及（如果成功）<strong>push</strong>（推送）和 <strong>deploy</strong>（部署）。</li>
 </ol>
 </li>
 <li>
 <p>在 Docker Hub 上验证 Docker 镜像</p>
 <ul>
-<li>在工作流成功运行后，访问你的 <a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 仓库</a>。</li>
-<li>你应该在仓库中看到一个新的镜像，具有以下内容：
+<li>工作流运行成功后，访问您的 <a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 仓库</a>。</li>
+<li>您应该会在仓库中看到一个新镜像，包含：
 <ul>
 <li>仓库名称：<code>${your-repository-name}</code></li>
 <li>标签包括：
 <ul>
-<li><code>latest</code> – 表示最近的成功构建；非常适合快速测试或部署。</li>
-<li><code>&lt;short-sha&gt;</code> – 基于提交哈希的唯一标识符，对版本跟踪、回滚和可追溯性非常有用。</li>
+<li><code>latest</code> – 代表最近一次成功的构建；非常适合快速测试或部署。</li>
+<li><code>&lt;short-sha&gt;</code> – 基于提交哈希的唯一标识符，可用于版本跟踪、回滚和可追溯性。</li>
 </ul>
 </li>
 </ul>
@@ -2374,19 +2363,19 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>为了保持代码质量并防止意外的直接推送，启用分支保护规则：</p>
+      <p>为了维护代码质量并防止意外直接推送，请启用分支保护规则：</p>
 <ul>
-<li>从你的 GitHub 仓库中，进入 <strong>设置 → 分支</strong>。</li>
-<li>在分支保护规则下，选择 <strong>添加规则</strong>。</li>
-<li>指定 <code>main</code> 作为分支名称。</li>
+<li>在您的 GitHub 仓库中，转到 <strong>Settings → Branches</strong>（设置 → 分支）。</li>
+<li>在“Branch protection rules”（分支保护规则）下，选择 <strong>Add rule</strong>（添加规则）。</li>
+<li>将 <code>main</code> 指定为分支名称。</li>
 <li>启用以下选项：
 <ul>
-<li><em>合并前需要拉取请求</em>。</li>
-<li><em>合并前需要状态检查通过</em>。</li>
+<li><em>Require a pull request before merging</em>（合并前需要拉取请求）。</li>
+<li><em>Require status checks to pass before merging</em>（合并前需要状态检查通过）。</li>
 </ul>
 </li>
 </ul>
-<p>这确保只有经过测试和审查的代码才能合并到 <code>main</code> 分支。</p>
+<p>这可以确保只有经过测试和审查的代码才能合并到 <code>main</code> 分支。</p>
     </div>
   </blockquote>
 
@@ -2398,21 +2387,21 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>在本节中，你为你的容器化 Node.js 应用程序使用 GitHub Actions 设置了一个全面的 CI/CD 流水线。</p>
-<p>你完成的任务：</p>
+<p>在本节中，您使用 GitHub Actions 为您的容器化 Node.js 应用程序设置了完整的 CI/CD 流水线。</p>
+<p>您已完成的工作：</p>
 <ul>
-<li>为你的项目创建了一个新的 GitHub 仓库。</li>
-<li>生成了一个 Docker Hub 访问令牌，并将其添加为 GitHub 密钥。</li>
+<li>为您的项目创建了一个新的 GitHub 仓库。</li>
+<li>生成了一个 Docker Hub 访问令牌，并将其添加为 GitHub Secret。</li>
 <li>创建了一个 GitHub Actions 工作流，该工作流：
 <ul>
-<li>在 Docker 容器中构建你的应用程序。</li>
+<li>在 Docker 容器中构建您的应用程序。</li>
 <li>在容器化环境中运行测试。</li>
 <li>如果测试通过，则将镜像推送到 Docker Hub。</li>
 </ul>
 </li>
 <li>验证了工作流成功运行。</li>
 </ul>
-<p>你的 Node.js 应用程序现在具有自动化测试和部署功能。</p>
+<p>您的 Node.js 应用程序现已实现自动化测试和部署。</p>
 <hr>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="相关资源">
@@ -2426,25 +2415,25 @@ if (resultsLength > 5) {
 <li>
     
   
-  <a class="link" href="/guides/gha/">GitHub Actions 简介</a> – 了解 GitHub Actions 如何自动化你的工作流</li>
+  <a class="link" href="/guides/gha/">GitHub Actions 简介</a> – 了解 GitHub Actions 如何自动化您的工作流</li>
 <li>
     
   
   <a class="link" href="/build/ci/github-actions/">Docker Build GitHub Actions</a> – 使用 GitHub Actions 设置容器构建</li>
 <li><a class="link" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" rel="noopener">GitHub Actions 的工作流语法</a> – 编写 GitHub 工作流的完整参考</li>
-<li><a class="link" href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry" rel="noopener">GitHub 容器注册表</a> – 了解 GHCR 功能和使用</li>
+<li><a class="link" href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry" rel="noopener">GitHub 容器注册表</a> – 了解 GHCR 功能和使用方法</li>
 <li>
-  <a class="link" href="/develop/develop-images/dockerfile_best-practices/">编写 Dockerfile 的最佳实践</a> – 优化你的镜像以提高性能和安全性</li>
+  <a class="link" href="/develop/develop-images/dockerfile_best-practices/">编写 Dockerfile 的最佳实践</a> – 优化您的镜像以获得性能和安全性</li>
 </ul>
 <hr>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="下一步">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5">
-    下一步
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="后续步骤">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4">
+    后续步骤
   </a>
 </h2>
 
-<p>接下来，学习如何使用生产就绪配置将你的容器化 Node.js 应用程序部署到 Kubernetes。这有助于你确保你的应用程序在生产环境中按预期行为，减少部署期间的意外。</p>
+<p>接下来，学习如何将容器化的 Node.js 应用程序部署到 Kubernetes，并使用生产就绪的配置。这有助于确保您的应用程序在类似生产的环境中按预期运行，从而减少部署过程中的意外情况。</p>
 
   </article>
   <div class="-mt-8 hidden min-w-48 flex-1 lg:block">
@@ -2545,8 +2534,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e4%b8%8b%e4%b8%80%e6%ad%a5"
-            >下一步</a
+          <a class="link lg:no-underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4"
+            >后续步骤</a
           >
         </li>
   </ul>
@@ -2573,9 +2562,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2590,7 +2581,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2605,7 +2596,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2620,7 +2611,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2635,7 +2626,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2651,26 +2642,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

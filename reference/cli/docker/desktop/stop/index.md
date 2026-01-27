@@ -1,27 +1,4 @@
----
-title: docker desktop stop
-url: /reference/cli/docker/desktop/stop/
-parent:
-  title: docker desktop (Beta)
-  url: /reference/cli/docker/desktop/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker desktop (Beta)
-    url: /reference/cli/docker/desktop/
-  - title: docker desktop stop
-    url: /reference/cli/docker/desktop/stop/
-next:
-  title: docker desktop status
-  url: /reference/cli/docker/desktop/status/
-prev:
-  title: docker desktop update
-  url: /reference/cli/docker/desktop/update/
----
+# docker desktop stop
 
 **Description:** Stop Docker Desktop
 

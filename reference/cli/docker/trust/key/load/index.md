@@ -1,26 +1,4 @@
----
-title: docker trust key load
-url: /reference/cli/docker/trust/key/load/
-parent:
-  title: docker trust key
-  url: /reference/cli/docker/trust/key/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker trust
-    url: /reference/cli/docker/trust/
-  - title: docker trust key
-    url: /reference/cli/docker/trust/key/
-  - title: docker trust key load
-    url: /reference/cli/docker/trust/key/load/
-next:
-  title: docker trust key generate
-  url: /reference/cli/docker/trust/key/generate/
----
+# docker trust key load
 
 **Description:** Load a private key file for signing
 

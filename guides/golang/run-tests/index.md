@@ -1,23 +1,4 @@
----
-title: 使用 Go test 运行测试
-url: /guides/golang/run-tests/
-parent:
-  title: Go 语言专用指南
-  url: /guides/golang/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Go 语言专用指南
-    url: /guides/golang/
-  - title: 使用 Go test 运行测试
-    url: /guides/golang/run-tests/
-next:
-  title: 使用容器进行 Go 开发
-  url: /guides/golang/develop/
-prev:
-  title: 为您的 Go 应用程序配置 CI/CD
-  url: /guides/golang/configure-ci-cd/
----
+# 使用 Go test 运行测试
 
 
 ## 前提条件

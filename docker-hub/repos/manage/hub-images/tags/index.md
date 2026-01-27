@@ -1,24 +1,4 @@
----
-title: Docker Hub 上的标签
-url: /docker-hub/repos/manage/hub-images/tags/
-parent:
-  title: 镜像管理
-  url: /docker-hub/repos/manage/hub-images/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/
-  - title: Docker Hub 上的标签
-    url: /docker-hub/repos/manage/hub-images/tags/
-prev:
-  title: Docker Hub 上的不可变标签
-  url: /docker-hub/repos/manage/hub-images/immutable-tags/
----
+# Docker Hub 上的标签
 
 
 标签让您能够在单个 Docker Hub 仓库中管理多个版本的镜像。通过为每个镜像添加特定的 `:<tag>`，例如 `docs/base:testing`，您可以组织并区分不同用途的镜像版本。如果未指定标签，镜像将默认使用 `latest` 标签。

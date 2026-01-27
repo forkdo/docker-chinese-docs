@@ -1,22 +1,4 @@
----
-title: 管理
-url: /admin/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-children:
-  - title: 组织管理概览
-    url: /admin/organization/
-    description: 了解如何管理您的 Docker 组织，包括团队、成员、权限和设置。
-  - title: 公司管理概览
-    url: /admin/company/
-    description: 了解如何使用公司管理多个组织，包括管理用户、所有者以及安全性。
----
+# 管理
 
 
 管理员可以使用 [Docker Admin Console](https://app.docker.com/admin) 管理公司和组织。Admin Console 提供了跨 Docker 环境的集中可观察性、访问管理和安全控制。

@@ -1,25 +1,4 @@
----
-title: 在 CI 中评估策略合规性
-url: /scout/policy/ci/
-parent:
-  title: Docker Scout 中的策略评估入门
-  url: /scout/policy/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 中的策略评估入门
-    url: /scout/policy/
-  - title: 在 CI 中评估策略合规性
-    url: /scout/policy/ci/
-next:
-  title: 使用 Docker Scout 进行修复
-  url: /scout/policy/remediation/
-prev:
-  title: 查看 Docker Scout 策略状态
-  url: /scout/policy/view/
----
+# 在 CI 中评估策略合规性
 
 
 将策略评估添加到你的持续集成流水线中，有助于检测和防止代码变更导致策略合规性比基线更差的情况。

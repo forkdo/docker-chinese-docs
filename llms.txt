@@ -26,17 +26,17 @@
 
 ## Get started
 - [构建、标记和发布镜像](/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/): 本概念页面将指导您如何构建、标记镜像，并将其发布到 Docker Hub 或其他任何注册中心
-- [多阶段构建](/get-started/docker-concepts/building-images/multi-stage-builds/): 本概念页面将为您介绍多阶段构建的目的及其优势
-- [理解镜像层](/get-started/docker-concepts/building-images/understanding-image-layers/): 本概念页将向您介绍容器镜像的层。
+- [多阶段构建](/get-started/docker-concepts/building-images/multi-stage-builds/): 本概念页面将向您介绍多阶段构建的用途及其优势
+- [了解镜像层](/get-started/docker-concepts/building-images/understanding-image-layers/): 本概念页面将向您介绍容器镜像的层。
 - [使用构建缓存](/get-started/docker-concepts/building-images/using-the-build-cache/): 本概念页面将向您介绍构建缓存、哪些更改会使缓存失效以及如何有效使用构建缓存。
 - [编写 Dockerfile](/get-started/docker-concepts/building-images/writing-a-dockerfile/): 本概念页面将指导您如何使用 Dockerfile 创建镜像。
-- [多容器应用](/get-started/docker-concepts/running-containers/multi-container-applications/): 本概念页面将向你介绍多容器应用的重要性，以及它与单容器应用的区别
+- [多容器应用程序](/get-started/docker-concepts/running-containers/multi-container-applications/): 本概念页将向您介绍多容器应用程序的重要性，以及它与单容器应用程序的不同之处
 - [覆盖容器默认设置](/get-started/docker-concepts/running-containers/overriding-container-defaults/): 本概念页面将指导您如何使用 `docker run` 命令覆盖容器的默认设置。
 - [持久化容器数据](/get-started/docker-concepts/running-containers/persisting-container-data/): 本概念页面将向您介绍 Docker 中数据持久化的重要性
 - [发布和暴露端口](/get-started/docker-concepts/running-containers/publishing-ports/): 本概念页面将向您介绍在 Docker 中发布和暴露端口的重要性
 - [与容器共享本地文件](/get-started/docker-concepts/running-containers/sharing-local-files/): 本概念页面将向您介绍 Docker 中可用的各种存储选项及其常见用途。
 - [什么是容器？](/get-started/docker-concepts/the-basics/what-is-a-container/): 什么是容器？本概念页面将介绍容器，并提供快速动手实践，您将在其中运行第一个容器。
-- [什么是镜像仓库？](/get-started/docker-concepts/the-basics/what-is-a-registry/): 什么是镜像仓库？本 Docker 概念指南将解释镜像仓库的定义，探讨其互操作性，并指导您与镜像仓库进行交互。
+- [什么是镜像仓库？](/get-started/docker-concepts/the-basics/what-is-a-registry/): 什么是镜像仓库？这个 Docker 概念将解释什么是镜像仓库，探讨它们的互操作性，并让您与镜像仓库进行交互。
 - [什么是镜像？](/get-started/docker-concepts/the-basics/what-is-an-image/): 什么是镜像
 - [什么是 Docker Compose？](/get-started/docker-concepts/the-basics/what-is-docker-compose/): 什么是 Docker Compose？
 - [什么是 Docker？](/get-started/docker-overview/): 深入了解 Docker 平台，包括其用途、采用的架构以及底层技术。
@@ -65,27 +65,27 @@
 - [在 Docker 中上手并管理角色与权限](/guides/admin-user-management/onboard/): 了解如何在 Docker 中管理角色、邀请成员，并实施可扩展的访问控制，以实现安全高效的协作。
 - [在 Docker 中设置角色和权限](/guides/admin-user-management/setup/): 通过角色和团队安全地管理 Docker 中的访问和协作的指南。
 - [使用 Docker 构建和运行智能体 AI 应用程序](/guides/agentic-ai/)
-- [使用 GitHub Actions 自动化构建](/guides/angular/configure-github-actions/): 了解如何为 Angular 应用程序配置基于 GitHub Actions 的 CI/CD。
+- [使用 GitHub Actions 自动化构建](/guides/angular/configure-github-actions/): 了解如何为你的 Angular 应用程序配置使用 GitHub Actions 的 CI/CD 流程。
 - [容器化 Angular 应用程序](/guides/angular/containerize/): 了解如何使用 Docker 容器化 Angular 应用程序，通过遵循性能、安全性和可扩展性的最佳实践，创建优化的、可用于生产的镜像。
 - [测试你的 Angular 部署](/guides/angular/deploy/): 学习如何在本地部署以测试和调试你的 Kubernetes 部署
 - [使用容器进行 Angular 开发](/guides/angular/develop/): 了解如何使用容器在本地开发您的 Angular 应用程序。
 - [在容器中运行 Angular 测试](/guides/angular/run-tests/): 学习如何在容器中运行 Angular 测试。
 - [Azure Pipelines 与 Docker 入门](/guides/azure-pipelines/)
 - [使用 Docker Buildx Bake 掌握多平台构建、测试等](/guides/bake/): 学习如何使用 Buildx Bake 管理简单和复杂的构建配置。 
-- [为你的 Bun 应用程序配置 CI/CD](/guides/bun/configure-ci-cd/): 学习如何使用 GitHub Actions 为你的 Bun 应用程序配置 CI/CD。
+- [为 Bun 应用程序配置 CI/CD](/guides/bun/configure-ci-cd/): 了解如何为你的 Bun 应用程序配置 GitHub Actions 的 CI/CD。
 - [容器化 Bun 应用程序](/guides/bun/containerize/): 了解如何容器化 Bun 应用程序。
 - [测试你的 Bun 部署](/guides/bun/deploy/): 学习如何使用 Kubernetes 在本地进行开发
 - [为 Bun 开发使用容器](/guides/bun/develop/): 了解如何在本地开发您的 Bun 应用程序。
 - [使用 Bake 构建 Compose 项目](/guides/compose-bake/): 学习如何使用 Docker Buildx Bake 构建 Docker Compose 项目
 - [借助容器支持的开发实现更快速的开发与测试](/guides/container-supported-development/): 在本地开发流程中使用容器，实现更快速的开发和测试……即使你的主应用并未运行在容器中。 
-- [为 C++ 应用程序配置 CI/CD](/guides/cpp/configure-ci-cd/): 了解如何为 C++ 应用程序配置 GitHub Actions 的 CI/CD。
+- [为 C++ 应用程序配置 CI/CD](/guides/cpp/configure-ci-cd/): 了解如何为 C++ 应用程序使用 GitHub Actions 配置 CI/CD。
 - [容器化 C++ 应用程序](/guides/cpp/containerize/): 了解如何使用 Docker Compose 构建并运行 C++ 应用程序。
 - [测试你的 C++ 部署](/guides/cpp/deploy/): 了解如何使用 Kubernetes 进行本地开发
 - [使用容器进行 C++ 开发](/guides/cpp/develop/): 了解如何在本地开发您的 C++ 应用程序。
 - [为您的 C++ 应用程序创建多阶段构建](/guides/cpp/multistage/): 了解如何为 C++ 应用程序创建多阶段构建。
 - [C++ Docker 镜像的供应链安全](/guides/cpp/security/): 了解如何从 C++ Docker 镜像中提取 SBOM。
 - [使用容器化数据库](/guides/databases/): 了解如何在本地容器化数据库中运行、连接和持久化数据。
-- [为您的 Deno 应用程序配置 CI/CD](/guides/deno/configure-ci-cd/): 了解如何使用 GitHub Actions 为您的 Deno 应用程序配置 CI/CD。
+- [为 Deno 应用程序配置 CI/CD](/guides/deno/configure-ci-cd/): 了解如何为 Deno 应用程序配置 GitHub Actions 的 CI/CD。
 - [将 Deno 应用程序容器化](/guides/deno/containerize/): 了解如何将 Deno 应用程序容器化。
 - [测试你的 Deno 部署](/guides/deno/deploy/): 了解如何使用 Kubernetes 在本地开发
 - [在容器中进行 Deno 开发](/guides/deno/develop/): 了解如何在本地开发您的 Deno 应用程序。
@@ -109,7 +109,7 @@
 - [软件供应链安全](/guides/docker-scout/s3c/): 了解软件供应链安全（S3C）、其含义及其重要性。
 - [软件物料清单](/guides/docker-scout/sbom/): 了解软件物料清单（SBOM）以及 Docker Scout 如何使用它。
 - [为什么选择 Docker Scout？](/guides/docker-scout/why/): 了解 Docker Scout 如何帮助您保障供应链安全。
-- [为你的 .NET 应用程序配置 CI/CD](/guides/dotnet/configure-ci-cd/): 了解如何为你的 .NET 应用程序配置 CI/CD
+- [为 .NET 应用程序配置 CI/CD](/guides/dotnet/configure-ci-cd/): 了解如何为 .NET 应用程序配置 CI/CD
 - [容器化 .NET 应用程序](/guides/dotnet/containerize/): 了解如何容器化 ASP.NET 应用程序。
 - [测试 .NET 部署](/guides/dotnet/deploy/): 了解如何部署应用程序
 - [使用容器进行 .NET 开发](/guides/dotnet/develop/): 了解如何使用容器在本地开发你的 .NET 应用程序。
@@ -123,7 +123,7 @@
 - [容器化生成式 AI 应用程序](/guides/genai-pdf-bot/containerize/): 了解如何容器化生成式 AI (GenAI) 应用程序。
 - [使用容器进行生成式 AI 开发](/guides/genai-pdf-bot/develop/): 学习如何在本地开发您的生成式 AI (GenAI) 应用程序。
 - [GenAI 视频转录与对话](/guides/genai-video-bot/): 探索一个使用 Docker、OpenAI 和 Pinecone 的生成式人工智能视频分析应用。
-- [使用 Docker 的 GitHub Actions 入门](/guides/gha/)
+- [使用 Docker 的 GitHub Actions 简介](/guides/gha/)
 - [自定义代码质量检查工作流](/guides/github-sonarqube-sandbox/customize/): 了解如何针对特定质量问题自定义提示词、按文件模式过滤、设置质量阈值，并将工作流与 GitHub Actions 集成以实现自动化代码质量检查。
 - [故障排除代码质量工作流](/guides/github-sonarqube-sandbox/troubleshoot/): 使用 E2B 构建代码质量工作流时，针对 MCP 工具无法加载、身份验证错误、权限问题、工作流超时以及其他常见问题的解决方案。
 - [构建代码质量检查工作流](/guides/github-sonarqube-sandbox/workflow/): 创建 E2B 沙箱、发现 MCP 工具、测试单个操作，并构建完整的质量门控 PR 工作流。
@@ -132,12 +132,12 @@
 - [容器化一个 Golang 应用](/guides/go-prometheus-monitoring/containerize/): 了解如何容器化一个 Golang 应用。
 - [开发你的应用程序](/guides/go-prometheus-monitoring/develop/): 学习如何使用 Docker 开发 Golang 应用程序。
 - [构建您的 Go 镜像](/guides/golang/build-images/): 学习如何通过编写 Dockerfile 来构建您的第一个 Docker 镜像
-- [为您的 Go 应用程序配置 CI/CD](/guides/golang/configure-ci-cd/): 了解如何为您的 Go 应用程序配置 CI/CD
+- [为 Go 应用程序配置 CI/CD](/guides/golang/configure-ci-cd/): 了解如何为 Go 应用程序配置 CI/CD
 - [测试你的 Go 部署](/guides/golang/deploy/): 了解如何部署你的 Go 应用程序
 - [使用容器进行 Go 开发](/guides/golang/develop/): 了解如何在本地开发你的应用。
 - [以容器形式运行 Go 镜像](/guides/golang/run-containers/): 学习如何以容器形式运行镜像。
 - [使用 Go test 运行测试](/guides/golang/run-tests/): 如何在容器中构建并运行 Go 测试
-- [为 Java 应用程序配置 CI/CD](/guides/java/configure-ci-cd/): 了解如何为 Java 应用程序配置 CI/CD
+- [为你的 Java 应用配置 CI/CD](/guides/java/configure-ci-cd/): 了解如何为你的 Java 应用配置 CI/CD
 - [容器化 Java 应用程序](/guides/java/containerize/): 学习如何将 Java 应用程序容器化。
 - [测试你的 Java 部署](/guides/java/deploy/): 学习如何在本地使用 Kubernetes 进行开发
 - [使用容器进行 Java 开发](/guides/java/develop/): 了解如何在本地开发您的应用。
@@ -148,7 +148,7 @@
 - [构建语言翻译应用程序](/guides/language-translation/): 学习如何使用 Python、Googletrans 和 Docker 构建并运行语言翻译应用程序。
 - [使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序](/guides/localstack/): 如何使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
 - [构建命名实体识别应用](/guides/named-entity-recognition/): 了解如何使用 Python、spaCy 和 Docker 构建并运行命名实体识别应用。
-- [使用 GitHub Actions 自动化构建](/guides/nodejs/configure-github-actions/): 了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD。
+- [使用 GitHub Actions 自动化构建](/guides/nodejs/configure-github-actions/): 了解如何为你的 Node.js 应用程序配置使用 GitHub Actions 的 CI/CD 流程。
 - [容器化 Node.js 应用](/guides/nodejs/containerize/): 了解如何使用 Docker 容器化 Node.js 应用，通过创建优化的、生产就绪的镜像，并遵循性能、安全性和可扩展性的最佳实践。
 - [部署你的 Node.js 应用](/guides/nodejs/deploy/): 学习如何使用生产就绪的配置将容器化的 Node.js 应用部署到 Kubernetes
 - [为 Node.js 开发使用容器](/guides/nodejs/develop/): 了解如何使用容器在本地开发 Node.js 应用程序。
@@ -156,34 +156,34 @@
 - [使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩](/guides/opentelemetry/): 学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。
 - [部署和编排](/guides/orchestration/): 了解 Docker 的基础知识并安装 Docker Desktop。
 - [使用 pgAdmin 可视化您的 PostgreSQL 数据库](/guides/pgadmin/): 使用 pgAdmin 可视化您的 PostgreSQL 数据库
-- [为您的 PHP 应用程序配置 CI/CD](/guides/php/configure-ci-cd/): 了解如何为您的 PHP 应用程序配置 CI/CD
+- [为 PHP 应用程序配置 CI/CD](/guides/php/configure-ci-cd/): 了解如何为 PHP 应用程序配置 CI/CD
 - [容器化 PHP 应用](/guides/php/containerize/): 了解如何容器化 PHP 应用。
 - [测试您的 PHP 部署](/guides/php/deploy/): 了解如何部署您的应用程序
 - [使用容器进行 PHP 开发](/guides/php/develop/): 了解如何使用容器在本地开发您的 PHP 应用程序。
 - [在容器中运行 PHP 测试](/guides/php/run-tests/): 了解如何在容器中运行 PHP 测试。
 - [在开发环境中启动时使用架构和数据预填充数据库](/guides/pre-seeding/): 在开发环境中启动时使用架构和数据预填充数据库
-- [使用 GitHub Actions 自动化构建](/guides/python/configure-github-actions/): 了解如何为 Python 应用程序配置基于 GitHub Actions 的 CI/CD。
+- [使用 GitHub Actions 自动化构建](/guides/python/configure-github-actions/): 了解如何为你的 Python 应用程序配置使用 GitHub Actions 的 CI/CD。
 - [容器化 Python 应用程序](/guides/python/containerize/): 学习如何将 Python 应用程序容器化。
 - [测试您的 Python 部署](/guides/python/deploy/): 学习如何使用 Kubernetes 进行本地开发
 - [使用容器进行 Python 开发](/guides/python/develop/): 了解如何在本地开发 Python 应用程序。
 - [Python 的代码检查、格式化与类型检查](/guides/python/lint-format-typing/): 了解如何为您的 Python 应用程序设置代码检查、格式化和类型检查。
-- [为您的 R 应用程序配置 CI/CD](/guides/r/configure-ci-cd/): 了解如何使用 GitHub Actions 为您的 R 应用程序配置 CI/CD。
+- [为你的 R 应用程序配置 CI/CD](/guides/r/configure-ci-cd/): 学习如何为你的 R 应用程序使用 GitHub Actions 配置 CI/CD。
 - [容器化 R 应用程序](/guides/r/containerize/): 了解如何容器化 R 应用程序。
 - [测试你的 R 部署](/guides/r/deploy/): 了解如何使用 Kubernetes 在本地开发
 - [使用容器进行 R 开发](/guides/r/develop/): 了解如何在本地开发 R 应用程序。
 - [容器化 RAG 应用程序](/guides/rag-ollama/containerize/): 了解如何容器化 RAG 应用程序。
 - [使用容器进行 RAG 开发](/guides/rag-ollama/develop/): 学习如何在本地开发生成式 RAG 应用。
-- [使用 GitHub Actions 自动化构建](/guides/reactjs/configure-github-actions/): 学习如何为你的 React.js 应用程序配置基于 GitHub Actions 的 CI/CD。
+- [使用 GitHub Actions 自动化构建](/guides/reactjs/configure-github-actions/): 了解如何为你的 React.js 应用程序配置使用 GitHub Actions 的 CI/CD。
 - [为 React.js 应用程序创建容器](/guides/reactjs/containerize/): 通过使用 Docker 创建优化、生产就绪的镜像，了解如何使用最佳实践为 React.js 应用程序创建容器，从而提高性能、安全性和可扩展性。
 - [测试您的 React.js 部署](/guides/reactjs/deploy/): 了解如何在本地部署以测试和调试您的 Kubernetes 部署
 - [使用容器进行 React.js 开发](/guides/reactjs/develop/): 了解如何使用容器在本地开发您的 React.js 应用程序。
 - [在容器中运行 React.js 测试](/guides/reactjs/run-tests/): 了解如何在容器中运行 React.js 测试。
-- [使用 GitHub Actions 自动化构建](/guides/ruby/configure-github-actions/): 了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。
+- [使用 GitHub Actions 自动化构建](/guides/ruby/configure-github-actions/): 了解如何为您的 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD。
 - [容器化 Ruby on Rails 应用程序](/guides/ruby/containerize/): 了解如何容器化 Ruby on Rails 应用程序。
 - [测试您的 Ruby on Rails 部署](/guides/ruby/deploy/): 了解如何使用 Kubernetes 进行本地开发
 - [使用容器进行 Ruby on Rails 开发](/guides/ruby/develop/): 学习如何在本地开发你的 Ruby on Rails 应用程序。
 - [构建您的 Rust 镜像](/guides/rust/build-images/): 了解如何构建您的第一个 Rust Docker 镜像
-- [为您的 Rust 应用程序配置 CI/CD](/guides/rust/configure-ci-cd/): 了解如何为您的应用程序配置 CI/CD
+- [为 Rust 应用程序配置 CI/CD](/guides/rust/configure-ci-cd/): 了解如何为应用程序配置 CI/CD
 - [测试你的 Rust 部署](/guides/rust/deploy/): 了解如何使用 Kubernetes 在本地测试你的 Rust 部署
 - [开发你的 Rust 应用程序](/guides/rust/develop/): 学习如何在本地开发你的 Rust 应用程序。
 - [以容器方式运行你的 Rust 镜像](/guides/rust/run-containers/): 学习如何以容器方式运行你的 Rust 镜像。
@@ -197,7 +197,7 @@
 - [构建文本识别应用](/guides/text-classification/): 学习如何使用 Python、NLTK、scikit-learn 和 Docker 构建并运行文本识别应用。
 - [构建文本摘要应用](/guides/text-summarization/): 了解如何使用 Python、Bert Extractive Summarizer 和 Docker 构建并运行文本摘要应用。
 - [使用 Traefik 进行 HTTP 路由](/guides/traefik/): 使用 Traefik 轻松在多个容器或非容器化工作负载之间路由流量
-- [使用 GitHub Actions 自动化构建](/guides/vuejs/configure-github-actions/): 了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。
+- [使用 GitHub Actions 自动化构建](/guides/vuejs/configure-github-actions/): 了解如何为您的 Vue.js 应用程序配置使用 GitHub Actions 的 CI/CD。
 - [容器化 Vue.js 应用程序](/guides/vuejs/containerize/): 了解如何使用 Docker 容器化 Vue.js 应用程序，通过遵循最佳实践创建一个针对性能、安全性和可扩展性进行优化的、可用于生产的镜像。
 - [测试 Vue.js 部署](/guides/vuejs/deploy/): 了解如何本地部署以测试和调试 Kubernetes 部署
 - [使用容器进行 Vue.js 开发](/guides/vuejs/develop/): 了解如何使用容器在本地开发您的 Vue.js 应用程序。
@@ -208,7 +208,7 @@
 ## Includes
 
 ## Manuals
-- [创建 Docker 账户](/accounts/create-account/): 了解如何注册 Docker ID 并登录您的账户
+- [创建 Docker 账户](/accounts/create-account/): 了解如何注册 Docker ID 并登录到您的账户
 - [停用 Docker 账户](/accounts/deactivate-user-account/): 了解如何停用 Docker 用户账户。
 - [Docker 帐户常见问题](/accounts/general-faqs/): 关于 Docker 帐户的常见问题
 - [管理 Docker 账户](/accounts/manage-account/): 了解如何管理您的 Docker 账户。
@@ -226,7 +226,7 @@
 - [创建和管理团队](/admin/organization/manage-a-team/): 了解如何为您的组织创建和管理团队
 - [管理 Docker 产品](/admin/organization/manage-products/): 了解如何为您的组织管理 Docker 产品的访问权限和使用情况
 - [管理组织成员](/admin/organization/members/): 了解如何在 Docker Hub 和 Docker 管理控制台中管理组织成员。
-- [为您的组织完成上车流程](/admin/organization/onboard/): 开始为您的 Docker Team 或 Business 组织完成上车流程。
+- [组织入驻](/admin/organization/onboard/): 开始入驻您的 Docker 团队或商业组织。
 - [创建您的组织](/admin/organization/orgs/): 了解如何创建组织。
 - [最佳实践](/ai/cagent/best-practices/): 构建高效 cagent 代理的模式与技术
 - [评估 (Evals)](/ai/cagent/evals/): 使用保存的对话测试您的代理
@@ -242,7 +242,7 @@
 - [工具集参考](/ai/cagent/reference/toolsets/): cagent 工具集及其功能的完整参考
 - [共享代理](/ai/cagent/sharing-agents/): 通过 OCI 仓库分发代理配置
 - [构建编码代理](/ai/cagent/tutorial/): 创建一个能够读取、写入并验证项目代码更改的编码代理
-- [在 Docker Compose 应用程序中定义 AI 模型](/ai/compose/models-and-compose/): 学习如何使用 models 顶层元素在 Docker Compose 应用程序中定义和使用 AI 模型
+- [在 Docker Compose 应用程序中定义 AI 模型](/ai/compose/models-and-compose/): 了解如何使用 models 顶级元素在 Docker Compose 应用程序中定义和使用 AI 模型
 - [Gordon 中的内置工具](/ai/gordon/mcp/built-in-tools/): 使用和配置 Gordon 的内置工具，用于 Docker、Kubernetes、安全性和开发工作流
 - [使用 YAML 配置 MCP 服务器](/ai/gordon/mcp/yaml/): 在 Gordon 中使用 MCP 服务器
 - [Docker MCP 目录](/ai/mcp-catalog-and-toolkit/catalog/): 了解 MCP 目录的优势、使用方法以及如何贡献内容
@@ -253,17 +253,22 @@
 - [Docker Hub MCP 服务器](/ai/mcp-catalog-and-toolkit/hub-mcp/): Docker Hub MCP 服务器使 LLM 能够访问 Docker Hub 镜像元数据，以实现内容发现。
 - [MCP Gateway](/ai/mcp-catalog-and-toolkit/mcp-gateway/): Docker 的 MCP Gateway 通过容器化的 MCP 服务器，为 AI 工具提供安全、集中且可扩展的编排，赋能开发者、运维人员和安全团队。
 - [Docker MCP Toolkit](/ai/mcp-catalog-and-toolkit/toolkit/): 使用 MCP Toolkit 设置 MCP 服务器和 MCP 客户端。
-- [DMR REST API](/ai/model-runner/api-reference/): Docker Model Runner REST API 端点的参考文档，包括 OpenAI 和 Ollama 兼容性。
+- [DMR REST API](/ai/model-runner/api-reference/): Docker Model Runner REST API 端点的参考文档，包括 OpenAI、Anthropic 和 Ollama 兼容性。
 - [配置选项](/ai/model-runner/configuration/): 在 Docker Model Runner 中配置上下文大小、运行时参数和模型行为。
 - [DMR 示例](/ai/model-runner/examples/): Docker Model Runner 的示例项目和 CI/CD 工作流。
 - [DMR 入门](/ai/model-runner/get-started/): 如何安装、启用并使用 Docker Model Runner 来管理和运行 AI 模型。
 - [IDE 与工具集成](/ai/model-runner/ide-integrations/): 配置流行的 AI 编程助手和工具，将 Docker Model Runner 用作其后端。
-- [推理引擎](/ai/model-runner/inference-engines/): 了解 Docker Model Runner 中的 llama.cpp 和 vLLM 推理引擎。
+- [推理引擎](/ai/model-runner/inference-engines/): 了解 Docker Model Runner 中的 llama.cpp、vLLM 和 Diffusers 推理引擎。
 - [Open WebUI 集成](/ai/model-runner/openwebui-integration/): 将 Open WebUI 设置为 Docker Model Runner 的类 ChatGPT 界面。
-- [高级配置](/ai/sandboxes/advanced-config/): Docker访问、卷挂载、环境变量、自定义模板和沙箱管理。
-- [配置 Claude Code](/ai/sandboxes/claude-code/): 了解如何配置 Claude Code 身份验证、传递 CLI 选项，以及使用 Docker 自定义沙盒代理环境。
-- [Docker Sandbox 快速入门](/ai/sandboxes/get-started/): 在隔离的沙箱环境中运行 Claude Code。包含先决条件和基本命令的快速设置指南。
-- [故障排除](/ai/sandboxes/troubleshooting/): 解决在本地为代理创建沙箱时的常见问题。
+- [支持的代理](/ai/sandboxes/agents/): Docker Sandboxes 支持的 AI 编码代理，包含实验性状态和配置详情。
+- [架构](/ai/sandboxes/architecture/): Docker Sandboxes 的技术架构，包括 microVM 隔离、私有 Docker 守护进程和工作区同步。
+- [配置 Claude Code](/ai/sandboxes/claude-code/): 了解如何配置 Claude Code 身份验证、传递 CLI 选项，以及使用 Docker 自定义沙箱代理环境。
+- [开始使用 Docker Sandboxes](/ai/sandboxes/get-started/): 在隔离的沙箱中运行 Claude Code。包含先决条件和基本命令的快速设置指南。
+- [从旧版沙箱迁移](/ai/sandboxes/migration/): 从基于容器的沙箱迁移到基于 microVM 的沙箱
+- [网络策略](/ai/sandboxes/network-policies/): 配置网络过滤策略，以控制来自沙盒代理的出站 HTTP 和 HTTPS 访问。
+- [自定义模板](/ai/sandboxes/templates/): 创建自定义沙箱模板，以标准化预装工具和配置的开发环境。
+- [故障排除](/ai/sandboxes/troubleshooting/): 解决在本地对代理进行沙盒化时的常见问题。
+- [有效使用沙盒](/ai/sandboxes/workflows/): Docker 沙盒的最佳实践和常见工作流，包括依赖管理、测试和多项目设置。
 - [Docker 计费使用 3D Secure 身份验证](/billing/3d-secure/): Docker 计费支持 3D Secure (3DS) 安全支付身份验证。了解 3DS 如何与 Docker 订阅配合使用。
 - [更改账单周期](/billing/cycle/): 了解如何更改 Docker 订阅的账单周期
 - [管理您的账单信息](/billing/details/): 了解如何在 Docker Hub 中更新您的账单信息
@@ -415,8 +420,8 @@
 - [Docker Desktop for Windows 的常见问题解答](/desktop/troubleshoot-and-support/faqs/windowsfaqs/): Docker Desktop for Windows 的常见问题解答
 - [提供反馈](/desktop/troubleshoot-and-support/feedback/): 找到适合您的反馈方式
 - [已知问题](/desktop/troubleshoot-and-support/troubleshoot/known-issues/): 查找 Docker Desktop 的已知问题
-- [修复 macOS 上“Docker.app 已损坏，无法打开”的问题](/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/): 修复 macOS 上出现的“Docker.app 已损坏，无法打开。您应该将它移到废纸篓”对话框问题
-- [Docker Desktop 故障排除主题](/desktop/troubleshoot-and-support/troubleshoot/topics/): 探索 Docker Desktop 的常见故障排除主题
+- [修复 macOS 上“Docker.app 已损坏，无法打开”问题](/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/): 修复 macOS 上“Docker.app 已损坏，无法打开。您应该将其移到废纸篓”对话框
+- [Docker Desktop 排查主题](/desktop/troubleshoot-and-support/troubleshoot/topics/): 探索 Docker Desktop 的常见排查主题
 - [卸载 Docker Desktop](/desktop/uninstall/): 如何卸载 Docker Desktop
 - [探索 Docker Desktop 中的构建视图](/desktop/use-desktop/builds/): 了解如何在 Docker Desktop 中使用构建视图
 - [探索 Docker Desktop 中的“容器”视图](/desktop/use-desktop/container/): 通过 Docker Dashboard 的“容器”视图了解您可以执行的操作
@@ -441,15 +446,16 @@
 - [软件供应链安全](/dhi/core-concepts/sscs/): 了解 Docker 加固镜像如何通过签名元数据、来源证明和最小化攻击面，帮助您保护软件供应链的每个阶段。
 - [安全软件开发生命周期](/dhi/core-concepts/ssdlc/): 了解 Docker Hardened Images 如何通过与扫描、签名和调试工具集成来支持安全的 SDLC。
 - [STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/core-concepts/stig/): 了解 Docker Hardened Images 如何提供支持 STIG 的容器镜像，并附带可验证的安全扫描证明，以满足政府和企业的合规要求。
-- [漏洞可利用性交换 (VEX)](/dhi/core-concepts/vex/): 了解 VEX 如何通过识别 Docker Hardened Images 中哪些漏洞实际可被利用，帮助您优先处理真实风险。
+- [漏洞可利用性交换 (VEX)](/dhi/core-concepts/vex/): 了解 VEX 如何通过识别 Docker 加固镜像中的哪些漏洞实际上可利用，帮助您优先处理真正的风险。
 - [Docker Hardened Images 可用类型](/dhi/explore/available/): 了解 Docker Hardened Images 目录中提供的不同镜像类型、发行版和变体。
 - [Docker 硬化镜像的构建方式](/dhi/explore/build-process/): 了解 Docker 如何通过自动化、以安全为中心的流水线来构建、测试和维护 Docker 硬化镜像。
 - [提供反馈](/dhi/explore/feedback/): 如何与 DHI 团队互动
 - [了解 Docker Hardened Images 的角色和职责](/dhi/explore/responsibility/): 了解使用 Docker Hardened Images 时，Docker、上游项目和您之间的职责划分。
+- [扫描器集成](/dhi/explore/scanner-integrations/): 了解哪些漏洞扫描器适用于 Docker Hardened Images，以及如何选择合适的扫描器以进行准确的漏洞评估。
 - [Docker 强化镜像如何进行测试](/dhi/explore/test/): 了解 Docker 强化镜像如何针对标准合规性、功能性和安全性进行自动测试。
 - [什么是加固镜像，为什么要使用它们？](/dhi/explore/what/): 了解什么是加固镜像、它的重要性，以及 Docker 加固镜像如何提供更强的安全性、合规性和运行效率。
 - [Docker Hardened Images 功能](/dhi/features/): Docker Hardened Images 为每个应用提供完全透明、最小攻击面和企业级安全——免费且开源。
-- [Docker Hardened Images 快速开始](/dhi/get-started/): 通过快速开始指南探索并运行 Docker Hardened Image。
+- [Docker 加固镜像快速入门](/dhi/get-started/): 按照快速入门指南探索并运行 Docker 加固镜像。
 - [对比 Docker Hardened 镜像](/dhi/how-to/compare/): 了解如何对比 Docker Hardened 镜像与其他容器镜像，以评估安全性改进和差异。
 - [自定义 Docker 加固镜像或 Helm chart <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/customize/): 了解如何自定义 Docker 加固镜像（DHI）和 Helm chart。
 - [调试 Docker Hardened Image 容器](/dhi/how-to/debug/): 了解如何使用 Docker Debug 在本地或生产环境中对 Docker Hardened Images (DHI) 进行故障排除。
@@ -460,8 +466,8 @@
 - [管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/manage/): 了解如何在您的组织中管理已镜像和自定义的 Docker Hardened Images。
 - [镜像 Docker Hardened Image 仓库 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>](/dhi/how-to/mirror/): 了解如何将镜像镜像到您组织的命名空间，并可选择将其推送到另一个私有注册中心。
 - [使用策略强制执行 Docker Hardened Image 用法](/dhi/how-to/policies/): 了解如何将镜像策略与 Docker Scout 结合使用，以管理 Docker Hardened Images。
-- [扫描 Docker Hardened Images](/dhi/how-to/scan/): 了解如何使用 Docker Scout、Grype 或 Trivy 扫描 Docker Hardened Images 的已知漏洞。
-- [使用 Docker Hardened Image](/dhi/how-to/use/): 了解如何在 Dockerfile、CI 流程和标准开发工作流中拉取、运行和引用 Docker Hardened Image。
+- [扫描 Docker 安全加固镜像](/dhi/how-to/scan/): 了解如何使用 Docker Scout、Grype、Trivy 或 Wiz 扫描 Docker 安全加固镜像中的已知漏洞。
+- [使用 Docker 加固镜像](/dhi/how-to/use/): 了解如何在 Dockerfile、CI 流水线以及标准开发工作流中拉取、运行和引用 Docker 加固镜像。
 - [验证 Docker Hardened 镜像或图表](/dhi/how-to/verify/): 使用 Docker Scout 或 cosign 验证 Docker Hardened 镜像和图表的签名证明，如 SBOM、来源和漏洞数据。
 - [迁移清单](/dhi/migration/checklist/): 迁移到 Docker Hardened Images 时需要考虑的清单
 - [Go](/dhi/migration/examples/go/): 将 Go 应用程序迁移到 Docker 强化镜像
@@ -471,7 +477,7 @@
 - [从 Ubuntu 迁移](/dhi/migration/migrate-from-ubuntu/): 从基于 Ubuntu 的镜像迁移到 Docker Hardened Images 的分步指南
 - [从 Wolfi 迁移](/dhi/migration/migrate-from-wolfi/): 从 Wolfi 发行版镜像迁移到 Docker 加固镜像的分步指南
 - [使用 Docker 的 AI 助手进行迁移](/dhi/migration/migrate-with-ai/): 使用 Docker 的 AI 助手自动将您的 Dockerfile 迁移至 Docker 强化镜像 (DHI)
-- [Docker Hardened Images 资源](/dhi/resources/): 与 Docker Hardened Images 相关的其他资源，包括产品信息、博客文章和 GitHub 仓库
+- [Docker Hardened Images 资源](/dhi/resources/): 包括产品信息、博客文章和 GitHub 仓库在内的 Docker Hardened Images 其他资源
 - [故障排除](/dhi/troubleshoot/): 解决构建、运行或调试 Docker Hardened Images 时的常见问题，例如非 root 用户行为、缺少 shell 和端口访问。
 - [Docker Hub 目录](/docker-hub/image-library/catalogs/): 探索专门的 Docker Hub 集合，例如生成式 AI 目录。
 - [镜像 Docker Hub 官方镜像库](/docker-hub/image-library/mirror/): 为 Docker Hub 镜像设置本地镜像仓库
@@ -598,7 +604,7 @@
 - [Docker Engine 26.1 发布说明](/engine/release-notes/26.1/): 了解 Docker Engine 的新功能、Bug 修复和重大变更
 - [Docker Engine 27 版本发行说明](/engine/release-notes/27/): 了解 Docker Engine 的新功能、错误修复和破坏性变更
 - [Docker Engine version 28 release notes](/engine/release-notes/28/): 了解 Docker Engine 的新功能、错误修复和重大变更
-- [Docker Engine 29 版本发布说明](/engine/release-notes/29/): 了解 Docker Engine 的新功能、错误修复和重大变更
+- [Docker Engine 29 版本发布说明](/engine/release-notes/29/): 了解 Docker Engine 的新功能、错误修复和破坏性变更
 - [Docker Engine 历史版本](/engine/release-notes/prior-releases/): Docker CE 发布说明
 - [杀毒软件与 Docker](/engine/security/antivirus/): 在 Docker 中使用杀毒软件的一般指南
 - [Docker 的 AppArmor 安全配置文件](/engine/security/apparmor/): 在 Docker 中启用 AppArmor
@@ -665,7 +671,7 @@
 - [启用增强型容器隔离](/enterprise/security/hardened-desktop/enhanced-container-isolation/enable-eci/): 在 Docker Desktop 中启用增强型容器隔离以保护容器安全
 - [增强型容器隔离常见问题解答](/enterprise/security/hardened-desktop/enhanced-container-isolation/faq/): 关于增强型容器隔离的常见问题
 - [增强型容器隔离的限制](/enterprise/security/hardened-desktop/enhanced-container-isolation/limitations/): 增强型容器隔离的已知限制和平台特定注意事项
-- [镜像访问管理](/enterprise/security/hardened-desktop/image-access-management/): 通过镜像访问管理控制开发者可以访问哪些 Docker Hub 镜像，以增强供应链安全
+- [镜像访问管理](/enterprise/security/hardened-desktop/image-access-management/): 通过镜像访问管理控制开发人员可以访问哪些 Docker Hub 镜像，以增强供应链安全性
 - [注册表访问管理](/enterprise/security/hardened-desktop/registry-access-management/): 使用注册表访问管理控制对已批准容器注册表的访问，确保 Docker Desktop 安全使用
 - [桌面设置合规性报告](/enterprise/security/hardened-desktop/settings-management/compliance-reporting/): 使用合规性报告仪表板跟踪和监控用户对 Docker Desktop 设置策略的合规性
 - [使用 Admin Console 配置设置管理](/enterprise/security/hardened-desktop/settings-management/configure-admin-console/): 使用 Docker Admin Console 在整个组织内配置和强制执行 Docker Desktop 设置
@@ -724,7 +730,7 @@
 - [Docker Offload 快速开始](/offload/quickstart/): 了解如何使用 Docker Offload 在本地和 CI 中更快地构建和运行容器镜像。
 - [故障排除 Docker Offload](/offload/troubleshoot/): 了解如何排查 Docker Offload 相关问题。
 - [Docker Offload 使用与计费](/offload/usage/): 了解 Docker Offload 的使用情况以及如何监控您的云资源。
-- [Docker Home、管理控制台、账单、安全和订阅功能的发布说明](/platform-release-notes/): 了解 Docker Home、管理控制台以及账单和订阅功能的新功能、错误修复和重大变更
+- [Docker Home、管理控制台、计费、安全和订阅功能的版本说明](/platform-release-notes/): 了解 Docker Home、管理控制台以及计费和订阅功能的新增功能、错误修复和重大变更
 - [Docker 的产品发布生命周期](/release-lifecycle/): 描述从 Beta 到 GA 的功能生命周期的各个阶段。
 - [已弃用和停用的 Docker 产品和功能](/retired/): 探索已弃用和停用的 Docker 功能、产品和开源项目，包括已过渡工具和已归档计划的详细信息。 
 - [咨询数据库来源和匹配服务](/scout/deep-dive/advisory-db-sources/): 详细介绍 Docker Scout 分析背后的咨询数据库和 CVE 到软件包的匹配服务。
@@ -759,7 +765,7 @@
 - [Docker Scout 健康评分](/scout/policy/scores/): Docker Scout 健康评分提供对 Docker Hub 镜像的供应链评估， 根据各种安全策略对其进行从 A 到 F 的评级。 
 - [查看 Docker Scout 策略状态](/scout/policy/view/): Docker Scout 仪表板和 `docker scout policy` 命令可用于查看镜像的策略状态。 
 - [Docker Scout 快速入门](/scout/quickstart/): 了解如何开始使用 Docker Scout 分析镜像并修复漏洞
-- [Docker Scout CLI 发布说明](/scout/release-notes/cli/): 了解 Docker Scout CLI 插件的最新功能
+- [CLI 版本说明](/scout/release-notes/cli/)
 - [Docker Scout 发布说明](/scout/release-notes/platform/): 了解 Docker Scout 的最新功能
 - [恢复您的 Docker 账户](/security/2fa/recover-hub-account/): 恢复您的 Docker 账户并管理双因素身份验证恢复代码
 - [个人访问令牌](/security/access-tokens/): 创建和管理个人 Docker 访问令牌，以实现安全的 CLI 认证和自动化
@@ -790,6 +796,7 @@
 - [Docker Engine API v1.50 参考文档](/reference/api/engine/version/v1.50/): Docker Engine API 的参考文档和 Swagger (OpenAPI) 规范。
 - [Docker Engine API v1.51 参考](/reference/api/engine/version/v1.51/): Docker Engine API 的参考文档和 Swagger (OpenAPI) 规范。
 - [Docker Engine API v1.52 参考文档](/reference/api/engine/version/v1.52/): Docker Engine API 的参考文档和 Swagger (OpenAPI) 规范。
+- [Docker Engine API v1.53 参考](/reference/api/engine/version/v1.53/): Docker Engine API 的参考文档和 Swagger (OpenAPI) 规范。
 - [接口: BackendV0](/reference/api/extensions-sdk/BackendV0/): Docker 扩展 API 参考
 - [接口：DesktopUI](/reference/api/extensions-sdk/DesktopUI/): Docker 扩展 API 参考
 - [接口：Dialog](/reference/api/extensions-sdk/Dialog/): Docker 扩展 API 参考
@@ -1069,10 +1076,20 @@
 - [docker plugin rm](/reference/cli/docker/plugin/rm/)
 - [docker plugin set](/reference/cli/docker/plugin/set/)
 - [docker plugin upgrade](/reference/cli/docker/plugin/upgrade/)
+- [docker sandbox create](/reference/cli/docker/sandbox/create/)
+- [docker sandbox create cagent](/reference/cli/docker/sandbox/create/cagent/)
+- [docker sandbox create codex](/reference/cli/docker/sandbox/create/codex/)
+- [docker sandbox create gemini](/reference/cli/docker/sandbox/create/gemini/)
+- [docker sandbox create kiro](/reference/cli/docker/sandbox/create/kiro/)
+- [docker sandbox exec](/reference/cli/docker/sandbox/exec/)
 - [docker sandbox inspect](/reference/cli/docker/sandbox/inspect/)
 - [docker sandbox ls](/reference/cli/docker/sandbox/ls/)
+- [docker 沙箱网络日志](/reference/cli/docker/sandbox/network/log/)
+- [docker sandbox network proxy](/reference/cli/docker/sandbox/network/proxy/)
+- [docker sandbox reset](/reference/cli/docker/sandbox/reset/)
 - [docker sandbox 删除](/reference/cli/docker/sandbox/rm/)
 - [docker sandbox run](/reference/cli/docker/sandbox/run/)
+- [docker sandbox stop](/reference/cli/docker/sandbox/stop/)
 - [docker scout attestation add](/reference/cli/docker/scout/attestation/add/)
 - [docker scout attestation get](/reference/cli/docker/scout/attestation/get/)
 - [docker scout 证明列表](/reference/cli/docker/scout/attestation/list/)

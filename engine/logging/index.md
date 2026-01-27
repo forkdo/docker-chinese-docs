@@ -1,31 +1,4 @@
----
-title: 查看容器日志
-url: /engine/logging/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 查看容器日志
-    url: /engine/logging/
-children:
-  - title: 使用日志记录驱动插件
-    url: /engine/logging/plugins/
-    description: 了解日志记录驱动插件，用于扩展和自定义 Docker 的日志记录功能
-  - title: 将 docker logs 与远程日志记录驱动程序结合使用
-    url: /engine/logging/dual-logging/
-    description: 了解如何在使用第三方日志记录解决方案时在本地读取容器日志。
-
-  - title: 自定义日志驱动输出
-    url: /engine/logging/log_tags/
-    description: 了解如何使用 Go 模板格式化日志输出
-  - title: 配置日志驱动程序
-    url: /engine/logging/configure/
-    description: 了解如何为 Docker 守护进程配置日志驱动程序
----
+# 查看容器日志
 
 
 `docker logs` 命令显示正在运行的容器记录的信息。`docker service logs` 命令显示服务中所有容器记录的信息。记录的信息以及日志的格式几乎完全取决于容器的端点命令。

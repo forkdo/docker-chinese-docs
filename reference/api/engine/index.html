@@ -10,7 +10,7 @@
   </title>
 
 
-<meta name="description" content="了解如何使用您选择的语言通过 Docker Engine API 和 SDK 进行开发。" />
+<meta name="description" content="了解如何在您选择的编程语言中使用 Docker Engine API 和 SDK。" />
 <meta
   name="keywords"
   content="developing, api, Docker, Engine, API, API, versions, SDK, versions"
@@ -18,7 +18,10 @@
 <link rel="canonical" href="/reference/api/engine/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解如何使用您选择的语言通过 Docker Engine API 和 SDK 进行开发。"
+  content="了解如何在您选择的编程语言中使用 Docker Engine API 和 SDK。"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="Docker Engine API" />
-<meta property="og:description" content="了解如何使用您选择的语言通过 Docker Engine API 和 SDK 进行开发。" />
+<meta property="og:description" content="了解如何在您选择的编程语言中使用 Docker Engine API 和 SDK。" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-12-12 16:53:42 &#43;0100 &#43;0100"
+  content="2026-01-19 14:46:00 &#43;0100 &#43;0100"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-12-12 16:53:42 &#43;0100 &#43;0100"
+  content="2026-01-19 14:46:00 &#43;0100 &#43;0100"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"reference","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-12-12T16:53:42+01:00","description":"了解如何使用您选择的语言通过 Docker Engine API 和 SDK 进行开发。","headline":"Docker Engine API","keywords":"developing, api, Docker, Engine, API, API, versions, SDK, versions","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/reference/api/engine/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/reference/","name":"参考"},"position":1},{"@type":"ListItem","item":{"@id":"/reference/api/engine/","name":"Docker Engine API"},"position":2}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"reference","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-19T14:46:00+01:00","description":"了解如何在您选择的编程语言中使用 Docker Engine API 和 SDK。","headline":"Docker Engine API","keywords":"developing, api, Docker, Engine, API, API, versions, SDK, versions","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/reference/api/engine/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/reference/","name":"参考"},"position":1},{"@type":"ListItem","item":{"@id":"/reference/api/engine/","name":"Docker Engine API"},"position":2}]}</script>
 <link rel="alternate" type="text/markdown" href="/reference/api/engine/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -9065,6 +9074,102 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/"
+        title="docker sandbox create"
+      >
+        
+  docker sandbox create
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/cagent/"
+        title="docker sandbox create cagent"
+      >
+        
+  docker sandbox create cagent
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/codex/"
+        title="docker sandbox create codex"
+      >
+        
+  docker sandbox create codex
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/gemini/"
+        title="docker sandbox create gemini"
+      >
+        
+  docker sandbox create gemini
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/kiro/"
+        title="docker sandbox create kiro"
+      >
+        
+  docker sandbox create kiro
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/exec/"
+        title="docker sandbox exec"
+      >
+        
+  docker sandbox exec
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/cli/docker/sandbox/inspect/"
         title="docker sandbox inspect"
       >
@@ -9097,11 +9202,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/reset/"
+        title="docker sandbox reset"
+      >
+        
+  docker sandbox reset
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/cli/docker/sandbox/run/"
         title="docker sandbox run"
       >
         
   docker sandbox run
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/stop/"
+        title="docker sandbox stop"
+      >
+        
+  docker sandbox stop
 
       </a>
     </li>
@@ -9121,6 +9258,87 @@ if (resultsLength > 5) {
 
       </a>
     </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/reference/cli/docker/sandbox/network/"
+          >
+            
+  Docker 沙箱网络
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/network/proxy/"
+        title="docker sandbox network proxy"
+      >
+        
+  docker sandbox network proxy
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/network/log/"
+        title="docker 沙箱网络日志"
+      >
+        
+  docker 沙箱网络日志
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
 
 
 
@@ -9401,6 +9619,22 @@ if (resultsLength > 5) {
     >
       
     
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/api/engine/version/v1.53/"
+        title="v1.53"
+      >
+        
+  v1.53
+
+      </a>
+    </li>
+
     
     <li
       class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
@@ -11937,13 +12171,13 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e6%9f%a5%e7%9c%8b-api-%e5%8f%82%e8%80%83"
-            >查看 API 参考</a
+          <a class="link lg:no-underline" href="#%e6%9f%a5%e7%9c%8b-api-%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3"
+            >查看 API 参考文档</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96%e7%9a%84-api-%e5%92%8c-sdk"
-            >版本化的 API 和 SDK</a
+          <a class="link lg:no-underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96-api-%e5%92%8c-sdk"
+            >版本化 API 和 SDK</a
           >
         </li>
         
@@ -11965,30 +12199,30 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>Docker 提供了一个用于与 Docker 守护进程交互的 API（称为 Docker Engine API），以及用于 Go 和 Python 的 SDK。这些 SDK 让您可以高效地构建和扩展 Docker 应用和解决方案。如果 Go 或 Python 不适合您，您可以直接使用 Docker Engine API。</p>
-<p>有关 Docker Engine SDK 的信息，请参阅 <a class="link" href="/reference/api/engine/sdk/">使用 Docker Engine SDK 进行开发</a>。</p>
-<p>Docker Engine API 是一个 RESTful API，可以通过 HTTP 客户端（如 <code>wget</code> 或 <code>curl</code>）或大多数现代编程语言附带的 HTTP 库进行访问。</p>
+    <p>Docker 提供了一个用于与 Docker 守护进程（称为 Docker Engine API）交互的 API，以及 Go 和 Python 的 SDK。这些 SDK 可让您高效地构建和扩展 Docker 应用程序和解决方案。如果您不使用 Go 或 Python，也可以直接使用 Docker Engine API。</p>
+<p>有关 Docker Engine SDK 的信息，请参阅<a class="link" href="/reference/api/engine/sdk/">使用 Docker Engine SDK 进行开发</a>。</p>
+<p>Docker Engine API 是一个 RESTful API，可通过 <code>wget</code> 或 <code>curl</code> 等 HTTP 客户端，或大多数现代编程语言内置的 HTTP 库进行访问。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="查看-api-参考">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9f%a5%e7%9c%8b-api-%e5%8f%82%e8%80%83">
-    查看 API 参考
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="查看-api-参考文档">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%9f%a5%e7%9c%8b-api-%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">
+    查看 API 参考文档
   </a>
 </h2>
 
 <p>您可以
     
   
-  <a class="link" href="/reference/api/engine/version/v1.52/">查看最新版本的 API 参考</a>或
+  <a class="link" href="/reference/api/engine/version/v1.53/">查看最新版本的 API 参考文档</a>，或
   <a class="link" href="/reference/api/engine/#api-version-matrix">选择特定版本</a>。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="版本化的-api-和-sdk">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96%e7%9a%84-api-%e5%92%8c-sdk">
-    版本化的 API 和 SDK
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="版本化-api-和-sdk">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96-api-%e5%92%8c-sdk">
+    版本化 API 和 SDK
   </a>
 </h2>
 
-<p>您应该使用的 Docker Engine API 版本取决于您的 Docker 守护进程和 Docker 客户端的版本。</p>
-<p>特定版本的 Docker Engine SDK 支持特定版本的 Docker Engine API，以及所有早期版本。如果发生破坏性变更，会显著记录这些变更。</p>
+<p>您应使用的 Docker Engine API 版本取决于 Docker 守护进程和 Docker 客户端的版本。</p>
+<p>特定版本的 Docker Engine SDK 支持特定版本的 Docker Engine API 以及所有早期版本。如果发生破坏性变更，这些变更会被显著记录。</p>
 
 
   
@@ -12007,16 +12241,20 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>Docker 守护进程和客户端不一定总是需要相同的版本。但是，请记住以下几点：</p>
+      <p>Docker 守护进程和客户端不必始终保持相同版本。但请注意以下几点：</p>
 <ul>
-<li>如果守护进程比客户端新，客户端将不知道守护进程中的新功能或已弃用的 API 端点。</li>
-<li>如果客户端比守护进程新，客户端可以请求守护进程不知道的 API 端点。</li>
+<li>
+<p>如果守护进程版本比客户端新，客户端将无法了解守护进程中的新功能或已弃用的 API 端点。</p>
+</li>
+<li>
+<p>如果客户端版本比守护进程新，客户端可能会请求守护进程未知的 API 端点。</p>
+</li>
 </ul>
     </div>
   </blockquote>
 
-<p>当添加新功能时，会发布新版本的 API。Docker API 是向后兼容的，因此除非您需要利用新功能，否则不需要更新使用 API 的代码。</p>
-<p>要查看您的 Docker 守护进程和客户端支持的最高 API 版本，请使用 <code>docker version</code>：</p>
+<p>当添加新功能时，会发布新版本的 API。Docker API 向后兼容，因此除非您需要使用新功能，否则无需更新使用 API 的代码。</p>
+<p>要查看 Docker 守护进程和客户端支持的最高 API 版本，请使用 <code>docker version</code> 命令：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12029,7 +12267,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBkb2NrZXIgdmVyc2lvbgpDbGllbnQ6IERvY2tlciBFbmdpbmUgLSBDb21tdW5pdHkKIFZlcnNpb246ICAgICAgICAgICAyOS4xLjMKIEFQSSB2ZXJzaW9uOiAgICAgICAxLjUyCiBHbyB2ZXJzaW9uOiAgICAgICAgZ28xLjI1LjUKIEdpdCBjb21taXQ6ICAgICAgICBmNTI4MTRkCiBCdWlsdDogICAgICAgICAgICAgRnJpIERlYyAxMiAxNDo1MDoxMyAyMDI1CiBPUy9BcmNoOiAgICAgICAgICAgbGludXgvYXJtNjQKIENvbnRleHQ6ICAgICAgICAgICBkZWZhdWx0CgpTZXJ2ZXI6IERvY2tlciBFbmdpbmUgLSBDb21tdW5pdHkKIEVuZ2luZToKICBWZXJzaW9uOiAgICAgICAgICAyOS4xLjMKICBBUEkgdmVyc2lvbjogICAgICAxLjUyIChtaW5pbXVtIHZlcnNpb24gMS40NCkKICBHbyB2ZXJzaW9uOiAgICAgICBnbzEuMjUuNQogIEdpdCBjb21taXQ6ICAgICAgIGZiZjNlZDIKICBCdWlsdDogICAgICAgICAgICBGcmkgRGVjIDEyIDE0OjUwOjEzIDIwMjUKICBPUy9BcmNoOiAgICAgICAgICBsaW51eC9hcm02NAogIC4uLg==', copying: false }"
+        x-data="{ code: 'JCBkb2NrZXIgdmVyc2lvbgpDbGllbnQ6IERvY2tlciBFbmdpbmUgLSBDb21tdW5pdHkKIFZlcnNpb246ICAgICAgICAgICAyOS4yLjAtcmMuMgogQVBJIHZlcnNpb246ICAgICAgIDEuNTMKIEdvIHZlcnNpb246ICAgICAgICBnbzEuMjUuNgogR2l0IGNvbW1pdDogICAgICAgIGQ1ZWQwMzcKIEJ1aWx0OiAgICAgICAgICAgICBNb24gSmFuIDE5IDEyOjA1OjEyIDIwMjYKIE9TL0FyY2g6ICAgICAgICAgICBsaW51eC9hcm02NAogQ29udGV4dDogICAgICAgICAgIGRlZmF1bHQKClNlcnZlcjogRG9ja2VyIEVuZ2luZSAtIENvbW11bml0eQogRW5naW5lOgogIFZlcnNpb246ICAgICAgICAgIDI5LjIuMC1yYy4yCiAgQVBJIHZlcnNpb246ICAgICAgMS41MyAobWluaW11bSB2ZXJzaW9uIDEuNDQpCiAgR28gdmVyc2lvbjogICAgICAgZ28xLjI1LjYKICBHaXQgY29tbWl0OiAgICAgICBmMTY0ZTUwCiAgQnVpbHQ6ICAgICAgICAgICAgTW9uIEphbiAxOSAxMjowNToxMiAyMDI2CiAgT1MvQXJjaDogICAgICAgICAgbGludXgvYXJtNjQKICAuLi4=', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12050,21 +12288,21 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker version
 </span></span><span class="line"><span class="cl"><span class="go">Client: Docker Engine - Community
-</span></span></span><span class="line"><span class="cl"><span class="go"> Version:           29.1.3
-</span></span></span><span class="line"><span class="cl"><span class="go"> API version:       1.52
-</span></span></span><span class="line"><span class="cl"><span class="go"> Go version:        go1.25.5
-</span></span></span><span class="line"><span class="cl"><span class="go"> Git commit:        f52814d
-</span></span></span><span class="line"><span class="cl"><span class="go"> Built:             Fri Dec 12 14:50:13 2025
+</span></span></span><span class="line"><span class="cl"><span class="go"> Version:           29.2.0-rc.2
+</span></span></span><span class="line"><span class="cl"><span class="go"> API version:       1.53
+</span></span></span><span class="line"><span class="cl"><span class="go"> Go version:        go1.25.6
+</span></span></span><span class="line"><span class="cl"><span class="go"> Git commit:        d5ed037
+</span></span></span><span class="line"><span class="cl"><span class="go"> Built:             Mon Jan 19 12:05:12 2026
 </span></span></span><span class="line"><span class="cl"><span class="go"> OS/Arch:           linux/arm64
 </span></span></span><span class="line"><span class="cl"><span class="go"> Context:           default
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="go">Server: Docker Engine - Community
 </span></span></span><span class="line"><span class="cl"><span class="go"> Engine:
-</span></span></span><span class="line"><span class="cl"><span class="go">  Version:          29.1.3
-</span></span></span><span class="line"><span class="cl"><span class="go">  API version:      1.52 (minimum version 1.44)
-</span></span></span><span class="line"><span class="cl"><span class="go">  Go version:       go1.25.5
-</span></span></span><span class="line"><span class="cl"><span class="go">  Git commit:       fbf3ed2
-</span></span></span><span class="line"><span class="cl"><span class="go">  Built:            Fri Dec 12 14:50:13 2025
+</span></span></span><span class="line"><span class="cl"><span class="go">  Version:          29.2.0-rc.2
+</span></span></span><span class="line"><span class="cl"><span class="go">  API version:      1.53 (minimum version 1.44)
+</span></span></span><span class="line"><span class="cl"><span class="go">  Go version:       go1.25.6
+</span></span></span><span class="line"><span class="cl"><span class="go">  Git commit:       f164e50
+</span></span></span><span class="line"><span class="cl"><span class="go">  Built:            Mon Jan 19 12:05:12 2026
 </span></span></span><span class="line"><span class="cl"><span class="go">  OS/Arch:          linux/arm64
 </span></span></span><span class="line"><span class="cl"><span class="go">  ...
 </span></span></span></code></pre></div>
@@ -12072,16 +12310,16 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您可以通过以下任何一种方式指定要使用的 API 版本：</p>
+<p>您可以通过以下任意方式指定要使用的 API 版本：</p>
 <ul>
 <li>
-<p>使用 SDK 时，请使用最新版本。至少，使用包含您所需功能的 API 版本。</p>
+<p>使用 SDK 时，请使用最新版本。至少应使用包含您所需功能对应 API 版本的版本。</p>
 </li>
 <li>
-<p>直接使用 <code>curl</code> 时，将版本指定为 URL 的第一部分。例如，如果端点是 <code>/containers/</code>，您可以使用 <code>/v1.52/containers/</code>。</p>
+<p>直接使用 <code>curl</code> 时，请在 URL 的第一部分指定版本。例如，如果端点是 <code>/containers/</code>，可以使用 <code>/v1.53/containers/</code>。</p>
 </li>
 <li>
-<p>要强制 Docker CLI 或 Docker Engine SDK 使用比 <code>docker version</code> 报告的版本更旧的 API 版本，请将环境变量 <code>DOCKER_API_VERSION</code> 设置为正确的版本。这在 Linux、Windows 或 macOS 客户端上有效。</p>
+<p>要强制 Docker CLI 或 Docker Engine SDK 使用比 <code>docker version</code> 报告的更旧的 API 版本，请将环境变量 <code>DOCKER_API_VERSION</code> 设置为正确的版本。此方法适用于 Linux、Windows 或 macOS 客户端。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12094,7 +12332,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBET0NLRVJfQVBJX1ZFUlNJT049MS41MQ==', copying: false }"
+        x-data="{ code: 'JCBET0NLRVJfQVBJX1ZFUlNJT049MS41Mg==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12113,19 +12351,19 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nv">DOCKER_API_VERSION</span><span class="o">=</span>1.51
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nv">DOCKER_API_VERSION</span><span class="o">=</span>1.52
 </span></span></code></pre></div>
       
     </div>
   </div>
 </div>
-<p>虽然设置了环境变量，但会使用该版本的 API，即使 Docker 守护进程支持更新的版本也是如此。此环境变量会禁用 API 版本协商，因此您应该仅在必须使用特定版本的 API 或出于调试目的时才使用它。</p>
+<p>在设置此环境变量期间，即使 Docker 守护进程支持更新的版本，也会使用该版本的 API。此环境变量会禁用 API 版本协商，因此仅在必须使用特定 API 版本或用于调试目的时才应使用。</p>
 </li>
 <li>
-<p>Docker Go SDK 允许您启用 API 版本协商，自动选择由客户端和正在使用的 Docker Engine 都支持的 API 版本。</p>
+<p>Docker Go SDK 允许您启用 API 版本协商，自动选择客户端和正在使用的 Docker Engine 均支持的 API 版本。</p>
 </li>
 <li>
-<p>对于 SDK，您还可以以编程方式将 API 版本指定为 <code>client</code> 对象的参数。请参阅 <a class="link" href="https://pkg.go.dev/github.com/docker/docker/client#NewClientWithOpts" rel="noopener">Go 构造函数</a>或 <a class="link" href="https://docker-py.readthedocs.io/en/stable/client.html" rel="noopener">Python SDK 的 <code>client</code> 文档</a>。</p>
+<p>对于 SDK，您还可以在程序中通过将 API 版本作为 <code>client</code> 对象的参数来指定。请参阅 <a class="link" href="https://pkg.go.dev/github.com/docker/docker/client#NewClientWithOpts" rel="noopener">Go 构造函数</a> 或 <a class="link" href="https://docker-py.readthedocs.io/en/stable/client.html" rel="noopener">Python SDK 的 <code>client</code> 文档</a>。</p>
 </li>
 </ul>
 
@@ -12157,7 +12395,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.52/">1.52</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v152-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v152-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12167,7 +12405,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.51/">1.51</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v151-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v151-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12177,7 +12415,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.50/">1.50</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v150-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v150-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12187,7 +12425,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.49/">1.49</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v149-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v149-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12197,7 +12435,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.48/">1.48</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v148-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v148-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12207,7 +12445,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.47/">1.47</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12217,7 +12455,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.47/">1.47</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12227,7 +12465,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.47/">1.47</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12237,7 +12475,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.47/">1.47</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v147-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12247,7 +12485,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.46/">1.46</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v146-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v146-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12257,7 +12495,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.46/">1.46</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v146-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v146-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12267,7 +12505,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.45/">1.45</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v145-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v145-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12277,7 +12515,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.45/">1.45</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v145-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v145-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12287,7 +12525,7 @@ if (resultsLength > 5) {
   <a class="link" href="/reference/api/engine/version/v1.44/">1.44</a></td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v144-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v144-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12296,7 +12534,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.43</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v143-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v143-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12305,7 +12543,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.42</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v142-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v142-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12314,7 +12552,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.41</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v141-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v141-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12323,7 +12561,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.40</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v140-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v140-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12332,7 +12570,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.39</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v139-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v139-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12341,7 +12579,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.38</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v138-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v138-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12350,7 +12588,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.37</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v137-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v137-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12359,7 +12597,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.37</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v137-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v137-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12368,7 +12606,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.37</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v137-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v137-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12377,7 +12615,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.36</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v136-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v136-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12386,7 +12624,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.35</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v135-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v135-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12395,7 +12633,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.34</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v134-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v134-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12404,7 +12642,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.33</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v133-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v133-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12413,7 +12651,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.32</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v132-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v132-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12422,7 +12660,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.31</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v131-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v131-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12431,7 +12669,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.30</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v130-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v130-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12440,7 +12678,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.29</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v129-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v129-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12449,7 +12687,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.28</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v128-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v128-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12458,7 +12696,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.27</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v127-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v127-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12467,7 +12705,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.26</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v126-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v126-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12476,7 +12714,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.26</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v126-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v126-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12485,7 +12723,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.25</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v125-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v125-api-changes">变更内容</a></td>
         </tr>
         <tr>
             <td
@@ -12494,7 +12732,7 @@ if (resultsLength > 5) {
               class="p-2" style="text-align: left">1.24</td>
             <td
               class="p-2" style="text-align: left">
-  <a class="link" href="/reference/api/engine/version-history/#v124-api-changes">变更</a></td>
+  <a class="link" href="/reference/api/engine/version-history/#v124-api-changes">变更内容</a></td>
         </tr>
     </tbody>
   </table>
@@ -12506,11 +12744,11 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>v1.44 之前的 API 版本已弃用。您可以在 GitHub 上的代码仓库中找到已弃用 API 版本的归档文档：</p>
+<p>v1.44 之前的 API 版本已被弃用。您可以在 GitHub 代码仓库中找到已弃用 API 版本的归档文档：</p>
 <ul>
-<li><a class="link" href="https://github.com/moby/moby/tree/28.x/docs/api" rel="noopener">API 版本 1.24–1.43 的文档</a>。</li>
-<li><a class="link" href="https://github.com/moby/moby/tree/v25.0.0/docs/api" rel="noopener">API 版本 1.18–1.23 的文档</a>。</li>
-<li><a class="link" href="https://github.com/moby/moby/tree/v1.9.1/docs/reference/api" rel="noopener">API 版本 1.17 及更早版本的文档</a>。</li>
+<li><a class="link" href="https://github.com/moby/moby/tree/28.x/docs/api" rel="noopener">API 版本 1.24–1.43 文档</a></li>
+<li><a class="link" href="https://github.com/moby/moby/tree/v25.0.0/docs/api" rel="noopener">API 版本 1.18–1.23 文档</a></li>
+<li><a class="link" href="https://github.com/moby/moby/tree/v1.9.1/docs/reference/api" rel="noopener">API 版本 1.17 及更早版本文档</a></li>
 </ul>
 
   </article>
@@ -12569,13 +12807,13 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e6%9f%a5%e7%9c%8b-api-%e5%8f%82%e8%80%83"
-            >查看 API 参考</a
+          <a class="link lg:no-underline" href="#%e6%9f%a5%e7%9c%8b-api-%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3"
+            >查看 API 参考文档</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96%e7%9a%84-api-%e5%92%8c-sdk"
-            >版本化的 API 和 SDK</a
+          <a class="link lg:no-underline" href="#%e7%89%88%e6%9c%ac%e5%8c%96-api-%e5%92%8c-sdk"
+            >版本化 API 和 SDK</a
           >
         </li>
         
@@ -12606,9 +12844,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12623,7 +12863,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12638,7 +12878,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12653,7 +12893,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12668,7 +12908,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12684,26 +12924,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

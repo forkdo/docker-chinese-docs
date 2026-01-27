@@ -1,27 +1,4 @@
----
-title: Docker 赞助的开源计划
-url: /docker-hub/repos/manage/trusted-content/dsos-program/
-parent:
-  title: 可信内容
-  url: /docker-hub/repos/manage/trusted-content/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 可信内容
-    url: /docker-hub/repos/manage/trusted-content/
-  - title: Docker 赞助的开源计划
-    url: /docker-hub/repos/manage/trusted-content/dsos-program/
-next:
-  title: Docker 官方镜像
-  url: /docker-hub/repos/manage/trusted-content/official-images/
-prev:
-  title: 洞察与分析
-  url: /docker-hub/repos/manage/trusted-content/insights-analytics/
----
+# Docker 赞助的开源计划
 
 
 [Docker 赞助的开源镜像](https://hub.docker.com/search?badges=open_source)由 Docker 通过该计划赞助的开源项目发布和维护。

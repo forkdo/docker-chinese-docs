@@ -1,23 +1,4 @@
----
-title: Docker Hub MCP 服务器
-url: /ai/mcp-catalog-and-toolkit/hub-mcp/
-parent:
-  title: Docker MCP Catalog and Toolkit
-  url: /ai/mcp-catalog-and-toolkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-  - title: Docker Hub MCP 服务器
-    url: /ai/mcp-catalog-and-toolkit/hub-mcp/
-next:
-  title: MCP Gateway
-  url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
-prev:
-  title: 安全常见问题解答
-  url: /ai/mcp-catalog-and-toolkit/faqs/
----
+# Docker Hub MCP 服务器
 
 
 Docker Hub MCP 服务器是一个模型上下文协议（MCP）服务器，它通过 Docker Hub API 接口，使 LLM 能够访问丰富的镜像元数据，从而实现智能内容发现和仓库管理。

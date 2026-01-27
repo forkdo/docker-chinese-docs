@@ -1,21 +1,4 @@
----
-title: docker trust signer
-url: /reference/cli/docker/trust/signer/
-parent:
-  title: docker trust
-  url: /reference/cli/docker/trust/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker trust
-    url: /reference/cli/docker/trust/
-  - title: docker trust signer
-    url: /reference/cli/docker/trust/signer/
----
+# docker trust signer
 
 **Description:** Manage entities who can sign Docker images
 

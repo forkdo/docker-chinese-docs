@@ -1,25 +1,4 @@
----
-title: tmpfs 挂载
-url: /engine/storage/tmpfs/
-parent:
-  title: 存储
-  url: /engine/storage/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: tmpfs 挂载
-    url: /engine/storage/tmpfs/
-next:
-  title: 绑定挂载
-  url: /engine/storage/bind-mounts/
-prev:
-  title: 使用 containerd 镜像存储的 Docker Engine
-  url: /engine/storage/containerd/
----
+# tmpfs 挂载
 
 
 [Volumes](volumes.md) 和 [bind mounts](bind-mounts.md) 允许你在主机和容器之间共享文件，以便在容器停止后仍能保留数据。

@@ -1,20 +1,4 @@
----
-title: 故障排除代码质量工作流
-url: /guides/github-sonarqube-sandbox/troubleshoot/
-parent:
-  title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
-  url: /guides/github-sonarqube-sandbox/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 如何使用 SonarQube 和 E2B 构建 AI 驱动的代码质量工作流
-    url: /guides/github-sonarqube-sandbox/
-  - title: 故障排除代码质量工作流
-    url: /guides/github-sonarqube-sandbox/troubleshoot/
-next:
-  title: 自定义代码质量检查工作流
-  url: /guides/github-sonarqube-sandbox/customize/
----
+# 故障排除代码质量工作流
 
 
 本页介绍在使用 E2B 沙盒和 MCP 服务器构建代码质量工作流时可能遇到的常见问题及其解决方案。

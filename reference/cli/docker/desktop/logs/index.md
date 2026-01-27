@@ -1,24 +1,4 @@
----
-title: Docker Desktop 日志
-url: /reference/cli/docker/desktop/logs/
-parent:
-  title: docker desktop (Beta)
-  url: /reference/cli/docker/desktop/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker desktop (Beta)
-    url: /reference/cli/docker/desktop/
-  - title: Docker Desktop 日志
-    url: /reference/cli/docker/desktop/logs/
-next:
-  title: docker desktop version
-  url: /reference/cli/docker/desktop/version/
----
+# Docker Desktop 日志
 
 **Description:** Print log entries for Docker Desktop
 

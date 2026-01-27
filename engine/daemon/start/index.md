@@ -1,22 +1,4 @@
----
-title: 启动守护进程
-url: /engine/daemon/start/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 启动守护进程
-    url: /engine/daemon/start/
-prev:
-  title: 使用 IPv6 网络
-  url: /engine/daemon/ipv6/
----
+# 启动守护进程
 
 
 本页介绍如何手动或使用操作系统实用程序启动守护进程。

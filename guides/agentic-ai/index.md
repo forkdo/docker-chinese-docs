@@ -1,21 +1,4 @@
----
-title: 使用 Docker 构建和运行智能体 AI 应用程序
-url: /guides/agentic-ai/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker 构建和运行智能体 AI 应用程序
-    url: /guides/agentic-ai/
-next:
-  title: 构建文本摘要应用
-  url: /guides/text-summarization/
-prev:
-  title: GenAI 视频转录与对话
-  url: /guides/genai-video-bot/
----
+# 使用 Docker 构建和运行智能体 AI 应用程序
 
 
 ## 简介

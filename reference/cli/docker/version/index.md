@@ -1,25 +1,4 @@
----
-title: docker version
-url: /reference/cli/docker/version/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker version
-    url: /reference/cli/docker/version/
-next:
-  title: docker search
-  url: /reference/cli/docker/search/
-prev:
-  title: docker 登录
-  url: /reference/cli/docker/login/
----
+# docker version
 
 **Description:** Show the Docker version information
 

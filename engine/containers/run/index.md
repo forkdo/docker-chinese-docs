@@ -1,20 +1,4 @@
----
-title: Running containers
-url: /engine/containers/run/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Running containers
-    url: /engine/containers/run/
-next:
-  title: 运行时指标
-  url: /engine/containers/runmetrics/
----
+# Running containers
 
 
 Docker runs processes in isolated containers. A container is a process

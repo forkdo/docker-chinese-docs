@@ -1,27 +1,4 @@
----
-title: docker model start-runner
-url: /reference/cli/docker/model/start-runner/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model start-runner
-    url: /reference/cli/docker/model/start-runner/
-next:
-  title: docker model run
-  url: /reference/cli/docker/model/run/
-prev:
-  title: docker model status
-  url: /reference/cli/docker/model/status/
----
+# docker model start-runner
 
 **Description:** Start Docker Model Runner (Docker Engine only)
 

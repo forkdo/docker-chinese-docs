@@ -1,25 +1,4 @@
----
-title: 探索 Docker Desktop 中的构建视图
-url: /desktop/use-desktop/builds/
-parent:
-  title: 探索 Docker Desktop
-  url: /desktop/use-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 探索 Docker Desktop
-    url: /desktop/use-desktop/
-  - title: 探索 Docker Desktop 中的构建视图
-    url: /desktop/use-desktop/builds/
-next:
-  title: 在 Docker Desktop 中探索卷视图
-  url: /desktop/use-desktop/volumes/
-prev:
-  title: 探索 Kubernetes 视图
-  url: /desktop/use-desktop/kubernetes/
----
+# 探索 Docker Desktop 中的构建视图
 
 
 **构建**视图提供了一个交互式界面，用于检查构建历史、监控活跃构建，以及直接在 Docker Desktop 中管理构建器。

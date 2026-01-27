@@ -1,20 +1,4 @@
----
-title: 添加或更新支付方式
-url: /billing/payment-method/
-parent:
-  title: 管理账单和支付
-  url: /billing/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理账单和支付
-    url: /billing/
-  - title: 添加或更新支付方式
-    url: /billing/payment-method/
-prev:
-  title: 管理您的账单信息
-  url: /billing/details/
----
+# 添加或更新支付方式
 
 
 本文介绍如何为您的个人账户或组织添加或更新支付方式。

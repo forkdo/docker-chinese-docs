@@ -1,33 +1,4 @@
----
-title: 存储
-url: /engine/storage/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-children:
-  - title: 卷（Volumes）
-    url: /engine/storage/volumes/
-    description: 了解如何创建、管理和使用卷（volumes）而非绑定挂载（bind mounts）来持久化 Docker 生成和使用的数据。
-  - title: 绑定挂载
-    url: /engine/storage/bind-mounts/
-    description: 使用绑定挂载
-  - title: tmpfs 挂载
-    url: /engine/storage/tmpfs/
-    description: 使用 tmpfs 挂载
-  - title: 存储驱动程序
-    url: /engine/storage/drivers/
-    description: 了解支持存储驱动程序的技术。
-  - title: 使用 containerd 镜像存储的 Docker Engine
-    url: /engine/storage/containerd/
-    description: 了解 containerd 镜像存储
----
+# 存储
 
 
 Docker 存储涵盖两个不同的概念：

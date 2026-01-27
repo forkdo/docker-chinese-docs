@@ -1,20 +1,4 @@
----
-title: 自动启动容器
-url: /engine/containers/start-containers-automatically/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 自动启动容器
-    url: /engine/containers/start-containers-automatically/
-prev:
-  title: 在容器中运行多个进程
-  url: /engine/containers/multi-service_container/
----
+# 自动启动容器
 
 
 Docker 提供了[重启策略](/reference/cli/docker/container/run.md#restart)，用于控制容器在退出时或 Docker 重启时是否自动启动。重启策略会按照正确的顺序启动相关联的容器。Docker 建议您使用重启策略，避免使用进程管理器来启动容器。

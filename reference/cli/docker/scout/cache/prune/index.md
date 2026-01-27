@@ -1,26 +1,4 @@
----
-title: docker scout cache prune
-url: /reference/cli/docker/scout/cache/prune/
-parent:
-  title: docker scout cache
-  url: /reference/cli/docker/scout/cache/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout cache
-    url: /reference/cli/docker/scout/cache/
-  - title: docker scout cache prune
-    url: /reference/cli/docker/scout/cache/prune/
-next:
-  title: docker scout cache df
-  url: /reference/cli/docker/scout/cache/df/
----
+# docker scout cache prune
 
 **Description:** Remove temporary or cached data
 

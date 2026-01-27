@@ -1,25 +1,4 @@
----
-title: 对比 Docker Hardened 镜像
-url: /dhi/how-to/compare/
-parent:
-  title: 操作指南
-  url: /dhi/how-to/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 操作指南
-    url: /dhi/how-to/
-  - title: 对比 Docker Hardened 镜像
-    url: /dhi/how-to/compare/
-next:
-  title: 使用 Docker Hardened Images 的扩展生命周期支持 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-  url: /dhi/how-to/els/
-prev:
-  title: 验证 Docker Hardened 镜像或图表
-  url: /dhi/how-to/verify/
----
+# 对比 Docker Hardened 镜像
 
 
 Docker Hardened 镜像 (DHIs) 旨在为您的应用程序提供增强的安全性、最小化的攻击面以及可用于生产的可靠基础。将 DHI 与标准镜像进行对比，有助于您理解安全性改进、软件包差异以及采用强化镜像的整体优势。

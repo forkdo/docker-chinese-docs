@@ -1,29 +1,4 @@
----
-title: docker mcp client disconnect
-url: /reference/cli/docker/mcp/client/client_disconnect/
-parent:
-  title: docker mcp client
-  url: /reference/cli/docker/mcp/client/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp client
-    url: /reference/cli/docker/mcp/client/
-  - title: docker mcp client disconnect
-    url: /reference/cli/docker/mcp/client/client_disconnect/
-next:
-  title: docker mcp client connect
-  url: /reference/cli/docker/mcp/client/client_connect/
-prev:
-  title: docker mcp client ls
-  url: /reference/cli/docker/mcp/client/client_ls/
----
+# docker mcp client disconnect
 
 **Description:** Disconnect the Docker MCP Toolkit from a client. Supported clients: claude-code claude-desktop codex continue cursor gemini goose gordon lmstudio opencode sema4 vscode zed
 

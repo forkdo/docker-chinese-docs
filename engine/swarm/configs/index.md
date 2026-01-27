@@ -1,25 +1,4 @@
----
-title: 使用 Docker Configs 存储配置数据
-url: /engine/swarm/configs/
-parent:
-  title: Swarm 模式
-  url: /engine/swarm/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: 使用 Docker Configs 存储配置数据
-    url: /engine/swarm/configs/
-next:
-  title: Swarm 模式关键概念
-  url: /engine/swarm/key-concepts/
-prev:
-  title: 使用 Docker secrets 管理敏感数据
-  url: /engine/swarm/secrets/
----
+# 使用 Docker Configs 存储配置数据
 
 
 ## 关于 configs

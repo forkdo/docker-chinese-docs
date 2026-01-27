@@ -1,24 +1,4 @@
----
-title: docker trust inspect
-url: /reference/cli/docker/trust/inspect/
-parent:
-  title: docker trust
-  url: /reference/cli/docker/trust/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker trust
-    url: /reference/cli/docker/trust/
-  - title: docker trust inspect
-    url: /reference/cli/docker/trust/inspect/
-prev:
-  title: docker trust revoke
-  url: /reference/cli/docker/trust/revoke/
----
+# docker trust inspect
 
 **Description:** Return low-level information about keys and signatures
 

@@ -1,24 +1,4 @@
----
-title: docker system prune
-url: /reference/cli/docker/system/prune/
-parent:
-  title: docker system
-  url: /reference/cli/docker/system/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker system
-    url: /reference/cli/docker/system/
-  - title: docker system prune
-    url: /reference/cli/docker/system/prune/
-next:
-  title: docker system info
-  url: /reference/cli/docker/system/info/
----
+# docker system prune
 
 **Description:** Remove unused data
 

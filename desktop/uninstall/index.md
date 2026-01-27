@@ -1,20 +1,4 @@
----
-title: 卸载 Docker Desktop
-url: /desktop/uninstall/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 卸载 Docker Desktop
-    url: /desktop/uninstall/
-prev:
-  title: 修复 Mac 上的 Docker Desktop 启动问题
-  url: /desktop/cert-revoke-solution/
----
+# 卸载 Docker Desktop
 
 
 > [!WARNING]

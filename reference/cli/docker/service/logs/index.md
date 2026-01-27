@@ -1,27 +1,4 @@
----
-title: docker service logs
-url: /reference/cli/docker/service/logs/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service logs
-    url: /reference/cli/docker/service/logs/
-next:
-  title: docker service inspect
-  url: /reference/cli/docker/service/inspect/
-prev:
-  title: docker service ls
-  url: /reference/cli/docker/service/ls/
----
+# docker service logs
 
 **Description:** Fetch the logs of a service or task
 

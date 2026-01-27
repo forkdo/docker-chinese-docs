@@ -1,24 +1,4 @@
----
-title: 洞察与分析
-url: /docker-hub/repos/manage/trusted-content/insights-analytics/
-parent:
-  title: 可信内容
-  url: /docker-hub/repos/manage/trusted-content/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 可信内容
-    url: /docker-hub/repos/manage/trusted-content/
-  - title: 洞察与分析
-    url: /docker-hub/repos/manage/trusted-content/insights-analytics/
-next:
-  title: Docker 赞助的开源计划
-  url: /docker-hub/repos/manage/trusted-content/dsos-program/
----
+# 洞察与分析
 
 
 “洞察与分析”为 Docker Hub 上的 [Docker Verified Publisher (DVP)](https://www.docker.com/partners/programs/) 和 [Docker-Sponsored Open Source (DSOS)](https://www.docker.com/community/open-source/application/#) 镜像提供使用分析。这包括自助访问特定时间段内的镜像和扩展使用指标。您可以查看按标签或摘要划分的镜像拉取次数、地理位置、云服务提供商、客户端等信息。

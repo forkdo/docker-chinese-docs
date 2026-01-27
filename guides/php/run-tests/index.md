@@ -1,23 +1,4 @@
----
-title: 在容器中运行 PHP 测试
-url: /guides/php/run-tests/
-parent:
-  title: PHP 语言专属指南
-  url: /guides/php/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: PHP 语言专属指南
-    url: /guides/php/
-  - title: 在容器中运行 PHP 测试
-    url: /guides/php/run-tests/
-next:
-  title: 使用容器进行 PHP 开发
-  url: /guides/php/develop/
-prev:
-  title: 为您的 PHP 应用程序配置 CI/CD
-  url: /guides/php/configure-ci-cd/
----
+# 在容器中运行 PHP 测试
 
 
 ## 前提条件

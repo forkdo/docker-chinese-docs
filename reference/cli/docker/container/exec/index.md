@@ -1,27 +1,4 @@
----
-title: docker container exec
-url: /reference/cli/docker/container/exec/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container exec
-    url: /reference/cli/docker/container/exec/
-next:
-  title: docker container diff
-  url: /reference/cli/docker/container/diff/
-prev:
-  title: docker container export
-  url: /reference/cli/docker/container/export/
----
+# docker container exec
 
 **Description:** Execute a command in a running container
 

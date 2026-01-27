@@ -1,23 +1,4 @@
----
-title: JSONArgsRecommended
-url: /reference/build-checks/json-args-recommended/
-parent:
-  title: Build checks
-  url: /reference/build-checks/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-  - title: JSONArgsRecommended
-    url: /reference/build-checks/json-args-recommended/
-next:
-  title: InvalidDefinitionDescription
-  url: /reference/build-checks/invalid-definition-description/
-prev:
-  title: LegacyKeyValueFormat
-  url: /reference/build-checks/legacy-key-value-format/
----
+# JSONArgsRecommended
 
 
 ## Output

@@ -1,33 +1,4 @@
----
-title: Docker build cache
-url: /build/cache/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-children:
-  - title: Build cache invalidation
-    url: /build/cache/invalidation/
-    description: Dig into the details about how cache invalidation works for Docker's build cache
-  - title: Build garbage collection
-    url: /build/cache/garbage-collection/
-    description: Learn about garbage collection in the BuildKit daemon
-  - title: Cache storage backends
-    url: /build/cache/backends/
-    description: Cache backends let you manage your build cache externally.
-External cache is useful to create a shared cache that can help
-speed up inner loop and CI builds.
-
-  - title: Optimize cache usage in builds
-    url: /build/cache/optimize/
-    description: An overview on how to optimize cache utilization in Docker builds.
----
+# Docker build cache
 
 
 When you build the same Docker image multiple times, knowing how to optimize

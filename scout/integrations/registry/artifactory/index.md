@@ -1,25 +1,4 @@
----
-title: 将 Docker Scout 与 Artifactory 容器注册表集成
-url: /scout/integrations/registry/artifactory/
-parent:
-  title: 将 Docker Scout 与其他系统集成
-  url: /scout/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 将 Docker Scout 与 Artifactory 容器注册表集成
-    url: /scout/integrations/registry/artifactory/
-next:
-  title: 将 Docker Scout 与 Amazon ECR 集成
-  url: /scout/integrations/registry/ecr/
-prev:
-  title: 将 Docker Scout 与 Azure Container Registry 集成
-  url: /scout/integrations/registry/acr/
----
+# 将 Docker Scout 与 Artifactory 容器注册表集成
 
 
 > **Experimental**

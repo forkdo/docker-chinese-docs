@@ -1,23 +1,4 @@
----
-title: 使用容器进行 C++ 开发
-url: /guides/cpp/develop/
-parent:
-  title: C++ 语言专用指南
-  url: /guides/cpp/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: C++ 语言专用指南
-    url: /guides/cpp/
-  - title: 使用容器进行 C++ 开发
-    url: /guides/cpp/develop/
-next:
-  title: 容器化 C++ 应用程序
-  url: /guides/cpp/containerize/
-prev:
-  title: 为 C++ 应用程序配置 CI/CD
-  url: /guides/cpp/configure-ci-cd/
----
+# 使用容器进行 C++ 开发
 
 
 ## 先决条件

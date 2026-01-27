@@ -1,27 +1,4 @@
----
-title: Host 网络驱动
-url: /engine/network/drivers/host/
-parent:
-  title: 网络驱动
-  url: /engine/network/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 网络概述
-    url: /engine/network/
-  - title: 网络驱动
-    url: /engine/network/drivers/
-  - title: Host 网络驱动
-    url: /engine/network/drivers/host/
-next:
-  title: 
-  url: /engine/network/drivers/bridge/
-prev:
-  title: IPvlan 网络驱动
-  url: /engine/network/drivers/ipvlan/
----
+# Host 网络驱动
 
 
 如果你为容器使用 `host` 网络模式，该容器的网络栈不会与 Docker 主机隔离（容器共享主机的网络命名空间），并且容器不会获得自己分配的 IP 地址。例如，如果你运行一个绑定到端口 80 的容器，并使用 `host` 网络，那么容器的应用程序在主机 IP 地址的端口 80 上可用。

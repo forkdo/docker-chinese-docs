@@ -10,15 +10,18 @@
   </title>
 
 
-<meta name="description" content="了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。" />
+<meta name="description" content="了解如何为您的 Vue.js 应用程序配置使用 GitHub Actions 的 CI/CD。" />
 <meta
   name="keywords"
-  content="CI/CD, GitHub(, Actions), Vue.js"
+  content="CI/CD, GitHub, Actions, Vue.js"
 />
 <link rel="canonical" href="/guides/vuejs/configure-github-actions/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。"
+  content="了解如何为您的 Vue.js 应用程序配置使用 GitHub Actions 的 CI/CD。"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="使用 GitHub Actions 自动化构建" />
-<meta property="og:description" content="了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。" />
+<meta property="og:description" content="了解如何为您的 Vue.js 应用程序配置使用 GitHub Actions 的 CI/CD。" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-08-04 19:09:27 &#43;0300 &#43;0300"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-08-04 19:09:27 &#43;0300 &#43;0300"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-08-04T19:09:27+03:00","description":"了解如何使用 GitHub Actions 为您的 Vue.js 应用程序配置 CI/CD。","headline":"使用 GitHub Actions 自动化构建","isPartOf":{"@id":"/guides/vuejs/","@type":"WebPage","name":"Vue.js"},"keywords":"CI/CD, GitHub(, Actions), Vue.js","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/vuejs/configure-github-actions/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/vuejs/","name":"Vue.js"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/vuejs/configure-github-actions/","name":"使用 GitHub Actions 自动化构建"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"了解如何为您的 Vue.js 应用程序配置使用 GitHub Actions 的 CI/CD。","headline":"使用 GitHub Actions 自动化构建","isPartOf":{"@id":"/guides/vuejs/","@type":"WebPage","name":"Vue.js"},"keywords":"CI/CD, GitHub, Actions, Vue.js","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/vuejs/configure-github-actions/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/vuejs/","name":"Vue.js"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/vuejs/configure-github-actions/","name":"使用 GitHub Actions 自动化构建"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/guides/vuejs/configure-github-actions/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1650,8 +1659,8 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"
-            >前提条件</a
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
+            >先决条件</a
           >
         </li>
         <li>
@@ -1667,18 +1676,49 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac-1-%e6%ad%a5%e7%94%9f%e6%88%90-docker-hub-%e5%87%ad%e8%af%81%e5%b9%b6%e8%ae%be%e7%bd%ae-github-%e5%af%86%e9%92%a5"
-            >第 1 步：生成 Docker Hub 凭证并设置 GitHub 密钥</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-1%e7%94%9f%e6%88%90-docker-hub-%e5%87%ad%e6%8d%ae%e5%b9%b6%e8%ae%be%e7%bd%ae-github-%e6%9c%ba%e5%af%86"
+            >步骤 1：生成 Docker Hub 凭据并设置 GitHub 机密</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac-2-%e6%ad%a5%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第 2 步：设置工作流</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-2%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b"
+            >步骤 2：设置工作流程</a
+          >
+        </li>
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#tags-docker-github-actions-ci-cd-vuejs-containerization"
+            >title: &quot;第 3 部分：使用 GitHub Actions 设置 CI/CD&quot;
+description: &quot;学习如何为容器化的 Vue.js 应用程序设置 CI/CD 管道，使用 GitHub Actions 自动化构建、测试和部署流程。&quot;
+keywords: [&quot;Docker&quot;, &quot;GitHub Actions&quot;, &quot;CI/CD&quot;, &quot;Vue.js&quot;, &quot;容器化&quot;, &quot;自动化部署&quot;]
+tags: [&quot;docker&quot;, &quot;github-actions&quot;, &quot;ci-cd&quot;, &quot;vuejs&quot;, &quot;containerization&quot;]</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac-3-%e6%ad%a5%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第 3 步：运行工作流</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-3-%e9%83%a8%e5%88%86%e4%bd%bf%e7%94%a8-github-actions-%e8%ae%be%e7%bd%ae-cicd"
+            >第 3 部分：使用 GitHub Actions 设置 CI/CD</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%88%9b%e5%bb%ba-github-%e4%bb%93%e5%ba%93"
+            >步骤 1：创建 GitHub 仓库</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-2%e9%85%8d%e7%bd%ae-docker-hub-%e8%ae%bf%e9%97%ae%e4%bb%a4%e7%89%8c"
+            >步骤 2：配置 Docker Hub 访问令牌</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-3%e5%88%9b%e5%bb%ba-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤 3：创建 GitHub Actions 工作流</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-3%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤 3：运行工作流</a
           >
         </li>
   </ul>
@@ -1704,17 +1744,17 @@ if (resultsLength > 5) {
       <hr />
     </div>
     
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="前提条件">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6">
-    前提条件
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="先决条件">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6">
+    先决条件
   </a>
 </h2>
 
-<p>完成本指南的所有先前部分，从 <a class="link" href="/guides/vuejs/containerize/">容器化 Vue.js 应用程序</a> 开始。</p>
+<p>完成本指南的所有前面部分，从 <a class="link" href="/guides/vuejs/containerize/">容器化 Vue.js 应用程序</a> 开始。</p>
 <p>您还必须拥有：</p>
 <ul>
 <li>一个 <a class="link" href="https://github.com/signup" rel="noopener">GitHub</a> 账户。</li>
-<li>一个 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker Hub</a> 账户。</li>
+<li>一个已验证的 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker Hub</a> 账户。</li>
 </ul>
 <hr>
 
@@ -1724,9 +1764,9 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>在本节中，您将使用 <a class="link" href="https://docs.github.com/en/actions" rel="noopener">GitHub Actions</a> 设置一个 CI/CD 管道，以自动执行以下操作：</p>
+<p>在本节中，您将使用 <a class="link" href="https://docs.github.com/en/actions" rel="noopener">GitHub Actions</a> 设置一个 CI/CD 流水线，以自动：</p>
 <ul>
-<li>在 Docker 容器中构建您的 Vue.js 应用程序。</li>
+<li>在 Docker 容器内构建您的 Vue.js 应用程序。</li>
 <li>在一致的环境中运行测试。</li>
 <li>将生产就绪的镜像推送到 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a>。</li>
 </ul>
@@ -1738,11 +1778,11 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>为了使 GitHub Actions 能够构建和推送 Docker 镜像，您需要将 Docker Hub 凭证安全地存储在新的 GitHub 仓库中。</p>
+<p>为了使 GitHub Actions 能够构建和推送 Docker 镜像，您将在新的 GitHub 仓库中安全地存储您的 Docker Hub 凭据。</p>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="第-1-步生成-docker-hub-凭证并设置-github-密钥">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-1-%e6%ad%a5%e7%94%9f%e6%88%90-docker-hub-%e5%87%ad%e8%af%81%e5%b9%b6%e8%ae%be%e7%bd%ae-github-%e5%af%86%e9%92%a5">
-    第 1 步：生成 Docker Hub 凭证并设置 GitHub 密钥
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-1生成-docker-hub-凭据并设置-github-机密">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-1%e7%94%9f%e6%88%90-docker-hub-%e5%87%ad%e6%8d%ae%e5%b9%b6%e8%ae%be%e7%bd%ae-github-%e6%9c%ba%e5%af%86">
+    步骤 1：生成 Docker Hub 凭据并设置 GitHub 机密
   </a>
 </h3>
 
@@ -1750,33 +1790,33 @@ if (resultsLength > 5) {
 <li>
 <p>从 <a class="link" href="https://hub.docker.com" rel="noopener">Docker Hub</a> 创建个人访问令牌 (PAT)</p>
 <ol>
-<li>转到您的 <strong>Docker Hub 账户 → 账户设置 → 安全性</strong>。</li>
-<li>生成一个新的访问令牌，权限为 <strong>Read/Write</strong>（读/写）。</li>
+<li>前往您的 <strong>Docker Hub 账户 → 账户设置 → 安全</strong>。</li>
+<li>生成一个具有 <strong>读/写</strong> 权限的新访问令牌。</li>
 <li>将其命名为类似 <code>docker-vuejs-sample</code> 的名称。</li>
-<li>复制并保存该令牌 — 您将在第 4 步中用到它。</li>
+<li>复制并保存该令牌 — 您将在步骤 4 中需要它。</li>
 </ol>
 </li>
 <li>
-<p>在 <a class="link" href="https://hub.docker.com/repositories/" rel="noopener">Docker Hub</a> 上创建一个仓库</p>
+<p>在 <a class="link" href="https://hub.docker.com/repositories/" rel="noopener">Docker Hub</a> 中创建一个仓库</p>
 <ol>
-<li>转到您的 <strong>Docker Hub 账户 → 创建仓库</strong>。</li>
-<li>对于仓库名称，请使用具有描述性的名称 — 例如：<code>vuejs-sample</code>。</li>
-<li>创建后，复制并保存仓库名称 — 您将在第 4 步中用到它。</li>
+<li>前往您的 <strong>Docker Hub 账户 → 创建仓库</strong>。</li>
+<li>对于仓库名称，使用描述性的名称 — 例如：<code>vuejs-sample</code>。</li>
+<li>创建后，复制并保存仓库名称 — 您将在步骤 4 中需要它。</li>
 </ol>
 </li>
 <li>
 <p>为您的 Vue.js 项目创建一个新的 <a class="link" href="https://github.com/new" rel="noopener">GitHub 仓库</a></p>
 </li>
 <li>
-<p>将 Docker Hub 凭证添加为 GitHub 仓库密钥</p>
+<p>将 Docker Hub 凭据添加为 GitHub 仓库机密</p>
 <p>在您新创建的 GitHub 仓库中：</p>
 <ol>
 <li>
-<p>导航至：
-<strong>Settings（设置） → Secrets and variables（密钥和变量） → Actions → New repository secret（新建仓库密钥）</strong>。</p>
+<p>导航到：
+<strong>Settings → Secrets and variables → Actions → New repository secret</strong>。</p>
 </li>
 <li>
-<p>添加以下密钥：</p>
+<p>添加以下机密：</p>
 </li>
 </ol>
 <div class="overflow-x-auto">
@@ -1785,9 +1825,9 @@ if (resultsLength > 5) {
     <thead class="bg-gray-100 dark:bg-gray-800">
         <tr>
             <th
-              class="p-2">名称</th>
+              class="p-2">Name</th>
             <th
-              class="p-2">值</th>
+              class="p-2">Value</th>
         </tr>
     </thead>
     <tbody>
@@ -1801,18 +1841,18 @@ if (resultsLength > 5) {
             <td
               class="p-2"><code>DOCKERHUB_TOKEN</code></td>
             <td
-              class="p-2">您的 Docker Hub 访问令牌（在第 1 步中创建）</td>
+              class="p-2">您的 Docker Hub 访问令牌（在步骤 1 中创建）</td>
         </tr>
         <tr>
             <td
               class="p-2"><code>DOCKERHUB_PROJECT_NAME</code></td>
             <td
-              class="p-2">您的 Docker 项目名称（在第 2 步中创建）</td>
+              class="p-2">您的 Docker 项目名称（在步骤 2 中创建）</td>
         </tr>
     </tbody>
   </table>
 </div>
-<p>这些密钥允许 GitHub Actions 在自动化工作流期间安全地向 Docker Hub 进行身份验证。</p>
+<p>这些机密允许 GitHub Actions 在自动化工作流程期间安全地与 Docker Hub 进行身份验证。</p>
 </li>
 <li>
 <p>将您的本地项目连接到 GitHub</p>
@@ -1876,7 +1916,7 @@ if (resultsLength > 5) {
     </div>
   </blockquote>
 
-<p>要确认您的本地项目已正确连接到远程 GitHub 仓库，请运行：</p>
+<p>为确认您的本地项目已正确连接到远程 GitHub 仓库，请运行：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1914,7 +1954,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您应该会看到类似以下的输出：</p>
+<p>您应该看到类似以下的输出：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1953,14 +1993,14 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>这确认了您的本地仓库已正确链接，并准备好将源代码推送到 GitHub。</p>
+<p>这确认了您的本地仓库已正确链接并准备好将源代码推送到 GitHub。</p>
 </li>
 <li>
 <p>将您的源代码推送到 GitHub</p>
-<p>按照以下步骤提交并推送您的本地项目到 GitHub 仓库：</p>
+<p>按照这些步骤提交并将您的本地项目推送到 GitHub 仓库：</p>
 <ol>
 <li>
-<p>将所有文件暂存以供提交。</p>
+<p>将所有文件暂存以进行提交。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1998,10 +2038,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令暂存所有更改 — 包括新的、修改过的和已删除的文件 — 为提交做准备。</p>
+<p>此命令将暂存所有更改 — 包括新文件、修改文件和删除文件 — 为提交做准备。</p>
 </li>
 <li>
-<p>使用描述性消息提交已暂存的更改。</p>
+<p>使用描述性消息提交暂存的更改。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2080,12 +2120,12 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令将您的本地提交推送到远程 GitHub 仓库的 <code>main</code> 分支，并设置上游分支。</p>
+<p>此命令将您的本地提交推送到远程 GitHub 仓库的 <code>main</code> 分支并设置上游分支。</p>
 </li>
 </ol>
 </li>
 </ol>
-<p>完成后，您的代码将在 GitHub 上可用，并且您配置的任何 GitHub Actions 工作流都将自动运行。</p>
+<p>完成后，您的代码将在 GitHub 上可用，您配置的任何 GitHub Actions 工作流程都将自动运行。</p>
 
 
   
@@ -2104,10 +2144,10 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>了解更多关于本步骤中使用的 Git 命令的信息：</p>
+      <p>了解更多关于此步骤中使用的 Git 命令：</p>
 <ul>
-<li><a class="link" href="https://git-scm.com/docs/git-add" rel="noopener">Git add</a> – 暂存更改（新的、修改的、删除的）以供提交</li>
-<li><a class="link" href="https://git-scm.com/docs/git-commit" rel="noopener">Git commit</a> – 保存已暂存更改的快照</li>
+<li><a class="link" href="https://git-scm.com/docs/git-add" rel="noopener">Git add</a> – 暂存更改（新、修改、删除）以进行提交</li>
+<li><a class="link" href="https://git-scm.com/docs/git-commit" rel="noopener">Git commit</a> – 保存暂存更改的快照</li>
 <li><a class="link" href="https://git-scm.com/docs/git-push" rel="noopener">Git push</a> – 将本地提交上传到您的 GitHub 仓库</li>
 <li><a class="link" href="https://git-scm.com/docs/git-remote" rel="noopener">Git remote</a> – 查看和管理远程仓库 URL</li>
 </ul>
@@ -2116,24 +2156,24 @@ if (resultsLength > 5) {
 
 <hr>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="第-2-步设置工作流">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-2-%e6%ad%a5%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81">
-    第 2 步：设置工作流
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-2设置工作流程">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-2%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b">
+    步骤 2：设置工作流程
   </a>
 </h3>
 
-<p>现在您将创建一个 GitHub Actions 工作流，该工作流将构建您的 Docker 镜像，运行测试，并将镜像推送到 Docker Hub。</p>
+<p>现在您将创建一个 GitHub Actions 工作流程，该工作流程构建您的 Docker 镜像，运行测试，并将镜像推送到 Docker Hub。</p>
 <ol>
 <li>
-<p>转到 GitHub 上的仓库，并在顶部菜单中选择 <strong>Actions</strong> 选项卡。</p>
+<p>前往 GitHub 上的您的仓库并选择顶部菜单中的 <strong>Actions</strong> 选项卡。</p>
 </li>
 <li>
-<p>在提示时选择 <strong>Set up a workflow yourself</strong>（自行设置工作流）。</p>
-<p>这将打开一个内联编辑器以创建新的工作流文件。默认情况下，它将保存到：
+<p>出现提示时选择 <strong>Set up a workflow yourself</strong>。</p>
+<p>这将打开一个内联编辑器以创建新的工作流程文件。默认情况下，它将保存到：
 <code>.github/workflows/main.yml</code></p>
 </li>
 <li>
-<p>将以下工作流配置添加到新文件中：</p>
+<p>将以下工作流程配置添加到新文件：</p>
 </li>
 </ol>
 <div
@@ -2148,7 +2188,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'bmFtZTogQ0kvQ0Qg4oCTIFZ1ZS5qcyBBcHAgd2l0aCBEb2NrZXIKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczogW21haW5dCiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgdHlwZXM6IFtvcGVuZWQsIHN5bmNocm9uaXplLCByZW9wZW5lZF0KCmpvYnM6CiAgYnVpbGQtdGVzdC1kZXBsb3k6CiAgICBuYW1lOiBCdWlsZCwgVGVzdCAmIERlcGxveQogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAoKICAgIHN0ZXBzOgogICAgICAjIDEuIOetvuWHuuS7o&#43;eggeW6kwogICAgICAtIG5hbWU6IENoZWNrb3V0IENvZGUKICAgICAgICB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCgogICAgICAjIDIuIOiuvue9riBEb2NrZXIgQnVpbGR4CiAgICAgIC0gbmFtZTogU2V0IHVwIERvY2tlciBCdWlsZHgKICAgICAgICB1c2VzOiBkb2NrZXIvc2V0dXAtYnVpbGR4LWFjdGlvbkB2MwoKICAgICAgIyAzLiDnvJPlrZggRG9ja2VyIOWxggogICAgICAtIG5hbWU6IENhY2hlIERvY2tlciBMYXllcnMKICAgICAgICB1c2VzOiBhY3Rpb25zL2NhY2hlQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIHBhdGg6IC90bXAvLmJ1aWxkeC1jYWNoZQogICAgICAgICAga2V5OiAke3sgcnVubmVyLm9zIH19LWJ1aWxkeC0ke3sgZ2l0aHViLnNoYSB9fQogICAgICAgICAgcmVzdG9yZS1rZXlzOiB8CiAgICAgICAgICAgICR7eyBydW5uZXIub3MgfX0tYnVpbGR4LQoKICAgICAgIyA0LiDnvJPlrZggbnBtIOS&#43;nei1lumhuQogICAgICAtIG5hbWU6IENhY2hlIG5wbSBEZXBlbmRlbmNpZXMKICAgICAgICB1c2VzOiBhY3Rpb25zL2NhY2hlQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIHBhdGg6IH4vLm5wbQogICAgICAgICAga2V5OiAke3sgcnVubmVyLm9zIH19LW5wbS0ke3sgaGFzaEZpbGVzKCcqKi9wYWNrYWdlLWxvY2suanNvbicpIH19CiAgICAgICAgICByZXN0b3JlLWtleXM6IHwKICAgICAgICAgICAgJHt7IHJ1bm5lci5vcyB9fS1ucG0tCgogICAgICAjIDUuIOeUn&#43;aIkOaehOW7uuWFg&#43;aVsOaNrgogICAgICAtIG5hbWU6IEdlbmVyYXRlIEJ1aWxkIE1ldGFkYXRhCiAgICAgICAgaWQ6IG1ldGEKICAgICAgICBydW46IHwKICAgICAgICAgIGVjaG8gIlJFUE9fTkFNRT0ke0dJVEhVQl9SRVBPU0lUT1JZIyMqL30iID4&#43;ICIkR0lUSFVCX09VVFBVVCIKICAgICAgICAgIGVjaG8gIlNIT1JUX1NIQT0ke0dJVEhVQl9TSEE6Ojd9IiA&#43;PiAiJEdJVEhVQl9PVVRQVVQiCgogICAgICAjIDYuIOS4uua1i&#43;ivleaehOW7uiBEb2NrZXIg6ZWc5YOPCiAgICAgIC0gbmFtZTogQnVpbGQgRGV2IERvY2tlciBJbWFnZQogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBjb250ZXh0OiAuCiAgICAgICAgICBmaWxlOiBEb2NrZXJmaWxlLmRldgogICAgICAgICAgdGFnczogJHt7IHN0ZXBzLm1ldGEub3V0cHV0cy5SRVBPX05BTUUgfX0tZGV2OmxhdGVzdAogICAgICAgICAgbG9hZDogdHJ1ZQogICAgICAgICAgY2FjaGUtZnJvbTogdHlwZT1sb2NhbCxzcmM9L3RtcC8uYnVpbGR4LWNhY2hlCiAgICAgICAgICBjYWNoZS10bzogdHlwZT1sb2NhbCxkZXN0PS90bXAvLmJ1aWxkeC1jYWNoZSxtb2RlPW1heAoKICAgICAgIyA3LiDlnKjlrrnlmajlhoXov5DooYzljZXlhYPmtYvor5UKICAgICAgLSBuYW1lOiBSdW4gVnVlLmpzIFRlc3RzCiAgICAgICAgcnVuOiB8CiAgICAgICAgICBkb2NrZXIgcnVuIC0tcm0gXAogICAgICAgICAgICAtLXdvcmtkaXIgL2FwcCBcCiAgICAgICAgICAgIC0tZW50cnlwb2ludCAiIiBcCiAgICAgICAgICAgICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuUkVQT19OQU1FIH19LWRldjpsYXRlc3QgXAogICAgICAgICAgICBzaCAtYyAibnBtIGNpICYmIG5wbSBydW4gdGVzdCAtLSAtLWNpIC0tcnVuSW5CYW5kIgogICAgICAgIGVudjoKICAgICAgICAgIENJOiB0cnVlCiAgICAgICAgICBOT0RFX0VOVjogdGVzdAogICAgICAgIHRpbWVvdXQtbWludXRlczogMTAKCiAgICAgICMgOC4g55m75b2VIERvY2tlciBIdWIKICAgICAgLSBuYW1lOiBEb2NrZXIgSHViIExvZ2luCiAgICAgICAgdXNlczogZG9ja2VyL2xvZ2luLWFjdGlvbkB2MwogICAgICAgIHdpdGg6CiAgICAgICAgICB1c2VybmFtZTogJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19CiAgICAgICAgICBwYXNzd29yZDogJHt7IHNlY3JldHMuRE9DS0VSSFVCX1RPS0VOIH19CgogICAgICAjIDkuIOaehOW7uuW5tuaOqOmAgeeUn&#43;S6p&#43;mVnOWDjwogICAgICAtIG5hbWU6IEJ1aWxkIGFuZCBQdXNoIFByb2R1Y3Rpb24gSW1hZ2UKICAgICAgICB1c2VzOiBkb2NrZXIvYnVpbGQtcHVzaC1hY3Rpb25AdjYKICAgICAgICB3aXRoOgogICAgICAgICAgY29udGV4dDogLgogICAgICAgICAgZmlsZTogRG9ja2VyZmlsZQogICAgICAgICAgcHVzaDogdHJ1ZQogICAgICAgICAgcGxhdGZvcm1zOiBsaW51eC9hbWQ2NCxsaW51eC9hcm02NAogICAgICAgICAgdGFnczogfAogICAgICAgICAgICAke3sgc2VjcmV0cy5ET0NLRVJfVVNFUk5BTUUgfX0vJHt7IHNlY3JldHMuRE9DS0VSSFVCX1BST0pFQ1RfTkFNRSB9fTpsYXRlc3QKICAgICAgICAgICAgJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19LyR7eyBzZWNyZXRzLkRPQ0tFUkhVQl9QUk9KRUNUX05BTUUgfX06JHt7IHN0ZXBzLm1ldGEub3V0cHV0cy5TSE9SVF9TSEEgfX0KICAgICAgICAgIGNhY2hlLWZyb206IHR5cGU9bG9jYWwsc3JjPS90bXAvLmJ1aWxkeC1jYWNoZQ==', copying: false }"
+        x-data="{ code: 'bmFtZTogQ0kvQ0Qg4oCTIFZ1ZS5qcyBBcHAgd2l0aCBEb2NrZXIKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczogW21haW5dCiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgdHlwZXM6IFtvcGVuZWQsIHN5bmNocm9uaXplLCByZW9wZW5lZF0KCmpvYnM6CiAgYnVpbGQtdGVzdC1kZXBsb3k6CiAgICBuYW1lOiBCdWlsZCwgVGVzdCAmIERlcGxveQogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAoKICAgIHN0ZXBzOgogICAgICAjIDEuIENoZWNrb3V0IHRoZSBjb2RlYmFzZQogICAgICAtIG5hbWU6IENoZWNrb3V0IENvZGUKICAgICAgICB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCgogICAgICAjIDIuIFNldCB1cCBEb2NrZXIgQnVpbGR4CiAgICAgIC0gbmFtZTogU2V0IHVwIERvY2tlciBCdWlsZHgKICAgICAgICB1c2VzOiBkb2NrZXIvc2V0dXAtYnVpbGR4LWFjdGlvbkB2MwoKICAgICAgIyAzLiBDYWNoZSBEb2NrZXIgbGF5ZXJzCiAgICAgIC0gbmFtZTogQ2FjaGUgRG9ja2VyIExheWVycwogICAgICAgIHVzZXM6IGFjdGlvbnMvY2FjaGVAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgcGF0aDogL3RtcC8uYnVpbGR4LWNhY2hlCiAgICAgICAgICBrZXk6ICR7eyBydW5uZXIub3MgfX0tYnVpbGR4LSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICByZXN0b3JlLWtleXM6IHwKICAgICAgICAgICAgJHt7IHJ1bm5lci5vcyB9fS1idWlsZHgtCgogICAgICAjIDQuIENhY2hlIG5wbSBkZXBlbmRlbmNpZXMKICAgICAgLSBuYW1lOiBDYWNoZSBucG0gRGVwZW5kZW5jaWVzCiAgICAgICAgdXNlczogYWN0aW9ucy9jYWNoZUB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBwYXRoOiB&#43;Ly5ucG0KICAgICAgICAgIGtleTogJHt7IHJ1bm5lci5vcyB9fS1ucG0tJHt7IGhhc2hGaWxlcygnKiovcGFja2FnZS1sb2NrLmpzb24nKSB9fQogICAgICAgICAgcmVzdG9yZS1rZXlzOiB8CiAgICAgICAgICAgICR7eyBydW5uZXIub3MgfX0tbnBtLQoKICAgICAgIyA1LiBHZW5lcmF0ZSBidWlsZCBtZXRhZGF0YQogICAgICAtIG5hbWU6IEdlbmVyYXRlIEJ1aWxkIE1ldGFkYXRhCiAgICAgICAgaWQ6IG1ldGEKICAgICAgICBydW46IHwKICAgICAgICAgIGVjaG8gIlJFUE9fTkFNRT0ke0dJVEhVQl9SRVBPU0lUT1JZIyMqL30iID4&#43;ICIkR0lUSFVCX09VVFBVVCIKICAgICAgICAgIGVjaG8gIlNIT1JUX1NIQT0ke0dJVEhVQl9TSEE6Ojd9IiA&#43;PiAiJEdJVEhVQl9PVVRQVVQiCgogICAgICAjIDYuIEJ1aWxkIERvY2tlciBpbWFnZSBmb3IgdGVzdGluZwogICAgICAtIG5hbWU6IEJ1aWxkIERldiBEb2NrZXIgSW1hZ2UKICAgICAgICB1c2VzOiBkb2NrZXIvYnVpbGQtcHVzaC1hY3Rpb25AdjYKICAgICAgICB3aXRoOgogICAgICAgICAgY29udGV4dDogLgogICAgICAgICAgZmlsZTogRG9ja2VyZmlsZS5kZXYKICAgICAgICAgIHRhZ3M6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuUkVQT19OQU1FIH19LWRldjpsYXRlc3QKICAgICAgICAgIGxvYWQ6IHRydWUKICAgICAgICAgIGNhY2hlLWZyb206IHR5cGU9bG9jYWwsc3JjPS90bXAvLmJ1aWxkeC1jYWNoZQogICAgICAgICAgY2FjaGUtdG86IHR5cGU9bG9jYWwsZGVzdD0vdG1wLy5idWlsZHgtY2FjaGUsbW9kZT1tYXgKCiAgICAgICMgNy4gUnVuIHVuaXQgdGVzdHMgaW5zaWRlIGNvbnRhaW5lcgogICAgICAtIG5hbWU6IFJ1biBWdWUuanMgVGVzdHMKICAgICAgICBydW46IHwKICAgICAgICAgIGRvY2tlciBydW4gLS1ybSBcCiAgICAgICAgICAgIC0td29ya2RpciAvYXBwIFwKICAgICAgICAgICAgLS1lbnRyeXBvaW50ICIiIFwKICAgICAgICAgICAgJHt7IHN0ZXBzLm1ldGEub3V0cHV0cy5SRVBPX05BTUUgfX0tZGV2OmxhdGVzdCBcCiAgICAgICAgICAgIHNoIC1jICJucG0gY2kgJiYgbnBtIHJ1biB0ZXN0IC0tIC0tY2kgLS1ydW5JbkJhbmQiCiAgICAgICAgZW52OgogICAgICAgICAgQ0k6IHRydWUKICAgICAgICAgIE5PREVfRU5WOiB0ZXN0CiAgICAgICAgdGltZW91dC1taW51dGVzOiAxMAoKICAgICAgIyA4LiBMb2cgaW4gdG8gRG9ja2VyIEh1YgogICAgICAtIG5hbWU6IERvY2tlciBIdWIgTG9naW4KICAgICAgICB1c2VzOiBkb2NrZXIvbG9naW4tYWN0aW9uQHYzCiAgICAgICAgd2l0aDoKICAgICAgICAgIHVzZXJuYW1lOiAke3sgc2VjcmV0cy5ET0NLRVJfVVNFUk5BTUUgfX0KICAgICAgICAgIHBhc3N3b3JkOiAke3sgc2VjcmV0cy5ET0NLRVJIVUJfVE9LRU4gfX0KCiAgICAgICMgOS4gQnVpbGQgYW5kIHB1c2ggcHJvZHVjdGlvbiBpbWFnZQogICAgICAtIG5hbWU6IEJ1aWxkIGFuZCBQdXNoIFByb2R1Y3Rpb24gSW1hZ2UKICAgICAgICB1c2VzOiBkb2NrZXIvYnVpbGQtcHVzaC1hY3Rpb25AdjYKICAgICAgICB3aXRoOgogICAgICAgICAgY29udGV4dDogLgogICAgICAgICAgZmlsZTogRG9ja2VyZmlsZQogICAgICAgICAgcHVzaDogdHJ1ZQogICAgICAgICAgcGxhdGZvcm1zOiBsaW51eC9hbWQ2NCxsaW51eC9hcm02NAogICAgICAgICAgdGFnczogfAogICAgICAgICAgICAke3sgc2VjcmV0cy5ET0NLRVJfVVNFUk5BTUUgfX0vJHt7IHNlY3JldHMuRE9DS0VSSFVCX1BST0pFQ1RfTkFNRSB9fTpsYXRlc3QKICAgICAgICAgICAgJHt7IHNlY3JldHMuRE9DS0VSX1VTRVJOQU1FIH19LyR7eyBzZWNyZXRzLkRPQ0tFUkhVQl9QUk9KRUNUX05BTUUgfX06JHt7IHN0ZXBzLm1ldGEub3V0cHV0cy5TSE9SVF9TSEEgfX0KICAgICAgICAgIGNhY2hlLWZyb206IHR5cGU9bG9jYWwsc3JjPS90bXAvLmJ1aWxkeC1jYWNoZQ==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -2182,17 +2222,17 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 1. 签出代码库</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 1. Checkout the codebase</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout Code</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 2. 设置 Docker Buildx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 2. Set up Docker Buildx</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Docker Buildx</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/setup-buildx-action@v3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 3. 缓存 Docker 层</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 3. Cache Docker layers</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Cache Docker Layers</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/cache@v4</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
@@ -2201,7 +2241,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">restore-keys</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">            ${{ runner.os }}-buildx-</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 4. 缓存 npm 依赖项</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 4. Cache npm dependencies</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Cache npm Dependencies</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/cache@v4</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
@@ -2210,14 +2250,14 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">restore-keys</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">            ${{ runner.os }}-npm-</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 5. 生成构建元数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 5. Generate build metadata</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Generate Build Metadata</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">meta</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;REPO_NAME=${GITHUB_REPOSITORY##*/}&#34; &gt;&gt; &#34;$GITHUB_OUTPUT&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;SHORT_SHA=${GITHUB_SHA::7}&#34; &gt;&gt; &#34;$GITHUB_OUTPUT&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 6. 为测试构建 Docker 镜像</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 6. Build Docker image for testing</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Dev Docker Image</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
@@ -2228,7 +2268,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">cache-from</span><span class="p">:</span><span class="w"> </span><span class="l">type=local,src=/tmp/.buildx-cache</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">cache-to</span><span class="p">:</span><span class="w"> </span><span class="l">type=local,dest=/tmp/.buildx-cache,mode=max</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 7. 在容器内运行单元测试</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 7. Run unit tests inside container</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Run Vue.js Tests</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">          docker run --rm \
@@ -2241,14 +2281,14 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">NODE_ENV</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">timeout-minutes</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 8. 登录 Docker Hub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 8. Log in to Docker Hub</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Docker Hub Login</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/login-action@v3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKER_USERNAME }}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKERHUB_TOKEN }}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 9. 构建并推送生产镜像</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 9. Build and push production image</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and Push Production Image</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
@@ -2264,16 +2304,262 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
+<hr>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="tags-docker-github-actions-ci-cd-vuejs-containerization">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#tags-docker-github-actions-ci-cd-vuejs-containerization">
+    title: &quot;第 3 部分：使用 GitHub Actions 设置 CI/CD&quot;
+description: &quot;学习如何为容器化的 Vue.js 应用程序设置 CI/CD 管道，使用 GitHub Actions 自动化构建、测试和部署流程。&quot;
+keywords: [&quot;Docker&quot;, &quot;GitHub Actions&quot;, &quot;CI/CD&quot;, &quot;Vue.js&quot;, &quot;容器化&quot;, &quot;自动化部署&quot;]
+tags: [&quot;docker&quot;, &quot;github-actions&quot;, &quot;ci-cd&quot;, &quot;vuejs&quot;, &quot;containerization&quot;]
+  </a>
+</h2>
+
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="第-3-部分使用-github-actions-设置-cicd">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-3-%e9%83%a8%e5%88%86%e4%bd%bf%e7%94%a8-github-actions-%e8%ae%be%e7%bd%ae-cicd">
+    第 3 部分：使用 GitHub Actions 设置 CI/CD
+  </a>
+</h2>
+
+<p>本节将指导您使用 GitHub Actions 为容器化的 Vue.js 应用程序设置完整的 CI/CD 管道。您将学习如何自动化构建、测试和部署流程，确保代码质量和部署的一致性。</p>
+<hr>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-1创建-github-仓库">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%88%9b%e5%bb%ba-github-%e4%bb%93%e5%ba%93">
+    步骤 1：创建 GitHub 仓库
+  </a>
+</h3>
+
+<p>首先，您需要创建一个新的 GitHub 仓库来托管您的 Vue.js 应用程序。</p>
+<ol>
+<li>
+<p>登录到 GitHub 并创建一个新的仓库</p>
+<ul>
+<li>点击 &quot;New repository&quot; 按钮</li>
+<li>输入仓库名称（例如 <code>vuejs-docker-cicd</code>）</li>
+<li>选择 &quot;Public&quot; 或 &quot;Private&quot;（根据您的偏好）</li>
+<li><strong>不要</strong> 初始化仓库（不添加 README、.gitignore 或 license）</li>
+</ul>
+</li>
+<li>
+<p>将本地项目推送到 GitHub</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'Z2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vZ2l0aHViLmNvbS88eW91ci11c2VybmFtZT4vPHlvdXItcmVwby1uYW1lPi5naXQKZ2l0IGJyYW5jaCAtTSBtYWluCmdpdCBwdXNoIC11IG9yaWdpbiBtYWlu', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add origin https://github.com/&lt;your-username&gt;/&lt;your-repo-name&gt;.git
+</span></span><span class="line"><span class="cl">git branch -M main
+</span></span><span class="line"><span class="cl">git push -u origin main</span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
+</li>
+</ol>
+<hr>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-2配置-docker-hub-访问令牌">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-2%e9%85%8d%e7%bd%ae-docker-hub-%e8%ae%bf%e9%97%ae%e4%bb%a4%e7%89%8c">
+    步骤 2：配置 Docker Hub 访问令牌
+  </a>
+</h3>
+
+<p>为了能够将 Docker 镜像推送到 Docker Hub，您需要配置访问令牌。</p>
+<ol>
+<li>
+<p>生成 Docker Hub 访问令牌</p>
+<ul>
+<li>登录到 <a class="link" href="https://hub.docker.com/" rel="noopener">Docker Hub</a></li>
+<li>导航到 Account Settings → Security</li>
+<li>点击 &quot;New Access Token&quot;</li>
+<li>输入令牌描述（例如 &quot;GitHub Actions CI/CD&quot;）</li>
+<li>点击 &quot;Generate&quot; 并复制生成的令牌</li>
+</ul>
+</li>
+<li>
+<p>将令牌添加到 GitHub 仓库</p>
+<ul>
+<li>转到您的 GitHub 仓库 → Settings → Secrets and variables → Actions</li>
+<li>点击 &quot;New repository secret&quot;</li>
+<li>Name: <code>DOCKERHUB_TOKEN</code></li>
+<li>Secret: 粘贴您复制的访问令牌</li>
+<li>点击 &quot;Add secret&quot;</li>
+</ul>
+</li>
+</ol>
+<hr>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-3创建-github-actions-工作流">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-3%e5%88%9b%e5%bb%ba-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81">
+    步骤 3：创建 GitHub Actions 工作流
+  </a>
+</h3>
+
+<p>在您的项目根目录中创建 <code>.github/workflows/ci-cd.yml</code> 文件：</p>
+<div
+  data-pagefind-ignore
+  x-data
+  x-ref="root"
+  class="group mt-2 mb-4 flex w-full scroll-mt-2 flex-col items-start gap-4 rounded bg-gray-50 p-2 outline outline-1 outline-offset-[-1px] outline-gray-200 dark:bg-gray-900 dark:outline-gray-800"
+>
+  
+  <div class="relative w-full">
+    
+    
+    <div class="syntax-light dark:syntax-dark not-prose w-full">
+      <button
+        x-data="{ code: 'bmFtZTogQ0kvQ0QgUGlwZWxpbmUKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczogWyAibWFpbiIgXQogIHB1bGxfcmVxdWVzdDoKICAgIGJyYW5jaGVzOiBbICJtYWluIiBdCgplbnY6CiAgUkVHSVNUUlk6IGRvY2tlci5pbwogIElNQUdFX05BTUU6ICR7eyBzZWNyZXRzLkRPQ0tFUkhVQl9VU0VSTkFNRSB9fS8ke3sgZ2l0aHViLmV2ZW50LnJlcG9zaXRvcnkubmFtZSB9fQoKam9iczoKICB0ZXN0OgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gbmFtZTogQ2hlY2tvdXQgcmVwb3NpdG9yeQogICAgICAgIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKCiAgICAgIC0gbmFtZTogU2V0IHVwIERvY2tlciBCdWlsZHgKICAgICAgICB1c2VzOiBkb2NrZXIvc2V0dXAtYnVpbGR4LWFjdGlvbkB2MwoKICAgICAgLSBuYW1lOiBDYWNoZSBEb2NrZXIgbGF5ZXJzCiAgICAgICAgdXNlczogYWN0aW9ucy9jYWNoZUB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBwYXRoOiAvdG1wLy5idWlsZHgtY2FjaGUKICAgICAgICAgIGtleTogJHt7IHJ1bm5lci5vcyB9fS1idWlsZHgtJHt7IGdpdGh1Yi5zaGEgfX0KICAgICAgICAgIHJlc3RvcmUta2V5czogfAogICAgICAgICAgICAke3sgcnVubmVyLm9zIH19LWJ1aWxkeC0KCiAgICAgIC0gbmFtZTogQnVpbGQgYW5kIHJ1biB0ZXN0cwogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBjb250ZXh0OiAuCiAgICAgICAgICBmaWxlOiAuL0RvY2tlcmZpbGUuZGV2CiAgICAgICAgICB0YXJnZXQ6IHRlc3QKICAgICAgICAgIGxvYWQ6IHRydWUKICAgICAgICAgIGNhY2hlLWZyb206IHR5cGU9bG9jYWwsc3JjPS90bXAvLmJ1aWxkeC1jYWNoZQogICAgICAgICAgY2FjaGUtdG86IHR5cGU9bG9jYWwsZGVzdD0vdG1wLy5idWlsZHgtY2FjaGUtbmV3CiAgICAgICAgZW52OgogICAgICAgICAgRE9DS0VSX0JVSUxES0lUOiAxCgogICAgICAtIG5hbWU6IFJ1biB0ZXN0cwogICAgICAgIHJ1bjogfAogICAgICAgICAgZG9ja2VyIHJ1biAtLXJtICQoZG9ja2VyIGltYWdlcyAtcSB8IGhlYWQgLW4gMSkgbnBtIHRlc3QKCiAgICAgIC0gbmFtZTogTW92ZSBjYWNoZQogICAgICAgIHJ1bjogfAogICAgICAgICAgcm0gLXJmIC90bXAvLmJ1aWxkeC1jYWNoZQogICAgICAgICAgbXYgL3RtcC8uYnVpbGR4LWNhY2hlLW5ldyAvdG1wLy5idWlsZHgtY2FjaGUKCiAgYnVpbGQtYW5kLXB1c2g6CiAgICBuZWVkczogdGVzdAogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgaWY6IGdpdGh1Yi5ldmVudF9uYW1lID09ICdwdXNoJyAmJiBnaXRodWIucmVmID09ICdyZWZzL2hlYWRzL21haW4nCiAgICBwZXJtaXNzaW9uczoKICAgICAgY29udGVudHM6IHJlYWQKICAgICAgcGFja2FnZXM6IHdyaXRlCiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVja291dCByZXBvc2l0b3J5CiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAoKICAgICAgLSBuYW1lOiBTZXQgdXAgRG9ja2VyIEJ1aWxkeAogICAgICAgIHVzZXM6IGRvY2tlci9zZXR1cC1idWlsZHgtYWN0aW9uQHYzCgogICAgICAtIG5hbWU6IExvZyBpbiB0byBEb2NrZXIgSHViCiAgICAgICAgdXNlczogZG9ja2VyL2xvZ2luLWFjdGlvbkB2MwogICAgICAgIHdpdGg6CiAgICAgICAgICB1c2VybmFtZTogJHt7IHNlY3JldHMuRE9DS0VSSFVCX1VTRVJOQU1FIH19CiAgICAgICAgICBwYXNzd29yZDogJHt7IHNlY3JldHMuRE9DS0VSSFVCX1RPS0VOIH19CgogICAgICAtIG5hbWU6IEV4dHJhY3QgbWV0YWRhdGEgKHRhZ3MsIGxhYmVscykKICAgICAgICBpZDogbWV0YQogICAgICAgIHVzZXM6IGRvY2tlci9tZXRhZGF0YS1hY3Rpb25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgaW1hZ2VzOiAke3sgZW52LlJFR0lTVFJZIH19LyR7eyBlbnYuSU1BR0VfTkFNRSB9fQogICAgICAgICAgdGFnczogfAogICAgICAgICAgICB0eXBlPXJhdyx2YWx1ZT1sYXRlc3QKICAgICAgICAgICAgdHlwZT1zaGEscHJlZml4PSxzdWZmaXg9LGZvcm1hdD1zaG9ydAoKICAgICAgLSBuYW1lOiBCdWlsZCBhbmQgcHVzaAogICAgICAgIHVzZXM6IGRvY2tlci9idWlsZC1wdXNoLWFjdGlvbkB2NgogICAgICAgIHdpdGg6CiAgICAgICAgICBjb250ZXh0OiAuCiAgICAgICAgICBmaWxlOiAuL0RvY2tlcmZpbGUKICAgICAgICAgIHRhcmdldDogcHJvZAogICAgICAgICAgcHVzaDogdHJ1ZQogICAgICAgICAgdGFnczogJHt7IHN0ZXBzLm1ldGEub3V0cHV0cy50YWdzIH19CiAgICAgICAgICBsYWJlbHM6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMubGFiZWxzIH19CiAgICAgICAgICBjYWNoZS1mcm9tOiB0eXBlPWdoYQogICAgICAgICAgY2FjaGUtdG86IHR5cGU9Z2hhLG1vZGU9bWF4', copying: false }"
+        class="
+          top-1
+         absolute right-2 z-10 text-gray-300 dark:text-gray-500"
+        title="copy"
+        @click="window.navigator.clipboard.writeText(atob(code).replaceAll(/^[\$>]\s+/gm, ''));
+      copying = true;
+      setTimeout(() => copying = false, 2000);"
+      >
+        <span
+          :class="{ 'group-hover:block' : !copying }"
+          class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-590q0-13 8.5-21.5T150-760q13 0 21.5 8.5T180-730v590h470q13 0 21.5 8.5T680-110q0 13-8.5 21.5T650-80H180Z"/></svg></span
+        >
+        <span :class="{ 'group-hover:block' : copying }" class="icon-svg hidden"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg></span
+        >
+      </button>
+      
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CI/CD Pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;main&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;main&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">REGISTRY</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">IMAGE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Docker Buildx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/setup-buildx-action@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Cache Docker layers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/cache@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/tmp/.buildx-cache</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ runner.os }}-buildx-${{ github.sha }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">restore-keys</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            ${{ runner.os }}-buildx-</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and run tests</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l">./Dockerfile.dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">cache-from</span><span class="p">:</span><span class="w"> </span><span class="l">type=local,src=/tmp/.buildx-cache</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">cache-to</span><span class="p">:</span><span class="w"> </span><span class="l">type=local,dest=/tmp/.buildx-cache-new</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">DOCKER_BUILDKIT</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Run tests</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          docker run --rm $(docker images -q | head -n 1) npm test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Move cache</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          rm -rf /tmp/.buildx-cache
+</span></span></span><span class="line"><span class="cl"><span class="sd">          mv /tmp/.buildx-cache-new /tmp/.buildx-cache</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build-and-push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">github.event_name == &#39;push&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l">read</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">packages</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Docker Buildx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/setup-buildx-action@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Log in to Docker Hub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/login-action@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKERHUB_USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.DOCKERHUB_TOKEN }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Extract metadata (tags, labels)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">meta</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/metadata-action@v5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="l">${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            type=raw,value=latest
+</span></span></span><span class="line"><span class="cl"><span class="sd">            type=sha,prefix=,suffix=,format=short</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">docker/build-push-action@v6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l">./Dockerfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l">prod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.meta.outputs.tags }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.meta.outputs.labels }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">cache-from</span><span class="p">:</span><span class="w"> </span><span class="l">type=gha</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">cache-to</span><span class="p">:</span><span class="w"> </span><span class="l">type=gha,mode=max</span></span></span></code></pre></div>
+      
+    </div>
+  </div>
+</div>
 <p>此工作流为您的 Vue.js 应用程序执行以下任务：</p>
 <ul>
 <li>在每次针对 <code>main</code> 分支的 <code>push</code> 或 <code>pull request</code> 时触发。</li>
-<li>使用 <code>Dockerfile.dev</code> 构建一个开发 Docker 镜像，针对测试进行了优化。</li>
-<li>在干净的容器化环境中使用 Vitest 执行单元测试，以确保一致性。</li>
-<li>如果任何测试失败，立即停止工作流 — 强制执行代码质量。</li>
-<li>缓存 Docker 构建层和 npm 依赖项，以加快 CI 运行速度。</li>
-<li>使用 GitHub 仓库密钥安全地向 Docker Hub 进行身份验证。</li>
-<li>使用 <code>Dockerfile</code> 中的 <code>prod</code> 阶段构建生产就绪的镜像。</li>
-<li>使用 <code>latest</code> 和短 SHA 标记最终镜像并将其推送到 Docker Hub，以便进行跟踪。</li>
+<li>使用 <code>Dockerfile.dev</code> 构建开发 Docker 镜像，针对测试进行优化。</li>
+<li>在干净的容器化环境中使用 Vitest 执行单元测试以确保一致性。</li>
+<li>如果任何测试失败，立即停止工作流——强制执行代码质量。</li>
+<li>缓存 Docker 构建层和 npm 依赖项以加快 CI 运行速度。</li>
+<li>使用 GitHub 仓库密钥安全地与 Docker Hub 进行身份验证。</li>
+<li>使用 <code>Dockerfile</code> 中的 <code>prod</code> 阶段构建生产就绪镜像。</li>
+<li>使用 <code>latest</code> 和短 SHA 标签将最终镜像标记并推送到 Docker Hub 以实现可追溯性。</li>
 </ul>
 
 
@@ -2299,18 +2585,18 @@ if (resultsLength > 5) {
 
 <hr>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="第-3-步运行工作流">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac-3-%e6%ad%a5%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81">
-    第 3 步：运行工作流
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="步骤-3运行工作流">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4-3%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81">
+    步骤 3：运行工作流
   </a>
 </h3>
 
-<p>添加工作流文件后，是时候触发并观察 CI/CD 过程的运行了。</p>
+<p>在您添加了工作流文件后，是时候触发并观察 CI/CD 过程的实际运行了。</p>
 <ol>
 <li>
 <p>提交并推送您的工作流文件</p>
 <ul>
-<li>在 GitHub 编辑器中选择 &quot;Commit changes…&quot;（提交更改…）。</li>
+<li>在 GitHub 编辑器中选择 &quot;Commit changes…&quot;</li>
 <li>此推送将自动触发 GitHub Actions 管道。</li>
 </ul>
 </li>
@@ -2318,20 +2604,20 @@ if (resultsLength > 5) {
 <p>监控工作流执行</p>
 <ul>
 <li>转到 GitHub 仓库中的 Actions 选项卡。</li>
-<li>点击进入工作流运行，以跟踪每个步骤：<strong>build</strong>、<strong>test</strong> 和（如果成功）<strong>push</strong>。</li>
+<li>点击进入工作流运行以跟踪每个步骤：<strong>build</strong>、<strong>test</strong> 和（如果成功）<strong>push</strong>。</li>
 </ul>
 </li>
 <li>
 <p>在 Docker Hub 上验证 Docker 镜像</p>
 <ul>
 <li>工作流成功运行后，访问您的 <a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 仓库</a>。</li>
-<li>您应该会在您的仓库下看到一个新的镜像，包含：
+<li>您应该在您的仓库下看到一个新镜像，包含：
 <ul>
 <li>仓库名称：<code>${your-repository-name}</code></li>
 <li>标签包括：
 <ul>
-<li><code>latest</code> – 代表最近的成功构建；非常适合快速测试或部署。</li>
-<li><code>&lt;short-sha&gt;</code> – 基于提交哈希的唯一标识符，对于版本跟踪、回滚和可追溯性非常有用。</li>
+<li><code>latest</code> – 代表最新的成功构建；适合快速测试或部署。</li>
+<li><code>&lt;short-sha&gt;</code> – 基于提交哈希的唯一标识符，用于版本跟踪、回滚和可追溯性。</li>
 </ul>
 </li>
 </ul>
@@ -2362,15 +2648,15 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>要维护代码质量并防止意外直接推送，请启用分支保护规则：</p>
+      <p>为了保持代码质量并防止意外的直接推送，启用分支保护规则：</p>
 <ul>
-<li>导航到您的 <strong>GitHub 仓库 → Settings（设置） → Branches（分支）</strong>。</li>
-<li>在分支保护规则下，点击 <strong>Add rule（添加规则）</strong>。</li>
+<li>导航到您的 <strong>GitHub 仓库 → Settings → Branches</strong>。</li>
+<li>在分支保护规则下，点击 <strong>Add rule</strong>。</li>
 <li>指定 <code>main</code> 作为分支名称。</li>
 <li>启用以下选项：
 <ul>
-<li><em>Require a pull request before merging（在合并前需要拉取请求）</em>。</li>
-<li><em>Require status checks to pass before merging（在合并前需要状态检查通过）</em>。</li>
+<li><em>Require a pull request before merging</em>。</li>
+<li><em>Require status checks to pass before merging</em>。</li>
 </ul>
 </li>
 </ul>
@@ -2386,22 +2672,22 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>在本节中，您使用 GitHub Actions 为容器化的 Vue.js 应用程序设置了一个完整的 CI/CD 管道。</p>
-<p>以下是您完成的工作：</p>
+<p>在本节中，您使用 GitHub Actions 为容器化的 Vue.js 应用程序设置了完整的 CI/CD 管道。</p>
+<p>以下是您完成的内容：</p>
 <ul>
-<li>为您的项目创建了一个新的 GitHub 仓库。</li>
-<li>生成了一个安全的 Docker Hub 访问令牌，并将其作为密钥添加到 GitHub。</li>
+<li>为您的项目专门创建了一个新的 GitHub 仓库。</li>
+<li>生成了一个安全的 Docker Hub 访问令牌并将其作为密钥添加到 GitHub。</li>
 <li>定义了一个 GitHub Actions 工作流，该工作流：
 <ul>
-<li>在 Docker 容器中构建您的应用程序。</li>
+<li>在 Docker 容器内构建您的应用程序。</li>
 <li>在一致的容器化环境中运行测试。</li>
-<li>如果测试通过，则将生产就绪的镜像推送到 Docker Hub。</li>
+<li>如果测试通过，将生产就绪镜像推送到 Docker Hub。</li>
 </ul>
 </li>
 <li>通过 GitHub Actions 触发并验证了工作流执行。</li>
 <li>确认您的镜像已成功发布到 Docker Hub。</li>
 </ul>
-<p>通过此设置，您的 Vue.js 应用程序现在已准备好进行跨环境的自动化测试和部署 — 从而提高信心、一致性和团队生产力。</p>
+<p>通过此设置，您的 Vue.js 应用程序现在已准备好在不同环境中进行自动化测试和部署——提高信心、一致性和团队生产力。</p>
 <hr>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="相关资源">
@@ -2410,7 +2696,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>深入了解容器化应用程序的自动化和最佳实践：</p>
+<p>深入了解自动化和容器化应用程序的最佳实践：</p>
 <ul>
 <li>
     
@@ -2424,7 +2710,7 @@ if (resultsLength > 5) {
 <li>
   <a class="link" href="/compose/compose-file/">Compose 文件参考</a> – <code>compose.yaml</code> 的完整配置参考</li>
 <li>
-  <a class="link" href="/develop/develop-images/dockerfile_best-practices/">编写 Dockerfile 的最佳实践</a> – 优化镜像的性能和安全性</li>
+  <a class="link" href="/develop/develop-images/dockerfile_best-practices/">编写 Dockerfiles 的最佳实践</a> – 优化您的镜像以获得性能和安全性</li>
 </ul>
 <hr>
 
@@ -2434,7 +2720,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>接下来，学习如何在部署之前在 Kubernetes 上本地测试和调试您的 Vue.js 工作负载。这有助于确保您的应用程序在类似生产的环境中按预期运行，从而减少部署期间的意外情况。</p>
+<p>接下来，了解如何在部署之前在 Kubernetes 上本地测试和调试您的 Vue.js 工作负载。这有助于您确保应用程序在类似生产的环境中按预期运行，减少部署期间的意外情况。</p>
 
   </article>
   <div class="-mt-8 hidden min-w-48 flex-1 lg:block">
@@ -2492,8 +2778,8 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"
-            >前提条件</a
+          <a class="link lg:no-underline" href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6"
+            >先决条件</a
           >
         </li>
         <li>
@@ -2509,18 +2795,49 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac-1-%e6%ad%a5%e7%94%9f%e6%88%90-docker-hub-%e5%87%ad%e8%af%81%e5%b9%b6%e8%ae%be%e7%bd%ae-github-%e5%af%86%e9%92%a5"
-            >第 1 步：生成 Docker Hub 凭证并设置 GitHub 密钥</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-1%e7%94%9f%e6%88%90-docker-hub-%e5%87%ad%e6%8d%ae%e5%b9%b6%e8%ae%be%e7%bd%ae-github-%e6%9c%ba%e5%af%86"
+            >步骤 1：生成 Docker Hub 凭据并设置 GitHub 机密</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac-2-%e6%ad%a5%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第 2 步：设置工作流</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-2%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b"
+            >步骤 2：设置工作流程</a
+          >
+        </li>
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#tags-docker-github-actions-ci-cd-vuejs-containerization"
+            >title: &quot;第 3 部分：使用 GitHub Actions 设置 CI/CD&quot;
+description: &quot;学习如何为容器化的 Vue.js 应用程序设置 CI/CD 管道，使用 GitHub Actions 自动化构建、测试和部署流程。&quot;
+keywords: [&quot;Docker&quot;, &quot;GitHub Actions&quot;, &quot;CI/CD&quot;, &quot;Vue.js&quot;, &quot;容器化&quot;, &quot;自动化部署&quot;]
+tags: [&quot;docker&quot;, &quot;github-actions&quot;, &quot;ci-cd&quot;, &quot;vuejs&quot;, &quot;containerization&quot;]</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac-3-%e6%ad%a5%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第 3 步：运行工作流</a
+          <a class="link lg:no-underline" href="#%e7%ac%ac-3-%e9%83%a8%e5%88%86%e4%bd%bf%e7%94%a8-github-actions-%e8%ae%be%e7%bd%ae-cicd"
+            >第 3 部分：使用 GitHub Actions 设置 CI/CD</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-1%e5%88%9b%e5%bb%ba-github-%e4%bb%93%e5%ba%93"
+            >步骤 1：创建 GitHub 仓库</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-2%e9%85%8d%e7%bd%ae-docker-hub-%e8%ae%bf%e9%97%ae%e4%bb%a4%e7%89%8c"
+            >步骤 2：配置 Docker Hub 访问令牌</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-3%e5%88%9b%e5%bb%ba-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤 3：创建 GitHub Actions 工作流</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4-3%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤 3：运行工作流</a
           >
         </li>
   </ul>
@@ -2563,9 +2880,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2580,7 +2899,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2595,7 +2914,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2610,7 +2929,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2625,7 +2944,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2641,26 +2960,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

@@ -1,21 +1,4 @@
----
-title: 强制登录 Docker Desktop
-url: /enterprise/security/enforce-sign-in/
-parent:
-  title: 企业级安全
-  url: /enterprise/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强制登录 Docker Desktop
-    url: /enterprise/security/enforce-sign-in/
-children:
-  - title: 配置登录强制执行
-    url: /enterprise/security/enforce-sign-in/methods/
-    description: 使用注册表项、配置配置文件、plist 文件或 registry.json 文件为 Docker Desktop 配置登录强制执行
----
+# 强制登录 Docker Desktop
 
 
 

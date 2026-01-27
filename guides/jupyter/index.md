@@ -1,21 +1,4 @@
----
-title: 使用 JupyterLab 进行数据科学
-url: /guides/jupyter/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 JupyterLab 进行数据科学
-    url: /guides/jupyter/
-next:
-  title: 使用 Dex 在测试中模拟 OAuth 服务
-  url: /guides/dex/
-prev:
-  title: 使用 LocalStack 和 Docker 开发与测试 AWS Cloud 应用程序
-  url: /guides/localstack/
----
+# 使用 JupyterLab 进行数据科学
 
 
 Docker 和 JupyterLab 是两个强大的工具，可以增强您的数据科学工作流程。在本指南中，您将学习如何将它们结合使用，以创建和运行可复现的数据科学环境。本指南基于 [使用 JupyterLab 和 Docker 强化 AI/ML 开发](https://www.docker.com/blog/supercharging-ai-ml-development-with-jupyterlab-and-docker/)。

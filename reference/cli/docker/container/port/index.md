@@ -1,27 +1,4 @@
----
-title: docker container port
-url: /reference/cli/docker/container/port/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container port
-    url: /reference/cli/docker/container/port/
-next:
-  title: docker container pause
-  url: /reference/cli/docker/container/pause/
-prev:
-  title: docker container prune
-  url: /reference/cli/docker/container/prune/
----
+# docker container port
 
 **Description:** List port mappings or a specific mapping for the container
 

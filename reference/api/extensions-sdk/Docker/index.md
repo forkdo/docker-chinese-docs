@@ -1,23 +1,4 @@
----
-title: 接口：Docker
-url: /reference/api/extensions-sdk/Docker/
-parent:
-  title: 扩展 API 参考
-  url: /reference/api/extensions-sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 扩展 API 参考
-    url: /reference/api/extensions-sdk/
-  - title: 接口：Docker
-    url: /reference/api/extensions-sdk/Docker/
-next:
-  title: 接口：Dialog
-  url: /reference/api/extensions-sdk/Dialog/
-prev:
-  title: 接口：DockerCommand
-  url: /reference/api/extensions-sdk/DockerCommand/
----
+# 接口：Docker
 
 
 **`自版本`**

@@ -1,27 +1,4 @@
----
-title: docker compose create
-url: /reference/cli/docker/compose/create/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose create
-    url: /reference/cli/docker/compose/create/
-next:
-  title: docker compose cp
-  url: /reference/cli/docker/compose/cp/
-prev:
-  title: docker compose down
-  url: /reference/cli/docker/compose/down/
----
+# docker compose create
 
 **Description:** Creates containers for a service
 

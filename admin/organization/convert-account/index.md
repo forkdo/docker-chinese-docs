@@ -1,25 +1,4 @@
----
-title: 将账户转换为组织
-url: /admin/organization/convert-account/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 将账户转换为组织
-    url: /admin/organization/convert-account/
-next:
-  title: 管理组织成员
-  url: /admin/organization/members/
-prev:
-  title: 创建和管理团队
-  url: /admin/organization/manage-a-team/
----
+# 将账户转换为组织
 
 
 

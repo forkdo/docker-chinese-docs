@@ -1,26 +1,4 @@
----
-title: docker mcp client connect
-url: /reference/cli/docker/mcp/client/client_connect/
-parent:
-  title: docker mcp client
-  url: /reference/cli/docker/mcp/client/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp client
-    url: /reference/cli/docker/mcp/client/
-  - title: docker mcp client connect
-    url: /reference/cli/docker/mcp/client/client_connect/
-prev:
-  title: docker mcp client disconnect
-  url: /reference/cli/docker/mcp/client/client_disconnect/
----
+# docker mcp client connect
 
 **Description:** Connect the Docker MCP Toolkit to a client. Supported clients: claude-code claude-desktop codex continue cursor gemini goose gordon lmstudio opencode sema4 vscode zed
 

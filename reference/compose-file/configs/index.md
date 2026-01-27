@@ -1,23 +1,4 @@
----
-title: Configs 顶级元素
-url: /reference/compose-file/configs/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: Configs 顶级元素
-    url: /reference/compose-file/configs/
-next:
-  title: 在 Docker Compose 中定义和管理卷
-  url: /reference/compose-file/volumes/
-prev:
-  title: Secrets
-  url: /reference/compose-file/secrets/
----
+# Configs 顶级元素
 
 
 

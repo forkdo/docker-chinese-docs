@@ -18,7 +18,10 @@
 <link rel="canonical" href="/get-started/docker-concepts/running-containers/persisting-container-data/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -44,7 +47,7 @@
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-12-03 10:26:30 &#43;0100 &#43;0100"
+  content="2026-01-21 04:27:56 &#43;0530 &#43;0530"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-12-03 10:26:30 &#43;0100 &#43;0100"
+  content="2026-01-21 04:27:56 &#43;0530 &#43;0530"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-12-03T10:26:30+01:00","description":"本概念页面将向您介绍 Docker 中数据持久化的重要性","headline":"持久化容器数据","keywords":"concepts, build, images, container, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/running-containers/persisting-container-data/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/running-containers/persisting-container-data/","name":"持久化容器数据"},"position":2}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-21T04:27:56+05:30","description":"本概念页面将向您介绍 Docker 中数据持久化的重要性","headline":"持久化容器数据","keywords":"concepts, build, images, container, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/running-containers/persisting-container-data/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/running-containers/persisting-container-data/","name":"持久化容器数据"},"position":2}]}</script>
 <link rel="alternate" type="text/markdown" href="/get-started/docker-concepts/running-containers/persisting-container-data/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1642,10 +1651,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/get-started/docker-concepts/building-images/understanding-image-layers/"
-        title="理解镜像层"
+        title="了解镜像层"
       >
         
-  理解镜像层
+  了解镜像层
 
       </a>
     </li>
@@ -1838,10 +1847,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/get-started/docker-concepts/running-containers/multi-container-applications/"
-        title="多容器应用"
+        title="多容器应用程序"
       >
         
-  多容器应用
+  多容器应用程序
 
       </a>
     </li>
@@ -2332,8 +2341,8 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>容器启动时会使用镜像提供的文件和配置。每个容器都可以创建、修改和删除文件，且不会影响其他容器。当容器被删除时，这些文件更改也会被删除。</p>
-<p>虽然容器的这种短暂特性非常有用，但当您希望持久化数据时，它会带来挑战。例如，如果您重启数据库容器，可能不希望从一个空的数据库开始。那么，如何持久化文件呢？</p>
+<p>容器启动时，会使用镜像提供的文件和配置。每个容器都可以创建、修改和删除文件，且不会影响其他容器。当容器被删除时，这些文件更改也会被删除。</p>
+<p>虽然容器的这种短暂特性有其优势，但当您希望持久化数据时会带来挑战。例如，如果重启数据库容器，您可能不希望从一个空的数据库开始。那么，如何持久化文件呢？</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="容器卷">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%ae%b9%e5%99%a8%e5%8d%b7">
@@ -2341,8 +2350,8 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>卷是一种存储机制，它提供了在单个容器的生命周期之外持久化数据的能力。可以将其想象为从容器内部到容器外部提供快捷方式或符号链接。</p>
-<p>例如，假设您创建一个名为 <code>log-data</code> 的卷。</p>
+<p>卷是一种存储机制，能够在单个容器的生命周期之外持久化数据。可以将其想象为从容器内部到容器外部的快捷方式或符号链接。</p>
+<p>例如，假设您创建了一个名为 <code>log-data</code> 的卷。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2419,7 +2428,7 @@ if (resultsLength > 5) {
   </div>
 </div>
 <p>如果卷 <code>log-data</code> 不存在，Docker 会自动为您创建它。</p>
-<p>当容器运行时，它写入 <code>/logs</code> 文件夹的所有文件都将保存在此卷中，位于容器外部。如果您删除容器并使用相同的卷启动新容器，这些文件仍然存在。</p>
+<p>当容器运行时，它写入 <code>/logs</code> 文件夹的所有文件都会被保存在这个卷中，位于容器外部。如果删除容器并使用相同的卷启动新容器，这些文件仍然存在。</p>
 
 
   
@@ -2439,7 +2448,7 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>卷拥有独立于容器的生命周期，根据您使用的数据类型和应用程序，卷可能会变得非常大。以下命令有助于管理卷：</p>
+<p>卷的生命周期独立于容器，并且根据您使用的数据类型和应用程序，可能会变得非常大。以下命令有助于管理卷：</p>
 <ul>
 <li><code>docker volume ls</code> - 列出所有卷</li>
 <li><code>docker volume rm &lt;volume-name-or-id&gt;</code> - 删除卷（仅在卷未附加到任何容器时有效）</li>
@@ -2466,7 +2475,7 @@ if (resultsLength > 5) {
   <a class="link" href="/get-started/get-docker/">下载并安装</a> Docker Desktop。</p>
 </li>
 <li>
-<p>使用以下命令启动一个 <a class="link" href="https://hub.docker.com/_/postgres" rel="noopener">Postgres 镜像</a> 容器：</p>
+<p>使用以下命令启动一个使用 <a class="link" href="https://hub.docker.com/_/postgres" rel="noopener">Postgres 镜像</a> 的容器：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2627,7 +2636,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您应该会得到类似以下的输出：</p>
+<p>您应该得到类似以下的输出：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2670,7 +2679,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>运行以下命令退出 PostgreSQL shell：</p>
+<p>通过运行以下命令退出 PostgreSQL shell：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2751,7 +2760,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>使用以下命令启动新容器，附加包含持久化数据的相同卷：</p>
+<p>通过运行以下命令启动新容器，附加具有持久化数据的相同卷：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2839,16 +2848,16 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>Docker Desktop 仪表板提供了查看任何卷内容的功能，以及导出、导入和克隆卷的功能。</p>
+<p>Docker Desktop Dashboard 提供了查看任何卷内容的功能，以及导出、导入、清空、删除和克隆卷的功能。</p>
 <ol>
 <li>
-<p>打开 Docker Desktop 仪表板并导航到 <strong>Volumes</strong> 视图。在此视图中，您应该能看到 <strong>postgres_data</strong> 卷。</p>
+<p>打开 Docker Desktop Dashboard 并导航到 <strong>Volumes</strong> 视图。在此视图中，您应该能看到 <strong>postgres_data</strong> 卷。</p>
 </li>
 <li>
 <p>选择 <strong>postgres_data</strong> 卷的名称。</p>
 </li>
 <li>
-<p><strong>Data</strong> 选项卡显示卷的内容，并提供导航文件的功能。双击文件可以查看其内容并进行更改。</p>
+<p><strong>Stored Data</strong> 标签页显示卷的内容，并提供浏览文件的功能。<strong>Container in-use</strong> 标签页显示使用该卷的容器名称、镜像名称、容器使用的端口号以及目标路径。目标路径是容器内访问卷中文件的路径。<strong>Exports</strong> 标签页允许您导出卷。双击文件可以查看其内容并进行修改。</p>
 </li>
 <li>
 <p>右键单击任何文件可以保存或删除它。</p>
@@ -2861,7 +2870,7 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>在删除卷之前，必须确保它没有附加到任何容器。如果您尚未删除之前的容器，请使用以下命令（<code>-f</code> 会先停止容器，然后将其删除）：</p>
+<p>在删除卷之前，必须确保它没有附加到任何容器。如果您还没有删除之前的容器，请使用以下命令（<code>-f</code> 会先停止容器，然后删除它）：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2899,10 +2908,10 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>有多种方法可以删除卷，包括：</p>
+<p>有几种方法可以删除卷，包括：</p>
 <ul>
 <li>
-<p>在 Docker Desktop 仪表板中选择卷上的 <strong>Delete Volume</strong> 选项。</p>
+<p>在 Docker Desktop Dashboard 中选择卷上的 <strong>Delete Volume</strong> 选项。</p>
 </li>
 <li>
 <p>使用 <code>docker volume rm</code> 命令：</p>
@@ -2995,11 +3004,11 @@ if (resultsLength > 5) {
 <p>以下资源将帮助您进一步了解卷：</p>
 <ul>
 <li>
-  <a class="link" href="/engine/storage">管理 Docker 中的数据</a></li>
+  <a class="link" href="/engine/storage">Manage data in Docker</a></li>
 <li>
-  <a class="link" href="/engine/storage/volumes">卷</a></li>
+  <a class="link" href="/engine/storage/volumes">Volumes</a></li>
 <li>
-  <a class="link" href="/engine/containers/run/#volume-mounts">卷挂载</a></li>
+  <a class="link" href="/engine/containers/run/#volume-mounts">Volume mounts</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="下一步">
@@ -3134,9 +3143,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3151,7 +3162,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3166,7 +3177,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3181,7 +3192,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3196,7 +3207,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3212,26 +3223,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

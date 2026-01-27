@@ -1,27 +1,4 @@
----
-title: Device Mapper 存储驱动程序（已弃用）
-url: /engine/storage/drivers/device-mapper-driver/
-parent:
-  title: 存储驱动程序
-  url: /engine/storage/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: 存储驱动程序
-    url: /engine/storage/drivers/
-  - title: Device Mapper 存储驱动程序（已弃用）
-    url: /engine/storage/drivers/device-mapper-driver/
-next:
-  title: BTRFS 存储驱动
-  url: /engine/storage/drivers/btrfs-driver/
-prev:
-  title: OverlayFS 存储驱动程序
-  url: /engine/storage/drivers/overlayfs-driver/
----
+# Device Mapper 存储驱动程序（已弃用）
 
 
 > **已弃用**

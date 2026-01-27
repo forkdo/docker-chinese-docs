@@ -1,23 +1,4 @@
----
-title: 运行时指标
-url: /engine/containers/runmetrics/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 运行时指标
-    url: /engine/containers/runmetrics/
-next:
-  title: 资源限制
-  url: /engine/containers/resource_constraints/
-prev:
-  title: Running containers
-  url: /engine/containers/run/
----
+# 运行时指标
 
 
 ## Docker stats

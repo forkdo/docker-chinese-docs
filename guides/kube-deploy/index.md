@@ -1,21 +1,4 @@
----
-title: 部署到 Kubernetes
-url: /guides/kube-deploy/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 部署到 Kubernetes
-    url: /guides/kube-deploy/
-next:
-  title: 构建语言翻译应用程序
-  url: /guides/language-translation/
-prev:
-  title: 部署到 Swarm
-  url: /guides/swarm-deploy/
----
+# 部署到 Kubernetes
 
 
 ## 先决条件

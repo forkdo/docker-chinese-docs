@@ -1,23 +1,4 @@
----
-title: Build variables
-url: /build/building/variables/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Build variables
-    url: /build/building/variables/
-next:
-  title: Multi-stage builds
-  url: /build/building/multi-stage/
-prev:
-  title: Build secrets
-  url: /build/building/secrets/
----
+# Build variables
 
 
 In Docker Build, build arguments (`ARG`) and environment variables (`ENV`)
@@ -100,8 +81,8 @@ The following example defines the version of `node` and `alpine` using build arg
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-ARG NODE_VERSION="20"
-ARG ALPINE_VERSION="3.21"
+ARG NODE_VERSION="24"
+ARG ALPINE_VERSION="3.23"
 
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 WORKDIR /src

@@ -1,24 +1,4 @@
----
-title: docker pass get
-url: /reference/cli/docker/pass/get/
-parent:
-  title: Docker Pass
-  url: /reference/cli/docker/pass/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: Docker Pass
-    url: /reference/cli/docker/pass/
-  - title: docker pass get
-    url: /reference/cli/docker/pass/get/
-prev:
-  title: docker pass ls
-  url: /reference/cli/docker/pass/ls/
----
+# docker pass get
 
 **Description:** Get a secret
 

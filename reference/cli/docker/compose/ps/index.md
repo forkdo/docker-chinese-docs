@@ -1,27 +1,4 @@
----
-title: docker compose ps
-url: /reference/cli/docker/compose/ps/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose ps
-    url: /reference/cli/docker/compose/ps/
-next:
-  title: docker compose port
-  url: /reference/cli/docker/compose/port/
-prev:
-  title: docker compose publish
-  url: /reference/cli/docker/compose/publish/
----
+# docker compose ps
 
 **Description:** List containers
 

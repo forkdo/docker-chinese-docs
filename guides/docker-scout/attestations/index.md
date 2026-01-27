@@ -1,23 +1,4 @@
----
-title: 证明
-url: /guides/docker-scout/attestations/
-parent:
-  title: 使用 Docker Scout 保障您的软件供应链安全
-  url: /guides/docker-scout/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Scout 保障您的软件供应链安全
-    url: /guides/docker-scout/
-  - title: 证明
-    url: /guides/docker-scout/attestations/
-next:
-  title: 软件物料清单
-  url: /guides/docker-scout/sbom/
-prev:
-  title: 修复
-  url: /guides/docker-scout/remediation/
----
+# 证明
 
 
 

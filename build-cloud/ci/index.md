@@ -1,23 +1,4 @@
----
-title: 在 CI 中使用 Docker Build Cloud
-url: /build-cloud/ci/
-parent:
-  title: Docker Build Cloud
-  url: /build-cloud/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build Cloud
-    url: /build-cloud/
-  - title: 在 CI 中使用 Docker Build Cloud
-    url: /build-cloud/ci/
-next:
-  title: 使用 Docker Build Cloud
-  url: /build-cloud/usage/
-prev:
-  title: 优化云端构建
-  url: /build-cloud/optimization/
----
+# 在 CI 中使用 Docker Build Cloud
 
 
 在 CI 中使用 Docker Build Cloud 可以加速您的构建流水线，从而减少等待时间和上下文切换。您可以照常控制 CI 工作流，并将构建执行委托给 Docker Build Cloud。

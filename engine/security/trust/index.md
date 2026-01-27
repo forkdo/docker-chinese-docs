@@ -1,35 +1,4 @@
----
-title: Docker 中的内容信任
-url: /engine/security/trust/
-parent:
-  title: Docker Engine 安全
-  url: /engine/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: Docker 中的内容信任
-    url: /engine/security/trust/
-children:
-  - title: 使用 Compose 部署 Notary Server
-    url: /engine/security/trust/deploying_notary/
-    description: 部署 Notary
-  - title: 使用内容信任实现自动化
-    url: /engine/security/trust/trust_automation/
-    description: 使用信任机制自动化内容推送与拉取
-  - title: 内容信任的委托
-    url: /engine/security/trust/trust_delegation/
-    description: 内容信任的委托
-  - title: 在内容信任沙盒中进行操作
-    url: /engine/security/trust/trust_sandbox/
-    description: 在信任沙盒中进行操作
-  - title: 管理内容信任的密钥
-    url: /engine/security/trust/trust_key_mng/
-    description: 管理内容信任的密钥
----
+# Docker 中的内容信任
 
 
 在联网系统之间传输数据时，信任是一个核心问题。特别是通过互联网等不受信任的介质进行通信时，确保系统所操作的所有数据的完整性和发布者身份至关重要。您使用 Docker Engine 将镜像（数据）推送到公共或私有仓库或从中拉取。内容信任使您能够验证通过任何通道从仓库接收的所有数据的完整性和发布者。

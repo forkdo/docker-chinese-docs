@@ -1,25 +1,4 @@
----
-title: 读取守护程序日志
-url: /engine/daemon/logs/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 读取守护程序日志
-    url: /engine/daemon/logs/
-next:
-  title: 替代容器运行时
-  url: /engine/daemon/alternative-runtimes/
-prev:
-  title: 配置 Docker 守护进程的远程访问
-  url: /engine/daemon/remote-access/
----
+# 读取守护程序日志
 
 
 守护程序日志可以帮助你诊断问题。根据操作系统配置和使用的日志子系统，日志可能保存在以下几个位置之一：

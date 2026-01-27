@@ -1,22 +1,4 @@
----
-title: 镜像 Docker Hub 官方镜像库
-url: /docker-hub/image-library/mirror/
-parent:
-  title: 内容库
-  url: /docker-hub/image-library/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 内容库
-    url: /docker-hub/image-library/
-  - title: 镜像 Docker Hub 官方镜像库
-    url: /docker-hub/image-library/mirror/
-next:
-  title: Docker Hub 目录
-  url: /docker-hub/image-library/catalogs/
----
+# 镜像 Docker Hub 官方镜像库
 
 
 ## 使用场景

@@ -1,21 +1,4 @@
----
-title: 使用 Docker Buildx Bake 掌握多平台构建、测试等
-url: /guides/bake/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Buildx Bake 掌握多平台构建、测试等
-    url: /guides/bake/
-next:
-  title: 构建一个情感分析应用
-  url: /guides/sentiment-analysis/
-prev:
-  title: 构建文本识别应用
-  url: /guides/text-classification/
----
+# 使用 Docker Buildx Bake 掌握多平台构建、测试等
 
 
 本指南演示了如何使用 Docker Buildx Bake 简化和自动化构建镜像、测试以及生成构建产物的过程。通过在声明式的 `docker-bake.hcl` 文件中定义构建配置，您可以消除手动脚本，并为复杂的构建、测试和产物生成实现高效的工作流。

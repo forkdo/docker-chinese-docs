@@ -1,27 +1,4 @@
----
-title: docker image push
-url: /reference/cli/docker/image/push/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image push
-    url: /reference/cli/docker/image/push/
-next:
-  title: docker image pull
-  url: /reference/cli/docker/image/pull/
-prev:
-  title: docker image rm
-  url: /reference/cli/docker/image/rm/
----
+# docker image push
 
 **Description:** Upload an image to a registry
 

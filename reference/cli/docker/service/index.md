@@ -1,19 +1,4 @@
----
-title: docker service
-url: /reference/cli/docker/service/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
----
+# docker service
 
 **Description:** Manage Swarm services
 

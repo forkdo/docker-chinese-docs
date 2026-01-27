@@ -1,19 +1,4 @@
----
-title: docker buildx
-url: /reference/cli/docker/buildx/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
----
+# docker buildx
 
 **Description:** Docker Buildx
 

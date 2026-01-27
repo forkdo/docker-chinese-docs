@@ -1,22 +1,4 @@
----
-title: 迁移清单
-url: /dhi/migration/checklist/
-parent:
-  title: 迁移
-  url: /dhi/migration/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 迁移清单
-    url: /dhi/migration/checklist/
-prev:
-  title: 使用 Docker 的 AI 助手进行迁移
-  url: /dhi/migration/migrate-with-ai/
----
+# 迁移清单
 
 
 使用此清单确保您在迁移到 Docker Hardened Images 时考虑到了所有关键事项。

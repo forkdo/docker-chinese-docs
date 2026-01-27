@@ -1,27 +1,4 @@
----
-title: Macvlan 网络驱动
-url: /engine/network/drivers/macvlan/
-parent:
-  title: 网络驱动
-  url: /engine/network/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 网络概述
-    url: /engine/network/
-  - title: 网络驱动
-    url: /engine/network/drivers/
-  - title: Macvlan 网络驱动
-    url: /engine/network/drivers/macvlan/
-next:
-  title: IPvlan 网络驱动
-  url: /engine/network/drivers/ipvlan/
-prev:
-  title: none 网络驱动
-  url: /engine/network/drivers/none/
----
+# Macvlan 网络驱动
 
 
 某些应用程序（尤其是传统应用程序或监控网络流量的应用程序）需要直接连接到物理网络。在这种情况下，您可以使用 `macvlan` 网络驱动为每个容器的虚拟网络接口分配一个 MAC 地址，使其看起来像是直接连接到物理网络的物理网络接口。此时，您需要指定 Docker 主机上的一个物理接口用于 Macvlan，以及网络的子网和网关。您甚至可以使用不同的物理网络接口来隔离 Macvlan 网络。

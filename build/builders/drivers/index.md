@@ -1,38 +1,4 @@
----
-title: Build drivers
-url: /build/builders/drivers/
-parent:
-  title: Builders
-  url: /build/builders/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Builders
-    url: /build/builders/
-  - title: Build drivers
-    url: /build/builders/drivers/
-children:
-  - title: Docker container driver
-    url: /build/builders/drivers/docker-container/
-    description: The Docker container driver runs BuildKit in a container image.
-  - title: Docker driver
-    url: /build/builders/drivers/docker/
-    description: The Docker driver is the default driver.
-It uses the BuildKit bundled with the Docker Engine.
-
-  - title: Kubernetes driver
-    url: /build/builders/drivers/kubernetes/
-    description: The Kubernetes driver lets you run BuildKit in a Kubernetes cluster.
-You can connect to, and run your builds in, the cluster using Buildx.
-
-  - title: Remote driver
-    url: /build/builders/drivers/remote/
-    description: The remote driver lets you connect to a remote BuildKit instance
-that you set up and configure manually.
-
----
+# Build drivers
 
 
 Build drivers are configurations for how and where the BuildKit backend runs.

@@ -1,20 +1,4 @@
----
-title: E2B 沙盒
-url: /ai/mcp-catalog-and-toolkit/e2b-sandboxes/
-parent:
-  title: Docker MCP Catalog and Toolkit
-  url: /ai/mcp-catalog-and-toolkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-  - title: E2B 沙盒
-    url: /ai/mcp-catalog-and-toolkit/e2b-sandboxes/
-next:
-  title: 安全常见问题解答
-  url: /ai/mcp-catalog-and-toolkit/faqs/
----
+# E2B 沙盒
 
 
 Docker 已与 [E2B](https://e2b.dev/) 达成合作，后者是为 AI 智能体提供安全云沙盒的供应商。通过此次合作，每个 E2B 沙盒均可直接访问 Docker 的 [MCP Catalog](https://hub.docker.com/mcp)，该目录汇集了来自 GitHub、Notion 和 Stripe 等发布者的 200 多款工具。

@@ -1,26 +1,4 @@
----
-title: docker trust signer remove
-url: /reference/cli/docker/trust/signer/remove/
-parent:
-  title: docker trust signer
-  url: /reference/cli/docker/trust/signer/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker trust
-    url: /reference/cli/docker/trust/
-  - title: docker trust signer
-    url: /reference/cli/docker/trust/signer/
-  - title: docker trust signer remove
-    url: /reference/cli/docker/trust/signer/remove/
-next:
-  title: docker trust signer add
-  url: /reference/cli/docker/trust/signer/add/
----
+# docker trust signer remove
 
 **Description:** Remove a signer
 

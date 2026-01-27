@@ -1,21 +1,4 @@
----
-title: 部署和编排
-url: /guides/orchestration/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 部署和编排
-    url: /guides/orchestration/
-next:
-  title: 部署到 Swarm
-  url: /guides/swarm-deploy/
-prev:
-  title: 在开发环境中启动时使用架构和数据预填充数据库
-  url: /guides/pre-seeding/
----
+# 部署和编排
 
 
 容器化提供了一种将应用程序迁移到云和数据中心并进行扩展的机会。容器有效地保证了这些应用程序在任何地方都能以相同的方式运行，使您能够快速轻松地利用所有这些环境的优势。此外，当您扩展应用程序时，您需要一些工具来帮助自动化这些应用程序的维护，自动替换失败的容器，并在容器的生命周期内管理更新和重新配置的部署。

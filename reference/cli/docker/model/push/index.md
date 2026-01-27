@@ -1,27 +1,4 @@
----
-title: docker model push
-url: /reference/cli/docker/model/push/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model push
-    url: /reference/cli/docker/model/push/
-next:
-  title: docker model purge
-  url: /reference/cli/docker/model/purge/
-prev:
-  title: docker model reinstall-runner
-  url: /reference/cli/docker/model/reinstall-runner/
----
+# docker model push
 
 **Description:** Push a model to Docker Hub
 

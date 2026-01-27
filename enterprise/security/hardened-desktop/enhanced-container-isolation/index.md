@@ -1,32 +1,4 @@
----
-title: 增强容器隔离
-url: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-parent:
-  title: 强化版 Docker Desktop
-  url: /enterprise/security/hardened-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: 增强容器隔离
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-children:
-  - title: 启用增强型容器隔离
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/enable-eci/
-    description: 在 Docker Desktop 中启用增强型容器隔离以保护容器安全
-  - title: 配置 Docker 套接字异常和高级设置
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/config/
-    description: 为增强容器隔离配置 Docker 套接字异常和高级设置
-  - title: 增强型容器隔离的限制
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/limitations/
-    description: 增强型容器隔离的已知限制和平台特定注意事项
-  - title: 增强型容器隔离常见问题解答
-    url: /enterprise/security/hardened-desktop/enhanced-container-isolation/faq/
-    description: 关于增强型容器隔离的常见问题
----
+# 增强容器隔离
 
 
 

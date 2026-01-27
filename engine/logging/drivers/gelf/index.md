@@ -1,25 +1,4 @@
----
-title: Graylog 扩展格式日志驱动程序
-url: /engine/logging/drivers/gelf/
-parent:
-  title: 查看容器日志
-  url: /engine/logging/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 查看容器日志
-    url: /engine/logging/
-  - title: Graylog 扩展格式日志驱动程序
-    url: /engine/logging/drivers/gelf/
-next:
-  title: Google Cloud Logging 驱动
-  url: /engine/logging/drivers/gcplogs/
-prev:
-  title: Journald 日志驱动
-  url: /engine/logging/drivers/journald/
----
+# Graylog 扩展格式日志驱动程序
 
 
 `gelf` 日志驱动程序是一种便捷的格式，[Graylog](https://www.graylog.org/)、[Logstash](https://www.elastic.co/products/logstash) 和 [Fluentd](https://www.fluentd.org) 等多种工具都能理解这种格式。许多工具都使用这种格式。

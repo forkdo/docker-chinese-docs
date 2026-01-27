@@ -1,20 +1,4 @@
----
-title: 示例
-url: /ai/cagent/reference/examples/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 示例
-    url: /ai/cagent/reference/examples/
-next:
-  title: CLI 参考
-  url: /ai/cagent/reference/cli/
----
+# 示例
 
 
 从以下 agent 示例中获取灵感。
@@ -254,6 +238,9 @@ agents:
        - Be proactive in identifying potential issues
        - Only ask for clarification if necessary, try your best to use all the tools to get the info you need
 
+       **Tools:**
+        - When needed and possible, call multiple tools concurrently. It's faster and cheaper.
+
     add_date: true
     add_environment_info: true
     add_prompt_files:
@@ -287,7 +274,7 @@ agents:
         description: "Commit local changes"
         instruction: |
             Based on the below changes: create a single commit with an appropriate message.
- 
+
             - Current git status: !shell(cmd="git status")
             - Current git diff (staged and unstaged changes): !shell(cmd="git diff HEAD")
             - Current branch: !shell(cmd="git branch --show-current")

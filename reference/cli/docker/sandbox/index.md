@@ -1,19 +1,4 @@
----
-title: Docker 沙箱
-url: /reference/cli/docker/sandbox/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: Docker 沙箱
-    url: /reference/cli/docker/sandbox/
----
+# Docker 沙箱
 
 **Description:** Docker Sandbox
 
@@ -411,9 +396,18 @@ Local sandbox environments for AI agents, using Docker.
 
 | Command | Description |
 |---------|-------------|
+| [`docker sandbox create`](/reference/cli/docker/sandbox/create/) | Create a sandbox for an agent |
+| [`docker sandbox create cagent`](/reference/cli/docker/sandbox/create/cagent/) | Create a sandbox for cagent |
+| [`docker sandbox create codex`](/reference/cli/docker/sandbox/create/codex/) | Create a sandbox for codex |
+| [`docker sandbox create gemini`](/reference/cli/docker/sandbox/create/gemini/) | Create a sandbox for gemini |
+| [`docker sandbox create kiro`](/reference/cli/docker/sandbox/create/kiro/) | Create a sandbox for kiro |
+| [`docker sandbox exec`](/reference/cli/docker/sandbox/exec/) | Execute a command inside a sandbox |
 | [`docker sandbox inspect`](/reference/cli/docker/sandbox/inspect/) | Display detailed information on one or more sandboxes |
-| [`docker sandbox ls`](/reference/cli/docker/sandbox/ls/) | List sandboxes |
-| [`docker sandbox run`](/reference/cli/docker/sandbox/run/) | Run an AI agent inside a sandbox |
+| [`docker sandbox ls`](/reference/cli/docker/sandbox/ls/) | List VMs |
+| [`docker sandbox reset`](/reference/cli/docker/sandbox/reset/) | Reset all VM sandboxes and clean up state |
+| [`docker sandbox run`](/reference/cli/docker/sandbox/run/) | Run an agent in a sandbox |
+| [`docker sandbox stop`](/reference/cli/docker/sandbox/stop/) | Stop one or more sandboxes without removing them |
 | [`docker sandbox 删除`](/reference/cli/docker/sandbox/rm/) | Remove one or more sandboxes |
+| [`Docker 沙箱网络`](/reference/cli/docker/sandbox/network/) | Manage sandbox networking |
 
 

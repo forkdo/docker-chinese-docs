@@ -1,27 +1,4 @@
----
-title: 在 swarm 上检查服务
-url: /engine/swarm/swarm-tutorial/inspect-service/
-parent:
-  title: Swarm 模式入门
-  url: /engine/swarm/swarm-tutorial/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: Swarm 模式入门
-    url: /engine/swarm/swarm-tutorial/
-  - title: 在 swarm 上检查服务
-    url: /engine/swarm/swarm-tutorial/inspect-service/
-next:
-  title: 将服务部署到 swarm
-  url: /engine/swarm/swarm-tutorial/deploy-service/
-prev:
-  title: 扩展 Swarm 中的服务
-  url: /engine/swarm/swarm-tutorial/scale-service/
----
+# 在 swarm 上检查服务
 
 
 当您[部署服务](deploy-service.md)到 swarm 后，可以使用 Docker CLI 查看 swarm 中运行服务的详细信息。

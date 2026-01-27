@@ -1,24 +1,4 @@
----
-title: docker model version
-url: /reference/cli/docker/model/version/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model version
-    url: /reference/cli/docker/model/version/
-next:
-  title: docker model uninstall-runner
-  url: /reference/cli/docker/model/uninstall-runner/
----
+# docker model version
 
 **Description:** Show the Docker Model Runner version
 

@@ -1,23 +1,4 @@
----
-title: 使用 Compose SDK
-url: /compose/compose-sdk/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 使用 Compose SDK
-    url: /compose/compose-sdk/
-next:
-  title: Docker Compose 快速入门
-  url: /compose/gettingstarted/
-prev:
-  title: 发布说明
-  url: /compose/release-notes/
----
+# 使用 Compose SDK
 
 
 

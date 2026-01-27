@@ -1,25 +1,4 @@
----
-title: 管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-url: /dhi/how-to/manage/
-parent:
-  title: 操作指南
-  url: /dhi/how-to/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 操作指南
-    url: /dhi/how-to/
-  - title: 管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-    url: /dhi/how-to/manage/
-next:
-  title: 使用 Docker 加固镜像（DHI）Helm chart
-  url: /dhi/how-to/helm/
-prev:
-  title: 使用 Docker Hardened Images 的扩展生命周期支持 <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-  url: /dhi/how-to/els/
----
+# 管理 Docker Hardened Images 和 charts <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 
 
 

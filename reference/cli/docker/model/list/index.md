@@ -1,27 +1,4 @@
----
-title: docker model list
-url: /reference/cli/docker/model/list/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model list
-    url: /reference/cli/docker/model/list/
-next:
-  title: docker model install-runner
-  url: /reference/cli/docker/model/install-runner/
-prev:
-  title: docker model logs
-  url: /reference/cli/docker/model/logs/
----
+# docker model list
 
 **Description:** List the models pulled to your local environment
 

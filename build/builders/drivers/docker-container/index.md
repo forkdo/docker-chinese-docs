@@ -1,24 +1,4 @@
----
-title: Docker container driver
-url: /build/builders/drivers/docker-container/
-parent:
-  title: Build drivers
-  url: /build/builders/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Builders
-    url: /build/builders/
-  - title: Build drivers
-    url: /build/builders/drivers/
-  - title: Docker container driver
-    url: /build/builders/drivers/docker-container/
-prev:
-  title: Docker driver
-  url: /build/builders/drivers/docker/
----
+# Docker container driver
 
 
 The Docker container driver allows creation of a managed and customizable

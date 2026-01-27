@@ -1,24 +1,4 @@
----
-title: Node.js
-url: /dhi/migration/examples/node/
-parent:
-  title: 迁移示例
-  url: /dhi/migration/examples/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 迁移示例
-    url: /dhi/migration/examples/
-  - title: Node.js
-    url: /dhi/migration/examples/node/
-next:
-  title: Python
-  url: /dhi/migration/examples/python/
----
+# Node.js
 
 
 此示例展示了如何将 Node.js 应用程序迁移到 Docker Hardened Images。

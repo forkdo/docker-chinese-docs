@@ -1,25 +1,4 @@
----
-title: 活动日志
-url: /admin/organization/activity-logs/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 活动日志
-    url: /admin/organization/activity-logs/
-next:
-  title: 管理 Docker 产品
-  url: /admin/organization/manage-products/
-prev:
-  title: 组织信息
-  url: /admin/organization/general-settings/
----
+# 活动日志
 
 
 

@@ -1,25 +1,4 @@
----
-title: 使用 Docker Compose 定义和运行多容器应用程序
-url: /guides/docker-compose/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Compose 定义和运行多容器应用程序
-    url: /guides/docker-compose/
-children:
-  - title: 为什么使用 Docker Compose？
-    url: /guides/docker-compose/why/
-    description: 了解 Docker Compose 如何帮助您简化应用程序开发。
-  - title: 演示：设置和使用 Docker Compose
-    url: /guides/docker-compose/setup/
-    description: 了解如何开始使用 Docker Compose。
-  - title: 常见挑战与问题
-    url: /guides/docker-compose/common-questions/
-    description: 探索与 Docker Compose 相关的常见挑战与问题。
----
+# 使用 Docker Compose 定义和运行多容器应用程序
 
 
 开发者在处理多容器 Docker 应用程序时会面临挑战，包括复杂的配置、依赖项管理以及维护一致的环境。网络、资源分配、数据持久化、日志记录和监控增加了难度。安全问题和故障排除问题进一步使过程复杂化，需要有效的工具和实践来实现高效管理。

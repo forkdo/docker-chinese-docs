@@ -1,27 +1,4 @@
----
-title: docker buildx prune
-url: /reference/cli/docker/buildx/prune/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx prune
-    url: /reference/cli/docker/buildx/prune/
-next:
-  title: docker buildx ls
-  url: /reference/cli/docker/buildx/ls/
-prev:
-  title: docker buildx rm
-  url: /reference/cli/docker/buildx/rm/
----
+# docker buildx prune
 
 **Description:** Remove build cache
 

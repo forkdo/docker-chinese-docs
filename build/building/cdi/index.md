@@ -1,23 +1,4 @@
----
-title: Container Device Interface (CDI)
-url: /build/building/cdi/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Container Device Interface (CDI)
-    url: /build/building/cdi/
-next:
-  title: Export binaries
-  url: /build/building/export/
-prev:
-  title: Building best practices
-  url: /build/building/best-practices/
----
+# Container Device Interface (CDI)
 
 
 <!-- vale Docker.We = NO -->

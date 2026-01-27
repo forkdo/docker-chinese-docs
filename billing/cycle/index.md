@@ -1,23 +1,4 @@
----
-title: 更改账单周期
-url: /billing/cycle/
-parent:
-  title: 管理账单和支付
-  url: /billing/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理账单和支付
-    url: /billing/
-  - title: 更改账单周期
-    url: /billing/cycle/
-next:
-  title: 提交免税证明
-  url: /billing/tax-certificate/
-prev:
-  title: 计费常见问题
-  url: /billing/faqs/
----
+# 更改账单周期
 
 
 购买订阅时，您可以在月度或年度账单周期之间进行选择。如果您当前是月度账单周期，可以选择切换到年度账单周期。

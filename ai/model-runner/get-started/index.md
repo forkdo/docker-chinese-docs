@@ -1,20 +1,4 @@
----
-title: DMR 入门
-url: /ai/model-runner/get-started/
-parent:
-  title: Docker Model Runner
-  url: /ai/model-runner/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Model Runner
-    url: /ai/model-runner/
-  - title: DMR 入门
-    url: /ai/model-runner/get-started/
-prev:
-  title: DMR REST API
-  url: /ai/model-runner/api-reference/
----
+# DMR 入门
 
 
 Docker Model Runner (DMR) 允许您使用 Docker 在本地运行和管理 AI 模型。本页将向您展示如何启用 DMR、拉取并运行模型、配置模型设置以及发布自定义模型。

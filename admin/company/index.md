@@ -1,30 +1,4 @@
----
-title: 公司管理概览
-url: /admin/company/
-parent:
-  title: 管理
-  url: /admin/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 公司管理概览
-    url: /admin/company/
-children:
-  - title: 创建公司
-    url: /admin/company/new-company/
-    description: 了解如何创建公司以集中管理多个组织。
-  - title: 管理公司成员
-    url: /admin/company/users/
-    description: 了解如何在 Docker 管理控制台中管理公司用户。
-  - title: 管理公司所有者
-    url: /admin/company/owners/
-    description: 了解如何添加和移除公司所有者。
-  - title: 管理公司组织
-    url: /admin/company/organizations/
-    description: 了解如何管理公司中的组织。
----
+# 公司管理概览
 
 
 

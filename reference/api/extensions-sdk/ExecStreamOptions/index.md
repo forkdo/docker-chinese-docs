@@ -1,23 +1,4 @@
----
-title: 接口：ExecStreamOptions
-url: /reference/api/extensions-sdk/ExecStreamOptions/
-parent:
-  title: 扩展 API 参考
-  url: /reference/api/extensions-sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 扩展 API 参考
-    url: /reference/api/extensions-sdk/
-  - title: 接口：ExecStreamOptions
-    url: /reference/api/extensions-sdk/ExecStreamOptions/
-next:
-  title: 接口：ExecProcess
-  url: /reference/api/extensions-sdk/ExecProcess/
-prev:
-  title: 接口：ExtensionCli
-  url: /reference/api/extensions-sdk/ExtensionCli/
----
+# 接口：ExecStreamOptions
 
 
 **`自版本`**

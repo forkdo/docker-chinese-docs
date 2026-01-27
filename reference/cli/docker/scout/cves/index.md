@@ -1,27 +1,4 @@
----
-title: docker scout cves
-url: /reference/cli/docker/scout/cves/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout cves
-    url: /reference/cli/docker/scout/cves/
-next:
-  title: docker scout config
-  url: /reference/cli/docker/scout/config/
-prev:
-  title: docker scout enroll
-  url: /reference/cli/docker/scout/enroll/
----
+# docker scout cves
 
 **Description:** Display CVEs identified in a software artifact
 

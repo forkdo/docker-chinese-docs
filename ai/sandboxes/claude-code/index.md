@@ -1,147 +1,100 @@
----
-title: 配置 Claude Code
-url: /ai/sandboxes/claude-code/
-parent:
-  title: Docker 沙盒
-  url: /ai/sandboxes/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 沙盒
-    url: /ai/sandboxes/
-  - title: 配置 Claude Code
-    url: /ai/sandboxes/claude-code/
-next:
-  title: Docker Sandbox 快速入门
-  url: /ai/sandboxes/get-started/
-prev:
-  title: 高级配置
-  url: /ai/sandboxes/advanced-config/
----
+# 配置 Claude Code
 
 
 
 
-本指南介绍在沙盒环境中运行 Claude Code 的身份验证、配置文件和常用选项。
+本指南涵盖了在沙箱环境中运行 Claude Code 的身份验证、配置文件和常用选项。
 
-## 快速入门
+## 快速开始
 
-在沙盒中启动 Claude 的最简单方法：
+要为项目目录创建沙箱并运行 Claude Code：
 
 ```console
-$ docker sandbox run claude
+$ docker sandbox run claude ~/my-project
 ```
 
-这将启动一个沙盒化的 Claude Code 代理，并将当前工作目录作为其工作空间。
+### 直接传递提示词
 
-或者指定其他工作空间：
+使用特定提示词启动 Claude：
 
 ```console
-$ docker sandbox run -w ~/my-project claude
+$ docker sandbox run <sandbox-name> -- "为登录功能添加错误处理"
 ```
 
-## 向 Claude 传递 CLI 选项
-
-Claude Code 支持各种命令行选项，您可以通过 `docker sandbox run` 传递这些选项。代理名称（`claude`）之后的任何参数都会直接传递给沙盒内的 Claude Code。
-
-### 继续之前的对话
-
-恢复您最近的对话：
+或者：
 
 ```console
-$ docker sandbox run claude -c
+$ docker sandbox run <sandbox-name> -- "$(cat prompt.txt)"
 ```
 
-或者使用长格式：
-
-```console
-$ docker sandbox run claude --continue
-```
-
-### 直接传递提示
-
-使用特定提示启动 Claude：
-
-```console
-$ docker sandbox run claude "为登录函数添加错误处理"
-```
-
-这将启动 Claude 并立即处理该提示。
-
-### 组合选项
-
-您可以将沙盒选项与 Claude 选项结合使用：
-
-```console
-$ docker sandbox run -e DEBUG=1 claude -c
-```
-
-这将创建一个 `DEBUG` 设置为 `1` 的沙盒，启用调试输出以便进行故障排除，并继续之前的对话。
-
-### 可用的 Claude 选项
-
-所有 Claude Code CLI 选项都可以通过 `docker sandbox run` 工作：
-
-- `-c, --continue` - 继续最近的对话
-- `-p, --prompt` - 从 stdin 读取提示（对管道操作很有用）
-- `--dangerously-skip-permissions` - 跳过权限提示（在沙盒中默认启用）
-- 以及更多选项 - 请参阅 [Claude Code 文档](https://docs.claude.com/en/docs/claude-code) 获取完整列表
+这将启动 Claude 并立即处理提示词。
 
 ## 身份验证
 
-Claude 沙盒支持以下凭据管理策略。
+Claude Code 需要一个 Anthropic API 密钥才能工作。推荐的方法是在 shell 配置文件中设置 `ANTHROPIC_API_KEY` 环境变量。
 
-### 策略 1：`sandbox`（默认）
+Docker Sandboxes 通过守护进程运行，不会继承当前 shell 会话的环境变量。为了使 API 密钥在沙箱中可用，您需要在 shell 配置文件中全局设置它。
 
-```console
-$ docker sandbox run claude
+将 API 密钥添加到您的 shell 配置文件：
+
+```plaintext {title="~/.bashrc 或 ~/.zshrc"}
+export ANTHROPIC_API_KEY=sk-ant-api03-xxxxx
 ```
 
-首次运行时，Claude 会提示您输入 Anthropic API 密钥。凭据存储在名为 `docker-claude-sandbox-data` 的持久 Docker 卷中。所有未来的 Claude 沙盒都会自动使用这些存储的凭据，并且它们在沙盒重启和删除后仍然保留。
+然后应用更改：
 
-沙盒将此卷挂载到 `/mnt/claude-data`，并在沙盒用户的主目录中创建符号链接。
-
-> [!NOTE]
-> 如果您的工作区包含带有 `primaryApiKey` 字段的 `.claude.json` 文件，您将收到关于潜在冲突的警告。您可以选择从 `.claude.json` 中移除 `primaryApiKey` 字段，或者继续并忽略该警告。
-
-### 策略 2：`none`
-
-不进行自动凭据管理。
+1. 加载您的 shell 配置：`source ~/.bashrc`（或 `~/.zshrc`）
+2. 重启 Docker Desktop，以便守护进程获取新的环境变量
+3. 创建并运行您的沙箱：
 
 ```console
-$ docker sandbox run --credentials=none claude
+$ docker sandbox create claude ~/project
+$ docker sandbox run <sandbox-name>
 ```
 
-Docker 不会发现、注入或存储任何凭据。您必须在容器内手动进行身份验证。凭据不会与其他沙盒共享，但在容器的生命周期内会持续存在。
+沙箱将检测环境变量并自动使用它。
+
+### 交互式身份验证
+
+如果未找到凭据，Claude Code 将在启动时提示您进行身份验证。使用此方法时，您需要为每个工作区分别进行身份验证。
+
+为避免重复身份验证，请使用上述的 `ANTHROPIC_API_KEY` 环境变量方法。
 
 ## 配置
 
-Claude Code 可以通过 CLI 选项进行配置。您在代理名称后传递的任何参数都会直接传递给容器内的 Claude Code。
+可以通过 CLI 选项配置 Claude Code。在沙箱名称和 `--` 分隔符之后传递的任何参数都会直接传递给 Claude Code。
 
-在代理名称后传递选项：
+在沙箱名称后传递选项：
 
 ```console
-$ docker sandbox run claude [claude-options]
+$ docker sandbox run <sandbox-name> -- [claude-options]
 ```
 
 例如：
 
 ```console
-$ docker sandbox run claude --continue
+$ docker sandbox run <sandbox-name> -- --continue
 ```
 
-请参阅 [Claude Code CLI 参考](https://docs.claude.com/en/docs/claude-code/cli-reference) 获取可用选项的完整列表。
-
-## 高级用法
-
-有关更高级的配置，包括环境变量、卷挂载、Docker 套接字访问和自定义模板，请参阅[高级配置](advanced-config.md)。
+有关可用选项，请参阅 [Claude Code CLI 参考](https://docs.claude.com/en/docs/claude-code/cli-reference)。
 
 ## 基础镜像
 
-`docker/sandbox-templates:claude-code` 镜像包含具有自动凭据管理的 Claude Code，以及开发工具（Docker CLI、GitHub CLI、Node.js、Go、Python 3、Git、ripgrep、jq）。它以非 root 的 `agent` 用户身份运行，具有 `sudo` 访问权限，并默认使用 `--dangerously-skip-permissions` 启动 Claude。
+Claude Code 沙箱模板是一个在沙箱虚拟机内运行的容器镜像。它包括：
 
-## 下一步
+- 基于 Ubuntu 的环境，包含 Claude Code
+- 开发工具：Docker CLI、GitHub CLI、Node.js、Go、Python 3、Git、ripgrep、jq
+- 具有 sudo 权限的非 root 用户 `agent`
+- 用于运行其他容器的私有 Docker 守护进程
 
-- [高级配置](advanced-config.md)
+默认情况下，Claude 在沙箱中以 `--dangerously-skip-permissions` 启动。
+
+您可以基于 `docker/sandbox-templates:claude-code` 构建自定义模板。有关详细信息，请参阅 [自定义模板](templates.md)。
+
+## 后续步骤
+
+- [有效使用沙箱](workflows.md)
+- [自定义模板](templates.md)
+- [网络策略](network-policies.md)
 - [故障排除](troubleshooting.md)
 - [CLI 参考](/reference/cli/docker/sandbox/)

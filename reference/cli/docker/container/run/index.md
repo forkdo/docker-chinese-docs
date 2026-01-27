@@ -1,27 +1,4 @@
----
-title: docker container run
-url: /reference/cli/docker/container/run/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container run
-    url: /reference/cli/docker/container/run/
-next:
-  title: docker container rm
-  url: /reference/cli/docker/container/rm/
-prev:
-  title: docker container start
-  url: /reference/cli/docker/container/start/
----
+# docker container run
 
 **Description:** Create and run a new container from an image
 

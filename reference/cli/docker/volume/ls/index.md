@@ -1,27 +1,4 @@
----
-title: docker volume ls
-url: /reference/cli/docker/volume/ls/
-parent:
-  title: docker volume
-  url: /reference/cli/docker/volume/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker volume
-    url: /reference/cli/docker/volume/
-  - title: docker volume ls
-    url: /reference/cli/docker/volume/ls/
-next:
-  title: docker volume inspect
-  url: /reference/cli/docker/volume/inspect/
-prev:
-  title: docker volume prune
-  url: /reference/cli/docker/volume/prune/
----
+# docker volume ls
 
 **Description:** List volumes
 

@@ -1,23 +1,4 @@
----
-title: 使用 Docker Compose
-url: /get-started/workshop/08_using_compose/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 使用 Docker Compose
-    url: /get-started/workshop/08_using_compose/
-next:
-  title: 多容器应用
-  url: /get-started/workshop/07_multi_container/
-prev:
-  title: 镜像构建最佳实践
-  url: /get-started/workshop/09_image_best/
----
+# 使用 Docker Compose
 
 
 [Docker Compose](/manuals/compose/_index.md) 是一个帮助你定义和共享多容器应用的工具。使用 Compose，你可以创建一个 YAML 文件来定义服务，然后通过单条命令启动或停止所有服务。

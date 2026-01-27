@@ -1,20 +1,4 @@
----
-title: 测试您的 React.js 部署
-url: /guides/reactjs/deploy/
-parent:
-  title: React.js 语言特定指南
-  url: /guides/reactjs/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: React.js 语言特定指南
-    url: /guides/reactjs/
-  - title: 测试您的 React.js 部署
-    url: /guides/reactjs/deploy/
-next:
-  title: 使用 GitHub Actions 自动化构建
-  url: /guides/reactjs/configure-github-actions/
----
+# 测试您的 React.js 部署
 
 
 ## 先决条件

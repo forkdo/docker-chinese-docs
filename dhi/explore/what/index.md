@@ -1,22 +1,4 @@
----
-title: 什么是加固镜像，为什么要使用它们？
-url: /dhi/explore/what/
-parent:
-  title: 探索 Docker Hardened Images
-  url: /dhi/explore/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 探索 Docker Hardened Images
-    url: /dhi/explore/
-  - title: 什么是加固镜像，为什么要使用它们？
-    url: /dhi/explore/what/
-prev:
-  title: Docker 硬化镜像的构建方式
-  url: /dhi/explore/build-process/
----
+# 什么是加固镜像，为什么要使用它们？
 
 
 在当今多样化的软件环境中，容器镜像通常设计为具有灵活性和广泛的兼容性。虽然这使得它们适用于许多用例，但也可能导致镜像包含超出特定工作负载所需的更多组件。Docker 加固镜像采用最小化设计的方法，有助于减少镜像大小、限制攻击面，并简化安全和合规工作流程。

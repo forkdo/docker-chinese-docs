@@ -1,23 +1,4 @@
----
-title: 为什么使用 Compose？
-url: /compose/intro/features-uses/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 为什么使用 Compose？
-    url: /compose/intro/features-uses/
-next:
-  title: Compose 的工作原理
-  url: /compose/intro/compose-application-model/
-prev:
-  title: Docker Compose 的历史和发展
-  url: /compose/intro/history/
----
+# 为什么使用 Compose？
 
 
 ## Docker Compose 的主要优势

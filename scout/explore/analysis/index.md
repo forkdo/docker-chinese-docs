@@ -1,23 +1,4 @@
----
-title: Docker Scout 镜像分析
-url: /scout/explore/analysis/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 镜像分析
-    url: /scout/explore/analysis/
-next:
-  title: Docker Scout 指标导出器
-  url: /scout/explore/metrics-exporter/
-prev:
-  title: 仪表板
-  url: /scout/explore/dashboard/
----
+# Docker Scout 镜像分析
 
 
 当您为仓库启用镜像分析时，

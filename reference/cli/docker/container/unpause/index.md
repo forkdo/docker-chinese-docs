@@ -1,27 +1,4 @@
----
-title: docker container unpause
-url: /reference/cli/docker/container/unpause/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container unpause
-    url: /reference/cli/docker/container/unpause/
-next:
-  title: docker container top
-  url: /reference/cli/docker/container/top/
-prev:
-  title: docker container update
-  url: /reference/cli/docker/container/update/
----
+# docker container unpause
 
 **Description:** Unpause all processes within one or more containers
 

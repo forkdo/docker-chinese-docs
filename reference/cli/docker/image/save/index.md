@@ -1,27 +1,4 @@
----
-title: docker image save
-url: /reference/cli/docker/image/save/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image save
-    url: /reference/cli/docker/image/save/
-next:
-  title: docker image rm
-  url: /reference/cli/docker/image/rm/
-prev:
-  title: docker image tag
-  url: /reference/cli/docker/image/tag/
----
+# docker image save
 
 **Description:** Save one or more images to a tar archive (streamed to STDOUT by default)
 

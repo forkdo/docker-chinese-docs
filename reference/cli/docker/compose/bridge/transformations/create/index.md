@@ -1,28 +1,4 @@
----
-title: docker compose bridge transformations create
-url: /reference/cli/docker/compose/bridge/transformations/create/
-parent:
-  title: docker compose bridge 转换
-  url: /reference/cli/docker/compose/bridge/transformations/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose bridge
-    url: /reference/cli/docker/compose/bridge/
-  - title: docker compose bridge 转换
-    url: /reference/cli/docker/compose/bridge/transformations/
-  - title: docker compose bridge transformations create
-    url: /reference/cli/docker/compose/bridge/transformations/create/
-prev:
-  title: docker compose bridge transformations list
-  url: /reference/cli/docker/compose/bridge/transformations/list/
----
+# docker compose bridge transformations create
 
 **Description:** Create a new transformation
 

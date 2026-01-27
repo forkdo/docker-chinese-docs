@@ -1,23 +1,4 @@
----
-title: 安全常见问题解答
-url: /ai/mcp-catalog-and-toolkit/faqs/
-parent:
-  title: Docker MCP Catalog and Toolkit
-  url: /ai/mcp-catalog-and-toolkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-  - title: 安全常见问题解答
-    url: /ai/mcp-catalog-and-toolkit/faqs/
-next:
-  title: Docker Hub MCP 服务器
-  url: /ai/mcp-catalog-and-toolkit/hub-mcp/
-prev:
-  title: E2B 沙盒
-  url: /ai/mcp-catalog-and-toolkit/e2b-sandboxes/
----
+# 安全常见问题解答
 
 
 Docker MCP 目录和工具包是一个用于安全构建、共享和运行 MCP 工具的解决方案。此页面解答了有关 MCP 目录和工具包安全性的常见问题。

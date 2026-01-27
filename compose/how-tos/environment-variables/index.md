@@ -1,33 +1,4 @@
----
-title: Compose 中的环境变量
-url: /compose/how-tos/environment-variables/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose 中的环境变量
-    url: /compose/how-tos/environment-variables/
-children:
-  - title: 在容器环境中设置环境变量
-    url: /compose/how-tos/environment-variables/set-environment-variables/
-    description: 如何使用 Compose 设置、使用和管理环境变量
-  - title: Docker Compose 中的环境变量优先级
-    url: /compose/how-tos/environment-variables/envvars-precedence/
-    description: 说明 Compose 中环境变量解析方式的场景概览
-  - title: 在 Docker Compose 中配置预定义环境变量
-    url: /compose/how-tos/environment-variables/envvars/
-    description: 预定义环境变量的配置方法
-  - title: 在 Compose 文件中使用插值设置、使用和管理变量
-    url: /compose/how-tos/environment-variables/variable-interpolation/
-    description: 如何在 Compose 文件中使用插值设置、使用和管理变量
-  - title: Docker Compose 中处理环境变量的最佳实践
-    url: /compose/how-tos/environment-variables/best-practices/
-    description: 解释在 Compose 中设置、使用和管理环境变量的最佳方式
----
+# Compose 中的环境变量
 
 
 Docker Compose 中的环境变量和插值（interpolation）帮助您创建可重用、灵活的配置。这使得 Docker 化的应用程序更易于在不同环境之间管理和部署。

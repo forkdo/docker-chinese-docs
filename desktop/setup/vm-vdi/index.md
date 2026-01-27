@@ -1,20 +1,4 @@
----
-title: 在 VM 或 VDI 环境中运行适用于 Windows 的 Docker Desktop
-url: /desktop/setup/vm-vdi/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 VM 或 VDI 环境中运行适用于 Windows 的 Docker Desktop
-    url: /desktop/setup/vm-vdi/
-prev:
-  title: 登录 Docker Desktop
-  url: /desktop/setup/sign-in/
----
+# 在 VM 或 VDI 环境中运行适用于 Windows 的 Docker Desktop
 
 
 Docker 建议在 Mac、Linux 或 Windows 上原生运行 Docker Desktop。但是，只要虚拟桌面配置得当，适用于 Windows 的 Docker Desktop 可以在虚拟桌面内运行。

@@ -1,20 +1,4 @@
----
-title: 旧版本发行说明
-url: /desktop/previous-versions/archive-windows/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 旧版本发行说明
-    url: /desktop/previous-versions/archive-windows/
-next:
-  title: 旧版本发行说明
-  url: /desktop/previous-versions/archive-mac/
----
+# 旧版本发行说明
 
 
 此页面包含 Docker Desktop for Windows 旧版本的发行说明。

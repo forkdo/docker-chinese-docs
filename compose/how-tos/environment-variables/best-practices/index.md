@@ -1,22 +1,4 @@
----
-title: Docker Compose 中处理环境变量的最佳实践
-url: /compose/how-tos/environment-variables/best-practices/
-parent:
-  title: Compose 中的环境变量
-  url: /compose/how-tos/environment-variables/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose 中的环境变量
-    url: /compose/how-tos/environment-variables/
-  - title: Docker Compose 中处理环境变量的最佳实践
-    url: /compose/how-tos/environment-variables/best-practices/
-next:
-  title: 在 Compose 文件中使用插值设置、使用和管理变量
-  url: /compose/how-tos/environment-variables/variable-interpolation/
----
+# Docker Compose 中处理环境变量的最佳实践
 
 
 #### 安全地处理敏感信息

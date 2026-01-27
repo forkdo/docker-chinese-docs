@@ -1,79 +1,4 @@
----
-title: Build checks
-url: /reference/build-checks/
-parent:
-  title: 参考文档
-  url: /reference/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-children:
-  - title: ConsistentInstructionCasing
-    url: /reference/build-checks/consistent-instruction-casing/
-    description: All commands within the Dockerfile should use the same casing (either upper or lower)
-  - title: CopyIgnoredFile
-    url: /reference/build-checks/copy-ignored-file/
-    description: Attempting to Copy file that is excluded by .dockerignore
-  - title: DuplicateStageName
-    url: /reference/build-checks/duplicate-stage-name/
-    description: Stage names should be unique
-  - title: ExposeInvalidFormat
-    url: /reference/build-checks/expose-invalid-format/
-    description: IP address and host-port mapping should not be used in EXPOSE instruction. This will become an error in a future release
-  - title: ExposeProtoCasing
-    url: /reference/build-checks/expose-proto-casing/
-    description: Protocol in EXPOSE instruction should be lowercase
-  - title: FromAsCasing
-    url: /reference/build-checks/from-as-casing/
-    description: The 'as' keyword should match the case of the 'from' keyword
-  - title: FromPlatformFlagConstDisallowed
-    url: /reference/build-checks/from-platform-flag-const-disallowed/
-    description: FROM --platform flag should not use a constant value
-  - title: InvalidDefaultArgInFrom
-    url: /reference/build-checks/invalid-default-arg-in-from/
-    description: Default value for global ARG results in an empty or invalid base image name
-  - title: InvalidDefinitionDescription
-    url: /reference/build-checks/invalid-definition-description/
-    description: Comment for build stage or argument should follow the format: `# <arg/stage name> <description>`. If this is not intended to be a description comment, add an empty line or comment between the instruction and the comment.
-  - title: JSONArgsRecommended
-    url: /reference/build-checks/json-args-recommended/
-    description: JSON arguments recommended for ENTRYPOINT/CMD to prevent unintended behavior related to OS signals
-  - title: LegacyKeyValueFormat
-    url: /reference/build-checks/legacy-key-value-format/
-    description: Legacy key/value format with whitespace separator should not be used
-  - title: MaintainerDeprecated
-    url: /reference/build-checks/maintainer-deprecated/
-    description: The MAINTAINER instruction is deprecated, use a label instead to define an image author
-  - title: MultipleInstructionsDisallowed
-    url: /reference/build-checks/multiple-instructions-disallowed/
-    description: Multiple instructions of the same type should not be used in the same stage
-  - title: NoEmptyContinuation
-    url: /reference/build-checks/no-empty-continuation/
-    description: Empty continuation lines will become errors in a future release
-  - title: RedundantTargetPlatform
-    url: /reference/build-checks/redundant-target-platform/
-    description: Setting platform to predefined $TARGETPLATFORM in FROM is redundant as this is the default behavior
-  - title: ReservedStageName
-    url: /reference/build-checks/reserved-stage-name/
-    description: Reserved words should not be used as stage names
-  - title: SecretsUsedInArgOrEnv
-    url: /reference/build-checks/secrets-used-in-arg-or-env/
-    description: Sensitive data should not be used in the ARG or ENV commands
-  - title: StageNameCasing
-    url: /reference/build-checks/stage-name-casing/
-    description: Stage names should be lowercase
-  - title: UndefinedArgInFrom
-    url: /reference/build-checks/undefined-arg-in-from/
-    description: FROM command must use declared ARGs
-  - title: UndefinedVar
-    url: /reference/build-checks/undefined-var/
-    description: Variables should be defined before their use
-  - title: WorkdirRelativePath
-    url: /reference/build-checks/workdir-relative-path/
-    description: Relative workdir without an absolute workdir declared within the build can have unexpected results if the base image changes
----
+# Build checks
 
 
 BuildKit has built-in support for analyzing your build configuration based on a
@@ -169,7 +94,7 @@ To learn more about how to use build checks, see
       <td>FROM --platform flag should not use a constant value</td>
     </tr>
     <tr>
-      <td><a href="./copy-ignored-file/">CopyIgnoredFile (experimental)</a></td>
+      <td><a href="./copy-ignored-file/">CopyIgnoredFile</a></td>
       <td>Attempting to Copy file that is excluded by .dockerignore</td>
     </tr>
     <tr>

@@ -1,26 +1,4 @@
----
-title: 将 Docker Scout 与其他系统集成
-url: /scout/integrations/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-children:
-  - title: 
-    url: /scout/integrations/team-collaboration/
-  - title: 将 Docker Scout 与环境集成
-    url: /scout/integrations/environment/
-    description: Docker Scout 可与运行时环境集成，为您提供软件供应链的实时洞察。
-  - title: 在持续集成中使用 Docker Scout
-    url: /scout/integrations/ci/
-    description: 如何在持续集成流水线中设置 Docker Scout
----
+# 将 Docker Scout 与其他系统集成
 
 
 默认情况下，Docker Scout 会与您的 Docker 组织以及您在 Docker Hub 上启用 Docker Scout 的仓库进行集成。您还可以将 Docker Scout 与额外的第三方系统集成，以获取更多洞察，包括关于您正在运行的工作负载的实时信息。

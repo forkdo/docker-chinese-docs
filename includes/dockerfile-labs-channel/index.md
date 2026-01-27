@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/dockerfile-labs-channel/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/dockerfile-labs-channel/
-next:
-  title: 
-  url: /includes/dev-envs-changing/
-prev:
-  title: 
-  url: /includes/engine-license/
----
+# 
 
 > [!IMPORTANT]
 >

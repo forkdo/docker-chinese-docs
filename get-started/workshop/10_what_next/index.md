@@ -1,20 +1,4 @@
----
-title: Docker 工作坊之后该做什么
-url: /get-started/workshop/10_what_next/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: Docker 工作坊之后该做什么
-    url: /get-started/workshop/10_what_next/
-next:
-  title: 镜像构建最佳实践
-  url: /get-started/workshop/09_image_best/
----
+# Docker 工作坊之后该做什么
 
 
 虽然您已经完成了工作坊，但关于容器仍有许多内容需要学习。

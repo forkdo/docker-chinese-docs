@@ -1,21 +1,4 @@
----
-title: 使用 Docker Engine SDK 进行开发
-url: /reference/api/engine/sdk/
-parent:
-  title: Docker Engine API
-  url: /reference/api/engine/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Docker Engine API
-    url: /reference/api/engine/
-  - title: 使用 Docker Engine SDK 进行开发
-    url: /reference/api/engine/sdk/
-children:
-  - title: 使用 Docker Engine SDK 和 Docker API 的示例
-    url: /reference/api/engine/sdk/examples/
-    description: 使用 Go 和 Python SDK 以及使用 curl 的 HTTP API 执行特定 Docker 操作的示例。
----
+# 使用 Docker Engine SDK 进行开发
 
 
 Docker 提供了一个用于与 Docker 守护进程交互的 API（称为 Docker Engine API），以及用于 Go 和 Python 的 SDK。这些 SDK 让您可以高效地构建和扩展 Docker 应用程序和解决方案。如果 Go 或 Python 不适合您，您可以直接使用 Docker Engine API。
@@ -145,15 +128,15 @@ print(client.containers.run("alpine", ["echo", "hello", "world"]))
 ```console
 $ curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
   -d '{"Image": "alpine", "Cmd": ["echo", "hello world"]}' \
-  -X POST http://localhost/v1.52/containers/create
+  -X POST http://localhost/v1.53/containers/create
 {"Id":"1c6594faf5","Warnings":null}
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/start
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/wait
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/wait
 {"StatusCode":0}
 
-$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.52/containers/1c6594faf5/logs?stdout=1"
+$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.53/containers/1c6594faf5/logs?stdout=1"
 hello world
 ```
 
@@ -163,7 +146,7 @@ hello world
 >
 > 前面的示例假设您使用的是 cURL 7.50.0 或更高版本。旧版本的 cURL 在使用套接字连接时使用了[非标准 URL 表示法](https://github.com/moby/moby/issues/17960)。
 >
-> 如果您使用的是旧版本的 cURL，请改用 `http:/<API version>/`，例如：`http:/v1.52/containers/1c6594faf5/start`。
+> 如果您使用的是旧版本的 cURL，请改用 `http:/<API version>/`，例如：`http:/v1.53/containers/1c6594faf5/start`。
 
 
 

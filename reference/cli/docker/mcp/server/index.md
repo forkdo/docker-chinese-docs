@@ -1,21 +1,4 @@
----
-title: docker mcp server
-url: /reference/cli/docker/mcp/server/
-parent:
-  title: docker mcp
-  url: /reference/cli/docker/mcp/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp server
-    url: /reference/cli/docker/mcp/server/
----
+# docker mcp server
 
 **Description:** Manage servers
 

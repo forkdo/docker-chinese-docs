@@ -1,19 +1,4 @@
----
-title: docker checkpoint
-url: /reference/cli/docker/checkpoint/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker checkpoint
-    url: /reference/cli/docker/checkpoint/
----
+# docker checkpoint
 
 **Description:** Manage checkpoints
 

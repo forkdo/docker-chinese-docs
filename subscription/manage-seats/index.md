@@ -1,23 +1,4 @@
----
-title: 管理订阅席位
-url: /subscription/manage-seats/
-parent:
-  title: 订阅
-  url: /subscription/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 订阅
-    url: /subscription/
-  - title: 管理订阅席位
-    url: /subscription/manage-seats/
-next:
-  title: 扩展您的订阅
-  url: /subscription/scale/
-prev:
-  title: 更改您的订阅
-  url: /subscription/change/
----
+# 管理订阅席位
 
 
 您可以随时为 Docker Team 或 Business 订阅添加或移除席位，以适应团队变动。在计费周期中途添加席位时，系统会按额外席位的比例收取费用。

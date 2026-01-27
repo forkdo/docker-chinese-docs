@@ -1,18 +1,4 @@
----
-title: Azure Pipelines 与 Docker 入门
-url: /guides/azure-pipelines/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Azure Pipelines 与 Docker 入门
-    url: /guides/azure-pipelines/
-prev:
-  title: 使用 Docker 的 GitHub Actions 入门
-  url: /guides/gha/
----
+# Azure Pipelines 与 Docker 入门
 
 
 > 本文档为社区贡献。Docker 感谢 [Kristiyan Velkov](https://www.linkedin.com/in/kristiyan-velkov-763130b3/) 的宝贵贡献。

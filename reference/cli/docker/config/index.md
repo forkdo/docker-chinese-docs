@@ -1,19 +1,4 @@
----
-title: docker config
-url: /reference/cli/docker/config/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker config
-    url: /reference/cli/docker/config/
----
+# docker config
 
 **Description:** Manage Swarm configs
 

@@ -1,21 +1,4 @@
----
-title: 借助容器支持的开发实现更快速的开发与测试
-url: /guides/container-supported-development/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 借助容器支持的开发实现更快速的开发与测试
-    url: /guides/container-supported-development/
-next:
-  title: 使用 Kafka 和 Docker 开发事件驱动型应用程序
-  url: /guides/kafka/
-prev:
-  title: 将 Go 应用迁移到 DHI
-  url: /guides/dhi-go-example/
----
+# 借助容器支持的开发实现更快速的开发与测试
 
 
 容器提供了一种一致的方式来跨不同环境构建、共享和运行应用。虽然容器通常用于将你的应用容器化，但它们也使得运行开发所需的关键服务变得异常简单。你可以轻松启动自己的数据库，而无需安装或连接到远程数据库。但这还只是冰山一角。

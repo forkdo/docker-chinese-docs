@@ -1,24 +1,4 @@
----
-title: docker pass set
-url: /reference/cli/docker/pass/set/
-parent:
-  title: Docker Pass
-  url: /reference/cli/docker/pass/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: Docker Pass
-    url: /reference/cli/docker/pass/
-  - title: docker pass set
-    url: /reference/cli/docker/pass/set/
-next:
-  title: docker pass rm
-  url: /reference/cli/docker/pass/rm/
----
+# docker pass set
 
 **Description:** Set a secret
 

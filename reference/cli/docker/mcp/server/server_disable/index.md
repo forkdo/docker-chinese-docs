@@ -1,29 +1,4 @@
----
-title: docker mcp server disable
-url: /reference/cli/docker/mcp/server/server_disable/
-parent:
-  title: docker mcp server
-  url: /reference/cli/docker/mcp/server/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp server
-    url: /reference/cli/docker/mcp/server/
-  - title: docker mcp server disable
-    url: /reference/cli/docker/mcp/server/server_disable/
-next:
-  title: 
-  url: /reference/cli/docker/mcp/server/server_inspect/
-prev:
-  title: docker mcp server enable
-  url: /reference/cli/docker/mcp/server/server_enable/
----
+# docker mcp server disable
 
 **Description:** Disable a server or multiple servers
 

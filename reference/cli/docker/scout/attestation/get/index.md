@@ -1,29 +1,4 @@
----
-title: docker scout attestation get
-url: /reference/cli/docker/scout/attestation/get/
-parent:
-  title: docker scout attestation
-  url: /reference/cli/docker/scout/attestation/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout attestation
-    url: /reference/cli/docker/scout/attestation/
-  - title: docker scout attestation get
-    url: /reference/cli/docker/scout/attestation/get/
-next:
-  title: docker scout attestation add
-  url: /reference/cli/docker/scout/attestation/add/
-prev:
-  title: docker scout 证明列表
-  url: /reference/cli/docker/scout/attestation/list/
----
+# docker scout attestation get
 
 **Description:** Get attestation for image
 

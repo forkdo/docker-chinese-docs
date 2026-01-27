@@ -1,27 +1,4 @@
----
-title: docker buildx rm
-url: /reference/cli/docker/buildx/rm/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx rm
-    url: /reference/cli/docker/buildx/rm/
-next:
-  title: docker buildx prune
-  url: /reference/cli/docker/buildx/prune/
-prev:
-  title: docker buildx stop
-  url: /reference/cli/docker/buildx/stop/
----
+# docker buildx rm
 
 **Description:** Remove one or more builder instances
 

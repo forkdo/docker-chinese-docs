@@ -1,23 +1,4 @@
----
-title: 插值
-url: /reference/compose-file/interpolation/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 插值
-    url: /reference/compose-file/interpolation/
-next:
-  title: 扩展
-  url: /reference/compose-file/extension/
-prev:
-  title: 合并 Compose 文件
-  url: /reference/compose-file/merge/
----
+# 插值
 
 
 

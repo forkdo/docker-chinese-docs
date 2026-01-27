@@ -1,25 +1,4 @@
----
-title: 管理组织成员
-url: /admin/organization/members/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 管理组织成员
-    url: /admin/organization/members/
-next:
-  title: 为您的组织完成上车流程
-  url: /admin/organization/onboard/
-prev:
-  title: 将账户转换为组织
-  url: /admin/organization/convert-account/
----
+# 管理组织成员
 
 
 了解如何在 Docker Hub 和 Docker 管理控制台中为您的组织管理成员。

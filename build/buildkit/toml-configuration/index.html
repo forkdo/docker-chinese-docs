@@ -18,7 +18,10 @@
 <link rel="canonical" href="/build/buildkit/toml-configuration/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -44,7 +47,7 @@
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-11-03 13:55:25 &#43;0100 &#43;0100"
+  content="2026-01-27 11:35:06 &#43;0000 &#43;0000"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-11-03 13:55:25 &#43;0100 &#43;0100"
+  content="2026-01-27 11:35:06 &#43;0000 &#43;0000"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-11-03T13:55:25+01:00","description":"","headline":"buildkitd.toml","isPartOf":{"@id":"/build/buildkit/","@type":"WebPage","name":"BuildKit"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/build/buildkit/toml-configuration/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/build/","name":"Docker Build"},"position":2},{"@type":"ListItem","item":{"@id":"/build/buildkit/","name":"BuildKit"},"position":3},{"@type":"ListItem","item":{"@id":"/build/buildkit/toml-configuration/","name":"buildkitd.toml"},"position":4}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-27T11:35:06Z","description":"","headline":"buildkitd.toml","isPartOf":{"@id":"/build/buildkit/","@type":"WebPage","name":"BuildKit"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/build/buildkit/toml-configuration/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/build/","name":"Docker Build"},"position":2},{"@type":"ListItem","item":{"@id":"/build/buildkit/","name":"BuildKit"},"position":3},{"@type":"ListItem","item":{"@id":"/build/buildkit/toml-configuration/","name":"buildkitd.toml"},"position":4}]}</script>
 <link rel="alternate" type="text/markdown" href="/build/buildkit/toml-configuration/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4768,10 +4777,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4811,10 +4820,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4842,11 +4851,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4863,6 +4904,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6252,10 +6341,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8893,18 +8982,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10640,10 +10725,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11638,10 +11723,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -12354,7 +12439,7 @@ Note that some configuration options are only useful in edge cases.</p>
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'IyBkZWJ1ZyBlbmFibGVzIGFkZGl0aW9uYWwgZGVidWcgbG9nZ2luZwpkZWJ1ZyA9IHRydWUKIyB0cmFjZSBlbmFibGVzIGFkZGl0aW9uYWwgdHJhY2UgbG9nZ2luZyAodmVyeSB2ZXJib3NlLCB3aXRoIHBvdGVudGlhbCBwZXJmb3JtYW5jZSBpbXBhY3RzKQp0cmFjZSA9IHRydWUKIyByb290IGlzIHdoZXJlIGFsbCBidWlsZGtpdCBzdGF0ZSBpcyBzdG9yZWQuCnJvb3QgPSAiL3Zhci9saWIvYnVpbGRraXQiCiMgaW5zZWN1cmUtZW50aXRsZW1lbnRzIGFsbG93cyBpbnNlY3VyZSBlbnRpdGxlbWVudHMsIGRpc2FibGVkIGJ5IGRlZmF1bHQuCmluc2VjdXJlLWVudGl0bGVtZW50cyA9IFsgIm5ldHdvcmsuaG9zdCIsICJzZWN1cml0eS5pbnNlY3VyZSIsICJkZXZpY2UiIF0KIyBwcm92ZW5hbmNlRW52RGlyIGlzIHRoZSBkaXJlY3Rvcnkgd2hlcmUgZXh0cmEgY29uZmlnIGlzIGxvYWRlZCB0aGF0IGlzIGFkZGVkCiMgdG8gdGhlIHByb3ZlbmFuY2Ugb2YgYnVpbGRzOgojIHNsc2EgdjAuMjogaW52b2NhdGlvbi5lbnZpcm9ubWVudC4qCiMgc2xzYSB2MTogYnVpbGREZWZpbml0aW9uLmludGVybmFsUGFyYW1ldGVycy4qCnByb3ZlbmFuY2VFbnZEaXIgPSAiL2V0Yy9idWlsZGtpdC9wcm92ZW5hbmNlLmQiCgpbbG9nXQogICMgbG9nIGZvcm1hdHRlcjoganNvbiBvciB0ZXh0CiAgZm9ybWF0ID0gInRleHQiCgpbZG5zXQogIG5hbWVzZXJ2ZXJzPVsiMS4xLjEuMSIsIjguOC44LjgiXQogIG9wdGlvbnM9WyJlZG5zMCJdCiAgc2VhcmNoRG9tYWlucz1bImV4YW1wbGUuY29tIl0KCltncnBjXQogIGFkZHJlc3MgPSBbICJ0Y3A6Ly8wLjAuMC4wOjEyMzQiIF0KICAjIGRlYnVnQWRkcmVzcyBpcyBhZGRyZXNzIGZvciBhdHRhY2hpbmcgZ28gcHJvZmlsZXMgYW5kIGRlYnVnZ2Vycy4KICBkZWJ1Z0FkZHJlc3MgPSAiMC4wLjAuMDo2MDYwIgogIHVpZCA9IDAKICBnaWQgPSAwCiAgW2dycGMudGxzXQogICAgY2VydCA9ICIvZXRjL2J1aWxka2l0L3Rscy5jcnQiCiAgICBrZXkgPSAiL2V0Yy9idWlsZGtpdC90bHMua2V5IgogICAgY2EgPSAiL2V0Yy9idWlsZGtpdC90bHNjYS5jcnQiCgpbb3RlbF0KICAjIE9URUwgY29sbGVjdG9yIHRyYWNlIHNvY2tldCBwYXRoCiAgc29ja2V0UGF0aCA9ICIvcnVuL2J1aWxka2l0L290ZWwtZ3JwYy5zb2NrIgoKW2NkaV0KICAjIERpc2FibGVzIHN1cHBvcnQgb2YgdGhlIENvbnRhaW5lciBEZXZpY2UgSW50ZXJmYWNlIChDREkpLgogIGRpc2FibGVkID0gdHJ1ZQogICMgTGlzdCBvZiBkaXJlY3RvcmllcyB0byBzY2FuIGZvciBDREkgc3BlYyBmaWxlcy4gRm9yIG1vcmUgZGV0YWlscyBhYm91dCBDREkKICAjIHNwZWNpZmljYXRpb24sIHBsZWFzZSByZWZlciB0byBodHRwczovL2dpdGh1Yi5jb20vY25jZi10YWdzL2NvbnRhaW5lci1kZXZpY2UtaW50ZXJmYWNlL2Jsb2IvbWFpbi9TUEVDLm1kI2NkaS1qc29uLXNwZWNpZmljYXRpb24KICBzcGVjRGlycyA9IFsiL2V0Yy9jZGkiLCAiL3Zhci9ydW4vY2RpIiwgIi9ldGMvYnVpbGRraXQvY2RpIl0KCiMgY29uZmlnIGZvciBidWlsZCBoaXN0b3J5IEFQSSB0aGF0IHN0b3JlcyBpbmZvcm1hdGlvbiBhYm91dCBjb21wbGV0ZWQgYnVpbGQgY29tbWFuZHMKW2hpc3RvcnldCiAgIyBtYXhBZ2UgaXMgdGhlIG1heGltdW0gYWdlIG9mIGhpc3RvcnkgZW50cmllcyB0byBrZWVwLCBpbiBzZWNvbmRzLgogIG1heEFnZSA9IDE3MjgwMAogICMgbWF4RW50cmllcyBpcyB0aGUgbWF4aW11bSBudW1iZXIgb2YgaGlzdG9yeSBlbnRyaWVzIHRvIGtlZXAuCiAgbWF4RW50cmllcyA9IDUwCgpbd29ya2VyLm9jaV0KICBlbmFibGVkID0gdHJ1ZQogICMgcGxhdGZvcm1zIGlzIG1hbnVhbGx5IGNvbmZpZ3VyZSBwbGF0Zm9ybXMsIGRldGVjdGVkIGF1dG9tYXRpY2FsbHkgaWYgdW5zZXQuCiAgcGxhdGZvcm1zID0gWyAibGludXgvYW1kNjQiLCAibGludXgvYXJtNjQiIF0KICBzbmFwc2hvdHRlciA9ICJhdXRvIiAjIG92ZXJsYXlmcyBvciBuYXRpdmUsIGRlZmF1bHQgdmFsdWUgaXMgImF1dG8iLgogIHJvb3RsZXNzID0gZmFsc2UgIyBzZWUgZG9jcy9yb290bGVzcy5tZCBmb3IgdGhlIGRldGFpbHMgb24gcm9vdGxlc3MgbW9kZS4KICAjIFdoZXRoZXIgcnVuIHN1YnByb2Nlc3NlcyBpbiBtYWluIHBpZCBuYW1lc3BhY2Ugb3Igbm90LCB0aGlzIGlzIHVzZWZ1bCBmb3IKICAjIHJ1bm5pbmcgcm9vdGxlc3MgYnVpbGRraXQgaW5zaWRlIGEgY29udGFpbmVyLgogIG5vUHJvY2Vzc1NhbmRib3ggPSBmYWxzZQogICMgZ2MgZW5hYmxlcy9kaXNhYmxlcyBnYXJiYWdlIGNvbGxlY3Rpb24KICBnYyA9IHRydWUKICAjIHJlc2VydmVkU3BhY2UgaXMgdGhlIG1pbmltdW0gYW1vdW50IG9mIGRpc2sgc3BhY2UgZ3VhcmFudGVlZCB0byBiZQogICMgcmV0YWluZWQgYnkgdGhpcyBidWlsZGtpdCB3b3JrZXIgLSBhbnkgdXNhZ2UgYmVsb3cgdGhpcyB0aHJlc2hvbGQgd2lsbCBub3QKICAjIGJlIHJlY2xhaW1lZCBkdXJpbmcgZ2FyYmFnZSBjb2xsZWN0aW9uLgogICMgYWxsIGRpc2sgc3BhY2UgcGFyYW1ldGVycyBjYW4gYmUgYW4gaW50ZWdlciBudW1iZXIgb2YgYnl0ZXMgKGUuZy4KICAjIDUxMjAwMDAwMCksIGEgc3RyaW5nIHdpdGggYSB1bml0IChlLmcuICI1MTJNQiIpLCBvciBhIHN0cmluZyBwZXJjZW50YWdlCiAgIyBvZiB0aGUgdG90YWwgZGlzayBzcGFjZSAoZS5nLiAiMTAlIikKICByZXNlcnZlZFNwYWNlID0gIjMwJSIKICAjIG1heFVzZWRTcGFjZSBpcyB0aGUgbWF4aW11bSBhbW91bnQgb2YgZGlzayBzcGFjZSB0aGF0IG1heSBiZSB1c2VkIGJ5CiAgIyB0aGlzIGJ1aWxka2l0IHdvcmtlciAtIGFueSB1c2FnZSBhYm92ZSB0aGlzIHRocmVzaG9sZCB3aWxsIGJlIHJlY2xhaW1lZAogICMgZHVyaW5nIGdhcmJhZ2UgY29sbGVjdGlvbi4KICBtYXhVc2VkU3BhY2UgPSAiNjAlIgogICMgbWluRnJlZVNwYWNlIGlzIHRoZSB0YXJnZXQgYW1vdW50IG9mIGZyZWUgZGlzayBzcGFjZSB0aGF0IHRoZSBnYXJiYWdlCiAgIyBjb2xsZWN0b3Igd2lsbCBhdHRlbXB0IHRvIGxlYXZlIC0gaG93ZXZlciwgaXQgd2lsbCBuZXZlciBiZSBib3VnaHQgYmVsb3cKICAjIHJlc2VydmVkU3BhY2UuCiAgbWluRnJlZVNwYWNlID0gIjIwR0IiCiAgIyBhbHRlcm5hdGUgT0NJIHdvcmtlciBiaW5hcnkgbmFtZShleGFtcGxlICdjcnVuJyksIGJ5IGRlZmF1bHQgZWl0aGVyIAogICMgYnVpbGRraXQtcnVuYyBvciBydW5jIGJpbmFyeSBpcyB1c2VkCiAgYmluYXJ5ID0gIiIKICAjIG5hbWUgb2YgdGhlIGFwcGFybW9yIHByb2ZpbGUgdGhhdCBzaG91bGQgYmUgdXNlZCB0byBjb25zdHJhaW4gYnVpbGQgY29udGFpbmVycy4KICAjIHRoZSBwcm9maWxlIHNob3VsZCBhbHJlYWR5IGJlIGxvYWRlZCAoYnkgYSBoaWdoZXIgbGV2ZWwgc3lzdGVtKSBiZWZvcmUgY3JlYXRpbmcgYSB3b3JrZXIuCiAgYXBwYXJtb3ItcHJvZmlsZSA9ICIiCiAgIyBsaW1pdCB0aGUgbnVtYmVyIG9mIHBhcmFsbGVsIGJ1aWxkIHN0ZXBzIHRoYXQgY2FuIHJ1biBhdCB0aGUgc2FtZSB0aW1lCiAgbWF4LXBhcmFsbGVsaXNtID0gNAogICMgbWFpbnRhaW4gYSBwb29sIG9mIHJldXNhYmxlIENOSSBuZXR3b3JrIG5hbWVzcGFjZXMgdG8gYW1vcnRpemUgdGhlIG92ZXJoZWFkCiAgIyBvZiBhbGxvY2F0aW5nIGFuZCByZWxlYXNpbmcgdGhlIG5hbWVzcGFjZXMKICBjbmlQb29sU2l6ZSA9IDE2CgogIFt3b3JrZXIub2NpLmxhYmVsc10KICAgICJmb28iID0gImJhciIKCiAgW1t3b3JrZXIub2NpLmdjcG9saWN5XV0KICAgICMgcmVzZXJ2ZWRTcGFjZSBpcyB0aGUgbWluaW11bSBhbW91bnQgb2YgZGlzayBzcGFjZSBndWFyYW50ZWVkIHRvIGJlCiAgICAjIHJldGFpbmVkIGJ5IHRoaXMgcG9saWN5IC0gYW55IHVzYWdlIGJlbG93IHRoaXMgdGhyZXNob2xkIHdpbGwgbm90IGJlCiAgICAjIHJlY2xhaW1lZCBkdXJpbmcgIyBnYXJiYWdlIGNvbGxlY3Rpb24uCiAgICByZXNlcnZlZFNwYWNlID0gIjUxMk1CIgogICAgIyBtYXhVc2VkU3BhY2UgaXMgdGhlIG1heGltdW0gYW1vdW50IG9mIGRpc2sgc3BhY2UgdGhhdCBtYXkgYmUgdXNlZCBieSB0aGlzCiAgICAjIHBvbGljeSAtIGFueSB1c2FnZSBhYm92ZSB0aGlzIHRocmVzaG9sZCB3aWxsIGJlIHJlY2xhaW1lZCBkdXJpbmcgZ2FyYmFnZQogICAgIyBjb2xsZWN0aW9uLgogICAgbWF4VXNlZFNwYWNlID0gIjFHQiIKICAgICMgbWluRnJlZVNwYWNlIGlzIHRoZSB0YXJnZXQgYW1vdW50IG9mIGZyZWUgZGlzayBzcGFjZSB0aGF0IHRoZSBnYXJiYWdlCiAgICAjIGNvbGxlY3RvciB3aWxsIGF0dGVtcHQgdG8gbGVhdmUgLSBob3dldmVyLCBpdCB3aWxsIG5ldmVyIGJlIGJvdWdodCBiZWxvdwogICAgIyByZXNlcnZlZFNwYWNlLgogICAgbWluRnJlZVNwYWNlID0gIjEwR0IiCiAgICAjIGtlZXBEdXJhdGlvbiBjYW4gYmUgYW4gaW50ZWdlciBudW1iZXIgb2Ygc2Vjb25kcyAoZS5nLiAxNzI4MDApLCBvciBhCiAgICAjIHN0cmluZyBkdXJhdGlvbiAoZS5nLiAiNDhoIikKICAgIGtlZXBEdXJhdGlvbiA9ICI0OGgiCiAgICBmaWx0ZXJzID0gWyAidHlwZT09c291cmNlLmxvY2FsIiwgInR5cGU9PWV4ZWMuY2FjaGVtb3VudCIsICJ0eXBlPT1zb3VyY2UuZ2l0LmNoZWNrb3V0Il0KICBbW3dvcmtlci5vY2kuZ2Nwb2xpY3ldXQogICAgYWxsID0gdHJ1ZQogICAgcmVzZXJ2ZWRTcGFjZSA9IDEwMjQwMDAwMDAKClt3b3JrZXIuY29udGFpbmVyZF0KICBhZGRyZXNzID0gIi9ydW4vY29udGFpbmVyZC9jb250YWluZXJkLnNvY2siCiAgZW5hYmxlZCA9IHRydWUKICBwbGF0Zm9ybXMgPSBbICJsaW51eC9hbWQ2NCIsICJsaW51eC9hcm02NCIgXQogIG5hbWVzcGFjZSA9ICJidWlsZGtpdCIKCiAgIyBnYyBlbmFibGVzL2Rpc2FibGVzIGdhcmJhZ2UgY29sbGVjdGlvbgogIGdjID0gdHJ1ZQogICMgcmVzZXJ2ZWRTcGFjZSBpcyB0aGUgbWluaW11bSBhbW91bnQgb2YgZGlzayBzcGFjZSBndWFyYW50ZWVkIHRvIGJlCiAgIyByZXRhaW5lZCBieSB0aGlzIGJ1aWxka2l0IHdvcmtlciAtIGFueSB1c2FnZSBiZWxvdyB0aGlzIHRocmVzaG9sZCB3aWxsIG5vdAogICMgYmUgcmVjbGFpbWVkIGR1cmluZyBnYXJiYWdlIGNvbGxlY3Rpb24uCiAgIyBhbGwgZGlzayBzcGFjZSBwYXJhbWV0ZXJzIGNhbiBiZSBhbiBpbnRlZ2VyIG51bWJlciBvZiBieXRlcyAoZS5nLgogICMgNTEyMDAwMDAwKSwgYSBzdHJpbmcgd2l0aCBhIHVuaXQgKGUuZy4gIjUxMk1CIiksIG9yIGEgc3RyaW5nIHBlcmNlbnRhZ2UKICAjIG9mIHRoZSB0b3RhbCBkaXNrIHNwYWNlIChlLmcuICIxMCUiKQogIHJlc2VydmVkU3BhY2UgPSAiMzAlIgogICMgbWF4VXNlZFNwYWNlIGlzIHRoZSBtYXhpbXVtIGFtb3VudCBvZiBkaXNrIHNwYWNlIHRoYXQgbWF5IGJlIHVzZWQgYnkKICAjIHRoaXMgYnVpbGRraXQgd29ya2VyIC0gYW55IHVzYWdlIGFib3ZlIHRoaXMgdGhyZXNob2xkIHdpbGwgYmUgcmVjbGFpbWVkCiAgIyBkdXJpbmcgZ2FyYmFnZSBjb2xsZWN0aW9uLgogIG1heFVzZWRTcGFjZSA9ICI2MCUiCiAgIyBtaW5GcmVlU3BhY2UgaXMgdGhlIHRhcmdldCBhbW91bnQgb2YgZnJlZSBkaXNrIHNwYWNlIHRoYXQgdGhlIGdhcmJhZ2UKICAjIGNvbGxlY3RvciB3aWxsIGF0dGVtcHQgdG8gbGVhdmUgLSBob3dldmVyLCBpdCB3aWxsIG5ldmVyIGJlIGJvdWdodCBiZWxvdwogICMgcmVzZXJ2ZWRTcGFjZS4KICBtaW5GcmVlU3BhY2UgPSAiMjBHQiIKICAjIGxpbWl0IHRoZSBudW1iZXIgb2YgcGFyYWxsZWwgYnVpbGQgc3RlcHMgdGhhdCBjYW4gcnVuIGF0IHRoZSBzYW1lIHRpbWUKICBtYXgtcGFyYWxsZWxpc20gPSA0CiAgIyBtYWludGFpbiBhIHBvb2wgb2YgcmV1c2FibGUgQ05JIG5ldHdvcmsgbmFtZXNwYWNlcyB0byBhbW9ydGl6ZSB0aGUgb3ZlcmhlYWQKICAjIG9mIGFsbG9jYXRpbmcgYW5kIHJlbGVhc2luZyB0aGUgbmFtZXNwYWNlcwogIGNuaVBvb2xTaXplID0gMTYKICAjIGRlZmF1bHRDZ3JvdXBQYXJlbnQgc2V0cyB0aGUgcGFyZW50IGNncm91cCBvZiBhbGwgY29udGFpbmVycy4KICBkZWZhdWx0Q2dyb3VwUGFyZW50ID0gImJ1aWxka2l0IgoKICBbd29ya2VyLmNvbnRhaW5lcmQubGFiZWxzXQogICAgImZvbyIgPSAiYmFyIgoKICAjIGNvbmZpZ3VyZSB0aGUgY29udGFpbmVyZCBydW50aW1lCiAgW3dvcmtlci5jb250YWluZXJkLnJ1bnRpbWVdCiAgICBuYW1lID0gImlvLmNvbnRhaW5lcmQucnVuYy52MiIKICAgIHBhdGggPSAiL3BhdGgvdG8vY29udGFpbmVyZC9ydW5jL3NoaW0iCiAgICBvcHRpb25zID0geyBCaW5hcnlOYW1lID0gInJ1bmMiIH0KCiAgW1t3b3JrZXIuY29udGFpbmVyZC5nY3BvbGljeV1dCiAgICByZXNlcnZlZFNwYWNlID0gNTEyMDAwMDAwCiAgICBrZWVwRHVyYXRpb24gPSAxNzI4MDAKICAgIGZpbHRlcnMgPSBbICJ0eXBlPT1zb3VyY2UubG9jYWwiLCAidHlwZT09ZXhlYy5jYWNoZW1vdW50IiwgInR5cGU9PXNvdXJjZS5naXQuY2hlY2tvdXQiXQogIFtbd29ya2VyLmNvbnRhaW5lcmQuZ2Nwb2xpY3ldXQogICAgYWxsID0gdHJ1ZQogICAgcmVzZXJ2ZWRTcGFjZSA9IDEwMjQwMDAwMDAKCiMgcmVnaXN0cnkgY29uZmlndXJlcyBhIG5ldyBEb2NrZXIgcmVnaXN0ZXIgdXNlZCBmb3IgY2FjaGUgaW1wb3J0IG9yIG91dHB1dC4KW3JlZ2lzdHJ5LiJkb2NrZXIuaW8iXQogICMgbWlycm9yIGNvbmZpZ3VyYXRpb24gdG8gaGFuZGxlIHBhdGggaW4gY2FzZSBhIG1pcnJvciByZWdpc3RyeSByZXF1aXJlcyBhIC9wcm9qZWN0IHBhdGggcmF0aGVyIHRoYW4ganVzdCBhIGhvc3Q6cG9ydAogIG1pcnJvcnMgPSBbInlvdXJtaXJyb3IubG9jYWw6NTAwMCIsICJjb3JlLmhhcmJvci5kb21haW4vcHJveHkuZG9ja2VyLmlvIl0KICAjIFVzZSBwbGFpbiBIVFRQIHRvIGNvbm5lY3QgdG8gdGhlIG1pcnJvcnMuCiAgaHR0cCA9IHRydWUKICAjIFVzZSBIVFRQUyB3aXRoIHNlbGYtc2lnbmVkIGNlcnRpZmljYXRlcy4gRG8gbm90IGVuYWJsZSB0aGlzIHRvZ2V0aGVyIHdpdGggYGh0dHBgLgogIGluc2VjdXJlID0gdHJ1ZQogICMgSWYgeW91IHVzZSB0b2tlbiBhdXRoIHdpdGggc2VsZi1zaWduZWQgY2VydGlmaWNhdGVzLAogICMgdGhlbiBidWlsZGN0bCBhbHNvIG5lZWRzIHRvIHRydXN0IHRoZSB0b2tlbiBwcm92aWRlciBDQSAoZm9yIGV4YW1wbGUsIGNlcnRpZmljYXRlcyB0aGF0IGFyZSBjb25maWd1cmVkIGZvciByZWdpc3RyeSkKICAjIGJlY2F1c2UgYnVpbGRjdGwgcHVsbHMgdG9rZW5zIGRpcmVjdGx5IHdpdGhvdXQgZGFlbW9uIHByb2Nlc3MKICBjYT1bIi9ldGMvY29uZmlnL215Y2EucGVtIl0KICBbW3JlZ2lzdHJ5LiJkb2NrZXIuaW8iLmtleXBhaXJdXQogICAga2V5PSIvZXRjL2NvbmZpZy9rZXkucGVtIgogICAgY2VydD0iL2V0Yy9jb25maWcvY2VydC5wZW0iCgojIG9wdGlvbmFsbHkgbWlycm9yIGNvbmZpZ3VyYXRpb24gY2FuIGJlIGRvbmUgYnkgZGVmaW5pbmcgaXQgYXMgYSByZWdpc3RyeS4KW3JlZ2lzdHJ5LiJ5b3VybWlycm9yLmxvY2FsOjUwMDAiXQogIGh0dHAgPSB0cnVlCgojIEZyb250ZW5kIGNvbnRyb2wKW2Zyb250ZW5kLiJkb2NrZXJmaWxlLnYwIl0KICBlbmFibGVkID0gdHJ1ZQoKW2Zyb250ZW5kLiJnYXRld2F5LnYwIl0KICBlbmFibGVkID0gdHJ1ZQogICMgSWYgYWxsb3dlZFJlcG9zaXRvcmllcyBpcyBlbXB0eSwgYWxsIGdhdGV3YXkgc291cmNlcyBhcmUgYWxsb3dlZC4KICAjIE90aGVyd2lzZSwgb25seSB0aGUgbGlzdGVkIHJlcG9zaXRvcmllcyBhcmUgYWxsb3dlZCBhcyBhIGdhdGV3YXkgc291cmNlLgogICMgCiAgIyBOT1RFOiBPbmx5IHRoZSByZXBvc2l0b3J5IG5hbWUgKHdpdGhvdXQgdGFnKSBpcyBjb21wYXJlZC4KICAjCiAgIyBFeGFtcGxlOgogICMgYWxsb3dlZFJlcG9zaXRvcmllcyA9IFsgImRvY2tlci1yZWdpc3RyeS53aWtpbWVkaWEub3JnL3JlcG9zL3JlbGVuZy9ibHViYmVyL2J1aWxka2l0IiBdCiAgYWxsb3dlZFJlcG9zaXRvcmllcyA9IFtdCgpbc3lzdGVtXQogICMgaG93IG9mdGVuIGJ1aWxka2l0IHNjYW5zIGZvciBjaGFuZ2VzIGluIHRoZSBzdXBwb3J0ZWQgZW11bGF0ZWQgcGxhdGZvcm1zCiAgcGxhdGZvcm1zQ2FjaGVNYXhBZ2UgPSAiMWgi', copying: false }"
+        x-data="{ code: 'IyBkZWJ1ZyBlbmFibGVzIGFkZGl0aW9uYWwgZGVidWcgbG9nZ2luZwpkZWJ1ZyA9IHRydWUKIyB0cmFjZSBlbmFibGVzIGFkZGl0aW9uYWwgdHJhY2UgbG9nZ2luZyAodmVyeSB2ZXJib3NlLCB3aXRoIHBvdGVudGlhbCBwZXJmb3JtYW5jZSBpbXBhY3RzKQp0cmFjZSA9IHRydWUKIyByb290IGlzIHdoZXJlIGFsbCBidWlsZGtpdCBzdGF0ZSBpcyBzdG9yZWQuCnJvb3QgPSAiL3Zhci9saWIvYnVpbGRraXQiCiMgaW5zZWN1cmUtZW50aXRsZW1lbnRzIGFsbG93cyBpbnNlY3VyZSBlbnRpdGxlbWVudHMsIGRpc2FibGVkIGJ5IGRlZmF1bHQuCmluc2VjdXJlLWVudGl0bGVtZW50cyA9IFsgIm5ldHdvcmsuaG9zdCIsICJzZWN1cml0eS5pbnNlY3VyZSIsICJkZXZpY2UiIF0KIyBwcm92ZW5hbmNlRW52RGlyIGlzIHRoZSBkaXJlY3Rvcnkgd2hlcmUgZXh0cmEgY29uZmlnIGlzIGxvYWRlZCB0aGF0IGlzIGFkZGVkCiMgdG8gdGhlIHByb3ZlbmFuY2Ugb2YgYnVpbGRzOgojIHNsc2EgdjAuMjogaW52b2NhdGlvbi5lbnZpcm9ubWVudC4qCiMgc2xzYSB2MTogYnVpbGREZWZpbml0aW9uLmludGVybmFsUGFyYW1ldGVycy4qCnByb3ZlbmFuY2VFbnZEaXIgPSAiL2V0Yy9idWlsZGtpdC9wcm92ZW5hbmNlLmQiCgpbbG9nXQogICMgbG9nIGZvcm1hdHRlcjoganNvbiBvciB0ZXh0CiAgZm9ybWF0ID0gInRleHQiCgpbZG5zXQogIG5hbWVzZXJ2ZXJzPVsiMS4xLjEuMSIsIjguOC44LjgiXQogIG9wdGlvbnM9WyJlZG5zMCJdCiAgc2VhcmNoRG9tYWlucz1bImV4YW1wbGUuY29tIl0KCltncnBjXQogIGFkZHJlc3MgPSBbICJ0Y3A6Ly8wLjAuMC4wOjEyMzQiIF0KICAjIGRlYnVnQWRkcmVzcyBpcyBhZGRyZXNzIGZvciBhdHRhY2hpbmcgZ28gcHJvZmlsZXMgYW5kIGRlYnVnZ2Vycy4KICBkZWJ1Z0FkZHJlc3MgPSAiMC4wLjAuMDo2MDYwIgogIHVpZCA9IDAKICBnaWQgPSAwCiAgW2dycGMudGxzXQogICAgY2VydCA9ICIvZXRjL2J1aWxka2l0L3Rscy5jcnQiCiAgICBrZXkgPSAiL2V0Yy9idWlsZGtpdC90bHMua2V5IgogICAgY2EgPSAiL2V0Yy9idWlsZGtpdC90bHNjYS5jcnQiCgpbb3RlbF0KICAjIE9URUwgY29sbGVjdG9yIHRyYWNlIHNvY2tldCBwYXRoCiAgc29ja2V0UGF0aCA9ICIvcnVuL2J1aWxka2l0L290ZWwtZ3JwYy5zb2NrIgoKW2NkaV0KICAjIERpc2FibGVzIHN1cHBvcnQgb2YgdGhlIENvbnRhaW5lciBEZXZpY2UgSW50ZXJmYWNlIChDREkpLgogIGRpc2FibGVkID0gdHJ1ZQogICMgTGlzdCBvZiBkaXJlY3RvcmllcyB0byBzY2FuIGZvciBDREkgc3BlYyBmaWxlcy4gRm9yIG1vcmUgZGV0YWlscyBhYm91dCBDREkKICAjIHNwZWNpZmljYXRpb24sIHBsZWFzZSByZWZlciB0byBodHRwczovL2dpdGh1Yi5jb20vY25jZi10YWdzL2NvbnRhaW5lci1kZXZpY2UtaW50ZXJmYWNlL2Jsb2IvbWFpbi9TUEVDLm1kI2NkaS1qc29uLXNwZWNpZmljYXRpb24KICBzcGVjRGlycyA9IFsiL2V0Yy9jZGkiLCAiL3Zhci9ydW4vY2RpIiwgIi9ldGMvYnVpbGRraXQvY2RpIl0KCiMgY29uZmlnIGZvciBidWlsZCBoaXN0b3J5IEFQSSB0aGF0IHN0b3JlcyBpbmZvcm1hdGlvbiBhYm91dCBjb21wbGV0ZWQgYnVpbGQgY29tbWFuZHMKW2hpc3RvcnldCiAgIyBtYXhBZ2UgaXMgdGhlIG1heGltdW0gYWdlIG9mIGhpc3RvcnkgZW50cmllcyB0byBrZWVwLCBpbiBzZWNvbmRzLgogIG1heEFnZSA9IDE3MjgwMAogICMgbWF4RW50cmllcyBpcyB0aGUgbWF4aW11bSBudW1iZXIgb2YgaGlzdG9yeSBlbnRyaWVzIHRvIGtlZXAuCiAgbWF4RW50cmllcyA9IDUwCgpbd29ya2VyLm9jaV0KICBlbmFibGVkID0gdHJ1ZQogICMgcGxhdGZvcm1zIGlzIG1hbnVhbGx5IGNvbmZpZ3VyZSBwbGF0Zm9ybXMsIGRldGVjdGVkIGF1dG9tYXRpY2FsbHkgaWYgdW5zZXQuCiAgcGxhdGZvcm1zID0gWyAibGludXgvYW1kNjQiLCAibGludXgvYXJtNjQiIF0KICBzbmFwc2hvdHRlciA9ICJhdXRvIiAjIG92ZXJsYXlmcyBvciBuYXRpdmUsIGRlZmF1bHQgdmFsdWUgaXMgImF1dG8iLgogIHJvb3RsZXNzID0gZmFsc2UgIyBzZWUgZG9jcy9yb290bGVzcy5tZCBmb3IgdGhlIGRldGFpbHMgb24gcm9vdGxlc3MgbW9kZS4KICAjIFdoZXRoZXIgcnVuIHN1YnByb2Nlc3NlcyBpbiBtYWluIHBpZCBuYW1lc3BhY2Ugb3Igbm90LCB0aGlzIGlzIHVzZWZ1bCBmb3IKICAjIHJ1bm5pbmcgcm9vdGxlc3MgYnVpbGRraXQgaW5zaWRlIGEgY29udGFpbmVyLgogIG5vUHJvY2Vzc1NhbmRib3ggPSBmYWxzZQogICMgZ2MgZW5hYmxlcy9kaXNhYmxlcyBnYXJiYWdlIGNvbGxlY3Rpb24KICBnYyA9IHRydWUKICAjIHJlc2VydmVkU3BhY2UgaXMgdGhlIG1pbmltdW0gYW1vdW50IG9mIGRpc2sgc3BhY2UgZ3VhcmFudGVlZCB0byBiZQogICMgcmV0YWluZWQgYnkgdGhpcyBidWlsZGtpdCB3b3JrZXIgLSBhbnkgdXNhZ2UgYmVsb3cgdGhpcyB0aHJlc2hvbGQgd2lsbCBub3QKICAjIGJlIHJlY2xhaW1lZCBkdXJpbmcgZ2FyYmFnZSBjb2xsZWN0aW9uLgogICMgYWxsIGRpc2sgc3BhY2UgcGFyYW1ldGVycyBjYW4gYmUgYW4gaW50ZWdlciBudW1iZXIgb2YgYnl0ZXMgKGUuZy4KICAjIDUxMjAwMDAwMCksIGEgc3RyaW5nIHdpdGggYSB1bml0IChlLmcuICI1MTJNQiIpLCBvciBhIHN0cmluZyBwZXJjZW50YWdlCiAgIyBvZiB0aGUgdG90YWwgZGlzayBzcGFjZSAoZS5nLiAiMTAlIikKICByZXNlcnZlZFNwYWNlID0gIjMwJSIKICAjIG1heFVzZWRTcGFjZSBpcyB0aGUgbWF4aW11bSBhbW91bnQgb2YgZGlzayBzcGFjZSB0aGF0IG1heSBiZSB1c2VkIGJ5CiAgIyB0aGlzIGJ1aWxka2l0IHdvcmtlciAtIGFueSB1c2FnZSBhYm92ZSB0aGlzIHRocmVzaG9sZCB3aWxsIGJlIHJlY2xhaW1lZAogICMgZHVyaW5nIGdhcmJhZ2UgY29sbGVjdGlvbi4KICBtYXhVc2VkU3BhY2UgPSAiNjAlIgogICMgbWluRnJlZVNwYWNlIGlzIHRoZSB0YXJnZXQgYW1vdW50IG9mIGZyZWUgZGlzayBzcGFjZSB0aGF0IHRoZSBnYXJiYWdlCiAgIyBjb2xsZWN0b3Igd2lsbCBhdHRlbXB0IHRvIGxlYXZlIC0gaG93ZXZlciwgaXQgd2lsbCBuZXZlciBiZSBib3VnaHQgYmVsb3cKICAjIHJlc2VydmVkU3BhY2UuCiAgbWluRnJlZVNwYWNlID0gIjIwR0IiCiAgIyBhbHRlcm5hdGUgT0NJIHdvcmtlciBiaW5hcnkgbmFtZShleGFtcGxlICdjcnVuJyksIGJ5IGRlZmF1bHQgZWl0aGVyIAogICMgYnVpbGRraXQtcnVuYyBvciBydW5jIGJpbmFyeSBpcyB1c2VkCiAgYmluYXJ5ID0gIiIKICAjIG5hbWUgb2YgdGhlIGFwcGFybW9yIHByb2ZpbGUgdGhhdCBzaG91bGQgYmUgdXNlZCB0byBjb25zdHJhaW4gYnVpbGQgY29udGFpbmVycy4KICAjIHRoZSBwcm9maWxlIHNob3VsZCBhbHJlYWR5IGJlIGxvYWRlZCAoYnkgYSBoaWdoZXIgbGV2ZWwgc3lzdGVtKSBiZWZvcmUgY3JlYXRpbmcgYSB3b3JrZXIuCiAgYXBwYXJtb3ItcHJvZmlsZSA9ICIiCiAgIyBsaW1pdCB0aGUgbnVtYmVyIG9mIHBhcmFsbGVsIGJ1aWxkIHN0ZXBzIHRoYXQgY2FuIHJ1biBhdCB0aGUgc2FtZSB0aW1lCiAgbWF4LXBhcmFsbGVsaXNtID0gNAogICMgbWFpbnRhaW4gYSBwb29sIG9mIHJldXNhYmxlIENOSSBuZXR3b3JrIG5hbWVzcGFjZXMgdG8gYW1vcnRpemUgdGhlIG92ZXJoZWFkCiAgIyBvZiBhbGxvY2F0aW5nIGFuZCByZWxlYXNpbmcgdGhlIG5hbWVzcGFjZXMKICBjbmlQb29sU2l6ZSA9IDE2CgogIFt3b3JrZXIub2NpLmxhYmVsc10KICAgICJmb28iID0gImJhciIKCiAgW1t3b3JrZXIub2NpLmdjcG9saWN5XV0KICAgICMgcmVzZXJ2ZWRTcGFjZSBpcyB0aGUgbWluaW11bSBhbW91bnQgb2YgZGlzayBzcGFjZSBndWFyYW50ZWVkIHRvIGJlCiAgICAjIHJldGFpbmVkIGJ5IHRoaXMgcG9saWN5IC0gYW55IHVzYWdlIGJlbG93IHRoaXMgdGhyZXNob2xkIHdpbGwgbm90IGJlCiAgICAjIHJlY2xhaW1lZCBkdXJpbmcgIyBnYXJiYWdlIGNvbGxlY3Rpb24uCiAgICByZXNlcnZlZFNwYWNlID0gIjUxMk1CIgogICAgIyBtYXhVc2VkU3BhY2UgaXMgdGhlIG1heGltdW0gYW1vdW50IG9mIGRpc2sgc3BhY2UgdGhhdCBtYXkgYmUgdXNlZCBieSB0aGlzCiAgICAjIHBvbGljeSAtIGFueSB1c2FnZSBhYm92ZSB0aGlzIHRocmVzaG9sZCB3aWxsIGJlIHJlY2xhaW1lZCBkdXJpbmcgZ2FyYmFnZQogICAgIyBjb2xsZWN0aW9uLgogICAgbWF4VXNlZFNwYWNlID0gIjFHQiIKICAgICMgbWluRnJlZVNwYWNlIGlzIHRoZSB0YXJnZXQgYW1vdW50IG9mIGZyZWUgZGlzayBzcGFjZSB0aGF0IHRoZSBnYXJiYWdlCiAgICAjIGNvbGxlY3RvciB3aWxsIGF0dGVtcHQgdG8gbGVhdmUgLSBob3dldmVyLCBpdCB3aWxsIG5ldmVyIGJlIGJvdWdodCBiZWxvdwogICAgIyByZXNlcnZlZFNwYWNlLgogICAgbWluRnJlZVNwYWNlID0gIjEwR0IiCiAgICAjIGtlZXBEdXJhdGlvbiBjYW4gYmUgYW4gaW50ZWdlciBudW1iZXIgb2Ygc2Vjb25kcyAoZS5nLiAxNzI4MDApLCBvciBhCiAgICAjIHN0cmluZyBkdXJhdGlvbiAoZS5nLiAiNDhoIikKICAgIGtlZXBEdXJhdGlvbiA9ICI0OGgiCiAgICBmaWx0ZXJzID0gWyAidHlwZT09c291cmNlLmxvY2FsIiwgInR5cGU9PWV4ZWMuY2FjaGVtb3VudCIsICJ0eXBlPT1zb3VyY2UuZ2l0LmNoZWNrb3V0Il0KICBbW3dvcmtlci5vY2kuZ2Nwb2xpY3ldXQogICAgYWxsID0gdHJ1ZQogICAgcmVzZXJ2ZWRTcGFjZSA9IDEwMjQwMDAwMDAKClt3b3JrZXIuY29udGFpbmVyZF0KICBhZGRyZXNzID0gIi9ydW4vY29udGFpbmVyZC9jb250YWluZXJkLnNvY2siCiAgZW5hYmxlZCA9IHRydWUKICBwbGF0Zm9ybXMgPSBbICJsaW51eC9hbWQ2NCIsICJsaW51eC9hcm02NCIgXQogIG5hbWVzcGFjZSA9ICJidWlsZGtpdCIKCiAgIyBnYyBlbmFibGVzL2Rpc2FibGVzIGdhcmJhZ2UgY29sbGVjdGlvbgogIGdjID0gdHJ1ZQogICMgcmVzZXJ2ZWRTcGFjZSBpcyB0aGUgbWluaW11bSBhbW91bnQgb2YgZGlzayBzcGFjZSBndWFyYW50ZWVkIHRvIGJlCiAgIyByZXRhaW5lZCBieSB0aGlzIGJ1aWxka2l0IHdvcmtlciAtIGFueSB1c2FnZSBiZWxvdyB0aGlzIHRocmVzaG9sZCB3aWxsIG5vdAogICMgYmUgcmVjbGFpbWVkIGR1cmluZyBnYXJiYWdlIGNvbGxlY3Rpb24uCiAgIyBhbGwgZGlzayBzcGFjZSBwYXJhbWV0ZXJzIGNhbiBiZSBhbiBpbnRlZ2VyIG51bWJlciBvZiBieXRlcyAoZS5nLgogICMgNTEyMDAwMDAwKSwgYSBzdHJpbmcgd2l0aCBhIHVuaXQgKGUuZy4gIjUxMk1CIiksIG9yIGEgc3RyaW5nIHBlcmNlbnRhZ2UKICAjIG9mIHRoZSB0b3RhbCBkaXNrIHNwYWNlIChlLmcuICIxMCUiKQogIHJlc2VydmVkU3BhY2UgPSAiMzAlIgogICMgbWF4VXNlZFNwYWNlIGlzIHRoZSBtYXhpbXVtIGFtb3VudCBvZiBkaXNrIHNwYWNlIHRoYXQgbWF5IGJlIHVzZWQgYnkKICAjIHRoaXMgYnVpbGRraXQgd29ya2VyIC0gYW55IHVzYWdlIGFib3ZlIHRoaXMgdGhyZXNob2xkIHdpbGwgYmUgcmVjbGFpbWVkCiAgIyBkdXJpbmcgZ2FyYmFnZSBjb2xsZWN0aW9uLgogIG1heFVzZWRTcGFjZSA9ICI2MCUiCiAgIyBtaW5GcmVlU3BhY2UgaXMgdGhlIHRhcmdldCBhbW91bnQgb2YgZnJlZSBkaXNrIHNwYWNlIHRoYXQgdGhlIGdhcmJhZ2UKICAjIGNvbGxlY3RvciB3aWxsIGF0dGVtcHQgdG8gbGVhdmUgLSBob3dldmVyLCBpdCB3aWxsIG5ldmVyIGJlIGJvdWdodCBiZWxvdwogICMgcmVzZXJ2ZWRTcGFjZS4KICBtaW5GcmVlU3BhY2UgPSAiMjBHQiIKICAjIGxpbWl0IHRoZSBudW1iZXIgb2YgcGFyYWxsZWwgYnVpbGQgc3RlcHMgdGhhdCBjYW4gcnVuIGF0IHRoZSBzYW1lIHRpbWUKICBtYXgtcGFyYWxsZWxpc20gPSA0CiAgIyBtYWludGFpbiBhIHBvb2wgb2YgcmV1c2FibGUgQ05JIG5ldHdvcmsgbmFtZXNwYWNlcyB0byBhbW9ydGl6ZSB0aGUgb3ZlcmhlYWQKICAjIG9mIGFsbG9jYXRpbmcgYW5kIHJlbGVhc2luZyB0aGUgbmFtZXNwYWNlcwogIGNuaVBvb2xTaXplID0gMTYKICAjIGRlZmF1bHRDZ3JvdXBQYXJlbnQgc2V0cyB0aGUgcGFyZW50IGNncm91cCBvZiBhbGwgY29udGFpbmVycy4KICBkZWZhdWx0Q2dyb3VwUGFyZW50ID0gImJ1aWxka2l0IgoKICBbd29ya2VyLmNvbnRhaW5lcmQubGFiZWxzXQogICAgImZvbyIgPSAiYmFyIgoKICAjIGNvbmZpZ3VyZSB0aGUgY29udGFpbmVyZCBydW50aW1lCiAgW3dvcmtlci5jb250YWluZXJkLnJ1bnRpbWVdCiAgICBuYW1lID0gImlvLmNvbnRhaW5lcmQucnVuYy52MiIKICAgIHBhdGggPSAiL3BhdGgvdG8vY29udGFpbmVyZC9ydW5jL3NoaW0iCiAgICBvcHRpb25zID0geyBCaW5hcnlOYW1lID0gInJ1bmMiIH0KCiAgW1t3b3JrZXIuY29udGFpbmVyZC5nY3BvbGljeV1dCiAgICByZXNlcnZlZFNwYWNlID0gNTEyMDAwMDAwCiAgICBrZWVwRHVyYXRpb24gPSAxNzI4MDAKICAgIGZpbHRlcnMgPSBbICJ0eXBlPT1zb3VyY2UubG9jYWwiLCAidHlwZT09ZXhlYy5jYWNoZW1vdW50IiwgInR5cGU9PXNvdXJjZS5naXQuY2hlY2tvdXQiXQogIFtbd29ya2VyLmNvbnRhaW5lcmQuZ2Nwb2xpY3ldXQogICAgYWxsID0gdHJ1ZQogICAgcmVzZXJ2ZWRTcGFjZSA9IDEwMjQwMDAwMDAKCiMgcmVnaXN0cnkgY29uZmlndXJlcyBhIG5ldyBEb2NrZXIgcmVnaXN0ZXIgdXNlZCBmb3IgY2FjaGUgaW1wb3J0IG9yIG91dHB1dC4KW3JlZ2lzdHJ5LiJkb2NrZXIuaW8iXQogICMgbWlycm9yIGNvbmZpZ3VyYXRpb24gdG8gaGFuZGxlIHBhdGggaW4gY2FzZSBhIG1pcnJvciByZWdpc3RyeSByZXF1aXJlcyBhIC9wcm9qZWN0IHBhdGggcmF0aGVyIHRoYW4ganVzdCBhIGhvc3Q6cG9ydAogIG1pcnJvcnMgPSBbInlvdXJtaXJyb3IubG9jYWw6NTAwMCIsICJjb3JlLmhhcmJvci5kb21haW4vcHJveHkuZG9ja2VyLmlvIl0KICAjIFVzZSBwbGFpbiBIVFRQIHRvIGNvbm5lY3QgdG8gdGhlIG1pcnJvcnMuCiAgaHR0cCA9IHRydWUKICAjIFVzZSBIVFRQUyB3aXRoIHNlbGYtc2lnbmVkIGNlcnRpZmljYXRlcy4gRG8gbm90IGVuYWJsZSB0aGlzIHRvZ2V0aGVyIHdpdGggYGh0dHBgLgogIGluc2VjdXJlID0gdHJ1ZQogICMgSWYgeW91IHVzZSB0b2tlbiBhdXRoIHdpdGggc2VsZi1zaWduZWQgY2VydGlmaWNhdGVzLAogICMgdGhlbiBidWlsZGN0bCBhbHNvIG5lZWRzIHRvIHRydXN0IHRoZSB0b2tlbiBwcm92aWRlciBDQSAoZm9yIGV4YW1wbGUsIGNlcnRpZmljYXRlcyB0aGF0IGFyZSBjb25maWd1cmVkIGZvciByZWdpc3RyeSkKICAjIGJlY2F1c2UgYnVpbGRjdGwgcHVsbHMgdG9rZW5zIGRpcmVjdGx5IHdpdGhvdXQgZGFlbW9uIHByb2Nlc3MKICBjYT1bIi9ldGMvY29uZmlnL215Y2EucGVtIl0KICBbW3JlZ2lzdHJ5LiJkb2NrZXIuaW8iLmtleXBhaXJdXQogICAga2V5PSIvZXRjL2NvbmZpZy9rZXkucGVtIgogICAgY2VydD0iL2V0Yy9jb25maWcvY2VydC5wZW0iCgojIG9wdGlvbmFsbHkgbWlycm9yIGNvbmZpZ3VyYXRpb24gY2FuIGJlIGRvbmUgYnkgZGVmaW5pbmcgaXQgYXMgYSByZWdpc3RyeS4KW3JlZ2lzdHJ5LiJ5b3VybWlycm9yLmxvY2FsOjUwMDAiXQogIGh0dHAgPSB0cnVlCgojIEZyb250ZW5kIGNvbnRyb2wKW2Zyb250ZW5kLiJkb2NrZXJmaWxlLnYwIl0KICBlbmFibGVkID0gdHJ1ZQoKW2Zyb250ZW5kLiJnYXRld2F5LnYwIl0KICBlbmFibGVkID0gdHJ1ZQogICMgSWYgYWxsb3dlZFJlcG9zaXRvcmllcyBpcyBlbXB0eSwgYWxsIGdhdGV3YXkgc291cmNlcyBhcmUgYWxsb3dlZC4KICAjIE90aGVyd2lzZSwgb25seSB0aGUgbGlzdGVkIHJlcG9zaXRvcmllcyBhcmUgYWxsb3dlZCBhcyBhIGdhdGV3YXkgc291cmNlLgogICMgCiAgIyBOT1RFOiBPbmx5IHRoZSByZXBvc2l0b3J5IG5hbWUgKHdpdGhvdXQgdGFnKSBpcyBjb21wYXJlZC4KICAjCiAgIyBFeGFtcGxlOgogICMgYWxsb3dlZFJlcG9zaXRvcmllcyA9IFsgImRvY2tlci1yZWdpc3RyeS53aWtpbWVkaWEub3JnL3JlcG9zL3JlbGVuZy9ibHViYmVyL2J1aWxka2l0IiBdCiAgYWxsb3dlZFJlcG9zaXRvcmllcyA9IFtdCgpbc3lzdGVtXQogICMgaG93IG9mdGVuIGJ1aWxka2l0IHNjYW5zIGZvciBjaGFuZ2VzIGluIHRoZSBzdXBwb3J0ZWQgZW11bGF0ZWQgcGxhdGZvcm1zCiAgcGxhdGZvcm1zQ2FjaGVNYXhBZ2UgPSAiMWgiCgoKIyBvcHRpb25hbCBzaWduZWQgY2FjaGUgY29uZmlndXJhdGlvbiBmb3IgR2l0SHViIEFjdGlvbnMgYmFja2VuZApbZ2hhY2FjaGUuc2lnbl0KIyBjb21tYW5kIHRoYXQgc2lnbnMgdGhlIHBheWxvYWQgaW4gc3RkaW4gYW5kIG91dHB1dHMgdGhlIHNpZ25hdHVyZSB0byBzdGRvdXQuIE5vcm1hbGx5IHlvdSB3YW50IGNvc2lnbiB0byBwcm9kdWNlIHRoZSBzaWduYXR1cmUgYnl0ZXMuCmNtZCA9ICIiCltnaGFjYWNoZS52ZXJpZnldCnJlcXVpcmVkID0gZmFsc2UKW2doYWNhY2hlLnZlcmlmeS5wb2xpY3ldCnRpbWVzdGFtcFRocmVzaG9sZCA9IDEKdGxvZ1RocmVzaG9sZCA9IDEKIyBjZXRpZmljYXRlIHByb3BlcnRpZXMgdGhhdCBuZWVkIHRvIG1hdGNoLiBTaW1wbGUgd2lsZGNhcmRzICgqKSBhcmUgc3VwcG9ydGVkLgpjZXJ0aWZpY2F0ZUlzc3VlciA9ICIiCnN1YmplY3RBbHRlcm5hdGl2ZU5hbWUgPSAiIgpidWlsZFNpZ25lclVSSSA9ICIi', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12572,7 +12657,22 @@ Note that some configuration options are only useful in edge cases.</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">system</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">  <span class="c"># how often buildkit scans for changes in the supported emulated platforms</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">platformsCacheMaxAge</span> <span class="p">=</span> <span class="s2">&#34;1h&#34;</span></span></span></code></pre></div>
+</span></span><span class="line"><span class="cl">  <span class="nx">platformsCacheMaxAge</span> <span class="p">=</span> <span class="s2">&#34;1h&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># optional signed cache configuration for GitHub Actions backend</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">ghacache</span><span class="p">.</span><span class="nx">sign</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c"># command that signs the payload in stdin and outputs the signature to stdout. Normally you want cosign to produce the signature bytes.</span>
+</span></span><span class="line"><span class="cl"><span class="nx">cmd</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">ghacache</span><span class="p">.</span><span class="nx">verify</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">required</span> <span class="p">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">ghacache</span><span class="p">.</span><span class="nx">verify</span><span class="p">.</span><span class="nx">policy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timestampThreshold</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nx">tlogThreshold</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="c"># cetificate properties that need to match. Simple wildcards (*) are supported.</span>
+</span></span><span class="line"><span class="cl"><span class="nx">certificateIssuer</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">subjectAlternativeName</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">buildSignerURI</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span></span></span></code></pre></div>
       
     </div>
   </div>
@@ -12620,9 +12720,11 @@ Note that some configuration options are only useful in edge cases.</p>
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12637,7 +12739,7 @@ Note that some configuration options are only useful in edge cases.</p>
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12652,7 +12754,7 @@ Note that some configuration options are only useful in edge cases.</p>
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12667,7 +12769,7 @@ Note that some configuration options are only useful in edge cases.</p>
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12682,7 +12784,7 @@ Note that some configuration options are only useful in edge cases.</p>
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12698,26 +12800,71 @@ Note that some configuration options are only useful in edge cases.</p>
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

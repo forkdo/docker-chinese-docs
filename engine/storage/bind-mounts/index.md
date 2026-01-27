@@ -1,25 +1,4 @@
----
-title: 绑定挂载
-url: /engine/storage/bind-mounts/
-parent:
-  title: 存储
-  url: /engine/storage/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: 绑定挂载
-    url: /engine/storage/bind-mounts/
-next:
-  title: 卷（Volumes）
-  url: /engine/storage/volumes/
-prev:
-  title: tmpfs 挂载
-  url: /engine/storage/tmpfs/
----
+# 绑定挂载
 
 
 当您使用绑定挂载时，主机上的文件或目录会从主机挂载到容器中。相比之下，当您使用卷时，会在主机上的 Docker 存储目录中创建一个新目录，Docker 会管理该目录的内容。

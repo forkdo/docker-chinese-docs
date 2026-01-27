@@ -1,20 +1,4 @@
----
-title: 版本和名称顶级元素
-url: /reference/compose-file/version-and-name/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 版本和名称顶级元素
-    url: /reference/compose-file/version-and-name/
-prev:
-  title: 在 Docker Compose 中定义服务
-  url: /reference/compose-file/services/
----
+# 版本和名称顶级元素
 
 
 ## 版本顶级元素（已弃用）

@@ -1,24 +1,4 @@
----
-title: docker network connect
-url: /reference/cli/docker/network/connect/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network connect
-    url: /reference/cli/docker/network/connect/
-prev:
-  title: docker network create
-  url: /reference/cli/docker/network/create/
----
+# docker network connect
 
 **Description:** Connect a container to a network
 

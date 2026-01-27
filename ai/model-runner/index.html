@@ -13,12 +13,15 @@
 <meta name="description" content="了解如何使用 Docker Model Runner 管理和运行 AI 模型。" />
 <meta
   name="keywords"
-  content="Docker, ai, model, runner, docker, desktop, docker, engine, llm, openai, ollama, llama.cpp, vllm, cpu, nvidia, cuda, amd, rocm, vulkan, cline, continue, cursor"
+  content="Docker, ai, model, runner, docker, desktop, docker, engine, llm, openai, ollama, llama.cpp, vllm, diffusers, cpu, nvidia, cuda, amd, rocm, vulkan, cline, continue, cursor, image, generation, stable, diffusion"
 />
 <link rel="canonical" href="/ai/model-runner/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -44,7 +47,7 @@
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2026-01-06 16:46:13 &#43;0000 &#43;0000"
+  content="2026-01-26 11:42:08 &#43;0100 &#43;0100"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2026-01-06 16:46:13 &#43;0000 &#43;0000"
+  content="2026-01-26 11:42:08 &#43;0100 &#43;0100"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-06T16:46:13Z","description":"了解如何使用 Docker Model Runner 管理和运行 AI 模型。","headline":"Model Runner","isPartOf":{"@id":"/manuals/","@type":"WebPage","name":"手册"},"keywords":"Docker, ai, model, runner, docker, desktop, docker, engine, llm, openai, ollama, llama.cpp, vllm, cpu, nvidia, cuda, amd, rocm, vulkan, cline, continue, cursor","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/ai/model-runner/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/ai/model-runner/","name":"Model Runner"},"position":2}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-26T11:42:08+01:00","description":"了解如何使用 Docker Model Runner 管理和运行 AI 模型。","headline":"Model Runner","isPartOf":{"@id":"/manuals/","@type":"WebPage","name":"手册"},"keywords":"Docker, ai, model, runner, docker, desktop, docker, engine, llm, openai, ollama, llama.cpp, vllm, diffusers, cpu, nvidia, cuda, amd, rocm, vulkan, cline, continue, cursor, image, generation, stable, diffusion","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/ai/model-runner/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/ai/model-runner/","name":"Model Runner"},"position":2}]}</script>
 <link rel="alternate" type="text/markdown" href="/ai/model-runner/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4764,10 +4773,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4807,10 +4816,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4838,11 +4847,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4859,6 +4900,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6252,10 +6341,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8893,18 +8982,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10640,10 +10725,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11638,10 +11723,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -12340,8 +12425,8 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#docker-model-runner-%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86"
-            >Docker Model Runner 工作原理</a
+          <a class="link lg:no-underline" href="#docker-model-runner-%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86"
+            >Docker Model Runner 的工作原理</a
           >
         </li>
         
@@ -12365,14 +12450,19 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#docker-model-%e6%97%a0%e6%b3%95%e8%af%86%e5%88%ab"
-            ><code>docker model</code> 无法识别</a
+          <a class="link lg:no-underline" href="#docker-model-%e6%9c%aa%e8%a2%ab%e8%af%86%e5%88%ab"
+            ><code>docker model</code> 未被识别</a
           >
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e5%8f%8d%e9%a6%88%e6%84%8f%e8%a7%81"
-            >反馈意见</a
+          <a class="link lg:no-underline" href="#%e9%9a%90%e7%a7%81%e5%92%8c%e6%95%b0%e6%8d%ae%e6%94%b6%e9%9b%86"
+            >隐私和数据收集</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%88%86%e4%ba%ab%e5%8f%8d%e9%a6%88"
+            >分享反馈</a
           >
         </li>
         <li>
@@ -12423,9 +12513,9 @@ if (resultsLength > 5) {
   </div>
 
 
-<p>Docker Model Runner (DMR) 让使用 Docker 管理、运行和部署 AI 模型变得轻而易举。专为开发者设计，Docker Model Runner 简化了直接从 Docker Hub 或任何 OCI 兼容注册表中拉取、运行和提供大型语言模型 (LLM) 及其他 AI 模型的过程。</p>
-<p>通过与 Docker Desktop 和 Docker Engine 无缝集成，您可以通过 OpenAI 和 Ollama 兼容 API 提供模型，将 GGUF 文件打包为 OCI 制品，并通过命令行和图形界面与模型交互。</p>
-<p>无论您是在构建生成式 AI 应用、试验机器学习工作流，还是将 AI 集成到软件开发生命周期中，Docker Model Runner 都能为您提供一种一致、安全且高效的本地 AI 模型处理方式。</p>
+<p>Docker Model Runner (DMR) 让您能够轻松地使用 Docker 管理、运行和部署 AI 模型。专为开发人员设计，Docker Model Runner 简化了从 Docker Hub 或任何 OCI 兼容注册表中拉取、运行和提供大型语言模型 (LLM) 及其他 AI 模型的过程。</p>
+<p>通过与 Docker Desktop 和 Docker Engine 无缝集成，您可以通过 OpenAI 和 Ollama 兼容 API 提供模型，将 GGUF 文件打包为 OCI 工件，并通过命令行和图形界面与模型进行交互。</p>
+<p>无论您是在构建生成式 AI 应用程序、试验机器学习工作流，还是将 AI 集成到软件开发生命周期中，Docker Model Runner 都提供了一种一致、安全且高效的方式来在本地处理 AI 模型。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="主要功能">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%b8%bb%e8%a6%81%e5%8a%9f%e8%83%bd">
@@ -12435,13 +12525,14 @@ if (resultsLength > 5) {
 
 <ul>
 <li><a class="link" href="https://hub.docker.com/u/ai" rel="noopener">从 Docker Hub 拉取和推送模型</a></li>
-<li>通过 <a class="link" href="/ai/model-runner/api-reference/">OpenAI 和 Ollama 兼容 API</a> 提供模型，轻松与现有应用集成</li>
-<li>支持 <a class="link" href="/ai/model-runner/inference-engines/">llama.cpp 和 vLLM 推理引擎</a>（vLLM 支持 Linux x86_64/amd64 和配备 NVIDIA GPU 的 Windows WSL2）</li>
-<li>将 GGUF 和 Safetensors 文件打包为 OCI 制品并发布到任意容器注册表</li>
-<li>直接从命令行或 Docker Desktop GUI 运行和交互 AI 模型</li>
-<li><a class="link" href="/ai/model-runner/ide-integrations/">连接 AI 编码工具</a>，如 Cline、Continue、Cursor 和 Aider</li>
+<li>通过 <a class="link" href="/ai/model-runner/api-reference/">OpenAI 和 Ollama 兼容 API</a> 提供模型，轻松与现有应用程序集成</li>
+<li>支持 <a class="link" href="/ai/model-runner/inference-engines/">llama.cpp、vLLM 和 Diffusers 推理引擎</a>（vLLM 和 Diffusers 在配备 NVIDIA GPU 的 Linux 系统上可用）</li>
+<li>使用 Diffusers 后端通过 Stable Diffusion 模型<a class="link" href="/ai/model-runner/inference-engines/#diffusers">根据文本提示生成图像</a></li>
+<li>将 GGUF 和 Safetensors 文件打包为 OCI 工件并发布到任何容器注册表</li>
+<li>直接通过命令行或 Docker Desktop GUI 运行和与 AI 模型交互</li>
+<li><a class="link" href="/ai/model-runner/ide-integrations/">连接到 AI 编码工具</a>，如 Cline、Continue、Cursor 和 Aider</li>
 <li><a class="link" href="/ai/model-runner/configuration/">配置上下文大小和模型参数</a>以调整性能</li>
-<li><a class="link" href="/ai/model-runner/openwebui-integration/">设置 Open WebUI</a> 获得类似 ChatGPT 的网页界面</li>
+<li><a class="link" href="/ai/model-runner/openwebui-integration/">设置 Open WebUI</a> 以获得类似 ChatGPT 的 Web 界面</li>
 <li>管理本地模型并显示日志</li>
 <li>显示提示和响应详情</li>
 <li>支持多轮交互的对话上下文</li>
@@ -12575,13 +12666,13 @@ if (resultsLength > 5) {
 </div>
 
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="docker-model-runner-工作原理">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#docker-model-runner-%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86">
-    Docker Model Runner 工作原理
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="docker-model-runner-的工作原理">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#docker-model-runner-%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86">
+    Docker Model Runner 的工作原理
   </a>
 </h2>
 
-<p>模型首次使用时从 Docker Hub 拉取并本地存储。它们仅在收到请求时加载到内存中运行，不用时自动卸载以优化资源。由于模型可能较大，首次拉取可能需要一些时间。之后它们会被本地缓存以便更快访问。您可以使用 <a class="link" href="/ai/model-runner/api-reference/">OpenAI 和 Ollama 兼容 API</a> 与模型交互。</p>
+<p>模型在您首次使用时从 Docker Hub 拉取并存储在本地。它们仅在运行时收到请求时加载到内存中，并在不使用时卸载以优化资源。由于模型可能很大，初始拉取可能需要一些时间。之后，它们会被缓存在本地以便更快访问。您可以使用 <a class="link" href="/ai/model-runner/api-reference/">OpenAI 和 Ollama 兼容 API</a> 与模型进行交互。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="推理引擎">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%8e%a8%e7%90%86%e5%bc%95%e6%93%8e">
@@ -12589,7 +12680,7 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>Docker Model Runner 支持两种推理引擎：</p>
+<p>Docker Model Runner 支持三种推理引擎：</p>
 <div class="overflow-x-auto">
   <table
   >
@@ -12598,7 +12689,7 @@ if (resultsLength > 5) {
             <th
               class="p-2">引擎</th>
             <th
-              class="p-2">适用场景</th>
+              class="p-2">最适合</th>
             <th
               class="p-2">模型格式</th>
         </tr>
@@ -12620,10 +12711,18 @@ if (resultsLength > 5) {
             <td
               class="p-2">Safetensors</td>
         </tr>
+        <tr>
+            <td
+              class="p-2"><a class="link" href="/ai/model-runner/inference-engines/#diffusers">Diffusers</a></td>
+            <td
+              class="p-2">图像生成（Stable Diffusion）</td>
+            <td
+              class="p-2">Safetensors</td>
+        </tr>
     </tbody>
   </table>
 </div>
-<p>llama.cpp 是默认引擎，可在所有平台上运行。vLLM 需要 NVIDIA GPU，支持 Linux x86_64 和 Windows WSL2。详见 <a class="link" href="/ai/model-runner/inference-engines/">推理引擎</a> 的详细比较和设置说明。</p>
+<p>llama.cpp 是默认引擎，可在所有平台上运行。vLLM 需要 NVIDIA GPU，支持 Linux x86_64 和 Windows with WSL2。Diffusers 支持图像生成，需要在 Linux（x86_64 或 ARM64）上使用 NVIDIA GPU。有关详细比较和设置，请参阅 <a class="link" href="/ai/model-runner/inference-engines/">推理引擎</a>。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="上下文大小">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%b8%8a%e4%b8%8b%e6%96%87%e5%a4%a7%e5%b0%8f">
@@ -12631,7 +12730,7 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>模型具有可配置的上下文大小（上下文长度），决定其可处理的 token 数量。默认值因模型而异，通常为 2,048-8,192 个 token。您可以按模型调整此设置：</p>
+<p>模型具有可配置的上下文大小（上下文长度），用于确定它们可以处理的 token 数量。默认值因模型而异，但通常为 2,048-8,192 个 token。您可以按模型调整此设置：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12669,7 +12768,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>有关上下文大小和其他参数的详情，请参阅 <a class="link" href="/ai/model-runner/configuration/">配置选项</a>。</p>
+<p>有关上下文大小和其他参数的详细信息，请参阅 <a class="link" href="/ai/model-runner/configuration/">配置选项</a>。</p>
 
 
   
@@ -12712,13 +12811,13 @@ Model Runner。</p>
 </h2>
 
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="docker-model-无法识别">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#docker-model-%e6%97%a0%e6%b3%95%e8%af%86%e5%88%ab">
-    <code>docker model</code> 无法识别
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="docker-model-未被识别">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#docker-model-%e6%9c%aa%e8%a2%ab%e8%af%86%e5%88%ab">
+    <code>docker model</code> 未被识别
   </a>
 </h3>
 
-<p>如果运行 Docker Model Runner 命令时看到：</p>
+<p>如果您运行 Docker Model Runner 命令时看到：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -12796,13 +12895,33 @@ Model Runner。</p>
 </div>
 <p>链接完成后，重新运行命令。</p>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="反馈意见">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8f%8d%e9%a6%88%e6%84%8f%e8%a7%81">
-    反馈意见
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="隐私和数据收集">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%9a%90%e7%a7%81%e5%92%8c%e6%95%b0%e6%8d%ae%e6%94%b6%e9%9b%86">
+    隐私和数据收集
   </a>
 </h2>
 
-<p>感谢您试用 Docker Model Runner。要报告错误或请求功能，请 <a class="link" href="https://github.com/docker/model-runner/issues" rel="noopener">在 GitHub 上提交 issue</a>。您也可以通过 <strong>启用 Docker Model Runner</strong> 设置旁边的 <strong>提供反馈</strong> 链接提交反馈。</p>
+<p>Docker Model Runner 尊重您在 Docker Desktop 中的隐私设置。数据收集由<strong>发送使用情况统计信息</strong>设置控制：</p>
+<ul>
+<li><strong>已禁用</strong>：不收集任何使用数据</li>
+<li><strong>已启用</strong>：仅收集最小量的非个人数据：
+<ul>
+<li><a class="link" href="https://github.com/docker/model-runner/blob/eb76b5defb1a598396f99001a500a30bbbb48f01/pkg/metrics/metrics.go#L96" rel="noopener">模型名称</a>（通过向 Docker Hub 发送 HEAD 请求）</li>
+<li>用户代理信息</li>
+<li>请求是来自主机还是容器</li>
+</ul>
+</li>
+</ul>
+<p>在使用 Docker Engine 运行 Docker Model Runner 时，无论任何设置如何，都会向 Docker Hub 发送 HEAD 请求以跟踪模型名称。</p>
+<p>绝不会收集任何提示内容、响应或个人身份信息。</p>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="分享反馈">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%88%86%e4%ba%ab%e5%8f%8d%e9%a6%88">
+    分享反馈
+  </a>
+</h2>
+
+<p>感谢您试用 Docker Model Runner。要报告错误或请求功能，请在 <a class="link" href="https://github.com/docker/model-runner/issues" rel="noopener">GitHub 上创建问题</a>。您也可以通过<strong>启用 Docker Model Runner</strong>设置旁边的<strong>提供反馈</strong>链接提交反馈。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="后续步骤">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4">
@@ -12811,12 +12930,12 @@ Model Runner。</p>
 </h2>
 
 <ul>
-<li><a class="link" href="/ai/model-runner/get-started/">DMR 入门指南</a> - 启用 DMR 并运行您的第一个模型</li>
+<li><a class="link" href="/ai/model-runner/get-started/">开始使用 DMR</a> - 启用 DMR 并运行您的第一个模型</li>
 <li><a class="link" href="/ai/model-runner/api-reference/">API 参考</a> - OpenAI 和 Ollama 兼容 API 文档</li>
 <li><a class="link" href="/ai/model-runner/configuration/">配置选项</a> - 上下文大小和运行时参数</li>
-<li><a class="link" href="/ai/model-runner/inference-engines/">推理引擎</a> - llama.cpp 和 vLLM 详情</li>
+<li><a class="link" href="/ai/model-runner/inference-engines/">推理引擎</a> - llama.cpp、vLLM 和 Diffusers 详情</li>
 <li><a class="link" href="/ai/model-runner/ide-integrations/">IDE 集成</a> - 连接 Cline、Continue、Cursor 等工具</li>
-<li><a class="link" href="/ai/model-runner/openwebui-integration/">Open WebUI 集成</a> - 设置网页聊天界面</li>
+<li><a class="link" href="/ai/model-runner/openwebui-integration/">Open WebUI 集成</a> - 设置 Web 聊天界面</li>
 </ul>
 <hr>
 
@@ -12886,8 +13005,8 @@ Model Runner。</p>
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#docker-model-runner-%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86"
-            >Docker Model Runner 工作原理</a
+          <a class="link lg:no-underline" href="#docker-model-runner-%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86"
+            >Docker Model Runner 的工作原理</a
           >
         </li>
         
@@ -12911,14 +13030,19 @@ Model Runner。</p>
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#docker-model-%e6%97%a0%e6%b3%95%e8%af%86%e5%88%ab"
-            ><code>docker model</code> 无法识别</a
+          <a class="link lg:no-underline" href="#docker-model-%e6%9c%aa%e8%a2%ab%e8%af%86%e5%88%ab"
+            ><code>docker model</code> 未被识别</a
           >
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e5%8f%8d%e9%a6%88%e6%84%8f%e8%a7%81"
-            >反馈意见</a
+          <a class="link lg:no-underline" href="#%e9%9a%90%e7%a7%81%e5%92%8c%e6%95%b0%e6%8d%ae%e6%94%b6%e9%9b%86"
+            >隐私和数据收集</a
+          >
+        </li>
+        <li>
+          <a class="link lg:no-underline" href="#%e5%88%86%e4%ba%ab%e5%8f%8d%e9%a6%88"
+            >分享反馈</a
           >
         </li>
         <li>
@@ -12941,9 +13065,11 @@ Model Runner。</p>
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12958,7 +13084,7 @@ Model Runner。</p>
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12973,7 +13099,7 @@ Model Runner。</p>
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12988,7 +13114,7 @@ Model Runner。</p>
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13003,7 +13129,7 @@ Model Runner。</p>
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13019,26 +13145,71 @@ Model Runner。</p>
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

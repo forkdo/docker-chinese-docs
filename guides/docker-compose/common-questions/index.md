@@ -1,20 +1,4 @@
----
-title: 常见挑战与问题
-url: /guides/docker-compose/common-questions/
-parent:
-  title: 使用 Docker Compose 定义和运行多容器应用程序
-  url: /guides/docker-compose/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Compose 定义和运行多容器应用程序
-    url: /guides/docker-compose/
-  - title: 常见挑战与问题
-    url: /guides/docker-compose/common-questions/
-next:
-  title: 演示：设置和使用 Docker Compose
-  url: /guides/docker-compose/setup/
----
+# 常见挑战与问题
 
 
 <!-- vale Docker.HeadingLength = NO -->

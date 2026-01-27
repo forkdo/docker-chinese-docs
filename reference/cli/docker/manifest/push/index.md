@@ -1,27 +1,4 @@
----
-title: docker manifest push
-url: /reference/cli/docker/manifest/push/
-parent:
-  title: docker manifest
-  url: /reference/cli/docker/manifest/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker manifest
-    url: /reference/cli/docker/manifest/
-  - title: docker manifest push
-    url: /reference/cli/docker/manifest/push/
-next:
-  title: docker manifest inspect
-  url: /reference/cli/docker/manifest/inspect/
-prev:
-  title: docker manifest rm
-  url: /reference/cli/docker/manifest/rm/
----
+# docker manifest push
 
 **Description:** Push a manifest list to a repository
 

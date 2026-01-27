@@ -1,27 +1,4 @@
----
-title: docker volume rm
-url: /reference/cli/docker/volume/rm/
-parent:
-  title: docker volume
-  url: /reference/cli/docker/volume/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker volume
-    url: /reference/cli/docker/volume/
-  - title: docker volume rm
-    url: /reference/cli/docker/volume/rm/
-next:
-  title: docker volume prune
-  url: /reference/cli/docker/volume/prune/
-prev:
-  title: docker volume update
-  url: /reference/cli/docker/volume/update/
----
+# docker volume rm
 
 **Description:** Remove one or more volumes
 

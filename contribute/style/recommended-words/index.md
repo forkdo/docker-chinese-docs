@@ -1,21 +1,4 @@
----
-title: 推荐词汇表
-url: /contribute/style/recommended-words/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 推荐词汇表
-    url: /contribute/style/recommended-words/
-next:
-  title: 格式指南
-  url: /contribute/style/formatting/
-prev:
-  title: Docker 术语
-  url: /contribute/style/terminology/
----
+# 推荐词汇表
 
 
 为确保文档的一致性，技术写作团队推荐使用以下措辞。

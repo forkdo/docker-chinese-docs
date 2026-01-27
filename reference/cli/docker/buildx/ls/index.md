@@ -1,27 +1,4 @@
----
-title: docker buildx ls
-url: /reference/cli/docker/buildx/ls/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx ls
-    url: /reference/cli/docker/buildx/ls/
-next:
-  title: docker buildx inspect
-  url: /reference/cli/docker/buildx/inspect/
-prev:
-  title: docker buildx prune
-  url: /reference/cli/docker/buildx/prune/
----
+# docker buildx ls
 
 **Description:** List builder instances
 

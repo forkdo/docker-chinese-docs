@@ -1,22 +1,4 @@
----
-title: 将 Docker Scout 与 Amazon ECR 集成
-url: /scout/integrations/registry/ecr/
-parent:
-  title: 将 Docker Scout 与其他系统集成
-  url: /scout/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 将 Docker Scout 与 Amazon ECR 集成
-    url: /scout/integrations/registry/ecr/
-prev:
-  title: 将 Docker Scout 与 Artifactory 容器注册表集成
-  url: /scout/integrations/registry/artifactory/
----
+# 将 Docker Scout 与 Amazon ECR 集成
 
 
 将 Docker Scout 与 Amazon Elastic Container Registry (ECR) 集成后，您可以查看托管在 ECR 仓库中的镜像洞察。在将 Docker Scout 与 ECR 集成并为仓库激活 Docker Scout 后，将镜像推送到该仓库会自动触发镜像分析。您可以使用 Docker Scout 仪表盘或 `docker scout` CLI 命令来查看镜像洞察。

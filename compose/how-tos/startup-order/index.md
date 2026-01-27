@@ -1,23 +1,4 @@
----
-title: 控制 Compose 中的启动和关闭顺序
-url: /compose/how-tos/startup-order/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 控制 Compose 中的启动和关闭顺序
-    url: /compose/how-tos/startup-order/
-next:
-  title: 在 Compose 中使用生命周期钩子
-  url: /compose/how-tos/lifecycle/
-prev:
-  title: 使用 Compose Watch
-  url: /compose/how-tos/file-watch/
----
+# 控制 Compose 中的启动和关闭顺序
 
 
 您可以使用 [depends_on](/reference/compose-file/services.md#depends_on) 属性控制服务启动和关闭的顺序。Compose 总是按照依赖顺序启动和停止容器，其中依赖关系由 `depends_on`、`links`、`volumes_from` 和 `network_mode: "service:..."` 确定。

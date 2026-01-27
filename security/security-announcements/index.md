@@ -1,20 +1,4 @@
----
-title: Docker 安全公告
-url: /security/security-announcements/
-parent:
-  title: 开发者安全
-  url: /security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 开发者安全
-    url: /security/
-  - title: Docker 安全公告
-    url: /security/security-announcements/
-next:
-  title: 个人访问令牌
-  url: /security/access-tokens/
----
+# Docker 安全公告
 
 
 

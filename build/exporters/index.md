@@ -1,31 +1,4 @@
----
-title: Exporters overview
-url: /build/exporters/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Exporters overview
-    url: /build/exporters/
-children:
-  - title: Image and registry exporters
-    url: /build/exporters/image-registry/
-    description: The image and registry exporters create an image that can be loaded to your
-local image store or pushed to a registry
-
-  - title: Local and tar exporters
-    url: /build/exporters/local-tar/
-    description: The local and tar exporters save the build result to the local filesystem
-
-  - title: OCI and Docker exporters
-    url: /build/exporters/oci-docker/
-    description: The OCI and Docker exporters create an image layout tarball on the local filesystem
-
----
+# Exporters overview
 
 
 Exporters save your build results to a specified output type. You specify the

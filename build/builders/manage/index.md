@@ -1,19 +1,4 @@
----
-title: Manage builders
-url: /build/builders/manage/
-parent:
-  title: Builders
-  url: /build/builders/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Builders
-    url: /build/builders/
-  - title: Manage builders
-    url: /build/builders/manage/
----
+# Manage builders
 
 
 You can create, inspect, and manage builders using `docker buildx` commands,

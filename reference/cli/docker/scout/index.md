@@ -1,19 +1,4 @@
----
-title: docker scout
-url: /reference/cli/docker/scout/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
----
+# docker scout
 
 **Description:** Command line tool for Docker Scout
 

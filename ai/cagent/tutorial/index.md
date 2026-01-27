@@ -1,23 +1,4 @@
----
-title: 构建编码代理
-url: /ai/cagent/tutorial/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 构建编码代理
-    url: /ai/cagent/tutorial/
-next:
-  title: 使用 Docker Model Runner 运行本地模型
-  url: /ai/cagent/local-models/
-prev:
-  title: 最佳实践
-  url: /ai/cagent/best-practices/
----
+# 构建编码代理
 
 
 本教程将指导你如何构建一个能够协助软件开发任务的编码代理。你将从一个基础代理开始，逐步为其添加功能，最终得到一个生产就绪的助手，它能够读取代码、进行修改、运行测试，甚至查阅文档。

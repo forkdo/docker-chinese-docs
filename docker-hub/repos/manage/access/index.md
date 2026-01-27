@@ -1,25 +1,4 @@
----
-title: 访问管理
-url: /docker-hub/repos/manage/access/
-parent:
-  title: 仓库
-  url: /docker-hub/repos/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 访问管理
-    url: /docker-hub/repos/manage/access/
-next:
-  title: 仓库信息
-  url: /docker-hub/repos/manage/information/
-prev:
-  title: 镜像安全洞察
-  url: /docker-hub/repos/manage/vulnerability-scanning/
----
+# 访问管理
 
 
 在本主题中，了解可用于管理对仓库访问的功能。包括可见性、协作者、角色、团队和组织访问令牌。

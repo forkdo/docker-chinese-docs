@@ -1,27 +1,4 @@
----
-title: Named contexts with GitHub Actions
-url: /build/ci/github-actions/named-contexts/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Named contexts with GitHub Actions
-    url: /build/ci/github-actions/named-contexts/
-next:
-  title: Multi-platform image with GitHub Actions
-  url: /build/ci/github-actions/multi-platform/
-prev:
-  title: Push to multiple registries with GitHub Actions
-  url: /build/ci/github-actions/push-multi-registries/
----
+# Named contexts with GitHub Actions
 
 
 You can define [additional build contexts](/reference/cli/docker/buildx/build.md#build-context),
@@ -58,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           build-contexts: |
-            alpine=docker-image://alpine:3.21
+            alpine=docker-image://alpine:3.23
           tags: myimage:latest
 ```
 

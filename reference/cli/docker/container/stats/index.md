@@ -1,27 +1,4 @@
----
-title: docker container stats
-url: /reference/cli/docker/container/stats/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container stats
-    url: /reference/cli/docker/container/stats/
-next:
-  title: docker container start
-  url: /reference/cli/docker/container/start/
-prev:
-  title: docker container stop
-  url: /reference/cli/docker/container/stop/
----
+# docker container stats
 
 **Description:** Display a live stream of container(s) resource usage statistics
 

@@ -1,26 +1,4 @@
----
-title: docker mcp oauth revoke
-url: /reference/cli/docker/mcp/oauth/oauth_revoke/
-parent:
-  title: docker mcp oauth
-  url: /reference/cli/docker/mcp/oauth/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp oauth
-    url: /reference/cli/docker/mcp/oauth/
-  - title: docker mcp oauth revoke
-    url: /reference/cli/docker/mcp/oauth/oauth_revoke/
-next:
-  title: docker mcp oauth ls
-  url: /reference/cli/docker/mcp/oauth/oauth_ls/
----
+# docker mcp oauth revoke
 
 **Description:** Revoke the specified OAuth app.
 

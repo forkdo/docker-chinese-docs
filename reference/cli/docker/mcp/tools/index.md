@@ -1,34 +1,4 @@
----
-title: 
-url: /reference/cli/docker/mcp/tools/
-parent:
-  title: docker mcp
-  url: /reference/cli/docker/mcp/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: 
-    url: /reference/cli/docker/mcp/tools/
-children:
-  - title: docker mcp tools call
-    url: /reference/cli/docker/mcp/tools/tools_call/
-  - title: docker mcp tools count
-    url: /reference/cli/docker/mcp/tools/tools_count/
-  - title: docker mcp tools disable
-    url: /reference/cli/docker/mcp/tools/tools_disable/
-  - title: docker mcp tools enable
-    url: /reference/cli/docker/mcp/tools/tools_enable/
-  - title: docker mcp tools inspect
-    url: /reference/cli/docker/mcp/tools/tools_inspect/
-  - title: docker mcp tools ls
-    url: /reference/cli/docker/mcp/tools/tools_ls/
----
+# 
 
 datafolder: mcp-cli
 datafile: docker_mcp_tools

@@ -1,20 +1,3 @@
----
-title: 
-url: /includes/compose/volumes/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/compose/volumes/
-next:
-  title: 
-  url: /includes/compose/services/
-prev:
-  title: 
-  url: /includes/compose/watch/
----
+# 
 
 卷（Volume）是由容器引擎实现的持久化数据存储。Compose 为服务挂载卷提供了一种中立的方式，并提供配置参数以将它们分配给基础设施。顶层的 `volumes` 声明允许您配置命名卷，这些卷可以在多个服务之间重复使用。

@@ -1,27 +1,4 @@
----
-title: docker service rm
-url: /reference/cli/docker/service/rm/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service rm
-    url: /reference/cli/docker/service/rm/
-next:
-  title: docker service ps
-  url: /reference/cli/docker/service/ps/
-prev:
-  title: docker service rollback
-  url: /reference/cli/docker/service/rollback/
----
+# docker service rm
 
 **Description:** Remove one or more services
 

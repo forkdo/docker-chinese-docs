@@ -1,25 +1,4 @@
----
-title: Docker network driver plugins
-url: /engine/extend/plugins_network/
-parent:
-  title: Docker Engine managed plugin system
-  url: /engine/extend/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine managed plugin system
-    url: /engine/extend/
-  - title: Docker network driver plugins
-    url: /engine/extend/plugins_network/
-next:
-  title: Docker log driver plugins
-  url: /engine/extend/plugins_logging/
-prev:
-  title: Docker Plugin API
-  url: /engine/extend/plugin_api/
----
+# Docker network driver plugins
 
 
 This document describes Docker Engine network driver plugins generally

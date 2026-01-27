@@ -1,21 +1,4 @@
----
-title: docker buildx debug
-url: /reference/cli/docker/buildx/debug/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx debug
-    url: /reference/cli/docker/buildx/debug/
----
+# docker buildx debug
 
 **Description:** Start debugger
 

@@ -1,22 +1,4 @@
----
-title: 使用 containerd 镜像存储的 Docker Engine
-url: /engine/storage/containerd/
-parent:
-  title: 存储
-  url: /engine/storage/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: 使用 containerd 镜像存储的 Docker Engine
-    url: /engine/storage/containerd/
-next:
-  title: tmpfs 挂载
-  url: /engine/storage/tmpfs/
----
+# 使用 containerd 镜像存储的 Docker Engine
 
 
 containerd 镜像存储是 Docker Engine 29.0 及更高版本在全新安装时的默认存储后端。如果您是从早期版本升级而来，守护进程将继续使用传统的 graph 驱动程序（overlay2），直到您启用 containerd 镜像存储为止。

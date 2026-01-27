@@ -1,27 +1,4 @@
----
-title: docker container commit
-url: /reference/cli/docker/container/commit/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container commit
-    url: /reference/cli/docker/container/commit/
-next:
-  title: docker container attach
-  url: /reference/cli/docker/container/attach/
-prev:
-  title: docker container create
-  url: /reference/cli/docker/container/create/
----
+# docker container commit
 
 **Description:** Create a new image from a container's changes
 

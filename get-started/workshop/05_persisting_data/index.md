@@ -1,23 +1,4 @@
----
-title: 持久化数据库
-url: /get-started/workshop/05_persisting_data/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 持久化数据库
-    url: /get-started/workshop/05_persisting_data/
-next:
-  title: 共享应用程序
-  url: /get-started/workshop/04_sharing_app/
-prev:
-  title: 使用 bind mounts
-  url: /get-started/workshop/06_bind_mounts/
----
+# 持久化数据库
 
 
 如果你没有注意到，每次启动容器时，你的待办事项列表都是空的。为什么会这样？在本部分中，你将深入了解容器的工作原理。

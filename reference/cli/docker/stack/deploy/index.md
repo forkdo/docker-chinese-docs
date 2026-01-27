@@ -1,27 +1,4 @@
----
-title: docker stack deploy
-url: /reference/cli/docker/stack/deploy/
-parent:
-  title: docker stack
-  url: /reference/cli/docker/stack/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker stack
-    url: /reference/cli/docker/stack/
-  - title: docker stack deploy
-    url: /reference/cli/docker/stack/deploy/
-next:
-  title: docker stack config
-  url: /reference/cli/docker/stack/config/
-prev:
-  title: docker stack ls
-  url: /reference/cli/docker/stack/ls/
----
+# docker stack deploy
 
 **Description:** Deploy a new stack or update an existing stack
 

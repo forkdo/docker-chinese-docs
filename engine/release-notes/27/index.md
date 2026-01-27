@@ -1,23 +1,4 @@
----
-title: Docker Engine 27 版本发行说明
-url: /engine/release-notes/27/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 27 版本发行说明
-    url: /engine/release-notes/27/
-next:
-  title: Docker Engine 26.1 发布说明
-  url: /engine/release-notes/26.1/
-prev:
-  title: Docker Engine version 28 release notes
-  url: /engine/release-notes/28/
----
+# Docker Engine 27 版本发行说明
 
 
 本页面描述了 Docker Engine 27 版本的最新变更、新增功能、已知问题和修复。

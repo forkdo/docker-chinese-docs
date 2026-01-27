@@ -1,17 +1,4 @@
----
-title: dockerd
-url: /reference/cli/dockerd/
-parent:
-  title: CLI 参考
-  url: /reference/cli/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: dockerd
-    url: /reference/cli/dockerd/
----
+# dockerd
 
 
 <!-- This file is maintained within the docker/cli GitHub

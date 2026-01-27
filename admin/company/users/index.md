@@ -1,25 +1,4 @@
----
-title: 管理公司成员
-url: /admin/company/users/
-parent:
-  title: 公司管理概览
-  url: /admin/company/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 公司管理概览
-    url: /admin/company/
-  - title: 管理公司成员
-    url: /admin/company/users/
-next:
-  title: 创建公司
-  url: /admin/company/new-company/
-prev:
-  title: 管理公司所有者
-  url: /admin/company/owners/
----
+# 管理公司成员
 
 
 

@@ -1,27 +1,4 @@
----
-title: docker container inspect
-url: /reference/cli/docker/container/inspect/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container inspect
-    url: /reference/cli/docker/container/inspect/
-next:
-  title: docker container export
-  url: /reference/cli/docker/container/export/
-prev:
-  title: docker container kill
-  url: /reference/cli/docker/container/kill/
----
+# docker container inspect
 
 **Description:** Display detailed information on one or more containers
 

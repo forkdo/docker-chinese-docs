@@ -1,23 +1,4 @@
----
-title: Docker MCP Toolkit
-url: /ai/mcp-catalog-and-toolkit/toolkit/
-parent:
-  title: Docker MCP Catalog and Toolkit
-  url: /ai/mcp-catalog-and-toolkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-  - title: Docker MCP Toolkit
-    url: /ai/mcp-catalog-and-toolkit/toolkit/
-next:
-  title: Docker MCP 目录
-  url: /ai/mcp-catalog-and-toolkit/catalog/
-prev:
-  title: 动态 MCP
-  url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
----
+# Docker MCP Toolkit
 
 
 

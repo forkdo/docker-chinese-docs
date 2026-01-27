@@ -1,27 +1,4 @@
----
-title: 向 swarm 添加节点
-url: /engine/swarm/swarm-tutorial/add-nodes/
-parent:
-  title: Swarm 模式入门
-  url: /engine/swarm/swarm-tutorial/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: Swarm 模式入门
-    url: /engine/swarm/swarm-tutorial/
-  - title: 向 swarm 添加节点
-    url: /engine/swarm/swarm-tutorial/add-nodes/
-next:
-  title: 创建 swarm
-  url: /engine/swarm/swarm-tutorial/create-swarm/
-prev:
-  title: 将服务部署到 swarm
-  url: /engine/swarm/swarm-tutorial/deploy-service/
----
+# 向 swarm 添加节点
 
 
 在[创建了一个 swarm](create-swarm.md) 并拥有管理节点后，您就可以添加工作节点了。

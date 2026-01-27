@@ -1,21 +1,4 @@
----
-title: 表格
-url: /contribute/components/tables/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 表格
-    url: /contribute/components/tables/
-next:
-  title: 标签页 (Tabs)
-  url: /contribute/components/tabs/
-prev:
-  title: 链接
-  url: /contribute/components/links/
----
+# 表格
 
 
 ## 示例

@@ -1,28 +1,4 @@
----
-title: 使用 Docker Compose 开发和部署 Laravel 应用
-url: /guides/frameworks/laravel/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Compose 开发和部署 Laravel 应用
-    url: /guides/frameworks/laravel/
-children:
-  - title: 使用 Docker Compose 搭建 Laravel 的先决条件
-    url: /guides/frameworks/laravel/prerequisites/
-    description: 在使用 Docker Compose 搭建 Laravel 之前，请确保您已具备所需的工具和知识。
-  - title: 使用 Docker Compose 搭建 Laravel 生产环境
-    url: /guides/frameworks/laravel/production-setup/
-    description: 使用 Docker Compose 为 Laravel 搭建可用于生产环境的环境。
-  - title: 使用 Docker Compose 进行 Laravel 开发环境设置
-    url: /guides/frameworks/laravel/development-setup/
-    description: 使用 Docker Compose 设置 Laravel 开发环境。
-  - title: 在 Laravel 中使用 Docker 的常见问题
-    url: /guides/frameworks/laravel/common-questions/
-    description: 查找有关使用 Docker Compose 设置和管理 Laravel 环境的常见问题解答，包括故障排除和最佳实践。
----
+# 使用 Docker Compose 开发和部署 Laravel 应用
 
 
 Laravel 是一个流行的 PHP 框架，允许开发者快速高效地构建 Web 应用。Docker Compose 通过在单个 YAML 文件中定义必要的服务（如 PHP、Web 服务器和数据库）来简化开发和生产环境的管理。本指南提供了一种使用 Docker Compose 设置强大 Laravel 环境的简化方法，专注于简单性和高效性。

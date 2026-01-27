@@ -1,27 +1,4 @@
----
-title: docker config ls
-url: /reference/cli/docker/config/ls/
-parent:
-  title: docker config
-  url: /reference/cli/docker/config/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker config
-    url: /reference/cli/docker/config/
-  - title: docker config ls
-    url: /reference/cli/docker/config/ls/
-next:
-  title: docker config inspect
-  url: /reference/cli/docker/config/inspect/
-prev:
-  title: docker config rm
-  url: /reference/cli/docker/config/rm/
----
+# docker config ls
 
 **Description:** List configs
 

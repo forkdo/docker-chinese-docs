@@ -1,23 +1,4 @@
----
-title: Docker Hardened Images 功能
-url: /dhi/features/
-parent:
-  title: Docker Hardened Images
-  url: /dhi/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: Docker Hardened Images 功能
-    url: /dhi/features/
-next:
-  title: Docker Hardened Images 快速开始
-  url: /dhi/get-started/
-prev:
-  title: 故障排除
-  url: /dhi/troubleshoot/
----
+# Docker Hardened Images 功能
 
 
 Docker Hardened Images (DHI) 是由 Docker 维护的、最小的、安全的、可用于生产环境的容器基础镜像和应用镜像。DHI 旨在减少漏洞并简化合规性，可轻松集成到您现有的基于 Docker 的工作流中，几乎或完全无需重新配置。

@@ -1,27 +1,4 @@
----
-title: docker container start
-url: /reference/cli/docker/container/start/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container start
-    url: /reference/cli/docker/container/start/
-next:
-  title: docker container run
-  url: /reference/cli/docker/container/run/
-prev:
-  title: docker container stats
-  url: /reference/cli/docker/container/stats/
----
+# docker container start
 
 **Description:** Start one or more stopped containers
 

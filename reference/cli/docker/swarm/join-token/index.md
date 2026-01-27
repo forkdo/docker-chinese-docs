@@ -1,27 +1,4 @@
----
-title: docker swarm join-token
-url: /reference/cli/docker/swarm/join-token/
-parent:
-  title: docker swarm
-  url: /reference/cli/docker/swarm/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker swarm
-    url: /reference/cli/docker/swarm/
-  - title: docker swarm join-token
-    url: /reference/cli/docker/swarm/join-token/
-next:
-  title: docker swarm join
-  url: /reference/cli/docker/swarm/join/
-prev:
-  title: docker swarm leave
-  url: /reference/cli/docker/swarm/leave/
----
+# docker swarm join-token
 
 **Description:** Manage join tokens
 

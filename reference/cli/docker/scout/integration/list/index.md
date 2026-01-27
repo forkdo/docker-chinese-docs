@@ -1,26 +1,4 @@
----
-title: docker scout integration list
-url: /reference/cli/docker/scout/integration/list/
-parent:
-  title: docker scout integration
-  url: /reference/cli/docker/scout/integration/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout integration
-    url: /reference/cli/docker/scout/integration/
-  - title: docker scout integration list
-    url: /reference/cli/docker/scout/integration/list/
-next:
-  title: docker scout integration delete
-  url: /reference/cli/docker/scout/integration/delete/
----
+# docker scout integration list
 
 **Description:** List integrations which can be installed
 

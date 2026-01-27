@@ -1,20 +1,4 @@
----
-title: Docker Build Cloud 发布说明
-url: /build-cloud/release-notes/
-parent:
-  title: Docker Build Cloud
-  url: /build-cloud/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build Cloud
-    url: /build-cloud/
-  - title: Docker Build Cloud 发布说明
-    url: /build-cloud/release-notes/
-next:
-  title: Builder settings
-  url: /build-cloud/builder-settings/
----
+# Docker Build Cloud 发布说明
 
 
 此页面包含有关 Docker Build Cloud 各版本中的新功能、改进、已知问题和错误修复的信息。

@@ -1,27 +1,4 @@
----
-title: 镜像管理
-url: /docker-hub/repos/manage/hub-images/manage/
-parent:
-  title: 镜像管理
-  url: /docker-hub/repos/manage/hub-images/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/manage/
-next:
-  title: Docker Hub 上的不可变标签
-  url: /docker-hub/repos/manage/hub-images/immutable-tags/
-prev:
-  title: Docker Hub 上的软件制品
-  url: /docker-hub/repos/manage/hub-images/oci-artifacts/
----
+# 镜像管理
 
 
 

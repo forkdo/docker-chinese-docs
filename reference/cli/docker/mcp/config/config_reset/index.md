@@ -1,29 +1,4 @@
----
-title: docker mcp config reset
-url: /reference/cli/docker/mcp/config/config_reset/
-parent:
-  title: docker mcp config
-  url: /reference/cli/docker/mcp/config/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp config
-    url: /reference/cli/docker/mcp/config/
-  - title: docker mcp config reset
-    url: /reference/cli/docker/mcp/config/config_reset/
-next:
-  title: docker mcp config read
-  url: /reference/cli/docker/mcp/config/config_read/
-prev:
-  title: docker mcp config restore
-  url: /reference/cli/docker/mcp/config/config_restore/
----
+# docker mcp config reset
 
 **Description:** Reset the configuration
 

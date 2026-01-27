@@ -1,27 +1,4 @@
----
-title: docker container kill
-url: /reference/cli/docker/container/kill/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container kill
-    url: /reference/cli/docker/container/kill/
-next:
-  title: docker container inspect
-  url: /reference/cli/docker/container/inspect/
-prev:
-  title: docker container logs
-  url: /reference/cli/docker/container/logs/
----
+# docker container kill
 
 **Description:** Kill one or more running containers
 

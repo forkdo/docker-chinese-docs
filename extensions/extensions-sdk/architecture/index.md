@@ -1,26 +1,4 @@
----
-title: 扩展架构
-url: /extensions/extensions-sdk/architecture/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 扩展架构
-    url: /extensions/extensions-sdk/architecture/
-children:
-  - title: 扩展元数据
-    url: /extensions/extensions-sdk/architecture/metadata/
-    description: Docker 扩展元数据
-  - title: 扩展安全性
-    url: /extensions/extensions-sdk/architecture/security/
-    description: 扩展安全模型的各个方面
----
+# 扩展架构
 
 
 扩展是运行在 Docker Desktop 内部的应用程序。它们被打包为 Docker 镜像，通过 Docker Hub 分发，用户可以通过 Docker Desktop 控制面板中的 Marketplace 或 Docker Extensions CLI 进行安装。

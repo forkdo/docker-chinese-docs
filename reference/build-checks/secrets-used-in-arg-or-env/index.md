@@ -1,23 +1,4 @@
----
-title: SecretsUsedInArgOrEnv
-url: /reference/build-checks/secrets-used-in-arg-or-env/
-parent:
-  title: Build checks
-  url: /reference/build-checks/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-  - title: SecretsUsedInArgOrEnv
-    url: /reference/build-checks/secrets-used-in-arg-or-env/
-next:
-  title: ReservedStageName
-  url: /reference/build-checks/reserved-stage-name/
-prev:
-  title: StageNameCasing
-  url: /reference/build-checks/stage-name-casing/
----
+# SecretsUsedInArgOrEnv
 
 
 ## Output

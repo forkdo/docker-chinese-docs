@@ -1,22 +1,4 @@
----
-title: 将 Docker Scout 与 Azure Container Registry 集成
-url: /scout/integrations/registry/acr/
-parent:
-  title: 将 Docker Scout 与其他系统集成
-  url: /scout/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 将 Docker Scout 与 Azure Container Registry 集成
-    url: /scout/integrations/registry/acr/
-next:
-  title: 将 Docker Scout 与 Artifactory 容器注册表集成
-  url: /scout/integrations/registry/artifactory/
----
+# 将 Docker Scout 与 Azure Container Registry 集成
 
 
 将 Docker Scout 与 Azure Container Registry (ACR) 集成后，您可以查看托管在 ACR 仓库中的镜像的洞察信息。在将 Docker Scout 与 ACR 集成并为仓库激活 Docker Scout 后，向仓库推送镜像将自动触发镜像分析。您可以使用 Docker Scout Dashboard 或 `docker scout` CLI 命令查看镜像洞察信息。

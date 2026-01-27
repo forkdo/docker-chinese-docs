@@ -1,23 +1,4 @@
----
-title: 使用容器进行 PHP 开发
-url: /guides/php/develop/
-parent:
-  title: PHP 语言专属指南
-  url: /guides/php/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: PHP 语言专属指南
-    url: /guides/php/
-  - title: 使用容器进行 PHP 开发
-    url: /guides/php/develop/
-next:
-  title: 容器化 PHP 应用
-  url: /guides/php/containerize/
-prev:
-  title: 在容器中运行 PHP 测试
-  url: /guides/php/run-tests/
----
+# 使用容器进行 PHP 开发
 
 
 ## 先决条件

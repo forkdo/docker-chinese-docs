@@ -1,29 +1,4 @@
----
-title: docker mcp oauth ls
-url: /reference/cli/docker/mcp/oauth/oauth_ls/
-parent:
-  title: docker mcp oauth
-  url: /reference/cli/docker/mcp/oauth/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp oauth
-    url: /reference/cli/docker/mcp/oauth/
-  - title: docker mcp oauth ls
-    url: /reference/cli/docker/mcp/oauth/oauth_ls/
-next:
-  title: docker mcp oauth authorize
-  url: /reference/cli/docker/mcp/oauth/oauth_authorize/
-prev:
-  title: docker mcp oauth revoke
-  url: /reference/cli/docker/mcp/oauth/oauth_revoke/
----
+# docker mcp oauth ls
 
 **Description:** List available OAuth apps.
 

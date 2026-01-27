@@ -1,20 +1,4 @@
----
-title: 测试你的 Go 部署
-url: /guides/golang/deploy/
-parent:
-  title: Go 语言专用指南
-  url: /guides/golang/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Go 语言专用指南
-    url: /guides/golang/
-  - title: 测试你的 Go 部署
-    url: /guides/golang/deploy/
-next:
-  title: 为您的 Go 应用程序配置 CI/CD
-  url: /guides/golang/configure-ci-cd/
----
+# 测试你的 Go 部署
 
 
 ## 先决条件

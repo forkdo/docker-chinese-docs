@@ -1,25 +1,4 @@
----
-title: 在 Docker Desktop 中探索卷视图
-url: /desktop/use-desktop/volumes/
-parent:
-  title: 探索 Docker Desktop
-  url: /desktop/use-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 探索 Docker Desktop
-    url: /desktop/use-desktop/
-  - title: 在 Docker Desktop 中探索卷视图
-    url: /desktop/use-desktop/volumes/
-next:
-  title: 探索 Docker Desktop 中的 Images 视图
-  url: /desktop/use-desktop/images/
-prev:
-  title: 探索 Docker Desktop 中的构建视图
-  url: /desktop/use-desktop/builds/
----
+# 在 Docker Desktop 中探索卷视图
 
 
 Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删除、克隆、清空、导出和导入 [Docker 卷](/manuals/engine/storage/volumes.md)。您还可以浏览卷中的文件和文件夹，并查看哪些容器正在使用它们。

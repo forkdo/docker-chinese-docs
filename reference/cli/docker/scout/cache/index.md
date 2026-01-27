@@ -1,21 +1,4 @@
----
-title: docker scout cache
-url: /reference/cli/docker/scout/cache/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout cache
-    url: /reference/cli/docker/scout/cache/
----
+# docker scout cache
 
 **Description:** Manage Docker Scout cache and temporary files
 

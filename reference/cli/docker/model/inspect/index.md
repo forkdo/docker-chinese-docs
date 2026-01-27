@@ -1,27 +1,4 @@
----
-title: docker model inspect
-url: /reference/cli/docker/model/inspect/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model inspect
-    url: /reference/cli/docker/model/inspect/
-next:
-  title: docker model bench
-  url: /reference/cli/docker/model/bench/
-prev:
-  title: docker model install-runner
-  url: /reference/cli/docker/model/install-runner/
----
+# docker model inspect
 
 **Description:** Display detailed information on one model
 

@@ -1,25 +1,4 @@
----
-title: 使用 Docker Scout 进行修复
-url: /scout/policy/remediation/
-parent:
-  title: Docker Scout 中的策略评估入门
-  url: /scout/policy/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 中的策略评估入门
-    url: /scout/policy/
-  - title: 使用 Docker Scout 进行修复
-    url: /scout/policy/remediation/
-next:
-  title: Docker Scout 健康评分
-  url: /scout/policy/scores/
-prev:
-  title: 在 CI 中评估策略合规性
-  url: /scout/policy/ci/
----
+# 使用 Docker Scout 进行修复
 
 
 

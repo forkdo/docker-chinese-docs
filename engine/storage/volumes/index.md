@@ -1,22 +1,4 @@
----
-title: 卷（Volumes）
-url: /engine/storage/volumes/
-parent:
-  title: 存储
-  url: /engine/storage/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: 卷（Volumes）
-    url: /engine/storage/volumes/
-prev:
-  title: 绑定挂载
-  url: /engine/storage/bind-mounts/
----
+# 卷（Volumes）
 
 
 卷是由 Docker 创建和管理的容器持久化数据存储机制。你可以使用 `docker volume create` 命令显式创建卷，也可以在创建容器或服务时由 Docker 自动创建。

@@ -1,25 +1,4 @@
----
-title: 不可变基础设施
-url: /dhi/core-concepts/immutability/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: 不可变基础设施
-    url: /dhi/core-concepts/immutability/
-next:
-  title: 漏洞可利用性交换 (VEX)
-  url: /dhi/core-concepts/vex/
-prev:
-  title: 代码签名
-  url: /dhi/core-concepts/signatures/
----
+# 不可变基础设施
 
 
 不可变基础设施是一种安全和运维模型，在该模型中，服务器、容器和镜像等组件在部署后永不修改。您不应修补或重新配置在线系统，而是直接用新版本完全替换它们。

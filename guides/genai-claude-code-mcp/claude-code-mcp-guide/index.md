@@ -1,21 +1,4 @@
----
-title: 使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件
-url: /guides/genai-claude-code-mcp/claude-code-mcp-guide/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件
-    url: /guides/genai-claude-code-mcp/claude-code-mcp-guide/
-next:
-  title: 使用 Bake 构建 Compose 项目
-  url: /guides/compose-bake/
-prev:
-  title: 使用 Dex 在测试中模拟 OAuth 服务
-  url: /guides/dex/
----
+# 使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件
 
 
 本指南介绍了如何使用 Claude Code 与 Docker MCP Toolkit，使 Claude 能够实时搜索 Docker Hub，并从自然语言生成完整的 `docker-compose.yaml` 文件。

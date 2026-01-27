@@ -1,20 +1,4 @@
----
-title: 部署您的 Docker 设置
-url: /guides/admin-set-up/deploy/
-parent:
-  title: 使用 Docker 为您的公司奠定成功基础
-  url: /guides/admin-set-up/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker 为您的公司奠定成功基础
-    url: /guides/admin-set-up/
-  - title: 部署您的 Docker 设置
-    url: /guides/admin-set-up/deploy/
-next:
-  title: 测试
-  url: /guides/admin-set-up/testing/
----
+# 部署您的 Docker 设置
 
 
 > [!WARNING]

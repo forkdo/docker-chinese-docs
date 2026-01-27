@@ -1,24 +1,4 @@
----
-title: docker model bench
-url: /reference/cli/docker/model/bench/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model bench
-    url: /reference/cli/docker/model/bench/
-prev:
-  title: docker model inspect
-  url: /reference/cli/docker/model/inspect/
----
+# docker model bench
 
 **Description:** Benchmark a model's performance at different concurrency levels
 

@@ -1,18 +1,4 @@
----
-title: 学习资源
-url: /get-started/resources/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 学习资源
-    url: /get-started/resources/
-next:
-  title: 什么是 Docker？
-  url: /get-started/docker-overview/
----
+# 学习资源
 
 
 Docker 以及由 Docker 专家组成的更广泛的社区为大家整理了多种多样的方式，以帮助您获得进一步关于 Docker 的培训和动手实践经验。通过以下免费和付费资源，扩展您对 Docker 和 Kubernetes 的理解。

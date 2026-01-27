@@ -1,18 +1,4 @@
----
-title: 术语表
-url: /reference/glossary/
-parent:
-  title: 参考文档
-  url: /reference/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 术语表
-    url: /reference/glossary/
-next:
-  title: Dockerfile reference
-  url: /reference/dockerfile/
----
+# 术语表
 
 
 > [!TIP]

@@ -1,27 +1,4 @@
----
-title: docker image ls
-url: /reference/cli/docker/image/ls/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image ls
-    url: /reference/cli/docker/image/ls/
-next:
-  title: docker image load
-  url: /reference/cli/docker/image/load/
-prev:
-  title: docker image prune
-  url: /reference/cli/docker/image/prune/
----
+# docker image ls
 
 **Description:** List images
 

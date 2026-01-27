@@ -1,21 +1,4 @@
----
-title: 徽章
-url: /contribute/components/badges/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 徽章
-    url: /contribute/components/badges/
-next:
-  title: 图标
-  url: /contribute/components/icons/
-prev:
-  title: 折叠面板
-  url: /contribute/components/accordions/
----
+# 徽章
 
 
 ### 示例

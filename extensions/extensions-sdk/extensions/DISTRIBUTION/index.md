@@ -1,27 +1,4 @@
----
-title: 打包并发布您的扩展
-url: /extensions/extensions-sdk/extensions/DISTRIBUTION/
-parent:
-  title: 第二部分：发布
-  url: /extensions/extensions-sdk/extensions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 第二部分：发布
-    url: /extensions/extensions-sdk/extensions/
-  - title: 打包并发布您的扩展
-    url: /extensions/extensions-sdk/extensions/DISTRIBUTION/
-next:
-  title: 验证您的扩展
-  url: /extensions/extensions-sdk/extensions/validate/
-prev:
-  title: 分享你的扩展
-  url: /extensions/extensions-sdk/extensions/share/
----
+# 打包并发布您的扩展
 
 
 本页提供有关如何打包和分发扩展的附加信息。

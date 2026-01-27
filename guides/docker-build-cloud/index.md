@@ -1,28 +1,4 @@
----
-title: Docker Build Cloud: 通过快速、多架构构建来收回您的时间
-url: /guides/docker-build-cloud/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Docker Build Cloud: 通过快速、多架构构建来收回您的时间
-    url: /guides/docker-build-cloud/
-children:
-  - title: 为什么选择 Docker Build Cloud？
-    url: /guides/docker-build-cloud/why/
-    description: 了解 Docker Build Cloud 如何让您的构建更快。
-  - title: 演示：在开发中设置并使用 Docker Build Cloud
-    url: /guides/docker-build-cloud/dev/
-    description: 了解如何使用 Docker Build Cloud 进行本地构建。
-  - title: 演示：在 CI 中使用 Docker Build Cloud
-    url: /guides/docker-build-cloud/ci/
-    description: 了解如何在 CI 中使用 Docker Build Cloud 更快地构建您的应用程序。
-  - title: 常见挑战与问题
-    url: /guides/docker-build-cloud/common-questions/
-    description: 探索与 Docker Build Cloud 相关的常见挑战与问题。
----
+# Docker Build Cloud: 通过快速、多架构构建来收回您的时间
 
 
 <!-- vale Vale.Spelling = NO -->

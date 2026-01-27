@@ -1,22 +1,4 @@
----
-title: 调试 Docker Hardened Image 容器
-url: /dhi/how-to/debug/
-parent:
-  title: 操作指南
-  url: /dhi/how-to/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 操作指南
-    url: /dhi/how-to/
-  - title: 调试 Docker Hardened Image 容器
-    url: /dhi/how-to/debug/
-next:
-  title: 使用策略强制执行 Docker Hardened Image 用法
-  url: /dhi/how-to/policies/
----
+# 调试 Docker Hardened Image 容器
 
 
 Docker Hardened Images (DHI) 优先考虑极简主义和安全性，这意味着它们有意省略了许多常见的调试工具（如 shell 或包管理器）。这使得直接进行故障排除变得困难且可能带来风险。为了解决这个问题，你可以使用 [Docker

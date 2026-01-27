@@ -1,25 +1,4 @@
----
-title: Docker Compose 中的环境变量优先级
-url: /compose/how-tos/environment-variables/envvars-precedence/
-parent:
-  title: Compose 中的环境变量
-  url: /compose/how-tos/environment-variables/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose 中的环境变量
-    url: /compose/how-tos/environment-variables/
-  - title: Docker Compose 中的环境变量优先级
-    url: /compose/how-tos/environment-variables/envvars-precedence/
-next:
-  title: 在容器环境中设置环境变量
-  url: /compose/how-tos/environment-variables/set-environment-variables/
-prev:
-  title: 在 Docker Compose 中配置预定义环境变量
-  url: /compose/how-tos/environment-variables/envvars/
----
+# Docker Compose 中的环境变量优先级
 
 
 当同一个环境变量在多个来源中被设置时，Docker Compose 会遵循优先级规则来确定该变量在容器环境中的值。

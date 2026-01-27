@@ -1,24 +1,4 @@
----
-title: docker volume update
-url: /reference/cli/docker/volume/update/
-parent:
-  title: docker volume
-  url: /reference/cli/docker/volume/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker volume
-    url: /reference/cli/docker/volume/
-  - title: docker volume update
-    url: /reference/cli/docker/volume/update/
-next:
-  title: docker volume rm
-  url: /reference/cli/docker/volume/rm/
----
+# docker volume update
 
 **Description:** Update a volume (cluster volumes only)
 

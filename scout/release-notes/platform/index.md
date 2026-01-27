@@ -1,20 +1,4 @@
----
-title: Docker Scout 发布说明
-url: /scout/release-notes/platform/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 发布说明
-    url: /scout/release-notes/platform/
-next:
-  title: Docker Scout CLI 发布说明
-  url: /scout/release-notes/cli/
----
+# Docker Scout 发布说明
 
 
 <!-- vale Docker.We = NO -->

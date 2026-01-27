@@ -1,25 +1,4 @@
----
-title: 从 Ubuntu 迁移
-url: /dhi/migration/migrate-from-ubuntu/
-parent:
-  title: 迁移
-  url: /dhi/migration/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 从 Ubuntu 迁移
-    url: /dhi/migration/migrate-from-ubuntu/
-next:
-  title: 从 Alpine 或 Debian 迁移
-  url: /dhi/migration/migrate-from-doi/
-prev:
-  title: 从 Wolfi 迁移
-  url: /dhi/migration/migrate-from-wolfi/
----
+# 从 Ubuntu 迁移
 
 
 Docker Hardened Images (DHI) 提供 [Alpine-based 和 Debian-based

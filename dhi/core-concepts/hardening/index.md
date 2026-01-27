@@ -1,25 +1,4 @@
----
-title: 基础镜像加固
-url: /dhi/core-concepts/hardening/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: 基础镜像加固
-    url: /dhi/core-concepts/hardening/
-next:
-  title: 代码签名
-  url: /dhi/core-concepts/signatures/
-prev:
-  title: 极简或无发行版镜像
-  url: /dhi/core-concepts/distroless/
----
+# 基础镜像加固
 
 
 ## 什么是基础镜像加固？

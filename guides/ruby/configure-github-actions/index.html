@@ -10,7 +10,7 @@
   </title>
 
 
-<meta name="description" content="了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。" />
+<meta name="description" content="了解如何为您的 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD。" />
 <meta
   name="keywords"
   content="ci/cd, github, actions, ruby, flask"
@@ -18,7 +18,10 @@
 <link rel="canonical" href="/guides/ruby/configure-github-actions/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。"
+  content="了解如何为您的 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD。"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="使用 GitHub Actions 自动化构建" />
-<meta property="og:description" content="了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。" />
+<meta property="og:description" content="了解如何为您的 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD。" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-11-03 14:35:55 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-11-03 14:35:55 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-11-03T14:35:55+01:00","description":"了解如何为 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD 流程。","headline":"使用 GitHub Actions 自动化构建","isPartOf":{"@id":"/guides/ruby/","@type":"WebPage","name":"Ruby"},"keywords":"ci/cd, github, actions, ruby, flask","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/ruby/configure-github-actions/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/ruby/","name":"Ruby"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/ruby/configure-github-actions/","name":"使用 GitHub Actions 自动化构建"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"了解如何为您的 Ruby on Rails 应用程序配置使用 GitHub Actions 的 CI/CD。","headline":"使用 GitHub Actions 自动化构建","isPartOf":{"@id":"/guides/ruby/","@type":"WebPage","name":"Ruby"},"keywords":"ci/cd, github, actions, ruby, flask","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/ruby/configure-github-actions/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/ruby/","name":"Ruby"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/ruby/configure-github-actions/","name":"使用 GitHub Actions 自动化构建"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/guides/ruby/configure-github-actions/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1669,23 +1678,23 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>请完成本指南中从<a class="link" href="/guides/ruby/containerize/">容器化 Ruby on Rails 应用程序</a>开始的所有先前章节。要完成本节内容，您必须拥有 <a class="link" href="https://github.com/signup" rel="noopener">GitHub</a> 账户和 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker</a> 账户。</p>
-<p>如果您尚未为您的项目创建 <a class="link" href="https://github.com/new" rel="noopener">GitHub 仓库</a>，现在可以开始创建了。创建仓库后，请记得<a class="link" href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories" rel="noopener">添加远程仓库</a>，并确保您可以提交代码并<a class="link" href="https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push" rel="noopener">将代码推送到 GitHub</a>。</p>
+<p>完成本指南从<a class="link" href="/guides/ruby/containerize/">容器化 Ruby on Rails 应用程序</a>开始的所有先前章节。您必须拥有 <a class="link" href="https://github.com/signup" rel="noopener">GitHub</a> 账户和经过验证的 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker</a> 账户才能完成本章节。</p>
+<p>如果您尚未为您的项目创建 <a class="link" href="https://github.com/new" rel="noopener">GitHub 仓库</a>，现在是时候创建了。创建仓库后，不要忘记<a class="link" href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories" rel="noopener">添加远程仓库</a>，并确保您可以提交和<a class="link" href="https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push" rel="noopener">推送代码</a>到 GitHub。</p>
 <ol>
 <li>
-<p>在您的项目 GitHub 仓库中，打开 <strong>Settings</strong>（设置），然后进入 <strong>Secrets and variables</strong>（机密和变量）&gt; <strong>Actions</strong>。</p>
+<p>在您的项目 GitHub 仓库中，打开<strong>设置</strong>，然后转到<strong>机密和变量</strong> &gt; <strong>操作</strong>。</p>
 </li>
 <li>
-<p>在 <strong>Variables</strong>（变量）选项卡下，创建一个名为 <code>DOCKER_USERNAME</code> 的新 <strong>Repository variable</strong>（仓库变量），并将您的 Docker ID 作为其值。</p>
+<p>在<strong>变量</strong>选项卡下，创建一个名为 <code>DOCKER_USERNAME</code> 的新<strong>仓库变量</strong>，并将您的 Docker ID 作为其值。</p>
 </li>
 <li>
 <p>为 Docker Hub 创建一个新的
     
   
-  <a class="link" href="/security/access-tokens/#create-an-access-token">个人访问令牌 (PAT)</a>。您可以将此令牌命名为 <code>docker-tutorial</code>。请确保访问权限包含读取和写入权限。</p>
+  <a class="link" href="/security/access-tokens/#create-an-access-token">个人访问令牌 (PAT)</a>。您可以将此令牌命名为 <code>docker-tutorial</code>。确保访问权限包括读取和写入。</p>
 </li>
 <li>
-<p>将 PAT 作为 <strong>Repository secret</strong>（仓库机密）添加到您的 GitHub 仓库中，名称为 <code>DOCKERHUB_TOKEN</code>。</p>
+<p>将 PAT 作为<strong>仓库机密</strong>添加到您的 GitHub 仓库中，名称为 <code>DOCKERHUB_TOKEN</code>。</p>
 </li>
 </ol>
 
@@ -1708,15 +1717,15 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>您可以通过在仓库的 <code>.github/workflows/</code> 目录中创建 YAML 文件来创建 GitHub Actions 工作流。您可以使用自己喜欢的文本编辑器或 GitHub 网页界面来完成此操作。以下步骤展示了如何使用 GitHub 网页界面创建工作流文件。</p>
+<p>您可以通过在仓库的 <code>.github/workflows/</code> 目录中创建 YAML 文件来创建 GitHub Actions 工作流。为此，请使用您喜欢的文本编辑器或 GitHub 网页界面。以下步骤展示了如何使用 GitHub 网页界面创建工作流文件。</p>
 <p>如果您更喜欢使用 GitHub 网页界面，请按照以下步骤操作：</p>
 <ol>
 <li>
-<p>转到 GitHub 上的仓库，然后选择 <strong>Actions</strong> 选项卡。</p>
+<p>转到 GitHub 上的您的仓库，然后选择<strong>操作</strong>选项卡。</p>
 </li>
 <li>
-<p>选择 <strong>set up a workflow yourself</strong>（自行设置工作流）。</p>
-<p>这将带您进入一个页面，用于在仓库中创建新的 GitHub Actions 工作流文件。默认情况下，文件创建在 <code>.github/workflows/main.yml</code> 路径下，让我们将其名称更改为 <code>build.yml</code>。</p>
+<p>选择<strong>自行设置工作流</strong>。</p>
+<p>这会将您带到一个页面，用于在仓库中创建新的 GitHub Actions 工作流文件。默认情况下，文件创建在 <code>.github/workflows/main.yml</code> 下，让我们将其名称更改为 <code>build.yml</code>。</p>
 </li>
 </ol>
 <p>如果您更喜欢使用文本编辑器，请在仓库的 <code>.github/workflows/</code> 目录中创建一个名为 <code>build.yml</code> 的新文件。</p>
@@ -1781,16 +1790,16 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>每个 GitHub Actions 工作流包含一个或多个作业。每个作业由多个步骤组成。每个步骤可以运行一组命令或使用<a class="link" href="https://github.com/marketplace?type=actions" rel="noopener">现有操作</a>。上述操作包含三个步骤：</p>
+<p>每个 GitHub Actions 工作流包括一个或多个作业。每个作业由步骤组成。每个步骤可以运行一组命令或使用<a class="link" href="https://github.com/marketplace?type=actions" rel="noopener">现有操作</a>。上述操作有三个步骤：</p>
 <ol>
 <li>
-<p><a class="link" href="https://github.com/docker/login-action" rel="noopener"><strong>Login to Docker Hub</strong></a>：此操作使用您之前创建的 Docker ID 和个人访问令牌 (PAT) 登录到 Docker Hub。</p>
+<p><a class="link" href="https://github.com/docker/login-action" rel="noopener"><strong>登录到 Docker Hub</strong></a>：操作使用您之前创建的 Docker ID 和个人访问令牌 (PAT) 登录到 Docker Hub。</p>
 </li>
 <li>
-<p><a class="link" href="https://github.com/docker/setup-buildx-action" rel="noopener"><strong>Set up Docker Buildx</strong></a>：此操作设置 Docker <a class="link" href="https://github.com/docker/buildx" rel="noopener">Buildx</a>，这是一个扩展 Docker CLI 功能的 CLI 插件。</p>
+<p><a class="link" href="https://github.com/docker/setup-buildx-action" rel="noopener"><strong>设置 Docker Buildx</strong></a>：操作设置 Docker <a class="link" href="https://github.com/docker/buildx" rel="noopener">Buildx</a>，这是一个扩展 Docker CLI 功能的 CLI 插件。</p>
 </li>
 <li>
-<p><a class="link" href="https://github.com/docker/build-push-action" rel="noopener"><strong>Build and push</strong></a>：此操作构建 Docker 镜像并将其推送到 Docker Hub。<code>tags</code> 参数指定镜像名称和标签。本示例中使用的是 <code>latest</code> 标签。</p>
+<p><a class="link" href="https://github.com/docker/build-push-action" rel="noopener"><strong>构建并推送</strong></a>：操作构建 Docker 镜像并将其推送到 Docker Hub。<code>tags</code> 参数指定镜像名称和标签。本例中使用 <code>latest</code> 标签。</p>
 </li>
 </ol>
 
@@ -1801,8 +1810,8 @@ if (resultsLength > 5) {
 </h2>
 
 <p>提交更改并将其推送到 <code>main</code> 分支。此工作流会在您每次向 <code>main</code> 分支推送更改时运行。您可以在 <a class="link" href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows" rel="noopener">GitHub 文档</a> 中找到有关工作流触发器的更多信息。</p>
-<p>转到 GitHub 仓库的 <strong>Actions</strong> 选项卡。它会显示工作流。选择工作流可以查看其所有步骤的详细信息。</p>
-<p>工作流完成后，转到 <a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 上的仓库页面</a>。如果您在该列表中看到新仓库，则表示 GitHub Actions 工作流已成功将镜像推送到 Docker Hub。</p>
+<p>转到 GitHub 仓库的<strong>操作</strong>选项卡。它会显示工作流。选择工作流可以查看其所有步骤的细分。</p>
+<p>工作流完成后，转到 <a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 上的仓库</a>。如果您在该列表中看到新仓库，则表示 GitHub Actions 工作流已成功将镜像推送到 Docker Hub。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="总结">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%80%bb%e7%bb%93">
@@ -1810,7 +1819,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>在本节中，您学习了如何为 Ruby on Rails 应用程序设置 GitHub Actions 工作流。</p>
+<p>在本节中，您学习了如何为您的 Ruby on Rails 应用程序设置 GitHub Actions 工作流。</p>
 <p>相关信息：</p>
 <ul>
 <li>
@@ -1821,7 +1830,7 @@ if (resultsLength > 5) {
     
   
   <a class="link" href="/build/ci/github-actions/">Docker Build GitHub Actions</a></li>
-<li><a class="link" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" rel="noopener">GitHub Actions 工作流语法</a></li>
+<li><a class="link" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" rel="noopener">GitHub Actions 的工作流语法</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="后续步骤">
@@ -1947,9 +1956,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1964,7 +1975,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1979,7 +1990,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1994,7 +2005,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2009,7 +2020,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2025,26 +2036,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

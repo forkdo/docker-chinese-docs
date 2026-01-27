@@ -1,23 +1,4 @@
----
-title: 在 Compose 中使用生命周期钩子
-url: /compose/how-tos/lifecycle/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 在 Compose 中使用生命周期钩子
-    url: /compose/how-tos/lifecycle/
-next:
-  title: 在 Compose 中使用配置集
-  url: /compose/how-tos/profiles/
-prev:
-  title: 控制 Compose 中的启动和关闭顺序
-  url: /compose/how-tos/startup-order/
----
+# 在 Compose 中使用生命周期钩子
 
 
 

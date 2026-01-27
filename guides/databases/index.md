@@ -1,21 +1,4 @@
----
-title: 使用容器化数据库
-url: /guides/databases/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用容器化数据库
-    url: /guides/databases/
-next:
-  title: 使用 WireMock 在开发和测试中模拟 API 服务
-  url: /guides/wiremock/
-prev:
-  title: 构建命名实体识别应用
-  url: /guides/named-entity-recognition/
----
+# 使用容器化数据库
 
 
 使用本地容器化数据库提供了灵活性和易设置性，让您能够密切镜像生产环境，而无需传统数据库安装的开销。Docker 简化了这一过程，只需几个命令即可在隔离的容器中部署、管理和扩展数据库。

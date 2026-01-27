@@ -1,17 +1,4 @@
----
-title: 
-url: /desktop/enterprise/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 
-    url: /desktop/enterprise/
----
+# 
 
 title: Docker Desktop Enterprise
 description: Docker Desktop Enterprise

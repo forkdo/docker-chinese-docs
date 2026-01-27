@@ -1,27 +1,4 @@
----
-title: docker compose restart
-url: /reference/cli/docker/compose/restart/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose restart
-    url: /reference/cli/docker/compose/restart/
-next:
-  title: docker compose push
-  url: /reference/cli/docker/compose/push/
-prev:
-  title: docker compose rm
-  url: /reference/cli/docker/compose/rm/
----
+# docker compose restart
 
 **Description:** Restart service containers
 

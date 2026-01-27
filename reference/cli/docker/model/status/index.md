@@ -1,27 +1,4 @@
----
-title: docker model status
-url: /reference/cli/docker/model/status/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model status
-    url: /reference/cli/docker/model/status/
-next:
-  title: docker model start-runner
-  url: /reference/cli/docker/model/start-runner/
-prev:
-  title: docker model stop-runner
-  url: /reference/cli/docker/model/stop-runner/
----
+# docker model status
 
 **Description:** Check if the Docker Model Runner is running
 

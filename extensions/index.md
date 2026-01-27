@@ -1,31 +1,4 @@
----
-title: Docker 扩展
-url: /extensions/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-children:
-  - title: Marketplace 扩展
-    url: /extensions/marketplace/
-    description: 扩展
-  - title: 非 Marketplace 扩展
-    url: /extensions/non-marketplace/
-    description: 扩展
-  - title: 为扩展配置私有市场
-    url: /extensions/private-marketplace/
-    description: 如何配置和使用 Docker Extensions 的私有市场
-  - title: Docker Extensions 的设置与反馈
-    url: /extensions/settings-feedback/
-    description: 扩展
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-    description: Docker 扩展 SDK 文档总索引
----
+# Docker 扩展
 
 
 Docker 扩展让您可以在 Docker Desktop 中使用第三方工具来扩展其功能。

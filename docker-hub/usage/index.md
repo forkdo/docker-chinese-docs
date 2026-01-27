@@ -1,24 +1,4 @@
----
-title: Docker Hub 使用情况和限制
-url: /docker-hub/usage/
-parent:
-  title: Docker Hub
-  url: /docker-hub/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: Docker Hub 使用情况和限制
-    url: /docker-hub/usage/
-children:
-  - title: Docker Hub 拉取使用情况和限制
-    url: /docker-hub/usage/pulls/
-    description: 了解 Docker Hub 的拉取使用情况和限制。
-  - title: 优化 Docker Hub 使用的最佳实践
-    url: /docker-hub/usage/manage/
-    description: 了解如何优化和管理您的 Docker Hub 使用情况。
----
+# Docker Hub 使用情况和限制
 
 
 下表概述了每种用户类型的包含使用情况和限制，需遵守合理使用原则：

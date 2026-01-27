@@ -1,29 +1,4 @@
----
-title: docker mcp catalog ls
-url: /reference/cli/docker/mcp/catalog/catalog_ls/
-parent:
-  title: docker mcp catalog
-  url: /reference/cli/docker/mcp/catalog/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp catalog
-    url: /reference/cli/docker/mcp/catalog/
-  - title: docker mcp catalog ls
-    url: /reference/cli/docker/mcp/catalog/catalog_ls/
-next:
-  title: docker mcp catalog init
-  url: /reference/cli/docker/mcp/catalog/catalog_init/
-prev:
-  title: docker mcp catalog reset
-  url: /reference/cli/docker/mcp/catalog/catalog_reset/
----
+# docker mcp catalog ls
 
 **Description:** List all configured catalogs
 

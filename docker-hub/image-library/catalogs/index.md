@@ -1,25 +1,4 @@
----
-title: Docker Hub 目录
-url: /docker-hub/image-library/catalogs/
-parent:
-  title: 内容库
-  url: /docker-hub/image-library/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 内容库
-    url: /docker-hub/image-library/
-  - title: Docker Hub 目录
-    url: /docker-hub/image-library/catalogs/
-next:
-  title: 可信内容
-  url: /docker-hub/image-library/trusted-content/
-prev:
-  title: 镜像 Docker Hub 官方镜像库
-  url: /docker-hub/image-library/mirror/
----
+# Docker Hub 目录
 
 
 Docker Hub 目录是您值得信赖的、开箱即用的容器镜像和资源集合，旨在满足特定的开发需求。它们让您可以更轻松地找到高质量、经过预先验证的内容，从而能够自信地快速构建、部署和管理应用程序。Docker Hub 中的目录：

@@ -1,27 +1,4 @@
----
-title: docker scout recommendations
-url: /reference/cli/docker/scout/recommendations/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout recommendations
-    url: /reference/cli/docker/scout/recommendations/
-next:
-  title: docker scout quickview
-  url: /reference/cli/docker/scout/quickview/
-prev:
-  title: docker scout sbom
-  url: /reference/cli/docker/scout/sbom/
----
+# docker scout recommendations
 
 **Description:** Display available base image updates and remediation recommendations
 

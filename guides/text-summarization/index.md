@@ -1,21 +1,4 @@
----
-title: 构建文本摘要应用
-url: /guides/text-summarization/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 构建文本摘要应用
-    url: /guides/text-summarization/
-next:
-  title: 构建文本识别应用
-  url: /guides/text-classification/
-prev:
-  title: 使用 Docker 构建和运行智能体 AI 应用程序
-  url: /guides/agentic-ai/
----
+# 构建文本摘要应用
 
 
 ## 概述

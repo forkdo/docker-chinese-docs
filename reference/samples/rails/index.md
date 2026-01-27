@@ -1,23 +1,5 @@
----
-title: Rails 示例
-url: /reference/samples/rails/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: Rails 示例
-    url: /reference/samples/rails/
-next:
-  title: Python 示例
-  url: /reference/samples/python/
-prev:
-  title: React 示例
-  url: /reference/samples/react/
----
+# Rails 示例
 
-
-
+| Name | Description |
+|------|-------------|
+| [Compose and Rails](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/rails/) | This Quickstart guide shows you how to use Docker Compose to set up and run a Rails/PostgreSQL app. |

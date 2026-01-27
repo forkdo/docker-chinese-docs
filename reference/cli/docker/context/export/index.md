@@ -1,27 +1,4 @@
----
-title: docker context export
-url: /reference/cli/docker/context/export/
-parent:
-  title: docker context
-  url: /reference/cli/docker/context/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker context
-    url: /reference/cli/docker/context/
-  - title: docker context export
-    url: /reference/cli/docker/context/export/
-next:
-  title: docker context create
-  url: /reference/cli/docker/context/create/
-prev:
-  title: docker context import
-  url: /reference/cli/docker/context/import/
----
+# docker context export
 
 **Description:** Export a context to a tar archive FILE or a tar stream on STDOUT.
 

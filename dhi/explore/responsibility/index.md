@@ -1,25 +1,4 @@
----
-title: 了解 Docker Hardened Images 的角色和职责
-url: /dhi/explore/responsibility/
-parent:
-  title: 探索 Docker Hardened Images
-  url: /dhi/explore/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 探索 Docker Hardened Images
-    url: /dhi/explore/
-  - title: 了解 Docker Hardened Images 的角色和职责
-    url: /dhi/explore/responsibility/
-next:
-  title: Docker 强化镜像如何进行测试
-  url: /dhi/explore/test/
-prev:
-  title: 提供反馈
-  url: /dhi/explore/feedback/
----
+# 了解 Docker Hardened Images 的角色和职责
 
 
 Docker Hardened Images (DHIs) 由 Docker 策划和维护，并使用上游开源组件构建。为了提供安全性、可靠性和合规性，职责由三个群体共同承担：

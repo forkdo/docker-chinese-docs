@@ -1,35 +1,4 @@
----
-title: 扩展 SDK 概览
-url: /extensions/extensions-sdk/
-parent:
-  title: Docker 扩展
-  url: /extensions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-children:
-  - title: 构建和发布流程
-    url: /extensions/extensions-sdk/process/
-    description: 了解创建扩展的过程。
-  - title: 快速入门
-    url: /extensions/extensions-sdk/quickstart/
-    description: 快速构建扩展的指南
-  - title: 第二部分：发布
-    url: /extensions/extensions-sdk/extensions/
-    description: 发布扩展的一般步骤
-  - title: 扩展架构
-    url: /extensions/extensions-sdk/architecture/
-    description: Docker 扩展架构
-  - title: Docker 扩展的 UI 样式概览
-    url: /extensions/extensions-sdk/design/
-    description: Docker 扩展设计
-  - title: 
-    url: /extensions/extensions-sdk/dev/
----
+# 扩展 SDK 概览
 
 
 本节中的资源可帮助您创建自己的 Docker 扩展。

@@ -1,34 +1,4 @@
----
-title: Docker Build Cloud
-url: /build-cloud/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build Cloud
-    url: /build-cloud/
-children:
-  - title: Docker Build Cloud 设置
-    url: /build-cloud/setup/
-    description: 如何开始使用 Docker Build Cloud
-  - title: 使用 Docker Build Cloud
-    url: /build-cloud/usage/
-    description: 使用 Buildx CLI 客户端调用云构建
-  - title: 在 CI 中使用 Docker Build Cloud
-    url: /build-cloud/ci/
-    description: 使用 Docker Build Cloud 加速您的 CI 流水线
-  - title: 优化云端构建
-    url: /build-cloud/optimization/
-    description: 远程构建与本地构建不同。本文介绍如何针对远程构建器进行优化。
-  - title: Builder settings
-    url: /build-cloud/builder-settings/
-    description: Set your builder settings relating to private registries, disk allocation .
-  - title: Docker Build Cloud 发布说明
-    url: /build-cloud/release-notes/
-    description: 了解 Docker Build Cloud 的最新功能
----
+# Docker Build Cloud
 
 
 

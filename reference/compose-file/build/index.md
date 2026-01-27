@@ -1,23 +1,4 @@
----
-title: Compose Build 规范
-url: /reference/compose-file/build/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: Compose Build 规范
-    url: /reference/compose-file/build/
-next:
-  title: 学习在 Docker Compose 中使用配置文件
-  url: /reference/compose-file/profiles/
-prev:
-  title: Compose 部署规范
-  url: /reference/compose-file/deploy/
----
+# Compose Build 规范
 
 
 

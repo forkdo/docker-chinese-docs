@@ -1,27 +1,4 @@
----
-title: docker manifest create
-url: /reference/cli/docker/manifest/create/
-parent:
-  title: docker manifest
-  url: /reference/cli/docker/manifest/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker manifest
-    url: /reference/cli/docker/manifest/
-  - title: docker manifest create
-    url: /reference/cli/docker/manifest/create/
-next:
-  title: docker manifest annotate
-  url: /reference/cli/docker/manifest/annotate/
-prev:
-  title: docker manifest inspect
-  url: /reference/cli/docker/manifest/inspect/
----
+# docker manifest create
 
 **Description:** Create a local manifest list for annotating and pushing to a registry
 

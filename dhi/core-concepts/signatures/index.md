@@ -1,25 +1,4 @@
----
-title: 代码签名
-url: /dhi/core-concepts/signatures/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: 代码签名
-    url: /dhi/core-concepts/signatures/
-next:
-  title: 不可变基础设施
-  url: /dhi/core-concepts/immutability/
-prev:
-  title: 基础镜像加固
-  url: /dhi/core-concepts/hardening/
----
+# 代码签名
 
 
 ## 什么是代码签名？

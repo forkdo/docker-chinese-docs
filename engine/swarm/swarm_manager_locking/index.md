@@ -1,22 +1,4 @@
----
-title: 锁定 Swarm 以保护其加密密钥
-url: /engine/swarm/swarm_manager_locking/
-parent:
-  title: Swarm 模式
-  url: /engine/swarm/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: 锁定 Swarm 以保护其加密密钥
-    url: /engine/swarm/swarm_manager_locking/
-next:
-  title: 管理和维护 Docker Engine 集群
-  url: /engine/swarm/admin_guide/
----
+# 锁定 Swarm 以保护其加密密钥
 
 
 Swarm 管理节点使用的 Raft 日志默认在磁盘上加密。这种静态加密可保护服务的配置和数据，防止攻击者访问加密的 Raft 日志。引入此功能的原因之一是为了支持 [Docker 密钥](secrets.md) 功能。

@@ -1,22 +1,4 @@
----
-title: 气隙容器
-url: /enterprise/security/hardened-desktop/air-gapped-containers/
-parent:
-  title: 强化版 Docker Desktop
-  url: /enterprise/security/hardened-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: 气隙容器
-    url: /enterprise/security/hardened-desktop/air-gapped-containers/
-next:
-  title: 镜像访问管理
-  url: /enterprise/security/hardened-desktop/image-access-management/
----
+# 气隙容器
 
 
 

@@ -1,27 +1,4 @@
----
-title: docker plugin ls
-url: /reference/cli/docker/plugin/ls/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin ls
-    url: /reference/cli/docker/plugin/ls/
-next:
-  title: docker plugin install
-  url: /reference/cli/docker/plugin/install/
-prev:
-  title: docker plugin push
-  url: /reference/cli/docker/plugin/push/
----
+# docker plugin ls
 
 **Description:** List plugins
 

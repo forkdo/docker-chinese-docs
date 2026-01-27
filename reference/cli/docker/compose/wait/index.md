@@ -1,27 +1,4 @@
----
-title: docker compose wait
-url: /reference/cli/docker/compose/wait/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose wait
-    url: /reference/cli/docker/compose/wait/
-next:
-  title: docker compose volumes
-  url: /reference/cli/docker/compose/volumes/
-prev:
-  title: docker compose watch
-  url: /reference/cli/docker/compose/watch/
----
+# docker compose wait
 
 **Description:** Block until containers of all (or specified) services stop.
 

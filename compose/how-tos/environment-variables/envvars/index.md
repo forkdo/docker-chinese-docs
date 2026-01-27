@@ -1,25 +1,4 @@
----
-title: 在 Docker Compose 中配置预定义环境变量
-url: /compose/how-tos/environment-variables/envvars/
-parent:
-  title: Compose 中的环境变量
-  url: /compose/how-tos/environment-variables/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose 中的环境变量
-    url: /compose/how-tos/environment-variables/
-  - title: 在 Docker Compose 中配置预定义环境变量
-    url: /compose/how-tos/environment-variables/envvars/
-next:
-  title: Docker Compose 中的环境变量优先级
-  url: /compose/how-tos/environment-variables/envvars-precedence/
-prev:
-  title: 在 Compose 文件中使用插值设置、使用和管理变量
-  url: /compose/how-tos/environment-variables/variable-interpolation/
----
+# 在 Docker Compose 中配置预定义环境变量
 
 
 Docker Compose 包含多个预定义环境变量。它还继承了常见的 Docker CLI 环境变量，例如 `DOCKER_HOST` 和 `DOCKER_CONTEXT`。有关详细信息，请参阅 [Docker CLI 环境变量参考](/reference/cli/docker/#environment-variables)。

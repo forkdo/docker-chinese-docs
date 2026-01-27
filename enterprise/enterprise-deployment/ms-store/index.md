@@ -1,23 +1,4 @@
----
-title: 在 Windows 上通过 Microsoft Store 安装 Docker Desktop
-url: /enterprise/enterprise-deployment/ms-store/
-parent:
-  title: 部署 Docker Desktop
-  url: /enterprise/enterprise-deployment/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 部署 Docker Desktop
-    url: /enterprise/enterprise-deployment/
-  - title: 在 Windows 上通过 Microsoft Store 安装 Docker Desktop
-    url: /enterprise/enterprise-deployment/ms-store/
-next:
-  title: PKG 安装程序
-  url: /enterprise/enterprise-deployment/pkg-install-and-configure/
-prev:
-  title: 使用 Intune 部署
-  url: /enterprise/enterprise-deployment/use-intune/
----
+# 在 Windows 上通过 Microsoft Store 安装 Docker Desktop
 
 
 您可以通过 [Microsoft 应用商店](https://apps.microsoft.com/detail/xp8cbj40xlbwkx?hl=en-GB&gl=GB) 部署适用于 Windows 的 Docker Desktop。

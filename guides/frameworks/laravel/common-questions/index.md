@@ -1,20 +1,4 @@
----
-title: 在 Laravel 中使用 Docker 的常见问题
-url: /guides/frameworks/laravel/common-questions/
-parent:
-  title: 使用 Docker Compose 开发和部署 Laravel 应用
-  url: /guides/frameworks/laravel/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Compose 开发和部署 Laravel 应用
-    url: /guides/frameworks/laravel/
-  - title: 在 Laravel 中使用 Docker 的常见问题
-    url: /guides/frameworks/laravel/common-questions/
-next:
-  title: 使用 Docker Compose 进行 Laravel 开发环境设置
-  url: /guides/frameworks/laravel/development-setup/
----
+# 在 Laravel 中使用 Docker 的常见问题
 
 
 <!-- vale Docker.HeadingLength = NO -->

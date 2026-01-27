@@ -1,27 +1,4 @@
----
-title: docker compose events
-url: /reference/cli/docker/compose/events/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose events
-    url: /reference/cli/docker/compose/events/
-next:
-  title: docker compose down
-  url: /reference/cli/docker/compose/down/
-prev:
-  title: docker compose exec
-  url: /reference/cli/docker/compose/exec/
----
+# docker compose events
 
 **Description:** Receive real time events from containers
 

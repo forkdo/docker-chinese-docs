@@ -1,24 +1,4 @@
----
-title: 角色与权限
-url: /enterprise/security/roles-and-permissions/
-parent:
-  title: 企业级安全
-  url: /enterprise/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 角色与权限
-    url: /enterprise/security/roles-and-permissions/
-children:
-  - title: 核心角色
-    url: /enterprise/security/roles-and-permissions/core-roles/
-    description: 通过组织中的角色来控制对内容、注册表和组织管理的访问权限。
-  - title: 自定义角色
-    url: /enterprise/security/roles-and-permissions/custom-roles/
-    description: 使用自定义角色为您的组织创建量身定制的权限集
----
+# 角色与权限
 
 
 

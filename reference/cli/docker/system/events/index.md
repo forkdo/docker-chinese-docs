@@ -1,27 +1,4 @@
----
-title: docker system events
-url: /reference/cli/docker/system/events/
-parent:
-  title: docker system
-  url: /reference/cli/docker/system/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker system
-    url: /reference/cli/docker/system/
-  - title: docker system events
-    url: /reference/cli/docker/system/events/
-next:
-  title: docker system df
-  url: /reference/cli/docker/system/df/
-prev:
-  title: docker system info
-  url: /reference/cli/docker/system/info/
----
+# docker system events
 
 **Description:** Get real time events from the server
 

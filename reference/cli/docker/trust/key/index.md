@@ -1,21 +1,4 @@
----
-title: docker trust key
-url: /reference/cli/docker/trust/key/
-parent:
-  title: docker trust
-  url: /reference/cli/docker/trust/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker trust
-    url: /reference/cli/docker/trust/
-  - title: docker trust key
-    url: /reference/cli/docker/trust/key/
----
+# docker trust key
 
 **Description:** Manage keys for signing Docker images
 

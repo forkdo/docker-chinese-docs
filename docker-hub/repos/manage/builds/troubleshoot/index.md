@@ -1,27 +1,4 @@
----
-title: 排查自动构建问题
-url: /docker-hub/repos/manage/builds/troubleshoot/
-parent:
-  title: 自动构建
-  url: /docker-hub/repos/manage/builds/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 自动构建
-    url: /docker-hub/repos/manage/builds/
-  - title: 排查自动构建问题
-    url: /docker-hub/repos/manage/builds/troubleshoot/
-next:
-  title: 自动化构建和自动化测试的高级选项
-  url: /docker-hub/repos/manage/builds/advanced/
-prev:
-  title: 管理自动构建
-  url: /docker-hub/repos/manage/builds/manage-builds/
----
+# 排查自动构建问题
 
 
 > [!NOTE]

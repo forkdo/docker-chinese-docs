@@ -1,19 +1,4 @@
----
-title: docker system
-url: /reference/cli/docker/system/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker system
-    url: /reference/cli/docker/system/
----
+# docker system
 
 **Description:** Manage Docker
 

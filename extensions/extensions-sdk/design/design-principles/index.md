@@ -1,27 +1,4 @@
----
-title: Docker 设计原则
-url: /extensions/extensions-sdk/design/design-principles/
-parent:
-  title: Docker 扩展的 UI 样式概览
-  url: /extensions/extensions-sdk/design/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: Docker 扩展的 UI 样式概览
-    url: /extensions/extensions-sdk/design/
-  - title: Docker 设计原则
-    url: /extensions/extensions-sdk/design/design-principles/
-next:
-  title: Docker 扩展的设计指南
-  url: /extensions/extensions-sdk/design/design-guidelines/
-prev:
-  title: MUI 最佳实践
-  url: /extensions/extensions-sdk/design/mui-best-practices/
----
+# Docker 设计原则
 
 
 ## 提供可执行的指导

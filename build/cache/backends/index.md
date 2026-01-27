@@ -1,38 +1,4 @@
----
-title: Cache storage backends
-url: /build/cache/backends/
-parent:
-  title: Docker build cache
-  url: /build/cache/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-  - title: Cache storage backends
-    url: /build/cache/backends/
-children:
-  - title: Amazon S3 cache
-    url: /build/cache/backends/s3/
-    description: Manage build cache with Amazon S3 buckets
-  - title: Azure Blob Storage cache
-    url: /build/cache/backends/azblob/
-    description: Manage build cache with Azure blob storage
-  - title: GitHub Actions cache
-    url: /build/cache/backends/gha/
-    description: Use the GitHub Actions cache to manage your build cache in CI
-  - title: Inline cache
-    url: /build/cache/backends/inline/
-    description: Embed the build cache into the image
-  - title: Local cache
-    url: /build/cache/backends/local/
-    description: Manage build cache with Amazon S3 buckets
-  - title: Registry cache
-    url: /build/cache/backends/registry/
-    description: Manage build cache with an OCI registry
----
+# Cache storage backends
 
 
 To ensure fast builds, BuildKit automatically caches the build result in its own

@@ -1,28 +1,4 @@
----
-title: Deno 语言特定指南
-url: /guides/deno/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Deno 语言特定指南
-    url: /guides/deno/
-children:
-  - title: 将 Deno 应用程序容器化
-    url: /guides/deno/containerize/
-    description: 了解如何将 Deno 应用程序容器化。
-  - title: 在容器中进行 Deno 开发
-    url: /guides/deno/develop/
-    description: 了解如何在本地开发您的 Deno 应用程序。
-  - title: 为您的 Deno 应用程序配置 CI/CD
-    url: /guides/deno/configure-ci-cd/
-    description: 了解如何使用 GitHub Actions 为您的 Deno 应用程序配置 CI/CD。
-  - title: 测试你的 Deno 部署
-    url: /guides/deno/deploy/
-    description: 了解如何使用 Kubernetes 在本地开发
----
+# Deno 语言特定指南
 
 
 Deno 入门指南将教你如何使用 Docker 创建一个容器化的 Deno 应用程序。

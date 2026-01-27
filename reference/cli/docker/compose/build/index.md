@@ -1,27 +1,4 @@
----
-title: docker compose build
-url: /reference/cli/docker/compose/build/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose build
-    url: /reference/cli/docker/compose/build/
-next:
-  title: docker compose attach
-  url: /reference/cli/docker/compose/attach/
-prev:
-  title: docker compose config
-  url: /reference/cli/docker/compose/config/
----
+# docker compose build
 
 **Description:** Build or rebuild services
 

@@ -1,20 +1,4 @@
----
-title: 测试 .NET 部署
-url: /guides/dotnet/deploy/
-parent:
-  title: .NET 语言特定指南
-  url: /guides/dotnet/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: .NET 语言特定指南
-    url: /guides/dotnet/
-  - title: 测试 .NET 部署
-    url: /guides/dotnet/deploy/
-next:
-  title: 为你的 .NET 应用程序配置 CI/CD
-  url: /guides/dotnet/configure-ci-cd/
----
+# 测试 .NET 部署
 
 
 ## 先决条件

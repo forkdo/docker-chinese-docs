@@ -1,23 +1,4 @@
----
-title: Docker Engine 17.04 发行说明
-url: /engine/release-notes/17.04/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 17.04 发行说明
-    url: /engine/release-notes/17.04/
-next:
-  title: Docker Engine 17.03 发布说明
-  url: /engine/release-notes/17.03/
-prev:
-  title: Docker Engine 17.05 发行说明
-  url: /engine/release-notes/17.05/
----
+# Docker Engine 17.04 发行说明
 
 
 ## 17.04.0-ce

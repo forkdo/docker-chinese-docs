@@ -1,20 +1,4 @@
----
-title: Checking your build configuration
-url: /build/checks/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Checking your build configuration
-    url: /build/checks/
-prev:
-  title: Build release notes
-  url: /build/release-notes/
----
+# Checking your build configuration
 
 
 

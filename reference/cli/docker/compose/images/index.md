@@ -1,27 +1,4 @@
----
-title: docker compose images
-url: /reference/cli/docker/compose/images/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose images
-    url: /reference/cli/docker/compose/images/
-next:
-  title: docker compose exec
-  url: /reference/cli/docker/compose/exec/
-prev:
-  title: docker compose kill
-  url: /reference/cli/docker/compose/kill/
----
+# docker compose images
 
 **Description:** List images used by the created containers
 

@@ -1,29 +1,4 @@
----
-title: docker mcp catalog export
-url: /reference/cli/docker/mcp/catalog/catalog_export/
-parent:
-  title: docker mcp catalog
-  url: /reference/cli/docker/mcp/catalog/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp catalog
-    url: /reference/cli/docker/mcp/catalog/
-  - title: docker mcp catalog export
-    url: /reference/cli/docker/mcp/catalog/catalog_export/
-next:
-  title: docker mcp catalog create
-  url: /reference/cli/docker/mcp/catalog/catalog_create/
-prev:
-  title: docker mcp catalog fork
-  url: /reference/cli/docker/mcp/catalog/catalog_fork/
----
+# docker mcp catalog export
 
 **Description:** Export a configured catalog to a file
 

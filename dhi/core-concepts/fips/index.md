@@ -1,25 +1,4 @@
----
-title: FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-url: /dhi/core-concepts/fips/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-    url: /dhi/core-concepts/fips/
-next:
-  title: 常见漏洞和暴露 (CVE)
-  url: /dhi/core-concepts/cves/
-prev:
-  title: Docker Hardened Images 中的 glibc 和 musl 支持
-  url: /dhi/core-concepts/glibc-musl/
----
+# FIPS <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 
 
 

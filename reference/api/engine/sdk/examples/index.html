@@ -18,7 +18,10 @@
 <link rel="canonical" href="/reference/api/engine/sdk/examples/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -9065,6 +9074,102 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/"
+        title="docker sandbox create"
+      >
+        
+  docker sandbox create
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/cagent/"
+        title="docker sandbox create cagent"
+      >
+        
+  docker sandbox create cagent
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/codex/"
+        title="docker sandbox create codex"
+      >
+        
+  docker sandbox create codex
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/gemini/"
+        title="docker sandbox create gemini"
+      >
+        
+  docker sandbox create gemini
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/create/kiro/"
+        title="docker sandbox create kiro"
+      >
+        
+  docker sandbox create kiro
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/exec/"
+        title="docker sandbox exec"
+      >
+        
+  docker sandbox exec
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/cli/docker/sandbox/inspect/"
         title="docker sandbox inspect"
       >
@@ -9097,11 +9202,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/reset/"
+        title="docker sandbox reset"
+      >
+        
+  docker sandbox reset
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
         href="/reference/cli/docker/sandbox/run/"
         title="docker sandbox run"
       >
         
   docker sandbox run
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/stop/"
+        title="docker sandbox stop"
+      >
+        
+  docker sandbox stop
 
       </a>
     </li>
@@ -9121,6 +9258,87 @@ if (resultsLength > 5) {
 
       </a>
     </li>
+
+  
+  
+  <li class="" x-data="{ expanded: false }">
+    <div
+      class=" flex w-full items-center justify-between rounded-sm"
+    >
+      <div class="navbar-entry-margin w-full truncate">
+          
+          
+          <a
+            
+            class="hover:text-blue block select-none hover:dark:text-blue-400"
+            href="/reference/cli/docker/sandbox/network/"
+          >
+            
+  Docker 沙箱网络
+
+          </a>
+      </div>
+      
+      
+      <button
+        @click="expanded = !expanded"
+        class="rounded-sm hover:bg-gray-200 hover:dark:bg-gray-800"
+      >
+        <span
+          :class="{ 'hidden' : expanded }"
+          class="icon-svg "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M464-376 306-533q-2-2-3.5-4.76-1.5-2.77-1.5-5.92 0-6.32 4.13-10.82 4.12-4.5 10.87-4.5h328q6.75 0 10.88 4.64 4.12 4.63 4.12 10.81 0 1.55-5 10.55L496-376q-3 3-7.06 5t-8.94 2q-4.87 0-8.94-2-4.06-2-7.06-5Z"/></svg>
+        </span>
+        <span
+          :class="{ 'hidden' : !expanded }"
+          class="icon-svg hidden"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M316-400q-6.75 0-10.87-4.64-4.13-4.63-4.13-10.81 0-1.55 5-10.55l158-157q3-3 7.06-5 4.07-2 8.94-2 4.88 0 8.94 2t7.06 5l158 157q2 2 3.5 4.76 1.5 2.77 1.5 5.92 0 6.32-4.12 10.82-4.13 4.5-10.88 4.5H316Z"/></svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      :class="{ 'hidden' : !expanded }"
+      class="hidden ml-3"
+    >
+      
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/network/proxy/"
+        title="docker sandbox network proxy"
+      >
+        
+  docker sandbox network proxy
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/cli/docker/sandbox/network/log/"
+        title="docker 沙箱网络日志"
+      >
+        
+  docker 沙箱网络日志
+
+      </a>
+    </li>
+
+
+
+    </ul>
+  </li>
 
 
 
@@ -9401,6 +9619,22 @@ if (resultsLength > 5) {
     >
       
     
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/reference/api/engine/version/v1.53/"
+        title="v1.53"
+      >
+        
+  v1.53
+
+      </a>
+    </li>
+
     
     <li
       class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
@@ -12237,7 +12471,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgLUggIkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbiIgXAogIC1kICd7IkltYWdlIjogImFscGluZSIsICJDbWQiOiBbImVjaG8iLCAiaGVsbG8gd29ybGQiXX0nIFwKICAtWCBQT1NUIGh0dHA6Ly9sb2NhbGhvc3QvdjEuNTIvY29udGFpbmVycy9jcmVhdGUKeyJJZCI6IjFjNjU5NGZhZjUiLCJXYXJuaW5ncyI6bnVsbH0KCiQgY3VybCAtLXVuaXgtc29ja2V0IC92YXIvcnVuL2RvY2tlci5zb2NrIC1YIFBPU1QgaHR0cDovL2xvY2FsaG9zdC92MS41Mi9jb250YWluZXJzLzFjNjU5NGZhZjUvc3RhcnQKCiQgY3VybCAtLXVuaXgtc29ja2V0IC92YXIvcnVuL2RvY2tlci5zb2NrIC1YIFBPU1QgaHR0cDovL2xvY2FsaG9zdC92MS41Mi9jb250YWluZXJzLzFjNjU5NGZhZjUvd2FpdAp7IlN0YXR1c0NvZGUiOjB9CgokIGN1cmwgLS11bml4LXNvY2tldCAvdmFyL3J1bi9kb2NrZXIuc29jayAiaHR0cDovL2xvY2FsaG9zdC92MS41Mi9jb250YWluZXJzLzFjNjU5NGZhZjUvbG9ncz9zdGRvdXQ9MSIKaGVsbG8gd29ybGQ=', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgLUggIkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbiIgXAogIC1kICd7IkltYWdlIjogImFscGluZSIsICJDbWQiOiBbImVjaG8iLCAiaGVsbG8gd29ybGQiXX0nIFwKICAtWCBQT1NUIGh0dHA6Ly9sb2NhbGhvc3QvdjEuNTMvY29udGFpbmVycy9jcmVhdGUKeyJJZCI6IjFjNjU5NGZhZjUiLCJXYXJuaW5ncyI6bnVsbH0KCiQgY3VybCAtLXVuaXgtc29ja2V0IC92YXIvcnVuL2RvY2tlci5zb2NrIC1YIFBPU1QgaHR0cDovL2xvY2FsaG9zdC92MS41My9jb250YWluZXJzLzFjNjU5NGZhZjUvc3RhcnQKCiQgY3VybCAtLXVuaXgtc29ja2V0IC92YXIvcnVuL2RvY2tlci5zb2NrIC1YIFBPU1QgaHR0cDovL2xvY2FsaG9zdC92MS41My9jb250YWluZXJzLzFjNjU5NGZhZjUvd2FpdAp7IlN0YXR1c0NvZGUiOjB9CgokIGN1cmwgLS11bml4LXNvY2tldCAvdmFyL3J1bi9kb2NrZXIuc29jayAiaHR0cDovL2xvY2FsaG9zdC92MS41My9jb250YWluZXJzLzFjNjU5NGZhZjUvbG9ncz9zdGRvdXQ9MSIKaGVsbG8gd29ybGQ=', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12258,15 +12492,15 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="go">  -d &#39;{&#34;Image&#34;: &#34;alpine&#34;, &#34;Cmd&#34;: [&#34;echo&#34;, &#34;hello world&#34;]}&#39; \
-</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST http://localhost/v1.52/containers/create
+</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST http://localhost/v1.53/containers/create
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;Id&#34;:&#34;1c6594faf5&#34;,&#34;Warnings&#34;:null}
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/start
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
 </span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/wait
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/wait
 </span></span><span class="line"><span class="cl"><span class="go">{&#34;StatusCode&#34;:0}
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="s2">&#34;http://localhost/v1.52/containers/1c6594faf5/logs?stdout=1&#34;</span>
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="s2">&#34;http://localhost/v1.53/containers/1c6594faf5/logs?stdout=1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="go">hello world
 </span></span></span></code></pre></div>
       
@@ -12293,7 +12527,7 @@ if (resultsLength > 5) {
     </div>
     <div class="admonition-content">
       <p>前面的示例假设您使用的是 cURL 7.50.0 或更高版本。旧版本的 cURL 在使用套接字连接时使用了<a class="link" href="https://github.com/moby/moby/issues/17960" rel="noopener">非标准 URL 表示法</a>。</p>
-<p>如果您使用的是旧版本的 cURL，请使用 <code>http:/&lt;API version&gt;/</code>，例如：<code>http:/v1.52/containers/1c6594faf5/start</code>。</p>
+<p>如果您使用的是旧版本的 cURL，请使用 <code>http:/&lt;API version&gt;/</code>，例如：<code>http:/v1.53/containers/1c6594faf5/start</code>。</p>
     </div>
   </blockquote>
 
@@ -12515,7 +12749,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgLUggIkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbiIgXAogIC1kICd7IkltYWdlIjogImJmaXJzaC9yZXRpY3VsYXRlLXNwbGluZXMifScgXAogIC1YIFBPU1QgaHR0cDovL2xvY2FsaG9zdC92MS41Mi9jb250YWluZXJzL2NyZWF0ZQp7IklkIjoiMWM2NTk0ZmFmNSIsIldhcm5pbmdzIjpudWxsfQoKJCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgLVggUE9TVCBodHRwOi8vbG9jYWxob3N0L3YxLjUyL2NvbnRhaW5lcnMvMWM2NTk0ZmFmNS9zdGFydA==', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgLUggIkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbiIgXAogIC1kICd7IkltYWdlIjogImJmaXJzaC9yZXRpY3VsYXRlLXNwbGluZXMifScgXAogIC1YIFBPU1QgaHR0cDovL2xvY2FsaG9zdC92MS41My9jb250YWluZXJzL2NyZWF0ZQp7IklkIjoiMWM2NTk0ZmFmNSIsIldhcm5pbmdzIjpudWxsfQoKJCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgLVggUE9TVCBodHRwOi8vbG9jYWxob3N0L3YxLjUzL2NvbnRhaW5lcnMvMWM2NTk0ZmFmNS9zdGFydA==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12536,10 +12770,10 @@ if (resultsLength > 5) {
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="go">  -d &#39;{&#34;Image&#34;: &#34;bfirsh/reticulate-splines&#34;}&#39; \
-</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST http://localhost/v1.52/containers/create
+</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST http://localhost/v1.53/containers/create
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;Id&#34;:&#34;1c6594faf5&#34;,&#34;Warnings&#34;:null}
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.52/containers/1c6594faf5/start
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
 </span></span></code></pre></div>
       
     </div>
@@ -12748,7 +12982,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92MS41Mi9jb250YWluZXJzL2pzb24KW3sKICAiSWQiOiJhZTYzZThiODlhMjZmMDFmNmI0YjJjOWE3ODE3YzMxYTFiNjE5NmFjZjU2MGY2NjU4NmZiYzg4MDlmZmNkNzcyIiwKICAiTmFtZXMiOlsiL3RlbmRlcl93aW5nIl0sCiAgIkltYWdlIjoiYmZpcnNoL3JldGljdWxhdGUtc3BsaW5lcyIsCiAgLi4uCn1d', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92MS41My9jb250YWluZXJzL2pzb24KW3sKICAiSWQiOiJhZTYzZThiODlhMjZmMDFmNmI0YjJjOWE3ODE3YzMxYTFiNjE5NmFjZjU2MGY2NjU4NmZiYzg4MDlmZmNkNzcyIiwKICAiTmFtZXMiOlsiL3RlbmRlcl93aW5nIl0sCiAgIkltYWdlIjoiYmZpcnNoL3JldGljdWxhdGUtc3BsaW5lcyIsCiAgLi4uCn1d', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12767,7 +13001,7 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock http://localhost/v1.52/containers/json
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
 </span></span><span class="line"><span class="cl"><span class="go">[{
 </span></span></span><span class="line"><span class="cl"><span class="go">  &#34;Id&#34;:&#34;ae63e8b89a26f01f6b4b2c9a7817c31a1b6196acf560f66586fbc8809ffcd772&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go">  &#34;Names&#34;:[&#34;/tender_wing&#34;],
@@ -13009,7 +13243,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92MS41Mi9jb250YWluZXJzL2pzb24KW3sKICAiSWQiOiJhZTYzZThiODlhMjZmMDFmNmI0YjJjOWE3ODE3YzMxYTFiNjE5NmFjZjU2MGY2NjU4NmZiYzg4MDlmZmNkNzcyIiwKICAiTmFtZXMiOlsiL3RlbmRlcl93aW5nIl0sCiAgIkltYWdlIjoiYmZpcnNoL3JldGljdWxhdGUtc3BsaW5lcyIsCiAgLi4uCn1dCgokIGN1cmwgLS11bml4LXNvY2tldCAvdmFyL3J1bi9kb2NrZXIuc29jayBcCiAgLVggUE9TVCBodHRwOi8vbG9jYWxob3N0L3YxLjUyL2NvbnRhaW5lcnMvYWU2M2U4Yjg5YTI2L3N0b3A=', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92MS41My9jb250YWluZXJzL2pzb24KW3sKICAiSWQiOiJhZTYzZThiODlhMjZmMDFmNmI0YjJjOWE3ODE3YzMxYTFiNjE5NmFjZjU2MGY2NjU4NmZiYzg4MDlmZmNkNzcyIiwKICAiTmFtZXMiOlsiL3RlbmRlcl93aW5nIl0sCiAgIkltYWdlIjoiYmZpcnNoL3JldGljdWxhdGUtc3BsaW5lcyIsCiAgLi4uCn1dCgokIGN1cmwgLS11bml4LXNvY2tldCAvdmFyL3J1bi9kb2NrZXIuc29jayBcCiAgLVggUE9TVCBodHRwOi8vbG9jYWxob3N0L3YxLjUzL2NvbnRhaW5lcnMvYWU2M2U4Yjg5YTI2L3N0b3A=', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -13028,7 +13262,7 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock http://localhost/v1.52/containers/json
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
 </span></span><span class="line"><span class="cl"><span class="go">[{
 </span></span></span><span class="line"><span class="cl"><span class="go">  &#34;Id&#34;:&#34;ae63e8b89a26f01f6b4b2c9a7817c31a1b6196acf560f66586fbc8809ffcd772&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go">  &#34;Names&#34;:[&#34;/tender_wing&#34;],
@@ -13037,7 +13271,7 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="go">}]
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST http://localhost/v1.52/containers/ae63e8b89a26/stop
+</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST http://localhost/v1.53/containers/ae63e8b89a26/stop
 </span></span></span></code></pre></div>
       
     </div>
@@ -13247,7 +13481,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgImh0dHA6Ly9sb2NhbGhvc3QvdjEuNTIvY29udGFpbmVycy9jYTVmNTVjZGIvbG9ncz9zdGRvdXQ9MSIKUmV0aWN1bGF0aW5nIHNwbGluZSAxLi4uClJldGljdWxhdGluZyBzcGxpbmUgMi4uLgpSZXRpY3VsYXRpbmcgc3BsaW5lIDMuLi4KUmV0aWN1bGF0aW5nIHNwbGluZSA0Li4uClJldGljdWxhdGluZyBzcGxpbmUgNS4uLg==', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgImh0dHA6Ly9sb2NhbGhvc3QvdjEuNTMvY29udGFpbmVycy9jYTVmNTVjZGIvbG9ncz9zdGRvdXQ9MSIKUmV0aWN1bGF0aW5nIHNwbGluZSAxLi4uClJldGljdWxhdGluZyBzcGxpbmUgMi4uLgpSZXRpY3VsYXRpbmcgc3BsaW5lIDMuLi4KUmV0aWN1bGF0aW5nIHNwbGluZSA0Li4uClJldGljdWxhdGluZyBzcGxpbmUgNS4uLg==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -13266,7 +13500,7 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="s2">&#34;http://localhost/v1.52/containers/ca5f55cdb/logs?stdout=1&#34;</span>
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="s2">&#34;http://localhost/v1.53/containers/ca5f55cdb/logs?stdout=1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="go">Reticulating spline 1...
 </span></span></span><span class="line"><span class="cl"><span class="go">Reticulating spline 2...
 </span></span></span><span class="line"><span class="cl"><span class="go">Reticulating spline 3...
@@ -13480,7 +13714,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92MS41Mi9pbWFnZXMvanNvbgpbewogICJJZCI6InNoYTI1NjozMWQ5YTMxZTFkZDgwMzQ3MGM1YTE1MWI4OTE5ZWYxOTg4YWMzZWZkNDQyODFhYzU5ZDQzYWQ2MjNmMjc1ZGNkIiwKICAiUGFyZW50SWQiOiJzaGEyNTY6ZWU0NjAzMjYwZGFhZmUxYThjMmYzYjc4ZmQ3NjA5MjI5MThhYjI0NDFjYmIyODUzZWQ1YzQzOWU1OWM1MmY5NiIsCiAgLi4uCn1d', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgaHR0cDovL2xvY2FsaG9zdC92MS41My9pbWFnZXMvanNvbgpbewogICJJZCI6InNoYTI1NjozMWQ5YTMxZTFkZDgwMzQ3MGM1YTE1MWI4OTE5ZWYxOTg4YWMzZWZkNDQyODFhYzU5ZDQzYWQ2MjNmMjc1ZGNkIiwKICAiUGFyZW50SWQiOiJzaGEyNTY6ZWU0NjAzMjYwZGFhZmUxYThjMmYzYjc4ZmQ3NjA5MjI5MThhYjI0NDFjYmIyODUzZWQ1YzQzOWU1OWM1MmY5NiIsCiAgLi4uCn1d', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -13499,7 +13733,7 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock http://localhost/v1.52/images/json
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock http://localhost/v1.53/images/json
 </span></span><span class="line"><span class="cl"><span class="go">[{
 </span></span></span><span class="line"><span class="cl"><span class="go">  &#34;Id&#34;:&#34;sha256:31d9a31e1dd803470c5a151b8919ef1988ac3efd44281ac59d43ad623f275dcd&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go">  &#34;ParentId&#34;:&#34;sha256:ee4603260daafe1a8c2f3b78fd760922918ab2441cbb2853ed5c439e59c52f96&#34;,
@@ -13714,7 +13948,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgXAogIC1YIFBPU1QgImh0dHA6Ly9sb2NhbGhvc3QvdjEuNTIvaW1hZ2VzL2NyZWF0ZT9mcm9tSW1hZ2U9YWxwaW5lIgp7InN0YXR1cyI6IlB1bGxpbmcgZnJvbSBsaWJyYXJ5L2FscGluZSIsImlkIjoiMy4xIn0KeyJzdGF0dXMiOiJQdWxsaW5nIGZzIGxheWVyIiwicHJvZ3Jlc3NEZXRhaWwiOnt9LCJpZCI6IjhmMTM3MDM1MDlmNyJ9Cnsic3RhdHVzIjoiRG93bmxvYWRpbmciLCJwcm9ncmVzc0RldGFpbCI6eyJjdXJyZW50IjozMjc2OCwidG90YWwiOjIyNDQwMjd9LCJwcm9ncmVzcyI6IltcdTAwM2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0gMzIuNzcga0IvMi4yNDQgTUIiLCJpZCI6IjhmMTM3MDM1MDlmNyJ9Ci4uLg==', copying: false }"
+        x-data="{ code: 'JCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgXAogIC1YIFBPU1QgImh0dHA6Ly9sb2NhbGhvc3QvdjEuNTMvaW1hZ2VzL2NyZWF0ZT9mcm9tSW1hZ2U9YWxwaW5lIgp7InN0YXR1cyI6IlB1bGxpbmcgZnJvbSBsaWJyYXJ5L2FscGluZSIsImlkIjoiMy4xIn0KeyJzdGF0dXMiOiJQdWxsaW5nIGZzIGxheWVyIiwicHJvZ3Jlc3NEZXRhaWwiOnt9LCJpZCI6IjhmMTM3MDM1MDlmNyJ9Cnsic3RhdHVzIjoiRG93bmxvYWRpbmciLCJwcm9ncmVzc0RldGFpbCI6eyJjdXJyZW50IjozMjc2OCwidG90YWwiOjIyNDQwMjd9LCJwcm9ncmVzcyI6IltcdTAwM2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0gMzIuNzcga0IvMi4yNDQgTUIiLCJpZCI6IjhmMTM3MDM1MDlmNyJ9Ci4uLg==', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -13734,7 +13968,7 @@ if (resultsLength > 5) {
       </button>
       
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST &#34;http://localhost/v1.52/images/create?fromImage=alpine&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST &#34;http://localhost/v1.53/images/create?fromImage=alpine&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;status&#34;:&#34;Pulling from library/alpine&#34;,&#34;id&#34;:&#34;3.1&#34;}
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;status&#34;:&#34;Pulling fs layer&#34;,&#34;progressDetail&#34;:{},&#34;id&#34;:&#34;8f13703509f7&#34;}
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;status&#34;:&#34;Downloading&#34;,&#34;progressDetail&#34;:{&#34;current&#34;:32768,&#34;total&#34;:2244027},&#34;progress&#34;:&#34;[\u003e                                                  ] 32.77 kB/2.244 MB&#34;,&#34;id&#34;:&#34;8f13703509f7&#34;}
@@ -13985,7 +14219,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBKU09OPSQoZWNobyAneyJ1c2VybmFtZSI6ICJzdHJpbmciLCAicGFzc3dvcmQiOiAic3RyaW5nIiwgInNlcnZlcmFkZHJlc3MiOiAic3RyaW5nIn0nIHwgYmFzZTY0KQoKJCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgXAogIC1IICJDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL3RhciIKICAtWCBQT1NUICJodHRwOi8vbG9jYWxob3N0L3YxLjUyL2ltYWdlcy9jcmVhdGU/ZnJvbUltYWdlPWFscGluZSIKICAtSCAiWC1SZWdpc3RyeS1BdXRoIgogIC1kICIkSlNPTiIKeyJzdGF0dXMiOiJQdWxsaW5nIGZyb20gbGlicmFyeS9hbHBpbmUiLCJpZCI6IjMuMSJ9Cnsic3RhdHVzIjoiUHVsbGluZyBmcyBsYXllciIsInByb2dyZXNzRGV0YWlsIjp7fSwiaWQiOiI4ZjEzNzAzNTA5ZjcifQp7InN0YXR1cyI6IkRvd25sb2FkaW5nIiwicHJvZ3Jlc3NEZXRhaWwiOnsiY3VycmVudCI6MzI3NjgsInRvdGFsIjoyMjQ0MDI3fSwicHJvZ3Jlc3MiOiJbXHUwMDNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdIDMyLjc3IGtCLzIuMjQ0IE1CIiwiaWQiOiI4ZjEzNzAzNTA5ZjcifQouLi4=', copying: false }"
+        x-data="{ code: 'JCBKU09OPSQoZWNobyAneyJ1c2VybmFtZSI6ICJzdHJpbmciLCAicGFzc3dvcmQiOiAic3RyaW5nIiwgInNlcnZlcmFkZHJlc3MiOiAic3RyaW5nIn0nIHwgYmFzZTY0KQoKJCBjdXJsIC0tdW5peC1zb2NrZXQgL3Zhci9ydW4vZG9ja2VyLnNvY2sgXAogIC1IICJDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL3RhciIKICAtWCBQT1NUICJodHRwOi8vbG9jYWxob3N0L3YxLjUzL2ltYWdlcy9jcmVhdGU/ZnJvbUltYWdlPWFscGluZSIKICAtSCAiWC1SZWdpc3RyeS1BdXRoIgogIC1kICIkSlNPTiIKeyJzdGF0dXMiOiJQdWxsaW5nIGZyb20gbGlicmFyeS9hbHBpbmUiLCJpZCI6IjMuMSJ9Cnsic3RhdHVzIjoiUHVsbGluZyBmcyBsYXllciIsInByb2dyZXNzRGV0YWlsIjp7fSwiaWQiOiI4ZjEzNzAzNTA5ZjcifQp7InN0YXR1cyI6IkRvd25sb2FkaW5nIiwicHJvZ3Jlc3NEZXRhaWwiOnsiY3VycmVudCI6MzI3NjgsInRvdGFsIjoyMjQ0MDI3fSwicHJvZ3Jlc3MiOiJbXHUwMDNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdIDMyLjc3IGtCLzIuMjQ0IE1CIiwiaWQiOiI4ZjEzNzAzNTA5ZjcifQouLi4=', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -14008,7 +14242,7 @@ if (resultsLength > 5) {
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="go">  -H &#34;Content-Type: application/tar&#34;
-</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST &#34;http://localhost/v1.52/images/create?fromImage=alpine&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST &#34;http://localhost/v1.53/images/create?fromImage=alpine&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">  -H &#34;X-Registry-Auth&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">  -d &#34;$JSON&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;status&#34;:&#34;Pulling from library/alpine&#34;,&#34;id&#34;:&#34;3.1&#34;}
@@ -14247,7 +14481,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIGFscGluZSB0b3VjaCAvaGVsbG93b3JsZAowODg4MjY5YTlkNTg0ZjBmYThmYzk2YjNjMGQ4ZDU3OTY5Y2VlYTNhNjRhY2Y0N2NkMzRlZWJiNDc0NGRiYzUyCiQgY3VybCAtLXVuaXgtc29ja2V0IC92YXIvcnVuL2RvY2tlci5zb2NrXAogIC1YIFBPU1QgImh0dHA6Ly9sb2NhbGhvc3QvdjEuNTIvY29tbWl0P2NvbnRhaW5lcj0wODg4MjY5YTlkJnJlcG89aGVsbG93b3JsZCIKeyJJZCI6InNoYTI1Njo2Yzg2YTVjZDRiODdmMjc3MTY0OGNlNjE5ZTMxOWYzZTUwODM5NGI1YmZjMmNkYmQyZDYwZjU5ZDUyYWNkYTZjIn0=', copying: false }"
+        x-data="{ code: 'JCBkb2NrZXIgcnVuIC1kIGFscGluZSB0b3VjaCAvaGVsbG93b3JsZAowODg4MjY5YTlkNTg0ZjBmYThmYzk2YjNjMGQ4ZDU3OTY5Y2VlYTNhNjRhY2Y0N2NkMzRlZWJiNDc0NGRiYzUyCiQgY3VybCAtLXVuaXgtc29ja2V0IC92YXIvcnVuL2RvY2tlci5zb2NrXAogIC1YIFBPU1QgImh0dHA6Ly9sb2NhbGhvc3QvdjEuNTMvY29tbWl0P2NvbnRhaW5lcj0wODg4MjY5YTlkJnJlcG89aGVsbG93b3JsZCIKeyJJZCI6InNoYTI1Njo2Yzg2YTVjZDRiODdmMjc3MTY0OGNlNjE5ZTMxOWYzZTUwODM5NGI1YmZjMmNkYmQyZDYwZjU5ZDUyYWNkYTZjIn0=', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -14269,7 +14503,7 @@ if (resultsLength > 5) {
         <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -d alpine touch /helloworld
 </span></span><span class="line"><span class="cl"><span class="go">0888269a9d584f0fa8fc96b3c0d8d57969ceea3a64acf47cd34eebb4744dbc52
 </span></span></span><span class="line"><span class="cl"><span class="gp">$</span> curl --unix-socket /var/run/docker.sock<span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST &#34;http://localhost/v1.52/commit?container=0888269a9d&amp;repo=helloworld&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  -X POST &#34;http://localhost/v1.53/commit?container=0888269a9d&amp;repo=helloworld&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;Id&#34;:&#34;sha256:6c86a5cd4b87f2771648ce619e319f3e508394b5bfc2cdbd2d60f59d52acda6c&#34;}
 </span></span></span></code></pre></div>
       
@@ -14398,9 +14632,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14415,7 +14651,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14430,7 +14666,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14445,7 +14681,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14460,7 +14696,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14476,26 +14712,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

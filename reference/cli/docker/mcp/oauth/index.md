@@ -1,21 +1,4 @@
----
-title: docker mcp oauth
-url: /reference/cli/docker/mcp/oauth/
-parent:
-  title: docker mcp
-  url: /reference/cli/docker/mcp/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp oauth
-    url: /reference/cli/docker/mcp/oauth/
----
+# docker mcp oauth
 
 
 

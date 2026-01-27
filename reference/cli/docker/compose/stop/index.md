@@ -1,27 +1,4 @@
----
-title: docker compose stop
-url: /reference/cli/docker/compose/stop/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose stop
-    url: /reference/cli/docker/compose/stop/
-next:
-  title: docker compose start
-  url: /reference/cli/docker/compose/start/
-prev:
-  title: docker compose top
-  url: /reference/cli/docker/compose/top/
----
+# docker compose stop
 
 **Description:** Stop services
 

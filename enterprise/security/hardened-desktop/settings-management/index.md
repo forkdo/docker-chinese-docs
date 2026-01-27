@@ -1,32 +1,4 @@
----
-title: Settings Management
-url: /enterprise/security/hardened-desktop/settings-management/
-parent:
-  title: 强化版 Docker Desktop
-  url: /enterprise/security/hardened-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: Settings Management
-    url: /enterprise/security/hardened-desktop/settings-management/
-children:
-  - title: 使用 JSON 文件配置设置管理
-    url: /enterprise/security/hardened-desktop/settings-management/configure-json-file/
-    description: 使用 admin-settings.json 文件配置和强制执行 Docker Desktop 设置
-  - title: 使用 Admin Console 配置设置管理
-    url: /enterprise/security/hardened-desktop/settings-management/configure-admin-console/
-    description: 使用 Docker Admin Console 在整个组织内配置和强制执行 Docker Desktop 设置
-  - title: 桌面设置合规性报告
-    url: /enterprise/security/hardened-desktop/settings-management/compliance-reporting/
-    description: 使用合规性报告仪表板跟踪和监控用户对 Docker Desktop 设置策略的合规性
-  - title: 设置参考
-    url: /enterprise/security/hardened-desktop/settings-management/settings-reference/
-    description: 所有 Docker Desktop 设置和配置选项的完整参考
----
+# Settings Management
 
 
 

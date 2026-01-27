@@ -1,20 +1,4 @@
----
-title: 测试你的 Deno 部署
-url: /guides/deno/deploy/
-parent:
-  title: Deno 语言特定指南
-  url: /guides/deno/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Deno 语言特定指南
-    url: /guides/deno/
-  - title: 测试你的 Deno 部署
-    url: /guides/deno/deploy/
-next:
-  title: 为您的 Deno 应用程序配置 CI/CD
-  url: /guides/deno/configure-ci-cd/
----
+# 测试你的 Deno 部署
 
 
 ## 前置条件

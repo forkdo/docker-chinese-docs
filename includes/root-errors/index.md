@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/root-errors/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/root-errors/
-next:
-  title: 
-  url: /includes/open-terminal/
-prev:
-  title: 
-  url: /includes/swarm-compose-compat/
----
+# 
 
 > [!TIP]
 > 

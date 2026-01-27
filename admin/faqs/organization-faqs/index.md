@@ -1,20 +1,4 @@
----
-title: 关于组织的常见问题解答
-url: /admin/faqs/organization-faqs/
-parent:
-  title: 管理
-  url: /admin/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 关于组织的常见问题解答
-    url: /admin/faqs/organization-faqs/
-prev:
-  title: 关于公司的常见问题
-  url: /admin/faqs/company-faqs/
----
+# 关于组织的常见问题解答
 
 
 ### 如何查看我的组织中有多少活跃用户？

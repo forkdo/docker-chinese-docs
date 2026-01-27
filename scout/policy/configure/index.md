@@ -1,22 +1,4 @@
----
-title: 配置策略
-url: /scout/policy/configure/
-parent:
-  title: Docker Scout 中的策略评估入门
-  url: /scout/policy/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 中的策略评估入门
-    url: /scout/policy/
-  - title: 配置策略
-    url: /scout/policy/configure/
-next:
-  title: 查看 Docker Scout 策略状态
-  url: /scout/policy/view/
----
+# 配置策略
 
 
 某些策略类型是可配置的。这意味着您可以使用自己的配置参数创建该策略类型的新自定义版本。如果您需要暂时忽略某个策略，也可以禁用它；如果某个策略不符合您的需求，还可以将其完全删除。

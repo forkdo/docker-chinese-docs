@@ -1,19 +1,4 @@
----
-title: docker model
-url: /reference/cli/docker/model/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
----
+# docker model
 
 **Description:** Docker Model Runner
 

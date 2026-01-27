@@ -1,27 +1,4 @@
----
-title: docker scout quickview
-url: /reference/cli/docker/scout/quickview/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout quickview
-    url: /reference/cli/docker/scout/quickview/
-next:
-  title: docker scout push
-  url: /reference/cli/docker/scout/push/
-prev:
-  title: docker scout recommendations
-  url: /reference/cli/docker/scout/recommendations/
----
+# docker scout quickview
 
 **Description:** Quick overview of an image
 

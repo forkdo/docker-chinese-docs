@@ -1,27 +1,4 @@
----
-title: docker model restart-runner
-url: /reference/cli/docker/model/restart-runner/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model restart-runner
-    url: /reference/cli/docker/model/restart-runner/
-next:
-  title: docker model reinstall-runner
-  url: /reference/cli/docker/model/reinstall-runner/
-prev:
-  title: docker model rm
-  url: /reference/cli/docker/model/rm/
----
+# docker model restart-runner
 
 **Description:** Restart Docker Model Runner (Docker Engine only)
 

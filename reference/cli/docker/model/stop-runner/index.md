@@ -1,27 +1,4 @@
----
-title: docker model stop-runner
-url: /reference/cli/docker/model/stop-runner/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model stop-runner
-    url: /reference/cli/docker/model/stop-runner/
-next:
-  title: docker model status
-  url: /reference/cli/docker/model/status/
-prev:
-  title: docker model tag
-  url: /reference/cli/docker/model/tag/
----
+# docker model stop-runner
 
 **Description:** Stop Docker Model Runner (Docker Engine only)
 

@@ -1,23 +1,4 @@
----
-title: containerd 镜像存储
-url: /desktop/features/containerd/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: containerd 镜像存储
-    url: /desktop/features/containerd/
-next:
-  title: 同步文件共享
-  url: /desktop/features/synchronized-file-sharing/
-prev:
-  title: Wasm 工作负载
-  url: /desktop/features/wasm/
----
+# containerd 镜像存储
 
 
 Docker Desktop 正在向使用 containerd 进行镜像和文件系统管理过渡。本文档概述了 containerd 镜像存储的优势、设置过程以及启用的新功能。

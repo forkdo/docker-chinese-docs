@@ -1,21 +1,4 @@
----
-title: 卡片
-url: /contribute/components/cards/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 卡片
-    url: /contribute/components/cards/
-next:
-  title: 列表
-  url: /contribute/components/lists/
-prev:
-  title: 图标
-  url: /contribute/components/icons/
----
+# 卡片
 
 
 可以使用 `card` 短代码在页面中添加卡片。  

@@ -1,23 +1,4 @@
----
-title: Docker Engine 18.02 发布说明
-url: /engine/release-notes/18.02/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 18.02 发布说明
-    url: /engine/release-notes/18.02/
-next:
-  title: Docker Engine 18.01 发布说明
-  url: /engine/release-notes/18.01/
-prev:
-  title: Docker Engine 18.03 发布说明
-  url: /engine/release-notes/18.03/
----
+# Docker Engine 18.02 发布说明
 
 
 ## 18.02.0-ce

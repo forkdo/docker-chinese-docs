@@ -1,21 +1,4 @@
----
-title: docker scout vex
-url: /reference/cli/docker/scout/vex/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout vex
-    url: /reference/cli/docker/scout/vex/
----
+# docker scout vex
 
 **Description:** Manage VEX attestations on images
 

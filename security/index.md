@@ -1,25 +1,4 @@
----
-title: 开发者安全
-url: /security/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 开发者安全
-    url: /security/
-children:
-  - title: 个人访问令牌
-    url: /security/access-tokens/
-    description: 创建和管理个人 Docker 访问令牌，以实现安全的 CLI 认证和自动化
-  - title: 为您的 Docker 账户启用双因素认证
-    url: /security/2fa/
-    description: 在您的 Docker 账户上启用或禁用双因素认证，以增强安全性和账户保护
-  - title: Docker 安全公告
-    url: /security/security-announcements/
-    description: Docker 安全公告
----
+# 开发者安全
 
 
 Docker 通过其开发者级别的安全功能，帮助您保护本地环境、基础设施和网络。

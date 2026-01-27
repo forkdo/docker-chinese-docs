@@ -1,27 +1,4 @@
----
-title: docker context ls
-url: /reference/cli/docker/context/ls/
-parent:
-  title: docker context
-  url: /reference/cli/docker/context/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker context
-    url: /reference/cli/docker/context/
-  - title: docker context ls
-    url: /reference/cli/docker/context/ls/
-next:
-  title: docker context inspect
-  url: /reference/cli/docker/context/inspect/
-prev:
-  title: docker context rm
-  url: /reference/cli/docker/context/rm/
----
+# docker context ls
 
 **Description:** List contexts
 

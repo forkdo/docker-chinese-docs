@@ -1,27 +1,4 @@
----
-title: 使用内容信任实现自动化
-url: /engine/security/trust/trust_automation/
-parent:
-  title: Docker 中的内容信任
-  url: /engine/security/trust/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: Docker 中的内容信任
-    url: /engine/security/trust/
-  - title: 使用内容信任实现自动化
-    url: /engine/security/trust/trust_automation/
-next:
-  title: 使用 Compose 部署 Notary Server
-  url: /engine/security/trust/deploying_notary/
-prev:
-  title: 内容信任的委托
-  url: /engine/security/trust/trust_delegation/
----
+# 使用内容信任实现自动化
 
 
 Docker 内容信任（Docker Content Trust）通常被集成到现有的自动化系统中。为了让工具能够封装 Docker 并推送受信任的内容，可以向客户端传递特定的环境变量。

@@ -1,23 +1,4 @@
----
-title: 在 Docker Compose 中定义和管理卷
-url: /reference/compose-file/volumes/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 在 Docker Compose 中定义和管理卷
-    url: /reference/compose-file/volumes/
-next:
-  title: 在 Docker Compose 中定义和管理网络
-  url: /reference/compose-file/networks/
-prev:
-  title: Configs 顶级元素
-  url: /reference/compose-file/configs/
----
+# 在 Docker Compose 中定义和管理卷
 
 
 

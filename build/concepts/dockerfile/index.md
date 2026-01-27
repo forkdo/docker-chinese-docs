@@ -1,23 +1,4 @@
----
-title: Dockerfile overview
-url: /build/concepts/dockerfile/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Dockerfile overview
-    url: /build/concepts/dockerfile/
-next:
-  title: Docker Build Overview
-  url: /build/concepts/overview/
-prev:
-  title: Build context
-  url: /build/concepts/context/
----
+# Dockerfile overview
 
 
 <!-- vale Docker.We = NO -->

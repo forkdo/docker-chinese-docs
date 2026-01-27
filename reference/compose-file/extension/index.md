@@ -1,23 +1,4 @@
----
-title: 扩展
-url: /reference/compose-file/extension/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 扩展
-    url: /reference/compose-file/extension/
-next:
-  title: 片段
-  url: /reference/compose-file/fragments/
-prev:
-  title: 插值
-  url: /reference/compose-file/interpolation/
----
+# 扩展
 
 
 

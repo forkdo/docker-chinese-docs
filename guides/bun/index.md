@@ -1,28 +1,4 @@
----
-title: Bun 语言特定指南
-url: /guides/bun/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Bun 语言特定指南
-    url: /guides/bun/
-children:
-  - title: 容器化 Bun 应用程序
-    url: /guides/bun/containerize/
-    description: 了解如何容器化 Bun 应用程序。
-  - title: 为 Bun 开发使用容器
-    url: /guides/bun/develop/
-    description: 了解如何在本地开发您的 Bun 应用程序。
-  - title: 为你的 Bun 应用程序配置 CI/CD
-    url: /guides/bun/configure-ci-cd/
-    description: 学习如何使用 GitHub Actions 为你的 Bun 应用程序配置 CI/CD。
-  - title: 测试你的 Bun 部署
-    url: /guides/bun/deploy/
-    description: 学习如何使用 Kubernetes 在本地进行开发
----
+# Bun 语言特定指南
 
 
 Bun 入门指南教你如何使用 Docker 创建容器化的 Bun 应用程序。

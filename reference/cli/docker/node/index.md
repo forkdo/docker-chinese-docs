@@ -1,19 +1,4 @@
----
-title: docker node
-url: /reference/cli/docker/node/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker node
-    url: /reference/cli/docker/node/
----
+# docker node
 
 **Description:** Manage Swarm nodes
 

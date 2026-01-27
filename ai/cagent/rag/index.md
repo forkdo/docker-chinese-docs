@@ -1,23 +1,4 @@
----
-title: RAG
-url: /ai/cagent/rag/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: RAG
-    url: /ai/cagent/rag/
-next:
-  title: 共享代理
-  url: /ai/cagent/sharing-agents/
-prev:
-  title: 评估 (Evals)
-  url: /ai/cagent/evals/
----
+# RAG
 
 
 当你在 cagent 中配置一个 RAG 源时，你的智能体会自动获得一个针对该知识库的搜索工具。智能体自行决定何时进行搜索，仅检索相关信息，并使用这些信息来回答问题或完成任务——所有这些都无需你手动管理提示词中的内容。

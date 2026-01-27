@@ -1,22 +1,4 @@
----
-title: SSO 身份提供程序常见问题解答
-url: /enterprise/security/single-sign-on/faqs/idp-faqs/
-parent:
-  title: 单点登录概述
-  url: /enterprise/security/single-sign-on/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 单点登录概述
-    url: /enterprise/security/single-sign-on/
-  - title: SSO 身份提供程序常见问题解答
-    url: /enterprise/security/single-sign-on/faqs/idp-faqs/
-next:
-  title: SSO 用户管理常见问题解答
-  url: /enterprise/security/single-sign-on/faqs/users-faqs/
----
+# SSO 身份提供程序常见问题解答
 
 
 ## 我可以在 Docker SSO 中使用多个身份提供程序吗？

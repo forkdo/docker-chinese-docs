@@ -1,27 +1,4 @@
----
-title: Copy image between registries with GitHub Actions
-url: /build/ci/github-actions/copy-image-registries/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Copy image between registries with GitHub Actions
-    url: /build/ci/github-actions/copy-image-registries/
-next:
-  title: Cache management with GitHub Actions
-  url: /build/ci/github-actions/cache/
-prev:
-  title: Export to Docker with GitHub Actions
-  url: /build/ci/github-actions/export-docker/
----
+# Copy image between registries with GitHub Actions
 
 
 [Multi-platform images](../../building/multi-platform.md) built using Buildx can

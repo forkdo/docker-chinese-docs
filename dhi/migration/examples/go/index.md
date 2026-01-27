@@ -1,24 +1,4 @@
----
-title: Go
-url: /dhi/migration/examples/go/
-parent:
-  title: 迁移示例
-  url: /dhi/migration/examples/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 迁移
-    url: /dhi/migration/
-  - title: 迁移示例
-    url: /dhi/migration/examples/
-  - title: Go
-    url: /dhi/migration/examples/go/
-prev:
-  title: Python
-  url: /dhi/migration/examples/python/
----
+# Go
 
 
 本示例展示了如何将 Go 应用程序迁移到 Docker 强化镜像。

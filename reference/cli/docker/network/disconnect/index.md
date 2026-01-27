@@ -1,27 +1,4 @@
----
-title: docker network disconnect
-url: /reference/cli/docker/network/disconnect/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network disconnect
-    url: /reference/cli/docker/network/disconnect/
-next:
-  title: docker network create
-  url: /reference/cli/docker/network/create/
-prev:
-  title: docker network inspect
-  url: /reference/cli/docker/network/inspect/
----
+# docker network disconnect
 
 **Description:** Disconnect a container from a network
 

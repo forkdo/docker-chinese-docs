@@ -1,22 +1,4 @@
----
-title: docker 登录
-url: /reference/cli/docker/login/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker 登录
-    url: /reference/cli/docker/login/
-next:
-  title: docker version
-  url: /reference/cli/docker/version/
----
+# docker 登录
 
 **Description:** Authenticate to a registry
 

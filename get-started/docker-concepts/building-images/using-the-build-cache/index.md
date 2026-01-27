@@ -1,23 +1,4 @@
----
-title: 使用构建缓存
-url: /get-started/docker-concepts/building-images/using-the-build-cache/
-parent:
-  title: 构建镜像
-  url: /get-started/docker-concepts/building-images/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 构建镜像
-    url: /get-started/docker-concepts/building-images/
-  - title: 使用构建缓存
-    url: /get-started/docker-concepts/building-images/using-the-build-cache/
-next:
-  title: 构建、标记和发布镜像
-  url: /get-started/docker-concepts/building-images/build-tag-and-publish-an-image/
-prev:
-  title: 多阶段构建
-  url: /get-started/docker-concepts/building-images/multi-stage-builds/
----
+# 使用构建缓存
 
 
 

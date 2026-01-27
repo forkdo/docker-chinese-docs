@@ -1,27 +1,4 @@
----
-title: docker container diff
-url: /reference/cli/docker/container/diff/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container diff
-    url: /reference/cli/docker/container/diff/
-next:
-  title: docker container create
-  url: /reference/cli/docker/container/create/
-prev:
-  title: docker container exec
-  url: /reference/cli/docker/container/exec/
----
+# docker container diff
 
 **Description:** Inspect changes to files or directories on a container's filesystem
 

@@ -1,38 +1,4 @@
----
-title: Docker Scout 中的策略评估入门
-url: /scout/policy/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 中的策略评估入门
-    url: /scout/policy/
-children:
-  - title: Docker Scout 健康评分
-    url: /scout/policy/scores/
-    description: Docker Scout 健康评分提供对 Docker Hub 镜像的供应链评估，
-根据各种安全策略对其进行从 A 到 F 的评级。
-
-  - title: 使用 Docker Scout 进行修复
-    url: /scout/policy/remediation/
-    description: 了解 Docker Scout 如何通过修复功能自动帮助您提升软件质量
-  - title: 在 CI 中评估策略合规性
-    url: /scout/policy/ci/
-    description: 配置你的持续集成流水线，当镜像的策略评估结果比基线更差时
-使流水线失败
-
-  - title: 查看 Docker Scout 策略状态
-    url: /scout/policy/view/
-    description: Docker Scout 仪表板和 `docker scout policy` 命令可用于查看镜像的策略状态。
-
-  - title: 配置策略
-    url: /scout/policy/configure/
-    description: 了解如何在 Docker Scout 中配置、禁用或删除策略
----
+# Docker Scout 中的策略评估入门
 
 
 在软件供应链管理中，维护制品的安全性和可靠性是重中之重。Docker Scout 中的策略评估在现有分析功能的基础上引入了一层控制。它让您能够为制品定义供应链规则，并帮助您跟踪您的制品随时间推移相对于这些规则和阈值的表现。

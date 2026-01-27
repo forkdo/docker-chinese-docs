@@ -1,15 +1,4 @@
----
-title: 管理未关联的机器
-url: /unassociated-machines/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理未关联的机器
-    url: /unassociated-machines/
----
+# 管理未关联的机器
 
 
 > **关于未关联的机器**

@@ -1,22 +1,4 @@
----
-title: 洞察 (Insights)
-url: /admin/organization/insights/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 洞察 (Insights)
-    url: /admin/organization/insights/
-next:
-  title: 组织信息
-  url: /admin/organization/general-settings/
----
+# 洞察 (Insights)
 
 
 

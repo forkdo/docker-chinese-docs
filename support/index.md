@@ -1,18 +1,7 @@
----
-title: 获取 Docker 产品支持
-url: /support/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 获取 Docker 产品支持
-    url: /support/
----
+# 获取 Docker 产品支持
 
 
-Docker 根据您的订阅级别和需求提供多种支持渠道。
+Docker 提供多种支持渠道，具体取决于您的订阅级别和需求。
 
 ## 付费订阅支持
 
@@ -34,9 +23,9 @@ Docker 根据您的订阅级别和需求提供多种支持渠道。
 
 | 级别 | 描述 |
 | :--- | :--- |
-| 严重 | 影响众多客户或单个组织内所有用户的广泛或全公司范围的服务中断。业务运营已停止，且无可用解决方案。 |
-| 高 | 团队或部门级别的影响，阻止重要用户访问核心功能。存在严重的业务影响，且无可用解决方案。 |
-| 中等 | 个人用户或小组影响，导致部分功能丧失。业务运营仍在继续，通常有可用解决方案，但生产力降低。 |
+| 严重 | 影响众多客户或单个组织内所有用户的广泛或全公司范围的服务中断。业务运营已停止，且无可用解决方法。 |
+| 高 | 团队或部门级别的影响，阻止重要用户访问核心功能。存在严重的业务影响，且无可用解决方法。 |
+| 中等 | 个人用户或小团体影响，导致部分功能丧失。业务运营继续，通常有可用解决方法，但生产力降低。 |
 
 ### 请求支持
 
@@ -48,18 +37,18 @@ Docker 根据您的订阅级别和需求提供多种支持渠道。
 
 ## 社区支持
 
-所有 Docker 用户均可通过社区资源寻求支持，Docker 或社区将尽最大努力回应：
+所有 Docker 用户均可通过社区资源寻求支持，Docker 或社区将尽最大努力进行响应：
 
 - [Docker 社区论坛](https://forums.docker.com/)
 - [Docker 社区 Slack](http://dockr.ly/comm-slack)
 
 ## Docker Desktop 支持
 
-Docker Desktop 支持仅对付费订阅用户提供。
+Docker Desktop 支持仅适用于付费订阅用户。
 
 ### 支持范围
 
-**支持范围**
+**Covered**
 
 
 
@@ -71,8 +60,8 @@ Docker Desktop 支持包括：
 - 登录问题
 - 推送或拉取问题，包括速率限制
 - 应用程序崩溃或意外行为
-- 自动构建
-- 基本产品“如何使用”问题
+- 自动化构建
+- 基本产品“操作方法”问题
 
 **Windows 特定：**
 
@@ -80,13 +69,13 @@ Docker Desktop 支持包括：
 - 启用 Windows 功能
 - 在[某些 VM 或 VDI 环境](/manuals/desktop/setup/vm-vdi.md)中运行（仅限 Docker Business）
 
-**不支持范围**
+**Not covered**
 
 
 
 Docker Desktop 支持不包括：
 
-- 不受支持的操作系统，包括测试版/预览版
+- 不支持的操作系统，包括测试版/预览版
 - 使用仿真运行不同架构的容器
 - Docker Engine、Docker CLI 或其他捆绑的 Linux 组件
 - Kubernetes
@@ -104,19 +93,19 @@ Docker Desktop 支持不包括：
 
 > [!NOTE]
 >
-> 仅在 [VM 或 VDI 环境中运行 Docker Desktop](/manuals/desktop/setup/vm-vdi.md) 的支持仅对 Docker Business 客户提供。
+> 仅 Docker Business 客户可获得[在 VM 或 VDI 环境中运行 Docker Desktop](/manuals/desktop/setup/vm-vdi.md) 的支持。
 
 
 
 ### 支持的版本
 
-- Docker Business：最新版本的六个月内的版本（仅对最新版本应用修复）
+- Docker Business：最新版本六个月内的版本（仅对最新版本应用修复）
 - Docker Pro 和 Team：仅最新版本
 
 ### 机器数量
 
 - Docker Pro：一台机器
-- Docker Team：等于订阅席位的机器数量
+- Docker Team：机器数量等于订阅席位
 - Docker Business：无限机器
 
 ### 支持的操作系统
@@ -127,13 +116,11 @@ Docker Desktop 支持不包括：
 
 ### 社区资源
 
-- [Docker Desktop for Windows](https://github.com/docker/for-win)
-- [Docker Desktop for Mac](https://github.com/docker/for-mac)
-- [Docker Desktop for Linux](https://github.com/docker/desktop-linux)
+- [Docker Desktop 问题跟踪器](https://github.com/docker/desktop-feedback)
 
 ### 诊断数据和隐私
 
-上传诊断信息时，诊断包可能包含用户名和 IP 地址等个人数据。诊断包仅可由直接参与诊断问题的 Docker, Inc. 员工访问。
+上传诊断信息时，诊断包可能包含用户名和 IP 地址等个人数据。只有直接参与诊断问题的 Docker, Inc. 员工才能访问诊断包。
 
 默认情况下，Docker, Inc. 会在 30 天后删除上传的诊断包。您可以通过指定诊断 ID 或您的 GitHub ID 请求删除诊断包。Docker, Inc. 仅使用数据调查特定用户问题，但可能会得出高级（非个人）指标。
 

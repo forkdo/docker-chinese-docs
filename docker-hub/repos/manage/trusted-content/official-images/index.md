@@ -1,27 +1,4 @@
----
-title: Docker 官方镜像
-url: /docker-hub/repos/manage/trusted-content/official-images/
-parent:
-  title: 可信内容
-  url: /docker-hub/repos/manage/trusted-content/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 可信内容
-    url: /docker-hub/repos/manage/trusted-content/
-  - title: Docker 官方镜像
-    url: /docker-hub/repos/manage/trusted-content/official-images/
-next:
-  title: Docker Verified Publisher Program
-  url: /docker-hub/repos/manage/trusted-content/dvp-program/
-prev:
-  title: Docker 赞助的开源计划
-  url: /docker-hub/repos/manage/trusted-content/dsos-program/
----
+# Docker 官方镜像
 
 
 > [!NOTE]

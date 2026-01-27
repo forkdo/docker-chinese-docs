@@ -1,24 +1,4 @@
----
-title: 批量迁移镜像
-url: /docker-hub/repos/manage/hub-images/bulk-migrate/
-parent:
-  title: 镜像管理
-  url: /docker-hub/repos/manage/hub-images/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 镜像管理
-    url: /docker-hub/repos/manage/hub-images/
-  - title: 批量迁移镜像
-    url: /docker-hub/repos/manage/hub-images/bulk-migrate/
-next:
-  title: 在仓库之间移动镜像
-  url: /docker-hub/repos/manage/hub-images/move/
----
+# 批量迁移镜像
 
 
 本指南介绍如何在 Docker Hub 组织或命名空间之间批量迁移 Docker 镜像。无论您是合并仓库、更改组织结构，还是将镜像迁移到新账户，这些技术都能帮助您高效迁移，同时保持镜像完整性。

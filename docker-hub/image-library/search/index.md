@@ -1,22 +1,4 @@
----
-title: Docker Hub 搜索
-url: /docker-hub/image-library/search/
-parent:
-  title: 内容库
-  url: /docker-hub/image-library/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 内容库
-    url: /docker-hub/image-library/
-  - title: Docker Hub 搜索
-    url: /docker-hub/image-library/search/
-prev:
-  title: 可信内容
-  url: /docker-hub/image-library/trusted-content/
----
+# Docker Hub 搜索
 
 
 [Docker Hub 搜索界面](https://hub.docker.com/search) 让您能够探索数百万资源。为了帮助您准确找到所需内容，它提供了多种筛选器，帮助您缩小结果范围或发现不同类型的内容。

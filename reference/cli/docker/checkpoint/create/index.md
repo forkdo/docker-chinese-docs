@@ -1,24 +1,4 @@
----
-title: docker checkpoint create
-url: /reference/cli/docker/checkpoint/create/
-parent:
-  title: docker checkpoint
-  url: /reference/cli/docker/checkpoint/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker checkpoint
-    url: /reference/cli/docker/checkpoint/
-  - title: docker checkpoint create
-    url: /reference/cli/docker/checkpoint/create/
-prev:
-  title: docker checkpoint ls
-  url: /reference/cli/docker/checkpoint/ls/
----
+# docker checkpoint create
 
 **Description:** Create a checkpoint from a running container
 

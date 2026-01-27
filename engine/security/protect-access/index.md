@@ -1,25 +1,4 @@
----
-title: 保护 Docker 守护进程套接字
-url: /engine/security/protect-access/
-parent:
-  title: Docker Engine 安全
-  url: /engine/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: 保护 Docker 守护进程套接字
-    url: /engine/security/protect-access/
-next:
-  title: 使用证书验证仓库客户端
-  url: /engine/security/certificates/
-prev:
-  title: 杀毒软件与 Docker
-  url: /engine/security/antivirus/
----
+# 保护 Docker 守护进程套接字
 
 
 默认情况下，Docker 通过一个非联网的 UNIX 套接字运行。它也可以选择使用 SSH 或 TLS (HTTPS) 套接字进行通信。

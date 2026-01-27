@@ -1,20 +1,4 @@
----
-title: 安装 Docker Scout
-url: /scout/install/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 安装 Docker Scout
-    url: /scout/install/
-prev:
-  title: Docker Scout 快速入门
-  url: /scout/quickstart/
----
+# 安装 Docker Scout
 
 
 Docker Scout CLI 插件随 Docker Desktop 预装。

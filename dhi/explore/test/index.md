@@ -1,25 +1,4 @@
----
-title: Docker 强化镜像如何进行测试
-url: /dhi/explore/test/
-parent:
-  title: 探索 Docker Hardened Images
-  url: /dhi/explore/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 探索 Docker Hardened Images
-    url: /dhi/explore/
-  - title: Docker 强化镜像如何进行测试
-    url: /dhi/explore/test/
-next:
-  title: Docker Hardened Images 可用类型
-  url: /dhi/explore/available/
-prev:
-  title: 了解 Docker Hardened Images 的角色和职责
-  url: /dhi/explore/responsibility/
----
+# Docker 强化镜像如何进行测试
 
 
 Docker 强化镜像（DHI）旨在安全、精简并可用于生产环境。为了确保其可靠性和安全性，Docker 采用了全面的测试策略，您可以使用签名证明和开源工具独立验证这些策略。

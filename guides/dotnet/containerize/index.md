@@ -1,20 +1,4 @@
----
-title: 容器化 .NET 应用程序
-url: /guides/dotnet/containerize/
-parent:
-  title: .NET 语言特定指南
-  url: /guides/dotnet/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: .NET 语言特定指南
-    url: /guides/dotnet/
-  - title: 容器化 .NET 应用程序
-    url: /guides/dotnet/containerize/
-prev:
-  title: 使用容器进行 .NET 开发
-  url: /guides/dotnet/develop/
----
+# 容器化 .NET 应用程序
 
 
 ## 先决条件

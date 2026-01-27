@@ -1,30 +1,10 @@
----
-title: docker sandbox 删除
-url: /reference/cli/docker/sandbox/rm/
-parent:
-  title: Docker 沙箱
-  url: /reference/cli/docker/sandbox/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: Docker 沙箱
-    url: /reference/cli/docker/sandbox/
-  - title: docker sandbox 删除
-    url: /reference/cli/docker/sandbox/rm/
-next:
-  title: docker sandbox run
-  url: /reference/cli/docker/sandbox/run/
----
+# docker sandbox 删除
 
 **Description:** Remove one or more sandboxes
 
-**Usage:** `docker sandbox rm [OPTIONS] SANDBOX [SANDBOX...]`
+**Usage:** `docker sandbox rm SANDBOX [SANDBOX...]`
 
-
+**Aliases:** `docker sandbox rm`, `docker sandbox remove`
 
 
 
@@ -37,9 +17,11 @@ next:
 
 ## Description
 
-Remove one or more sandboxes by their IDs or names.
+Remove one or more sandboxes and all their associated resources.
 
-This command removes the specified sandboxes. Each sandbox is identified by its unique ID or name.
+This command will:
+- Check if the sandbox exists
+- Remove the sandbox and clean up its associated resources
 
 
 

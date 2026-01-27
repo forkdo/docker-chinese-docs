@@ -1,23 +1,4 @@
----
-title: 开发你的 Rust 应用程序
-url: /guides/rust/develop/
-parent:
-  title: Rust 语言专属指南
-  url: /guides/rust/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Rust 语言专属指南
-    url: /guides/rust/
-  - title: 开发你的 Rust 应用程序
-    url: /guides/rust/develop/
-next:
-  title: 以容器方式运行你的 Rust 镜像
-  url: /guides/rust/run-containers/
-prev:
-  title: 为您的 Rust 应用程序配置 CI/CD
-  url: /guides/rust/configure-ci-cd/
----
+# 开发你的 Rust 应用程序
 
 
 ## 先决条件

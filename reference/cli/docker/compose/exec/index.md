@@ -1,27 +1,4 @@
----
-title: docker compose exec
-url: /reference/cli/docker/compose/exec/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose exec
-    url: /reference/cli/docker/compose/exec/
-next:
-  title: docker compose events
-  url: /reference/cli/docker/compose/events/
-prev:
-  title: docker compose images
-  url: /reference/cli/docker/compose/images/
----
+# docker compose exec
 
 **Description:** Execute a command in a running container
 

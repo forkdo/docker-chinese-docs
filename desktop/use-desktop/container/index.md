@@ -1,22 +1,4 @@
----
-title: 探索 Docker Desktop 中的“容器”视图
-url: /desktop/use-desktop/container/
-parent:
-  title: 探索 Docker Desktop
-  url: /desktop/use-desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 探索 Docker Desktop
-    url: /desktop/use-desktop/
-  - title: 探索 Docker Desktop 中的“容器”视图
-    url: /desktop/use-desktop/container/
-prev:
-  title: 探索 Docker Desktop 中的 Images 视图
-  url: /desktop/use-desktop/images/
----
+# 探索 Docker Desktop 中的“容器”视图
 
 
 “容器”视图列出了所有正在运行和已停止的容器和应用程序。它提供了一个简洁的界面来管理容器的生命周期、与运行中的应用程序交互以及检查 Docker 对象（包括 Docker Compose 应用程序）。

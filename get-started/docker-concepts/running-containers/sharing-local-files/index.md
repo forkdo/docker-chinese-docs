@@ -1,21 +1,4 @@
----
-title: 与容器共享本地文件
-url: /get-started/docker-concepts/running-containers/sharing-local-files/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 与容器共享本地文件
-    url: /get-started/docker-concepts/running-containers/sharing-local-files/
-next:
-  title: 持久化容器数据
-  url: /get-started/docker-concepts/running-containers/persisting-container-data/
-prev:
-  title: 多容器应用
-  url: /get-started/docker-concepts/running-containers/multi-container-applications/
----
+# 与容器共享本地文件
 
 
 

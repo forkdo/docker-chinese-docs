@@ -1,20 +1,4 @@
----
-title: 旧版本
-url: /reference/compose-file/legacy-versions/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 旧版本
-    url: /reference/compose-file/legacy-versions/
-next:
-  title: Compose 开发规范
-  url: /reference/compose-file/develop/
----
+# 旧版本
 
 
 Compose 文件参考的旧版本已迁移至 [Compose 仓库的 V1 分支](https://github.com/docker/compose/tree/v1/docs)。这些版本已不再进行主动维护。

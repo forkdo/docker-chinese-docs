@@ -1,23 +1,7 @@
----
-title: MongoDB 样本
-url: /reference/samples/mongodb/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: MongoDB 样本
-    url: /reference/samples/mongodb/
-next:
-  title: Minecraft 示例
-  url: /reference/samples/minecraft/
-prev:
-  title: MS-SQL 示例
-  url: /reference/samples/ms-sql/
----
+# MongoDB 样本
 
-
-
+| Name | Description |
+|------|-------------|
+| [NGINX / Flask / MongoDB](https://github.com/docker/awesome-compose/tree/master/nginx-flask-mongo) | A sample Python/Flask application with Nginx proxy and a Mongo database. |
+| [React / Express / MongoDB](https://github.com/docker/awesome-compose/tree/master/react-express-mongodb) | A sample React application with a Node.js backend and a Mongo database. |
+| [slack-clone-docker](https://github.com/dockersamples/slack-clone-docker) | A sample Slack Clone app built with the MERN stack. |

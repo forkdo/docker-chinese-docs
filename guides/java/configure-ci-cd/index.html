@@ -10,7 +10,7 @@
   </title>
 
 
-<meta name="description" content="了解如何为 Java 应用程序配置 CI/CD" />
+<meta name="description" content="了解如何为你的 Java 应用配置 CI/CD" />
 <meta
   name="keywords"
   content="java, CI/CD, local, development"
@@ -18,7 +18,10 @@
 <link rel="canonical" href="/guides/java/configure-ci-cd/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解如何为 Java 应用程序配置 CI/CD"
+  content="了解如何为你的 Java 应用配置 CI/CD"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="配置 CI/CD" />
-<meta property="og:description" content="了解如何为 Java 应用程序配置 CI/CD" />
+<meta property="og:description" content="了解如何为你的 Java 应用配置 CI/CD" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-07-18 07:49:29 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-07-18 07:49:29 &#43;0100 &#43;0100"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-07-18T07:49:29+01:00","description":"了解如何为 Java 应用程序配置 CI/CD","headline":"配置 CI/CD","isPartOf":{"@id":"/guides/java/","@type":"WebPage","name":"Java"},"keywords":"java, CI/CD, local, development","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/java/configure-ci-cd/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/java/","name":"Java"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/java/configure-ci-cd/","name":"配置 CI/CD"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"guides","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"了解如何为你的 Java 应用配置 CI/CD","headline":"配置 CI/CD","isPartOf":{"@id":"/guides/java/","@type":"WebPage","name":"Java"},"keywords":"java, CI/CD, local, development","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/guides/java/configure-ci-cd/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/guides/","name":"指南"},"position":1},{"@type":"ListItem","item":{"@id":"/guides/java/","name":"Java"},"position":2},{"@type":"ListItem","item":{"@id":"/guides/java/configure-ci-cd/","name":"配置 CI/CD"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/guides/java/configure-ci-cd/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -617,7 +626,7 @@ if (resultsLength > 5) {
                 action: 'AskGordon',
                 ...(this.includePageContext && {
                   page_url: window.location.href,
-                  page_title: &#34;为 Java 应用程序配置 CI/CD&#34;
+                  page_title: &#34;为你的 Java 应用配置 CI/CD&#34;
                 })
               }
             }
@@ -1502,7 +1511,7 @@ if (resultsLength > 5) {
 </nav>
 
     <div class="flex items-start justify-between">
-      <h1 data-pagefind-weight="10">为 Java 应用程序配置 CI/CD</h1>
+      <h1 data-pagefind-weight="10">为你的 Java 应用配置 CI/CD</h1>
       <div class="md-dropdown ml-auto hidden lg:block">
         <div class="ml-3 relative inline-block" x-data="{ open: false }" @click.outside="open = false">
   <div class="flex shadow rounded-sm overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -1653,18 +1662,18 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93"
-            >第一步：创建仓库</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4%e4%b8%80%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93"
+            >步骤一：创建仓库</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第二步：设置工作流</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4%e4%ba%8c%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤二：设置工作流</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第三步：运行工作流</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4%e4%b8%89%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤三：运行工作流</a
           >
         </li>
         <li>
@@ -1690,7 +1699,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>完成本指南前面的部分，从<a class="link" href="/guides/java/containerize/">容器化您的应用程序</a>开始。您必须拥有 <a class="link" href="https://github.com/signup" rel="noopener">GitHub</a> 账户和 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker</a> 账户才能完成本部分。</p>
+<p>完成本指南的前面部分，从 <a class="link" href="/guides/java/containerize/">容器化你的应用</a> 开始。你必须拥有 <a class="link" href="https://github.com/signup" rel="noopener">GitHub</a> 账户和已验证的 <a class="link" href="https://hub.docker.com/signup" rel="noopener">Docker</a> 账户才能完成本部分。</p>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="概述">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%a6%82%e8%bf%b0">
@@ -1698,41 +1707,46 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>在本部分中，您将学习如何设置和使用 GitHub Actions 来构建并将 Docker 镜像推送到 Docker Hub。您将完成以下步骤：</p>
+<p>在本部分中，你将学习如何设置和使用 GitHub Actions 来构建并将你的 Docker 镜像推送到 Docker Hub。你将完成以下步骤：</p>
 <ol>
-<li>在 GitHub 上创建新仓库。</li>
+<li>在 GitHub 上创建一个新仓库。</li>
 <li>定义 GitHub Actions 工作流。</li>
 <li>运行工作流。</li>
 </ol>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="第一步创建仓库">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93">
-    第一步：创建仓库
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤一创建仓库">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4%e4%b8%80%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93">
+    步骤一：创建仓库
   </a>
 </h2>
 
-<p>创建 GitHub 仓库，配置 Docker Hub 凭据，并推送源代码。</p>
+<p>创建一个 GitHub 仓库，配置 Docker Hub 凭据，并推送你的源代码。</p>
 <ol>
 <li>
-<p>在 GitHub 上<a class="link" href="https://github.com/new" rel="noopener">创建新仓库</a>。</p>
+<p>在 GitHub 上 <a class="link" href="https://github.com/new" rel="noopener">创建一个新仓库</a>。</p>
 </li>
 <li>
-<p>打开仓库的 <strong>Settings</strong>（设置），然后转到 <strong>Secrets and variables</strong>（机密和变量）&gt; <strong>Actions</strong>。</p>
+<p>打开仓库的 <strong>Settings</strong>，然后转到 <strong>Secrets and variables</strong> &gt;
+<strong>Actions</strong>。</p>
 </li>
 <li>
-<p>创建一个名为 <code>DOCKER_USERNAME</code> 的新 <strong>Repository variable</strong>（仓库变量），并将您的 Docker ID 作为其值。</p>
+<p>创建一个名为 <code>DOCKER_USERNAME</code> 的新 <strong>Repository variable</strong>，并使用你的 Docker ID 作为值。</p>
 </li>
 <li>
-<p>为 Docker Hub 创建一个新的
+<p>为 Docker Hub 创建一个新的 
     
   
-  <a class="link" href="/security/access-tokens/#create-an-access-token">个人访问令牌 (PAT)</a>。您可以将此令牌命名为 <code>docker-tutorial</code>。确保访问权限包括读取和写入权限。</p>
+  <a class="link" href="/security/access-tokens/#create-an-access-token">Personal Access Token (PAT)</a>。你可以将此令牌命名为 <code>docker-tutorial</code>。确保访问权限包括读取和写入。</p>
 </li>
 <li>
-<p>将 PAT 作为 <strong>Repository secret</strong>（仓库机密）添加到您的 GitHub 仓库中，名称为 <code>DOCKERHUB_TOKEN</code>。</p>
+<p>将 PAT 作为 <strong>Repository secret</strong> 添加到你的 GitHub 仓库中，命名为
+<code>DOCKERHUB_TOKEN</code>。</p>
 </li>
 <li>
-<p>在本地机器上的本地仓库中，运行以下命令将 origin 更改为刚刚创建的仓库。请确保将 <code>your-username</code> 替换为您的 GitHub 用户名，将 <code>your-repository</code> 替换为您创建的仓库名称。</p>
+<p>在你机器上的本地仓库中，运行以下命令来更改
+origin 为你刚刚创建的仓库。确保你将
+<code>your-username</code> 更改为你的 GitHub 用户名，将 <code>your-repository</code> 更改为
+你创建的仓库名称。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1772,7 +1786,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>运行以下命令将本地仓库暂存、提交并推送到 GitHub。</p>
+<p>运行以下命令来暂存、提交并将你的本地仓库推送到 GitHub。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -1815,24 +1829,24 @@ if (resultsLength > 5) {
 </li>
 </ol>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="第二步设置工作流">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81">
-    第二步：设置工作流
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤二设置工作流">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4%e4%ba%8c%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81">
+    步骤二：设置工作流
   </a>
 </h2>
 
-<p>设置 GitHub Actions 工作流以构建、测试并将镜像推送到 Docker Hub。</p>
+<p>为构建、测试并将镜像推送到 Docker Hub 设置你的 GitHub Actions 工作流。</p>
 <ol>
 <li>
-<p>转到 GitHub 上的仓库，然后选择 <strong>Actions</strong> 选项卡。
-该项目已经有一个 <code>maven-build</code> 工作流，用于使用 Maven 构建和测试您的 Java 应用程序。如果需要，您可以选择禁用此工作流，因为本指南中不会使用它。您将创建一个新的替代工作流来构建、测试并推送镜像。</p>
+<p>转到 GitHub 上的你的仓库，然后选择 <strong>Actions</strong> 选项卡。
+项目已经有一个 <code>maven-build</code> 工作流，使用 Maven 构建和测试你的 Java 应用。如果需要，你可以选择性地禁用此工作流，因为你在本指南中不会使用它。你将创建一个新的替代工作流来构建、测试并推送你的镜像。</p>
 </li>
 <li>
-<p>选择 <strong>New workflow</strong>（新建工作流）。</p>
+<p>选择 <strong>New workflow</strong>。</p>
 </li>
 <li>
-<p>选择 <strong>set up a workflow yourself</strong>（自行设置工作流）。</p>
-<p>这会将您带到一个页面，用于在仓库中创建新的 GitHub Actions 工作流文件，默认位于 <code>.github/workflows/main.yml</code>。</p>
+<p>选择 <strong>set up a workflow yourself</strong>。</p>
+<p>这会带你到一个页面，在你的仓库中创建一个新的 GitHub actions 工作流文件，默认在 <code>.github/workflows/main.yml</code> 下。</p>
 </li>
 <li>
 <p>在编辑器窗口中，复制并粘贴以下 YAML 配置。</p>
@@ -1904,29 +1918,32 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>有关 <code>docker/build-push-action</code> 的 YAML 语法的更多信息，请参阅 <a class="link" href="https://github.com/docker/build-push-action/blob/master/README.md" rel="noopener">GitHub Action README</a>。</p>
+<p>有关 <code>docker/build-push-action</code> 的 YAML 语法的更多信息，
+请参阅 <a class="link" href="https://github.com/docker/build-push-action/blob/master/README.md" rel="noopener">GitHub Action README</a>。</p>
 </li>
 </ol>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="第三步运行工作流">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81">
-    第三步：运行工作流
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="步骤三运行工作流">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%ad%a5%e9%aa%a4%e4%b8%89%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81">
+    步骤三：运行工作流
   </a>
 </h2>
 
 <p>保存工作流文件并运行作业。</p>
 <ol>
 <li>
-<p>选择 <strong>Commit changes...</strong>（提交更改...）并将更改推送到 <code>main</code> 分支。</p>
+<p>选择 <strong>Commit changes...</strong> 并将更改推送到 <code>main</code> 分支。</p>
 <p>推送提交后，工作流会自动启动。</p>
 </li>
 <li>
 <p>转到 <strong>Actions</strong> 选项卡。它会显示工作流。</p>
-<p>选择工作流可以查看其所有步骤的细分。</p>
+<p>选择工作流会显示所有步骤的详细信息。</p>
 </li>
 <li>
-<p>工作流完成后，转到 <a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 上的仓库</a>。</p>
-<p>如果您在该列表中看到新仓库，则表示 GitHub Actions 已成功将镜像推送到 Docker Hub。</p>
+<p>当工作流完成后，转到你的
+<a class="link" href="https://hub.docker.com/repositories" rel="noopener">Docker Hub 上的仓库</a>。</p>
+<p>如果你在该列表中看到新仓库，这意味着 GitHub Actions
+已成功将镜像推送到 Docker Hub。</p>
 </li>
 </ol>
 
@@ -1936,18 +1953,18 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>在本部分中，您学习了如何为应用程序设置 GitHub Actions 工作流。</p>
+<p>在本部分中，你学习了如何为你的应用设置 GitHub Actions 工作流。</p>
 <p>相关信息：</p>
 <ul>
 <li>
     
   
-  <a class="link" href="/guides/gha/">GitHub Actions 简介</a></li>
+  <a class="link" href="/guides/gha/">GitHub Actions 介绍</a></li>
 <li>
     
   
   <a class="link" href="/build/ci/github-actions/">Docker Build GitHub Actions</a></li>
-<li><a class="link" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" rel="noopener">GitHub Actions 工作流语法</a></li>
+<li><a class="link" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" rel="noopener">GitHub Actions 的工作流语法</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="下一步">
@@ -1956,7 +1973,7 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>接下来，了解如何在部署之前在 Kubernetes 上本地测试和调试工作负载。</p>
+<p>接下来，了解如何在部署前在 Kubernetes 上本地测试和调试你的工作负载。</p>
 
   </article>
   <div class="-mt-8 hidden min-w-48 flex-1 lg:block">
@@ -2024,18 +2041,18 @@ if (resultsLength > 5) {
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93"
-            >第一步：创建仓库</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4%e4%b8%80%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93"
+            >步骤一：创建仓库</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第二步：设置工作流</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4%e4%ba%8c%e8%ae%be%e7%bd%ae%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤二：设置工作流</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
-            >第三步：运行工作流</a
+          <a class="link lg:no-underline" href="#%e6%ad%a5%e9%aa%a4%e4%b8%89%e8%bf%90%e8%a1%8c%e5%b7%a5%e4%bd%9c%e6%b5%81"
+            >步骤三：运行工作流</a
           >
         </li>
         <li>
@@ -2072,9 +2089,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2089,7 +2108,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2104,7 +2123,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2119,7 +2138,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2134,7 +2153,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2150,26 +2169,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

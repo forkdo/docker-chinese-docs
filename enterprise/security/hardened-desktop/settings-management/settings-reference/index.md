@@ -1,24 +1,4 @@
----
-title: 设置参考
-url: /enterprise/security/hardened-desktop/settings-management/settings-reference/
-parent:
-  title: Settings Management
-  url: /enterprise/security/hardened-desktop/settings-management/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: Settings Management
-    url: /enterprise/security/hardened-desktop/settings-management/
-  - title: 设置参考
-    url: /enterprise/security/hardened-desktop/settings-management/settings-reference/
-next:
-  title: 桌面设置合规性报告
-  url: /enterprise/security/hardened-desktop/settings-management/compliance-reporting/
----
+# 设置参考
 
 
 本参考文档记录了所有 Docker Desktop 设置和配置选项。使用此文档可以了解不同配置方法和平台上的设置行为。其组织结构与 Docker Desktop GUI 相匹配。

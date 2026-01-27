@@ -1,25 +1,4 @@
----
-title: 在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine
-url: /engine/install/raspberry-pi-os/
-parent:
-  title: 安装 Docker Engine
-  url: /engine/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 安装 Docker Engine
-    url: /engine/install/
-  - title: 在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine
-    url: /engine/install/raspberry-pi-os/
-next:
-  title: 在 Fedora 上安装 Docker Engine
-  url: /engine/install/fedora/
-prev:
-  title: 在 CentOS 上安装 Docker Engine
-  url: /engine/install/centos/
----
+# 在 Raspberry Pi OS (32-bit / armhf) 上安装 Docker Engine
 
 
 > [!WARNING]
@@ -174,15 +153,15 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
    # 列出可用版本：
    $ apt-cache madison docker-ce | awk '{ print $3 }'
 
-   5:29.1.4-1~raspbian.12~bookworm
-   5:29.1.3-1~raspbian.12~bookworm
+   5:29.2.0-1~raspbian.12~bookworm
+   5:29.1.5-1~raspbian.12~bookworm
    ...
    ```
 
    选择所需的版本并安装：
 
    ```console
-   $ VERSION_STRING=5:29.1.4-1~raspbian.12~bookworm
+   $ VERSION_STRING=5:29.2.0-1~raspbian.12~bookworm
    $ sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 

@@ -1,23 +1,4 @@
----
-title: 构建依赖镜像
-url: /compose/how-tos/dependent-images/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 构建依赖镜像
-    url: /compose/how-tos/dependent-images/
-next:
-  title: 使用 Compose Watch
-  url: /compose/how-tos/file-watch/
-prev:
-  title: 在 Docker Compose 中安全管理机密信息
-  url: /compose/how-tos/use-secrets/
----
+# 构建依赖镜像
 
 
 

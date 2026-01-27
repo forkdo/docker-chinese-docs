@@ -1,40 +1,4 @@
----
-title: Docker MCP Catalog and Toolkit
-url: /ai/mcp-catalog-and-toolkit/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker MCP Catalog and Toolkit
-    url: /ai/mcp-catalog-and-toolkit/
-children:
-  - title: Docker MCP Toolkit 入门指南
-    url: /ai/mcp-catalog-and-toolkit/get-started/
-    description: 了解如何快速安装和使用 MCP Toolkit 来设置服务器和客户端。
-  - title: Docker MCP 目录
-    url: /ai/mcp-catalog-and-toolkit/catalog/
-    description: 了解 MCP 目录的优势、使用方法以及如何贡献内容
-  - title: Docker MCP Toolkit
-    url: /ai/mcp-catalog-and-toolkit/toolkit/
-    description: 使用 MCP Toolkit 设置 MCP 服务器和 MCP 客户端。
-  - title: 动态 MCP
-    url: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
-    description: 使用自然语言通过动态 MCP 服务器按需发现并添加 MCP 服务器
-  - title: MCP Gateway
-    url: /ai/mcp-catalog-and-toolkit/mcp-gateway/
-    description: Docker 的 MCP Gateway 通过容器化的 MCP 服务器，为 AI 工具提供安全、集中且可扩展的编排，赋能开发者、运维人员和安全团队。
-  - title: Docker Hub MCP 服务器
-    url: /ai/mcp-catalog-and-toolkit/hub-mcp/
-    description: Docker Hub MCP 服务器使 LLM 能够访问 Docker Hub 镜像元数据，以实现内容发现。
-  - title: 安全常见问题解答
-    url: /ai/mcp-catalog-and-toolkit/faqs/
-    description: 与 MCP 目录和工具包安全性相关的常见问题
-  - title: E2B 沙盒
-    url: /ai/mcp-catalog-and-toolkit/e2b-sandboxes/
-    description: 专为 AI 智能体设计的基于云的安全沙盒，内置 Docker MCP Gateway 集成
----
+# Docker MCP Catalog and Toolkit
 
 
 

@@ -1,18 +1,4 @@
----
-title: 源文件规范
-url: /contribute/file-conventions/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 源文件规范
-    url: /contribute/file-conventions/
-prev:
-  title: 内容中的 UI 元素
-  url: /contribute/ui/
----
+# 源文件规范
 
 
 ## 文件名

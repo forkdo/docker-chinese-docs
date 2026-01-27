@@ -1,23 +1,4 @@
----
-title: 演示：设置和使用 Docker Compose
-url: /guides/docker-compose/setup/
-parent:
-  title: 使用 Docker Compose 定义和运行多容器应用程序
-  url: /guides/docker-compose/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Compose 定义和运行多容器应用程序
-    url: /guides/docker-compose/
-  - title: 演示：设置和使用 Docker Compose
-    url: /guides/docker-compose/setup/
-next:
-  title: 为什么使用 Docker Compose？
-  url: /guides/docker-compose/why/
-prev:
-  title: 常见挑战与问题
-  url: /guides/docker-compose/common-questions/
----
+# 演示：设置和使用 Docker Compose
 
 
 本 Docker Compose 演示展示了如何编排多容器应用程序环境，简化开发和部署流程。

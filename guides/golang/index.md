@@ -1,34 +1,4 @@
----
-title: Go 语言专用指南
-url: /guides/golang/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Go 语言专用指南
-    url: /guides/golang/
-children:
-  - title: 构建您的 Go 镜像
-    url: /guides/golang/build-images/
-    description: 学习如何通过编写 Dockerfile 来构建您的第一个 Docker 镜像
-  - title: 以容器形式运行 Go 镜像
-    url: /guides/golang/run-containers/
-    description: 学习如何以容器形式运行镜像。
-  - title: 使用容器进行 Go 开发
-    url: /guides/golang/develop/
-    description: 了解如何在本地开发你的应用。
-  - title: 使用 Go test 运行测试
-    url: /guides/golang/run-tests/
-    description: 如何在容器中构建并运行 Go 测试
-  - title: 为您的 Go 应用程序配置 CI/CD
-    url: /guides/golang/configure-ci-cd/
-    description: 了解如何为您的 Go 应用程序配置 CI/CD
-  - title: 测试你的 Go 部署
-    url: /guides/golang/deploy/
-    description: 了解如何部署你的 Go 应用程序
----
+# Go 语言专用指南
 
 
 本指南将向你展示如何使用 Docker 创建、测试和部署容器化的 Go 应用程序。

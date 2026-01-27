@@ -1,27 +1,4 @@
----
-title: docker buildx build
-url: /reference/cli/docker/buildx/build/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx build
-    url: /reference/cli/docker/buildx/build/
-next:
-  title: docker buildx bake
-  url: /reference/cli/docker/buildx/bake/
-prev:
-  title: docker buildx create
-  url: /reference/cli/docker/buildx/create/
----
+# docker buildx build
 
 **Description:** Start a build
 
@@ -74,10 +51,11 @@ The `docker buildx build` command starts a build using BuildKit.
 | `--no-cache-filter` |  |  Do not cache specified stages |
 | `-o`, `--output` |  |  Output destination (format: `type=local,dest=path`) |
 | `--platform` |  |  Set target platform for build |
+| `--policy` |  |  Policy configuration (format: `filename=path[,filename=path][,reset=true|false][,disabled=true|false][,strict=true|false][,log-level=level]`)<br> |
 | `--progress` | `auto` |  Set type of progress output (`auto`, `none`,  `plain`, `quiet`, `rawjson`, `tty`). Use plain to show container output<br> |
 | `--provenance` |  |  Shorthand for `--attest=type=provenance` |
 | `--pull` |  |  Always attempt to pull all referenced images |
-| `--push` |  |  Shorthand for `--output=type=registry` |
+| `--push` |  |  Shorthand for `--output=type=registry,unpack=false` |
 | `-q`, `--quiet` |  |  Suppress the build output and print image ID on success |
 | `--sbom` |  |  Shorthand for `--attest=type=sbom` |
 | `--secret` |  |  Secret to expose to the build (format: `id=mysecret[,src=/local/secret]`)<br> |
@@ -269,8 +247,13 @@ Learn more about the built-in build arguments in the [Dockerfile reference docs]
 --build-context=name=VALUE
 ```
 
-Define additional build context with specified contents. In Dockerfile the context can be accessed when `FROM name` or `--from=name` is used.
-When Dockerfile defines a stage with the same name it is overwritten.
+Define additional build context with specified contents.
+
+In a Dockerfile:
+
+- the context can be accessed when `FROM name` or `--from=name` is used
+- the context overrides a stage called `name` when used as `FROM ... AS name`
+- the context overrides a `#syntax` directive when used as `#syntax=name`
 
 The value can be a:
 

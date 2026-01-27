@@ -1,27 +1,4 @@
----
-title: docker scout policy
-url: /reference/cli/docker/scout/policy/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout policy
-    url: /reference/cli/docker/scout/policy/
-next:
-  title: docker scout environment
-  url: /reference/cli/docker/scout/environment/
-prev:
-  title: docker scout push
-  url: /reference/cli/docker/scout/push/
----
+# docker scout policy
 
 **Description:** Evaluate policies against an image and display the policy evaluation results (experimental)
 

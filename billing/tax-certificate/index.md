@@ -1,23 +1,4 @@
----
-title: 提交免税证明
-url: /billing/tax-certificate/
-parent:
-  title: 管理账单和支付
-  url: /billing/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理账单和支付
-    url: /billing/
-  - title: 提交免税证明
-    url: /billing/tax-certificate/
-next:
-  title: 发票和账单历史记录
-  url: /billing/history/
-prev:
-  title: 更改账单周期
-  url: /billing/cycle/
----
+# 提交免税证明
 
 
 如果您是美国客户且免征销售税，您可以向 Docker 支持团队提交有效的免税证明。

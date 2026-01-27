@@ -1,23 +1,4 @@
----
-title: 在 Docker CLI 中使用代理服务器
-url: /engine/cli/proxy/
-parent:
-  title: Docker Engine
-  url: /engine/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 在 Docker CLI 中使用代理服务器
-    url: /engine/cli/proxy/
-next:
-  title: 自动补全
-  url: /engine/cli/completion/
-prev:
-  title: 过滤命令
-  url: /engine/cli/filter/
----
+# 在 Docker CLI 中使用代理服务器
 
 
 本文介绍如何通过容器中的环境变量配置 Docker CLI 以使用代理。

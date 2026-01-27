@@ -1,27 +1,4 @@
----
-title: docker compose unpause
-url: /reference/cli/docker/compose/unpause/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose unpause
-    url: /reference/cli/docker/compose/unpause/
-next:
-  title: docker compose top
-  url: /reference/cli/docker/compose/top/
-prev:
-  title: docker compose up
-  url: /reference/cli/docker/compose/up/
----
+# docker compose unpause
 
 **Description:** Unpause services
 

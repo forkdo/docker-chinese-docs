@@ -1,20 +1,4 @@
----
-title: Docker Scout SBOM
-url: /scout/how-tos/view-create-sboms/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout SBOM
-    url: /scout/how-tos/view-create-sboms/
-prev:
-  title: 使用环境变量配置 Docker Scout
-  url: /scout/how-tos/configure-cli/
----
+# Docker Scout SBOM
 
 
 [镜像分析](/manuals/scout/explore/analysis.md) 使用镜像 SBOM 来了解镜像包含的软件包及其版本。

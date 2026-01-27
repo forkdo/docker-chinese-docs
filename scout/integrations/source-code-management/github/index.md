@@ -1,19 +1,4 @@
----
-title: 将 Docker Scout 与 GitHub 集成
-url: /scout/integrations/source-code-management/github/
-parent:
-  title: 将 Docker Scout 与其他系统集成
-  url: /scout/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 将 Docker Scout 与 GitHub 集成
-    url: /scout/integrations/source-code-management/github/
----
+# 将 Docker Scout 与 GitHub 集成
 
 
 

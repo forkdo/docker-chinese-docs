@@ -1,22 +1,4 @@
----
-title: Add a backend to your extension
-url: /extensions/extensions-sdk/build/backend-extension-tutorial/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: Add a backend to your extension
-    url: /extensions/extensions-sdk/build/backend-extension-tutorial/
-next:
-  title: Create an advanced frontend extension
-  url: /extensions/extensions-sdk/build/frontend-extension-tutorial/
----
+# Add a backend to your extension
 
 
 Your extension can ship a backend part with which the frontend can interact with. This page provides information on why and how to add a backend.
@@ -205,13 +187,9 @@ FROM node:17.7-alpine3.14 AS client-builder
 FROM golang:1.17-alpine AS builder
 ENV CGO_ENABLED=0
 WORKDIR /backend
-COPY vm/go.* .
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
-    go mod download
-COPY vm/. .
-RUN --mount=type=cache,target=/go/pkg/mod \
-    --mount=type=cache,target=/root/.cache/go-build \
+    --mount=type=bind,source=vm/.,target=. \
     go build -trimpath -ldflags="-s -w" -o bin/service
 
 FROM alpine:3.15

@@ -1,20 +1,4 @@
----
-title: 配置文件参考
-url: /ai/cagent/reference/config/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 配置文件参考
-    url: /ai/cagent/reference/config/
-prev:
-  title: 工具集参考
-  url: /ai/cagent/reference/toolsets/
----
+# 配置文件参考
 
 
 本文档记录了 cagent 代理的 YAML 配置文件格式。

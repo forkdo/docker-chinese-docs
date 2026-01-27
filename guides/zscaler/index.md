@@ -1,21 +1,4 @@
----
-title: 在 Docker 中使用 Zscaler
-url: /guides/zscaler/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 在 Docker 中使用 Zscaler
-    url: /guides/zscaler/
-next:
-  title: 构建命名实体识别应用
-  url: /guides/named-entity-recognition/
-prev:
-  title: 在 GenAI 中利用 RAG 教授新知识
-  url: /guides/genai-leveraging-rag/
----
+# 在 Docker 中使用 Zscaler
 
 
 在许多企业环境中，网络流量会通过 HTTPS 代理（如 Zscaler）进行拦截和监控。虽然 Zscaler 能够确保安全合规和网络控制，但它可能会给使用 Docker 的开发者带来问题，特别是在构建过程中，可能会出现 SSL 证书验证错误。本指南概述了如何配置 Docker 容器和构建过程，以正确处理 Zscaler 的自定义证书，确保在受监控环境中平稳运行。

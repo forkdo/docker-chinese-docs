@@ -1,23 +1,4 @@
----
-title: 测试
-url: /guides/admin-set-up/testing/
-parent:
-  title: 使用 Docker 为您的公司奠定成功基础
-  url: /guides/admin-set-up/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker 为您的公司奠定成功基础
-    url: /guides/admin-set-up/
-  - title: 测试
-    url: /guides/admin-set-up/testing/
-next:
-  title: 最终确定计划并开始设置
-  url: /guides/admin-set-up/finalize-plans-and-setup/
-prev:
-  title: 部署您的 Docker 设置
-  url: /guides/admin-set-up/deploy/
----
+# 测试
 
 
 ## SSO 和 SCIM 测试

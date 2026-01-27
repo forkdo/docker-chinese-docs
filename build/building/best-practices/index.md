@@ -1,23 +1,4 @@
----
-title: Building best practices
-url: /build/building/best-practices/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Building best practices
-    url: /build/building/best-practices/
-next:
-  title: Container Device Interface (CDI)
-  url: /build/building/cdi/
-prev:
-  title: Base images
-  url: /build/building/base-images/
----
+# Building best practices
 
 
 ## Use multi-stage builds

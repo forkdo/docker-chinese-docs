@@ -1,23 +1,4 @@
----
-title: 使用 Docker Model Runner 运行本地模型
-url: /ai/cagent/local-models/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 使用 Docker Model Runner 运行本地模型
-    url: /ai/cagent/local-models/
-next:
-  title: 模型提供商
-  url: /ai/cagent/model-providers/
-prev:
-  title: 构建编码代理
-  url: /ai/cagent/tutorial/
----
+# 使用 Docker Model Runner 运行本地模型
 
 
 Docker Model Runner 允许您在本地机器上运行 AI 模型。无需 API 密钥，无持续成本，且您的数据保持私密。

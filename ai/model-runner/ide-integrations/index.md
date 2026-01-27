@@ -1,23 +1,4 @@
----
-title: IDE 与工具集成
-url: /ai/model-runner/ide-integrations/
-parent:
-  title: Docker Model Runner
-  url: /ai/model-runner/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Model Runner
-    url: /ai/model-runner/
-  - title: IDE 与工具集成
-    url: /ai/model-runner/ide-integrations/
-next:
-  title: DMR 示例
-  url: /ai/model-runner/examples/
-prev:
-  title: Open WebUI 集成
-  url: /ai/model-runner/openwebui-integration/
----
+# IDE 与工具集成
 
 
 Docker Model Runner (DMR) 可以作为流行的 AI 编程助手和开发工具的本地后端。本指南介绍了如何配置常用工具以使用在 DMR 中运行的模型。

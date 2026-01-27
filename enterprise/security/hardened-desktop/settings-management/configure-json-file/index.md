@@ -1,24 +1,4 @@
----
-title: 使用 JSON 文件配置设置管理
-url: /enterprise/security/hardened-desktop/settings-management/configure-json-file/
-parent:
-  title: Settings Management
-  url: /enterprise/security/hardened-desktop/settings-management/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 强化版 Docker Desktop
-    url: /enterprise/security/hardened-desktop/
-  - title: Settings Management
-    url: /enterprise/security/hardened-desktop/settings-management/
-  - title: 使用 JSON 文件配置设置管理
-    url: /enterprise/security/hardened-desktop/settings-management/configure-json-file/
-prev:
-  title: 使用 Admin Console 配置设置管理
-  url: /enterprise/security/hardened-desktop/settings-management/configure-admin-console/
----
+# 使用 JSON 文件配置设置管理
 
 
 

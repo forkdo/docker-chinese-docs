@@ -1,26 +1,4 @@
----
-title: docker buildx dap attach
-url: /reference/cli/docker/buildx/dap/attach/
-parent:
-  title: docker buildx dap
-  url: /reference/cli/docker/buildx/dap/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx dap
-    url: /reference/cli/docker/buildx/dap/
-  - title: docker buildx dap attach
-    url: /reference/cli/docker/buildx/dap/attach/
-prev:
-  title: docker buildx dap build
-  url: /reference/cli/docker/buildx/dap/build/
----
+# docker buildx dap attach
 
 **Description:** Attach to a container created by the dap evaluate request
 

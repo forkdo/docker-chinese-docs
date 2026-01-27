@@ -1,27 +1,4 @@
----
-title: Docker driver
-url: /build/builders/drivers/docker/
-parent:
-  title: Build drivers
-  url: /build/builders/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Builders
-    url: /build/builders/
-  - title: Build drivers
-    url: /build/builders/drivers/
-  - title: Docker driver
-    url: /build/builders/drivers/docker/
-next:
-  title: Docker container driver
-  url: /build/builders/drivers/docker-container/
-prev:
-  title: Kubernetes driver
-  url: /build/builders/drivers/kubernetes/
----
+# Docker driver
 
 
 The Buildx Docker driver is the default driver. It uses the BuildKit server

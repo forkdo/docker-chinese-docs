@@ -1,22 +1,4 @@
----
-title: Docker Scout 健康评分
-url: /scout/policy/scores/
-parent:
-  title: Docker Scout 中的策略评估入门
-  url: /scout/policy/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 中的策略评估入门
-    url: /scout/policy/
-  - title: Docker Scout 健康评分
-    url: /scout/policy/scores/
-prev:
-  title: 使用 Docker Scout 进行修复
-  url: /scout/policy/remediation/
----
+# Docker Scout 健康评分
 
 
 

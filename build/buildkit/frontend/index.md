@@ -1,25 +1,4 @@
----
-title: Custom Dockerfile syntax
-url: /build/buildkit/frontend/
-parent:
-  title: BuildKit
-  url: /build/buildkit/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: BuildKit
-    url: /build/buildkit/
-  - title: Custom Dockerfile syntax
-    url: /build/buildkit/frontend/
-next:
-  title: Configure BuildKit
-  url: /build/buildkit/configure/
-prev:
-  title: Dockerfile release notes
-  url: /build/buildkit/dockerfile-release-notes/
----
+# Custom Dockerfile syntax
 
 
 ## Dockerfile frontend

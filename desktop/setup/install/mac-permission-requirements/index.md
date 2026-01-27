@@ -1,23 +1,4 @@
----
-title: 了解 Mac 上 Docker Desktop 的权限要求
-url: /desktop/setup/install/mac-permission-requirements/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 了解 Mac 上 Docker Desktop 的权限要求
-    url: /desktop/setup/install/mac-permission-requirements/
-next:
-  title: 在 Mac 上安装 Docker Desktop
-  url: /desktop/setup/install/mac-install/
-prev:
-  title: 在 Windows 上安装 Docker Desktop
-  url: /desktop/setup/install/windows-install/
----
+# 了解 Mac 上 Docker Desktop 的权限要求
 
 
 本页介绍了在 Mac 上运行和安装 Docker Desktop 的权限要求。

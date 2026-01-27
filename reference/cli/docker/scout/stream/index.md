@@ -1,27 +1,4 @@
----
-title: docker scout stream
-url: /reference/cli/docker/scout/stream/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout stream
-    url: /reference/cli/docker/scout/stream/
-next:
-  title: docker scout sbom
-  url: /reference/cli/docker/scout/sbom/
-prev:
-  title: docker scout version
-  url: /reference/cli/docker/scout/version/
----
+# docker scout stream
 
 **Description:** Manage streams (experimental)
 

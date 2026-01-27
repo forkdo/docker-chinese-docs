@@ -1,25 +1,4 @@
----
-title: 替代容器运行时
-url: /engine/daemon/alternative-runtimes/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 替代容器运行时
-    url: /engine/daemon/alternative-runtimes/
-next:
-  title: 使用 Prometheus 收集 Docker 指标
-  url: /engine/daemon/prometheus/
-prev:
-  title: 读取守护程序日志
-  url: /engine/daemon/logs/
----
+# 替代容器运行时
 
 
 Docker Engine 使用 containerd 管理容器生命周期，包括创建、启动和停止容器。默认情况下，containerd 使用 runc 作为其容器运行时。

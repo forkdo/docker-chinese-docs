@@ -1,19 +1,4 @@
----
-title: Ask Gordon
-url: /ai/gordon/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Ask Gordon
-    url: /ai/gordon/
-children:
-  - title: Model Context Protocol (MCP)
-    url: /ai/gordon/mcp/
-    description: 了解如何在 Gordon 中使用 Model Context Protocol (MCP) 服务器，以扩展 Docker Desktop 中的 AI 功能。
----
+# Ask Gordon
 
 
 

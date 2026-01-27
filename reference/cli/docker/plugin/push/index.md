@@ -1,27 +1,4 @@
----
-title: docker plugin push
-url: /reference/cli/docker/plugin/push/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin push
-    url: /reference/cli/docker/plugin/push/
-next:
-  title: docker plugin ls
-  url: /reference/cli/docker/plugin/ls/
-prev:
-  title: docker plugin rm
-  url: /reference/cli/docker/plugin/rm/
----
+# docker plugin push
 
 **Description:** Push a plugin to a registry
 

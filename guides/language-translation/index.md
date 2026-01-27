@@ -1,21 +1,4 @@
----
-title: 构建语言翻译应用程序
-url: /guides/language-translation/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 构建语言翻译应用程序
-    url: /guides/language-translation/
-next:
-  title: GenAI 视频转录与对话
-  url: /guides/genai-video-bot/
-prev:
-  title: 部署到 Kubernetes
-  url: /guides/kube-deploy/
----
+# 构建语言翻译应用程序
 
 
 ## 概述

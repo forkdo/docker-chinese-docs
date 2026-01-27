@@ -1,27 +1,4 @@
----
-title: docker service inspect
-url: /reference/cli/docker/service/inspect/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service inspect
-    url: /reference/cli/docker/service/inspect/
-next:
-  title: docker service create
-  url: /reference/cli/docker/service/create/
-prev:
-  title: docker service logs
-  url: /reference/cli/docker/service/logs/
----
+# docker service inspect
 
 **Description:** Display detailed information on one or more services
 

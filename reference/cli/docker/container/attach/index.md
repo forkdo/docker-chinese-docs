@@ -1,27 +1,4 @@
----
-title: docker container attach
-url: /reference/cli/docker/container/attach/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container attach
-    url: /reference/cli/docker/container/attach/
-next:
-  title: 
-  url: /reference/cli/docker/container/cp/
-prev:
-  title: docker container commit
-  url: /reference/cli/docker/container/commit/
----
+# docker container attach
 
 **Description:** Attach local standard input, output, and error streams to a running container
 

@@ -1,23 +1,4 @@
----
-title: 使用 include 模块化 Compose 文件
-url: /reference/compose-file/include/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: 使用 include 模块化 Compose 文件
-    url: /reference/compose-file/include/
-next:
-  title: 合并 Compose 文件
-  url: /reference/compose-file/merge/
-prev:
-  title: 模型
-  url: /reference/compose-file/models/
----
+# 使用 include 模块化 Compose 文件
 
 
 

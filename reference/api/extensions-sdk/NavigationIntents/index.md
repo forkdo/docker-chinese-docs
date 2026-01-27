@@ -1,23 +1,4 @@
----
-title: 接口: NavigationIntents
-url: /reference/api/extensions-sdk/NavigationIntents/
-parent:
-  title: 扩展 API 参考
-  url: /reference/api/extensions-sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 扩展 API 参考
-    url: /reference/api/extensions-sdk/
-  - title: 接口: NavigationIntents
-    url: /reference/api/extensions-sdk/NavigationIntents/
-next:
-  title: 接口: ExtensionVM
-  url: /reference/api/extensions-sdk/ExtensionVM/
-prev:
-  title: 接口: RawExecResult
-  url: /reference/api/extensions-sdk/RawExecResult/
----
+# 接口: NavigationIntents
 
 
 **`Since`**

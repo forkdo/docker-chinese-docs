@@ -1,23 +1,4 @@
----
-title: 使用容器进行 Java 开发
-url: /guides/java/develop/
-parent:
-  title: Java 语言专属指南
-  url: /guides/java/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Java 语言专属指南
-    url: /guides/java/
-  - title: 使用容器进行 Java 开发
-    url: /guides/java/develop/
-next:
-  title: 容器化 Java 应用程序
-  url: /guides/java/containerize/
-prev:
-  title: 运行 Java 测试
-  url: /guides/java/run-tests/
----
+# 使用容器进行 Java 开发
 
 
 ## 先决条件

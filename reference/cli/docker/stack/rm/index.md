@@ -1,27 +1,4 @@
----
-title: docker stack rm
-url: /reference/cli/docker/stack/rm/
-parent:
-  title: docker stack
-  url: /reference/cli/docker/stack/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker stack
-    url: /reference/cli/docker/stack/
-  - title: docker stack rm
-    url: /reference/cli/docker/stack/rm/
-next:
-  title: docker stack ps
-  url: /reference/cli/docker/stack/ps/
-prev:
-  title: docker stack services
-  url: /reference/cli/docker/stack/services/
----
+# docker stack rm
 
 **Description:** Remove one or more stacks
 

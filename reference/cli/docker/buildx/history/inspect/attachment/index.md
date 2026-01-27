@@ -1,25 +1,4 @@
----
-title: docker buildx history inspect attachment
-url: /reference/cli/docker/buildx/history/inspect/attachment/
-parent:
-  title: docker buildx history inspect
-  url: /reference/cli/docker/buildx/history/inspect/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx history
-    url: /reference/cli/docker/buildx/history/
-  - title: docker buildx history inspect
-    url: /reference/cli/docker/buildx/history/inspect/
-  - title: docker buildx history inspect attachment
-    url: /reference/cli/docker/buildx/history/inspect/attachment/
----
+# docker buildx history inspect attachment
 
 **Description:** Inspect a build record attachment
 

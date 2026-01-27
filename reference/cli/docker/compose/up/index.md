@@ -1,27 +1,4 @@
----
-title: docker compose up
-url: /reference/cli/docker/compose/up/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose up
-    url: /reference/cli/docker/compose/up/
-next:
-  title: docker compose unpause
-  url: /reference/cli/docker/compose/unpause/
-prev:
-  title: docker compose version
-  url: /reference/cli/docker/compose/version/
----
+# docker compose up
 
 **Description:** Create and start containers
 

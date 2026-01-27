@@ -1,27 +1,4 @@
----
-title: docker stack ps
-url: /reference/cli/docker/stack/ps/
-parent:
-  title: docker stack
-  url: /reference/cli/docker/stack/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker stack
-    url: /reference/cli/docker/stack/
-  - title: docker stack ps
-    url: /reference/cli/docker/stack/ps/
-next:
-  title: docker stack ls
-  url: /reference/cli/docker/stack/ls/
-prev:
-  title: docker stack rm
-  url: /reference/cli/docker/stack/rm/
----
+# docker stack ps
 
 **Description:** List the tasks in the stack
 

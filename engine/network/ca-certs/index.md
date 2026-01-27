@@ -1,25 +1,4 @@
----
-title: 在 Docker 中使用 CA 证书
-url: /engine/network/ca-certs/
-parent:
-  title: 网络概述
-  url: /engine/network/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 网络概述
-    url: /engine/network/
-  - title: 在 Docker 中使用 CA 证书
-    url: /engine/network/ca-certs/
-next:
-  title: 端口发布与映射
-  url: /engine/network/port-publishing/
-prev:
-  title: 旧版容器链接
-  url: /engine/network/links/
----
+# 在 Docker 中使用 CA 证书
 
 
 > [!CAUTION]

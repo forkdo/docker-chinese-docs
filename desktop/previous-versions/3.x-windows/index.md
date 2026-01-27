@@ -1,23 +1,4 @@
----
-title: Docker for Windows 3.x 发行说明
-url: /desktop/previous-versions/3.x-windows/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Docker for Windows 3.x 发行说明
-    url: /desktop/previous-versions/3.x-windows/
-next:
-  title: Docker for Windows 2.x 发布说明
-  url: /desktop/previous-versions/2.x-windows/
-prev:
-  title: 旧版本发行说明
-  url: /desktop/previous-versions/archive-mac/
----
+# Docker for Windows 3.x 发行说明
 
 
 本页包含 Docker Desktop for Windows 3.x 的发行说明。

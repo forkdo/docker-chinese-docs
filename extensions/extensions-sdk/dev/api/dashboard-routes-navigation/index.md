@@ -1,29 +1,4 @@
----
-title: 导航
-url: /extensions/extensions-sdk/dev/api/dashboard-routes-navigation/
-parent:
-  title: 扩展 API
-  url: /extensions/extensions-sdk/dev/api/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 
-    url: /extensions/extensions-sdk/dev/
-  - title: 扩展 API
-    url: /extensions/extensions-sdk/dev/api/
-  - title: 导航
-    url: /extensions/extensions-sdk/dev/api/dashboard-routes-navigation/
-next:
-  title: 仪表板
-  url: /extensions/extensions-sdk/dev/api/dashboard/
-prev:
-  title: 扩展 UI API
-  url: /extensions/extensions-sdk/dev/api/overview/
----
+# 导航
 
 
 `ddClient.desktopUI.navigate` 可用于导航至 Docker Desktop 的特定界面，例如容器选项卡、镜像选项卡或特定容器的日志。

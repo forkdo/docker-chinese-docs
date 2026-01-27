@@ -1,23 +1,4 @@
----
-title: 使用容器进行 Vue.js 开发
-url: /guides/vuejs/develop/
-parent:
-  title: Vue.js 语言专用指南
-  url: /guides/vuejs/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Vue.js 语言专用指南
-    url: /guides/vuejs/
-  - title: 使用容器进行 Vue.js 开发
-    url: /guides/vuejs/develop/
-next:
-  title: 容器化 Vue.js 应用程序
-  url: /guides/vuejs/containerize/
-prev:
-  title: 在容器中运行 Vue.js 测试
-  url: /guides/vuejs/run-tests/
----
+# 使用容器进行 Vue.js 开发
 
 
 ## 前提条件

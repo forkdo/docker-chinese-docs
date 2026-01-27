@@ -1,24 +1,4 @@
----
-title: docker compose attach
-url: /reference/cli/docker/compose/attach/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose attach
-    url: /reference/cli/docker/compose/attach/
-prev:
-  title: docker compose build
-  url: /reference/cli/docker/compose/build/
----
+# docker compose attach
 
 **Description:** Attach local standard input, output, and error streams to a service's running container
 

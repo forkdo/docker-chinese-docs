@@ -1,24 +1,4 @@
----
-title: docker buildx bake
-url: /reference/cli/docker/buildx/bake/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx bake
-    url: /reference/cli/docker/buildx/bake/
-prev:
-  title: docker buildx build
-  url: /reference/cli/docker/buildx/build/
----
+# docker buildx bake
 
 **Description:** Build from a file
 
@@ -74,6 +54,7 @@ guide for introduction to writing bake files.
 | `--push` |  |  Shorthand for `--set=*.output=type=registry`. Conditional. |
 | `--sbom` |  |  Shorthand for `--set=*.attest=type=sbom` |
 | `--set` |  |  Override target value (e.g., `targetpattern.key=value`) |
+| `--var` |  |  Set a variable value (e.g., `name=value`) |
 
 
 
@@ -436,6 +417,7 @@ $ docker buildx bake --set foo*.args.mybuildarg=value   # overrides build arg fo
 $ docker buildx bake --set *.platform=linux/arm64       # overrides platform for all targets
 $ docker buildx bake --set foo*.no-cache                # bypass caching only for targets starting with 'foo'
 $ docker buildx bake --set target.platform+=linux/arm64 # appends 'linux/arm64' to the platform list
+$ docker buildx bake --set target.contexts.bar=../bar   # overrides 'bar' named context
 ```
 
 > [!NOTE]
@@ -454,6 +436,7 @@ You can override the following fields:
 * `cache-to`
 * `call`
 * `context`
+* `contexts`
 * `dockerfile`
 * `entitlements`
 * `extra-hosts`

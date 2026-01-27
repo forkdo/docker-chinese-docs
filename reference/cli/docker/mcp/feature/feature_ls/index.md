@@ -1,26 +1,4 @@
----
-title: docker mcp feature ls
-url: /reference/cli/docker/mcp/feature/feature_ls/
-parent:
-  title: docker mcp 功能
-  url: /reference/cli/docker/mcp/feature/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp 功能
-    url: /reference/cli/docker/mcp/feature/
-  - title: docker mcp feature ls
-    url: /reference/cli/docker/mcp/feature/feature_ls/
-next:
-  title: docker mcp feature enable
-  url: /reference/cli/docker/mcp/feature/feature_enable/
----
+# docker mcp feature ls
 
 **Description:** List all available features and their status
 

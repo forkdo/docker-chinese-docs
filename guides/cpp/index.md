@@ -1,34 +1,4 @@
----
-title: C++ 语言专用指南
-url: /guides/cpp/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: C++ 语言专用指南
-    url: /guides/cpp/
-children:
-  - title: 为您的 C++ 应用程序创建多阶段构建
-    url: /guides/cpp/multistage/
-    description: 了解如何为 C++ 应用程序创建多阶段构建。
-  - title: 容器化 C++ 应用程序
-    url: /guides/cpp/containerize/
-    description: 了解如何使用 Docker Compose 构建并运行 C++ 应用程序。
-  - title: 使用容器进行 C++ 开发
-    url: /guides/cpp/develop/
-    description: 了解如何在本地开发您的 C++ 应用程序。
-  - title: 为 C++ 应用程序配置 CI/CD
-    url: /guides/cpp/configure-ci-cd/
-    description: 了解如何为 C++ 应用程序配置 GitHub Actions 的 CI/CD。
-  - title: 测试你的 C++ 部署
-    url: /guides/cpp/deploy/
-    description: 了解如何使用 Kubernetes 进行本地开发
-  - title: C++ Docker 镜像的供应链安全
-    url: /guides/cpp/security/
-    description: 了解如何从 C++ Docker 镜像中提取 SBOM。
----
+# C++ 语言专用指南
 
 
 C++ 入门指南教你如何使用 Docker 创建容器化的 C++ 应用程序。在本指南中，你将学习如何：

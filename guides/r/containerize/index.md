@@ -1,20 +1,4 @@
----
-title: 容器化 R 应用程序
-url: /guides/r/containerize/
-parent:
-  title: R 语言专属指南
-  url: /guides/r/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: R 语言专属指南
-    url: /guides/r/
-  - title: 容器化 R 应用程序
-    url: /guides/r/containerize/
-prev:
-  title: 使用容器进行 R 开发
-  url: /guides/r/develop/
----
+# 容器化 R 应用程序
 
 
 ## 先决条件

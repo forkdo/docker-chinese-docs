@@ -1,24 +1,4 @@
----
-title: 将 Docker Scout 与 Sysdig 集成
-url: /scout/integrations/environment/sysdig/
-parent:
-  title: 将 Docker Scout 与环境集成
-  url: /scout/integrations/environment/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 将 Docker Scout 与环境集成
-    url: /scout/integrations/environment/
-  - title: 将 Docker Scout 与 Sysdig 集成
-    url: /scout/integrations/environment/sysdig/
-prev:
-  title: 通过 CLI 进行通用环境集成
-  url: /scout/integrations/environment/cli/
----
+# 将 Docker Scout 与 Sysdig 集成
 
 
 

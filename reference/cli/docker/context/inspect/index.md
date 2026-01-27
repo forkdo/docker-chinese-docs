@@ -1,27 +1,4 @@
----
-title: docker context inspect
-url: /reference/cli/docker/context/inspect/
-parent:
-  title: docker context
-  url: /reference/cli/docker/context/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker context
-    url: /reference/cli/docker/context/
-  - title: docker context inspect
-    url: /reference/cli/docker/context/inspect/
-next:
-  title: docker context import
-  url: /reference/cli/docker/context/import/
-prev:
-  title: docker context ls
-  url: /reference/cli/docker/context/ls/
----
+# docker context inspect
 
 **Description:** Display detailed information on one or more contexts
 

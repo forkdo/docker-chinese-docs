@@ -1,38 +1,4 @@
----
-title: 自动构建
-url: /docker-hub/repos/manage/builds/
-parent:
-  title: 仓库
-  url: /docker-hub/repos/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 自动构建
-    url: /docker-hub/repos/manage/builds/
-children:
-  - title: 设置自动化构建
-    url: /docker-hub/repos/manage/builds/setup/
-    description: 设置自动化构建
-  - title: 配置从 GitHub 和 BitBucket 的自动构建
-    url: /docker-hub/repos/manage/builds/link-source/
-    description: 链接到 GitHub 和 BitBucket
-  - title: 自动化仓库测试
-    url: /docker-hub/repos/manage/builds/automated-testing/
-    description: 自动化测试
-  - title: 自动化构建和自动化测试的高级选项
-    url: /docker-hub/repos/manage/builds/advanced/
-    description: 自动化构建
-  - title: 排查自动构建问题
-    url: /docker-hub/repos/manage/builds/troubleshoot/
-    description: 如何排查自动构建问题
-  - title: 管理自动构建
-    url: /docker-hub/repos/manage/builds/manage-builds/
-    description: 如何在 Docker Hub 中管理自动构建
----
+# 自动构建
 
 
 

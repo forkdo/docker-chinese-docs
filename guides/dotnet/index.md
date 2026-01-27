@@ -1,31 +1,4 @@
----
-title: .NET 语言特定指南
-url: /guides/dotnet/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: .NET 语言特定指南
-    url: /guides/dotnet/
-children:
-  - title: 容器化 .NET 应用程序
-    url: /guides/dotnet/containerize/
-    description: 了解如何容器化 ASP.NET 应用程序。
-  - title: 使用容器进行 .NET 开发
-    url: /guides/dotnet/develop/
-    description: 了解如何使用容器在本地开发你的 .NET 应用程序。
-  - title: 在容器中运行 .NET 测试
-    url: /guides/dotnet/run-tests/
-    description: 了解如何在容器中运行 .NET 测试。
-  - title: 为你的 .NET 应用程序配置 CI/CD
-    url: /guides/dotnet/configure-ci-cd/
-    description: 了解如何为你的 .NET 应用程序配置 CI/CD
-  - title: 测试 .NET 部署
-    url: /guides/dotnet/deploy/
-    description: 了解如何部署应用程序
----
+# .NET 语言特定指南
 
 
 本 .NET 入门指南将指导您如何使用 Docker 创建容器化的 .NET 应用程序。在本指南中，您将学习如何：

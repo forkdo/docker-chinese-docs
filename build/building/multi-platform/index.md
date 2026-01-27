@@ -1,23 +1,4 @@
----
-title: Multi-platform builds
-url: /build/building/multi-platform/
-parent:
-  title: Docker Build
-  url: /build/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Multi-platform builds
-    url: /build/building/multi-platform/
-next:
-  title: Build secrets
-  url: /build/building/secrets/
-prev:
-  title: Export binaries
-  url: /build/building/export/
----
+# Multi-platform builds
 
 
 A multi-platform build refers to a single build invocation that targets

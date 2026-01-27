@@ -1,27 +1,4 @@
----
-title: docker model purge
-url: /reference/cli/docker/model/purge/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model purge
-    url: /reference/cli/docker/model/purge/
-next:
-  title: docker model pull
-  url: /reference/cli/docker/model/pull/
-prev:
-  title: docker model push
-  url: /reference/cli/docker/model/push/
----
+# docker model purge
 
 **Description:** Remove all models
 

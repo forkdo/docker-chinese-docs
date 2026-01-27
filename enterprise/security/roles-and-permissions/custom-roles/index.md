@@ -1,22 +1,4 @@
----
-title: 自定义角色
-url: /enterprise/security/roles-and-permissions/custom-roles/
-parent:
-  title: 角色与权限
-  url: /enterprise/security/roles-and-permissions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 角色与权限
-    url: /enterprise/security/roles-and-permissions/
-  - title: 自定义角色
-    url: /enterprise/security/roles-and-permissions/custom-roles/
-next:
-  title: 核心角色
-  url: /enterprise/security/roles-and-permissions/core-roles/
----
+# 自定义角色
 
 
 

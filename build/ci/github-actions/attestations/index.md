@@ -1,27 +1,4 @@
----
-title: Add SBOM and provenance attestations with GitHub Actions
-url: /build/ci/github-actions/attestations/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Add SBOM and provenance attestations with GitHub Actions
-    url: /build/ci/github-actions/attestations/
-next:
-  title: Add image annotations with GitHub Actions
-  url: /build/ci/github-actions/annotations/
-prev:
-  title: Validating build configuration with GitHub Actions
-  url: /build/ci/github-actions/checks/
----
+# Add SBOM and provenance attestations with GitHub Actions
 
 
 Software Bill of Material (SBOM) and provenance

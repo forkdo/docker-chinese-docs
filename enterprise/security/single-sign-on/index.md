@@ -1,27 +1,4 @@
----
-title: 单点登录概述
-url: /enterprise/security/single-sign-on/
-parent:
-  title: 企业级安全
-  url: /enterprise/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 单点登录概述
-    url: /enterprise/security/single-sign-on/
-children:
-  - title: 管理单点登录
-    url: /enterprise/security/single-sign-on/manage/
-    description: 了解如何为您的组织或公司管理单点登录。
-  - title: 连接单点登录
-    url: /enterprise/security/single-sign-on/connect/
-    description: 连接 Docker 与您的身份提供商，测试配置，并启用强制策略
-  - title: 配置单点登录
-    url: /enterprise/security/single-sign-on/configure/
-    description: 了解如何为您的组织或公司配置单点登录。
----
+# 单点登录概述
 
 
 

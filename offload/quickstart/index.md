@@ -1,20 +1,4 @@
----
-title: Docker Offload 快速开始
-url: /offload/quickstart/
-parent:
-  title: Docker Offload
-  url: /offload/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Offload
-    url: /offload/
-  - title: Docker Offload 快速开始
-    url: /offload/quickstart/
-prev:
-  title: 关于 Docker Offload
-  url: /offload/about/
----
+# Docker Offload 快速开始
 
 
 

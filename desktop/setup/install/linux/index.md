@@ -1,33 +1,4 @@
----
-title: 在 Linux 上安装 Docker Desktop
-url: /desktop/setup/install/linux/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 Linux 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/
-children:
-  - title: 在 Ubuntu 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/ubuntu/
-    description: 了解如何在 Ubuntu 上安装、启动和升级 Docker Desktop。本快速指南将涵盖先决条件、安装方法等内容。
-  - title: 在 Debian 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/debian/
-    description: 在 Debian 上安装 Docker Desktop 的说明
-  - title: 在 Fedora 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/fedora/
-    description: 在 Fedora 上安装 Docker Desktop 的说明
-  - title: 在基于 Arch 的发行版上安装 Docker Desktop
-    url: /desktop/setup/install/linux/archlinux/
-    description: 在基于 Arch 的发行版上安装 Docker Desktop 包的说明。主要面向希望在各种基于 Arch 的发行版上试用 Docker Desktop 的开发者。
-  - title: 在 RHEL 上安装 Docker Desktop
-    url: /desktop/setup/install/linux/rhel/
-    description: 在 RHEL 上安装 Docker Desktop 的说明
----
+# 在 Linux 上安装 Docker Desktop
 
 
 > **Docker Desktop 条款**

@@ -1,18 +1,4 @@
----
-title: 编写 Docker 使用指南的规范
-url: /contribute/guides/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 编写 Docker 使用指南的规范
-    url: /contribute/guides/
-next:
-  title: 写作清单
-  url: /contribute/checklist/
----
+# 编写 Docker 使用指南的规范
 
 
 <!-- vale Docker.We = NO -->

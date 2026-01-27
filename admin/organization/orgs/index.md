@@ -1,22 +1,4 @@
----
-title: 创建您的组织
-url: /admin/organization/orgs/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 创建您的组织
-    url: /admin/organization/orgs/
-prev:
-  title: 为您的组织完成上车流程
-  url: /admin/organization/onboard/
----
+# 创建您的组织
 
 
 

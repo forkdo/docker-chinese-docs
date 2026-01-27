@@ -1,23 +1,4 @@
----
-title: Compose 部署规范
-url: /reference/compose-file/deploy/
-parent:
-  title: Compose 文件参考
-  url: /reference/compose-file/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Compose 文件参考
-    url: /reference/compose-file/
-  - title: Compose 部署规范
-    url: /reference/compose-file/deploy/
-next:
-  title: Compose Build 规范
-  url: /reference/compose-file/build/
-prev:
-  title: Compose 开发规范
-  url: /reference/compose-file/develop/
----
+# Compose 部署规范
 
 
 

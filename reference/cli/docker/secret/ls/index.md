@@ -1,27 +1,4 @@
----
-title: docker secret ls
-url: /reference/cli/docker/secret/ls/
-parent:
-  title: docker secret
-  url: /reference/cli/docker/secret/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker secret
-    url: /reference/cli/docker/secret/
-  - title: docker secret ls
-    url: /reference/cli/docker/secret/ls/
-next:
-  title: docker secret inspect
-  url: /reference/cli/docker/secret/inspect/
-prev:
-  title: docker secret rm
-  url: /reference/cli/docker/secret/rm/
----
+# docker secret ls
 
 **Description:** List secrets
 

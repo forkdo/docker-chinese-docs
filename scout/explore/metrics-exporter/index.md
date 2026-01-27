@@ -1,20 +1,4 @@
----
-title: Docker Scout 指标导出器
-url: /scout/explore/metrics-exporter/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: Docker Scout 指标导出器
-    url: /scout/explore/metrics-exporter/
-prev:
-  title: Docker Scout 镜像分析
-  url: /scout/explore/analysis/
----
+# Docker Scout 指标导出器
 
 
 Docker Scout 公开一个指标 HTTP 端点，允许您使用 Prometheus 或 Datadog 从 Docker Scout 抓取漏洞和策略数据。通过此功能，您可以创建自托管的 Docker Scout 仪表板，用于可视化供应链指标。

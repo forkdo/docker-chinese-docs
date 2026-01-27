@@ -1,24 +1,4 @@
----
-title: docker image history
-url: /reference/cli/docker/image/history/
-parent:
-  title: docker image
-  url: /reference/cli/docker/image/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker image
-    url: /reference/cli/docker/image/
-  - title: docker image history
-    url: /reference/cli/docker/image/history/
-prev:
-  title: docker image import
-  url: /reference/cli/docker/image/import/
----
+# docker image history
 
 **Description:** Show the history of an image
 

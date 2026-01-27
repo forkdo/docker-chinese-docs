@@ -1,22 +1,4 @@
----
-title: Access authorization plugin
-url: /engine/extend/plugins_authorization/
-parent:
-  title: Docker Engine managed plugin system
-  url: /engine/extend/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine managed plugin system
-    url: /engine/extend/
-  - title: Access authorization plugin
-    url: /engine/extend/plugins_authorization/
-prev:
-  title: Docker log driver plugins
-  url: /engine/extend/plugins_logging/
----
+# Access authorization plugin
 
 
 This document describes the Docker Engine plugins available in Docker

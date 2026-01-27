@@ -1,22 +1,4 @@
----
-title: Build cache invalidation
-url: /build/cache/invalidation/
-parent:
-  title: Docker build cache
-  url: /build/cache/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-  - title: Build cache invalidation
-    url: /build/cache/invalidation/
-prev:
-  title: Build garbage collection
-  url: /build/cache/garbage-collection/
----
+# Build cache invalidation
 
 
 When building an image, Docker steps through the instructions in your
@@ -82,7 +64,7 @@ The cache for `RUN` instructions isn't invalidated automatically between builds.
 Suppose you have a step in your Dockerfile to install `curl`:
 
 ```dockerfile
-FROM alpine:3.21 AS install
+FROM alpine:3.23 AS install
 RUN apk add curl
 ```
 

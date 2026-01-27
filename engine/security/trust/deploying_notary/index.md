@@ -1,24 +1,4 @@
----
-title: 使用 Compose 部署 Notary Server
-url: /engine/security/trust/deploying_notary/
-parent:
-  title: Docker 中的内容信任
-  url: /engine/security/trust/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: Docker 中的内容信任
-    url: /engine/security/trust/
-  - title: 使用 Compose 部署 Notary Server
-    url: /engine/security/trust/deploying_notary/
-prev:
-  title: 使用内容信任实现自动化
-  url: /engine/security/trust/trust_automation/
----
+# 使用 Compose 部署 Notary Server
 
 
 部署 Notary Server 最简单的方法是使用 Docker Compose。要执行本页的操作，您必须已经[安装了 Docker Compose](/manuals/compose/install/_index.md)。

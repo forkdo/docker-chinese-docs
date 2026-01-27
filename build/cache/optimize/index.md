@@ -1,22 +1,4 @@
----
-title: Optimize cache usage in builds
-url: /build/cache/optimize/
-parent:
-  title: Docker build cache
-  url: /build/cache/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-  - title: Optimize cache usage in builds
-    url: /build/cache/optimize/
-next:
-  title: Build garbage collection
-  url: /build/cache/garbage-collection/
----
+# Optimize cache usage in builds
 
 
 When building with Docker, a layer is reused from the build cache if the
@@ -242,6 +224,7 @@ tool you're using. Here are a few examples:
 
 ```dockerfile
 RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
     go build -o /app/hello
 ```
 

@@ -1,23 +1,4 @@
----
-title: PKG 安装程序
-url: /enterprise/enterprise-deployment/pkg-install-and-configure/
-parent:
-  title: 部署 Docker Desktop
-  url: /enterprise/enterprise-deployment/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 部署 Docker Desktop
-    url: /enterprise/enterprise-deployment/
-  - title: PKG 安装程序
-    url: /enterprise/enterprise-deployment/pkg-install-and-configure/
-next:
-  title: MSI 安装程序
-  url: /enterprise/enterprise-deployment/msi-install-and-configure/
-prev:
-  title: 在 Windows 上通过 Microsoft Store 安装 Docker Desktop
-  url: /enterprise/enterprise-deployment/ms-store/
----
+# PKG 安装程序
 
 
 

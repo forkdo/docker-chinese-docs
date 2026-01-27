@@ -1,20 +1,4 @@
----
-title: Docker Extensions 的设置与反馈
-url: /extensions/settings-feedback/
-parent:
-  title: Docker 扩展
-  url: /extensions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: Docker Extensions 的设置与反馈
-    url: /extensions/settings-feedback/
-next:
-  title: 为扩展配置私有市场
-  url: /extensions/private-marketplace/
----
+# Docker Extensions 的设置与反馈
 
 
 ## 设置

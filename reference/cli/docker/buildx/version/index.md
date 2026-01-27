@@ -1,24 +1,4 @@
----
-title: docker buildx version
-url: /reference/cli/docker/buildx/version/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx version
-    url: /reference/cli/docker/buildx/version/
-next:
-  title: docker buildx use
-  url: /reference/cli/docker/buildx/use/
----
+# docker buildx version
 
 **Description:** Show buildx version information
 

@@ -1,27 +1,4 @@
----
-title: docker plugin inspect
-url: /reference/cli/docker/plugin/inspect/
-parent:
-  title: docker plugin
-  url: /reference/cli/docker/plugin/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker plugin
-    url: /reference/cli/docker/plugin/
-  - title: docker plugin inspect
-    url: /reference/cli/docker/plugin/inspect/
-next:
-  title: docker plugin enable
-  url: /reference/cli/docker/plugin/enable/
-prev:
-  title: docker plugin install
-  url: /reference/cli/docker/plugin/install/
----
+# docker plugin inspect
 
 **Description:** Display detailed information on one or more plugins
 

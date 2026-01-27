@@ -1,23 +1,4 @@
----
-title: Interface: Toast
-url: /reference/api/extensions-sdk/Toast/
-parent:
-  title: 扩展 API 参考
-  url: /reference/api/extensions-sdk/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 扩展 API 参考
-    url: /reference/api/extensions-sdk/
-  - title: Interface: Toast
-    url: /reference/api/extensions-sdk/Toast/
-next:
-  title: Interface: OpenDialogResult
-  url: /reference/api/extensions-sdk/OpenDialogResult/
-prev:
-  title: 接口: BackendV0
-  url: /reference/api/extensions-sdk/BackendV0/
----
+# Interface: Toast
 
 
 Toasts 提供对用户的简短通知。

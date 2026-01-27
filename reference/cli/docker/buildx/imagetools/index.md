@@ -1,21 +1,4 @@
----
-title: docker buildx imagetools
-url: /reference/cli/docker/buildx/imagetools/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx imagetools
-    url: /reference/cli/docker/buildx/imagetools/
----
+# docker buildx imagetools
 
 **Description:** Commands to work on images in registry
 

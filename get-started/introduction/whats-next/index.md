@@ -1,20 +1,4 @@
----
-title: 下一步
-url: /get-started/introduction/whats-next/
-parent:
-  title: 介绍
-  url: /get-started/introduction/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 介绍
-    url: /get-started/introduction/
-  - title: 下一步
-    url: /get-started/introduction/whats-next/
-next:
-  title: 构建并推送你的第一个镜像
-  url: /get-started/introduction/build-and-push-first-image/
----
+# 下一步
 
 
 以下部分提供了分步指南，帮助你理解核心 Docker 概念、构建镜像以及运行容器。

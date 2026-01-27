@@ -1,24 +1,4 @@
----
-title: docker stack config
-url: /reference/cli/docker/stack/config/
-parent:
-  title: docker stack
-  url: /reference/cli/docker/stack/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker stack
-    url: /reference/cli/docker/stack/
-  - title: docker stack config
-    url: /reference/cli/docker/stack/config/
-prev:
-  title: docker stack deploy
-  url: /reference/cli/docker/stack/deploy/
----
+# docker stack config
 
 **Description:** Outputs the final config file, after doing merges and interpolations
 

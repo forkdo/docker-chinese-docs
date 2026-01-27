@@ -1,25 +1,4 @@
----
-title: 自定义日志驱动输出
-url: /engine/logging/log_tags/
-parent:
-  title: 查看容器日志
-  url: /engine/logging/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 查看容器日志
-    url: /engine/logging/
-  - title: 自定义日志驱动输出
-    url: /engine/logging/log_tags/
-next:
-  title: 将 docker logs 与远程日志记录驱动程序结合使用
-  url: /engine/logging/dual-logging/
-prev:
-  title: 配置日志驱动程序
-  url: /engine/logging/configure/
----
+# 自定义日志驱动输出
 
 
 `tag` 日志选项用于指定标识容器日志消息的标签格式。默认情况下，系统使用容器 ID 的前 12 个字符。要覆盖此行为，请指定 `tag` 选项：

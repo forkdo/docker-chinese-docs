@@ -1,27 +1,4 @@
----
-title: docker network create
-url: /reference/cli/docker/network/create/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network create
-    url: /reference/cli/docker/network/create/
-next:
-  title: docker network connect
-  url: /reference/cli/docker/network/connect/
-prev:
-  title: docker network disconnect
-  url: /reference/cli/docker/network/disconnect/
----
+# docker network create
 
 **Description:** Create a network
 

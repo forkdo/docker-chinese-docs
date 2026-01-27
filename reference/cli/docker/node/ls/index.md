@@ -1,27 +1,4 @@
----
-title: docker node ls
-url: /reference/cli/docker/node/ls/
-parent:
-  title: docker node
-  url: /reference/cli/docker/node/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker node
-    url: /reference/cli/docker/node/
-  - title: docker node ls
-    url: /reference/cli/docker/node/ls/
-next:
-  title: docker node inspect
-  url: /reference/cli/docker/node/inspect/
-prev:
-  title: docker node promote
-  url: /reference/cli/docker/node/promote/
----
+# docker node ls
 
 **Description:** List nodes in the swarm
 

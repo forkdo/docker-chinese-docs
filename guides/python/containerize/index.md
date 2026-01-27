@@ -1,20 +1,4 @@
----
-title: 容器化 Python 应用程序
-url: /guides/python/containerize/
-parent:
-  title: Python 语言专属指南
-  url: /guides/python/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Python 语言专属指南
-    url: /guides/python/
-  - title: 容器化 Python 应用程序
-    url: /guides/python/containerize/
-prev:
-  title: 使用容器进行 Python 开发
-  url: /guides/python/develop/
----
+# 容器化 Python 应用程序
 
 
 ## 先决条件

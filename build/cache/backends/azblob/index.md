@@ -1,27 +1,4 @@
----
-title: Azure Blob Storage cache
-url: /build/cache/backends/azblob/
-parent:
-  title: Cache storage backends
-  url: /build/cache/backends/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-  - title: Cache storage backends
-    url: /build/cache/backends/
-  - title: Azure Blob Storage cache
-    url: /build/cache/backends/azblob/
-next:
-  title: Amazon S3 cache
-  url: /build/cache/backends/s3/
-prev:
-  title: GitHub Actions cache
-  url: /build/cache/backends/gha/
----
+# Azure Blob Storage cache
 
 
 

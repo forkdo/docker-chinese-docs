@@ -1,19 +1,4 @@
----
-title: docker desktop (Beta)
-url: /reference/cli/docker/desktop/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker desktop (Beta)
-    url: /reference/cli/docker/desktop/
----
+# docker desktop (Beta)
 
 **Description:** Docker Desktop
 

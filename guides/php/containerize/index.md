@@ -1,20 +1,4 @@
----
-title: 容器化 PHP 应用
-url: /guides/php/containerize/
-parent:
-  title: PHP 语言专属指南
-  url: /guides/php/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: PHP 语言专属指南
-    url: /guides/php/
-  - title: 容器化 PHP 应用
-    url: /guides/php/containerize/
-prev:
-  title: 使用容器进行 PHP 开发
-  url: /guides/php/develop/
----
+# 容器化 PHP 应用
 
 
 ## 前置条件

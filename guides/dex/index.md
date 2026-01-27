@@ -1,21 +1,4 @@
----
-title: 使用 Dex 在测试中模拟 OAuth 服务
-url: /guides/dex/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Dex 在测试中模拟 OAuth 服务
-    url: /guides/dex/
-next:
-  title: 使用 Claude Code 和 Docker MCP Toolkit 生成 Docker Compose 文件
-  url: /guides/genai-claude-code-mcp/claude-code-mcp-guide/
-prev:
-  title: 使用 JupyterLab 进行数据科学
-  url: /guides/jupyter/
----
+# 使用 Dex 在测试中模拟 OAuth 服务
 
 
 Dex 是一个开源的 OpenID Connect (OIDC) 和 OAuth 2.0 身份认证服务，可配置为通过各种后端身份认证服务（如 LDAP、SAML 和 OAuth）进行身份验证。在 Docker 容器中运行 Dex 可以让开发人员模拟 OAuth 2.0 服务器，用于测试和开发目的。本指南将引导您使用 Docker 容器将 Dex 设置为 OAuth 模拟服务器。

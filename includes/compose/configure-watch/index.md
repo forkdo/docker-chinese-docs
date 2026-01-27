@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/compose/configure-watch/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/compose/configure-watch/
-next:
-  title: 
-  url: /includes/compose/configs/
-prev:
-  title: 
-  url: /includes/compose/deploy/
----
+# 
 
 1. 在 `compose.yaml` 文件中的一个或多个服务中添加 `watch` 部分。
 2. 运行 `docker compose up --watch` 命令来构建并启动 Compose 项目，同时启动文件监听模式。

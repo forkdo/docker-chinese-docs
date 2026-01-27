@@ -1,25 +1,4 @@
----
-title: Docker Plugin API
-url: /engine/extend/plugin_api/
-parent:
-  title: Docker Engine managed plugin system
-  url: /engine/extend/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine managed plugin system
-    url: /engine/extend/
-  - title: Docker Plugin API
-    url: /engine/extend/plugin_api/
-next:
-  title: Docker network driver plugins
-  url: /engine/extend/plugins_network/
-prev:
-  title: Docker volume plugins
-  url: /engine/extend/plugins_volume/
----
+# Docker Plugin API
 
 
 Docker plugins are out-of-process extensions which add capabilities to the

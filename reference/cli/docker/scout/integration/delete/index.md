@@ -1,29 +1,4 @@
----
-title: docker scout integration delete
-url: /reference/cli/docker/scout/integration/delete/
-parent:
-  title: docker scout integration
-  url: /reference/cli/docker/scout/integration/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout integration
-    url: /reference/cli/docker/scout/integration/
-  - title: docker scout integration delete
-    url: /reference/cli/docker/scout/integration/delete/
-next:
-  title: docker scout integration configure
-  url: /reference/cli/docker/scout/integration/configure/
-prev:
-  title: docker scout integration list
-  url: /reference/cli/docker/scout/integration/list/
----
+# docker scout integration delete
 
 **Description:** Delete a new integration configuration
 

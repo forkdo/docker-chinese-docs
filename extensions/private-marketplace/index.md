@@ -1,23 +1,4 @@
----
-title: 为扩展配置私有市场
-url: /extensions/private-marketplace/
-parent:
-  title: Docker 扩展
-  url: /extensions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 为扩展配置私有市场
-    url: /extensions/private-marketplace/
-next:
-  title: 非 Marketplace 扩展
-  url: /extensions/non-marketplace/
-prev:
-  title: Docker Extensions 的设置与反馈
-  url: /extensions/settings-feedback/
----
+# 为扩展配置私有市场
 
 
 

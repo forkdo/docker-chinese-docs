@@ -1,22 +1,4 @@
----
-title: 使用 WSL
-url: /desktop/features/wsl/use-wsl/
-parent:
-  title: Windows 上的 Docker Desktop WSL 2 后端
-  url: /desktop/features/wsl/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Windows 上的 Docker Desktop WSL 2 后端
-    url: /desktop/features/wsl/
-  - title: 使用 WSL
-    url: /desktop/features/wsl/use-wsl/
-prev:
-  title: 在 WSL 上使用自定义内核
-  url: /desktop/features/wsl/custom-kernels/
----
+# 使用 WSL
 
 
 以下部分介绍如何开始使用 Docker 和 WSL 2 开发应用程序。为了获得使用 Docker 和 WSL 2 的最佳开发体验，我们建议将代码放在默认的 Linux 发行版中。在 Docker Desktop 上开启 WSL 2 功能后，就可以在 Linux 发行版中处理代码，理想情况下，IDE 仍然保留在 Windows 中。如果您使用的是 [VS Code](https://code.visualstudio.com/download)，这种工作流会非常简单。

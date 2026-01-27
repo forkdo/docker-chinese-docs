@@ -1,31 +1,8 @@
----
-title: docker sandbox ls
-url: /reference/cli/docker/sandbox/ls/
-parent:
-  title: Docker 沙箱
-  url: /reference/cli/docker/sandbox/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: Docker 沙箱
-    url: /reference/cli/docker/sandbox/
-  - title: docker sandbox ls
-    url: /reference/cli/docker/sandbox/ls/
-next:
-  title: docker sandbox inspect
-  url: /reference/cli/docker/sandbox/inspect/
-prev:
-  title: docker sandbox run
-  url: /reference/cli/docker/sandbox/run/
----
+# docker sandbox ls
 
-**Description:** List sandboxes
+**Description:** List VMs
 
-**Usage:** `docker sandbox ls`
+**Usage:** `docker sandbox ls [OPTIONS]`
 
 **Aliases:** `docker sandbox list`
 
@@ -275,43 +252,42 @@ prev:
 
 ## Description
 
-List all sandboxes.
-
-This command lists all sandboxes using the Docker API.
+List all VMs managed by sandboxd with their sandboxes
 
 
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
+| `--json` |  |  Output in JSON format |
 | `--no-trunc` |  |  Don't truncate output |
-| `-q`, `--quiet` |  |  Only display sandbox IDs |
+| `-q`, `--quiet` |  |  Only display VM names |
 
 
 
 ## Examples
 
-### List all sandboxes
+### List all VMs
 
 ```console
 $ docker sandbox ls
-SANDBOX ID    NAME         WORKSPACE                    CREATED
-abc123def     my-project   /home/user/my-project        2 hours ago
-def456ghi     ml-work      /home/user/ml-projects       1 day ago
+VM ID         NAME       STATUS    WORKSPACE                    SOCKET PATH                           SANDBOXES    AGENTS
+abc123def     claude-vm  running   /home/user/my-project        /Users/.../docker-1764682554072.sock  2           claude
+def456ghi     gemini-vm  stopped   /home/user/ml-projects
 ```
 
-### Show only sandbox IDs (--quiet) {#quiet}
+### Show only VM names (--quiet) {#quiet}
 
 ```text
 --quiet
 ```
 
-Output only sandbox IDs:
+Output only VM names:
 
 ```console
 $ docker sandbox ls --quiet
-abc123def
-def456ghi
+claude-vm
+gemini-vm
 ```
 
 ### Don't truncate output (--no-trunc) {#no-trunc}
@@ -320,16 +296,49 @@ def456ghi
 --no-trunc
 ```
 
-By default, long sandbox IDs and workspace paths are truncated for readability. Use `--no-trunc` to display the full values:
+By default, long VM IDs, workspace paths, and socket paths are truncated for readability. Use `--no-trunc` to display the full values:
 
 ```console
 $ docker sandbox ls
-SANDBOX ID    TEMPLATE  NAME         WORKSPACE                     STATUS   CREATED
-abc123def456  ubuntu    my-project   /home/user/.../my-project     running  2 hours ago
+VM ID         NAME       STATUS    WORKSPACE                   SOCKET PATH                           SANDBOXES    AGENTS
+abc123def     claude-vm  running   /home/user/.../my-project   ...sandboxes/vm/claude-vm/docker.sock  2           claude
 
 $ docker sandbox ls --no-trunc
-SANDBOX ID              TEMPLATE  NAME         WORKSPACE                                          STATUS   CREATED
-abc123def456ghi789jkl   ubuntu    my-project   /home/user/very/long/path/to/my-project           running  2 hours ago
+VM ID                     NAME       STATUS    WORKSPACE                                          SOCKET PATH                                                              SANDBOXES    AGENTS
+abc123def456ghi789jkl     claude-vm  running   /home/user/very/long/path/to/my-project           /Users/user/.docker/sandboxes/vm/claude-vm/docker-1764682554072.sock    2           claude
+```
+
+### JSON output (--json)
+
+```text
+--json
+```
+
+Output detailed VM information in JSON format:
+
+```console
+$ docker sandbox ls --json
+{
+  "vms": [
+    {
+      "name": "claude-vm",
+      "agent": "claude",
+      "status": "running",
+      "socket_path": "/Users/user/.docker/sandboxes/vm/claude-vm/docker-1234567890.sock",
+      "sandbox_count": 2,
+      "workspaces": [
+        "/home/user/my-project",
+        "/home/user/another-project"
+      ]
+    },
+    {
+      "name": "gemini-vm",
+      "agent": "gemini",
+      "status": "stopped",
+      "sandbox_count": 0
+    }
+  ]
+}
 ```
 
 

@@ -1,22 +1,4 @@
----
-title: 构建和发布流程
-url: /extensions/extensions-sdk/process/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 构建和发布流程
-    url: /extensions/extensions-sdk/process/
-prev:
-  title: 快速入门
-  url: /extensions/extensions-sdk/quickstart/
----
+# 构建和发布流程
 
 
 本文档的结构与您创建扩展时需要采取的步骤相匹配。

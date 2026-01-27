@@ -1,22 +1,4 @@
----
-title: Introduction to Bake
-url: /build/bake/introduction/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Introduction to Bake
-    url: /build/bake/introduction/
-prev:
-  title: Bake targets
-  url: /build/bake/targets/
----
+# Introduction to Bake
 
 
 Bake is an abstraction for the `docker build` command that lets you more easily

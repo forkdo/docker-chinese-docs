@@ -1,25 +1,4 @@
----
-title: 使用用户命名空间隔离容器
-url: /engine/security/userns-remap/
-parent:
-  title: Docker Engine 安全
-  url: /engine/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker Engine 安全
-    url: /engine/security/
-  - title: 使用用户命名空间隔离容器
-    url: /engine/security/userns-remap/
-next:
-  title: Docker 的 Seccomp 安全配置文件
-  url: /engine/security/seccomp/
-prev:
-  title: 使用证书验证仓库客户端
-  url: /engine/security/certificates/
----
+# 使用用户命名空间隔离容器
 
 
 Linux 命名空间为运行中的进程提供隔离，限制其对系统资源的访问，而进程本身并不会察觉到这些限制。有关 Linux 命名空间的更多信息，请参阅 [Linux 命名空间](https://www.linux.com/news/understanding-and-securing-linux-namespaces)。

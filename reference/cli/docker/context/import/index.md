@@ -1,27 +1,4 @@
----
-title: docker context import
-url: /reference/cli/docker/context/import/
-parent:
-  title: docker context
-  url: /reference/cli/docker/context/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker context
-    url: /reference/cli/docker/context/
-  - title: docker context import
-    url: /reference/cli/docker/context/import/
-next:
-  title: docker context export
-  url: /reference/cli/docker/context/export/
-prev:
-  title: docker context inspect
-  url: /reference/cli/docker/context/inspect/
----
+# docker context import
 
 **Description:** Import a context from a tar or zip file
 

@@ -1,22 +1,4 @@
----
-title: A2A 模式
-url: /ai/cagent/integrations/a2a/
-parent:
-  title: 集成
-  url: /ai/cagent/integrations/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 集成
-    url: /ai/cagent/integrations/
-  - title: A2A 模式
-    url: /ai/cagent/integrations/a2a/
-prev:
-  title: ACP 集成
-  url: /ai/cagent/integrations/acp/
----
+# A2A 模式
 
 
 A2A 模式将您的 cagent 代理作为 HTTP 服务器运行，其他系统可以通过 Agent-to-Agent 协议调用该服务器。这使您可以将代理作为服务暴露，其他代理或应用程序可以在网络上发现并调用该服务。

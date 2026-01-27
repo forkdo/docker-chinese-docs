@@ -1,21 +1,4 @@
----
-title: 什么是 Docker？
-url: /get-started/docker-overview/
-parent:
-  title: 开始使用
-  url: /get-started/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: 什么是 Docker？
-    url: /get-started/docker-overview/
-next:
-  title: 获取 Docker
-  url: /get-started/get-docker/
-prev:
-  title: 学习资源
-  url: /get-started/resources/
----
+# 什么是 Docker？
 
 
 Docker 是一个用于开发、交付和运行应用程序的开放平台。

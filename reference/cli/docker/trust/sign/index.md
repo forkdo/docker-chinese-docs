@@ -1,24 +1,4 @@
----
-title: docker trust sign
-url: /reference/cli/docker/trust/sign/
-parent:
-  title: docker trust
-  url: /reference/cli/docker/trust/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker trust
-    url: /reference/cli/docker/trust/
-  - title: docker trust sign
-    url: /reference/cli/docker/trust/sign/
-next:
-  title: docker trust revoke
-  url: /reference/cli/docker/trust/revoke/
----
+# docker trust sign
 
 **Description:** Sign an image
 

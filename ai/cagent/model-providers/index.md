@@ -1,20 +1,4 @@
----
-title: 模型提供商
-url: /ai/cagent/model-providers/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 模型提供商
-    url: /ai/cagent/model-providers/
-prev:
-  title: 使用 Docker Model Runner 运行本地模型
-  url: /ai/cagent/local-models/
----
+# 模型提供商
 
 
 要运行 cagent，您需要一个模型提供商。您可以使用带有 API 密钥的云提供商，也可以通过 [Docker Model

@@ -1,23 +1,4 @@
----
-title: 以容器形式运行 Go 镜像
-url: /guides/golang/run-containers/
-parent:
-  title: Go 语言专用指南
-  url: /guides/golang/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Go 语言专用指南
-    url: /guides/golang/
-  - title: 以容器形式运行 Go 镜像
-    url: /guides/golang/run-containers/
-next:
-  title: 构建您的 Go 镜像
-  url: /guides/golang/build-images/
-prev:
-  title: 使用容器进行 Go 开发
-  url: /guides/golang/develop/
----
+# 以容器形式运行 Go 镜像
 
 
 ## 前提条件

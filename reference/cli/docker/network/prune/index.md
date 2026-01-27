@@ -1,27 +1,4 @@
----
-title: docker network prune
-url: /reference/cli/docker/network/prune/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network prune
-    url: /reference/cli/docker/network/prune/
-next:
-  title: docker network ls
-  url: /reference/cli/docker/network/ls/
-prev:
-  title: docker network rm
-  url: /reference/cli/docker/network/rm/
----
+# docker network prune
 
 **Description:** Remove all unused networks
 

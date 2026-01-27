@@ -1,25 +1,4 @@
----
-title: 在 RHEL 上安装 Docker Engine
-url: /engine/install/rhel/
-parent:
-  title: 安装 Docker Engine
-  url: /engine/install/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 安装 Docker Engine
-    url: /engine/install/
-  - title: 在 RHEL 上安装 Docker Engine
-    url: /engine/install/rhel/
-next:
-  title: 在 Debian 上安装 Docker Engine
-  url: /engine/install/debian/
-prev:
-  title: 在 Fedora 上安装 Docker Engine
-  url: /engine/install/fedora/
----
+# 在 RHEL 上安装 Docker Engine
 
 
 要开始在 RHEL 上使用 Docker Engine，请确保你[满足先决条件](#prerequisites)，然后按照[安装步骤](#installation-methods)操作。
@@ -111,14 +90,14 @@ $ sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/dock
    ```console
    $ dnf list docker-ce --showduplicates | sort -r
 
-   docker-ce.x86_64    3:29.1.4-1.el9    docker-ce-stable
-   docker-ce.x86_64    3:29.1.3-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.2.0-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.1.5-1.el9    docker-ce-stable
    <...>
    ```
 
    返回的列表取决于启用的仓库，并且特定于你的 RHEL 版本（在此示例中由 `.el9` 后缀指示）。
 
-   通过其完全限定的包名安装特定版本，包名是包名（`docker-ce`）加上版本字符串（第 2 列），用连字符（`-`）分隔。例如，`docker-ce-3:29.1.4-1.el9`。
+   通过其完全限定的包名安装特定版本，包名是包名（`docker-ce`）加上版本字符串（第 2 列），用连字符（`-`）分隔。例如，`docker-ce-3:29.2.0-1.el9`。
 
    将 `<VERSION_STRING>` 替换为所需版本，然后运行以下命令进行安装：
 

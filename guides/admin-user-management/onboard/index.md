@@ -1,23 +1,4 @@
----
-title: 在 Docker 中上手并管理角色与权限
-url: /guides/admin-user-management/onboard/
-parent:
-  title: 掌握用户和访问管理
-  url: /guides/admin-user-management/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 掌握用户和访问管理
-    url: /guides/admin-user-management/
-  - title: 在 Docker 中上手并管理角色与权限
-    url: /guides/admin-user-management/onboard/
-next:
-  title: 在 Docker 中设置角色和权限
-  url: /guides/admin-user-management/setup/
-prev:
-  title: 监控与洞察
-  url: /guides/admin-user-management/audit-and-monitor/
----
+# 在 Docker 中上手并管理角色与权限
 
 
 本页面将指导您完成邀请所有者和成员上手，并使用 SSO 和 SCIM 等工具确保未来的上手流程具备长期适用性。

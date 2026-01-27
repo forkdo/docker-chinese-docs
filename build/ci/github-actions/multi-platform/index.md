@@ -1,27 +1,4 @@
----
-title: Multi-platform image with GitHub Actions
-url: /build/ci/github-actions/multi-platform/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Multi-platform image with GitHub Actions
-    url: /build/ci/github-actions/multi-platform/
-next:
-  title: Local registry with GitHub Actions
-  url: /build/ci/github-actions/local-registry/
-prev:
-  title: Named contexts with GitHub Actions
-  url: /build/ci/github-actions/named-contexts/
----
+# Multi-platform image with GitHub Actions
 
 
 You can build [multi-platform images](../../building/multi-platform.md) using

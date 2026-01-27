@@ -1,25 +1,4 @@
----
-title: 组织信息
-url: /admin/organization/general-settings/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 组织信息
-    url: /admin/organization/general-settings/
-next:
-  title: 活动日志
-  url: /admin/organization/activity-logs/
-prev:
-  title: 洞察 (Insights)
-  url: /admin/organization/insights/
----
+# 组织信息
 
 
 了解如何使用 Admin Console 更新您的组织信息。

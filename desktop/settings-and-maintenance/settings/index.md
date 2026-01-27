@@ -1,20 +1,4 @@
----
-title: 更改 Docker Desktop 设置
-url: /desktop/settings-and-maintenance/settings/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 更改 Docker Desktop 设置
-    url: /desktop/settings-and-maintenance/settings/
-prev:
-  title: 如何备份和恢复 Docker Desktop 数据
-  url: /desktop/settings-and-maintenance/backup-and-restore/
----
+# 更改 Docker Desktop 设置
 
 
 要导航到 **Settings**，有两种方式：

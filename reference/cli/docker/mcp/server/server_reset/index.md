@@ -1,26 +1,4 @@
----
-title: docker mcp server reset
-url: /reference/cli/docker/mcp/server/server_reset/
-parent:
-  title: docker mcp server
-  url: /reference/cli/docker/mcp/server/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp server
-    url: /reference/cli/docker/mcp/server/
-  - title: docker mcp server reset
-    url: /reference/cli/docker/mcp/server/server_reset/
-next:
-  title: docker mcp server list
-  url: /reference/cli/docker/mcp/server/server_ls/
----
+# docker mcp server reset
 
 **Description:** Disable all the servers
 

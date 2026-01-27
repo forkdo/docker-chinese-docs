@@ -1,27 +1,4 @@
----
-title: docker compose ls
-url: /reference/cli/docker/compose/ls/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose ls
-    url: /reference/cli/docker/compose/ls/
-next:
-  title: docker compose logs
-  url: /reference/cli/docker/compose/logs/
-prev:
-  title: docker compose pause
-  url: /reference/cli/docker/compose/pause/
----
+# docker compose ls
 
 **Description:** List running compose projects
 

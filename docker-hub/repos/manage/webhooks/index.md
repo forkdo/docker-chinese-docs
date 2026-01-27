@@ -1,25 +1,4 @@
----
-title: Webhooks
-url: /docker-hub/repos/manage/webhooks/
-parent:
-  title: 仓库
-  url: /docker-hub/repos/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: Webhooks
-    url: /docker-hub/repos/manage/webhooks/
-next:
-  title: 镜像安全洞察
-  url: /docker-hub/repos/manage/vulnerability-scanning/
-prev:
-  title: 将组织仓库导出为 CSV
-  url: /docker-hub/repos/manage/export/
----
+# Webhooks
 
 
 您可以使用 Webhook 在仓库发生推送事件时触发另一个服务中的操作。Webhook 是发送到您在 Docker Hub 中定义的 URL 的 POST 请求。

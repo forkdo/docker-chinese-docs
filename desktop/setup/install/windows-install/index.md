@@ -1,23 +1,4 @@
----
-title: 在 Windows 上安装 Docker Desktop
-url: /desktop/setup/install/windows-install/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: 在 Windows 上安装 Docker Desktop
-    url: /desktop/setup/install/windows-install/
-next:
-  title: 了解 Mac 上 Docker Desktop 的权限要求
-  url: /desktop/setup/install/mac-permission-requirements/
-prev:
-  title: 了解 Windows 的权限要求
-  url: /desktop/setup/install/windows-permission-requirements/
----
+# 在 Windows 上安装 Docker Desktop
 
 
 > **Docker Desktop 使用条款**

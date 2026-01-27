@@ -1,23 +1,4 @@
----
-title: 使用环境变量配置 Docker Scout
-url: /scout/how-tos/configure-cli/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 使用环境变量配置 Docker Scout
-    url: /scout/how-tos/configure-cli/
-next:
-  title: Docker Scout SBOM
-  url: /scout/how-tos/view-create-sboms/
-prev:
-  title: 使用 GUI 创建例外
-  url: /scout/how-tos/create-exceptions-gui/
----
+# 使用环境变量配置 Docker Scout
 
 
 以下环境变量可用于配置 Docker Scout CLI 命令，以及对应的 `docker/scout-cli` 容器镜像：

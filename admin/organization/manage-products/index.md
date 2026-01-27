@@ -1,25 +1,4 @@
----
-title: 管理 Docker 产品
-url: /admin/organization/manage-products/
-parent:
-  title: 组织管理概览
-  url: /admin/organization/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 组织管理概览
-    url: /admin/organization/
-  - title: 管理 Docker 产品
-    url: /admin/organization/manage-products/
-next:
-  title: 停用组织
-  url: /admin/organization/deactivate-account/
-prev:
-  title: 活动日志
-  url: /admin/organization/activity-logs/
----
+# 管理 Docker 产品
 
 
 

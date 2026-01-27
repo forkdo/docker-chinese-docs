@@ -1,27 +1,4 @@
----
-title: docker container update
-url: /reference/cli/docker/container/update/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container update
-    url: /reference/cli/docker/container/update/
-next:
-  title: docker container unpause
-  url: /reference/cli/docker/container/unpause/
-prev:
-  title: docker container wait
-  url: /reference/cli/docker/container/wait/
----
+# docker container update
 
 **Description:** Update configuration of one or more containers
 

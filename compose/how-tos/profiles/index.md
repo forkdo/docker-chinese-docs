@@ -1,23 +1,4 @@
----
-title: 在 Compose 中使用配置集
-url: /compose/how-tos/profiles/
-parent:
-  title: Docker Compose
-  url: /compose/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: 在 Compose 中使用配置集
-    url: /compose/how-tos/profiles/
-next:
-  title: 指定项目名称
-  url: /compose/how-tos/project-name/
-prev:
-  title: 在 Compose 中使用生命周期钩子
-  url: /compose/how-tos/lifecycle/
----
+# 在 Compose 中使用配置集
 
 
 

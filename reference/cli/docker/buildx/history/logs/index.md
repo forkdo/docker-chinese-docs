@@ -1,29 +1,4 @@
----
-title: docker buildx history logs
-url: /reference/cli/docker/buildx/history/logs/
-parent:
-  title: docker buildx history
-  url: /reference/cli/docker/buildx/history/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx history
-    url: /reference/cli/docker/buildx/history/
-  - title: docker buildx history logs
-    url: /reference/cli/docker/buildx/history/logs/
-next:
-  title: docker buildx history import
-  url: /reference/cli/docker/buildx/history/import/
-prev:
-  title: docker buildx history ls
-  url: /reference/cli/docker/buildx/history/ls/
----
+# docker buildx history logs
 
 **Description:** Print the logs of a build record
 

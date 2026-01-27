@@ -1,23 +1,4 @@
----
-title: Docker Scout demo
-url: /guides/docker-scout/demo/
-parent:
-  title: 使用 Docker Scout 保障您的软件供应链安全
-  url: /guides/docker-scout/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Docker Scout 保障您的软件供应链安全
-    url: /guides/docker-scout/
-  - title: Docker Scout demo
-    url: /guides/docker-scout/demo/
-next:
-  title: 为什么选择 Docker Scout？
-  url: /guides/docker-scout/why/
-prev:
-  title: 软件供应链安全
-  url: /guides/docker-scout/s3c/
----
+# Docker Scout demo
 
 
 

@@ -1,25 +1,4 @@
----
-title: docker debug
-url: /reference/cli/docker/debug/
-parent:
-  title: docker
-  url: /reference/cli/docker/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker debug
-    url: /reference/cli/docker/debug/
-next:
-  title: docker build (legacy builder)
-  url: /reference/cli/docker/build-legacy/
-prev:
-  title: docker exec
-  url: 
----
+# docker debug
 
 **Description:** Get a shell into any container or image. An alternative to debugging with `docker exec`.
 

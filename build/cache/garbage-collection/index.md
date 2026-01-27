@@ -1,25 +1,4 @@
----
-title: Build garbage collection
-url: /build/cache/garbage-collection/
-parent:
-  title: Docker build cache
-  url: /build/cache/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Docker build cache
-    url: /build/cache/
-  - title: Build garbage collection
-    url: /build/cache/garbage-collection/
-next:
-  title: Build cache invalidation
-  url: /build/cache/invalidation/
-prev:
-  title: Optimize cache usage in builds
-  url: /build/cache/optimize/
----
+# Build garbage collection
 
 
 While [`docker builder prune`](/reference/cli/docker/builder/prune.md)

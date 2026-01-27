@@ -1,24 +1,4 @@
----
-title: docker volume create
-url: /reference/cli/docker/volume/create/
-parent:
-  title: docker volume
-  url: /reference/cli/docker/volume/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker volume
-    url: /reference/cli/docker/volume/
-  - title: docker volume create
-    url: /reference/cli/docker/volume/create/
-prev:
-  title: docker volume inspect
-  url: /reference/cli/docker/volume/inspect/
----
+# docker volume create
 
 **Description:** Create a volume
 

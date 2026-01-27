@@ -1,20 +1,4 @@
----
-title: 容器化应用程序
-url: /get-started/workshop/02_our_app/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 容器化应用程序
-    url: /get-started/workshop/02_our_app/
-prev:
-  title: 更新应用程序
-  url: /get-started/workshop/03_updating_app/
----
+# 容器化应用程序
 
 
 在本指南的剩余部分，您将使用一个运行在 Node.js 上的简单待办事项列表管理器。如果您不熟悉 Node.js，也不必担心。本指南不需要任何 JavaScript 前期经验。

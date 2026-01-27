@@ -1,27 +1,4 @@
----
-title: Using secrets with GitHub Actions
-url: /build/ci/github-actions/secrets/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Using secrets with GitHub Actions
-    url: /build/ci/github-actions/secrets/
-next:
-  title: Validating build configuration with GitHub Actions
-  url: /build/ci/github-actions/checks/
-prev:
-  title: GitHub Actions build summary
-  url: /build/ci/github-actions/build-summary/
----
+# Using secrets with GitHub Actions
 
 
 A build secret is sensitive information, such as a password or API token, consumed as part of the build process.
@@ -128,7 +105,7 @@ to fetch Go modules from a private GitHub repository.
 ```dockerfile {collapse=1}
 # syntax=docker/dockerfile:1
 
-ARG GO_VERSION="1.24"
+ARG GO_VERSION="1.25"
 
 FROM golang:${GO_VERSION}-alpine AS base
 ENV CGO_ENABLED=0

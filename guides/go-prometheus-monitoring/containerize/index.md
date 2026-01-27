@@ -1,23 +1,4 @@
----
-title: 容器化一个 Golang 应用
-url: /guides/go-prometheus-monitoring/containerize/
-parent:
-  title: 使用 Prometheus 和 Grafana 监控 Golang 应用
-  url: /guides/go-prometheus-monitoring/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 Prometheus 和 Grafana 监控 Golang 应用
-    url: /guides/go-prometheus-monitoring/
-  - title: 容器化一个 Golang 应用
-    url: /guides/go-prometheus-monitoring/containerize/
-next:
-  title: 构建应用程序
-  url: /guides/go-prometheus-monitoring/application/
-prev:
-  title: 使用 Docker Compose 连接服务
-  url: /guides/go-prometheus-monitoring/compose/
----
+# 容器化一个 Golang 应用
 
 
 容器化可以帮助你将应用及其依赖打包到一个称为容器的单一包中。该包可以在任何平台上运行，而无需担心环境问题。在本节中，你将学习如何使用 Docker 容器化一个 Golang 应用。

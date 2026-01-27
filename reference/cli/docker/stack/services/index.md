@@ -1,24 +1,4 @@
----
-title: docker stack services
-url: /reference/cli/docker/stack/services/
-parent:
-  title: docker stack
-  url: /reference/cli/docker/stack/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker stack
-    url: /reference/cli/docker/stack/
-  - title: docker stack services
-    url: /reference/cli/docker/stack/services/
-next:
-  title: docker stack rm
-  url: /reference/cli/docker/stack/rm/
----
+# docker stack services
 
 **Description:** List the services in the stack
 

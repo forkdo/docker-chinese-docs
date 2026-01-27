@@ -1,27 +1,4 @@
----
-title: docker service scale
-url: /reference/cli/docker/service/scale/
-parent:
-  title: docker service
-  url: /reference/cli/docker/service/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker service
-    url: /reference/cli/docker/service/
-  - title: docker service scale
-    url: /reference/cli/docker/service/scale/
-next:
-  title: docker service rollback
-  url: /reference/cli/docker/service/rollback/
-prev:
-  title: docker service update
-  url: /reference/cli/docker/service/update/
----
+# docker service scale
 
 **Description:** Scale one or multiple replicated services
 

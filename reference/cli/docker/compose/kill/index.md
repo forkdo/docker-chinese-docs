@@ -1,27 +1,4 @@
----
-title: docker compose kill
-url: /reference/cli/docker/compose/kill/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose kill
-    url: /reference/cli/docker/compose/kill/
-next:
-  title: docker compose images
-  url: /reference/cli/docker/compose/images/
-prev:
-  title: docker compose logs
-  url: /reference/cli/docker/compose/logs/
----
+# docker compose kill
 
 **Description:** Force stop service containers
 

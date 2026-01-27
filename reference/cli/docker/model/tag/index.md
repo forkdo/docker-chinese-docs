@@ -1,27 +1,4 @@
----
-title: docker model tag
-url: /reference/cli/docker/model/tag/
-parent:
-  title: docker model
-  url: /reference/cli/docker/model/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker model
-    url: /reference/cli/docker/model/
-  - title: docker model tag
-    url: /reference/cli/docker/model/tag/
-next:
-  title: docker model stop-runner
-  url: /reference/cli/docker/model/stop-runner/
-prev:
-  title: docker model uninstall-runner
-  url: /reference/cli/docker/model/uninstall-runner/
----
+# docker model tag
 
 **Description:** Tag a model
 

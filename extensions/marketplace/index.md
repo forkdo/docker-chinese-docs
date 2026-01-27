@@ -1,20 +1,4 @@
----
-title: Marketplace 扩展
-url: /extensions/marketplace/
-parent:
-  title: Docker 扩展
-  url: /extensions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: Marketplace 扩展
-    url: /extensions/marketplace/
-prev:
-  title: 非 Marketplace 扩展
-  url: /extensions/non-marketplace/
----
+# Marketplace 扩展
 
 
 Extensions Marketplace 中提供两种类型的扩展：

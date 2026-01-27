@@ -1,27 +1,4 @@
----
-title: docker container create
-url: /reference/cli/docker/container/create/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container create
-    url: /reference/cli/docker/container/create/
-next:
-  title: docker container commit
-  url: /reference/cli/docker/container/commit/
-prev:
-  title: docker container diff
-  url: /reference/cli/docker/container/diff/
----
+# docker container create
 
 **Description:** Create a new container
 

@@ -1,20 +1,4 @@
----
-title: 关于公司的常见问题
-url: /admin/faqs/company-faqs/
-parent:
-  title: 管理
-  url: /admin/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 管理
-    url: /admin/
-  - title: 关于公司的常见问题
-    url: /admin/faqs/company-faqs/
-next:
-  title: 关于组织的常见问题解答
-  url: /admin/faqs/organization-faqs/
----
+# 关于公司的常见问题
 
 
 ### 我的部分组织没有 Docker Business 订阅。我还能使用父公司吗？

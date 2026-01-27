@@ -1,25 +1,4 @@
----
-title: Inheritance in Bake
-url: /build/bake/inheritance/
-parent:
-  title: Bake
-  url: /build/bake/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Bake
-    url: /build/bake/
-  - title: Inheritance in Bake
-    url: /build/bake/inheritance/
-next:
-  title: Bake targets
-  url: /build/bake/targets/
-prev:
-  title: Variables in Bake
-  url: /build/bake/variables/
----
+# Inheritance in Bake
 
 
 Targets can inherit attributes from other targets, using the `inherits`
@@ -29,7 +8,7 @@ image for a development environment:
 ```hcl {title=docker-bake.hcl}
 target "app-dev" {
   args = {
-    GO_VERSION = "1.24"
+    GO_VERSION = "1.25"
   }
   tags = ["docker.io/username/myapp:dev"]
   labels = {
@@ -62,7 +41,7 @@ arguments:
 ```hcl {title=docker-bake.hcl}
 target "_common" {
   args = {
-    GO_VERSION = "1.24"
+    GO_VERSION = "1.25"
     BUILDKIT_CONTEXT_KEEP_GIT_DIR = 1
   }
 }
@@ -129,7 +108,7 @@ attributes from both the `app-dev` and `_common` targets.
 ```hcl {title=docker-bake.hcl}
 target "_common" {
   args = {
-    GO_VERSION = "1.24"
+    GO_VERSION = "1.25"
     BUILDKIT_CONTEXT_KEEP_GIT_DIR = 1
   }
 }

@@ -1,26 +1,4 @@
----
-title: 配置用户
-url: /enterprise/security/provisioning/
-parent:
-  title: 企业级安全
-  url: /enterprise/security/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 企业级安全
-    url: /enterprise/security/
-  - title: 配置用户
-    url: /enterprise/security/provisioning/
-children:
-  - title: 即时配置 (JIT)
-    url: /enterprise/security/provisioning/just-in-time/
-    description: 了解即时配置 (JIT) 如何与您的 SSO 连接配合使用。
-  - title: 组映射
-    url: /enterprise/security/provisioning/group-mapping/
-    description: 通过将身份提供程序组与 Docker 团队同步，实现团队成员资格的自动化管理
-  - title: 
-    url: /enterprise/security/provisioning/scim/
----
+# 配置用户
 
 
 

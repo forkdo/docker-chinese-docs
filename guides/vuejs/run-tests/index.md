@@ -1,23 +1,4 @@
----
-title: 在容器中运行 Vue.js 测试
-url: /guides/vuejs/run-tests/
-parent:
-  title: Vue.js 语言专用指南
-  url: /guides/vuejs/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Vue.js 语言专用指南
-    url: /guides/vuejs/
-  - title: 在容器中运行 Vue.js 测试
-    url: /guides/vuejs/run-tests/
-next:
-  title: 使用容器进行 Vue.js 开发
-  url: /guides/vuejs/develop/
-prev:
-  title: 使用 GitHub Actions 自动化构建
-  url: /guides/vuejs/configure-github-actions/
----
+# 在容器中运行 Vue.js 测试
 
 
 ## 先决条件

@@ -10,15 +10,18 @@
   </title>
 
 
-<meta name="description" content="了解 Docker Engine 的新功能、错误修复和重大变更" />
+<meta name="description" content="了解 Docker Engine 的新功能、错误修复和破坏性变更" />
 <meta
   name="keywords"
-  content="docker, docker, engine, ce, 新增功能, 发布说明"
+  content="docker, docker, engine, ce, whats, new, release, notes"
 />
 <link rel="canonical" href="/engine/release-notes/29/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解 Docker Engine 的新功能、错误修复和重大变更"
+  content="了解 Docker Engine 的新功能、错误修复和破坏性变更"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="Engine v29" />
-<meta property="og:description" content="了解 Docker Engine 的新功能、错误修复和重大变更" />
+<meta property="og:description" content="了解 Docker Engine 的新功能、错误修复和破坏性变更" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2026-01-08 20:51:23 &#43;0100 &#43;0100"
+  content="2026-01-26 18:57:33 &#43;0100 &#43;0100"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2026-01-08 20:51:23 &#43;0100 &#43;0100"
+  content="2026-01-26 18:57:33 &#43;0100 &#43;0100"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-08T20:51:23+01:00","description":"了解 Docker Engine 的新功能、错误修复和重大变更","headline":"Engine v29","keywords":"docker, docker, engine, ce, 新增功能, 发布说明","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/engine/release-notes/29/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/engine/","name":"Docker Engine"},"position":2},{"@type":"ListItem","item":{"@id":"/engine/release-notes/29/","name":"Engine v29"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-26T18:57:33+01:00","description":"了解 Docker Engine 的新功能、错误修复和破坏性变更","headline":"Engine v29","keywords":"docker, docker, engine, ce, whats, new, release, notes","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/engine/release-notes/29/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/engine/","name":"Docker Engine"},"position":2},{"@type":"ListItem","item":{"@id":"/engine/release-notes/29/","name":"Engine v29"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/engine/release-notes/29/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4764,10 +4773,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4807,10 +4816,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4838,11 +4847,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4859,6 +4900,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6248,10 +6337,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8889,18 +8978,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10636,10 +10721,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11634,10 +11719,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -12336,6 +12421,22 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
+          <a class="link lg:no-underline" href="#2920"
+            >29.2.0</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#2915"
+            >29.1.5</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+  </ul>
+        <li>
           <a class="link lg:no-underline" href="#2914"
             >29.1.4</a
           >
@@ -12351,6 +12452,13 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
   </ul>
+        <li>
+          <a class="link lg:no-underline" href="#keywords-%e5%8f%91%e5%b8%83-docker-engine"
+            >title: &quot;29.0.0+&quot;
+description: &quot;Docker Engine 29.0.0+ 发布说明&quot;
+keywords: &quot;发布, Docker, Engine&quot;</a
+          >
+        </li>
         <li>
           <a class="link lg:no-underline" href="#2912"
             >29.1.2</a
@@ -12421,12 +12529,138 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>本文档介绍了 Docker Engine 29 版本的最新变更、新增功能、已知问题和修复内容。</p>
+    <p>此页面描述了 Docker Engine 29 版本的最新变更、新增功能、已知问题和修复。</p>
 <p>更多信息请参阅：</p>
 <ul>
-<li>已弃用和移除的功能，请参阅<a class="link" href="/engine/deprecated/">已弃用的 Engine 功能</a>。</li>
+<li>已弃用和移除的功能，请参阅 <a class="link" href="/engine/deprecated/">已弃用的 Engine 功能</a>。</li>
 <li>Engine API 的变更，请参阅 
   <a class="link" href="/reference/api/engine/version-history/">Engine API 版本历史</a>。</li>
+</ul>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="2920">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#2920">
+    29.2.0
+  </a>
+</h2>
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-01-26</em>
+
+<p>有关此版本中完整的拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
+<ul>
+<li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.2.0" rel="noopener">docker/cli, 29.2.0 里程碑</a></li>
+<li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.2.0" rel="noopener">moby/moby, 29.2.0 里程碑</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="新增功能">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%96%b0%e5%a2%9e%e5%8a%9f%e8%83%bd">
+    新增功能
+  </a>
+</h3>
+
+<ul>
+<li><code>docker info</code> 现在包含 <code>NRI</code> 部分。<a class="link" href="https://github.com/docker/cli/pull/6710" rel="noopener">docker/cli#6710</a></li>
+<li>添加实验性 NRI 支持。<a class="link" href="https://github.com/moby/moby/pull/51711" rel="noopener">moby/moby#51711</a>, <a class="link" href="https://github.com/moby/moby/pull/51712" rel="noopener">moby/moby#51712</a>, <a class="link" href="https://github.com/moby/moby/pull/51675" rel="noopener">moby/moby#51675</a>, <a class="link" href="https://github.com/moby/moby/pull/51674" rel="noopener">moby/moby#51674</a>, <a class="link" href="https://github.com/moby/moby/pull/51636" rel="noopener">moby/moby#51636</a>, <a class="link" href="https://github.com/moby/moby/pull/51634" rel="noopener">moby/moby#51634</a></li>
+<li>在检查端点中添加了新的 <code>Identity</code> 字段，以显示有关镜像的可信来源信息。这包括本地构建镜像的构建引用、拉取镜像的远程注册表仓库，以及包含有效签名证明声明的镜像的验证签名信息。<a class="link" href="https://github.com/moby/moby/pull/51737" rel="noopener">moby/moby#51737</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba">
+    错误修复和增强
+  </a>
+</h3>
+
+<ul>
+<li>改进 <code>--detach-keys</code> 命令行选项的验证。<a class="link" href="https://github.com/docker/cli/pull/6742" rel="noopener">docker/cli#6742</a></li>
+<li>防止在不完整初始化后守护进程关闭时出现潜在的 panic。<a class="link" href="https://github.com/moby/moby/pull/51797" rel="noopener">moby/moby#51797</a></li>
+<li>移除对匿名只读卷的限制。<a class="link" href="https://github.com/moby/moby/pull/51682" rel="noopener">moby/moby#51682</a></li>
+<li>dockerd 上的 <code>--validate</code> 标志现在还会验证系统要求，允许在启动守护进程之前检查系统要求。<a class="link" href="https://github.com/moby/moby/pull/51868" rel="noopener">moby/moby#51868</a></li>
+<li>如果可能，使用 CDI 处理对 NVIDIA 设备的 <code>--gpus</code> 请求。<a class="link" href="https://github.com/moby/moby/pull/50228" rel="noopener">moby/moby#50228</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="包更新">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8c%85%e6%9b%b4%e6%96%b0">
+    包更新
+  </a>
+</h3>
+
+<ul>
+<li>将 BuildKit 更新到 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.27.0" rel="noopener">v0.27.0</a>。<a class="link" href="https://github.com/moby/moby/pull/51886" rel="noopener">moby/moby#51886</a></li>
+<li>将 containerd（仅静态二进制文件）更新到 <a class="link" href="https://github.com/containerd/containerd/releases/tag/v2.2.1" rel="noopener">v2.2.1</a>。<a class="link" href="https://github.com/moby/moby/pull/51765" rel="noopener">moby/moby#51765</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="无根模式">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%97%a0%e6%a0%b9%e6%a8%a1%e5%bc%8f">
+    无根模式
+  </a>
+</h3>
+
+<ul>
+<li>无根模式：在查找 CDI 设备时考虑 <code>$XDG_CONFIG_HOME/cdi</code> 和 <code>$XDG_RUNTIME_DIR/cdi</code>。<a class="link" href="https://github.com/moby/moby/pull/51624" rel="noopener">moby/moby#51624</a></li>
+<li>将 RootlessKit 更新到 <a class="link" href="https://github.com/rootless-containers/rootlesskit/releases/tag/v2.3.6" rel="noopener">v2.3.6</a>。<a class="link" href="https://github.com/moby/moby/pull/51757" rel="noopener">moby/moby#51757</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="api">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#api">
+    API
+  </a>
+</h3>
+
+<ul>
+<li>在监听套接字上原生支持 gRPC。<a class="link" href="https://github.com/moby/moby/pull/50744" rel="noopener">moby/moby#50744</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="go-sdk">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#go-sdk">
+    Go SDK
+  </a>
+</h3>
+
+<ul>
+<li>cli/command: 添加 WithAPIClientOptions 选项。<a class="link" href="https://github.com/docker/cli/pull/6740" rel="noopener">docker/cli#6740</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="弃用">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%bc%83%e7%94%a8">
+    弃用
+  </a>
+</h3>
+
+<ul>
+<li>从 Windows 上用于 CLI 插件的路径列表中移除 <code>%PROGRAMDATA%\Docker\cli-plugins</code>。此路径是为了与旧安装向后兼容而存在的，但已被 <code>%ProgramFiles%\Docker\cli-plugins</code> 替代。<a class="link" href="https://github.com/docker/cli/pull/6713" rel="noopener">docker/cli#6713</a></li>
+</ul>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="2915">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#2915">
+    29.1.5
+  </a>
+</h2>
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-01-16</em>
+
+<p>有关此版本中完整的拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
+<ul>
+<li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.1.5" rel="noopener">docker/cli, 29.1.5 里程碑</a></li>
+<li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.1.5" rel="noopener">moby/moby, 29.1.5 里程碑</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="包更新-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8c%85%e6%9b%b4%e6%96%b0-1">
+    包更新
+  </a>
+</h3>
+
+<ul>
+<li>将 Go 运行时更新到 <a class="link" href="https://go.dev/doc/devel/release#go1.25.6" rel="noopener">1.25.6</a>。<a class="link" href="https://github.com/moby/moby/pull/51860" rel="noopener">moby/moby#51860</a>, <a class="link" href="https://github.com/docker/cli/pull/6750" rel="noopener">docker/cli#6750</a></li>
+</ul>
+
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c">
+    网络
+  </a>
+</h3>
+
+<ul>
+<li>修复了一个回归问题，其中在容器关闭宽限期期间可能会中断已建立的网络连接。<a class="link" href="https://github.com/moby/moby/pull/51843" rel="noopener">moby/moby#51843</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2914">
@@ -12437,32 +12671,32 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2026-01-08</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中完整的拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.1.4" rel="noopener">docker/cli, 29.1.4 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.1.4" rel="noopener">moby/moby, 29.1.4 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba-1">
+    错误修复和增强
   </a>
 </h3>
 
 <ul>
-<li>修复 Windows 上 <code>docker run --network none</code> 导致的崩溃问题。<a class="link" href="https://github.com/moby/moby/pull/51830" rel="noopener">moby/moby#51830</a></li>
-<li>修复挂载路径过长时镜像挂载失败并提示“文件名过长”的问题。<a class="link" href="https://github.com/moby/moby/pull/51829" rel="noopener">moby/moby#51829</a></li>
-<li>修复可能导致创建孤立 overlay2 层的问题。<a class="link" href="https://github.com/moby/moby/pull/51826" rel="noopener">moby/moby#51826</a>、<a class="link" href="https://github.com/moby/moby/pull/51824" rel="noopener">moby/moby#51824</a></li>
+<li>修复 Windows 上 <code>docker run --network none</code> 的 panic。<a class="link" href="https://github.com/moby/moby/pull/51830" rel="noopener">moby/moby#51830</a></li>
+<li>修复由于挂载路径过长导致的镜像挂载失败问题，错误为&quot;文件名太长&quot;。<a class="link" href="https://github.com/moby/moby/pull/51829" rel="noopener">moby/moby#51829</a></li>
+<li>修复可能创建孤立的 overlay2 层的问题。<a class="link" href="https://github.com/moby/moby/pull/51826" rel="noopener">moby/moby#51826</a>, <a class="link" href="https://github.com/moby/moby/pull/51824" rel="noopener">moby/moby#51824</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0">
-    打包更新
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="包更新-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8c%85%e6%9b%b4%e6%96%b0-2">
+    包更新
   </a>
 </h3>
 
 <ul>
-<li>将 BuildKit 更新至 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.26.3" rel="noopener">v0.26.3</a>。<a class="link" href="https://github.com/moby/moby/pull/51821" rel="noopener">moby/moby#51821</a></li>
+<li>将 BuildKit 更新到 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.26.3" rel="noopener">v0.26.3</a>。<a class="link" href="https://github.com/moby/moby/pull/51821" rel="noopener">moby/moby#51821</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2913">
@@ -12473,42 +12707,54 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-12-12</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中完整的拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.1.3" rel="noopener">docker/cli, 29.1.3 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.1.3" rel="noopener">moby/moby, 29.1.3 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能-1">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd-1">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba-2">
+    错误修复和增强
   </a>
 </h3>
 
 <ul>
-<li>为 <code>docker stack deploy --compose-file</code> 添加 Shell 自动补全支持。<a class="link" href="https://github.com/docker/cli/pull/6690" rel="noopener">docker/cli#6690</a></li>
-<li>containerd 镜像存储：修复 <code>docker build</code> 忽略显式设置的 <code>unpack</code> 镜像导出器选项的错误。<a class="link" href="https://github.com/moby/moby/pull/51514" rel="noopener">moby/moby#51514</a></li>
-<li>修复 <code>docker image ls</code> 对悬空镜像的处理逻辑。<a class="link" href="https://github.com/docker/cli/pull/6704" rel="noopener">docker/cli#6704</a></li>
-<li>修复 Engine 在关闭时可能遗留设置了自动删除的容器处于“dead”状态且永不回收的问题。<a class="link" href="https://github.com/moby/moby/pull/51693" rel="noopener">moby/moby#51693</a></li>
-<li>修复在 i386 架构上的构建问题。<a class="link" href="https://github.com/moby/moby/pull/51528" rel="noopener">moby/moby#51528</a></li>
-<li>修复当先前存在 graphdriver 状态时，显式 graphdriver 配置（<code>&quot;storage-driver&quot;</code>）被当作 containerd snapshotter 处理的问题。<a class="link" href="https://github.com/moby/moby/pull/51516" rel="noopener">moby/moby#51516</a></li>
-<li>修复可能导致创建孤立 overlay2 层的问题。<a class="link" href="https://github.com/moby/moby/pull/51703" rel="noopener">moby/moby#51703</a></li>
+<li>为 <code>docker stack deploy --compose-file</code> 添加 shell 补全。<a class="link" href="https://github.com/docker/cli/pull/6690" rel="noopener">docker/cli#6690</a></li>
+<li>containerd 镜像存储：修复导致 <code>docker build</code> 忽略显式设置的 <code>unpack</code> 镜像导出器选项的错误。<a class="link" href="https://github.com/moby/moby/pull/51514" rel="noopener">moby/moby#51514</a></li>
+<li>修复 <code>docker image ls</code> 悬空镜像处理。<a class="link" href="https://github.com/docker/cli/pull/6704" rel="noopener">docker/cli#6704</a></li>
+<li>修复可能导致 Engine 在关闭时将设置了自动移除的容器留在 'dead' 状态且永远不会回收它们的错误。<a class="link" href="https://github.com/moby/moby/pull/51693" rel="noopener">moby/moby#51693</a></li>
+<li>修复在 i386 上的构建。<a class="link" href="https://github.com/moby/moby/pull/51528" rel="noopener">moby/moby#51528</a></li>
+<li>修复当存在先前的 graphdriver 状态时，显式 graphdriver 配置（<code>&quot;storage-driver&quot;</code>）被当作 containerd 快照器处理的问题。<a class="link" href="https://github.com/moby/moby/pull/51516" rel="noopener">moby/moby#51516</a></li>
+<li>修复可能创建孤立的 overlay2 层的问题。<a class="link" href="https://github.com/moby/moby/pull/51703" rel="noopener">moby/moby#51703</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-1">
     网络
   </a>
 </h3>
 
+<hr>
+
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="keywords-发布-docker-engine">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#keywords-%e5%8f%91%e5%b8%83-docker-engine">
+    title: &quot;29.0.0+&quot;
+description: &quot;Docker Engine 29.0.0+ 发布说明&quot;
+keywords: &quot;发布, Docker, Engine&quot;
+  </a>
+</h2>
+
+<em class="text-gray-400 italic dark:text-gray-500">2025-11-12</em>
+
 <ul>
-<li>允许在容器网络未配置特定子网的情况下创建具有特定 IP 地址的容器。<a class="link" href="https://github.com/moby/moby/pull/51583" rel="noopener">moby/moby#51583</a></li>
-<li>避免在升级到 v29.1.2 之前通过 API 创建的容器启动时崩溃（该容器设置了 <code>PublishAll</code> 且 <code>PortBindings</code> 映射为 nil）。<a class="link" href="https://github.com/moby/moby/pull/51691" rel="noopener">moby/moby#51691</a></li>
-<li>修复节点加入 Swarm 集群后，连接到非 Swarm 范围网络的容器无法解析 DNS 的问题。<a class="link" href="https://github.com/moby/moby/pull/51515" rel="noopener">moby/moby#51515</a></li>
+<li>允许在容器网络未配置特定子网时创建具有特定 IP 地址的容器。<a class="link" href="https://github.com/moby/moby/pull/51583" rel="noopener">moby/moby#51583</a></li>
+<li>修复在升级到 v29.1.2 之前通过 API 创建的容器（使用 <code>PublishAll</code> 和 nil 的 <code>PortBindings</code> 映射）启动时崩溃的问题。<a class="link" href="https://github.com/moby/moby/pull/51691" rel="noopener">moby/moby#51691</a></li>
+<li>修复节点加入 Swarm 集群后阻止连接到非 swarm 范围网络的容器进行 DNS 解析的错误。<a class="link" href="https://github.com/moby/moby/pull/51515" rel="noopener">moby/moby#51515</a></li>
 <li>修复使用远程网络驱动插件时导致守护进程崩溃的问题。<a class="link" href="https://github.com/moby/moby/pull/51558" rel="noopener">moby/moby#51558</a></li>
-<li>修复在创建具有多个网络连接的容器时可能导致“endpoint not found”错误的问题（其中一个网络非内部网络但无外部 IP 连接）。<a class="link" href="https://github.com/moby/moby/pull/51538" rel="noopener">moby/moby#51538</a></li>
-<li>修复在禁用 IPv6 的主机上无法启动 Rootless Docker 的问题。<a class="link" href="https://github.com/moby/moby/pull/51543" rel="noopener">moby/moby#51543</a></li>
-<li>当容器创建时端口映射指向容器端口 0 时返回错误。<a class="link" href="https://github.com/moby/moby/pull/51695" rel="noopener">moby/moby#51695</a></li>
+<li>修复在创建具有多个网络连接的容器时可能导致&quot;端点未找到&quot;错误的问题，当其中一个网络是非内部网络但没有自己的外部 IP 连接时。<a class="link" href="https://github.com/moby/moby/pull/51538" rel="noopener">moby/moby#51538</a></li>
+<li>修复在 IPv6 禁用的主机上阻止无根 Docker 启动的问题。<a class="link" href="https://github.com/moby/moby/pull/51543" rel="noopener">moby/moby#51543</a></li>
+<li>当容器使用指向容器端口 0 的端口映射创建时返回错误。<a class="link" href="https://github.com/moby/moby/pull/51695" rel="noopener">moby/moby#51695</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2912">
@@ -12519,7 +12765,7 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-12-02</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.1.2" rel="noopener">docker/cli, 29.1.2 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.1.2" rel="noopener">moby/moby, 29.1.2 里程碑</a></li>
@@ -12532,45 +12778,45 @@ if (resultsLength > 5) {
 </h3>
 
 <ul>
-<li>将 Go 运行时更新至 <a class="link" href="https://go.dev/doc/devel/release#go1.25.5" rel="noopener">1.25.5</a>。<a class="link" href="https://github.com/moby/moby/pull/51648" rel="noopener">moby/moby#51648</a>、<a class="link" href="https://github.com/docker/cli/pull/6688" rel="noopener">docker/cli#6688</a>
+<li>更新 Go 运行时到 <a class="link" href="https://go.dev/doc/devel/release#go1.25.5" rel="noopener">1.25.5</a>。<a class="link" href="https://github.com/moby/moby/pull/51648" rel="noopener">moby/moby#51648</a>，<a class="link" href="https://github.com/docker/cli/pull/6688" rel="noopener">docker/cli#6688</a>
 <ul>
-<li>修复格式化主机名验证错误时因资源使用过多导致的潜在 DoS 问题 <a class="link" href="https://nvd.nist.gov/vuln/detail/CVE-2025-61729" rel="noopener"><strong>CVE-2025-61729</strong></a></li>
-<li>修复通配符 SAN 的排除子域名约束执行不正确的问题，该问题可能导致证书被错误信任 <a class="link" href="https://nvd.nist.gov/vuln/detail/CVE-2025-22874" rel="noopener"><strong>CVE-2025-61727</strong></a></li>
+<li>修复在格式化主机名验证错误时可能导致通过过度资源使用进行拒绝服务攻击的问题 <a class="link" href="https://nvd.nist.gov/vuln/detail/CVE-2025-61729" rel="noopener"><strong>CVE-2025-61729</strong></a></li>
+<li>修复通配符 SAN 的排除子域约束的错误执行，这可能允许不当信任的证书 <a class="link" href="https://nvd.nist.gov/vuln/detail/CVE-2025-22874" rel="noopener"><strong>CVE-2025-61727</strong></a></li>
 </ul>
 </li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能-2">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd-2">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="bug-修复和增强">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#bug-%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba">
+    Bug 修复和增强
   </a>
 </h3>
 
 <ul>
-<li>containerd 镜像存储：修复 <code>docker image inspect</code> 在并非所有可分发 blob 都在本地可用时无法返回可用镜像数据的问题。<a class="link" href="https://github.com/moby/moby/pull/51629" rel="noopener">moby/moby#51629</a></li>
-<li>dockerd-rootless-setuptool.sh：修复 <code>nsenter: no namespace specified</code> 错误。<a class="link" href="https://github.com/moby/moby/pull/51622" rel="noopener">moby/moby#51622</a></li>
-<li>修复使用 graph-drivers 作为存储时 <code>docker system df</code> 显示共享大小和唯一大小为 <code>N/A</code> 的问题。<a class="link" href="https://github.com/moby/moby/pull/51631" rel="noopener">moby/moby#51631</a></li>
+<li>containerd 镜像存储：修复 <code>docker image inspect</code> 在本地不可用所有可分发的 blob 时无法返回可用镜像数据的问题。<a class="link" href="https://github.com/moby/moby/pull/51629" rel="noopener">moby/moby#51629</a></li>
+<li>dockerd-rootless-setuptool.sh：修复 <code>nsenter: no namespace specified</code>。<a class="link" href="https://github.com/moby/moby/pull/51622" rel="noopener">moby/moby#51622</a></li>
+<li>修复使用图形驱动程序作为存储时 <code>docker system df</code> 显示共享大小和唯一大小为 <code>N/A</code> 的问题。<a class="link" href="https://github.com/moby/moby/pull/51631" rel="noopener">moby/moby#51631</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新-1">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0-1">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0">
     打包更新
   </a>
 </h3>
 
 <ul>
-<li>将 runc（静态二进制文件）更新至 <a class="link" href="https://github.com/opencontainers/runc/releases/tag/v1.3.4" rel="noopener">v1.3.4</a>。<a class="link" href="https://github.com/moby/moby/pull/51633" rel="noopener">moby/moby#51633</a></li>
+<li>更新 runc（在静态二进制文件中）到 <a class="link" href="https://github.com/opencontainers/runc/releases/tag/v1.3.4" rel="noopener">v1.3.4</a>。<a class="link" href="https://github.com/moby/moby/pull/51633" rel="noopener">moby/moby#51633</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-1">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-1">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-2">
     网络
   </a>
 </h3>
 
 <ul>
-<li>修复在 Rootless 模式下使用 slirp4netns 时端口映射失败的问题。<a class="link" href="https://github.com/moby/moby/pull/51616" rel="noopener">moby/moby#51616</a></li>
-<li>防止在发起设置了 <code>HostConfig.PublishAllPorts</code>（<code>-P</code>）且无端口绑定的 API 请求时崩溃。<a class="link" href="https://github.com/moby/moby/pull/51621" rel="noopener">moby/moby#51621</a></li>
+<li>修复在使用 slirp4netns 时阻止无根模式下端口映射的错误。<a class="link" href="https://github.com/moby/moby/pull/51616" rel="noopener">moby/moby#51616</a></li>
+<li>防止在使用 <code>HostConfig.PublishAllPorts</code> 设置（<code>-P</code>）且没有端口绑定的情况下进行 API 请求时崩溃。<a class="link" href="https://github.com/moby/moby/pull/51621" rel="noopener">moby/moby#51621</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2911">
@@ -12581,20 +12827,20 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-28</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.1.1" rel="noopener">docker/cli, 29.1.1 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.1.1" rel="noopener">moby/moby, 29.1.1 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-2">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-2">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-3">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-3">
     网络
   </a>
 </h3>
 
 <ul>
-<li>回退一个破坏所有自定义桥接网络外部 DNS 解析的 PR。<a class="link" href="https://github.com/moby/moby/pull/51615" rel="noopener">moby/moby#51615</a></li>
+<li>回滚破坏所有自定义桥接网络上外部 DNS 解析的 PR。<a class="link" href="https://github.com/moby/moby/pull/51615" rel="noopener">moby/moby#51615</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2910">
@@ -12605,34 +12851,34 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-27</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.1.0" rel="noopener">docker/cli, 29.1.0 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.1.0" rel="noopener">moby/moby, 29.1.0 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新-2">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0-2">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0-1">
     打包更新
   </a>
 </h3>
 
 <ul>
-<li>将 BuildKit 更新至 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.26.1" rel="noopener">v0.26.1</a>。<a class="link" href="https://github.com/moby/moby/pull/51551" rel="noopener">moby/moby#51551</a></li>
-<li>将 containerd 二进制文件更新至 v2.2.0（静态二进制文件）。<a class="link" href="https://github.com/moby/moby/pull/51271" rel="noopener">moby/moby#51271</a></li>
+<li>更新 BuildKit 到 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.26.1" rel="noopener">v0.26.1</a>。<a class="link" href="https://github.com/moby/moby/pull/51551" rel="noopener">moby/moby#51551</a></li>
+<li>更新 containerd 二进制文件到 v2.2.0（静态二进制文件）。<a class="link" href="https://github.com/moby/moby/pull/51271" rel="noopener">moby/moby#51271</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-3">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-3">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-4">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-4">
     网络
   </a>
 </h3>
 
 <ul>
 <li>不再在容器重启时覆盖用户修改的 <code>/etc/resolv.conf</code>。<a class="link" href="https://github.com/moby/moby/pull/51507" rel="noopener">moby/moby#51507</a></li>
-<li>修复 Windows 容器的 <code>--publish-all</code> / <code>-P</code> 功能。<a class="link" href="https://github.com/moby/moby/pull/51586" rel="noopener">moby/moby#51586</a></li>
-<li>修复容器停止或网络断开期间网关配置失败时导致容器无法重启或重新连接网络的问题。<a class="link" href="https://github.com/moby/moby/pull/51592" rel="noopener">moby/moby#51592</a></li>
-<li>Windows 容器：不在端口映射中显示 IPv6 映射的 IPv4 地址。例如，显示 <code>[::ffff:0.0.0.0]:8080-&gt;80/tcp</code> 而非 <code>0.0.0.0:8080-&gt;80/tcp</code>。<a class="link" href="https://github.com/moby/moby/pull/51587" rel="noopener">moby/moby#51587</a></li>
+<li>修复 Windows 容器的 <code>--publish-all</code> / <code>-P</code>。<a class="link" href="https://github.com/moby/moby/pull/51586" rel="noopener">moby/moby#51586</a></li>
+<li>修复在容器停止或网络断开期间网关配置失败时阻止容器重启或网络重新连接的问题。<a class="link" href="https://github.com/moby/moby/pull/51592" rel="noopener">moby/moby#51592</a></li>
+<li>Windows 容器：不要在端口映射中显示 IPv6 映射的 IPv4 地址。例如，显示 <code>0.0.0.0:8080-&gt;80/tcp</code> 而不是 <code>[::ffff:0.0.0.0]:8080-&gt;80/tcp</code>。<a class="link" href="https://github.com/moby/moby/pull/51587" rel="noopener">moby/moby#51587</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2904">
@@ -12643,15 +12889,15 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-24</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.0.4" rel="noopener">docker/cli, 29.0.4 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.0.4" rel="noopener">moby/moby, 29.0.4 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能-3">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd-3">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="bug-修复和增强-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#bug-%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba-1">
+    Bug 修复和增强
   </a>
 </h3>
 
@@ -12659,14 +12905,14 @@ if (resultsLength > 5) {
 <li><code>docker image ls</code> 不再截断镜像名称。<a class="link" href="https://github.com/docker/cli/pull/6675" rel="noopener">docker/cli#6675</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-4">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-4">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-5">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-5">
     网络
   </a>
 </h3>
 
 <ul>
-<li>允许在容器网络未配置特定子网的情况下创建具有特定 IP 地址的容器。<a class="link" href="https://github.com/moby/moby/pull/51583" rel="noopener">moby/moby#51583</a></li>
+<li>允许在容器网络未配置特定子网时创建具有特定 IP 地址的容器。<a class="link" href="https://github.com/moby/moby/pull/51583" rel="noopener">moby/moby#51583</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2903">
@@ -12677,25 +12923,25 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-24</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.0.3" rel="noopener">docker/cli, 29.0.3 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.0.3" rel="noopener">moby/moby, 29.0.3 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能-4">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd-4">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="bug-修复和增强-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#bug-%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba-2">
+    Bug 修复和增强
   </a>
 </h3>
 
 <ul>
-<li><code>docker version --format json</code>：恢复顶级 <code>BuildTime</code> 字段使用 RFC3339Nano 格式。<a class="link" href="https://github.com/docker/cli/pull/6668" rel="noopener">docker/cli#6668</a></li>
-<li>修复 <code>docker image ls</code> 忽略 <code>docker.json</code> 中自定义 <code>imageFormat</code> 的问题。<a class="link" href="https://github.com/docker/cli/pull/6667" rel="noopener">docker/cli#6667</a></li>
+<li><code>docker version --format json</code>：恢复顶级 <code>BuildTime</code> 字段以使用 RFC3339Nano 格式。<a class="link" href="https://github.com/docker/cli/pull/6668" rel="noopener">docker/cli#6668</a></li>
+<li>修复 <code>docker image ls</code> 忽略来自 <code>docker.json</code> 的自定义 <code>imageFormat</code> 的问题。<a class="link" href="https://github.com/docker/cli/pull/6667" rel="noopener">docker/cli#6667</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-5">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-5">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-6">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-6">
     网络
   </a>
 </h3>
@@ -12712,21 +12958,21 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-17</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.0.2" rel="noopener">docker/cli, 29.0.2 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.0.2" rel="noopener">moby/moby, 29.0.2 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-6">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-6">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-7">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-7">
     网络
   </a>
 </h3>
 
 <ul>
-<li>修复在创建具有多个网络连接的容器时可能导致“endpoint not found”错误的问题（其中一个网络非内部网络但无外部 IP 连接）。<a class="link" href="https://github.com/moby/moby/pull/51538" rel="noopener">moby/moby#51538</a></li>
-<li>修复在禁用 IPv6 的主机上无法启动 Rootless Docker 的问题。<a class="link" href="https://github.com/moby/moby/pull/51543" rel="noopener">moby/moby#51543</a></li>
+<li>修复在创建具有多个网络连接的容器时可能导致&quot;端点未找到&quot;错误的问题，当其中一个网络是非内部网络但没有自己的外部 IP 连接时。<a class="link" href="https://github.com/moby/moby/pull/51538" rel="noopener">moby/moby#51538</a></li>
+<li>修复在 IPv6 禁用的主机上阻止无根 Docker 启动的问题。<a class="link" href="https://github.com/moby/moby/pull/51543" rel="noopener">moby/moby#51543</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2901">
@@ -12737,36 +12983,36 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-14</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中的完整拉取请求和变更列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.0.1" rel="noopener">docker/cli, 29.0.1 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.0.1" rel="noopener">moby/moby, 29.0.1 里程碑</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能-5">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd-5">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="bug-修复和增强-3">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#bug-%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba-3">
+    Bug 修复和增强
   </a>
 </h3>
 
 <ul>
 <li><code>docker image ls</code> 在输出重定向时（例如用于 <code>grep</code>）不再截断名称宽度。<a class="link" href="https://github.com/docker/cli/pull/6656" rel="noopener">docker/cli#6656</a></li>
-<li><code>docker image ls</code> 现在会考虑 <code>NO_COLOR</code> 环境变量来决定是否使用彩色输出。<a class="link" href="https://github.com/docker/cli/pull/6654" rel="noopener">docker/cli#6654</a></li>
-<li>containerd 镜像存储：修复 <code>docker build</code> 忽略显式设置的 <code>unpack</code> 镜像导出器选项的错误。<a class="link" href="https://github.com/moby/moby/pull/51514" rel="noopener">moby/moby#51514</a></li>
-<li>修复 <code>docker image ls --all</code> 不显示未标记/悬空镜像的问题。<a class="link" href="https://github.com/docker/cli/pull/6657" rel="noopener">docker/cli#6657</a></li>
-<li>修复在 i386 架构上的构建问题。<a class="link" href="https://github.com/moby/moby/pull/51528" rel="noopener">moby/moby#51528</a></li>
-<li>修复当先前存在 graphdriver 状态时，显式 graphdriver 配置（<code>&quot;storage-driver&quot;</code>）被当作 containerd snapshotter 处理的问题。<a class="link" href="https://github.com/moby/moby/pull/51516" rel="noopener">moby/moby#51516</a></li>
-<li>修复 <code>docker version --format=json</code> 中 <code>ApiVersion</code> 和 <code>MinApiVersion</code> 字段输出格式与之前版本不一致的问题。<a class="link" href="https://github.com/docker/cli/pull/6648" rel="noopener">docker/cli#6648</a></li>
+<li><code>docker image ls</code> 现在考虑 <code>NO_COLOR</code> 环境变量来选择是否使用彩色输出。<a class="link" href="https://github.com/docker/cli/pull/6654" rel="noopener">docker/cli#6654</a></li>
+<li>containerd 镜像存储：修复了一个导致 <code>docker build</code> 忽略显式设置的 <code>unpack</code> 镜像导出器选项的错误。<a class="link" href="https://github.com/moby/moby/pull/51514" rel="noopener">moby/moby#51514</a></li>
+<li>修复 <code>docker image ls --all</code> 无法显示未标记/悬空镜像的错误。<a class="link" href="https://github.com/docker/cli/pull/6657" rel="noopener">docker/cli#6657</a></li>
+<li>修复在 i386 上的构建问题。<a class="link" href="https://github.com/moby/moby/pull/51528" rel="noopener">moby/moby#51528</a></li>
+<li>修复当存在先前的图形驱动程序状态时，显式图形驱动程序配置（<code>&quot;storage-driver&quot;</code>）被当作 containerd 快照器处理的问题。<a class="link" href="https://github.com/moby/moby/pull/51516" rel="noopener">moby/moby#51516</a></li>
+<li>修复 <code>docker version --format=json</code> 中 <code>ApiVersion</code> 和 <code>MinApiVersion</code> 字段的输出格式，使其与先前版本对齐。<a class="link" href="https://github.com/docker/cli/pull/6648" rel="noopener">docker/cli#6648</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-7">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-7">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-8">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-8">
     网络
   </a>
 </h3>
 
 <ul>
-<li>修复节点加入 Swarm 集群后，连接到非 Swarm 范围网络的容器无法解析 DNS 的问题。<a class="link" href="https://github.com/moby/moby/pull/51515" rel="noopener">moby/moby#51515</a></li>
+<li>修复了一个错误，该错误阻止了附加到非 Swarm 范围网络的容器在节点加入 Swarm 集群后进行 DNS 解析。<a class="link" href="https://github.com/moby/moby/pull/51515" rel="noopener">moby/moby#51515</a></li>
 </ul>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="2900">
@@ -12777,7 +13023,7 @@ if (resultsLength > 5) {
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-10</em>
 
-<p>有关此版本中拉取请求和变更的完整列表，请参阅相关的 GitHub 里程碑：</p>
+<p>有关此版本中所有拉取请求和更改的完整列表，请参阅相关的 GitHub 里程碑：</p>
 <ul>
 <li><a class="link" href="https://github.com/docker/cli/issues?q=is%3Aclosed&#43;milestone%3A29.0.0" rel="noopener">docker/cli, 29.0.0 里程碑</a></li>
 <li><a class="link" href="https://github.com/moby/moby/issues?q=is%3Aclosed&#43;milestone%3A29.0.0" rel="noopener">moby/moby, 29.0.0 里程碑</a></li>
@@ -12805,119 +13051,120 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>此版本包含多项重大变更和弃用内容。升级前请仔细查阅发布说明。</p>
+      <p>此版本包含多个破坏性变更和弃用。升级前请仔细查看发布说明。</p>
     </div>
   </blockquote>
 
 <ul>
-<li>现在可通过将 Docker 守护进程的 <code>firewall-backend</code> 选项设置为 <code>nftables</code> 来启用对 nftables 的实验性支持。更多信息请参阅 <a class="link" href="https://docs.docker.com/engine/network/firewall-nftables/" rel="noopener">Docker Engine 文档</a>。</li>
-<li>containerd 镜像存储现在成为<strong>全新安装</strong>的默认选项。这不适用于配置了 <code>userns-remap</code> 的守护进程（参见 <a class="link" href="https://github.com/moby/moby/issues/47377" rel="noopener">moby#47377</a>）。</li>
+<li>现在可以通过将 Docker 守护进程的 <code>firewall-backend</code> 选项设置为 <code>nftables</code> 来启用对 nftables 的实验性支持。更多信息，请参见 <a class="link" href="https://docs.docker.com/engine/network/firewall-nftables/" rel="noopener">Docker Engine 文档</a>。</li>
+<li>containerd 镜像存储现在是<strong>全新安装</strong>的默认选项。这不适用于配置了 <code>userns-remap</code> 的守护进程（参见 <a class="link" href="https://github.com/moby/moby/issues/47377" rel="noopener">moby#47377</a>）。</li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="重大变更">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%87%8d%e5%a4%a7%e5%8f%98%e6%9b%b4">
-    重大变更
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="破坏性变更">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%a0%b4%e5%9d%8f%e6%80%a7%e5%8f%98%e6%9b%b4">
+    破坏性变更
   </a>
 </h3>
 
 <ul>
-<li>Go 模块 <code>github.com/docker/docker</code> 已弃用，推荐使用 <code>github.com/moby/moby/client</code> 和 <code>github.com/moby/moby/api</code>。<code>github.com/moby/moby</code> 模块被视为<strong>内部实现细节</strong>——唯一受支持的公共模块是 <code>client</code> 和 <code>api</code>。
-从 v29 开始，发布版本将使用 <code>docker-</code> 前缀进行标记（例如 <code>docker-v29.0.0</code>）。<strong>这仅影响 Go 模块用户和软件包维护者。</strong></li>
-<li>守护进程现在要求 API 版本为 <code>v1.44</code> 或更高（Docker v25.0+）。</li>
-<li>Debian armhf（32 位）软件包现在面向 ARMv7 CPU，无法在 ARMv6 设备上运行。</li>
-<li>官方 Raspbian（32 位）软件包不再提供。64 位设备请使用 Debian arm64 软件包，32 位 ARMv7 设备请使用 Debian armhf 软件包。</li>
-<li><strong>cgroup v1 已弃用。</strong> 支持将持续到至少 2029 年 5 月，但请尽快迁移至 cgroup v2。参见 <a class="link" href="https://github.com/moby/moby/issues/51111" rel="noopener">moby#51111</a>。</li>
-<li>Docker 内容信任（Docker Content Trust）已从 Docker CLI 中移除，可作为独立插件构建：https://github.com/docker/cli/blob/v29.0.0/cmd/docker-trust/main.go</li>
+<li>Go 模块 <code>github.com/docker/docker</code> 已弃用，推荐使用 <code>github.com/moby/moby/client</code> 和 <code>github.com/moby/moby/api</code>。<code>github.com/moby/moby</code> 模块被视为<strong>内部实现细节</strong> - 唯一受支持的公共模块是 <code>client</code> 和 <code>api</code>。
+从 v29 开始，发布版本使用 <code>docker-</code> 前缀进行标记（例如，<code>docker-v29.0.0</code>）。<strong>这仅影响 Go 模块用户和包维护者。</strong></li>
+<li>守护进程现在需要 API 版本 <code>v1.44</code> 或更高版本（Docker v25.0+）。</li>
+<li>Debian armhf（32 位）包现在针对 ARMv7 CPU，无法在 ARMv6 设备上工作。</li>
+<li>不再提供官方 Raspbian（32 位）包。对于 64 位设备，请使用 Debian arm64 包，或对于 32 位 ARMv7 设备，请使用 Debian armhf 包。</li>
+<li><strong>cgroup v1 已弃用。</strong> 支持将持续到至少 2029 年 5 月，但请尽快迁移到 cgroup v2。参见 <a class="link" href="https://github.com/moby/moby/issues/51111" rel="noopener">moby#51111</a>。</li>
+<li>Docker Content Trust 已从 Docker CLI 中移除。可以作为单独的插件构建：https://github.com/docker/cli/blob/v29.0.0/cmd/docker-trust/main.go</li>
 </ul>
 <hr>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="新增功能">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%96%b0%e5%a2%9e%e5%8a%9f%e8%83%bd">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="新增功能-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%96%b0%e5%a2%9e%e5%8a%9f%e8%83%bd-1">
     新增功能
   </a>
 </h3>
 
 <ul>
-<li><code>docker image load</code> 和 <code>docker image save</code> 现在支持通过 <code>--platform</code> 标志选择多个平台（例如 <code>docker image load --platform linux/amd64,linux/arm64 -i image.tar</code>）。<a class="link" href="https://github.com/docker/cli/pull/6126" rel="noopener">docker/cli#6126</a></li>
-<li><code>docker image ls</code> 现在默认使用新视图（类似 <code>--tree</code> 但已折叠）。<a class="link" href="https://github.com/docker/cli/pull/6566" rel="noopener">docker/cli#6566</a></li>
-<li><code>docker run --runtime &lt;...&gt;</code> 现在支持在 Windows 上使用。<a class="link" href="https://github.com/moby/moby/pull/50546" rel="noopener">moby/moby#50546</a></li>
-<li><code>GET /containers/json</code> 现在包含描述容器健康检查状态的 <code>Health</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50281" rel="noopener">moby/moby#50281</a></li>
-<li>在构建器配置中添加 <code>device</code> 权限。<a class="link" href="https://github.com/moby/moby/pull/50386" rel="noopener">moby/moby#50386</a></li>
+<li><code>docker image load</code> 和 <code>docker image save</code> 现在通过 <code>--platform</code> 标志支持多平台选择（例如，<code>docker image load --platform linux/amd64,linux/arm64 -i image.tar</code>）。<a class="link" href="https://github.com/docker/cli/pull/6126" rel="noopener">docker/cli#6126</a></li>
+<li><code>docker image ls</code> 现在默认使用新视图（类似于 <code>--tree</code> 但已折叠）。<a class="link" href="https://github.com/docker/cli/pull/6566" rel="noopener">docker/cli#6566</a></li>
+<li><code>docker run --runtime &lt;...&gt;</code> 现在在 Windows 上受支持。<a class="link" href="https://github.com/moby/moby/pull/50546" rel="noopener">moby/moby#50546</a></li>
+<li><code>GET /containers/json</code> 现在包含一个描述容器健康检查状态的 <code>Health</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50281" rel="noopener">moby/moby#50281</a></li>
+<li>向构建器配置添加 <code>device</code> 权限。<a class="link" href="https://github.com/moby/moby/pull/50386" rel="noopener">moby/moby#50386</a></li>
 <li>为 <code>docker service create</code> 和 <code>docker service update</code> 命令添加对 <code>memory-swap</code> 和 <code>memory-swappiness</code> 标志的支持。<a class="link" href="https://github.com/docker/cli/pull/6619" rel="noopener">docker/cli#6619</a></li>
-<li>允许 Docker CLI 在键值对（<code>&quot;GODEBUG&quot;:&quot;...&quot;</code>）存在于 Docker 上下文元数据中时设置 <code>GODEBUG</code> 环境变量。<a class="link" href="https://github.com/docker/cli/pull/6371" rel="noopener">docker/cli#6371</a></li>
+<li>允许 Docker CLI 在 Docker 上下文元数据中存在键值对（<code>&quot;GODEBUG&quot;:&quot;...&quot;</code>）时设置 <code>GODEBUG</code> 环境变量。<a class="link" href="https://github.com/docker/cli/pull/6371" rel="noopener">docker/cli#6371</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强功能-6">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba%e5%8a%9f%e8%83%bd-6">
-    错误修复和增强功能
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="错误修复和增强-3">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%94%99%e8%af%af%e4%bf%ae%e5%a4%8d%e5%92%8c%e5%a2%9e%e5%bc%ba-3">
+    错误修复和增强
   </a>
 </h3>
 
 <ul>
-<li><code>docker image ls --tree</code> 现在按名称字母顺序排序镜像，而非按创建时间排序。<a class="link" href="https://github.com/docker/cli/pull/6595" rel="noopener">docker/cli#6595</a></li>
-<li><code>docker image ls</code> 默认不再显示未标记的镜像（除非提供 <code>--all</code> 标志）。<a class="link" href="https://github.com/docker/cli/pull/6574" rel="noopener">docker/cli#6574</a></li>
-<li><code>docker save</code>：修复使用 overlay2 存储驱动导出镜像时 tar 成员时间戳不一致的问题。<a class="link" href="https://github.com/moby/moby/pull/51365" rel="noopener">moby/moby#51365</a></li>
-<li>为 fluentd 日志驱动添加新的日志选项（<code>fluentd-read-timeout</code>），用于指定从 fluentd 连接读取确认信息的超时时间。<a class="link" href="https://github.com/moby/moby/pull/50249" rel="noopener">moby/moby#50249</a></li>
+<li><code>docker image ls --tree</code> 现在按名称字母顺序而不是创建日期对镜像进行排序。<a class="link" href="https://github.com/docker/cli/pull/6595" rel="noopener">docker/cli#6595</a></li>
+<li><code>docker image ls</code> 在未提供 <code>--all</code> 标志时不再默认显示未标记的镜像。<a class="link" href="https://github.com/docker/cli/pull/6574" rel="noopener">docker/cli#6574</a></li>
+<li><code>docker save</code>：修复了使用 overlay2 存储驱动程序导出镜像时 tar 成员时间戳不一致的问题。<a class="link" href="https://github.com/moby/moby/pull/51365" rel="noopener">moby/moby#51365</a></li>
+<li>为 fluentd 日志驱动程序添加了一个新的日志选项（<code>fluentd-read-timeout</code>），该选项允许指定从 fluentd 连接读取确认的超时时间。<a class="link" href="https://github.com/moby/moby/pull/50249" rel="noopener">moby/moby#50249</a></li>
 <li>为 <code>docker images</code> 添加镜像名称自动补全功能。<a class="link" href="https://github.com/docker/cli/pull/6452" rel="noopener">docker/cli#6452</a></li>
-<li>为 <code>docker inspect</code> 添加 Shell 自动补全支持（当设置 <code>--type</code> 时）。<a class="link" href="https://github.com/docker/cli/pull/6444" rel="noopener">docker/cli#6444</a></li>
-<li>为 <code>docker plugin</code> 子命令添加 Shell 自动补全支持。<a class="link" href="https://github.com/docker/cli/pull/6445" rel="noopener">docker/cli#6445</a></li>
-<li>api/types/container：将 ContainerState 和 HealthStatus 设为具体类型。<a class="link" href="https://github.com/moby/moby/pull/51439" rel="noopener">moby/moby#51439</a></li>
-<li>当启用 userns 重映射时，containerd 镜像存储暂时不可用，作为 <a class="link" href="https://github.com/moby/moby/issues/47377" rel="noopener">moby#47377</a> 的临时解决方案。<a class="link" href="https://github.com/moby/moby/pull/51042" rel="noopener">moby/moby#51042</a></li>
-<li>contrib：移除仅用于集成测试的 contrib/httpserver。<a class="link" href="https://github.com/moby/moby/pull/50654" rel="noopener">moby/moby#50654</a></li>
-<li>守护进程：改进对 <code>--dns</code> 选项及 <code>daemon.json</code> 中对应 <code>&quot;dns&quot;</code> 字段的验证。<a class="link" href="https://github.com/moby/moby/pull/50600" rel="noopener">moby/moby#50600</a></li>
-<li>dockerd-rootless.sh：如果未安装 slirp4netns，则尝试使用 pasta (passt)。<a class="link" href="https://github.com/moby/moby/pull/51149" rel="noopener">moby/moby#51149</a></li>
-<li>修复多次将同一镜像挂载到不同目标时 <code>--mount type=image</code> 失败的问题。<a class="link" href="https://github.com/moby/moby/pull/50268" rel="noopener">moby/moby#50268</a></li>
-<li>修复 <code>docker stats &lt;container&gt;</code> 无法优雅退出的问题。<a class="link" href="https://github.com/docker/cli/pull/6582" rel="noopener">docker/cli#6582</a></li>
-<li>修复 API 服务器在 <code>/events</code> 端点存在开放连接时无法快速关闭的问题。<a class="link" href="https://github.com/moby/moby/pull/51448" rel="noopener">moby/moby#51448</a></li>
-<li>修复在“一次性”模式下收集容器统计信息时不包含容器 ID 和名称的问题。<a class="link" href="https://github.com/moby/moby/pull/51302" rel="noopener">moby/moby#51302</a></li>
-<li>修复在扩大具有放置偏好的服务后，Swarm 中所有新任务可能永远卡在 PENDING 状态的问题。<a class="link" href="https://github.com/moby/moby/pull/50202" rel="noopener">moby/moby#50202</a></li>
-<li>修复使用 containerd 镜像存储时自定义元头未传递的问题。<a class="link" href="https://github.com/moby/moby/pull/51024" rel="noopener">moby/moby#51024</a></li>
-<li>修复使用 <code>--log-level=trace</code> 运行守护进程时请求未被记录的问题。<a class="link" href="https://github.com/moby/moby/pull/50986" rel="noopener">moby/moby#50986</a></li>
-<li>修复 firewalld 重载后 Swarm 服务无法通过发布端口访问的问题。<a class="link" href="https://github.com/moby/moby/pull/50443" rel="noopener">moby/moby#50443</a></li>
-<li>改进连接 API 失败时的错误提示，为用户提供更多上下文信息。<a class="link" href="https://github.com/moby/moby/pull/50285" rel="noopener">moby/moby#50285</a></li>
-<li>改进 <code>docker secret</code> 和 <code>docker config</code> 子命令的 Shell 自动补全功能。<a class="link" href="https://github.com/docker/cli/pull/6446" rel="noopener">docker/cli#6446</a></li>
-<li>使用 <code>docker run --gpus</code> 选择设备驱动时，优先使用显式设备驱动名称而非 GPU 能力。<a class="link" href="https://github.com/moby/moby/pull/50717" rel="noopener">moby/moby#50717</a></li>
-<li>将 runc 更新至 <a class="link" href="https://github.com/opencontainers/runc/releases/tag/v1.3.3" rel="noopener">v1.3.3</a>。<a class="link" href="https://github.com/moby/moby/pull/51393" rel="noopener">moby/moby#51393</a></li>
-<li>更新 SwarmKit 内部 TLS 配置以排除已知不安全的密码套件。<a class="link" href="https://github.com/moby/moby/pull/51139" rel="noopener">moby/moby#51139</a></li>
-<li>Windows：修复 BuildKit 创建隔离模式与守护进程配置不一致的容器的问题。<a class="link" href="https://github.com/moby/moby/pull/50942" rel="noopener">moby/moby#50942</a></li>
+<li>当设置了 <code>--type</code> 时，为 <code>docker inspect</code> 添加 shell 自动补全功能。<a class="link" href="https://github.com/docker/cli/pull/6444" rel="noopener">docker/cli#6444</a></li>
+<li>为 <code>docker plugin</code> 子命令添加 shell 自动补全功能。<a class="link" href="https://github.com/docker/cli/pull/6445" rel="noopener">docker/cli#6445</a></li>
+<li>api/types/container：使 ContainerState、HealthStatus 成为具体类型。<a class="link" href="https://github.com/moby/moby/pull/51439" rel="noopener">moby/moby#51439</a></li>
+<li>当启用用户命名空间重新映射时，containerd 镜像存储暂时不可用，这是针对 <a class="link" href="https://github.com/moby/moby/issues/47377" rel="noopener">moby#47377</a> 的临时解决方案。<a class="link" href="https://github.com/moby/moby/pull/51042" rel="noopener">moby/moby#51042</a></li>
+<li>contrib：移除 contrib/httpserver，该组件仅用于集成测试。<a class="link" href="https://github.com/moby/moby/pull/50654" rel="noopener">moby/moby#50654</a></li>
+<li>daemon：改进 <code>--dns</code> 选项和 <code>daemon.json</code> 中相应 <code>&quot;dns&quot;</code> 字段的验证。<a class="link" href="https://github.com/moby/moby/pull/50600" rel="noopener">moby/moby#50600</a></li>
+<li>dockerd-rootless.sh：如果未安装 slirp4netns，尝试使用 pasta (passt)。<a class="link" href="https://github.com/moby/moby/pull/51149" rel="noopener">moby/moby#51149</a></li>
+<li>修复 <code>--mount type=image</code> 在将同一镜像多次挂载到不同目标位置时的失败问题。<a class="link" href="https://github.com/moby/moby/pull/50268" rel="noopener">moby/moby#50268</a></li>
+<li>修复 <code>docker stats &lt;container&gt;</code> 无法正常退出的问题。<a class="link" href="https://github.com/docker/cli/pull/6582" rel="noopener">docker/cli#6582</a></li>
+<li>修复 API 服务器在有到 <code>/events</code> 端点的开放连接时无法快速关闭的错误。<a class="link" href="https://github.com/moby/moby/pull/51448" rel="noopener">moby/moby#51448</a></li>
+<li>修复在&quot;一次性&quot;模式下收集容器统计信息时不会包含容器 ID 和名称的错误。<a class="link" href="https://github.com/moby/moby/pull/51302" rel="noopener">moby/moby#51302</a></li>
+<li>修复在使用放置偏好扩展服务后，Swarm 中的所有新任务可能永远卡在 PENDING 状态的问题。<a class="link" href="https://github.com/moby/moby/pull/50202" rel="noopener">moby/moby#50202</a></li>
+<li>修复使用 containerd 镜像存储时自定义元头没有传递的问题。<a class="link" href="https://github.com/moby/moby/pull/51024" rel="noopener">moby/moby#51024</a></li>
+<li>修复以 <code>--log-level=trace</code> 运行守护进程时请求未被记录的问题。<a class="link" href="https://github.com/moby/moby/pull/50986" rel="noopener">moby/moby#50986</a></li>
+<li>修复 firewalld 重新加载后 Swarm 服务无法从发布端口访问的问题。<a class="link" href="https://github.com/moby/moby/pull/50443" rel="noopener">moby/moby#50443</a></li>
+<li>改进连接 API 失败时的错误，为用户提供更多上下文。<a class="link" href="https://github.com/moby/moby/pull/50285" rel="noopener">moby/moby#50285</a></li>
+<li>改进 <code>docker secret</code> 和 <code>docker config</code> 子命令的 shell 自动补全功能。<a class="link" href="https://github.com/docker/cli/pull/6446" rel="noopener">docker/cli#6446</a></li>
+<li>当使用 <code>docker run --gpus</code> 选择设备驱动程序时，优先使用显式的设备驱动程序名称而不是 GPU 功能。<a class="link" href="https://github.com/moby/moby/pull/50717" rel="noopener">moby/moby#50717</a></li>
+<li>更新 runc 至 <a class="link" href="https://github.com/opencontainers/runc/releases/tag/v1.3.3" rel="noopener">v1.3.3</a>。<a class="link" href="https://github.com/moby/moby/pull/51393" rel="noopener">moby/moby#51393</a></li>
+<li>更新 SwarmKit 内部 TLS 配置以排除已知的不安全密码套件。<a class="link" href="https://github.com/moby/moby/pull/51139" rel="noopener">moby/moby#51139</a></li>
+<li>Windows：修复 BuildKit 创建的容器隔离模式与守护进程配置不一致的问题。<a class="link" href="https://github.com/moby/moby/pull/50942" rel="noopener">moby/moby#50942</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新-3">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0-3">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="打包更新-2">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e6%89%93%e5%8c%85%e6%9b%b4%e6%96%b0-2">
     打包更新
   </a>
 </h3>
 
 <ul>
 <li>
-<p>客户端：从客户端配置中移除传统的 CBC 密码套件。<a class="link" href="https://github.com/moby/moby/pull/50126" rel="noopener">moby/moby#50126</a></p>
+<p>client：从客户端配置中移除遗留的 CBC 密码套件。<a class="link" href="https://github.com/moby/moby/pull/50126" rel="noopener">moby/moby#50126</a></p>
 </li>
 <li>
-<p>contrib：移除无人维护的 <code>editorconfig</code>。<a class="link" href="https://github.com/moby/moby/pull/50607" rel="noopener">moby/moby#50607</a></p>
+<p>contrib：移除 <code>editorconfig</code>，因为它已不再维护。<a class="link" href="https://github.com/moby/moby/pull/50607" rel="noopener">moby/moby#50607</a></p>
 </li>
 <li>
-<p>contrib：移除 <code>nano</code> 和 TextMate (<code>tmbundle</code>) 的 Dockerfile 语法高亮文件（因其无人维护且过时）。<a class="link" href="https://github.com/moby/moby/pull/50606" rel="noopener">moby/moby#50606</a></p>
+<p>contrib：移除 <code>nano</code> 和 TextMate (<code>tmbundle</code>) 的 Dockerfile 语法高亮文件，因为它们已不再维护且过时。<a class="link" href="https://github.com/moby/moby/pull/50606" rel="noopener">moby/moby#50606</a></p>
 </li>
 <li>
-<p>contrib：移除 mkimage-xxx 脚本（因其无人维护且未经测试）。<a class="link" href="https://github.com/moby/moby/pull/50297" rel="noopener">moby/moby#50297</a></p>
+<p>contrib：移除 mkimage-xxx 脚本，因为它们已不再维护且未经过测试。<a class="link" href="https://github.com/moby/moby/pull/50297" rel="noopener">moby/moby#50297</a></p>
 </li>
 <li>
-<p>如果 Docker 降级至不支持此功能的版本，网络将变得不可用，必须删除并重新创建。<a class="link" href="https://github.com/moby/moby/pull/50114" rel="noopener">moby/moby#50114</a></p>
+<p>如果 Docker 降级到不支持此功能的版本，网络将变得不可用，必须删除并重新创建。<a class="link" href="https://github.com/moby/moby/pull/50114" rel="noopener">moby/moby#50114</a></p>
 </li>
 <li>
-<p>Windows overlay 网络驱动现在支持 <code>--dns</code> 选项。<a class="link" href="https://github.com/moby/moby/pull/51229" rel="noopener">moby/moby#51229</a></p>
+<p>Windows overlay 网络驱动程序现在支持 <code>--dns</code> 选项。<a class="link" href="https://github.com/moby/moby/pull/51229" rel="noopener">moby/moby#51229</a></p>
 </li>
 <li>
-<p>将 BuildKit 更新至 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.25.2" rel="noopener">v0.25.2</a>。<a class="link" href="https://github.com/moby/moby/pull/51397" rel="noopener">moby/moby#51397</a></p>
+<p>更新 BuildKit 至 <a class="link" href="https://github.com/moby/buildkit/releases/tag/v0.25.2" rel="noopener">v0.25.2</a>。<a class="link" href="https://github.com/moby/moby/pull/51397" rel="noopener">moby/moby#51397</a></p>
 </li>
 <li>
-<p>将 containerd 更新至 <a class="link" href="https://github.com/containerd/containerd/releases/tag/v2.1.5" rel="noopener">v2.1.5</a>。<a class="link" href="https://github.com/moby/moby/pull/51409" rel="noopener">moby/moby#51409</a></p>
-<p>containerd v2.1.5 现在使用 systemd 默认的 <code>LimitNOFILE</code> 设置容器，
-将打开文件描述符限制（<code>ulimit -n</code>）从 <code>1048576</code> 更改为
-<code>1024</code>。此更改将 Docker Engine v25.0 中针对构建容器引入的调整扩展至所有容器。</p>
-<p>这可以防止程序根据 ulimit 调整行为时在限制设为 <code>infinity</code> 时消耗过多内存。
-容器现在与主机上运行的程序行为一致。</p>
-<p>如果工作负载需要更高限制，请使用 <code>docker run</code> 的 <code>--ulimit</code> 选项，
+<p>更新 containerd 至 <a class="link" href="https://github.com/containerd/containerd/releases/tag/v2.1.5" rel="noopener">v2.1.5</a>。<a class="link" href="https://github.com/moby/moby/pull/51409" rel="noopener">moby/moby#51409</a></p>
+<p>containerd v2.1.5 现在使用 systemd 的默认 <code>LimitNOFILE</code> 用于容器，
+将打开的文件描述符限制（<code>ulimit -n</code>）从 <code>1048576</code> 改为
+<code>1024</code>。这扩展了 Docker Engine v25.0 中为构建容器引入的更改，
+现在适用于所有容器。</p>
+<p>这防止了基于 ulimit 调整行为的程序在限制设置为 <code>infinity</code> 时消耗
+过多内存。容器现在的行为与在主机上运行的程序相同。</p>
+<p>如果您的工作负载需要更高的限制，请使用 <code>docker run</code> 的 <code>--ulimit</code>，
 或在 <code>/etc/docker/daemon.json</code> 中设置默认值：</p>
 <div
   data-pagefind-ignore
@@ -12963,280 +13210,596 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>更多信息请参阅 <a class="link" href="https://github.com/moby/moby/issues/51485" rel="noopener">moby#51485</a>。</p>
+<p>有关更多信息，请参见 <a class="link" href="https://github.com/moby/moby/issues/51485" rel="noopener">moby#51485</a>。</p>
 </li>
 <li>
-<p>将 Go 运行时更新至 <a class="link" href="https://go.dev/doc/devel/release#go1.25.4" rel="noopener">1.25.4</a>。<a class="link" href="https://github.com/moby/moby/pull/51418" rel="noopener">moby/moby#51418</a>、<a class="link" href="https://github.com/docker/cli/pull/6632" rel="noopener">docker/cli#6632</a></p>
+<p>更新 Go 运行时至 <a class="link" href="https://go.dev/doc/devel/release#go1.25.4" rel="noopener">1.25.4</a>。<a class="link" href="https://github.com/moby/moby/pull/51418" rel="noopener">moby/moby#51418</a>，<a class="link" href="https://github.com/docker/cli/pull/6632" rel="noopener">docker/cli#6632</a></p>
 </li>
 <li>
-<p>用户可通过使用未指定地址请求默认池分配网络的特定前缀大小，例如 <code>--subnet 0.0.0.0/24 --subnet ::/96</code>。<a class="link" href="https://github.com/moby/moby/pull/50114" rel="noopener">moby/moby#50114</a></p>
+<p>用户可以通过使用未指定地址来请求从默认池分配的网络的特定前缀大小，例如 <code>--subnet 0.0.0.0/24 --subnet ::/96</code>。<a class="link" href="https://github.com/moby/moby/pull/50114" rel="noopener">moby/moby#50114</a></p>
 </li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-8">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-8">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="网络-9">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%bd%91%e7%bb%9c-9">
     网络
   </a>
 </h3>
 
 <ul>
-<li>添加守护进程选项 <code>--bridge-accept-fwmark</code>。具有此防火墙标记的数据包将被桥接网络接受，覆盖 Docker 的 iptables 或 nftables “drop” 规则。<a class="link" href="https://github.com/moby/moby/pull/50476" rel="noopener">moby/moby#50476</a></li>
-<li>api/types/system：弃用 <code>DiskUsage</code> 的顶级字段，改用类型特定字段。<a class="link" href="https://github.com/moby/moby/pull/51235" rel="noopener">moby/moby#51235</a></li>
-<li>确保桥接网络创建失败时移除桥接设备。<a class="link" href="https://github.com/moby/moby/pull/51147" rel="noopener">moby/moby#51147</a></li>
-<li>确保 Engine 重启时 Windows NAT 网络以其原始标签重新创建。<a class="link" href="https://github.com/moby/moby/pull/50447" rel="noopener">moby/moby#50447</a></li>
-<li>使用传统链接在容器上设置的环境变量已弃用，不再自动添加。<a class="link" href="https://github.com/moby/moby/pull/50719" rel="noopener">moby/moby#50719</a>
+<li>添加守护进程选项 <code>--bridge-accept-fwmark</code>。带有此防火墙标记的数据包将被桥接网络接受，覆盖 Docker 的 iptables 或 nftables &quot;drop&quot; 规则。<a class="link" href="https://github.com/moby/moby/pull/50476" rel="noopener">moby/moby#50476</a></li>
+<li>api/types/system: 为类型特定字段弃用顶级 <code>DiskUsage</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51235" rel="noopener">moby/moby#51235</a></li>
+<li>确保在桥接网络创建失败时移除桥接设备。<a class="link" href="https://github.com/moby/moby/pull/51147" rel="noopener">moby/moby#51147</a></li>
+<li>确保 Engine 重启时，Windows NAT 网络使用其原始标签重新创建。<a class="link" href="https://github.com/moby/moby/pull/50447" rel="noopener">moby/moby#50447</a></li>
+<li>使用传统链接在容器上设置的环境变量已被弃用，不再自动添加。<a class="link" href="https://github.com/moby/moby/pull/50719" rel="noopener">moby/moby#50719</a>
 <ul>
-<li>可通过使用 <code>DOCKER_KEEP_DEPRECATED_LEGACY_LINKS_ENV_VARS=1</code> 启动守护进程来恢复此功能</li>
-<li>鼓励用户停止使用这些变量（因其已弃用），且此临时解决方案将在后续版本中移除</li>
+<li>守护进程可以使用 <code>DOCKER_KEEP_DEPRECATED_LEGACY_LINKS_ENV_VARS=1</code> 启动以恢复它们</li>
+<li>鼓励用户停止依赖这些功能，因为它们已被弃用，逃生机制将在后续版本中移除</li>
 </ul>
 </li>
-<li>修复 NetworkDB 中的错误，该错误有时会导致条目在某些节点上卡在已删除状态，从而导致 overlay 网络上容器之间的连接问题。<a class="link" href="https://github.com/moby/moby/pull/50342" rel="noopener">moby/moby#50342</a></li>
-<li>修复可能导致 Engine 和另一主机进程绑定同一 UDP 端口的错误。<a class="link" href="https://github.com/moby/moby/pull/50669" rel="noopener">moby/moby#50669</a></li>
-<li>修复在桥接网络驱动启动、创建或删除网络或创建端口映射时处理 firewalld 重载可能导致死锁的问题。<a class="link" href="https://github.com/moby/moby/pull/50620" rel="noopener">moby/moby#50620</a></li>
-<li>修复在特定接口上仅禁用 IPv6 时导致容器无法启动或选择其网络网关的问题。<a class="link" href="https://github.com/moby/moby/pull/48971" rel="noopener">moby/moby#48971</a></li>
-<li>对于 Linux，<code>docker info</code> 现在报告可用的防火墙后端。<a class="link" href="https://github.com/docker/cli/pull/6191" rel="noopener">docker/cli#6191</a></li>
-<li>大幅提升 overlay 网络和 Swarm 路由网格的可靠性。<a class="link" href="https://github.com/moby/moby/pull/50393" rel="noopener">moby/moby#50393</a></li>
-<li>提升 NetworkDB（overlay 网络管理平面的一部分）在更新突发后的收敛速率。<a class="link" href="https://github.com/moby/moby/pull/50193" rel="noopener">moby/moby#50193</a></li>
-<li>提升 overlay 网络驱动的可靠性。<a class="link" href="https://github.com/moby/moby/pull/50260" rel="noopener">moby/moby#50260</a></li>
-<li>改进容器连接至网络时的错误处理。<a class="link" href="https://github.com/moby/moby/pull/50945" rel="noopener">moby/moby#50945</a></li>
-<li>macvlan 和 IPvlan-l2 网络：除非 IPAM 配置中明确包含 <code>--gateway</code>，否则不会配置默认网关。这解决了在启用 IPv6 自动配置的网络中可能导致容器启动失败的问题。<a class="link" href="https://github.com/moby/moby/pull/50929" rel="noopener">moby/moby#50929</a></li>
-<li>nftables：Docker 不会在主机上启用 IP 转发。如果桥接网络需要转发但未启用，守护进程启动或网络创建将失败并显示错误。必须启用转发并确保防火墙规则到位以防止非 Docker 接口之间的 unwanted 转发；或使用守护进程选项 <code>--ip-forward=false</code> 禁用检查（但某些桥接网络功能包括端口转发可能无法工作）。有关从 iptables 迁移至 nftables 的更多信息，请参阅 <a class="link" href="https://docs.docker.com/engine/network/firewall-nftables" rel="noopener">Engine 文档</a>。<a class="link" href="https://github.com/moby/moby/pull/50646" rel="noopener">moby/moby#50646</a></li>
-<li>守护进程启动时，先重启共享其网络栈的容器，再重启需要这些栈的容器。<a class="link" href="https://github.com/moby/moby/pull/50327" rel="noopener">moby/moby#50327</a></li>
-<li>发布端口现在在网关模式为 &quot;routed&quot; 的网络中始终可访问。此前，仅当路由模式网络被选为容器的默认网关时才会添加打开这些端口的规则。<a class="link" href="https://github.com/moby/moby/pull/50140" rel="noopener">moby/moby#50140</a></li>
-<li>自 28.0.0 起，仅当环境变量 <code>DOCKER_IPTABLES_SCTP_CHECKSUM=1</code> 设置时才会添加用于 SCTP 校验和的 <code>iptables</code> mangle 规则。该规则现已移除，环境变量不再生效。<a class="link" href="https://github.com/moby/moby/pull/50539" rel="noopener">moby/moby#50539</a></li>
+<li>修复 NetworkDB 中的一个错误，该错误有时会导致某些节点上的条目卡在删除状态，导致覆盖网络上容器之间的连接问题。<a class="link" href="https://github.com/moby/moby/pull/50342" rel="noopener">moby/moby#50342</a></li>
+<li>修复一个错误，该错误可能导致 Engine 和另一个主机进程绑定相同的 UDP 端口。<a class="link" href="https://github.com/moby/moby/pull/50669" rel="noopener">moby/moby#50669</a></li>
+<li>修复一个死锁问题，如果在桥接网络驱动程序启动、创建或删除网络或创建端口映射时处理 firewalld 重载，可能会发生此问题。<a class="link" href="https://github.com/moby/moby/pull/50620" rel="noopener">moby/moby#50620</a></li>
+<li>修复在特定接口上仅禁用 IPv6 时阻止容器启动或选择其网络网关的问题。<a class="link" href="https://github.com/moby/moby/pull/48971" rel="noopener">moby/moby#48971</a></li>
+<li>对于 Linux，<code>docker info</code> 现在报告防火墙后端（如果可用）。<a class="link" href="https://github.com/docker/cli/pull/6191" rel="noopener">docker/cli#6191</a></li>
+<li>大幅提高覆盖网络和 Swarm 路由网格的可靠性。<a class="link" href="https://github.com/moby/moby/pull/50393" rel="noopener">moby/moby#50393</a></li>
+<li>改进 NetworkDB 的收敛速度，NetworkDB 是覆盖网络管理平面的一部分，在突发更新后。<a class="link" href="https://github.com/moby/moby/pull/50193" rel="noopener">moby/moby#50193</a></li>
+<li>提高覆盖网络驱动程序的可靠性。<a class="link" href="https://github.com/moby/moby/pull/50260" rel="noopener">moby/moby#50260</a></li>
+<li>改进容器连接到网络的错误处理。<a class="link" href="https://github.com/moby/moby/pull/50945" rel="noopener">moby/moby#50945</a></li>
+<li>macvlan 和 IPvlan-l2 网络：除非在 IPAM 配置中明确包含 <code>--gateway</code>，否则不会配置默认网关。这解决了在启用了 IPv6 自动配置的网络中可能导致容器启动失败的问题。<a class="link" href="https://github.com/moby/moby/pull/50929" rel="noopener">moby/moby#50929</a></li>
+<li>nftables: Docker 不会在主机上启用 IP 转发。如果桥接网络需要转发但未启用，守护进程启动或网络创建将失败并显示错误。您必须启用转发并确保防火墙规则到位以防止非 Docker 接口之间的不必要转发。或者，使用守护进程选项 <code>--ip-forward=false</code> 禁用检查，但某些桥接网络功能（包括端口转发）可能无法工作。有关从 iptables 迁移到 nftables 的更多信息，请参见 <a class="link" href="https://docs.docker.com/engine/network/firewall-nftables" rel="noopener">Engine Docs</a>。<a class="link" href="https://github.com/moby/moby/pull/50646" rel="noopener">moby/moby#50646</a></li>
+<li>在守护进程启动时，先重启共享其网络栈的容器，然后再重启需要这些栈的容器。<a class="link" href="https://github.com/moby/moby/pull/50327" rel="noopener">moby/moby#50327</a></li>
+<li>发布的端口现在在网关模式为 &quot;routed&quot; 的网络中始终可访问。以前，只有当路由模式网络被选为容器的默认网关时，才会添加打开这些端口的规则。<a class="link" href="https://github.com/moby/moby/pull/50140" rel="noopener">moby/moby#50140</a></li>
+<li>自 28.0.0 起，只有在设置了环境变量 <code>DOCKER_IPTABLES_SCTP_CHECKSUM=1</code> 时才会添加用于校验 SCTP 的 <code>iptables</code> mangle 规则。该规则现在已被移除，环境变量现在没有效果。<a class="link" href="https://github.com/moby/moby/pull/50539" rel="noopener">moby/moby#50539</a></li>
 <li>桥接网络的 iptables 规则已更新，包括移除 <code>DOCKER-ISOLATION-STAGE-1</code> 和 <code>DOCKER-ISOLATION-STAGE-2</code> 链。通过这些更改：<a class="link" href="https://github.com/moby/moby/pull/49981" rel="noopener">moby/moby#49981</a>
 <ul>
-<li>当 userland-proxy 未运行时，容器现在可以访问其他网络中容器发布到主机地址的端口</li>
-<li>容器现在可以访问其他网络中网关模式为 &quot;nat-unprotected&quot; 的容器地址上的端口</li>
+<li>当用户空间代理未运行时，容器现在可以访问发布到主机地址的端口</li>
+<li>容器现在可以访问具有 &quot;nat-unprotected&quot; 网关模式的其他网络上的容器地址端口</li>
 </ul>
 </li>
-<li>动态链接时，Docker 守护进程现在依赖 libnftables。<a class="link" href="https://github.com/moby/moby/pull/51033" rel="noopener">moby/moby#51033</a></li>
-<li>Windows：<code>network inspect</code>：HNS 网络名称现在在选项 <code>com.docker.network.windowsshim.networkname</code> 中报告，而非 Docker 网络名称（后者仅在守护进程重启后报告）。<a class="link" href="https://github.com/moby/moby/pull/50961" rel="noopener">moby/moby#50961</a></li>
-<li>Windows：守护进程重启时恢复网络，保留其与非默认 IPAM 驱动的关联。<a class="link" href="https://github.com/moby/moby/pull/50649" rel="noopener">moby/moby#50649</a></li>
+<li>当动态链接时，Docker 守护进程现在依赖于 libnftables。<a class="link" href="https://github.com/moby/moby/pull/51033" rel="noopener">moby/moby#51033</a></li>
+<li>Windows: <code>network inspect</code>: HNS 网络名称现在在选项 <code>com.docker.network.windowsshim.networkname</code> 中报告，而不是 Docker 网络名称，Docker 网络名称仅在守护进程重启后报告。<a class="link" href="https://github.com/moby/moby/pull/50961" rel="noopener">moby/moby#50961</a></li>
+<li>Windows: 在守护进程重启时恢复网络时，保留它们与非默认 IPAM 驱动程序的关联。<a class="link" href="https://github.com/moby/moby/pull/50649" rel="noopener">moby/moby#50649</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="api">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#api">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="api-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#api-1">
     API
   </a>
 </h3>
 
 <ul>
-<li><code>events</code> API 现在将内容类型报告为 <code>application/x-ndjson</code>（用于换行分隔的 JSON 事件流）。<a class="link" href="https://github.com/moby/moby/pull/50953" rel="noopener">moby/moby#50953</a></li>
-<li><code>GET /images/{name}/get</code> 和 <code>POST /images/load</code> 现在接受多个 <code>platform</code> 查询参数，允许导出和加载多平台镜像。<a class="link" href="https://github.com/moby/moby/pull/50166" rel="noopener">moby/moby#50166</a></li>
-<li><code>GET /images/{name}/json</code> 现在在其值为空时省略以下字段：<code>Parent</code>、<code>Comment</code>、<code>DockerVersion</code>、<code>Author</code>。<a class="link" href="https://github.com/moby/moby/pull/51072" rel="noopener">moby/moby#51072</a></li>
-<li><code>GET /images/{name}/json</code>：未设置时省略空的 <code>Config</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50915" rel="noopener">moby/moby#50915</a></li>
-<li><code>POST /images/{name:}/push</code>：移除对请求体中 API v1.4 auth-config 的兼容性支持。<a class="link" href="https://github.com/moby/moby/pull/50371" rel="noopener">moby/moby#50371</a></li>
-<li>为 Swarm 服务添加对内存交换性的支持。<a class="link" href="https://github.com/moby/moby/pull/51114" rel="noopener">moby/moby#51114</a>
+<li><code>events</code> API 现在为换行符分隔的 JSON 事件流报告内容类型为 <code>application/x-ndjson</code>。<a class="link" href="https://github.com/moby/moby/pull/50953" rel="noopener">moby/moby#50953</a></li>
+<li><code>GET /images/{name}/get</code> 和 <code>POST /images/load</code> 现在接受多个 <code>platform</code> 查询参数，允许导出和加载多个平台的镜像。<a class="link" href="https://github.com/moby/moby/pull/50166" rel="noopener">moby/moby#50166</a></li>
+<li><code>GET /images/{name}/json</code> 现在在值为空时省略以下字段：<code>Parent</code>、<code>Comment</code>、<code>DockerVersion</code>、<code>Author</code>。<a class="link" href="https://github.com/moby/moby/pull/51072" rel="noopener">moby/moby#51072</a></li>
+<li><code>GET /images/{name}/json</code>：在未设置时省略空的 <code>Config</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50915" rel="noopener">moby/moby#50915</a></li>
+<li><code>POST /images/{name:}/push</code>：移除对 API v1.4 身份验证配置在请求体中的兼容性。<a class="link" href="https://github.com/moby/moby/pull/50371" rel="noopener">moby/moby#50371</a></li>
+<li>添加对 Swarm 服务中内存交换比的支持。<a class="link" href="https://github.com/moby/moby/pull/51114" rel="noopener">moby/moby#51114</a>
 <ul>
-<li><code>GET /services</code> 现在在 <code>Resource</code> 需求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
-<li><code>GET /services/{id}</code> 现在在 <code>Resource</code> 需求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
-<li><code>POST /services/create</code> 现在接受 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段作为 <code>Resource</code> 需求的一部分</li>
-<li><code>POST /services/{id}/update</code> 现在接受 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段作为 <code>Resource</code> 需求的一部分</li>
-<li><code>GET /tasks</code> 现在在 <code>Resource</code> 需求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
-<li><code>GET /tasks/{id}</code> 现在在 <code>Resource</code> 需求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
+<li><code>GET /services</code> 现在在 <code>Resource</code> 要求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
+<li><code>GET /services/{id}</code> 现在在 <code>Resource</code> 要求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
+<li><code>POST /services/create</code> 现在在 <code>Resource</code> 要求中接受 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
+<li><code>POST /services/{id}/update</code> 现在在 <code>Resource</code> 要求中接受 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
+<li><code>GET /tasks</code> 现在在 <code>Resource</code> 要求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
+<li><code>GET /tasks/{id}</code> 现在在 <code>Resource</code> 要求中返回 <code>SwapBytes</code> 和 <code>MemorySwappiness</code> 字段</li>
 </ul>
 </li>
-<li>api/types/build：将 <code>CachePruneOptions</code> 类型移至 <code>client.BuildCachePruneOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50772" rel="noopener">moby/moby#50772</a></li>
-<li>api/types/checkpoint：将检查点选项移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50905" rel="noopener">moby/moby#50905</a></li>
-<li>api/types/container：<code>OnBuild</code> 现在在其值为空或零时被省略。<a class="link" href="https://github.com/moby/moby/pull/51154" rel="noopener">moby/moby#51154</a></li>
-<li>api/types/container：使容器配置中的 <code>MacAddress</code> 对 v1.52 及更高版本过时，改用网络端点设置。<a class="link" href="https://github.com/moby/moby/pull/51189" rel="noopener">moby/moby#51189</a></li>
-<li>api/types/container：将 <code>ResizeOptions</code> 类型移至客户端中的 <code>ContainerResizeOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50773" rel="noopener">moby/moby#50773</a></li>
-<li>api/types/events：将 <code>ListOptions</code> 类型移至客户端 <code>EventsListOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50774" rel="noopener">moby/moby#50774</a></li>
-<li>api/types/image：将镜像选项移至客户端。<a class="link" href="https://github.com/moby/moby/pull/50776" rel="noopener">moby/moby#50776</a></li>
-<li>api/types/network：将 <code>CreateOptions</code>、<code>ConnectOptions</code> 和 <code>DisconnectOptions</code> 移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50817" rel="noopener">moby/moby#50817</a></li>
-<li>api/types/network：将 <code>ListOptions</code> 和 <code>InspectOptions</code> 类型移至客户端。<a class="link" href="https://github.com/moby/moby/pull/50786" rel="noopener">moby/moby#50786</a></li>
-<li>api/types/plugin：将 <code>ListResponse</code> 更改为非指针切片。<a class="link" href="https://github.com/moby/moby/pull/51440" rel="noopener">moby/moby#51440</a></li>
+<li>api/types/build：将 <code>CachePruneOptions</code> 类型移动到 <code>client.BuildCachePruneOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50772" rel="noopener">moby/moby#50772</a></li>
+<li>api/types/checkpoint：将检查点选项移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50905" rel="noopener">moby/moby#50905</a></li>
+<li>api/types/container：如果 <code>OnBuild</code> 的值为空或零，则现在会被省略。<a class="link" href="https://github.com/moby/moby/pull/51154" rel="noopener">moby/moby#51154</a></li>
+<li>api/types/container：使容器配置 <code>MacAddress</code> 在 v1.52 及更高版本中过时。请改用网络端点设置。<a class="link" href="https://github.com/moby/moby/pull/51189" rel="noopener">moby/moby#51189</a></li>
+<li>api/types/container：将 <code>ResizeOptions</code> 类型移动到客户端中的 <code>ContainerResizeOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50773" rel="noopener">moby/moby#50773</a></li>
+<li>api/types/events：将 <code>ListOptions</code> 类型移动到客户端 <code>EventsListOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50774" rel="noopener">moby/moby#50774</a></li>
+<li>api/types/image：将镜像选项移出到客户端。<a class="link" href="https://github.com/moby/moby/pull/50776" rel="noopener">moby/moby#50776</a></li>
+<li>api/types/network：将 <code>CreateOptions</code>、<code>ConnectOptions</code> 和 <code>DisconnectOptions</code> 移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50817" rel="noopener">moby/moby#50817</a></li>
+<li>api/types/network：将 <code>ListOptions</code> 和 <code>InspectOptions</code> 类型移动到客户端。<a class="link" href="https://github.com/moby/moby/pull/50786" rel="noopener">moby/moby#50786</a></li>
+<li>api/types/plugin：将 <code>ListResponse</code> 改为非指针切片。<a class="link" href="https://github.com/moby/moby/pull/51440" rel="noopener">moby/moby#51440</a></li>
 <li>api/types/plugin：移除已弃用的 <code>Config.DockerVersion</code>。<a class="link" href="https://github.com/moby/moby/pull/51458" rel="noopener">moby/moby#51458</a></li>
-<li>api/types/registry：将 <code>SearchOptions</code> 移至客户端中的 <code>ImageSearchOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50787" rel="noopener">moby/moby#50787</a></li>
-<li>api/types/registry：将 <code>ServiceConfig</code> 传统字段编组支持移至守护进程后端。<a class="link" href="https://github.com/moby/moby/pull/50826" rel="noopener">moby/moby#50826</a></li>
-<li>api/types/registry：将编码/解码认证配置函数移至参考工具包。<a class="link" href="https://github.com/moby/moby/pull/50785" rel="noopener">moby/moby#50785</a></li>
-<li>api/types/storage：添加 <code>Storage</code> 类型并集成到容器 inspect 中。<a class="link" href="https://github.com/moby/moby/pull/50857" rel="noopener">moby/moby#50857</a></li>
-<li>api/types/swarm：弃用并移除对 <code>PortConfigProtocol</code> 的支持，改用 <code>network.IPProtocol</code>。<a class="link" href="https://github.com/moby/moby/pull/51094" rel="noopener">moby/moby#51094</a></li>
-<li>api/types/swarm：将选项类型移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50794" rel="noopener">moby/moby#50794</a></li>
-<li>api/types/swarm：将 <code>SecretListOptions</code> 类型移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50816" rel="noopener">moby/moby#50816</a></li>
-<li>api/types/system：将 <code>DiskUsageOptions</code> 移至客户端。<a class="link" href="https://github.com/moby/moby/pull/50788" rel="noopener">moby/moby#50788</a></li>
-<li>api/types/system：将 <code>SecurityOpt</code> 和 <code>DecodeSecurityOptions</code> 移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50825" rel="noopener">moby/moby#50825</a></li>
-<li>api/types/volume：将 ListResponse.Volumes 更改为非指针切片。<a class="link" href="https://github.com/moby/moby/pull/51454" rel="noopener">moby/moby#51454</a></li>
-<li>api/types/volume：将 <code>ListOptions</code> 类型移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50789" rel="noopener">moby/moby#50789</a></li>
-<li>api/types/volume：将 <code>UpdateOptions</code> 移至客户端模块。<a class="link" href="https://github.com/moby/moby/pull/51205" rel="noopener">moby/moby#51205</a></li>
-<li>api/types：守护进程：将磁盘使用结构体移至后端服务器。<a class="link" href="https://github.com/moby/moby/pull/50764" rel="noopener">moby/moby#50764</a></li>
-<li>api：使 <code>image.InspectResponse</code> 中的 <code>GraphDriver</code> 字段变为可选。使用传统 graph 驱动时该字段将继续发送，使用 containerd 镜像后端时将被省略。<a class="link" href="https://github.com/moby/moby/pull/50893" rel="noopener">moby/moby#50893</a></li>
+<li>api/types/registry：将 <code>SearchOptions</code> 移动到客户端中的 <code>ImageSearchOptions</code>。<a class="link" href="https://github.com/moby/moby/pull/50787" rel="noopener">moby/moby#50787</a></li>
+<li>api/types/registry：将 <code>ServiceConfig</code> 遗留字段序列化支持移到守护进程后端。<a class="link" href="https://github.com/moby/moby/pull/50826" rel="noopener">moby/moby#50826</a></li>
+<li>api/types/registry：将编码/解码身份验证配置函数移到引用工具包。<a class="link" href="https://github.com/moby/moby/pull/50785" rel="noopener">moby/moby#50785</a></li>
+<li>api/types/storage：添加 <code>Storage</code> 类型并集成到容器检查中。<a class="link" href="https://github.com/moby/moby/pull/50857" rel="noopener">moby/moby#50857</a></li>
+<li>api/types/swarm：弃用并停止支持 <code>PortConfigProtocol</code>；请改用 <code>network.IPProtocol</code>。<a class="link" href="https://github.com/moby/moby/pull/51094" rel="noopener">moby/moby#51094</a></li>
+<li>api/types/swarm：将选项类型移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50794" rel="noopener">moby/moby#50794</a></li>
+<li>api/types/swarm：将 <code>SecretListOptions</code> 类型移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50816" rel="noopener">moby/moby#50816</a></li>
+<li>api/types/system：将 <code>DiskUsageOptions</code> 移动到客户端。<a class="link" href="https://github.com/moby/moby/pull/50788" rel="noopener">moby/moby#50788</a></li>
+<li>api/types/system：将 <code>SecurityOpt</code> 和 <code>DecodeSecurityOptions</code> 移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50825" rel="noopener">moby/moby#50825</a></li>
+<li>api/types/volume：将 ListResponse.Volumes 改为非指针切片。<a class="link" href="https://github.com/moby/moby/pull/51454" rel="noopener">moby/moby#51454</a></li>
+<li>api/types/volume：将 <code>ListOptions</code> 类型移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/50789" rel="noopener">moby/moby#50789</a></li>
+<li>api/types/volume：将 <code>UpdateOptions</code> 移动到客户端模块。<a class="link" href="https://github.com/moby/moby/pull/51205" rel="noopener">moby/moby#51205</a></li>
+<li>api/types: daemon：将磁盘使用情况结构移动到后端服务器。<a class="link" href="https://github.com/moby/moby/pull/50764" rel="noopener">moby/moby#50764</a></li>
+<li>api：使 <code>image.InspectResponse</code> 中的 <code>GraphDriver</code> 字段变为可选。在使用旧版图形驱动程序时将继续发出此字段，而在使用 containerd 镜像后端时将省略此字段。<a class="link" href="https://github.com/moby/moby/pull/50893" rel="noopener">moby/moby#50893</a></li>
 <li>api：重新定义容器网络端口类型。<a class="link" href="https://github.com/moby/moby/pull/50710" rel="noopener">moby/moby#50710</a></li>
-<li>client：PluginListResult：将 Items 字段更改为非指针切片。<a class="link" href="https://github.com/moby/moby/pull/51440" rel="noopener">moby/moby#51440</a></li>
-<li>使用 API v1.52 及更高版本检查网络时，提供关于分配给网络的子网 IPAM 分配的统计信息。<a class="link" href="https://github.com/moby/moby/pull/50917" rel="noopener">moby/moby#50917</a></li>
-<li>MAC 地址字段现在表示为与标准库 net.HardwareAddr 类型兼容的字节切片，而非字符串。<a class="link" href="https://github.com/moby/moby/pull/51355" rel="noopener">moby/moby#51355</a></li>
-<li>为描述 Engine API 的 Swagger 规范添加 <code>NetworkSummary</code> 和 <code>NetworkInspect</code> 的 Swagger 定义。<a class="link" href="https://github.com/moby/moby/pull/50855" rel="noopener">moby/moby#50855</a></li>
-<li>将 API 版本更新至 1.52。<a class="link" href="https://github.com/moby/moby/pull/50418" rel="noopener">moby/moby#50418</a></li>
+<li>client: PluginListResult：将 Items 字段更改为非指针切片。<a class="link" href="https://github.com/moby/moby/pull/51440" rel="noopener">moby/moby#51440</a></li>
+<li>使用 API v1.52 及更新版本检查网络时，提供分配给网络的子网的 IPAM 分配统计信息。<a class="link" href="https://github.com/moby/moby/pull/50917" rel="noopener">moby/moby#50917</a></li>
+<li>MAC 地址字段表示为与标准库 net.HardwareAddr 类型兼容的字节切片，而不是字符串。<a class="link" href="https://github.com/moby/moby/pull/51355" rel="noopener">moby/moby#51355</a></li>
+<li>为 <code>NetworkSummary</code> 和 <code>NetworkInspect</code> 添加的 Swagger 定义已添加到描述 Engine API 的 Swagger 规范中。<a class="link" href="https://github.com/moby/moby/pull/50855" rel="noopener">moby/moby#50855</a></li>
+<li>将 API 版本更新为 1.52。<a class="link" href="https://github.com/moby/moby/pull/50418" rel="noopener">moby/moby#50418</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="go-sdk">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#go-sdk">
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="go-sdk-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#go-sdk-1">
     Go SDK
   </a>
 </h3>
 
 <ul>
-<li>已移除 <code>api/pkg/progress</code> 和 <code>api/pkg/streamformatter</code>。<a class="link" href="https://github.com/moby/moby/pull/51153" rel="noopener">moby/moby#51153</a></li>
-<li><code>api/types/registry</code>：<code>EncodeAuthConfig</code>：零值使用空字符串。<a class="link" href="https://github.com/moby/moby/pull/50426" rel="noopener">moby/moby#50426</a></li>
+<li><code>api/pkg/progress</code> 和 <code>api/pkg/streamformatter</code> 已被移除。<a class="link" href="https://github.com/moby/moby/pull/51153" rel="noopener">moby/moby#51153</a></li>
+<li><code>api/types/registry</code>: <code>EncodeAuthConfig</code>: 零值时使用空字符串。<a class="link" href="https://github.com/moby/moby/pull/50426" rel="noopener">moby/moby#50426</a></li>
 <li><code>api/types/versions</code> 已移至客户端和守护进程。<a class="link" href="https://github.com/moby/moby/pull/51284" rel="noopener">moby/moby#51284</a></li>
-<li><code>client.ConfigCreate</code>、<code>client.ConfigList</code>、<code>client.ConfigInspectWithRaw</code>、<code>client.ConfigUpdate</code> 和 <code>client.ConfigRemove</code> 方法现在接受选项结构体而非位置参数，并返回专用结果结构体。<a class="link" href="https://github.com/moby/moby/pull/51078" rel="noopener">moby/moby#51078</a></li>
-<li><code>client.ImageBuild</code>、<code>client.BuildCancel</code>、<code>client.ImageList</code>、<code>client.ImageRemove</code>、<code>client.ImageTag</code> 和 <code>client.ImageSearch</code> 方法现在接受选项结构体而非位置参数，并返回专用结果结构体。<a class="link" href="https://github.com/moby/moby/pull/51227" rel="noopener">moby/moby#51227</a></li>
-<li><code>client</code>：<code>ContainerExec...</code> 方法已重命名为 <code>Exec...</code>。<a class="link" href="https://github.com/moby/moby/pull/51262" rel="noopener">moby/moby#51262</a></li>
-<li><code>client</code>：将 <code>ImageInspect</code>、<code>ImageHistory</code>、<code>ImageLoad</code> 和 <code>ImageSave</code> 的返回值包装在结构体中。<a class="link" href="https://github.com/moby/moby/pull/51236" rel="noopener">moby/moby#51236</a></li>
-<li><code>ImagePull</code> 现在返回一个带有 <code>JSONMessages</code> 方法的对象，该方法返回消息对象的迭代器。<a class="link" href="https://github.com/moby/moby/pull/50935" rel="noopener">moby/moby#50935</a></li>
-<li><code>ImagePush</code> 现在返回一个带有 <code>JSONMessages</code> 方法的对象，该方法返回消息对象的迭代器。<a class="link" href="https://github.com/moby/moby/pull/51148" rel="noopener">moby/moby#51148</a></li>
-<li>api/types/container：将 <code>StatsResponseReader</code> 移至 <code>client</code> 包。<a class="link" href="https://github.com/moby/moby/pull/50521" rel="noopener">moby/moby#50521</a></li>
-<li>api/types/container：将容器选项移至客户端。<a class="link" href="https://github.com/moby/moby/pull/50897" rel="noopener">moby/moby#50897</a></li>
-<li>api/types/container：将 <code>Port</code> 重命名为 <code>PortSummary</code>。<a class="link" href="https://github.com/moby/moby/pull/50711" rel="noopener">moby/moby#50711</a></li>
-<li>api/types/container：StatsResponse：添加 <code>OSType</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51305" rel="noopener">moby/moby#51305</a></li>
-<li>api/types：将 <code>ErrorResponse</code> 移至 <code>common/ErrorResponse</code>。<a class="link" href="https://github.com/moby/moby/pull/50632" rel="noopener">moby/moby#50632</a></li>
-<li>api：移除未使用的 <code>DefaultVersion</code>、<code>MinSupportedAPIVersion</code> 常量。<a class="link" href="https://github.com/moby/moby/pull/50587" rel="noopener">moby/moby#50587</a></li>
-<li>cli/command：添加 <code>WithUserAgent</code> 选项。<a class="link" href="https://github.com/docker/cli/pull/4574" rel="noopener">docker/cli#4574</a></li>
-<li>client：<code>ContainerCommitOptions</code>：移除 <code>Pause</code> 字段，改用 <code>NoPause</code>。<a class="link" href="https://github.com/moby/moby/pull/51019" rel="noopener">moby/moby#51019</a></li>
-<li>client：添加 <code>DefaultAPIVersion</code> 常量，定义客户端支持默认（及最大）API 版本。<a class="link" href="https://github.com/moby/moby/pull/50433" rel="noopener">moby/moby#50433</a></li>
-<li>client：为客户端提供的 exec 方法添加 <code>ExecAPIClient</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/50997" rel="noopener">moby/moby#50997</a></li>
-<li>client：Client.PluginList：添加选项结构体。<a class="link" href="https://github.com/moby/moby/pull/51207" rel="noopener">moby/moby#51207</a></li>
-<li>client：ContainersPrune：重写以使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
-<li>client：ImagesPrune：重写以使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
-<li>client：NetworksPrune：重写以使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
-<li>client：移除 <code>client.ContainerStatsResult.OSType</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51305" rel="noopener">moby/moby#51305</a></li>
-<li>client：VolumesPrune：重写以使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
-<li>daemon/config：添加 <code>DefaultAPIVersion</code> 常量，定义守护进程支持默认（及最大）API 版本。<a class="link" href="https://github.com/moby/moby/pull/50436" rel="noopener">moby/moby#50436</a></li>
-<li>修复 <code>ContainerExecStart</code>、<code>ContainerList</code> 和 <code>Events</code> 中的数据竞争问题。<a class="link" href="https://github.com/moby/moby/pull/50448" rel="noopener">moby/moby#50448</a></li>
+<li><code>client.ConfigCreate</code>、<code>client.ConfigList</code>、<code>client.ConfigInspectWithRaw</code>、<code>client.ConfigUpdate</code> 和 <code>client.ConfigRemove</code> 方法现在接受选项结构体而不是位置参数，并返回专用的结果结构体。<a class="link" href="https://github.com/moby/moby/pull/51078" rel="noopener">moby/moby#51078</a></li>
+<li><code>client.ImageBuild</code>、<code>client.BuildCancel</code>、<code>client.ImageList</code>、<code>client.ImageRemove</code>、<code>client.ImageTag</code> 和 <code>client.ImageSearch</code> 方法现在接受选项结构体而不是位置参数，并返回专用的结果结构体。<a class="link" href="https://github.com/moby/moby/pull/51227" rel="noopener">moby/moby#51227</a></li>
+<li><code>client</code>: <code>ContainerExec...</code> 方法已重命名为 <code>Exec...</code>。<a class="link" href="https://github.com/moby/moby/pull/51262" rel="noopener">moby/moby#51262</a></li>
+<li><code>client</code>: 将 <code>ImageInspect</code>、<code>ImageHistory</code>、<code>ImageLoad</code> 和 <code>ImageSave</code> 的返回值包装在结构体中。<a class="link" href="https://github.com/moby/moby/pull/51236" rel="noopener">moby/moby#51236</a></li>
+<li><code>ImagePull</code> 现在返回一个对象，该对象具有 <code>JSONMessages</code> 方法，返回消息对象的迭代器。<a class="link" href="https://github.com/moby/moby/pull/50935" rel="noopener">moby/moby#50935</a></li>
+<li><code>ImagePush</code> 现在返回一个对象，该对象具有 <code>JSONMessages</code> 方法，返回消息对象的迭代器。<a class="link" href="https://github.com/moby/moby/pull/51148" rel="noopener">moby/moby#51148</a></li>
+<li>api/types/container: 将 <code>StatsResponseReader</code> 移至 <code>client</code> 包。<a class="link" href="https://github.com/moby/moby/pull/50521" rel="noopener">moby/moby#50521</a></li>
+<li>api/types/container: 将容器选项移至客户端。<a class="link" href="https://github.com/moby/moby/pull/50897" rel="noopener">moby/moby#50897</a></li>
+<li>api/types/container: 将 <code>Port</code> 重命名为 <code>PortSummary</code>。<a class="link" href="https://github.com/moby/moby/pull/50711" rel="noopener">moby/moby#50711</a></li>
+<li>api/types/container: StatsResponse: 添加 <code>OSType</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51305" rel="noopener">moby/moby#51305</a></li>
+<li>api/types: 将 <code>ErrorResponse</code> 移至 <code>common/ErrorResponse</code>。<a class="link" href="https://github.com/moby/moby/pull/50632" rel="noopener">moby/moby#50632</a></li>
+<li>api: 移除未使用的 <code>DefaultVersion</code>、<code>MinSupportedAPIVersion</code> 常量。<a class="link" href="https://github.com/moby/moby/pull/50587" rel="noopener">moby/moby#50587</a></li>
+<li>cli/command: 添加 <code>WithUserAgent</code> 选项。<a class="link" href="https://github.com/docker/cli/pull/4574" rel="noopener">docker/cli#4574</a></li>
+<li>client: <code>ContainerCommitOptions</code>: 移除 <code>Pause</code> 字段，改用 <code>NoPause</code>。<a class="link" href="https://github.com/moby/moby/pull/51019" rel="noopener">moby/moby#51019</a></li>
+<li>client: 添加 <code>DefaultAPIVersion</code> 常量，该常量定义了客户端支持的默认（和最大）API 版本。<a class="link" href="https://github.com/moby/moby/pull/50433" rel="noopener">moby/moby#50433</a></li>
+<li>client: 添加 <code>ExecAPIClient</code> 接口，用于客户端提供的 exec 方法。<a class="link" href="https://github.com/moby/moby/pull/50997" rel="noopener">moby/moby#50997</a></li>
+<li>client: Client.PluginList: 添加选项结构体。<a class="link" href="https://github.com/moby/moby/pull/51207" rel="noopener">moby/moby#51207</a></li>
+<li>client: ContainersPrune: 重写为使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
+<li>client: ImagesPrune: 重写为使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
+<li>client: NetworksPrune: 重写为使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
+<li>client: 移除 <code>client.ContainerStatsResult.OSType</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51305" rel="noopener">moby/moby#51305</a></li>
+<li>client: VolumesPrune: 重写为使用选项结构体和结果。<a class="link" href="https://github.com/moby/moby/pull/51200" rel="noopener">moby/moby#51200</a></li>
+<li>daemon/config: 添加 <code>DefaultAPIVersion</code> 常量，该常量定义了守护进程支持的默认（和最大）API 版本。<a class="link" href="https://github.com/moby/moby/pull/50436" rel="noopener">moby/moby#50436</a></li>
+<li>修复 <code>ContainerExecStart</code>、<code>ContainerList</code> 和 <code>Events</code> 中的数据竞争。<a class="link" href="https://github.com/moby/moby/pull/50448" rel="noopener">moby/moby#50448</a></li>
 <li>IP 地址和子网现在分别为 <code>netip.Addr</code> 和 <code>netip.Prefix</code> 类型。<a class="link" href="https://github.com/moby/moby/pull/50956" rel="noopener">moby/moby#50956</a></li>
-<li>移除结构体 <code>NetworkSettingsBase</code> 和 <code>DefaultNetworkSettings</code>。<code>NetworkSettingsBase</code> 中未弃用的字段现在直接位于 <code>NetworkSettings</code> 中。<a class="link" href="https://github.com/moby/moby/pull/50846" rel="noopener">moby/moby#50846</a></li>
-<li>客户端现在使用其自己的 <code>client.Filters</code> 类型来过滤 API 请求，接口更人性化。使用 <code>github.com/docker/docker/api/types/filters</code> 包的用户在升级至 v29 客户端时需要重构代码。<a class="link" href="https://github.com/moby/moby/pull/51115" rel="noopener">moby/moby#51115</a></li>
-<li>类型 <code>&quot;github.com/moby/moby/api/types/network&quot;.Summary</code> 和 <code>&quot;github.com/moby/moby/api/types/network&quot;.Inspect</code> 不再是别名，其大部分字段已移至嵌入结构体中。迁移至新的 github.com/moby/moby/api 模块时，Engine API 客户端可能需要进行一些源码级更改。<a class="link" href="https://github.com/moby/moby/pull/50878" rel="noopener">moby/moby#50878</a></li>
-<li>将最低 Go 版本更新至 1.24。<a class="link" href="https://github.com/docker/cli/pull/6624" rel="noopener">docker/cli#6624</a></li>
+<li>移除 <code>NetworkSettingsBase</code> 和 <code>DefaultNetworkSettings</code> 结构体。<code>NetworkSettingsBase</code> 中未被弃用的字段现在直接位于 <code>NetworkSettings</code> 中。<a class="link" href="https://github.com/moby/moby/pull/50846" rel="noopener">moby/moby#50846</a></li>
+<li>客户端现在使用其自己的 <code>client.Filters</code> 类型来过滤 API 请求，具有更符合人体工程学的接口。使用 <code>github.com/docker/docker/api/types/filters</code> 包的用户在升级到 v29 客户端时需要重构。<a class="link" href="https://github.com/moby/moby/pull/51115" rel="noopener">moby/moby#51115</a></li>
+<li>类型 <code>&quot;github.com/moby/moby/api/types/network&quot;.Summary</code> 和 <code>&quot;github.com/moby/moby/api/types/network&quot;.Inspect</code> 不再是别名，它们的大多数字段已移至嵌入结构体中。在迁移到新的 github.com/moby/moby/api 模块时，Engine API 客户端可能需要一些源代码级别的更改。<a class="link" href="https://github.com/moby/moby/pull/50878" rel="noopener">moby/moby#50878</a></li>
+<li>将最低 Go 版本更新为 1.24。<a class="link" href="https://github.com/docker/cli/pull/6624" rel="noopener">docker/cli#6624</a></li>
 </ul>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="弃用内容">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%bc%83%e7%94%a8%e5%86%85%e5%ae%b9">
-    弃用内容
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="弃用-1">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%bc%83%e7%94%a8-1">
+    弃用
   </a>
 </h3>
 
 <ul>
-<li><code>client/pkg/jsonmessage</code>：移除已弃用的 <code>ProgressMessage</code>、<code>ErrorMessage</code>、<code>DisplayJSONMessagesToStream</code> 和 <code>Stream</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/49264" rel="noopener">moby/moby#49264</a></li>
-<li><code>GET /events</code> 不再包含已弃用的 <code>status</code>、<code>id</code> 和 <code>from</code> 字段。这些字段已在 API v1.22 中移除，但仍包含在响应中。使用 API v1.52 或更高版本时这些字段现在被省略。<a class="link" href="https://github.com/moby/moby/pull/50832" rel="noopener">moby/moby#50832</a></li>
-<li>api/types/network：CreateRequest：移除已弃用的 CheckDuplicate 字段。<a class="link" href="https://github.com/moby/moby/pull/50998" rel="noopener">moby/moby#50998</a></li>
-<li>api/types/plugin：弃用 <code>Config.DockerVersion</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51109" rel="noopener">moby/moby#51109</a></li>
-<li>api/types/registry：移除已弃用的 AuthConfig.Email 字段。<a class="link" href="https://github.com/moby/moby/pull/51059" rel="noopener">moby/moby#51059</a></li>
-<li>api/types/strslice：弃用 StrSlice，推荐使用常规 <code>[]string</code>。<a class="link" href="https://github.com/moby/moby/pull/50292" rel="noopener">moby/moby#50292</a></li>
-<li>api/types/sytem：移除已弃用的 <code>DiskUsage.BuilderSize</code>。<a class="link" href="https://github.com/moby/moby/pull/51180" rel="noopener">moby/moby#51180</a></li>
-<li>api/types：将插件类型移至 api/types/plugin。<a class="link" href="https://github.com/moby/moby/pull/48114" rel="noopener">moby/moby#48114</a></li>
-<li>API：弃用说明：Engine 在启动容器时自动回填空的 <code>PortBindings</code> 列表（使用空的 HostIP 和 HostPort 的 PortBinding）的行为已弃用（针对 API 1.52），并将在 API 1.53 中移除。<a class="link" href="https://github.com/moby/moby/pull/50874" rel="noopener">moby/moby#50874</a></li>
-<li>build：移除经典构建器对 DCT 的支持。<a class="link" href="https://github.com/docker/cli/pull/6195" rel="noopener">docker/cli#6195</a></li>
-<li>cli/command：移除已弃用的 <code>ResolveDefaultContext</code>。<a class="link" href="https://github.com/docker/cli/pull/6555" rel="noopener">docker/cli#6555</a></li>
-<li>client：ImageBuildResponse：移除 OSType 字段。<a class="link" href="https://github.com/moby/moby/pull/50995" rel="noopener">moby/moby#50995</a></li>
-<li>client：移除 <code>ImageCreate</code> 方法，请改用 <code>ImagePull</code> 或 <code>ImageImport</code>。<a class="link" href="https://github.com/moby/moby/pull/51366" rel="noopener">moby/moby#51366</a></li>
-<li>client：移除已弃用的 <code>ImageListOptions.ContainerCount</code>。<a class="link" href="https://github.com/moby/moby/pull/51006" rel="noopener">moby/moby#51006</a></li>
-<li>client：移除对协商 API 版本 &lt; v1.44 (docker 25.0) 的支持。<a class="link" href="https://github.com/moby/moby/pull/51119" rel="noopener">moby/moby#51119</a></li>
-<li>client：移除未使用的 <code>Client.HTTPClient()</code> 方法。<a class="link" href="https://github.com/moby/moby/pull/51011" rel="noopener">moby/moby#51011</a></li>
-<li>daemon/graphdriver：移除已弃用的 <code>GetDriver()</code>。<a class="link" href="https://github.com/moby/moby/pull/50377" rel="noopener">moby/moby#50377</a></li>
-<li>daemon：将最低 API 版本提高至 v1.44。<a class="link" href="https://github.com/moby/moby/pull/51186" rel="noopener">moby/moby#51186</a></li>
-<li>弃用 <code>docker commit</code> 上的 <code>--pause</code> 标志，推荐使用 <code>--no-pause</code>。<a class="link" href="https://github.com/docker/cli/pull/6460" rel="noopener">docker/cli#6460</a></li>
-<li>弃用 cgroup v1。<a class="link" href="https://github.com/moby/moby/pull/51360" rel="noopener">moby/moby#51360</a>、<a class="link" href="https://github.com/docker/cli/pull/6598" rel="noopener">docker/cli#6598</a></li>
-<li>Go SDK：<code>cli-plugins/manager</code>：弃用元数据别名，推荐使用 <code>cli-plugins/manager/metadata</code> 中的等效项。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></li>
-<li>Go SDK：<code>cli-plugins/manager</code>：移除仅用于内部使用的 <code>Candidate</code> 接口。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></li>
-<li>Go SDK：<code>cli-plugins/manager</code>：移除仅用于内部使用的 <code>NewPluginError</code> 函数。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></li>
-<li>Go SDK：<code>cli-plugins/manager</code>：移除已弃用的 <code>ResourceAttributesEnvvar</code> 常量。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></li>
-<li>Go SDK：<code>cli/command</code>：移除 <code>ErrPromptTerminated</code>、<code>DisableInputEcho</code>、<code>PromptForInput</code> 和 <code>PromptForConfirmation</code> 工具。这些工具仅用于内部且不再使用。<a class="link" href="https://github.com/docker/cli/pull/6243" rel="noopener">docker/cli#6243</a></li>
-<li>Go SDK：<code>cli/registry/client</code>：移除已弃用的 <code>RepoNameForReference</code>。<a class="link" href="https://github.com/docker/cli/pull/6206" rel="noopener">docker/cli#6206</a></li>
-<li>Go SDK：api/types/build：移除已弃用的 BuildCache.Parent 字段。<a class="link" href="https://github.com/moby/moby/pull/51185" rel="noopener">moby/moby#51185</a></li>
-<li>Go SDK：api/types/container：移除已弃用的 <code>ContainerTopOKBody</code> 别名。<a class="link" href="https://github.com/moby/moby/pull/50400" rel="noopener">moby/moby#50400</a></li>
-<li>Go SDK：api/types/container：移除已弃用的 <code>ContainerUpdateOKBody</code> 别名。<a class="link" href="https://github.com/moby/moby/pull/50400" rel="noopener">moby/moby#50400</a></li>
-<li>Go SDK：api/types/container：移除已弃用的 <code>Stats</code> 类型。<a class="link" href="https://github.com/moby/moby/pull/50492" rel="noopener">moby/moby#50492</a></li>
-<li>Go SDK：api/types/filters：移除已弃用的 <code>ToParamWithVersion</code>。<a class="link" href="https://github.com/moby/moby/pull/50561" rel="noopener">moby/moby#50561</a></li>
-<li>Go SDK：api/types/image：<code>InspectResponse</code>：移除已弃用的 <code>VirtualSize</code>、<code>Container</code>、<code>ContainerConfig</code>、<code>Parent</code> 和 <code>DockerVersion</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51103" rel="noopener">moby/moby#51103</a></li>
-<li>Go SDK：api/types/image：移除已弃用的 Summary.VirtualSize 字段。<a class="link" href="https://github.com/moby/moby/pull/51190" rel="noopener">moby/moby#51190</a></li>
-<li>Go SDK：api/types/registry：移除已弃用的 <code>ServiceConfig.AllowNondistributableArtifactsCIDRs</code> 和 <code>ServiceConfig.AllowNondistributableArtifactsHostnames</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50375" rel="noopener">moby/moby#50375</a></li>
-<li>Go SDK：api/types/swarm：移除已弃用的 ServiceSpec.Networks 字段。<a class="link" href="https://github.com/moby/moby/pull/51184" rel="noopener">moby/moby#51184</a></li>
-<li>GO SDK：api/types/system：移除已弃用的 <code>Commit.Expected</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51127" rel="noopener">moby/moby#51127</a></li>
-<li>Go SDK：api/types：移除已弃用的别名。<a class="link" href="https://github.com/moby/moby/pull/50452" rel="noopener">moby/moby#50452</a></li>
-<li>Go SDK：api：弃用 <code>NoBaseImageSpecifier</code> 常量。该常量不再使用，将在下一版本中移除。<a class="link" href="https://github.com/moby/moby/pull/50437" rel="noopener">moby/moby#50437</a></li>
-<li>Go SDK：api：移除 <code>NoBaseImageSpecifier</code>。<a class="link" href="https://github.com/moby/moby/pull/50574" rel="noopener">moby/moby#50574</a></li>
-<li>Go SDK：cli/command/builder：移除不再使用的 <code>CachePrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></li>
-<li>Go SDK：cli/command/builder：移除 <code>NewBuilderCommand</code> 和 <code>NewBakeStubCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/checkpoint：移除 <code>NewCheckpointCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/checkpoint：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/completion：移除已弃用的 <code>NoComplete</code>。<a class="link" href="https://github.com/docker/cli/pull/6408" rel="noopener">docker/cli#6408</a></li>
-<li>Go SDK：cli/command/config：移除 <code>NewConfigCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/config：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/config：移除已弃用的 <code>RunConfigCreate</code>、<code>CreateOptions</code>、<code>RunConfigInspect</code>、<code>InspectOptions</code>、<code>RunConfigList</code>、<code>ListOptions</code>、<code>RunConfigRemove</code> 和 <code>RemoveOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6370" rel="noopener">docker/cli#6370</a></li>
-<li>Go SDK：cli/command/container：弃用 <code>NewDiffFormat</code>、<code>DiffFormatWrite</code>。这些函数仅用于内部，将在下一版本中移除。<a class="link" href="https://github.com/docker/cli/pull/6187" rel="noopener">docker/cli#6187</a></li>
-<li>Go SDK：cli/command/container：移除 <code>NewBuildCommand</code>、<code>NewPullCommand</code>、<code>NewPushCommand</code>、<code>NewImagesCommand</code>、<code>NewImageCommand</code>、<code>NewHistoryCommand</code>、<code>NewImportCommand</code>、<code>NewLoadCommand</code>、<code>NewRemoveCommand</code>、<code>NewSaveCommand</code>、<code>NewTagCommand</code>、<code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/container：移除 <code>NewRunCommand</code>、<code>NewExecCommand</code>、<code>NewPsCommand</code>、<code>NewContainerCommand</code>、<code>NewAttachCommand</code>、<code>NewCommitCommand</code>、<code>NewCopyCommand</code>、<code>NewCreateCommand</code>、<code>NewDiffCommand</code>、<code>NewExportCommand</code>、<code>NewKillCommand</code>、<code>NewLogsCommand</code>、<code>NewPauseCommand</code>、<code>NewPortCommand</code>、<code>NewRenameCommand</code>、<code>NewRestartCommand</code>、<code>NewRmCommand</code>、<code>NewStartCommand</code>、<code>NewStatsCommand</code>、<code>NewStopCommand</code>、<code>NewTopCommand</code>、<code>NewUnpauseCommand</code>、<code>NewUpdateCommand</code>、<code>NewWaitCommand</code>、<code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/container：移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></li>
-<li>Go SDK：cli/command/container：移除已弃用的 <code>NewDiffFormat</code>、<code>DiffFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/context：移除 <code>NewContextCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/context：移除已弃用的 <code>RunCreate</code> 和 <code>CreateOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></li>
-<li>Go SDK：cli/command/context：移除已弃用的 <code>RunExport</code> 和 <code>ExportOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></li>
-<li>Go SDK：cli/command/context：移除已弃用的 <code>RunImport</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></li>
-<li>Go SDK：cli/command/context：移除已弃用的 <code>RunRemove</code> 和 <code>RemoveOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></li>
-<li>Go SDK：cli/command/context：移除已弃用的 <code>RunUpdate</code> 和 <code>UpdateOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></li>
-<li>Go SDK：cli/command/context：移除已弃用的 <code>RunUse</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></li>
-<li>Go SDK：cli/command/formatter/swarm：移除已弃用的 <code>GetStacks</code> 函数。<a class="link" href="https://github.com/docker/cli/pull/6406" rel="noopener">docker/cli#6406</a></li>
-<li>Go SDK：cli/command/image/build：弃用 <code>DefaultDockerfileName</code>、<code>DetectArchiveReader</code>、<code>WriteTempDockerfile</code>、<code>ResolveAndValidateContextPath</code>。这些工具仅用于内部，将在下一版本中移除。<a class="link" href="https://github.com/docker/cli/pull/6561" rel="noopener">docker/cli#6561</a></li>
-<li>Go SDK：cli/command/image：移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></li>
-<li>Go SDK：cli/command/image：移除已弃用的 <code>AuthResolver</code> 工具。<a class="link" href="https://github.com/docker/cli/pull/6373" rel="noopener">docker/cli#6373</a></li>
-<li>Go SDK：cli/command/image：移除已弃用的 <code>NewHistoryFormat</code>、<code>HistoryWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a>、<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/manifest：移除 <code>NewManifestCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/network：移除 <code>NewNetworkCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/network：移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></li>
-<li>Go SDK：cli/command/network：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/node：移除 <code>NewNodeCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/node：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/plugin：移除 <code>NewPluginCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/plugin：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/registry：移除 <code>NewLoginCommand</code>、<code>NewLogoutCommand</code>、<code>NewSearchCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/registry：移除已弃用的 <code>NewSearchFormat</code>、<code>SearchWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/registry：移除已弃用的 <code>OauthLoginEscapeHatchEnvVar</code> 常量。<a class="link" href="https://github.com/docker/cli/pull/6463" rel="noopener">docker/cli#6463</a></li>
-<li>Go SDK：cli/command/secret：移除 <code>NewSecretCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/secret：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/service：移除 <code>NewServiceCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/service：移除已弃用的 <code>NewFormat</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/stack/swarm：移除已弃用的 RunPS 和 options.PS。<a class="link" href="https://github.com/docker/cli/pull/6398" rel="noopener">docker/cli#6398</a></li>
-<li>Go SDK：cli/command/stack：移除 <code>NewStackCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/stack：移除已弃用的 RunList 和 options.List。<a class="link" href="https://github.com/docker/cli/pull/6398" rel="noopener">docker/cli#6398</a></li>
-<li>Go SDK：cli/command/stack：移除已弃用的 RunServices 和 swarm.GetServices。<a class="link" href="https://github.com/docker/cli/pull/6398" rel="noopener">docker/cli#6398</a></li>
-<li>Go SDK：cli/command/swarm：移除 <code>NewSwarmCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/system：移除 <code>NewVersionCommand</code>、<code>NewInfoCommand</code>、<code>NewSystemCommand</code>、<code>NewEventsCommand</code>、<code>NewInspectCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/task：移除已弃用的 <code>NewTaskFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/trust：移除 <code>NewTrustCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/trust：移除已弃用的 <code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6344" rel="noopener">docker/cli#6344</a></li>
-<li>Go SDK：cli/command/trust：移除已弃用的 <code>SignedTagInfo</code>、<code>SignerInfo</code>、<code>NewTrustTagFormat</code>、<code>NewSignerInfoFormat</code>、<code>TagWrite</code>、<code>SignerInfoWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></li>
-<li>Go SDK：cli/command/volume：移除 <code>NewVolumeCommand</code>、<code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></li>
-<li>Go SDK：cli/command/volume：移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></li>
-<li>Go SDK：cli/command：移除仅用于内部的 <code>AddTrustSigningFlags</code>、<code>AddTrustVerificationFlags</code> 和 <code>AddPlatformFlag</code> 工具。<a class="link" href="https://github.com/docker/cli/pull/6244" rel="noopener">docker/cli#6244</a></li>
-<li>Go SDK：cli/command：移除已弃用的 <code>DockerCli.Apply</code>。<a class="link" href="https://github.com/docker/cli/pull/6503" rel="noopener">docker/cli#6503</a></li>
-<li>Go SDK：cli/command：移除已弃用的 <code>DockerCli.ContentTrustEnabled</code>。<a class="link" href="https://github.com/docker/cli/pull/6502" rel="noopener">docker/cli#6502</a></li>
-<li>Go SDK：cli/command：移除已弃用的 <code>DockerCli.DefaultVersion</code>。<a class="link" href="https://github.com/docker/cli/pull/6502" rel="noopener">docker/cli#6502</a></li>
-<li>Go SDK：cli/command：移除已弃用的 <code>RegistryAuthenticationPrivilegedFunc</code>。<a class="link" href="https://github.com/docker/cli/pull/6349" rel="noopener">docker/cli#6349</a></li>
-<li>Go SDK：cli/command：移除已弃用的 <code>WithContentTrustFromEnv</code>、<code>WithContentTrust</code> 选项。<a class="link" href="https://github.com/docker/cli/pull/6502" rel="noopener">docker/cli#6502</a></li>
-<li>Go SDK：cli/config/configfile：移除已弃用的 <code>ConfigFile.Experimental</code> 字段。<a class="link" href="https://github.com/docker/cli/pull/6464" rel="noopener">docker/cli#6464</a></li>
-<li>Go SDK：cli/config/types：移除已弃用的 <code>AuthConfig.Email</code> 字段。<a class="link" href="https://github.com/docker/cli/pull/6515" rel="noopener">docker/cli#6515</a></li>
-<li>Go SDK：cli/manifest/store：移除已弃用的 <code>IsNotFound</code>。<a class="link" href="https://github.com/docker/cli/pull/6523" rel="noopener">docker/cli#6523</a></li>
-<li>Go SDK：cli：移除已弃用的 <code>VisitAll</code>、<code>DisableFlagsInUseLine</code> 工具。<a class="link" href="https://github.com/docker/cli/pull/6296" rel="noopener">docker/cli#6296</a></li>
-<li>Go SDK：client：从 <code>APIClient</code> 接口中移除 <code>APIClient.ImageInspectWithRaw</code>。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：从 <code>ImageAPIClient</code> 接口中移除 <code>ImageAPIClient.ImageInspectWithRaw</code>。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：从 <code>ImageAPIClientDeprecated</code> 中移除 <code>ImageAPIClientDeprecated.ImageInspectWithRaw</code>。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：移除已弃用的 <code>ErrorConnectionFailed</code> 和 <code>IsErrNotFound</code> 函数。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：移除已弃用的 <code>NewClient</code> 和 <code>NewEnvClient</code> 函数。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：移除 <code>CommonAPIClient</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：移除 <code>ImageAPIClientDeprecated</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：client：移除已弃用的 <code>Client.ImageInspectWithRaw</code> 方法。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></li>
-<li>Go SDK：container：移除已弃用的 <code>IsValidHealthString</code>。<a class="link" href="https://github.com/moby/moby/pull/50378" rel="noopener">moby/moby#50378</a></li>
-<li>Go SDK：container：移除已弃用的 <code>IsValidStateString</code>。<a class="link" href="https://github.com/moby/moby/pull/50378" rel="noopener">moby/moby#50378</a></li>
-<li>Go SDK：container：移除已弃用的 <code>StateStatus</code>、<code>WaitCondition</code> 及相关常量 <code>WaitConditionNotRunning</code>、<code>WaitConditionNextExit</code> 和 <code>WaitConditionRemoved</code>。<a class="link" href="https://github.com/moby/moby/pull/50378" rel="noopener">moby/moby#50378</a></li>
-<li>Go SDK：弃用 <code>pkg/stdcopy</code>（已移至 <code>api/pkg/stdcopy</code>）。<a class="link" href="https://github.com/moby/moby/pull/50462" rel="noopener">moby/moby#50462</a></li>
-<li>Go SDK：弃用字段 <code>NetworkSettingsBase.Bridge</code>、结构体 <code>NetworkSettingsBase</code>、<code>DefaultNetworkSettings</code> 的所有字段及结构体 <code>DefaultNetworkSettings</code>。<a class="link" href="https://github.com/moby/moby/pull/50848" rel="noopener">moby/moby#50848</a></li>
-<li>Go SDK：弃用 pkg/stringid，推荐使用 <code>github.com/moby/moby/client/pkg/stringid</code>。<a class="link" href="https://github.com/moby/moby/pull/50504" rel="noopener">moby/moby#50504</a></li>
-<li>Go SDK：弃用已迁移至 <code>github.com/moby/profiles</code> 的 profiles 包。<a class="link" href="https://github.com/moby/moby/pull/50481" rel="noopener">moby/moby#50481</a></li>
-<li>Go SDK：oci：弃用 SetCapabilities，并进行一些 minor 清理/修复。<a class="link" href="https://github.com/moby/moby/pull/50461" rel="noopener">moby/moby#50461</a></li>
-<li>Go SDK：opts：移除已弃用的 <code>ListOpts.GetAll</code>（不再使用，已被 <code>ListOpts.GetSlice</code> 替代）。<a class="link" href="https://github.com/docker/cli/pull/6293" rel="noopener">docker/cli#6293</a></li>
-<li>Go SDK：opts：移除已弃用的 <code>NewNamedListOptsRef</code>、<code>NewNamedMapOpts</code>、<code>NamedListOpts</code>、<code>NamedMapOpts</code> 和 <code>NamedOption</code>。这些类型</li>
+<li>
+<p><code>client/pkg/jsonmessage</code>：移除已弃用的 <code>ProgressMessage</code>、<code>ErrorMessage</code>、<code>DisplayJSONMessagesToStream</code> 和 <code>Stream</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/49264" rel="noopener">moby/moby#49264</a></p>
+</li>
+<li>
+<p><code>GET /events</code> 不再包含已弃用的 <code>status</code>、<code>id</code> 和 <code>from</code> 字段。这些字段在 API v1.22 中已被移除，但仍包含在响应中。使用 API v1.52 或更高版本时，这些字段现在将被省略。<a class="link" href="https://github.com/moby/moby/pull/50832" rel="noopener">moby/moby#50832</a></p>
+</li>
+<li>
+<p>api/types/network: CreateRequest：移除已弃用的 CheckDuplicate 字段。<a class="link" href="https://github.com/moby/moby/pull/50998" rel="noopener">moby/moby#50998</a></p>
+</li>
+<li>
+<p>api/types/plugin：弃用 <code>Config.DockerVersion</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51109" rel="noopener">moby/moby#51109</a></p>
+</li>
+<li>
+<p>api/types/registry：移除已弃用的 AuthConfig.Email 字段。<a class="link" href="https://github.com/moby/moby/pull/51059" rel="noopener">moby/moby#51059</a></p>
+</li>
+<li>
+<p>api/types/strslice：弃用 StrSlice，建议使用常规的 <code>[]string</code>。<a class="link" href="https://github.com/moby/moby/pull/50292" rel="noopener">moby/moby#50292</a></p>
+</li>
+<li>
+<p>api/types/sytem：移除已弃用的 <code>DiskUsage.BuilderSize</code>。<a class="link" href="https://github.com/moby/moby/pull/51180" rel="noopener">moby/moby#51180</a></p>
+</li>
+<li>
+<p>api/types：将插件类型移至 api/types/plugin。<a class="link" href="https://github.com/moby/moby/pull/48114" rel="noopener">moby/moby#48114</a></p>
+</li>
+<li>
+<p>API：弃用：当启动容器时，Engine 会自动用带有空 HostIP 和 HostPort 的 PortBinding 来填充空的 <code>PortBindings</code> 列表。此行为在 API 1.52 中已弃用，并将在 API 1.53 中移除。<a class="link" href="https://github.com/moby/moby/pull/50874" rel="noopener">moby/moby#50874</a></p>
+</li>
+<li>
+<p>build：移除经典构建器的 DCT 支持。<a class="link" href="https://github.com/docker/cli/pull/6195" rel="noopener">docker/cli#6195</a></p>
+</li>
+<li>
+<p>cli/command：移除已弃用的 <code>ResolveDefaultContext</code>。<a class="link" href="https://github.com/docker/cli/pull/6555" rel="noopener">docker/cli#6555</a></p>
+</li>
+<li>
+<p>client：ImageBuildResponse：移除 OSType 字段。<a class="link" href="https://github.com/moby/moby/pull/50995" rel="noopener">moby/moby#50995</a></p>
+</li>
+<li>
+<p>client：移除 <code>ImageCreate</code> 方法 - 请使用 <code>ImagePull</code> 或 <code>ImageImport</code> 代替。<a class="link" href="https://github.com/moby/moby/pull/51366" rel="noopener">moby/moby#51366</a></p>
+</li>
+<li>
+<p>client：移除已弃用的 <code>ImageListOptions.ContainerCount</code>。<a class="link" href="https://github.com/moby/moby/pull/51006" rel="noopener">moby/moby#51006</a></p>
+</li>
+<li>
+<p>client：移除对协商 API 版本 &lt; v1.44 (docker 25.0) 的支持。<a class="link" href="https://github.com/moby/moby/pull/51119" rel="noopener">moby/moby#51119</a></p>
+</li>
+<li>
+<p>client：移除未使用的 <code>Client.HTTPClient()</code> 方法。<a class="link" href="https://github.com/moby/moby/pull/51011" rel="noopener">moby/moby#51011</a></p>
+</li>
+<li>
+<p>daemon/graphdriver：移除已弃用的 <code>GetDriver()</code>。<a class="link" href="https://github.com/moby/moby/pull/50377" rel="noopener">moby/moby#50377</a></p>
+</li>
+<li>
+<p>daemon：将最低 API 版本提升至 v1.44。<a class="link" href="https://github.com/moby/moby/pull/51186" rel="noopener">moby/moby#51186</a></p>
+</li>
+<li>
+<p>弃用 <code>docker commit</code> 中的 <code>--pause</code> 标志，推荐使用 <code>--no-pause</code>。<a class="link" href="https://github.com/docker/cli/pull/6460" rel="noopener">docker/cli#6460</a></p>
+</li>
+<li>
+<p>弃用 cgroup v1。<a class="link" href="https://github.com/moby/moby/pull/51360" rel="noopener">moby/moby#51360</a>, <a class="link" href="https://github.com/docker/cli/pull/6598" rel="noopener">docker/cli#6598</a></p>
+</li>
+<li>
+<p>Go SDK：<code>cli-plugins/manager</code>：弃用元数据别名，推荐使用 <code>cli-plugins/manager/metadata</code> 中的等效项。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></p>
+</li>
+<li>
+<p>Go SDK：<code>cli-plugins/manager</code>：移除 <code>Candidate</code> 接口，该接口仅用于内部使用。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></p>
+</li>
+<li>
+<p>Go SDK：<code>cli-plugins/manager</code>：移除 <code>NewPluginError</code> 函数，该函数仅用于内部使用。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></p>
+</li>
+<li>
+<p>Go SDK：<code>cli-plugins/manager</code>：移除已弃用的 <code>ResourceAttributesEnvvar</code> 常量。<a class="link" href="https://github.com/docker/cli/pull/6237" rel="noopener">docker/cli#6237</a></p>
+</li>
+<li>
+<p>Go SDK：<code>cli/command</code>：移除 <code>ErrPromptTerminated</code>、<code>DisableInputEcho</code>、<code>PromptForInput</code> 和 <code>PromptForConfirmation</code> 工具。这些工具仅供内部使用，不再使用。<a class="link" href="https://github.com/docker/cli/pull/6243" rel="noopener">docker/cli#6243</a></p>
+</li>
+<li>
+<p>Go SDK：<code>cli/registry/client</code>：移除已弃用的 <code>RepoNameForReference</code>。<a class="link" href="https://github.com/docker/cli/pull/6206" rel="noopener">docker/cli#6206</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/build：移除已弃用的 BuildCache.Parent 字段。<a class="link" href="https://github.com/moby/moby/pull/51185" rel="noopener">moby/moby#51185</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/container：移除已弃用的 <code>ContainerTopOKBody</code> 别名。<a class="link" href="https://github.com/moby/moby/pull/50400" rel="noopener">moby/moby#50400</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/container：移除已弃用的 <code>ContainerUpdateOKBody</code> 别名。<a class="link" href="https://github.com/moby/moby/pull/50400" rel="noopener">moby/moby#50400</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/container：移除已弃用的 <code>Stats</code> 类型。<a class="link" href="https://github.com/moby/moby/pull/50492" rel="noopener">moby/moby#50492</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/filters：移除已弃用的 <code>ToParamWithVersion</code>。<a class="link" href="https://github.com/moby/moby/pull/50561" rel="noopener">moby/moby#50561</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/image：<code>InspectResponse</code>：移除已弃用的 <code>VirtualSize</code>、<code>Container</code>、<code>ContainerConfig</code>、<code>Parent</code> 和 <code>DockerVersion</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51103" rel="noopener">moby/moby#51103</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/image：移除已弃用的 Summary.VirtualSize 字段。<a class="link" href="https://github.com/moby/moby/pull/51190" rel="noopener">moby/moby#51190</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/registry：移除已弃用的 <code>ServiceConfig.AllowNondistributableArtifactsCIDRs</code> 和 <code>ServiceConfig.AllowNondistributableArtifactsHostnames</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50375" rel="noopener">moby/moby#50375</a></p>
+</li>
+<li>
+<p>Go SDK：api/types/swarm：移除已弃用的 ServiceSpec.Networks 字段。<a class="link" href="https://github.com/moby/moby/pull/51184" rel="noopener">moby/moby#51184</a></p>
+</li>
+<li>
+<p>GO SDK：api/types/system：移除已弃用的 <code>Commit.Expected</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/51127" rel="noopener">moby/moby#51127</a></p>
+</li>
+<li>
+<p>Go SDK：api/types：移除已弃用的别名。<a class="link" href="https://github.com/moby/moby/pull/50452" rel="noopener">moby/moby#50452</a></p>
+</li>
+<li>
+<p>Go SDK：api：弃用 <code>NoBaseImageSpecifier</code> 常量。此常量不再使用，将在下次发布中移除。<a class="link" href="https://github.com/moby/moby/pull/50437" rel="noopener">moby/moby#50437</a></p>
+</li>
+<li>
+<p>Go SDK：api：移除 <code>NoBaseImageSpecifier</code>。<a class="link" href="https://github.com/moby/moby/pull/50574" rel="noopener">moby/moby#50574</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/builder：移除 <code>CachePrune()</code>，该函数不再使用。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/builder：移除 <code>NewBuilderCommand</code> 和 <code>NewBakeStubCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/checkpoint：移除 <code>NewCheckpointCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/checkpoint：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/completion：移除已弃用的 <code>NoComplete</code>。<a class="link" href="https://github.com/docker/cli/pull/6408" rel="noopener">docker/cli#6408</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/config：移除 <code>NewConfigCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/config：移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/config：移除已弃用的 <code>RunConfigCreate</code>、<code>CreateOptions</code>、<code>RunConfigInspect</code>、<code>InspectOptions</code>、<code>RunConfigList</code>、<code>ListOptions</code>、<code>RunConfigRemove</code> 和 <code>RemoveOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6370" rel="noopener">docker/cli#6370</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/container：弃用 <code>NewDiffFormat</code>、<code>DiffFormatWrite</code>。这些函数仅在内部使用，将在下次发布中移除。<a class="link" href="https://github.com/docker/cli/pull/6187" rel="noopener">docker/cli#6187</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/container：移除 <code>NewBuildCommand</code>、<code>NewPullCommand</code>、<code>NewPushCommand</code>、<code>NewImagesCommand</code>、<code>NewImageCommand</code>、<code>NewHistoryCommand</code>、<code>NewImportCommand</code>、<code>NewLoadCommand</code>、<code>NewRemoveCommand</code>、<code>NewSaveCommand</code>、<code>NewTagCommand</code>、<code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK：cli/command/container：移除 <code>NewRunCommand</code>、<code>NewExecCommand</code>、<code>NewPsCommand</code>、<code>NewContainerCommand</code>、<code>NewAttachCommand</code>、<code>NewCommitCommand</code>、<code>NewCopyCommand</code>、<code>NewCreateCommand</code>、<code>NewDiffCommand</code>、<code>NewExportCommand</code>、<code>NewKillCommand</code>、<code>NewLogsCommand</code>、<code>NewPauseCommand</code>、<code>NewPortCommand</code>、<code>NewRenameCommand</code>、<code>NewRestartCommand</code>、<code>NewRmCommand</code>、<code>NewStartCommand</code>、<code>NewStatsCommand</code>、<code>NewStopCommand</code>、<code>NewTopCommand</code>、<code>NewUnpauseCommand</code>、<code>NewUpdateCommand</code>、<code>NewWaitCommand</code>、<code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/container: 移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/container: 移除已弃用的 <code>NewDiffFormat</code>、<code>DiffFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除 <code>NewContextCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除已弃用的 <code>RunCreate</code> 和 <code>CreateOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除已弃用的 <code>RunExport</code> 和 <code>ExportOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除已弃用的 <code>RunImport</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除已弃用的 <code>RunRemove</code> 和 <code>RemoveOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除已弃用的 <code>RunUpdate</code> 和 <code>UpdateOptions</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/context: 移除已弃用的 <code>RunUse</code>。<a class="link" href="https://github.com/docker/cli/pull/6407" rel="noopener">docker/cli#6407</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/formatter/swarm: 移除已弃用的 <code>GetStacks</code> 函数。<a class="link" href="https://github.com/docker/cli/pull/6406" rel="noopener">docker/cli#6406</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/image/build: 弃用 <code>DefaultDockerfileName</code>、<code>DetectArchiveReader</code>、<code>WriteTempDockerfile</code>、<code>ResolveAndValidateContextPath</code>。这些工具仅在内部使用，将在下一个版本中移除。<a class="link" href="https://github.com/docker/cli/pull/6561" rel="noopener">docker/cli#6561</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/image: 移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/image: 移除已弃用的 <code>AuthResolver</code> 工具。<a class="link" href="https://github.com/docker/cli/pull/6373" rel="noopener">docker/cli#6373</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/image: 移除已弃用的 <code>NewHistoryFormat</code>、<code>HistoryWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a>, <a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/manifest: 移除 <code>NewManifestCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/network: 移除 <code>NewNetworkCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/network: 移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/network: 移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/node: 移除 <code>NewNodeCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/node: 移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/plugin: 移除 <code>NewPluginCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/plugin: 移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/registry: 移除 <code>NewLoginCommand</code>、<code>NewLogoutCommand</code>、<code>NewSearchCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/registry: 移除已弃用的 <code>NewSearchFormat</code>、<code>SearchWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/registry: 移除已弃用的 <code>OauthLoginEscapeHatchEnvVar</code> 常量。<a class="link" href="https://github.com/docker/cli/pull/6463" rel="noopener">docker/cli#6463</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/secret: 移除 <code>NewSecretCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/secret: 移除已弃用的 <code>NewFormat</code>、<code>FormatWrite</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/service: 移除 <code>NewServiceCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/service: 移除已弃用的 <code>NewFormat</code>、<code>InspectFormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/stack/swarm: 移除已弃用的 RunPS 和 options.PS。<a class="link" href="https://github.com/docker/cli/pull/6398" rel="noopener">docker/cli#6398</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/stack: 移除 <code>NewStackCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/stack: 移除已弃用的 RunList 和 options.List。<a class="link" href="https://github.com/docker/cli/pull/6398" rel="noopener">docker/cli#6398</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/stack: 移除已弃用的 RunServices 和 swarm.GetServices。<a class="link" href="https://github.com/docker/cli/pull/6398" rel="noopener">docker/cli#6398</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/swarm: 移除 <code>NewSwarmCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/system: 移除 <code>NewVersionCommand</code>、<code>NewInfoCommand</code>、<code>NewSystemCommand</code>、<code>NewEventsCommand</code>、<code>NewInspectCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/task: 移除已弃用的 <code>NewTaskFormat</code>、<code>FormatWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/trust: 移除 <code>NewTrustCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/trust: 移除已弃用的 <code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6344" rel="noopener">docker/cli#6344</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/trust: 移除已弃用的 <code>SignedTagInfo</code>、<code>SignerInfo</code>、<code>NewTrustTagFormat</code>、<code>NewSignerInfoFormat</code>、<code>TagWrite</code>、<code>SignerInfoWrite</code>。<a class="link" href="https://github.com/docker/cli/pull/6339" rel="noopener">docker/cli#6339</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/volume: 移除 <code>NewVolumeCommand</code>、<code>NewPruneCommand</code>。<a class="link" href="https://github.com/docker/cli/pull/6335" rel="noopener">docker/cli#6335</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command/volume: 移除不再使用的 <code>RunPrune()</code>。<a class="link" href="https://github.com/docker/cli/pull/6236" rel="noopener">docker/cli#6236</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command: 移除仅在内部使用的 <code>AddTrustSigningFlags</code>、<code>AddTrustVerificationFlags</code> 和 <code>AddPlatformFlag</code> 工具。<a class="link" href="https://github.com/docker/cli/pull/6244" rel="noopener">docker/cli#6244</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command: 移除已弃用的 <code>DockerCli.Apply</code>。<a class="link" href="https://github.com/docker/cli/pull/6503" rel="noopener">docker/cli#6503</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command: 移除已弃用的 <code>DockerCli.ContentTrustEnabled</code>。<a class="link" href="https://github.com/docker/cli/pull/6502" rel="noopener">docker/cli#6502</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command: 移除已弃用的 <code>DockerCli.DefaultVersion</code>。<a class="link" href="https://github.com/docker/cli/pull/6502" rel="noopener">docker/cli#6502</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command: 移除已弃用的 <code>RegistryAuthenticationPrivilegedFunc</code>。<a class="link" href="https://github.com/docker/cli/pull/6349" rel="noopener">docker/cli#6349</a></p>
+</li>
+<li>
+<p>Go SDK: cli/command: 移除已弃用的 <code>WithContentTrustFromEnv</code>、<code>WithContentTrust</code> 选项。<a class="link" href="https://github.com/docker/cli/pull/6502" rel="noopener">docker/cli#6502</a></p>
+</li>
+<li>
+<p>Go SDK: cli/config/configfile: 移除已弃用的 <code>ConfigFile.Experimental</code> 字段。<a class="link" href="https://github.com/docker/cli/pull/6464" rel="noopener">docker/cli#6464</a></p>
+</li>
+<li>
+<p>Go SDK: cli/config/types: 移除已弃用的 <code>AuthConfig.Email</code> 字段。<a class="link" href="https://github.com/docker/cli/pull/6515" rel="noopener">docker/cli#6515</a></p>
+</li>
+<li>
+<p>Go SDK: cli/manifest/store: 移除已弃用的 <code>IsNotFound</code>。<a class="link" href="https://github.com/docker/cli/pull/6523" rel="noopener">docker/cli#6523</a></p>
+</li>
+<li>
+<p>Go SDK: cli: 移除已弃用的 <code>VisitAll</code>、<code>DisableFlagsInUseLine</code> 工具。<a class="link" href="https://github.com/docker/cli/pull/6296" rel="noopener">docker/cli#6296</a></p>
+</li>
+<li>
+<p>Go SDK: client: 从 <code>APIClient</code> 接口中移除 <code>ImageInspectWithRaw</code>。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK: client: 从 <code>ImageAPIClient</code> 接口中移除 <code>ImageAPIClient.ImageInspectWithRaw</code>。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK: client: 从 <code>ImageAPIClientDeprecated</code> 中移除 <code>ImageAPIClientDeprecated.ImageInspectWithRaw</code>。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK: client: 移除已弃用的 <code>ErrorConnectionFailed</code> 和 <code>IsErrNotFound</code> 函数。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK: client: 移除已弃用的 <code>NewClient</code> 和 <code>NewEnvClient</code> 函数。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK: client: 移除 <code>CommonAPIClient</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK：client：移除 <code>ImageAPIClientDeprecated</code> 接口。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK：client：移除已弃用的 <code>Client.ImageInspectWithRaw</code> 方法。<a class="link" href="https://github.com/moby/moby/pull/50485" rel="noopener">moby/moby#50485</a></p>
+</li>
+<li>
+<p>Go SDK：container：移除已弃用的 <code>IsValidHealthString</code>。<a class="link" href="https://github.com/moby/moby/pull/50378" rel="noopener">moby/moby#50378</a></p>
+</li>
+<li>
+<p>Go SDK：container：移除已弃用的 <code>IsValidStateString</code>。<a class="link" href="https://github.com/moby/moby/pull/50378" rel="noopener">moby/moby#50378</a></p>
+</li>
+<li>
+<p>Go SDK：container：移除已弃用的 <code>StateStatus</code>、<code>WaitCondition</code> 以及相关的 <code>WaitConditionNotRunning</code>、<code>WaitConditionNextExit</code> 和 <code>WaitConditionRemoved</code> 常量。<a class="link" href="https://github.com/moby/moby/pull/50378" rel="noopener">moby/moby#50378</a></p>
+</li>
+<li>
+<p>Go SDK：弃用 <code>pkg/stdcopy</code>，该包已移至 <code>api/pkg/stdcopy</code>。<a class="link" href="https://github.com/moby/moby/pull/50462" rel="noopener">moby/moby#50462</a></p>
+</li>
+<li>
+<p>Go SDK：弃用字段 <code>NetworkSettingsBase.Bridge</code>、结构体 <code>NetworkSettingsBase</code>、<code>DefaultNetworkSettings</code> 的所有字段以及结构体 <code>DefaultNetworkSettings</code>。<a class="link" href="https://github.com/moby/moby/pull/50848" rel="noopener">moby/moby#50848</a></p>
+</li>
+<li>
+<p>Go SDK：弃用 pkg/stringid，建议使用 <code>github.com/moby/moby/client/pkg/stringid</code>。<a class="link" href="https://github.com/moby/moby/pull/50504" rel="noopener">moby/moby#50504</a></p>
+</li>
+<li>
+<p>Go SDK：弃用 profiles 包，该包已迁移至 <code>github.com/moby/profiles</code>。<a class="link" href="https://github.com/moby/moby/pull/50481" rel="noopener">moby/moby#50481</a></p>
+</li>
+<li>
+<p>Go SDK：oci：弃用 SetCapabilities，以及一些小的清理/修复。<a class="link" href="https://github.com/moby/moby/pull/50461" rel="noopener">moby/moby#50461</a></p>
+</li>
+<li>
+<p>Go SDK：opts：移除已弃用的 <code>ListOpts.GetAll</code>。它不再被使用，并被 <code>ListOpts.GetSlice</code> 替代。<a class="link" href="https://github.com/docker/cli/pull/6293" rel="noopener">docker/cli#6293</a></p>
+</li>
+<li>
+<p>Go SDK：opts：移除已弃用的 <code>NewNamedListOptsRef</code>、<code>NewNamedMapOpts</code>、<code>NamedListOpts</code>、<code>NamedMapOpts</code> 和 <code>NamedOption</code>。这些类型和函数不再被使用，将在下一个版本中移除。<a class="link" href="https://github.com/docker/cli/pull/6293" rel="noopener">docker/cli#6293</a></p>
+</li>
+<li>
+<p>Go SDK：opts：移除已弃用的 <code>ParseEnvFile</code>，建议使用 <code>kvfile.Parse</code>。<a class="link" href="https://github.com/docker/cli/pull/6382" rel="noopener">docker/cli#6382</a></p>
+</li>
+<li>
+<p>Go SDK：opts：移除已弃用的 <code>QuotedString</code>。<a class="link" href="https://github.com/docker/cli/pull/6293" rel="noopener">docker/cli#6293</a></p>
+</li>
+<li>
+<p>Go SDK：opts：移除已弃用的 <code>ValidateHost</code>。<a class="link" href="https://github.com/docker/cli/pull/6293" rel="noopener">docker/cli#6293</a></p>
+</li>
+<li>
+<p>Go SDK：pkg/system 已被移除，现在是一个内部包。<a class="link" href="https://github.com/moby/moby/pull/50559" rel="noopener">moby/moby#50559</a></p>
+</li>
+<li>
+<p>Go SDK：pkg/system：弃用 <code>EscapeArgs()</code> 和 <code>IsAbs</code>。这些函数仅在内部使用，将在下一个版本中移除。<a class="link" href="https://github.com/moby/moby/pull/50399" rel="noopener">moby/moby#50399</a></p>
+</li>
+<li>
+<p>Go SDK：registry：移除已弃用的 <code>APIEndpoint.TrimHostName</code>、<code>APIEndpoint.Official</code> 和 <code>APIEndpoint.AllowNondistributableArtifacts</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50376" rel="noopener">moby/moby#50376</a></p>
+</li>
+<li>
+<p>Go SDK：registry：移除已弃用的 <code>HostCertsDir()</code> 和 <code>SetCertsDir()</code> 函数。<a class="link" href="https://github.com/moby/moby/pull/50373" rel="noopener">moby/moby#50373</a></p>
+</li>
+<li>
+<p>Go SDK：registry：移除已弃用的 <code>RepositoryInfo.Official</code> 和 <code>RepositoryInfo.Class</code> 字段。<a class="link" href="https://github.com/moby/moby/pull/50498" rel="noopener">moby/moby#50498</a></p>
+</li>
+<li>
+<p>Go SDK：registry：移除已弃用的 <code>Service.ResolveRepository()</code>。<a class="link" href="https://github.com/moby/moby/pull/50374" rel="noopener">moby/moby#50374</a></p>
+</li>
+<li>
+<p>Go SDK：移除 <code>buildkit.ClientOpts</code>。<a class="link" href="https://github.com/moby/moby/pull/50318" rel="noopener">moby/moby#50318</a></p>
+</li>
+<li>
+<p>Go SDK：移除 <code>pkg/fileutils</code>。<a class="link" href="https://github.com/moby/moby/pull/50558" rel="noopener">moby/moby#50558</a></p>
+</li>
+<li>
+<p>Go SDK：从 <code>cli-plugins/manager</code> 中移除已弃用的 <code>IsNotFound</code>、<code>CommandAnnotationPlugin</code>、<code>CommandAnnotationPluginVendor</code>、<code>CommandAnnotationPluginVersion</code>、<code>CommandAnnotationPluginInvalid</code>、<code>CommandAnnotationPluginCommandPath</code>、<code>NamePrefix</code>、<code>MetadataSubcommandName</code>、<code>HookSubcommandName</code>、<code>Metadata</code> 和 <code>ReexecEnvvar</code>，建议使用其 <code>cli-plugins/manager/metadata</code> 等价物。<a class="link" href="https://github.com/docker/cli/pull/6414" rel="noopener">docker/cli#6414</a></p>
+</li>
+<li>
+<p>Go SDK：移除已弃用的 <code>types/plugins/logdriver</code> 和 <code>types/swarm/runtime</code> 包；插件运行时规范现在通过 <code>types/swarm.RuntimeSpec</code> 和 <code>types/swarm.RuntimePrivilege</code> 暴露。<a class="link" href="https://github.com/moby/moby/pull/50554" rel="noopener">moby/moby#50554</a></p>
+</li>
+<li>
+<p>Go SDK：移除已弃用的 <code>cli/command/formatter</code> 包。<a class="link" href="https://github.com/docker/cli/pull/6406" rel="noopener">docker/cli#6406</a></p>
+</li>
+<li>
+<p>Go SDK：移除已弃用的 <code>cli/registry/client</code> 包。<a class="link" href="https://github.com/docker/cli/pull/6462" rel="noopener">docker/cli#6462</a></p>
+</li>
+<li>
+<p>Go SDK：移除已弃用的 <code>pkg/idtools</code> 包。<a class="link" href="https://github.com/moby/moby/pull/50456" rel="noopener">moby/moby#50456</a></p>
+</li>
+<li>
+<p>Go SDK：templates：移除已弃用的 <code>NewParse</code> 函数。<a class="link" href="https://github.com/docker/cli/pull/6453" rel="noopener">docker/cli#6453</a></p>
+</li>
+<li>
+<p>在 <code>docker run</code> 和 <code>docker create</code> 上隐藏 <code>--kernel-memory</code> 选项，并在使用时产生警告，因为它不再被守护进程和内核支持。<a class="link" href="https://github.com/docker/cli/pull/6455" rel="noopener">docker/cli#6455</a></p>
+</li>
+<li>
+<p>在使用 JSON 格式时，从 <code>docker image ls</code> 输出中移除 <code>VirtualSize</code> 字段。<a class="link" href="https://github.com/docker/cli/pull/6524" rel="noopener">docker/cli#6524</a></p>
+</li>
+<li>
+<p>移除 <code>VirtualSize</code> 格式化选项和输出。<a class="link" href="https://github.com/docker/cli/pull/6524" rel="noopener">docker/cli#6524</a></p>
+</li>
+<li>
+<p>移除对 API 版本 &lt; v1.44（Docker v24.0 及更早版本）的 API 版本兼容性。<a class="link" href="https://github.com/docker/cli/pull/6551" rel="noopener">docker/cli#6551</a></p>
+</li>
+<li>
+<p>移除 <code>--mount</code> 的已弃用 <code>bind-nonrecursive</code> 选项。<a class="link" href="https://github.com/docker/cli/pull/6241" rel="noopener">docker/cli#6241</a></p>
+</li>
+<li>
+<p>移除已弃用的包（<code>pkg/archive</code>、<code>pkg/chrootarchive</code>、<code>pkg/atomicwriter</code>、<code>pkg/reexec</code>、<code>pkg/platform</code>、<code>pkg/parsers</code>）、<code>pkg/system.MkdirAll</code>。有关替代方案，请参见 <code>github.com/moby/go-archive</code>、<code>github.com/moby/sys</code> 和标准库。<a class="link" href="https://github.com/moby/moby/pull/50208" rel="noopener">moby/moby#50208</a></p>
+</li>
+<li>
+<p>移除对 <code>--tlscacert</code>、<code>--tlscert</code> 和 <code>--tlskey</code> 命令行标志的带引号值的特殊处理。<a class="link" href="https://github.com/docker/cli/pull/6306" rel="noopener">docker/cli#6306</a></p>
+</li>
+<li>
+<p>移除对 API &lt; 1.30 的 AutoRemove（<code>--rm</code>）支持。<a class="link" href="https://github.com/docker/cli/pull/6525" rel="noopener">docker/cli#6525</a></p>
+</li>
+<li>
+<p>移除对加载旧版（Docker 1.10 之前）镜像的支持。<a class="link" href="https://github.com/moby/moby/pull/50324" rel="noopener">moby/moby#50324</a></p>
+</li>
 </ul>
 
   </article>
@@ -13295,6 +13858,22 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
+          <a class="link lg:no-underline" href="#2920"
+            >29.2.0</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+  </ul>
+        <li>
+          <a class="link lg:no-underline" href="#2915"
+            >29.1.5</a
+          >
+        </li>
+        
+  <ul class="pl-2">
+  </ul>
+        <li>
           <a class="link lg:no-underline" href="#2914"
             >29.1.4</a
           >
@@ -13310,6 +13889,13 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
   </ul>
+        <li>
+          <a class="link lg:no-underline" href="#keywords-%e5%8f%91%e5%b8%83-docker-engine"
+            >title: &quot;29.0.0+&quot;
+description: &quot;Docker Engine 29.0.0+ 发布说明&quot;
+keywords: &quot;发布, Docker, Engine&quot;</a
+          >
+        </li>
         <li>
           <a class="link lg:no-underline" href="#2912"
             >29.1.2</a
@@ -13397,9 +13983,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13414,7 +14002,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13429,7 +14017,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13444,7 +14032,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13459,7 +14047,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13475,26 +14063,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

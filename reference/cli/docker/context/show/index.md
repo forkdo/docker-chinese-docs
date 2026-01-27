@@ -1,27 +1,4 @@
----
-title: docker context show
-url: /reference/cli/docker/context/show/
-parent:
-  title: docker context
-  url: /reference/cli/docker/context/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker context
-    url: /reference/cli/docker/context/
-  - title: docker context show
-    url: /reference/cli/docker/context/show/
-next:
-  title: docker context rm
-  url: /reference/cli/docker/context/rm/
-prev:
-  title: docker context update
-  url: /reference/cli/docker/context/update/
----
+# docker context show
 
 **Description:** Print the name of the current context
 

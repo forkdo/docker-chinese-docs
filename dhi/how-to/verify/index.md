@@ -1,25 +1,4 @@
----
-title: 验证 Docker Hardened 镜像或图表
-url: /dhi/how-to/verify/
-parent:
-  title: 操作指南
-  url: /dhi/how-to/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 操作指南
-    url: /dhi/how-to/
-  - title: 验证 Docker Hardened 镜像或图表
-    url: /dhi/how-to/verify/
-next:
-  title: 对比 Docker Hardened 镜像
-  url: /dhi/how-to/compare/
-prev:
-  title: 扫描 Docker Hardened Images
-  url: /dhi/how-to/scan/
----
+# 验证 Docker Hardened 镜像或图表
 
 
 Docker Hardened 镜像 (DHI) 和图表包含签名证明，用于验证构建过程、内容和安全态势。这些证明可用于每个镜像变体和图表，并且可以使用 [cosign](https://docs.sigstore.dev/) 或 Docker Scout CLI 进行验证。

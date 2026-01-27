@@ -1,20 +1,4 @@
----
-title: 将 Deno 应用程序容器化
-url: /guides/deno/containerize/
-parent:
-  title: Deno 语言特定指南
-  url: /guides/deno/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: Deno 语言特定指南
-    url: /guides/deno/
-  - title: 将 Deno 应用程序容器化
-    url: /guides/deno/containerize/
-prev:
-  title: 在容器中进行 Deno 开发
-  url: /guides/deno/develop/
----
+# 将 Deno 应用程序容器化
 
 
 ## 先决条件

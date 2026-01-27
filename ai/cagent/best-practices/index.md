@@ -1,23 +1,4 @@
----
-title: 最佳实践
-url: /ai/cagent/best-practices/
-parent:
-  title: cagent
-  url: /ai/cagent/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: cagent
-    url: /ai/cagent/
-  - title: 最佳实践
-    url: /ai/cagent/best-practices/
-next:
-  title: 构建编码代理
-  url: /ai/cagent/tutorial/
-prev:
-  title: 共享代理
-  url: /ai/cagent/sharing-agents/
----
+# 最佳实践
 
 
 这些模式源于构建和运行 cagent 代理的经验。它们并非功能或配置选项，而是在实践中行之有效的方法。

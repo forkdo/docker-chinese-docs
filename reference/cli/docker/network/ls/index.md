@@ -1,27 +1,4 @@
----
-title: docker network ls
-url: /reference/cli/docker/network/ls/
-parent:
-  title: docker network
-  url: /reference/cli/docker/network/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker network
-    url: /reference/cli/docker/network/
-  - title: docker network ls
-    url: /reference/cli/docker/network/ls/
-next:
-  title: docker network inspect
-  url: /reference/cli/docker/network/inspect/
-prev:
-  title: docker network prune
-  url: /reference/cli/docker/network/prune/
----
+# docker network ls
 
 **Description:** List networks
 

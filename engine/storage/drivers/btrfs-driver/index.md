@@ -1,27 +1,4 @@
----
-title: BTRFS 存储驱动
-url: /engine/storage/drivers/btrfs-driver/
-parent:
-  title: 存储驱动程序
-  url: /engine/storage/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 存储
-    url: /engine/storage/
-  - title: 存储驱动程序
-    url: /engine/storage/drivers/
-  - title: BTRFS 存储驱动
-    url: /engine/storage/drivers/btrfs-driver/
-next:
-  title: AUFS 存储驱动程序
-  url: /engine/storage/drivers/aufs-driver/
-prev:
-  title: Device Mapper 存储驱动程序（已弃用）
-  url: /engine/storage/drivers/device-mapper-driver/
----
+# BTRFS 存储驱动
 
 
 > [!IMPORTANT]

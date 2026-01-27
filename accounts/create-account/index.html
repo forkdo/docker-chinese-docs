@@ -10,15 +10,18 @@
   </title>
 
 
-<meta name="description" content="了解如何注册 Docker ID 并登录您的账户" />
+<meta name="description" content="了解如何注册 Docker ID 并登录到您的账户" />
 <meta
   name="keywords"
-  content="账户, docker, ID, 账单, 付费计划, 支持, Hub, Store, 论坛, 知识库, beta, 访问, 邮箱, 激活, 验证"
+  content="accounts, docker, ID, billing, paid, plans, support, Hub, Store, Forums, knowledge, base, beta, access, email, activation, verification"
 />
 <link rel="canonical" href="/accounts/create-account/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="了解如何注册 Docker ID 并登录您的账户"
+  content="了解如何注册 Docker ID 并登录到您的账户"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="创建账户" />
-<meta property="og:description" content="了解如何注册 Docker ID 并登录您的账户" />
+<meta property="og:description" content="了解如何注册 Docker ID 并登录到您的账户" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-07-29 17:21:49 -0400 -0400"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-07-29 17:21:49 -0400 -0400"
+  content="2026-01-23 09:09:37 -0600 -0600"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-07-29T17:21:49-04:00","description":"了解如何注册 Docker ID 并登录您的账户","headline":"创建账户","isPartOf":{"@id":"/accounts/","@type":"WebPage","name":"Docker 账户"},"keywords":"账户, docker, ID, 账单, 付费计划, 支持, Hub, Store, 论坛, 知识库, beta, 访问, 邮箱, 激活, 验证","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/accounts/create-account/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/accounts/","name":"Docker 账户"},"position":2},{"@type":"ListItem","item":{"@id":"/accounts/create-account/","name":"创建账户"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"manuals","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-23T09:09:37-06:00","description":"了解如何注册 Docker ID 并登录到您的账户","headline":"创建账户","isPartOf":{"@id":"/accounts/","@type":"WebPage","name":"Docker 账户"},"keywords":"accounts, docker, ID, billing, paid, plans, support, Hub, Store, Forums, knowledge, base, beta, access, email, activation, verification","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/accounts/create-account/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/manuals/","name":"手册"},"position":1},{"@type":"ListItem","item":{"@id":"/accounts/","name":"Docker 账户"},"position":2},{"@type":"ListItem","item":{"@id":"/accounts/create-account/","name":"创建账户"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/accounts/create-account/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4764,10 +4773,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4807,10 +4816,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4838,11 +4847,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4859,6 +4900,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6248,10 +6337,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8889,18 +8978,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10640,10 +10725,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11638,10 +11723,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -12342,8 +12427,8 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e9%82%ae%e7%ae%b1%e6%b3%a8%e5%86%8c"
-            >使用邮箱注册</a
+          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e7%94%b5%e5%ad%90%e9%82%ae%e7%ae%b1%e6%b3%a8%e5%86%8c"
+            >使用电子邮箱注册</a
           >
         </li>
         <li>
@@ -12353,15 +12438,15 @@ if (resultsLength > 5) {
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e7%99%bb%e5%bd%95%e6%82%a8%e7%9a%84%e8%b4%a6%e6%88%b7"
-            >登录您的账户</a
+          <a class="link lg:no-underline" href="#%e7%99%bb%e5%bd%95%e5%88%b0%e6%82%a8%e7%9a%84%e8%b4%a6%e6%88%b7"
+            >登录到您的账户</a
           >
         </li>
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e9%82%ae%e7%ae%b1%e6%88%96-docker-id-%e7%99%bb%e5%bd%95"
-            >使用邮箱或 Docker ID 登录</a
+          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e7%94%b5%e5%ad%90%e9%82%ae%e7%ae%b1%e6%88%96-docker-id-%e7%99%bb%e5%bd%95"
+            >使用电子邮箱或 Docker ID 登录</a
           >
         </li>
         <li>
@@ -12376,8 +12461,8 @@ if (resultsLength > 5) {
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e9%87%8d%e7%bd%ae%e6%82%a8%e7%9a%84%e5%af%86%e7%a0%81"
-            >重置您的密码</a
+          <a class="link lg:no-underline" href="#%e9%87%8d%e7%bd%ae%e5%af%86%e7%a0%81"
+            >重置密码</a
           >
         </li>
         <li>
@@ -12391,8 +12476,8 @@ if (resultsLength > 5) {
 
       <hr />
     </div>
-    <p>您可以通过邮箱地址或使用 Google 或 GitHub 账户注册一个免费的 Docker 账户。创建唯一的 Docker ID 后，您可以访问所有 Docker 产品，包括 Docker Hub、Docker Desktop 和 Docker Scout。</p>
-<p>您的 Docker ID 将成为托管 Docker 服务的用户名，以及 <a class="link" href="https://forums.docker.com/" rel="noopener">Docker 论坛</a> 的用户名。</p>
+    <p>您可以使用电子邮箱地址注册免费的 Docker 账户，也可以通过 Google 或 GitHub 账户注册。创建唯一的 Docker ID 后，您就可以访问所有 Docker 产品，包括 Docker Hub、Docker Desktop 和 Docker Scout。</p>
+<p>您的 Docker ID 将成为您在托管 Docker 服务以及 <a class="link" href="https://forums.docker.com/" rel="noopener">Docker 论坛</a> 中的用户名。</p>
 
 
   
@@ -12416,7 +12501,7 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>探索 <a class="link" href="https://www.docker.com/pricing/" rel="noopener">Docker 的订阅服务</a>，了解 Docker 还能为您提供哪些功能。</p>
+      <p>浏览 <a class="link" href="https://www.docker.com/pricing/" rel="noopener">Docker 订阅计划</a> 以了解 Docker 还能为您提供哪些服务。</p>
     </div>
   </blockquote>
 
@@ -12427,64 +12512,30 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>您可以通过邮箱注册，或使用 Google 或 GitHub 账户注册。</p>
+<p>使用电子邮箱地址、Google 或 GitHub 账户注册需要额外的验证才能完成账户创建：</p>
+<ul>
+<li>如果使用 Google 或 GitHub 注册，您必须首先通过该提供商验证您的电子邮箱地址。</li>
+<li>如果使用电子邮箱地址注册，Docker 会发送一封验证邮件。请按照邮件中的说明验证您的账户并完成注册流程。</li>
+</ul>
+<p>在您验证账户之前，Docker 会阻止登录。</p>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="使用邮箱注册">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8%e9%82%ae%e7%ae%b1%e6%b3%a8%e5%86%8c">
-    使用邮箱注册
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="使用电子邮箱注册">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8%e7%94%b5%e5%ad%90%e9%82%ae%e7%ae%b1%e6%b3%a8%e5%86%8c">
+    使用电子邮箱注册
   </a>
 </h3>
 
 <ol>
-<li>
-<p>访问 <a class="link" href="https://app.docker.com/signup/" rel="noopener">Docker 注册页面</a>。</p>
-</li>
-<li>
-<p>输入一个唯一且有效的邮箱地址。</p>
-</li>
-<li>
-<p>输入用作 Docker ID 的用户名。创建 Docker ID 后，如果您停用此账户，将来无法再次使用该用户名。</p>
-<p>您的用户名：</p>
+<li>访问 <a class="link" href="https://app.docker.com/signup/" rel="noopener">Docker 注册页面</a> 并输入一个唯一的有效电子邮箱地址。</li>
+<li>输入一个用作 Docker ID 的用户名。一旦创建了 Docker ID，如果您停用此账户，将来就不能再重复使用该 ID。您的用户名：
 <ul>
 <li>长度必须在 4 到 30 个字符之间</li>
 <li>只能包含数字和小写字母</li>
 </ul>
 </li>
-<li>
-<p>输入至少 9 个字符的密码。</p>
-</li>
-<li>
-<p>选择 <strong>注册（Sign Up）</strong>。</p>
-</li>
-<li>
-<p>打开您的邮箱客户端。Docker 会向您提供的地址发送一封验证邮件。</p>
-</li>
-<li>
-<p>验证您的邮箱地址以完成注册流程。</p>
-</li>
+<li>选择一个至少 9 个字符长的密码，然后点击 <strong>Sign Up</strong>（注册）。</li>
+<li>收到 Docker 验证邮件后，验证您的电子邮箱地址。这样就完成了注册流程。</li>
 </ol>
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Note
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>您必须先验证邮箱地址，才能完全访问 Docker 的功能。</p>
-    </div>
-  </blockquote>
-
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="使用-google-或-github-注册">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8-google-%e6%88%96-github-%e6%b3%a8%e5%86%8c">
@@ -12492,74 +12543,40 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>要使用社交账户注册，您必须先在您的社交账户提供商处验证邮箱地址。</p>
-    </div>
-  </blockquote>
-
 <ol>
-<li>
-<p>访问 <a class="link" href="https://app.docker.com/signup/" rel="noopener">Docker 注册页面</a>。</p>
-</li>
-<li>
-<p>选择您的社交账户提供商，Google 或 GitHub。</p>
-</li>
-<li>
-<p>选择您要链接到 Docker 账户的社交账户。</p>
-</li>
-<li>
-<p>选择 <strong>授权 Docker（Authorize Docker）</strong> 以允许 Docker 访问您的社交账户信息。您将被重定向到注册页面。</p>
-</li>
-<li>
-<p>输入用作 Docker ID 的用户名。</p>
-<p>您的用户名：</p>
+<li>访问 <a class="link" href="https://app.docker.com/signup/" rel="noopener">Docker 注册页面</a>。</li>
+<li>选择您的社交账户提供商，Google 或 GitHub。</li>
+<li>选择您要链接到 Docker 账户的社交账户。</li>
+<li>点击 <strong>Authorize Docker</strong>（授权 Docker）以允许 Docker 访问您的社交账户信息。您将被重定向到注册页面。</li>
+<li>输入一个用作 Docker ID 的用户名。您的用户名：
 <ul>
 <li>长度必须在 4 到 30 个字符之间</li>
 <li>只能包含数字和小写字母</li>
 </ul>
 </li>
-<li>
-<p>选择 <strong>注册（Sign up）</strong>。</p>
-</li>
+<li>点击 <strong>Sign up</strong>（注册）。</li>
 </ol>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="登录您的账户">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%99%bb%e5%bd%95%e6%82%a8%e7%9a%84%e8%b4%a6%e6%88%b7">
-    登录您的账户
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="登录到您的账户">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e7%99%bb%e5%bd%95%e5%88%b0%e6%82%a8%e7%9a%84%e8%b4%a6%e6%88%b7">
+    登录到您的账户
   </a>
 </h2>
 
-<p>您可以通过邮箱、Google 或 GitHub 账户，或从 Docker CLI 登录。</p>
+<p>您可以使用电子邮箱、Google 或 GitHub 账户登录，也可以从 Docker CLI 登录。</p>
 
-<h3 class=" scroll-mt-20 flex items-center gap-2" id="使用邮箱或-docker-id-登录">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8%e9%82%ae%e7%ae%b1%e6%88%96-docker-id-%e7%99%bb%e5%bd%95">
-    使用邮箱或 Docker ID 登录
+<h3 class=" scroll-mt-20 flex items-center gap-2" id="使用电子邮箱或-docker-id-登录">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8%e7%94%b5%e5%ad%90%e9%82%ae%e7%ae%b1%e6%88%96-docker-id-%e7%99%bb%e5%bd%95">
+    使用电子邮箱或 Docker ID 登录
   </a>
 </h3>
 
 <ol>
 <li>访问 <a class="link" href="https://login.docker.com" rel="noopener">Docker 登录页面</a>。</li>
-<li>输入您的邮箱地址或 Docker ID，然后选择 <strong>继续（Continue）</strong>。</li>
-<li>输入您的密码，然后选择 <strong>继续（Continue）</strong>。</li>
+<li>输入您的电子邮箱地址或 Docker ID，然后点击 <strong>Continue</strong>（继续）。</li>
+<li>输入您的密码，然后点击 <strong>Continue</strong>（继续）。</li>
 </ol>
-<p>要重置密码，请参阅 <a class="link" href="#reset-your-password">重置您的密码</a>。</p>
+<p>要重置密码，请参阅 <a class="link" href="#reset-your-password">重置密码</a>。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="使用-google-或-github-登录">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8-google-%e6%88%96-github-%e7%99%bb%e5%bd%95">
@@ -12567,31 +12584,9 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-
-
-  
-
-  <blockquote
-    
-    class="admonition admonition-note admonition not-prose">
-    <div class="admonition-header">
-      <span class="admonition-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-      </span>
-      <span class="admonition-title">
-        Important
-      </span>
-    </div>
-    <div class="admonition-content">
-      <p>您的 Google 或 GitHub 账户必须有已验证的邮箱地址。</p>
-    </div>
-  </blockquote>
-
-<p>您可以使用 Google 或 GitHub 凭据登录。如果您的社交账户使用与现有 Docker ID 相同的邮箱地址，账户将自动链接。</p>
-<p>如果不存在 Docker ID，Docker 将为您创建一个新账户。</p>
-<p>目前 Docker 不支持将多种登录方式链接到同一个 Docker ID。</p>
+<p>您可以使用 Google 或 GitHub 凭据登录。如果您的社交账户使用的电子邮箱地址与现有的 Docker ID 相同，这些账户会自动关联。</p>
+<p>如果不存在 Docker ID，Docker 会为您创建一个新账户。</p>
+<p>Docker 目前不支持将多个登录方式关联到同一个 Docker ID。</p>
 
 <h3 class=" scroll-mt-20 flex items-center gap-2" id="使用-cli-登录">
   <a class="text-black dark:text-white no-underline hover:underline" href="#%e4%bd%bf%e7%94%a8-cli-%e7%99%bb%e5%bd%95">
@@ -12599,7 +12594,7 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>使用 <code>docker login</code> 命令从命令行进行身份验证。详细信息请参阅 
+<p>使用 <code>docker login</code> 命令从命令行进行身份验证。有关详细信息，请参阅 
   <a class="link" href="/reference/cli/docker/login/"><code>docker login</code></a>。</p>
 
 
@@ -12624,24 +12619,23 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p><code>docker login</code> 命令将凭据存储在您主目录下的 <code>.docker/config.json</code> 中。密码是 base64 编码的。</p>
-<p>为提高安全性，请使用 <a class="link" href="https://github.com/docker/docker-credential-helpers" rel="noopener">Docker 凭据助手</a>。
-为获得更强的保护，请使用 <a class="link" href="/security/access-tokens/">个人访问令牌</a> 代替密码。这在 CI/CD 环境或无法使用凭据助手时特别有用。</p>
+      <p><code>docker login</code> 命令会将凭据存储在您的主目录下的 <code>.docker/config.json</code> 文件中。密码会以 base64 编码形式存储。</p>
+<p>为了提高安全性，请使用 <a class="link" href="https://github.com/docker/docker-credential-helpers" rel="noopener">Docker 凭据助手</a>。为了获得更强的保护，请使用 <a class="link" href="/security/access-tokens/">个人访问令牌</a> 而不是密码。这在 CI/CD 环境或无法使用凭据助手时特别有用。</p>
     </div>
   </blockquote>
 
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="重置您的密码">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%87%8d%e7%bd%ae%e6%82%a8%e7%9a%84%e5%af%86%e7%a0%81">
-    重置您的密码
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="重置密码">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e9%87%8d%e7%bd%ae%e5%af%86%e7%a0%81">
+    重置密码
   </a>
 </h2>
 
 <p>要重置密码：</p>
 <ol>
 <li>访问 <a class="link" href="https://login.docker.com/" rel="noopener">Docker 登录页面</a>。</li>
-<li>输入您的邮箱地址。</li>
-<li>当提示输入密码时，选择 <strong>忘记密码？（Forgot password?）</strong>。</li>
+<li>输入您的电子邮箱地址。</li>
+<li>当提示输入密码时，点击 <strong>Forgot password?</strong>（忘记密码？）。</li>
 </ol>
 
 <h2 class=" scroll-mt-20 flex items-center gap-2" id="故障排除">
@@ -12650,8 +12644,8 @@ if (resultsLength > 5) {
   </a>
 </h2>
 
-<p>如果您有付费的 Docker 订阅，请<a class="link" href="https://hub.docker.com/support/contact/" rel="noopener">联系支持团队</a> 获取帮助。</p>
-<p>所有 Docker 用户都可以通过以下资源寻求故障排除信息和支持，Docker 或社区将尽力响应：</p>
+<p>如果您拥有付费的 Docker 订阅，请<a class="link" href="https://hub.docker.com/support/contact/" rel="noopener">联系支持团队</a> 获取帮助。</p>
+<p>所有 Docker 用户都可以通过以下资源寻求故障排除信息和支持，Docker 或社区会尽力提供响应：</p>
 <ul>
 <li><a class="link" href="https://forums.docker.com/" rel="noopener">Docker 社区论坛</a></li>
 <li><a class="link" href="http://dockr.ly/comm-slack" rel="noopener">Docker 社区 Slack</a></li>
@@ -12720,8 +12714,8 @@ if (resultsLength > 5) {
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e9%82%ae%e7%ae%b1%e6%b3%a8%e5%86%8c"
-            >使用邮箱注册</a
+          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e7%94%b5%e5%ad%90%e9%82%ae%e7%ae%b1%e6%b3%a8%e5%86%8c"
+            >使用电子邮箱注册</a
           >
         </li>
         <li>
@@ -12731,15 +12725,15 @@ if (resultsLength > 5) {
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e7%99%bb%e5%bd%95%e6%82%a8%e7%9a%84%e8%b4%a6%e6%88%b7"
-            >登录您的账户</a
+          <a class="link lg:no-underline" href="#%e7%99%bb%e5%bd%95%e5%88%b0%e6%82%a8%e7%9a%84%e8%b4%a6%e6%88%b7"
+            >登录到您的账户</a
           >
         </li>
         
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e9%82%ae%e7%ae%b1%e6%88%96-docker-id-%e7%99%bb%e5%bd%95"
-            >使用邮箱或 Docker ID 登录</a
+          <a class="link lg:no-underline" href="#%e4%bd%bf%e7%94%a8%e7%94%b5%e5%ad%90%e9%82%ae%e7%ae%b1%e6%88%96-docker-id-%e7%99%bb%e5%bd%95"
+            >使用电子邮箱或 Docker ID 登录</a
           >
         </li>
         <li>
@@ -12754,8 +12748,8 @@ if (resultsLength > 5) {
         </li>
   </ul>
         <li>
-          <a class="link lg:no-underline" href="#%e9%87%8d%e7%bd%ae%e6%82%a8%e7%9a%84%e5%af%86%e7%a0%81"
-            >重置您的密码</a
+          <a class="link lg:no-underline" href="#%e9%87%8d%e7%bd%ae%e5%af%86%e7%a0%81"
+            >重置密码</a
           >
         </li>
         <li>
@@ -12778,9 +12772,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12795,7 +12791,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12810,7 +12806,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12825,7 +12821,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12840,7 +12836,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12856,26 +12852,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

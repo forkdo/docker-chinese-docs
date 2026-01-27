@@ -1,23 +1,4 @@
----
-title: 管理漏洞例外
-url: /scout/explore/exceptions/
-parent:
-  title: Docker Scout
-  url: /scout/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 管理漏洞例外
-    url: /scout/explore/exceptions/
-next:
-  title: 仪表板
-  url: /scout/explore/dashboard/
-prev:
-  title: 镜像详情视图
-  url: /scout/explore/image-details-view/
----
+# 管理漏洞例外
 
 
 容器镜像中发现的漏洞有时需要额外的上下文。

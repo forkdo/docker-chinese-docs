@@ -1,23 +1,4 @@
----
-title: 更新应用程序
-url: /get-started/workshop/03_updating_app/
-parent:
-  title: Docker 工作坊概览
-  url: /get-started/workshop/
-breadcrumbs:
-  - title: 开始使用
-    url: /get-started/
-  - title: Docker 工作坊概览
-    url: /get-started/workshop/
-  - title: 更新应用程序
-    url: /get-started/workshop/03_updating_app/
-next:
-  title: 容器化应用程序
-  url: /get-started/workshop/02_our_app/
-prev:
-  title: 共享应用程序
-  url: /get-started/workshop/04_sharing_app/
----
+# 更新应用程序
 
 
 在[第1部分](./02_our_app.md)中，你已经将一个待办事项应用程序容器化。在本部分中，你将更新应用程序和镜像。你还将学习如何停止和删除容器。

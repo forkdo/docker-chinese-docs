@@ -1,25 +1,4 @@
----
-title: STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-url: /dhi/core-concepts/stig/
-parent:
-  title: 核心概念
-  url: /dhi/core-concepts/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hardened Images
-    url: /dhi/
-  - title: 核心概念
-    url: /dhi/core-concepts/
-  - title: STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
-    url: /dhi/core-concepts/stig/
-next:
-  title: 安全软件开发生命周期
-  url: /dhi/core-concepts/ssdlc/
-prev:
-  title: 漏洞可利用性交换 (VEX)
-  url: /dhi/core-concepts/vex/
----
+# STIG <span class="not-prose bg-blue-500 dark:bg-blue-400 rounded-sm px-1 text-xs text-white whitespace-nowrap">DHI Enterprise</span>
 
 
 

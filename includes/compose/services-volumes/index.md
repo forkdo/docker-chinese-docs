@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/compose/services-volumes/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/compose/services-volumes/
-next:
-  title: 
-  url: /includes/compose/services-secrets/
-prev:
-  title: 
-  url: /includes/compose/services/
----
+# 
 
 `volumes` 属性定义了可被服务容器访问的主机路径或命名卷。你可以使用 `volumes` 定义多种类型的挂载：`volume`、`bind`、`tmpfs` 或 `npipe`。
 

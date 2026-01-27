@@ -1,22 +1,4 @@
----
-title: 身份验证
-url: /extensions/extensions-sdk/guides/oauth2-flow/
-parent:
-  title: 扩展 SDK 概览
-  url: /extensions/extensions-sdk/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker 扩展
-    url: /extensions/
-  - title: 扩展 SDK 概览
-    url: /extensions/extensions-sdk/
-  - title: 身份验证
-    url: /extensions/extensions-sdk/guides/oauth2-flow/
-next:
-  title: 调用主机二进制文件
-  url: /extensions/extensions-sdk/guides/invoke-host-binaries/
----
+# 身份验证
 
 
 > [!NOTE]

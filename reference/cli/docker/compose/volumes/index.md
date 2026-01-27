@@ -1,27 +1,4 @@
----
-title: docker compose volumes
-url: /reference/cli/docker/compose/volumes/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose volumes
-    url: /reference/cli/docker/compose/volumes/
-next:
-  title: docker compose version
-  url: /reference/cli/docker/compose/version/
-prev:
-  title: docker compose wait
-  url: /reference/cli/docker/compose/wait/
----
+# docker compose volumes
 
 **Description:** List volumes
 

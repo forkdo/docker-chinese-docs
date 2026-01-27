@@ -1,18 +1,4 @@
----
-title: 排查配置问题
-url: /enterprise/troubleshoot/troubleshoot-provisioning/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 排查配置问题
-    url: /enterprise/troubleshoot/troubleshoot-provisioning/
-prev:
-  title: 故障排除单点登录
-  url: /enterprise/troubleshoot/troubleshoot-sso/
----
+# 排查配置问题
 
 
 本文档帮助排查使用 SCIM 和即时 (JIT) 配置时常见的用户配置问题，包括用户角色、属性以及意外的账户行为。

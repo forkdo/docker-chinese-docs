@@ -10,15 +10,18 @@
   </title>
 
 
-<meta name="description" content="本概念页面将为您介绍多阶段构建的目的及其优势" />
+<meta name="description" content="本概念页面将向您介绍多阶段构建的用途及其优势" />
 <meta
   name="keywords"
-  content="概念, 构建, 镜像, 容器, docker, desktop"
+  content="concepts, build, images, container, docker, desktop"
 />
 <link rel="canonical" href="/get-started/docker-concepts/building-images/multi-stage-builds/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -27,7 +30,7 @@
   name="twitter:description"
   property="og:description"
   itemprop="description"
-  content="本概念页面将为您介绍多阶段构建的目的及其优势"
+  content="本概念页面将向您介绍多阶段构建的用途及其优势"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="/" />
@@ -39,12 +42,12 @@
 />
 <meta name="twitter:image:alt" content="Docker Documentation" />
 <meta property="og:title" content="多阶段构建" />
-<meta property="og:description" content="本概念页面将为您介绍多阶段构建的目的及其优势" />
+<meta property="og:description" content="本概念页面将向您介绍多阶段构建的用途及其优势" />
 <meta property="og:type" content="website" />
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2025-09-04 16:36:06 -0400 -0400"
+  content="2026-01-21 22:04:29 &#43;0530 &#43;0530"
 />
 <meta
   property="og:image"
@@ -57,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2025-09-04 16:36:06 -0400 -0400"
+  content="2026-01-21 22:04:29 &#43;0530 &#43;0530"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2025-09-04T16:36:06-04:00","description":"本概念页面将为您介绍多阶段构建的目的及其优势","headline":"多阶段构建","isPartOf":{"@id":"/get-started/docker-concepts/building-images/","@type":"WebPage","name":"构建镜像"},"keywords":"概念, 构建, 镜像, 容器, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/building-images/multi-stage-builds/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/","name":"构建镜像"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/multi-stage-builds/","name":"多阶段构建"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-21T22:04:29+05:30","description":"本概念页面将向您介绍多阶段构建的用途及其优势","headline":"多阶段构建","isPartOf":{"@id":"/get-started/docker-concepts/building-images/","@type":"WebPage","name":"构建镜像"},"keywords":"concepts, build, images, container, docker, desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/docker-concepts/building-images/multi-stage-builds/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/","name":"构建镜像"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/docker-concepts/building-images/multi-stage-builds/","name":"多阶段构建"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/get-started/docker-concepts/building-images/multi-stage-builds/index.md" />
 
   
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1642,10 +1651,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/get-started/docker-concepts/building-images/understanding-image-layers/"
-        title="理解镜像层"
+        title="了解镜像层"
       >
         
-  理解镜像层
+  了解镜像层
 
       </a>
     </li>
@@ -1838,10 +1847,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/get-started/docker-concepts/running-containers/multi-container-applications/"
-        title="多容器应用"
+        title="多容器应用程序"
       >
         
-  多容器应用
+  多容器应用程序
 
       </a>
     </li>
@@ -2266,13 +2275,13 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e8%a7%a3%e9%87%8a"
-            >解释</a
+          <a class="link lg:no-underline" href="#%e8%af%b4%e6%98%8e"
+            >说明</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e5%b0%9d%e8%af%95"
-            >动手尝试</a
+          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e5%ae%9e%e8%b7%b5"
+            >动手实践</a
           >
         </li>
         
@@ -2313,20 +2322,20 @@ if (resultsLength > 5) {
 </div>
 
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="解释">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%a7%a3%e9%87%8a">
-    解释
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="说明">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e8%af%b4%e6%98%8e">
+    说明
   </a>
 </h2>
 
-<p>在传统构建中，所有构建指令都在单个构建容器中按顺序执行：下载依赖项、编译代码以及打包应用程序。所有这些层最终都会进入您的最终镜像。这种方法可行，但它会导致镜像臃肿，携带不必要的重量，并增加您的安全风险。这就是多阶段构建的用武之地。</p>
-<p>多阶段构建在您的 Dockerfile 中引入了多个阶段，每个阶段都有特定的用途。可以将其视为能够在多个不同的环境中并发运行构建的不同部分的能力。通过将构建环境与最终运行环境分离，您可以显著减小镜像体积并缩小攻击面。这对于具有大型构建依赖项的应用程序尤其有益。</p>
+<p>在传统的构建方式中，所有构建指令都在单个构建容器中按顺序执行：下载依赖项、编译代码以及打包应用程序。所有这些层最终都会包含在您的最终镜像中。这种方法虽然可行，但会导致镜像臃肿，携带不必要的负担并增加安全风险。而多阶段构建正是为了解决这个问题而诞生的。</p>
+<p>多阶段构建在 Dockerfile 中引入了多个阶段，每个阶段都有其特定用途。可以将其理解为能够在多个不同环境中并发运行构建的不同部分。通过将构建环境与最终运行时环境分离，您可以显著减小镜像体积并降低攻击面。这对于具有大型构建依赖项的应用程序尤其有益。</p>
 <p>多阶段构建适用于所有类型的应用程序。</p>
 <ul>
-<li>对于解释型语言，如 JavaScript、Ruby 或 Python，您可以在一个阶段构建和压缩代码，然后将生产就绪的文件复制到更小的运行时镜像中。这可以优化您的镜像以进行部署。</li>
-<li>对于编译型语言，如 C、Go 或 Rust，多阶段构建让您可以在一个阶段进行编译，并将编译后的二进制文件复制到最终的运行时镜像中。无需在最终镜像中捆绑整个编译器。</li>
+<li>对于解释型语言（如 JavaScript、Ruby 或 Python），您可以在一个阶段中构建和压缩代码，然后将生产就绪的文件复制到更小的运行时镜像中。这可以优化您的镜像以便部署。</li>
+<li>对于编译型语言（如 C、Go 或 Rust），多阶段构建允许您在一个阶段中进行编译，然后将编译后的二进制文件复制到最终的运行时镜像中。无需在最终镜像中捆绑整个编译器。</li>
 </ul>
-<p>以下是一个使用伪代码的多阶段构建结构的简化示例。请注意，这里有多个 <code>FROM</code> 语句和一个新的 <code>AS &lt;stage-name&gt;</code>。此外，第二阶段的 <code>COPY</code> 语句正在从之前的阶段 <code>--from</code> 复制。</p>
+<p>以下是一个使用伪代码简化的多阶段构建结构示例。请注意，其中包含多个 <code>FROM</code> 语句和一个新的 <code>AS &lt;stage-name&gt;</code>。此外，第二阶段的 <code>COPY</code> 语句是从前一阶段 <code>--from</code> 复制内容。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2339,7 +2348,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'IyDpmLbmrrUgMTog5p6E5bu6546v5aKDCkZST00gYnVpbGRlci1pbWFnZSBBUyBidWlsZC1zdGFnZSAKIyDlronoo4XmnoTlu7rlt6XlhbcgKOS&#43;i&#43;WmgiwgTWF2ZW4sIEdyYWRsZSkKIyDlpI3liLbmupDku6PnoIEKIyDmnoTlu7rlkb3ku6QgKOS&#43;i&#43;Wmgiwg57yW6K&#43;RLCDmiZPljIUpCgojIOmYtuautSAyOiDov5DooYzml7bnjq/looMKRlJPTSBydW50aW1lLWltYWdlIEFTIGZpbmFsLXN0YWdlICAKIyDku47mnoTlu7rpmLbmrrXlpI3liLblupTnlKjnqIvluo/mnoTku7YgKOS&#43;i&#43;WmgiwgSkFSIOaWh&#43;S7tikKQ09QWSAtLWZyb209YnVpbGQtc3RhZ2UgL3BhdGgvaW4vYnVpbGQvc3RhZ2UgL3BhdGgvdG8vcGxhY2UvaW4vZmluYWwvc3RhZ2UKIyDlrprkuYnov5DooYzml7bphY3nva4gKOS&#43;i&#43;WmgiwgQ01ELCBFTlRSWVBPSU5UKSA=', copying: false }"
+        x-data="{ code: 'IyDpmLbmrrUgMe&#43;8muaehOW7uueOr&#43;WigwpGUk9NIGJ1aWxkZXItaW1hZ2UgQVMgYnVpbGQtc3RhZ2UgCiMg5a6J6KOF5p6E5bu65bel5YW377yI5L6L5aaCIE1hdmVu44CBR3JhZGxl77yJCiMg5aSN5Yi25rqQ5Luj56CBCiMg5p6E5bu65ZG95Luk77yI5L6L5aaC57yW6K&#43;R44CB5omT5YyF77yJCgojIOmYtuautSAy77ya6L&#43;Q6KGM5pe2546v5aKDCkZST00gcnVudGltZS1pbWFnZSBBUyBmaW5hbC1zdGFnZSAgCiMgIOS7juaehOW7uumYtuauteWkjeWItuW6lOeUqOeoi&#43;W6j&#43;WItuWTge&#43;8iOS&#43;i&#43;WmgiBKQVIg5paH5Lu277yJCkNPUFkgLS1mcm9tPWJ1aWxkLXN0YWdlIC9wYXRoL2luL2J1aWxkL3N0YWdlIC9wYXRoL3RvL3BsYWNlL2luL2ZpbmFsL3N0YWdlCiMg5a6a5LmJ6L&#43;Q6KGM5pe26YWN572u77yI5L6L5aaCIENNROOAgUVOVFJZUE9JTlTvvIkg', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -2358,40 +2367,40 @@ if (resultsLength > 5) {
         >
       </button>
       
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 阶段 1: 构建环境</span><span class="err">
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># 阶段 1：构建环境</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">builder-image</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build-stage</span> <span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 安装构建工具 (例如, Maven, Gradle)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 安装构建工具（例如 Maven、Gradle）</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="c"># 复制源代码</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 构建命令 (例如, 编译, 打包)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 构建命令（例如编译、打包）</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 2: 运行时环境</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 阶段 2：运行时环境</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">runtime-image</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final-stage</span>  <span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 从构建阶段复制应用程序构件 (例如, JAR 文件)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="c">#  从构建阶段复制应用程序制品（例如 JAR 文件）</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="k">COPY</span> --from<span class="o">=</span>build-stage /path/in/build/stage /path/to/place/in/final/stage<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="c"># 定义运行时配置 (例如, CMD, ENTRYPOINT) </span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="c"># 定义运行时配置（例如 CMD、ENTRYPOINT） </span></span></span></code></pre></div>
       
     </div>
   </div>
 </div>
-<p>这个 Dockerfile 使用了两个阶段：</p>
+<p>此 Dockerfile 使用了两个阶段：</p>
 <ul>
-<li>构建阶段使用一个包含编译应用程序所需构建工具的基础镜像。它包括安装构建工具、复制源代码和执行构建命令的指令。</li>
-<li>最终阶段使用一个适合运行您应用程序的更小的基础镜像。它从构建阶段复制编译后的构件（例如 JAR 文件）。最后，它定义了启动应用程序的运行时配置（使用 <code>CMD</code> 或 <code>ENTRYPOINT</code>）。</li>
+<li>构建阶段使用包含编译应用程序所需构建工具的基础镜像。它包括安装构建工具、复制源代码和执行构建命令的指令。</li>
+<li>最终阶段使用适合运行应用程序的更小基础镜像。它从构建阶段复制编译后的制品（例如 JAR 文件）。最后，它定义启动应用程序的运行时配置（使用 <code>CMD</code> 或 <code>ENTRYPOINT</code>）。</li>
 </ul>
 
-<h2 class=" scroll-mt-20 flex items-center gap-2" id="动手尝试">
-  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8a%a8%e6%89%8b%e5%b0%9d%e8%af%95">
-    动手尝试
+<h2 class=" scroll-mt-20 flex items-center gap-2" id="动手实践">
+  <a class="text-black dark:text-white no-underline hover:underline" href="#%e5%8a%a8%e6%89%8b%e5%ae%9e%e8%b7%b5">
+    动手实践
   </a>
 </h2>
 
-<p>在这篇实践指南中，您将掌握多阶段构建的强大功能，为一个示例 Java 应用程序创建精简高效的 Docker 镜像。您将使用一个简单的基于 Spring Boot 的 &quot;Hello World&quot; 应用程序（使用 Maven 构建）作为示例。</p>
+<p>在本实践指南中，您将通过为一个示例 Java 应用程序创建精简高效的 Docker 镜像来掌握多阶段构建的强大功能。您将使用一个简单的基于 Spring Boot 的“Hello World”应用程序作为示例，该应用程序使用 Maven 构建。</p>
 <ol>
 <li>
 <p><a class="link" href="https://www.docker.com/products/docker-desktop/" rel="noopener">下载并安装</a> Docker Desktop。</p>
 </li>
 <li>
-<p>打开这个<a class="link" href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=3.4.0-M3&amp;packaging=jar&amp;jvmVersion=21&amp;groupId=com.example&amp;artifactId=spring-boot-docker&amp;name=spring-boot-docker&amp;description=Demo%20project%20for%20Spring%20Boot&amp;packageName=com.example.spring-boot-docker&amp;dependencies=web" rel="noopener">预初始化的项目</a>以生成一个 ZIP 文件。如下图所示：</p>
+<p>打开此<a class="link" href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=4.0.1&amp;packaging=jar&amp;configurationFileFormat=properties&amp;jvmVersion=21&amp;groupId=com.example&amp;artifactId=spring-boot-docker&amp;name=spring-boot-docker&amp;description=Demo%20project%20for%20Spring%20Boot&amp;packageName=com.example.spring-boot-docker&amp;dependencies=web" rel="noopener">预初始化项目</a>以生成 ZIP 文件。其效果如下所示：</p>
 
   
   
@@ -2412,7 +2421,7 @@ if (resultsLength > 5) {
   <img
     loading="lazy"
     src="/get-started/docker-concepts/building-images/images/multi-stage-builds-spring-initializer.webp"
-    alt="一张 Spring Initializr 工具的截图，已选择 Java 21、Spring Web 和 Spring Boot 3.4.0"
+    alt="Spring Initializr 工具截图，已选择 Java 21、Spring Web 和 Spring Boot 3.4.0"
     
     
     class="mx-auto
@@ -2434,17 +2443,17 @@ if (resultsLength > 5) {
         loading="lazy"
         class="max-h-full max-w-full rounded-sm"
         src="/get-started/docker-concepts/building-images/images/multi-stage-builds-spring-initializer.webp"
-        alt="一张 Spring Initializr 工具的截图，已选择 Java 21、Spring Web 和 Spring Boot 3.4.0"
+        alt="Spring Initializr 工具截图，已选择 Java 21、Spring Web 和 Spring Boot 3.4.0"
       />
     </div>
   </template>
 </figure>
-<p><a class="link" href="https://start.spring.io/" rel="noopener">Spring Initializr</a> 是一个用于 Spring 项目的快速启动生成器。它提供了一个可扩展的 API 来生成基于 JVM 的项目，并为几种常见概念提供实现——例如 Java、Kotlin 和 Groovy 的基本语言生成。</p>
-<p>选择 <strong>Generate</strong> 来创建并下载此项目的 zip 文件。</p>
-<p>在此演示中，您已将 Maven 构建自动化与 Java、Spring Web 依赖项以及用于元数据的 Java 21 配对。</p>
+<p><a class="link" href="https://start.spring.io/" rel="noopener">Spring Initializr</a> 是 Spring 项目的快速启动生成器。它提供了一个可扩展的 API 来生成基于 JVM 的项目，并为几个常见概念提供了实现 — 例如 Java、Kotlin、Groovy 和 Maven 的基本语言生成。</p>
+<p>选择 <strong>Generate</strong> 以创建并下载此项目的 zip 文件。</p>
+<p>为了演示，您已将 Maven 构建自动化与 Java、Spring Web 依赖项以及 Java 21 元数据配对。</p>
 </li>
 <li>
-<p>浏览项目目录。解压文件后，您将看到以下项目目录结构：</p>
+<p>导航到项目目录。解压文件后，您将看到以下项目目录结构：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2504,12 +2513,12 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p><code>src/main/java</code> 目录包含您项目的源代码，<code>src/test/java</code> 目录包含测试源代码，而 <code>pom.xml</code> 文件是您的项目对象模型 (POM)。</p>
-<p><code>pom.xml</code> 文件是 Maven 项目配置的核心。它是一个单一的配置文件，包含构建定制项目所需的大部分信息。POM 很庞大，可能看起来令人生畏。幸运的是，您还不需要理解每一个细节就能有效地使用它。</p>
+<p><code>src/main/java</code> 目录包含项目的源代码，<code>src/test/java</code> 目录包含测试源代码，而 <code>pom.xml</code> 文件是项目的 Project Object Model (POM)。</p>
+<p><code>pom.xml</code> 文件是 Maven 项目配置的核心。它是一个单一的配置文件，包含了构建自定义项目所需的大部分信息。POM 非常庞大，可能看起来令人望而生畏。但幸运的是，您无需了解其所有细节即可有效地使用它。</p>
 </li>
 <li>
-<p>创建一个显示 &quot;Hello World!&quot; 的 RESTful Web 服务。</p>
-<p>在 <code>src/main/java/com/example/spring_boot_docker/</code> 目录下，您可以使用以下内容修改您的 <code>SpringBootDockerApplication.java</code> 文件：</p>
+<p>创建一个显示“Hello World!”的 RESTful Web 服务。</p>
+<p>在 <code>src/main/java/com/example/spring_boot_docker/</code> 目录下，您可以使用以下内容修改 <code>SpringBootDockerApplication.java</code> 文件：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2567,7 +2576,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p><code>SpringbootDockerApplication.java</code> 文件首先声明您的 <code>com.example.spring_boot_docker</code> 包并导入必要的 Spring 框架。这个 Java 文件创建了一个简单的 Spring Boot Web 应用程序，当用户访问其主页时会响应 &quot;Hello World&quot;。</p>
+<p><code>SpringbootDockerApplication.java</code> 文件首先声明 <code>com.example.spring_boot_docker</code> 包并导入必要的 Spring 框架。此 Java 文件创建了一个简单的 Spring Boot Web 应用程序，当用户访问其主页时，它会响应“Hello World”。</p>
 </li>
 </ol>
 
@@ -2577,10 +2586,10 @@ if (resultsLength > 5) {
   </a>
 </h3>
 
-<p>现在您有了项目，就可以创建 <code>Dockerfile</code> 了。</p>
+<p>现在您已经拥有项目，可以准备创建 <code>Dockerfile</code> 了。</p>
 <ol>
 <li>
-<p>在包含所有其他文件夹和文件（如 src、pom.xml 等）的同一文件夹中创建一个名为 <code>Dockerfile</code> 的文件。</p>
+<p>在与包含所有其他文件夹和文件（如 src、pom.xml 等）相同的文件夹中创建一个名为 <code>Dockerfile</code> 的文件。</p>
 </li>
 <li>
 <p>在 <code>Dockerfile</code> 中，通过添加以下行来定义您的基础镜像：</p>
@@ -2622,7 +2631,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>现在，使用 <code>WORKDIR</code> 指令定义工作目录。这将指定未来命令运行的位置以及文件将被复制到容器镜像中的目录。</p>
+<p>现在，使用 <code>WORKDIR</code> 指令定义工作目录。这将指定未来命令将在何处运行以及目录文件将被复制到容器镜像内的位置。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2661,7 +2670,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>将 Maven 包装器脚本和您项目的 <code>pom.xml</code> 文件复制到 Docker 容器内的当前工作目录 <code>/app</code> 中。</p>
+<p>将 Maven 包装器脚本和项目的 <code>pom.xml</code> 文件复制到 Docker 容器内当前工作目录 <code>/app</code> 中。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2701,7 +2710,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>在容器内执行一个命令。它运行 <code>./mvnw dependency:go-offline</code> 命令，该命令使用 Maven 包装器 (<code>./mvnw</code>) 下载项目的所有依赖项，而不构建最终的 JAR 文件（对于更快的构建很有用）。</p>
+<p>在容器内执行命令。该命令会运行 <code>./mvnw dependency:go-offline</code>，使用 Maven 包装器（<code>./mvnw</code>）下载项目的所有依赖项，但不会构建最终的 JAR 文件（有助于加快构建速度）。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2740,7 +2749,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>将主机上的 <code>src</code> 目录复制到容器内的 <code>/app</code> 目录中。</p>
+<p>将宿主机上项目中的 <code>src</code> 目录复制到容器内的 <code>/app</code> 目录。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2779,7 +2788,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>设置容器启动时要执行的默认命令。此命令指示容器使用 <code>spring-boot:run</code> 目标运行 Maven 包装器 (<code>./mvnw</code>)，这将构建并执行您的 Spring Boot 应用程序。</p>
+<p>设置容器启动时要执行的默认命令。该命令指示容器运行 Maven 包装器（<code>./mvnw</code>）并指定 <code>spring-boot:run</code> 目标，这将构建并执行你的 Spring Boot 应用程序。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2816,7 +2825,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>完成以上步骤后，您应该得到以下 Dockerfile：</p>
+<p>至此，你应该会得到如下所示的 Dockerfile：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2948,7 +2957,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>这样做将产生类似以下的输出：</p>
+<p>执行后将产生类似如下的输出：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -2987,7 +2996,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此输出显示您的镜像大小为 880MB。它包含了完整的 JDK、Maven 工具链等。在生产环境中，您的最终镜像中不需要这些。</p>
+<p>该输出显示你的镜像大小为 880MB。它包含了完整的 JDK、Maven 工具链等。但在生产环境中，最终镜像中并不需要这些内容。</p>
 </li>
 </ol>
 
@@ -2999,7 +3008,7 @@ if (resultsLength > 5) {
 
 <ol>
 <li>
-<p>现在您已经有了构建好的镜像，是时候运行容器了。</p>
+<p>现在你已经构建好了镜像，是时候运行容器了。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3037,7 +3046,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>然后您将在容器日志中看到类似以下的输出：</p>
+<p>随后你将在容器日志中看到类似如下的输出：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3091,7 +3100,7 @@ if (resultsLength > 5) {
 </div>
 </li>
 <li>
-<p>通过您的 Web 浏览器访问您的 &quot;Hello World&quot; 页面，地址为 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a>，或通过以下 curl 命令访问：</p>
+<p>通过 Web 浏览器访问 <a class="link" href="http://localhost:8080" rel="noopener">http://localhost:8080</a>，或使用以下 curl 命令访问你的“Hello World”页面：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3190,13 +3199,13 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>请注意，此 Dockerfile 已被拆分为两个阶段。</p>
+<p>请注意，这个 Dockerfile 已被拆分为两个阶段。</p>
 <ul>
 <li>
-<p>第一阶段与之前的 Dockerfile 保持一致，为构建应用程序提供 Java 开发工具包 (JDK) 环境。此阶段被命名为 builder。</p>
+<p>第一阶段与之前的 Dockerfile 保持一致，提供 Java 开发工具包（JDK）环境用于构建应用程序。该阶段被命名为 builder。</p>
 </li>
 <li>
-<p>第二阶段是一个名为 <code>final</code> 的新阶段。它使用更精简的 <code>eclipse-temurin:21.0.2_13-jre-jammy</code> 镜像，仅包含运行应用程序所需的 Java 运行时环境 (JRE)。此镜像提供了一个 Java 运行时环境 (JRE)，足以运行编译后的应用程序（JAR 文件）。</p>
+<p>第二阶段是一个名为 <code>final</code> 的新阶段。它使用更轻量的 <code>eclipse-temurin:21.0.2_13-jre-jammy</code> 镜像，仅包含运行应用程序所需的 Java 运行时环境（JRE）。该镜像提供 Java 运行时环境（JRE），足以运行已编译的应用程序（JAR 文件）。</p>
 </li>
 </ul>
 
@@ -3206,14 +3215,14 @@ if (resultsLength > 5) {
 <blockquote
   
   class="admonition not-prose">
-  <p>对于生产使用，强烈建议您使用 jlink 生成自定义的 JRE 类运行时。所有版本的 Eclipse Temurin 都提供 JRE 镜像，但 <code>jlink</code> 允许您创建一个仅包含应用程序所需必要 Java 模块的最小运行时。这可以显著减小最终镜像的大小并提高其安全性。<a class="link" href="https://hub.docker.com/_/eclipse-temurin" rel="noopener">请参阅此页面</a> 以获取更多信息。</p>
+  <p>在生产环境中，强烈建议使用 jlink 生成类似自定义 JRE 的运行时。Eclipse Temurin 的所有版本都提供 JRE 镜像，但 <code>jlink</code> 允许你创建一个仅包含应用程序所需 Java 模块的最小运行时。这可以显著减小最终镜像的大小并提高其安全性。<a class="link" href="https://hub.docker.com/_/eclipse-temurin" rel="noopener">更多信息请参考此页面</a>。</p>
 
   </blockquote>
 
-<p>通过多阶段构建，Docker 构建使用一个基础镜像进行编译、打包和单元测试，然后使用另一个单独的镜像用于应用程序运行时。因此，最终镜像的体积更小，因为它不包含任何开发或调试工具。通过将构建环境与最终运行环境分离，您可以显著减小镜像体积并提高最终镜像的安全性。</p>
+<p>使用多阶段构建时，Docker 构建会使用一个基础镜像进行编译、打包和单元测试，然后使用另一个镜像作为应用程序运行时。因此，最终镜像的体积更小，因为它不包含任何开发或调试工具。通过将构建环境与最终运行时环境分离，你可以显著减小镜像大小并提高最终镜像的安全性。</p>
 </li>
 <li>
-<p>现在，重新构建您的镜像并运行您准备使用的生产构建。</p>
+<p>现在，重新构建你的镜像并运行可用于生产的构建版本。</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3251,7 +3260,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>此命令使用您当前目录中 <code>Dockerfile</code> 文件的最终阶段构建一个名为 <code>spring-helloworld-builder</code> 的 Docker 镜像。</p>
+<p>该命令使用当前目录下 <code>Dockerfile</code> 文件中的最终阶段构建名为 <code>spring-helloworld-builder</code> 的 Docker 镜像。</p>
 
 
   
@@ -3270,7 +3279,7 @@ if (resultsLength > 5) {
       </span>
     </div>
     <div class="admonition-content">
-      <p>在您的多阶段 Dockerfile 中，最终阶段 (final) 是构建的默认目标。这意味着如果您没有在 <code>docker build</code> 命令中使用 <code>--target</code> 标志明确指定目标阶段，Docker 将默认构建最后一个阶段。您可以使用 <code>docker build -t spring-helloworld-builder --target builder .</code> 来仅构建包含 JDK 环境的 builder 阶段。</p>
+      <p>在 multistage Dockerfile 中，最终阶段（final）是构建的默认目标。这意味着如果你没有在 <code>docker build</code> 命令中显式指定目标阶段（使用 <code>--target</code> 标志），Docker 将默认自动构建最后一个阶段。你可以使用 <code>docker build -t spring-helloworld-builder --target builder .</code> 仅构建带有 JDK 环境的 builder 阶段。</p>
     </div>
   </blockquote>
 
@@ -3314,7 +3323,7 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您将得到类似以下的输出：</p>
+<p>你将获得类似如下的输出：</p>
 <div
   data-pagefind-ignore
   x-data
@@ -3353,8 +3362,8 @@ if (resultsLength > 5) {
     </div>
   </div>
 </div>
-<p>您的最终镜像只有 428 MB，而原始构建大小为 880 MB。</p>
-<p>通过优化每个阶段并仅包含必要的内容，您能够在实现相同功能的同时显著减小整体镜像体积。这不仅提高了性能，还使您的 Docker 镜像更轻量、更安全、更易于管理。</p>
+<p>你的最终镜像大小仅为 428 MB，而原始构建大小为 880 MB。</p>
+<p>通过优化每个阶段并仅包含必要的内容，你能够在保持相同功能的同时显著减小整体镜像大小。这不仅提升了性能，还使你的 Docker 镜像更轻量、更安全且更易于管理。</p>
 </li>
 </ol>
 
@@ -3430,13 +3439,13 @@ if (resultsLength > 5) {
       
   <ul class="pl-2">
         <li>
-          <a class="link lg:no-underline" href="#%e8%a7%a3%e9%87%8a"
-            >解释</a
+          <a class="link lg:no-underline" href="#%e8%af%b4%e6%98%8e"
+            >说明</a
           >
         </li>
         <li>
-          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e5%b0%9d%e8%af%95"
-            >动手尝试</a
+          <a class="link lg:no-underline" href="#%e5%8a%a8%e6%89%8b%e5%ae%9e%e8%b7%b5"
+            >动手实践</a
           >
         </li>
         
@@ -3482,9 +3491,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3499,7 +3510,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3514,7 +3525,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3529,7 +3540,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3544,7 +3555,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3560,26 +3571,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

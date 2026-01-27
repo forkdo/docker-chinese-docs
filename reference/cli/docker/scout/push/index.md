@@ -1,27 +1,4 @@
----
-title: docker scout push
-url: /reference/cli/docker/scout/push/
-parent:
-  title: docker scout
-  url: /reference/cli/docker/scout/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker scout
-    url: /reference/cli/docker/scout/
-  - title: docker scout push
-    url: /reference/cli/docker/scout/push/
-next:
-  title: docker scout policy
-  url: /reference/cli/docker/scout/policy/
-prev:
-  title: docker scout quickview
-  url: /reference/cli/docker/scout/quickview/
----
+# docker scout push
 
 **Description:** Push an image or image index to Docker Scout
 

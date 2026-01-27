@@ -1,25 +1,4 @@
----
-title: Swarm 模式关键概念
-url: /engine/swarm/key-concepts/
-parent:
-  title: Swarm 模式
-  url: /engine/swarm/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: Swarm 模式关键概念
-    url: /engine/swarm/key-concepts/
-next:
-  title: Swarm 模式中的 Raft 共识
-  url: /engine/swarm/raft/
-prev:
-  title: 使用 Docker Configs 存储配置数据
-  url: /engine/swarm/configs/
----
+# Swarm 模式关键概念
 
 
 本主题介绍 Docker Engine 1.12 中集群管理和编排功能特有的一些概念。

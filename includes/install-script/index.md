@@ -1,21 +1,4 @@
----
-title: 
-url: /includes/install-script/
-parent:
-  title: 
-  url: /includes/
-breadcrumbs:
-  - title: 
-    url: /includes/
-  - title: 
-    url: /includes/install-script/
-next:
-  title: 
-  url: /includes/hub-categories/
-prev:
-  title: 
-  url: /includes/open-terminal/
----
+# 
 
 ### 使用便捷脚本安装
 

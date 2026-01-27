@@ -1,18 +1,4 @@
----
-title: Registry 认证
-url: /reference/api/registry/auth/
-parent:
-  title: 参考文档
-  url: /reference/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Registry 认证
-    url: /reference/api/registry/auth/
-prev:
-  title: Docker Hub 支持的注册表 API
-  url: /reference/api/registry/latest/
----
+# Registry 认证
 
 
 本文档概述了 Registry 的认证方案：

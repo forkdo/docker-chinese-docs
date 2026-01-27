@@ -1,21 +1,4 @@
----
-title: 内容中的 UI 元素
-url: /contribute/ui/
-parent:
-  title: 为 Docker 文档做贡献
-  url: /contribute/
-breadcrumbs:
-  - title: 为 Docker 文档做贡献
-    url: /contribute/
-  - title: 内容中的 UI 元素
-    url: /contribute/ui/
-next:
-  title: 源文件规范
-  url: /contribute/file-conventions/
-prev:
-  title: 写作清单
-  url: /contribute/checklist/
----
+# 内容中的 UI 元素
 
 
 在编写涉及按钮、字段、菜单、对话框或其他用户界面 (UI) 元素的文档时，请参考本指南。本指南说明了如何格式化 UI 术语、编写以任务为中心的说明，以及如何一致且清晰地引用常见的 UI 模式。

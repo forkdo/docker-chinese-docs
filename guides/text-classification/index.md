@@ -1,21 +1,4 @@
----
-title: 构建文本识别应用
-url: /guides/text-classification/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 构建文本识别应用
-    url: /guides/text-classification/
-next:
-  title: 使用 Docker Buildx Bake 掌握多平台构建、测试等
-  url: /guides/bake/
-prev:
-  title: 构建文本摘要应用
-  url: /guides/text-summarization/
----
+# 构建文本识别应用
 
 
 ## 概述

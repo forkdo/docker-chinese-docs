@@ -1,21 +1,4 @@
----
-title: docker buildx dap
-url: /reference/cli/docker/buildx/dap/
-parent:
-  title: docker buildx
-  url: /reference/cli/docker/buildx/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx dap
-    url: /reference/cli/docker/buildx/dap/
----
+# docker buildx dap
 
 **Description:** Start debug adapter protocol compatible debugger
 

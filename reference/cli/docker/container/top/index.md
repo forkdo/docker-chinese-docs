@@ -1,27 +1,4 @@
----
-title: docker container top
-url: /reference/cli/docker/container/top/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container top
-    url: /reference/cli/docker/container/top/
-next:
-  title: docker container stop
-  url: /reference/cli/docker/container/stop/
-prev:
-  title: docker container unpause
-  url: /reference/cli/docker/container/unpause/
----
+# docker container top
 
 **Description:** Display the running processes of a container
 

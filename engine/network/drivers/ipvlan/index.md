@@ -1,27 +1,4 @@
----
-title: IPvlan 网络驱动
-url: /engine/network/drivers/ipvlan/
-parent:
-  title: 网络驱动
-  url: /engine/network/drivers/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: 网络概述
-    url: /engine/network/
-  - title: 网络驱动
-    url: /engine/network/drivers/
-  - title: IPvlan 网络驱动
-    url: /engine/network/drivers/ipvlan/
-next:
-  title: Host 网络驱动
-  url: /engine/network/drivers/host/
-prev:
-  title: Macvlan 网络驱动
-  url: /engine/network/drivers/macvlan/
----
+# IPvlan 网络驱动
 
 
 IPvlan 驱动让用户完全控制 IPv4 和 IPv6 地址分配。VLAN 驱动在此基础上更进一步，让操作员完全控制第 2 层 VLAN 标记，甚至包括对底层网络集成感兴趣的用户的 IPvlan L3 路由。对于抽象物理约束的覆盖（overlay）部署，请参阅 [多主机覆盖](overlay.md) 驱动。

@@ -1,29 +1,4 @@
----
-title: docker mcp catalog create
-url: /reference/cli/docker/mcp/catalog/catalog_create/
-parent:
-  title: docker mcp catalog
-  url: /reference/cli/docker/mcp/catalog/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp catalog
-    url: /reference/cli/docker/mcp/catalog/
-  - title: docker mcp catalog create
-    url: /reference/cli/docker/mcp/catalog/catalog_create/
-next:
-  title: docker mcp catalog add
-  url: /reference/cli/docker/mcp/catalog/catalog_add/
-prev:
-  title: docker mcp catalog export
-  url: /reference/cli/docker/mcp/catalog/catalog_export/
----
+# docker mcp catalog create
 
 **Description:** Create a new empty catalog
 

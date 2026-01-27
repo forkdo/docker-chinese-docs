@@ -1,29 +1,4 @@
----
-title: docker mcp tools disable
-url: /reference/cli/docker/mcp/tools/tools_disable/
-parent:
-  title: 
-  url: /reference/cli/docker/mcp/tools/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: 
-    url: /reference/cli/docker/mcp/tools/
-  - title: docker mcp tools disable
-    url: /reference/cli/docker/mcp/tools/tools_disable/
-next:
-  title: docker mcp tools count
-  url: /reference/cli/docker/mcp/tools/tools_count/
-prev:
-  title: docker mcp tools enable
-  url: /reference/cli/docker/mcp/tools/tools_enable/
----
+# docker mcp tools disable
 
 **Description:** disable one or more tools
 

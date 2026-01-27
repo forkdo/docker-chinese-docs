@@ -1,27 +1,4 @@
----
-title: 将 Docker Scout 与 GitLab CI/CD 集成
-url: /scout/integrations/ci/gitlab/
-parent:
-  title: 在持续集成中使用 Docker Scout
-  url: /scout/integrations/ci/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Scout
-    url: /scout/
-  - title: 将 Docker Scout 与其他系统集成
-    url: /scout/integrations/
-  - title: 在持续集成中使用 Docker Scout
-    url: /scout/integrations/ci/
-  - title: 将 Docker Scout 与 GitLab CI/CD 集成
-    url: /scout/integrations/ci/gitlab/
-next:
-  title: 将 Docker Scout 与 GitHub Actions 集成
-  url: /scout/integrations/ci/gha/
-prev:
-  title: 将 Docker Scout 与 Jenkins 集成
-  url: /scout/integrations/ci/jenkins/
----
+# 将 Docker Scout 与 GitLab CI/CD 集成
 
 
 以下示例在 GitLab CI 中运行，该 CI 位于包含 Docker 镜像定义和内容的仓库中。由提交触发，管道会构建镜像。如果提交到默认分支，则使用 Docker Scout 获取 CVE 报告。如果提交到其他分支，则使用 Docker Scout 将新版本与当前发布的版本进行比较。

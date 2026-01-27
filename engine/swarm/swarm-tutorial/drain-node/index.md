@@ -1,24 +1,4 @@
----
-title: 将 swarm 中的节点设置为排空状态
-url: /engine/swarm/swarm-tutorial/drain-node/
-parent:
-  title: Swarm 模式入门
-  url: /engine/swarm/swarm-tutorial/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Swarm 模式
-    url: /engine/swarm/
-  - title: Swarm 模式入门
-    url: /engine/swarm/swarm-tutorial/
-  - title: 将 swarm 中的节点设置为排空状态
-    url: /engine/swarm/swarm-tutorial/drain-node/
-next:
-  title: 对服务应用滚动更新
-  url: /engine/swarm/swarm-tutorial/rolling-update/
----
+# 将 swarm 中的节点设置为排空状态
 
 
 在本教程的前面步骤中，所有节点都处于 `Active` 可用状态。Swarm 管理器可以将任务分配给任何 `Active` 节点，因此到目前为止，所有节点都可以接收任务。

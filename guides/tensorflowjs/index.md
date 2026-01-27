@@ -1,21 +1,4 @@
----
-title: 使用 TensorFlow.js 进行人脸检测
-url: /guides/tensorflowjs/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 TensorFlow.js 进行人脸检测
-    url: /guides/tensorflowjs/
-next:
-  title: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
-  url: /guides/pgadmin/
-prev:
-  title: 使用 Traefik 进行 HTTP 路由
-  url: /guides/traefik/
----
+# 使用 TensorFlow.js 进行人脸检测
 
 
 本指南介绍如何将 TensorFlow.js 与 Docker 无缝集成以执行人脸检测。在本指南中，您将了解如何：

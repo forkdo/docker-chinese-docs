@@ -1,27 +1,4 @@
----
-title: Local registry with GitHub Actions
-url: /build/ci/github-actions/local-registry/
-parent:
-  title: Docker Build GitHub Actions
-  url: /build/ci/github-actions/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Build
-    url: /build/
-  - title: Continuous integration with Docker
-    url: /build/ci/
-  - title: Docker Build GitHub Actions
-    url: /build/ci/github-actions/
-  - title: Local registry with GitHub Actions
-    url: /build/ci/github-actions/local-registry/
-next:
-  title: Export to Docker with GitHub Actions
-  url: /build/ci/github-actions/export-docker/
-prev:
-  title: Multi-platform image with GitHub Actions
-  url: /build/ci/github-actions/multi-platform/
----
+# Local registry with GitHub Actions
 
 
 For testing purposes you may need to create a [local registry](https://hub.docker.com/_/registry)

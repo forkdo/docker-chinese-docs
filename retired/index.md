@@ -1,18 +1,4 @@
----
-title: 已弃用和停用的 Docker 产品和功能
-url: /retired/
-parent:
-  title: 手册
-  url: /manuals/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: 已弃用和停用的 Docker 产品和功能
-    url: /retired/
-next:
-  title: Docker 的产品发布生命周期
-  url: /release-lifecycle/
----
+# 已弃用和停用的 Docker 产品和功能
 
 
 本文档概述了已弃用、停用或已过渡的 Docker 功能、产品和开源项目。

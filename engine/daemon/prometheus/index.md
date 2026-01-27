@@ -1,25 +1,4 @@
----
-title: 使用 Prometheus 收集 Docker 指标
-url: /engine/daemon/prometheus/
-parent:
-  title: Docker 守护进程配置概述
-  url: /engine/daemon/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Engine
-    url: /engine/
-  - title: Docker 守护进程配置概述
-    url: /engine/daemon/
-  - title: 使用 Prometheus 收集 Docker 指标
-    url: /engine/daemon/prometheus/
-next:
-  title: Docker 守护进程故障排除
-  url: /engine/daemon/troubleshoot/
-prev:
-  title: 替代容器运行时
-  url: /engine/daemon/alternative-runtimes/
----
+# 使用 Prometheus 收集 Docker 指标
 
 
 [Prometheus](https://prometheus.io/) 是一个开源的系统监控和告警工具包。您可以将 Docker 配置为 Prometheus 的目标。

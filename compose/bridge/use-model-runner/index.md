@@ -1,22 +1,4 @@
----
-title: 在 Compose Bridge 中使用 Docker Model Runner
-url: /compose/bridge/use-model-runner/
-parent:
-  title: Compose Bridge 概述
-  url: /compose/bridge/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Compose
-    url: /compose/
-  - title: Compose Bridge 概述
-    url: /compose/bridge/
-  - title: 在 Compose Bridge 中使用 Docker Model Runner
-    url: /compose/bridge/use-model-runner/
-next:
-  title: 自定义 Compose Bridge
-  url: /compose/bridge/customize/
----
+# 在 Compose Bridge 中使用 Docker Model Runner
 
 
 Compose Bridge 支持模型感知部署。它可以部署和配置 Docker Model Runner，这是一个用于托管和服务机器 LLM 的轻量级服务。

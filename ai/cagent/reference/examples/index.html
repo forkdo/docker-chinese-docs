@@ -18,7 +18,10 @@
 <link rel="canonical" href="/ai/cagent/reference/examples/" />
 
 
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg">
+<link rel="icon" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/images/favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#2496ed" />
 
 
@@ -69,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.4ee4b359b882dd7179261e0dba752485b517e278e75727fe94a57fe3576c938d.css"
-            integrity="sha256-TuSzWbiC3XF5Jh4NunUkhbUX4njnVyf&#43;lKV/41dsk40="
+            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
+            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
             crossorigin="anonymous"
           />
         
@@ -499,12 +502,18 @@ if (resultsLength > 5) {
       this.$watch('$store.gordon.query', (query) => {
         if (query) {
           this.currentQuestion = query
+          const shouldAutoSubmit = this.$store.gordon.autoSubmit
           this.$nextTick(() => {
-            this.$refs.input?.focus()
-            this.$refs.input?.select()
+            if (shouldAutoSubmit) {
+              this.askQuestion()
+            } else {
+              this.$refs.input?.focus()
+              this.$refs.input?.select()
+            }
           })
-          // Clear the store query after using it
+          // Clear the store query and autoSubmit flag after using them
           this.$store.gordon.query = ''
+          this.$store.gordon.autoSubmit = false
         }
       })
     },
@@ -1348,7 +1357,7 @@ if (resultsLength > 5) {
   在 Compose 中使用 AI 模型
     <span><span
   class="not-prose bg-green-500 dark:bg-green-700 rounded-sm px-1 text-xs text-white"
-  >新功能
+  >新增
 </span>
 
     </span>
@@ -4768,10 +4777,10 @@ if (resultsLength > 5) {
             href="/ai/sandboxes/"
           >
             
-  Docker 沙盒
+  Docker 沙箱
     <span><span
   class="not-prose bg-violet-500 dark:bg-violet-400 rounded-sm px-1 text-xs text-white"
-  >实验性功能
+  >Experimental
 </span>
 
     </span>
@@ -4811,10 +4820,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/ai/sandboxes/get-started/"
-        title="快速开始"
+        title="入门指南"
       >
         
-  快速开始
+  入门指南
 
       </a>
     </li>
@@ -4842,11 +4851,43 @@ if (resultsLength > 5) {
       <a
         
         class="block w-full truncate"
-        href="/ai/sandboxes/advanced-config/"
-        title="高级"
+        href="/ai/sandboxes/workflows/"
+        title="工作流"
       >
         
-  高级
+  工作流
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/templates/"
+        title="自定义模板"
+      >
+        
+  自定义模板
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/agents/"
+        title="支持的代理"
+      >
+        
+  支持的代理
 
       </a>
     </li>
@@ -4863,6 +4904,54 @@ if (resultsLength > 5) {
       >
         
   故障排除
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/network-policies/"
+        title="网络策略"
+      >
+        
+  网络策略
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/architecture/"
+        title="架构"
+      >
+        
+  架构
+
+      </a>
+    </li>
+
+    
+    <li
+      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
+    >
+      <a
+        
+        class="block w-full truncate"
+        href="/ai/sandboxes/migration/"
+        title="从旧版沙箱迁移"
+      >
+        
+  从旧版沙箱迁移
 
       </a>
     </li>
@@ -6252,10 +6341,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/desktop/troubleshoot-and-support/troubleshoot/mac-damaged-dialog/"
-        title="macOS 应用损坏对话框"
+        title="macOS 应用已损坏对话框"
       >
         
-  macOS 应用损坏对话框
+  macOS 应用已损坏对话框
 
       </a>
     </li>
@@ -8893,18 +8982,14 @@ if (resultsLength > 5) {
       class="hidden ml-3"
     >
       
-    
-    <li
-      class="navbar-entry-margin hover:text-blue  rounded-sm hover:dark:text-blue-400"
-    >
+    <li class="navbar-entry-margin hover:text-blue hover:dark:text-blue-400">
       <a
-        
         class="block w-full truncate"
-        href="/scout/release-notes/cli/"
-        title="CLI 发布说明"
+        href="https://github.com/docker/scout-cli/releases"
+        title="CLI 版本说明"
       >
         
-  CLI 发布说明
+  CLI 版本说明
 
       </a>
     </li>
@@ -10640,10 +10725,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/platform-release-notes/"
-        title="发布说明"
+        title="版本说明"
       >
         
-  发布说明
+  版本说明
 
       </a>
     </li>
@@ -11638,10 +11723,10 @@ if (resultsLength > 5) {
         
         class="block w-full truncate"
         href="/admin/organization/onboard/"
-        title="为您的组织完成上车流程"
+        title="组织入驻"
       >
         
-  为您的组织完成上车流程
+  组织入驻
 
       </a>
     </li>
@@ -12617,7 +12702,7 @@ if (resultsLength > 5) {
     
     <div class="syntax-light dark:syntax-dark not-prose w-full">
       <button
-        x-data="{ code: 'IyEvdXNyL2Jpbi9lbnYgY2FnZW50IHJ1bgoKbW9kZWxzOgogIGNsYXVkZToKICAgIHByb3ZpZGVyOiBhbnRocm9waWMKICAgIG1vZGVsOiBjbGF1ZGUtb3B1cy00LTUKICBoYWlrdToKICAgIHByb3ZpZGVyOiBhbnRocm9waWMKICAgIG1vZGVsOiBjbGF1ZGUtaGFpa3UtNC01CgphZ2VudHM6CiAgcm9vdDoKICAgIG1vZGVsOiBjbGF1ZGUKICAgIGRlc2NyaXB0aW9uOiBFeHBlcnQgR29sYW5nIERldmVsb3BlciBzcGVjaWFsaXplZCBpbiBpbXBsZW1lbnRpbmcgZmVhdHVyZXMgYW5kIGltcHJvdmluZyBjb2RlIHF1YWxpdHkuCiAgICBpbnN0cnVjdGlvbjogfAogICAgICAqKkdvYWw6KioKICAgICAgSGVscCB3aXRoIEdvIGNvZGUtcmVsYXRlZCB0YXNrcyBieSBleGFtaW5pbmcsIG1vZGlmeWluZywgYW5kIHZhbGlkYXRpbmcgY29kZSBjaGFuZ2VzLgoKICAgICAgPFRBU0s&#43;CiAgICAgICAgICAqKldvcmtmbG93OioqCiAgICAgICAgICAxLiAqKkFuYWx5emUgdGhlIFRhc2sqKjogVW5kZXJzdGFuZCB0aGUgdXNlcidzIHJlcXVpcmVtZW50cyBhbmQgaWRlbnRpZnkgdGhlIHJlbGV2YW50IGNvZGUgYXJlYXMgdG8gZXhhbWluZS4KCiAgICAgICAgICAyLiAqKkNvZGUgRXhhbWluYXRpb24qKjogCiAgICAgICAgICAtIFNlYXJjaCBmb3IgcmVsZXZhbnQgY29kZSBmaWxlcyBhbmQgZnVuY3Rpb25zCiAgICAgICAgICAtIEFuYWx5emUgY29kZSBzdHJ1Y3R1cmUgYW5kIGRlcGVuZGVuY2llcwogICAgICAgICAgLSBJZGVudGlmeSBwb3RlbnRpYWwgYXJlYXMgZm9yIG1vZGlmaWNhdGlvbgoKICAgICAgICAgIDMuICoqQ29kZSBNb2RpZmljYXRpb24qKjoKICAgICAgICAgIC0gTWFrZSBuZWNlc3NhcnkgY29kZSBjaGFuZ2VzCiAgICAgICAgICAtIEVuc3VyZSBjaGFuZ2VzIGZvbGxvdyBiZXN0IHByYWN0aWNlcwogICAgICAgICAgLSBNYWludGFpbiBjb2RlIHN0eWxlIGNvbnNpc3RlbmN5CgogICAgICAgICAgNC4gKipWYWxpZGF0aW9uIExvb3AqKjoKICAgICAgICAgIC0gUnVuIGxpbnRlcnMgYW5kIHRlc3RzIHRvIGNoZWNrIGNvZGUgcXVhbGl0eQogICAgICAgICAgLSBWZXJpZnkgY2hhbmdlcyBtZWV0IHJlcXVpcmVtZW50cwogICAgICAgICAgLSBJZiBpc3N1ZXMgZm91bmQsIHJldHVybiB0byBzdGVwIDMKICAgICAgICAgIC0gQ29udGludWUgdW50aWwgYWxsIHJlcXVpcmVtZW50cyBhcmUgbWV0CgogICAgICAgICAgNS4gKipTdW1tYXJ5Kio6CiAgICAgICAgICAtIFZlcnkgY29uY2lzZWx5IHN1bW1hcml6ZSB0aGUgY2hhbmdlcyBtYWRlIChub3QgaW4gYSBmaWxlKQogICAgICAgICAgLSBGb3IgdHJpdmlhbCB0YXNrcywgYW5zd2VyIHRoZSBxdWVzdGlvbiB3aXRob3V0IGV4dHJhIGluZm9ybWF0aW9uCiAgICAgIDwvVEFTSz4KCiAgICAgICoqRGV0YWlsczoqKgogICAgICAgLSBCZSB0aG9yb3VnaCBpbiBjb2RlIGV4YW1pbmF0aW9uIGJlZm9yZSBtYWtpbmcgY2hhbmdlcwogICAgICAgLSBBbHdheXMgdmFsaWRhdGUgY2hhbmdlcyBiZWZvcmUgY29uc2lkZXJpbmcgdGhlIHRhc2sgY29tcGxldGUKICAgICAgIC0gRm9sbG93IEdvIGJlc3QgcHJhY3RpY2VzCiAgICAgICAtIE1haW50YWluIG9yIGltcHJvdmUgY29kZSBxdWFsaXR5CiAgICAgICAtIEJlIHByb2FjdGl2ZSBpbiBpZGVudGlmeWluZyBwb3RlbnRpYWwgaXNzdWVzCiAgICAgICAtIE9ubHkgYXNrIGZvciBjbGFyaWZpY2F0aW9uIGlmIG5lY2Vzc2FyeSwgdHJ5IHlvdXIgYmVzdCB0byB1c2UgYWxsIHRoZSB0b29scyB0byBnZXQgdGhlIGluZm8geW91IG5lZWQKCiAgICBhZGRfZGF0ZTogdHJ1ZQogICAgYWRkX2Vudmlyb25tZW50X2luZm86IHRydWUKICAgIGFkZF9wcm9tcHRfZmlsZXM6CiAgICAgIC0gQUdFTlRTLm1kCiAgICBzdWJfYWdlbnRzOgogICAgICAtIGxpYnJhcmlhbgogICAgdG9vbHNldHM6CiAgICAgIC0gdHlwZTogZmlsZXN5c3RlbQogICAgICAtIHR5cGU6IHNoZWxsCiAgICAgIC0gdHlwZTogdG9kbwogICAgICAtIHR5cGU6IG1jcAogICAgICAgIGNvbW1hbmQ6IGdvcGxzCiAgICAgICAgYXJnczogWyJtY3AiXQogICAgY29tbWFuZHM6CiAgICAgIGZpeC1saW50OgogICAgICAgIGRlc2NyaXB0aW9uOiAiRml4IHRoZSBsaW50IGlzc3VlcyIKICAgICAgICBpbnN0cnVjdGlvbjogfAogICAgICAgICAgRml4IHRoZSBsaW50IGlzc3VlcyAoaWYgYW55KS4KCiAgICAgICAgICBIZXJlIHRoZSByZXN1bHQgb2YgdGhlIGxpbnRpbmcgY29tbWFuZDoKICAgICAgICAgICQgdGFzayBsaW50CiAgICAgICAgICAke3NoZWxsKHtjbWQ6ICJ0YXNrIGxpbnQifSl9CgogICAgICAgICAgJGdvX2RpYWdub3N0aWNzCiAgICAgICAgICAke2dvX2RpYWdub3N0aWNzKCl9CgogICAgICAgICAgJGdvX3Z1bG5jaGVjawogICAgICAgICAgJHtnb192dWxuY2hlY2soKX0KICAgICAgcmVtb3ZlLWNvbW1lbnRzLXRlc3RzOiAiUmVtb3ZlIHVzZWxlc3MgY29tbWVudHMgaW4gdGVzdCBmaWxlcyAoKl90ZXN0LmdvKSIKICAgICAgY29tbWl0OgogICAgICAgIGRlc2NyaXB0aW9uOiAiQ29tbWl0IGxvY2FsIGNoYW5nZXMiCiAgICAgICAgaW5zdHJ1Y3Rpb246IHwKICAgICAgICAgICAgQmFzZWQgb24gdGhlIGJlbG93IGNoYW5nZXM6IGNyZWF0ZSBhIHNpbmdsZSBjb21taXQgd2l0aCBhbiBhcHByb3ByaWF0ZSBtZXNzYWdlLgogCiAgICAgICAgICAgIC0gQ3VycmVudCBnaXQgc3RhdHVzOiAhc2hlbGwoY21kPSJnaXQgc3RhdHVzIikKICAgICAgICAgICAgLSBDdXJyZW50IGdpdCBkaWZmIChzdGFnZWQgYW5kIHVuc3RhZ2VkIGNoYW5nZXMpOiAhc2hlbGwoY21kPSJnaXQgZGlmZiBIRUFEIikKICAgICAgICAgICAgLSBDdXJyZW50IGJyYW5jaDogIXNoZWxsKGNtZD0iZ2l0IGJyYW5jaCAtLXNob3ctY3VycmVudCIpCiAgICAgIHNpbXBsaWZ5OiAiTG9vayBhdCB0aGUgbG9jYWwgY2hhbmdlcyBhbmQgdHJ5IHRvIHNpbXBsaWZ5IHRoZSBjb2RlIGFuZCBhcmNoaXRlY3R1cmUgYnV0IGRvbid0IHJlbW92ZSBhbnkgZmVhdHVyZS4gSSBqdXN0IHdhbnQgdGhlIGNvZGUgdG8gYmUgZWFzaWVyIHRvIHJlYWQgYW5kIG1haW50YWluLiIKICAgICAgaW5pdDogfAogICAgICAgIENyZWF0ZSBhbiBBR0VOVFMubWQgZmlsZSBmb3IgdGhpcyBwcm9qZWN0IGJ5IGluc3BlY3RpbmcgdGhlIGNvZGViYXNlLiBUaGUgQUdFTlRTLm1kIHNob3VsZCBoZWxwIEFJIGNvZGluZyBhZ2VudHMgdW5kZXJzdGFuZCBob3cgdG8gd29yayB3aXRoIHRoaXMgcHJvamVjdCBlZmZlY3RpdmVseS4KCiAgICAgICAgQW5hbHl6ZSB0aGUgcHJvamVjdCBzdHJ1Y3R1cmUgYW5kIGluY2x1ZGU6CiAgICAgICAgMS4gKipEZXZlbG9wbWVudCBDb21tYW5kcyoqOiBCdWlsZCwgdGVzdCwgbGludCwgYW5kIHJ1biBjb21tYW5kcyAoY2hlY2sgTWFrZWZpbGUsIFRhc2tmaWxlLCBwYWNrYWdlLmpzb24sIENhcmdvLnRvbWwsIGV0Yy4pCiAgICAgICAgMi4gKipBcmNoaXRlY3R1cmUgT3ZlcnZpZXcqKjogS2V5IHBhY2thZ2VzL21vZHVsZXMsIHRoZWlyIHJlc3BvbnNpYmlsaXRpZXMsIGFuZCBob3cgdGhleSBpbnRlcmFjdAogICAgICAgIDMuICoqQ29kZSBTdHlsZSBhbmQgQ29udmVudGlvbnMqKjogUGF0dGVybnMgdXNlZCwgZXJyb3IgaGFuZGxpbmcgYXBwcm9hY2hlcywgbmFtaW5nIGNvbnZlbnRpb25zCiAgICAgICAgNC4gKipUZXN0aW5nIEd1aWRlbGluZXMqKjogSG93IHRvIHJ1biB0ZXN0cywgdGVzdCBwYXR0ZXJucyB1c2VkLCBhbnkgc3BlY2lhbCB0ZXN0aW5nIHNldHVwCiAgICAgICAgNS4gKipDb25maWd1cmF0aW9uKio6IEltcG9ydGFudCBjb25maWcgZmlsZXMgYW5kIGVudmlyb25tZW50IHZhcmlhYmxlcwogICAgICAgIDYuICoqQ29tbW9uIERldmVsb3BtZW50IFBhdHRlcm5zKio6IEZyZXF1ZW50bHkgdXNlZCBwYXR0ZXJucyBzcGVjaWZpYyB0byB0aGlzIGNvZGViYXNlCiAgICAgICAgNy4gKipLZXkgRmlsZXMgUmVmZXJlbmNlKio6IFF1aWNrIHJlZmVyZW5jZSB0YWJsZSBvZiBpbXBvcnRhbnQgZmlsZXMgYW5kIHRoZWlyIHB1cnBvc2VzCgogICAgICAgIEZvY3VzIG9uIGluZm9ybWF0aW9uIHRoYXQgd291bGQgaGVscCBhbiBBSSBhZ2VudCBuYXZpZ2F0ZSBhbmQgbW9kaWZ5IHRoZSBjb2RlYmFzZSBjb3JyZWN0bHkuIEJlIGNvbmNpc2UgYnV0IGNvbXByZWhlbnNpdmUuCiAgICAgIHNlY3VyaXR5LXJldmlldzogfAogICAgICAgIFBlcmZvcm0gYSBzZWN1cml0eSByZXZpZXcgb2YgdGhlIGxvY2FsIGNoYW5nZXMgaW4gdGhpcyBHaXQgcmVwb3NpdG9yeS4KCiAgICAgICAgKipXb3JrZmxvdzoqKgogICAgICAgIDEuICoqSWRlbnRpZnkgQ2hhbmdlcyoqOiBSdW4gYGdpdCBkaWZmYCB0byBzZWUgdW5jb21taXR0ZWQgY2hhbmdlcywgYW5kIGBnaXQgZGlmZiBIRUFEfjFgIG9yIGBnaXQgbG9nIC0tb25lbGluZSAtNWAgdG8gdW5kZXJzdGFuZCByZWNlbnQgY29tbWl0cyBpZiBuZWVkZWQuCgogICAgICAgIDIuICoqU2VjdXJpdHkgQW5hbHlzaXMqKjogUmV2aWV3IHRoZSBjaGFuZ2VzIGZvciBjb21tb24gc2VjdXJpdHkgaXNzdWVzOgogICAgICAgICAgIC0gKipJbnB1dCBWYWxpZGF0aW9uKio6IENoZWNrIGZvciBtaXNzaW5nIG9yIGluYWRlcXVhdGUgaW5wdXQgdmFsaWRhdGlvbgogICAgICAgICAgIC0gKipTUUwgSW5qZWN0aW9uKio6IExvb2sgZm9yIHJhdyBTUUwgcXVlcmllcyBvciBpbXByb3BlciB1c2Ugb2YgcXVlcnkgYnVpbGRlcnMKICAgICAgICAgICAtICoqQ29tbWFuZCBJbmplY3Rpb24qKjogSWRlbnRpZnkgdW5zYWZlIHVzZSBvZiBleGVjLCBzaGVsbCBjb21tYW5kcywgb3Igc3lzdGVtIGNhbGxzCiAgICAgICAgICAgLSAqKlBhdGggVHJhdmVyc2FsKio6IENoZWNrIGZvciB1bnNhZmUgZmlsZSBwYXRoIGhhbmRsaW5nCiAgICAgICAgICAgLSAqKlNlbnNpdGl2ZSBEYXRhIEV4cG9zdXJlKio6IExvb2sgZm9yIGhhcmRjb2RlZCBzZWNyZXRzLCBBUEkga2V5cywgb3IgY3JlZGVudGlhbHMKICAgICAgICAgICAtICoqQXV0aGVudGljYXRpb24vQXV0aG9yaXphdGlvbioqOiBSZXZpZXcgYW55IGF1dGgtcmVsYXRlZCBjaGFuZ2VzCiAgICAgICAgICAgLSAqKkVycm9yIEhhbmRsaW5nKio6IENoZWNrIGZvciBpbmZvcm1hdGlvbiBsZWFrYWdlIGluIGVycm9yIG1lc3NhZ2VzCiAgICAgICAgICAgLSAqKkRlcGVuZGVuY3kgU2VjdXJpdHkqKjogTm90ZSBhbnkgbmV3IGRlcGVuZGVuY2llcyB0aGF0IHNob3VsZCBiZSB2ZXR0ZWQKICAgICAgICAgICAtICoqUmFjZSBDb25kaXRpb25zKio6IElkZW50aWZ5IHBvdGVudGlhbCBjb25jdXJyZW5jeSBpc3N1ZXMgaW4gR28gY29kZQogICAgICAgICAgIC0gKipVbnNhZmUgUG9pbnRlciBVc2FnZSoqOiBDaGVjayBmb3IgdW5zYWZlIHBhY2thZ2UgdXNhZ2UKCiAgICAgICAgMy4gKipHby1TcGVjaWZpYyBDaGVja3MqKjoKICAgICAgICAgICAtIFJ1biBgZ29fdnVsbmNoZWNrYCB0byBjaGVjayBmb3Iga25vd24gdnVsbmVyYWJpbGl0aWVzCiAgICAgICAgICAgLSBSZXZpZXcgdXNlIG9mIGB1bnNhZmVgIHBhY2thZ2UKICAgICAgICAgICAtIENoZWNrIGZvciBwcm9wZXIgY29udGV4dCBjYW5jZWxsYXRpb24gYW5kIHRpbWVvdXQgaGFuZGxpbmcKICAgICAgICAgICAtIFZlcmlmeSBwcm9wZXIgZXJyb3Igd3JhcHBpbmcgYW5kIGhhbmRsaW5nCgogICAgICAgIDQuICoqUmVwb3J0Kio6IFByb3ZpZGUgYSBzdHJ1Y3R1cmVkIHNlY3VyaXR5IHJldmlldyB3aXRoOgogICAgICAgICAgIC0gKipTdW1tYXJ5Kio6IE92ZXJhbGwgc2VjdXJpdHkgcG9zdHVyZSBvZiB0aGUgY2hhbmdlcwogICAgICAgICAgIC0gKipGaW5kaW5ncyoqOiBMaXN0IG9mIGlkZW50aWZpZWQgaXNzdWVzIHdpdGggc2V2ZXJpdHkgKENyaXRpY2FsL0hpZ2gvTWVkaXVtL0xvdy9JbmZvKQogICAgICAgICAgIC0gKipSZWNvbW1lbmRhdGlvbnMqKjogU3BlY2lmaWMgc3VnZ2VzdGlvbnMgdG8gaW1wcm92ZSBzZWN1cml0eQogICAgICAgICAgIC0gKipUaXBzKio6IEdlbmVyYWwgc2VjdXJpdHkgYmVzdCBwcmFjdGljZXMgcmVsZXZhbnQgdG8gdGhlIGNoYW5nZXMKCiAgcGxhbm5lcjoKICAgIG1vZGVsOiBjbGF1ZGUKICAgIGluc3RydWN0aW9uOiB8CiAgICAgIFlvdSBhcmUgYSBwbGFubmluZyBhZ2VudCByZXNwb25zaWJsZSBmb3IgZ2F0aGVyaW5nIHVzZXIgcmVxdWlyZW1lbnRzIGFuZCBjcmVhdGluZyBhIGRldmVsb3BtZW50IHBsYW4uCiAgICAgIEFsd2F5cyBhc2sgY2xhcmlmeWluZyBxdWVzdGlvbnMgdG8gZW5zdXJlIHlvdSBmdWxseSB1bmRlcnN0YW5kIHRoZSB1c2VyJ3MgbmVlZHMgYmVmb3JlIGNyZWF0aW5nIHRoZSBwbGFuLgogICAgICBPbmNlIHlvdSBoYXZlIGEgY2xlYXIgdW5kZXJzdGFuZGluZywgYW5hbHl6ZSB0aGUgZXhpc3RpbmcgY29kZSBhbmQgY3JlYXRlIGEgZGV0YWlsZWQgZGV2ZWxvcG1lbnQgcGxhbiBpbiBhIG1hcmtkb3duIGZpbGUuIERvIG5vdCB3cml0ZSBhbnkgY29kZSB5b3Vyc2VsZi4KICAgICAgT25jZSB0aGUgcGxhbiBpcyBjcmVhdGVkLCB5b3Ugd2lsbCBkZWxlZ2F0ZSB0YXNrcyB0byB0aGUgcm9vdCBhZ2VudC4gTWFrZSBzdXJlIHRvIHByb3ZpZGUgdGhlIGZpbGUgbmFtZSBvZiB0aGUgcGxhbiB3aGVuIGRlbGVnYXRpbmcuIFdyaXRlIHRoZSBwbGFuIGluIHRoZSBjdXJyZW50IGRpcmVjdG9yeS4KICAgIHRvb2xzZXRzOgogICAgICAtIHR5cGU6IGZpbGVzeXN0ZW0KICAgIHN1Yl9hZ2VudHM6CiAgICAgIC0gcm9vdAoKICByZXZpZXdlcjoKICAgIG1vZGVsOiBnb29nbGUvZ2VtaW5pLTMtcHJvLXByZXZpZXcKICAgIGluc3RydWN0aW9uOiB8CiAgICAgIEdpdmUgbWUgZmVlZGJhY2sgYWJvdXQgdGhlIGxvY2FsIGNoYW5nZXMuIERvbid0IGJlIHRvbyBwaWNreSwgdGhpbmsgYWJvdXQgY29kZSBxdWFsaXR5LCBzZWN1cml0eSwgZHVwbGljYXRpb24sIGlkaW9tYXRpYyBHbywKICAgICAgcGVyZm9ybWFuY2UsIG1haW50YWluYWJpbGl0eSwgYW5kIGJlc3QgcHJhY3RpY2VzLgogICAgICBQcm92aWRlIHN1Z2dlc3Rpb25zIGZvciBpbXByb3ZlbWVudHMgYW5kIHBvaW50IG91dCBhbnkgcG90ZW50aWFsIGlzc3Vlcy4KICAgICAgRG9uJ3QgYmUgdG9vIHZlcmJvc2UsIGtlZXAgeW91ciByZXZpZXcgY29uY2lzZSBhbmQgdG8gdGhlIHBvaW50LgogICAgYWRkX3Byb21wdF9maWxlczoKICAgICAgLSBBR0VOVFMubWQKICAgIHN1Yl9hZ2VudHM6CiAgICAgIC0gbGlicmFyaWFuCiAgICB0b29sc2V0czoKICAgICAgLSB0eXBlOiBmaWxlc3lzdGVtCiAgICAgIC0gdHlwZTogc2hlbGwKICAgICAgLSB0eXBlOiBtY3AKICAgICAgICBjb21tYW5kOiBnb3BscwogICAgICAgIGFyZ3M6IFsibWNwIl0KCiAgbGlicmFyaWFuOgogICAgbW9kZWw6IGhhaWt1CiAgICBkZXNjcmlwdGlvbjogRG9jdW1lbnRhdGlvbiBsaWJyYXJpYW4uIENhbiBzZWFyY2ggdGhlIFdlYiBhbmQgbG9vayBmb3IgcmVsZXZhbnQgZG9jdW1lbnRhdGlvbiB0byBoZWxwIHRoZSBnb2xhbmcgZGV2ZWxvcGVyIGFnZW50LgogICAgaW5zdHJ1Y3Rpb246IHwKICAgICAgWW91IGFyZSB0aGUgbGlicmFyaWFuLCB5b3VyIGpvYiBpcyB0byBsb29rIGZvciByZWxldmFudCBkb2N1bWVudGF0aW9uIHRvIGhlbHAgdGhlIGdvbGFuZyBkZXZlbG9wZXIgYWdlbnQuCiAgICAgIFdoZW4gZ2l2ZW4gYSBxdWVyeSwgc2VhcmNoIHRoZSBpbnRlcm5ldCBmb3IgcmVsZXZhbnQgZG9jdW1lbnRhdGlvbiwgYXJ0aWNsZXMsIG9yIHJlc291cmNlcyB0aGF0IGNhbiBhc3Npc3QgaW4gY29tcGxldGluZyB0aGUgdGFzay4KICAgICAgVXNlIGNvbnRleHQ3IGZvciBzZWFyY2hpbmcgZG9jdW1lbnRhdGlvbiBhbmQgYnJhdmUgZm9yIGdlbmVyYWwgd2ViIHNlYXJjaGVzLgogICAgdG9vbHNldHM6CiAgICAgIC0gdHlwZTogbWNwCiAgICAgICAgcmVmOiBkb2NrZXI6Y29udGV4dDcKICAgICAgLSB0eXBlOiBtY3AKICAgICAgICByZWY6IGRvY2tlcjpicmF2ZQogICAgICAtIHR5cGU6IGZldGNoCgpwZXJtaXNzaW9uczoKICBhbGxvdzoKICAgIC0gZ29fZGlhZ25vc3RpY3MKICAgIC0gZ29fZmlsZV9jb250ZXh0CiAgICAtIGdvX3BhY2thZ2VfYXBpCiAgICAtIGdvX3N5bWJvbF9yZWZlcmVuY2VzCiAgICAtIGdvX3Z1bG5jaGVjawogICAgLSBnb193b3Jrc3BhY2UKICAgIC0gc2hlbGw6Y21kPWdoIC0tdmVyc2lvbgogICAgLSBzaGVsbDpjbWQ9Z2ggcHIgdmlldyAqCiAgICAtIHNoZWxsOmNtZD1naCBwciBkaWZmICoKICAgIC0gc2hlbGw6Y21kPWdpdCByZW1vdGUgLXYKICAgIC0gc2hlbGw6Y21kPWxzICoKICAgIC0gc2hlbGw6Y21kPWNhdCAqCiAgICAtIHNoZWxsOmNtZD1oZWFkICoKICAgIC0gc2hlbGw6Y21kPXRhaWwgKgogICAgLSBzaGVsbDpjbWQ9d2MgKgogICAgLSBzaGVsbDpjbWQ9ZmluZCAqCiAgICAtIHNoZWxsOmNtZD1ncmVwICoKICAgIC0gc2hlbGw6Y21kPXB3ZAogICAgLSBzaGVsbDpjbWQ9ZWNobyAqCiAgICAtIHNoZWxsOmNtZD13aGljaCAqCiAgICAtIHNoZWxsOmNtZD10eXBlICoKICAgIC0gc2hlbGw6Y21kPWZpbGUgKgogICAgLSBzaGVsbDpjbWQ9c3RhdCAqCiAgICAtIHNoZWxsOmNtZD1naXQgc3RhdHVzKgogICAgLSBzaGVsbDpjbWQ9Z2l0IGxvZyoKICAgIC0gc2hlbGw6Y21kPWdpdCBkaWZmKgogICAgLSBzaGVsbDpjbWQ9Z2l0IHNob3cqCiAgICAtIHNoZWxsOmNtZD1naXQgYnJhbmNoKgogICAgLSBzaGVsbDpjbWQ9Z2l0IHJlbW90ZSAtdioKICAgIC0gc2hlbGw6Y21kPWdpdCBjb21taXQgKgogICAgLSBzaGVsbDpjbWQ9Z28gdGVzdCoKICAgIC0gc2hlbGw6Y21kPWdvIGJ1aWxkKg==', copying: false }"
+        x-data="{ code: 'IyEvdXNyL2Jpbi9lbnYgY2FnZW50IHJ1bgoKbW9kZWxzOgogIGNsYXVkZToKICAgIHByb3ZpZGVyOiBhbnRocm9waWMKICAgIG1vZGVsOiBjbGF1ZGUtb3B1cy00LTUKICBoYWlrdToKICAgIHByb3ZpZGVyOiBhbnRocm9waWMKICAgIG1vZGVsOiBjbGF1ZGUtaGFpa3UtNC01CgphZ2VudHM6CiAgcm9vdDoKICAgIG1vZGVsOiBjbGF1ZGUKICAgIGRlc2NyaXB0aW9uOiBFeHBlcnQgR29sYW5nIERldmVsb3BlciBzcGVjaWFsaXplZCBpbiBpbXBsZW1lbnRpbmcgZmVhdHVyZXMgYW5kIGltcHJvdmluZyBjb2RlIHF1YWxpdHkuCiAgICBpbnN0cnVjdGlvbjogfAogICAgICAqKkdvYWw6KioKICAgICAgSGVscCB3aXRoIEdvIGNvZGUtcmVsYXRlZCB0YXNrcyBieSBleGFtaW5pbmcsIG1vZGlmeWluZywgYW5kIHZhbGlkYXRpbmcgY29kZSBjaGFuZ2VzLgoKICAgICAgPFRBU0s&#43;CiAgICAgICAgICAqKldvcmtmbG93OioqCiAgICAgICAgICAxLiAqKkFuYWx5emUgdGhlIFRhc2sqKjogVW5kZXJzdGFuZCB0aGUgdXNlcidzIHJlcXVpcmVtZW50cyBhbmQgaWRlbnRpZnkgdGhlIHJlbGV2YW50IGNvZGUgYXJlYXMgdG8gZXhhbWluZS4KCiAgICAgICAgICAyLiAqKkNvZGUgRXhhbWluYXRpb24qKjogCiAgICAgICAgICAtIFNlYXJjaCBmb3IgcmVsZXZhbnQgY29kZSBmaWxlcyBhbmQgZnVuY3Rpb25zCiAgICAgICAgICAtIEFuYWx5emUgY29kZSBzdHJ1Y3R1cmUgYW5kIGRlcGVuZGVuY2llcwogICAgICAgICAgLSBJZGVudGlmeSBwb3RlbnRpYWwgYXJlYXMgZm9yIG1vZGlmaWNhdGlvbgoKICAgICAgICAgIDMuICoqQ29kZSBNb2RpZmljYXRpb24qKjoKICAgICAgICAgIC0gTWFrZSBuZWNlc3NhcnkgY29kZSBjaGFuZ2VzCiAgICAgICAgICAtIEVuc3VyZSBjaGFuZ2VzIGZvbGxvdyBiZXN0IHByYWN0aWNlcwogICAgICAgICAgLSBNYWludGFpbiBjb2RlIHN0eWxlIGNvbnNpc3RlbmN5CgogICAgICAgICAgNC4gKipWYWxpZGF0aW9uIExvb3AqKjoKICAgICAgICAgIC0gUnVuIGxpbnRlcnMgYW5kIHRlc3RzIHRvIGNoZWNrIGNvZGUgcXVhbGl0eQogICAgICAgICAgLSBWZXJpZnkgY2hhbmdlcyBtZWV0IHJlcXVpcmVtZW50cwogICAgICAgICAgLSBJZiBpc3N1ZXMgZm91bmQsIHJldHVybiB0byBzdGVwIDMKICAgICAgICAgIC0gQ29udGludWUgdW50aWwgYWxsIHJlcXVpcmVtZW50cyBhcmUgbWV0CgogICAgICAgICAgNS4gKipTdW1tYXJ5Kio6CiAgICAgICAgICAtIFZlcnkgY29uY2lzZWx5IHN1bW1hcml6ZSB0aGUgY2hhbmdlcyBtYWRlIChub3QgaW4gYSBmaWxlKQogICAgICAgICAgLSBGb3IgdHJpdmlhbCB0YXNrcywgYW5zd2VyIHRoZSBxdWVzdGlvbiB3aXRob3V0IGV4dHJhIGluZm9ybWF0aW9uCiAgICAgIDwvVEFTSz4KCiAgICAgICoqRGV0YWlsczoqKgogICAgICAgLSBCZSB0aG9yb3VnaCBpbiBjb2RlIGV4YW1pbmF0aW9uIGJlZm9yZSBtYWtpbmcgY2hhbmdlcwogICAgICAgLSBBbHdheXMgdmFsaWRhdGUgY2hhbmdlcyBiZWZvcmUgY29uc2lkZXJpbmcgdGhlIHRhc2sgY29tcGxldGUKICAgICAgIC0gRm9sbG93IEdvIGJlc3QgcHJhY3RpY2VzCiAgICAgICAtIE1haW50YWluIG9yIGltcHJvdmUgY29kZSBxdWFsaXR5CiAgICAgICAtIEJlIHByb2FjdGl2ZSBpbiBpZGVudGlmeWluZyBwb3RlbnRpYWwgaXNzdWVzCiAgICAgICAtIE9ubHkgYXNrIGZvciBjbGFyaWZpY2F0aW9uIGlmIG5lY2Vzc2FyeSwgdHJ5IHlvdXIgYmVzdCB0byB1c2UgYWxsIHRoZSB0b29scyB0byBnZXQgdGhlIGluZm8geW91IG5lZWQKCiAgICAgICAqKlRvb2xzOioqCiAgICAgICAgLSBXaGVuIG5lZWRlZCBhbmQgcG9zc2libGUsIGNhbGwgbXVsdGlwbGUgdG9vbHMgY29uY3VycmVudGx5LiBJdCdzIGZhc3RlciBhbmQgY2hlYXBlci4KCiAgICBhZGRfZGF0ZTogdHJ1ZQogICAgYWRkX2Vudmlyb25tZW50X2luZm86IHRydWUKICAgIGFkZF9wcm9tcHRfZmlsZXM6CiAgICAgIC0gQUdFTlRTLm1kCiAgICBzdWJfYWdlbnRzOgogICAgICAtIGxpYnJhcmlhbgogICAgdG9vbHNldHM6CiAgICAgIC0gdHlwZTogZmlsZXN5c3RlbQogICAgICAtIHR5cGU6IHNoZWxsCiAgICAgIC0gdHlwZTogdG9kbwogICAgICAtIHR5cGU6IG1jcAogICAgICAgIGNvbW1hbmQ6IGdvcGxzCiAgICAgICAgYXJnczogWyJtY3AiXQogICAgY29tbWFuZHM6CiAgICAgIGZpeC1saW50OgogICAgICAgIGRlc2NyaXB0aW9uOiAiRml4IHRoZSBsaW50IGlzc3VlcyIKICAgICAgICBpbnN0cnVjdGlvbjogfAogICAgICAgICAgRml4IHRoZSBsaW50IGlzc3VlcyAoaWYgYW55KS4KCiAgICAgICAgICBIZXJlIHRoZSByZXN1bHQgb2YgdGhlIGxpbnRpbmcgY29tbWFuZDoKICAgICAgICAgICQgdGFzayBsaW50CiAgICAgICAgICAke3NoZWxsKHtjbWQ6ICJ0YXNrIGxpbnQifSl9CgogICAgICAgICAgJGdvX2RpYWdub3N0aWNzCiAgICAgICAgICAke2dvX2RpYWdub3N0aWNzKCl9CgogICAgICAgICAgJGdvX3Z1bG5jaGVjawogICAgICAgICAgJHtnb192dWxuY2hlY2soKX0KICAgICAgcmVtb3ZlLWNvbW1lbnRzLXRlc3RzOiAiUmVtb3ZlIHVzZWxlc3MgY29tbWVudHMgaW4gdGVzdCBmaWxlcyAoKl90ZXN0LmdvKSIKICAgICAgY29tbWl0OgogICAgICAgIGRlc2NyaXB0aW9uOiAiQ29tbWl0IGxvY2FsIGNoYW5nZXMiCiAgICAgICAgaW5zdHJ1Y3Rpb246IHwKICAgICAgICAgICAgQmFzZWQgb24gdGhlIGJlbG93IGNoYW5nZXM6IGNyZWF0ZSBhIHNpbmdsZSBjb21taXQgd2l0aCBhbiBhcHByb3ByaWF0ZSBtZXNzYWdlLgoKICAgICAgICAgICAgLSBDdXJyZW50IGdpdCBzdGF0dXM6ICFzaGVsbChjbWQ9ImdpdCBzdGF0dXMiKQogICAgICAgICAgICAtIEN1cnJlbnQgZ2l0IGRpZmYgKHN0YWdlZCBhbmQgdW5zdGFnZWQgY2hhbmdlcyk6ICFzaGVsbChjbWQ9ImdpdCBkaWZmIEhFQUQiKQogICAgICAgICAgICAtIEN1cnJlbnQgYnJhbmNoOiAhc2hlbGwoY21kPSJnaXQgYnJhbmNoIC0tc2hvdy1jdXJyZW50IikKICAgICAgc2ltcGxpZnk6ICJMb29rIGF0IHRoZSBsb2NhbCBjaGFuZ2VzIGFuZCB0cnkgdG8gc2ltcGxpZnkgdGhlIGNvZGUgYW5kIGFyY2hpdGVjdHVyZSBidXQgZG9uJ3QgcmVtb3ZlIGFueSBmZWF0dXJlLiBJIGp1c3Qgd2FudCB0aGUgY29kZSB0byBiZSBlYXNpZXIgdG8gcmVhZCBhbmQgbWFpbnRhaW4uIgogICAgICBpbml0OiB8CiAgICAgICAgQ3JlYXRlIGFuIEFHRU5UUy5tZCBmaWxlIGZvciB0aGlzIHByb2plY3QgYnkgaW5zcGVjdGluZyB0aGUgY29kZWJhc2UuIFRoZSBBR0VOVFMubWQgc2hvdWxkIGhlbHAgQUkgY29kaW5nIGFnZW50cyB1bmRlcnN0YW5kIGhvdyB0byB3b3JrIHdpdGggdGhpcyBwcm9qZWN0IGVmZmVjdGl2ZWx5LgoKICAgICAgICBBbmFseXplIHRoZSBwcm9qZWN0IHN0cnVjdHVyZSBhbmQgaW5jbHVkZToKICAgICAgICAxLiAqKkRldmVsb3BtZW50IENvbW1hbmRzKio6IEJ1aWxkLCB0ZXN0LCBsaW50LCBhbmQgcnVuIGNvbW1hbmRzIChjaGVjayBNYWtlZmlsZSwgVGFza2ZpbGUsIHBhY2thZ2UuanNvbiwgQ2FyZ28udG9tbCwgZXRjLikKICAgICAgICAyLiAqKkFyY2hpdGVjdHVyZSBPdmVydmlldyoqOiBLZXkgcGFja2FnZXMvbW9kdWxlcywgdGhlaXIgcmVzcG9uc2liaWxpdGllcywgYW5kIGhvdyB0aGV5IGludGVyYWN0CiAgICAgICAgMy4gKipDb2RlIFN0eWxlIGFuZCBDb252ZW50aW9ucyoqOiBQYXR0ZXJucyB1c2VkLCBlcnJvciBoYW5kbGluZyBhcHByb2FjaGVzLCBuYW1pbmcgY29udmVudGlvbnMKICAgICAgICA0LiAqKlRlc3RpbmcgR3VpZGVsaW5lcyoqOiBIb3cgdG8gcnVuIHRlc3RzLCB0ZXN0IHBhdHRlcm5zIHVzZWQsIGFueSBzcGVjaWFsIHRlc3Rpbmcgc2V0dXAKICAgICAgICA1LiAqKkNvbmZpZ3VyYXRpb24qKjogSW1wb3J0YW50IGNvbmZpZyBmaWxlcyBhbmQgZW52aXJvbm1lbnQgdmFyaWFibGVzCiAgICAgICAgNi4gKipDb21tb24gRGV2ZWxvcG1lbnQgUGF0dGVybnMqKjogRnJlcXVlbnRseSB1c2VkIHBhdHRlcm5zIHNwZWNpZmljIHRvIHRoaXMgY29kZWJhc2UKICAgICAgICA3LiAqKktleSBGaWxlcyBSZWZlcmVuY2UqKjogUXVpY2sgcmVmZXJlbmNlIHRhYmxlIG9mIGltcG9ydGFudCBmaWxlcyBhbmQgdGhlaXIgcHVycG9zZXMKCiAgICAgICAgRm9jdXMgb24gaW5mb3JtYXRpb24gdGhhdCB3b3VsZCBoZWxwIGFuIEFJIGFnZW50IG5hdmlnYXRlIGFuZCBtb2RpZnkgdGhlIGNvZGViYXNlIGNvcnJlY3RseS4gQmUgY29uY2lzZSBidXQgY29tcHJlaGVuc2l2ZS4KICAgICAgc2VjdXJpdHktcmV2aWV3OiB8CiAgICAgICAgUGVyZm9ybSBhIHNlY3VyaXR5IHJldmlldyBvZiB0aGUgbG9jYWwgY2hhbmdlcyBpbiB0aGlzIEdpdCByZXBvc2l0b3J5LgoKICAgICAgICAqKldvcmtmbG93OioqCiAgICAgICAgMS4gKipJZGVudGlmeSBDaGFuZ2VzKio6IFJ1biBgZ2l0IGRpZmZgIHRvIHNlZSB1bmNvbW1pdHRlZCBjaGFuZ2VzLCBhbmQgYGdpdCBkaWZmIEhFQUR&#43;MWAgb3IgYGdpdCBsb2cgLS1vbmVsaW5lIC01YCB0byB1bmRlcnN0YW5kIHJlY2VudCBjb21taXRzIGlmIG5lZWRlZC4KCiAgICAgICAgMi4gKipTZWN1cml0eSBBbmFseXNpcyoqOiBSZXZpZXcgdGhlIGNoYW5nZXMgZm9yIGNvbW1vbiBzZWN1cml0eSBpc3N1ZXM6CiAgICAgICAgICAgLSAqKklucHV0IFZhbGlkYXRpb24qKjogQ2hlY2sgZm9yIG1pc3Npbmcgb3IgaW5hZGVxdWF0ZSBpbnB1dCB2YWxpZGF0aW9uCiAgICAgICAgICAgLSAqKlNRTCBJbmplY3Rpb24qKjogTG9vayBmb3IgcmF3IFNRTCBxdWVyaWVzIG9yIGltcHJvcGVyIHVzZSBvZiBxdWVyeSBidWlsZGVycwogICAgICAgICAgIC0gKipDb21tYW5kIEluamVjdGlvbioqOiBJZGVudGlmeSB1bnNhZmUgdXNlIG9mIGV4ZWMsIHNoZWxsIGNvbW1hbmRzLCBvciBzeXN0ZW0gY2FsbHMKICAgICAgICAgICAtICoqUGF0aCBUcmF2ZXJzYWwqKjogQ2hlY2sgZm9yIHVuc2FmZSBmaWxlIHBhdGggaGFuZGxpbmcKICAgICAgICAgICAtICoqU2Vuc2l0aXZlIERhdGEgRXhwb3N1cmUqKjogTG9vayBmb3IgaGFyZGNvZGVkIHNlY3JldHMsIEFQSSBrZXlzLCBvciBjcmVkZW50aWFscwogICAgICAgICAgIC0gKipBdXRoZW50aWNhdGlvbi9BdXRob3JpemF0aW9uKio6IFJldmlldyBhbnkgYXV0aC1yZWxhdGVkIGNoYW5nZXMKICAgICAgICAgICAtICoqRXJyb3IgSGFuZGxpbmcqKjogQ2hlY2sgZm9yIGluZm9ybWF0aW9uIGxlYWthZ2UgaW4gZXJyb3IgbWVzc2FnZXMKICAgICAgICAgICAtICoqRGVwZW5kZW5jeSBTZWN1cml0eSoqOiBOb3RlIGFueSBuZXcgZGVwZW5kZW5jaWVzIHRoYXQgc2hvdWxkIGJlIHZldHRlZAogICAgICAgICAgIC0gKipSYWNlIENvbmRpdGlvbnMqKjogSWRlbnRpZnkgcG90ZW50aWFsIGNvbmN1cnJlbmN5IGlzc3VlcyBpbiBHbyBjb2RlCiAgICAgICAgICAgLSAqKlVuc2FmZSBQb2ludGVyIFVzYWdlKio6IENoZWNrIGZvciB1bnNhZmUgcGFja2FnZSB1c2FnZQoKICAgICAgICAzLiAqKkdvLVNwZWNpZmljIENoZWNrcyoqOgogICAgICAgICAgIC0gUnVuIGBnb192dWxuY2hlY2tgIHRvIGNoZWNrIGZvciBrbm93biB2dWxuZXJhYmlsaXRpZXMKICAgICAgICAgICAtIFJldmlldyB1c2Ugb2YgYHVuc2FmZWAgcGFja2FnZQogICAgICAgICAgIC0gQ2hlY2sgZm9yIHByb3BlciBjb250ZXh0IGNhbmNlbGxhdGlvbiBhbmQgdGltZW91dCBoYW5kbGluZwogICAgICAgICAgIC0gVmVyaWZ5IHByb3BlciBlcnJvciB3cmFwcGluZyBhbmQgaGFuZGxpbmcKCiAgICAgICAgNC4gKipSZXBvcnQqKjogUHJvdmlkZSBhIHN0cnVjdHVyZWQgc2VjdXJpdHkgcmV2aWV3IHdpdGg6CiAgICAgICAgICAgLSAqKlN1bW1hcnkqKjogT3ZlcmFsbCBzZWN1cml0eSBwb3N0dXJlIG9mIHRoZSBjaGFuZ2VzCiAgICAgICAgICAgLSAqKkZpbmRpbmdzKio6IExpc3Qgb2YgaWRlbnRpZmllZCBpc3N1ZXMgd2l0aCBzZXZlcml0eSAoQ3JpdGljYWwvSGlnaC9NZWRpdW0vTG93L0luZm8pCiAgICAgICAgICAgLSAqKlJlY29tbWVuZGF0aW9ucyoqOiBTcGVjaWZpYyBzdWdnZXN0aW9ucyB0byBpbXByb3ZlIHNlY3VyaXR5CiAgICAgICAgICAgLSAqKlRpcHMqKjogR2VuZXJhbCBzZWN1cml0eSBiZXN0IHByYWN0aWNlcyByZWxldmFudCB0byB0aGUgY2hhbmdlcwoKICBwbGFubmVyOgogICAgbW9kZWw6IGNsYXVkZQogICAgaW5zdHJ1Y3Rpb246IHwKICAgICAgWW91IGFyZSBhIHBsYW5uaW5nIGFnZW50IHJlc3BvbnNpYmxlIGZvciBnYXRoZXJpbmcgdXNlciByZXF1aXJlbWVudHMgYW5kIGNyZWF0aW5nIGEgZGV2ZWxvcG1lbnQgcGxhbi4KICAgICAgQWx3YXlzIGFzayBjbGFyaWZ5aW5nIHF1ZXN0aW9ucyB0byBlbnN1cmUgeW91IGZ1bGx5IHVuZGVyc3RhbmQgdGhlIHVzZXIncyBuZWVkcyBiZWZvcmUgY3JlYXRpbmcgdGhlIHBsYW4uCiAgICAgIE9uY2UgeW91IGhhdmUgYSBjbGVhciB1bmRlcnN0YW5kaW5nLCBhbmFseXplIHRoZSBleGlzdGluZyBjb2RlIGFuZCBjcmVhdGUgYSBkZXRhaWxlZCBkZXZlbG9wbWVudCBwbGFuIGluIGEgbWFya2Rvd24gZmlsZS4gRG8gbm90IHdyaXRlIGFueSBjb2RlIHlvdXJzZWxmLgogICAgICBPbmNlIHRoZSBwbGFuIGlzIGNyZWF0ZWQsIHlvdSB3aWxsIGRlbGVnYXRlIHRhc2tzIHRvIHRoZSByb290IGFnZW50LiBNYWtlIHN1cmUgdG8gcHJvdmlkZSB0aGUgZmlsZSBuYW1lIG9mIHRoZSBwbGFuIHdoZW4gZGVsZWdhdGluZy4gV3JpdGUgdGhlIHBsYW4gaW4gdGhlIGN1cnJlbnQgZGlyZWN0b3J5LgogICAgdG9vbHNldHM6CiAgICAgIC0gdHlwZTogZmlsZXN5c3RlbQogICAgc3ViX2FnZW50czoKICAgICAgLSByb290CgogIHJldmlld2VyOgogICAgbW9kZWw6IGdvb2dsZS9nZW1pbmktMy1wcm8tcHJldmlldwogICAgaW5zdHJ1Y3Rpb246IHwKICAgICAgR2l2ZSBtZSBmZWVkYmFjayBhYm91dCB0aGUgbG9jYWwgY2hhbmdlcy4gRG9uJ3QgYmUgdG9vIHBpY2t5LCB0aGluayBhYm91dCBjb2RlIHF1YWxpdHksIHNlY3VyaXR5LCBkdXBsaWNhdGlvbiwgaWRpb21hdGljIEdvLAogICAgICBwZXJmb3JtYW5jZSwgbWFpbnRhaW5hYmlsaXR5LCBhbmQgYmVzdCBwcmFjdGljZXMuCiAgICAgIFByb3ZpZGUgc3VnZ2VzdGlvbnMgZm9yIGltcHJvdmVtZW50cyBhbmQgcG9pbnQgb3V0IGFueSBwb3RlbnRpYWwgaXNzdWVzLgogICAgICBEb24ndCBiZSB0b28gdmVyYm9zZSwga2VlcCB5b3VyIHJldmlldyBjb25jaXNlIGFuZCB0byB0aGUgcG9pbnQuCiAgICBhZGRfcHJvbXB0X2ZpbGVzOgogICAgICAtIEFHRU5UUy5tZAogICAgc3ViX2FnZW50czoKICAgICAgLSBsaWJyYXJpYW4KICAgIHRvb2xzZXRzOgogICAgICAtIHR5cGU6IGZpbGVzeXN0ZW0KICAgICAgLSB0eXBlOiBzaGVsbAogICAgICAtIHR5cGU6IG1jcAogICAgICAgIGNvbW1hbmQ6IGdvcGxzCiAgICAgICAgYXJnczogWyJtY3AiXQoKICBsaWJyYXJpYW46CiAgICBtb2RlbDogaGFpa3UKICAgIGRlc2NyaXB0aW9uOiBEb2N1bWVudGF0aW9uIGxpYnJhcmlhbi4gQ2FuIHNlYXJjaCB0aGUgV2ViIGFuZCBsb29rIGZvciByZWxldmFudCBkb2N1bWVudGF0aW9uIHRvIGhlbHAgdGhlIGdvbGFuZyBkZXZlbG9wZXIgYWdlbnQuCiAgICBpbnN0cnVjdGlvbjogfAogICAgICBZb3UgYXJlIHRoZSBsaWJyYXJpYW4sIHlvdXIgam9iIGlzIHRvIGxvb2sgZm9yIHJlbGV2YW50IGRvY3VtZW50YXRpb24gdG8gaGVscCB0aGUgZ29sYW5nIGRldmVsb3BlciBhZ2VudC4KICAgICAgV2hlbiBnaXZlbiBhIHF1ZXJ5LCBzZWFyY2ggdGhlIGludGVybmV0IGZvciByZWxldmFudCBkb2N1bWVudGF0aW9uLCBhcnRpY2xlcywgb3IgcmVzb3VyY2VzIHRoYXQgY2FuIGFzc2lzdCBpbiBjb21wbGV0aW5nIHRoZSB0YXNrLgogICAgICBVc2UgY29udGV4dDcgZm9yIHNlYXJjaGluZyBkb2N1bWVudGF0aW9uIGFuZCBicmF2ZSBmb3IgZ2VuZXJhbCB3ZWIgc2VhcmNoZXMuCiAgICB0b29sc2V0czoKICAgICAgLSB0eXBlOiBtY3AKICAgICAgICByZWY6IGRvY2tlcjpjb250ZXh0NwogICAgICAtIHR5cGU6IG1jcAogICAgICAgIHJlZjogZG9ja2VyOmJyYXZlCiAgICAgIC0gdHlwZTogZmV0Y2gKCnBlcm1pc3Npb25zOgogIGFsbG93OgogICAgLSBnb19kaWFnbm9zdGljcwogICAgLSBnb19maWxlX2NvbnRleHQKICAgIC0gZ29fcGFja2FnZV9hcGkKICAgIC0gZ29fc3ltYm9sX3JlZmVyZW5jZXMKICAgIC0gZ29fdnVsbmNoZWNrCiAgICAtIGdvX3dvcmtzcGFjZQogICAgLSBzaGVsbDpjbWQ9Z2ggLS12ZXJzaW9uCiAgICAtIHNoZWxsOmNtZD1naCBwciB2aWV3ICoKICAgIC0gc2hlbGw6Y21kPWdoIHByIGRpZmYgKgogICAgLSBzaGVsbDpjbWQ9Z2l0IHJlbW90ZSAtdgogICAgLSBzaGVsbDpjbWQ9bHMgKgogICAgLSBzaGVsbDpjbWQ9Y2F0ICoKICAgIC0gc2hlbGw6Y21kPWhlYWQgKgogICAgLSBzaGVsbDpjbWQ9dGFpbCAqCiAgICAtIHNoZWxsOmNtZD13YyAqCiAgICAtIHNoZWxsOmNtZD1maW5kICoKICAgIC0gc2hlbGw6Y21kPWdyZXAgKgogICAgLSBzaGVsbDpjbWQ9cHdkCiAgICAtIHNoZWxsOmNtZD1lY2hvICoKICAgIC0gc2hlbGw6Y21kPXdoaWNoICoKICAgIC0gc2hlbGw6Y21kPXR5cGUgKgogICAgLSBzaGVsbDpjbWQ9ZmlsZSAqCiAgICAtIHNoZWxsOmNtZD1zdGF0ICoKICAgIC0gc2hlbGw6Y21kPWdpdCBzdGF0dXMqCiAgICAtIHNoZWxsOmNtZD1naXQgbG9nKgogICAgLSBzaGVsbDpjbWQ9Z2l0IGRpZmYqCiAgICAtIHNoZWxsOmNtZD1naXQgc2hvdyoKICAgIC0gc2hlbGw6Y21kPWdpdCBicmFuY2gqCiAgICAtIHNoZWxsOmNtZD1naXQgcmVtb3RlIC12KgogICAgLSBzaGVsbDpjbWQ9Z2l0IGNvbW1pdCAqCiAgICAtIHNoZWxsOmNtZD1nbyB0ZXN0KgogICAgLSBzaGVsbDpjbWQ9Z28gYnVpbGQq', copying: false }"
         class="
           top-1
          absolute right-2 z-10 text-gray-300 dark:text-gray-500"
@@ -12702,7 +12787,10 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="sd">       - Follow Go best practices
 </span></span></span><span class="line"><span class="cl"><span class="sd">       - Maintain or improve code quality
 </span></span></span><span class="line"><span class="cl"><span class="sd">       - Be proactive in identifying potential issues
-</span></span></span><span class="line"><span class="cl"><span class="sd">       - Only ask for clarification if necessary, try your best to use all the tools to get the info you need</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="sd">       - Only ask for clarification if necessary, try your best to use all the tools to get the info you need
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">       **Tools:**
+</span></span></span><span class="line"><span class="cl"><span class="sd">        - When needed and possible, call multiple tools concurrently. It&#39;s faster and cheaper.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">add_date</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">add_environment_info</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -12736,11 +12824,11 @@ if (resultsLength > 5) {
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">commit</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Commit local changes&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span></span></span><span class="line"><span class="cl"><span class="sd">            Based on the below changes: create a single commit with an appropriate message.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">Current git status</span><span class="p">:</span><span class="w"> </span>!<span class="l">shell(cmd=&#34;git status&#34;)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">Current git diff (staged and unstaged changes)</span><span class="p">:</span><span class="w"> </span>!<span class="l">shell(cmd=&#34;git diff HEAD&#34;)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">Current branch</span><span class="p">:</span><span class="w"> </span>!<span class="l">shell(cmd=&#34;git branch --show-current&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            Based on the below changes: create a single commit with an appropriate message.
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            - Current git status: !shell(cmd=&#34;git status&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">            - Current git diff (staged and unstaged changes): !shell(cmd=&#34;git diff HEAD&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">            - Current branch: !shell(cmd=&#34;git branch --show-current&#34;)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">simplify</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Look at the local changes and try to simplify the code and architecture but don&#39;t remove any feature. I just want the code to be easier to read and maintain.&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">init</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Create an AGENTS.md file for this project by inspecting the codebase. The AGENTS.md should help AI coding agents understand how to work with this project effectively.
@@ -13098,9 +13186,11 @@ if (resultsLength > 5) {
     </main>
 
     <footer class="relative z-10 w-full">
-      <div class="footer">
-  <div class="social">
-    <a href="https://www.linkedin.com/company/docker">
+      <div
+  class="ml-auto hidden grid-cols-3 gap-6 border-t border-gray-200 bg-gray-100 px-4 pt-6 pb-2 text-gray-600 md:grid dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 [&_a:hover]:underline [&_a:hover]:underline-offset-4"
+>
+  <div class="flex min-w-20 flex-wrap items-center gap-1">
+    <a href="https://www.linkedin.com/company/docker" aria-label="LinkedIn">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13115,7 +13205,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://x.com/docker/">
+    <a href="https://x.com/docker/" aria-label="Twitter">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13130,7 +13220,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.facebook.com/docker.run">
+    <a href="https://www.facebook.com/docker.run" aria-label="Facebook">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13145,7 +13235,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="http://www.youtube.com/user/dockerrun">
+    <a href="http://www.youtube.com/user/dockerrun" aria-label="YouTube">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13160,7 +13250,7 @@ if (resultsLength > 5) {
 
       </span>
     </a>
-    <a href="https://www.instagram.com/dockerinc/">
+    <a href="https://www.instagram.com/dockerinc/" aria-label="Instagram">
       <span class="icon-svg">
         
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13176,26 +13266,71 @@ if (resultsLength > 5) {
       </span>
     </a>
   </div>
-  <div class="links">
-    <a href="https://www.docker.com/">Product offerings</a>
-    <a href="https://www.docker.com/pricing/">Pricing</a>
-    <a href="https://www.docker.com/company/">About us</a>
-    <a href="/contribute/">贡献指南</a>
-    <a href="/llms.txt">Read llms.txt</a>
+  <div class="flex items-center justify-center gap-3">
+    <a
+      href="https://www.docker.com/"
+      class="inline-flex truncate whitespace-normal"
+      >Product offerings</a
+    >
+    <a
+      href="https://www.docker.com/pricing/"
+      class="inline-flex truncate whitespace-normal"
+      >Pricing</a
+    >
+    <a
+      href="https://www.docker.com/company/"
+      class="inline-flex truncate whitespace-normal"
+      >About us</a
+    >
+      <a href="/contribute/" class="inline-flex truncate whitespace-normal"
+        >贡献指南</a
+      >
+    <a
+      href="/llms.txt"
+      class="inline-flex truncate whitespace-normal"
+      >llms.txt</a
+    >
   </div>
-  <div class="secondaryLinks">
-    <button type="button" id="ot-sdk-btn" class="ot-sdk-show-settings">
+  <div class="flex items-center justify-end">
+    <button
+      type="button"
+      id="ot-sdk-btn"
+      class="ot-sdk-show-settings whitespace-normal md:truncate"
+    >
       Cookies Settings
     </button>
-    <a title="Docker Terms of Service" href="https://www.docker.com/legal/docker-terms-service">Terms of Service</a>
-    <a title="Docker Systems Status Page" href="https://www.dockerstatus.com/">Status</a>
-    <a title="Docker Legal Terms" href="https://www.docker.com/legal">Legal</a>
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Terms of Service"
+      href="https://www.docker.com/legal/docker-terms-service"
+      class="whitespace-normal md:truncate"
+      >Terms of Service</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Systems Status Page"
+      href="https://www.dockerstatus.com/"
+      class="whitespace-normal md:truncate"
+      >Status</a
+    >
+    <span class="mx-1 text-gray-400">|</span>
+    <a
+      title="Docker Legal Terms"
+      href="https://www.docker.com/legal"
+      class="whitespace-normal md:truncate"
+      >Legal</a
+    >
   </div>
 </div>
 <div
-  class="text-sm text-gray-400 dark:text-gray-600 border-t dark:border-gray-700  border-gray-200 md:border-none px-4 py-4 bg-gray-100 dark:bg-gray-900 ">
-  <span>Copyright © 2013-2026 Docker Inc. All rights reserved.</span>
+  class="border-t border-gray-200 bg-gray-100 px-4 py-4 text-sm text-gray-400 md:border-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-600"
+>
+  <span
+    >Copyright © 2013-2026 Docker Inc. All rights
+    reserved.</span
+  >
 </div>
+
     </footer>
 
     

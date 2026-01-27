@@ -1,27 +1,4 @@
----
-title: 自动化仓库测试
-url: /docker-hub/repos/manage/builds/automated-testing/
-parent:
-  title: 自动构建
-  url: /docker-hub/repos/manage/builds/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Hub
-    url: /docker-hub/
-  - title: 仓库
-    url: /docker-hub/repos/
-  - title: 自动构建
-    url: /docker-hub/repos/manage/builds/
-  - title: 自动化仓库测试
-    url: /docker-hub/repos/manage/builds/automated-testing/
-next:
-  title: 配置从 GitHub 和 BitBucket 的自动构建
-  url: /docker-hub/repos/manage/builds/link-source/
-prev:
-  title: 自动化构建和自动化测试的高级选项
-  url: /docker-hub/repos/manage/builds/advanced/
----
+# 自动化仓库测试
 
 
 > [!NOTE]

@@ -1,21 +1,4 @@
----
-title: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
-url: /guides/pgadmin/
-parent:
-  title: Docker 指南
-  url: /guides/
-breadcrumbs:
-  - title: Docker 指南
-    url: /guides/
-  - title: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
-    url: /guides/pgadmin/
-next:
-  title: 使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩
-  url: /guides/opentelemetry/
-prev:
-  title: 使用 TensorFlow.js 进行人脸检测
-  url: /guides/tensorflowjs/
----
+# 使用 pgAdmin 可视化您的 PostgreSQL 数据库
 
 
 许多应用程序在应用堆栈中使用 PostgreSQL 数据库。然而，并非所有开发人员都精通导航和操作 PostgreSQL 数据库。

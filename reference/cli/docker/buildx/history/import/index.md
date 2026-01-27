@@ -1,29 +1,4 @@
----
-title: docker buildx history import
-url: /reference/cli/docker/buildx/history/import/
-parent:
-  title: docker buildx history
-  url: /reference/cli/docker/buildx/history/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx history
-    url: /reference/cli/docker/buildx/history/
-  - title: docker buildx history import
-    url: /reference/cli/docker/buildx/history/import/
-next:
-  title: docker buildx history export
-  url: /reference/cli/docker/buildx/history/export/
-prev:
-  title: docker buildx history logs
-  url: /reference/cli/docker/buildx/history/logs/
----
+# docker buildx history import
 
 **Description:** Import build records into Docker Desktop
 

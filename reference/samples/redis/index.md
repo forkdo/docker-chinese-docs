@@ -1,23 +1,9 @@
----
-title: Redis 示例
-url: /reference/samples/redis/
-parent:
-  title: 示例概览
-  url: /reference/samples/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: 示例概览
-    url: /reference/samples/
-  - title: Redis 示例
-    url: /reference/samples/redis/
-next:
-  title: React 示例
-  url: /reference/samples/react/
-prev:
-  title: Ruby 示例
-  url: /reference/samples/ruby/
----
+# Redis 示例
 
-
-
+| Name | Description |
+|------|-------------|
+| [NGINX / Node.js / Redis](https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis) | A sample Node.js application with Nginx proxy and a Redis database. |
+| [Python / Flask / Redis](https://github.com/docker/awesome-compose/tree/master/flask-redis) | A sample Python/Flask and a Redis database. |
+| [Nextcloud / Redis / MariaDB](https://github.com/docker/awesome-compose/tree/master/nextcloud-redis-mariadb) | A sample Nextcloud setup. |
+| [example-voting-app](https://github.com/dockersamples/example-voting-app) | A sample Docker Compose app. |
+| [link-shortener-typescript](https://github.com/dockersamples/link-shortener-typescript) | A Simple URL Shortener built using TypeScript and Nest.js powered with Docker. |

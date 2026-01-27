@@ -1,27 +1,4 @@
----
-title: docker container logs
-url: /reference/cli/docker/container/logs/
-parent:
-  title: docker container
-  url: /reference/cli/docker/container/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker container
-    url: /reference/cli/docker/container/
-  - title: docker container logs
-    url: /reference/cli/docker/container/logs/
-next:
-  title: docker container kill
-  url: /reference/cli/docker/container/kill/
-prev:
-  title: docker container ls
-  url: /reference/cli/docker/container/ls/
----
+# docker container logs
 
 **Description:** Fetch the logs of a container
 

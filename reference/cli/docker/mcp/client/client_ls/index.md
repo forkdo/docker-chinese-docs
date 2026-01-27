@@ -1,29 +1,4 @@
----
-title: docker mcp client ls
-url: /reference/cli/docker/mcp/client/client_ls/
-parent:
-  title: docker mcp client
-  url: /reference/cli/docker/mcp/client/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker mcp
-    url: /reference/cli/docker/mcp/
-  - title: docker mcp client
-    url: /reference/cli/docker/mcp/client/
-  - title: docker mcp client ls
-    url: /reference/cli/docker/mcp/client/client_ls/
-next:
-  title: docker mcp client disconnect
-  url: /reference/cli/docker/mcp/client/client_disconnect/
-prev:
-  title: docker mcp 客户端手动说明
-  url: /reference/cli/docker/mcp/client/client_manual-instructions/
----
+# docker mcp client ls
 
 **Description:** List client configurations
 

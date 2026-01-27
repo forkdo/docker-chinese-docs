@@ -1,23 +1,4 @@
----
-title: RedundantTargetPlatform
-url: /reference/build-checks/redundant-target-platform/
-parent:
-  title: Build checks
-  url: /reference/build-checks/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: Build checks
-    url: /reference/build-checks/
-  - title: RedundantTargetPlatform
-    url: /reference/build-checks/redundant-target-platform/
-next:
-  title: NoEmptyContinuation
-  url: /reference/build-checks/no-empty-continuation/
-prev:
-  title: ReservedStageName
-  url: /reference/build-checks/reserved-stage-name/
----
+# RedundantTargetPlatform
 
 
 ## Output

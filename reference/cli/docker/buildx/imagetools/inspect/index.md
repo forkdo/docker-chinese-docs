@@ -1,26 +1,4 @@
----
-title: docker buildx imagetools inspect
-url: /reference/cli/docker/buildx/imagetools/inspect/
-parent:
-  title: docker buildx imagetools
-  url: /reference/cli/docker/buildx/imagetools/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker buildx
-    url: /reference/cli/docker/buildx/
-  - title: docker buildx imagetools
-    url: /reference/cli/docker/buildx/imagetools/
-  - title: docker buildx imagetools inspect
-    url: /reference/cli/docker/buildx/imagetools/inspect/
-next:
-  title: docker buildx imagetools create
-  url: /reference/cli/docker/buildx/imagetools/create/
----
+# docker buildx imagetools inspect
 
 **Description:** Show details of an image in the registry
 

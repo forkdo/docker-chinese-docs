@@ -1,20 +1,4 @@
----
-title: Docker Desktop 通用常见问题解答
-url: /desktop/troubleshoot-and-support/faqs/general/
-parent:
-  title: Docker Desktop
-  url: /desktop/
-breadcrumbs:
-  - title: 手册
-    url: /manuals/
-  - title: Docker Desktop
-    url: /desktop/
-  - title: Docker Desktop 通用常见问题解答
-    url: /desktop/troubleshoot-and-support/faqs/general/
-prev:
-  title: Docker Desktop for Mac 常见问题解答
-  url: /desktop/troubleshoot-and-support/faqs/macfaqs/
----
+# Docker Desktop 通用常见问题解答
 
 
 ### 我可以在离线状态下使用 Docker Desktop 吗？

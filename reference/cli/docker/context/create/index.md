@@ -1,24 +1,4 @@
----
-title: docker context create
-url: /reference/cli/docker/context/create/
-parent:
-  title: docker context
-  url: /reference/cli/docker/context/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker context
-    url: /reference/cli/docker/context/
-  - title: docker context create
-    url: /reference/cli/docker/context/create/
-prev:
-  title: docker context export
-  url: /reference/cli/docker/context/export/
----
+# docker context create
 
 **Description:** Create a context
 

@@ -1,27 +1,4 @@
----
-title: docker compose pull
-url: /reference/cli/docker/compose/pull/
-parent:
-  title: docker compose
-  url: /reference/cli/docker/compose/
-breadcrumbs:
-  - title: 参考文档
-    url: /reference/
-  - title: CLI 参考
-    url: /reference/cli/
-  - title: docker
-    url: /reference/cli/docker/
-  - title: docker compose
-    url: /reference/cli/docker/compose/
-  - title: docker compose pull
-    url: /reference/cli/docker/compose/pull/
-next:
-  title: docker compose publish
-  url: /reference/cli/docker/compose/publish/
-prev:
-  title: docker compose push
-  url: /reference/cli/docker/compose/push/
----
+# docker compose pull
 
 **Description:** Pull service images
 
