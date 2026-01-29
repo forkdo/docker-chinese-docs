@@ -352,6 +352,15 @@
 - [SBOM attestations](/build/metadata/attestations/sbom/): SBOM attestations describe what software artifacts an image contains and the artifacts used to create the image. 
 - [SLSA definitions](/build/metadata/attestations/slsa-definitions/)
 - [Provenance attestations](/build/metadata/attestations/slsa-provenance/): Provenance build attestations describe how and where your image was built. 
+- [Built-in functions](/build/policies/built-ins/): Buildx includes built-in helper functions to make writing policies easier
+- [Debugging build policies](/build/policies/debugging/): Debug policies during development with inspection and testing tools
+- [Policy templates and examples](/build/policies/examples/): Browse policy examples from quick-start configs to production-grade security templates
+- [Input reference](/build/policies/inputs/): Reference documentation for policy input fields
+- [Introduction to build policies](/build/policies/intro/): Get started with writing and evaluating build policies
+- [Test build policies](/build/policies/testing/): Write and run unit tests for build policies, similar to the opa test command
+- [Using build policies](/build/policies/usage/): Apply policies to builds and develop policies iteratively
+- [Validating Git repositories](/build/policies/validate-git/): Write policies to validate Git repositories used in your builds
+- [Validating image inputs](/build/policies/validate-images/): Write policies to validate container images used in your builds
 - [Build release notes](/build/release-notes/)
 - [自定义 Compose Bridge](/compose/bridge/customize/): 了解如何使用 Go 模板和 Compose 扩展来自定义 Compose Bridge 转换
 - [使用默认的 Compose Bridge 转换](/compose/bridge/usage/): 了解如何使用默认的 Compose Bridge 转换将 Compose 文件转换为 Kubernetes 清单文件
@@ -869,6 +878,8 @@
 - [docker buildx imagetools inspect](/reference/cli/docker/buildx/imagetools/inspect/)
 - [docker buildx inspect](/reference/cli/docker/buildx/inspect/)
 - [docker buildx ls](/reference/cli/docker/buildx/ls/)
+- [docker buildx policy eval](/reference/cli/docker/buildx/policy/eval/)
+- [docker buildx policy test](/reference/cli/docker/buildx/policy/test/)
 - [docker buildx prune](/reference/cli/docker/buildx/prune/)
 - [docker buildx rm](/reference/cli/docker/buildx/rm/)
 - [docker buildx stop](/reference/cli/docker/buildx/stop/)

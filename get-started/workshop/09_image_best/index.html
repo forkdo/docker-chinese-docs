@@ -47,7 +47,7 @@
 <meta
   property="og:updated_time"
   itemprop="dateUpdated"
-  content="2024-11-13 20:28:57 -0500 -0500"
+  content="2026-01-28 21:28:31 &#43;0530 &#43;0530"
 />
 <meta
   property="og:image"
@@ -60,9 +60,9 @@
 <meta
   property="article:published_time"
   itemprop="datePublished"
-  content="2024-11-13 20:28:57 -0500 -0500"
+  content="2026-01-28 21:28:31 &#43;0530 &#43;0530"
 />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2024-11-13T20:28:57-05:00","description":"为您的应用程序构建镜像的技巧","headline":"第 8 部分：镜像构建最佳实践","isPartOf":{"@id":"/get-started/workshop/","@type":"WebPage","name":"Docker 工作坊"},"keywords":"入门，设置，概述，快速开始，简介，概念，容器，, Docker, Desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/workshop/09_image_best/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/workshop/","name":"Docker 工作坊"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/workshop/09_image_best/","name":"第 8 部分：镜像构建最佳实践"},"position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","articleSection":"get-started","author":{"@type":"Organization","name":"Docker Inc","url":"https://www.docker.com"},"dateModified":"2026-01-28T21:28:31+05:30","description":"为您的应用程序构建镜像的技巧","headline":"第 8 部分：镜像构建最佳实践","isPartOf":{"@id":"/get-started/workshop/","@type":"WebPage","name":"Docker 工作坊"},"keywords":"入门，设置，概述，快速开始，简介，概念，容器，, Docker, Desktop","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/docker-logo.png"},"name":"Docker Inc","url":"https://www.docker.com"},"url":"/get-started/workshop/09_image_best/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@id":"/get-started/","name":"开始使用"},"position":1},{"@type":"ListItem","item":{"@id":"/get-started/workshop/","name":"Docker 工作坊"},"position":2},{"@type":"ListItem","item":{"@id":"/get-started/workshop/09_image_best/","name":"第 8 部分：镜像构建最佳实践"},"position":3}]}</script>
 <link rel="alternate" type="text/markdown" href="/get-started/workshop/09_image_best/index.md" />
 
   
@@ -72,8 +72,8 @@
         
           <link
             rel="stylesheet"
-            href="/css/style.2339351b55ffae1a963378a38bf7255851407254b41ee72dd190a93ae3bc2f70.css"
-            integrity="sha256-Izk1G1X/rhqWM3iji/clWFFAclS0Huct0ZCpOuO8L3A="
+            href="/css/style.471e9409699f5a32ba1b2a97b69fbe6f636c185e1dd15f117d3b362287b9be94.css"
+            integrity="sha256-Rx6UCWmfWjK6GyqXtp&#43;&#43;b2NsGF4d0V8RfTs2Ioe5vpQ="
             crossorigin="anonymous"
           />
         
@@ -938,12 +938,64 @@ if (resultsLength > 5) {
             <template
               x-if="message.role === 'assistant' && !message.isStreaming"
             >
-              <div class="flex items-center gap-2 text-xs">
-                <div class="flex items-center gap-1">
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-3 text-xs">
+                  
+                  <div class="flex items-center gap-1.5 text-gray-600 dark:text-gray-400">
+                    <span class="icon-svg icon-xs text-blue-500 dark:text-blue-400">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- sparkle icon using path, stroke currentColor -->
+  <path d="M18.5 7.84656V2.84656M5.5 20.8466V15.8466M16 5.34656H21M3 18.3466H8M6.5 1.84656L5.71554 3.41547C5.45005 3.94645 5.31731 4.21194 5.13997 4.442C4.98261 4.64615 4.79959 4.82917 4.59545 4.98653C4.36538 5.16387 4.0999 5.29661 3.56892 5.5621L2 6.34656L3.56892 7.13102C4.0999 7.39651 4.36538 7.52925 4.59545 7.70659C4.79959 7.86395 4.98261 8.04696 5.13997 8.25111C5.31731 8.48117 5.45005 8.74666 5.71554 9.27764L6.5 10.8466L7.28446 9.27764C7.54995 8.74666 7.68269 8.48117 7.86003 8.25111C8.01739 8.04696 8.20041 7.86395 8.40455 7.70659C8.63462 7.52925 8.9001 7.3965 9.43108 7.13102L11 6.34656L9.43108 5.5621C8.9001 5.29661 8.63462 5.16387 8.40455 4.98653C8.20041 4.82917 8.01739 4.64615 7.86003 4.442C7.68269 4.21194 7.54995 3.94645 7.28446 3.41547L6.5 1.84656ZM17 11.8466L16.0489 13.7488C15.7834 14.2798 15.6506 14.5453 15.4733 14.7753C15.3159 14.9795 15.1329 15.1625 14.9288 15.3199C14.6987 15.4972 14.4332 15.6299 13.9023 15.8954L12 16.8466L13.9023 17.7977C14.4332 18.0632 14.6987 18.1959 14.9288 18.3733C15.1329 18.5306 15.3159 18.7136 15.4733 18.9178C15.6506 19.1478 15.7834 19.4133 16.0489 19.9443L17 21.8466L17.9511 19.9443C18.2166 19.4133 18.3494 19.1478 18.5267 18.9178C18.6841 18.7136 18.8671 18.5306 19.0712 18.3733C19.3013 18.1959 19.5668 18.0632 20.0977 17.7977L22 16.8466L20.0977 15.8954C19.5668 15.6299 19.3013 15.4972 19.0712 15.3199C18.8671 15.1625 18.6841 14.9795 18.5267 14.7753C18.3494 14.5453 18.2166 14.2798 17.9511 13.7488L17 11.8466Z"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+<rect width="24" height="24" fill="currentColor" fill-opacity="1"/>
+</g>
+</svg>
+
+                    </span>
+                    <span class="font-medium">Was this helpful?</span>
+                  </div>
+
+                  
+                  <div class="flex items-center gap-2">
+                    
+                    <button
+                      @click="submitFeedback(index, 'positive')"
+                      :class="message.feedback === 'positive'
+                        ? 'bg-green-100 text-green-700 ring ring-green-500 dark:bg-green-900/50 dark:text-green-400 dark:ring-green-600'
+                        : 'bg-gray-100 text-gray-600 hover:bg-green-50 hover:text-green-600 hover:ring hover:ring-green dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-green-900/30 dark:hover:text-green-400 dark:hover:ring-green'"
+                      class="cursor-pointer rounded-full px-3 py-1.5 transition-all duration-200 flex items-center gap-1.5"
+                      title="Helpful"
+                    >
+                      <span class="icon-svg icon-sm transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M860-632q23 0 41.5 18.5T920-572v82q0 11-2.5 25.5T910-439L794-171q-9 21-29.5 36T721-120H314q-25 0-42.5-17.5T254-180v-428q0-11 4.5-22t12.5-19l207-218q14-14 33.5-17t36.5 7q17 10 25.5 28t4.5 37l-38 180h320ZM137-120q-23 0-40-17t-17-40v-398q0-23 17-40t40-17q23 0 40 17t17 40v398q0 23-17 40t-40 17Z"/></svg>
+                      </span>
+                      <span class="hidden sm:inline font-medium">Helpful</span>
+                    </button>
+
+                    
+                    <button
+                      @click="submitFeedback(index, 'negative')"
+                      :class="message.feedback === 'negative'
+                        ? 'bg-red-100 text-red-700 ring ring-red-500 dark:bg-red-900/50 dark:text-red-400 dark:ring-red-600'
+                        : 'bg-gray-100 text-gray-600 hover:bg-red-50 hover:text-red-600 hover:ring hover:ring-red dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-red-900/30 dark:hover:text-red-400 dark:hover:ring-red'"
+                      class="cursor-pointer rounded-full px-3 py-1.5 transition-all duration-200 flex items-center gap-1.5"
+                      title="Not quite"
+                    >
+                      <span class="icon-svg icon-sm transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M100-328q-23 0-41.5-18.5T40-388v-82q0-11 2.5-25.5T50-521l116-268q9-21 29.5-36t43.5-15h407q25 0 42.5 17.5T706-780v428q0 11-4.5 22T689-311L482-93q-14 14-33.5 17T412-83q-17-10-25.5-28t-4.5-37l38-180H100Zm723-512q23 0 40 17t17 40v398q0 23-17 40t-40 17q-23 0-40-17t-17-40v-398q0-23 17-40t40-17Z"/></svg>
+                      </span>
+                      <span class="hidden sm:inline font-medium">Not quite</span>
+                    </button>
+                  </div>
+
+                  
+                  <div class="h-4 w-px bg-gray-300 dark:bg-gray-600"></div>
+
                   
                   <button
                     @click="copyAnswer(index)"
-                    class="cursor-pointer rounded bg-gray-100 p-1.5 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+                    class="cursor-pointer rounded-full px-3 py-1.5 transition-all duration-200 flex items-center gap-1.5 bg-gray-100 text-gray-600 hover:bg-blue-50 hover:text-blue-700 hover:ring hover:ring-blue dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 dark:hover:ring-blue-400"
                     :title="message.copied ? 'Copied!' : 'Copy answer'"
                   >
                     <span
@@ -958,46 +1010,20 @@ if (resultsLength > 5) {
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="m421-389-98-98q-9-9-22-9t-23 10q-9 9-9 22t9 22l122 123q9 9 21 9t21-9l239-239q10-10 10-23t-10-23q-10-9-23.5-8.5T635-603L421-389Zm59 309q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/></svg>
                     </span>
-                  </button>
-                  
-                  <button
-                    @click="submitFeedback(index, 'positive')"
-                    :class="message.feedback === 'positive'
-											? 'bg-green-200 text-green-700 dark:bg-green-900/50 dark:text-green-400'
-											: 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700'"
-                    class="cursor-pointer rounded p-1.5"
-                    title="Helpful"
-                  >
-                    <span class="icon-svg icon-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M860-632q23 0 41.5 18.5T920-572v82q0 11-2.5 25.5T910-439L794-171q-9 21-29.5 36T721-120H314q-25 0-42.5-17.5T254-180v-428q0-11 4.5-22t12.5-19l207-218q14-14 33.5-17t36.5 7q17 10 25.5 28t4.5 37l-38 180h320ZM137-120q-23 0-40-17t-17-40v-398q0-23 17-40t40-17q23 0 40 17t17 40v398q0 23-17 40t-40 17Z"/></svg>
-                    </span>
-                  </button>
-                  
-                  <button
-                    @click="submitFeedback(index, 'negative')"
-                    :class="message.feedback === 'negative'
-											? 'bg-red-200 text-red-700 dark:bg-red-900/50 dark:text-red-400'
-											: 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700'"
-                    class="cursor-pointer rounded p-1.5"
-                    title="Not helpful"
-                  >
-                    <span class="icon-svg icon-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 -960 960 960"><path d="M100-328q-23 0-41.5-18.5T40-388v-82q0-11 2.5-25.5T50-521l116-268q9-21 29.5-36t43.5-15h407q25 0 42.5 17.5T706-780v428q0 11-4.5 22T689-311L482-93q-14 14-33.5 17T412-83q-17-10-25.5-28t-4.5-37l38-180H100Zm723-512q23 0 40 17t17 40v398q0 23-17 40t-40 17q-23 0-40-17t-17-40v-398q0-23 17-40t40-17Z"/></svg>
-                    </span>
+                    <span class="hidden sm:inline font-medium">Copy</span>
                   </button>
                 </div>
-                <template x-if="message.feedback">
-                  <span
-                    :class="message.feedback === 'positive' ? 'text-green-600 dark:text-green-400' : 'text-gray-600 dark:text-gray-400'"
-                  >
-                    Thanks for your feedback!
-                  </span>
-                </template>
+
+                
                 <template x-if="message.feedbackError">
-                  <span
-                    class="text-red-600 dark:text-red-400"
-                    x-text="message.feedbackError"
-                  ></span>
+                  <div
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 translate-y-1"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    class="flex items-center gap-1.5 text-xs text-red-600 dark:text-red-400"
+                  >
+                    <span x-text="message.feedbackError"></span>
+                  </div>
                 </template>
               </div>
             </template>

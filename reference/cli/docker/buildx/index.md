@@ -56,6 +56,7 @@ You can also use the `BUILDX_BUILDER` environment variable.
 | [`docker buildx imagetools`](/reference/cli/docker/buildx/imagetools/) | Commands to work on images in registry |
 | [`docker buildx inspect`](/reference/cli/docker/buildx/inspect/) | Inspect current builder instance |
 | [`docker buildx ls`](/reference/cli/docker/buildx/ls/) | List builder instances |
+| [`docker buildx policy`](/reference/cli/docker/buildx/policy/) | Commands for working with build policies |
 | [`docker buildx prune`](/reference/cli/docker/buildx/prune/) | Remove build cache |
 | [`docker buildx rm`](/reference/cli/docker/buildx/rm/) | Remove one or more builder instances |
 | [`docker buildx stop`](/reference/cli/docker/buildx/stop/) | Stop builder instance |
