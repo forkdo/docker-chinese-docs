@@ -438,7 +438,7 @@ services:
 
 Compose guarantees dependency services have been started before
 starting a dependent service.
-Compose waits for dependency services to be "ready" before
+With short syntax, Compose does not wait for dependency services to be "healthy" before
 starting a dependent service.
 
 #### Long syntax
@@ -784,6 +784,8 @@ extends:
 
 - `service`: Defines the name of the service being referenced as a base, for example `web` or `database`.
 - `file`: The location of a Compose configuration file defining that service.
+
+`extends` is not supported when deploying with `docker stack deploy`.
 
 #### Restrictions
 
@@ -1334,6 +1336,9 @@ If either is omitted, Compose automatically generates the environment variable n
 
 `network_mode` sets a service container's network mode.
 
+- `bridge`: Connects the container to Docker's default bridge network instead of
+  a project-specific network. Containers on the default bridge network cannot
+  resolve each other by service name . Instead, use a user-defined network for DNS resolution.
 - `none`: Turns off all container networking.
 - `host`: Gives the container raw access to the host's network interface.
 - `service:{name}`: Gives the container access to the specified container by referring to its service name.
@@ -1342,6 +1347,7 @@ If either is omitted, Compose automatically generates the environment variable n
 For more information container networks, see the [Docker Engine documentation](/manuals/engine/network/_index.md#container-networks).
 
 ```yml
+    network_mode: "bridge"
     network_mode: "host"
     network_mode: "none"
     network_mode: "service:[service name]"
@@ -1651,6 +1657,10 @@ in the form:
 - `CONTAINER` is `port | range`.
 - `PROTOCOL` restricts ports to a specified protocol either `tcp` or `udp`(optional). Default is `tcp`.
 
+> [!WARNING]
+>
+> If you do not specify a host IP (such as `127.0.0.1`), Docker binds to all interfaces (`0.0.0.0`), bypassing host firewall rules. This can expose the container directly to the internet if the host has a public IP address. For more information, see [Port publishing and mapping](/manuals/engine/network/port-publishing.md).
+
 Ports can be either a single value or a range. `HOST` and `CONTAINER` must use equivalent ranges.
 
 You can either specify both ports (`HOST:CONTAINER`), or just the container port. In the latter case,
@@ -1658,6 +1668,8 @@ the container runtime automatically allocates any unassigned port of the host.
 
 `HOST:CONTAINER` should always be specified as a (quoted) string, to avoid conflicts
 with [YAML base-60 float](https://yaml.org/type/float.html).
+
+
 
 IPv6 addresses can be enclosed in square brackets.
 
@@ -1740,13 +1752,56 @@ services:
 
 For more information, see [Use lifecycle hooks](/manuals/compose/how-tos/lifecycle.md).
 
+### pre_start
+
+{{< summary-bar feature_name="Compose pre_start" >}}
+
+`pre_start` defines a sequence of init containers to run before the service container is started. Each step runs to completion, in declared order, and the service container only starts once every step has exited `0`. A non-zero exit fails the bring-up of the service and its dependents.
+
+Unlike `post_start` and `pre_stop`, which run a command inside the running service container, each `pre_start` step runs in its own ephemeral container, created after the service container is created but before it is started. Possible values are:
+
+- `command`: The command to run. Optional when the chosen image's entrypoint already runs the intended command.
+- `image`: The image used for the ephemeral container. If omitted, the parent service's image is used.
+- `user`: The user to run the command. If not set, defaults to the user declared in `image` (or to the main service command's user when `image` is omitted).
+- `privileged`: Lets the `pre_start` command run with privileged access.
+- `working_dir`: The working directory in which to run the command. If not set, it is run in the same working directory as the main service command.
+- `environment`: Sets the environment variables to run the `pre_start` command. The command inherits the `environment` set for the service's main command, and this section lets you append or override values.
+- `per_replica: false`: Whether the step runs once for the service as a whole before any replica starts.
+
+`pre_start` steps only run once the service's `depends_on` conditions have been satisfied, so a step can rely on those dependencies the same way the main service command does. A`pre_start` container joins the same networks as the service, so it can reach services declared in `depends_on`, and shares the service's declared volume mounts so files it produces in a shared volume are visible to the service. 
+
+With `per_replica: false` and a scaled service, only mounts that are shared across replicas (named volumes, bind mounts) are usable. Per-instance mounts (`tmpfs`, anonymous volumes) cannot be addressed by a single run. This is not an error. The steps run without access to per-instance mounts. Data a `per_replica: false` step must share with the service belongs in a named volume or bind mount.
+
+A `pre_start` step that has already succeeded for its current definition is not re-run on a subsequent `up`, nor when the service container restarts under its `restart` policy. A step runs again when its definition changes, when the previous run did not succeed, or when the service is recreated. For example, after a change to the service configuration or an explicit forced recreation.
+
+```yaml
+services:
+  app:
+    image: myapp:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    pre_start:
+      - command: ["./manage.py", "migrate"]
+      - image: busybox
+        command: sh -c 'chown -R 1000:1000 /data'
+    volumes:
+      - data:/data
+
+  db:
+    image: postgres:16
+
+volumes:
+  data:
+```
+
 ### `pre_stop`
 
 {{< summary-bar feature_name="Compose pre stop" >}}
 
 `pre_stop` defines a sequence of lifecycle hooks to run before the container is stopped. These hooks won't run if the container stops by itself or is terminated suddenly.
 
-Configuration is equivalent to [post_start](#post_start).
+Configuration is equivalent to [`post_start`](#post_start).
 
 ### `privileged`
 
@@ -1858,7 +1913,7 @@ Optionally, limit the number of restart retries the Docker daemon attempts.
 ```
 
 You can find more detailed information on restart policies in the
-[Restart Policies (--restart)](/reference/cli/docker/container/run.md#restart)
+[Restart Policies (--restart)](/reference/cli/docker/container/run/#restart)
 section of the Docker run reference page.
 
 ### `runtime`
@@ -1930,31 +1985,40 @@ the service's containers.
   The default value is world-readable permissions (mode `0444`).
   The writable bit must be ignored if set. The executable bit may be set.
 
-Note that support for `uid`, `gid`, and `mode` attributes are not implemented in Docker Compose when the source of the secret is a [`file`](secrets.md). This is because bind-mounts used under the hood don't allow uid remapping.
+Note that support for `uid`, `gid`, and `mode` attributes are only implemented in Docker Compose when the source of the secret is [`environment`](secrets.md). When the source is a [`file`](secrets.md), Compose uses a bind-mount under the hood which doesn't allow `uid` remapping, and these attributes are silently ignored.
 
-The following example sets the name of the `server-certificate` secret file to `server.cert`
-within the container, sets the mode to `0440` (group-readable), and sets the user and group
-to `103`. The value of `server-certificate` is set
-to the contents of the file `./server.cert`.
+The following example sets the name of the `my-token` secret file within the container,
+sets the mode to `0440` (group-readable), and sets the user and group to `103`.
+The value of `my-token` is read from the `MY_TOKEN` environment variable.
 
 ```yml
 services:
   frontend:
     image: example/webapp
     secrets:
-      - source: server-certificate
-        target: server.cert
+      - source: my-token
         uid: "103"
         gid: "103"
         mode: 0o440
 secrets:
-  server-certificate:
-    file: ./server.cert
+  my-token:
+    environment: "MY_TOKEN"
 ```
 
 ### `security_opt`
 
 `security_opt` overrides the default labeling scheme for each container.
+
+Options accept either `option=value` or `option:value` syntax. For boolean options
+such as `no-new-privileges`, the value may be omitted entirely, in which case the
+option is treated as enabled. The following syntaxes are all equivalent:
+
+```yml
+security_opt:
+  - no-new-privileges
+  - no-new-privileges=true
+  - no-new-privileges:true
+```
 
 ```yml
 security_opt:
@@ -1962,7 +2026,7 @@ security_opt:
   - label=role:ROLE
 ```
 
-For further default labeling schemes you can override, see [Security configuration](/reference/cli/docker/container/run.md#security-opt).
+For further default labeling schemes you can override, see [Security configuration](/reference/cli/docker/container/run/#security-opt).
 
 ### `shm_size`
 
@@ -1972,7 +2036,7 @@ It's specified as a [byte value](extension.md#specifying-byte-values).
 ### `stdin_open`
 
 `stdin_open` configures a service's container to run with an allocated stdin. This is the same as running a container with the
-`-i` flag. For more information, see [Keep stdin open](/reference/cli/docker/container/run.md#interactive).
+`-i` flag. For more information, see [Keep stdin open](/reference/cli/docker/container/run/#interactive).
 
 Supported values are `true` or `false`.
 
@@ -2027,7 +2091,7 @@ sysctls:
 You can only use sysctls that are namespaced in the kernel. Docker does not
 support changing sysctls inside a container that also modify the host system.
 For an overview of supported sysctls, refer to [configure namespaced kernel
-parameters (sysctls) at runtime](/reference/cli/docker/container/run.md#sysctl).
+parameters (sysctls) at runtime](/reference/cli/docker/container/run/#sysctl).
 
 ### `tmpfs`
 
@@ -2059,7 +2123,7 @@ services:
 ### `tty`
 
 `tty` configures a service's container to run with a TTY. This is the same as running a container with the
-`-t` or `--tty` flag. For more information, see [Allocate a pseudo-TTY](/reference/cli/docker/container/run.md#tty).
+`-t` or `--tty` flag. For more information, see [Allocate a pseudo-TTY](/reference/cli/docker/container/run/#tty).
 
 Supported values are `true` or `false`.
 

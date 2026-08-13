@@ -17,7 +17,6 @@ This page shows you how to turn on Enhanced Container Isolation (ECI) and verify
 Before you begin, you must have:
 
 - A Docker Business subscription
-- Docker Desktop 4.13 or later
 - [Enforced sign-in](/manuals/enterprise/security/enforce-sign-in/_index.md) (for administrators managing organization-wide settings only)
 
 ## Enable Enhanced Container Isolation
@@ -48,10 +47,10 @@ a Docker Business subscription.
 Configure Enhanced Container Isolation organization-wide using Settings Management:
 
 {{< tabs >}}
-{{< tab name="Admin Console" >}}
+{{< tab name="Docker Home" >}}
 
 1. Sign in to [Docker Home](https://app.docker.com) and select your organization from the top-left account drop-down.
-1. Go to **Admin Console** > **Desktop Settings Management**.
+1. Select **Docker Desktop**, then **Settings Management**.
 1. [Create or edit a setting policy](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md).
 1. Set **Enhanced Container Isolation** to **Always enabled**.
 

@@ -6,7 +6,7 @@ keywords: how to use docker desktop, what is docker desktop used for, what does 
   desktop do, using docker desktop
 params:
   sidebar:
-    group: Products
+    group: Application development
 grid:
 - title: Install Docker Desktop
   description: |
@@ -14,33 +14,27 @@ grid:
     [Mac](/desktop/setup/install/mac-install/),
     [Windows](/desktop/setup/install/windows-install/), or
     [Linux](/desktop/setup/install/linux/).
-  icon: download
+  icon: arrow-down-tray
 - title: Learn about Docker Desktop
   description: Navigate Docker Desktop.
-  icon: feature_search
+  icon: magnifying-glass
   link: /desktop/use-desktop/
 - title: Explore its key features
   description: |
     Find information about [Networking](/desktop/features/networking/), [Docker VMM](/desktop/features/vmm/), [WSL](/desktop/features/wsl/), and more.
-  icon: category
+  icon: squares-2x2
 - title: View the release notes
   description: Find out about new features, improvements, and bug fixes.
-  icon: note_add
+  icon: document-plus
   link: /desktop/release-notes/
 - title: Browse common FAQs
   description: Explore general FAQs or FAQs for specific platforms.
-  icon: help
+  icon: question-mark-circle
   link: /desktop/troubleshoot-and-support/faqs/general/
 - title: Give feedback
   description: Provide feedback on Docker Desktop or Docker Desktop features.
-  icon: sms
+  icon: chat-bubble-left
   link: /desktop/troubleshoot-and-support/feedback/
-aliases:
-- /desktop/opensource/
-- /docker-for-mac/dashboard/
-- /docker-for-mac/opensource/
-- /docker-for-windows/dashboard/
-- /docker-for-windows/opensource/
 ---
 
 Docker Desktop is a one-click-install application for your Mac, Linux, or Windows environment
@@ -66,7 +60,7 @@ Docker Desktop integrates with your preferred development tools and languages, a
 
 - [Docker MCP Toolkit and Catalog](/manuals/ai/mcp-catalog-and-toolkit/_index.md)
 - [Docker Model Runner](/manuals/ai/model-runner/_index.md)
-- [Ask Gordon](/manuals/ai/gordon/_index.md)
+- [Gordon](/manuals/ai/gordon/_index.md)
 - [Docker Offload](/manuals/offload/_index.md)
 - [Docker Engine](/manuals/engine/_index.md)
 - Docker CLI client

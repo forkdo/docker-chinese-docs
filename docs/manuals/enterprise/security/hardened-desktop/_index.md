@@ -5,29 +5,32 @@ description: Security features that help organizations secure developer environm
 keywords: security, hardened desktop, enhanced container isolation, registry access management, settings management, admins, docker desktop, image access management, air-gapped containers
 tags: [admin]
 aliases:
- - /desktop/hardened-desktop/
  - /security/for-admins/hardened-desktop/
 grid:
   - title: "Settings Management"
     description: Learn how Settings Management can secure your developers' workflows.
-    icon: shield_locked
+    icon: shield-check
     link: /enterprise/security/hardened-desktop/settings-management/
   - title: "Enhanced Container Isolation"
     description: Understand how Enhanced Container Isolation can prevent container attacks.
-    icon: "security"
+    icon: shield-check
     link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
   - title: "Registry Access Management"
     description: Control the registries developers can access while using Docker Desktop.
-    icon: "home_storage"
+    icon: server
     link: /enterprise/security/hardened-desktop/registry-access-management/
   - title: "Image Access Management"
     description: Control the images developers can pull from Docker Hub.
-    icon: "photo_library"
+    icon: photo
     link: /enterprise/security/hardened-desktop/image-access-management/
   - title: "Air-Gapped Containers"
     description: Restrict containers from accessing unwanted network resources.
-    icon: "vpn_lock"
+    icon: lock-closed
     link: /enterprise/security/hardened-desktop/air-gapped-containers/
+  - title: "Namespace access"
+    description: Control whether organization members can push content to their personal namespaces.
+    icon: folder-open
+    link: /enterprise/security/hardened-desktop/namespace-access/
 weight: 60
 ---
 
@@ -52,6 +55,7 @@ Hardened Docker Desktop features work independently and together to create a def
 - Registry Access Management and Image Access Management prevent access to unauthorized container registries and image types, reducing exposure to malicious payloads
 - Enhanced Container Isolation runs containers without root privileges inside a Linux user namespace, limiting the impact of malicious containers
 - Air-gapped containers let you configure network restrictions for containers, preventing malicious containers from accessing your organization's internal network resources
+- Namespace access controls whether organization members can push content to their personal Docker Hub namespaces, preventing accidental publication of images outside approved locations
 - Settings Management locks down Docker Desktop configurations to enforce company policies and prevent developers from introducing insecure settings, whether intentionally or accidentally
 
 ## Next steps

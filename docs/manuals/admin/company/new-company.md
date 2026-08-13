@@ -1,14 +1,16 @@
 ---
-title: Create a company
+title: Create new company
+linkTitle: Setup
+weight: 10
 description: Learn how to create a company to centrally manage multiple organizations.
-keywords: company, hub, organization, company owner, Admin Console, company management, Docker Business, create company, Docker Admin Console
+keywords: company, hub, organization, company owner, Docker Home, company management, Docker Business, create company
 aliases:
-- /docker-hub/new-company/
+  - /docker-hub/new-company/
 ---
 
 {{< summary-bar feature_name="Company" >}}
 
-Learn how to create a new company in the Docker Admin Console, a centralized
+Learn how to create a new company in Docker Home, a centralized
 dashboard for managing organizations.
 
 ## Prerequisites
@@ -22,27 +24,30 @@ Before you begin, you must:
 
 To create a new company:
 
-1. Sign in to [Docker Home](https://app.docker.com/) and select your
-organization.
-1. Select **Admin Console**, then **Company management**.
+1. Sign in to [Docker Home](https://app.docker.com/) and select the
+   organization you want to add to your company.
+1. Select **Organization settings**.
 1. Select **Create a company**.
 1. Enter a unique name for your company, then select **Continue**.
 
-    > [!TIP]
-    >
-    > The name for your company can't be the same as an existing user,
-    organization, or company namespace.
+   > [!TIP]
+   >
+   > The name for your company can't be the same as an existing user,
+   > organization, or company namespace.
 
 1. Review the migration details and then select **Create company**.
 
-For more information on how you can add organizations to your company,
-see [Add organizations to a company](./organizations.md#add-organizations-to-a-company).
+When you create the company, the organization you selected is automatically
+migrated to the new company.
+
+For more information on how you can add more organizations to your company,
+see [Add more organizations](./manage.md#add-more-organizations).
 
 ## Next steps
 
-- [Manage organizations](./organizations.md)
-- [Manage company users](./users.md)
-- [Manage company owners](./owners.md)
+- [Add organizations](./manage.md#add-more-organizations)
+- [Invite company members](./manage.md#company-invitations)
+- [Manage company owners](./manage.md#company-owners)
 
 ## More resources
 

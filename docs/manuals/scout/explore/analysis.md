@@ -29,11 +29,8 @@ see [Integrating Docker Scout with other systems](/manuals/scout/integrations/_i
 
 ## Activate Docker Scout on a repository
 
-Docker Personal comes with 1 Scout-enabled repository. You can upgrade your
-Docker subscription if you need additional repositories.
-See [Subscriptions and features](https://www.docker.com/pricing/)
-to learn how many Scout-enabled
-repositories come with each subscription tier.
+See [Subscriptions and features](https://www.docker.com/pricing?ref=Docs&refAction=DocsScoutAnalysis)
+to learn how many Scout-enabled repositories come with each subscription tier.
 
 Before you can activate image analysis on a repository in a third-party registry,
 the registry must be integrated with Docker Scout for your Docker organization.
@@ -183,8 +180,8 @@ $ docker scout cves --format only-packages --only-vuln-packages \
 For more information about these commands and how to use them, refer to the CLI
 reference documentation:
 
-- [`docker scout quickview`](/reference/cli/docker/scout/quickview.md)
-- [`docker scout cves`](/reference/cli/docker/scout/cves.md)
+- [`docker scout quickview`](/reference/cli/docker/scout/quickview/)
+- [`docker scout cves`](/reference/cli/docker/scout/cves/)
 
 ## Vulnerability severity assessment
 
@@ -233,4 +230,3 @@ To analyze images larger than that:
 
 - Attach an [SBOM attestation](/manuals/build/metadata/attestations/sbom.md) at build-time. When an image includes an SBOM attestation, Docker Scout uses it instead of generating one, so the 10 GB limit doesn’t apply.
 - Alternatively, you can use the [CLI](#cli) to analyze the image locally. The 10 GB limit doesn’t apply when using the CLI. If the image includes an SBOM attestation, the CLI uses it to complete the analysis faster.
-

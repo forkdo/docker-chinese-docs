@@ -4,8 +4,6 @@ keywords: Docker Desktop for Windows, edge, release notes
 title: Docker Desktop for Windows Edge Release notes
 toc_min: 1
 toc_max: 2
-aliases:
-- /desktop/windows/release-notes/edge-releases/
 sitemap: false
 ---
 
@@ -2561,7 +2559,7 @@ are working on a solution.
   - Improve layout of About and Settings dialog
   - Improve Updater
   - Link to *Help*
-  - Link to *Send Feeback*
+  - Link to *Send Feedback*
 
 **General**
 

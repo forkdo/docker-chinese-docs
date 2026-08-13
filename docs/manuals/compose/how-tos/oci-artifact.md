@@ -4,11 +4,6 @@ linkTitle: OCI artifact applications
 weight: 110
 description: Learn how to package, publish, and securely run Docker Compose applications from OCI-compliant registries.
 keywords: cli, compose, oci, docker hub, artificats, publish, package, distribute, docker compose oci support
-params:
-  sidebar:
-    badge:
-      color: green
-      text: New
 ---
 
 {{< summary-bar feature_name="Compose OCI artifact" >}}
@@ -150,6 +145,7 @@ $ docker compose publish -y username/my-compose-app:latest
 
 ## Next steps
 
+- [Familiarize yourself with Compose's trust model](/manuals/compose/trust-model.md)
 - [Learn about OCI artifacts in Docker Hub](/manuals/docker-hub/repos/manage/hub-images/oci-artifacts.md)
-- [Compose publish command](/reference/cli/docker/compose/publish.md)
+- [Compose publish command](/reference/cli/docker/compose/publish/)
 - [Understand `include`](/reference/compose-file/include.md)

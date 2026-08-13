@@ -51,8 +51,7 @@ To get started with Docker Engine on Ubuntu, make sure you
 To install Docker Engine, you need the 64-bit version of one of these Ubuntu
 versions:
 
-- Ubuntu Questing 25.10
-- Ubuntu Plucky 25.04
+- Ubuntu Resolute 26.04 (LTS)
 - Ubuntu Noble 24.04 (LTS)
 - Ubuntu Jammy 22.04 (LTS)
 
@@ -78,6 +77,7 @@ The unofficial packages to uninstall are:
 - `docker-compose`
 - `docker-compose-v2`
 - `docker-doc`
+- `docker-buildx`
 - `podman-docker`
 
 Moreover, Docker Engine depends on `containerd` and `runc`. Docker Engine
@@ -88,7 +88,7 @@ conflicts with the versions bundled with Docker Engine.
 Run the following command to uninstall all conflicting packages:
 
 ```console
-$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc docker-buildx podman-docker containerd runc | cut -f1)
 ```
 
 `apt` might report that you have none of these packages installed.
@@ -138,6 +138,7 @@ Docker from the repository.
    URIs: {{% param "download-url-base" %}}
    Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
    Components: stable
+   Architectures: $(dpkg --print-architecture)
    Signed-By: /etc/apt/keyrings/docker.asc
    EOF
 
@@ -181,14 +182,13 @@ Docker from the repository.
 
     > [!NOTE]
     >
-    > The Docker service starts automatically after installation. To verify that
-    > Docker is running, use:
-    > 
+    > After installation, verify that Docker is running:
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > Some systems may have this behavior disabled and will require a manual start:
+    > If Docker is not running, start it manually:
     >
     > ```console
     > $ sudo systemctl start docker
@@ -249,14 +249,13 @@ download a new file each time you want to upgrade Docker Engine.
 
     > [!NOTE]
     >
-    > The Docker service starts automatically after installation. To verify that
-    > Docker is running, use:
-    > 
+    > After installation, verify that Docker is running:
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > Some systems may have this behavior disabled and will require a manual start:
+    > If Docker is not running, start it manually:
     >
     > ```console
     > $ sudo systemctl start docker

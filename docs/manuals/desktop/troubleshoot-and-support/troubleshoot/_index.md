@@ -7,14 +7,6 @@ toc_max: 2
 title: Troubleshoot Docker Desktop
 linkTitle: Troubleshoot and diagnose
 aliases:
-  - /desktop/linux/troubleshoot/
-  - /desktop/mac/troubleshoot/
-  - /desktop/windows/troubleshoot/
-  - /docker-for-mac/troubleshoot/
-  - /mackit/troubleshoot/
-  - /windows/troubleshoot/
-  - /docker-for-win/troubleshoot/
-  - /docker-for-windows/troubleshoot/
   - /desktop/troubleshoot/overview/
   - /desktop/troubleshoot/
 tags: [Troubleshooting]
@@ -53,6 +45,9 @@ If you are a Mac or Linux user, you also have the option to **Uninstall** Docker
 ### Diagnose from the app
 
 1. From **Troubleshoot**, select **Get support**. This opens the in-app Support page and starts collecting the diagnostics.
+   > [!NOTE]
+   >
+   > Gathering diagnostics may take several minutes. Don't close Docker Desktop while the diagnostics are being collected.
 2. When the diagnostics collection process is complete, select **Upload to get a Diagnostic ID**.
 3. When the diagnostics are uploaded, Docker Desktop prints a diagnostic ID. Copy this ID.
 4. Use your diagnostics ID to get help:
@@ -65,6 +60,9 @@ If you are a Mac or Linux user, you also have the option to **Uninstall** Docker
 ### Diagnose from an error message
 
 1. When an error message appears, select **Gather diagnostics**.
+   > [!NOTE]
+   >
+   > Gathering diagnostics may take several minutes. Don't close Docker Desktop while the diagnostics are being collected.
 2. When the diagnostics are uploaded, Docker Desktop prints a diagnostic ID. Copy this ID.
 3. Use your diagnostics ID to get help:
    - If you have a paid Docker subscription, select **Contact support**. This opens the Docker Desktop support form. Fill in the information required and add the ID you copied in step three to the **Diagnostics ID field**. Then, select **Submit ticket** to request Docker Desktop support.
@@ -78,19 +76,31 @@ If you are a Mac or Linux user, you also have the option to **Uninstall** Docker
 In some cases, it's useful to run the diagnostics yourself, for instance, if
 Docker Desktop cannot start.
 
+> [!NOTE]
+>
+> Gathering diagnostics may take several minutes. Wait for the process to complete before closing the terminal.
+
 {{< tabs group="os" >}}
 {{< tab name="Windows" >}}
 
 1. Locate the `com.docker.diagnose` tool:
 
    ```console
+   # For all-user installations
    $ C:\Program Files\Docker\Docker\resources\com.docker.diagnose.exe
+
+   # For per-user installations
+   $ %LOCALAPPDATA%\Programs\DockerDesktop\resources\com.docker.diagnose.exe
    ```
 
 2. Create and upload the diagnostics ID. In PowerShell, run:
 
    ```console
+   # For all-user installations
    $ & "C:\Program Files\Docker\Docker\resources\com.docker.diagnose.exe" gather -upload
+
+   # For per-user installations
+   $ & %LOCALAPPDATA%\Programs\DockerDesktop\resources\com.docker.diagnose.exe" gather -upload
    ```
 
 After the diagnostics have finished, the terminal displays your diagnostics ID and the path to the diagnostics file. The diagnostics ID is composed of your user ID and a timestamp. For example `BE9AFAAF-F68B-41D0-9D12-84760E6B8740/20190905152051`.
@@ -131,6 +141,10 @@ After the diagnostics have finished, the terminal displays your diagnostics ID a
 
 {{< /tab >}}
 {{< /tabs >}}
+
+> [!TIP]
+>
+> You can also use the [`docker desktop diagnose` command](/manuals/desktop/features/desktop-cli.md) to diagnose Docker Desktop and upload the diagnostics ID.
 
 To view the contents of the diagnostic file:
 

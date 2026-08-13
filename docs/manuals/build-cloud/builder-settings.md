@@ -25,7 +25,7 @@ Any changes take effect immediately.
 Your subscription includes the following Build cache space:
 
 | Subscription | Build cache space |
-|--------------|-------------------|
+| ------------ | ----------------- |
 | Personal     | N/A               |
 | Pro          | 50GB              |
 | Team         | 100GB             |
@@ -43,16 +43,16 @@ two builders:
 > [!IMPORTANT]
 >
 > If you only build for one architecture, be aware that your effective cache
-space is half of your subscription's total allocation.
+> space is half of your subscription's total allocation.
 
 ### Get more build cache space
 
-To get more Build cache space, [upgrade your subscription](/manuals/subscription/scale.md).
+To get more Build cache space, [upgrade your subscription](/manuals/subscription/manage.md#upgrade-plans).
 
 > [!TIP]
 >
 > If you build large images, consider allocating less storage for caching to
-leave more space for active builds.
+> leave more space for active builds.
 
 ## Private resource access
 
@@ -70,10 +70,9 @@ internal package repositories for npm or PyPI, use [build secrets](/manuals/buil
 to authenticate during the build. For internal OCI registries, use `docker
 login` to authenticate before building.
 
-Note that if you use a private registry that requires authentication, you will
-need to authenticate with `docker login` twice before building. This is because
-the cloud builder needs to authenticate with Docker to use the cloud builder,
-and then again to authenticate with the private registry.
+If you use a private registry that requires authentication, you need to
+authenticate twice before building: once to Docker Hub (to access Docker Build
+Cloud), and once to your private registry (to push/pull images).
 
 ```console
 $ echo $DOCKER_PAT | docker login docker.io -u <username> --password-stdin

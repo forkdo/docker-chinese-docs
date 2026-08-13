@@ -27,11 +27,6 @@ You can enable DMR using Docker Desktop or Docker Engine. Follow the instruction
 You can now use the `docker model` command in the CLI and view and interact
 with your local models in the **Models** tab in the Docker Desktop Dashboard.
 
-> [!IMPORTANT]
->
-> For Docker Desktop versions 4.45 and earlier, this setting was under the
-> **Beta features** tab.
-
 ### Docker Engine
 
 1. Ensure you have installed [Docker Engine](/engine/install/).
@@ -75,11 +70,9 @@ then reinstall it:
 ```bash
 docker model uninstall-runner --images && docker model install-runner
 ```
-
 > [!NOTE]
-> With the above command, local models are preserved.
-> To delete the models during the upgrade, add the `--models` option to the
-> `uninstall-runner` command.
+> With the above command, local models are preserved and only the Docker Model Runner images are removed.
+> To also delete the local models during the upgrade, add the `--models` option to the `uninstall-runner` command.
 
 ## Pull a model
 

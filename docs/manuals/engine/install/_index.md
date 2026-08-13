@@ -31,6 +31,21 @@ aliases:
 - /engine/installation/oracle/
 - /enterprise/supported-platforms/
 - /install/linux/docker-ee/oracle/
+- /ee/docker-ee/sles/
+- /ee/docker-ee/suse/
+- /engine/installation/linux/docker-ce/sles/
+- /engine/installation/linux/docker-ee/sles/
+- /engine/installation/linux/docker-ee/suse/
+- /engine/installation/linux/sles/
+- /engine/installation/linux/SUSE/
+- /engine/installation/linux/suse/
+- /engine/installation/sles/
+- /engine/installation/SUSE/
+- /install/linux/docker-ce/sles/
+- /install/linux/docker-ee/sles/
+- /install/linux/docker-ee/suse/
+- /install/linux/sles/
+- /installation/sles/
 ---
 
 This section describes how to install Docker Engine on Linux, also known as
@@ -49,7 +64,6 @@ Click on a platform's link to view the relevant installation procedure.
 | [Fedora](fedora.md)                            |       ✅       |       ✅        |              |   ✅    |       |
 | [Raspberry Pi OS (32-bit)](raspberry-pi-os.md) |                |                 |      ⚠️      |         |       |
 | [RHEL](rhel.md)                                |       ✅       |       ✅        |              |         |  ✅   |
-| [SLES](sles.md)                                |                |                 |              |         |  ❌   |
 | [Ubuntu](ubuntu.md)                            |       ✅       |       ✅        |      ✅      |   ✅    |  ✅   |
 | [Binaries](binaries.md)                        |       ✅       |       ✅        |      ✅      |         |       |
 
@@ -109,7 +123,7 @@ Patch releases are always backward compatible with its major and minor version.
 
 Commercial use of Docker Engine obtained via Docker Desktop
 within larger enterprises (exceeding 250 employees OR with annual revenue surpassing
-$10 million USD), requires a [paid subscription](https://www.docker.com/pricing/).
+$10 million USD), requires a [paid subscription](https://www.docker.com/pricing?ref=Docs&refAction=DocsEngineInstall).
 Apache License, Version 2.0. See [LICENSE](https://github.com/moby/moby/blob/master/LICENSE) for the full license.
 
 ## Reporting security issues

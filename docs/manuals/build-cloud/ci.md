@@ -29,8 +29,9 @@ See [Loading build results](./usage/#loading-build-results) for details.
 
 > [!NOTE]
 >
-> Builds on Docker Build Cloud have a timeout limit of 90 minutes. Builds that
-> run for longer than 90 minutes are automatically cancelled.
+> Builds on Docker Build Cloud have a timeout limit that depends on your
+> subscription plan. Builds that run for longer than your limit are
+> automatically cancelled.
 
 ## Setting up credentials for CI/CD
 
@@ -90,19 +91,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@{{% param "login_action_version" %}}
         with:
           username: ${{ vars.DOCKER_ACCOUNT }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
       
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
         with:
           driver: cloud
           endpoint: "${{ vars.DOCKER_ACCOUNT }}/${{ vars.CLOUD_BUILDER_NAME }}" # for example, "acme/default"
       
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@{{% param "build_push_action_version" %}}
         with:
           tags: "<IMAGE>" # for example, "acme/my-image:latest"
           # For pull requests, export results to the build cache.
@@ -120,7 +121,7 @@ command directly instead, you have two options:
   ```yaml
   - name: Set up Docker Buildx
     id: builder
-    uses: docker/setup-buildx-action@v3
+    uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
     with:
       driver: cloud
       endpoint: "${{ vars.DOCKER_ACCOUNT }}/${{ vars.CLOUD_BUILDER_NAME }}"
@@ -201,7 +202,7 @@ jobs:
           curl --silent -L --output ~/.docker/cli-plugins/docker-buildx $BUILDX_URL
           chmod a+x ~/.docker/cli-plugins/docker-buildx
 
-      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ --password-stdin
+      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ACCOUNT --password-stdin
       - run: docker buildx create --use --driver cloud "${DOCKER_ACCOUNT}/${CLOUD_BUILDER_NAME}"
 
       - run: |
@@ -224,7 +225,7 @@ jobs:
           curl --silent -L --output ~/.docker/cli-plugins/docker-buildx $BUILDX_URL
           chmod a+x ~/.docker/cli-plugins/docker-buildx
 
-      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ --password-stdin
+      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ACCOUNT --password-stdin
       - run: docker buildx create --use --driver cloud "${DOCKER_ACCOUNT}/${CLOUD_BUILDER_NAME}"
 
       - run: |

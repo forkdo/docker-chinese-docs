@@ -1,24 +1,28 @@
 ---
 title: Manage a Docker account
-linkTitle: Manage an account
+linkTitle: Manage
 weight: 20
-description: Learn how to manage your Docker account.
-keywords: accounts, docker ID, account settings, account management, docker home
+description: Update account settings, email, password, 2FA, tokens, and
+  connected accounts
+keywords:
+  manage docker account, account settings, update email, change password,
+  Gravatar, two-factor authentication, personal access tokens, Google, GitHub,
+  connected accounts, convert account, deactivate account, Docker Home
 ---
 
-You can centrally manage your Docker account using Docker Home, including
-adminstrative and security settings.
+You can manage your Docker account in Docker Home, including administrative
+and security settings.
 
 > [!TIP]
 >
 > If your account is associated with an organization that enforces single
 > sign-on (SSO), you may not have permissions to update your account settings.
-> You must contact your administrator to update your settings.
+> Contact your administrator to update your settings.
 
 ## Update account information
 
 Account information is visible on your **Account settings** page. You can
-update the following account information:
+update the following:
 
 - Full name
 - Company
@@ -41,34 +45,28 @@ To update your email address:
 1. Sign in to your [Docker account](https://app.docker.com/login).
 1. Select your avatar in the top-right corner and select **Account settings**.
 1. Select **Email**.
-1. Enter your new email address and your password to confirm the change.
-1. Select **Send verification email**. Docker sends a verification
-link to your new email.
+1. Enter your new email address and confirm your identity with your password.
+   Select **Verify email**.
+1. Go to the new Docker email and copy the 6-digit verification code.
+1. Paste the verification code to complete updating your email.
 
-Your new email address will appear as unverified until you complete the
-verification process. You can:
-
-- Resend the verification email if needed.
-- Remove the unverified email address at any time before verification.
-
-To verify your email, open your email client and follow the instructions
-in the Docker verification email.
+Your verification session expires after 15 minutes.
 
 > [!NOTE]
 >
 > Docker accounts only support one verified email address at a time, which
-is used for account notifications and security-related communications. You
-can't add multiple verified email addresses to your account.
+> is used for account notifications and security-related communications. You
+> can't add multiple verified email addresses to your account.
 
 ## Change your password
 
-You can change your password by initiating a password reset via email. To change your password:
+Initiate your password reset through email:
 
 1. Sign in to your [Docker account](https://app.docker.com/login).
 1. Select your avatar in the top-right corner and select **Account settings**.
 1. Select **Password**, then **Reset password**.
-1. Docker will send you a password reset email with instructions to reset
-your password.
+1. Docker sends you a password reset email with instructions to reset your
+   password.
 
 ## Manage two-factor authentication
 
@@ -79,7 +77,7 @@ To update your two-factor authentication (2FA) settings:
 1. Select **2FA**.
 
 For more information, see
-[Enable two-factor authentication](../security/2fa/_index.md).
+[Enable two-factor authentication](/manuals/security/2fa/_index.md).
 
 ## Manage personal access tokens
 
@@ -90,11 +88,16 @@ To manage personal access tokens:
 1. Select **Personal access tokens**.
 
 For more information, see
-[Create and manage access tokens](../security/access-tokens.md).
+[Create and manage access tokens](/manuals/security/access-tokens.md).
 
 ## Manage connected accounts
 
-You can unlink connected Google or GitHub accounts:
+If you signed up with Google or GitHub, that provider appears under
+**Connected accounts**. Disconnecting it removes the OAuth connection. It
+doesn't change your Docker ID, and it doesn't let you add a different sign-in
+method. You can't connect both Google and GitHub to the same account.
+
+To disconnect a connected account:
 
 1. Sign in to your [Docker account](https://app.docker.com/login).
 1. Select your avatar in the top-right corner and select **Account settings**.
@@ -104,15 +107,24 @@ You can unlink connected Google or GitHub accounts:
 To fully unlink your Docker account, you must also unlink Docker from Google
 or GitHub. See Google or GitHub's documentation for more information:
 
-- [Manage connections between your Google Account and third-parties](https://support.google.com/accounts/answer/13533235?hl=en)
-- [Reviewing and revoking authorization of GitHub Apps](https://docs.github.com/en/apps/using-github-apps/reviewing-and-revoking-authorization-of-github-apps)
+- [Manage connections between your Google Account and
+  third-parties](https://support.google.com/accounts/answer/13533235?hl=en)
+- [Reviewing and revoking authorization of GitHub
+  Apps](https://docs.github.com/en/apps/using-github-apps/reviewing-and-revoking-authorization-of-github-apps)
 
 ## Convert your account
 
 For information on converting your account into an organization, see
-[Convert an account into an organization](../admin/organization/convert-account.md).
+[Convert an account into an
+organization](/manuals/admin/organization/setup/convert-account.md).
 
 ## Deactivate your account
 
 For information on deactivating your account, see
-[Deactivating a user account](./deactivate-user-account.md).
+[Deactivate a Docker account](/manuals/accounts/deactivate-user-account.md).
+
+## Next steps
+
+- [Docker accounts overview](/manuals/accounts/_index.md)
+- [Create a Docker account](/manuals/accounts/create-account.md)
+- [Enable two-factor authentication](/manuals/security/2fa/_index.md)

@@ -4,15 +4,13 @@ keywords: Docker Extensions, Docker Desktop, Linux, Mac, Windows, feedback
 title: Settings and feedback for Docker Extensions
 linkTitle: Settings and feedback
 weight: 40
-aliases:
- - /desktop/extensions/settings-feedback/
 ---
 
 ## Settings
 
 ### Turn on or turn off extensions
 
-Docker Extensions is switched on by default. To change your settings:
+Docker Extensions is switched off by default. To change your settings:
 
 1. Navigate to **Settings**.
 2. Select the **Extensions** tab.
@@ -21,8 +19,8 @@ Docker Extensions is switched on by default. To change your settings:
 
 > [!NOTE]
 >
-> If you are an [organization owner](/manuals/admin/organization/manage-a-team.md#organization-owner), you can turn off extensions for your users. Open the `settings-store.json` file, and set `"extensionsEnabled"` to `false`.
-> The `settings-store.json` file (or `settings.json` for Docker Desktop versions 4.34 and earlier) is located at:
+> If you are an [organization owner](/manuals/admin/organization/manage/manage-a-team.md#what-is-an-organization-owner), you can turn off extensions for your users. Open the `settings-store.json` file, and set `"extensionsEnabled"` to `false`.
+> The `settings-store.json` file is located at:
 >   - `~/Library/Group Containers/group.com.docker/settings-store.json` on Mac
 >   - `C:\Users\[USERNAME]\AppData\Roaming\Docker\settings-store.json` on Windows
 >

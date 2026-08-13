@@ -12,6 +12,9 @@ Docker Hardened Images (DHI) is a comprehensive catalog of
 security-hardened container images built to meet diverse
 development and production needs.
 
+You can explore the DHI catalog on [Docker Hub](https://hub.docker.com/hardened-images/catalog) or use the [DHI CLI](../tools/cli.md) to browse
+available images, tags, and metadata from the command line.
+
 ## Framework and application images
 
 DHI includes a selection of popular frameworks and application images, each
@@ -76,13 +79,13 @@ For example, you might find tags like the following in a DHI repository:
 - `3.9.23-debian12`: runtime image for Python 3.9.23
 - `3.9.23-debian12-dev`: development image for Python 3.9.23
 
-## FIPs and STIG variants {tier="DHI Enterprise"}
+## FIPs and STIG variants
 
 {{< summary-bar feature_name="Docker Hardened Images" >}}
 
 Some Docker Hardened Images include a `-fips` variant. These variants use
 cryptographic modules that have been validated under [FIPS
-140](../core-concepts/fips.md), a U.S. government standard for secure
+140](security-concepts/fips.md), a U.S. government standard for secure
 cryptographic operations.
 
 FIPS variants are designed to help organizations meet regulatory and compliance
@@ -107,7 +110,7 @@ in the **Compliance** column of the image tags list in the Docker Hub catalog.
 
 ## Compatibility variants
 
-Some Docker Hardened Images include a compatiability variant. These variants
+Some Docker Hardened Images include a compatibility variant. These variants
 provide additional tools and configurations for specific use cases without
 bloating the minimal base images.
 
@@ -130,3 +133,28 @@ You can recognize compatibility variants by their tag that includes `-compat`.
 Use compatibility variants when your deployment requires additional tools beyond
 the minimal runtime, such as when using Helm charts or applications with
 specific tooling requirements.
+
+## Socket Firewall variants
+
+Some Docker Hardened Images include Socket Firewall variants. These are `dev`
+variants that come with [Socket](https://socket.dev/) preinstalled to monitor
+package manager activity and block malicious packages during development and CI
+builds.
+
+Two tiers are available, identified by their tag suffix:
+
+- `-sfw-dev`: Socket Firewall Free. No API key required.
+- `-sfw-ent-dev`: Socket Firewall Enterprise. Requires an API key from Socket.
+
+Not all images offer both tiers.
+
+## Image-specific variants
+
+Some images include variants that go beyond the general `dev`, `compat`, and
+`sfw` patterns. These represent distinct editions, bundled tooling, or
+runtime configurations specific to that image. Examples include a PHP-FPM variant
+for web server integration, a native binary build for faster startup, or a
+specific edition of a database.
+
+You can identify these variants by their tag suffix. The image name in the tag
+suffix typically reflects what's included or different.

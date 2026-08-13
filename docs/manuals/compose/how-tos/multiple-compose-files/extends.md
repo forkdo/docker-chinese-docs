@@ -6,7 +6,6 @@ linkTitle: Extend
 weight: 20
 aliases:
 - /compose/extends/
-- /compose/multiple-compose-files/extends/
 ---
 
 Docker Compose's [`extends` attribute](/reference/compose-file/services.md#extends)
@@ -28,6 +27,12 @@ configuration. Tracking which fragment of a service is relative to which path is
 difficult and confusing, so to keep paths easier to understand, all paths must
 be defined relative to the base file. 
 
+> [!NOTE]
+>
+> `extends` is not supported when deploying with `docker stack deploy`. Running
+> `docker stack config` on a Compose file that uses `extends` returns the error:
+> `Configuration contains forbidden properties`.
+
 ## How the `extends` attribute works
 
 ### Extending services from another file
@@ -42,7 +47,7 @@ services:
       service: webapp
 ```
 
-This instructs Compose to re-use only the properties of the `webapp` service
+This instructs Compose to reuse only the properties of the `webapp` service
 defined in the `common-services.yml` file. The `webapp` service itself is not part of the final project.
 
 If `common-services.yml`
@@ -66,7 +71,7 @@ To include the service `webapp` in the final project when extending services fro
 ```yaml
 services:
   web:
-    build: alpine
+    build: ./alpine
     command: echo
     extends:
       file: common-services.yml
@@ -86,7 +91,7 @@ If you define services in the same Compose file and extend one service from anot
 ```yaml 
 services:
   web:
-    build: alpine
+    build: ./alpine
     extends: webapp
   webapp:
     environment:

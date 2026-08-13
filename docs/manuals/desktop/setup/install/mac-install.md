@@ -11,10 +11,6 @@ aliases:
 - /desktop/mac/install/
 - /docker-for-mac/install/
 - /engine/installation/mac/
-- /installation/mac/
-- /docker-for-mac/apple-m1/
-- /docker-for-mac/apple-silicon/
-- /desktop/mac/apple-silicon/
 - /desktop/install/mac-install/
 - /desktop/install/mac/
 ---
@@ -23,7 +19,7 @@ aliases:
 >
 > Commercial use of Docker Desktop in larger enterprises (more than 250
 > employees or more than $10 million USD in annual revenue) requires a [paid
-> subscription](https://www.docker.com/pricing/).
+> subscription](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopMacInstall).
 
 This page provides download links, system requirements, and step-by-step installation instructions for Docker Desktop on Mac.
 
@@ -35,17 +31,6 @@ This page provides download links, system requirements, and step-by-step install
 ## System requirements
 
 {{< tabs >}}
-{{< tab name="Mac with Intel chip" >}}
-
-- A supported version of macOS.
-
-  > [!IMPORTANT]
-  >
-  > Docker Desktop is supported on the current and two previous major macOS releases. As new major versions of macOS are made generally available, Docker stops supporting the oldest version and supports the newest version of macOS (in addition to the previous two releases).
-
-- At least 4 GB of RAM.
-
-{{< /tab >}}
 {{< tab name="Mac with Apple silicon" >}}
 
 - A supported version of macOS.
@@ -60,6 +45,17 @@ This page provides download links, system requirements, and step-by-step install
    ```console
    $ softwareupdate --install-rosetta
    ```
+{{< /tab >}}
+{{< tab name="Mac with Intel chip" >}}
+
+- A supported version of macOS.
+
+  > [!IMPORTANT]
+  >
+  > Docker Desktop is supported on the current and two previous major macOS releases. As new major versions of macOS are made generally available, Docker stops supporting the oldest version and supports the newest version of macOS (in addition to the previous two releases).
+
+- At least 4 GB of RAM.
+
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -167,7 +163,7 @@ $ sudo /Applications/Docker.app/Contents/MacOS/install --user testuser --proxy-h
 
 ## Where to go next
 
-- Explore [Docker's subscriptions](https://www.docker.com/pricing/) to see what Docker can offer you.
+- Explore [Docker's subscriptions](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopMacInstall) to see what Docker can offer you.
 - [Get started with Docker](/get-started/introduction/_index.md).
 - [Explore Docker Desktop](/manuals/desktop/use-desktop/_index.md) and all its features.
 - [Troubleshooting](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) describes common problems, workarounds, how

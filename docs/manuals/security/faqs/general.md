@@ -40,7 +40,7 @@ Docker activity logs are available for 90 days. You're responsible for exporting
 
 ## Can I export a list of users with their roles and privileges?
 
-Yes, use the [Export Members](../../admin/organization/members.md#export-members) feature to export a CSV file containing your organization's users with role and team information.
+Yes, use the [Export Members](../../admin/organization/manage/members.md#export-members-csv-file) feature to export a CSV file containing your organization's users with role and team information.
 
 ## How does Docker Desktop handle authentication information?
 
@@ -54,7 +54,7 @@ Docker Desktop uses the host operating system's secure key management to store a
 
 If SCIM isn't turned on, you must manually remove users from the organization. SCIM can automate user removal, but only for users added after SCIM is turned on. Users added before SCIM was turned on must be removed manually.
 
-For more information, see [Manage organization members](/manuals/admin/organization/members.md).
+For more information, see [Manage organization members](/manuals/admin/organization/manage/members.md).
 
 ## What metadata does Scout collect from container images?
 
@@ -62,8 +62,8 @@ For information about metadata stored by Docker Scout, see [Data handling](/manu
 
 ## How are Marketplace extensions vetted for security?
 
-Security vetting for extensions is on the roadmap but isn't currently implemented. Extensions aren't covered as part of Docker's Third-Party Risk Management Program.
+Security vetting for extensions isn't implemented. Extensions aren't covered as part of Docker's Third-Party Risk Management Program.
 
 ## Can I prevent users from pushing images to Docker Hub private repositories?
 
-No direct setting exists to disable private repositories. However, [Registry Access Management](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) lets administrators control which registries developers can access through Docker Desktop via the Admin Console.
+No direct setting exists to disable private repositories. However, [Registry Access Management](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) lets administrators control which registries developers can access through Docker Desktop via Docker Home.
