@@ -8,7 +8,7 @@ aliases:
 - /storage/bind-mounts/
 ---
 
-当您使用绑定挂载时，主机上的文件或目录会从主机挂载到容器中。相比之下，当您使用卷时，会在主机上的 Docker 存储目录中创建一个新目录，Docker 会管理该目录的内容。
+当您使用绑定挂载时，主机上的文件或目录会从主机挂载到容器中。相比之下，当您使用卷时，会在主机上的 Docker 存储目录中创建一个新目录。Docker 会创建并维护该存储位置，但容器使用标准的文件系统操作直接访问它。
 
 ## 何时使用绑定挂载
 
@@ -57,13 +57,19 @@ $ docker run --volume <host-path>:<container-path>
 
 通常，`--mount` 是首选。主要区别在于 `--mount` 标志更明确，并支持所有可用的选项。
 
-如果您使用 `--volume` 来绑定挂载一个在 Docker 主机上尚不存在的文件或目录，Docker 会自动为您在主机上创建该目录。它总是被创建为目录。
+如果您使用 `--volume` 来绑定挂载一个在 Docker 主机上尚不存在的文件或目录，Docker 会自动为您在主机上创建该目录。它总是被创建为目录。如果 Docker 守护进程没有权限创建源目录，请在启动容器之前先创建它。
 
-如果指定的挂载路径在主机上不存在，`--mount` 不会自动创建目录。相反，它会产生一个错误：
+默认情况下，如果指定的挂载路径在主机上不存在，`--mount` 不会自动创建目录。相反，它会产生一个错误：
 
 ```console
 $ docker run --mount type=bind,src=/dev/noexist,dst=/mnt/foo alpine
 docker: Error response from daemon: invalid mount config for type "bind": bind source path does not exist: /dev/noexist.
+```
+
+您可以使用 `bind-create-src` 选项，在源目录不存在时自动在主机上创建它：
+
+```console
+$ docker run --mount type=bind,src=/home/user/mydir,dst=/mnt/foo,bind-create-src alpine
 ```
 
 ### --mount 的选项
@@ -82,6 +88,7 @@ $ docker run --mount type=bind,src=<host-path>,dst=<container-path>[,<key>=<valu
 | `destination`, `dst`, `target` | 文件或目录在容器中挂载的路径。必须是绝对路径。                                                           |
 | `readonly`, `ro`              | 如果存在，则使绑定挂载以只读方式[挂载到容器中](#use-a-read-only-bind-mount)。                               |
 | `bind-propagation`            | 如果存在，则更改[绑定传播](#configure-bind-propagation)。                                                 |
+| `bind-create-src`             | 如果源目录不存在，则在主机上自动创建它。默认情况下，如果源路径在守护进程上不存在，`--mount` 会产生错误。 |
 
 ```console {title="示例"}
 $ docker run --mount type=bind,src=.,dst=/project,ro,bind-propagation=rshared

@@ -4,46 +4,46 @@ linkTitle: 参考
 layout: wide
 description: 查找 Docker 平台各种 API、CLI 和文件格式的参考文档
 params:
-  icon: terminal
+  icon: command-line
   notoc: true
   grid_files:
   - title: Dockerfile
     description: 定义单个容器的内容和启动行为。
-    icon: edit_document
+    icon: pencil-square
     link: /reference/dockerfile/
   - title: Compose 文件
     description: 定义多容器应用程序。
-    icon: polyline
+    icon: rectangle-stack
     link: /reference/compose-file/
   grid_clis:
   - title: Docker CLI
     description: 主要的 Docker CLI，包含所有 `docker` 命令。
-    icon: terminal
+    icon: command-line
     link: /reference/cli/docker/
   - title: Compose CLI
     description: Docker Compose 的 CLI，用于构建和运行多容器应用程序。
-    icon: subtitles
+    icon: server-stack
     link: /reference/cli/docker/compose/
   - title: Daemon CLI (dockerd)
     description: 管理容器的持久进程。
-    icon: developer_board
+    icon: cpu-chip
     link: /reference/cli/dockerd/
   grid_apis:
   - title: Engine API
     description: Docker 的主要 API，提供对守护进程的程序化访问。
-    icon: api
+    icon: code-bracket
     link: /reference/api/engine/
   - title: Docker Hub API
     description: 与 Docker Hub 交互的 API。
-    icon: communities
+    icon: cloud
     link: /reference/api/hub/latest/
   - title: DVP Data API
     description: Docker Verified Publishers 用于获取分析数据的 API。
-    icon: area_chart
+    icon: chart-bar
     link: /reference/api/dvp/latest/
   - title: Registry API
     description: Docker Registry 的 API。
-    icon: database
+    icon: circle-stack
     link: /reference/api/registry/latest/
 ---
 

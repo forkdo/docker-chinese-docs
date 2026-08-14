@@ -73,6 +73,10 @@ $ docker extension install <name-of-your-extension>
 
 ## 第四步：提交并发布扩展到 Marketplace
 
+> [!IMPORTANT]
+>
+> 在 Docker 审查扩展市场安全性期间，提交到 Docker 扩展市场的新扩展已暂停。您仍可以更新现有扩展，私有市场扩展不受影响。如有其他疑问，请联系 extensions@docker.com。
+
 如果您希望让所有 Docker Desktop 用户都能使用您的扩展，可以将其提交到 Marketplace 进行发布。有关更多信息，请参阅 [发布](extensions/_index.md)。
 
 ## 清理
@@ -90,4 +94,3 @@ $ docker extension rm <name-of-your-extension>
 - 学习如何为您的扩展[设置 CI](dev/continuous-integration.md)。
 - 了解更多关于扩展[架构](architecture/_index.md)的信息。
 - 了解更多关于[设计 UI](design/design-guidelines.md)的信息。
----

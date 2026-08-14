@@ -6,13 +6,9 @@ description: 了解如何使用 Python、Bert Extractive Summarizer 和 Docker �
 summary: '本指南介绍如何使用 Docker 容器化文本摘要模型。
 
   '
-tags:
-- ai
-languages:
-- python
-aliases:
-- /guides/use-case/nlp/text-summarization/
+
 params:
+  tags: [ai]
   time: 20 minutes
 ---
 
@@ -238,7 +234,7 @@ params:
 
    > [!NOTE]
    >
-   > 对于 Windows 用户，在运行容器时可能会遇到错误。验证 `entrypoint.sh` 中的行尾是否为 `LF` (`\n`) 而不是 `CRLF` (`\r\n`)，然后重新构建镜像。更多详情，请参阅 [避免意外的语法错误，对容器中的文件使用 Unix 风格的行尾](/desktop/troubleshoot-and-support/troubleshoot/topics/#Unexpected-syntax-errors-use-Unix-style-line endings-for-files-in-containers)。
+   > 对于 Windows 用户，在运行容器时可能会遇到错误。验证 `entrypoint.sh` 中的行尾是否为 `LF` (`\n`) 而不是 `CRLF` (`\r\n`)，然后重新构建镜像。更多详情，请参阅 [避免意外的语法错误，对容器中的文件使用 Unix 风格的行尾](/desktop/troubleshoot-and-support/troubleshoot/topics/#Unexpected-syntax-errors-use-Unix-style-line-endings-for-files-in-containers)。
 
    容器启动后，您将在控制台中看到以下内容。
 

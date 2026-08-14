@@ -6,13 +6,10 @@ description: 了解如何使用 Python、spaCy 和 Docker 构建并运行命名�
 summary: '本指南介绍如何使用 Docker 容器化命名实体识别 (NER) 模型。
 
   '
-tags:
-- ai
-languages:
-- python
 aliases:
 - /guides/use-case/nlp/named-entity-recognition/
 params:
+  tags: [ai]
   time: 20 分钟
 ---
 

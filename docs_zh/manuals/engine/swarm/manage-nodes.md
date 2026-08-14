@@ -119,7 +119,7 @@ node-1
 
 然而，引擎标签仍然有用，因为某些不影响容器安全编排的功能可能更适合以分散的方式设置。例如，引擎可以有一个标签来指示它具有某种类型的磁盘设备，这可能与安全性无直接关系。这些标签更容易被 swarm 编排器“信任”。
 
-有关服务约束的更多信息，请参阅 `docker service create` [CLI 参考](/reference/cli/docker/service/create.md)。
+有关服务约束的更多信息，请参阅 `docker service create` [CLI 参考](/reference/cli/docker/service/create/)。
 
 ### 提升或降级节点
 

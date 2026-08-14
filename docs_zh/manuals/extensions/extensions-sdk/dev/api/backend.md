@@ -20,7 +20,7 @@ ddClient.extension.vm.service
  .then((value: any) => console.log(value)
 ```
 
-有关其他方法（如 POST、UPDATE 和 DELETE），请参阅 [Service API 参考](/reference/api/extensions-sdk/HttpService.md)。
+有关其他 HTTP 方法，请参阅 [Service API 参考](/reference/api/extensions-sdk/HttpService.md)。
 
 > 已弃用的扩展后端通信
 >

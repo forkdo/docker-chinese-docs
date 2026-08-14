@@ -5,7 +5,21 @@ description: '将 Docker Scout 与 Slack 集成，以在 Slack 频道中接收�
 
   '
 keywords: scout, team collaboration, slack, notifications, updates
+params:
+  sidebar:
+    badge:
+      color: gray
+      text: Deprecated
 ---
+
+> [!IMPORTANT]
+>
+> Docker Scout 的 Slack 集成已弃用，并将于 2026 年 7 月 30 日停止服务。若要在
+> 不依赖推送通知的情况下呈现 CVE 和策略结果，请将 `docker scout cves` 或
+> `docker scout policy` 集成到您的 CI 流水线中。
+> 请参阅 [CI 集成](/manuals/scout/integrations/_index.md#continuous-integration)。
+> 更多详情，请参阅
+> [Scout 平台发布说明](/manuals/scout/release-notes/platform.md)。
 
 您可以通过创建 Slack Webhook 并将其添加到 Docker Scout 仪表板，从而将 Docker Scout 与 Slack 集成。当新的漏洞被披露并影响您一个或多个镜像时，Docker Scout 会通知您。
 

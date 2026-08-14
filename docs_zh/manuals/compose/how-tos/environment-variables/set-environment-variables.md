@@ -1,3 +1,5 @@
+<!-- FILE: manuals/compose/how-tos/environment-variables/set-environment-variables.md -->
+
 ---
 title: 在容器环境中设置环境变量
 linkTitle: 设置环境变量
@@ -5,8 +7,6 @@ weight: 10
 description: 如何使用 Compose 设置、使用和管理环境变量
 keywords: compose, orchestration, environment, environment variables, container environment variables
 aliases:
-- /compose/env/
-- /compose/link-env-deprecated/
 - /compose/environment-variables/set-environment-variables/
 ---
 

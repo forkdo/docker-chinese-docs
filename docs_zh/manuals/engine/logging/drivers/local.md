@@ -18,7 +18,9 @@ aliases:
 
 ## 用法
 
-要将 `local` 驱动程序用作默认日志记录驱动程序，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opt` 键设置为适当的值。该文件在 Linux 主机上位于 `/etc/docker/`，在 Windows Server 上位于 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `local` 驱动程序用作默认日志记录驱动程序，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opt` 键设置为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+{{% include "daemon-cfg-desktop.md" %}}
 
 以下示例将日志驱动程序设置为 `local` 并设置 `max-size` 选项。
 

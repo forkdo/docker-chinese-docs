@@ -47,6 +47,7 @@ download-url-base: https://download.docker.com/linux/debian
 - `docker.io`
 - `docker-compose`
 - `docker-doc`
+- `docker-buildx`
 - `podman-docker`
 
 此外，Docker Engine 依赖于 `containerd` 和 `runc`。Docker Engine 将这些依赖项捆绑为一个包：`containerd.io`。如果您之前安装了 `containerd` 或 `runc`，请卸载它们以避免与 Docker Engine 捆绑的版本发生冲突。
@@ -54,7 +55,7 @@ download-url-base: https://download.docker.com/linux/debian
 运行以下命令以卸载所有冲突的软件包：
 
 ```console
-$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
+$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc docker-buildx podman-docker containerd runc | cut -f1)
 ```
 
 `apt` 可能会报告您没有安装这些软件包。
@@ -92,6 +93,7 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc po
    URIs: {{% param "download-url-base" %}}
    Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
    Components: stable
+   Architectures: $(dpkg --print-architecture)
    Signed-By: /etc/apt/keyrings/docker.asc
    EOF
 
@@ -100,13 +102,13 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc po
 
    > [!NOTE]
    >
-   > 如果您使用的是衍生发行版，例如 Kali Linux，您可能需要替换命令中预期打印版本代号的部分：
+   > 如果您使用的是 Debian testing 或衍生发行版（例如 Kali Linux），您可能需要替换命令中预期打印版本代号的部分：
    >
    > ```console
    > $(. /etc/os-release && echo "$VERSION_CODENAME")
    > ```
    >
-   > 将此部分替换为相应 Debian 版本的代号，例如 `bookworm`。
+   > 将此部分替换为相应 Debian 版本的代号，例如 `trixie`。
 
 2. 安装 Docker 软件包。
 
@@ -144,13 +146,13 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc po
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -203,13 +205,13 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc po
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker

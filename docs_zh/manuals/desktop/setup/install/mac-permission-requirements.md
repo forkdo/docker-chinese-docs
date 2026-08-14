@@ -4,10 +4,7 @@ keywords: Docker Desktop, mac, security, install, permissions
 title: 了解 Mac 上 Docker Desktop 的权限要求
 linkTitle: Mac 权限要求
 aliases:
-- /docker-for-mac/privileged-helper/
-- /desktop/mac/privileged-helper/
 - /desktop/mac/permission-requirements/
-- /desktop/install/mac-permission-requirements/
 weight: 20
 ---
 
@@ -91,6 +88,12 @@ $ rm /Library/LaunchDaemons/com.docker.vmnetd.plist
 
 $ rm /Library/PrivilegedHelperTools/com.docker.vmnetd
 ```
+
+## 后端助手套接字
+
+除了可选的[特权助手](#privileged-helper)外，Docker Desktop 后端进程（`com.docker.backend`）使用一个内部助手套接字（`~/Library/Containers/com.docker.docker/Data/forkexecd.sock`）来派生并执行助手进程，作为运行 Docker Desktop 的一部分。
+
+与特权助手不同，此套接字不以 `root` 身份运行，也不授予任何提升的权限。它仅由运行 Docker Desktop 的同一个 macOS 用户拥有和访问，并包含在 Docker Desktop 的应用程序容器中。
 
 ## 在 Linux VM 中以 root 身份运行的容器
 

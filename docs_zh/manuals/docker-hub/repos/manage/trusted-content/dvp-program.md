@@ -41,7 +41,6 @@ Docker Verified Publisher Program (DVP) 为 Docker Hub 发布者提供多项功�
 - [洞察与分析](#insights-and-analytics)：详细的使用指标和社区参与数据
 - [漏洞分析](#vulnerability-analysis)：使用 Docker Scout 进行自动安全扫描
 - [优先搜索排名](#priority-search-ranking)：在 Docker Hub 搜索结果中增强可发现性
-- [移除速率限制](#removal-of-rate-limiting)：开发团队不受限制的拉取
 - [联合营销机会](#co-marketing-opportunities)：与 Docker 的联合推广活动
 
 ### 企业级基础设施
@@ -49,7 +48,7 @@ Docker Verified Publisher Program (DVP) 为 Docker Hub 发布者提供多项功�
 Docker Verified Publisher Program 运行在 Docker Hub 的企业级基础设施上，服务于全球数百万开发者。您发布的内容受益于：
 
 - **高可用性和正常运行时间**：Docker 的系统设计为跨多个可用区进行故障转移，具有负载均衡的自动扩展功能，可实现 99.9% 的正常运行时间。
-- **全球交付和快速下载**：Docker 利用 Cloudflare 的 CDN 和缓存（配合 Cache Reserve），实现超过 99% 的缓存命中率，减少对源流量的依赖，确保全球各地的开发者都能快速访问。
+- **全球交付和快速下载**：Docker 利用全球 CDN 和缓存基础设施，实现超过 99% 的缓存命中率，减少对源流量的依赖，确保全球各地的开发者都能快速访问。
 - **持久性**：Docker 维护记录在案的备份策略，并对生产数据执行每日完整备份。
 
 您只需像往常一样将镜像推送到 Docker Hub，Docker 就会处理其余的工作，将您的镜像提供给全球数百万开发者。
@@ -80,12 +79,6 @@ DVP 组织可以为 Docker Hub 上的单个仓库上传自定义图像。这允�
 ### 优先搜索排名
 
 验证发布者镜像在 Docker Hub 搜索结果中获得增强的可见性，使开发人员更容易发现您的内容。这种改进的可发现性有助于推动您的镜像在开发人员社区中的采用。
-
-### 移除速率限制
-
-验证发布者镜像免于标准的 [Docker Hub 速率限制](../../../usage/_index.md)，确保开发人员可以不受限制地拉取您的镜像。**这适用于所有用户，包括未经身份验证的用户**，他们可以获得 DVP 镜像的无限拉取。这消除了潜在的采用障碍，并为您的内容用户提供了无缝体验。
-
-DVP 合作伙伴可以通过在拉取其镜像时检查是否存在速率限制标头来验证这种无限访问。当拉取 DVP 镜像时，用户不会看到 `ratelimit-limit` 或 `ratelimit-remaining` 标头，这表示无限访问。有关检查速率限制的更多详细信息，请参阅 [查看拉取速率和限制](../../../usage/pulls.md#view-pull-rate-and-limit)。
 
 ### 联合营销机会
 

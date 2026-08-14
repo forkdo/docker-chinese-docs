@@ -23,9 +23,9 @@ aliases:
 │ ├── compose.yaml
 │ ├── node_modules/
 │ ├── package.json
+│ ├── package-lock.json
 │ ├── spec/
-│ ├── src/
-│ └── yarn.lock
+│ └── src/
 ```
 
 ## 定义应用服务
@@ -34,14 +34,14 @@ aliases:
 
 ```console
 $ docker run -dp 127.0.0.1:3000:3000 \
-  -w /app -v "$(pwd):/app" \
+  -w /app -v ".:/app" \
   --network todo-app \
   -e MYSQL_HOST=mysql \
   -e MYSQL_USER=root \
   -e MYSQL_PASSWORD=secret \
   -e MYSQL_DB=todos \
-  node:lts-alpine \
-  sh -c "yarn install && yarn run dev"
+  node:24-alpine \
+  sh -c "npm install && npm run dev"
 ```
 
 现在你将在 `compose.yaml` 文件中定义此服务。
@@ -51,7 +51,7 @@ $ docker run -dp 127.0.0.1:3000:3000 \
    ```yaml
    services:
      app:
-       image: node:lts-alpine
+       image: node:24-alpine
    ```
 
 2. 通常你会看到 `command` 紧邻 `image` 定义（尽管没有顺序要求）。将 `command` 添加到你的 `compose.yaml` 文件中。
@@ -59,8 +59,8 @@ $ docker run -dp 127.0.0.1:3000:3000 \
    ```yaml
    services:
      app:
-       image: node:lts-alpine
-       command: sh -c "yarn install && yarn run dev"
+       image: node:24-alpine
+       command: sh -c "npm install && npm run dev"
    ```
 
 3. 现在通过为服务定义 `ports` 来迁移命令中的 `-p 127.0.0.1:3000:3000` 部分。
@@ -68,20 +68,20 @@ $ docker run -dp 127.0.0.1:3000:3000 \
    ```yaml
    services:
      app:
-       image: node:lts-alpine
-       command: sh -c "yarn install && yarn run dev"
+       image: node:24-alpine
+       command: sh -c "npm install && npm run dev"
        ports:
          - 127.0.0.1:3000:3000
    ```
 
-4. 接下来，通过使用 `working_dir` 和 `volumes` 定义，迁移工作目录 (`-w /app`) 和卷映射 (`-v "$(pwd):/app"`)。
+4. 接下来，通过使用 `working_dir` 和 `volumes` 定义，迁移工作目录 (`-w /app`) 和卷映射 (`-v ".:/app"`)。
    Docker Compose 卷定义的一个优势是你可以使用当前目录的相对路径。
 
    ```yaml
    services:
      app:
-       image: node:lts-alpine
-       command: sh -c "yarn install && yarn run dev"
+       image: node:24-alpine
+       command: sh -c "npm install && npm run dev"
        ports:
          - 127.0.0.1:3000:3000
        working_dir: /app
@@ -94,8 +94,8 @@ $ docker run -dp 127.0.0.1:3000:3000 \
    ```yaml
    services:
      app:
-       image: node:lts-alpine
-       command: sh -c "yarn install && yarn run dev"
+       image: node:24-alpine
+       command: sh -c "npm install && npm run dev"
        ports:
          - 127.0.0.1:3000:3000
        working_dir: /app
@@ -170,8 +170,8 @@ $ docker run -d \
 ```yaml
 services:
   app:
-    image: node:lts-alpine
-    command: sh -c "yarn install && yarn run dev"
+    image: node:24-alpine
+    command: sh -c "npm install && npm run dev"
     ports:
       - 127.0.0.1:3000:3000
     working_dir: /app
@@ -256,7 +256,7 @@ volumes:
 相关信息：
  - [Compose 概述](/manuals/compose/_index.md)
  - [Compose 文件参考](/reference/compose-file/_index.md)
- - [Compose CLI 参考](/reference/cli/docker/compose/_index.md)
+ - [Compose CLI 参考](/reference/cli/docker/compose/)
 
 ## 下一步
 

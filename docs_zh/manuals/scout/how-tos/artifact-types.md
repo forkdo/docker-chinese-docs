@@ -171,6 +171,6 @@ $ docker scout sbom --format spdx -o sbom.spdx.json archive://scout-cli.tar
 
 在 CLI 参考文档中阅读有关命令和支持的标志：
 
-- [`docker scout quickview`](/reference/cli/docker/scout/quickview.md)
-- [`docker scout cves`](/reference/cli/docker/scout/cves.md)
-- [`docker scout compare`](/reference/cli/docker/scout/compare.md)
+- [`docker scout quickview`](/reference/cli/docker/scout/quickview/)
+- [`docker scout cves`](/reference/cli/docker/scout/cves/)
+- [`docker scout compare`](/reference/cli/docker/scout/compare/)

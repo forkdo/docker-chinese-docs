@@ -25,27 +25,27 @@ Docker Hardened Images (DHIs) 由 Docker 策划和维护，并使用上游开源
 ## 修补
 
 - 上游：维护和更新每个组件的源代码，包括修复库和依赖项中的漏洞。
-- Docker：应用上游补丁后重新构建和重新发布镜像。Docker 监控漏洞并发布受影响镜像的更新。只有 DHI Enterprise 包含 SLA。DHI Free 提供安全基线，但不保证修复时间表。
+- Docker：应用上游补丁后重新构建和重新发布镜像。Docker 监控漏洞并发布受影响镜像的更新。DHI Select 和 DHI Enterprise 包含 [SLA 承诺](https://docs.docker.com/go/dhi-sla/)。DHI Community 提供安全基线，但不保证修复时间表。
 - 您：在您的环境中应用 DHI 更新，并修补您在基础镜像之上安装的任何软件或依赖项。
 
 ## 测试
 
 - 上游：定义原始软件的行为和功能，并负责验证核心功能。
-- Docker：验证 DHIs 的启动、运行和行为是否与上游预期一致。Docker 还运行安全扫描，并随每个镜像包含一份[测试证明](../core-concepts/attestations.md)。
+- Docker：验证 DHIs 的启动、运行和行为是否与上游预期一致。Docker 还运行安全扫描，并随每个镜像包含一份[测试证明](security-concepts/attestations.md)。
 - 您：在 DHIs 之上测试您的应用程序，并验证任何更改或自定义在您的环境中是否按预期运行。
 
 ## 安全与合规
 
 - Docker：随每个镜像发布签名的 SBOM、VEX 文档、来源数据和 CVE 扫描结果，以支持合规性和供应链安全性。
-  - 对于免费 DHI 用户：所有安全元数据和透明度功能均免费包含在内。
-  - 对于 DHI Enterprise 用户：提供额外的合规变体（如 FIPS 和 STIG）以及自定义功能，并在基础镜像修补时自动重新构建。
+  - 对于 DHI Community 用户：所有安全元数据和透明度功能均免费包含在内。
+  - 对于 DHI Select 和 Enterprise 用户：提供额外的合规变体（如 FIPS 和 STIG）以及自定义功能，并在基础镜像修补时自动重新构建。
 - 您：将 DHIs 集成到您的安全和合规工作流程中，包括漏洞管理和审计。
 
 ## 支持
 
 - Docker：
-  - 对于免费 DHI 用户：提供社区支持和公共文档。
-  - 对于 DHI Enterprise 用户：可访问 Docker 的企业支持团队，用于关键任务应用程序。
+  - 对于 DHI Community 用户：提供社区支持和公共文档。
+  - 对于 DHI Select 和 DHI Enterprise 用户：可访问 Docker 的企业支持团队，用于关键任务应用程序。
 - 您：监控 Docker 的发行说明、安全公告和文档，以获取更新和最佳实践。
 
 ## 总结

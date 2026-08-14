@@ -21,9 +21,8 @@ download-url-base: https://download.docker.com/linux/fedora
 
 要安装 Docker Engine，您需要以下任一 Fedora 版本的维护版本：
 
+- Fedora 44
 - Fedora 43
-- Fedora 42
-- Fedora 41
 
 ### 卸载旧版本
 
@@ -130,6 +129,17 @@ $ sudo dnf config-manager addrepo --from-repofile {{% param "download-url-base" 
    这会将 Docker systemd 服务配置为在系统启动时自动启动。如果您不希望 Docker 自动启动，请使用 `sudo
    systemctl start docker` 代替。
 
+   > [!NOTE]
+   >
+   > 如果 Docker 服务启动失败，并且 `journalctl -u docker`
+   > 显示 `failed to find iptables`，请使用 `alternatives`
+   > 将 `iptables` 命令指向 `iptables-nft`，然后重启服务：
+   >
+   > ```console
+   > $ sudo alternatives --set iptables /usr/bin/iptables-nft
+   > $ sudo systemctl restart docker
+   > ```
+
 3. 通过运行 `hello-world` 镜像验证安装是否成功：
 
    ```console
@@ -174,6 +184,17 @@ $ sudo dnf config-manager addrepo --from-repofile {{% param "download-url-base" 
 
    这会将 Docker systemd 服务配置为在系统启动时自动启动。如果您不希望 Docker 自动启动，请使用 `sudo
    systemctl start docker` 代替。
+
+   > [!NOTE]
+   >
+   > 如果 Docker 服务启动失败，并且 `journalctl -u docker`
+   > 显示 `failed to find iptables`，请使用 `alternatives`
+   > 将 `iptables` 命令指向 `iptables-nft`，然后重启服务：
+   >
+   > ```console
+   > $ sudo alternatives --set iptables /usr/bin/iptables-nft
+   > $ sudo systemctl restart docker
+   > ```
 
 4. 通过运行 `hello-world` 镜像验证安装是否成功：
 

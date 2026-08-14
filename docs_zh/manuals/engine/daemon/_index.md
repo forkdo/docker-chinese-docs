@@ -73,6 +73,26 @@ $ dockerd --debug \
   --host tcp://192.168.59.3:2376
 ```
 
+#### 在 Windows 上监听 Unix 套接字
+
+从 Docker Engine 29.5 开始，您可以将 Windows 上的 `dockerd` 配置为监听 Unix 套接字。此设置为可选。默认的 Windows 端点仍为 `npipe` 命名管道。
+
+从提升的 PowerShell 会话中运行 `dockerd`：
+
+```powershell
+PS C:\> dockerd -H unix://C:/Users/<USER>/docker.sock --group docker-users
+```
+
+将 `<USER>` 替换为您的 Windows 用户配置文件目录的名称。如果不指定 `--group`，则只有 Administrators 组和 `SYSTEM` 帐户的成员可以访问该套接字。使用逗号分隔的列表可授予多个用户或组访问权限。
+
+使用用户配置文件中的路径来通过 `--group` 授予访问权限。直接在 `C:\` 下创建的套接字可能会继承较高的完整性级别，从而阻止已配置的用户和组访问。
+
+将 Docker 客户端配置为使用相同的套接字：
+
+```powershell
+PS C:\> docker -H unix://C:/Users/<USER>/docker.sock info
+```
+
 有关可用配置选项的详细信息，请参阅 [dockerd 参考文档](/reference/cli/dockerd.md)，或运行：
 
 ```console

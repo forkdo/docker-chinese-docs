@@ -4,8 +4,6 @@ keywords: deploy, kubernetes, kubectl, orchestration, Docker Desktop
 title: 探索 Kubernetes 视图
 linkTitle: Kubernetes
 aliases:
-- /docker-for-windows/kubernetes/
-- /docker-for-mac/kubernetes/
 - /desktop/kubernetes/
 - /desktop/features/kubernetes/
 weight: 50
@@ -28,7 +26,7 @@ Kubernetes 服务器作为单节点或多节点集群，在 Docker 容器内运�
 4.  可选：选择 **Show system containers (advanced)** 以在使用 Docker 命令时查看内部容器。
 5.  选择 **Create**。
 
-这会设置运行 Kubernetes 服务器所需的镜像，并在您的系统上安装 `kubectl` 命令行工具，位置在 `/usr/local/bin/kubectl` (Mac) 或 `C:\Program Files\Docker\Docker\resources\bin\kubectl.exe` (Windows)。如果您使用 Homebrew 或其他方法安装了 `kubectl` 并遇到冲突，请移除 `/usr/local/bin/kubectl`。
+这会设置运行 Kubernetes 服务器所需的镜像，并在您的系统上安装 `kubectl` 命令行工具，位置在 `/usr/local/bin/kubectl` (Mac) 或 `C:\Program Files\Docker\Docker\resources\bin\kubectl.exe`（全用户安装）或 `%LOCALAPPDATA%\Programs\DockerDesktop\resources\bin\kubectl.exe`（单用户安装）(Windows)。如果您使用 Homebrew 或其他方法安装了 `kubectl` 并遇到冲突，请移除 `/usr/local/bin/kubectl`。
 
    > [!NOTE]
    >
@@ -135,19 +133,24 @@ docker.io/docker/desktop-containerd-registry-mirror:<tag>
 在 `kubeadm` 模式下，它需要以下镜像：
 
 ```console
-docker.io/registry.k8s.io/kube-controller-manager:<tag>
-docker.io/registry.k8s.io/kube-apiserver:<tag>
-docker.io/registry.k8s.io/kube-scheduler:<tag>
-docker.io/registry.k8s.io/kube-proxy
-docker.io/registry.k8s.io/etcd:<tag>
-docker.io/registry.k8s.io/pause:<tag>
-docker.io/registry.k8s.io/coredns/coredns:<tag>
+docker.io/docker/desktop-kubernetes:<tag>
 docker.io/docker/desktop-storage-provisioner:<tag>
 docker.io/docker/desktop-vpnkit-controller:<tag>
-docker.io/docker/desktop-kubernetes:<tag>
+docker.io/docker/desktop-kubernetes-etcd:<tag>
+docker.io/docker/desktop-kubernetes-coredns:<tag>
+docker.io/docker/desktop-kubernetes-pause:<tag>
+docker.io/docker/desktop-kubernetes-apiserver:<tag>
+docker.io/docker/desktop-kubernetes-controller-manager:<tag>
+docker.io/docker/desktop-kubernetes-scheduler:<tag>
+docker.io/docker/desktop-kubernetes-proxy:<tag>
 ```
 
 镜像标签由 Docker Desktop 根据多个因素自动选择，包括所使用的 Kubernetes 版本。每个镜像的标签各不相同，并且可能在 Docker Desktop 版本之间发生变化。请关注 Docker Desktop 的发布说明以保持信息同步。
+
+> [!NOTE]
+>
+> 在 Docker Desktop 4.44 或更高版本中，您可以运行 `docker desktop kubernetes images list` 来列出当前安装的 Docker Desktop 版本所使用的 Kubernetes 镜像。
+> 更多信息，请参阅 [Docker Desktop CLI](/reference/cli/docker/desktop/kubernetes/images)。
 
 为了适应不允许访问 Docker Hub 的场景，管理员可以
 使用 [KubernetesImagesRepository](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md#kubernetes) 设置将 Docker Desktop 配置为从不同的仓库（例如，镜像仓库）
@@ -173,7 +176,9 @@ my-registry:5000/kind-images/desktop-containerd-registry-mirror:<tag>
 设置此功能的推荐方法如下：
 
 1.  使用所需的集群置备方法启动 Kubernetes：`kubeadm` 或 `kind`。
-2.  Kubernetes 启动后，使用 `docker ps` 查看 Docker Desktop 用于 Kubernetes 控制平面的容器镜像。
+2.  Kubernetes 启动后，使用以下任一方式：
+    - （Docker Desktop 4.44 或更高版本）`docker desktop kubernetes images list`，列出当前 Docker Desktop 安装将要拉取的镜像标签
+    - `docker ps`，查看 Docker Desktop 用于 Kubernetes 控制平面的容器镜像
 3.  将这些镜像（连同匹配的标签）克隆或镜像到您的自定义仓库。
 4.  停止 Kubernetes 集群。
 5.  配置 `KubernetesImagesRepository` 设置以指向您的自定义仓库。

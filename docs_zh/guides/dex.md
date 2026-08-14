@@ -4,10 +4,8 @@ description: 使用 Dex 在测试中模拟 OAuth 服务
 keywords: Dex, 容器化开发
 linktitle: 使用 Dex 模拟 OAuth 服务
 summary: 使用 Dex 在测试中模拟 OAuth 服务
-tags:
-- app-dev
-- distributed-systems
 params:
+  tags: [testing]
   time: 10 分钟
 ---
 
@@ -89,7 +87,7 @@ staticPasswords:
 
 配置好 Docker Compose 后，启动 Dex：
 ```yaml
-# docker-compose.yaml
+# compose.yaml
 
 services:
   dex:

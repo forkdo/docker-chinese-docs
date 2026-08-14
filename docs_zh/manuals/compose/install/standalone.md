@@ -10,6 +10,9 @@ weight: 20
 > [!WARNING]
 >
 > 此安装场景不推荐使用，仅出于向后兼容的目的而受支持。
+> 请改用 [Docker Desktop](/manuals/desktop/_index.md) 或
+> [Docker Compose 插件](/manuals/compose/install/linux.md)。
+> 仅当您无法使用上述任一选项时，才使用独立二进制文件。
 
 本页包含如何通过命令行在 Linux 或 Windows Server 上安装 Docker Compose 独立版的说明。
 
@@ -40,6 +43,7 @@ weight: 20
 > 如果安装后 `docker-compose` 命令失败，请检查您的路径。
 > 您也可以在 `/usr/bin` 或您路径中的任何其他目录创建一个符号链接。
 > 例如：
+>
 > ```console
 > $ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 > ```
@@ -58,7 +62,7 @@ weight: 20
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     ```
 
-3. 下载最新版本的 Docker Compose ({{% param "compose_version" %}})。运行以下命令：
+3.  下载最新版本的 Docker Compose ({{% param "compose_version" %}})。运行以下命令：
 
     ```powershell
      Start-BitsTransfer -Source "https://github.com/docker/compose/releases/download/{{% param "compose_version" %}}/docker-compose-windows-x86_64.exe" -Destination $Env:ProgramFiles\Docker\docker-compose.exe
@@ -69,7 +73,7 @@ weight: 20
     > [!NOTE]
     >
     > 在 Windows Server 2019 上，您可以将 Compose 可执行文件添加到 `$Env:ProgramFiles\Docker`。
-     因为此目录已在系统 `PATH` 中注册，您可以在后续步骤中运行 `docker-compose --version` 命令，无需额外配置。
+    > 因为此目录已在系统 `PATH` 中注册，您可以在后续步骤中运行 `docker-compose --version` 命令，无需额外配置。
 
 4.  测试安装。
 

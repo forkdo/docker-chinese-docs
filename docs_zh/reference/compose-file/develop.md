@@ -11,7 +11,7 @@ weight: 150
 >
 > Develop 是 Compose 规范的一个可选部分。它在 Docker Compose 2.22.0 及更高版本中可用。
 
-{{% include "compose/develop.md" %}}
+{{% include "compose/services-develop.md" %}}
 
 本文档定义了 Compose 的行为方式，以高效地为您提供帮助，并定义了 Compose 设置的开发约束和工作流。只有 Compose 文件服务的一个子集可能需要 `develop` 小节。
 

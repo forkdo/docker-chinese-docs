@@ -114,7 +114,7 @@ Docker Desktop 的[构建视图](/desktop/use-desktop/builds/)与 Docker Build C
 
 > [!WARNING]
 >
-> 如果您错误地使用构建参数来传递凭据、身份验证令牌或其他密钥，您应该重构您的构建，改用[密钥挂载](/reference/cli/docker/buildx/build.md#secret)来传递密钥。
+> 如果您错误地使用构建参数来传递凭据、身份验证令牌或其他密钥，您应该重构您的构建，改用[密钥挂载](/reference/cli/docker/buildx/build/#secret)来传递密钥。
 > 构建参数存储在缓存中，其值会通过证明（attestations）暴露。
 > 密钥挂载不会泄漏到构建之外，也永远不会包含在证明中。
 

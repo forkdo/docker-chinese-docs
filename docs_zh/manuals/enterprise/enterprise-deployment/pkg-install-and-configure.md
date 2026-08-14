@@ -5,8 +5,6 @@ keywords: pkg, mac, docker desktop, install, deploy, configure, admin, mdm
 tags:
 - admin
 weight: 20
-aliases:
-- /desktop/setup/install/enterprise-deployment/pkg-install-and-configure/
 ---
 
 {{< summary-bar feature_name="PKG installer" >}}
@@ -16,7 +14,7 @@ PKG 安装包支持各种 MDM（移动设备管理）解决方案，非常适合
 ## 交互式安装
 
 1. 在 [Docker Home](http://app.docker.com) 中，选择您的组织。
-2. 选择 **Admin Console**，然后选择 **Enterprise deployment**。
+2. 选择 **Docker Desktop**，然后选择 **Deploy**。
 3. 在 **macOS** 选项卡中，选择 **Download PKG installer** 按钮。
 4. 下载后，双击 `Docker.pkg` 运行安装程序。
 5. 按照安装向导的说明授权安装程序并继续安装。
@@ -31,14 +29,14 @@ PKG 安装包支持各种 MDM（移动设备管理）解决方案，非常适合
 >
 > 使用 PKG 安装 Docker Desktop 时，应用内更新会自动禁用。这可以确保组织保持版本一致性，并防止未经批准的更新。对于使用 `.dmg` 安装程序安装的 Docker Desktop，仍支持应用内更新。
 >
-> 当有可用更新时，Docker Desktop 会通知您。要更新 Docker Desktop，请从 Docker Admin Console 下载最新的安装程序。导航到 **Enterprise deployment** 页面。
+> 当有可用更新时，Docker Desktop 会通知您。要更新 Docker Desktop，请从 Docker Home 下载最新的安装程序。导航到 **Deploy** 页面。
 >
 > 要了解最新版本，请查看[发行说明](/manuals/desktop/release-notes.md)页面。
 
 ## 从命令行安装
 
 1. 在 [Docker Home](http://app.docker.com) 中，选择您的组织。
-2. 选择 **Admin Console**，然后选择 **Enterprise deployment**。
+2. 选择 **Docker Desktop**，然后选择 **Deploy**。
 3. 在 **macOS** 选项卡中，选择 **Download PKG installer** 按钮。
 4. 在终端中，运行以下命令：
 

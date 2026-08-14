@@ -2,12 +2,7 @@
 title: 使用提供者服务
 description: 了解如何在 Docker Compose 中使用提供者服务，将外部功能集成到应用程序中
 keywords: compose, docker compose, provider, services, platform capabilities, integration, model runner, ai
-weight: 112
-params:
-  sidebar:
-    badge:
-      color: green
-      text: 新增
+weight: 130
 ---
 
 {{< summary-bar feature_name="Compose provider services" >}}

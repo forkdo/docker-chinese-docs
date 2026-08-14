@@ -4,8 +4,6 @@ keywords: Feedback, Docker Desktop, Linux, Mac, Windows, Dev Environments, Exten
   Community forum, bugs, problems, issues
 title: 提供反馈
 weight: 40
-aliases:
- - /desktop/feedback/
 ---
 
 您可以通过多种方式为 Docker Desktop 或 Docker Desktop 功能提供反馈。

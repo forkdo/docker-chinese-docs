@@ -8,9 +8,8 @@ aliases:
 summary: '使用 Docker 探索容器编排的基础知识。
 
   '
-tags:
-- deploy
 params:
+  tags: [deployment]
   time: 10 分钟
 ---
 

@@ -30,7 +30,9 @@ aliases:
 
 ## 使用方法
 
-要将 `syslog` 驱动程序用作默认日志驱动程序，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值，该文件位于 Linux 主机上的 `/etc/docker/` 目录或 Windows Server 上的 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `syslog` 驱动程序用作默认日志驱动程序，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opt` 键设置为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+{{% include "daemon-cfg-desktop.md" %}}
 
 以下示例将日志驱动程序设置为 `syslog`，并设置 `syslog-address` 选项。`syslog-address` 选项支持 UDP 和 TCP；本示例使用 UDP。
 
@@ -62,7 +64,7 @@ $ docker run \
 以下日志选项支持作为 `syslog` 日志驱动程序的选项。它们可以在 `daemon.json` 中设置为默认值，方法是将其作为键值对添加到 `log-opts` JSON 数组中。也可以在启动容器时，为每个选项添加 `--log-opt <key>=<value>` 标志来设置。
 
 | 选项                     | 描述                                                                                                                                                                                                                                                                                                      | 示例值                                                                                            |
-| :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
 | `syslog-address`         | 外部 `syslog` 服务器的地址。URI 指定符可以是 `[tcp\|udp\|tcp+tls]://host:port`、`unix://path` 或 `unixgram://path`。如果传输协议是 `tcp`、`udp` 或 `tcp+tls`，则默认端口为 `514`。                                                                                          | `--log-opt syslog-address=tcp+tls://192.168.1.3:514`，`--log-opt syslog-address=unix:///tmp/syslog.sock` |
 | `syslog-facility`        | 要使用的 `syslog` 设施。可以是任何有效 `syslog` 设施的数字或名称。请参阅 [syslog 文档](https://tools.ietf.org/html/rfc5424#section-6.2.1)。                                                                                                                                      | `--log-opt syslog-facility=daemon`                                                                       |
 | `syslog-tls-ca-cert`     | 由 CA 签名的信任证书的绝对路径。如果地址协议不是 `tcp+tls`，则忽略此选项。                                                                                                                                                                                                   | `--log-opt syslog-tls-ca-cert=/etc/ca-certificates/custom/ca.pem`                                        |

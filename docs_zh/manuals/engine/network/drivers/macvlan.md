@@ -1,7 +1,7 @@
 ---
 title: Macvlan 网络驱动
 description: 关于如何使用 Macvlan 让容器在网络中表现为物理设备的全部内容
-keywords: network, macvlan, standalone
+keywords: network, macvlan, standalone, ipv6, slaac
 aliases:
 - /config/containers/macvlan/
 - /engine/userguide/networking/get-started-macvlan/
@@ -106,6 +106,20 @@ $ docker network create -d macvlan \
      -o parent=eth0.218 \
      -o macvlan_mode=bridge macvlan216
 ```
+
+### 使用路由器分配的 IPv6 地址
+
+前面的示例从由 Docker IPAM 管理的子网分配 IPv6 地址。在 `macvlan` 网络上，您也可以让容器使用无状态地址自动配置（SLAAC），直接从父网络上的路由器接收 IPv6 地址。
+
+当 `macvlan` 网络没有 IPv6 子网时，Docker 会禁用容器接口上的 IPv6，因此它无法接受 SLAAC 所依赖的路由器通告（router advertisement）。要在该接口上重新启用 IPv6，请在将容器连接到网络时将其 `disable_ipv6` sysctl 设置为 `0`：
+
+```console
+$ docker network connect \
+    --driver-opt="com.docker.network.endpoint.sysctls=net.ipv6.conf.IFNAME.disable_ipv6=0" \
+    my-macvlan-net my-container
+```
+
+在 sysctl 名称中使用字面字符串 `IFNAME`。Docker 会将其替换为容器在此网络上的接口名称。`disable_ipv6` 是逐接口的 sysctl，因此必须使用 `endpoint.sysctls` 驱动选项来设置，而不是 `docker run --sysctl`。有关更多详情，请参阅 [`docker network connect`](/reference/cli/docker/network/connect/#sysctl)。
 
 ## 使用示例
 

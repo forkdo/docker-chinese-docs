@@ -7,26 +7,30 @@ aliases:
 - /dhi/how-to/migrate/
 params:
   grid_migration_paths:
-  - title: 使用 Docker 的 AI 助手进行迁移
-    description: 使用 Docker 的 AI 助手，在指导和建议下自动将您的 Dockerfile 迁移到 Docker Hardened Images。
-    icon: smart_toy
+  - title: 使用 Gordon 进行迁移
+    description: 使用 Gordon，在指导和建议下自动将您的 Dockerfile 迁移到 Docker Hardened Images。
+    icon: sparkles
     link: /dhi/migration/migrate-with-ai/
   - title: 从 Alpine 或 Debian 镜像迁移
     description: 从 Docker 官方镜像（基于 Alpine 或 Debian）迁移到 Docker Hardened Images 的手动迁移指南。
-    icon: code
+    icon: code-bracket
     link: /dhi/migration/migrate-from-doi/
+  - title: 从 Ubuntu 迁移
+    description: 从基于 Ubuntu 的镜像过渡到 Docker Hardened Images 的手动迁移指南。
+    icon: arrow-up-circle
+    link: /dhi/migration/migrate-from-ubuntu/
   - title: 从 Wolfi 迁移
     description: 从基于 Wolfi 的镜像过渡到 Docker Hardened Images 的手动迁移指南。
-    icon: transform
+    icon: arrow-path
     link: /dhi/migration/migrate-from-wolfi/
   grid_migration_resources:
   - title: 迁移检查清单
     description: 全面的迁移注意事项清单，确保成功过渡到 Docker Hardened Images。
-    icon: checklist
+    icon: clipboard-document-check
     link: /dhi/migration/checklist/
   - title: 示例
     description: 针对不同编程语言和框架的 Dockerfile 迁移示例，为您的迁移过程提供指导。
-    icon: preview
+    icon: eye
     link: /dhi/migration/examples/
 ---
 

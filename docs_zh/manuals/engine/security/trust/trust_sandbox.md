@@ -14,7 +14,7 @@ aliases:
 
 这些说明假设您正在 Linux 或 macOS 上运行。您可以在本地计算机或虚拟机上运行此沙盒。您需要在本地计算机或虚拟机中拥有运行 docker 命令的权限。
 
-此沙盒要求您安装两个 Docker 工具：Docker Engine >= 1.10.0 和 Docker Compose >= 1.6.0。要安装 Docker Engine，请从[支持的平台列表](../../install/_index.md)中选择。要安装 Docker Compose，请参阅[此处的详细说明](/manuals/compose/install/_index.md)。
+此沙盒要求您安装当前版本的 Docker Engine 和 Docker Compose。要安装 Docker Engine，请从[支持的平台列表](../../install/_index.md)中选择。要安装 Docker Compose，请参阅 [Compose 安装说明](/manuals/compose/install/_index.md)。
 
 ## 沙盒中包含什么？
 

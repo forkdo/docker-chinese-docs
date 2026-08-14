@@ -44,7 +44,7 @@ services:
 
 ## 启动特定配置集
 
-要启动特定配置集，请提供 `--profile` [命令行选项](/reference/cli/docker/compose.md) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
+要启动特定配置集，请提供 `--profile` [命令行选项](/reference/cli/docker/compose/) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
 
 ```console
 $ docker compose --profile debug up
@@ -116,7 +116,7 @@ $ docker compose run db-migrations
 
 ## 停止应用程序和具有特定配置集的服务
 
-与启动特定配置集类似，您可以使用 `--profile` [命令行选项](/reference/cli/docker/compose.md#use--p-to-specify-a-project-name) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
+与启动特定配置集类似，您可以使用 `--profile` [命令行选项](/reference/cli/docker/compose/#use--p-to-specify-a-project-name) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
 
 ```console
 $ docker compose --profile debug down

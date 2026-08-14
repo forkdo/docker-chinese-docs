@@ -9,9 +9,8 @@ aliases:
 summary: '&desc 发现如何使用 Docker Swarm 部署和管理 Docker 容器。
 
   '
-tags:
-- deploy
 params:
+  tags: [deployment]
   time: 10 minutes
 ---
 

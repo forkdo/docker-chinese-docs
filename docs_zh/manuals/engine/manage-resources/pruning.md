@@ -1,10 +1,12 @@
 ---
 description: 使用 prune 命令移除未使用的资源以释放磁盘空间
-keywords: 清理, prune, images, volumes, containers, networks, disk, administration, 垃圾回收
+keywords:
+  清理, prune, images, volumes, containers, networks, disk, administration,
+  垃圾回收
 title: 清理未使用的 Docker 对象
 aliases:
-- /engine/admin/pruning/
-- /config/pruning/
+  - /engine/admin/pruning/
+  - /config/pruning/
 ---
 
 Docker 采用保守的方法来清理未使用的对象（通常称为“垃圾回收”），例如镜像、容器、卷和网络。除非您明确要求 Docker 这样做，否则这些对象通常不会被移除。这可能导致 Docker 占用额外的磁盘空间。针对每种类型的对象，Docker 都提供了一个 `prune` 命令。此外，您可以使用 `docker system prune` 一次清理多种类型的对象。本主题将展示如何使用这些 `prune` 命令。
@@ -37,7 +39,7 @@ Are you sure you want to continue? [y/N] y
 $ docker image prune -a --filter "until=24h"
 ```
 
-其他过滤表达式也可用。请参阅 [`docker image prune` 参考](/reference/cli/docker/image/prune.md) 获取更多示例。
+其他过滤表达式也可用。请参阅 [`docker image prune` 参考](/reference/cli/docker/image/prune/) 获取更多示例。
 
 ## 清理容器
 
@@ -58,7 +60,7 @@ Are you sure you want to continue? [y/N] y
 $ docker container prune --filter "until=24h"
 ```
 
-其他过滤表达式也可用。请参阅 [`docker container prune` 参考](/reference/cli/docker/container/prune.md) 获取更多示例。
+其他过滤表达式也可用。请参阅 [`docker container prune` 参考](/reference/cli/docker/container/prune/) 获取更多示例。
 
 ## 清理卷
 
@@ -67,19 +69,19 @@ $ docker container prune --filter "until=24h"
 ```console
 $ docker volume prune
 
-WARNING! This will remove all volumes not used by at least one container.
+WARNING! This will remove anonymous local volumes not used by at least one container.
 Are you sure you want to continue? [y/N] y
 ```
 
 默认情况下，系统会提示您继续。要绕过提示，请使用 `-f` 或 `--force` 标志。
 
-默认情况下，所有未使用的卷都会被移除。您可以使用 `--filter` 标志来限制范围。例如，以下命令仅移除未标记 `keep` 标签的卷：
+默认情况下，只有**匿名**的未使用卷会被移除。未挂载到任何容器的命名卷不会被删除，除非您传递 `--all` / `-a`。您也可以使用 `--filter` 标志来限制范围。例如，以下命令仅移除未标记 `keep` 标签的卷：
 
 ```console
 $ docker volume prune --filter "label!=keep"
 ```
 
-其他过滤表达式也可用。请参阅 [`docker volume prune` 参考](/reference/cli/docker/volume/prune.md) 获取更多示例。
+其他过滤表达式也可用。请参阅 [`docker volume prune` 参考](/reference/cli/docker/volume/prune/) 获取更多示例。
 
 ## 清理网络
 
@@ -100,7 +102,22 @@ Are you sure you want to continue? [y/N] y
 $ docker network prune --filter "until=24h"
 ```
 
-其他过滤表达式也可用。请参阅 [`docker network prune` 参考](/reference/cli/docker/network/prune.md) 获取更多示例。
+其他过滤表达式也可用。请参阅 [`docker network prune` 参考](/reference/cli/docker/network/prune/) 获取更多示例。
+
+## 清理构建缓存
+
+`docker buildx prune` 会移除当前所选构建器（builder）的构建缓存。如果您使用多个构建器，每个构建器维护各自的缓存 —— 使用 `--builder` 标志来指定特定的构建器实例。
+
+```console
+$ docker buildx prune
+
+WARNING! This will remove all dangling build cache.
+Are you sure you want to continue? [y/N] y
+```
+
+默认情况下，系统会提示您继续。要绕过提示，请使用 `-f` 或 `--force` 标志。
+
+请参阅 [`docker buildx prune` 参考](/reference/cli/docker/buildx/prune/) 了解所有选项，包括用于同时移除内部镜像和前端镜像的 `--all`。
 
 ## 清理所有内容
 
@@ -141,4 +158,4 @@ Are you sure you want to continue? [y/N] y
 $ docker system prune --filter "until=24h"
 ```
 
-其他过滤表达式也可用。请参阅 [`docker system prune` 参考](/reference/cli/docker/system/prune.md) 获取更多示例。
+其他过滤表达式也可用。请参阅 [`docker system prune` 参考](/reference/cli/docker/system/prune/) 获取更多示例。

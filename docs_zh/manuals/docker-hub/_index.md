@@ -5,31 +5,39 @@ title: Docker Hub
 weight: 30
 params:
   sidebar:
-    group: Products
+    group: Supply chain security
 grid:
 - title: Quickstart
   description: 获取在 Docker Hub 上开始使用的分步说明。
-  icon: explore
+  icon: magnifying-glass-plus
   link: /docker-hub/quickstart
 - title: Library
   description: 浏览内容库，其中包含数百万个操作系统、框架、数据库等镜像。
-  icon: book
+  icon: book-open
   link: /docker-hub/image-library/
 - title: Repositories
   description: 创建仓库，与您的团队、客户或 Docker 社区共享您的镜像。
   icon: inbox
   link: /docker-hub/repos
+- title: Settings
+  description: 了解 Docker Hub 中的设置。
+  icon: cog-6-tooth
+  link: /docker-hub/settings
 - title: Organizations
   description: 了解组织管理。
-  icon: store
+  icon: building-storefront
   link: /admin/
 - title: Usage and limits
   description: 探索使用限制以及如何更好地利用 Docker Hub。
-  icon: leaderboard
+  icon: chart-bar
   link: /docker-hub/usage/
+- title: MCP server
+  description: 使用 Docker Hub MCP 服务器，通过 AI 代理访问镜像元数据并管理仓库。
+  icon: server-stack
+  link: /docker-hub/mcp-server/
 - title: Release notes
   description: 了解新功能、改进和错误修复。
-  icon: note_add
+  icon: document-plus
   link: /docker-hub/release-notes
 aliases:
 - /docker-hub/overview/
@@ -46,6 +54,6 @@ Docker Hub 的主要功能：
 * 并发和自动化构建
 * 可信内容，提供高质量、安全的镜像
 
-除了图形界面外，您还可以使用 [Docker Hub API](../../reference/api/hub/latest.md) 或实验性的 [Docker Hub CLI 工具](https://github.com/docker/hub-tool#readme) 与 Docker Hub 交互。
+除了图形界面外，您还可以使用 [Docker Hub API](../../reference/api/hub/latest.md)、实验性的 [Docker Hub CLI 工具](https://github.com/docker/hub-tool#readme)，或通过 [Docker Hub MCP 服务器](/docker-hub/mcp-server/) 进行 AI 代理集成来与 Docker Hub 交互。
 
 {{< grid >}}

@@ -2,7 +2,7 @@
 description: 了解暂停 Docker Desktop Dashboard 的含义
 keywords: Docker Desktop Dashboard, manage, containers, gui, dashboard, pause, user manual
 title: 暂停 Docker Desktop
-weight: 70
+weight: 80
 ---
 
 暂停 Docker Desktop 会暂时挂起运行 Docker Engine 的 Linux 虚拟机。这将保存所有容器在内存中的当前状态，并冻结所有正在运行的进程，显著降低 CPU 和内存使用率，有助于节省笔记本电脑的电池电量。

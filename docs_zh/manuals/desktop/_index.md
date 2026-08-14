@@ -5,7 +5,7 @@ description: 了解 Docker Desktop、其提供的功能及其主要特性。通�
 keywords: 如何使用 Docker Desktop, Docker Desktop 的用途, Docker Desktop 的作用, 使用 Docker Desktop
 params:
   sidebar:
-    group: Products
+    group: Application development
 grid:
 - title: 安装 Docker Desktop
   description: '在 [Mac](/desktop/setup/install/mac-install/)、
@@ -15,34 +15,28 @@ grid:
     [Linux](/desktop/setup/install/linux/) 上安装 Docker Desktop。
 
     '
-  icon: download
+  icon: arrow-down-tray
 - title: 了解 Docker Desktop
   description: 掌握 Docker Desktop 的使用方法。
-  icon: feature_search
+  icon: magnifying-glass
   link: /desktop/use-desktop/
 - title: 探索其主要功能
   description: '查找有关 [Networking](/desktop/features/networking/)、[Docker VMM](/desktop/features/vmm/)、[WSL](/desktop/features/wsl/) 等功能的信息。
 
     '
-  icon: category
+  icon: squares-2x2
 - title: 查看发行说明
   description: 了解新功能、改进和错误修复。
-  icon: note_add
+  icon: document-plus
   link: /desktop/release-notes/
 - title: 浏览常见问题解答
   description: 探索通用问题解答或特定平台的问题解答。
-  icon: help
+  icon: question-mark-circle
   link: /desktop/troubleshoot-and-support/faqs/general/
 - title: 提供反馈
   description: 就 Docker Desktop 或其功能提供反馈。
-  icon: sms
+  icon: chat-bubble-left
   link: /desktop/troubleshoot-and-support/feedback/
-aliases:
-- /desktop/opensource/
-- /docker-for-mac/dashboard/
-- /docker-for-mac/opensource/
-- /docker-for-windows/dashboard/
-- /docker-for-windows/opensource/
 ---
 
 Docker Desktop 是一款适用于 Mac、Linux 或 Windows 环境的应用程序，只需点击一下即可完成安装，让您可以构建、共享和运行容器化应用程序及微服务。
@@ -67,7 +61,7 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 
 - [Docker MCP Toolkit and Catalog](/manuals/ai/mcp-catalog-and-toolkit/_index.md)
 - [Docker Model Runner](/manuals/ai/model-runner/_index.md)
-- [Ask Gordon](/manuals/ai/gordon/_index.md)
+- [Gordon](/manuals/ai/gordon/_index.md)
 - [Docker Offload](/manuals/offload/_index.md)
 - [Docker Engine](/manuals/engine/_index.md)
 - Docker CLI client

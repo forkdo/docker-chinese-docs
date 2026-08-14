@@ -6,13 +6,10 @@ description: 学习如何使用 Python、Googletrans 和 Docker 构建并运行�
 summary: '本指南演示如何使用 Docker 部署语言翻译模型以执行自然语言处理（NLP）任务。
 
   '
-tags:
-- ai
-languages:
-- python
 aliases:
 - /guides/use-case/nlp/language-translation/
 params:
+  tags: [ai]
   time: 20 分钟
 ---
 

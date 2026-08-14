@@ -1,6 +1,6 @@
 ---
-title: 安全常见问题解答
-linkTitle: 安全常见问题解答
+title: MCP Toolkit 常见问题解答
+linkTitle: 常见问题
 description: 与 MCP 目录和工具包安全性相关的常见问题
 keywords: MCP, Toolkit, MCP server, MCP client, security, faq
 tags:
@@ -63,6 +63,26 @@ $ docker mcp catalog update
 ```
 
 更新完成后，刷新 Docker Desktop 中的**目录**选项卡。
+
+### 配置文件与目录有什么区别？
+
+[目录](/manuals/ai/mcp-catalog-and-toolkit/catalog.md)是可用 MCP 服务器的来源——一个供你选择工具的图书馆。[配置文件](/manuals/ai/mcp-catalog-and-toolkit/profiles.md)则是你为组织工作而添加的服务器集合。可以把目录看作图书馆，把配置文件看作你为不同用途挑选出的书籍所摆放的个人书架。
+
+### 我可以与团队共享配置文件吗？
+
+可以。配置文件可以使用 `docker mcp profile push my-profile registry.example.com/profiles/my-profile:v1` 推送到兼容 OCI 的注册表。团队成员可以使用 `docker mcp profile pull registry.example.com/profiles/my-profile:v1` 拉取你的配置文件。请注意，出于安全原因，共享的配置文件中不包含凭据——团队成员需要单独配置 OAuth 和其他凭据。
+
+### 使用 MCP Toolkit 必须创建配置文件吗？
+
+是的，MCP Toolkit 需要配置文件才能运行服务器。如果你是从引入配置文件之前的版本升级而来，系统会自动为你创建一个包含现有服务器配置的默认配置文件。你可以创建更多命名配置文件，为不同项目或环境组织服务器。
+
+### 切换配置文件时服务器会怎样？
+
+每个配置文件都包含各自的一组服务器和配置。当你使用 `--profile profile-name` 运行网关时，只有该配置文件中的服务器对客户端可用。未指定配置文件时会使用默认配置文件。在配置文件之间切换会改变你的 AI 应用程序可以访问哪些服务器。
+
+### 我可以在多个配置文件中使用同一个服务器吗？
+
+可以。你可以将同一个 MCP 服务器添加到多个配置文件中，并在需要时为各自设置不同的配置。当你需要在不同项目或环境中使用同一服务器但采用不同设置时，这非常有用。
 
 ## 相关页面
 

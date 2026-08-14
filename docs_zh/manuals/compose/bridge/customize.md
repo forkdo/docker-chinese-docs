@@ -122,11 +122,18 @@ $ docker compose bridge convert --transformations mycompany/transform
 
 默认转换还包括用于使用 LLM 的应用程序的模板：
 
-- `model-runner-deployment.tmpl`
-- `model-runner-service.tmpl`
-- `model-runner-pvc.tmpl`
-- `/overlays/model-runner/kustomization.yaml`
-- `/overlays/desktop/deployment.tmpl`
+- `model-runner-deployment.tmpl`：生成 Docker Model Runner 的 Kubernetes 部署。自定义它可更改副本数、镜像标签、资源请求和限制、GPU 调度设置、容忍度（tolerations）或额外环境变量。
+- `model-runner-service.tmpl`：构建暴露 Docker Model Runner 的服务。更新它可在 `ClusterIP`、`NodePort` 或 `LoadBalancer` 类型之间切换、调整端口，或为入口（ingress）和服务网格添加注解。
+- `model-runner-pvc.tmpl`：定义用于存储已下载模型的持久卷声明（PVC）。编辑它可设置存储大小、存储类、访问模式，或您的存储提供商要求的卷注解。
+- `/overlays/model-runner/kustomization.yaml`：当你将 Model Runner 部署到独立的 Kubernetes 集群时应用的 Kustomize 覆盖层。扩展它可为标签和注解添加补丁、附加 `NetworkPolicies`，或包含额外的清单。
+- `/overlays/desktop/deployment.tmpl`：特定于 Desktop 的部署模板，它将集群内的 Model Runner 保持缩容，并将工作负载指向宿主端点。如果你更改 Desktop 端点，或想要在 Desktop 上部署 Model Runner 而非依赖宿主服务，请调整它。
+
+常见自定义场景：
+
+- 通过在 `model-runner-deployment.tmpl` 中添加特定于厂商的资源请求、限制和节点选择器来启用 GPU 支持。
+- 通过编辑 `model-runner-pvc.tmpl` 设置所需大小、存储类或访问模式，来增加或调优模型制品的存储。
+- 通过在 `model-runner-service.tmpl` 中切换服务类型，或在 model-runner 覆盖层中添加入口注解，将 Model Runner 暴露到集群外部。
+- 通过 `/overlays/model-runner/kustomization.yaml` 添加标签、注解或 NetworkPolicies 来对齐集群策略。
 
 这些模板可以被扩展或替换，以更改 Docker Model Runner 的部署或配置方式。
 

@@ -13,7 +13,7 @@ aliases:
 
 > [!NOTE]
 >
-> 默认的项目目录是 Compose 文件所在的基础目录。也可以使用 [`--project-directory` 命令行选项](/reference/cli/docker/compose.md#options)为其设置自定义值。
+> 默认的项目目录是 Compose 文件所在的基础目录。也可以使用 [`--project-directory` 命令行选项](/reference/cli/docker/compose/#options)为其设置自定义值。
 
 ## 示例用例
 

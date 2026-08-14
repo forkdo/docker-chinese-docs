@@ -1,9 +1,9 @@
 ---
 title: Docker 计费使用 3D Secure 身份验证
-linkTitle: 3D Secure 身份验证
-description: Docker 计费支持 3D Secure (3DS) 安全支付身份验证。了解 3DS 如何与 Docker 订阅配合使用。
-keywords: 计费, 续订, 支付, 订阅, 3DS, 信用卡验证, 安全支付, Docker 计费安全
-weight: 40
+linkTitle: 3D Secure
+description: 了解 3D Secure 身份验证如何用于 Docker 订阅付款，以及如何排查验证问题。
+keywords: 计费, 支付, 订阅, 3D Secure, 3DS, 信用卡验证, 支付身份验证
+weight: 30
 ---
 
 Docker 支持 3D Secure (3DS)，这是某些信用卡支付所需的额外身份验证层。如果您的银行或发卡机构要求 3DS，您可能需要在支付完成前验证您的身份。
@@ -22,10 +22,10 @@ Docker 支持 3D Secure (3DS)，这是某些信用卡支付所需的额外身份
 
 在执行以下任何操作时，系统可能会要求您验证身份：
 
-- 开始[付费订阅](../subscription/setup.md)
-- 将您的[计费周期](/billing/cycle/)从月度更改为年度
-- [升级您的订阅](../subscription/change.md)
-- 向现有订阅[添加席位](../subscription/manage-seats.md)
+- 开始[付费订阅](../subscription/manage.md)
+- 将您的[计费周期](/manuals/billing/details.md#billing-cycle)从月度更改为年度
+- [升级您的订阅](../subscription/manage.md#upgrade-plans)
+- 向现有订阅[添加席位](../admin/organization/manage/manage-seats.md)
 
 如果需要 3DS 且您的支付方式支持，验证提示将在结账过程中显示。
 
@@ -34,8 +34,8 @@ Docker 支持 3D Secure (3DS)，这是某些信用卡支付所需的额外身份
 如果您因 3DS 无法完成支付：
 
 1. 重试您的交易。确保在同一浏览器标签页中完成验证提示。
-2. 使用其他支付方式。某些卡片可能无法正常支持 3DS 或被阻止。
-3. 联系您的银行。您的银行可能正在阻止支付或 3DS 验证尝试。
+1. 使用其他支付方式。
+1. 联系您的银行以确认它是否正在阻止支付或 3DS 验证尝试。
 
 > [!NOTE]
 >

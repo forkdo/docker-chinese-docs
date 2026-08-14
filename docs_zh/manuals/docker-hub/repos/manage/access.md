@@ -75,7 +75,7 @@ aliases:
 
 ### 配置团队仓库权限
 
-在配置仓库权限之前，您必须先创建一个团队。有关更多详细信息，请参阅 [创建和管理团队](/manuals/admin/organization/manage-a-team.md)。
+在配置仓库权限之前，您必须先创建一个团队。有关更多详细信息，请参阅 [创建和管理团队](/manuals/admin/organization/manage/manage-a-team.md)。
 
 要配置团队仓库权限：
 
@@ -109,7 +109,7 @@ aliases:
 
 此功能非常适合希望控制谁可以拉取特定镜像的商业软件发布者，同时保持内部用户和外部消费者之间的清晰分离。
 
-如果您对受控分发感兴趣，请联系 [Docker 销售团队](https://www.docker.com/pricing/contact-sales/) 获取更多信息。
+如果您对受控分发感兴趣，请联系 <a href="https://www.docker.com/pricing/contact-sales/" id="dkr_docs_cs_hub_gated_distribution" class="link" rel="noopener">Docker 销售团队</a> 获取更多信息。
 
 ### 主要功能
 

@@ -1,11 +1,11 @@
+<!-- FILE: manuals/desktop/previous-versions/archive-mac.md -->
+
 ---
 description: Docker Desktop for Mac 旧版本发行说明
 keywords: Docker Desktop for Mac, 发行说明
 title: 旧版本发行说明
 toc_min: 1
 toc_max: 2
-aliases:
-- /desktop/mac/release-notes/archive/
 sitemap: false
 ---
 
@@ -458,4 +458,4 @@ sitemap: false
 
 - 增加默认的 ulimit for memlock（修复 [docker/for-mac#801](https://github.com/docker/for-mac/issues/801)）
 
-### Docker for Mac 1.1
+### Docker for Mac 1.1```

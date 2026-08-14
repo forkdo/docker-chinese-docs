@@ -14,21 +14,21 @@ aliases:
 根据您的订阅情况，在合理使用原则下，适用以下拉取使用情况和限制：
 
 | 用户类型                 | 每 6 小时的拉取速率限制             |
-|--------------------------|-----------------------------------------|
-| Business (已认证) | 无限                               |
-| Team (已认证)     | 无限                               |
-| Pro (已认证)      | 无限                               |
-| Personal (已认证) | 200                                     |
-| 未认证用户    | 每个 IPv4 地址或 IPv6 /64 子网 100 次 |
+| ------------------------ | ----------------------------------- |
+| Business (已认证)        | 无限                                |
+| Team (已认证)            | 无限                                |
+| Pro (已认证)             | 无限                                |
+| Personal (已认证)        | 200                                 |
+| 未认证用户               | 每个 IPv4 地址或 IPv6 /64 子网 100 次 |
 
 ## 拉取定义
 
 拉取定义如下：
 
- - Docker 拉取包括版本检查以及拉取导致的任何下载。根据客户端的不同，`docker pull` 可以通过执行版本检查来验证镜像或标签的存在，而无需下载。
- - 版本检查不计入使用定价。
- - 拉取普通镜像会为[单一清单](https://github.com/opencontainers/image-spec/blob/main/manifest.md)进行一次拉取。
- - 拉取多架构镜像将为每个不同的架构计为一次拉取。
+- Docker 拉取包括版本检查以及拉取导致的任何下载。根据客户端的不同，`docker pull` 可以通过执行版本检查来验证镜像或标签的存在，而无需下载。
+- 版本检查不计入使用定价。
+- 拉取普通镜像会为[单一清单](https://github.com/opencontainers/image-spec/blob/main/manifest.md)进行一次拉取。
+- 拉取多架构镜像将为每个不同的架构计为一次拉取。
 
 ## 拉取归因
 
@@ -40,8 +40,8 @@ aliases:
 - **公共拉取**：从公共仓库拉取镜像时，归因根据域名关联和组织成员身份确定。
 - **已验证域名所有权**：当从链接到已验证域名的帐户拉取镜像时，归因设置为该[域名](/manuals/enterprise/security/single-sign-on/faqs/domain-faqs.md)的所有者。
 - **单一组织成员身份**：
-   - 如果已验证域名的所有者是公司，且用户仅属于该[公司](../../admin/faqs/company-faqs.md#what-features-are-supported-at-the-company-level)内的一个组织，则拉取归因于该特定组织。
-   - 如果用户仅属于一个组织，则拉取归因于该特定组织。
+  - 如果已验证域名的所有者是公司，且用户仅属于该[公司](../../admin/company/company-faqs.md)内的一个组织，则拉取归因于该特定组织。
+  - 如果用户仅属于一个组织，则拉取归因于该特定组织。
 - **多个组织成员身份**：如果用户属于公司下的多个组织，则拉取归因于用户的个人命名空间。
 
 ### 认证
@@ -56,11 +56,11 @@ aliases:
 
 #### Docker Engine
 
-如果您使用的是独立版 Docker Engine，请从终端运行 `docker login` 命令以向 Docker Hub 进行认证。有关如何使用该命令的信息，请参阅 [docker login](/reference/cli/docker/login.md)。
+如果您使用的是独立版 Docker Engine，请从终端运行 `docker login` 命令以向 Docker Hub 进行认证。有关如何使用该命令的信息，请参阅 [docker login](/reference/cli/docker/login/)。
 
 #### Docker Swarm
 
-如果您正在运行 Docker Swarm，则必须使用 `--with-registry-auth` 标志向 Docker Hub 进行认证。更多信息，请参阅[创建服务](/reference/cli/docker/service/create.md#with-registry-auth)。如果您使用 Docker Compose 文件部署应用程序堆栈，请参阅 [docker stack deploy](/reference/cli/docker/stack/deploy.md)。
+如果您正在运行 Docker Swarm，则必须使用 `--with-registry-auth` 标志向 Docker Hub 进行认证。更多信息，请参阅[创建服务](/reference/cli/docker/service/create/#with-registry-auth)。如果您使用 Docker Compose 文件部署应用程序堆栈，请参阅 [docker stack deploy](/reference/cli/docker/stack/deploy/)。
 
 #### GitHub Actions
 
@@ -81,9 +81,9 @@ aliases:
 - [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Advanced+Settings#AdvancedSettings-RemoteCredentials)
 - [AWS CodeBuild](https://aws.amazon.com/blogs/devops/how-to-use-docker-images-from-a-private-registry-in-aws-codebuild-for-your-build-environment/)
 - [AWS ECS/Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html)
-- [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-docreg)
+- [Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
 - [Chipper CI](https://docs.chipperci.com/builds/docker/#rate-limit-auth)
-- [CircleCI](https://circleci.com/docs/2.0/private-images/)
+- [CircleCI](https://circleci.com/docs/guides/execution-managed/private-images/)
 - [Codefresh](https://codefresh.io/docs/docs/docker-registries/external-docker-registries/docker-hub/)
 - [Drone.io](https://docs.drone.io/pipeline/docker/syntax/images/#pulling-private-images)
 - [GitLab](https://docs.gitlab.com/ee/user/packages/container_registry/#authenticate-with-the-container-registry)
@@ -97,17 +97,17 @@ aliases:
 在该页面上，您还可以将包含以下详细信息的逗号分隔文件 (CSV) 报告发送到您的电子邮件。
 
 | CSV 列           | 定义                                                                                                                                                                                                         | 使用指南                                                                                                                                                                      |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `datehour`           | 导致数据传输的拉取发生的日期和小时 (`yyyy/mm/dd/hh`)。                                                                                                                                | 这有助于识别高峰使用时间和模式。                                                                                                                            |
-| `user_name`          | 拉取镜像的用户的 Docker ID                                                                                                                                                                    | 这让组织所有者能够跟踪每个用户的数据消耗并有效管理资源。                                                                                     |
-| `repository`         | 被拉取镜像的仓库名称。                                                                                                                                                           | 这让您能够识别哪些仓库访问最频繁并消耗最多数据传输。                                                                       |
-| `access_token_name`  | 用于 Docker CLI 认证的访问令牌名称。`generated` 令牌是用户登录时由 Docker 客户端自动生成的。                                               | 个人访问令牌通常用于认证自动化工具（Docker Desktop、CI/CD 工具等）。这对于识别哪个自动化系统发起了拉取非常有用。 |
-| `ips`                | 用于拉取镜像的 IP 地址。此字段是聚合的，因此可能会出现多个 IP 地址，表示在同一日期和小时内用于拉取镜像的所有 IP。                    | 这有助于您了解数据传输的来源，对于诊断和识别自动化或手动拉取的模式非常有用。                                    |
-| `repository_privacy` | 被拉取镜像仓库的隐私状态。可以是 `public`（公共）或 `private`（私有）。                                                                                                               | 这可以区分公共和私有仓库，以识别拉取影响的是哪个数据传输阈值。                                                              |
-| `tag`                | 镜像的标签。仅当拉取包含标签时，标签才可用。                                                                                                                                       | 这有助于识别镜像。标签通常用于识别镜像的特定版本或变体。                                                                     |
-| `digest`             | 镜像的唯一摘要。                                                                                                                                                                             | 这有助于识别镜像。                                                                                                                                                |
-| `version_checks`     | 每个镜像仓库在该日期和小时内累积的版本检查次数。根据客户端的不同，拉取可以执行版本检查以验证镜像或标签的存在，而无需下载。 | 这有助于识别版本检查的频率，您可以用它来分析使用趋势和潜在的意外行为。                                                  |
-| `pulls`              | 每个镜像仓库在该日期和小时内累积的拉取次数。                                                                                                                                            | 这有助于识别仓库拉取的频率，您可以用它来分析使用趋势和潜在的意外行为。                                                |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `datehour`       | 导致数据传输的拉取发生的日期和小时 (`yyyy/mm/dd/hh`)。                                                                                                                                                       | 这有助于识别高峰使用时间和模式。                                                                                                                                              |
+| `user_name`      | 拉取镜像的用户的 Docker ID                                                                                                                                                                                  | 这让组织所有者能够跟踪每个用户的数据消耗并有效管理资源。                                                                                                                      |
+| `repository`     | 被拉取镜像的仓库名称。                                                                                                                                                                                      | 这让您能够识别哪些仓库访问最频繁并消耗最多数据传输。                                                                                                                          |
+| `access_token_name` | 用于 Docker CLI 认证的访问令牌名称。`generated` 令牌是用户登录时由 Docker 客户端自动生成的。                                                                                                            | 个人访问令牌通常用于认证自动化工具（Docker Desktop、CI/CD 工具等）。这对于识别哪个自动化系统发起了拉取非常有用。                                                              |
+| `ips`            | 用于拉取镜像的 IP 地址。此字段是聚合的，因此可能会出现多个 IP 地址，表示在同一日期和小时内用于拉取镜像的所有 IP。                                                                                         | 这有助于您了解数据传输的来源，对于诊断和识别自动化或手动拉取的模式非常有用。                                                                                                  |
+| `repository_privacy` | 被拉取镜像仓库的隐私状态。可以是 `public`（公共）或 `private`（私有）。                                                                                                                                    | 这可以区分公共和私有仓库，以识别拉取影响的是哪个数据传输阈值。                                                                                                                |
+| `tag`            | 镜像的标签。仅当拉取包含标签时，标签才可用。                                                                                                                                                                | 这有助于识别镜像。标签通常用于识别镜像的特定版本或变体。                                                                                                                      |
+| `digest`         | 镜像的唯一摘要。                                                                                                                                                                                            | 这有助于识别镜像。                                                                                                                                                            |
+| `version_checks` | 每个镜像仓库在该日期和小时内累积的版本检查次数。根据客户端的不同，拉取可以执行版本检查以验证镜像或标签的存在，而无需下载。                                                                                 | 这有助于识别版本检查的频率，您可以用它来分析使用趋势和潜在的意外行为。                                                                                                        |
+| `pulls`          | 每个镜像仓库在该日期和小时内累积的拉取次数。                                                                                                                                                                | 这有助于识别仓库拉取的频率，您可以用它来分析使用趋势和潜在的意外行为。                                                                                                        |
 
 ## 查看拉取速率和限制
 
@@ -125,21 +125,21 @@ You have reached your pull rate limit. You may increase the limit by authenticat
 
 > [!NOTE]
 >
-> 要检查您的限制，您需要安装 `curl`、`grep` 和 `jq`。
+> 要检查您的限制，您需要安装 `curl` 和 `jq`。
 
 1. 获取令牌。
 
    - 要匿名获取令牌（如果您正在匿名拉取）：
 
-      ```console
-      $ TOKEN=$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
-      ```
+     ```console
+     $ TOKEN=$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
+     ```
 
    - 要使用用户帐户获取令牌（如果您已认证），请在以下命令中插入您的用户名和密码：
 
-      ```console
-      $ TOKEN=$(curl --user 'username:password' "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
-      ```
+     ```console
+     $ TOKEN=$(curl --user 'username:password' "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
+     ```
 
 2. 获取包含您限制的标头。这些标头在 GET 和 HEAD 请求上都会返回。使用 GET 会模拟真实拉取并计入限制。使用 HEAD 则不会。
 

@@ -1,8 +1,8 @@
 ---
 title: 资源限制
 weight: 30
-description: 指定容器的运行时选项
-keywords: docker, daemon, configuration, runtime
+description: 使用运行时配置标志限制容器内存和 CPU 使用量
+keywords: resource constraints, memory limits, CPU limits, cgroups, OOM, swap, docker run, memory swap
 aliases:
 - /engine/admin/resource_constraints/
 - /config/containers/resource_constraints/
@@ -10,7 +10,7 @@ aliases:
 
 默认情况下，容器没有资源限制，可以使用主机内核调度器允许的任意数量的给定资源。Docker 提供了多种方法来控制容器可以使用的内存量或 CPU 量，通过设置 `docker run` 命令的运行时配置标志来实现。本节详细介绍了何时应设置此类限制以及设置它们可能产生的影响。
 
-许多这些功能需要您的内核支持 Linux 功能。要检查是否支持，您可以使用 [`docker info`](/reference/cli/docker/system/info.md) 命令。如果内核中禁用了某项功能，您可能会在输出末尾看到类似以下的警告：
+许多这些功能需要您的内核支持 Linux 功能。要检查是否支持，您可以使用 [`docker info`](/reference/cli/docker/system/info/) 命令。如果内核中禁用了某项功能，您可能会在输出末尾看到类似以下的警告：
 
 ```console
 WARNING: No swap limit support
@@ -53,7 +53,6 @@ Docker 可以强制执行硬内存限制或软内存限制。
 | `--memory-swap`\*      | 允许此容器交换到磁盘的内存量。请参阅 [`--memory-swap` 详情](#--memory-swap-details)。                                                                                                                                                                                                                                                                          |
 | `--memory-swappiness`  | 默认情况下，主机内核可以换出容器使用的匿名页面的百分比。您可以将 `--memory-swappiness` 设置为 0 到 100 之间的值，以调整此百分比。请参阅 [`--memory-swappiness` 详情](#--memory-swappiness-details)。                                                                                                                                       |
 | `--memory-reservation` | 允许您指定一个小于 `--memory` 的软限制，当 Docker 检测到主机上发生争用或内存不足时激活。如果使用 `--memory-reservation`，则必须将其设置为低于 `--memory` 才能使其生效。因为它是软限制，所以不能保证容器不会超过该限制。                                                |
-| `--kernel-memory`      | 容器可以使用的最大内核内存量。允许的最小值为 `6m`。因为内核内存无法被换出，所以内核内存不足的容器可能会阻塞主机资源，这可能对主机和其他容器产生副作用。请参阅 [`--kernel-memory` 详情](#--kernel-memory-details)。                                   |
 | `--oom-kill-disable`   | 默认情况下，如果发生内存不足 (OOM) 错误，内核会终止容器中的进程。要更改此行为，请使用 `--oom-kill-disable` 选项。仅在您还设置了 `-m/--memory` 选项的容器上禁用 OOM killer。如果未设置 `-m` 标志，主机可能会耗尽内存，内核可能需要终止主机系统的进程以释放内存。 |
 
 有关 cgroups 和内存的一般信息，请参阅 [内存资源控制器](https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt) 的文档。
@@ -62,13 +61,13 @@ Docker 可以强制执行硬内存限制或软内存限制。
 
 `--memory-swap` 是一个修饰符标志，仅在同时设置了 `--memory` 时才有意义。使用交换空间允许容器在用完所有可用 RAM 后将多余的内存需求写入磁盘。对于经常将内存交换到磁盘的应用程序，会有性能损失。
 
-其设置可能产生复杂的效果：
+其设置可能产生复杂的影响：
 
 - 如果 `--memory-swap` 设置为正整数，则必须同时设置 `--memory` 和 `--memory-swap`。`--memory-swap` 表示可以使用的内存和交换空间的总量，而 `--memory` 控制非交换内存的使用量。因此，如果 `--memory="300m"` 且 `--memory-swap="1g"`，则容器可以使用 300m 内存和 700m (`1g - 300m`) 交换空间。
 
 - 如果 `--memory-swap` 设置为 `0`，则该设置将被忽略，该值被视为未设置。
 
-- 如果 `--memory-swap` 设置为与 `--memory` 相同的值，并且 `--memory` 设置为正整数，**则容器无法访问交换空间**。请参阅 [防止容器使用交换空间](#prevent-a-container-from-using-swap)。
+- 如果 `--memory-swap` 设置为与 `--memory` 相同的值，并且 `--memory` 设置为正整数，**则容器无法访问交换空间**。请参阅 [防止容器使用交换空间](#防止容器使用交换空间)。
 
 - 如果未设置 `--memory-swap`，但设置了 `--memory`，则容器可以使用与 `--memory` 设置一样多的交换空间（如果主机容器配置了交换空间）。例如，如果 `--memory="300m"` 且未设置 `--memory-swap`，则容器总共可以使用 600m 的内存和交换空间。
 
@@ -86,20 +85,9 @@ Docker 可以强制执行硬内存限制或软内存限制。
 - 值为 100 会将所有匿名页面设置为可交换。
 - 默认情况下，如果您不设置 `--memory-swappiness`，该值将从主机继承。
 
-### `--kernel-memory` 详情
-
-内核内存限制以分配给容器的总内存来表示。考虑以下情况：
-
-- **无限内存，无限内核内存**：这是默认行为。
-- **无限内存，有限内核内存**：当所有 cgroup 所需的内存量大于主机上实际存在的内存量时，这很合适。您可以将内核内存配置为永远不会超过主机上可用的内存量，而需要更多内存的容器需要等待。
-- **有限内存，无限内核内存**：总内存有限，但内核内存无限。
-- **有限内存，有限内核内存**：同时限制用户内存和内核内存对于调试内存相关问题非常有用。如果容器使用的任一类型的内存量超出预期，它会耗尽内存而不会影响其他容器或主机。在此设置下，如果内核内存限制低于用户内存限制，耗尽内核内存会导致容器经历 OOM 错误。如果内核内存限制高于用户内存限制，内核限制不会导致容器经历 OOM。
-
-当您启用内核内存限制时，主机系统会按进程跟踪“高水位线”统计信息，因此您可以跟踪哪些进程（在本例中是容器）正在使用过多内存。这可以通过在主机上查看 `/proc/<PID>/status` 来按进程查看。
-
 ## CPU
 
-默认情况下，每个容器对主机 CPU 周期的访问是无限制的。您可以设置各种约束来限制给定容器对主机 CPU 周期的访问。大多数用户使用并配置 [默认 CFS 调度器](#configure-the-default-cfs-scheduler)。您也可以配置 [实时调度器](#configure-the-real-time-scheduler)。
+默认情况下，每个容器对主机 CPU 周期的访问是无限制的。您可以设置各种约束来限制给定容器对主机 CPU 周期的访问。大多数用户使用并配置 [默认 CFS 调度器](#配置默认-cfs-调度器)。您也可以配置 [实时调度器](#配置实时调度器)。
 
 ### 配置默认 CFS 调度器
 
@@ -127,7 +115,7 @@ $ docker run -it --cpu-period=100000 --cpu-quota=50000 ubuntu /bin/bash
 
 ### 配置实时调度器
 
-您可以将容器配置为使用实时调度器，用于无法使用 CFS 调度器的任务。在 [配置 Docker 守护进程](#configure-the-docker-daemon) 或 [配置单个容器](#configure-individual-containers) 之前，您需要 [确保主机的内核已正确配置](#configure-the-host-machines-kernel)。
+您可以将容器配置为使用实时调度器，用于无法使用 CFS 调度器的任务。在 [配置 Docker 守护进程](#配置-docker-守护进程) 或 [配置单个容器](#配置单个容器) 之前，您需要 [确保主机的内核已正确配置](#配置主机的内核)。
 
 > [!WARNING]
 >
@@ -139,7 +127,7 @@ $ docker run -it --cpu-period=100000 --cpu-quota=50000 ubuntu /bin/bash
 
 #### 配置 Docker 守护进程
 
-要使用实时调度器运行容器，请运行 Docker 守护进程，并将 `--cpu-rt-runtime` 标志设置为每个运行时周期为实时任务保留的最大微秒数。例如，默认周期为 1000000 微秒（1 秒），设置 `--cpu-rt-runtime=950000` 可确保使用实时调度器的容器在每个 1000000 微秒周期内可以运行 950000 微秒，为非实时任务留下至少 50000 微秒。要在使用 `systemd` 的系统上使此配置永久生效，请为 `docker` 服务创建一个 systemd 单元文件。例如，请参阅有关如何使用 [systemd 单元文件](../daemon/proxy.md#systemd-unit-file) 配置守护进程以使用代理的说明。
+要使用实时调度器运行容器，请运行 Docker 守护进程，并将 `--cpu-rt-runtime` 标志设置为每个运行时周期为实时任务保留的最大微秒数。例如，默认周期为 1000000 微秒（1 秒），设置 `--cpu-rt-runtime=950000` 可确保使用实时调度器的容器在每个 1000000 微秒周期内可以运行 950000 微秒，为非实时任务留下至少 50000 微秒。要在使用 `systemd` 的系统上使此配置永久生效，请为 `docker` 服务创建一个 systemd 单元文件。例如，请参阅有关如何使用 [systemd 单元文件](../daemon/proxy.md#systemd-单元文件) 配置守护进程以使用代理的说明。
 
 #### 配置单个容器
 
@@ -165,74 +153,4 @@ $ docker run -it \
 
 ## GPU
 
-### 访问 NVIDIA GPU
-
-#### 先决条件
-
-访问官方 [NVIDIA 驱动程序页面](https://www.nvidia.com/Download/index.aspx) 下载并安装合适的驱动程序。完成后重新启动您的系统。
-
-验证您的 GPU 是否正在运行且可访问。
-
-#### 安装 nvidia-container-toolkit
-
-按照官方 NVIDIA Container Toolkit [安装说明](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) 进行操作。
-
-#### 暴露 GPU 以供使用
-
-在启动容器时包含 `--gpus` 标志以访问 GPU 资源。指定要使用的 GPU 数量。例如：
-
-```console
-$ docker run -it --rm --gpus all ubuntu nvidia-smi
-```
-
-暴露所有可用的 GPU 并返回类似以下的结果：
-
-```bash
-+-------------------------------------------------------------------------------+
-| NVIDIA-SMI 384.130            	Driver Version: 384.130               	|
-|-------------------------------+----------------------+------------------------+
-| GPU  Name 	   Persistence-M| Bus-Id    	Disp.A | Volatile Uncorr. ECC   |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M.   |
-|===============================+======================+========================|
-|   0  GRID K520       	Off  | 00000000:00:03.0 Off |                  N/A      |
-| N/A   36C	P0    39W / 125W |  	0MiB /  4036MiB |      0%  	Default |
-+-------------------------------+----------------------+------------------------+
-+-------------------------------------------------------------------------------+
-| Processes:                                                       GPU Memory   |
-|  GPU   	PID   Type   Process name                         	Usage  	|
-|===============================================================================|
-|  No running processes found                                                   |
-+-------------------------------------------------------------------------------+
-```
-
-使用 `device` 选项指定 GPU。例如：
-
-```console
-$ docker run -it --rm --gpus device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a ubuntu nvidia-smi
-```
-
-暴露该特定的 GPU。
-
-```console
-$ docker run -it --rm --gpus '"device=0,2"' ubuntu nvidia-smi
-```
-
-暴露第一个和第三个 GPU。
-
-> [!NOTE]
->
-> NVIDIA GPU 只能由运行单个引擎的系统访问。
-
-#### 设置 NVIDIA 功能
-
-您可以手动设置功能。例如，在 Ubuntu 上，您可以运行以下命令：
-
-```console
-$ docker run --gpus 'all,capabilities=utility' --rm ubuntu nvidia-smi
-```
-
-这启用了 `utility` 驱动程序功能，该功能将 `nvidia-smi` 工具添加到容器中。
-
-功能以及其他配置可以通过环境变量在镜像中设置。有关有效变量的更多信息，请参阅 [nvidia-container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/docker-specialized.html) 文档。这些变量可以在 Dockerfile 中设置。
-
-您也可以使用 CUDA 镜像，这些镜像会自动设置这些变量。请参阅官方 [CUDA 镜像](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda) NGC 目录页面。
+有关如何从容器访问 NVIDIA GPU 的信息，请参阅 [GPU 访问](gpu.md)。

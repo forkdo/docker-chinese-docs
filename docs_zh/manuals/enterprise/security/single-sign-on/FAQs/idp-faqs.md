@@ -6,9 +6,9 @@ keywords: identity providers, SSO IdP, SAML, Azure AD, Entra ID, certificate man
 tags:
 - FAQ
 aliases:
-- /single-sign-on/idp-faqs/
-- /faq/security/single-sign-on/idp-faqs/
-- /security/faqs/single-sign-on/idp-faqs/
+  - /single-sign-on/idp-faqs/
+  - /faq/security/single-sign-on/idp-faqs/
+  - /security/faqs/single-sign-on/idp-faqs/
 ---
 
 ## 我可以在 Docker SSO 中使用多个身份提供程序吗？
@@ -28,7 +28,12 @@ aliases:
 
 ## 如果现有证书过期会发生什么？
 
-如果证书过期，请联系您的身份提供程序以获取新的 X.509 证书。然后在 Docker 管理控制台的 [SSO 配置设置](/manuals/enterprise/security/single-sign-on/manage.md#manage-sso-connections)中更新证书。
+请联系您的身份提供程序以获取新的 X.509 证书。在 Docker Home 的 [SSO 配置设置](/manuals/enterprise/security/single-sign-on/manage.md#manage-sso-connections)中使用新证书进行更新。
+
+- 如果您的组织强制执行 SSO，用户名和密码凭据将不起作用。
+- 如果您的组织未强制执行 SSO，用户可以使用其用户名和密码凭据登录。
+
+如果您需要更多帮助，请联系 [Docker 支持](https://app.docker.com/support/contact)。
 
 ## 如果 SSO 开启后 IdP 发生故障会发生什么？
 
@@ -42,7 +47,7 @@ aliases:
 
 ## SAML SSO 是否使用即时配置？
 
-SSO 实现默认使用即时 (JIT) 配置。如果您使用 SCIM 开启自动配置，可以选择在管理控制台中关闭 JIT。请参阅[即时配置](/security/for-admins/provisioning/just-in-time/)。
+SSO 实现默认使用即时 (JIT) 配置。如果您使用 SCIM 开启自动配置，可以选择在 Docker Home 中关闭 JIT。请参阅[即时配置](/manuals/enterprise/security/provisioning/just-in-time.md)。
 
 ## 我的 Entra ID SSO 连接无法工作并显示错误。如何解决此问题？
 

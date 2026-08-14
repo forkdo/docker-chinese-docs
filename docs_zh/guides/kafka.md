@@ -6,13 +6,10 @@ linktitle: 基于 Kafka 的事件驱动应用
 summary: '本指南介绍如何在 Docker 容器中运行 Apache Kafka。
 
   '
-tags:
-- distributed-systems
-languages:
-- js
 aliases:
 - /guides/use-case/kafka/
 params:
+  tags: [deployment]
   time: 20 minutes
 ---
 

@@ -3,7 +3,7 @@ title: 获取 Docker 产品支持
 linkTitle: 支持
 description: 了解 Docker 产品的支持选项，包括付费订阅和社区资源
 keywords: support, help, docker desktop, subscriptions, community, troubleshooting
-weight: 5
+weight: 50
 params:
   sidebar:
     group: Platform
@@ -21,11 +21,9 @@ Docker 提供多种支持渠道，具体取决于您的订阅级别和需求。
 - Docker Team：2 个工作日内响应，24×5 可用性
 - Docker Business：1 个工作日内响应，24×5 可用性
 
-> [!NOTE]
+> [!TIP]
 >
-> Docker Business 订阅用户可额外购买高级支持服务，享受更快的响应时间和 24×7 可用性。
-
-有关详细的支持功能和响应时间，请参阅 [Docker 定价](https://www.docker.com/pricing/)。
+> 面向 [Docker Business 订阅用户](https://www.docker.com/pricing?ref=Docs&refAction=DocsSupport) 的高级支持附加组件提供更快的响应时间和 24×7 可用性。
 
 ### 支持严重性级别
 

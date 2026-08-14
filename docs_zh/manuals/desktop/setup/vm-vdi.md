@@ -4,7 +4,6 @@ keywords: nested virtualization, Docker Desktop, windows, VM, VDI environment
 title: 在 VM 或 VDI 环境中运行适用于 Windows 的 Docker Desktop
 linkTitle: VM 或 VDI 环境
 aliases:
-- /desktop/nested-virtualization/
 - /desktop/vm-vdi/
 weight: 30
 ---
@@ -24,7 +23,7 @@ Docker 建议在 Mac、Linux 或 Windows 上原生运行 Docker Desktop。但是
 
 Docker Offload 将 Docker Desktop 客户端与 Docker Engine 解耦，允许 Docker CLI 和 Docker Desktop Dashboard 与基于云的资源进行交互，就像它们是本地资源一样。当您运行容器时，Docker 会配置一个安全、隔离且短暂的云环境，该环境通过 SSH 隧道连接到 Docker Desktop。尽管是远程运行，但绑定挂载和端口转发等功能仍能无缝工作，提供类似本地的体验。要使用 Docker Offload：
 
-要开始使用 Docker Offload，请参阅 [Docker Offload 快速入门](/offload/quickstart/)。
+有关更多信息，请参阅 [Docker Offload 产品页面](https://www.docker.com/products/docker-offload/) 和 [Docker Offload 文档](/offload/)。
 
 ## 使用嵌套虚拟化时的虚拟桌面支持
 

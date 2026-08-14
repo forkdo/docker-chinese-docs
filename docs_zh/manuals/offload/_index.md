@@ -1,42 +1,39 @@
 ---
 title: Docker Offload
 weight: 15
-description: 查找关于 Docker Offload 的文档，帮助你在本地和 CI 中更快地构建和运行容器镜像
+description: 查找关于 Docker Offload 的文档，帮助你将容器卸载到云端。
 keywords: build, cloud, cloud build, remote builder
 params:
   sidebar:
-    group: Products
-    badge:
-      color: violet
-      text: Early Access
+    group: Application development
 grid:
 - title: 快速入门
   description: 只需几个步骤即可启动并运行 Docker Offload。
-  icon: rocket_launch
+  icon: rocket-launch
   link: /offload/quickstart/
 - title: 关于
   description: 了解 Docker Offload 及其工作原理。
-  icon: info
+  icon: information-circle
   link: /offload/about/
 - title: 配置
-  description: 设置和自定义你的云构建环境。
-  icon: tune
+  description: 为你的组织和 Docker Desktop 配置 Docker Offload 设置。
+  icon: adjustments-horizontal
   link: /offload/configuration/
-- title: 使用和计费
-  description: 了解 Docker Offload 的使用和计费，以及如何监控你的云资源。
-  icon: monitor_heart
+- title: 使用
+  description: 了解 Docker Offload 的使用情况以及如何监控你的云资源。
+  icon: heart
   link: /offload/usage/
 - title: 优化
   description: 提高 Docker Offload 的性能和成本效益。
-  icon: speed
+  icon: bolt
   link: /offload/optimize/
 - title: 故障排除
   description: 了解如何排查 Docker Offload 的问题。
-  icon: bug_report
+  icon: bug-ant
   link: /offload/troubleshoot/
 - title: 反馈
   description: 提供关于 Docker Offload 的反馈。
-  icon: feedback
+  icon: chat-bubble-left
   link: /offload/feedback/
 aliases:
 - /harmonia/

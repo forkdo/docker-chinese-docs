@@ -3,23 +3,26 @@ title: Docker Desktop 许可协议
 description: 关于 Docker Desktop 许可协议和商业使用要求的信息
 keywords: docker desktop license, subscription service agreement, commercial use, licensing terms
 weight: 40
+aliases:
+  - /subscription/products/desktop-license/
+  - /subscription/plans/desktop-license/
 ---
 
 Docker Desktop 根据 [Docker 订阅服务协议](https://www.docker.com/legal/docker-subscription-service-agreement) 进行授权。当您下载并安装 Docker Desktop 时，系统会要求您同意这些条款。
 
 Docker 订阅服务协议规定：
 
- - Docker Desktop 免费适用于：
-    - 小型企业（员工人数少于 250 人且年收入少于 1000 万美元）
-    - 个人使用
-    - 教育用途
-    - 非商业开源项目
+- Docker Desktop 免费适用于：
+  - 小型企业（员工人数少于 250 人且年收入少于 1000 万美元）
+  - 个人使用
+  - 教育用途
+  - 非商业开源项目
 - Docker Desktop 对以下情况需要付费订阅：
-    - 大型组织的专业使用
-    - 政府机构
-    - 超出免费层级限制的商业使用
+  - 大型组织的专业使用
+  - 政府机构
+  - 超出免费层级限制的商业使用
 - 包含 Docker Desktop 的付费订阅：
-    - Docker Pro、Team 和 Business 订阅
+  - Docker Pro、Team 和 Business 订阅
 
 ## 了解许可条款
 

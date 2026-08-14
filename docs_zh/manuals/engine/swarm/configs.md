@@ -56,10 +56,10 @@ Docker 包含对 Windows 容器上 configs 的支持，但实现上存在差异�
 
 使用这些链接阅读有关特定命令的详细信息，或继续阅读 [关于在服务中使用 configs 的示例](#advanced-example-use-configs-with-a-nginx-service)。
 
-- [`docker config create`](/reference/cli/docker/config/create.md)
-- [`docker config inspect`](/reference/cli/docker/config/inspect.md)
-- [`docker config ls`](/reference/cli/docker/config/ls.md)
-- [`docker config rm`](/reference/cli/docker/config/rm.md)
+- [`docker config create`](/reference/cli/docker/config/create/)
+- [`docker config inspect`](/reference/cli/docker/config/inspect/)
+- [`docker config ls`](/reference/cli/docker/config/ls/)
+- [`docker config rm`](/reference/cli/docker/config/rm/)
 
 ## 示例
 
@@ -73,7 +73,7 @@ Docker 包含对 Windows 容器上 configs 的支持，但实现上存在差异�
 
 `docker stack` 命令支持在 Compose 文件中定义 configs。
 但是，`docker compose` 不支持 `configs` 键。详情请见
-[Compose 文件参考](/reference/compose-file/legacy-versions.md)。
+[Compose 文件参考](/reference/compose-file/configs.md)。
 
 ### 简单示例：开始使用 configs
 
@@ -120,6 +120,7 @@ Docker 包含对 Windows 容器上 configs 的支持，但实现上存在差异�
 5.  尝试删除 config。删除失败，因为 `redis` 服务正在运行且有权访问 config。
 
     ```console
+
 
     $ docker config ls
 

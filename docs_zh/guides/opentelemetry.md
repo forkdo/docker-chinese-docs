@@ -4,12 +4,8 @@ description: 学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript
 keywords: OpenTelemetry, observability, tracing
 linktitle: 使用 OpenTelemetry 对 JS 应用进行插桩
 summary: 学习如何在 Docker 环境中使用 OpenTelemetry 对 JavaScript 应用进行可观测性插桩。
-tags:
-- app-dev
-- observability
-languages:
-- js
 params:
+  tags: [cicd]
   time: 10 分钟
 ---
 
@@ -136,8 +132,6 @@ service:
 创建 `docker-compose.yaml` 文件：
 
 ```yaml
-version: '3.9'
-
 services:
   app:
     build: ./app

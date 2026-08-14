@@ -10,6 +10,10 @@ aliases:
 - /docker-hub/builds/
 ---
 
+> [!WARNING]
+> Docker Hub 自动构建是一项已弃用的功能。
+> 它将于 2027 年 4 月 1 日完全退役。
+
 > [!NOTE]
 >
 > 自动化构建需要 Docker Pro、Team 或 Business 订阅。
@@ -121,13 +125,13 @@ aliases:
 
    > [!NOTE]
    >
-   > 您可以输入名称，或使用正则表达式来匹配要构建的源分支或标签名称。要了解更多信息，请参阅[正则表达式](index.md#regexes-and-automated-builds)。
+   > 您可以输入名称，或使用正则表达式来匹配要构建的源分支或标签名称。要了解更多信息，请参阅[正则表达式](#regexes-and-automated-builds)。
 
 4. 输入要应用于从此源构建的 Docker 镜像的标签。
 
    > [!NOTE]
    >
-   > 如果您配置了正则表达式来选择源，则可以引用捕获组并将其结果用作标签的一部分。要了解更多信息，请参阅[正则表达式](index.md#regexes-and-automated-builds)。
+   > 如果您配置了正则表达式来选择源，则可以引用捕获组并将其结果用作标签的一部分。要了解更多信息，请参阅[正则表达式](#regexes-and-automated-builds)。
 
 5. 对于您设置的每个新构建规则，重复步骤 2 到 4。
 

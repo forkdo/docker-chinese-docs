@@ -1,0 +1,78 @@
+---
+description: 了解 Docker Hub 中的设置
+keywords: Docker Hub, Hub, repositories, settings
+title: 设置
+weight: 25
+aliases:
+  - /docker-hub/repos/settings/
+---
+
+您可以在 Docker Hub 中配置以下设置：
+
+- [默认隐私](#默认隐私)：每个命名空间内所有仓库的设置
+- [通知](#通知)：自动构建通知的个人设置
+
+## 默认隐私
+
+您可以为命名空间中的所有仓库配置以下默认隐私设置：
+
+- [禁止创建公开仓库](#禁止创建公开仓库)：阻止组织用户创建公开仓库（仅限组织命名空间）
+- [配置默认仓库隐私](#配置默认仓库隐私)：为新仓库设置默认仓库隐私
+
+### 禁止创建公开仓库
+
+{{< summary-bar feature_name="Disable public repositories" >}}
+
+组织所有者和编辑者可以阻止在组织命名空间内创建公开仓库。您无法为个人账户命名空间配置此设置。
+
+> [!NOTE]
+>
+> 启用此功能不会影响现有的公开仓库。任何已存在的公开仓库将保持公开状态。要将其设为私有，您必须在各个仓库的设置中更改其可见性。
+
+要为组织命名空间配置禁用公开仓库设置：
+
+1. 登录 [Docker Hub](https://hub.docker.com)。
+2. 选择 **My Hub**。
+3. 从右上角的账户下拉菜单中选择您的组织。
+4. 选择 **Settings** > **Default privacy**。
+5. 将 **Disable public repositories** 切换为您所需的设置。
+6. 选择 **Save**。
+
+### 配置默认仓库隐私
+
+使用默认仓库隐私设置，在通过 `docker push` 命令创建尚不存在的仓库时自动设置隐私。在这种情况下，Docker Hub 会使用该命名空间的默认仓库隐私自动创建仓库。
+
+> [!NOTE]
+>
+> 当 **Disable public repositories** 启用时，您无法配置默认仓库隐私设置。
+
+要为命名空间配置默认仓库隐私：
+
+1. 登录 [Docker Hub](https://hub.docker.com)。
+2. 选择 **My Hub**。
+3. 从右上角的账户下拉菜单中选择您的组织或账户。
+4. 选择 **Settings** > **Default privacy**。
+5. 在 **Default repository privacy** 中，选择所需的默认隐私设置：
+
+   - **Public（公开）**：所有新仓库都会出现在 Docker Hub 搜索结果中，并且任何人都可以拉取。
+   - **Private（私有）**：所有新仓库不会出现在 Docker Hub 搜索结果中，并且仅您和协作者可访问。此外，如果仓库是在组织的命名空间中创建的，则该仓库可供具有相应角色或权限的人员访问。
+
+6. 选择 **Save**。
+
+## 通知
+
+您可以使用自动构建为您的全部仓库发送电子邮件通知。
+
+### 配置自动构建通知
+
+1. 登录 [Docker Hub](https://hub.docker.com)。
+2. 选择 **My Hub**。
+3. 从右上角的账户下拉菜单中选择您的个人账户。
+4. 选择 **Settings** > **Notifications**。
+5. 选择要通过电子邮件接收的通知：
+
+   - **Off（关闭）**：不发送任何通知。
+   - **Only failures（仅失败）**：仅发送有关构建失败的通知。
+   - **Everything（全部）**：发送有关构建成功和失败的通知。
+
+6. 选择 **Save**。

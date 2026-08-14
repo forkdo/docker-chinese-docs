@@ -25,7 +25,6 @@ Docker Scout 支持以下运行时集成：
 
 - [Docker Scout GitHub Action](https://github.com/marketplace/actions/docker-scout#record-an-image-deployed-to-an-environment)
 - [CLI 客户端](./cli.md)
-- [Sysdig 集成](./sysdig.md)
 
 > [!NOTE]
 >
@@ -56,7 +55,7 @@ $ docker scout config organization <org>
 
 将镜像分配到环境可以让您在环境内部和环境之间进行比较。这对于 GitHub 拉取请求等场景非常有用，可以比较从 PR 中的代码构建的镜像与 staging 或 production 中的相应镜像。
 
-您还可以使用 `--to-env` 标志与流进行比较，通过 [`docker scout compare`](/reference/cli/docker/scout/compare.md) CLI 命令：
+您还可以使用 `--to-env` 标志与流进行比较，通过 [`docker scout compare`](/reference/cli/docker/scout/compare/) CLI 命令：
 
 ```console
 $ docker scout compare --to-env production myorg/webapp:latest

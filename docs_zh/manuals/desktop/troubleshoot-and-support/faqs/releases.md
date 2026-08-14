@@ -9,7 +9,7 @@ tags:
 
 ### 新版本发布的频率如何？
 
-新版本大约每月发布一次，除非有需要尽快发布的紧急修复。
+新版本每周发布一次，除非有需要尽快发布的紧急修复。
 
 **Software updates** 选项卡中的 **Automatically check for updates** 设置默认开启。这意味着当有新版本可用时，您会在 Docker 菜单中收到通知，并且在 Docker Desktop 仪表板上看到通知标记。
 

@@ -3,7 +3,7 @@ description: 了解 Docker Desktop 资源节省模式及其配置方法
 keywords: Docker 仪表板, 资源节省, 管理, 容器, 图形界面, 仪表板, 用户手册
 title: Docker Desktop 的资源节省模式
 linkTitle: 资源节省模式
-weight: 60
+weight: 70
 ---
 
 资源节省模式通过在没有容器运行一段时间后自动停止 Docker Desktop Linux 虚拟机，可显著降低主机上 Docker Desktop 的 CPU 和内存使用率，降幅可达 2 GB 或更多。默认时间为 5 分钟，但您可以根据需要进行调整。

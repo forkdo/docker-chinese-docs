@@ -37,6 +37,17 @@ Docker 需要主机上启用 IP 转发才能进行其默认桥接网络配置。
 
 附加到 `FORWARD` 链的规则将在 Docker 的规则之后被处理。
 
+> [!NOTE]
+>
+> 默认情况下，远程主机只能通过发布到 Docker 主机某个地址上的端口访问容器。不允许改为将数据包直接发送到容器自身的 IP 地址（即“直接路由”访问）。
+>
+> 这些数据包会被 `raw` 表 `PREROUTING` 链中的一条规则丢弃，该链在 `filter` 表之前被处理。因此，它们永远不会到达 `DOCKER-USER` 链，`DOCKER-USER` 中的规则也无法放行它们。
+>
+> 任何到达主机防火墙规则时已经以容器为目标地址的数据包都会被这样处理。例如，Kubernetes CNI 插件可能会在数据包到达主机的 `PREROUTING` 规则之前，就把 Service 地址转换为容器地址。Docker 无法把这种结果与远程主机直接路由到容器的数据包区分开来。这些数据包到达的是哪个主机接口取决于插件的数据路径 —— 对于覆盖网络，通常是隧道设备。
+>
+> 要允许对容器*已发布*端口的直接路由访问，请使用网络选项 `com.docker.network.bridge.trusted_host_interfaces` 或守护进程选项 `allow-direct-routing`。未发布的端口仍受保护。请参阅[桥接网络中到容器的直接路由](./port-publishing.md#direct-routing-to-containers-in-bridge-networks)。
+> 要允许对容器所有端口（无论是否已发布）的直接路由访问，请参阅[网关模式](./port-publishing.md#gateway-modes)。
+
 ### 匹配请求的原始 IP 和端口
 
 当数据包到达 `DOCKER-USER` 链时，它们已经通过了目标网络地址转换（DNAT）过滤器。这意味着您使用的 `iptables` 标志只能匹配容器的内部 IP 地址和端口。

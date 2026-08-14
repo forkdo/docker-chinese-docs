@@ -6,8 +6,6 @@ description: 如何使用 Docker Desktop CLI
 keywords: cli, docker desktop, macos, windows, linux
 ---
 
-{{< summary-bar feature_name="Docker Desktop CLI" >}}
-
 Docker Desktop CLI 让您可以直接从命令行执行关键操作，例如启动、停止、重启和更新 Docker Desktop。
 
 Docker Desktop CLI 提供：
@@ -31,11 +29,12 @@ docker desktop COMMAND [OPTIONS]
 | `status`             | 显示 Docker Desktop 正在运行还是已停止。                         |
 | `engine ls`          | 列出可用的引擎（仅限 Windows）                                   |
 | `engine use`         | 在 Linux 和 Windows 容器之间切换（仅限 Windows）                 |
-| `update`             | 管理 Docker Desktop 更新。在 Docker Desktop 4.38 版本中仅适用于 Mac，在 4.39 及更高版本中适用于所有操作系统。 |
+| `update`             | 管理 Docker Desktop 更新。                                       |
 | `logs`               | 打印日志条目                                                     |
 | `disable`            | 禁用功能                                                         |
 | `enable`             | 启用功能                                                         |
 | `version`            | 显示 Docker Desktop CLI 插件版本信息                             |
 | `kubernetes`         | 列出 Docker Desktop 使用的 Kubernetes 镜像或重启集群。在 Docker Desktop 4.44 及更高版本中可用。 |
+| `diagnose`           | 诊断 Docker Desktop 并上传诊断信息。在 Docker Desktop 4.60 及更高版本中可用。 |
 
-有关每个命令的更多详细信息，请参阅 [Docker Desktop CLI 参考](/reference/cli/docker/desktop/_index.md)。
+有关每个命令的更多详细信息，请参阅 [Docker Desktop CLI 参考](/reference/cli/docker/desktop/)。

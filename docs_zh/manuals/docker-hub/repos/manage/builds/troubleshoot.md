@@ -9,6 +9,10 @@ aliases:
 - /docker-hub/builds/troubleshoot/
 ---
 
+> [!WARNING]
+> Docker Hub 自动构建是一项已弃用的功能。
+> 它将于 2027 年 4 月 1 日完全退役。
+
 > [!NOTE]
 >
 > 自动构建需要

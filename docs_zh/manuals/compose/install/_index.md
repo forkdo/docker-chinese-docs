@@ -5,10 +5,6 @@ title: Docker Compose 安装概述
 linkTitle: 安装
 weight: 20
 toc_max: 3
-aliases:
-- /compose/compose-desktop/
-- /compose/install/other/
-- /compose/install/compose-desktop/
 ---
 
 本文总结了根据您的平台和需求，安装 Docker Compose 的不同方法。

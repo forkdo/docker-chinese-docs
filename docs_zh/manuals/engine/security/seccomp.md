@@ -31,6 +31,8 @@ $ docker run --rm \
              hello-world
 ```
 
+Docker CLI 会从你调用 `docker` 的工作目录解析相对 profile 路径。CLI 读取该 profile 并将其内容发送给守护进程，因此当客户端和守护进程运行在不同主机上时，该 profile 必须在客户端主机上可用。
+
 ### 默认配置文件阻止的重要系统调用
 
 Docker 的默认 seccomp 配置文件是一个允许列表，指定了允许的调用。下表列出了因不在允许列表中而被有效阻止的显著（但不是全部）系统调用。表中包括每个系统调用被阻止而不是被列入白名单的原因。
@@ -51,6 +53,9 @@ Docker 的默认 seccomp 配置文件是一个允许列表，指定了允许的�
 | `init_module`       | 拒绝对内核模块的操作和函数。也受 `CAP_SYS_MODULE` 限制。                                                                                                                                                             |
 | `ioperm`            | 防止容器修改内核 I/O 特权级别。已通过 `CAP_SYS_RAWIO` 限制。                                                                                                                                               |
 | `iopl`              | 防止容器修改内核 I/O 特权级别。已通过 `CAP_SYS_RAWIO` 限制。                                                                                                                                               |
+| `io_uring_enter`    | 因可被利用以逃逸容器的安全漏洞而被阻止。参见 [moby/moby#46762](https://github.com/moby/moby/pull/46762)。                                                                                      |
+| `io_uring_register` | 因可被利用以逃逸容器的安全漏洞而被阻止。参见 [moby/moby#46762](https://github.com/moby/moby/pull/46762)。                                                                                      |
+| `io_uring_setup`    | 因可被利用以逃逸容器的安全漏洞而被阻止。参见 [moby/moby#46762](https://github.com/moby/moby/pull/46762)。                                                                                      |
 | `kcmp`              | 限制进程检查功能，已通过删除 `CAP_SYS_PTRACE` 阻止。                                                                                                                                                        |
 | `kexec_file_load`   | 与 `kexec_load` 相同的姐妹系统调用，参数略有不同。也受 `CAP_SYS_BOOT` 限制。                                                                                                                           |
 | `kexec_load`        | 拒绝加载新内核以供稍后执行。也受 `CAP_SYS_BOOT` 限制。                                                                                                                                                                   |
@@ -73,6 +78,8 @@ Docker 的默认 seccomp 配置文件是一个允许列表，指定了允许的�
 | `request_key`       | 防止容器使用内核密钥环，因为密钥环未被命名空间化。                                                                                                                                                                     |
 | `set_mempolicy`     | 修改内核内存和 NUMA 设置的系统调用。已通过 `CAP_SYS_NICE` 限制。                                                                                                                                                        |
 | `setns`             | 拒绝将线程与命名空间关联。也受 `CAP_SYS_ADMIN` 限制。                                                                                                                                                                     |
+| `socket`            | 针对 `AF_ALG` 阻止，以防止通过内核加密 API 在容器内提升权限（[CVE-2026-31431](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)）。也针对 `AF_VSOCK` 阻止。参见 [moby/moby#52494](https://github.com/moby/moby/pull/52494)。 |
+| `socketcall`        | 拒绝以防止绕过带有旧式 `socketcall` 多路复用器（i386、s390、MIPS o32）架构上的 socket 地址族过滤器。参见 [moby/moby#52494](https://github.com/moby/moby/pull/52494)。                                     |
 | `settimeofday`      | 时间/日期未被命名空间化。也受 `CAP_SYS_TIME` 限制。                                                                                                                                                                                     |
 | `stime`             | 时间/日期未被命名空间化。也受 `CAP_SYS_TIME` 限制。                                                                                                                                                                                     |
 | `swapon`            | 拒绝开始/停止交换到文件/设备。也受 `CAP_SYS_ADMIN` 限制。                                                                                                                                                                        |

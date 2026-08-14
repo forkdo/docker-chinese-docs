@@ -1,42 +1,44 @@
 ---
-description: 查找用于定义多容器应用程序的最新推荐 Docker Compose 文件格式版本。
-keywords: docker compose file, docker compose yml, docker compose reference, docker compose cmd, docker compose user, docker compose image, yaml spec, docker compose syntax, yaml specification, docker compose specification
+description:
+  查找用于定义多容器应用程序的最新推荐 Docker Compose 文件格式版本。
+keywords:
+  docker compose file, docker compose yml, docker compose reference, docker
+  compose cmd, docker compose user, docker compose image, yaml spec, docker compose
+  syntax, yaml specification, docker compose specification
 title: Compose 文件参考
 toc_max: 4
 toc_min: 1
 grid:
-- title: Version and name top-level element
-  description: 理解 Compose 的 version 和 name 属性。
-  icon: text_snippet
-  link: /reference/compose-file/version-and-name/
-- title: Services top-level element
-  description: 探索 Compose 的所有 services 属性。
-  icon: construction
-  link: /reference/compose-file/services/
-- title: Networks top-level element
-  description: 查找 Compose 的所有 networks 属性。
-  icon: lan
-  link: /reference/compose-file/networks/
-- title: Volumes top-level element
-  description: 探索 Compose 的所有 volumes 属性。
-  icon: database
-  link: /reference/compose-file/volumes/
-- title: Configs top-level element
-  description: 了解 Compose 中的 configs。
-  icon: settings
-  link: /reference/compose-file/configs/
-- title: Secrets top-level element
-  description: 了解 Compose 中的 secrets。
-  icon: lock
-  link: /reference/compose-file/secrets/
+  - title: Version and name top-level element
+    description: 理解 Compose 的 version 和 name 属性。
+    icon: document-text
+    link: /reference/compose-file/version-and-name/
+  - title: Services top-level element
+    description: 探索 Compose 的所有 services 属性。
+    icon: wrench-screwdriver
+    link: /reference/compose-file/services/
+  - title: Networks top-level element
+    description: 查找 Compose 的所有 networks 属性。
+    icon: server-stack
+    link: /reference/compose-file/networks/
+  - title: Volumes top-level element
+    description: 探索 Compose 的所有 volumes 属性。
+    icon: circle-stack
+    link: /reference/compose-file/volumes/
+  - title: Configs top-level element
+    description: 了解 Compose 中的 configs。
+    icon: cog-6-tooth
+    link: /reference/compose-file/configs/
+  - title: Secrets top-level element
+    description: 了解 Compose 中的 secrets。
+    icon: lock-closed
+    link: /reference/compose-file/secrets/
 aliases:
-- /compose/yaml/
-- /compose/compose-file/compose-file-v1/
-- /compose/compose-file/
-- /compose/reference/overview/
+  - /compose/compose-file/
+  - /compose/reference/overview/
 ---
 
->**刚接触 Docker Compose？**
+> **刚接触 Docker Compose？**
 >
 > 查找有关 [Docker Compose 的关键特性和使用场景](/manuals/compose/intro/features-uses.md) 的更多信息，或 [尝试快速入门指南](/manuals/compose/gettingstarted.md)。
 
@@ -51,6 +53,6 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 > [!TIP]
 >
 > 希望在 VS Code 中获得更好的 Compose 文件编辑体验？
-> 查看 [Docker VS Code 扩展（Beta）](https://marketplace.visualstudio.com/items?itemName=docker.docker)，支持代码检查、代码导航和漏洞扫描功能。
+> 查看 [Docker DX](https://marketplace.visualstudio.com/items?itemName=docker.docker) 扩展，支持代码检查、代码导航和漏洞扫描。
 
 {{< grid >}}

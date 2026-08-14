@@ -3,69 +3,68 @@ title: Docker MCP Catalog and Toolkit
 linkTitle: MCP Catalog and Toolkit
 params:
   sidebar:
-    group: AI
+    group: AI and agents
     badge:
       color: blue
       text: Beta
-weight: 10
+weight: 20
 description: 了解 Docker Hub 上的 Docker MCP 目录
 keywords: Docker, ai, mcp servers, ai agents, extension, docker desktop, llm, docker hub
 grid:
-- title: 开始使用 MCP Toolkit
-  description: 了解如何快速安装和使用 MCP Toolkit 来设置服务器和客户端。
-  icon: explore
-  link: /ai/mcp-catalog-and-toolkit/get-started/
-- title: MCP Catalog
-  description: 了解 MCP Catalog 的优势、使用方法以及如何做出贡献。
-  icon: hub
-  link: /ai/mcp-catalog-and-toolkit/catalog/
-- title: MCP Toolkit
-  description: 了解用于管理 MCP 服务器和客户端的 MCP Toolkit。
-  icon: /icons/toolkit.svg
-  link: /ai/mcp-catalog-and-toolkit/toolkit/
-- title: Dynamic MCP
-  description: 使用自然语言按需发现并添加 MCP 服务器。
-  icon: search
-  link: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
-- title: MCP Gateway
-  description: 了解为 MCP Toolkit 提供支持的底层技术。
-  icon: developer_board
-  link: /ai/mcp-catalog-and-toolkit/mcp-gateway/
-- title: Docker Hub MCP server
-  description: 探索用于搜索镜像、管理仓库等的 Docker Hub 服务器。
-  icon: device_hub
-  link: /ai/mcp-catalog-and-toolkit/hub-mcp/
+  - title: 开始使用 MCP Toolkit
+    description: 了解如何快速安装和使用 MCP Toolkit 来设置服务器和客户端。
+    icon: magnifying-glass-plus
+    link: /ai/mcp-catalog-and-toolkit/get-started/
+  - title: MCP Catalog
+    description: 浏览 Docker 精选的已验证 MCP 服务器合集
+    icon: globe-alt
+    link: /ai/mcp-catalog-and-toolkit/catalog/
+  - title: MCP Profiles
+    description: 将服务器组织成配置文件以适配不同项目，并共享配置
+    icon: folder
+    link: /ai/mcp-catalog-and-toolkit/profiles/
+  - title: MCP Toolkit
+    description: 使用 Docker Desktop 的界面发现、配置和管理 MCP 服务器
+    icon: /icons/toolkit.svg
+    link: /ai/mcp-catalog-and-toolkit/toolkit/
+  - title: MCP Gateway
+    description: 使用 CLI 和 Gateway 以自定义配置运行 MCP 服务器
+    icon: cpu-chip
+    link: /ai/mcp-catalog-and-toolkit/mcp-gateway/
+  - title: Dynamic MCP
+    description: 使用自然语言按需发现并添加 MCP 服务器。此功能为实验性功能。
+    icon: magnifying-glass
+    link: /ai/mcp-catalog-and-toolkit/dynamic-mcp/
+  - title: Security FAQs
+    description: 关于 MCP 安全性、凭据和服务器验证的常见问题
+    icon: shield-check
+    link: /ai/mcp-catalog-and-toolkit/faqs/
+  - title: E2B sandboxes
+    description: 内置 MCP Catalog 访问能力的 AI 智能体云端沙箱
+    icon: cloud
+    link: /ai/mcp-catalog-and-toolkit/e2b-sandboxes/
 ---
 
 {{< summary-bar feature_name="Docker MCP Catalog and Toolkit" >}}
 
 [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) 是一种开放协议，用于标准化 AI 应用程序访问外部工具和数据源的方式。通过将 LLM 连接到本地开发工具、数据库、API 和其他资源，MCP 扩展了其超越基础训练的能力。
 
-通过客户端-服务器架构，Claude、ChatGPT 和 [Gordon](/manuals/ai/gordon/_index.md) 等应用程序充当客户端，向 MCP 服务器发送请求，然后服务器处理这些请求并将必要的上下文传递给 AI 模型。
-
-MCP 服务器扩展了 AI 应用程序的实用性，但在本地运行服务器也带来了一些操作挑战。通常，服务器必须直接安装在您的机器上，并为每个应用程序单独配置。在本地运行不受信任的代码需要仔细审查，而保持服务器最新和解决环境冲突的责任则落在用户身上。
+问题在于，在本地运行 MCP 服务器会带来运维上的摩擦。你使用的每个应用程序都需要单独安装和配置每个服务器。你要在自己的机器上直接运行不受信任的代码，手动管理更新，并自行排查依赖冲突。为 Claude 配置一个 GitHub 服务器后，还要为 Cursor 再配置一遍，以此类推。每一次你都要管理凭据、权限和环境设置。
 
 ## Docker MCP 功能
 
-Docker 提供了三个集成组件，用于解决运行本地 MCP 服务器的挑战：
+[MCP Toolkit](/ai/mcp-catalog-and-toolkit/toolkit/) 和 [MCP Gateway](/ai/mcp-catalog-and-toolkit/mcp-gateway/) 通过集中式管理解决了这些挑战。你不必为每个 AI 应用程序分别配置每个服务器，而是只需设置一次，然后将所有客户端连接到它。整个工作流围绕三个概念展开：目录（catalogs）、配置文件（profiles）和客户端（clients）。
 
-MCP Catalog
-: 一个经过验证的 MCP 服务器精选集合，通过 Docker Hub 作为容器镜像打包和分发。所有服务器都经过版本控制，附带完整的来源和 SBOM 元数据，并持续维护和更新安全补丁。
+![MCP overview](./images/mcp_toolkit.avif)
 
-MCP Toolkit
-: Docker Desktop 中用于发现、配置和管理 MCP 服务器的图形界面。Toolkit 提供了一种统一的方式来搜索服务器、处理身份验证以及将它们连接到 AI 应用程序。
+[目录](/ai/mcp-catalog-and-toolkit/catalog/)是 MCP 服务器的精选集合。Docker MCP Catalog 提供 300 多个已验证的服务器，它们被打包为容器镜像，具备版本管理、来源溯源和安全更新。组织可以创建包含已批准服务器的[自定义目录](/ai/mcp-catalog-and-toolkit/catalog/#custom-catalogs)供其团队使用。
 
-MCP Gateway
-: 为 MCP Toolkit 提供支持的核心开源组件。MCP Gateway 管理 MCP 容器，并提供一个统一的端点，将您启用的服务器暴露给您使用的所有 AI 应用程序。
+[配置文件](/ai/mcp-catalog-and-toolkit/profiles/)将服务器组织成命名集合，以适配不同项目。你的 "web-dev" 配置文件可能使用 GitHub 和 Playwright；而 "backend" 配置文件则使用数据库工具。配置文件同时支持来自目录的容器化服务器和远程 MCP 服务器。配置一次后，即可在各客户端之间或与团队共享。
 
-这种集成方法确保：
+客户端是连接到你的配置文件的 AI 应用程序。Claude Code、Cursor、Zed 等通过 MCP Gateway 进行连接，Gateway 会将请求路由到正确的服务器，并处理身份验证和生命周期管理。
 
-- 从精选的工具目录中简化受信任 MCP 服务器的发现和设置
-- 在 Docker Desktop 内进行集中配置和身份验证
-- 默认情况下提供安全、一致的执行环境
-- 由于应用程序可以共享单个服务器运行时，而不是为每个应用程序启动重复的服务器，从而提高了性能。
-
-![MCP overview](./images/mcp-overview.svg)
+> [!NOTE]
+> 作为 Docker AI Governance 一部分的 MCP Gateway 是仅限邀请的功能。[联系 Docker 销售团队](https://www.docker.com/pricing/contact-sales/)以了解更多信息。
 
 ## 了解更多
 

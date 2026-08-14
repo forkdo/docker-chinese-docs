@@ -1,11 +1,10 @@
 ---
 title: 气隙容器
-description: 使用自定义代理规则和网络限制，通过气隙容器控制容器网络访问
-keywords: 气隙容器, 网络安全, 代理配置, 容器隔离, docker desktop
+description: 使用代理规则、PAC 文件和网络隔离，通过 Docker Desktop 气隙容器限制容器出站流量
+keywords: 气隙容器, 网络安全, 代理配置, 容器隔离, docker desktop, PAC file, network isolation
 aliases:
-- /desktop/hardened-desktop/settings-management/air-gapped-containers/
-- /desktop/hardened-desktop/air-gapped-containers/
 - /security/for-admins/hardened-desktop/air-gapped-containers/
+weight: 30
 ---
 
 {{< summary-bar feature_name="Air-gapped containers" >}}
@@ -14,30 +13,27 @@ aliases:
 
 Docker Desktop 可以配置容器网络流量以接受连接、拒绝连接或通过 HTTP 或 SOCKS 代理进行隧道传输。您可以控制策略应用于哪些 TCP 端口，以及是通过代理自动配置 (PAC) 文件使用单个代理还是每目标策略。
 
-此页面提供了气隙容器的概述和配置步骤。
-
 ## 谁应该使用气隙容器？
 
-气隙容器帮助组织在受限环境中维护安全：
+在以下情况下使用气隙容器：
 
-- 安全开发环境：防止容器访问未经授权的外部服务
-- 合规性要求：满足需要网络隔离的监管标准
-- 数据丢失防护：阻止容器将敏感数据上传到外部服务
-- 供应链安全：控制在构建期间容器可以访问哪些外部资源
-- 企业网络策略：对容器化应用程序强制执行现有网络安全策略
+- 您的组织要求容器仅与已批准的内部服务通信
+- 您需要满足要求网络隔离的合规标准（例如 SOC 2、ISO 27001 或 PCI DSS）
+- 您希望防止容器在构建时或运行时泄露数据或访问未批准的外部端点
 
 ## 气隙容器如何工作
 
-气隙容器通过拦截容器网络流量并应用代理规则来运行：
+`containersProxy` 管理两条不同的流量路径：
 
-1. 流量拦截：Docker Desktop 拦截来自容器的所有传出网络连接
-1. 端口过滤：只有指定端口 (`transparentPorts`) 上的流量才受代理规则约束
-1. 规则评估：PAC 文件规则或静态代理设置确定如何处理每个连接
-1. 连接处理：根据规则，流量被直接允许、通过代理路由或阻止
+- 镜像拉取（始终强制执行）：Docker Desktop 在 VM 启动时在 `daemon.json` 中将 `http.docker.internal:3128` 硬连线为守护进程的代理，因此所有 `docker pull` 和 Compose 拉取操作始终通过 `containersProxy` 进行，包括任何 PAC 文件规则。
+- 运行中的容器出站流量（可选）：Docker Desktop 拦截容器 TCP 连接，并仅对 `transparentPorts` 中列出的端口应用代理规则。若未配置，运行中的容器流量会完全绕过 `containersProxy`。
 
-一些重要的考虑因素包括：
+> [!IMPORTANT]
+>
+> 如果您在 `containersProxy` 下配置了 PAC 文件，该 PAC 文件必须返回适当的代理服务器以连接到托管您镜像的注册表。
 
-- 现有的 `proxy` 设置继续应用于主机上的 Docker Desktop 应用程序流量
+其他注意事项：
+
 - 如果 PAC 文件下载失败，容器将阻止对目标 URL 的请求
 - 端口 80 和 443 可用主机名，但其他端口仅可用 IP 地址
 
@@ -47,8 +43,7 @@ Docker Desktop 可以配置容器网络流量以接受连接、拒绝连接或�
 
 - 启用了[强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)以确保用户使用您的组织进行身份验证
 - Docker Business 订阅
-- 配置了[设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md)以管理组织策略
-- 下载了 Docker Desktop 4.29 或更高版本
+- 使用 `admin-settings.json` 文件配置了[设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md)以管理组织策略
 
 ## 配置气隙容器
 
@@ -71,7 +66,7 @@ Docker Desktop 可以配置容器网络流量以接受连接、拒绝连接或�
 
 ### 配置参数
 
-`containersProxy` 设置控制应用于容器流量的网络策略：
+`containersProxy` 设置控制应用于 `docker image pull` 以及（在配置了 `transparentPorts` 时）运行中容器出站流量的网络策略：
 
 | 参数 | 描述 | 值 |
 |-----------|-------------|-------|
@@ -144,8 +139,8 @@ function FindProxyForURL(url, host) {
 
 ### 一般注意事项
 
- - `FindProxyForURL` 函数 URL 参数格式为 http://host_or_ip:port 或 https://host_or_ip:port
- - 如果您有一个内部容器试图访问 https://docs.docker.com/enterprise/security/hardened-desktop/air-gapped-containers，docker 代理服务将向 FindProxyForURL 提交 docs.docker.com 作为 host 值，https://docs.docker.com:443 作为 url 值，如果您在 PAC 文件中使用 `shExpMatch` 函数如下：
+ - `FindProxyForURL` 函数 URL 参数格式为 `http://host_or_ip:port` 或 `https://host_or_ip:port`
+ - 如果您有一个内部容器试图访问 `https://docs.docker.com/enterprise/security/hardened-desktop/air-gapped-containers`，Docker 代理服务将向 `FindProxyForURL` 提交 docs.docker.com 作为 host 值，https://docs.docker.com:443 作为 url 值，如果您在 PAC 文件中使用 `shExpMatch` 函数如下：
 
    ```console
    if(shExpMatch(url, "https://docs.docker.com:443/enterprise/security/*")) return "DIRECT";
@@ -229,3 +224,8 @@ $ docker run --rm alpine wget -O- https://docker.io
 - 开发工作流影响：过于严格的策略可能会破坏合法的开发工作流。彻底测试并为必要的服务提供明确的例外。
 - PAC 文件管理：在可靠的基础设施上托管 PAC 文件。PAC 下载失败会导致容器网络访问被阻止。
 - 性能考虑：具有许多规则的复杂 PAC 文件可能会影响容器网络性能。保持规则简单高效。
+
+## 下一步
+
+- [了解增强容器隔离](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/_index.md)，以进一步限制容器在运行时可以执行的操作
+- [了解 Docker Desktop 如何处理主机和容器网络](/manuals/desktop/features/networking/_index.md)

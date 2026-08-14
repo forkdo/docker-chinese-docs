@@ -2,7 +2,7 @@
 title: Docker Offload 快速开始
 linktitle: 快速开始
 weight: 10
-description: 了解如何使用 Docker Offload 在本地和 CI 中更快地构建和运行容器镜像。
+description: 了解如何使用 Docker Offload 在云端构建和运行容器镜像。
 keywords: cloud, quickstart, Docker Desktop, offload
 ---
 
@@ -14,16 +14,13 @@ keywords: cloud, quickstart, Docker Desktop, offload
 
 > [!NOTE]
 >
-> 如果您是组织所有者，要开始使用 Docker Offload，必须先[注册](https://www.docker.com/products/docker-offload/)并为您的组织订阅 Docker Offload。订阅后，请参阅以下内容：
->
-> - [管理 Docker 产品](../admin/organization/manage-products.md) 了解如何为组织中的开发者管理访问权限。
-> - [用量和计费](./usage.md) 了解如何设置计费和监控用量。
+> 如果您是组织所有者，要开始使用 Docker Offload，必须先<a href="https://www.docker.com/pricing/contact-sales/" id="dkr_docs_cs_offload_quickstart" class="link" rel="noopener">联系销售</a>并为您的组织订阅 Docker Offload。订阅后，请参阅[管理 Docker 产品](../admin/organization/manage/manage-products.md) 了解如何为组织中的开发者管理访问权限。
+
 
 ## 前置条件
 
-- 您必须已安装 [Docker Desktop](/desktop/)。Docker Offload 适用于 Docker Desktop 4.50 或更高版本。
-- 您必须能够访问 Docker Offload。您的组织所有者必须已为组织[注册](https://www.docker.com/products/docker-offload/) Docker Offload。
-- 您的组织必须有可用的承诺用量或已启用按需用量。这由您的组织所有者设置。详细信息请参阅 [Docker Offload 用量和计费](/offload/usage/)。
+- 您必须已安装 [Docker Desktop](/desktop/)。Docker 建议使用最新版本的 Docker Desktop 以访问 Docker Offload 中的最新功能和改进。
+- 您必须拥有 Docker Business 订阅和 Docker Offload 订阅。
 
 ## 步骤 1：验证 Docker Offload 访问权限
 
@@ -51,11 +48,10 @@ keywords: cloud, quickstart, Docker Desktop, offload
    >
    > 要了解有关 Docker Offload CLI 命令的更多信息，请参阅 [Docker Offload CLI 参考](/reference/cli/docker/offload/)。
 
-3. 如果您是多个拥有 Docker Offload 访问权限的组织成员，您可以选择一个配置文件。所选组织将负责任何用量。
+3. 如果您是多个拥有 Docker Offload 访问权限的组织成员，您可以选择一个配置文件。您的用量将关联到所选配置文件的所属组织。
 
-启动 Docker Offload 后，您将在 Docker Desktop 仪表板标题中看到云图标
-({{< inline-image src="./images/cloud-mode.png" alt="Offload 模式图标" >}})
-，Docker Desktop 仪表板将显示为紫色。您可以在终端中运行 `docker offload status` 命令来检查 Docker Offload 的状态。
+
+启动 Docker Offload 后，您将在 Docker Desktop 仪表板标题中看到云图标 ({{< inline-image src="./images/cloud-mode.png" alt="Offload 模式图标" >}})，Docker Desktop 仪表板将显示为紫色。您可以在终端中运行 `docker offload status` 命令来检查 Docker Offload 的状态。
 
 ## 步骤 3：使用 Docker Offload 运行容器
 
@@ -69,26 +65,20 @@ $ docker run --rm hello-world
 
 如果 Docker Offload 正常工作，您将在终端输出中看到 `Hello from Docker!`。
 
-## 步骤 4：监控您的 Offload 用量
+## 步骤 4：监控您的 Offload 会话
 
-当 Docker Offload 启动并且您已开始会话（例如，您已运行容器）时，您可以在 Docker Desktop 仪表板页脚中沙漏图标
-({{< inline-image src="./images/hourglass-icon.png" alt="Offload 会话时长" >}})
-旁边看到当前会话时长估算。
+当 Docker Offload 启动并且您已开始会话（例如，您已运行容器）时，您可以在 Docker Desktop 仪表板页脚中沙漏图标 ({{< inline-image src="./images/hourglass-icon.png" alt="Offload 会话时长" >}}) 旁边看到当前会话时长估算。
 
-此外，当 Docker Offload 启动时，您可以通过在 Docker Desktop 仪表板左侧导航中选择 **Offload** > **Insights** 来查看详细的会话信息。
+此外，当 Docker Offload 启动时，您可以通过在 Docker Desktop 仪表板左侧导航中选择 **Docker Offload** > **Insights** 来查看详细的会话信息。
 
 ## 步骤 5：停止 Docker Offload
 
-Docker Offload 在一段时间不活动后会自动[idle](./configuration.md#understand-active-and-idle-states)。您可以在任何时候停止它。要停止 Docker Offload：
+如果您未响应 Docker Desktop 仪表板中出现的周期性提示，Docker Offload 会[idle](./about.md#session-management-and-idle-state)。您可以随时停止您的 Docker Offload 会话。要停止 Docker Offload：
 
 ```console
 $ docker offload stop
 ```
 
-停止 Docker Offload 后，云环境将被终止，所有正在运行的容器和镜像将被删除。当 Docker Offload 空闲约 5 分钟后，环境也会被终止，所有正在运行的容器和镜像将被删除。
+停止 Docker Offload 后，云环境将被终止，所有正在运行的容器和镜像将被删除。当 Docker Offload 空闲 5 分钟后，环境也会被终止，所有正在运行的容器和镜像将被删除。
 
 要再次启动 Docker Offload，运行 `docker offload start` 命令。
-
-## 下一步
-
-在 Docker Desktop 中配置您的空闲超时。更多信息请参阅 [配置 Docker Offload](./configuration.md)。

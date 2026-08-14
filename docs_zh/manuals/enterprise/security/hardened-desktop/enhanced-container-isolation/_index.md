@@ -6,8 +6,6 @@ keywords: enhanced container isolation, container security, sysbox runtime, linu
 aliases:
 - /desktop/hardened-desktop/enhanced-container-isolation/
 - /security/for-admins/hardened-desktop/enhanced-container-isolation/
-- /security/hardened-desktop/enhanced-container-isolation/how-eci-works
-- /security/hardened-desktop/enhanced-container-isolation/features-benefits
 weight: 10
 ---
 
@@ -15,15 +13,14 @@ weight: 10
 
 增强容器隔离（ECI）可防止恶意容器危害 Docker Desktop 或主机系统。它自动应用高级安全技术，同时保持完整的开发者生产力和工作流兼容性。
 
-ECI 加强了容器隔离，并锁定管理员创建的安全配置，例如 [注册表访问管理策略](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) 和 [设置管理](../settings-management/_index.md) 控制。
+- ECI 加强了容器隔离，并锁定管理员创建的安全配置，例如 [注册表访问管理策略](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) 和 [设置管理](../settings-management/_index.md) 控制。 
+- ECI 与其他 Docker 安全功能（如减少的 Linux 能力、seccomp 和 AppArmor）协同工作。
 
-> [!NOTE]
->
-> ECI 与其他 Docker 安全功能（如减少的 Linux 能力、seccomp 和 AppArmor）协同工作。
+如果你使用的是 WSL2 后端，请确保运行的是 WSL 2.6 或更高版本。这是必需的，因为 ECI 依赖至少 6.3.0 版本的 Linux 内核，而 WSL 2.6+ 包含 6.6 版本内核。
 
 ## 谁应该使用增强容器隔离？
 
-增强容器隔离专为以下场景设计：
+ECI 专为以下场景设计：
 
 - 希望防止基于容器的攻击并减少开发者环境中安全漏洞的组织
 - 需要更强容器隔离而不影响开发者工作流的安全团队
@@ -32,15 +29,10 @@ ECI 加强了容器隔离，并锁定管理员创建的安全配置，例如 [�
 ## 增强容器隔离的工作原理
 
 Docker 使用 [Sysbox 容器运行时](https://github.com/nestybox/sysbox) 实现 ECI，这是一个
-标准 OCI runc 运行时的安全增强分支。启用 ECI 后，通过 `docker run` 或 `docker create` 创建的容器自动使用 Sysbox 而非 runc，无需更改开发者工作流。
+标准 OCI runc 运行时的安全增强分支。启用 ECI 后，通过 `docker run` 或 `docker create` 创建的容器自动使用 Sysbox 而非 runc，无需更改开发者工作流。Docker 的默认运行时仍然是 runc，但所有用户容器
+隐式使用 Sysbox 启动。 
 
-即使使用 `--privileged` 标志的容器也能在增强容器隔离下安全运行，防止它们突破 Docker Desktop 虚拟机或其他容器。
-
-> [!NOTE]
->
-> 启用 ECI 时，Docker CLI 的 `--runtime` 标志将被忽略。
-Docker 的默认运行时仍然是 runc，但所有用户容器
-隐式使用 Sysbox 启动。
+启用 ECI 时，Docker CLI 的 `--runtime` 标志将被忽略。即使使用 `--privileged` 标志的容器也能在 ECI 下安全运行，防止它们突破 Docker Desktop 虚拟机或其他容器。
 
 ## 关键安全功能
 

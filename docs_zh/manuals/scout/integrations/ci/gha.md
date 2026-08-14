@@ -47,19 +47,19 @@ jobs:
     steps:
       # 向容器注册表进行身份验证
       - name: Authenticate to registry ${{ env.REGISTRY }}
-        uses: docker/login-action@v3
+        uses: docker/login-action@{{% param "login_action_version" %}}
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_TOKEN }}
       
       - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
 
       # 为 Docker 提取元数据（标签、标签）
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@{{% param "metadata_action_version" %}}
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           labels: |
@@ -73,7 +73,7 @@ jobs:
       # （在 PR 上不要推送，而是加载）
       - name: Build and push Docker image
         id: build-and-push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@{{% param "build_push_action_version" %}}
         with:
           sbom: ${{ github.event_name != 'pull_request' }}
           provenance: ${{ github.event_name != 'pull_request' }}
@@ -103,7 +103,7 @@ jobs:
 ```yaml
       # 如果 Docker Hub 是您的注册表且您之前已进行身份验证，则可以跳过此步骤
       - name: Authenticate to Docker
-        uses: docker/login-action@v3
+        uses: docker/login-action@{{% param "login_action_version" %}}
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PAT }}

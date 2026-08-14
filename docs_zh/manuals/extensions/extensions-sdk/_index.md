@@ -9,29 +9,33 @@ aliases:
 grid:
 - title: 构建和发布流程
   description: 了解构建和发布扩展的流程。
-  icon: checklist
+  icon: clipboard-document-check
   link: /extensions/extensions-sdk/process/
 - title: 快速入门指南
   description: 遵循快速入门指南快速创建一个基本的 Docker 扩展。
-  icon: explore
+  icon: magnifying-glass-plus
   link: /extensions/extensions-sdk/quickstart/
 - title: 查看设计指南
   description: 确保您的扩展符合 Docker 的设计指南和原则。
-  icon: design_services
+  icon: paint-brush
   link: /extensions/extensions-sdk/design/design-guidelines/
 - title: 发布您的扩展
   description: 了解如何将您的扩展发布到 Marketplace。
-  icon: publish
+  icon: arrow-up-tray
   link: /extensions/extensions-sdk/extensions/
 - title: 与 Kubernetes 交互
   description: 查找有关如何从您的 Docker 扩展中间接与 Kubernetes 集群交互的信息。
-  icon: multiple_stop
+  icon: arrows-right-left
   link: /extensions/extensions-sdk/guides/kubernetes/
 - title: 多架构扩展
   description: 为您的扩展构建多个架构版本。
-  icon: content_copy
+  icon: document-duplicate
   link: /extensions/extensions-sdk/extensions/multi-arch/
 ---
+
+> [!IMPORTANT]
+>
+> 在 Docker 审查 Marketplace 安全性期间，暂停向 Docker 扩展 Marketplace 提交新扩展。您仍然可以更新现有扩展，私有 Marketplace 扩展不受影响。如果您有其他疑问，请联系 extensions@docker.com。
 
 本节中的资源可帮助您创建自己的 Docker 扩展。
 

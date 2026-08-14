@@ -1,9 +1,11 @@
+<!-- FILE: manuals/compose/how-tos/lifecycle.md -->
+
 ---
 title: 在 Compose 中使用生命周期钩子
 linkTitle: 使用生命周期钩子
-weight: 20
-description: 了解如何使用 Docker Compose 的生命周期钩子（如 post_start 和 pre_stop）来自定义容器行为。
-keywords: docker compose lifecycle hooks, post_start, pre_stop, docker compose entrypoint, docker container stop hooks, compose hook commands
+weight: 110
+description: 了解如何使用 Docker Compose 的生命周期钩子（如 pre_start、post_start 和 pre_stop）来自定义容器行为。
+keywords: docker compose lifecycle hooks, post_start, pre_stop, pre_start, docker compose entrypoint, docker container stop hooks, compose hook commands
 ---
 
 {{< summary-bar feature_name="Compose lifecycle hooks" >}}
@@ -26,24 +28,19 @@ keywords: docker compose lifecycle hooks, post_start, pre_stop, docker compose e
 启动后钩子是在容器启动后运行的命令，但并没有固定的执行时间。
 在容器 entrypoint 执行期间，钩子的执行时机无法保证。
 
-在提供的示例中：
+由于钩子与容器 entrypoint 之间没有执行顺序保证，
+启动后钩子最适合用于那些不需要在应用开始运行前完成的任务，例如向外部系统注册容器。
 
-- 该钩子用于将一个卷的所有权更改为一个非 root 用户（因为卷默认以 root 用户的所有权创建）。
-- 容器启动后，`chown` 命令将 `/data` 目录的所有权更改为用户 `1001`。
+在以下示例中，容器启动后，一个以 root 权限运行的钩子将服务注册到内部服务注册表中。应用并不依赖注册在其开始提供服务之前完成。
 
 ```yaml
 services:
   app:
     image: backend
     user: 1001
-    volumes:
-      - data:/data    
     post_start:
-      - command: chown -R /data 1001:1001
+      - command: /opt/scripts/register-service.sh
         user: root
-
-volumes:
-  data: {} # a Docker volume is created with root ownership
 ```
 
 ### 停止前钩子
@@ -51,17 +48,25 @@ volumes:
 停止前钩子是在容器被特定命令（如 `docker compose down` 或使用 `Ctrl+C` 手动停止）停止之前运行的命令。
 如果容器自行停止或被突然终止，这些钩子将不会运行。
 
-在下面的示例中，在容器停止之前，会运行 `./data_flush.sh` 脚本来执行任何必要的清理工作。
+由于停止前钩子会在停止信号发送给容器之前运行，它适用于那些必须在应用仍在完全运行时完成的操作。
+
+在以下示例中，钩子在容器收到停止信号之前备份了一个数据文件。
 
 ```yaml
 services:
   app:
     image: backend
+    volumes:
+      - data:/data
     pre_stop:
-      - command: ./data_flush.sh
+      - command: cp /data/app.db /data/app.db.bak
+
+volumes:
+  data: {} # a Docker volume is created with root ownership
 ```
 
 ## 参考资料
 
 - [`post_start`](/reference/compose-file/services.md#post_start)
 - [`pre_stop`](/reference/compose-file/services.md#pre_stop)
+- [`pre_start`](/reference/compose-file/services.md#pre_start)

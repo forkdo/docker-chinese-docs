@@ -1,0 +1,57 @@
+---
+description: 将你的 Docker Hub 用户账户转换为组织
+linkTitle: Convert account（转换账户）
+title: Convert an account into an organization（将账户转换为组织）
+keywords: docker hub, hub, organization, convert account, migrate account
+weight: 40
+aliases:
+  - /docker-hub/convert-account/
+  - /admin/organization/convert-account/
+---
+
+{{< summary-bar feature_name="Admin orgs" >}}
+
+了解如何将现有用户账户转换为组织。如果你需要多个用户访问你的账户及其关联的仓库，这会很有用。将其转换为组织后，你可以通过 [teams](/manuals/admin/organization/manage/manage-a-team.md) 和 [roles](/manuals/enterprise/security/roles-and-permissions.md) 更好地控制这些用户的权限。
+
+将用户账户转换为组织时，该账户默认迁移到 Docker Team 订阅。
+
+## Prerequisites（先决条件）
+
+在将用户账户转换为组织之前，请确保你满足以下要求：
+
+- 你要转换的用户账户不得是公司、任何团队或组织的成员。你必须将该账户从所有团队、组织或公司中移除。
+
+  操作方法如下：
+  1. 导航到 **My Hub**，然后选择你需要离开的组织。
+  1. 在 **Members** 选项卡中找到你的用户名。
+  1. 选择 **More options** 菜单，然后选择 **Leave organization**。
+
+  如果用户账户是任何组织或公司的唯一所有者，请为另一用户分配所有者角色，然后将自己从组织或公司中移除。
+
+- 你必须准备好一个独立的 Docker ID，以便在转换期间分配为组织的所有者。
+
+  如果你想将自己的用户账户转换为组织账户，并且没有任何其他用户账户，则需要创建一个新的用户账户，将其分配为新组织的所有者。分配所有者角色后，该用户账户拥有配置和管理组织的完全管理访问权限。你可以在转换后分配更多具有所有者角色的用户。
+
+## What happens when you convert your account（转换账户时会发生什么）
+
+将你的账户转换为组织时，会发生以下情况：
+
+- 此过程会移除该账户的电子邮件地址。通知会改为发送给组织所有者。转换后，你可以将移除的电子邮件地址用于另一个账户。
+- 当前订阅将自动取消，你的新订阅将开始。
+- 仓库命名空间和名称不会改变，但转换账户会移除任何仓库协作者。转换账户后，你需要将仓库协作者添加为团队成员。
+- 现有的自动化构建显示为好像是由添加到组织的第一个所有者设置的。
+- 你添加为第一个所有者的用户账户将拥有配置和管理组织的完全管理访问权限。
+- 要将用户的个人访问令牌（PAT）转移到你转换后的组织，你必须将该用户指定为组织所有者。这将确保与该用户账户关联的任何 PAT 都转移到组织所有者。
+
+## Convert an account into an organization（将账户转换为组织）
+
+> [!IMPORTANT]
+>
+> 将账户转换为组织是永久性的。请备份你想要保留的任何数据或设置。
+
+1. 登录 [Docker Home](https://app.docker.com/)。
+1. 在右上角选择你的头像以打开下拉菜单。
+1. 在 **Account settings** 中，选择 **Convert**。
+1. 查看关于转换用户账户的警告显示。此操作无法撤销，并对你的资产和账户产生重大影响。
+1. 输入 **Username of new owner（新所有者的用户名）** 以设置一个组织所有者。你指定的新 Docker ID 将成为组织的所有者。你不能使用与你要转换的账户相同的 Docker ID。Docker ID 区分大小写。
+1. 选择 **Confirm**。新所有者会收到一封通知电子邮件。使用该所有者账户登录并管理新组织。

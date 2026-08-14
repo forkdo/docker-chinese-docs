@@ -4,30 +4,30 @@ keywords: Docker, get started
 description: 开始使用 Docker
 layout: wide
 params:
-  icon: download
+  icon: arrow-down-tray
   notoc: true
   get-started:
   - title: 获取 Docker
     description: 为您的设置选择最佳安装路径。
     link: /get-started/get-docker/
-    icon: download
+    icon: arrow-down-tray
   - title: 什么是 Docker？
     description: 了解 Docker 平台。
     link: /get-started/docker-overview/
-    icon: summarize
+    icon: document-text
   get-started2:
   - title: 简介
     description: 从基础开始，了解容器化应用程序的优势。
     link: /get-started/introduction/
-    icon: rocket
+    icon: rocket-launch
   - title: Docker 概念
     description: 更好地理解 Docker 的基本概念。
     link: /get-started/docker-concepts/the-basics/what-is-a-container/
-    icon: foundation
+    icon: home
   - title: Docker 研讨会
     description: 通过 45 分钟的研讨会，在指导下学习 Docker。
     link: /get-started/workshop/
-    icon: desk
+    icon: computer-desktop
 aliases:
   - /engine/get-started/
   - /engine/tutorials/usingdocker/

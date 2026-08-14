@@ -6,9 +6,8 @@ linktitle: 使用 pgAdmin 可视化您的 PostgreSQL 数据库
 summary: '探索如何将 pgAdmin 添加到您的开发堆栈中，并尽可能让您的队友轻松浏览 PostgreSQL 数据库。
 
   '
-tags:
-- databases
 params:
+  tags: [databases]
   time: 10 minutes
 ---
 
@@ -130,7 +129,7 @@ params:
     将以下配置添加到您的 `compose.yaml` 文件中以定义 pgpass 文件：
 
     ```yaml
-    config:
+    configs:
       pgadmin-pgpass:
         content: |
           postgres:5432:*:postgres:secret

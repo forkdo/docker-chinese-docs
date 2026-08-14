@@ -43,7 +43,7 @@ Docker Desktop 基于 Windows 证书存储创建所有用户受信任 CA 的证�
 
 ### 如何添加客户端证书？
 
-您可以在 `~/.docker/certs.d/<MyRegistry><Port>/client.cert` 和 `~/.docker/certs.d/<MyRegistry><Port>/client.key` 中添加您的客户端证书。您不需要使用 `git` 命令推送您的证书。
+您可以在 `~/.docker/certs.d/<MyRegistry>:<Port>/client.cert` 和 `~/.docker/certs.d/<MyRegistry>:<Port>/client.key` 中添加您的客户端证书。您不需要使用 `git` 命令推送您的证书。
 
 当 Docker Desktop 应用程序启动时，它会将 Windows 系统上的 `~/.docker/certs.d` 文件夹复制到 Moby（在 Hyper-V 上运行的 Docker Desktop 虚拟机）上的 `/etc/docker/certs.d` 目录。
 

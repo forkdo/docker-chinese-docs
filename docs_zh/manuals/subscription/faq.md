@@ -1,11 +1,11 @@
 ---
-title: 订阅常见问题
+title: 套餐常见问题
 linkTitle: 常见问题
 description: 关于 Docker 订阅和计费的常见问题
 keywords: subscription faqs, docker billing, subscription transfer, academic pricing, docker programs
 tags:
 - FAQ
-weight: 50
+weight: 30
 ---
 
 有关 Docker 订阅的更多信息，请参阅 [Docker 订阅概述](_index.md)。
@@ -30,3 +30,7 @@ Docker 提供两种内容贡献计划：
 - [Docker 认证发布商 (DVP)](../docker-hub/repos/manage/trusted-content/dvp-program.md)，面向商业出版商
 
 您也可以加入 [开发者预览计划](https://www.docker.com/community/get-involved/developer-preview/) 或注册早期访问计划，参与研究并试用新功能。
+
+> [!TIP]
+>
+> 需要升级？<a href="https://www.docker.com/pricing?ref=Docs&refAction=DocsSubscriptionFaq" id="pricing-link" class="link" rel="noopener">比较 Docker Team 和 Docker Business</a>，选择最适合您团队需求的套餐。

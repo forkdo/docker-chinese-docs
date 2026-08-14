@@ -48,7 +48,7 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
    {{< tab name="Mac / Linux" >}}
 
    ```console
-   $ docker run -it --mount type=bind,src="$(pwd)",target=/src ubuntu bash
+   $ docker run -it --mount type=bind,src=.,target=/src ubuntu bash
    ```
    
    {{< /tab >}}
@@ -62,14 +62,14 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
    {{< tab name="Git Bash" >}}
 
    ```console
-   $ docker run -it --mount type=bind,src="/$(pwd)",target=/src ubuntu bash
+   $ docker run -it --mount type=bind,src="./",target=/src ubuntu bash
    ```
    
    {{< /tab >}}
    {{< tab name="PowerShell" >}}
 
    ```console
-   $ docker run -it --mount "type=bind,src=$($pwd),target=/src" ubuntu bash
+   $ docker run -it --mount "type=bind,src=.,target=/src" ubuntu bash
    ```
    
    {{< /tab >}}
@@ -94,7 +94,7 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
    ```console
    root@ac1237fad8db:/# cd src
    root@ac1237fad8db:/src# ls
-   Dockerfile  node_modules  package.json  spec  src  yarn.lock
+   Dockerfile  node_modules  package.json  package-lock.json  spec  src  
    ```
 
 6. 创建一个名为 `myfile.txt` 的新文件。
@@ -102,7 +102,7 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
    ```console
    root@ac1237fad8db:/src# touch myfile.txt
    root@ac1237fad8db:/src# ls
-   Dockerfile  myfile.txt  node_modules  package.json  spec  src  yarn.lock
+   Dockerfile  myfile.txt  node_modules  package.json  package-lock.json  spec  src  
    ```
 
 7. 在主机上打开 `getting-started-app` 目录，并观察 `myfile.txt` 文件是否在目录中。
@@ -113,9 +113,9 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
    │ ├── myfile.txt
    │ ├── node_modules/
    │ ├── package.json
+   │ ├── package-lock.json
    │ ├── spec/
-   │ ├── src/
-   │ └── yarn.lock
+   │ └── src/
    ```
 
 8. 从主机上删除 `myfile.txt` 文件。
@@ -123,7 +123,7 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
 
    ```console
    root@ac1237fad8db:/src# ls
-   Dockerfile  node_modules  package.json  spec  src  yarn.lock
+   Dockerfile  node_modules  package.json  package-lock.json spec  src  
    ```
 
 10. 使用 `Ctrl` + `D` 停止交互式容器会话。
@@ -153,17 +153,17 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
 
    ```console
    $ docker run -dp 127.0.0.1:3000:3000 \
-       -w /app --mount type=bind,src="$(pwd)",target=/app \
-       node:lts-alpine \
-       sh -c "yarn install && yarn run dev"
+       -w /app --mount type=bind,src=.,target=/app \
+       node:24-alpine \
+       sh -c "npm install && npm run dev"
    ```
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
    - `-w /app` - 设置“工作目录”或命令将运行的当前目录
-   - `--mount type=bind,src="$(pwd)",target=/app` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
-   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
+   - `--mount type=bind,src=.,target=/app` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:24-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "npm install && npm run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `npm install` 安装包，然后运行 `npm run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
 3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
@@ -190,17 +190,17 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
 
    ```powershell
    $ docker run -dp 127.0.0.1:3000:3000 `
-       -w /app --mount "type=bind,src=$pwd,target=/app" `
-       node:lts-alpine `
-       sh -c "yarn install && yarn run dev"
+       -w /app --mount "type=bind,src=.,target=/app" `
+       node:24-alpine `
+       sh -c "npm install && npm run dev"
    ```
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
    - `-w /app` - 设置“工作目录”或命令将运行的当前目录
-   - `--mount "type=bind,src=$pwd,target=/app"` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
-   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
+   - `--mount "type=bind,src=.,target=/app"` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:24-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "npm install && npm run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `npm install` 安装包，然后运行 `npm run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
 3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
@@ -228,16 +228,16 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
    ```console
    $ docker run -dp 127.0.0.1:3000:3000 ^
        -w /app --mount "type=bind,src=%cd%,target=/app" ^
-       node:lts-alpine ^
-       sh -c "yarn install && yarn run dev"
+       node:24-alpine ^
+       sh -c "npm install && npm run dev"
    ```
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
    - `-w /app` - 设置“工作目录”或命令将运行的当前目录
    - `--mount "type=bind,src=%cd%,target=/app"` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
-   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
+   - `node:24-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "npm install && npm run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `npm install` 安装包，然后运行 `npm run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
 3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 
@@ -264,17 +264,17 @@ bind mount 是另一种挂载类型，它允许您将主机文件系统中的目
 
    ```console
    $ docker run -dp 127.0.0.1:3000:3000 \
-       -w //app --mount type=bind,src="/$(pwd)",target=/app \
-       node:lts-alpine \
-       sh -c "yarn install && yarn run dev"
+       -w //app --mount type=bind,src="./",target=/app \
+       node:24-alpine \
+       sh -c "npm install && npm run dev"
    ```
 
    以下是命令的详细说明：
    - `-dp 127.0.0.1:3000:3000` - 与之前相同。在分离（后台）模式下运行并创建端口映射
    - `-w //app` - 设置“工作目录”或命令将运行的当前目录
-   - `--mount type=bind,src="/$(pwd)",target=/app` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
-   - `node:lts-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
-   - `sh -c "yarn install && yarn run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `yarn install` 安装包，然后运行 `yarn run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
+   - `--mount type=bind,src="/.",target=/app` - 将主机的当前目录 bind mount 到容器中的 `/app` 目录
+   - `node:24-alpine` - 要使用的镜像。请注意，这是 Dockerfile 中应用的基础镜像
+   - `sh -c "npm install && npm run dev"` - 命令。您使用 `sh`（alpine 没有 `bash`）启动一个 shell，运行 `npm install` 安装包，然后运行 `npm run dev` 启动开发服务器。如果您查看 `package.json`，您会看到 `dev` 脚本启动了 `nodemon`。
 
 3. 您可以使用 `docker logs <container-id>` 查看日志。当您看到以下内容时，表示已准备就绪：
 

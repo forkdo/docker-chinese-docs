@@ -55,7 +55,7 @@ $ docker scout sbom --format list alpine
   zlib                    1.2.13-r1    apk
 ```
 
-有关 `docker scout sbom` 命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/sbom.md)。
+有关 `docker scout sbom` 命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/sbom/)。
 
 ## 作为构建签名附加 {#attest}
 

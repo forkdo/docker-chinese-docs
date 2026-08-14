@@ -1,8 +1,9 @@
 ---
-title: 管理单点登录
-linkTitle: 管理
+title: 管理 SSO 域和连接
+linkTitle: 管理连接
+weight: 30
 description: 了解如何为您的组织或公司管理单点登录。
-keywords: 管理, 单点登录, SSO, 登录, 管理控制台, 管理员, 安全, 域, 连接, 用户, 配置
+keywords: 管理, 单点登录, SSO, 登录, docker home, 管理员, 安全, 域, 连接, 用户, 配置
 aliases:
 - /admin/company/settings/sso-management/
 - /single-sign-on/manage/
@@ -21,7 +22,7 @@ aliases:
 要将域添加到现有的 SSO 连接：
 
 1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 SSO 连接表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Edit connection**（编辑连接）。
 1. 选择 **Next**（下一步）导航到域部分。
 1. 在 **Domains**（域）部分，选择 **Add domain**（添加域）。
@@ -36,8 +37,8 @@ aliases:
 >
 > 如果您对同一域使用多个身份提供者，则必须从每个 SSO 连接中单独移除该域。
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Edit connection**（编辑连接）。
 1. 选择 **Next**（下一步）导航到域部分。
 1. 在 **Domain**（域）部分，选择您要移除的域旁边的 **X** 图标。
@@ -55,16 +56,16 @@ aliases:
 
 要查看所有已配置的 SSO 连接：
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中查看所有已配置的连接。
 
 ### 编辑连接
 
 要修改现有的 SSO 连接：
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Edit connection**（编辑连接）。
 1. 按照屏幕上的说明修改您的连接设置。
 
@@ -72,8 +73,8 @@ aliases:
 
 要移除 SSO 连接：
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Delete connection**（删除连接）。
 1. 按照屏幕上的说明确认删除。
 

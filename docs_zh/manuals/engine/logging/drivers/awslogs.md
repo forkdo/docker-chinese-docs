@@ -13,7 +13,10 @@ aliases:
 
 ## 使用方法
 
-要将 `awslogs` 驱动设为默认日志驱动，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。该文件位于 Linux 主机上的 `/etc/docker/` 或 Windows Server 上的 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `awslogs` 驱动设为默认日志驱动，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+{{% include "daemon-cfg-desktop.md" %}}
+
 以下示例将日志驱动设为 `awslogs` 并设置 `awslogs-region` 选项。
 
 ```json
@@ -185,11 +188,16 @@ with some random words
 | `%p` | AM 或 PM。                                                        | AM       |
 | `%M` | 分钟作为零填充的十进制数。                          | 57       |
 | `%S` | 秒作为零填充的十进制数。                          | 04       |
-| `%L` | 毫秒作为零填充的十进制数。                    | .123     |
 | `%f` | 微秒作为零填充的十进制数。                    | 000345   |
 | `%z` | UTC 偏移量，格式为 +HHMM 或 -HHMM。                           | +1300    |
 | `%Z` | 时区名称。                                                  | PST      |
 | `%j` | 年份中的日期作为零填充的十进制数。                 | 363      |
+
+此外，支持以下非 `strftime` 代码：
+
+| 代码 | 含义                                                              | 示例  |
+| :--- | :------------------------------------------------------------------- | :------- |
+| `%L` | 毫秒作为零填充的十进制数，前面带有一个句点。 | .123     |
 
 ### awslogs-multiline-pattern
 
@@ -274,6 +282,13 @@ INFO Another message was logged
 ## 凭据
 
 您必须向 Docker 守护进程提供 AWS 凭据才能使用 `awslogs` 日志驱动。您可以通过 `AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY` 和 `AWS_SESSION_TOKEN` 环境变量、默认 AWS 共享凭据文件（root 用户的 `~/.aws/credentials`）或如果您在 Amazon EC2 实例上运行 Docker 守护进程，则使用 Amazon EC2 实例配置文件提供这些凭据。
+
+> [!NOTE]
+> Docker 在容器启动时读取 AWS 凭据。
+> 如果您使用带有临时凭据的共享 AWS 凭据文件，
+> 稍后更新该文件不会自动更新正在运行的容器所使用的凭据。
+> 当临时凭据过期时，向 Amazon CloudWatch Logs 投递日志可能会失败。在刷新凭据后重启容器，
+> 以便 Docker 可以加载更新后的值。
 
 凭据必须附加允许 `logs:CreateLogStream` 和 `logs:PutLogEvents` 操作的策略，如以下示例所示。
 

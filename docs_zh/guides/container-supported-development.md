@@ -7,9 +7,9 @@ summary: '容器并非只能用于你的应用。学习如何运行应用所依�
 description: '在本地开发流程中使用容器，实现更快速的开发和测试……即使你的主应用并未运行在容器中。
 
   '
-tags:
-- app-dev
+keywords: containers, local development, dependent services, testing, debugging, development environment
 params:
+  tags: [cicd]
   image: images/learning-paths/container-supported-development.png
   time: 20 分钟
   resource_links: []

@@ -23,11 +23,9 @@ Docker 内容信任 (DCT) 提供了对发送到远程 Docker 仓库和从远程 
 
 通过 DCT，镜像发布者可以对其镜像进行签名，而镜像消费者可以确保他们拉取的镜像是经过签名的。发布者可以是手动签署其内容的个人或组织，也可以是作为其发布过程一部分签署内容的自动化软件供应链。
 
-> [!NOTE]
+> [!WARNING]
 >
-> Docker 正在逐步淘汰 Docker 官方镜像 (DOI) 的 DCT。您应开始计划过渡到不同的镜像签名和验证解决方案（例如 [Sigstore](https://www.sigstore.dev/) 或 [Notation](https://github.com/notaryproject/notation#readme)）。DCT 完全弃用的时间表正在最终确定，并将很快公布。
->
-> 有关更多信息，请参阅 [逐步淘汰 Docker 内容信任](https://www.docker.com/blog/retiring-docker-content-trust/)。
+> Docker Content Trust (DCT) 正在退役。`notary.docker.io` 上的 Notary v1 服务将于 2026 年 12 月 8 日关闭。有关更多信息，请参阅 [Docker Content Trust (DCT)](/manuals/retired.md#docker-content-trust-dct)。
 
 ### 镜像标签和 DCT
 
@@ -76,12 +74,6 @@ DCT 与镜像的 `TAG` 部分相关联。每个镜像仓库都有一组密钥，
 在 Docker CLI 中，我们可以使用 `$ docker trust` 命令语法来签名和推送容器镜像。这是建立在 Notary 功能集之上的。有关更多信息，请参阅 [Notary GitHub 存储库](https://github.com/theupdateframework/notary)。
 
 对镜像进行签名的先决条件是 Docker Registry 附带 Notary 服务器（例如 Docker Hub）。请参阅[部署 Notary](/engine/security/trust/deploying_notary/) 以获取说明。
-
-> [!NOTE]
->
-> Docker 正在逐步淘汰 Docker 官方镜像 (DOI) 的 DCT。您应开始计划过渡到不同的镜像签名和验证解决方案（例如 [Sigstore](https://www.sigstore.dev/) 或 [Notation](https://github.com/notaryproject/notation#readme)）。DCT 完全弃用的时间表正在最终确定，并将很快公布。
->
-> 有关更多信息，请参阅 [逐步淘汰 Docker 内容信任](https://www.docker.com/blog/retiring-docker-content-trust/)。
 
 要对 Docker 镜像进行签名，您需要一个委派密钥对。这些密钥可以使用 `$ docker trust key generate` 在本地生成，也可以由证书颁发机构生成。
 

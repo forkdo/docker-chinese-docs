@@ -2,7 +2,9 @@
 title: Docker Hub 发布说明
 linkTitle: 发布说明
 weight: 999
-description: 了解 Docker Hub 的新功能、错误修复和重大变更
+description:
+  Learn about the new features, bug fixes, and breaking changes for Docker
+  Hub
 keywords: docker hub, 新功能, 发布说明
 toc_min: 1
 toc_max: 2
@@ -11,6 +13,32 @@ tags:
 ---
 
 在此处，您可以了解每个 Docker Hub 版本的最新变更、新功能、错误修复和已知问题。
+
+## 2026-06-29
+
+### 新增功能
+
+- Docker Hub 与 Cloudsmith 集成，使其能够通过托管令牌处理对 Docker Hub 和 Docker 强化镜像 (DHI) 上游的身份验证。这消除了在设置期间提供您自己凭据的需要。有关详细信息，请参阅 Cloudsmith 的公告[使用 Cloudsmith 托管的身份验证设置 Docker Hub 和 DHI 上游](https://cloudsmith.com/changelog/set-up-docker-hub-and-dhi-upstreams-with-cloudsmith-managed-authentication)。
+
+## 2026-05-20
+
+### 基础设施更新
+
+- Docker Hub 已新增 Amazon CloudFront 作为镜像推送和拉取的 CDN，从而提高了可靠性。您可能会在您的网络日志中看到一个新域名 `production.cloudfront.docker.com`。该域名的 TLS 证书由 Amazon Trust Services 颁发。
+
+  大多数用户不受影响。如果您的环境使用带有域名允许列表的出站防火墙、TLS 检查代理或托管的 CA 信任存储，您可能需要采取行动。有关更新的域名要求，请参阅 [Docker Desktop 允许列表](/manuals/desktop/setup/allow-list.md)。如果您看到 TLS 错误，请确保您的信任存储包含 [Amazon Trust Services Root CAs](https://www.amazontrust.com/repository/)。如果您是付费订阅用户，并且需要更新的 TLS 证书详细信息或问题仍然存在，可以[联系 Docker 支持](https://hub.docker.com/support/contact/)。
+
+## 2026-05-06
+
+### 弃用通知
+
+- [Docker Hub 自动构建](./repos/manage/builds/) 正在被弃用。现有账户将可使用至 2027 年 4 月 1 日。有关迁移指南，请参阅[迁移选项](./repos/manage/builds/migrate/)，了解如何迁移到 GitHub Actions 或 Bitbucket Pipelines。
+
+## 2026-02-13
+
+### 新增功能
+
+- 管理员现在可以使用[禁用公共仓库](./settings.md#disable-creation-of-public-repos)设置，防止在组织命名空间内创建公共仓库。
 
 ## 2025-02-18
 
@@ -88,7 +116,7 @@ tags:
 
 ### 错误修复和增强功能
 
-- 您现在可以从您拥有的组织[导出成员的 CSV 文件](../admin/organization//members.md#export-members)。
+- 您现在可以从您拥有的组织[导出成员的 CSV 文件](../admin/organization/manage/members.md#export-members-csv-file)。
 
 ## 2022-07-22
 
@@ -124,7 +152,7 @@ tags:
 
 ### 新增功能
 
-- 您现在可以使用信用卡购买或升级到 Docker Business 订阅。要了解更多信息，请参阅[升级您的订阅](../subscription//change.md)。
+- 您现在可以使用信用卡购买或升级到 Docker Business 订阅。要了解更多信息，请参阅[升级您的订阅](../subscription/plans/docker.md)。
 
 ## 2021-08-31
 
@@ -141,7 +169,7 @@ Docker 已[宣布](https://www.docker.com/blog/updating-product-subscriptions/)�
 - 现有的 Docker Free 订阅已更名为 **Docker Personal**。
 - Docker Engine 或任何其他上游**开源** Docker 或 Moby 项目**没有变更**。
 
-    要了解这些变更如何影响您，请阅读 [常见问题解答](https://www.docker.com/pricing/faq)。更多信息，请参阅 [Docker 订阅概述](../subscription/_index.md)。
+  要了解这些变更如何影响您，请阅读 [常见问题解答](https://www.docker.com/pricing/faq)。更多信息，请参阅 [Docker 订阅概述](../subscription/_index.md)。
 
 ## 2021-05-05
 
@@ -182,7 +210,7 @@ Docker 推出了高级镜像管理仪表板，使您能够查看和管理仓库�
 
 Docker 推出了审计日志，这是一项新功能，允许团队所有者查看在组织和仓库级别发生的活动列表。此功能从发布日期，即 **2021 年 1 月 25 日**起开始跟踪活动。
 
-有关此功能的更多信息和使用说明，请参阅[活动日志](../admin/organization/activity-logs.md)。
+有关此功能的更多信息和使用说明，请参阅[活动日志](../admin/activity-logs.md)。
 
 ## 2020-11-10
 
@@ -200,88 +228,88 @@ Docker 推出了 Hub 漏洞扫描，使您能够使用 Snyk 自动扫描 Docker 
 
 ### 新功能
 
-* Docker 宣布了一种新的、按席位定价的模式，以加速云原生开发的开发者工作流程。之前的私有仓库/并发自动构建计划已被新的 **Pro** 和 **Team** 计划取代，这些计划包含无限的私有仓库。更多信息，请参阅 [Docker 订阅](../subscription/_index.md)。
+- Docker 宣布了一种新的、按席位定价的模式，以加速云原生开发的开发者工作流程。之前的私有仓库/并发自动构建计划已被新的 **Pro** 和 **Team** 计划取代，这些计划包含无限的私有仓库。更多信息，请参阅 [Docker 订阅](../subscription/_index.md)。
 
-* Docker 已在 Docker Hub 上启用下载速率限制，用于下载和拉取请求。这限制了用户在指定时间内可以下载的对象数量。更多信息，请参阅[使用情况和限制](/manuals/docker-hub/usage/_index.md)。
+- Docker 已在 Docker Hub 上启用下载速率限制，用于下载和拉取请求。这限制了用户在指定时间内可以下载的对象数量。更多信息，请参阅[使用情况和限制](/manuals/docker-hub/usage/_index.md)。
 
 ## 2019-11-04
 
 ### 增强功能
 
-* [仓库页面](repos/_index.md)和所有相关设置和选项卡已更新，并从 `cloud.docker.com` 移至 `hub.docker.com`。您可以通过其新 URL 访问该页面：[https://hub.docker.com/repositories](https://hub.docker.com/repositories)。
+- [仓库页面](repos/_index.md)和所有相关设置和选项卡已更新，并从 `cloud.docker.com` 移至 `hub.docker.com`。您可以通过其新 URL 访问该页面：[https://hub.docker.com/repositories](https://hub.docker.com/repositories)。
 
 ### 已知问题
 
-* 某些官方镜像不显示扫描结果。
+- 某些官方镜像不显示扫描结果。
 
 ## 2019-10-21
 
 ### 新功能
 
-* **Beta：** Docker Hub 现在支持双因素认证 (2FA)。在您的账户设置中，在 **[安全](https://hub.docker.com/settings/security)** 部分启用它。
+- **Beta：** Docker Hub 现在支持双因素认证 (2FA)。在您的账户设置中，在 **[安全](https://hub.docker.com/settings/security)** 部分启用它。
 
-    > 如果您同时丢失了 2FA 认证设备和恢复代码，您可能无法恢复您的账户。
+  > 如果您同时丢失了 2FA 认证设备和恢复代码，您可能无法恢复您的账户。
 
 ### 增强功能
 
-* 作为一项安全措施，启用双因素认证后，Docker CLI 需要使用个人访问令牌而不是密码登录。
+- 作为一项安全措施，启用双因素认证后，Docker CLI 需要使用个人访问令牌而不是密码登录。
 
 ### 已知问题
 
-* 某些官方镜像不显示扫描结果。
+- 某些官方镜像不显示扫描结果。
 
 ## 2019-10-02
 
 ### 增强功能
 
-* 您现在可以直接从您的[组织页面](https://hub.docker.com/orgs)管理团队和成员。
-每个组织页面现在分为以下选项卡：
-  * **新增：** 成员 - 直接从此页面管理您的成员（删除、添加或打开他们的团队）
-  * **新增：** 团队 - 按团队或用户名搜索，并打开任何团队页面来管理团队
-  * **新增：** 邀请对象（条件选项卡，仅在存在邀请时显示）- 从此选项卡重新发送或删除邀请
-  * 仓库
-  * 设置
-  * 账单
+- 您现在可以直接从您的[组织页面](https://hub.docker.com/orgs)管理团队和成员。
+  每个组织页面现在分为以下选项卡：
+  - **新增：** 成员 - 直接从此页面管理您的成员（删除、添加或打开他们的团队）
+  - **新增：** 团队 - 按团队或用户名搜索，并打开任何团队页面来管理团队
+  - **新增：** 邀请对象（条件选项卡，仅在存在邀请时显示）- 从此选项卡重新发送或删除邀请
+  - 仓库
+  - 设置
+  - 账单
 
 ### 错误修复
 
-* 修复了 Kinematic 无法连接并登录 Docker Hub 的问题。
+- 修复了 Kinematic 无法连接并登录 Docker Hub 的问题。
 
 ### 已知问题
 
-* 某些官方镜像不显示扫描结果。
+- 某些官方镜像不显示扫描结果。
 
 ## 2019-09-19
 
 ### 新功能
 
-* 您现在可以在 Docker Hub 中[创建个人访问令牌](/security/access-tokens/)，并使用它们从 Docker CLI 进行身份验证。在您的账户设置中，在新的 **[安全](https://hub.docker.com/settings/security)** 部分找到它们。
+- 您现在可以在 Docker Hub 中[创建个人访问令牌](/security/access-tokens/)，并使用它们从 Docker CLI 进行身份验证。在您的账户设置中，在新的 **[安全](https://hub.docker.com/settings/security)** 部分找到它们。
 
 ### 已知问题
 
-* 某些官方镜像不显示扫描结果。
+- 某些官方镜像不显示扫描结果。
 
 ## 2019-09-16
 
 ### 增强功能
 
-* 个人账户的[账单页面](../subscription/change.md)已更新。您可以通过其新 URL 访问该页面：[https://hub.docker.com/billing/plan](https://hub.docker.com/billing/plan)。
+- 个人账户的[账单页面](../subscription/plans/docker.md)已更新。您可以通过其新 URL 访问该页面：[https://hub.docker.com/billing/plan](https://hub.docker.com/billing/plan)。
 
 ### 已知问题
 
-* 某些官方镜像不显示扫描结果。
+- 某些官方镜像不显示扫描结果。
 
 ## 2019-09-05
 
 ### 增强功能
 
-* 图像页面上的 `标签` 选项卡现在为每个标签提供附加信息：
-  * 与标签关联的摘要列表
-  * 构建时的架构
-  * 操作系统
-  * 最近为特定标签更新图像的用户
-* Docker 官方镜像的安全扫描摘要已更新。
+- 图像页面上的 `标签` 选项卡现在为每个标签提供附加信息：
+  - 与标签关联的摘要列表
+  - 构建时的架构
+  - 操作系统
+  - 最近为特定标签更新图像的用户
+- Docker 官方镜像的安全扫描摘要已更新。
 
 ### 已知问题
 
-* 某些官方镜像不显示扫描结果。
+- 某些官方镜像不显示扫描结果。

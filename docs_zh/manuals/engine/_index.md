@@ -5,43 +5,43 @@ description: 全面了解 Docker Engine，包括如何安装、存储细节、�
 keywords: Engine
 params:
   sidebar:
-    group: 开源
+    group: 应用开发
 grid:
 - title: 安装 Docker Engine
   description: 了解如何为您的发行版安装开源 Docker Engine。
-  icon: download
+  icon: arrow-down-tray
   link: /engine/install
 - title: 存储
   description: 在 Docker 容器中使用持久化数据。
-  icon: database
+  icon: circle-stack
   link: /storage
 - title: 网络
   description: 管理容器之间的网络连接。
-  icon: network_node
+  icon: server-stack
   link: /network
 - title: 容器日志
   description: 了解如何查看和读取容器日志。
-  icon: text_snippet
+  icon: document-text
   link: /config/containers/logging/
 - title: 清理
   description: 清理未使用的资源。
-  icon: content_cut
+  icon: scissors
   link: /config/pruning
 - title: 配置守护进程
   description: 深入了解 Docker 守护进程的配置选项。
-  icon: tune
+  icon: adjustments-horizontal
   link: /config/daemon
 - title: Rootless 模式
   description: 无需 root 权限运行 Docker。
-  icon: security
+  icon: shield-check
   link: /engine/security/rootless
 - title: 已弃用功能
   description: 了解您应停止使用的 Docker Engine 功能。
-  icon: folder_delete
+  icon: folder-minus
   link: /engine/deprecated/
 - title: 发行说明
   description: 阅读最新版本的发行说明。
-  icon: note_add
+  icon: document-plus
   link: /engine/release-notes
 aliases:
 - /edge/
@@ -65,4 +65,4 @@ CLI 使用 [Docker API](/reference/api/engine/_index.md) 通过脚本或直接 C
 
 ## 许可
 
-在大型企业（员工超过 250 人或年收入超过 1000 万美元）中通过 Docker Desktop 获得的 Docker Engine 的商业使用，需要[付费订阅](https://www.docker.com/pricing/)。Apache 许可证 2.0 版。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
+在大型企业（员工超过 250 人或年收入超过 1000 万美元）中通过 Docker Desktop 获得的 Docker Engine 的商业使用，需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsEngine)。Apache 许可证 2.0 版。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。

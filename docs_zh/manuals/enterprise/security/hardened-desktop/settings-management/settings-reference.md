@@ -3,527 +3,671 @@ title: 设置参考
 linkTitle: 设置参考
 description: 所有 Docker Desktop 设置和配置选项的完整参考
 keywords: docker desktop settings, configuration reference, admin controls, settings management
+toc_max: 2
 aliases:
 - /security/for-admins/hardened-desktop/settings-management/settings-reference/
 ---
 
-本参考文档记录了所有 Docker Desktop 设置和配置选项。使用此文档可以了解不同配置方法和平台上的设置行为。其组织结构与 Docker Desktop GUI 相匹配。
+本参考文档记录了管理员可以使用[设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md)配置的 Docker Desktop 设置。使用本页可以了解哪些设置可用、它们的可接受值、平台兼容性以及适用的配置方法。
 
-每个设置都包括：
+> [!NOTE]
+>
+> 本页仅涵盖面向向组织部署 Docker Desktop 的管理员的可配置设置。有关 Docker Desktop 面向用户的完整设置列表，请参阅[更改设置](/manuals/desktop/settings-and-maintenance/settings.md)。
 
-- 默认值和可接受值
-- 平台兼容性
-- 配置方法（Docker Desktop GUI、Admin Console、`admin-settings.json` 文件或 CLI）
-- 适用时的企业安全建议
+## 常规
 
-## 常规设置
+### 发送使用情况统计信息
 
-### 登录计算机时启动 Docker Desktop
+控制 Docker Desktop 是否收集并向 Docker 发送本地使用情况统计信息和崩溃报告。不影响通过 Docker Hub 或其他后端服务（如登录时间戳、拉取或构建）收集的服务器端遥测数据。
 
-| 默认值 | 可接受值 | 格式 |
-|---------------|-----------------|--------|
-| `false`       | `true`, `false` | Boolean |
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `analyticsEnabled` |
+| Docker Home | **发送使用情况统计信息** |
 
-- **描述：** 用户登录计算机时自动启动 Docker Desktop。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 确保 Docker Desktop 在系统启动后始终可用。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
+> [!NOTE]
+>
+> 在强化环境中，禁用并锁定此设置。这可让您控制所有数据流，并在需要时通过安全渠道收集支持日志。
 
-### Docker Desktop 启动时打开 Docker Dashboard
+### 自动检查更新
 
-| 默认值 | 可接受值            | 格式 |
-|---------------|----------------------------|--------|
-| `false`      | `true`, `false`  | Boolean   |
+控制 Docker Desktop 是否检查并通知用户可用的更新。当设置为 `true` 时，将禁用更新检查和通知。
 
-- **描述：** Docker Desktop 启动时是否自动打开 Docker Dashboard。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 启动后立即访问容器、镜像和数据卷。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `disableUpdate` |
+| Docker Home | **禁用更新** |
 
-### 选择 Docker Desktop 的主题
+> [!NOTE]
+>
+> 在强化环境中，启用并锁定此设置。这可保证只安装经过内部审查的版本。
 
-| 默认值 | 可接受值            | 格式 |
-|---------------|----------------------------|--------|
-| `system`      | `light`, `dark`, `system`  | Enum   |
+### 自动更新组件
 
-- **描述：** Docker Desktop 界面的视觉外观。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 自定义界面外观以匹配用户偏好或系统主题。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
+允许 Docker Desktop 自动更新不需要重启的组件，例如 Docker Compose、Docker Scout 和 Docker CLI。
 
-### 配置 Shell 自动补全
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `silentModulesUpdate` |
+| Docker Home | **自动更新组件** |
 
-| 默认值 | 可接受值         | 格式 |
-|---------------|-------------------------|--------|
-| `integrated`  | `integrated`, `system`  | String |
+### 启用 Gordon
 
-- **描述：** Docker CLI 自动补全如何与用户的 Shell 集成。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 控制 Docker 是否修改 Shell 配置文件以实现自动补全。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值（个人用户） | `true`, `false` |
+| 可接受值（Business 套餐） | `"Disabled"`, `"Enabled"`, `"Always Enabled"` |
+| JSON 键 | `enableDockerAI` |
+| Docker Home | **启用 Gordon** |
 
-### 选择容器终端
+> [!IMPORTANT]
+>
+> Docker Business 客户必须在 Docker Home 中将此设置为 `"Enabled"` 或 `"Always Enabled"`。仅设置为 `"User Defined"`（用户定义）不会激活 Gordon。
 
-| 默认值 | 可接受值         | 格式 |
-|---------------|-------------------------|--------|
-| `integrated`  | `integrated`, `system`  | String |
+### 阻止 `docker load`
 
-- **描述：** 从 Docker Desktop 启动 Docker CLI 时使用的默认终端。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 为 Docker CLI 交互设置首选终端应用程序。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
+阻止用户使用 `docker load` 命令加载本地 Docker 镜像，通过要求所有镜像都来自注册表来强制镜像来源可信。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `blockDockerLoad` |
+| Docker Home | **阻止 Docker Load** |
+
+> [!NOTE]
+>
+> 在强化环境中，启用并锁定此设置。这会强制所有镜像都来自您经过安全扫描的注册表。
+
+### 隐藏入门调查
+
+阻止向新用户显示入门调查。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `displayedOnboarding` |
+| Docker Home | **隐藏入门调查** |
 
 ### 启用 Docker 终端
 
-| 默认值 | 可接受值 | 格式 |
-|---------------|-----------------|--------|
-| `false`       | `true`, `false` | Boolean |
+允许或限制访问用于与主机系统交互的内置终端。当设置为 `false` 时，用户无法使用 Docker 终端与主机交互或直接从 Docker Desktop 执行命令。
 
-- **描述：** 访问 Docker Desktop 的集成终端功能。如果
-该值设置为 `false`，则用户无法使用 Docker 终端与
-主机交互并直接从 Docker Desktop 执行命令。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 允许或限制开发人员访问内置终端以与主机系统交互。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `desktopTerminalEnabled` 设置
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| Docker Desktop GUI | **常规** 选项卡 |
+| JSON 键 | `desktopTerminalEnabled` |
+| Docker Home | 不可用 |
 
-> [!NOTE]
->
-> 在强化环境中，禁用并锁定此设置以限制主机访问。
+### 在 TCP 2375 上公开 Docker API {{< badge color=blue text="仅限 Windows" >}}
 
-### 默认启用 Docker 调试
+通过端口 2375 上未经身份验证的 TCP 套接字公开 Docker API。仅建议在隔离且受保护的环境中使用。支持需要 TCP API 访问的遗留集成。
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `false`       | `true`, `false` | Boolean  |
-
-- **描述：** 是否默认为 Docker CLI 命令启用调试日志记录。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 为故障排除和支持场景提供详细输出。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-
-### 将虚拟机包含在 Time Machine 备份中
-
-| 默认值 | 可接受值 | 格式 |
-|---------------|-----------------|--------|
-| `false`       | `true`, `false` | Boolean |
-
-- **描述：** Docker Desktop 虚拟机是否包含在 macOS Time Machine 备份中。
-- **操作系统：** {{< badge color=blue text="Mac only" >}}
-- **使用场景：** 平衡备份完整性与备份大小和性能。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-
-### 使用 containerd 拉取和存储镜像
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `false`       | `true`, `false` | Boolean  |
-
-- **描述：** Docker Desktop 使用的镜像存储后端。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 提升镜像处理性能并启用 containerd 原生功能。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-
-### 选择虚拟机管理器
-
-#### Docker VMM
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
-
-#### Apple Virtualization framework
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
-
-- **描述：** 使用 Apple Virtualization Framework 运行 Docker 容器。
-- **操作系统：** {{< badge color=blue text="Mac only" >}}
-- **使用场景：** 在 Apple Silicon 上提升虚拟机性能。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-
-#### Rosetta
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
-
-- **描述：** 使用 Rosetta 在 Apple Silicon 上模拟 `amd64`。如果值
-设置为 `true`，Docker Desktop 会启用 Rosetta 以加速
-在 Apple Silicon 上对 x86_64/amd64 二进制文件的模拟。
-- **操作系统：** {{< badge color=blue text="Mac only" >}} 13+
-- **使用场景：** 在 Apple Silicon 主机上运行基于 Intel 的容器。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `useVirtualizationFrameworkRosetta` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Use Rosetta for x86_64/amd64 emulation on Apple Silicon** 设置
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `exposeDockerAPIOnTCP2375` |
+| Docker Home | **公开 Docker API** |
 
 > [!NOTE]
 >
-> 在强化环境中，禁用并锁定此设置，以便仅允许 ARM 原生镜像。
+> 在强化环境中，禁用并锁定此设置。这可确保 Docker API 仅能通过安全的内部套接字访问。
+
+## 扩展
+
+### 启用 Docker 扩展
+
+控制用户是否可以安装和运行 Docker 扩展。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `extensionsEnabled` |
+| Docker Home | **允许扩展** |
 
 > [!NOTE]
 >
-> Rosetta 需要启用 Apple Virtualization framework。
+> 在强化环境中，禁用并锁定此设置。这可防止安装第三方或未经验证的插件。
 
-#### QEMU
+### 仅允许通过 Docker Marketplace 分发的扩展
 
-> [!WARNING]
->
-> Docker Desktop 4.44 及更高版本中已弃用 QEMU。更多信息，请参阅 [博客公告](https://www.docker.com/blog/docker-desktop-for-mac-qemu-virtualization-option-to-be-deprecated-in-90-days/)
+阻止安装第三方或本地开发的扩展。
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `onlyMarketplaceExtensions` |
+| Docker Home | **仅限 Marketplace 扩展** |
 
-### 选择文件共享实现
+### 启用私有应用市场
 
-#### VirtioFS
+确保 Docker Desktop 连接到由管理员定义和控制的内容，而不是公共 Docker Marketplace。
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `extensionsPrivateMarketplace` |
+| Docker Home | **扩展私有应用市场** |
 
-- **描述：** 使用 VirtioFS 在主机和容器之间进行快速、原生的文件共享。如果值设置为 `true`，VirtioFS 将被设置为文件共享机制。如果 VirtioFS 和 gRPC 都设置为 `true`，则 VirtioFS 优先。
-- **操作系统：** {{< badge color=blue text="Mac only" >}} 12.5+
-- **使用场景：** 在现代 macOS 上获得更好的文件系统性能和兼容性。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规设置**
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `useVirtualizationFrameworkVirtioFS` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Use VirtioFS for file sharing** 设置
+## AI
 
-> [!NOTE]
->
-> 在强化环境中，对于 macOS 12.5 及更高版本，启用并锁定此设置。
+### 启用 Docker Model Runner
 
-#### gRPC FUSE
+启用 Docker Model Runner 功能以在容器中运行 AI 模型。
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `enableInference` |
+| Docker Home | **启用 Docker Model Runner** |
 
-- **描述：** 启用 gRPC FUSE 进行 macOS 文件共享。如果值设置为
-`true`，gRPC Fuse 将被设置为文件共享机制。
-- **操作系统：** {{< badge color=blue text="Mac only" >}}
-- **使用场景：** 提供比传统 osxfs 性能更优的替代文件共享方案。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `useGrpcfuse` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Use gRPC FUSE for file sharing** 设置
+#### 启用主机端 TCP 支持
 
-> [!NOTE]
->
-> 在强化环境中，禁用并锁定此设置。
+为 Docker Model Runner 服务启用 TCP 连接，允许外部应用程序通过 TCP 连接到 Model Runner。
 
-#### osxfs
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `enableInferenceTCP` |
+| Docker Home | **主机端 TCP 支持** |
+| 依赖 | 需先启用 Docker Model Runner |
 
-| 默认值 | 可接受值 | 格式  |
-| ------------- | --------------- | ------- |
-| `false`       | `true`, `false` | Boolean |
+##### 端口
 
-- **描述：** 使用原始的 osxfs 文件共享驱动程序用于 macOS。当
-设置为 `true` 时，Docker Desktop 使用 osxfs 而不是 VirtioFS 或 gRPC FUSE 来将主机目录挂载到容器中。
-- **操作系统：** {{< badge color=blue text="Mac only" >}}
-- **使用场景：** 与需要原始文件共享实现的旧版工具兼容。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
+指定 Model Runner TCP 连接使用的端口。
 
-### 发送使用统计
+| 属性 | 值 |
+|---|---|
+| 默认值 | `12434` |
+| 可接受值 | Integer |
+| 格式 | Integer |
+| JSON 键 | `enableInferenceTCPPort` |
+| Docker Home | **主机端 TCP 端口** |
+| 依赖 | 需先启用 Docker Model Runner 和主机端 TCP 支持 |
 
-| 默认值 | 可接受值 | 格式 |
-|---------------|-----------------|--------|
-| `true`        | `true`, `false` | Boolean |
+##### CORS 允许的来源
 
-- **描述：** 控制 Docker Desktop 是否收集并向 Docker 发送本地
-使用统计信息和崩溃报告。此设置影响从 Docker Desktop 应用程序本身收集的遥测数据。它不影响通过 Docker Hub 或其他后端服务（如登录时间戳、拉取或构建）收集的服务器端遥测数据。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 帮助 Docker 根据使用模式改进产品。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `analyticsEnabled` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Send usage statistics** 设置
+控制 Model Runner Web 集成的跨域资源共享。
 
-> [!NOTE]
->
-> 在强化环境中，禁用并锁定此设置。这允许你控制所有数据流，并在需要时通过安全渠道收集支持日志。
+| 属性 | 值 |
+|---|---|
+| 默认值 | 空字符串 |
+| 可接受值 | 空字符串（拒绝全部）、`*`（接受全部）或逗号分隔的来源列表 |
+| 格式 | String |
+| JSON 键 | `enableInferenceCORS` |
+| Docker Home | **CORS 允许的来源** |
+| 依赖 | 需先启用 Docker Model Runner 和主机端 TCP 支持 |
 
-> [!NOTE]
->
-> 使用 Insights Dashboard 的组织可能需要启用此设置，以确保开发人员活动完全可见。如果用户选择退出且该设置未被锁定，他们的活动可能会从分析视图中被排除。
+### 启用 GPU 支持的推理 {{< badge color=blue text="仅限 Windows" >}}
 
-### 使用增强型容器隔离
+启用 GPU 支持的推理。额外的组件将被下载到 `~/.docker/bin/inference`。
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `false`       | `true`, `false` | Boolean  |
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `enableInferenceGPUVariant` |
+| Docker Home | **启用 GPU 支持的推理** |
 
-- **描述：** 通过 Linux 用户命名空间和额外的隔离措施实现高级容器安全。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 防止容器修改 Docker Desktop 虚拟机配置或访问敏感的主机区域。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规设置**
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `enhancedContainerIsolation` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Enable enhanced container isolation** 设置
-
-> [!NOTE]
->
-> 在强化环境中，禁用并锁定此设置。这允许你控制所有数据流，并在需要时通过安全渠道收集支持日志。
-
-### 显示 CLI 提示
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`       | `true`, `false` | Boolean  |
-
-- **描述：** 使用 Docker 命令时在终端中显示有用的 CLI 建议。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 通过上下文提示帮助用户发现 Docker CLI 功能。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-
-### 启用 Scout 镜像分析
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
-
-- **描述：** 对容器镜像进行 Docker Scout SBOM（软件物料清单）生成和漏洞扫描。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 启用漏洞扫描和软件物料清单分析。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规设置**
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `sbomIndexing` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **SBOM indexing** 设置
-
-> [!NOTE]
->
-> 在强化环境中，启用并锁定此设置以确保合规性扫描始终可用。
-
-### 启用后台 Scout SBOM 索引
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `false`        | `true`, `false` | Boolean  |
-
-- **描述：** 无需用户交互即可为镜像自动进行 SBOM 索引。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 通过在空闲时间或镜像操作后进行索引，保持镜像元数据最新。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规设置**
-
-> [!NOTE]
->
-> 在强化环境中，启用并锁定此设置以进行持续的安全分析。
-
-### 自动检查配置
-
-| 默认值         | 可接受值 | 格式  |
-|-----------------------|-----------------|---------|
-| `CurrentSettingsVersions` | Integer         | Integer |
-
-- **描述：** 定期验证 Docker Desktop 配置是否未被外部应用程序修改。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 跟踪配置版本以进行兼容性和变更检测。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **常规** 设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `configurationFileVersion` 设置
-
-## 资源设置
-
-### CPU 限制
-
-| 默认值                                 | 可接受值 | 格式  |
-|-----------------------------------------------|-----------------|---------|
-| 主机上可用的逻辑 CPU 核心数 | Integer         | Integer |
-
-- **描述：** 分配给 Docker Desktop 虚拟机的 CPU 核心数。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 平衡 Docker 性能与主机系统资源可用性。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **高级** 资源设置
-
-### 内存限制
-
-| 默认值              | 可接受值 | 格式  |
-|---------------------------|-----------------|---------|
-| 基于系统资源 | Integer         | Integer |
-
-- **描述：** 分配给 Docker Desktop 虚拟机的 RAM 量（以 MiB 为单位）。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 控制内存分配以优化 Docker 和主机应用程序的性能。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **高级** 资源设置
-
-### 交换空间
-
-| 默认值 | 可接受值 | 格式  |
-|---------------|-----------------|---------|
-| `1024`        | Integer         | Integer |
-
-- **描述：** Docker 虚拟机可用的交换空间量（以 MiB 为单位）。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 在物理 RAM 有限时扩展容器工作负载的可用内存。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **高级** 资源设置
-
-### 磁盘使用限制
-
-| 默认值                  | 可接受值 | 格式  |
-|-------------------------------|-----------------|---------|
-| 虚拟机的默认磁盘大小。 | Integer         | Integer |
-
-- **描述：** 为 Docker Desktop 数据分配的最大磁盘空间（以 MiB 为单位）。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 防止 Docker 在主机系统上消耗过多的磁盘空间。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **高级** 资源设置
-
-### 磁盘镜像位置
-
-| 默认值                                                                 | 可接受值 | 格式 |
-|--------------------------------------------------|-----------------|--------|
-| macOS: `~/Library/Containers/com.docker.docker/Data/vms/0`  <br> Windows: `%USERPROFILE%\AppData\Local\Docker\wsl\data` | 文件路径       | String |
-
-- **描述：** Docker Desktop 存储虚拟机数据的文件系统路径。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 将 Docker 数据移动到自定义存储位置以进行性能或空间管理。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **高级** 资源设置
-
-### 启用资源节省器
-
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
-
-- **描述：** 空闲时自动暂停 Docker Desktop 以节省系统资源。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 在 Docker Desktop 未被主动使用时减少 CPU 和内存使用。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **高级** 资源设置
+## 文件共享和仿真
 
 ### 文件共享目录
 
-| 默认值                           | 可接受值                 | 格式                  |
-|----------------------------------------|---------------------------------|--------------------------|
-| 因操作系统而异                           | 作为字符串的文件路径列表   | 字符串数组列表   |
+定义容器在开发工作流中可以访问的主机目录。
 
-- **描述：** 可以作为卷挂载到容器中的主机目录。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 定义容器可以访问哪些主机目录以用于开发工作流。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **文件共享** 资源设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `filesharingAllowedDirectories` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Allowed file sharing directories** 设置
+| 属性 | 值 |
+|---|---|
+| 默认值 | 随操作系统而异 |
+| 可接受值 | 文件路径列表 |
+| 格式 | 字符串数组 |
+| JSON 键 | `filesharingAllowedDirectories` |
+| Docker Home | 是 — **允许的文件共享目录** |
+
+### VirtioFS {{< badge color=blue text="仅限 Mac" >}}
+
+使用 VirtioFS 在主机和容器之间进行快速、原生的文件共享。如果 VirtioFS 和 gRPC FUSE 都设置为 `true`，则 VirtioFS 优先。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `useVirtualizationFrameworkVirtioFS` |
+| Docker Home | **使用 VirtioFS 进行文件共享** 选项卡 |
+
+### gRPC FUSE {{< badge color=blue text="仅限 Mac" >}}
+
+为 macOS 文件共享启用 gRPC FUSE。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `useGrpcfuse` |
+| Docker Home | **使用 gRPC FUSE 进行文件共享** |
+
+### Rosetta {{< badge color=blue text="仅限 Mac" >}}
+
+使用 Rosetta 在 Apple Silicon 上进行 x86_64/amd64 仿真。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `useVirtualizationFrameworkRosetta` |
+| Docker Home | **在 Apple Silicon 上使用 Rosetta 进行 x86_64/amd64 仿真** |
+
+## Scout
+
+### 启用 Scout 镜像分析
+
+为容器镜像开启漏洞扫描和软件物料清单（SBOM）分析。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `sbomIndexing` |
+| Docker Home | **SBOM 索引** |
+
+### 启用后台 Scout SBOM 索引
+
+通过在空闲时间或镜像操作后索引来保持镜像元数据的最新状态。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `useBackgroundIndexing` |
+| Docker Home | **后台索引** |
+
+## 代理
 
 > [!NOTE]
 >
-> 在强化环境中，锁定为明确的允许列表，并禁用最终用户编辑。
+> 代理配置是一个特例，因为它必须在两个地方进行配置：
+>
+> 1. 在您组织的 Docker Home 中。
+> 2. 在安装了 Docker Desktop 的用户系统上。
+>
+> 在用户机器上，通过 `admin-settings.json` 文件或在 Docker Desktop 安装期间使用安装程序标志来配置代理。有关详细说明，请参阅[安装指南](/manuals/desktop/setup/install/windows-install.md#proxy-configuration)。
+>
+> 需要进行此额外配置，是因为 Docker Desktop 必须先知道使用哪个代理服务器，才能完成用户登录并从 Docker Home 获取组织设置。
 
-### 代理排除
+### 嵌入式 PAC 脚本
 
-| 默认值 | 可接受值    | 格式 |
-|---------------|--------------------|--------|
-| `""`          | 地址列表  | String |
+指定嵌入式代理自动配置（PAC）脚本。例如：`"embeddedPac": "function FindProxyForURL(url, host) { return \"DIRECT\"; }"`。
 
-- **描述：** 容器在使用代理设置时应绕过的网络地址。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 为内部服务或特定域定义代理例外。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **代理** 资源设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中带有 `manual` 和 `exclude` 模式的 `proxy` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **代理** 部分
+| 属性 | 值 |
+|---|---|
+| 默认值 | `""` |
+| 可接受值 | 嵌入式 PAC 脚本内容 |
+| 格式 | String |
+| JSON 键 | `embeddedPac` |
+| Docker Home | 是 **嵌入式 PAC 脚本** |
+
+### PAC 文件 URL
+
+指定 Docker Desktop 在路由网络流量时使用的 PAC 文件 URL。例如：`"pac": "http://proxy/proxy.pac"`。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `""` |
+| 可接受值 | PAC 文件 URL |
+| 格式 | String |
+| JSON 键 | `pac` |
+| Docker Home | **PAC 文件** |
+
+### 覆盖 Windows “dockerd” 端口 {{< badge color=blue text="仅限 Windows" >}}
+
+在本地此端口上公开 Docker Desktop 的内部代理，以供 Windows Docker 守护进程连接。如果设置为 0，则选择一个随机的空闲端口。如果值大于 0，则使用该确切值作为端口。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `-1` |
+| 可接受值 | `-1` `0` |
+| 格式 | String |
+| JSON 键 | `windowsDockerdPort` |
+| Docker Home | **覆盖 Windows “dockerd” 端口** |
+
+### 启用 Kerberos 和 NTLM 身份验证
+
+为企业代理身份验证启用 Kerberos 和 NTLM 协议支持。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `proxy.enableKerberosNtlm` |
+| Docker Home | **Kerberos NTLM** |
+
+### 代理绕过
+
+定义容器在使用代理设置时应绕过的网络地址。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `""` |
+| 可接受值 | 地址列表 |
+| 格式 | String |
+| Docker Desktop GUI | **代理** 选项卡 |
+| JSON 键 | `proxy`（使用 `manual` 和 `exclude` 模式） |
+| Docker Home | 是 — **代理** 部分 |
+
+## 容器代理
+
+### 隔离环境容器代理
+
+配置一个 HTTP/HTTPS 代理，管理两条不同的流量路径：
+
+- 守护进程镜像拉取（始终强制执行）：Docker Desktop 在 VM 启动时始终在 `daemon.json` 中将 `http.docker.internal:3128` 作为守护进程的代理注入。所有 `docker pull` 和 Compose 拉取操作都经过 `containersProxy` 路由，包括任何 PAC 文件规则。无论是否配置了 `transparentPorts`，这都适用。
+- 运行中容器的出站流量（可选加入）：只有当配置了 `transparentPorts` 时，容器的 TCP 流量才受 `containersProxy` 规则约束。如果不配置，运行中的容器直接连接，PAC 文件规则不适用于其出站流量。
+
+> [!IMPORTANT]
+>
+> 如果在 `containersProxy` 下配置了 PAC 文件，该 PAC 文件必须返回适当的代理服务器，以连接到托管镜像的注册表。
+
+[`proxy`](#代理) 设置管理 Docker Desktop 主机级流量：Desktop 应用程序、Docker CLI 和扩展。它仅在未显式配置 `containersProxy` 时作为守护进程的回退。一旦设置了 `containersProxy`，`proxy` 就不再参与守护进程或容器流量。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | 见下方示例 |
+| 可接受值 | JSON 对象 |
+| 格式 | JSON 对象 |
+| JSON 键 | `containersProxy` |
+| Docker Home | **容器代理** 部分 |
+
+```json
+"containersProxy": {
+  "locked": true,
+  "mode": "manual",
+  "http": "",
+  "https": "",
+  "exclude": [],
+  "pac": "",
+  "transparentPorts": ""
+}
+```
+
+有关更多信息，请参阅[隔离环境容器](/manuals/enterprise/security/hardened-desktop/air-gapped-containers.md)。
+
+## LinuxVM
+
+### 启用 WSL 引擎 {{< badge color=blue text="仅限 Windows" >}}
+
+设置为 `true` 时，Docker Desktop 使用基于 WSL 2 的引擎。覆盖安装时使用 `--backend=<backend name>` 设置的任何后端标志。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `wslEngineEnabled` |
+| Docker Home | **Windows Subsystem for Linux (WSL) 引擎** |
+
+### Docker 守护进程选项
+
+覆盖容器中使用的 Docker 守护进程配置，而不修改本地配置文件。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `{}` |
+| 可接受值 | JSON 对象 |
+| 格式 | 字符串化 JSON |
+| JSON 键 | `linuxVM.dockerDaemonOptions` |
+| Docker Home | LinuxVM 下拉菜单中的 **Docker 守护进程选项** |
+
+### VPNKit CIDR {{< badge color=blue text="仅限 Mac" >}}
+
+设置 Docker Desktop 内部 VPNKit DHCP/DNS 服务使用的网络子网。防止在具有重叠网络子网的环境中出现 IP 地址冲突。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `192.168.65.0/24` |
+| 可接受值 | CIDR 表示法 |
+| 格式 | String |
+| JSON 键 | `vpnkitCIDR` |
+| Docker Home | **VPNKit CIDR** |
+
+## Windows 容器
+
+### Docker 守护进程选项
+
+覆盖 Windows 容器中使用的 Docker 守护进程配置，而不修改本地配置文件。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `{}` |
+| 可接受值 | JSON 对象 |
+| 格式 | 字符串化 JSON |
+| JSON 键 | windowsContainers.dockerDaemonOptions |
+| Docker Home | **Windows 容器下拉菜单** 中的 **Docker 守护进程选项** |
+
+## Kubernetes
+
+### 启用 Kubernetes
+
+启用与 Docker Desktop 的本地 Kubernetes 集群集成。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `kubernetes` |
+| Docker Home | **启用 Kubernetes** |
+
+### 显示系统容器
+
+控制 Kubernetes 系统容器在 Docker Desktop Dashboard 中的可见性。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| Docker Home | **显示系统容器** |
+
+### Kubernetes 镜像仓库
+
+指定用于 Kubernetes 控制平面镜像的注册表，以替代 Docker Hub。覆盖镜像名称的 `[registry[:port]/][namespace]` 部分。镜像必须从 Docker Hub 镜像，并带有匹配的标签。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `""` |
+| 可接受值 | 注册表 URL |
+| 格式 | String |
+| JSON 键 | `KubernetesImagesRepository` |
+| Docker Home | **Kubernetes 镜像仓库** |
 
 > [!NOTE]
 >
-> 在强化环境中，禁用并锁定此设置以维持严格的代理控制。
+> 镜像必须从 Docker Hub 镜像，并带有匹配的标签。所需的镜像取决于集群置备方法。
 
-### Docker 子网
+> [!IMPORTANT]
+>
+> 将自定义镜像仓库与增强容器隔离一起使用时，请将以下镜像添加到 ECI 允许列表中：`[imagesRepository]/desktop-cloud-provider-kind:*` 和 `[imagesRepository]/desktop-containerd-registry-mirror:*`。
 
-| 默认值     | 可接受值 | 格式 |
-|-------------------|-----------------|--------|
-| `192.168.65.0/24` | IP 地址      | String |
+### 集群置备方法
 
-- **描述：** 覆盖用于 vpnkit DHCP/DNS 的网络范围以
-支持 `*.docker.internal`。
-- **操作系统：** {{< badge color=blue text="Mac only" >}}
-- **使用场景：** 自定义用于 Docker 容器网络的子网。
-- **配置此项设置的方式：**
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `vpnkitCIDR` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **VPN Kit CIDR** 设置
+控制 Kubernetes 集群拓扑和节点配置。
 
-### 对 UDP 使用内核网络
+| 属性 | 值 |
+|---|---|
+| 默认值 | `kubeadm` |
+| 可接受值 | `kubeadm`, `kind` |
+| 格式 | String |
+| Docker Home | **Kubernetes 模式** |
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `false`       | `true`, `false` | Boolean  |
+### 节点版本
 
-- **描述：** 使用主机的内核网络堆栈处理 UDP 流量，而不是 Docker 的虚拟网络驱动程序。这可以实现更快、更直接的 UDP 通信，但可能会绕过某些容器隔离功能。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 为 UDP 密集型应用（如实时媒体、DNS 或游戏）提升性能。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **网络** 资源设置
+固定集群节点使用的 Kubernetes 版本。
 
-### 启用主机网络
+| 属性 | 值 |
+|---|---|
+| 默认值 | `1.31.1` |
+| 可接受值 | 语义化版本（例如 `1.29.1`） |
+| 格式 | String |
+| Docker Home | **节点版本** 选项卡 |
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `false`       | `true`, `false` | Boolean  |
+### 节点数量
 
-- **描述：** 支持容器直接使用主机网络堆栈的实验性功能。
-- **操作系统：** {{< badge color=blue text="All" >}}
-- **使用场景：** 允许容器在特定场景下绕过 Docker 的网络隔离。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **网络** 资源设置
+设置多节点 Kubernetes 集群中的节点数量。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `1` |
+| 可接受值 | Integer |
+| 格式 | Integer |
+| Docker Home | **节点数量** |
+
+## 开发中功能
+
+### 访问 Beta 功能
+
+控制用户是否可以访问所有处于公开 Beta 阶段的 Docker Desktop 功能。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `allowBetaFeatures` |
+| Docker Home | **访问 Beta 功能** |
+
+### 启用 Docker MCP Toolkit（Beta）
+
+在 Docker Desktop 中启用 [Docker MCP Toolkit](/manuals/ai/mcp-catalog-and-toolkit/_index.md)，用于 AI 模型开发工作流。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `true` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `enableDockerMCPToolkit` |
+| Docker Home | 不可用 |
+
+## 增强容器隔离
+
+### 启用增强容器隔离
+
+防止容器修改 Docker Desktop VM 配置或访问敏感的主机区域。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `enhancedContainerIsolation` |
+| Docker Home | **启用增强容器隔离** |
+
+### Docker 套接字访问控制（ECI 例外）
+
+定义当增强容器隔离处于活动状态时，允许使用 Docker 套接字的特定镜像和命令。支持 Testcontainers、LocalStack 或需要在保持安全性的同时访问 Docker 套接字的 CI 系统。
+
+| 属性 | 值 |
+|---|---|
+| 可接受值 | JSON 对象 |
+| 格式 | JSON 对象 |
+| JSON 键 | `dockerSocketMount` |
+| Docker Home | **镜像列表**、**命令列表** |
+
+```json
+"enhancedContainerIsolation": {
+  ...
+}
+```
+
+## 网络
 
 ### 网络模式
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `dual-stack` | `ipv4only`, `ipv6only` | String  |
+设置 Docker 创建新网络时使用的默认 IP 协议。
 
-- **描述：** Docker 创建新网络时使用的默认 IP 协议。
-- **操作系统：** {{< badge color=blue text="Windows and Mac" >}}
-- **使用场景：** 与仅支持 IPv4 或 IPv6 的网络基础设施对齐。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **网络** 资源设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `defaultNetworkingMode` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **Default network IP mode**
+| 属性 | 值 |
+|---|---|
+| 默认值 | `dual-stack` |
+| 可接受值 | `ipv4only`, `ipv6only` |
+| 格式 | String |
+| JSON 键 | `defaultNetworkingMode` |
+| Docker Home | **默认网络 IP 模式** |
 
-更多信息，请参阅 [网络](/manuals/desktop/features/networking.md#networking-mode-and-dns-behaviour-for-mac-and-windows)。
+有关更多信息，请参阅[网络](/manuals/desktop/features/networking.md#networking-mode-and-dns-behaviour-for-mac-and-windows)。
 
-#### 抑制 IPv4/IPv6 的 DNS 解析
+### 抑制 IPv4/IPv6 的 DNS 解析
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `auto` | `ipv4`, `ipv6`, `none` | String  |
+过滤不支持的 DNS 记录类型，以在仅支持 IPv4 或 IPv6 的环境中提高可靠性。需要 Docker Desktop 4.43 及更高版本。
 
-- **描述：** 过滤不支持的 DNS 记录类型。需要 Docker Desktop
-4.43 及更高版本。
-- **操作系统：** {{< badge color=blue text="Windows and Mac" >}}
-- **使用场景：** 控制 Docker 过滤返回给容器的 DNS 记录，在仅支持 IPv4 或 IPv6 的环境中提高可靠性。
-- **配置此项设置的方式：**
-    - [Docker Desktop GUI](/manuals/desktop/settings-and-maintenance/settings.md) 中的 **网络** 资源设置
-    - Settings Management: [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)中的 `dnsInhibition` 设置
-    - Settings Management: [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 中的 **DNS filtering behavior**
+| 属性 | 值 |
+|---|---|
+| 默认值 | `auto` |
+| 可接受值 | `ipv4`, `ipv6`, `none` |
+| 格式 | String |
+| JSON 键 | `dnsInhibition` |
+| Docker Home | **DNS 过滤行为** |
 
-更多信息，请参阅 [网络](/manuals/desktop/features/networking.md#networking-mode-and-dns-behaviour-for-mac-and-windows)。
+有关更多信息，请参阅[网络](/manuals/desktop/features/networking.md#networking-mode-and-dns-behaviour-for-mac-and-windows)。
 
-### 启用 WSL 引擎
+### 端口绑定行为
 
-| 默认值 | 可接受值 | 格式   |
-|---------------|-----------------|----------|
-| `true`        | `true`, `false` | Boolean  |
+指定如何处理新容器的端口绑定。
 
-- **描述：** 如果值设置为 `
+| 属性 | 值 |
+|---|---|
+| 默认值 | `default-port-binding` |
+| 可接受值 | `default-local-port-binding`, `local-only-port-binding`, `default-port-binding` |
+| 格式 | String |
+| JSON 键 | `portBindingBehavior` |
+| Docker Home | **端口绑定行为** |
+
+## 其他
+
+### 启用 Docker Offload
+
+控制 Docker Offload 的可用性。启用后，用户会在 Docker Desktop 标题栏中看到 Docker Offload 开关。
+
+| 属性 | 值 |
+|---|---|
+| 默认值 | `false` |
+| 可接受值 | `true`, `false` |
+| 格式 | Boolean |
+| JSON 键 | `enableCloud` |
+| Docker Home | **启用 Docker Offload** |
+
+> [!NOTE]
+>
+> 此设置仅在对组织启用 Docker Offload 功能时可用。

@@ -8,7 +8,6 @@ tags:
 - admin
 aliases:
 - /security/for-admins/configure-sign-in/
-- /docker-hub/configure-sign-in/
 - /security/for-admins/enforce-sign-in/
 weight: 30
 ---
@@ -32,14 +31,23 @@ weight: 30
 当 Docker Desktop 检测到注册表键、`.plist` 文件或
 `registry.json` 文件时：
 
-- 会显示 `需要登录！` 提示，要求用户作为组织成员登录才能使用 Docker Desktop。
+- 会显示 **Sign in required!** 提示，要求用户作为组织成员登录才能使用 Docker Desktop。
 - 如果用户使用非组织成员的账户登录，将被自动注销，无法使用 Docker Desktop。他们可以点击 **登录** 使用其他账户重试。
 - 当用户使用组织成员账户登录后，可以正常使用 Docker Desktop。
-- 当用户注销时，`需要登录！` 提示会重新出现，除非他们重新登录，否则无法使用 Docker Desktop。
+- 当用户注销时，**Sign in required!** 提示会重新出现，除非他们重新登录，否则无法使用 Docker Desktop。
 
 > [!NOTE]
 >
 > 强制 Docker Desktop 登录不会影响 Docker CLI 访问。CLI 访问仅对强制单点登录（SSO）的组织进行限制。
+
+### 对已登录用户的影响
+
+首次部署强制登录时，已经在运行 Docker Desktop 的用户不会立即受到影响。Docker Desktop 仅在重启时重新评估强制登录。
+
+在下次 Docker Desktop 重启时：
+
+- 使用组织成员账户登录的用户会自动重新进行身份验证并继续不间断工作。
+- 使用非成员账户登录的用户会在启动时立即被注销，并看到 **Sign in required!** 提示。
 
 ## 强制登录与强制单点登录（SSO）的区别
 

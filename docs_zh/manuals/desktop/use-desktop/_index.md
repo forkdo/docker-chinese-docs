@@ -9,13 +9,11 @@ aliases:
 
 打开 Docker Desktop 时，会显示 Docker Desktop Dashboard。
 
-![容器视图中的 Docker Desktop Dashboard](../images/dashboard.webp) 
-
-它提供了一个集中式界面，用于管理您的[容器](container.md)、[镜像](images.md)、[卷](volumes.md)、[构建](builds.md)和[Kubernetes 资源](kubernetes.md)。
+它提供了一个集中式界面，用于管理您的[容器](container.md)、[镜像](images.md)、[卷](volumes.md)、[构建](builds.md)、[Kubernetes 资源](kubernetes.md)和[日志](logs.md)。
 
 此外，Docker Desktop Dashboard 还允许您：
 
-- 使用 [Ask Gordon](/manuals/ai/gordon/_index.md)，这是一个嵌入在 Docker Desktop 和 Docker CLI 中的个人 AI 助手。它旨在简化您的工作流程，并帮助您充分利用 Docker 生态系统。
+- 使用 [Gordon](/manuals/ai/gordon/_index.md)，这是一个嵌入在 Docker Desktop 和 Docker CLI 中的个人 AI 助手。它旨在简化您的工作流程，并帮助您充分利用 Docker 生态系统。
 - 导航至 **Settings**（设置）菜单以配置您的 Docker Desktop 设置。在 Dashboard 标题栏中选择 **Settings** 图标。
 - 访问 **Troubleshoot**（故障排除）菜单以进行调试和执行重启操作。在 Dashboard 标题栏中选择 **Troubleshoot** 图标。
 - 在 **Notifications center**（通知中心）中接收新版本、安装进度更新等通知。在 Docker Desktop Dashboard 的右下角选择铃铛图标以访问通知中心。
@@ -23,8 +21,11 @@ aliases:
 
   有关入门的更详细指南，请参阅[入门](/get-started/introduction/_index.md)。
 - 访问 [Docker Hub](/manuals/docker-hub/_index.md) 以搜索、浏览、拉取、运行或查看镜像详情。
-- 进入 [Docker Scout](../../scout/_index.md) 仪表板。
-- 导航至 [Docker Extensions](/manuals/extensions/_index.md)。
+- 如果您已启用 [Docker Extensions](/manuals/extensions/_index.md)，可导航至该功能。
+
+> [!TIP]
+>
+> 您可以自定义左侧导航栏，仅显示对您重要的选项卡，并隐藏不需要的选项卡。右键单击左侧导航栏，选择 **Customize**（自定义），然后选择、取消选择或重新排序选项卡。
 
 ## Docker 终端
 

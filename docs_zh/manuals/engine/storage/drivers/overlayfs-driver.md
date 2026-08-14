@@ -183,7 +183,7 @@ workdir=9186877cdf386d0a3b016149cf30c208f326dca307529e646afce5b3f83f5304/work)
 
 要创建容器，`overlay2` 驱动会组合表示镜像顶层的目录和容器的新目录。镜像的层是叠加层中的 `lowerdirs`，是只读的。容器的新目录是 `upperdir`，是可写的。
 
-### 磁盘上的镜像和容器层
+### 磁盘上的镜像和容器层（旧版 overlay 驱动）
 
 以下 `docker pull` 命令显示 Docker 主机正在下载包含五层的 Docker 镜像。
 

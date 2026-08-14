@@ -50,4 +50,5 @@ $ docker compose up --no-deps -d web
 
 ## 下一步
 
+- [熟悉 Compose 的信任模型](/manuals/compose/trust-model.md)
 - [使用多个 Compose 文件](multiple-compose-files/_index.md)

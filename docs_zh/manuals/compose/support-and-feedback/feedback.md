@@ -3,8 +3,6 @@ description: 找到适合您的 Docker Compose 反馈方式
 keywords: Feedback, Docker Compose, Community forum, bugs, problems, issues
 title: 提供反馈
 weight: 20
-aliases:
-- /compose/feedback/
 ---
 
 您可以通过多种方式为 Docker Compose 提供反馈。

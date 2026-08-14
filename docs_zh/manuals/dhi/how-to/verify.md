@@ -6,12 +6,14 @@ weight: 40
 keywords: verify container image, docker scout attest, cosign verify, sbom validation, signed container attestations, helm chart verification
 ---
 
-Docker Hardened 镜像 (DHI) 和图表包含签名证明，用于验证构建过程、内容和安全态势。这些证明可用于每个镜像变体和图表，并且可以使用 [cosign](https://docs.sigstore.dev/) 或 Docker Scout CLI 进行验证。
+Docker Hardened 镜像 (DHI) 和图表包含签名证明，用于验证构建过程、内容和安全态势。
 
 Docker 用于 DHI 镜像和图表的公钥发布在以下位置：
 
 - https://registry.scout.docker.com/keyring/dhi/latest.pub
 - https://github.com/docker-hardened-images/keyring
+
+Docker 推荐使用 [Docker Scout](/scout/)，但你也可以使用 [`regctl`](https://github.com/regclient/regclient) 和 [`cosign`](https://docs.sigstore.dev/) 来检索和验证证明。Docker Scout 具有几个关键优势：它理解 DHI 证明结构，自动解析平台，提供人类可读的摘要，通过 `--verify` 一步完成验证，并与 Docker 的证明基础设施紧密集成。
 
 > [!IMPORTANT]
 >
@@ -19,29 +21,18 @@ Docker 用于 DHI 镜像和图表的公钥发布在以下位置：
 >
 > 运行 `docker login dhi.io` 进行身份验证。
 
-## 使用 Docker Scout 验证镜像证明
-
-您可以使用 [Docker Scout](/scout/) CLI 列出和检索 Docker Hardened 镜像的证明。
+## 验证镜像证明
 
 > [!NOTE]
 >
 > 在运行 `docker scout attest` 命令之前，请确保您本地拉取的任何镜像都与远程镜像保持同步。您可以通过运行 `docker pull` 来实现这一点。如果您不这样做，可能会看到 `No attestation found`。
 
-### 为什么使用 Docker Scout 而不是直接使用 cosign？
-
-虽然您可以使用 cosign 手动验证证明，但 Docker Scout CLI 在处理 Docker Hardened 镜像和图表时提供了几个关键优势：
-
-- **专为 DHI 设计**：Docker Scout 理解 DHI 证明的结构和命名约定，因此您无需手动构造完整的摘要或 URI。
-- **自动平台解析**：使用 Scout，您可以指定平台（例如 `--platform linux/amd64`），它会自动验证正确的镜像变体。Cosign 需要您自己查找摘要。
-- **人类可读的摘要**：Scout 返回证明内容的摘要（例如，软件包数量、来源步骤），而 cosign 仅返回原始签名验证输出。
-- **一步验证**：`docker scout attest get` 中的 `--verify` 标志会验证证明并显示等效的 cosign 命令，从而更轻松地理解幕后发生的事情。
-- **与 Docker Hub 和 DHI 信任模型集成**：Docker Scout 与 Docker 的证明基础设施和公钥环紧密集成，确保兼容性并简化 Docker 生态系统内用户的验证。
-
-简而言之，Docker Scout 简化了验证过程并减少了人为错误的机会，同时仍然为您提供完全的可见性，并在需要时可以选择回退到 cosign。
-
 ### 列出可用证明
 
 要列出镜像的 DHI 镜像的证明：
+
+{{< tabs group="tool" >}}
+{{< tab name="Docker Scout" >}}
 
 > [!NOTE]
 >
@@ -53,7 +44,45 @@ $ docker scout attest list dhi.io/<image>:<tag>
 
 此命令显示所有可用的证明，包括 SBOM、来源、漏洞报告等。
 
+{{< /tab >}}
+{{< tab name="regctl" >}}
+
+首先，对两个注册表进行身份验证。本示例使用[组织访问令牌 (OAT)](../../enterprise/security/access-tokens.md) 以您的 Docker 组织身份进行身份验证。OAT 必须对您要验证的 DHI 仓库至少具有 pull 访问权限。只有令牌范围内的仓库才可访问。或者，您可以使用具有 `read only` 访问权限的[个人访问令牌 (PAT)](../../security/access-tokens.md) 以 Docker Hub 用户身份进行身份验证。
+
+> [!WARNING]
+>
+> 以下示例为了演示目的在命令行上直接导出凭据。这会在您的 shell 历史记录和进程列表中暴露敏感令牌。在生产环境中，请使用安全的方法，例如从受限权限的文件中读取、在运行时加载的环境文件，或密钥管理工具。
+
+```console
+$ export DOCKER_ORG="YOUR_DOCKER_ORG"
+$ export DOCKER_OAT="YOUR_DOCKER_OAT"
+$ echo $DOCKER_OAT | regctl registry login -u "$DOCKER_ORG" --pass-stdin docker.io
+$ echo $DOCKER_OAT | regctl registry login -u "$DOCKER_ORG" --pass-stdin registry.scout.docker.com
+```
+
+然后使用 `--external` 标志列出证明。DHI 仓库将镜像层存储在 `dhi.io`（或镜像镜像的 `docker.io`）上，并将签名证明存储在 `registry.scout.docker.com` 中：
+
+```console
+$ regctl artifact list docker.io/${DOCKER_ORG}/<image>:<tag> \
+  --external registry.scout.docker.com/${DOCKER_ORG}/<image> \
+  --platform linux/amd64
+```
+
+例如：
+
+```console
+$ regctl artifact list docker.io/${DOCKER_ORG}/dhi-node:22 \
+  --external registry.scout.docker.com/${DOCKER_ORG}/dhi-node \
+  --platform linux/amd64
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
 ### 检索特定证明
+
+{{< tabs group="tool" >}}
+{{< tab name="Docker Scout" >}}
 
 要检索特定证明，请使用 `--predicate-type` 标志和完整的谓词类型 URI：
 
@@ -93,7 +122,28 @@ $ docker scout attest get \
   dhi.io/python:3.13
 ```
 
-### 使用 Docker Scout 验证证明
+{{< /tab >}}
+{{< tab name="regctl" >}}
+
+列出证明后，使用 `Name` 字段中的摘要下载完整的证明制品：
+
+```console
+$ regctl artifact get <attestation-digest> > attestation.json
+```
+
+例如，要保存 SLSA 来源证明：
+
+```console
+$ regctl artifact get registry.scout.docker.com/${DOCKER_ORG}/dhi-node@sha256:6cbf803796e281e535f2681de7cd33a1012202610322a50ee745d1bb02ac3c18 > slsa_provenance.json
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+### 验证证明
+
+{{< tabs >}}
+{{< tab name="Docker Scout" >}}
 
 要使用 Docker Scout 验证证明，您可以使用 `--verify` 标志：
 
@@ -113,9 +163,37 @@ $ docker scout attest get dhi.io/node:20.19-debian12 \
    --predicate-type https://scout.docker.com/sbom/v0.1 --verify
 ```
 
+{{< /tab >}}
+{{< tab name="cosign" >}}
+
+列出证明并从 `Name` 字段获取摘要后，使用 cosign 进行验证：
+
+```console
+$ cosign verify \
+  <attestation-digest-from-name-field> \
+  --key https://registry.scout.docker.com/keyring/dhi/latest.pub \
+  --insecure-ignore-tlog=true
+```
+
+例如：
+
+```console
+$ cosign verify \
+  registry.scout.docker.com/${DOCKER_ORG}/dhi-node@sha256:6cbf803796e281e535f2681de7cd33a1012202610322a50ee745d1bb02ac3c18 \
+  --key https://registry.scout.docker.com/keyring/dhi/latest.pub \
+  --insecure-ignore-tlog=true
+```
+
+> [!NOTE]
+>
+> 需要使用 `--insecure-ignore-tlog=true` 标志，因为 DHI 证明可能不会记录在公共 Rekor 透明日志中以保护私有客户信息。证明签名仍会针对 Docker 的公钥进行验证。
+
+{{< /tab >}}
+{{< /tabs >}}
+
 #### 处理缺少的透明日志条目
 
-使用 `--verify` 时，有时可能会看到如下错误：
+在 Docker Scout 中使用 `--verify` 或 `cosign verify` 时，有时可能会看到如下错误：
 
 ```text
 ERROR no matching signatures: signature not found in transparency log
@@ -188,6 +266,12 @@ $ docker scout attest get \
 > $ cosign verify ...
 > ```
 
+## 验证包证明
+
+除了镜像证明之外，单个加固包也有自己的证明。这些包级别的证明允许您验证镜像中特定包的溯源和构建信息。
+
+有关如何从镜像证明中提取包信息并检索包级别证明的说明，请参阅[包证明](./hardened-packages.md#package-attestations)。
+
 ## 使用 Docker Scout 验证 Helm 图表证明
 
 Docker Hardened 镜像 Helm 图表包含与容器镜像相同的全面证明。图表的验证过程与镜像相同，使用相同的 Docker Scout CLI 命令。
@@ -255,11 +339,11 @@ $ docker scout attest get dhi.io/external-dns-chart:1.20.0 \
 
 ## 可用的 DHI 证明
 
-有关每个 DHI 图表可用的证明列表，请参阅[可用证明](../core-concepts/attestations.md#image-attestations)和[Helm 图表证明](../core-concepts/attestations.md#helm-chart-attestations)。
+有关每个 DHI 镜像可用的证明列表，请参阅[可用证明](../explore/security-concepts/attestations.md#image-attestations)和[Helm 图表证明](../explore/security-concepts/attestations.md#helm-chart-attestations)。
 
 ## 在 Docker Hub 上探索证明
 
-您还可以在[探索镜像变体](./explore.md#view-image-variant-details)时以可视化方式浏览证明。**证明**部分列出了每个可用的证明及其：
+您还可以在[探索镜像变体](./search-evaluate.md#image-variant-details)时以可视化方式浏览证明。**证明**部分列出了每个可用的证明及其：
 
 - 类型（例如 SBOM、VEX）
 - 谓词类型 URI

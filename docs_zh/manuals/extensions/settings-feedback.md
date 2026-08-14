@@ -4,15 +4,13 @@ keywords: Docker Extensions, Docker Desktop, Linux, Mac, Windows, feedback
 title: Docker Extensions 的设置与反馈
 linkTitle: 设置与反馈
 weight: 40
-aliases:
-- /desktop/extensions/settings-feedback/
 ---
 
 ## 设置
 
 ### 开启或关闭扩展
 
-Docker Extensions 默认开启。要更改您的设置：
+Docker Extensions 默认关闭。要更改您的设置：
 
 1. 导航至 **Settings**（设置）。
 2. 选择 **Extensions**（扩展）选项卡。
@@ -21,8 +19,8 @@ Docker Extensions 默认开启。要更改您的设置：
 
 > [!NOTE]
 >
-> 如果您是[组织所有者](/manuals/admin/organization/manage-a-team.md#organization-owner)，可以为用户关闭扩展。打开 `settings-store.json` 文件，并将 `"extensionsEnabled"` 设置为 `false`。
-> `settings-store.json` 文件（对于 Docker Desktop 4.34 及更早版本为 `settings.json`）位于：
+> 如果您是[组织所有者](/manuals/admin/organization/manage/manage-a-team.md#what-is-an-organization-owner)，可以为用户关闭扩展。打开 `settings-store.json` 文件，并将 `"extensionsEnabled"` 设置为 `false`。
+> `settings-store.json` 文件位于：
 >   - Mac 上的 `~/Library/Group Containers/group.com.docker/settings-store.json`
 >   - Windows 上的 `C:\Users\[USERNAME]\AppData\Roaming\Docker\settings-store.json`
 >

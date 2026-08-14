@@ -24,9 +24,7 @@ Docker Scout 镜像分析默认适用于 Docker Hub 仓库。
 
 ## 在仓库上启用 Docker Scout
 
-Docker Personal 套餐包含 1 个启用 Scout 的仓库。如果您需要更多仓库，可以升级您的
-Docker 订阅。请参阅[订阅和功能](https://www.docker.com/pricing/)，
-了解每个订阅级别包含多少个启用 Scout 的仓库。
+请参阅[订阅和功能](https://www.docker.com/pricing?ref=Docs&refAction=DocsScoutAnalysis)，了解每个订阅级别包含多少个启用 Scout 的仓库。
 
 在您可以在第三方镜像仓库中的仓库上启用镜像分析之前，
 该镜像仓库必须已为您的 Docker 组织集成了 Docker Scout。
@@ -163,8 +161,8 @@ $ docker scout cves --format only-packages --only-vuln-packages \
 
 有关这些命令及其使用方法的更多信息，请参阅 CLI 参考文档：
 
-- [`docker scout quickview`](/reference/cli/docker/scout/quickview.md)
-- [`docker scout cves`](/reference/cli/docker/scout/cves.md)
+- [`docker scout quickview`](/reference/cli/docker/scout/quickview/)
+- [`docker scout cves`](/reference/cli/docker/scout/cves/)
 
 ## 漏洞严重性评估
 

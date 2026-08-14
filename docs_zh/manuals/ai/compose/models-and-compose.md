@@ -3,15 +3,7 @@ title: 在 Docker Compose 应用程序中定义 AI 模型
 linkTitle: 在 Compose 中使用 AI 模型
 description: 了解如何使用 models 顶级元素在 Docker Compose 应用程序中定义和使用 AI 模型
 keywords: compose, docker compose, models, ai, machine learning, cloud providers, specification
-aliases:
-  - /compose/how-tos/model-runner/
-  - /ai/compose/model-runner/
 weight: 10
-params:
-  sidebar:
-    badge:
-      color: green
-      text: 新增
 ---
 
 {{< summary-bar feature_name="Compose models" >}}
@@ -21,8 +13,7 @@ Compose 允许您将 AI 模型定义为应用程序的核心组件，因此您�
 ## 先决条件
 
 - Docker Compose v2.38 或更高版本
-- 支持 Compose 模型的平台，例如 Docker Model Runner (DMR) 或兼容的云提供商。
-  如果您使用的是 DMR，请参阅[要求](/manuals/ai/model-runner/_index.md#requirements)。
+- 支持 Compose 模型的平台，例如 [Docker Model Runner (DMR)](/manuals/ai/model-runner/_index.md#requirements)。
 
 ## 什么是 Compose 模型？
 
@@ -81,7 +72,7 @@ models:
 - 通过扩展属性 `x-*` 可能还提供特定于平台的选项
 
 > [!提示]
-> 请参阅[常见运行时配置](#common-runtime-configurations)部分中的更多示例。
+> 请参阅[常见运行时配置](#常见运行时配置)部分中的更多示例。
 
 ## 服务模型绑定
 
@@ -171,7 +162,7 @@ Docker Model Runner 将：
 
 ### 云提供商
 
-相同的 Compose 文件可以在支持 Compose 模型的云提供商上运行：
+Compose 模型规范是可移植的。实现了 Compose 规范的平台可以支持 `models` 顶级元素，从而允许同一份 Compose 文件在不同的基础设施上运行。可以使用扩展属性（`x-*`）配置特定于云的行为：
 
 ```yaml
 services:
@@ -189,9 +180,10 @@ models:
       - "cloud.region=us-west-2"
 ```
 
-云提供商可能会：
+平台如何处理模型定义取决于其实现。平台可能会：
+
 - 使用托管 AI 服务而不是在本地运行模型
-- 应用特定于云的优化和扩展
+- 应用特定于平台的优化和扩展
 - 提供额外的监控和日志记录功能
 - 自动处理模型版本控制和更新
 
@@ -353,33 +345,6 @@ models:
     context_size: 2048
     runtime_flags:
       - "--embeddings"          # 嵌入模型必需
-```
-
-## 使用提供者服务的替代配置
-
-> [!重要]
->
-> 此方法已弃用。请改用 [`models` 顶级元素](#basic-model-definition)。
-
-您也可以使用 `provider` 服务类型，它允许声明应用程序所需的平台功能。
-对于 AI 模型，可以使用 `model` 类型来声明模型依赖项。
-
-要定义模型提供者：
-
-```yaml
-services:
-  chat:
-    image: my-chat-app
-    depends_on:
-      - ai_runner
-
-  ai_runner:
-    provider:
-      type: model
-      options:
-        model: ai/smollm2
-        context-size: 1024
-        runtime-flags: "--no-prefill-assistant"
 ```
 
 ## 参考文档

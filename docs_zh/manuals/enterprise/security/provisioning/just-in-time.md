@@ -3,9 +3,9 @@ description: 了解即时配置 (JIT) 如何与您的 SSO 连接配合使用。
 keywords: user provisioning, just-in-time provisioning, JIT, autoprovision, Docker Admin, admin, security
 title: 即时配置 (JIT)
 linkTitle: 即时配置 (JIT)
-weight: 10
+weight: 20
 aliases:
-- /security/for-admins/provisioning/just-in-time/
+  - /security/for-admins/provisioning/just-in-time/
 ---
 
 {{< summary-bar feature_name="SSO" >}}
@@ -27,22 +27,22 @@ aliases:
 
 1. 系统会检查是否存在与用户电子邮件地址关联的 Docker 账户。
 
-    - 如果账户存在：系统会使用现有账户，并在必要时更新用户的全名。
-    - 如果账户不存在：系统会使用基本用户属性（电子邮件、名字和姓氏）创建一个新 Docker 账户。系统会根据用户的电子邮件、姓名和随机数生成唯一的用户名，以确保平台上所有用户名都是唯一的。
+   - 如果账户存在：系统会使用现有账户，并在必要时更新用户的全名。
+   - 如果账户不存在：系统会使用基本用户属性（电子邮件、名字和姓氏）创建一个新 Docker 账户。系统会根据用户的电子邮件、姓名和随机数生成唯一的用户名，以确保平台上所有用户名都是唯一的。
 
 2. 系统会检查是否有待处理的 SSO 组织邀请。
 
-    - 找到邀请：邀请会被自动接受。
-    - 邀请包含特定组：用户会被添加到 SSO 组织中的该组。
+   - 找到邀请：邀请会被自动接受。
+   - 邀请包含特定组：用户会被添加到 SSO 组织中的该组。
 
 3. 系统会验证 IdP 是否在身份验证期间共享了组映射。
 
-    - 提供了组映射：用户会被分配到相关的组织和团队。
-    - 未提供组映射：系统会检查用户是否已经是组织成员。如果不是，用户会被添加到 SSO 连接中配置的默认组织和团队。
+   - 提供了组映射：用户会被分配到相关的组织和团队。
+   - 未提供组映射：系统会检查用户是否已经是组织成员。如果不是，用户会被添加到 SSO 连接中配置的默认组织和团队。
 
 下图展示了启用 JIT 的 SSO 身份验证流程概览：
 
-   ![JIT 配置启用工作流程](../images/jit-enabled-flow.svg)
+![JIT 配置启用工作流程](../images/jit-enabled-flow.svg)
 
 ## 禁用 JIT 配置的 SSO 身份验证
 
@@ -50,8 +50,8 @@ aliases:
 
 1. 系统会检查是否存在与用户电子邮件地址关联的 Docker 账户。
 
-    - 如果账户存在：系统会使用现有账户，并在必要时更新用户的全名。
-    - 如果账户不存在：系统会使用基本用户属性（电子邮件、名字和姓氏）创建一个新 Docker 账户。系统会根据用户的电子邮件、姓名和随机数生成唯一的用户名，以确保平台上所有用户名都是唯一的。
+   - 如果账户存在：系统会使用现有账户，并在必要时更新用户的全名。
+   - 如果账户不存在：系统会使用基本用户属性（电子邮件、名字和姓氏）创建一个新 Docker 账户。系统会根据用户的电子邮件、姓名和随机数生成唯一的用户名，以确保平台上所有用户名都是唯一的。
 
 2. 系统会检查是否有待处理的 SSO 组织邀请。
 
@@ -78,12 +78,12 @@ aliases:
 默认情况下，用户会通过 JIT 进行配置。如果您启用了 SCIM，可以禁用 JIT：
 
 1. 转到 [Docker Home](https://app.docker.com/)，然后从左上角的账户下拉菜单中选择您的组织。
-1. 选择 **Admin Console**，然后选择 **SSO and SCIM**。
+1. 选择 **Identity & auth**，然后选择 **SSO and SCIM**。
 1. 在 **SSO connections** 表中，选择 **Action** 图标，然后选择 **Disable JIT provisioning**。
 1. 选择 **Disable** 以确认。
 
 ## 后续步骤
 
-- 配置 [SCIM 配置](/manuals/enterprise/security/provisioning/scim.md) 以进行高级用户管理。
-- 设置 [组映射](/manuals/enterprise/security/provisioning/group-mapping.md) 以自动将用户分配到团队。
-- 查看 [排查配置问题](/manuals/enterprise/troubleshoot/troubleshoot-provisioning.md)。
+- 配置 [SCIM 配置](/manuals/enterprise/security/provisioning/scim/_index.md) 以进行高级用户管理。
+- 设置 [组映射](/manuals/enterprise/security/provisioning/scim/group-mapping.md) 以自动将用户分配到团队。
+- 查看 [排查配置问题](/manuals/enterprise/security/provisioning/troubleshoot-provisioning.md)。

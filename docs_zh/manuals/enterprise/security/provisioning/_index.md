@@ -7,18 +7,18 @@ weight: 20
 aliases:
 - /security/for-admins/provisioning/
 grid:
-- title: 即时 (JIT) 配置
-  description: 设置首次登录时自动创建用户。适用于设置要求简单的较小团队。
-  icon: schedule
-  link: just-in-time/
-- title: SCIM 配置
-  description: 在您的 IdP 和 Docker 之间启用持续的用户数据同步。适用于大型组织。
-  icon: sync
-  link: scim/
-- title: 组映射
-  description: 使用 IdP 组配置基于角色的访问控制。适用于严格的访问控制要求。
-  icon: group
-  link: group-mapping/
+  - title: SCIM 配置
+    description: 在您的 IdP 和 Docker 之间启用持续的用户数据同步。适用于大型组织。
+    icon: arrow-path
+    link: scim/
+  - title: 即时 (JIT) 配置
+    description: 设置首次登录时自动创建用户。适用于设置要求简单的较小团队。
+    icon: clock
+    link: just-in-time/
+  - title: 自动配置
+    description: 当电子邮件地址与已验证的域名匹配时，将成员关联到组织。
+    icon: user-group
+    link: auto-provisioning/
 ---
 
 {{< summary-bar feature_name="SSO" >}}
@@ -29,13 +29,14 @@ grid:
 
 ## 什么是配置？
 
-配置通过根据身份提供商 (IdP) 的数据自动执行帐户创建、更新和停用等任务来帮助管理用户。有三种用户配置方法，每种方法都为不同的组织需求提供优势：
+配置通过根据身份提供商 (IdP) 的数据自动执行帐户创建、更新和停用等任务来帮助管理用户。有几种用户配置方法，每种方法都为不同的组织需求提供优势：
 
 | 配置方法 | 描述 | Docker 中的默认设置 | 推荐用于 |
 | :--- | :--- | :------------- | :--- |
-| 即时 (JIT) | 在用户首次通过 SSO 登录时自动创建和配置用户帐户 | 默认启用 | 需要最少设置的组织、较小的团队或低安全性环境 |
 | 跨域身份管理系统 (SCIM) | 在您的 IdP 和 Docker 之间持续同步用户数据，确保用户属性保持更新而无需手动干预 | 默认禁用 | 大型组织或用户信息或角色频繁更改的环境 |
 | 组映射 | 将来自您 IdP 的用户组映射到 Docker 内的特定角色和权限，从而实现基于组成员资格的细粒度访问控制 | 默认禁用 | 需要严格访问控制和基于角色的用户管理的组织 |
+| 即时 (JIT) | 在用户首次通过 SSO 登录时自动创建和配置用户帐户 | 默认启用 | 需要最少设置的组织、较小的团队或低安全性环境 |
+| 自动配置 | 当电子邮件地址与已验证的域名匹配时添加用户 | 默认禁用 | 没有 SSO 但需要按域名添加现有 Docker 用户的组织 |
 
 ## 默认配置设置
 

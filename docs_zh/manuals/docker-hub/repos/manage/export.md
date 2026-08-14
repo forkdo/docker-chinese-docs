@@ -2,10 +2,10 @@
 title: 将组织仓库导出为 CSV
 linkTitle: 导出仓库
 description: 了解如何使用 API 导出 Docker Hub 组织下所有仓库的完整列表。
-keywords: docker hub, organization, repositories, export, csv, api, access token
+keywords: docker hub, organization, repositories, export, csv, api, personal access token, pat
 ---
 
-本指南介绍如何从 Docker Hub 组织中导出所有仓库的完整列表，包括私有仓库。您将使用组织访问令牌 (OAT) 对 Docker Hub API 进行身份验证，并将仓库详细信息导出到 CSV 文件，以便用于报告或分析。
+本指南介绍如何从 Docker Hub 组织中导出所有仓库的完整列表，包括私有仓库。您将使用来自管理员账户的[个人访问令牌 (PAT)](/security/access-tokens/) 对 Docker Hub API 进行身份验证，并将仓库详细信息导出到 CSV 文件，以便用于报告或分析。
 
 导出的数据包括仓库名称、可见性状态、最后更新时间、拉取次数和星标数。
 
@@ -18,47 +18,34 @@ keywords: docker hub, organization, repositories, export, csv, api, access token
 - 已安装 `jq` 用于 JSON 解析
 - 电子表格应用程序，用于查看 CSV 文件
 
-## 创建组织访问令牌
+## 创建个人访问令牌
 
-组织访问令牌允许您对 API 请求进行身份验证，而无需交互式登录步骤。
-
-1. 在 [Docker Home](https://app.docker.com) 中导航到您的组织，然后选择 **Admin Console**（管理控制台）。
-
-2. 从侧边栏选择 **Access tokens**（访问令牌）。
-
-3. 选择 **Generate access token**（生成访问令牌）。
-
-4. 配置令牌权限：
-
-   - 在 **Repository permissions**（仓库权限）下，添加您希望令牌访问的每个仓库
-   - 为每个仓库分配至少 **Image Pull**（读取）访问权限
-   - 每个令牌最多可添加 50 个仓库
-
-5. 复制生成的令牌并安全存储。
+从具有该组织仓库访问权限的用户账户[创建个人访问令牌](/security/access-tokens/)。创建令牌时，至少选择 **只读** 访问权限以列出仓库。
 
 > [!重要]
 >
-> 如果您只启用 **Read public repositories**（读取公共仓库），API 将仅返回公共仓库。要在导出中包含私有仓库，您必须明确将它们添加到令牌的仓库权限中。
+> 使用属于该组织成员的用户账户的 PAT。具有所有者角色的用户可以导出所有组织仓库。成员只能导出他们有权访问的仓库。
 
 ## 使用 Docker Hub API 进行身份验证
 
-将您的组织访问令牌交换为 JWT 承载令牌，用于后续的 API 请求。
+将您的个人访问令牌交换为 JWT 承载令牌，用于后续的 API 请求。
 
-1. 将您的组织名称和访问令牌设置为变量：
+1. 将您的 Docker Hub 用户名、组织名称和个人访问令牌设置为变量：
 
    ```bash
-   ORG="<your-org>"
-   OAT="<your_org_access_token>"
+   USERNAME="<your-docker-username>"
+   ORG="<org-name>"
+   PAT="<your_personal_access_token>"
    ```
 
 2. 调用身份验证端点以获取 JWT：
 
    ```bash
    TOKEN=$(
-     curl -s https://hub.docker.com/v2/users/login \
+     curl -s https://hub.docker.com/v2/auth/token \
        -H 'Content-Type: application/json' \
-       -d "{\"username\":\"$ORG\",\"password\":\"$OAT\"}" \
-     | jq -r '.token'
+       -d "{\"identifier\":\"$USERNAME\",\"secret\":\"$PAT\"}" \
+     | jq -r '.access_token'
    )
    ```
 
@@ -128,18 +115,18 @@ $ echo "Rows:" $(wc -l < repos.csv)
 
 ### 仅显示公共仓库
 
-您的组织访问令牌可能只启用了 **Read public repositories**（读取公共仓库），或者缺少对特定私有仓库的权限。
+与您的个人访问令牌关联的 Docker Hub 账户可能无权访问组织中的私有仓库。
 
 要解决此问题：
 
-1. 在 Docker Hub 中导航到组织的访问令牌
-2. 选择您创建的令牌
-3. 将私有仓库添加到令牌的权限中，并至少分配 **Image Pull**（镜像拉取）访问权限
+1. 验证该账户是组织的成员
+2. 检查该账户是否具有适当的权限（所有者或成员角色）
+3. 确保个人访问令牌具有足够的访问权限
 4. 重新生成 JWT 并重试导出
 
 ### API 返回 403 或缺少字段
 
-确保您使用的是来自 `/v2/users/login` 端点的 JWT 作为 `Authorization` 头部中的承载令牌，而不是直接使用组织访问令牌。
+确保您使用的是来自 `/v2/auth/token` 端点的 JWT 作为 `Authorization` 头部中的承载令牌，而不是直接使用个人访问令牌。
 
 验证您的身份验证：
 
@@ -149,12 +136,3 @@ $ curl -s "https://hub.docker.com/v2/namespaces/$ORG/repositories?page_size=1" \
 ```
 
 如果此操作返回错误，请重新运行身份验证步骤以获取新的 JWT。
-
-### 需要访问所有仓库
-
-组织访问令牌的作用域限定为您在创建令牌时选择的特定仓库。要导出所有仓库，您有两个选择：
-
-1. 将所有仓库添加到组织访问令牌中（最多 50 个仓库）
-2. 使用具有整个组织访问权限的管理员账户的个人访问令牌 (PAT)
-
-这两种方法之间的选择取决于您组织的安全策略。

@@ -4,9 +4,8 @@ description: 使用 Traefik 轻松在多个容器或非容器化工作负载之�
 keywords: traefik, container-supported development
 linktitle: 使用 Traefik 进行 HTTP 路由
 summary: 使用 Traefik 轻松在多个容器或非容器化工作负载之间路由流量
-tags:
-- networking
 params:
+  tags: [deployment]
   time: 20 minutes
 ---
 
@@ -48,17 +47,77 @@ Traefik 的一个独特功能是它可以通过多种方式进行配置。当使
    $ docker network create traefik-demo
    ```
 
-2. 使用以下命令启动 Traefik 容器。该命令将 Traefik 暴露在端口 80 上，挂载 Docker 套接字（用于监视容器以更新配置），并传递 `--providers.docker` 参数来配置 Traefik 使用 Docker 提供程序。
+2. 使用以下任一方法启动 Traefik 容器。这些命令将 Traefik 暴露在端口 80 上，挂载 Docker 套接字（用于监视容器以更新配置），并传递 `--providers.docker` 参数来配置 Traefik 使用 Docker 提供程序。
+
+   {{< tabs >}}
+   {{< tab name="使用 Docker Hardened Images" >}}
+
+   Docker Hardened Images (DHI) 版的 Traefik 可在 [Docker Hub](https://hub.docker.com/hardened-images/catalog/dhi/traefik) 上获取。
+   如果尚未进行身份验证，请先运行：
+
+   ```bash
+   $ docker login dhi.io
+   ```
+
+   然后使用 Hardened 镜像启动容器：
 
    ```console
-   $ docker run -d --network=traefik-demo -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock traefik:v3.6.2 --providers.docker
+   $ docker run -d --network=traefik-demo \
+     -p 80:80 \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     dhi.io/traefik:3.6.2 \
+     --providers.docker
    ```
+
+   {{< /tab >}}
+
+   {{< tab name="使用官方镜像" >}}
+
+   你也可以使用 Docker Hub 上的官方镜像：
+
+   ```console
+   $ docker run -d --network=traefik-demo \
+     -p 80:80 \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     traefik:v3.6.2 \
+     --providers.docker
+   ```
+
+   {{< /tab >}}
+   {{< /tabs >}}
 
 3. 现在，启动一个简单的 Nginx 容器，并定义 Traefik 用于配置 HTTP 路由的标签。请注意，Nginx 容器没有暴露任何端口。
 
-   ```console
-   $ docker run -d --network=traefik-demo --label 'traefik.http.routers.nginx.rule=Host(`nginx.localhost`)' nginx
+   {{< tabs >}}
+   {{< tab name="使用 Docker Hardened Images" >}}
+
+   Docker Hardened Images (DHI) 版的 Nginx 可在 [Nginx DHI 镜像](https://hub.docker.com/hardened-images/catalog/dhi/nginx) 上获取。
+   如果尚未进行身份验证，请先运行：
+
+   ```bash
+   $ docker login dhi.io
    ```
+
+   ```console
+   $ docker run -d --network=traefik-demo \
+     --label 'traefik.http.routers.nginx.rule=Host(`nginx.localhost`)' \
+     dhi.io/nginx:1.29.3
+   ```
+
+   {{< /tab >}}
+
+   {{< tab name="使用官方镜像" >}}
+
+   你也可以按如下方式运行官方 Nginx 镜像：
+
+   ```console
+   $ docker run -d --network=traefik-demo \
+     --label 'traefik.http.routers.nginx.rule=Host(`nginx.localhost`)' \
+     nginx:1.29.3
+   ```
+
+   {{< /tab >}}
+   {{< /tabs >}}
 
    容器启动后，在浏览器中打开 [http://nginx.localhost](http://nginx.localhost) 以查看应用（所有基于 Chromium 的浏览器都会在本地路由 \*.localhost 请求，无需额外设置）。
 
@@ -84,6 +143,24 @@ Traefik 的一个独特功能是它可以通过多种方式进行配置。当使
 
 1. 在 `compose.yaml` 文件中，Traefik 使用以下配置：
 
+   {{< tabs >}}
+   {{< tab name="使用 DHI 镜像" >}}
+
+   ```yaml
+   services:
+     proxy:
+       image: dhi.io/traefik:3.6.2
+       command: --providers.docker
+       ports:
+         - 80:80
+       volumes:
+         - /var/run/docker.sock:/var/run/docker.sock
+   ```
+
+   {{< /tab >}}
+
+   {{< tab name="使用官方镜像" >}}
+
    ```yaml
    services:
      proxy:
@@ -95,20 +172,54 @@ Traefik 的一个独特功能是它可以通过多种方式进行配置。当使
          - /var/run/docker.sock:/var/run/docker.sock
    ```
 
+   {{< /tab >}}
+   {{< /tabs >}}
+
    请注意，这与之前使用的配置基本相同，但现在使用的是 Compose 语法。
 
 2. 客户端服务具有以下配置，它将启动容器并为其提供标签以在 localhost 接收请求。
 
-   ```yaml {hl_lines=[7,8]}
+   {{< tabs >}}
+   {{< tab name="使用 Docker Hardened Images" >}}
+
+   Docker Hardened Images (DHI) 版的 Nginx 可在 [Nginx DHI 镜像](https://hub.docker.com/hardened-images/catalog/dhi/nginx) 上获取。
+
+   如果尚未进行身份验证，请先运行：
+
+   ```bash
+   $ docker login dhi.io
+   ```
+
+   你可以按如下所示将其作为基础镜像使用：
+
+   ```yaml
    services:
      # …
      client:
-       image: nginx:alpine
+       image: dhi.io/nginx:1.29.3-alpine3.21
        volumes:
          - "./client:/usr/share/nginx/html"
        labels:
          traefik.http.routers.client.rule: "Host(`localhost`)"
    ```
+
+   {{< /tab >}}
+
+   {{< tab name="使用官方镜像" >}}
+
+   ```yaml
+   services:
+     # …
+     client:
+       image: nginx:1.29.3-alpine3.22
+       volumes:
+         - "./client:/usr/share/nginx/html"
+       labels:
+         traefik.http.routers.client.rule: "Host(`localhost`)"
+   ```
+
+   {{< /tab >}}
+   {{< /tabs >}}
 
 3. API 服务具有类似的配置，但你会注意到路由规则有两个条件 - 主机必须是 “localhost” 并且 URL 路径必须具有 “/api” 前缀。由于此规则更具体，Traefik 将首先评估它，而不是客户端规则。
 
@@ -139,7 +250,7 @@ Traefik 的一个独特功能是它可以通过多种方式进行配置。当使
 
 5. 在启动堆栈之前，如果 Nginx 容器仍在运行，请停止它。
 
-就是这样。现在，你只需要使用 `docker compose up` 启动 Compose 堆栈，所有服务和应用都将准备好进行开发。
+   就是这样。现在，你只需要使用 `docker compose up` 启动 Compose 堆栈，所有服务和应用都将准备好进行开发。
 
 ## 将流量发送到非容器化工作负载
 
@@ -177,18 +288,41 @@ http:
 1. 配置文件被挂载到 Traefik 容器中（确切的目标路径由你决定）
 2. `command` 已更新以添加文件提供程序并指向配置文件的位置
 
-```yaml
-services:
-  proxy:
-    image: traefik:v3.6.2
-    command: --providers.docker --providers.file.filename=/config/traefik-config.yaml --api.insecure
-    ports:
-      - 80:80
-      - 8080:8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./dev/traefik-config.yaml:/config/traefik-config.yaml
-```
+  {{< tabs >}}
+  {{< tab name="使用 DHI 镜像" >}}
+
+  ```yaml
+  services:
+    proxy:
+      image: dhi.io/traefik:3.6.2
+      command: --providers.docker --providers.file.filename=/config/traefik-config.yaml --api.insecure
+      ports:
+        - 80:80
+        - 8080:8080
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./dev/traefik-config.yaml:/config/traefik-config.yaml
+  ```
+
+  {{< /tab >}}
+
+  {{< tab name="使用官方镜像" >}}
+
+  ```yaml
+  services:
+    proxy:
+      image: traefik:v3.6.2
+      command: --providers.docker --providers.file.filename=/config/traefik-config.yaml --api.insecure
+      ports:
+        - 80:80
+        - 8080:8080
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./dev/traefik-config.yaml:/config/traefik-config.yaml
+  ```
+
+  {{< /tab >}}
+  {{< /tabs >}}
 
 ### 启动示例应用
 

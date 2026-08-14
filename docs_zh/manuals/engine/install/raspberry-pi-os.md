@@ -7,7 +7,7 @@ weight: 50
 toc_max: 4
 aliases:
 - /engine/installation/linux/raspbian/
-- /engine/install/raspbian/
+- /engine/raspbian/
 download-url-base: https://download.docker.com/linux/raspbian
 ---
 
@@ -176,13 +176,13 @@ $ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; 
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -236,13 +236,13 @@ $ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; 
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker

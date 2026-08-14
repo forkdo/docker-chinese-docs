@@ -37,3 +37,5 @@ weight: 30
    此命令将标记为 `v1.0` 的镜像推送到 `my-namespace/my-repo` 仓库。
 
 3. 在 Docker Hub 上验证镜像。
+
+   登录 [Docker Hub](https://hub.docker.com) 并导航到您的仓库（本例中为 `my-namespace/my-repo`）。选择 **Tags** 标签，确认您的标签（本例中为 `v1.0`）出现在列表中。

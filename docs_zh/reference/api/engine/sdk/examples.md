@@ -33,6 +33,7 @@ package main
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/api/pkg/stdcopy"
@@ -42,15 +43,15 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	reader, err := apiClient.ImagePull(ctx, "docker.io/library/alpine", client.ImagePullOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer reader.Close()
@@ -67,25 +68,25 @@ func main() {
 		Image: "alpine",
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	if _, err := apiClient.ContainerStart(ctx, resp.ID, client.ContainerStartOptions{}); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	wait := apiClient.ContainerWait(ctx, resp.ID, client.ContainerWaitOptions{})
 	select {
 	case err := <-wait.Error:
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 	case <-wait.Result:
 	}
 
 	out, err := apiClient.ContainerLogs(ctx, resp.ID, client.ContainerLogsOptions{ShowStdout: true})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	stdcopy.StdCopy(os.Stdout, os.Stderr, out)
@@ -144,6 +145,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/client"
@@ -151,9 +153,9 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
@@ -161,7 +163,7 @@ func main() {
 
 	out, err := apiClient.ImagePull(ctx, imageName, client.ImagePullOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer out.Close()
 	io.Copy(os.Stdout, out)
@@ -170,11 +172,11 @@ func main() {
 		Image: imageName,
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	if _, err := apiClient.ContainerStart(ctx, resp.ID, client.ContainerStartOptions{}); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	fmt.Println(resp.ID)
@@ -219,21 +221,22 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	containers, err := apiClient.ContainerList(ctx, client.ContainerListOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	for _, container := range containers.Items {
@@ -285,28 +288,29 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	containers, err := apiClient.ContainerList(ctx, client.ContainerListOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	for _, container := range containers.Items {
 		fmt.Print("正在停止容器 ", container.ID[:10], "... ")
 		noWaitTimeout := 0 // 不等待容器正常退出
 		if _, err := apiClient.ContainerStop(ctx, container.ID, client.ContainerStopOptions{Timeout: &noWaitTimeout}); err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 		fmt.Println("成功")
 	}
@@ -355,6 +359,7 @@ package main
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/client"
@@ -362,9 +367,9 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
@@ -372,7 +377,7 @@ func main() {
 	// 将此 ID 替换为实际存在的容器
 	out, err := apiClient.ContainerLogs(ctx, "f1064a8a4c82", options)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	io.Copy(os.Stdout, out)
@@ -417,21 +422,22 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	images, err := apiClient.ImageList(ctx, client.ImageListOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	for _, image := range images.Items {
@@ -478,6 +484,7 @@ package main
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/client"
@@ -485,15 +492,15 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	out, err := apiClient.ImagePull(ctx, "alpine", client.ImagePullOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer out.Close()
@@ -543,36 +550,34 @@ package main
 
 import (
 	"context"
-	"encoding/base64"
-	"encoding/json"
 	"io"
+	"log"
 	"os"
 
+	"github.com/moby/moby/api/pkg/authconfig"
 	"github.com/moby/moby/api/types/registry"
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
-	authConfig := registry.AuthConfig{
+	authStr, err := authconfig.Encode(registry.AuthConfig{
 		Username: "username",
 		Password: "password",
-	}
-	encodedJSON, err := json.Marshal(authConfig)
+	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	authStr := base64.URLEncoding.EncodeToString(encodedJSON)
 
 	out, err := apiClient.ImagePull(ctx, "alpine", client.ImagePullOptions{RegistryAuth: authStr})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer out.Close()
@@ -627,6 +632,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/api/types/container"
 	"github.com/moby/moby/client"
@@ -634,9 +640,9 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
@@ -647,25 +653,25 @@ func main() {
 		Image: "alpine",
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	if _, err := apiClient.ContainerStart(ctx, createResp.ID, client.ContainerStartOptions{}); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	wait := apiClient.ContainerWait(ctx, createResp.ID, client.ContainerWaitOptions{})
 	select {
 	case err := <-wait.Error:
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 	case <-wait.Result:
 	}
 
 	commitResp, err := apiClient.ContainerCommit(ctx, createResp.ID, client.ContainerCommitOptions{Reference: "helloworld"})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	fmt.Println(commitResp.ID)

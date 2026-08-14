@@ -4,9 +4,9 @@ weight: 30
 keywords: concepts, build, images, container, docker desktop
 description: 什么是镜像仓库？这个 Docker 概念将解释什么是镜像仓库，探讨它们的互操作性，并让您与镜像仓库进行交互。
 aliases:
-- /guides/walkthroughs/run-hub-images/
-- /guides/walkthroughs/publish-your-image/
-- /guides/docker-concepts/the-basics/what-is-a-registry/
+  - /guides/walkthroughs/run-hub-images/
+  - /guides/walkthroughs/publish-your-image/
+  - /guides/docker-concepts/the-basics/what-is-a-registry/
 ---
 
 {{< youtube-embed 2WDl10Wv5rs >}}
@@ -29,32 +29,24 @@ _仓库_ 是存储和管理容器镜像的集中位置，而 _仓库_ 是仓库�
 
 以下图表显示了仓库、仓库和镜像之间的关系。
 
-```goat {class="text-sm"}
-+---------------------------------------+
-|               仓库                    |
-|---------------------------------------|
-|                                       |
-|    +-----------------------------+    |
-|    |        仓库 A               |    |
-|    |-----------------------------|    |
-|    |   镜像: project-a:v1.0      |    |
-|    |   镜像: project-a:v2.0      |    |
-|    +-----------------------------+    |
-|                                       |
-|    +-----------------------------+    |
-|    |        仓库 B               |    |
-|    |-----------------------------|    |
-|    |   镜像: project-b:v1.0      |    |
-|    |   镜像: project-b:v1.1      |    |
-|    |   镜像: project-b:v2.0      |    |
-|    +-----------------------------+    |
-|                                       |
-+---------------------------------------+
+```mermaid
+flowchart TB
+  subgraph Registry
+    subgraph A["Repository A"]
+      A1["project-a:v1.0"]
+      A2["project-a:v2.0"]
+    end
+    subgraph B["Repository B"]
+      B1["project-b:v1.0"]
+      B2["project-b:v1.1"]
+      B3["project-b:v2.0"]
+    end
+  end
 ```
 
-> [!NOTE]
+> [!TIP]
 >
-> 您可以使用 Docker Hub 的免费版本创建一个私有仓库和无限数量的公共仓库。有关更多信息，请访问 [Docker Hub 订阅页面](https://www.docker.com/pricing/)。
+> Docker Personal 方案为您提供 1 个私有仓库和无限数量的公共仓库。如需无限私有仓库，请升级到 [Docker Team 方案](https://www.docker.com/pricing?ref=Docs&refAction=DocsConceptsRegistry)。
 
 ## 动手尝试
 
@@ -96,21 +88,21 @@ _仓库_ 是存储和管理容器镜像的集中位置，而 _仓库_ 是仓库�
 
 1. 使用以下命令克隆 GitHub 仓库：
 
-    ```console
-    git clone https://github.com/dockersamples/helloworld-demo-node
-    ```
+   ```console
+   git clone https://github.com/dockersamples/helloworld-demo-node
+   ```
 
 2. 进入新创建的目录。
 
-    ```console
-    cd helloworld-demo-node
-    ```
+   ```console
+   cd helloworld-demo-node
+   ```
 
 3. 运行以下命令构建 Docker 镜像，将 `YOUR_DOCKER_USERNAME` 替换为您的用户名。
 
-    ```console
-    docker build -t <YOUR_DOCKER_USERNAME>/docker-quickstart .
-    ```
+   ```console
+   docker build -t <YOUR_DOCKER_USERNAME>/docker-quickstart .
+   ```
 
     > [!NOTE]
     >
@@ -118,40 +110,40 @@ _仓库_ 是存储和管理容器镜像的集中位置，而 _仓库_ 是仓库�
 
 4. 运行以下命令列出新创建的 Docker 镜像：
 
-    ```console
-    docker images
-    ```
+   ```console
+   docker images
+   ```
 
-    您将看到如下输出：
+   您将看到如下输出：
 
-    ```console
-    REPOSITORY                                 TAG       IMAGE ID       CREATED         SIZE
-    <YOUR_DOCKER_USERNAME>/docker-quickstart   latest    476de364f70e   2 minutes ago   170MB
-    ```
+   ```console
+   REPOSITORY                                 TAG       IMAGE ID       CREATED         SIZE
+   <YOUR_DOCKER_USERNAME>/docker-quickstart   latest    476de364f70e   2 minutes ago   170MB
+   ```
 
 5. 通过运行以下命令启动容器来测试镜像（将用户名替换为您自己的用户名）：
 
-    ```console
-    docker run -d -p 8080:8080 <YOUR_DOCKER_USERNAME>/docker-quickstart 
-    ```
+   ```console
+   docker run -d -p 8080:8080 <YOUR_DOCKER_USERNAME>/docker-quickstart
+   ```
 
-    您可以通过浏览器访问 [http://localhost:8080](http://localhost:8080) 来验证容器是否正常工作。
+   您可以通过浏览器访问 [http://localhost:8080](http://localhost:8080) 来验证容器是否正常工作。
 
 6. 使用 [`docker tag`](/reference/cli/docker/image/tag/) 命令标记 Docker 镜像。Docker 标签允许您为镜像添加标签和版本。
 
-    ```console 
-    docker tag <YOUR_DOCKER_USERNAME>/docker-quickstart <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0 
-    ```
+   ```console
+   docker tag <YOUR_DOCKER_USERNAME>/docker-quickstart <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0
+   ```
 
 7. 最后，是时候使用 [`docker push`](/reference/cli/docker/image/push/) 命令将新构建的镜像推送到您的 Docker Hub 仓库了：
 
-    ```console 
-    docker push <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0
-    ```
+   ```console
+   docker push <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0
+   ```
 
 8. 打开 [Docker Hub](https://hub.docker.com) 并导航到您的仓库。导航到 **Tags** 部分并查看您新推送的镜像。
 
-    ![显示新添加的镜像标签的 Docker Hub 页面截图](images/dockerhub-tags.webp?border=true) 
+    ![显示新添加的镜像标签的 Docker Hub 页面截图](images/dockerhub-tags.webp?border=true)
 
 在这个演练中，您注册了 Docker 账户，创建了您的第一个 Docker Hub 仓库，并构建、标记并将容器镜像推送到您的 Docker Hub 仓库。
 

@@ -8,37 +8,15 @@ Docker 以及由 Docker 专家组成的更广泛的社区为大家整理了多�
 
 ## Docker 培训
 
-通过 [Docker 专家提供的基础到高级培训](https://www.docker.com/trainings/) 来扩展您在 Docker 方面的知识。
-
-您可以方便地找到录播内容，也可以注册直播课程来参与问答。
-
-## 托管实验室
-
-这些自主安排进度的动手实践课使用一个免费的托管环境（[Play with Kubernetes](https://labs.play-with-k8s.com/)），无需任何安装。跟着学习，了解更多关于 Kubernetes 的知识。
-
-* [Kubernetes 实践课](https://training.play-with-kubernetes.com/kubernetes-workshop/)
-
-* 实验室是免费的，但需要使用 Docker ID 注册。
-
-## 自学教程
-
-这些免费的教程由 Docker 社区的专家创建，为使用 Docker 平台提供了分步指导的工作流程。
-
-* **将 Docker 集成到您的 IDE 中**
-    * [Java 开发：Eclipse](https://training.play-with-docker.com/java-debugging-eclipse/)
-    * [Java 开发：IntelliJ](https://training.play-with-docker.com/java-debugging-intellij/)
-    * [Java 开发：Netbeans](https://training.play-with-docker.com/java-debugging-netbeans/)
-    * [使用 Docker 和 Visual Studio Code 对 Node.js 进行实时调试](https://training.play-with-docker.com/nodejs-live-debugging/)
-
-* **Windows 容器**
-    * [Windows 容器设置](https://training.play-with-docker.com/windows-containers-setup/)
-    * [Windows 容器基础](https://training.play-with-docker.com/windows-containers-basics/)
-    * [Windows 容器：多容器应用](https://training.play-with-docker.com/windows-containers-multicontainer/)
+通过 Docker 专家创建的[动手培训课程](/get-started/introduction)，以自主安排进度的学习方式掌握 Docker 和容器化的基础知识。
 
 ## 书籍
 
 如果书籍是您偏好的学习方式，可以看看由 [Docker Captains](https://www.docker.com/community/captains) 撰写的这些书籍。Docker Captain 是 Docker 授予社区中部分成员的荣誉称号，这些成员既是其领域的专家，也致力于与他人分享自己的 Docker 知识。
 
+* [Operational AI with Docker](https://www.amazon.com/Operational-AI-Docker-services-Kubernetes/dp/1807301095)，Ajeet Singh Raina & Harsh Manvar，2026年4月
+* [Docker and Kubernetes Security](https://www.dockersecurity.io/)，Mohammad-Ali A'râbi，2025年10月。在 [buy.DockerSecurity.io](https://buy.dockersecurity.io/) 使用代码 `AHOYCAPTAIN` 可享 PDF 版 5 折优惠。
+* [Docker for React.js Developers](https://www.dockerfrontend.com/)，Kristiyan Velkov。从前端视角学习 Docker，提供适用于现代 React.js 应用程序的实用、可直接用于生产的示例。在 [www.dockerfrontend.com](https://www.dockerfrontend.com/) 或 [www.kristiyanvelkov.com](https://www.kristiyanvelkov.com) 使用代码 `DOCKER30` 可享 **30% 折扣**。
 * [Learn Docker in a Month of Lunches](https://www.manning.com/books/learn-docker-in-a-month-of-lunches), Elton Stoneman。使用代码 `stonemanpc` 可享受 40% 的折扣。
 * [Docker on Windows: From 101 to Production with Docker on Windows](https://www.amazon.com/Docker-Windows-Elton-Stoneman-ebook/dp/B0711Y4J9K/), Elton Stoneman
 * [Learn Kubernetes in a Month of Lunches](https://www.manning.com/books/learn-kubernetes-in-a-month-of-lunches), Elton Stoneman。使用代码 `stonemanpc` 可享受 40% 的折扣。
@@ -61,18 +39,7 @@ Docker 以及由 Docker 专家组成的更广泛的社区为大家整理了多�
 * [Elton Stoneman](https://docker4.net/udemy): Docker for .NET Apps - on Linux and Windows。包含优惠码 `644ABCBC33F474541885`。
 * [Nick Janetakis](https://nickjanetakis.com/courses/) Dive into Docker, Docker for DevOps
 * [Nigel Poulton](https://nigelpoulton.com/video-courses): Kubernetes 101, Getting Started with Kubernetes, Docker and Kubernetes: The Big Picture, Kubernetes Deep Dive, Docker Deep Dive
-* [Arun Gupta](https://www.lynda.com/Docker-tutorials/Docker-Java-developers/576584-2.html): Docker for Java Developers
 * [Ajeet Singh Raina](https://collabnix.com/): Docker and Kubernetes Labs
 * \[法语\] [Luc Juggery](https://www.udemy.com/user/lucjuggery/): Introduction to Kubernetes, The Docker Platform
 
 * 许多课程是收费的
-
-## 社区翻译的文档
-
-> [!NOTE]
->
-> 以下部分包含由社区成员翻译的 Docker 文档子集。
-> 这不是 Docker 文档的官方翻译版本，内容可能不是最新的。
-> 您必须自行斟酌使用社区翻译的文档。
-
-- 由 Docker Captain [Masahito Zembutsu](https://github.com/zembutsu) 翻译的 [Docker 文档日文版子集](https://docs.docker.jp/index.html)。

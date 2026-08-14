@@ -99,12 +99,12 @@ Swarm 中的每个节点都强制执行 TLS 双向身份验证和加密，以保
 * 学习 Swarm 模式[关键概念](key-concepts.md)。
 * 从 [Swarm 模式教程](swarm-tutorial/_index.md)开始。
 * 探索 Swarm 模式 CLI 命令
-  * [swarm init](/reference/cli/docker/swarm/init.md)
-  * [swarm join](/reference/cli/docker/swarm/join.md)
-  * [service create](/reference/cli/docker/service/create.md)
-  * [service inspect](/reference/cli/docker/service/inspect.md)
-  * [service ls](/reference/cli/docker/service/ls.md)
-  * [service rm](/reference/cli/docker/service/rm.md)
-  * [service scale](/reference/cli/docker/service/scale.md)
-  * [service ps](/reference/cli/docker/service/ps.md)
-  * [service update](/reference/cli/docker/service/update.md)
+  * [swarm init](/reference/cli/docker/swarm/init/)
+  * [swarm join](/reference/cli/docker/swarm/join/)
+  * [service create](/reference/cli/docker/service/create/)
+  * [service inspect](/reference/cli/docker/service/inspect/)
+  * [service ls](/reference/cli/docker/service/ls/)
+  * [service rm](/reference/cli/docker/service/rm/)
+  * [service scale](/reference/cli/docker/service/scale/)
+  * [service ps](/reference/cli/docker/service/ps/)
+  * [service update](/reference/cli/docker/service/update/)

@@ -20,7 +20,7 @@ weight: 60
 
 ### 推荐方案：React + MUI，使用我们的主题
 
-Docker Desktop 的 UI 使用 React 和 [MUI](https://mui.com/)（基于 Material UI）编写。这是构建扩展程序唯一官方支持的框架，也是 `init` 命令自动为您配置的框架。使用该框架可为开发者带来显著优势：
+Docker Desktop 的 UI 使用 React 和 [MUI](https://mui.com/)（基于 Material UI 规范）编写。这是构建扩展程序唯一官方支持的框架，也是 `init` 命令自动为您配置的框架。使用该框架可为开发者带来显著优势：
 
 - 您可以使用我们的 [Material UI 主题](https://www.npmjs.com/package/@docker/docker-mui-theme) 自动复现 Docker Desktop 的外观和风格。
 - 未来，我们将发布专门针对此组合的工具和组件（例如自定义 MUI 组件，或用于与 Docker 交互的 React 钩子）。

@@ -31,7 +31,7 @@ $ make push-extension
 $ docker buildx build --push --platform=linux/amd64,linux/arm64 --tag=username/my-extension:0.0.1 .
 ```
 
-然后，您可以使用 [`docker buildx imagetools` 命令](/reference/cli/docker/buildx/imagetools/_index.md) 检查镜像清单，以查看镜像是否可用于两种架构：
+然后，您可以使用 [`docker buildx imagetools` 命令](/reference/cli/docker/buildx/imagetools/) 检查镜像清单，以查看镜像是否可用于两种架构：
 
 ```console
 $ docker buildx imagetools inspect username/my-extension:0.0.1

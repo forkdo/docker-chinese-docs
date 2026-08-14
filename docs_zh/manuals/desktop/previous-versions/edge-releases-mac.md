@@ -4,8 +4,6 @@ keywords: Docker Desktop for Mac, edge, release notes
 title: Docker Desktop for Mac Edge release notes
 toc_min: 1
 toc_max: 2
-aliases:
-- /desktop/mac/release-notes/edge-releases/
 sitemap: false
 ---
 
@@ -454,4 +452,4 @@ Fixed an issue that caused VMs running on older hardware with macOS Catalina to 
 
 - When you start a Docker Compose application and then start a Docker App which has the same name as the Compose application, Docker Desktop displays only one application on the Dashboard. However, when you expand the application, containers that belong to both applications are displayed on the Dashboard.
 
-- When you deploy
+- When you deploy```

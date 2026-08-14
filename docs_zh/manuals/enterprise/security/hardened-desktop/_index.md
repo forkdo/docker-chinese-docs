@@ -11,24 +11,28 @@ aliases:
 grid:
 - title: 设置管理
   description: 了解设置管理如何保护开发者的工作流程。
-  icon: shield_locked
+  icon: shield-check
   link: /enterprise/security/hardened-desktop/settings-management/
 - title: 增强型容器隔离
   description: 了解增强型容器隔离如何防范容器攻击。
-  icon: security
+  icon: shield-check
   link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
 - title: 注册表访问管理
   description: 控制开发者在使用 Docker Desktop 时可以访问的注册表。
-  icon: home_storage
+  icon: server
   link: /enterprise/security/hardened-desktop/registry-access-management/
 - title: 镜像访问管理
   description: 控制开发者可以从 Docker Hub 拉取的镜像。
-  icon: photo_library
+  icon: photo
   link: /enterprise/security/hardened-desktop/image-access-management/
 - title: 气隙容器
   description: 限制容器访问不需要的网络资源。
-  icon: vpn_lock
+  icon: lock-closed
   link: /enterprise/security/hardened-desktop/air-gapped-containers/
+- title: 命名空间访问
+  description: 控制组织成员是否可以将内容推送到其个人命名空间。
+  icon: folder-open
+  link: /enterprise/security/hardened-desktop/namespace-access/
 weight: 60
 ---
 
@@ -53,6 +57,7 @@ weight: 60
 - 注册表访问管理和镜像访问管理可防止访问未经授权的容器注册表和镜像类型，从而减少暴露于恶意载荷的风险
 - 增强型容器隔离在 Linux 用户命名空间中以非 root 权限运行容器，限制恶意容器的影响
 - 气隙容器允许您为容器配置网络限制，防止恶意容器访问组织的内部网络资源
+- 命名空间访问控制组织成员是否可以将内容推送到其个人 Docker Hub 命名空间，防止镜像被意外发布到批准位置之外
 - 设置管理可以锁定 Docker Desktop 配置，以强制执行公司策略并防止开发者有意或无意地引入不安全的设置
 
 ## 后续步骤

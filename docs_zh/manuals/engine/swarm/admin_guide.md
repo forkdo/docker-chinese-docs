@@ -239,5 +239,5 @@ $ docker swarm init --force-new-cluster --advertise-addr node01:2377
 当负载分布令您满意时，您可以将服务缩减回原始规模。您可以使用 `docker service ps` 来评估您的服务在节点之间的当前平衡情况。
 
 另请参阅
-[`docker service scale`](/reference/cli/docker/service/scale.md) 和
-[`docker service ps`](/reference/cli/docker/service/ps.md)。
+[`docker service scale`](/reference/cli/docker/service/scale/) 和
+[`docker service ps`](/reference/cli/docker/service/ps/)。

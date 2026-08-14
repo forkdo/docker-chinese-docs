@@ -76,5 +76,5 @@ This node joined a swarm as a manager.
 
 ## 了解更多
 
-* `swarm join` [命令行参考](/reference/cli/docker/swarm/join.md)
+* `swarm join` [命令行参考](/reference/cli/docker/swarm/join/)
 * [Swarm 模式教程](swarm-tutorial/_index.md)

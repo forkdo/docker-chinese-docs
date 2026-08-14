@@ -5,8 +5,6 @@ toc_max: 3
 title: 安装 Docker Compose 插件
 linkTitle: 插件
 aliases:
-- /compose/compose-plugin/
-- /compose/compose-linux/
 - /compose/install/compose-plugin/
 weight: 10
 ---

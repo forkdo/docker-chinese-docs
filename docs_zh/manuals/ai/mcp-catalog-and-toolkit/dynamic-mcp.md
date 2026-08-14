@@ -1,14 +1,9 @@
 ---
 title: 动态 MCP
-linkTitle: 动态 MCP
+linkTitle: 动态发现
 description: 使用自然语言通过动态 MCP 服务器按需发现并添加 MCP 服务器
 keywords: dynamic mcps, mcp discovery, mcp-find, mcp-add, code-mode, ai agents, model context protocol
-weight: 35
-params:
-  sidebar:
-    badge:
-      color: green
-      text: New
+weight: 40
 ---
 
 Dynamic MCP 使 AI 代理能够在对话过程中按需发现并添加 MCP 服务器，无需手动配置。在启动代理会话之前，无需预先配置每个 MCP 服务器，客户端可以搜索 [MCP 目录](/manuals/ai/mcp-catalog-and-toolkit/catalog.md) 并根据需要添加服务器。
@@ -23,7 +18,7 @@ Dynamic MCP 是早期开发阶段的实验性功能。欢迎您尝试并探索�
 
 ## 工作原理
 
-当您将客户端连接到 MCP 网关时，网关会暴露一小套管理工具，以及您已启用的任何 MCP 服务器。这些管理工具让代理可以与网关的配置进行交互：
+当您将客户端连接到 MCP 网关时，网关会暴露一小套管理工具，以及您当前活动配置文件中的任何 MCP 服务器。这些管理工具让代理可以与网关的配置进行交互：
 
 | 工具             | 描述                                                              |
 | ---------------- | ------------------------------------------------------------------------ |
@@ -36,7 +31,7 @@ Dynamic MCP 是早期开发阶段的实验性功能。欢迎您尝试并探索�
 
 有了这些可用的工具，代理可以搜索目录、添加服务器、处理身份验证，并直接使用新添加的工具，无需重启或手动配置。
 
-动态添加的服务器和工具仅与您*当前的会话相关联*。当您启动新会话时，之前添加的服务器不会自动包含在内。
+动态添加的服务器和工具仅与您*当前的会话相关联*。它们不会被持久化到您的配置文件中。当您启动新会话时，只有那些您通过 [MCP 工具包](/manuals/ai/mcp-catalog-and-toolkit/toolkit.md)或[配置文件](/manuals/ai/mcp-catalog-and-toolkit/profiles.md)添加到配置文件中的服务器才可用。
 
 ## 先决条件
 

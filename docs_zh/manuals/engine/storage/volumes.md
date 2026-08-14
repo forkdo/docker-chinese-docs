@@ -322,7 +322,7 @@ $ docker volume rm nginx-vol
 
 ## 使用只读卷
 
-对于某些开发应用程序，容器需要写入绑定挂载，以便将更改传播回 Docker 宿主机。而在其他情况下，容器只需要读取数据的权限。多个容器可以挂载同一个卷。你可以同时将单个卷以 `read-write` 模式挂载给某些容器，以 `read-only` 模式挂载给其他容器。
+对于某些应用程序，容器需要写入卷。而在其他情况下，容器只需要读取数据的权限。多个容器可以挂载同一个卷。你可以同时将单个卷以 `read-write` 模式挂载给某些容器，以 `read-only` 模式挂载给其他容器。
 
 以下示例修改了前面的示例，通过添加 `ro` 到挂载点后的选项列表（默认为空），将目录挂载为只读卷。如果存在多个选项，可以用逗号分隔。
 
@@ -629,12 +629,14 @@ $ docker run --rm --volumes-from dbstore2 -v $(pwd):/backup ubuntu bash -c "cd /
 
 Docker 数据卷在删除容器后仍会持续存在。需要考虑两种类型的卷：
 
-- 命名卷有来自容器外部的特定源，例如 `awesome:/bar`。
-- 匿名卷没有特定源。因此，删除容器时，可以指示 Docker Engine 守护进程删除它们。
+- 命名卷有特定的名称，例如 `awesome:/bar`，其中 `awesome` 是名称。
+- 匿名卷没有特定的名称。因此，删除容器时，可以指示 Docker Engine 守护进程删除它们。
 
 ### 删除匿名卷
 
 要自动删除匿名卷，请使用 `--rm` 选项。例如，此命令创建一个匿名 `/foo` 卷。删除容器时，Docker Engine 会删除 `/foo` 卷，但不会删除 `awesome` 卷。
+
+`--rm` 选项同时适用于前台容器和分离模式（`-d`）容器。当容器退出时，匿名卷会被清理。
 
 ```console
 $ docker run --rm -v /foo -v awesome:/bar busybox top
@@ -656,5 +658,6 @@ $ docker volume prune
 
 - 了解[绑定挂载](bind-mounts.md)。
 - 了解[tmpfs 挂载](tmpfs.md)。
+- 了解[镜像挂载](image-mounts.md)。
 - 了解[存储驱动](/engine/storage/drivers/)。
 - 了解[第三方卷驱动插件](/engine/extend/legacy_plugins/)。

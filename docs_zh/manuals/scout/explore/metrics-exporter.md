@@ -100,7 +100,7 @@ dckr_pat_...
 
 3. 在 Prometheus 配置文件 `/prometheus/prometheus/prometheus.yml` 中，将第 6 行 `metrics_path` 属性中的 `ORG` 替换为您的 Docker 组织命名空间。
 
-   ```yaml {title="prometheus/prometheus.yml",hl_lines="6",linenos=1}
+   ```yaml {title="prometheus/prometheus.yml",hl_lines="6",linenos=true}
    global:
      scrape_interval: 60s
      scrape_timeout: 40s

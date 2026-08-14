@@ -5,7 +5,7 @@ description: 描述从 Beta 到 GA 的功能生命周期的各个阶段。
 keywords: beta, GA, Early Access,
 params:
   sidebar:
-    group: Products
+    group: Application development
 ---
 
 本文详细介绍了 Docker 的产品发布生命周期以及 Docker 如何定义每个阶段。此外，还提供了有关产品退役流程的信息。功能和产品可能会经历部分或所有这些阶段。

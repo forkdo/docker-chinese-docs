@@ -55,7 +55,7 @@ Docker Scout 中的 PURL 遵循 [purl-spec](https://github.com/package-url/purl-
 
 ### 环境元数据
 
-如果您通过 [Sysdig 集成](/manuals/scout/integrations/environment/sysdig.md) 将 Docker Scout 与您的运行时环境集成，Docker Scout 会收集关于您部署的以下数据点：
+如果您通过 [CLI 集成](/manuals/scout/integrations/environment/cli.md) 将 Docker Scout 与您的运行时环境集成，Docker Scout 会收集关于您部署的以下数据点：
 
 - Kubernetes 命名空间
 - 工作负载名称

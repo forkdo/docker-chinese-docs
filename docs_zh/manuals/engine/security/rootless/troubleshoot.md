@@ -69,8 +69,17 @@ weight: 30
 - 要暴露特权 TCP/UDP 端口（< 1024），请参见[暴露特权端口](./tips.md#exposing-privileged-ports)。
 - `docker inspect` 中显示的 `IPAddress` 在 RootlessKit 的网络命名空间内。
   这意味着如果不使用 `nsenter` 进入该网络命名空间，主机将无法访问该 IP 地址。
-- 主机网络（`docker run --net=host`）也在 RootlessKit 的网络命名空间内。
+- 使用 `docker run -p` 进行端口转发默认不传播源 IP 地址。
+  请参阅 [`docker run -p` 不传播源 IP 地址](#docker-run--p-不传播源-ip-地址) 以启用源 IP 传播。
 - 不支持将 NFS 挂载作为 docker 的 "data-root"。此限制并非 rootless 模式特有。
+- 使用 `--cap-add` 添加的能力仅适用于容器用户命名空间所管辖的资源。它们不授予对主机或其他全局资源的特权。因此，需要在[初始用户命名空间](https://man7.org/linux/man-pages/man7/user_namespaces.7.html)中具备相应能力的操作仍然可能失败。
+
+### 历史限制
+
+#### 直到 Docker Engine v29.5
+
+- 主机网络（`docker run --net=host`）在 RootlessKit 的网络命名空间内。
+  这意味着使用 `--net=host` 的容器监听的端口无法从真实的主机网络命名空间访问。
 
 ## 问题排查
 
@@ -211,14 +220,18 @@ Rootless 模式下的网络通过 RootlessKit 中的网络和端口驱动程序�
 如果您遇到与网络相关的意外行为或性能问题，请查看下表，其中显示了
 RootlessKit 支持的配置及其比较：
 
-| 网络驱动       | 端口驱动       | 网络吞吐量 | 端口吞吐量 | 源 IP 传播 | 无需 SUID | 备注                                                                         |
-| -------------- | -------------- | ---------- | ---------- | ---------- | --------- | ---------------------------------------------------------------------------- |
-| `slirp4netns`  | `builtin`      | 慢         | 快 ✅       | ❌          | ✅         | 典型设置中的默认选项                                                         |
-| `vpnkit`       | `builtin`      | 慢         | 快 ✅       | ❌          | ✅         | 未安装 `slirp4netns` 时的默认选项                                            |
-| `slirp4netns`  | `slirp4netns`  | 慢         | 慢         | ✅          | ✅         |                                                                              |
-| `pasta`        | `implicit`     | 慢         | 快 ✅       | ✅          | ✅         | 实验性功能；需要 pasta 2023_12_04 或更高版本                                 |
-| `lxc-user-nic` | `builtin`      | 快 ✅       | 快 ✅       | ❌          | ❌         | 实验性功能                                                                   |
-| `bypass4netns` | `bypass4netns` | 快 ✅       | 快 ✅       | ✅          | ✅         | **注意：**由于需要自定义 seccomp 配置文件，尚未集成到 RootlessKit 中         |
+| 网络驱动           | 端口驱动            | 网络吞吐量 | 端口吞吐量 | 源 IP 传播 | 无需 SUID | 备注                                                                         |
+| ------------------ | ------------------- | ---------- | ---------- | ---------- | --------- | ---------------------------------------------------------------------------- |
+| `gvisor-tap-vsock` | `builtin`           | 慢         | 快 ✅       | ✅ (*)      | ✅         | 未安装 slirp4netns 时的默认选项                                              |
+| `slirp4netns`      | `builtin`           | 慢         | 快 ✅       | ✅ (*)      | ✅         | 已安装 slirp4netns 时的默认选项                                              |
+| `vpnkit`           | `builtin`           | 慢         | 快 ✅       | ✅ (*)      | ✅         | 旧版                                                                         |
+| `gvisor-tap-vsock` | `gvisor-tap-vsock`  | 慢         | 慢         | ❌          | ✅         | 不推荐。请改用 `builtin` 端口驱动。                                          |
+| `slirp4netns`      | `slirp4netns`       | 慢         | 慢         | ✅          | ✅         |                                                                              |
+| `pasta`            | `implicit`          | 慢         | 快 ✅       | ✅          | ✅         | 实验性功能；需要 pasta 2023_12_04 或更高版本                                 |
+| `lxc-user-nic`     | `builtin`           | 快 ✅       | 快 ✅       | ✅ (*)      | ❌         | 实验性功能                                                                   |
+| `bypass4netns`     | `bypass4netns`      | 快 ✅       | 快 ✅       | ✅          | ✅         | **注意：**由于需要自定义 seccomp 配置文件，尚未集成到 RootlessKit 中         |
+
+(*) 自 RootlessKit v3.0 起适用。还需要禁用 `userland-proxy`。
 
 有关排查特定网络问题的信息，请参见：
 
@@ -264,36 +277,96 @@ $ cat /proc/sys/net/ipv4/ping_group_range
 
 #### `--net=host` 不在主机网络命名空间上监听端口
 
-这是预期行为，因为守护进程在 RootlessKit 的
-网络命名空间内。请改用 `docker run -p`。
+在 Docker Engine v29.5 之前，这是预期行为，因为守护进程在 RootlessKit 的
+网络命名空间内。请改用 `docker run -p`，或升级到 Docker Engine v29.5 或更高版本。
 
 #### 网络速度慢
 
-如果安装了 slirp4netns v0.4.0 或更高版本，rootless 模式下的 Docker 默认使用 [slirp4netns](https://github.com/rootless-containers/slirp4netns) 作为默认网络栈。
-如果未安装 slirp4netns，Docker 会回退到 [VPNKit](https://github.com/moby/vpnkit)。
-安装 slirp4netns 可能会提高网络吞吐量。
+rootless 模式下的 Docker 使用运行在用户态的 TCP/IP 栈，例如：
+- [slirp4netns](https://github.com/rootless-containers/slirp4netns)（已安装 slirp4netns 时的默认选项）
+- [pasta](https://passt.top/passt/about/)
+- [VPNKit](https://github.com/moby/vpnkit)
+- [gvisor-tap-vsock](https://github.com/containers/gvisor-tap-vsock)（未安装上述任何组件时的默认选项）
 
-有关 RootlessKit 网络驱动程序的更多信息，请参见
-[RootlessKit 文档](https://github.com/rootless-containers/rootlesskit/blob/v2.0.0/docs/network.md)。
+用户态的 TCP/IP 栈通常比内核态的慢，并且性能可能因所使用的网络驱动程序而异。
 
-此外，更改 MTU 值也可能提高吞吐量。
-可以通过创建 `~/.config/systemd/user/docker.service.d/override.conf` 文件并添加以下内容来指定 MTU 值：
+有关更多信息，请参阅 [RootlessKit 文档](https://github.com/rootless-containers/rootlesskit/blob/v3.0.0/docs/network.md)。
+
+##### 变通方案 1：绕过用户态 TCP/IP 栈
+
+使用 `docker run --net=host` 绕过用户态 TCP/IP 栈。这自 Docker Engine v29.5 起适用。
+但是，这要求容器共享主机网络命名空间，出于安全原因可能并不可取。
+
+##### 变通方案 2：禁用用户态 TCP/IP 栈
+
+或者，你可以使用 `lxc-user-nic` 网络驱动程序（实验性）来完全禁用用户态 TCP/IP 栈。
+但是，这需要配置 `/etc/lxc/lxc-usernet` 以启用特权辅助程序。
+
+```bash
+sudo apt-get install -y lxc
+sudo mkdir -p /etc/lxc
+cat <<EOF | sudo tee /etc/lxc/lxc-usernet
+# USERNAME TYPE BRIDGE COUNT
+$USER veth lxcbr0 10
+EOF
+```
+
+另外，请确保 rootful 守护进程未运行，因为其 iptables 规则可能会干扰 `lxc-user-nic` 驱动程序。
+
+```console
+$ systemctl is-active docker.service
+inactive
+
+$ systemctl is-active docker.socket
+inactive
+```
+
+可以通过创建 `~/.config/systemd/user/docker.service.d/override.conf` 文件并添加以下内容来指定网络驱动程序：
 
 ```systemd
 [Service]
-Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_MTU=<INTEGER>"
+Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_NET=lxc-user-nic"
+# 可选：指定 MTU（可能影响吞吐量）
+# Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_MTU=<INTEGER>"
 ```
 
 然后重启守护进程：
-```console
-$ systemctl --user daemon-reload
-$ systemctl --user restart docker
+
+```bash
+systemctl --user daemon-reload
+systemctl --user restart docker
 ```
 
 #### `docker run -p` 不传播源 IP 地址
 
-这是因为 rootless 模式下的 Docker 默认使用 RootlessKit 的 `builtin` 端口
-驱动程序，该驱动程序不支持源 IP 传播。要启用
+{{< tabs >}}
+{{< tab name="RootlessKit v3.0 或更高版本" >}}
+这是因为 Docker Engine 的 `userland-proxy` 与 RootlessKit 的源 IP 传播不兼容。
+
+要禁用 userland-proxy，请将以下配置添加到 `~/.config/docker/daemon.json`：
+
+```json
+{"userland-proxy": false}
+```
+
+然后重启守护进程：
+
+```bash
+systemctl --user restart docker
+```
+
+你可能还需要加载 `br_netfilter` 内核模块：
+
+```bash
+sudo tee /etc/modules-load.d/docker.conf <<EOF >/dev/null
+br_netfilter
+EOF
+
+sudo systemctl restart systemd-modules-load.service
+```
+{{< /tab >}}
+{{< tab name="早期版本" >}}
+这是因为 RootlessKit 的 `builtin` 端口驱动程序在 v3.0 之前不支持源 IP 传播。要启用
 源 IP 传播，您可以：
 
 - 使用 `slirp4netns` RootlessKit 端口驱动程序
@@ -330,11 +403,13 @@ $ systemctl --user restart docker
    $ systemctl --user daemon-reload
    $ systemctl --user restart docker
    ```
+{{< /tab >}}
+{{< /tabs >}}
 
 有关 RootlessKit 网络选项的更多信息，请参见：
 
-- [网络驱动程序](https://github.com/rootless-containers/rootlesskit/blob/v2.0.0/docs/network.md)
-- [端口驱动程序](https://github.com/rootless-containers/rootlesskit/blob/v2.0.0/docs/port.md)
+- [网络驱动程序](https://github.com/rootless-containers/rootlesskit/blob/v3.0.0/docs/network.md)
+- [端口驱动程序](https://github.com/rootless-containers/rootlesskit/blob/v3.0.0/docs/port.md)
 
 ### 调试技巧
 

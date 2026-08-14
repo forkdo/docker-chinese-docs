@@ -8,58 +8,62 @@ params:
   sidebar:
     group: Enterprise
 grid_admins:
-- title: 设置管理
-  description: 了解设置管理如何保护开发者的工作流程。
-  icon: shield_locked
-  link: /enterprise/security/hardened-desktop/settings-management/
-- title: 增强容器隔离
-  description: 了解增强容器隔离如何防止容器攻击。
-  icon: security
-  link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
-- title: 注册表访问管理
-  description: 控制开发者在 Docker Desktop 上可以访问的注册表。
-  icon: home_storage
-  link: /enterprise/security/hardened-desktop/registry-access-management/
-- title: 镜像访问管理
-  description: 控制开发者可以从 Docker Hub 拉取的镜像。
-  icon: photo_library
-  link: /enterprise/security/hardened-desktop/image-access-management/
-- title: 气隙容器
-  description: 限制容器访问不需要的网络资源。
-  icon: vpn_lock
-  link: /enterprise/security/hardened-desktop/air-gapped-containers/
-- title: 强制登录
-  description: 为您的团队和组织成员配置登录。
-  link: /enterprise/security/enforce-sign-in/
-  icon: passkey
-- title: 域名管理
-  description: 识别组织内未被覆盖的用户。
-  link: /enterprise/security/domain-management/
-  icon: person_search
-- title: Docker Scout
-  description: 探索 Docker Scout 如何帮助您创建更安全的软件供应链。
-  icon: query_stats
-  link: /scout/
-- title: SSO
-  description: 了解如何为您的公司或组织配置 SSO。
-  icon: key
-  link: /enterprise/security/single-sign-on/
-- title: SCIM
-  description: 设置 SCIM 以自动配置和取消配置用户。
-  icon: checklist
-  link: /enterprise/security/provisioning/scim/
-- title: 角色和权限
-  description: 为个人分配角色，赋予他们在组织内不同的权限。
-  icon: badge
-  link: /enterprise/security/roles-and-permissions/
-- title: 扩展的私有市场（Beta）
-  description: 了解如何为您的 Docker Desktop 用户配置和设置带有精选扩展列表的私有市场。
-  icon: storefront
-  link: /desktop/extensions/private-marketplace/
-- title: 组织访问令牌
-  description: 创建组织访问令牌作为密码的替代。
-  link: /enterprise/security/access-tokens/
-  icon: password
+  - title: 设置管理
+    description: 了解设置管理如何保护开发者的工作流程。
+    icon: shield-check
+    link: /enterprise/security/hardened-desktop/settings-management/
+  - title: 增强容器隔离
+    description: 了解增强容器隔离如何防止容器攻击。
+    icon: shield-check
+    link: /enterprise/security/hardened-desktop/enhanced-container-isolation/
+  - title: 注册表访问管理
+    description: 控制开发者在 Docker Desktop 上可以访问的注册表。
+    icon: server
+    link: /enterprise/security/hardened-desktop/registry-access-management/
+  - title: 镜像访问管理
+    description: 控制开发者可以从 Docker Hub 拉取的镜像。
+    icon: photo
+    link: /enterprise/security/hardened-desktop/image-access-management/
+  - title: 气隙容器
+    description: 限制容器访问不需要的网络资源。
+    icon: lock-closed
+    link: /enterprise/security/hardened-desktop/air-gapped-containers/
+  - title: 强制登录
+    description: 为您的团队和组织成员配置登录。
+    link: /enterprise/security/enforce-sign-in/
+    icon: finger-print
+  - title: OIDC 连接
+    description: 配置 OpenID Connect 连接，用于自动化的工作负载身份验证。
+    link: /enterprise/security/oidc-connections/
+    icon: link
+  - title: 域名管理
+    description: 识别组织内未被覆盖的用户。
+    link: /enterprise/security/domain-management/
+    icon: magnifying-glass
+  - title: Docker Scout
+    description: 探索 Docker Scout 如何帮助您创建更安全的软件供应链。
+    icon: chart-bar
+    link: /scout/
+  - title: SSO
+    description: 了解如何为您的公司或组织配置 SSO。
+    icon: key
+    link: /enterprise/security/single-sign-on/
+  - title: SCIM
+    description: 设置 SCIM 以自动配置和取消配置用户。
+    icon: clipboard-document-check
+    link: /enterprise/security/provisioning/scim/
+  - title: 角色和权限
+    description: 为个人分配角色，赋予他们在组织内不同的权限。
+    icon: identification
+    link: /enterprise/security/roles-and-permissions/
+  - title: 扩展的私有市场（Beta）
+    description: 了解如何为您的 Docker Desktop 用户配置和设置带有精选扩展列表的私有市场。
+    icon: building-storefront
+    link: /extensions/private-marketplace/
+  - title: 组织访问令牌
+    description: 创建组织访问令牌作为密码的替代。
+    link: /enterprise/security/access-tokens/
+    icon: lock-closed
 ---
 
 Docker 为管理员和开发者提供安全护栏。

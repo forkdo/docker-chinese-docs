@@ -1,7 +1,7 @@
 # Python
 .venv/
 
-build/
+/build/
 docsite/
 translated/
 tmp/

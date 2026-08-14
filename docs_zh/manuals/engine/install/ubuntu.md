@@ -42,8 +42,7 @@ download-url-base: https://download.docker.com/linux/ubuntu
 
 要安装 Docker Engine，您需要以下任一 Ubuntu 版本的 64 位版本：
 
-- Ubuntu Questing 25.10
-- Ubuntu Plucky 25.04
+- Ubuntu Resolute 26.04 (LTS)
 - Ubuntu Noble 24.04 (LTS)
 - Ubuntu Jammy 22.04 (LTS)
 
@@ -66,6 +65,7 @@ s390x 和 ppc64le（ppc64el）架构。
 - `docker-compose`
 - `docker-compose-v2`
 - `docker-doc`
+- `docker-buildx`
 - `podman-docker`
 
 此外，Docker Engine 依赖于 `containerd` 和 `runc`。Docker Engine
@@ -75,7 +75,7 @@ s390x 和 ppc64le（ppc64el）架构。
 运行以下命令卸载所有冲突的软件包：
 
 ```console
-$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc docker-buildx podman-docker containerd runc | cut -f1)
 ```
 
 `apt` 可能会报告您未安装这些软件包中的任何一个。
@@ -121,6 +121,7 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compos
    URIs: {{% param "download-url-base" %}}
    Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
    Components: stable
+   Architectures: $(dpkg --print-architecture)
    Signed-By: /etc/apt/keyrings/docker.asc
    EOF
 
@@ -164,13 +165,13 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compos
 
     > [!NOTE]
     >
-    > 安装后 Docker 服务会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能已禁用此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -227,13 +228,13 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compos
 
     > [!NOTE]
     >
-    > 安装后 Docker 服务会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能已禁用此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker

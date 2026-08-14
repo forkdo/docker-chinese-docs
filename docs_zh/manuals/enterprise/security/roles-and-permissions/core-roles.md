@@ -1,33 +1,32 @@
 ---
-title: 核心角色
-description: 通过组织中的角色来控制对内容、注册表和组织管理的访问权限。
-keywords: members, teams, organization, company, roles, access, docker hub, admin console, security, permissions
+title: 核心角色与权限
+linkTitle: 核心角色
+description: 比较 Member、Editor 和 Owner 在内容、注册表和组织管理方面的权限。
+keywords: core roles, member, editor, owner, permissions, organization, company, docker hub, docker home, security, oidc connections, teams
 aliases:
-- /docker-hub/roles-and-permissions/
-- /security/for-admins/roles-and-permissions/
-- /enterprise/security/roles-and-permissions/
+  - /enterprise/security/roles-and-permissions/
 ---
 
 {{< summary-bar feature_name="General admin" >}}
 
 核心角色是 Docker 内置的、具有预定义权限集的角色。
-本页概述了 Docker 的核心角色以及每个角色的权限。
+本页总结了每个核心角色的权限。
 
 ## 什么是核心角色？
 
 Docker 组织包含三种核心角色：
 
-- **Member（成员）**：非管理角色，具有基本访问权限。成员可以查看组织内的其他成员，并从其有权访问的仓库中拉取镜像。
+- **Member（成员）**：非管理角色，具有基本访问权限。成员可以
+  查看组织内的其他成员，并从其有权访问的仓库中拉取镜像。
 - **Editor（编辑者）**：部分管理权限。编辑者可以创建、编辑和删除仓库，还可以管理仓库的团队权限。
-- **Owner（所有者）**：完全管理权限。所有者可以管理所有组织设置，包括仓库、团队、成员、账单和安全功能。
+- **Owner（所有者）**：完全管理权限。所有者可以管理所有
+  组织设置，包括仓库、团队、成员、账单和安全功能。
 
-> [!NOTE]
->
-> 公司所有者与组织所有者具有相同的组织管理权限，但某些内容和注册表权限公司所有者不具备（例如仓库拉取/推送）。更多信息请参阅 [公司概述](/admin/company/)。
+公司所有者与组织所有者具有相同的组织管理权限，但某些内容和注册表权限公司所有者不具备（例如仓库拉取/推送）。更多信息请参阅 [公司概述](/manuals/admin/company/_index.md)。
 
 ### 内容与注册表权限
 
-这些权限适用于整个组织范围，包括组织命名空间下的所有仓库。
+这些权限适用于整个组织范围。
 
 | 权限                                                | Member | Editor | Owner |
 | :-------------------------------------------------- | :----- | :----- | :---- |
@@ -37,8 +36,10 @@ Docker 组织包含三种核心角色：
 | 创建并发布扩展                                      | ✅     | ✅     | ✅    |
 | 成为已验证、官方或开源发布者                        | ❌     | ❌     | ✅    |
 | 编辑和删除发布者仓库徽标                            | ❌     | ✅     | ✅    |
+| 配置 DVP 分析设置                                   | ❌     | ✅     | ✅    |
 | 以发布者身份查看内容参与度                          | ❌     | ❌     | ✅    |
 | 创建公开和私有仓库                                  | ❌     | ✅     | ✅    |
+| 禁用公开仓库                                        | ❌     | ✅     | ✅    |
 | 编辑和删除仓库                                      | ❌     | ✅     | ✅    |
 | 管理标签                                            | ❌     | ✅     | ✅    |
 | 查看仓库活动                                        | ❌     | ❌     | ✅    |
@@ -46,11 +47,14 @@ Docker 组织包含三种核心角色：
 | 编辑构建设置                                        | ❌     | ❌     | ✅    |
 | 查看团队                                            | ✅     | ✅     | ✅    |
 | 为仓库分配团队权限                                  | ❌     | ✅     | ✅    |
+| 管理 OIDC 连接                                     | ❌     | ✅     | ✅    |
 
-将成员添加到团队时，可以授予超出其组织角色的额外仓库权限：
+您可以向成员授予超出其组织角色的仓库权限：
 
-1. 角色权限：适用于整个组织（member 或 editor）
-2. 团队权限：针对特定仓库的额外权限
+- 角色权限：适用于整个组织（member 或 editor）
+- 团队权限：针对特定仓库的额外权限
+
+要扩展对私有仓库的访问，请配置团队权限。自定义角色可以授予用于管理仓库（创建、编辑、删除）的组织范围权限，但不会授予对私有仓库的拉取访问权限——为此请使用团队权限。
 
 ### 组织管理权限
 
@@ -67,6 +71,7 @@ Docker 组织包含三种核心角色：
 | 导出和报告                                                    | ❌     | ❌     | ✅    |
 | 镜像访问管理                                                  | ❌     | ❌     | ✅    |
 | 注册表访问管理                                                | ❌     | ❌     | ✅    |
+| 命名空间访问控制                                              | ❌     | ❌     | ✅    |
 | 设置单点登录（SSO）和 SCIM                                   | ❌     | ❌     | ✅ \* |
 | 要求 Docker Desktop 登录                                      | ❌     | ❌     | ✅ \* |
 | 管理账单信息（例如账单地址）                                  | ❌     | ❌     | ✅    |
@@ -75,6 +80,12 @@ Docker 组织包含三种核心角色：
 | 管理订阅                                                      | ❌     | ❌     | ✅    |
 | 管理席位                                                      | ❌     | ❌     | ✅    |
 | 升级和降级套餐                                                | ❌     | ❌     | ✅    |
+
+> [!TIP]
+>
+> 如果您需要更精细的访问控制，可以
+> [升级到 Docker Business 套餐](https://www.docker.com/pricing?ref=Docs&refAction=DocsEnterpriseCoreRoles)
+> 以获得自定义角色和高级权限。
 
 _\* 如果不属于公司_
 

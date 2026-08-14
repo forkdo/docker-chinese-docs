@@ -10,9 +10,9 @@ summary: '构建容器镜像既是一门技术也是一门艺术。你既要保�
   '
 layout: series
 params:
-  skill: 初级
+  proficiencyLevel: Beginner
   time: 25 分钟
-  prereq: 无
+  prerequisites: 无
 ---
 
 ## 关于本系列

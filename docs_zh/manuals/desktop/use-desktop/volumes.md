@@ -111,7 +111,7 @@ Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删�
    {{< /tab >}}
    {{< tab name="External cloud storage" >}}
 
-   您必须拥有 [Docker Business 订阅](https://www.docker.com/pricing/)才能导出到外部云提供商。
+   您必须拥有 [Docker Business 订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopVolumes)才能导出到外部云提供商。
 
    选择您的云提供商，然后指定上传到存储的 URL。请参阅以下针对您的云提供商的文档以了解如何获取 URL。
 
@@ -126,7 +126,7 @@ Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删�
 
 ### 计划卷导出
 
-1. 登录 Docker Desktop。您必须登录并拥有付费的 [Docker 订阅](https://www.docker.com/pricing/)才能计划卷导出。
+1. 登录 Docker Desktop。您必须登录并拥有付费的 [Docker 订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopVolumes)才能计划卷导出。
 2. 在 **Volumes** 视图中，选择要导出的卷。
 3. 选择 **Exports**（导出）选项卡。
 4. 选择 **Schedule export**（计划导出）。
@@ -149,7 +149,7 @@ Docker Desktop 中的 **Volumes**（卷）视图允许您创建、检查、删�
    {{< /tab >}}
    {{< tab name="External cloud storage" >}}
 
-   您必须拥有 [Docker Business 订阅](https://www.docker.com/pricing/)才能导出到外部云提供商。
+   您必须拥有 [Docker Business 订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopVolumes)才能导出到外部云提供商。
 
    选择您的云提供商，然后指定上传到存储的 URL。请参阅以下针对您的云提供商的文档以了解如何获取 URL。
 

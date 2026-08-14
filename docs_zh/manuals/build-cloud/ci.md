@@ -22,7 +22,7 @@ aliases:
 
 > [!NOTE]
 >
-> Docker Build Cloud 上的构建有 90 分钟的超时限制。运行时间超过 90 分钟的构建将自动取消。
+> Docker Build Cloud 上的构建有超时限制，该限制取决于您的订阅套餐。运行时间超过限制时长的构建将自动取消。
 
 ## 为 CI/CD 设置凭证
 
@@ -81,19 +81,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@{{% param "login_action_version" %}}
         with:
           username: ${{ vars.DOCKER_ACCOUNT }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
       
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
         with:
           driver: cloud
           endpoint: "${{ vars.DOCKER_ACCOUNT }}/${{ vars.CLOUD_BUILDER_NAME }}" # 例如 "acme/default"
       
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@{{% param "build_push_action_version" %}}
         with:
           tags: "<IMAGE>" # 例如 "acme/my-image:latest"
           # 对于拉取请求，将结果导出到构建缓存。
@@ -109,7 +109,7 @@ jobs:
   ```yaml
   - name: Set up Docker Buildx
     id: builder
-    uses: docker/setup-buildx-action@v3
+    uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
     with:
       driver: cloud
       endpoint: "${{ vars.DOCKER_ACCOUNT }}/${{ vars.CLOUD_BUILDER_NAME }}"
@@ -189,7 +189,7 @@ jobs:
           curl --silent -L --output ~/.docker/cli-plugins/docker-buildx $BUILDX_URL
           chmod a+x ~/.docker/cli-plugins/docker-buildx
 
-      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ --password-stdin
+      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ACCOUNT --password-stdin
       - run: docker buildx create --use --driver cloud "${DOCKER_ACCOUNT}/${CLOUD_BUILDER_NAME}"
 
       - run: |
@@ -212,7 +212,7 @@ jobs:
           curl --silent -L --output ~/.docker/cli-plugins/docker-buildx $BUILDX_URL
           chmod a+x ~/.docker/cli-plugins/docker-buildx
 
-      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ --password-stdin
+      - run: echo "$DOCKER_ACCESS_TOKEN" | docker login --username $DOCKER_ACCOUNT --password-stdin
       - run: docker buildx create --use --driver cloud "${DOCKER_ACCOUNT}/${CLOUD_BUILDER_NAME}"
 
       - run: |

@@ -63,7 +63,7 @@ weight: 10
 - `docker exec -it <container-id> /bin/sh`
 - 访问 Windows 容器时使用 `docker exec -it <container-id> cmd.exe`
 
-更多详情，请参阅 [`docker exec` CLI 参考文档](/reference/cli/docker/exec/)。
+更多详情，请参阅 [`docker exec` CLI 参考文档](/reference/cli/docker/container/exec/)。
 
 如果您已在设置中启用 Docker Debug，或已开启选项卡右侧的**调试模式**，则会显示**调试**选项卡。
 

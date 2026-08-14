@@ -23,8 +23,8 @@ aliases:
 
 有两种方式可以配置这些设置：
 
-- 通过配置文件或 CLI 标志 [配置守护进程](#daemon-configuration)
-- 在系统上设置 [环境变量](#environment-variables)
+- 通过配置文件或 CLI 标志 [配置守护进程](#守护进程配置)
+- 在系统上设置 [环境变量](#环境变量)
 
 直接配置守护进程优先于环境变量。
 
@@ -36,7 +36,7 @@ aliases:
 {
   "proxies": {
     "http-proxy": "http://proxy.example.com:3128",
-    "https-proxy": "https://proxy.example.com:3129",
+    "https-proxy": "http://proxy.example.com:3128",
     "no-proxy": "*.test.example.com,.example.org,127.0.0.0/8"
   }
 }
@@ -83,19 +83,19 @@ Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP �
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
    ```
 
-   如果您使用 HTTPS 代理服务器，请设置 `HTTPS_PROXY` 环境变量：
+   要代理 HTTPS 请求，请设置 `HTTPS_PROXY` 环境变量：
 
    ```systemd
    [Service]
-   Environment="HTTPS_PROXY=https://proxy.example.com:3129"
+   Environment="HTTPS_PROXY=http://proxy.example.com:3128"
    ```
 
-   可以设置多个环境变量；要同时设置非 HTTPS 和 HTTPS 代理：
+   可以设置多个环境变量；要同时设置 HTTP 和 HTTPS 代理：
 
    ```systemd
    [Service]
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
-   Environment="HTTPS_PROXY=https://proxy.example.com:3129"
+   Environment="HTTPS_PROXY=http://proxy.example.com:3128"
    ```
 
    > [!NOTE]
@@ -124,7 +124,7 @@ Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP �
    ```systemd
    [Service]
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
-   Environment="HTTPS_PROXY=https://proxy.example.com:3129"
+   Environment="HTTPS_PROXY=http://proxy.example.com:3128"
    Environment="NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp"
    ```
 
@@ -140,7 +140,7 @@ Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP �
    ```console
    $ sudo systemctl show --property=Environment docker
 
-   Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=https://proxy.example.com:3129 NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp
+   Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=http://proxy.example.com:3128 NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp
    ```
 
 {{< /tab >}}
@@ -159,19 +159,19 @@ Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP �
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
    ```
 
-   如果您使用 HTTPS 代理服务器，请设置 `HTTPS_PROXY` 环境变量：
+   要代理 HTTPS 请求，请设置 `HTTPS_PROXY` 环境变量：
 
    ```systemd
    [Service]
-   Environment="HTTPS_PROXY=https://proxy.example.com:3129"
+   Environment="HTTPS_PROXY=http://proxy.example.com:3128"
    ```
 
-   可以设置多个环境变量；要同时设置非 HTTPS 和 HTTPS 代理：
+   可以设置多个环境变量；要同时设置 HTTP 和 HTTPS 代理：
 
    ```systemd
    [Service]
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
-   Environment="HTTPS_PROXY=https://proxy.example.com:3129"
+   Environment="HTTPS_PROXY=http://proxy.example.com:3128"
    ```
 
    > [!NOTE]
@@ -200,7 +200,7 @@ Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP �
    ```systemd
    [Service]
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
-   Environment="HTTPS_PROXY=https://proxy.example.com:3129"
+   Environment="HTTPS_PROXY=http://proxy.example.com:3128"
    Environment="NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp"
    ```
 
@@ -216,7 +216,7 @@ Docker 守护进程在启动环境中检查以下环境变量，以配置 HTTP �
    ```console
    $ systemctl --user show --property=Environment docker
 
-   Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=https://proxy.example.com:3129 NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp
+   Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=http://proxy.example.com:3128 NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp
    ```
 
 {{< /tab >}}

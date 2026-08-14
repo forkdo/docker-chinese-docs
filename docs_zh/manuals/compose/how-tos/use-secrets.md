@@ -110,6 +110,7 @@ secrets:
 
 ## 资源
 
+- [熟悉 Compose 的信任模型](/manuals/compose/trust-model.md)
 - [Secrets 顶层元素](/reference/compose-file/secrets.md)
 - [服务顶层元素的 Secrets 属性](/reference/compose-file/services.md#secrets)
 - [构建机密信息](https://docs.docker.com/build/building/secrets/)

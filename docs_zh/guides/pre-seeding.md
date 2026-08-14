@@ -4,10 +4,8 @@ linktitle: 预填充数据库
 description: 在开发环境中启动时使用架构和数据预填充数据库
 keywords: 预填充, 数据库, postgres, 容器支持的开发
 summary: 在开发环境中启动时使用架构和数据预填充数据库
-tags:
-- app-dev
-- databases
 params:
+  tags: [databases]
   time: 20 分钟
 ---
 
@@ -46,7 +44,7 @@ params:
 
    ```plaintext
    PostgreSQL Database directory appears to contain a database; Skipping initialization
- 
+
    2024-09-08 09:09:47.136 UTC [1] LOG:  starting PostgreSQL 16.4 (Debian 16.4-1.pgdg120+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
    2024-09-08 09:09:47.137 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
    2024-09-08 09:09:47.137 UTC [1] LOG:  listening on IPv6 address "::", port 5432
@@ -89,7 +87,7 @@ params:
    INSERT INTO users (name, email) VALUES
      ('Alpha', 'alpha@example.com'),
      ('Beta', 'beta@example.com'),
-     ('Gamma', 'gamma@example.com');  
+     ('Gamma', 'gamma@example.com');
    ```
 
    SQL 脚本创建一个名为 `sampledb` 的新数据库，连接到它，并创建一个 `users` 表。该表包括一个自动递增的 `id` 作为主键，一个最大长度为 50 个字符的 `name` 字段，以及一个唯一的、最多 100 个字符的 `email` 字段。
@@ -125,7 +123,7 @@ params:
    sampledb=# \l
                                                 List of databases
    Name    |  Owner   | Encoding |  Collate   |   Ctype    | ICU Locale | Locale Provider |   Access privileges
-   -----------+----------+----------+------------+------------+------------+-----------------+-----------------------
+   -----------+----------+----------+------------+------------+------------+-----------------+--------------------
    postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            |
    sampledb  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            |
    template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            | =c/postgres          +
@@ -140,13 +138,13 @@ params:
    ```console
    sampledb=# SELECT * FROM users;
    id | name  |       email
-   ----+-------+-------------------
+   ----+-------+----------------
     1 | Alpha | alpha@example.com
     2 | Beta  | beta@example.com
     3 | Gamma | gamma@example.com
    (3 rows)
    ```
-  
+
    使用 `\q` 或 `\quit` 退出 Postgres 交互式 shell。
 
 ## 通过绑定挂载 SQL 脚本预填充数据库
@@ -176,7 +174,7 @@ $ docker container stop postgres
     ('Gamma', 'gamma@example.com')
    ON CONFLICT (email) DO NOTHING;
    ```
-   
+
 2. 创建一个名为 `Dockerfile` 的文本文件并复制以下内容。
 
    ```plaintext
@@ -186,10 +184,10 @@ $ docker container stop postgres
    ```
 
    此 Dockerfile 将 `seed.sql` 脚本直接复制到 PostgreSQL 容器的初始化目录中。
-   
+
 
 3. 使用 Docker Compose。
-   
+
    使用 Docker Compose 可以更轻松地管理和部署带有预填充数据库的 PostgreSQL 容器。此 compose.yml 文件定义了一个名为 `db` 的 Postgres 服务，使用最新的 Postgres 镜像，该镜像设置了一个名为 `sampledb` 的数据库，以及一个用户 `postgres` 和密码 `mysecretpassword`。
 
    ```yaml
@@ -210,37 +208,37 @@ $ docker container stop postgres
 
    volumes:
      data_sql:
-    ```
-  
-    它将主机上的端口 `5432` 映射到容器的 `5432`，让您可以从容器外部访问 Postgres 数据库。它还定义了 `data_sql` 用于持久化数据库数据，确保在容器停止时数据不会丢失。
+   ```
 
-    需要注意的是，到主机的端口映射仅在您想从非容器化程序连接到数据库时才需要。如果您将连接到 DB 的服务容器化，则应通过自定义桥接网络连接到数据库。
+   它将主机上的端口 `5432` 映射到容器的 `5432`，让您可以从容器外部访问 Postgres 数据库。它还定义了 `data_sql` 用于持久化数据库数据，确保在容器停止时数据不会丢失。
+
+   需要注意的是，到主机的端口映射仅在您想从非容器化程序连接到数据库时才需要。如果您将连接到 DB 的服务容器化，则应通过自定义桥接网络连接到数据库。
 
 4. 启动 Compose 服务。
 
-    假设您已将 `seed.sql` 文件与 Dockerfile 放在同一目录中，请执行以下命令：
+   假设您已将 `seed.sql` 文件与 Dockerfile 放在同一目录中，请执行以下命令：
 
-    ```console
-    $ docker compose up -d --build
-    ```
+   ```console
+   $ docker compose up -d --build
+   ```
 
 5. 现在是时候验证 `users` 表是否已填充数据了。
 
-    ```console
-    $ docker exec -it my_postgres_db psql -h localhost -U postgres sampledb
-    ```
+   ```console
+   $ docker exec -it my_postgres_db psql -h localhost -U postgres sampledb
+   ```
 
-    ```sql 
-    sampledb=# SELECT * FROM users;
-      id | name  |       email
-    ----+-------+-------------------
-       1 | Alpha | alpha@example.com
-       2 | Beta  | beta@example.com
-       3 | Gamma | gamma@example.com
-     (3 rows)
+   ```sql
+   sampledb=# SELECT * FROM users;
+     id | name  |       email
+   ----+-------+----------------
+      1 | Alpha | alpha@example.com
+      2 | Beta  | beta@example.com
+      3 | Gamma | gamma@example.com
+    (3 rows)
 
-    sampledb=#
-    ```
+   sampledb=#
+   ```
 
 
 ## 使用 JavaScript 代码预填充数据库
@@ -313,31 +311,31 @@ $ docker container stop postgres
 
 3. 启动填充过程
 
-    ```console
-    $ node seed.js
-    ```
+   ```console
+   $ node seed.js
+   ```
 
-    您应该看到以下命令：
+   您应该看到以下命令：
 
-    ```plaintext
-    Database seeded successfully!
-    ```
+   ```plaintext
+   Database seeded successfully!
+   ```
 
 4. 验证数据库是否正确填充：
 
-    ```console
-    $ docker exec -it postgres psql -h localhost -U postgres sampledb
-    ```
+   ```console
+   $ docker exec -it postgres psql -h localhost -U postgres sampledb
+   ```
 
-    ```console
-    sampledb=# SELECT * FROM todos;
-    id |      task      | completed
-    ----+----------------+-----------
-    1 | Watch netflix  | f
-    2 | Finish podcast | f
-    3 | Pick up kid    | f
-    (3 rows)  
-    ```
+   ```console
+   sampledb=# SELECT * FROM todos;
+   id |      task      | completed
+   ----+----------------+--------
+   1 | Watch netflix  | f
+   2 | Finish podcast | f
+   3 | Pick up kid    | f
+   (3 rows)
+   ```
 
 ## 总结
 

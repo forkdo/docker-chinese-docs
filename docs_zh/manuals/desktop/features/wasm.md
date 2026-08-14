@@ -17,7 +17,7 @@ params:
 
 > [!IMPORTANT]
 >
-> Wasm 工作负载将在未来的 Docker Desktop 版本中被弃用并移除。目前不再进行积极维护。
+> Wasm 工作负载已被弃用，并将在未来的 Docker Desktop 版本中被移除。此功能不再进行积极维护。
 
 WebAssembly (Wasm) 是 Linux 和 Windows 容器的一种快速、轻量级的替代方案。使用 Docker Desktop，您现在可以与传统容器并行运行 Wasm 工作负载。
 

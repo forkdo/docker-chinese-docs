@@ -21,7 +21,7 @@ title: 在 Swarm 模式下运行 Docker Engine
 
 当您运行创建 swarm 的命令时，Docker Engine 会开始以 Swarm 模式运行。
 
-运行 [`docker swarm init`](/reference/cli/docker/swarm/init.md) 在当前节点上创建单节点 swarm。引擎按如下方式设置 swarm：
+运行 [`docker swarm init`](/reference/cli/docker/swarm/init/) 在当前节点上创建单节点 swarm。引擎按如下方式设置 swarm：
 
 * 将当前节点切换到 Swarm 模式。
 * 创建一个名为 `default` 的 swarm。
@@ -84,7 +84,7 @@ $ docker swarm init --default-addr-pool 10.20.0.0/16 --default-addr-pool 10.30.0
 
 有关更多信息，请参考以下页面：
 - [Swarm 网络](./networking.md) 了解更多关于默认地址池使用的信息
-- `docker swarm init` [CLI 参考](/reference/cli/docker/swarm/init.md) 了解更多关于 `--default-addr-pool` 标志的详细信息。
+- `docker swarm init` [CLI 参考](/reference/cli/docker/swarm/init/) 了解更多关于 `--default-addr-pool` 标志的详细信息。
 
 ### 配置通告地址
 
@@ -98,7 +98,7 @@ $ docker swarm init --advertise-addr <MANAGER-IP>
 
 如果其他节点到达第一个管理器节点的地址与管理器看到的自身地址不同，也必须指定 `--advertise-addr`。例如，在跨越不同区域的云设置中，主机既有用于区域内访问的内部地址，也有用于从该区域外部访问的外部地址。在这种情况下，请使用 `--advertise-addr` 指定外部地址，以便该节点可以将该信息传播给随后连接到它的其他节点。
 
-有关通告地址的更多详细信息，请参阅 `docker swarm init` [CLI 参考](/reference/cli/docker/swarm/init.md)。
+有关通告地址的更多详细信息，请参阅 `docker swarm init` [CLI 参考](/reference/cli/docker/swarm/init/)。
 
 ### 查看加入命令或更新 swarm 加入令牌
 
@@ -163,5 +163,5 @@ To add a worker to this swarm, run the following command:
 ## 了解更多
 
 * [将节点加入 swarm](join-nodes.md)
-* `swarm init` [命令行参考](/reference/cli/docker/swarm/init.md)
+* `swarm init` [命令行参考](/reference/cli/docker/swarm/init/)
 * [Swarm 模式教程](swarm-tutorial/_index.md)

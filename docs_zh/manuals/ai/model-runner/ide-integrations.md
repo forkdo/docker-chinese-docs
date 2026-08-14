@@ -2,7 +2,7 @@
 title: IDE 与工具集成
 description: 配置流行的 AI 编程助手和工具，将 Docker Model Runner 用作其后端。
 weight: 40
-keywords: Docker, ai, model runner, cline, continue, cursor, vscode, ide, integration, openai, ollama
+keywords: Docker, ai, model runner, cline, continue, cursor, vscode, ide, integration, openai, ollama, claude, anthropic, claude-code
 ---
 
 Docker Model Runner (DMR) 可以作为流行的 AI 编程助手和开发工具的本地后端。本指南介绍了如何配置常用工具以使用在 DMR 中运行的模型。
@@ -22,6 +22,17 @@ Docker Model Runner (DMR) 可以作为流行的 AI 编程助手和开发工具�
    ```console
    $ docker model pull ai/qwen2.5-coder
    ```
+
+> [!TIP]
+>
+> 许多模型（例如 `gpt-oss`）的默认上下文大小为 4,096 个 token，这对于编程任务而言较为受限。
+> 您可以将其重新打包为更大的上下文窗口：
+>
+> ```console
+> $ docker model pull gpt-oss
+> $ docker model package --from ai/gpt-oss --context-size 32000 gpt-oss:32k
+> ```
+> 此外，`ai/glm-4.7-flash`、`ai/qwen2.5-coder`、`ai/devstral-small-2` 等模型默认就带有 128K 上下文，无需重新打包即可使用。
 
 ## Cline (VS Code)
 
@@ -221,6 +232,78 @@ response = llm.complete("Write a hello world function")
 print(response.text)
 ```
 
+## OpenCode
+
+[OpenCode](https://opencode.ai/) 是一款开源编程助手，专为直接集成到开发者的工作流而设计。它支持多种模型提供商，并提供了灵活的配置系统，便于在它们之间切换。
+
+请参阅[在 Docker Model Runner 中使用 OpenCode](../../../guides/opencode-model-runner.md)，
+获取一个聚焦于实际任务的指南，其中逐步讲解模型设置、配置和故障排除。
+
+### 配置
+
+1. 安装 OpenCode（参见 [文档](https://opencode.ai/docs/#install)）
+2. 在您的 OpenCode 配置中引用 DMR，可以全局配置在 `~/.config/opencode/opencode.json`，也可以在项目根目录下使用 `opencode.json` 文件进行项目级配置
+   ```json
+   {
+     "$schema": "https://opencode.ai/config.json",
+     "provider": {
+       "dmr": {
+         "npm": "@ai-sdk/openai-compatible",
+         "name": "Docker Model Runner",
+         "options": {
+           "baseURL": "http://localhost:12434/v1"
+         },
+         "models": {
+           "ai/qwen2.5-coder": {
+             "name": "ai/qwen2.5-coder"
+           },
+           "ai/llama3.2": {
+             "name": "ai/llama3.2"
+           }
+         }
+       }
+     }
+   }
+   ```
+3. 在 OpenCode 中选择您想要的模型
+
+您可以在[这篇 Docker 博客文章](https://www.docker.com/blog/opencode-docker-model-runner-private-ai-coding/)中了解更多详情。
+
+## Claude Code
+
+[Claude Code](https://claude.com/product/claude-code) 是 [Anthropic](https://www.anthropic.com/) 的命令行智能体编程工具。它运行在您的终端中，理解您的代码库，并通过自然语言命令执行日常任务、解释复杂代码以及处理 Git 工作流。
+
+请参阅[在 Docker Model Runner 中使用 Claude Code](../../../guides/claude-code-model-runner.md)，
+获取一个聚焦于实际任务的指南，其中逐步讲解模型设置、配置和请求检查。若要在隔离的 Docker 沙箱中针对本地模型运行 Claude Code，请参阅
+[在 Docker 沙箱中使用 Docker Model Runner 运行 Claude Code](../../../guides/claude-code-sandbox-model-runner.md)。
+
+### 配置
+
+1. 安装 Claude Code（参见 [文档](https://code.claude.com/docs/en/quickstart#step-1-install-claude-code)）
+2. 使用 `ANTHROPIC_BASE_URL` 环境变量将 Claude Code 指向 DMR。在 Mac 或 Linux 上，例如要使用 `gpt-oss:32k` 模型，可以这样做：
+    ```bash
+    ANTHROPIC_BASE_URL=http://localhost:12434 claude --model qwen2.5-coder
+    ```
+    在 Windows（PowerShell）上可以这样操作：
+    ```powershell
+    $env:ANTHROPIC_BASE_URL="http://localhost:12434"
+    claude --model gpt-oss:32k
+    ```
+
+> [!TIP]
+>
+> 为避免每次都设置该变量，可将其添加到您的 shell 配置文件（`~/.bashrc`、`~/.zshrc` 或等效文件）中：
+>
+> ```shell
+> export ANTHROPIC_BASE_URL=http://localhost:12434
+> ```
+
+您可以在[这篇 Docker 博客文章](https://www.docker.com/blog/run-claude-code-locally-docker-model-runner/)中了解更多详情。
+
+> [!NOTE]
+>
+> 尽管本页其他集成使用的是 [OpenAI 兼容 API](/ai/model-runner/api-reference/#openai-compatible-api)，DMR 在此处还暴露了一个 [Anthropic 兼容 API](/ai/model-runner/api-reference/#anthropic-compatible-api)。
+
 ## 常见问题
 
 ### “Connection refused” 错误
@@ -236,6 +319,8 @@ print(response.text)
    ```
 
 3. 检查是否有其他服务正在使用端口 12434。
+
+4. 如果您在 WSL 中运行工具，并希望通过 `localhost` 连接到主机上的 DMR，这可能无法直接生效。将 WSL 配置为使用[镜像网络（mirrored networking）](https://learn.microsoft.com/en-us/windows/wsl/networking#mirrored-mode-networking)可以解决此问题。
 
 ### “Model not found” 错误
 
@@ -268,7 +353,8 @@ print(response.text)
 
 | 用例 | 推荐模型 | 备注 |
 |----------|-------------------|-------|
-| 代码补全 | `ai/qwen2.5-coder` | 针对编程任务进行了优化 |
+| 代码补全 | `ai/qwen3-coder` | 针对编程任务进行了优化，并带有较大的上下文窗口 |
+| 智能体编程 | `ai/devstral-small-2` | 非常契合 Claude Code 和 OpenCode 等工具 |
 | 通用助手 | `ai/llama3.2` | 能力均衡 |
 | 轻量/快速 | `ai/smollm2` | 资源占用低 |
 | 嵌入 (Embeddings) | `ai/all-minilm` | 用于 RAG 和语义搜索 |

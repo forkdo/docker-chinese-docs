@@ -17,13 +17,13 @@ aliases:
 | 方法 | 平台 |
 |:-------|:---------|
 | 注册表项 | 仅限 Windows |
-| 配置配置文件 | 仅限 macOS |
-| `plist` 文件 | 仅限 macOS |
+| 配置配置文件 | 仅限 Mac |
+| `plist` 文件 | 仅限 Mac |
 | `registry.json` | 所有平台 |
 
 > [!TIP]
 >
-> 对于 macOS，配置配置文件提供最高的安全性，因为它们受到 Apple 系统完整性保护 (SIP) 的保护。
+> 对于 Mac，配置配置文件提供最高的安全性，因为它们受到 Apple 系统完整性保护 (SIP) 的保护。
 
 ## Windows：注册表项方法
 
@@ -38,24 +38,22 @@ aliases:
    $ HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Docker\Docker Desktop
    ```
 1. 创建一个多字符串值名称 `allowedOrgs`。
-1. 使用您的组织名称作为字符串数据：
+1. 使用您的组织名称作为字符串数据。您可以添加多个组织：
    - 仅使用小写字母
    - 每个组织单独一行
    - 不要使用空格或逗号作为分隔符
 1. 重启 Docker Desktop。
-1. 验证 Docker Desktop 中是否出现 `Sign in required!` 提示。
-
-> [!IMPORTANT]
->
-> Docker Desktop 4.36 及更高版本支持添加多个组织。
-> 使用 4.35 及更早版本时，添加多个组织会导致登录强制执行静默失败。
+1. 验证 Docker Desktop 中是否出现 **Sign in required!** 提示。
 
 {{< /tab >}}
 {{< tab name="组策略部署" >}}
 
 使用组策略在您的组织中部署注册表项：
 
-1. 创建一个包含所需键结构的注册表脚本。
+1. 创建具有以下结构的注册表脚本：
+   - 路径：`HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Docker\Docker Desktop`
+   - 值名称：`allowedOrgs`（多字符串）
+   - 值数据：您的组织名称，每行一个，仅使用小写字母
 1. 在组策略管理中，创建或编辑一个 GPO。
 1. 导航到 **计算机配置** > **首选项** > **Windows 设置** > **注册表**。
 1. 右键单击 **注册表** > **新建** > **注册表项**。
@@ -71,17 +69,13 @@ aliases:
 {{< /tab >}}
 {{< /tabs >}}
 
-## macOS：配置配置文件方法（推荐）
+## Mac：配置配置文件方法（推荐）
 
-{{< summary-bar feature_name="Config profiles" >}}
-
-配置配置文件为 macOS 提供最安全的强制执行方法，因为它们受到 Apple 系统完整性保护的保护。
+配置配置文件为 Mac 提供最安全的强制执行方法，因为它们受到 Apple 系统完整性保护的保护。
 
 载荷是一个键值对的字典。Docker Desktop 支持以下键：
 
-- `allowedOrgs`：在一个字符串中设置组织列表，每个组织用分号分隔。
-
-在 Docker Desktop 4.48 及更高版本中，还支持以下键：
+- `allowedOrgs`：在一个字符串中设置组织列表，每个组织仅使用小写字母，并以分号分隔。
 
 - `overrideProxyHTTP`：设置必须用于传出 HTTP 请求的 HTTP 代理 URL。
 - `overrideProxyHTTPS`：设置必须用于传出 HTTPS 请求的 HTTP 代理 URL。
@@ -89,7 +83,7 @@ aliases:
 - `overrideProxyPAC`：设置 PAC 文件所在的文件路径。它优先于所选代理上的远程 PAC 文件。
 - `overrideProxyEmbeddedPAC`：设置内存中 PAC 文件的内容。它优先于 `overrideProxyPAC`。
 
-通过配置配置文件覆盖至少一个代理设置将自动锁定这些设置，因为它们由 macOS 管理。
+通过配置配置文件覆盖至少一个代理设置将自动锁定这些设置，因为它们由 Mac 管理。
 
 1. 创建一个名为 `docker.mobileconfig` 的文件，并包含以下内容：
    ```xml
@@ -113,7 +107,7 @@ aliases:
             <key>PayloadDescription</key>
             <string>Configuration profile to manage Docker Desktop settings.</string>
             <key>PayloadOrganization</key>
-            <string>Your Company Name</string>
+            <string>Your company name</string>
             <key>allowedOrgs</key>
             <string>first_org;second_org</string>
             <key>overrideProxyHTTP</key>
@@ -135,13 +129,13 @@ aliases:
       <key>PayloadDescription</key>
       <string>Config profile to enforce Docker Desktop settings for allowed organizations.</string>
       <key>PayloadOrganization</key>
-      <string>Your Company Name</string>
+      <string>Your company name</string>
    </dict>
    </plist>
    ```
 1. 替换占位符：
    - 将 `com.yourcompany.docker.config` 更改为您公司的标识符
-   - 将 `Your Company Name` 替换为您的组织名称
+   - 将 `Your company name` 替换为您的组织名称，确保全部为小写
    - 将 `PayloadUUID` 替换为随机生成的 UUID
    - 使用您的组织名称（用分号分隔）更新 `allowedOrgs` 值
    - 将 `company.proxy:port` 替换为 http/https 代理服务器主机（或 IP 地址）和端口
@@ -161,15 +155,13 @@ aliases:
 </dict>
 ```
 
-## macOS：plist 文件方法
-
-对于 macOS 和 Docker Desktop 4.32 及更高版本，请使用此替代方法。
+## Mac：plist 文件方法
 
 {{< tabs >}}
 {{< tab name="手动创建" >}}
 
 1. 创建文件 `/Library/Application Support/com.docker.docker/desktop.plist`。
-1. 添加此内容，将 `myorg1` 和 `myorg2` 替换为您的组织名称：
+1. 添加此内容，将 `myorg1` 和 `myorg2` 替换为您的组织名称，并确保它们仅使用小写字母：
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -232,7 +224,7 @@ registry.json 方法适用于所有平台，并提供灵活的部署选项。
 
 1. 确保用户是您 Docker 组织的成员。
 1. 在您平台的适当位置创建 `registry.json` 文件。
-1. 添加此内容，将组织名称替换为您自己的：
+1. 添加此内容，将组织名称替换为您自己的，并确保它们仅使用小写字母：
       ```json
       {
          "allowedOrgs": ["myorg1", "myorg2"]
@@ -256,7 +248,7 @@ registry.json 方法适用于所有平台，并提供灵活的部署选项。
 Set-Content /ProgramData/DockerDesktop/registry.json '{"allowedOrgs":["myorg1","myorg2"]}'
 ```
 
-#### macOS
+#### Mac
 
 ```console
 sudo mkdir -p "/Library/Application Support/com.docker.docker"
@@ -282,16 +274,24 @@ echo '{"allowedOrgs":["myorg1","myorg2"]}' | sudo tee /usr/share/docker-desktop/
 Start-Process '.\Docker Desktop Installer.exe' -Wait 'install --allowed-org=myorg'
 
 # 命令提示符
-"Docker Desktop Installer.exe" install --allowed-org=myorg
+"Docker Desktop Installer.exe" install --allowed-org=myorg1
 ```
 
-#### macOS
+> [!NOTE]
+>
+> `--allowed-org` 标志只接受一个组织。要在 Mac 上为多个组织强制登录，请在安装后配置 `registry.json` 文件。
+
+#### Mac
 
 ```console
 sudo hdiutil attach Docker.dmg
 sudo /Volumes/Docker/Docker.app/Contents/MacOS/install --allowed-org=myorg
 sudo hdiutil detach /Volumes/Docker
 ```
+
+> [!NOTE]
+>
+> `--allowed-org` 标志只接受一个组织。要在 Mac 上为多个组织强制登录，请在安装后配置 `registry.json` 文件。
 
 {{< /tab >}}
 {{< /tabs >}}
@@ -301,13 +301,9 @@ sudo hdiutil detach /Volumes/Docker
 当同一系统上存在多种配置方法时，Docker Desktop 使用以下优先级顺序：
 
 1. 注册表项（仅限 Windows）
-2. 配置配置文件（仅限 macOS）
-3. plist 文件（仅限 macOS）
-4. registry.json 文件
-
-> [!IMPORTANT]
->
-> Docker Desktop 4.36 及更高版本支持在单个配置中指定多个组织。早期版本（4.35 及以下）在指定多个组织时会静默失败。
+1. 配置配置文件（仅限 Mac）
+1. plist 文件（仅限 Mac）
+1. registry.json 文件
 
 ## 故障排除登录强制执行
 

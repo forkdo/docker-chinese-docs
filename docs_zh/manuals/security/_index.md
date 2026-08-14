@@ -11,39 +11,39 @@ grid_developers:
 - title: 设置双因素认证
   description: 为您的 Docker 账户添加额外的身份验证层。
   link: /security/2fa/
-  icon: phonelink_lock
+  icon: device-phone-mobile
 - title: 管理访问令牌
   description: 创建个人访问令牌作为密码的替代方案。
-  icon: password
+  icon: lock-closed
   link: /security/access-tokens/
 - title: 静态漏洞扫描
   description: 对您的 Docker 镜像自动执行一次性漏洞扫描。
-  icon: image_search
+  icon: magnifying-glass
   link: /docker-hub/repos/manage/vulnerability-scanning/
 - title: Docker Engine 安全
   description: 了解如何保持 Docker Engine 的安全性。
-  icon: security
+  icon: shield-check
   link: /engine/security/
 - title: Docker Compose 中的密钥
   description: 了解如何在 Docker Compose 中使用密钥。
-  icon: privacy_tip
+  icon: shield-exclamation
   link: /compose/how-tos/use-secrets/
 grid_resources:
 - title: 安全常见问题
   description: 探索常见的安全问题解答。
-  icon: help
+  icon: question-mark-circle
   link: /faq/security/general/
 - title: 安全最佳实践
   description: 了解您可以采取的提升容器安全性的步骤。
-  icon: category
+  icon: squares-2x2
   link: /develop/security-best-practices/
 - title: 使用 VEX 抑制 CVE
   description: 了解如何抑制在镜像中发现的不适用或已修复的漏洞。
-  icon: query_stats
+  icon: chart-bar
   link: /scout/guides/vex/
 - title: Docker Hardened Images
   description: 了解如何使用 Docker Hardened Images 增强软件供应链安全。
-  icon: encrypted_add_circle
+  icon: lock-closed
   link: /dhi/
 ---
 

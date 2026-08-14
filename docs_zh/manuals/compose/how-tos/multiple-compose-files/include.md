@@ -2,8 +2,6 @@
 description: 如何使用 Docker Compose 的 include 顶级元素
 keywords: compose, docker, include, compose file
 title: Include
-aliases:
-- /compose/multiple-compose-files/include/
 ---
 
 {{< summary-bar feature_name="Compose include" >}}

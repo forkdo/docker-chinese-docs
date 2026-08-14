@@ -84,7 +84,7 @@ Docker Hub 提供各种 Docker 支持并认可的镜像，称为 Docker 可信�
 
 ### 搜索并下载镜像
 
-1. 打开终端并使用 [`docker search`](/reference/cli/docker/search.md) 命令搜索镜像：
+1. 打开终端并使用 [`docker search`](/reference/cli/docker/search/) 命令搜索镜像：
 
    ```console
    docker search docker/welcome-to-docker
@@ -99,7 +99,7 @@ Docker Hub 提供各种 Docker 支持并认可的镜像，称为 Docker 可信�
 
    此输出显示有关 Docker Hub 上可用相关镜像的信息。
 
-2. 使用 [`docker pull`](/reference/cli/docker/image/pull.md) 命令拉取镜像。
+2. 使用 [`docker pull`](/reference/cli/docker/image/pull/) 命令拉取镜像。
 
    ```console
    docker pull docker/welcome-to-docker
@@ -127,7 +127,7 @@ Docker Hub 提供各种 Docker 支持并认可的镜像，称为 Docker 可信�
 
 ### 了解镜像
 
-1. 使用 [`docker image ls`](/reference/cli/docker/image/ls.md) 命令列出你下载的镜像：
+1. 使用 [`docker image ls`](/reference/cli/docker/image/ls/) 命令列出你下载的镜像：
 
    ```console
    docker image ls
@@ -146,7 +146,7 @@ Docker Hub 提供各种 Docker 支持并认可的镜像，称为 Docker 可信�
    >
    > 此处显示的镜像大小反映的是镜像的未压缩大小，而不是各层的下载大小。
 
-2. 使用 [`docker image history`](/reference/cli/docker/image/history.md) 命令列出镜像的层：
+2. 使用 [`docker image history`](/reference/cli/docker/image/history/) 命令列出镜像的层：
 
    ```console
    docker image history docker/welcome-to-docker

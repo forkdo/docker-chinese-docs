@@ -3,7 +3,16 @@ title: 将 Docker Scout 与 SonarQube 集成
 linkTitle: SonarQube
 description: 使用项目中定义的 SonarQube 质量门禁评估镜像
 keywords: scout, supply chain, integration, code quality
+params:
+  sidebar:
+    badge:
+      color: gray
+      text: Deprecated
 ---
+
+> [!IMPORTANT]
+>
+> Docker Scout 的 SonarQube 集成已弃用，并将于 2026 年 9 月 1 日停用。我们将提供迁移指引。有关详细信息，请参阅 [Scout 平台版本说明](/manuals/scout/release-notes/platform.md)。
 
 SonarQube 集成功能使 Docker Scout 能够通过策略评估展示 SonarQube 质量门禁检查，具体位于新的 [SonarQube 质量门禁策略](/manuals/scout/policy/_index.md#sonarqube-quality-gates-policy) 下。
 

@@ -6,11 +6,8 @@ linktitle: 使用 LocalStack 进行 AWS 开发
 summary: '本指南介绍如何使用 Docker 运行 LocalStack，这是一个本地 AWS 云堆栈模拟器。
 
   '
-tags:
-- cloud-services
-languages:
-- js
 params:
+  tags: [databases]
   time: 20 分钟
 ---
 
@@ -111,7 +108,7 @@ LocalStack 是一个云服务模拟器，它在您的笔记本电脑上的单个
 
 现在是将您的应用程序连接到 LocalStack 的时候了。位于 `backend/` 目录中的 `index.js` 文件是后端应用程序的主要入口点。
 
-该代码与 LocalStack 的 S3 服务交互，该服务通过 `S3_ENDPOINT_URL` 环境变量定义的端点访问，对于本地开发通常设置为 `http://localhost:4556`。
+该代码与 LocalStack 的 S3 服务交互，该服务通过 `S3_ENDPOINT_URL` 环境变量定义的端点访问，对于本地开发通常设置为 `http://localhost:4566`。
 
 来自 AWS SDK 的 `S3Client` 被配置为使用此 LocalStack 端点，以及同样来自环境变量的测试凭证（`AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`）。这种设置让应用程序能够在本地模拟的 S3 服务上执行操作，就像与真实的 AWS S3 交互一样，使代码能够灵活适应不同的环境。
 
@@ -263,7 +260,7 @@ LocalStack 是一个云服务模拟器，它在您的笔记本电脑上的单个
          - SERVICES=s3
          - GATEWAY_LISTEN=0.0.0.0:4566
        volumes:
-         - ./localstack:/docker-entrypoint-initaws.d"
+         - ./localstack:/etc/localstack/init/ready.d
 
    volumes:
      mongodbdata:
@@ -304,6 +301,14 @@ LocalStack 是一个云服务模拟器，它在您的笔记本电脑上的单个
    ```
 
    该命令创建一个名为 `mysamplebucket` 的 S3 存储桶。
+
+   > [!TIP]
+   >
+   > 您可以通过在本地 `./localstack` 目录下放置一个 shell 脚本（例如
+   > `init.sh`）来自动化此步骤。请确保该脚本可执行
+   > （`chmod +x ./localstack/init.sh`）。LocalStack 就绪后会运行挂载在
+   > `/etc/localstack/init/ready.d` 中的文件。
+   > 更多详情请参阅 [LocalStack init hooks](https://docs.localstack.cloud/references/init-hooks/)。
 
    打开 [http://localhost:5173](http://localhost:5173) 访问完整的待办事项列表应用程序，并开始将图像上传到 Amazon S3 存储桶。
 

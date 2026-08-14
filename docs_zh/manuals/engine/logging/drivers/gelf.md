@@ -20,7 +20,9 @@ aliases:
 
 ## 使用方法
 
-要将 `gelf` 驱动程序用作默认日志驱动程序，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。该文件位于 Linux 主机上的 `/etc/docker/` 目录，或 Windows Server 上的 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `gelf` 驱动程序用作默认日志驱动程序，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+{{% include "daemon-cfg-desktop.md" %}}
 
 以下示例将日志驱动程序设置为 `gelf`，并设置了 `gelf-address` 选项。
 

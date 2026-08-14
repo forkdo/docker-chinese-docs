@@ -38,6 +38,29 @@ $ docker run -d -p 8080:80 nginx
 >
 > 发布端口时，默认情况下会发布到所有网络接口。这意味着任何到达您机器的流量都可以访问已发布的应用程序。请注意不要发布数据库或任何敏感信息。[在此处了解有关已发布端口的更多信息](/engine/network/#published-ports)。
 
+### 在特定主机 IP 上发布
+
+默认情况下，已发布的端口会监听所有主机接口（`0.0.0.0` / `::`）。您可以通过在发布字符串中先将 IP 放在最前面，从而绑定到单个地址：
+
+```console
+$ docker run -d -p 127.0.0.1:8080:80 nginx
+```
+
+完整形式为 `HOST_IP:HOST_PORT:CONTAINER_PORT`。
+
+- `HOST_IP`：可选。要绑定的主机地址。使用 `127.0.0.1` 可将端口限制在机器本地，或使用特定的接口 IP，以便只有该网卡接受流量。
+- `HOST_PORT` / `CONTAINER_PORT`：含义与 `HOST_PORT:CONTAINER_PORT` 中相同。
+
+在 Compose 中，相同的扩展形式也适用于 `ports` 下：
+
+```yaml
+services:
+  app:
+    image: docker/welcome-to-docker
+    ports:
+      - "127.0.0.1:8080:80"
+```
+
 ### 发布到临时端口
 
 有时，您可能只想发布端口，但并不关心使用哪个主机端口。在这些情况下，您可以让 Docker 为您选择端口。为此，只需省略 `HOST_PORT` 配置。

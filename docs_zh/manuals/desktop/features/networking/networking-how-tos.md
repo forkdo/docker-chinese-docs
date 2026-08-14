@@ -4,19 +4,12 @@ keywords: docker desktop, networking, vpn, proxy, port mapping, dns
 title: 探索 Docker Desktop 上的网络操作指南
 linkTitle: 操作指南
 aliases:
-- /desktop/linux/networking/
-- /docker-for-mac/networking/
-- /mackit/networking/
-- /desktop/mac/networking/
-- /docker-for-win/networking/
-- /docker-for-windows/networking/
-- /desktop/windows/networking/
 - /desktop/networking/
 ---
 
 本页介绍如何配置和使用网络功能、将容器连接到主机服务、在代理或 VPN 后工作以及排查常见问题。
 
-有关 Docker Desktop 如何在容器、虚拟机和主机之间路由网络流量和文件 I/O 的详细信息，请参阅 [网络概述](/manuals/desktop/features/networking/index.md#overview)。
+有关 Docker Desktop 如何在容器、虚拟机和主机之间路由网络流量和文件 I/O 的详细信息，请参阅 [网络概述](/manuals/desktop/features/networking/_index.md#overview)。
 
 ## 核心网络操作指南
 
@@ -68,9 +61,9 @@ $ docker run -d -P --name webserver nginx
 
 或者，您也可以使用 [主机网络](/manuals/engine/network/drivers/host.md#docker-desktop) 让容器直接访问主机的网络堆栈。
 
-有关与 `docker run` 一起使用的发布选项的更多详细信息，请参阅 [run 命令](/reference/cli/docker/container/run.md)。
+有关与 `docker run` 一起使用的发布选项的更多详细信息，请参阅 [run 命令](/reference/cli/docker/container/run/)。
 
-所有入站连接都通过 Docker Desktop 后端进程（Mac 上的 `com.docker.backend`，Windows 上的 `com.docker.backend`，或 Linux 上的 `qemu`），该进程处理到虚拟机的端口转发。有关更多详细信息，请参阅 [暴露端口的工作原理](/manuals/desktop/features/networking/index.md#how-exposed-ports-work)。
+所有入站连接都通过 Docker Desktop 后端进程（Mac 上的 `com.docker.backend`，Windows 上的 `com.docker.backend.exe`，或 Linux 上的 `qemu`），该进程处理到虚拟机的端口转发。有关更多详细信息，请参阅 [暴露端口的工作原理](/manuals/desktop/features/networking/_index.md#how-exposed-ports-work)。
 
 ### 使用 VPN
 
@@ -78,7 +71,7 @@ Docker Desktop 网络在连接到 VPN 时可以工作。
 
 为此，Docker Desktop 会拦截来自容器的流量，并将其注入到主机中，就像它源自 Docker 应用程序一样。
 
-有关此流量如何出现在主机防火墙和端点检测系统中的详细信息，请参阅 [防火墙和端点可见性](/manuals/desktop/features/networking/index.md#firewalls-and-endpoint-visibility.md)。
+有关此流量如何出现在主机防火墙和端点检测系统中的详细信息，请参阅 [防火墙和端点可见性](/manuals/desktop/features/networking/_index.md#firewalls-and-endpoint-visibility)。
 
 ### 使用代理
 
@@ -94,9 +87,9 @@ Docker Desktop 可以使用系统代理或手动配置。
 
 ## Mac 和 Windows 的网络操作指南
 
-使用 Docker Desktop 4.42 及更高版本，您可以控制 Docker 如何处理容器网络和 DNS 解析，以更好地支持各种环境——从仅 IPv4 到双栈和仅 IPv6 系统。这些设置有助于防止因不兼容或配置错误的主机网络导致的超时和连接问题。
+您可以控制 Docker 如何处理容器网络和 DNS 解析，以更好地支持各种环境——从仅 IPv4 到双栈和仅 IPv6 系统。这些设置有助于防止因不兼容或配置错误的主机网络导致的超时和连接问题。
 
-您可以在 Docker Desktop 仪表板设置的 **网络** 选项卡上设置以下设置，或者如果您是管理员，可以通过 [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md#networking) 或 [管理控制台](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 使用设置管理。
+您可以在 Docker Desktop 仪表板设置的 **网络** 选项卡上设置以下设置，或者如果您是管理员，可以通过 [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md#networking) 或 [Docker Home](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md) 使用设置管理。
 
 > [!NOTE]
 >
@@ -163,7 +156,7 @@ services:
 
 ### 更改内部 IP 地址
 
-Docker 使用的内部 IP 地址可以从 **设置** 中更改。更改 IP 后，您需要重置 Kubernetes 集群并离开任何活动的 Swarm。
+Docker 使用的内部 IP 地址可以从 **设置** 中更改。更改 IP 后，您需要重置 Kubernetes 集群并离开任何活跃的 Swarm。
 
 ### 主机上没有 `docker0` 网桥
 

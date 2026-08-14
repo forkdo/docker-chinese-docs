@@ -17,7 +17,9 @@ aliases:
 
 > [!NOTE]
 >
-> Docker Desktop 需要 WSL 2 版本 2.1.5 或更高版本。使用 `wsl --version` 检查您的版本，如有需要使用 `wsl --update` 更新。
+> Docker Desktop 需要 WSL 2 版本 2.1.5 或更高版本。WSL 2 后端的 ECI
+> 需要 WSL 2.6 或更高版本，因为 ECI 依赖至少 6.3.0 版本的 Linux 内核。使用 `wsl --version` 检查您的版本，如有需要使用
+> `wsl --update` 更新。
 
 增强型容器隔离根据您的 Windows 后端配置提供不同的安全级别。
 
@@ -47,7 +49,7 @@ ECI 仅适用于 Linux 容器（Docker Desktop 的默认模式）。不支持原
 Docker Build 保护取决于驱动程序和 Docker Desktop 版本：
 
 | 构建驱动 | 保护 | 版本要求 |
-|:------------|:-----------|:---------------------|
+| :------------ | :----------- | :--------------------- |
 | `docker` (默认) | 受保护 | Docker Desktop 4.30 及以后版本（WSL 2 除外） |
 | `docker` (旧版) | 未受保护 | Docker Desktop 4.30 之前版本 |
 | `docker-container` | 始终受保护 | 所有 Docker Desktop 版本 |
@@ -66,31 +68,24 @@ $ docker buildx create --driver docker-container --use
 $ docker buildx build --network=host .
 ```
 
-## Docker Desktop Kubernetes 未受保护
+## Docker Desktop Kubernetes 在 Kubeadm 模式下未受保护
 
-集成的 Kubernetes 功能无法从 ECI 保护中受益。恶意或特权 Pod 可以破坏 Docker Desktop VM 并绕过安全控制。
+集成 Kubernetes 功能在使用旧版 Kubeadm 配置器时无法从 ECI 保护中受益。恶意或特权 Pod 可以破坏 Docker Desktop VM 并绕过安全控制。
 
 ### 建议
 
-使用 Kubernetes in Docker (KinD) 获得 ECI 保护的 Kubernetes：
-
-```console
-$ kind create cluster
-```
-
-启用 ECI 后，每个 Kubernetes 节点都在 ECI 保护的容器中运行，提供与 Docker Desktop VM 的更强隔离。
+使用更新的 Docker Desktop Kubernetes "KinD" 配置器（参见 [集群配置方法](/manuals/desktop/use-desktop/kubernetes.md#cluster-provisioning-method)）。在该模式下，启用 ECI 后，每个 Kubernetes 节点都在 ECI 保护的容器中运行，提供与 Docker Desktop VM 的更强隔离。KinD 配置器速度也更快，并支持多节点 Kubernetes 集群。
 
 ## 未受保护的容器类型
 
 以下容器类型目前无法从 ECI 保护中受益：
 
 - Docker Extensions：扩展容器在没有 ECI 保护的情况下运行
-- Docker Debug：Docker Debug 容器绕过 ECI 限制
-- Kubernetes pods：使用 Docker Desktop 集成 Kubernetes 时
+- Kubernetes pods：使用旧版 Kubeadm 配置器的 Docker Desktop 集成 Kubernetes 时。
 
 ### 建议
 
-仅使用来自可信来源的扩展，在安全敏感环境中避免使用 Docker Debug。
+在安全敏感环境中仅使用来自可信来源的扩展。
 
 ## 全局命令限制
 
@@ -138,17 +133,6 @@ $ kind create cluster
 $ docker image rm <image>
 $ docker pull <image>
 ```
-
-## 版本兼容性
-
-ECI 功能在不同 Docker Desktop 版本中逐步引入：
-
-- Docker Desktop 4.36 及以后版本：通配符允许列表支持（`"*"`）和改进的派生镜像处理
-- Docker Desktop 4.34 及以后版本：派生镜像支持（`allowDerivedImages`）
-- Docker Desktop 4.30 及以后版本：使用默认驱动的 Docker Build 保护（WSL 2 除外）
-- Docker Desktop 4.13 及以后版本：核心 ECI 功能
-
-要获得最新的功能可用性，请使用最新版本的 Docker Desktop。
 
 ## 生产环境兼容性
 

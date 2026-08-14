@@ -33,6 +33,21 @@ Compose Bridge 还支持通过 Docker Model Runner 使用 LLM 的应用程序。
 
 更多详情，请参阅[使用 Model Runner](use-model-runner.md)。
 
+## 大规模应用组织标准
+
+Compose Bridge 支持自定义转换模板，这让平台团队能够一次性编入组织标准，并在每次将 `compose.yaml`
+文件转换为 Kubernetes 清单或其他格式时一致地应用它们。
+
+开发人员继续编写标准的 Compose 文件。在转换期间，Compose Bridge 运行你的自定义转换，并自动将
+所需的安全上下文、资源限制、标签和网络策略注入到输出清单中——无需开发人员了解或管理这些细节。
+
+当你的需求变化时，在一个地方更新转换模板。每个团队在下一次转换时都会获取这些更改，无需编辑
+各个 Compose 文件。
+
+这种关注点分离让开发人员专注于应用配置，而平台团队通过转换层控制治理并执行策略。
+
+要开始使用，请参阅[自定义 Compose Bridge](/manuals/compose/bridge/customize.md)。
+
 ## 下一步是什么？
 
 - [使用 Compose Bridge](usage.md)

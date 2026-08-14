@@ -16,6 +16,8 @@ Docker Compose 命令行工具的第一个版本发布于 2014 年。它由 Pyth
 
 Docker Compose 命令行工具的第二个版本于 2020 年发布，由 Go 编写，通过 `docker compose` 命令调用。Compose v2 会忽略 `compose.yaml` 文件中顶级的 `version` 元素。
 
+Compose v5 于 2025 年发布，使用相同的 `docker compose` 命令，并且在功能上与 Compose v2 完全相同。它的主要区别在于引入了官方的 [Go SDK](/manuals/compose/compose-sdk.md)。
+
 更多信息，请参阅 [Compose 的历史与开发](/manuals/compose/intro/history.md)。
 
 ### `up`、`run` 和 `start` 有什么区别？
@@ -28,7 +30,7 @@ Docker Compose 命令行工具的第二个版本于 2020 年发布，由 Go 编�
 
 ### 为什么我的服务重新创建或停止需要 10 秒钟？
 
-`docker compose stop` 命令尝试通过发送 `SIGTERM` 信号来停止容器。之后它会等待一个 [默认 10 秒的超时时间](/reference/cli/docker/compose/stop.md)。超时后，一个 `SIGKILL` 信号会被发送到容器以强制终止它。如果你在等待这个超时，那意味着你的容器在接收到 `SIGTERM` 信号时并未正常关闭。
+`docker compose stop` 命令尝试通过发送 `SIGTERM` 信号来停止容器。之后它会等待一个 [默认 10 秒的超时时间](/reference/cli/docker/compose/stop/)。超时后，一个 `SIGKILL` 信号会被发送到容器以强制终止它。如果你在等待这个超时，那意味着你的容器在接收到 `SIGTERM` 信号时并未正常关闭。
 
 关于 [容器中的进程处理信号](https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86) 这个问题，已经有很多相关的文章。
 

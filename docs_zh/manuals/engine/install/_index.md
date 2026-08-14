@@ -28,6 +28,21 @@ aliases:
 - /engine/installation/oracle/
 - /enterprise/supported-platforms/
 - /install/linux/docker-ee/oracle/
+- /ee/docker-ee/sles/
+- /ee/docker-ee/suse/
+- /engine/installation/linux/docker-ce/sles/
+- /engine/installation/linux/docker-ee/sles/
+- /engine/installation/linux/docker-ee/suse/
+- /engine/installation/linux/sles/
+- /engine/installation/linux/SUSE/
+- /engine/installation/linux/suse/
+- /engine/installation/sles/
+- /engine/installation/SUSE/
+- /install/linux/docker-ce/sles/
+- /install/linux/docker-ee/sles/
+- /install/linux/docker-ee/suse/
+- /install/linux/sles/
+- /installation/sles/
 ---
 
 本节介绍如何在 Linux 上安装 Docker Engine，也称为 Docker CE。Docker Engine 也可通过 Docker Desktop 在 Windows、macOS 和 Linux 上使用。有关如何安装 Docker Desktop 的说明，请参阅：[Docker Desktop 概述](/manuals/desktop/_index.md)。
@@ -43,7 +58,6 @@ aliases:
 | [Fedora](fedora.md)                              |       ✅       |       ✅        |              |   ✅    |       |
 | [Raspberry Pi OS (32-bit)](raspberry-pi-os.md)   |                |                 |      ⚠️      |         |       |
 | [RHEL](rhel.md)                                  |       ✅       |       ✅        |              |         |  ✅   |
-| [SLES](sles.md)                                  |                |                 |              |         |  ❌   |
 | [Ubuntu](ubuntu.md)                              |       ✅       |       ✅        |      ✅      |   ✅    |  ✅   |
 | [Binaries](binaries.md)                          |       ✅       |       ✅        |      ✅      |         |       |
 
@@ -80,7 +94,7 @@ Docker Engine 是一个开源项目，由 Moby 项目维护者和社区成员提
 
 ### 许可
 
-在大型企业（员工人数超过 250 人或年收入超过 1000 万美元）中，通过 Docker Desktop 获得的 Docker Engine 的商业使用需要[付费订阅](https://www.docker.com/pricing/)。Apache License, Version 2.0。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
+在大型企业（员工人数超过 250 人或年收入超过 1000 万美元）中，通过 Docker Desktop 获得的 Docker Engine 的商业使用需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsEngineInstall)。Apache License, Version 2.0。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
 
 ## 报告安全问题
 

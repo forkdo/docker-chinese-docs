@@ -19,6 +19,8 @@ weight: 12
 
 ## 管理仓库镜像和镜像索引
 
+可使用以下步骤通过图形用户界面删除一个或多个项目。如需批量删除，请参阅[删除 API 端点](/reference/api/registry/latest/#tag/delete)。
+
 1. 登录 [Docker Hub](https://hub.docker.com)。
 2. 选择 **My Hub** > **Repositories**。
 3. 在列表中，选择一个仓库。
@@ -40,4 +42,4 @@ weight: 12
 
    > [!NOTE]
    >
-   > 如果您想批量删除，可以使用[删除 API 端点](/reference/api/registry/latest/#tag/delete)。
+   > 删除操作可能需要一些时间才能完成。删除过程中可能会出现超时错误。系统会在后台自动重试删除，无需您进行任何操作，项目将被移除。

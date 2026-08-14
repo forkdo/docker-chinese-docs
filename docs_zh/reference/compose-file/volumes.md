@@ -69,6 +69,20 @@ volumes:
       device: ":/docker/example"
 ```
 
+如果您想要一个具名的绑定挂载，请使用 `local` 驱动程序配合 `driver_opts`。这种模式为 Compose 卷提供一个稳定的名称，同时将其映射到特定的宿主机路径：
+
+```yaml
+volumes:
+  app-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /srv/app-data # 必须是宿主机的绝对路径且已存在
+```
+
+`type`、`o` 和 `device` 键会被直接传递给 local 驱动程序。若只需在单个服务上进行一次性的宿主机路径挂载，请参阅[绑定挂载](/manuals/engine/storage/bind-mounts.md)。
+
 ### `external`
 
 如果设置为 `true`：

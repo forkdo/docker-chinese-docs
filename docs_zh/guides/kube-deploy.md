@@ -8,9 +8,8 @@ aliases:
 summary: '了解如何使用 Kubernetes 部署和编排 Docker 容器。
 
   '
-tags:
-- deploy
 params:
+  tags: [deployment]
   time: 10 分钟
 ---
 

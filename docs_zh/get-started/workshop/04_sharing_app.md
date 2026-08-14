@@ -20,7 +20,7 @@ aliases:
 
 要推送镜像，你首先需要在 Docker Hub 上创建一个仓库。
 
-1. [注册](https://www.docker.com/pricing?utm_source=docker&utm_medium=webreferral&utm_campaign=docs_driven_upgrade) 或登录 [Docker Hub](https://hub.docker.com)。
+1. [注册](https://www.docker.com/pricing?ref=Docs&refAction=DocsSharingApp) 或登录 [Docker Hub](https://hub.docker.com)。
 
 2. 选择 **Create Repository** 按钮。
 
@@ -51,7 +51,7 @@ aliases:
    An image does not exist locally with the tag: docker/getting-started
    ```
 
-   这个失败是预期的，因为镜像还没有正确标记。Docker 正在查找名为 `docker/getting started` 的镜像名称，但你的本地镜像仍然命名为 `getting-started`。
+   这个失败是预期的，因为镜像还没有正确标记。Docker 正在查找名为 `docker/getting-started` 的镜像名称，但你的本地镜像仍然命名为 `getting-started`。
 
    你可以通过运行以下命令来确认这一点：
 
@@ -59,7 +59,7 @@ aliases:
    docker image ls
    ```
 
-2. 要解决这个问题，首先使用你的 Docker ID 登录 Docker Hub：`docker login YOUR-USER-NAME`。
+2. 要解决这个问题，首先使用你的 Docker ID 登录 Docker Hub：`docker login -u YOUR-USER-NAME`。
 3. 使用 `docker tag` 命令为 `getting-started` 镜像赋予新名称。将 `YOUR-USER-NAME` 替换为你的 Docker ID。
 
    ```console
@@ -74,49 +74,7 @@ aliases:
 
 ## 在新实例上运行镜像
 
-现在你的镜像已经构建并推送到注册表中，尝试在从未见过此容器镜像的全新实例上运行你的应用程序。为此，你将使用 Play with Docker。
-
-> [!NOTE]
->
-> Play with Docker 使用 amd64 平台。如果你使用的是基于 ARM 的 Apple silicon Mac，你需要重新构建镜像以兼容 Play with Docker，并将新镜像推送到你的仓库。
->
-> 要为 amd64 平台构建镜像，请使用 `--platform` 标志。
-> ```console
-> $ docker build --platform linux/amd64 -t YOUR-USER-NAME/getting-started .
-> ```
->
-> Docker buildx 也支持构建多平台镜像。要了解更多信息，请参阅 [Multi-platform images](/manuals/build/building/multi-platform.md)。
-
-
-1. 在浏览器中打开 [Play with Docker](https://labs.play-with-docker.com/)。
-
-2. 选择 **Login**，然后从下拉列表中选择 **docker**。
-
-3. 使用你的 Docker Hub 账户登录，然后选择 **Start**。
-
-4. 在左侧边栏中选择 **ADD NEW INSTANCE** 选项。如果你看不到它，让浏览器窗口更宽一点。几秒钟后，浏览器中会打开一个终端窗口。
-
-    ![Play with Docker add new instance](images/pwd-add-new-instance.webp)
-
-5. 在终端中，启动你刚刚推送的应用程序。
-
-   ```console
-   $ docker run -dp 0.0.0.0:3000:3000 YOUR-USER-NAME/getting-started
-   ```
-
-    你应该看到镜像被拉取下来并最终启动。
-
-    > [!TIP]
-    >
-    > 你可能已经注意到，此命令将端口映射绑定到不同的 IP 地址。之前的 `docker run` 命令将端口发布到主机上的 `127.0.0.1:3000`。这次，你使用的是 `0.0.0.0`。
-    >
-    > 绑定到 `127.0.0.1` 仅将容器的端口暴露给回环接口。而绑定到 `0.0.0.0` 会将容器的端口暴露在主机的所有接口上，使其可被外部世界访问。
-    >
-    > 有关端口映射工作原理的更多信息，请参阅 [Networking](/manuals/engine/network/_index.md#published-ports)。
-
-6. 当 3000 徽章出现时，选择它。
-
-   如果没有出现 3000 徽章，你可以选择 **Open Port** 并指定 `3000`。
+现在你的镜像已经构建并推送到注册表中，你可以在任何安装了 Docker 的机器上运行你的应用程序。尝试在另一台计算机或云实例上拉取并运行你的镜像。
 
 ## 总结
 

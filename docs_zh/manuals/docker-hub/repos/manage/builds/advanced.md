@@ -8,6 +8,10 @@ aliases:
 - /docker-hub/builds/advanced/
 ---
 
+> [!WARNING]
+> Docker Hub 自动构建是一项已弃用的功能。
+> 它将于 2027 年 4 月 1 日完全退役。
+
 > [!NOTE]
 >
 > 自动化构建需要 Docker Pro、Team 或 Business 订阅。
@@ -86,7 +90,7 @@ $ docker build --build-arg CUSTOM=$VAR -f $DOCKERFILE_PATH -t $IMAGE_NAME .
 >
 > `hooks/build` 文件会覆盖构建器使用的基本 `docker build` 命令，因此您必须在钩子中包含类似的构建命令，否则自动化构建会失败。
 
-请参考 [docker build 文档](/reference/cli/docker/buildx/build.md#build-arg) 了解 Docker 构建时变量的更多信息。
+请参考 [docker build 文档](/reference/cli/docker/buildx/build/#build-arg) 了解 Docker 构建时变量的更多信息。
 
 #### 推送到多个仓库
 

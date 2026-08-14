@@ -5,16 +5,16 @@ weight: 30
 description: 从容器的角度了解网络工作原理
 keywords: networking, container, standalone, IP address, DNS resolution
 aliases:
-- /articles/networking/
-- /config/containers/container-networking/
-- /engine/tutorials/networkingcontainers/
-- /engine/userguide/networking/
-- /engine/userguide/networking/configure-dns/
-- /engine/userguide/networking/default_network/binding/
-- /engine/userguide/networking/default_network/configure-dns/
-- /engine/userguide/networking/default_network/container-communication/
-- /engine/userguide/networking/dockernetworks/
-- /network/
+  - /articles/networking/
+  - /config/containers/container-networking/
+  - /engine/tutorials/networkingcontainers/
+  - /engine/userguide/networking/
+  - /engine/userguide/networking/configure-dns/
+  - /engine/userguide/networking/default_network/binding/
+  - /engine/userguide/networking/default_network/configure-dns/
+  - /engine/userguide/networking/default_network/container-communication/
+  - /engine/userguide/networking/dockernetworks/
+  - /network/
 ---
 
 容器网络是指容器之间以及容器与非 Docker 网络服务进行连接和通信的能力。
@@ -58,14 +58,14 @@ $ docker run --network=my-net -it busybox
 
 Docker Engine 除了默认的 "bridge" 外，还有许多网络驱动程序。在 Linux 上，以下内置网络驱动程序可用：
 
-| 驱动程序                          | 描述                                                         |
-|:--------------------------------|:--------------------------------------------------------------------|
-| [bridge](./drivers/bridge.md)   | 默认网络驱动程序。                                         |
-| [host](./drivers/host.md)       | 移除容器与 Docker 主机之间的网络隔离。 |
-| [none](./drivers/none.md)       | 完全将容器与主机和其他容器隔离。  |
-| [overlay](./drivers/overlay.md) | Swarm 覆盖网络将多个 Docker 守护进程连接在一起。    |
-| [ipvlan](./drivers/ipvlan.md)   | 将容器连接到外部 VLAN。                               |
-| [macvlan](./drivers/macvlan.md) | 容器作为设备出现在主机的网络上。                 |
+| 驱动程序                        | 描述                                                                |
+| :------------------------------ | :------------------------------------------------------------------ |
+| [bridge](./drivers/bridge.md)   | 默认网络驱动程序。                                                  |
+| [host](./drivers/host.md)       | 移除容器与 Docker 主机之间的网络隔离。                              |
+| [none](./drivers/none.md)       | 完全将容器与主机和其他容器隔离。                                    |
+| [overlay](./drivers/overlay.md) | Swarm 覆盖网络将多个 Docker 守护进程连接在一起。                    |
+| [ipvlan](./drivers/ipvlan.md)   | 将容器连接到外部 VLAN。                                             |
+| [macvlan](./drivers/macvlan.md) | 容器作为设备出现在主机的网络上。                                    |
 
 更多信息可以在特定的网络驱动程序页面中找到，包括其配置选项和功能详情。
 
@@ -85,8 +85,8 @@ Docker Engine 除了默认的 "bridge" 外，还有许多网络驱动程序。�
 发送数据包时，如果目的地是直接连接网络中的地址，则数据包会发送到该网络。否则，数据包会发送到默认网关以路由到其目的地。在上面的示例中，`ipvlan` 网络的网关必须是默认网关。
 
 默认网关由 Docker 选择，并且可能在容器的网络连接发生变化时改变。
-要在创建容器或连接新网络时让 Docker 选择特定的默认网关，请设置网关优先级。请参阅 [`docker run`](/reference/cli/docker/container/run.md) 和
-[`docker network connect`](/reference/cli/docker/network/connect.md) 命令的 `gw-priority` 选项。
+要在创建容器或连接新网络时让 Docker 选择特定的默认网关，请设置网关优先级。请参阅 [`docker run`](/reference/cli/docker/container/run/) 和
+[`docker network connect`](/reference/cli/docker/network/connect/) 命令的 `gw-priority` 选项。
 
 默认的 `gw-priority` 为 `0`，具有最高优先级的网络中的网关是默认网关。因此，当一个网络应该始终是默认网关时，只需将其 `gw-priority` 设置为 `1` 即可。
 
@@ -142,13 +142,13 @@ $ docker network create --ipv6 --subnet 192.0.2.0/24 --subnet 2001:db8::/64 myne
 ```json
 {
   "default-address-pools": [
-    {"base":"172.17.0.0/16","size":16},
-    {"base":"172.18.0.0/16","size":16},
-    {"base":"172.19.0.0/16","size":16},
-    {"base":"172.20.0.0/14","size":16},
-    {"base":"172.24.0.0/14","size":16},
-    {"base":"172.28.0.0/14","size":16},
-    {"base":"192.168.0.0/16","size":20}
+    { "base": "172.17.0.0/16", "size": 16 },
+    { "base": "172.18.0.0/16", "size": 16 },
+    { "base": "172.19.0.0/16", "size": 16 },
+    { "base": "172.20.0.0/14", "size": 16 },
+    { "base": "172.24.0.0/14", "size": 16 },
+    { "base": "172.28.0.0/14", "size": 16 },
+    { "base": "192.168.0.0/16", "size": 20 }
   ]
 }
 ```
@@ -169,9 +169,7 @@ Docker 将分配子网 `172.17.0.0/24`、`172.17.1.0/24`，依此类推，直到
 
 ```json
 {
-  "default-address-pools": [
-    {"base": "172.17.0.0/16", "size": 24}
-  ]
+  "default-address-pools": [{ "base": "172.17.0.0/16", "size": 24 }]
 }
 ```
 
@@ -208,12 +206,22 @@ $ docker network inspect mynet -f '{{json .IPAM.Config}}' | jq .
 连接到
 [自定义网络](drivers/bridge.md#use-user-defined-bridge-networks) 的容器使用 Docker 的嵌入式 DNS 服务器。
 嵌入式 DNS 服务器将外部 DNS 查找转发到主机上配置的 DNS 服务器。
+嵌入式 DNS 服务器的地址是 `127.0.0.11`。
+它没有 IPv6 等效地址；即便在仅 IPv6 的容器中，该 IPv4 地址同样有效。
+如果某个应用程序需要显式的 DNS 服务器地址，请使用 `127.0.0.11`。
+
+> [!NOTE]
+>
+> 当您为默认 `bridge` 网络上的容器配置多个 DNS 服务器时，容器的解析器库决定了它如何查询这些服务器。
+> 有些解析器按顺序查询服务器。
+> 另一些则并行查询，并使用最先收到的响应，即使该响应是 `NXDOMAIN`。
+> 在自定义网络上，Docker 的嵌入式 DNS 服务器会按顺序查询上游服务器，并在收到成功响应或 `NXDOMAIN` 响应后停止。
 
 您可以使用用于启动容器的 `docker run` 或 `docker create` 命令的标志，在每个容器的基础上配置 DNS 解析。
 下表描述了与 DNS 配置相关的可用 `docker run` 标志。
 
-| 标志           | 描述                                                                                                                                                                                                                                           |
-| -------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 标志           | 描述                                                                                                                                                                                                                                                   |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--dns`        | DNS 服务器的 IP 地址。要指定多个 DNS 服务器，请使用多个 `--dns` 标志。DNS 请求将从容器的网络命名空间转发，因此，例如 `--dns=127.0.0.1` 指的是容器自己的环回地址。 |
 | `--dns-search` | 用于搜索非完全限定主机名的 DNS 搜索域。要指定多个 DNS 搜索前缀，请使用多个 `--dns-search` 标志。                                                                                                              |
 | `--dns-opt`    | 表示 DNS 选项及其值的键值对。有关有效选项，请参阅操作系统的 `resolv.conf` 文档。                                                                                                              |
@@ -222,7 +230,7 @@ $ docker network inspect mynet -f '{{json .IPAM.Config}}' | jq .
 ### 自定义主机
 
 您的容器在 `/etc/hosts` 中会有定义容器自身主机名以及 `localhost` 和一些其他常见内容的行。主机上 `/etc/hosts` 中定义的自定义主机不会被容器继承。
-要将额外的主机传递到容器中，请参阅 `docker run` 参考文档中的 [向容器 hosts 文件添加条目](/reference/cli/docker/container/run.md#add-host)。
+要将额外的主机传递到容器中，请参阅 `docker run` 参考文档中的 [向容器 hosts 文件添加条目](/reference/cli/docker/container/run/#add-host)。
 
 ## 容器网络
 

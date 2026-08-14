@@ -2,42 +2,74 @@
 title: Docker 工作坊之后该做什么
 weight: 100
 linkTitle: 第 9 部分：下一步
-keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop
-description: 确保您对自己的应用程序接下来可以做什么有更多想法
+keywords: get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop, AI, model runner, MCP, agents, hardened images, security
+description: 探索完成 Docker 工作坊之后接下来要做的事情，包括加固您的镜像、AI 开发以及特定语言的指南。
 aliases:
 - /get-started/11_what_next/
 - /guides/workshop/10_what_next/
+summary: |
+  既然您已经完成了 Docker 工作坊，您已经准备好探索使用 Docker Hardened Images 加固您的镜像、
+  构建 AI 驱动的应用程序，以及深入了解特定语言的指南。
+notoc: true
+secure-images:
+- title: 什么是 Docker Hardened Images？
+  description: 了解安全的、最小的、生产就绪的基础镜像，具有近乎为零的 CVE。
+  link: /dhi/explore/what/
+- title: 开始使用 DHI
+  description: 在几分钟内拉取并运行您的第一个 Docker Hardened Image。
+  link: /dhi/get-started/
+- title: 使用加固镜像
+  description: 学习如何在您的 Dockerfile 和 CI/CD 流水线中使用 DHI。
+  link: /dhi/how-to/use/
+- title: 探索 DHI 目录
+  description: 浏览可用的加固镜像、变体和安全证明。
+  link: /dhi/how-to/explore/
+ai-development:
+- title: Docker Model Runner
+  description: 使用熟悉的 Docker 命令和兼容 OpenAI 的 API 在本地运行和管理 AI 模型。
+  link: /ai/model-runner/
+- title: MCP Toolkit
+  description: 设置、管理和运行容器化的 MCP 服务器，为您的 AI 代理提供动力。
+  link: /ai/mcp-catalog-and-toolkit/toolkit/
+- title: 使用 Docker Agent 构建 AI 代理
+  description: 创建协作解决复杂问题的专业化 AI 代理团队。
+  link: /ai/docker-agent/
+- title: 在 Compose 中使用 AI 模型
+  description: 在您的 Docker Compose 应用中定义 AI 模型依赖。
+  link: /ai/compose/models-and-compose/
+language-guides:
+- title: Node.js
+  description: 学习如何对 Node.js 应用程序进行容器化和开发。
+  link: /guides/language/nodejs/
+- title: Python
+  description: 在容器中构建并运行 Python 应用程序。
+  link: /guides/language/python/
+- title: Java
+  description: 使用最佳实践对 Java 应用程序进行容器化。
+  link: /guides/language/java/
+- title: Go
+  description: 使用 Docker 开发和部署 Go 应用程序。
+  link: /guides/language/golang/
 ---
 
-虽然您已经完成了工作坊，但关于容器仍有许多内容需要学习。
+恭喜您完成了 Docker 工作坊。您已经学习了如何对应用程序进行容器化、使用多容器设置、使用 Docker Compose，以及应用镜像构建最佳实践。
 
-以下是接下来可以了解的一些其他领域。
+以下是接下来要探索的内容。
 
-## 容器编排
+## 加固您的镜像
 
-在生产环境中运行容器非常困难。您不会想要登录到一台机器上简单地运行 `docker run` 或 `docker compose up`。为什么？因为如果容器崩溃了怎么办？如何在多台机器上进行扩展？容器编排可以解决这个问题。Kubernetes、Swarm、Nomad 和 ECS 等工具都可以解决这个问题，只是方式略有不同。
+通过 Docker Hardened Images 将您的镜像构建技能提升到新的水平——这些安全、最小化且生产就绪的基础镜像现在对所有人免费。
 
-其基本思想是您有一些管理器，它们接收预期的状态。这种状态可能是“我想运行我的 Web 应用程序的两个实例并暴露端口 80”。然后，管理器会查看集群中的所有机器，并将工作委派给工作节点。管理器会监视更改（例如容器退出），然后努力使实际状态反映预期状态。
+{{< grid items="secure-images" >}}
 
-## 云原生计算基金会项目
+## 使用 AI 进行构建
 
-CNCF 是各种开源项目的厂商中立之家，包括 Kubernetes、Prometheus、Envoy、Linkerd、NATS 等。您可以在此处查看[已毕业和孵化的项目](https://www.cncf.io/projects/)，以及整个[CNCF 全景图](https://landscape.cncf.io/)。有很多项目可以帮助解决监控、日志记录、安全、镜像注册表、消息传递等方面的问题。
+Docker 让在本地运行 AI 模型并构建智能体式 AI 应用程序变得轻松。探索 Docker 的 AI 工具并开始构建由 AI 驱动的应用程序。
 
-## 入门视频工作坊
+{{< grid items="ai-development" >}}
 
-Docker 建议观看 DockerCon 2022 的视频工作坊。您可以观看整个视频，或使用以下链接在特定部分打开视频。
+## 特定语言指南
 
-* [Docker 概述和安装](https://youtu.be/gAGEar5HQoU)
-* [拉取、运行和探索容器](https://youtu.be/gAGEar5HQoU?t=1400)
-* [构建容器镜像](https://youtu.be/gAGEar5HQoU?t=3185)
-* [将应用程序容器化](https://youtu.be/gAGEar5HQoU?t=4683)
-* [连接数据库并设置绑定挂载](https://youtu.be/gAGEar5HQoU?t=6305)
-* [将容器部署到云端](https://youtu.be/gAGEar5HQoU?t=8280)
+通过动手教程，将您学到的知识应用到您喜欢的编程语言上。
 
-<iframe src="https://www.youtube-nocookie.com/embed/gAGEar5HQoU" style="max-width: 100%; aspect-ratio: 16 / 9;" width="560" height="auto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-## 从零开始创建容器
-
-如果您想了解容器是如何从零开始构建的，Aqua Security 的 Liz Rice 有一个精彩的演讲，她在演讲中使用 Go 从零开始创建了一个容器。虽然该演讲没有深入探讨网络、使用镜像作为文件系统以及其他高级主题，但它深入探讨了事物是如何工作的。
-
-<iframe src="https://www.youtube-nocookie.com/embed/8fi7uSYlOdc" style="max-width: 100%; aspect-ratio: 16 / 9;" width="560" height="auto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< grid items="language-guides" >}}

@@ -6,13 +6,10 @@ toc_max: 2
 summary: '使用 Docker 运行 Jupyter notebook。
 
   '
-tags:
-- data-science
-languages:
-- python
 aliases:
 - /guides/use-case/jupyter/
 params:
+  tags: [ai]
   time: 20 minutes
 ---
 
@@ -291,7 +288,7 @@ $ docker compose up --build
 
 ### 共享您的镜像
 
-1. [注册](https://www.docker.com/pricing?utm_source=docker&utm_medium=webreferral&utm_campaign=docs_driven_upgrade)或登录 [Docker Hub](https://hub.docker.com)。
+1. [注册](https://www.docker.com/pricing?ref=Docs&refAction=DocsGuidesJupyter)或登录 [Docker Hub](https://hub.docker.com)。
 
 2. 重命名您的镜像，以便 Docker 知道要将其推送到哪个存储库。打开终端并运行以下 `docker tag` 命令。将 `YOUR-USER-NAME` 替换为您的 Docker ID。
 

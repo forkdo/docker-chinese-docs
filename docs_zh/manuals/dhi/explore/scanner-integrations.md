@@ -1,22 +1,28 @@
 ---
 title: 扫描器集成
 description: 了解哪些漏洞扫描器适用于 Docker Hardened Images，以及如何选择合适的扫描器以进行准确的漏洞评估。
-keywords: scanner integration, vulnerability scanning, docker scout, trivy, grype, container security scanners
+keywords: scanner integration, vulnerability scanning, docker scout, trivy, grype, wiz, black duck, aikido, aws inspector, container security scanners
 weight: 40
 ---
 
-Docker Hardened Images 可与多种漏洞扫描器配合使用。然而，要获得准确反映这些镜像实际安全状况的结果，您的扫描器需要理解每个镜像附带的 VEX（漏洞可利用性交换）证明。
+Docker Hardened Images (DHI) 可与多种漏洞扫描器配合使用。然而，要获得准确反映这些镜像实际安全状况的结果，您的扫描器需要理解每个镜像附带的 VEX（漏洞可利用性交换）证明。
 
 ## 支持 VEX 的扫描器
 
-以下扫描器可以读取并应用 Docker Hardened Images 附带的 VEX 证明，从而提供更准确的漏洞评估：
+以下扫描器可以读取并应用 Docker Hardened Images 附带的 VEX 证明：
 
-- [Docker Scout](/scout/)：零配置自动应用 VEX 声明。直接集成到 Docker Desktop 和 Docker CLI 中。
-- [Trivy](https://trivy.dev/)：通过 VEX Hub 支持自动更新的 VEX，或为隔离环境提供本地 VEX 文件支持。
-- [Grype](https://github.com/anchore/grype)：通过 `--vex` 标志支持本地 VEX 文件处理。
-- [Wiz](https://www.wiz.io/)：零配置自动应用 VEX 声明。
+| 扫描器 | VEX 应用方式 |
+|---------|-----------------|
+| [Docker Scout](/scout/) | 自动应用，零配置 |
+| [Trivy](https://trivy.dev/) | VEX Hub（推荐）或本地 VEX 文件 |
+| [Grype](https://github.com/anchore/grype) | 通过 `--vex` 标志配合本地 VEX 文件 |
+| [Wiz](https://docs.wiz.io/) | 自动应用，零配置 |
+| [Mend.io](https://docs.mend.io/platform/latest/docker-hardened-images) | 自动应用，零配置 |
+| [Black Duck](https://documentation.blackduck.com/bundle/bd-hub/page/Reporting/vexReport_global.html) | 自动应用，零配置 |
+| [Aikido](https://help.aikido.dev/container-image-scanning/standalone-registries/docker-hub-images) | 自动应用，零配置 |
+| [AWS Inspector](https://docs.aws.amazon.com/inspector/latest/user/supported.html) | 自动应用，零配置 |
 
-有关分步说明，请参阅[扫描 Docker Hardened Images](/manuals/dhi/how-to/scan.md)。
+有关 Docker Scout、Trivy 和 Grype 的分步说明，请参阅[扫描 Docker Hardened Images](/manuals/dhi/how-to/scan.md)。对于 Wiz、Mend.io、Black Duck、Aikido 和 AWS Inspector，请参阅其各自的文档。
 
 ## 为 Docker Hardened Images 选择扫描器
 
@@ -24,7 +30,7 @@ Docker Hardened Images 可与多种漏洞扫描器配合使用。然而，要获
 
 Docker Hardened Images 包含遵循 [OpenVEX 标准](https://openvex.dev/)的签名 VEX 证明。OpenVEX 是一种开放标准，满足 CISA（网络安全和基础设施安全局，负责网络安全指导的美国政府机构）定义的 VEX 最低要求。这些证明记录了哪些漏洞不适用于该镜像以及原因，帮助您专注于真正的风险。
 
-要了解 VEX 是什么及其工作原理，请参阅 [VEX 核心概念](/manuals/dhi/core-concepts/vex.md)。
+要了解 VEX 是什么及其工作原理，请参阅 [VEX 核心概念](/manuals/dhi/explore/security-concepts/vex.md)。
 
 由于 OpenVEX 是获得政府支持的开放标准，它具有强大的行业推动力，任何工具都可以实现它，无需特定于供应商的集成。当您引入使用自有扫描工具的第三方审计人员，或希望在流水线中使用多种安全工具时，这一点很重要。借助 VEX，这些工具都可以直接从您的镜像中读取和验证相同的漏洞数据。
 
@@ -57,7 +63,7 @@ Docker Hardened Images 使用基于 OpenVEX 开放标准的 VEX 证明来记录�
 
 镜像包含签名证明，解释哪些漏洞不适用以及原因。任何支持 VEX 的扫描器都可以读取这些证明，为您提供：
 
-- **工具灵活性**：使用任何支持 OpenVEX 的扫描器（Docker Scout、Trivy、Grype、Wiz 等）
+- **工具灵活性**：使用任何支持 OpenVEX 的扫描器（Docker Scout、Trivy、Grype 等）
 - **完全透明**：审查每个漏洞评估的确切推理
 - **完全可审计**：安全团队和合规官员可以独立验证所有漏洞评估和推理
 - **历史可见性**：VEX 声明随镜像保留，因此您始终可以检查漏洞状态，即使是旧版本

@@ -6,8 +6,6 @@ weight: 50
 tags:
 - Best practices
 keywords: compose, orchestration, environment, env file, environment variables
-aliases:
-- /compose/environment-variables/best-practices/
 ---
 
 #### 安全地处理敏感信息

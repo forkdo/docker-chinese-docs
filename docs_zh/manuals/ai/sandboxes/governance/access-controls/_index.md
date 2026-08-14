@@ -1,0 +1,19 @@
+---
+title: 访问控制
+weight: 20
+description: 为沙箱的网络、文件系统与 MCP 访问配置本地和组织级控制。
+keywords: docker sandboxes, access controls, governance, network access, filesystem access, MCP access
+---
+
+访问控制以策略的形式表达。本地与组织页面说明策略在何处生效；网络与文件系统页面说明这些策略内部的规则。MCP 策略使用 Cedar 语句，而非网络和文件系统的规则格式。
+
+## 策略作用范围
+
+- [本地策略](local.md)：使用 `sbx policy` CLI 在开发者机器上配置网络规则。
+- [组织策略](organization.md)：为组织或团队管理集中式策略。
+
+## 访问面
+
+- [网络访问策略](network.md)：控制沙箱的出向网络访问。
+- [文件系统访问策略](filesystem.md)：控制沙箱可以将哪些主机路径挂载为工作区。
+- [MCP 访问策略](mcp.md)：使用 Cedar 策略控制 MCP 服务器注册、工具调用、资源、提示以及审批关卡。

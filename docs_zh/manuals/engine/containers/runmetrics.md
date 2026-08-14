@@ -25,7 +25,7 @@ redis1              0.07%               796 KB / 64 MB        1.21%             
 redis2              0.07%               2.746 MB / 64 MB      4.29%               1.266 KB / 648 B    12.4 MB / 0 B
 ```
 
-有关 `docker stats` 命令的更多详细信息，请参阅 [`docker stats`](/reference/cli/docker/container/stats.md) 参考页面。
+有关 `docker stats` 命令的更多详细信息，请参阅 [`docker stats`](/reference/cli/docker/container/stats/) 参考页面。
 
 ## 控制组 (Control groups)
 
@@ -65,6 +65,10 @@ cgroups 的文件布局在 v1 和 v2 之间有显著差异。
 在 cgroup v2 主机上，`/proc/cgroups` 的内容没有意义。
 请参阅 `/sys/fs/cgroup/cgroup.controllers` 以获取可用的控制器。
 
+> [!IMPORTANT]
+>
+> 本页后面较详细的指标示例描述的是 cgroup v1 的文件布局。在 cgroup v2 主机上，请使用本页查找容器的 cgroup 目录，然后检查该目录中的控制器文件（例如 `memory.*`、`cpu.*` 和 `io.*`）。有关控制器语义，请参阅 [cgroup v2 内核文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
+
 ### 更改 cgroup 版本
 
 更改 cgroup 版本需要重新启动整个系统。
@@ -93,7 +97,7 @@ Docker 自 20.10 版起支持 cgroup v2。
 
 - 默认的 cgroup 驱动程序 (`dockerd --exec-opt native.cgroupdriver`) 在 v2 上是 `systemd`，在 v1 上是 `cgroupfs`。
 - 默认的 cgroup 命名空间模式 (`docker run --cgroupns`) 在 v2 上是 `private`，在 v1 上是 `host`。
-- `docker run` 标志 `--oom-kill-disable` 和 `--kernel-memory` 在 v2 上会被忽略。
+- `docker run` 标志 `--oom-kill-disable` 在 v2 上会被忽略。
 
 ### 查找给定容器的 cgroup
 
@@ -108,12 +112,13 @@ Docker 自 20.10 版起支持 cgroup v2。
 - cgroup v2, `cgroupfs` 驱动程序：`/sys/fs/cgroup/docker/<longid>/`
 - cgroup v2, `systemd` 驱动程序：`/sys/fs/cgroup/system.slice/docker-<longid>.scope/`
 
-### 来自 cgroups 的指标：内存、CPU、块 I/O
+### 来自 cgroups 的指标：内存、CPU、块 I/O (cgroup v1)
 
 > [!NOTE]
 >
-> 本节尚未针对 cgroup v2 进行更新。
-> 有关 cgroup v2 的更多信息，请参阅[内核文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
+> 本节记录了 cgroup v1 的指标文件和格式。
+> 对于 cgroup v2，请检查容器 cgroup 目录中的相关控制器文件，并参阅
+> [内核文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
 
 对于每个子系统（内存、CPU 和块 I/O），存在一个或多个包含统计信息的伪文件。
 
@@ -167,7 +172,7 @@ Docker 自 20.10 版起支持 cgroup v2。
 : 表示控制组中进程映射的内存量。它不提供有关使用了多少内存的信息；而是告诉您它是如何使用的。
 
 `pgfault`, `pgmajfault`
-: 分别表示 cgroup 的进程触发“页面错误”和“主错误”的次数。当进程访问其虚拟内存空间中不存在或受保护的部分时，就会发生页面错误。前者可能发生在进程存在错误并尝试访问无效地址时（通常会发送 `SIGSEGV` 信号，通常以著名的 `Segmentation fault` 消息终止它）。后者可能发生在进程读取已被换出的内存区域，或对应于映射文件的内存区域时：在这种情况下，内核从磁盘加载页面，并让 CPU 完成内存访问。当进程写入写时复制（copy-on-write）内存区域时也可能发生：同样，内核抢占该进程，复制内存页面，并在进程自己的页面副本上恢复写入操作。“主”错误发生在内核实际需要从磁盘读取数据时。当它只是复制现有页面或分配空页面时，就是常规（或“次要”）错误。
+: 分别表示 cgroup 的进程触发“页面错误”和“主错误”的次数。当进程访问一个当前未映射到物理内存帧的虚拟内存页时，就会发生页面错误。这是内存管理的正常组成部分。例如，当进程读取已被换出或对应于内存映射文件的内存区域时，就会发生页面错误：在这种情况下，内核从磁盘加载页面，并让 CPU 完成内存访问。当进程写入写时复制（copy-on-write）内存区域时也会发生：内核复制内存页面，并在进程自己的页面副本上恢复写入操作。“主”错误发生在内核需要从磁盘读取数据时。当它只是复制现有页面或分配空页面时，就是常规（或“次要”）错误。
 
 `swap`
 : 该 cgroup 中进程当前使用的交换量。

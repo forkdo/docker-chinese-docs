@@ -7,13 +7,49 @@ outputs:
 - HTML
 - markdown
 - RSS
-type: security-announcements
+layout: security-announcements
 weight: 80
 toc_min: 1
 toc_max: 2
 ---
 
-{{< rss-button feed="/security/security-announcements/index.xml" text="订阅安全 RSS 源" >}}
+[订阅安全 RSS 源](/security/security-announcements/index.xml)
+
+## Docker Desktop 4.86.0 安全更新：CVE-2026-17106
+
+Docker Desktop 中的一个漏洞已于 8 月 10 日在 [4.86.0](/manuals/desktop/release-notes.md#4860) 版本中修复：
+
+- 修复了 CVE-2026-17106，即 `docker container cp` 中的目标逃逸缺陷。
+
+## Docker Desktop 4.71.0 安全更新：CVE-2026-5843
+
+Docker Desktop 中的一个漏洞已于 4 月 27 日在 [4.71.0](/manuals/desktop/release-notes.md#4710) 版本中修复：
+
+- 修复了 [CVE-2026-5843](https://www.cve.org/cverecord?id=CVE-2026-5843)，即 Docker Model Runner MLX 推理后端中的容器到主机代码执行漏洞。
+
+## Docker Desktop 4.68.0 安全更新：CVE-2026-5817
+
+Docker Desktop 中的一个漏洞已于 4 月 7 日在 [4.68.0](/manuals/desktop/release-notes.md#4680) 版本中修复：
+
+- 修复了 [CVE-2026-5817](https://www.cve.org/cverecord?id=CVE-2026-5817)，即 Docker Model Runner vllm-metal 推理后端中的容器到主机代码执行漏洞。
+
+## Docker Desktop 4.67.0 安全更新：CVE-2026-33990
+
+Docker Desktop 中的一个漏洞已于 3 月 30 日在 [4.67.0](/manuals/desktop/release-notes.md#4670) 版本中修复：
+
+- 修复了 [CVE-2026-33990](https://www.cve.org/cverecord?id=CVE-2026-33990)，即 Docker Model Runner OCI Registry Client 中的 SSRF 漏洞。
+
+## Docker Desktop 4.62.0 安全更新：CVE-2026-28400
+
+Docker Desktop 中的一个漏洞已于 2 月 23 日在 [4.62.0](/manuals/desktop/release-notes.md#4620) 版本中修复：
+
+- 修复了 [CVE-2026-28400](https://www.cve.org/cverecord?id=CVE-2026-28400)，即 Docker Model Runner 中的运行时标志注入漏洞。
+
+## Docker Desktop 4.62.0 安全更新：CVE-2026-2664
+
+Docker Desktop 中的一个漏洞已于 2 月 23 日在 [4.62.0](/manuals/desktop/release-notes.md#4620) 版本中修复：
+
+- 修复了 [CVE-2026-2664](https://www.cve.org/cverecord?id=CVE-2026-2664)，即 gRPC-FUSE 内核模块中的越界读取漏洞。
 
 ## Docker Desktop 4.54.0 安全更新：CVE-2025-13743
 
@@ -86,7 +122,7 @@ _最后更新时间：2024 年 7 月_
 
 首次引入 [SSO 强制](/manuals/enterprise/security/single-sign-on/connect.md) 时，Docker 提供了一个宽限期，允许在 Docker CLI 认证到 Docker Hub 时继续使用密码。这是为了方便组织更轻松地使用 SSO 强制。建议配置 SSO 的管理员鼓励使用 CLI 的用户[切换到个人访问令牌（PAT）](/manuals/enterprise/security/single-sign-on/_index.md#prerequisites)，以应对宽限期结束。
 
-2024 年 9 月 16 日，宽限期将结束，当 SSO 强制时，密码将无法再通过 Docker CLI 认证到 Docker Hub。受影响的用户需要切换到使用 PAT 才能继续登录。
+2024 年 9 月 16 日，宽限期结束，当 SSO 强制时，密码将无法再通过 Docker CLI 认证到 Docker Hub。受影响的用户需要切换到使用 PAT 才能继续登录。
 
 在 Docker，我们希望为开发者和组织提供最安全的体验，这一弃用是我们朝着这个方向迈出的关键一步。
 
@@ -109,32 +145,32 @@ _最后更新时间：2024 年 2 月 2 日_
 我们致力于维护最高安全标准。我们已在 1 月 31 日发布了修复版本的 runc、BuildKit 和 Moby，并在 2 月 1 日发布了 Docker Desktop 的更新，以解决这些漏洞。此外，我们最新的 BuildKit 和 Moby 版本还包括对 [CVE-2024-23650](https://scout.docker.com/v/CVE-2024-23650) 和 [CVE-2024-24557](https://scout.docker.com/v/CVE-2024-24557) 的修复，分别由独立研究人员和通过 Docker 的内部研究计划发现。
 
 |                        | 受影响的版本         |
-|:-----------------------|:--------------------------|
-| `runc`                 | <= 1.1.11                 |
-| `BuildKit`             | <= 0.12.4                 |
-| `Moby (Docker Engine)` | <= 25.0.1 和 <= 24.0.8   |
-| `Docker Desktop`       | <= 4.27.0                 |
+| :--------------------- | :------------------- |
+| `runc`                 | <= 1.1.11            |
+| `BuildKit`             | <= 0.12.4            |
+| `Moby (Docker Engine)` | <= 25.0.1 和 <= 24.0.8 |
+| `Docker Desktop`       | <= 4.27.0            |
 
 ### 如果您使用的是受影响的版本，应该怎么做？
 
 如果您使用的是受影响的 runc、BuildKit、Moby 或 Docker Desktop 版本，请确保升级到最新版本，链接在下表中：
 
-|                        | 已修复的版本          |
-|:-----------------------|:--------------------------|
-| `runc`                 | >= [1.1.12](https://github.com/opencontainers/runc/releases/tag/v1.1.12)                 |
-| `BuildKit`             | >= [0.12.5](https://github.com/moby/buildkit/releases/tag/v0.12.5)                 |
-| `Moby (Docker Engine)` | >= [25.0.2](https://github.com/moby/moby/releases/tag/v25.0.2) 和 >= [24.0.9](https://github.com/moby/moby/releases/tag/v24.0.9)   |
-| `Docker Desktop`       | >= [4.27.1](/manuals/desktop/release-notes.md#4271)                 |
+|                        | 已修复的版本                                                                                                                  |
+| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `runc`                 | >= [1.1.12](https://github.com/opencontainers/runc/releases/tag/v1.1.12)                                                          |
+| `BuildKit`             | >= [0.12.5](https://github.com/moby/buildkit/releases/tag/v0.12.5)                                                                |
+| `Moby (Docker Engine)` | >= [25.0.2](https://github.com/moby/moby/releases/tag/v25.0.2) 和 >= [24.0.9](https://github.com/moby/moby/releases/tag/v24.0.9) |
+| `Docker Desktop`       | >= [4.27.1](/manuals/desktop/release-notes.md#4271)                                                                               |
 
 如果您无法及时升级到不受影响的版本，请遵循以下最佳实践以降低风险：
 
-* 仅使用受信任的 Docker 镜像（例如 [Docker 官方镜像](../docker-hub/image-library/trusted-content.md#docker-official-images)）。
-* 不要从不受信任的来源或不受信任的 Dockerfile 构建 Docker 镜像。
-* 如果您是使用 Docker Desktop 的 Docker Business 客户且无法升级到 v4.27.1，请确保启用 [Hardened Docker Desktop](/manuals/enterprise/security/hardened-desktop/_index.md) 功能，例如：
-  * [增强容器隔离](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/_index.md)，这可以减轻在运行恶意镜像容器时 CVE-2024-21626 的影响。
-  * [镜像访问管理](/manuals/enterprise/security/hardened-desktop/image-access-management.md) 和 [注册表访问管理](/manuals/enterprise/security/hardened-desktop/registry-access-management.md)，这些功能让组织能够控制用户可以访问哪些镜像和仓库。
-* 对于 CVE-2024-23650、CVE-2024-23651、CVE-2024-23652 和 CVE-2024-23653，避免使用来自不受信任来源的 BuildKit 前端。前端镜像通常在 Dockerfile 的 #syntax 行中指定，或在使用 `buildctl build` 命令时使用 `--frontend` 标志指定。
-* 为了缓解 CVE-2024-24557，请确保使用 BuildKit 或在构建镜像时禁用缓存。从 CLI 可以通过 `DOCKER_BUILDKIT=1` 环境变量（如果安装了 buildx 插件，Moby >= v23.0 的默认值）或 `--no-cache` 标志完成。如果您直接使用 HTTP API 或通过客户端使用，可以通过将 [/build API 端点](https://docs.docker.com/reference/api/engine/version/v1.44/#tag/Image/operation/ImageBuild) 的 `nocache` 设置为 `true` 或将 `version` 设置为 `2` 来实现相同的效果。
+- 仅使用受信任的 Docker 镜像（例如 [Docker 官方镜像](../docker-hub/image-library/trusted-content.md#docker-official-images)）。
+- 不要从不受信任的来源或不受信任的 Dockerfile 构建 Docker 镜像。
+- 如果您是使用 Docker Desktop 的 Docker Business 客户且无法升级到 v4.27.1，请确保启用 [Hardened Docker Desktop](/manuals/enterprise/security/hardened-desktop/_index.md) 功能，例如：
+  - [增强容器隔离](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/_index.md)，这可以减轻在运行恶意镜像容器时 CVE-2024-21626 的影响。
+  - [镜像访问管理](/manuals/enterprise/security/hardened-desktop/image-access-management.md) 和 [注册表访问管理](/manuals/enterprise/security/hardened-desktop/registry-access-management.md)，这些功能让组织能够控制用户可以访问哪些镜像和仓库。
+- 对于 CVE-2024-23650、CVE-2024-23651、CVE-2024-23652 和 CVE-2024-23653，避免使用来自不受信任来源的 BuildKit 前端。前端镜像通常在 Dockerfile 的 #syntax 行中指定，或在使用 `buildctl build` 命令时使用 `--frontend` 标志指定。
+- 为了缓解 CVE-2024-24557，请确保使用 BuildKit 或在构建镜像时禁用缓存。从 CLI 可以通过 `DOCKER_BUILDKIT=1` 环境变量（如果安装了 buildx 插件，Moby >= v23.0 的默认值）或 `--no-cache` 标志完成。如果您直接使用 HTTP API 或通过客户端使用，可以通过将 [/build API 端点](https://docs.docker.com/reference/api/engine/version/v1.44/#tag/Image/operation/ImageBuild) 的 `nocache` 设置为 `true` 或将 `version` 设置为 `2` 来实现相同的效果。
 
 ### 技术细节和影响
 
@@ -190,15 +226,15 @@ _没有其他 Docker 产品受这些漏洞影响。_
 
 ### 公告链接
 
-* Runc
-  * [CVE-2024-21626](https://github.com/opencontainers/runc/security/advisories/GHSA-xr7r-f8xq-vfvv)
-* BuildKit
-  * [CVE-2024-23650](https://github.com/moby/buildkit/security/advisories/GHSA-9p26-698r-w4hx)
-  * [CVE-2024-23651](https://github.com/moby/buildkit/security/advisories/GHSA-m3r6-h7wv-7xxv)
-  * [CVE-2024-23652](https://github.com/moby/buildkit/security/advisories/GHSA-4v98-7qmw-rqr8)
-  * [CVE-2024-23653](https://github.com/moby/buildkit/security/advisories/GHSA-wr6v-9f75-vh2g)
-* Moby
-  * [CVE-2024-24557](https://github.com/moby/moby/security/advisories/GHSA-xw73-rw38-6vjc)
+- Runc
+  - [CVE-2024-21626](https://github.com/opencontainers/runc/security/advisories/GHSA-xr7r-f8xq-vfvv)
+- BuildKit
+  - [CVE-2024-23650](https://github.com/moby/buildkit/security/advisories/GHSA-9p26-698r-w4hx)
+  - [CVE-2024-23651](https://github.com/moby/buildkit/security/advisories/GHSA-m3r6-h7wv-7xxv)
+  - [CVE-2024-23652](https://github.com/moby/buildkit/security/advisories/GHSA-4v98-7qmw-rqr8)
+  - [CVE-2024-23653](https://github.com/moby/buildkit/security/advisories/GHSA-wr6v-9f75-vh2g)
+- Moby
+  - [CVE-2024-24557](https://github.com/moby/moby/security/advisories/GHSA-xw73-rw38-6vjc)
 
 ## Text4Shell CVE-2022-42889
 
@@ -254,18 +290,18 @@ _最后更新时间：2021 年 12 月_
 
 [Docker 官方镜像](../docker-hub/image-library/trusted-content.md#docker-official-images) 中的多个镜像包含易受攻击的 Log4j 2 CVE-2021-44228 版本。下表列出了可能包含易受攻击的 Log4j 2 版本的 Docker 官方镜像。我们已将这些镜像中的 Log4j 2 更新到最新版本。其中一些镜像可能因其他原因而不易受攻击。我们建议您也查看上游网站上发布的指南。
 
-| 仓库                | 已修复版本         | 附加文档       |
-|:------------------------|:-----------------------|:-----------------------|
-| [couchbase](https://hub.docker.com/_/couchbase)    | 7.0.3 | [Couchbase 博客](https://blog.couchbase.com/what-to-know-about-the-log4j-vulnerability-cve-2021-44228/) |
-| [Elasticsearch](https://hub.docker.com/_/elasticsearch)    | 6.8.22, 7.16.2 | [Elasticsearch 公告](https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2) |
-| [Flink](https://hub.docker.com/_/flink)    | 1.11.6, 1.12.7, 1.13.5, 1.14.2  | [Flink 对 Log4j CVE 的建议](https://flink.apache.org/2021/12/10/log4j-cve.html) |
-| [Geonetwork](https://hub.docker.com/_/geonetwork)    | 3.10.10 | [Geonetwork GitHub 讨论](https://github.com/geonetwork/core-geonetwork/issues/6076) |
-| [lightstreamer](https://hub.docker.com/_/lightstreamer)     | 等待信息 | 等待信息  |
-| [logstash](https://hub.docker.com/_/logstash)    | 6.8.22, 7.16.2 | [Elasticsearch 公告](https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2) |
-| [neo4j](https://hub.docker.com/_/neo4j)     | 4.4.2 | [Neo4j 公告](https://community.neo4j.com/t/log4j-cve-mitigation-for-neo4j/48856) |
-| [solr](https://hub.docker.com/_/solr)    | 8.11.1 | [Solr 安全新闻](https://solr.apache.org/security.html#apache-solr-affected-by-apache-log4j-cve-2021-44228) |
-| [sonarqube](https://hub.docker.com/_/sonarqube)    | 8.9.5, 9.2.2 | [SonarQube 公告](https://community.sonarsource.com/t/sonarqube-sonarcloud-and-the-log4j-vulnerability/54721) |
-| [storm](https://hub.docker.com/_/storm)    | 等待信息 | 等待信息 |
+| 仓库                                              | 已修复版本                     | 附加文档                                                                                                |
+| :------------------------------------------------ | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
+| [couchbase](https://hub.docker.com/_/couchbase)         | 7.0.3                          | [Couchbase blog](https://blog.couchbase.com/what-to-know-about-the-log4j-vulnerability-cve-2021-44228/)                 |
+| [Elasticsearch](https://hub.docker.com/_/elasticsearch) | 6.8.22, 7.16.2                 | [Elasticsearch announcement](https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2) |
+| [Flink](https://hub.docker.com/_/flink)                 | 1.11.6, 1.12.7, 1.13.5, 1.14.2 | [Flink advice on Log4j CVE](https://flink.apache.org/2021/12/10/log4j-cve.html)                                         |
+| [Geonetwork](https://hub.docker.com/_/geonetwork)       | 3.10.10                        | [Geonetwork GitHub discussion](https://github.com/geonetwork/core-geonetwork/issues/6076)                               |
+| [lightstreamer](https://hub.docker.com/_/lightstreamer) | Awaiting info                  | Awaiting info                                                                                                           |
+| [logstash](https://hub.docker.com/_/logstash)           | 6.8.22, 7.16.2                 | [Elasticsearch announcement](https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2) |
+| [neo4j](https://hub.docker.com/_/neo4j)                 | 4.4.2                          | [Neo4j announcement](https://community.neo4j.com/t/log4j-cve-mitigation-for-neo4j/48856)                                |
+| [solr](https://hub.docker.com/_/solr)                   | 8.11.1                         | [Solr security news](https://solr.apache.org/security.html#apache-solr-affected-by-apache-log4j-cve-2021-44228)         |
+| [sonarqube](https://hub.docker.com/_/sonarqube)         | 8.9.5, 9.2.2                   | [SonarQube announcement](https://community.sonarsource.com/t/sonarqube-sonarcloud-and-the-log4j-vulnerability/54721)    |
+| [storm](https://hub.docker.com/_/storm)                 | Awaiting info                  | Awaiting info                                                                                                           |
 
 > [!NOTE]
 >

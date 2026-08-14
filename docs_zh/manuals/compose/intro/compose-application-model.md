@@ -5,7 +5,6 @@ description: 了解 Docker Compose 的工作原理，从应用模型到 Compose 
 keywords: docker compose, compose.yaml, docker compose model, compose cli, multi-container application, compose example 
 aliases:
 - /compose/compose-file/02-model/
-- /compose/compose-yaml-file/
 - /compose/compose-application-model/
 ---
 
@@ -80,7 +79,7 @@ $ docker compose logs
 $ docker compose ps
 ```
 
-有关所有 Compose CLI 命令的完整列表，请参见 [参考文档](/reference/cli/docker/compose/_index.md)。
+有关所有 Compose CLI 命令的完整列表，请参见 [参考文档](/reference/cli/docker/compose/)。
 
 ## 示例说明
 

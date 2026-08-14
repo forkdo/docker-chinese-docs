@@ -47,43 +47,116 @@ aliases:
 
 ## 管理对象上的标签
 
-每种支持标签的对象类型都有添加和管理标签的机制，并根据该对象类型使用它们。这些链接是了解如何在 Docker 部署中使用标签的良好起点。
+每种支持标签的对象类型都有添加和管理标签的机制，并根据该对象类型使用它们。
 
 镜像、容器、本地守护进程、卷和网络上的标签在对象的生命周期内是静态的。要更改这些标签，必须重新创建对象。Swarm 节点和服务上的标签可以动态更新。
 
-- 镜像和容器
+### 镜像
 
-  - [向镜像添加标签](/reference/dockerfile.md#label)
-  - [在运行时覆盖容器的标签](/reference/cli/docker/container/run.md#label)
-  - [检查镜像或容器上的标签](/reference/cli/docker/inspect.md)
-  - [按标签过滤镜像](/reference/cli/docker/image/ls.md#filter)
-  - [按标签过滤容器](/reference/cli/docker/container/ls.md#filter)
+在 Dockerfile 中使用 [`LABEL` 指令](/reference/dockerfile.md#label) 向镜像添加标签：
 
-- 本地 Docker 守护进程
+```dockerfile
+LABEL com.example.version="1.0"
+LABEL com.example.description="Web application"
+```
 
-  - [在运行时向 Docker 守护进程添加标签](/reference/cli/dockerd.md)
-  - [检查 Docker 守护进程的标签](/reference/cli/docker/system/info.md)
+您也可以在构建时使用 `--label` 标志设置标签，而无需在 Dockerfile 中添加 `LABEL` 指令：
 
-- 卷
+```console
+$ docker build --label "com.example.version=1.0" -t myapp .
+```
 
-  - [向卷添加标签](/reference/cli/docker/volume/create.md)
-  - [检查卷的标签](/reference/cli/docker/volume/inspect.md)
-  - [按标签过滤卷](/reference/cli/docker/volume/ls.md#filter)
+使用 `docker inspect` 检查镜像上的标签：
 
-- 网络
+```console
+$ docker inspect --format='{{json .Config.Labels}}' myapp
+```
 
-  - [向网络添加标签](/reference/cli/docker/network/create.md)
-  - [检查网络的标签](/reference/cli/docker/network/inspect.md)
-  - [按标签过滤网络](/reference/cli/docker/network/ls.md#filter)
+使用 [`docker image ls --filter`](/reference/cli/docker/image/ls/#filter) 按标签过滤镜像：
 
-- Swarm 节点
+```console
+$ docker image ls --filter "label=com.example.version"
+```
 
-  - [添加或更新 Swarm 节点的标签](/reference/cli/docker/node/update.md#label-add)
-  - [检查 Swarm 节点的标签](/reference/cli/docker/node/inspect.md)
-  - [按标签过滤 Swarm 节点](/reference/cli/docker/node/ls.md#filter)
+### 容器
 
-- Swarm 服务
-  - [创建 Swarm 服务时添加标签](/reference/cli/docker/service/create.md#label)
-  - [更新 Swarm 服务的标签](/reference/cli/docker/service/update.md)
-  - [检查 Swarm 服务的标签](/reference/cli/docker/service/inspect.md)
-  - [按标签过滤 Swarm 服务](/reference/cli/docker/service/ls.md#filter)
+在启动容器时使用 [`docker run --label`](/reference/cli/docker/container/run/#label) 覆盖或添加标签：
+
+```console
+$ docker run --label "com.example.env=prod" myapp
+```
+
+检查容器上的标签：
+
+```console
+$ docker inspect --format='{{json .Config.Labels}}' mycontainer
+```
+
+使用 [`docker container ls --filter`](/reference/cli/docker/container/ls/#filter) 按标签过滤容器：
+
+```console
+$ docker container ls --filter "label=com.example.env=prod"
+```
+
+### 本地 Docker 守护进程
+
+在启动 `dockerd` 时传递 `--label` 标志，或在 [守护进程配置文件](/reference/cli/dockerd.md#daemon-configuration-file) 中设置 `"labels"`，即可向 Docker 守护进程添加标签：
+
+```json
+{
+  "labels": ["com.example.environment=production"]
+}
+```
+
+使用 `docker system info` 查看守护进程标签。
+
+### 卷
+
+在[创建卷](/reference/cli/docker/volume/create/)时添加标签：
+
+```console
+$ docker volume create --label "com.example.purpose=database" myvolume
+```
+
+检查卷标签：
+
+```console
+$ docker volume inspect myvolume --format='{{json .Labels}}'
+```
+
+使用 [`docker volume ls --filter`](/reference/cli/docker/volume/ls/#filter) 按标签过滤卷：
+
+```console
+$ docker volume ls --filter "label=com.example.purpose"
+```
+
+### 网络
+
+在[创建网络](/reference/cli/docker/network/create/)时添加标签：
+
+```console
+$ docker network create --label "com.example.purpose=frontend" mynetwork
+```
+
+检查网络标签：
+
+```console
+$ docker network inspect mynetwork --format='{{json .Labels}}'
+```
+
+使用 [`docker network ls --filter`](/reference/cli/docker/network/ls/#filter) 按标签过滤网络：
+
+```console
+$ docker network ls --filter "label=com.example.purpose"
+```
+
+### Swarm 节点
+
+- [添加或更新 Swarm 节点的标签](/reference/cli/docker/node/update/#label-add)
+- [按标签过滤 Swarm 节点](/reference/cli/docker/node/ls/#filter)
+
+### Swarm 服务
+
+- [创建 Swarm 服务时添加标签](/reference/cli/docker/service/create/#label)
+- [更新 Swarm 服务的标签](/reference/cli/docker/service/update/)
+- [按标签过滤 Swarm 服务](/reference/cli/docker/service/ls/#filter)

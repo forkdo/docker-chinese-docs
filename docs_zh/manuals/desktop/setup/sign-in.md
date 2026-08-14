@@ -6,25 +6,10 @@ linkTitle: 登录
 weight: 40
 aliases:
 - /desktop/linux/
-- /desktop/linux/index/
 - /desktop/mac/
-- /desktop/mac/index/
 - /desktop/windows/
-- /desktop/windows/index/
 - /docker-for-mac/
-- /docker-for-mac/index/
-- /docker-for-mac/osx/
-- /docker-for-mac/started/
 - /docker-for-windows/
-- /docker-for-windows/index/
-- /docker-for-windows/started/
-- /mac/
-- /mackit/
-- /mackit/getting-started/
-- /win/
-- /windows/
-- /winkit/
-- /winkit/getting-started/
 - /desktop/get-started/
 ---
 
@@ -34,7 +19,7 @@ Docker 推荐使用 Docker Dashboard 右上角的 **Sign in** 选项进行登录
 
 > [!TIP]
 >
-> 浏览 [Docker 核心订阅](https://www.docker.com/pricing/)，了解 Docker 还能为您提供哪些服务。
+> 浏览 [Docker 核心订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopSignIn)，了解 Docker 还能为您提供哪些服务。
 
 ## 登录的好处
 

@@ -10,9 +10,9 @@ summary: '开启全面的学习路径，深入了解 Docker 和容器化技术�
   '
 layout: series
 params:
-  skill: Beginner
+  proficiencyLevel: Beginner
   time: 15 minutes
-  prereq: None
+  prerequisites: None
 aliases:
 - /guides/getting-started/
 ---

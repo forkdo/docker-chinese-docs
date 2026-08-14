@@ -3,8 +3,9 @@ title: 使用 Docker 的 GitHub Actions 简介
 linkTitle: GitHub Actions 与 Docker
 summary: |
   了解如何使用 GitHub Actions 自动化镜像构建和推送。
+keywords: github actions, ci/cd, docker hub, build and push, automation, workflows
 params:
-  tags: [devops]
+  tags: [cicd]
   time: 10 分钟
 ---
 
@@ -69,11 +70,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@{{% param "checkout_action_version" %}}
 
       - name: Extract Docker image metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@{{% param "metadata_action_version" %}}
         with:
           images: ${{ vars.DOCKER_USERNAME }}/my-image
 ```
@@ -89,7 +90,7 @@ jobs:
 
 ```yaml
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@{{% param "login_action_version" %}}
         with:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -103,7 +104,7 @@ jobs:
 
 ```yaml
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@{{% param "build_push_action_version" %}}
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
@@ -128,10 +129,10 @@ SBOM（软件物料清单）和来源证明（provenance attestations）可以�
 
 ```yaml
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@{{% param "build_push_action_version" %}}
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
@@ -160,25 +161,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@{{% param "checkout_action_version" %}}
 
       - name: Extract Docker image metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@{{% param "metadata_action_version" %}}
         with:
           images: ${{ vars.DOCKER_USERNAME }}/my-image
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@{{% param "login_action_version" %}}
         with:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@{{% param "setup_buildx_action_version" %}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@{{% param "build_push_action_version" %}}
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
@@ -192,5 +193,6 @@ jobs:
 ### 延伸阅读
 
 - 在 [Docker Build GitHub Actions](/manuals/build/ci/github-actions/_index.md) 部分了解更多高级配置和示例。
-- 对于更复杂的构建设置，你可以考虑使用 [Bake](/manuals/build/bake/_index.md)。（另请参阅 [Mastering Buildx Bake guide](/guides/bake/index.md)。）
+- 对于更复杂的构建设置，你可以考虑使用 [Bake](/manuals/build/bake/_index.md)。（另请参阅 [Mastering Buildx Bake guide](/guides/bake/)。）
+
 - 了解 Docker 的托管构建服务，该服务专为更快的多平台构建而设计，请参阅 [Docker Build Cloud](/guides/docker-build-cloud/_index.md)。

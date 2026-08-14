@@ -6,8 +6,6 @@ keywords: microsoft store, windows, docker desktop, install, deploy, configure, 
 tags:
 - admin
 weight: 30
-aliases:
-- /desktop/setup/install/enterprise-deployment/ms-store/
 ---
 
 您可以通过 [Microsoft 应用商店](https://apps.microsoft.com/detail/xp8cbj40xlbwkx?hl=en-GB&gl=GB) 部署适用于 Windows 的 Docker Desktop。

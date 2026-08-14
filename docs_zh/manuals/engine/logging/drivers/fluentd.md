@@ -27,7 +27,9 @@ aliases:
 - `fluentd-address`：指定用于连接 Fluentd 守护进程的套接字地址，例如 `fluentdhost:24224` 或 `unix:///path/to/fluentd.sock`。
 - `tag`：为 Fluentd 消息指定标签。支持一些 Go 模板标记，例如 `{{.ID}}`、`{{.FullID}}` 或 `{{.Name}}` `docker.{{.ID}}`。
 
-要将 `fluentd` 驱动用作默认日志驱动，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opt` 键设置为适当的值。该文件在 Linux 主机上位于 `/etc/docker/`，在 Windows Server 上位于 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `fluentd` 驱动用作默认日志驱动，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opt` 键设置为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+{{% include "daemon-cfg-desktop.md" %}}
 
 以下示例将日志驱动设置为 `fluentd` 并设置 `fluentd-address` 选项。
 

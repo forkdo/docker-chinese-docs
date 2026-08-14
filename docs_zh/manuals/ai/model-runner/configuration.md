@@ -92,7 +92,7 @@ models:
 使用 `docker model configure` 命令：
 
 ```console
-$ docker model configure --runtime-flag "--temp" --runtime-flag "0.7" --runtime-flag "--top-p" --runtime-flag "0.9" ai/qwen2.5-coder
+$ docker model configure ai/qwen2.5-coder -- --temp 0.7 --top-p 0.9
 ```
 
 ### 常用 llama.cpp 参数

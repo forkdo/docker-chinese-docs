@@ -3,7 +3,7 @@ description: 关于 Docker 单点登录的常见问题
 keywords: Docker, Docker Hub, SSO FAQs, single sign-on, administration, security
 title: 通用 SSO 常见问题
 linkTitle: 通用
-weight: 10
+weight: 20
 tags:
 - FAQ
 aliases:

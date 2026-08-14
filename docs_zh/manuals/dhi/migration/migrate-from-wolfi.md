@@ -7,7 +7,7 @@ keywords: wolfi, chainguard, migration, dhi
 
 本指南帮助您从基于 Wolfi 的镜像迁移到 Docker 加固镜像 (DHI)。通常来说，迁移过程非常简单，因为 Wolfi 与 Alpine 类似，而 DHI 提供基于 Alpine 的加固镜像。
 
-与其他加固镜像一样，DHI 提供全面的[证明](/dhi/core-concepts/attestations/)，包括 SBOM 和来源信息，使您能够[验证](/manuals/dhi/how-to/verify.md)镜像签名并[扫描](/manuals/dhi/how-to/scan.md)漏洞，以确保镜像的安全性和完整性。
+与其他加固镜像一样，DHI 提供全面的[证明](/dhi/explore/security-concepts/attestations/)，包括 SBOM 和来源信息，使您能够[验证](/manuals/dhi/how-to/verify.md)镜像签名并[扫描](/manuals/dhi/how-to/scan.md)漏洞，以确保镜像的安全性和完整性。
 
 ## 迁移步骤
 
@@ -31,7 +31,7 @@ keywords: wolfi, chainguard, migration, dhi
 - FROM cgr.dev/chainguard/go:latest-dev
 
 + ## 更新为使用加固基础镜像
-+ FROM dhi.io/golang:1.25-alpine3.22-dev
++ FROM dhi.io/golang:1.25-alpine3.24-dev
 ```
 
 请注意，DHI 没有 `latest` 标签，以促进镜像版本控制的最佳实践。请确保为您的镜像指定适当的版本标签。要找到正确的标签，请浏览 [DHI 目录](https://hub.docker.com/hardened-images/catalog/) 中的可用标签。
@@ -50,19 +50,19 @@ keywords: wolfi, chainguard, migration, dhi
 
 ```dockerfile
 # 构建阶段
-FROM dhi.io/golang:1.25-alpine3.22-dev AS builder
+FROM dhi.io/golang:1.25-alpine3.24-dev AS builder
 WORKDIR /app
 COPY . .
 RUN go build -o myapp
 
 # 运行时阶段
-FROM dhi.io/golang:1.25-alpine3.22
+FROM dhi.io/golang:1.25-alpine3.24
 WORKDIR /app
 COPY --from=builder /app/myapp .
 ENTRYPOINT ["/app/myapp"]
 ```
 
-更新 Dockerfile 后，构建并测试您的应用程序。如果遇到问题，请参阅[故障排除](/manuals/dhi/troubleshoot.md)指南，了解常见问题及其解决方案。
+更新 Dockerfile 后，构建并测试您的应用程序。如果遇到问题，请参阅[故障排除](/manuals/dhi/how-to/troubleshoot.md)指南，了解常见问题及其解决方案。
 
 ## 语言特定示例
 

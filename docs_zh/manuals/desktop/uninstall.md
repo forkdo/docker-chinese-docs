@@ -8,7 +8,7 @@ weight: 210
 
 > [!WARNING]
 >
-> 卸载 Docker Desktop 会销毁机器本地的 Docker 容器、镜像、卷和其他与 Docker 相关的数据，并删除应用程序生成的文件。要了解如何在卸载前保留重要数据，请参阅[备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md)部分。
+> 卸载 Docker Desktop 会销毁机器本地的 Docker 容器、镜像、卷和其他与 Docker 相关的数据，并删除应用程序生成的文件。要在卸载前保留重要数据，请参阅[备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md)部分。
 
 {{< tabs >}}
 {{< tab name="Windows" >}}
@@ -23,7 +23,11 @@ weight: 210
 
 1. 找到安装程序：
    ```console
+   # 所有用户安装
    $ C:\Program Files\Docker\Docker\Docker Desktop Installer.exe
+
+   # 按用户安装 (Beta)
+   $ %LOCALAPPDATA%\Programs\DockerDesktop\Docker Desktop Installer.exe
    ```
 2. 卸载 Docker Desktop。
  - 在 PowerShell 中，运行：
@@ -46,7 +50,7 @@ C:\Users\<您的用户名>\AppData\Roaming\Docker
 C:\Users\<您的用户名>\AppData\Roaming\Docker Desktop
 C:\Users\<您的用户名>\.docker
 ```
- 
+
 {{< /tab >}}
 {{< tab name="Mac" >}}
 
@@ -87,13 +91,6 @@ $ /Applications/Docker.app/Contents/MacOS/uninstall
 ```console
 $ rm -rf ~/Library/Group\ Containers/group.com.docker
 $ rm -rf ~/.docker
-```
-
-对于 Docker Desktop 4.36 及更早版本，文件系统上可能还会留下以下文件。您可以使用管理员权限删除这些文件：
-
-```console
-/Library/PrivilegedHelperTools/com.docker.vmnetd
-/Library/PrivilegedHelperTools/com.docker.socket
 ```
 
 {{< /tab >}}

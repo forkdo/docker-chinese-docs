@@ -6,13 +6,9 @@ description: 学习如何使用 Python、NLTK、scikit-learn 和 Docker 构建�
 summary: '本指南详细介绍如何使用 Docker 容器化文本分类模型。
 
   '
-tags:
-- ai
-languages:
-- python
-aliases:
-- /guides/use-case/nlp/text-classification/
+
 params:
+  tags: [ai]
   time: 20 分钟
 ---
 
@@ -311,7 +307,7 @@ params:
 
    > [!NOTE]
    >
-   > 对于 Windows 用户，在运行容器时可能会收到错误。验证 `entrypoint.sh` 中的行尾是否为 `LF` (`\n`) 而不是 `CRLF` (`\r\n`)，然后重新构建镜像。有关更多详细信息，请参阅 [避免意外的语法错误，对容器中的文件使用 Unix 样式行尾](/desktop/troubleshoot-and-support/troubleshoot/topics/#Unexpected-syntax-errors-use-Unix-style-line endings-for-files-in-containers)。
+   > 对于 Windows 用户，在运行容器时可能会收到错误。验证 `entrypoint.sh` 中的行尾是否为 `LF` (`\n`) 而不是 `CRLF` (`\r\n`)，然后重新构建镜像。有关更多详细信息，请参阅 [避免意外的语法错误，对容器中的文件使用 Unix 样式行尾](/desktop/troubleshoot-and-support/troubleshoot/topics/#Unexpected-syntax-errors-use-Unix-style-line-endings-for-files-in-containers)。
 
    容器启动后，您将在控制台中看到以下内容。
 

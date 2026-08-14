@@ -1,13 +1,13 @@
 ---
 title: Node.js
-description: 将 Node.js 应用程序迁移到 Docker Hardened Images
+description: 将 Node.js 应用程序迁移到 Docker 强化镜像
 weight: 30
 keywords: nodejs, node, migration, dhi
 ---
 
-此示例展示了如何将 Node.js 应用程序迁移到 Docker Hardened Images。
+此示例展示了如何将 Node.js 应用程序迁移到 Docker 强化镜像。
 
-以下示例展示了迁移到 Docker Hardened Images 之前和之后的 Dockerfile。每个示例包含五种变体：
+以下示例展示了迁移到 Docker 强化镜像之前和之后的 Dockerfile。每个示例包含五种变体：
 
 - **Before (Ubuntu)**：使用基于 Ubuntu 的镜像的示例 Dockerfile，迁移到 DHI 之前
 - **Before (Wolfi)**：使用 Wolfi 发行版镜像的示例 Dockerfile，迁移到 DHI 之前
@@ -19,7 +19,7 @@ keywords: nodejs, node, migration, dhi
 >
 > 多阶段构建适用于大多数用例。单阶段构建出于简单性而受支持，但在大小和安全性方面存在权衡。
 >
-> 您必须先对 `dhi.io` 进行身份验证，才能拉取 Docker Hardened Images。
+> 您必须先对 `dhi.io` 进行身份验证，才能拉取 Docker 强化镜像。
 > 使用您的 Docker ID 凭据（与您用于 Docker Hub 的用户名和密码相同）。如果您没有 Docker 账户，请[免费创建一个](../../../accounts/create-account.md)。
 >
 > 运行 `docker login dhi.io` 进行身份验证。
@@ -30,7 +30,10 @@ keywords: nodejs, node, migration, dhi
 ```dockerfile
 #syntax=docker/dockerfile:1
 
-FROM ubuntu/node:18-24.04_edge
+FROM ubuntu:24.04
+
+RUN apt-get update && apt-get install -y nodejs npm --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -39,7 +42,7 @@ RUN npm install
 
 COPY . .
 
-CMD ["node", "index.js"]
+CMD ["index.js"]
 ```
 
 {{< /tab >}}
@@ -91,7 +94,7 @@ CMD ["node", "index.js"]
 #syntax=docker/dockerfile:1
 
 # === Build stage: Install dependencies and build application ===
-FROM dhi.io/node:23-alpine3.21-dev AS builder
+FROM dhi.io/node:22-alpine3.23-dev AS builder
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -104,7 +107,7 @@ RUN npm install
 COPY . .
 
 # === Final stage: Create minimal runtime image ===
-FROM dhi.io/node:23-alpine3.21
+FROM dhi.io/node:22-alpine3.23
 ENV PATH=/app/node_modules/.bin:$PATH
 
 COPY --from=builder --chown=node:node /usr/src/app /app
@@ -120,7 +123,7 @@ CMD ["index.js"]
 ```dockerfile
 #syntax=docker/dockerfile:1
 
-FROM dhi.io/node:23-alpine3.21-dev
+FROM dhi.io/node:22-alpine3.23-dev
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -132,7 +135,7 @@ RUN npm install
 
 COPY . .
 
-CMD ["node", "index.js"]
+CMD ["index.js"]
 ```
 
 {{< /tab >}}

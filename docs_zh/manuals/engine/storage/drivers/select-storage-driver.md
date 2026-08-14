@@ -30,7 +30,7 @@ Docker Engine 在 Linux 上提供以下存储后端：
 
 <!-- markdownlint-disable reference-links-images -->
 
-如果没有明确配置存储驱动程序，Docker Engine 有一个优先列表来决定使用哪个存储驱动程序，前提是该存储驱动程序满足先决条件，并自动选择兼容的存储驱动程序。您可以在 [Docker Engine {{% param "docker_ce_version" %}} 的源代码](https://github.com/moby/moby/blob/v{{% param "docker_ce_version" %}}/daemon/graphdriver/driver_linux.go#L52-L53) 中查看顺序。
+如果没有明确配置存储驱动程序，Docker Engine 有一个优先列表来决定使用哪个存储驱动程序，前提是该存储驱动程序满足先决条件，并自动选择兼容的存储驱动程序。您可以在 [Docker Engine {{% param "docker_ce_version" %}} 的源代码](https://github.com/moby/moby/blob/docker-v{{% param "docker_ce_version" %}}/daemon/graphdriver/driver_linux.go) 中查看顺序。
 { #storage-driver-order }
 
 <!-- markdownlint-enable reference-links-images -->

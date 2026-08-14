@@ -5,8 +5,6 @@ weight: 50
 description: 如何在 Docker Desktop 中使用 USB/IP
 keywords: usb, usbip, docker desktop, macos, windows, linux
 toc_max: 3
-aliases:
-- /desktop/usbip/
 ---
 
 {{< summary-bar feature_name="USB/IP support" >}}

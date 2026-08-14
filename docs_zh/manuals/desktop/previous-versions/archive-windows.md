@@ -1,11 +1,11 @@
+<!-- FILE: manuals/desktop/previous-versions/archive-windows.md -->
+
 ---
 description: Docker Desktop for Windows 旧版本发行说明
 keywords: Docker Desktop for Windows, 发行说明
 title: 旧版本发行说明
 toc_min: 1
 toc_max: 2
-aliases:
-- /desktop/windows/release-notes/archive/
 sitemap: false
 ---
 

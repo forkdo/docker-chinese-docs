@@ -1,64 +1,63 @@
 ---
 title: 管理
-description: Docker 管理控制台中管理功能和角色的概述
-keywords: admin, administration, company, organization, Admin Console, user accounts, account management
+description: Docker Home 中管理功能和角色的概述
+keywords: admin, administration, company, organization, Docker Home, user accounts, account management
 weight: 10
 params:
   sidebar:
     group: Enterprise
 grid:
-- title: 公司管理
-  description: 探索如何管理公司。
-  icon: apartment
-  link: /admin/company/
-- title: 组织管理
-  description: 了解组织管理。
-  icon: store
-  link: /admin/organization/
-- title: 组织入驻
-  description: 了解如何入驻并保护您的组织。
-  icon: explore
-  link: /admin/organization/onboard
-- title: 公司常见问题
-  description: 发现关于公司的常见问题和解答。
-  icon: help
-  link: /faq/admin/company-faqs/
-- title: 组织常见问题
-  description: 探索关于组织的热门常见问题。
-  icon: help
-  link: /faq/admin/organization-faqs/
-- title: 安全
-  description: 探索管理员的安全功能。
-  icon: shield_locked
-  link: /security/
+  - title: 公司管理
+    description: 探索如何管理公司。
+    icon: building-office-2
+    link: /admin/company/
+  - title: 组织管理
+    description: 了解组织管理。
+    icon: building-storefront
+    link: /admin/organization/
+  - title: 组织入驻
+    description: 了解如何入驻并保护您的组织。
+    icon: magnifying-glass-plus
+    link: /admin/organization/setup/onboard
+  - title: 安全
+    description: 探索管理员的安全功能。
+    icon: shield-check
+    link: /enterprise/security/
 aliases:
-- /docker-hub/admin-overview
+  - /docker-hub/admin-overview
 ---
 
-管理员可以使用 [Docker Admin Console](https://app.docker.com/admin) 管理公司和组织。Admin Console 提供了跨 Docker 环境的集中可观察性、访问管理和安全控制。
+组织和公司所有者可以管理成员、控制访问，并在其 Docker 环境中强制执行安全。你可以在 Docker Home 中执行这些任务，它提供集中的可观察性、访问管理和安全控制。
 
-## 公司和组织层级结构
+作为组织或公司所有者，你可以：
 
-[Docker Admin Console](https://app.docker.com/admin) 为管理员提供了对其公司和组织的集中可观察性、访问管理和控制。为了提供这些功能，Docker 使用以下层级结构和角色。
+- 创建和管理公司与组织
+- 为成员分配角色和权限
+- 将成员分组到团队中，按项目或角色管理访问
+- 设置公司范围内的策略，包括 SCIM 配置和安全强制执行
+
+## 公司与组织层级结构
+
+为了提供集中的管理，Docker 将公司和组织组织成以下层级结构和角色。
 
 ![显示 Docker 管理层级结构的图示，顶部是公司，其次是组织、团队和成员](./images/docker-admin-structure.webp)
 
 ### 公司
 
-公司用于对多个 Docker 组织进行集中配置。公司仅对 Docker Business 订阅用户开放。
+公司用于对多个 Docker 组织进行集中配置。公司所有者可以查看和管理公司内的每个组织及其公司范围的设置，拥有与组织所有者相同的访问权限。有关公司所有者角色及其对席位的影响，请参阅
+[公司角色](/manuals/admin/company/_index.md#company-roles)。
 
-公司有以下管理员角色：
-
-- 公司所有者：可以查看和管理公司内的所有组织。
-  拥有对公司范围设置的完全访问权限，并继承与组织所有者相同的权限。
+公司仅对 Docker Business 订阅用户开放。
 
 ### 组织
 
-组织包含团队和仓库。所有 Docker Team 和 Business 订阅用户必须至少有一个组织。
+组织位于公司之下，是您对团队和成员进行分组并分配仓库访问权限的地方。每个 Docker Team 和 Business 订阅用户都至少拥有一个组织。
 
-组织有以下管理员角色：
+组织所有者持有组织所有者管理员角色，管理组织设置、用户和访问控制。每个所有者占用一个
+[席位](/manuals/admin/organization/organization-faqs.md#what-is-the-difference-between-user-invitee-seat-and-member)。
 
-- 组织所有者：可以管理组织设置、用户和访问控制。
+[升级到 Docker Business 套餐](https://www.docker.com/pricing?ref=Docs&refAction=DocsAdmin)
+可授予你公司所有者角色，以便管理多个组织。
 
 ### 团队
 
@@ -68,21 +67,8 @@ aliases:
 
 成员是添加到组织中的任何 Docker 用户。组织和公司所有者可以分配角色给成员，以定义其访问级别。
 
-> [!NOTE]
->
-> 创建公司是可选的，但组织和团队是 Team 和 Business 订阅所必需的。
+## 后续步骤
 
-## Admin Console 功能
-
-Docker 的 [Admin Console](https://app.docker.com/admin) 允许您：
-
-- 创建和管理公司和组织
-- 为成员分配角色和权限
-- 将成员分组到团队中，按项目或角色管理访问权限
-- 设置公司范围的策略，包括 SCIM 配置和安全强制
-
-## 管理公司和组织
-
-在以下部分中了解如何管理公司和组织。
+在以下章节中了解如何管理公司和组织。
 
 {{< grid >}}

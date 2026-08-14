@@ -7,10 +7,6 @@ tags:
 - FAQ
 - admin
 weight: 70
-aliases:
-- /desktop/install/msi/faq/
-- /desktop/setup/install/msi/faq/
-- /desktop/setup/install/enterprise-deployment/faq/
 ---
 
 ## MSI
@@ -19,14 +15,15 @@ aliases:
 
 ### 如果用户已有旧版 Docker Desktop 安装（即 `.exe` 版本），用户数据会怎样？
 
-用户必须先[卸载](/manuals/desktop/uninstall.md)旧的 `.exe` 安装，才能使用新的 MSI 版本。这将删除机器上所有 Docker 容器、镜像、卷以及其他与 Docker 相关的本地数据，并移除 Docker Desktop 生成的文件。
-
-要在卸载前保留现有数据，用户应[备份](/manuals/desktop/settings-and-maintenance/backup-and-restore.md)其容器和卷。
-
-对于 Docker Desktop 4.30 及更高版本，`.exe` 安装程序包含一个 `-keep-data` 标志，可在移除 Docker Desktop 的同时保留底层资源（例如容器 VM）：
+用户必须先[卸载](/manuals/desktop/uninstall.md)旧的 `.exe` 安装，才能使用新的 MSI 版本。`.exe` 安装程序包含一个 `-keep-data` 标志，可在移除 Docker Desktop 的同时保留底层资源（例如容器 VM）：
 
 ```powershell
+# 对于全用户安装
 & 'C:\Program Files\Docker\Docker\Docker Desktop Installer.exe' uninstall -keep-data
+
+# 对于每用户安装
+& '%LOCALAPPDATA%\Programs\DockerDesktop\Docker Desktop Installer.exe' uninstall -keep-data
+
 ```
 
 ### 如果用户的机器上有旧的 `.exe` 安装，会发生什么？
@@ -70,16 +67,22 @@ psexec -i -s msiexec /i "DockerDesktop.msi"
 
 作为解决方法，您可以创建一个在用户账户上下文中运行的脚本。
 
-该脚本将负责创建 `docker-users` 组并使用正确的用户填充它。
+该脚本将负责确保 `docker-users` 组存在并使用正确的用户填充它。
 
-这是一个创建 `docker-users` 组并将当前用户添加到其中的示例脚本（要求可能因环境而异）：
+> [!WARNING]
+>
+> 加入 `docker-users` 组即授予对 Docker 守护进程套接字的访问权限，这等同于在主机上授予管理权限。仅将需要访问 Windows 容器或 Hyper-V VM 管理的用户添加进去。对于使用 WSL 2 后端的 Linux 容器，不需要此组成员身份。详见 [保护 Docker 守护进程套接字](/manuals/engine/security/protect-access.md)。
+
+这是一个在需要时创建 `docker-users` 组并将当前用户添加到其中的示例脚本（要求可能因环境而异）：
 
 ```powershell
 $Group = "docker-users"
 $CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 
-# 创建组
-New-LocalGroup -Name $Group
+# 如果组不存在，则创建该组
+if (-not (Get-LocalGroup -Name $Group -ErrorAction SilentlyContinue)) {
+    New-LocalGroup -Name $Group
+}
 
 # 将用户添加到组中
 Add-LocalGroupMember -Group $Group -Member $CurrentUser
