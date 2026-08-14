@@ -78,3 +78,4 @@ afterAll(async () => {
 - 构建一个[高级前端](/manuals/extensions/extensions-sdk/build/frontend-extension-tutorial.md)扩展。
 - 了解更多关于扩展[架构](../architecture/_index.md)的信息。
 - 了解如何[发布您的扩展](../extensions/_index.md)。
+

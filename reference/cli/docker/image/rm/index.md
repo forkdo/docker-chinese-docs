@@ -6,12 +6,6 @@
 
 **Aliases:** `docker image remove`, `docker rmi`
 
-<!--
-此页面由 Docker 源代码自动生成。如果您想对本文内容提出修改建议，请在 GitHub 上的源仓库中提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -144,8 +138,8 @@ multiple times, or by passing a comma-separated list of platforms to remove.
 The following uses of this option are equivalent;
 
 ```console
-$ docker image rm --plaform linux/amd64 --platform linux/ppc64le myimage
-$ docker image rm --plaform linux/amd64,linux/ppc64le myimage
+$ docker image rm --platform linux/amd64 --platform linux/ppc64le myimage
+$ docker image rm --platform linux/amd64,linux/ppc64le myimage
 ```
 
 The following example removes the `linux/amd64` and `linux/ppc64le` variants

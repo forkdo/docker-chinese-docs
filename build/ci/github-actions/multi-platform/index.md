@@ -1,15 +1,14 @@
-# Multi-platform image with GitHub Actions
+# 使用 GitHub Actions 构建多平台镜像
 
 
-You can build [multi-platform images](../../building/multi-platform.md) using
-the `platforms` option, as shown in the following example:
+你可以使用 `platforms` 选项构建[多平台镜像](../../building/multi-platform.md)，如以下示例所示：
 
 > [!NOTE]
 >
-> - For a list of available platforms, see the [Docker Setup Buildx](https://github.com/marketplace/actions/docker-setup-buildx)
->   action.
-> - If you want support for more platforms, you can use QEMU with the [Docker Setup QEMU](https://github.com/docker/setup-qemu-action)
->   action.
+> - 有关可用平台的列表，请参阅 [Docker Setup Buildx](https://github.com/marketplace/actions/docker-setup-buildx)
+>   action。
+> - 如果你需要支持更多平台，可以使用 [Docker Setup QEMU](https://github.com/docker/setup-qemu-action)
+>   action 配合 QEMU。
 
 ```yaml
 name: ci
@@ -22,19 +21,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           platforms: linux/amd64,linux/arm64
           push: true
@@ -43,18 +42,15 @@ jobs:
 
 ## Build and load multi-platform images
 
-The default Docker setup for GitHub Actions runners does not support loading
-multi-platform images to the local image store of the runner after building
-them. To load a multi-platform image, you need to enable the containerd image
-store option for the Docker Engine.
+GitHub Actions runner 的默认 Docker 配置支持构建多平台镜像并将其推送到注册表。但是，它不支持在
+构建后将多平台镜像加载到 runner 的本地镜像存储。要在本地加载多平台镜像，你需要为 Docker Engine
+启用 containerd 镜像存储选项。
 
-There is no way to configure the default Docker setup in the GitHub Actions
-runners directly, but you can use `docker/setup-docker-action` to customize the
-Docker Engine and CLI settings for a job.
+无法直接配置 GitHub Actions runner 中的默认 Docker 配置，但你可以使用 `docker/setup-docker-action`
+来为某个作业自定义 Docker Engine 和 CLI 设置。
 
-The following example workflow enables the containerd image store, builds a
-multi-platform image, and loads the results into the GitHub runner's local
-image store.
+下面的示例工作流启用了 containerd 镜像存储，构建一个多平台镜像，并将结果加载到 GitHub runner 的
+本地镜像存储。
 
 ```yaml
 name: ci
@@ -67,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker
-        uses: docker/setup-docker-action@v4
+        uses: docker/setup-docker-action@v5
         with:
           daemon-config: |
             {
@@ -78,16 +74,16 @@ jobs:
             }
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           platforms: linux/amd64,linux/arm64
           load: true
@@ -96,19 +92,13 @@ jobs:
 
 ## Distribute build across multiple runners
 
-Building multiple platforms on the same runner can significantly extend build
-times, particularly when dealing with complex Dockerfiles or a high number of
-target platforms. By distributing platform-specific builds across multiple
-runners using a matrix strategy, you can drastically reduce build durations and
-streamline your CI pipeline. These examples demonstrate how to allocate each
-platform build to a dedicated runner, including ARM-native runners where
-applicable, and create a unified manifest list using the
-[`buildx imagetools create` command](/reference/cli/docker/buildx/imagetools/create.md).
+在同一台 runner 上构建多个平台会显著延长构建时间，尤其是在处理复杂 Dockerfile 或大量目标平台时。
+如果你希望在不自行维护自定义矩阵与合并作业的情况下，将平台构建分散到多个 runner 上，请使用
+[Docker GitHub Builder](github-builder/_index.md)。这些可复用工作流会计算逐平台矩阵，在每个平台
+各自的 runner 上运行，并为你创建最终的 manifest。
 
-The following workflow will build the image for each platform on a dedicated
-runner using a matrix strategy and push by digest. Then, the `merge` job will
-create manifest lists and push them to Docker Hub. The [`metadata` action](https://github.com/docker/metadata-action)
-is used to set tags and labels.
+下面的工作流使用 [`build.yml` 可复用工作流](github-builder/build.md)
+来分发一个多平台 Dockerfile 构建：
 
 ```yaml
 name: ci
@@ -116,119 +106,43 @@ name: ci
 on:
   push:
 
-env:
-  REGISTRY_IMAGE: user/app
+permissions:
+  contents: read
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - platform: linux/amd64
-          runner: ubuntu-latest
-        - platform: linux/arm64
-          runner: ubuntu-24.04-arm
-    runs-on: ${{ matrix.runner }}
-    steps:
-      - name: Prepare
-        run: |
-          platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY_IMAGE }}
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
+    uses: docker/github-builder/.github/workflows/build.yml@v1
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      output: image
+      push: true
+      platforms: linux/amd64,linux/arm64
+      meta-images: user/app
+      meta-tags: |
+        type=ref,event=branch
+        type=ref,event=pr
+        type=semver,pattern={{version}}
+        type=semver,pattern={{major}}.{{minor}}
+    secrets:
+      registry-auths: |
+        - registry: docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and push by digest
-        id: build
-        uses: docker/build-push-action@v6
-        with:
-          platforms: ${{ matrix.platform }}
-          labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ env.REGISTRY_IMAGE }}
-          outputs: type=image,push-by-digest=true,name-canonical=true,push=true
-
-      - name: Export digest
-        run: |
-          mkdir -p ${{ runner.temp }}/digests
-          digest="${{ steps.build.outputs.digest }}"
-          touch "${{ runner.temp }}/digests/${digest#sha256:}"
-
-      - name: Upload digest
-        uses: actions/upload-artifact@v4
-        with:
-          name: digests-${{ env.PLATFORM_PAIR }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
-
-  merge:
-    runs-on: ubuntu-latest
-    needs:
-      - build
-    steps:
-      - name: Download digests
-        uses: actions/download-artifact@v4
-        with:
-          path: ${{ runner.temp }}/digests
-          pattern: digests-*
-          merge-multiple: true
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY_IMAGE }}
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-
-      - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
-        run: |
-          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf '${{ env.REGISTRY_IMAGE }}@sha256:%s ' *)
-
-      - name: Inspect image
-        run: |
-          docker buildx imagetools inspect ${{ env.REGISTRY_IMAGE }}:${{ steps.meta.outputs.version }}
 ```
+
+使用默认开启的 `distribute: true`，工作流会将构建拆分为每个 runner 一个平台，并在其 finalize 阶段
+组装最终的多平台镜像。默认的 `runner` 映射将 Linux Arm 平台发送到 `ubuntu-24.04-arm`，其他平台使用
+`ubuntu-24.04`。要自定义该映射，请参阅
+[runner selection](github-builder/architecture.md#runner-selection)。如果你需要直接控制 Docker 构建
+输入，请参阅 [Build with Docker GitHub Builder build.yml](github-builder/build.md)。
 
 ### With Bake
 
-It's also possible to build on multiple runners using Bake, with the
-[bake action](https://github.com/docker/bake-action).
-
-You can find a live example [in this GitHub repository](https://github.com/crazy-max/docker-linguist).
-
-The following example achieves the same results as described in
-[the previous section](#distribute-build-across-multiple-runners).
+当你的构建定义在 Bake 文件中时，可以使用 [`bake.yml` 可复用工作流](github-builder/bake.md) 实现
+相同模式。该工作流从 Bake 定义中读取目标平台，分发逐平台构建，并在无需单独的准备或合并作业的情况下
+发布最终 manifest。
 
 ```hcl
 variable "DEFAULT_TAG" {
@@ -271,136 +185,27 @@ name: ci
 on:
   push:
 
-env:
-  REGISTRY_IMAGE: user/app
+permissions:
+  contents: read
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.platforms.outputs.matrix }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Create matrix
-        id: platforms
-        run: |
-          echo "matrix=$(docker buildx bake image-all --print | jq -cr '.target."image-all".platforms')" >>${GITHUB_OUTPUT}
-
-      - name: Show matrix
-        run: |
-          echo ${{ steps.platforms.outputs.matrix }}
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY_IMAGE }}
-
-      - name: Rename meta bake definition file
-        run: |
-          mv "${{ steps.meta.outputs.bake-file }}" "${{ runner.temp }}/bake-meta.json"
-
-      - name: Upload meta bake definition
-        uses: actions/upload-artifact@v4
-        with:
-          name: bake-meta
-          path: ${{ runner.temp }}/bake-meta.json
-          if-no-files-found: error
-          retention-days: 1
-
-  build:
-    needs:
-      - prepare
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: ${{ fromJson(needs.prepare.outputs.matrix) }}
-    runs-on: ${{ startsWith(matrix.platform, 'linux/arm') && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
-    steps:
-      - name: Prepare
-        run: |
-          platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
-
-      - name: Download meta bake definition
-        uses: actions/download-artifact@v4
-        with:
-          name: bake-meta
-          path: ${{ runner.temp }}
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
+  bake:
+    uses: docker/github-builder/.github/workflows/bake.yml@v1
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      output: image
+      push: true
+      target: image-all
+      meta-images: user/app
+      meta-tags: |
+        type=ref,event=branch
+        type=sha
+    secrets:
+      registry-auths: |
+        - registry: docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build
-        id: bake
-        uses: docker/bake-action@v6
-        with:
-          files: |
-            ./docker-bake.hcl
-            cwd://${{ runner.temp }}/bake-meta.json
-          targets: image
-          set: |
-            *.tags=${{ env.REGISTRY_IMAGE }}
-            *.platform=${{ matrix.platform }}
-            *.output=type=image,push-by-digest=true,name-canonical=true,push=true
-
-      - name: Export digest
-        run: |
-          mkdir -p ${{ runner.temp }}/digests
-          digest="${{ fromJSON(steps.bake.outputs.metadata).image['containerimage.digest'] }}"
-          touch "${{ runner.temp }}/digests/${digest#sha256:}"
-
-      - name: Upload digest
-        uses: actions/upload-artifact@v4
-        with:
-          name: digests-${{ env.PLATFORM_PAIR }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
-
-  merge:
-    runs-on: ubuntu-latest
-    needs:
-      - build
-    steps:
-      - name: Download meta bake definition
-        uses: actions/download-artifact@v4
-        with:
-          name: bake-meta
-          path: ${{ runner.temp }}
-
-      - name: Download digests
-        uses: actions/download-artifact@v4
-        with:
-          path: ${{ runner.temp }}/digests
-          pattern: digests-*
-          merge-multiple: true
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
-        run: |
-          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("${{ env.REGISTRY_IMAGE }}")) | "-t " + .) | join(" ")' ${{ runner.temp }}/bake-meta.json) \
-            $(printf '${{ env.REGISTRY_IMAGE }}@sha256:%s ' *)
-
-      - name: Inspect image
-        run: |
-          docker buildx imagetools inspect ${{ env.REGISTRY_IMAGE }}:$(jq -r '.target."docker-metadata-action".args.DOCKER_META_VERSION' ${{ runner.temp }}/bake-meta.json)
 ```
 

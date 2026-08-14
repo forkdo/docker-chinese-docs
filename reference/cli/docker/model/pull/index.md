@@ -6,12 +6,6 @@
 
 
 
-<!--
-本页面由 Docker 源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
-
-https://github.com/docker/model-cli
--->
-
 
 
 
@@ -24,12 +18,6 @@ https://github.com/docker/model-cli
 Pull a model to your local environment. Downloaded models also appear in the Docker Desktop Dashboard.
 
 
-
-## Options
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--ignore-runtime-memory-check` |  |  Do not block pull if estimated runtime memory for model exceeds system resources.<br> |
 
 
 

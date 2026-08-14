@@ -3,7 +3,7 @@
 
 > **Docker Desktop 条款**
 >
-> 在大型企业（超过 250 名员工或年度收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing/)。
+> 在大型企业（超过 250 名员工或年度收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopDebianInstall)。
 
 本页包含有关如何在 Debian 发行版上安装、启动和升级 Docker Desktop 的信息。
 
@@ -46,7 +46,7 @@
 
    默认情况下，Docker Desktop 安装在 `/opt/docker-desktop`。
 
-RPM 软件包包含一个安装后脚本，可自动完成其他设置步骤。
+DEB 软件包包含一个安装后脚本，可自动完成其他设置步骤。
 
 安装后脚本：
 
@@ -56,6 +56,8 @@ RPM 软件包包含一个安装后脚本，可自动完成其他设置步骤。
   这是因为经典的 Docker CLI 安装在 `/usr/bin/docker`。Docker Desktop 安装程序还会安装一个包含云集成能力的 Docker CLI 二进制文件，它本质上是 Compose CLI 的包装器，位于 `/usr/local/bin/com.docker.cli`。该符号链接确保包装器可以访问经典的 Docker CLI。
 
 ## 启动 Docker Desktop
+
+
 
 
 
@@ -115,6 +117,7 @@ $ systemctl --user enable docker-desktop
 $ systemctl --user stop docker-desktop
 ```
 
+
 ## 升级 Docker Desktop
 
 一旦发布了 Docker Desktop 的新版本，Docker UI 会显示通知。
@@ -126,10 +129,11 @@ $ sudo apt-get install ./docker-desktop-amd64.deb
 
 ## 下一步
 
-- 探索 [Docker 的订阅](https://www.docker.com/pricing/)，了解 Docker 可以为您提供什么。
+- 探索 [Docker 的订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopDebianInstall)，了解 Docker 可以为您提供什么。
 - 查看 [Docker 研讨会](/get-started/workshop/_index.md)，了解如何构建镜像并将其作为容器化应用程序运行。
 - [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其所有功能。
 - [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、解决方法、如何运行和提交诊断信息以及提交问题。
 - [常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供了常见问题的答案。
 - [发行说明](/manuals/desktop/release-notes.md) 列出了与 Docker Desktop 版本相关的组件更新、新功能和改进。
 - [备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供了有关备份和恢复与 Docker 相关的数据的说明。
+

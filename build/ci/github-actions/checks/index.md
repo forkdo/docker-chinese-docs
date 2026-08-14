@@ -1,14 +1,13 @@
-# Validating build configuration with GitHub Actions
+# 使用 GitHub Actions 验证构建配置
 
 
-[Build checks](/manuals/build/checks.md) let you validate your `docker build`
-configuration without actually running the build.
+[Build checks](/manuals/build/checks.md) 让你能够在不实际运行构建的情况下验证 `docker build`
+配置。
 
 ## Run checks with `docker/build-push-action`
 
-To run build checks in a GitHub Actions workflow with the `build-push-action`,
-set the `call` input parameter to `check`. With this set, the workflow fails if
-any check warnings are detected for your build's configuration.
+要在 GitHub Actions 工作流中使用 `build-push-action` 运行构建检查，请将 `call` 输入参数设为 `check`。
+设置后，如果发现构建配置存在任何检查警告，工作流将失败。
 
 ```yaml
 name: ci
@@ -21,21 +20,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Validate build configuration
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           call: check
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: true
           tags: user/app:latest
@@ -43,10 +42,8 @@ jobs:
 
 ## Run checks with `docker/bake-action`
 
-If you're using Bake and `docker/bake-action` to run your builds, you don't
-need to specify any special inputs in your GitHub Actions workflow
-configuration. Instead, define a Bake target that calls the `check` method,
-and invoke that target in your CI.
+如果你使用 Bake 和 `docker/bake-action` 来运行构建，则无需在 GitHub Actions 工作流配置中指定任何
+特殊输入。相反，定义一个调用 `check` 方法的 Bake target，并在你的 CI 中调用该 target。
 
 ```hcl
 target "build" {
@@ -75,21 +72,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Validate build configuration
-        uses: docker/bake-action@v6
+        uses: docker/bake-action@v7
         with:
           targets: validate-build
 
       - name: Build
-        uses: docker/bake-action@v6
+        uses: docker/bake-action@v7
         with:
           targets: build
           push: true
@@ -97,9 +94,9 @@ jobs:
 
 ### Using the `call` input directly
 
-You can also set the build method with the `call` input which is equivalent to using the `--call` flag with `docker buildx bake`
+你也可以设置 `call` 输入来指定构建方法，这等同于在使用 `docker buildx bake` 时传入 `--call` 标志。
 
-For example, to run a check without defining `call` in your Bake file:
+例如，要在不于 Bake 文件中定义 `call` 的情况下运行检查：
 
 ```yaml
 name: ci
@@ -112,10 +109,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Validate build configuration
-        uses: docker/bake-action@v6
+        uses: docker/bake-action@v7
         with:
           targets: build
           call: check

@@ -119,7 +119,7 @@
     将以下配置添加到您的 `compose.yaml` 文件中以定义 pgpass 文件：
 
     ```yaml
-    config:
+    configs:
       pgadmin-pgpass:
         content: |
           postgres:5432:*:postgres:secret

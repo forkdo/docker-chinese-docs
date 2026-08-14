@@ -1,17 +1,6 @@
 # 将 Docker Scout 与 Artifactory 容器注册表集成
 
 
-> **Experimental**
->
-> 
-
-`docker scout watch` 命令是实验性功能。
-
-实验性功能旨在用于测试和收集反馈，因为其功能或设计可能会在版本更新之间发生变更，恕不另行通知，或者可能会在未来的版本中完全移除。
-
-
-
-
 将 Docker Scout 与 JFrog Artifactory 集成，可让您对 Artifactory 中的镜像进行索引和分析。该集成由一个长期运行的 `docker scout watch` 进程提供支持。它会从您选择的仓库中提取镜像（可选择性过滤），接收来自 Artifactory 的 Webhook 回调，并将镜像数据推送到 Docker Scout。您可以在 Docker Scout 仪表板或通过 `docker scout` CLI 查看结果。
 
 ## 工作原理
@@ -119,7 +108,11 @@
 
 8. 持续监视新镜像或更新的镜像。
 
-   使用 `--refresh-registry` 选项运行 `docker scout watch`，以监视需要索引的新镜像。以下是示例命令：
+   使用 `--refresh-registry` 选项运行 `docker scout watch`，以监视需要索引的新镜像。
+
+   `docker scout watch` 命令是一个长期运行的进程，必须在后台无限期持续运行才能接收 Webhook 并监视新镜像。如果您直接在终端中运行它并关闭会话，该进程将会停止。
+
+   以下是示例命令。您可以将该进程作为系统服务（例如使用 `systemd` 或 `nohup`）运行，以确保它在后台持续运行。
 
    ```console
    $ docker scout watch --registry \
@@ -127,4 +120,5 @@
    --refresh-registry
    ```
 
-9. 可选。为来自流行协作平台的实时通知设置 Scout 集成。有关详细信息，请参阅[将 Docker Scout 与 Slack 集成](../team-collaboration/slack.md)。
+9. 可选。为来自流行协作平台的实时通知设置 Scout 集成。
+

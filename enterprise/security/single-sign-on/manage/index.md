@@ -1,4 +1,4 @@
-# 管理单点登录
+# 管理 SSO 域和连接
 
 
 
@@ -13,7 +13,7 @@
 要将域添加到现有的 SSO 连接：
 
 1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 SSO 连接表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Edit connection**（编辑连接）。
 1. 选择 **Next**（下一步）导航到域部分。
 1. 在 **Domains**（域）部分，选择 **Add domain**（添加域）。
@@ -28,8 +28,8 @@
 >
 > 如果您对同一域使用多个身份提供者，则必须从每个 SSO 连接中单独移除该域。
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Edit connection**（编辑连接）。
 1. 选择 **Next**（下一步）导航到域部分。
 1. 在 **Domain**（域）部分，选择您要移除的域旁边的 **X** 图标。
@@ -47,16 +47,16 @@
 
 要查看所有已配置的 SSO 连接：
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中查看所有已配置的连接。
 
 ### 编辑连接
 
 要修改现有的 SSO 连接：
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Edit connection**（编辑连接）。
 1. 按照屏幕上的说明修改您的连接设置。
 
@@ -64,8 +64,8 @@
 
 要移除 SSO 连接：
 
-1. 登录 [Docker Home](https://app.docker.com)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
-1. 选择 **Admin Console**（管理控制台），然后选择 **SSO and SCIM**。
+1. 登录 [Docker Home](https://app.docker.com/)，然后从左上角的帐户下拉菜单中选择您的公司或组织。
+1. 选择 **Identity & auth**（身份与认证），然后选择 **SSO and SCIM**。
 1. 在 **SSO connections**（SSO 连接）表中，选择您的连接的 **Actions**（操作）菜单，然后选择 **Delete connection**（删除连接）。
 1. 按照屏幕上的说明确认删除。
 
@@ -109,3 +109,4 @@ Docker 支持以下配置方法：
 1. 选择 **Remove**（移除）并确认移除。
 
 用户在被移除后会立即失去对您组织的访问权限。
+

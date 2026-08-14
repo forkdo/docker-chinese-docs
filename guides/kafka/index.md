@@ -243,3 +243,4 @@ services:
 通过使用 Docker，您可以简化使用 Kafka 开发和测试事件驱动应用程序的过程。容器简化了设置和部署开发所需的各种服务的过程。一旦它们在 Compose 中定义，团队中的每个人都可以从易用性中受益。
 
 如果您之前错过了，所有示例应用程序代码都可以在 dockersamples/kafka-development-node 中找到。
+

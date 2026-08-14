@@ -1,24 +1,19 @@
-# Test build policies
+# 测试构建策略
 
 
-The [`docker buildx policy test`](/reference/cli/docker/buildx/policy/test/)
-command runs unit tests for build policies using OPA's [standard test
-framework](https://www.openpolicyagent.org/docs/policy-testing).
+[`docker buildx policy test`](/reference/cli/docker/buildx/policy/test/) 命令使用 OPA 的 [标准测试框架](https://www.openpolicyagent.org/docs/policy-testing) 为构建策略运行单元测试。
 
 ```console
 $ docker buildx policy test <path>
 ```
 
-This validates policy logic with mocked inputs.
+这使用模拟输入来验证策略逻辑。
 
-For testing against real sources (actual image metadata, Git repositories), use
-[`docker buildx policy eval`](/reference/cli/docker/buildx/policy/eval/)
-instead. You can use the `eval --print` option to resolve input for a specific
-source for writing a test case.
+要针对真实源（实际的镜像元数据、Git 仓库）进行测试，请改用 [`docker buildx policy eval`](/reference/cli/docker/buildx/policy/eval/)。你可以使用 `eval --print` 选项为特定源解析输入，以便编写测试用例。
 
-## Basic example
+## 基本示例
 
-Start with a simple policy that only allows `alpine` images:
+从一个只允 `alpine` 镜像的简单策略开始：
 
 ```rego {title="Dockerfile.rego"}
 package docker
@@ -32,8 +27,7 @@ allow if {
 decision := {"allow": allow}
 ```
 
-Create a test file with the `*_test.rego` suffix. Test functions must start
-with `test_`:
+创建一个带有 `*_test.rego` 后缀的测试文件。测试函数必须以 `test_` 开头：
 
 ```rego {title="Dockerfile_test.rego"}
 package docker
@@ -47,7 +41,7 @@ test_ubuntu_denied if {
 }
 ```
 
-Run the tests:
+运行测试：
 
 ```console
 $ docker buildx policy test .
@@ -55,36 +49,35 @@ test_alpine_allowed: PASS (allow=true)
 test_ubuntu_denied: PASS (allow=false)
 ```
 
-`PASS` indicates that the tests defined in `Dockerfile_test.rego` executed
-successfully and all assertions were satisfied.
+`PASS` 表示 `Dockerfile_test.rego` 中定义的测试已成功执行，并且所有断言都得到满足。
 
-## Command options
+## 命令选项
 
-Filter tests by name with `--run`:
+使用 `--run` 按名称过滤测试：
 
 ```console
 $ docker buildx policy test --run alpine .
 test_alpine_allowed: PASS (allow=true)
 ```
 
-Test policies with non-default filenames using `--filename`:
+使用 `--filename` 测试具有非默认文件名的策略：
 
 ```console
 $ docker buildx policy test --filename app.Dockerfile .
 ```
 
-This loads `app.Dockerfile.rego` and runs `*_test.rego` files against it.
+这会加载 `app.Dockerfile.rego` 并针对它运行 `*_test.rego` 文件。
 
-## Test output
+## 测试输出
 
-Passed tests show the allow status and any deny messages:
+通过的测试显示允许状态和任何拒绝消息：
 
 ```console
 test_alpine_allowed: PASS (allow=true)
 test_ubuntu_denied: PASS (allow=false, deny_msg=only alpine images are allowed)
 ```
 
-Failed tests show input, decision output, and missing fields:
+失败的测试显示输入、决策输出和缺失字段：
 
 ```console
 test_invalid: FAIL (allow=false)
@@ -102,12 +95,11 @@ decision:
 missing_input: input.image.repo
 ```
 
-## Test deny messages
+## 测试拒绝消息
 
-To test custom error messages, capture the full decision result and assert on
-the `deny_msg` field.
+要测试自定义错误消息，请捕获完整的决策结果并对 `deny_msg` 字段进行断言。
 
-For a policy with deny messages:
+对于一个带有拒绝消息的策略：
 
 ```rego {title="Dockerfile.rego"}
 package docker
@@ -126,7 +118,7 @@ deny_msg contains msg if {
 decision := {"allow": allow, "deny_msg": deny_msg}
 ```
 
-Test the deny message:
+测试拒绝消息：
 
 ```rego {title="Dockerfile_test.rego"}
 test_deny_message if {
@@ -136,9 +128,9 @@ test_deny_message if {
 }
 ```
 
-## Test patterns
+## 测试模式
 
-**Test environment-specific rules:**
+**测试特定环境的规则：**
 
 ```rego
 test_production_requires_digest if {
@@ -156,7 +148,7 @@ test_development_allows_tags if {
 }
 ```
 
-**Test multiple registries:**
+**测试多个镜像仓库：**
 
 ```rego
 test_dockerhub_allowed if {
@@ -180,11 +172,11 @@ test_ghcr_allowed if {
 }
 ```
 
-For available input fields, see the [Input reference](./inputs.md).
+有关可用的输入字段，请参阅 [输入参考](./inputs.md)。
 
-## Organize test files
+## 组织测试文件
 
-The test runner discovers all `*_test.rego` files recursively:
+测试运行器会递归发现所有 `*_test.rego` 文件：
 
 ```plaintext
 build-policies/
@@ -196,13 +188,13 @@ build-policies/
     └── environments_test.rego
 ```
 
-Run all tests:
+运行所有测试：
 
 ```console
 $ docker buildx policy test .
 ```
 
-Or test specific files:
+或测试特定文件：
 
 ```console
 $ docker buildx policy test tests/registries_test.rego

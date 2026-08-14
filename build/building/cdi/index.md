@@ -1,49 +1,40 @@
-# Container Device Interface (CDI)
+# 容器设备接口（CDI）
 
 
 <!-- vale Docker.We = NO -->
 
-The [Container Device Interface (CDI)](https://github.com/cncf-tags/container-device-interface/blob/main/SPEC.md)
-is a specification designed to standardize how devices (like GPUs, FPGAs, and
-other hardware accelerators) are exposed to and used by containers. The aim is
-to provide a more consistent and secure mechanism for using hardware devices in
-containerized environments, addressing the challenges associated with
-device-specific setups and configurations.
+[容器设备接口（CDI）](https://github.com/cncf-tags/container-device-interface/blob/main/SPEC.md)
+是一项规范，旨在标准化设备（如 GPU、FPGA 及其他硬件加速器）如何暴露给容器并被容器使用。其目的是
+为在容器化环境中使用硬件设备提供一种更一致、更安全的机制，解决与设备特定设置和配置相关的挑战。
 
-In addition to enabling the container to interact with the device node, CDI also
-lets you specify additional configuration for the device, such as environment
-variables, host mounts (such as shared objects), and executable hooks.
+除了使容器能够与设备节点交互外，CDI 还允许你为设备指定额外的配置，例如环境变量、主机挂载（如
+共享对象）和可执行钩子（hooks）。
 
-## Getting started
+## 入门（Getting started）
 
-To get started with CDI, you need to have a compatible environment set up. This
-includes having Docker v27+ installed with [CDI configured](/reference/cli/dockerd.md#configure-cdi-devices)
-and Buildx v0.22+.
+要开始使用 CDI，你需要搭建一个兼容的环境。这包括安装 Docker v27+（已
+[配置 CDI](/reference/cli/dockerd.md#configure-cdi-devices)）以及 Buildx v0.22+。
 
-You also need to create the [device specifications using JSON or YAML files](https://github.com/cncf-tags/container-device-interface/blob/main/SPEC.md#cdi-json-specification)
-in one of the following locations:
+你还需要使用 JSON 或 YAML 文件在以下位置之一创建
+[设备规范](https://github.com/cncf-tags/container-device-interface/blob/main/SPEC.md#cdi-json-specification)：
 
 * `/etc/cdi`
 * `/var/run/cdi`
 * `/etc/buildkit/cdi`
 
 > [!NOTE]
-> Location can be changed by setting the `specDirs` option in the `cdi` section
-> of the [`buildkitd.toml` configuration file](../buildkit/configure.md) if you
-> are using BuildKit directly. If you're building using the Docker Daemon with
-> the `docker` driver, see [Configure CDI devices](/reference/cli/dockerd.md#configure-cdi-devices)
-> documentation.
+> 如果你直接使用 BuildKit，可以通过设置 [`buildkitd.toml` 配置文件](../buildkit/configure.md)
+> 的 `cdi` 段落中的 `specDirs` 选项来更改位置。如果你使用带 `docker` 驱动的 Docker 守护进程进行
+> 构建，请参阅 [配置 CDI 设备](/reference/cli/dockerd.md#configure-cdi-devices) 文档。
 
 > [!NOTE]
-> If you are creating a container builder on WSL, you need to ensure that
-> [Docker Desktop](../../desktop/_index.md) is installed and [WSL 2 GPU Paravirtualization](../../desktop/features/gpu.md#prerequisites)
-> is enabled. Buildx v0.27+ is also required to mount the WSL libraries in the
-> container.
+> 如果你在 WSL 上创建容器构建器，需要确保已安装 [Docker Desktop](../../desktop/_index.md) 且已启用
+> [WSL 2 GPU 半虚拟化](../../desktop/features/gpu.md#prerequisites)。还需要 Buildx v0.27+ 才能在容器中
+> 挂载 WSL 库。
 
-## Building with a simple CDI specification
+## 使用简单 CDI 规范进行构建（Building with a simple CDI specification）
 
-Let's start with a simple CDI specification that injects an environment variable
-into the build environment and write it to `/etc/cdi/foo.yaml`:
+让我们从一个简单的 CDI 规范开始，它将一个环境变量注入构建环境，并将其写入 `/etc/cdi/foo.yaml`：
 
 ```yaml {title="/etc/cdi/foo.yaml"}
 cdiVersion: "0.6.0"
@@ -55,8 +46,7 @@ devices:
     - FOO=injected
 ```
 
-Inspect the `default` builder to verify that `vendor1.com/device` is detected
-as a device:
+检查 `default` 构建器，确认 `vendor1.com/device` 被检测为设备：
 
 ```console
 $ docker buildx inspect
@@ -97,7 +87,7 @@ GC Policy rule#3:
  Min Free Space: 2.794GiB
 ```
 
-Now let's create a Dockerfile to use this device:
+现在让我们创建一个 Dockerfile 来使用此设备：
 
 ```dockerfile
 # syntax=docker/dockerfile:1-labs
@@ -106,18 +96,16 @@ RUN --device=vendor1.com/device \
   env | grep ^FOO=
 ```
 
-Here we use the [`RUN --device` command](/reference/dockerfile.md#run---device)
-and set `vendor1.com/device` which requests the first device available in the
-specification. In this case it uses `foo`, which is the first device in
-`/etc/cdi/foo.yaml`.
+这里我们使用 [`RUN --device` 命令](/reference/dockerfile.md#run---device) 并设置 `vendor1.com/device`，
+它请求规范中可用的第一个设备。在本例中它使用 `foo`，即 `/etc/cdi/foo.yaml` 中的第一个设备。
 
 > [!NOTE]
-> [`RUN --device` command](/reference/dockerfile.md#run---device) is only
-> featured in [`labs` channel](../buildkit/frontend.md#labs-channel) since
+> [`RUN --device` 命令](/reference/dockerfile.md#run---device) 仅在
+> [`labs` 通道](../buildkit/frontend.md#labs-channel) 中提供，自
 > [Dockerfile frontend v1.14.0-labs](https://github.com/moby/buildkit/releases/tag/dockerfile%2F1.14.0-labs)
-> and not yet available in stable syntax.
+> 起，在稳定语法中尚不可用。
 
-Now let's build this Dockerfile:
+现在让我们构建此 Dockerfile：
 
 ```console
 $ docker buildx build .
@@ -132,8 +120,7 @@ $ docker buildx build .
 ERROR: failed to build: failed to solve: failed to load LLB: device vendor1.com/device=foo is requested by the build but not allowed
 ```
 
-It fails because the device `vendor1.com/device=foo` is not automatically
-allowed by the build as shown in the `buildx inspect` output above:
+它失败了，因为如上 `buildx inspect` 输出所示，设备 `vendor1.com/device=foo` 未被构建自动允许：
 
 ```text
 Devices:
@@ -141,15 +128,15 @@ Devices:
  Automatically allowed: false
 ```
 
-To allow the device, you can use the [`--allow` flag](/reference/cli/docker/buildx/build.md#allow)
-with the `docker buildx build` command:
+要允许该设备，你可以使用 [`--allow` 标志](/reference/cli/docker/buildx/build/#allow) 配合
+`docker buildx build` 命令：
 
 ```console
 $ docker buildx build --allow device .
 ```
 
-Or you can set the `org.mobyproject.buildkit.device.autoallow` annotation in
-the CDI specification to automatically allow the device for all builds:
+或者，你可以在 CDI 规范中设置 `org.mobyproject.buildkit.device.autoallow` 注解，以自动允许该设备在所有
+构建中使用：
 
 ```yaml {title="/etc/cdi/foo.yaml"}
 cdiVersion: "0.6.0"
@@ -163,7 +150,7 @@ annotations:
   org.mobyproject.buildkit.device.autoallow: true
 ```
 
-Now running the build again with the `--allow device` flag:
+现在再次使用 `--allow device` 标志运行构建：
 
 ```console
 $ docker buildx build --progress=plain --allow device .
@@ -194,18 +181,16 @@ $ docker buildx build --progress=plain --allow device .
 #7 DONE 0.2s
 ```
 
-The build is successful and the output shows that the `FOO` environment variable
-was injected into the build environment as specified in the CDI specification.
+构建成功，输出显示 `FOO` 环境变量已按 CDI 规范中的指定被注入到构建环境中。
 
-## Set up a container builder with GPU support
+## 设置带有 GPU 支持的容器构建器（Set up a container builder with GPU support）
 
-In this section, we will show you how to set up a [container builder](../builders/drivers/docker-container.md)
-using NVIDIA GPUs. Since Buildx v0.22, when creating a new container builder, a
-GPU request is automatically added to the container builder if the host has GPU
-drivers installed in the kernel. This is similar to using [`--gpus=all` with the `docker run`](/reference/cli/docker/container/run.md#gpus)
-command.
+在本节中，我们将向你展示如何使用 NVIDIA GPU 设置
+[容器构建器](../builders/drivers/docker-container.md)。自 Buildx v0.22 起，在创建新的容器构建器时，
+如果主机的内核中已安装 GPU 驱动，会自动向容器构建器添加 GPU 请求。这类似于使用
+[`docker run` 的 `--gpus=all`](/reference/cli/docker/container/run/#gpus) 命令。
 
-Now let's create a container builder named `gpubuilder` using Buildx:
+现在让我们使用 Buildx 创建一个名为 `gpubuilder` 的容器构建器：
 
 ```console
 $ docker buildx create --name gpubuilder --driver-opt "image=moby/buildkit:buildx-stable-1-gpu" --bootstrap
@@ -219,13 +204,10 @@ gpubuilder
 ```
 
 > [!NOTE]
-> We made a specially crafted BuildKit image because the current BuildKit
-> release image is based on Alpine that doesn't support NVIDIA drivers. The
-> following image is based on Ubuntu and installs the NVIDIA client libraries
-> and generates the CDI specification for your GPU in the container builder if
-> a device is requested during a build.
+> 我们制作了一个特别定制的 BuildKit 镜像，因为当前的 BuildKit 发布镜像基于 Alpine，不支持 NVIDIA 驱动。
+> 以下镜像基于 Ubuntu，并安装 NVIDIA 客户端库，且在构建期间请求设备时为容器构建器生成 GPU 的 CDI 规范。
 
-Let's inspect this builder:
+让我们检查此构建器：
 
 ```console
 $ docker buildx inspect gpubuilder
@@ -274,20 +256,18 @@ GC Policy rule#3:
  Min Free Space: 188.1GiB
 ```
 
-We can see `nvidia.com/gpu` vendor is detected as a device in the builder which
-means that drivers were detected.
+我们可以看到 `nvidia.com/gpu` 供应商被检测为构建器中的一个设备，这意味着检测到了驱动。
 
-Optionally you can check if NVIDIA GPU devices are available in the container
-using `nvidia-smi`:
+可选地，你可以使用 `nvidia-smi` 检查容器是否有 NVIDIA GPU 设备可用：
 
 ```console
 $ docker exec -it buildx_buildkit_gpubuilder0 nvidia-smi -L
 GPU 0: Tesla T4 (UUID: GPU-6cf00fa7-59ac-16f2-3e83-d24ccdc56f84)
 ```
 
-## Building with GPU support
+## 使用 GPU 支持进行构建（Building with GPU support）
 
-Let's create a simple Dockerfile that will use the GPU device:
+让我们创建一个将使用 GPU 设备的简单 Dockerfile：
 
 ```dockerfile
 # syntax=docker/dockerfile:1-labs
@@ -295,7 +275,7 @@ FROM ubuntu
 RUN --device=nvidia.com/gpu nvidia-smi -L
 ```
 
-Now run the build using the `gpubuilder` builder we created earlier:
+现在使用我们之前创建的 `gpubuilder` 构建器运行构建：
 
 ```console
 $ docker buildx --builder gpubuilder build --progress=plain .
@@ -320,22 +300,18 @@ $ docker buildx --builder gpubuilder build --progress=plain .
 #8 DONE 1.6s
 ```
 
-As you might have noticed, the step `#7` is preparing the `nvidia.com/gpu`
-device by installing client libraries and the toolkit to generate the CDI
-specifications for the GPU.
+你可能注意到了，步骤 `#7` 通过安装客户端库和 toolkit 来为 GPU 生成 CDI 规范，从而准备 `nvidia.com/gpu`
+设备。
 
-The `nvidia-smi -L` command is then executed in the container using the GPU
-device. The output shows the GPU UUID.
+随后 `nvidia-smi -L` 命令在容器中使用 GPU 设备执行。输出显示了 GPU UUID。
 
-You can check the generated CDI specification within the container builder with
-the following command:
+你可以用以下命令检查容器构建器中生成的 CDI 规范：
 
 ```console
 $ docker exec -it buildx_buildkit_gpubuilder0 cat /etc/cdi/nvidia.yaml
 ```
 
-For the EC2 instance [`g4dn.xlarge`](https://aws.amazon.com/ec2/instance-types/g4/)
-used here, it looks like this:
+对于此处使用的 EC2 实例 [`g4dn.xlarge`](https://aws.amazon.com/ec2/instance-types/g4/)，它看起来如下：
 
 ```yaml {collapse=true}
 cdiVersion: 0.6.0
@@ -533,5 +509,5 @@ devices:
 kind: nvidia.com/gpu
 ```
 
-Congrats on your first build using a GPU device with BuildKit and CDI.
+恭喜你完成了第一次使用 GPU 设备配合 BuildKit 和 CDI 的构建。
 

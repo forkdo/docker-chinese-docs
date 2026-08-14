@@ -3,25 +3,13 @@
 
 ### 我可以在离线状态下使用 Docker Desktop 吗？
 
-可以，您可以在离线状态下使用 Docker Desktop。但是，您将无法访问需要互联网连接的功能。此外，任何需要登录的功能在离线或使用隔离网络环境时都无法使用。这包括：
-
-- [学习中心](/manuals/desktop/use-desktop/_index.md)中的资源
-- 从 Docker Hub 拉取或推送镜像
-- [镜像访问管理](/manuals/security/access-tokens.md)
-- [静态漏洞扫描](/manuals/docker-hub/repos/manage/vulnerability-scanning.md)
-- 在 Docker 仪表板中查看远程镜像
-- 使用 [BuildKit](/manuals/build/buildkit/_index.md#getting-started) 时的 Docker Build。您可以通过禁用 BuildKit 来解决此问题。运行 `DOCKER_BUILDKIT=0 docker build .` 可禁用 BuildKit。
-- [Kubernetes](/manuals/desktop/use-desktop/kubernetes.md)（首次启用 Kubernetes 时会下载镜像）
-- 检查更新
-- [应用内诊断](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md#diagnose-from-the-app)（包括[自诊断工具](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md#diagnose-from-the-app)）
-- 发送使用情况统计信息
-- 当 `networkMode` 设置为 `mirrored` 时
+可以，您可以在离线状态下使用 Docker Desktop。但是，您将无法访问需要互联网连接的功能。此外，任何需要登录的功能在离线或使用隔离网络环境时都无法使用。
 
 ### 如何连接到远程 Docker Engine API？
 
 要连接到远程 Engine API，您可能需要为 Docker 客户端和开发工具提供 Engine API 的位置。
 
-Mac 和 Windows WSL 2 用户可以通过 Unix 套接字连接到 Docker Engine：`unix:///var/run/docker.sock`。
+Mac 和 Windows WSL 2 用户可以通过 Unix 套接字连接到 Docker Engine：`unix:///var/run/docker.sock`。Docker Desktop for Linux 使用位于 `~/.docker/desktop/docker.sock` 的[按用户套接字](linuxfaqs.md#how-do-i-use-docker-sdks-with-docker-desktop-for-linux)，而不是系统级的 `/var/run/docker.sock`。
 
 如果您使用的是 [Apache Maven](https://maven.apache.org/) 等应用程序，这些程序需要设置 `DOCKER_HOST` 和 `DOCKER_CERT_PATH` 环境变量，请指定这些变量以通过 Unix 套接字连接到 Docker 实例。
 
@@ -104,7 +92,7 @@ $ /Applications/Docker.app/Contents/MacOS/install --user=<userid>
 
 > [!NOTE]
 > 
-> 在启动 Docker Desktop 之前，如果 `~/Library/Group Containers/group.com.docker/` 目录中已存在 `settings-store.json` 文件（对于 Docker Desktop 4.34 及更早版本为 `settings.json`），当您选择**完成**时，会出现一个**完成 Docker Desktop 设置**窗口，提示需要管理员权限。为避免这种情况，请确保在启动应用程序之前删除之前安装遗留下来的 `settings-store.json` 文件（对于 Docker Desktop 4.34 及更早版本为 `settings.json`）。
+> 在启动 Docker Desktop 之前，如果 `~/Library/Group Containers/group.com.docker/` 目录中已存在 `settings-store.json` 文件，当您选择**完成**时，会出现一个**完成 Docker Desktop 设置**窗口，提示需要管理员权限。为避免这种情况，请确保在启动应用程序之前删除之前安装遗留下来的 `settings-store.json` 文件。
 
 **Windows**
 
@@ -119,5 +107,6 @@ $ /Applications/Docker.app/Contents/MacOS/install --user=<userid>
 ```console
 $ "Docker Desktop Installer.exe" install —always-run-service
 ```
+
 
 

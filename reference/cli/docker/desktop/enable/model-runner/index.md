@@ -13,8 +13,6 @@
 
 
 
-
-
 ## Description
 
 Enable and manage Docker Model Runner settings used by 'docker model'

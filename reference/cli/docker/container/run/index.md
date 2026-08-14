@@ -6,14 +6,6 @@
 
 **Aliases:** `docker run`
 
-<!--
-本页内容由 Docker 源代码自动生成。如果您希望
-建议对此处显示的文本进行修改，请在 GitHub 上的源仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -1247,7 +1239,7 @@ the container and remove the file system when the container exits, use the
 `--rm` flag:
 
 ```text
---rm: Automatically remove the container when it exits
+--rm: Automatically remove the container and its associated anonymous volumes when it exits
 ```
 
 > [!NOTE]

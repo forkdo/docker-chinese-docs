@@ -17,7 +17,7 @@ Settings Management 专为以下组织设计：
 
 管理员可以使用以下方法之一定义设置：
 
-- [Admin Console](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md)：通过 Docker Admin Console 创建并分配设置策略。这提供了一个基于 Web 的界面，用于管理整个组织的设置。
+- [Docker Home](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md)：通过 Docker Home 创建并分配设置策略。这提供了一个基于 Web 的界面，用于管理整个组织的设置。
 - [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)：在用户机器上放置配置文件以强制执行设置。此方法适用于自动部署和脚本化安装。
 
 强制执行的设置会覆盖用户定义的配置，且开发者无法修改。
@@ -42,17 +42,19 @@ Settings Management 支持广泛的 Docker Desktop 功能，包括：
 
 1. 用户特定策略：最高优先级
 2. 组织默认策略：当不存在用户特定策略时应用
-3. 本地 `admin-settings.json` 文件：最低优先级，会被 Admin Console 策略覆盖
-4. [配置描述文件](/manuals/enterprise/security/enforce-sign-in/methods.md#configuration-profiles-method-mac-only)：Docker Admin Console 策略的超集。适用于 Docker Desktop 4.48 及更高版本。
+3. 本地 `admin-settings.json` 文件：最低优先级，会被 Docker Home 策略覆盖
+4. [配置描述文件](/manuals/enterprise/security/enforce-sign-in/methods.md#configuration-profiles-method-mac-only)（用于在控制代理设置时）
 
 ## 设置 Settings Management
+
+您可以随时创建设置管理策略，但您的组织需要先验证域名，策略才能生效。
 
 1. 确认您已[添加并验证](/manuals/enterprise/security/domain-management.md#add-and-verify-a-domain)组织的域名。
 2. [强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)以确保所有开发者都使用您的组织进行身份验证。
 3. 选择一种配置方法：
-    - 在 [macOS](/manuals/desktop/setup/install/mac-install.md#install-from-the-command-line) 或 [Windows](/manuals/desktop/setup/install/windows-install.md#install-from-the-command-line) 上使用 `--admin-settings` 安装程序标志自动创建 `admin-settings.json`。
-    - 手动创建并配置 [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)。
-    - 在 [Docker Admin Console](configure-admin-console.md) 中创建设置策略。
+   - 在 [macOS](/manuals/desktop/setup/install/mac-install.md#install-from-the-command-line) 或 [Windows](/manuals/desktop/setup/install/windows-install.md#install-from-the-command-line) 上使用 `--admin-settings` 安装程序标志自动创建 `admin-settings.json`。
+   - 手动创建并配置 [`admin-settings.json` 文件](/manuals/enterprise/security/hardened-desktop/settings-management/configure-json-file.md)。
+   - 在 [Docker Home](configure-admin-console.md) 中创建设置策略。
 
 配置完成后，开发者在以下情况下会收到强制执行的设置：
 
@@ -76,13 +78,13 @@ Settings Management 支持广泛的 Docker Desktop 功能，包括：
 
 当管理员应用 Settings Management 策略时，Docker Desktop 会在 GUI 中将大多数强制执行的设置显示为灰色。
 
-Docker Desktop GUI 目前不会显示所有集中设置，特别是管理员通过 Admin Console 应用的增强容器隔离 (ECI) 设置。
+Docker Desktop GUI 目前不会显示所有集中设置，特别是管理员通过 Docker Home 应用的增强容器隔离 (ECI) 设置。
 
 作为解决方法，您可以检查 `settings-store.json` 文件以查看所有已应用的设置：
 
-  - Mac：`~/Library/Application Support/Docker/settings-store.json`
-  - Windows：`%APPDATA%\Docker\settings-store.json`
-  - Linux：`~/.docker/desktop/settings-store.json`
+- Mac：`~/Library/Application Support/Docker/settings-store.json`
+- Windows：`%APPDATA%\Docker\settings-store.json`
+- Linux：`~/.docker/desktop/settings-store.json`
 
 `settings-store.json` 文件包含所有设置，包括那些可能未出现在 Docker Desktop GUI 中的设置。
 
@@ -98,4 +100,5 @@ Settings Management 具有以下限制：
 开始使用 Settings Management：
 
 - [使用 `admin-settings.json` 文件配置 Settings Management](configure-json-file.md)
-- [使用 Docker Admin Console 配置 Settings Management](configure-admin-console.md)
+- [使用 Docker Home 配置 Settings Management](configure-admin-console.md)
+

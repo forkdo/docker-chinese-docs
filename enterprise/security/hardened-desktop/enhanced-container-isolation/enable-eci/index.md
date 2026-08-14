@@ -12,7 +12,6 @@ ECI 可在保持开发者完整生产力的同时，防止恶意容器破坏 Doc
 开始前，您必须满足以下条件：
 
 - Docker Business 订阅
-- Docker Desktop 4.13 或更高版本
 - [强制登录](/manuals/enterprise/security/enforce-sign-in/_index.md)（仅适用于管理组织范围设置的 administrators）
 
 ## 启用增强型容器隔离
@@ -42,14 +41,14 @@ Docker Business 订阅。
 
 使用 Settings Management 在组织范围内配置增强型容器隔离：
 
-**Admin Console**
+**Docker Home**
 
 
 
 1. 登录 [Docker Home](https://app.docker.com) 并从左上角账户下拉菜单中选择您的组织。
-1. 转到 **Admin Console** > **Desktop Settings Management**。
-1. [创建或编辑设置策略](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md)。
-1. 将 **Enhanced Container Isolation** 设置为 **Always enabled**。
+2. 选择 **Docker Desktop**，然后 **Settings Management**。
+3. [创建或编辑设置策略](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md)。
+4. 将 **Enhanced Container Isolation** 设置为 **Always enabled**。
 
 **JSON file**
 
@@ -160,3 +159,4 @@ ECI 开启时，此命令会失败，除非您已为可信镜像配置 Docker so
 
 - 查看 [配置 Docker socket 例外和高级设置](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/config.md)。
 - 查看 [增强型容器隔离限制](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/limitations.md)。
+

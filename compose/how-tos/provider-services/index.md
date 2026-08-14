@@ -114,3 +114,4 @@ services:
 
 - [Docker 模型运行器文档](/manuals/ai/model-runner.md)
 - [Compose 扩展文档](https://github.com/docker/compose/blob/main/docs/extension.md)
+

@@ -1,14 +1,13 @@
-# Functions
+# 函数（Functions）
 
 
-HCL functions are great for when you need to manipulate values in your build
-configuration in more complex ways than just concatenation or interpolation.
+当你需要以比简单拼接或插值更复杂的方式操作构建配置中的值时，HCL 函数非常有用。
 
-## Standard library
+## 标准库
 
-Bake ships with built-in support for the [standard library functions](/manuals/build/bake/stdlib.md).
+Bake 内置支持 [标准库函数](/manuals/build/bake/stdlib.md)。
 
-The following example shows the `add` function:
+以下示例展示了 `add` 函数：
 
 ```hcl {title=docker-bake.hcl}
 variable "TAG" {
@@ -49,13 +48,12 @@ $ docker buildx bake --print webapp
 }
 ```
 
-## User-defined functions
+## 用户自定义函数
 
-You can create [user-defined functions](https://github.com/hashicorp/hcl/tree/main/ext/userfunc)
-that do just what you want, if the built-in standard library functions don't
-meet your needs.
+如果内置的标准库函数不满足你的需求，你可以创建 [用户自定义函数](https://github.com/hashicorp/hcl/tree/main/ext/userfunc)
+来做你恰好需要的事情。
 
-The following example defines an `increment` function.
+以下示例定义了一个 `increment` 函数。
 
 ```hcl {title=docker-bake.hcl}
 function "increment" {
@@ -97,14 +95,11 @@ $ docker buildx bake --print webapp
 }
 ```
 
-## Variables in functions
+## 函数中的变量
 
-You can make references to [variables](./variables) and standard library
-functions inside your functions.
+你可以在函数内部引用 [variables](./variables) 和标准库函数。
 
-You can't reference user-defined functions from other functions.
-
-The following example uses a global variable (`REPO`) in a custom function.
+以下示例在一个自定义函数中使用了全局变量（`REPO`）。
 
 ```hcl {title=docker-bake.hcl}
 # docker-bake.hcl
@@ -122,8 +117,7 @@ target "webapp" {
 }
 ```
 
-Printing the Bake file with the `--print` flag shows that the `tag` function
-uses the value of `REPO` to set the prefix of the tag.
+使用 `--print` 标志打印 Bake 文件，显示 `tag` 函数使用 `REPO` 的值来设置 tag 的前缀。
 
 ```console
 $ docker buildx bake --print webapp

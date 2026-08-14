@@ -6,12 +6,6 @@
 
 
 
-<!--
-此页面内容由 Docker 源代码自动生成。若要建议对此处显示的文本进行更改，请在 GitHub 上的源仓库中提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -45,7 +39,7 @@ pass a worker token, the node joins as a worker.
 The example below demonstrates joining a manager node using a manager token.
 
 ```console
-$ docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-7p73s1dx5in4tatdymyhg9hu2 192.168.99.121:2377
+$ docker swarm join --token SWMTKN-1-aabbccdd00112233aabbccdd00112233aabbccdd00112233aa-aabbccdd00112233... 192.168.99.121:2377
 This node joined a swarm as a manager.
 
 $ docker node ls
@@ -63,7 +57,7 @@ should join as workers instead. Managers should be stable hosts that have static
 The example below demonstrates joining a worker node using a worker token.
 
 ```console
-$ docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-1awxwuwd3z9j1z3puu7rcgdbx 192.168.99.121:2377
+$ docker swarm join --token SWMTKN-1-aabbccdd00112233aabbccdd00112233aabbccdd00112233aa-aabbccdd00112233... 192.168.99.121:2377
 This node joined a swarm as a worker.
 
 $ docker node ls

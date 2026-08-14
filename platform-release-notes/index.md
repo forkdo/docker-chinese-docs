@@ -3,6 +3,13 @@
 
 此页面详细介绍了 Docker Home、管理控制台、计费、安全和订阅功能的新增功能、增强功能、已知问题和错误修复。
 
+## 2026-02-13
+
+### 新增功能
+
+- 管理员现在可以使用[命名空间访问控制](/manuals/enterprise/security/hardened-desktop/namespace-access.md)来控制组织成员是否可以向其在 Docker Hub 上的个人命名空间推送内容。
+- 管理员现在可以使用[禁用公共仓库](/manuals/docker-hub/settings.md#disable-creation-of-public-repos)设置在组织命名空间内阻止创建公共仓库。
+
 ## 2026-01-27
 
 ### 新增功能
@@ -20,7 +27,7 @@
 
 ### 新增功能
 
-- 新的 Docker 订阅现已推出。更多信息请参阅 [Docker 订阅和功能](https://www.docker.com/pricing/) 以及[宣布升级 Docker 计划：更简单、更多价值、更好的开发和生产力](https://www.docker.com/blog/november-2024-updated-plans-announcement/)。
+- 新的 Docker 订阅现已推出。更多信息请参阅 [Docker 订阅和功能](https://www.docker.com/pricing?ref=Docs&refAction=DocsPlatformReleaseNotes) 以及[宣布升级 Docker 计划：更简单、更多价值、更好的开发和生产力](https://www.docker.com/blog/november-2024-updated-plans-announcement/)。
 
 ## 2024-11-18
 
@@ -61,10 +68,11 @@
 
 ### 新增功能
 
-- 管理员现在可以查看[组织洞察](/manuals/admin/organization/insights.md)。
+- 管理员现在可以查看[组织洞察](/manuals/admin/insights.md)。
 
 ## 2024-07-17
 
 ### 新增功能
 
 - 您现在可以在 [Docker Home](https://app.docker.com) 中集中访问和管理 Docker 产品。
+

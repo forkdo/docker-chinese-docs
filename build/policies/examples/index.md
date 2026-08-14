@@ -1,29 +1,20 @@
-# Policy templates and examples
+# 策略模板与示例
 
 
-This page provides complete, working policy examples you can copy and adapt.
-The examples are organized into two sections: getting started policies for
-quick adoption, and production templates for comprehensive security.
+本页提供完整的、可运行的策略示例，你可以复制并改编。这些示例分为两部分：用于快速采用的入门策略，以及用于全面安全性的生产模板。
 
-If you're new to policies, start with the tutorials:
-[Introduction](./intro.md), [Image validation](./validate-images.md), and [Git
-validation](./validate-git.md). Those pages teach individual techniques. This
-page shows complete policies combining those techniques.
+如果你不熟悉策略，请从教程开始：[简介](./intro.md)、[镜像验证](./validate-images.md) 和 [Git 验证](./validate-git.md)。这些页面讲授了各个技术。本页展示组合了这些技术的完整策略。
 
-## How to use these examples
+## 如何使用这些示例
 
-1. Copy the policy code into a `Dockerfile.rego` file next to your
-   Dockerfile
-2. Customize any todo comments with your specific values
-3. Test by running `docker build .` and verifying the policy works as
-   expected
-4. Refine based on your team's needs
+1. 将策略代码复制到你的 Dockerfile 旁边的 `Dockerfile.rego` 文件中
+2. 用你的特定值自定义任何 todo 注释
+3. 通过运行 `docker build .` 并验证策略按预期工作来进行测试
+4. 根据你的团队需求进行完善
 
-### Using examples with bake
+### 与 bake 一起使用
 
-These policies work with both `docker buildx build` and `docker buildx bake`.
-For bake, place the policy alongside your Dockerfile and it loads
-automatically. To use additional policies:
+这些策略同时适用于 `docker buildx build` 和 `docker buildx bake`。对于 bake，将策略放在你的 Dockerfile 旁边，它会自动加载。要使用额外的策略：
 
 ```hcl
 target "default" {
@@ -32,17 +23,15 @@ target "default" {
 }
 ```
 
-See the [Usage guide](./usage.md) for complete bake integration details.
+有关完整的 bake 集成详细信息，请参阅 [用法指南](./usage.md)。
 
-## Getting started
+## 入门
 
-These policies work immediately with minimal or no customization. Use them to
-adopt policies quickly and demonstrate value to your team.
+这些策略只需极少或无需自定义即可立即使用。使用它们来快速采用策略并向你的团队展示价值。
 
-### Development-friendly baseline
+### 对开发友好的基线
 
-A permissive policy that allows typical development workflows while blocking
-obvious security issues.
+一个宽松的策略，允许典型的开发工作流，同时阻止明显的安全问题。
 
 ```rego
 package docker
@@ -52,7 +41,7 @@ default allow := false
 allow if input.local
 allow if input.git
 
-# Allow common public registries
+# 允许常见的公共镜像仓库
 allow if {
   input.image.host == "docker.io"  # Docker Hub
 }
@@ -65,7 +54,7 @@ allow if {
   input.image.host == "dhi.io"  # Docker Hardened Images
 }
 
-# Require HTTPS for all downloads
+# 要求所有下载使用 HTTPS
 allow if {
   input.http.schema == "https"
 }
@@ -73,16 +62,13 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This policy allows local and Git contexts, images from Docker Hub, GitHub
-Container Registry, and [Docker Hardened Images](/dhi/), and `ADD` downloads
-over HTTPS. It blocks HTTP downloads and non-standard registries.
+此策略允许本地和 Git 上下文、来自 Docker Hub、GitHub Container Registry 和 [Docker Hardened Images](/dhi/) 的镜像，以及通过 HTTPS 进行的 `ADD` 下载。它会阻止 HTTP 下载和非标准镜像仓库。
 
-When to use: Starting point for teams new to policies. Provides basic security
-without disrupting development workflows.
+何时使用：对于刚接触策略的团队作为起点。在不干扰开发工作流的情况下提供基本安全性。
 
-### Registry allowlist
+### 镜像仓库允许列表
 
-Control which registries your builds can pull images from.
+控制你的构建可以从哪些镜像仓库拉取镜像。
 
 ```rego
 package docker
@@ -91,15 +77,15 @@ default allow := false
 
 allow if input.local
 
-# TODO: Add your internal registry hostname
+# TODO: 添加你的内部镜像仓库主机名
 allowed_registries := ["docker.io", "ghcr.io", "dhi.io", "registry.company.com"]
 
 allow if {
   input.image.host in allowed_registries
 }
 
-# Allow mirrored DHI images from Docker Hub (DHI Enterprise users)
-# TODO: Replace with your organization namespace
+# 允许从 Docker Hub 镜像的 DHI 镜像（DHI Enterprise 用户）
+# TODO: 替换为你的组织命名空间
 allow if {
   input.image.host == "docker.io"
   startswith(input.image.repo, "myorg/dhi-")
@@ -114,17 +100,13 @@ deny_msg contains msg if {
 decision := {"allow": allow, "deny_msg": deny_msg}
 ```
 
-This policy restricts image pulls to approved registries. Customize and add
-your internal registry to the list. If you have a DHI Enterprise subscription
-and have mirrored Docker Hardened Images to Docker Hub, add a rule to allow
-images from your organization's namespace.
+此策略将镜像拉取限制为已批准的镜像仓库。根据你的内部镜像仓库自定义并将其添加到列表中。如果你拥有 DHI Enterprise 订阅并将 Docker Hardened Images 镜像到了 Docker Hub，请添加一条规则以允许来自你组织命名空间的镜像。
 
-When to use: Enforce corporate policies about approved image sources. Prevents
-developers from using arbitrary public registries.
+何时使用：执行关于已批准镜像来源的公司策略。防止开发者使用任意公共镜像仓库。
 
-### Pin base images to digests
+### 将基础镜像固定到摘要
 
-Require digest references for reproducible builds.
+要求使用摘要引用以实现可复现的构建。
 
 ```rego
 package docker
@@ -133,7 +115,7 @@ default allow := false
 
 allow if input.local
 
-# Require digest references for all images
+# 要求所有镜像使用摘要引用
 allow if {
   input.image.isCanonical
 }
@@ -147,16 +129,13 @@ deny_msg contains msg if {
 decision := {"allow": allow, "deny_msg": deny_msg}
 ```
 
-This policy requires images use digest references like
-`alpine@sha256:abc123...` instead of tags like `alpine:3.19`. Digests are
-immutable - the same digest always resolves to the same image content.
+此策略要求镜像使用像 `alpine@sha256:abc123...` 这样的摘要引用，而不是像 `alpine:3.19` 这样的标签。摘要是不可变的——相同的摘要始终解析为相同的镜像内容。
 
-When to use: Ensure build reproducibility. Prevents builds from breaking when
-upstream tags are updated. Required for compliance in some environments.
+何时使用：确保构建可复现性。防止在上游标签更新时构建中断。在某些环境中合规要求必须如此。
 
-### Control external dependencies
+### 控制外部依赖
 
-Pin specific versions of dependencies downloaded during builds.
+固定构建期间下载的依赖项的特定版本。
 
 ```rego
 package docker
@@ -165,21 +144,21 @@ default allow := false
 
 allow if input.local
 
-# Allow any image (add restrictions as needed)
+# 允许任何镜像（根据需要添加限制）
 allow if input.image
 
-# TODO: Add your allowed Git repositories and tags
+# TODO: 添加你允许的 Git 仓库和标签
 allowed_repos := {
   "https://github.com/moby/buildkit.git": ["v0.26.1", "v0.27.0"],
 }
-# Only allow Git input from allowed_repos
+# 仅允许来自 allowed_repos 的 Git 输入
 allow if {
   some repo, versions in allowed_repos
   input.git.remote == repo
   input.git.tagName in versions
 }
 
-# TODO: Add your allowed downloads
+# TODO: 添加你允许的下载
 allow if {
   input.http.url == "https://example.com/app-v1.0.tar.gz"
 }
@@ -187,20 +166,17 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This policy creates allowlists for external dependencies. Add your Git
-repositories with approved version tags, and URLs.
+此策略为外部依赖创建允许列表。添加带有已批准版本标签和 URL 的 Git 仓库。
 
-When to use: Control which external dependencies can be used in builds.
-Prevents builds from pulling arbitrary versions or unverified downloads.
+何时使用：控制可以在构建中使用的外部依赖。防止构建拉取任意版本或未经验证的下载。
 
-## Production templates
+## 生产模板
 
-These templates demonstrate comprehensive security patterns. They require
-customization but show best practices for production environments.
+这些模板展示了全面的安全模式。它们需要自定义，但展示了生产环境的最佳实践。
 
-### Image attestation and provenance
+### 镜像证明与来源
 
-Require images have provenance attestations from trusted builders.
+要求镜像具有来自受信任构建器的来源证明。
 
 ```rego
 package docker
@@ -209,10 +185,10 @@ default allow := false
 
 allow if input.local
 
-# TODO: Add your repository names
+# TODO: 添加你的仓库名称
 allowed_repos := ["myorg/backend", "myorg/frontend", "myorg/worker"]
 
-# Production images need full attestations
+# 生产镜像需要完整的证明
 allow if {
   some repo in allowed_repos
   input.image.repo == repo
@@ -221,7 +197,7 @@ allow if {
   trusted_github_builder(sig, repo)
 }
 
-# Helper to validate GitHub Actions build from main branch
+# 验证来自 main 分支的 GitHub Actions 构建的辅助函数
 trusted_github_builder(sig, repo) if {
   sig.signer.certificateIssuer == "CN=sigstore-intermediate,O=sigstore.dev"
   sig.signer.issuer == "https://token.actions.githubusercontent.com"
@@ -230,14 +206,14 @@ trusted_github_builder(sig, repo) if {
   sig.signer.runnerEnvironment == "github-hosted"
 }
 
-# Allow Docker Hardened Images with built-in attestations
+# 允许带有内置证明的 Docker Hardened Images
 allow if {
   input.image.host == "dhi.io"
   input.image.isCanonical
   input.image.hasProvenance
 }
 
-# Allow official base images with digests
+# 允许带有摘要的官方基础镜像
 allow if {
   input.image.repo == "alpine"
   input.image.host == "docker.io"
@@ -247,23 +223,19 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This template validates that your application images have provenance
-attestations, and were built by GitHub Actions from your main branch. Docker
-Hardened Images are allowed when using digests since they include comprehensive
-attestations by default. Other base images must use digests.
+此模板验证你的应用镜像具有来源证明，并且是由你的 main 分支上的 GitHub Actions 构建的。当使用摘要时，Docker Hardened Images 被允许，因为它们默认包含全面的证明。其他基础镜像必须使用摘要。
 
-Customize:
+自定义：
 
-- Replace `allowed_repos` with your image names
-- Update the organization name in `trusted_github_builder()`
-- Add rules for other base images you use
+- 用你的镜像名称替换 `allowed_repos`
+- 在 `trusted_github_builder()` 中更新组织名称
+- 为你使用的其他基础镜像添加规则
 
-When to use: Enforce supply chain security for production deployments. Ensures
-images are built by trusted CI/CD pipelines with auditable provenance.
+何时使用：为生产部署执行供应链安全。确保镜像由具有可审计来源的受信任 CI/CD 管道构建。
 
-### Signed Git releases
+### 已签名的 Git 发布版本
 
-Enforce signed tags from trusted maintainers for Git dependencies.
+对来自受信任维护者的 Git 依赖强制执行已签名的标签。
 
 ```rego
 package docker
@@ -274,7 +246,7 @@ allow if input.local
 
 allow if input.image
 
-# TODO: Replace with your repository URL
+# TODO: 用你的仓库 URL 替换
 is_buildkit if {
     input.git.remote == "https://github.com/moby/buildkit.git"
 }
@@ -284,14 +256,14 @@ is_version_tag if {
     regex.match(`^v[0-9]+\.[0-9]+\.[0-9]+$`, input.git.tagName)
 }
 
-# Version tags must be signed
+# 版本标签必须已签名
 allow if {
     is_version_tag
     input.git.tagName != ""
     verify_git_signature(input.git.tag, "maintainers.asc")
 }
 
-# Allow unsigned refs for development
+# 允许开发中未签名的引用
 allow if {
     is_buildkit
     not is_version_tag
@@ -300,29 +272,27 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This template requires production release tags to be signed by trusted
-maintainers. Development branches and commits can be unsigned.
+此模板要求生产发布标签由受信任的维护者签名。开发分支和提交可以未签名。
 
-Setup:
+设置：
 
-1. Export maintainer PGP public keys to `maintainers.asc`:
+1. 将维护者 PGP 公钥导出到 `maintainers.asc`：
    ```console
    $ gpg --export --armor user1@example.com user2@example.com > maintainers.asc
    ```
-2. Place `maintainers.asc` in the same directory as your policy file
+2. 将 `maintainers.asc` 放在与你的策略文件相同的目录中
 
-Customize:
+自定义：
 
-- Replace the repository URL in `is_buildkit`
-- Update the maintainers in the PGP keyring file
-- Adjust the version tag regex pattern if needed
+- 在 `is_buildkit` 中替换仓库 URL
+- 更新 PGP 密钥环文件中的维护者
+- 根据需要调整版本标签正则模式
 
-When to use: Validate that production dependencies come from signed releases.
-Protects against compromised releases or unauthorized updates.
+何时使用：验证生产依赖来自已签名的发布版本。防止被入侵的发布版本或未经授权的更新。
 
-### Multi-registry policy
+### 多镜像仓库策略
 
-Apply different validation rules for internal and external registries.
+对内部和外部镜像仓库应用不同的验证规则。
 
 ```rego
 package docker
@@ -331,15 +301,15 @@ default allow := false
 
 allow if input.local
 
-# TODO: Replace with your internal registry hostname
+# TODO: 用你的内部镜像仓库主机名替换
 internal_registry := "registry.company.com"
 
-# Internal registry: basic validation
+# 内部镜像仓库：基本验证
 allow if {
   input.image.host == internal_registry
 }
 
-# External registries: strict validation
+# 外部镜像仓库：严格验证
 allow if {
   input.image.host != internal_registry
   input.image.host != ""
@@ -347,15 +317,15 @@ allow if {
   input.image.hasProvenance
 }
 
-# Docker Hub: allowlist specific images
+# Docker Hub：允许列表特定镜像
 allow if {
   input.image.host == "docker.io"
-  # TODO: Add your approved base images
+  # TODO: 添加你已批准的基础镜像
   input.image.repo in ["alpine", "golang", "node"]
   input.image.isCanonical
 }
 
-# Docker Hardened Images: trusted by default with built-in attestations
+# Docker Hardened Images：默认受信任，带有内置证明
 allow if {
   input.image.host == "dhi.io"
   input.image.isCanonical
@@ -364,24 +334,19 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This template defines a trust boundary between internal and external image
-sources. Internal images require minimal validation, while external images need
-digests and provenance. Docker Hardened Images from `dhi.io` are treated as
-trusted since they include comprehensive attestations and security guarantees.
+此模板在内部和外部镜像源之间定义了一个信任边界。内部镜像需要最少的验证，而外部镜像需要摘要和来源证明。来自 `dhi.io` 的 Docker Hardened Images 被视为受信任的，因为它们包含全面的证明和安全保证。
 
-Customize:
+自定义：
 
-- Set your internal registry hostname
-- Add your approved Docker Hub base images
-- Adjust validation requirements based on your security policies
+- 设置你的内部镜像仓库主机名
+- 添加你已批准的 Docker Hub 基础镜像
+- 根据你的安全策略调整验证要求
 
-When to use: Organizations with internal registries that need different rules
-for internal and external sources. Balances security with practical workflow
-needs.
+何时使用：拥有内部镜像仓库、需要对内部和外部源采用不同规则的组织。在安全需求与实际工作流需求之间取得平衡。
 
-### Multi-environment policy
+### 多环境策略
 
-Apply different rules based on the build target or stage. For example,
+根据构建目标或阶段应用不同的规则。例如：
 
 ```rego
 package docker
@@ -390,7 +355,7 @@ default allow := false
 
 allow if input.local
 
-# TODO: Define your environment detection logic
+# TODO: 定义你的环境检测逻辑
 is_production if {
   input.env.target == "production"
 }
@@ -399,20 +364,20 @@ is_development if {
   input.env.target == "development"
 }
 
-# Production: strict rules - only digest images with provenance
+# 生产：严格规则——仅允许带有来源的摘要镜像
 allow if {
   is_production
   input.image.isCanonical
   input.image.hasProvenance
 }
 
-# Development: permissive rules - any image
+# 开发：宽松规则——任何镜像
 allow if {
   is_development
   input.image
 }
 
-# Staging inherits production rules (default target detection)
+# 预发布环境继承生产规则（默认目标检测）
 allow if {
   not is_production
   not is_development
@@ -422,23 +387,19 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This template uses build targets to apply different validation levels.
-Production requires attestations and digests, development is permissive, and
-staging uses moderate rules.
+此模板使用构建目标来应用不同的验证级别。生产需要证明和摘要，开发是宽松的，预发布使用适度规则。
 
-Customize:
+自定义：
 
-- Update environment detection logic (target names, build args, etc.)
-- Adjust validation requirements for each environment
-- Add more environments as needed
+- 更新环境检测逻辑（目标名称、构建参数等）
+- 调整每个环境的验证要求
+- 根据需要添加更多环境
 
-When to use: Teams with separate build configurations for different deployment
-stages. Allows flexibility in development while enforcing strict rules for
-production.
+何时使用：为不同部署阶段拥有独立构建配置的团队。在开发中允许灵活性的同时，对生产强制执行严格规则。
 
-### Complete dependency pinning
+### 完整的依赖固定
 
-Pin all external dependencies to specific versions across all input types.
+将所有外部依赖跨所有输入类型固定到特定版本。
 
 ```rego
 package docker
@@ -447,8 +408,8 @@ default allow := false
 
 allow if input.local
 
-# TODO: Add your pinned images with exact digests
-# Docker Hub images use docker.io as host
+# TODO: 添加带有确切摘要的已固定镜像
+# Docker Hub 镜像使用 docker.io 作为主机
 allowed_dockerhub := {
   "alpine": "sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412",
   "golang": "sha256:abc123...",
@@ -461,7 +422,7 @@ allow if {
   input.image.checksum == digest
 }
 
-# TODO: Add your pinned DHI images
+# TODO: 添加你已固定的 DHI 镜像
 allowed_dhi := {
   "python": "sha256:def456...",
   "node": "sha256:ghi789...",
@@ -474,7 +435,7 @@ allow if {
   input.image.checksum == digest
 }
 
-# TODO: Add your pinned Git dependencies
+# TODO: 添加你已固定的 Git 依赖
 allowed_git := {
   "https://github.com/moby/buildkit.git": {
     "tag": "v0.26.1",
@@ -489,7 +450,7 @@ allow if {
   input.git.commitChecksum == version.commit
 }
 
-# TODO: Add your pinned HTTP downloads
+# TODO: 添加你已固定的 HTTP 下载
 allowed_downloads := {
   "https://releases.example.com/app-v1.0.tar.gz": "sha256:def456...",
 }
@@ -503,23 +464,19 @@ allow if {
 decision := {"allow": allow}
 ```
 
-This template pins every external dependency to exact versions with cryptographic
-verification. Images use digests, Git repos use commit SHAs, and downloads use
-checksums.
+此模板通过密码学验证将每个外部依赖固定到确切版本。镜像使用摘要，Git 仓库使用提交 SHA，下载使用校验和。
 
-Customize:
+自定义：
 
-- Add all your dependencies with exact versions/checksums
-- Maintain this file when updating dependencies
-- Consider automating updates through CI/CD
+- 添加所有带有确切版本/校验和的依赖
+- 更新依赖时维护此文件
+- 考虑通过 CI/CD 自动化更新
 
-When to use: Maximum reproducibility and security. Ensures builds always use
-exact versions of all dependencies. Required for high-security or regulated
-environments.
+何时使用：最大限度的可复现性和安全性。确保构建始终使用所有依赖的确切版本。高安全性或受监管环境所需。
 
-### Manual signature verification
+### 手动签名验证
 
-Verify image signatures by inspecting signature metadata fields.
+通过检查签名元数据字段来验证镜像签名。
 
 ```rego
 package docker
@@ -528,7 +485,7 @@ default allow := false
 
 allow if input.local
 
-# Require valid GitHub Actions signatures
+# 要求有效的 GitHub Actions 签名
 allow if {
     input.image
     input.image.hasProvenance
@@ -536,46 +493,38 @@ allow if {
     valid_github_signature(sig)
 }
 
-# Helper function to validate GitHub Actions signature
+# 验证 GitHub Actions 签名的辅助函数
 valid_github_signature(sig) if {
-    # Sigstore keyless signing
+    # Sigstore 无密钥签名
     sig.signer.certificateIssuer == "CN=sigstore-intermediate,O=sigstore.dev"
     sig.signer.issuer == "https://token.actions.githubusercontent.com"
 
-    # TODO: Replace with your organization
+    # TODO: 用你的组织替换
     startswith(sig.signer.buildSignerURI, "https://github.com/myorg/.github/workflows/")
     startswith(sig.signer.sourceRepositoryURI, "https://github.com/myorg/")
 
-    # Verify GitHub hosted runner
-    sig.signer.runnerEnvironment == "github-hosted"
-
-    # Require timestamp
+    # 要求时间戳
     count(sig.timestamps) > 0
 }
 
 decision := {"allow": allow}
 ```
 
-This policy validates that images were built by GitHub Actions using Sigstore
-keyless signing.
+此策略验证镜像是否由使用 Sigstore 无密钥签名的 GitHub Actions 构建。
 
-Customize:
+自定义：
 
-- Replace `myorg` with your GitHub organization
-- Adjust workflow path restrictions
-- Add additional signature field checks as needed
+- 用你的 GitHub 组织替换 `myorg`
+- 调整工作流路径限制
+- 根据需要添加额外的签名字段检查
 
-When to use: Enforce that images are built by CI/CD with verifiable signatures,
-not manually pushed by developers.
+何时使用：强制执行镜像由具有可验证签名的 CI/CD 构建，而不是由开发者手动推送。
 
-## Next steps
+## 下一步
 
-- Write unit tests for your policies: [Test build policies](./testing.md)
-- Review [Built-in functions](./built-ins.md) for signature verification and
-  attestation checking
-- Check the [Input reference](./inputs.md) for all available fields you can
-  validate
-- Read the tutorials for detailed explanations:
-  [Introduction](./intro.md), [Image validation](./validate-images.md), [Git
-  validation](./validate-git.md)
+- 为你的策略编写单元测试：[测试构建策略](./testing.md)
+- 查看 [内置函数](./built-ins.md) 了解签名验证和证明检查
+- 查看 [输入参考](./inputs.md) 了解你可以验证的所有可用字段
+- 阅读教程以获取详细解释：
+  [简介](./intro.md)、[镜像验证](./validate-images.md)、[Git 验证](./validate-git.md)
 

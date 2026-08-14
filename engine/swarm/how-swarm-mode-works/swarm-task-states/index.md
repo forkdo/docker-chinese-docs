@@ -46,4 +46,5 @@ j91iahr8s74p    \_ webserver.1   nginx    UbuntuVM    Shutdown       Failed 50 s
 
 ## 下一步
 
-- [了解 Swarm 任务](https://github.com/docker/swarmkit/blob/master/design/task_model.md)
+- [了解 Swarm 任务](https://github.com/moby/swarmkit/blob/master/design/task_model.md)
+

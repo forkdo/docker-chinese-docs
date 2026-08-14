@@ -9,6 +9,10 @@ Docker 审核的扩展由 Docker Extensions 团队手动审核，以确保额外
 
 自行发布的扩展由扩展开发者自主发布，并经过自动化验证过程。它们在 Marketplace 中显示为 **Not reviewed**（未审核）。
 
+> [!IMPORTANT]
+>
+> Marketplace 扩展由 Docker 审核，但未经完整的安全审计。扩展以主机级权限运行。它们可以安装二进制文件、访问 Docker Engine、调用命令并访问您机器上的文件。请仅安装来自您信任的发布者的扩展。
+
 ## 安装扩展
 
 > [!NOTE]
@@ -44,3 +48,4 @@ Docker 审核的扩展由 Docker Extensions 团队手动审核，以确保额外
    这将显示您已安装的扩展列表。
 2. 选择要卸载的扩展右侧的省略号。
 3. 选择 **Uninstall**（卸载）。
+

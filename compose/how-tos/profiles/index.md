@@ -3,7 +3,10 @@
 
 
 
+
+
 配置文件（Profiles）可帮助您根据不同的环境或用例调整 Compose 应用程序，方法是选择性地激活服务。服务可以分配到一个或多个配置文件；未分配的服务默认启动/停止，而已分配的服务仅在其配置文件处于活动状态时才会启动/停止。通过这种设置，特定服务（例如用于调试或开发的服务）可以包含在单个 `compose.yml` 文件中，并仅在需要时激活。
+
 
 ## 为服务分配配置集
 
@@ -39,7 +42,7 @@ services:
 
 ## 启动特定配置集
 
-要启动特定配置集，请提供 `--profile` [命令行选项](/reference/cli/docker/compose.md) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
+要启动特定配置集，请提供 `--profile` [命令行选项](/reference/cli/docker/compose/) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
 
 ```console
 $ docker compose --profile debug up
@@ -111,7 +114,7 @@ $ docker compose run db-migrations
 
 ## 停止应用程序和具有特定配置集的服务
 
-与启动特定配置集类似，您可以使用 `--profile` [命令行选项](/reference/cli/docker/compose.md#use--p-to-specify-a-project-name) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
+与启动特定配置集类似，您可以使用 `--profile` [命令行选项](/reference/cli/docker/compose/#use--p-to-specify-a-project-name) 或使用 [`COMPOSE_PROFILES` 环境变量](environment-variables/envvars.md#compose_profiles)：
 
 ```console
 $ docker compose --profile debug down
@@ -157,3 +160,4 @@ $ docker compose stop phpmyadmin
 ## 参考信息
 
 [`profiles`](/reference/compose-file/services.md#profiles)
+

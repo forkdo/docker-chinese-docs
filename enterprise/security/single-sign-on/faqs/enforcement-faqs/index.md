@@ -3,13 +3,13 @@
 
 ## Docker SSO 是否支持通过命令行进行身份验证？
 
-当强制执行 SSO 时，[系统会阻止使用密码访问 Docker CLI](/security/security-announcements/#deprecation-of-password-logins-on-cli-when-sso-enforced)。您必须改用个人访问令牌 (PAT) 进行 CLI 身份验证。
+当强制执行 SSO 时，[系统会阻止使用密码访问 Docker CLI](/manuals/security/security-announcements.md#deprecation-of-password-logins-on-cli-when-sso-enforced)。您必须改用个人访问令牌 (PAT) 进行 CLI 身份验证。
 
-每个用户都必须创建一个 PAT 才能访问 CLI。要了解如何创建 PAT，请参阅[管理个人访问令牌](/security/access-tokens/)。在强制执行 SSO 之前已经使用过 PAT 的用户可以继续使用该 PAT。
+每个用户都必须创建一个 PAT 才能访问 CLI。要了解如何创建 PAT，请参阅[管理个人访问令牌](/manuals/security/access-tokens.md)。在强制执行 SSO 之前已经使用过 PAT 的用户可以继续使用该 PAT。
 
 ## SSO 如何影响自动化系统和 CI/CD 管道？
 
-在强制执行 SSO 之前，您必须[创建个人访问令牌](/security/access-tokens/)以替换自动化系统和 CI/CD 管道中的密码。
+在强制执行 SSO 之前，您必须[创建个人访问令牌](/manuals/security/access-tokens.md)以替换自动化系统和 CI/CD 管道中的密码。
 
 ## 我能否在不立即强制执行的情况下开启 SSO？
 
@@ -27,7 +27,8 @@
 
 这些是您可以独立使用或一起使用的独立功能：
 
-- 强制执行 SSO 可确保用户使用 SSO 凭据而不是其 Docker ID 登录，从而实现更好的凭据管理。
+- 强制执行 SSO 可确保用户使用 SSO 凭据登录，从而实现更好的凭据管理。
 - 强制登录 Docker Desktop 可确保用户始终登录到属于您组织成员的帐户，从而始终应用安全设置和订阅权益。
 
 更多详情，请参阅[强制 Desktop 登录](/manuals/enterprise/security/enforce-sign-in/_index.md#enforcing-sign-in-versus-enforcing-single-sign-on-sso)。
+

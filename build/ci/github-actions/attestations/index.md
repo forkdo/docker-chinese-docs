@@ -1,49 +1,37 @@
-# Add SBOM and provenance attestations with GitHub Actions
+# 使用 GitHub Actions 添加 SBOM 与 provenance 证明
 
 
-Software Bill of Material (SBOM) and provenance
-[attestations](../../metadata/attestations/_index.md) add metadata about the contents of
-your image, and how it was built.
+软件物料清单（SBOM）与 provenance
+[证明（attestations）](../../metadata/attestations/_index.md) 会为你的镜像添加有关其内容以及
+构建方式的元数据。
 
-Attestations are supported with version 4 and later of the
-`docker/build-push-action`.
+`docker/build-push-action` 的 4 及更高版本支持证明。
 
 ## Default provenance
 
-The `docker/build-push-action` GitHub Action automatically adds provenance
-attestations to your image, with the following conditions:
+`docker/build-push-action` GitHub Action 会自动向你的镜像添加 provenance 证明，条件如下：
 
-- If the GitHub repository is public, provenance attestations with `mode=max`
-  are automatically added to the image.
-- If the GitHub repository is private, provenance attestations with `mode=min`
-  are automatically added to the image.
-- If you're using the [`docker` exporter](../../exporters/oci-docker.md), or
-  you're loading the build results to the runner with `load: true`, no
-  attestations are added to the image. These output formats don't support
-  attestations.
+- 如果 GitHub 仓库为公开仓库，则自动向镜像添加 `mode=max` 的 provenance 证明。
+- 如果 GitHub 仓库为私有仓库，则自动向镜像添加 `mode=min` 的 provenance 证明。
+- 如果你使用的是 [`docker` 导出器](../../exporters/oci-docker.md)，或者你使用 `load: true` 将构建结果
+  加载到 runner，则不会向镜像添加任何证明。这些输出格式不支持证明。
 
 > [!WARNING]
 >
-> If you're using `docker/build-push-action` to build images for code in a
-> public GitHub repository, the provenance attestations attached to your image
-> by default contains the values of build arguments. If you're misusing build
-> arguments to pass secrets to your build, such as user credentials or
-> authentication tokens, those secrets are exposed in the provenance
-> attestation. Refactor your build to pass those secrets using
-> [secret mounts](/reference/cli/docker/buildx/build.md#secret)
-> instead. Also remember to rotate any secrets you may have exposed.
+> 如果你使用 `docker/build-push-action` 为公开 GitHub 仓库中的代码构建镜像，默认附加到镜像上的
+> provenance 证明会包含构建参数的值。如果你误用构建参数向构建传递密钥（例如用户凭据或认证令牌），
+> 这些密钥就会暴露在 provenance 证明中。请重构你的构建，改用
+> [secret 挂载](/reference/cli/docker/buildx/build/#secret) 来传递这些密钥。同时记得轮换你可能已经
+> 暴露的任何密钥。
 
 ## Max-level provenance
 
-It's recommended that you build your images with max-level provenance
-attestations. Private repositories only add min-level provenance by default,
-but you can manually override the provenance level by setting the `provenance`
-input on the `docker/build-push-action` GitHub Action to `mode=max`.
+建议你在构建镜像时使用最高级别的 provenance 证明。私有仓库默认只添加 min 级别的 provenance，但你可以
+通过在 `docker/build-push-action` GitHub Action 上将 `provenance` 输入设为 `mode=max` 来手动覆盖
+provenance 级别。
 
-Note that adding attestations to an image means you must push the image to a
-registry directly, as opposed to loading the image to the local image store of
-the runner. This is because the local image store doesn't support loading
-images with attestations.
+请注意，为镜像添加证明意味着你必须直接将镜像推送到注册表，而不是将镜像加载到 runner 的本地镜像存储。
+这是因为本地镜像存储不支持加载带有证明的镜像。
 
 ```yaml
 name: ci
@@ -59,22 +47,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: true
           provenance: mode=max
@@ -83,13 +71,10 @@ jobs:
 
 ## SBOM
 
-SBOM attestations aren't automatically added to the image. To add SBOM
-attestations, set the `sbom` input of the `docker/build-push-action` to true.
+SBOM 证明不会自动添加到镜像。要添加 SBOM 证明，请将 `docker/build-push-action` 的 `sbom` 输入设为 true。
 
-Note that adding attestations to an image means you must push the image to a
-registry directly, as opposed to loading the image to the local image store of
-the runner. This is because the local image store doesn't support loading
-images with attestations.
+请注意，为镜像添加证明意味着你必须直接将镜像推送到注册表，而不是将镜像加载到 runner 的本地镜像存储。
+这是因为本地镜像存储不支持加载带有证明的镜像。
 
 ```yaml
 name: ci
@@ -105,22 +90,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           sbom: true
           push: true

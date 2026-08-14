@@ -32,7 +32,7 @@ Docker 提供了两种主要的存储选项，用于持久化数据以及在主�
 $ docker run -v /HOST/PATH:/CONTAINER/PATH -it nginx
 ```
 
-`--mount` 标志提供了更高级的功能和更精细的控制，使其适用于复杂的挂载场景或生产部署。如果您使用 `--mount` 来绑定挂载一个在 Docker 主机上尚不存在的文件或目录，`docker run` 命令不会自动为您创建它，而是生成一个错误。
+`--mount` 标志提供了更高级的功能和更精细的控制，使其适用于复杂的挂载场景或生产部署。默认情况下，如果您使用 `--mount` 来绑定挂载一个在 Docker 主机上尚不存在的文件或目录，`docker run` 命令不会自动为您创建它，而是生成一个错误。
 
 ```console
 $ docker run --mount type=bind,source=/HOST/PATH,target=/CONTAINER/PATH,readonly nginx
@@ -116,7 +116,7 @@ $ docker run -v HOST-DIRECTORY:/CONTAINER-DIRECTORY:rw nginx
    \______ O           __/
     \    \         __/
      \____\_______/
-
+    
     Hello from Docker!
     </pre>
     </body>
@@ -193,4 +193,5 @@ $ docker run -v HOST-DIRECTORY:/CONTAINER-DIRECTORY:rw nginx
 现在您已经学会了如何与容器共享本地文件，是时候学习多容器应用了。
 
 [多容器应用](Multi-container applications)
+
 

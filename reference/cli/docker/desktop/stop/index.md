@@ -15,8 +15,6 @@
 
 
 
-
-
 ## Options
 
 | Option | Default | Description |

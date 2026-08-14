@@ -3,29 +3,27 @@
 
 守护程序日志可以帮助你诊断问题。根据操作系统配置和使用的日志子系统，日志可能保存在以下几个位置之一：
 
-| 操作系统                           | 位置                                                                                                                                     |
-| :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| Linux                              | 使用命令 `journalctl -xu docker.service`（或读取 `/var/log/syslog` 或 `/var/log/messages`，具体取决于你的 Linux 发行版）                 |
-| macOS (`dockerd` 日志)             | `~/Library/Containers/com.docker.docker/Data/log/vm/dockerd.log`                                                                         |
-| macOS (`containerd` 日志)          | `~/Library/Containers/com.docker.docker/Data/log/vm/containerd.log`                                                                      |
-| Windows (WSL2) (`dockerd` 日志)    | `%LOCALAPPDATA%\Docker\log\vm\dockerd.log`                                                                                               |
-| Windows (WSL2) (`containerd` 日志) | `%LOCALAPPDATA%\Docker\log\vm\containerd.log`                                                                                            |
-| Windows (Windows 容器)             | 日志位于 Windows 事件日志中                                                                                                              |
+| 操作系统                   | 位置                                                                                                                                     |
+| :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| Linux                      | 使用命令 `journalctl -xu docker.service`（或读取 `/var/log/syslog` 或 `/var/log/messages`，具体取决于你的 Linux 发行版）                 |
+| macOS (Docker Desktop)     | `~/Library/Containers/com.docker.docker/Data/log/vm/init.log`                                                                            |
+| Windows (WSL2)             | `%LOCALAPPDATA%\Docker\log\vm\init.log`                                                                                                  |
+| Windows (Windows 容器)     | 日志位于 Windows 事件日志中                                                                                                              |
 
-要在 macOS 上查看 `dockerd` 日志，请打开终端窗口，并使用带有 `-f` 标志的 `tail` 命令来“跟踪”日志。日志将一直打印，直到你使用 `CTRL+c` 终止命令：
+在 macOS 和 Windows (WSL2) 上，Docker Desktop 将守护程序日志（`dockerd`、`containerd` 以及其他 VM 服务）写入单个采用 JSON 格式的多路复用 `init.log` 文件。每一行都包含一个标识该服务的 `"component"` 字段。要跟踪日志，请打开终端并使用带有 `-f` 标志的 `tail` 命令。日志会一直打印，直到你使用 `CTRL+c` 终止命令：
 
 ```console
-$ tail -f ~/Library/Containers/com.docker.docker/Data/log/vm/dockerd.log
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.497642089Z" level=debug msg="attach: stdout: begin"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.497714291Z" level=debug msg="attach: stderr: begin"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.500162665Z" level=debug msg="attach: stdin: begin"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.500222586Z" level=debug msg="Calling POST /v1.41/containers/35fc5ec0ffe1ad492d0a4fbf51fd6286a087b89d4dd66367fa3b7aec70b46a40/attach?logs=1&stdout=1&stderr=1&stream=1"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.500242588Z" level=debug msg="Calling POST /v1.41/containers/35fc5ec0ffe1ad492d0a4fbf51fd6286a087b89d4dd66367fa3b7aec70b46a40/wait?condition=removed"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.518403686Z" level=debug msg="Calling GET /v1.41/containers/35fc5ec0ffe1ad492d0a4fbf51fd6286a087b89d4dd66367fa3b7aec70b46a40/json"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.527074928Z" level=debug msg="Calling POST /v1.41/containers/35fc5ec0ffe1ad492d0a4fbf51fd6286a087b89d4dd66367fa3b7aec70b46a40/start"
-2021-07-28T10:21:21Z dockerd time="2021-07-28T10:21:21.528203579Z" level=debug msg="container mounted via layerStore: &{/var/lib/docker/overlay2/6e76ffecede030507fcaa576404e141e5f87fc4d7e1760e9ce5b52acb24
+$ tail -f ~/Library/Containers/com.docker.docker/Data/log/vm/init.log
+{"component":"dockerd","level":"debug","msg":"attach: stdout: begin","time":"2021-07-28T10:21:21.497642089Z"}
+{"component":"dockerd","level":"debug","msg":"attach: stderr: begin","time":"2021-07-28T10:21:21.497714291Z"}
 ...
 ^C
+```
+
+要仅筛选 `dockerd` 的输出：
+
+```console
+$ grep '"component":"dockerd"' ~/Library/Containers/com.docker.docker/Data/log/vm/init.log
 ```
 
 ## 启用调试
@@ -94,3 +92,4 @@ $ tail -f ~/Library/Containers/com.docker.docker/Data/log/vm/dockerd.log
 ```
 
 Docker 保存这些堆栈跟踪和转储的位置取决于你的操作系统和配置。有时你可以直接从堆栈跟踪和转储中获取有用的诊断信息。否则，你可以将此信息提供给 Docker 以帮助诊断问题。
+

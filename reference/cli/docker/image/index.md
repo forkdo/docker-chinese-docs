@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议更改此处显示的文本，请在 GitHub 的源代码仓库中
-打开一个工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -34,6 +26,7 @@ Manage images.
 
 | Command | Description |
 |---------|-------------|
+| [`docker image build`](/reference/cli/docker/image/build/) | Build an image from a Dockerfile |
 | [`docker image history`](/reference/cli/docker/image/history/) | Show the history of an image |
 | [`docker image import`](/reference/cli/docker/image/import/) | Import the contents from a tarball to create a filesystem image |
 | [`docker image inspect`](/reference/cli/docker/image/inspect/) | Display detailed information on one or more images |

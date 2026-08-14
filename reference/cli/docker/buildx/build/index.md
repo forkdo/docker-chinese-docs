@@ -6,14 +6,6 @@
 
 **Aliases:** `docker build`, `docker builder build`, `docker image build`, `docker buildx b`
 
-<!--
-This page is automatically generated from Docker's source code. If you want to
-suggest a change to the text that appears here, open a ticket or pull request
-in the source repository on GitHub:
-
-https://github.com/docker/buildx
--->
-
 
 
 
@@ -31,7 +23,7 @@ The `docker buildx build` command starts a build using BuildKit.
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--add-host` |  |  Add a custom host-to-IP mapping (format: `host:ip`) |
-| `--allow` |  |  Allow extra privileged entitlement (e.g., `network.host`, `security.insecure`, `device`)<br> |
+| `--allow` |  |  Allow extra privileged entitlement (e.g., `network.host`, `security.insecure`, `device`, `buildx.local.delete`)<br> |
 | `--annotation` |  |  Add annotation to the image |
 | `--attest` |  |  Attestation parameters (format: `type=sbom,generator=image`) |
 | `--build-arg` |  |  Set build-time variables |
@@ -57,6 +49,7 @@ The `docker buildx build` command starts a build using BuildKit.
 | `--pull` |  |  Always attempt to pull all referenced images |
 | `--push` |  |  Shorthand for `--output=type=registry,unpack=false` |
 | `-q`, `--quiet` |  |  Suppress the build output and print image ID on success |
+| `--resource` |  |  Resource limits for build containers (format: `memory=2g`, `cpu-quota=50000`)<br> |
 | `--sbom` |  |  Shorthand for `--attest=type=sbom` |
 | `--secret` |  |  Secret to expose to the build (format: `id=mysecret[,src=/local/secret]`)<br> |
 | `--shm-size` |  |  Shared memory size for build containers |
@@ -183,9 +176,14 @@ Allow extra privileged entitlement. List of entitlements:
    - `--allow device` - Grants access to all devices.
    - `--allow device=kind|name` - Grants access to a specific device.
    - `--allow device=kind|name,alias=kind|name` - Grants access to a specific device, with optional aliasing.
+- `buildx.local.delete` - Allows local outputs using `mode=delete` to delete
+  stale destination files when the destination is the current working directory
+  or outside it.
 
-For entitlements to be enabled, the BuildKit daemon also needs to allow them
-with `--allow-insecure-entitlement` (see [`create --buildkitd-flags`](/reference/cli/docker/buildx/create/#buildkitd-flags)).
+For BuildKit entitlements to be enabled, the BuildKit daemon also needs to allow
+them with `--allow-insecure-entitlement` (see [`create --buildkitd-flags`](/reference/cli/docker/buildx/create/#buildkitd-flags)).
+The `buildx.local.delete` entitlement is checked by Buildx and isn't sent to the
+BuildKit daemon.
 
 ```console
 $ docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
@@ -558,13 +556,37 @@ the daemon runs the containers used in the build with the
 ### Specify a Dockerfile (-f, --file) {#file}
 
 ```console
-$ docker buildx build -f <filepath> .
+$ docker buildx build -f [PATH|URL|-] .
 ```
 
-Specifies the filepath of the Dockerfile to use.
+Specifies the location of the Dockerfile to use.
 If unspecified, a file named `Dockerfile` at the root of the build context is used by default.
 
-To read a Dockerfile from stdin, you can use `-` as the argument for `--file`.
+The supported inputs formats are:
+
+- [`Local file path`](#local-file-path)
+- [`Remote URL`](#remote-url)
+- [`Standard input`](#standard-input)
+
+#### Local file path
+
+To specify a path to a local Dockerfile:
+
+```console
+$ docker buildx build -f path/to/Dockerfile .
+```
+
+#### Remote URL
+
+To specify a URL to a remote Dockerfile:
+
+```console
+$ docker buildx build -f https://raw.githubusercontent.com/docker/buildx/refs/tags/v0.29.0/Dockerfile .
+```
+
+#### Standard input
+
+To read a Dockerfile from stdin, use `-` as the argument:
 
 ```console
 $ cat Dockerfile | docker buildx build -f - .
@@ -733,6 +755,11 @@ will be put in subdirectories by their platform.
 Attribute key:
 
 - `dest` - destination directory where files will be written
+- `mode` - write mode, either `copy` or `delete`. The default is `copy`.
+  `delete` removes stale files from the destination after exporting the build
+  result. It can be used without `--allow` when `dest` resolves to a
+  subdirectory of the current working directory. If `dest` is the current working
+  directory or resolves outside it, pass `--allow=buildx.local.delete`.
 
 For more information, see
 [Local and tar exporters](/build/exporters/local-tar/).
@@ -1134,6 +1161,43 @@ $ docker buildx build --ulimit nofile=1024:1024 .
 > If you don't provide a `hard limit`, the `soft limit` is used
 > for both values. If no `ulimits` are set, they're inherited from
 > the default `ulimits` set on the daemon.
+
+> [!NOTE]
+> In most cases, it is recommended to let the builder automatically determine
+> the appropriate configurations. Manual adjustments should only be considered
+> when specific performance tuning is required for complex build scenarios.
+
+### Set CPU and memory limits for build containers (--resource) {#resource}
+
+The `--resource` flag constrains the resources available to the containers that
+run your `RUN` instructions during the build. It's repeatable and takes
+`key=value` pairs, where `key` is one of:
+
+| Key           | Description                                                                  |
+|:--------------|:-----------------------------------------------------------------------------|
+| `memory`      | Memory limit (format: `<number><unit>`, e.g. `512m`, `2g`).                  |
+| `memory-swap` | Total memory plus swap limit. Set to `-1` to allow unlimited swap.           |
+| `cpu-shares`  | CPU shares (relative weight).                                                |
+| `cpu-period`  | Length of a CPU CFS (Completely Fair Scheduler) period, in microseconds.     |
+| `cpu-quota`   | CPU CFS quota, in microseconds, within each `cpu-period`.                    |
+| `cpuset-cpus` | CPUs in which to allow execution (`0-3`, `0,1`).                             |
+| `cpuset-mems` | Memory nodes (MEMs) in which to allow execution (`0-3`, `0,1`).              |
+
+```console
+$ docker buildx build --resource memory=2g --resource cpu-quota=50000 --resource cpu-period=100000 .
+```
+
+These map to the cgroup resource limits of the legacy `docker build` API and
+only apply to individual build steps. They don't affect the build cache key.
+
+> [!NOTE]
+> These limits require a BuildKit daemon that supports per-step resource limits
+> (the `exec.meta.linux.resources` capability) and only take effect on Linux.
+
+> [!NOTE]
+> Because BuildKit can run build steps in parallel, these limits apply to each
+> step in isolation rather than to the build as a whole. When the same step is
+> requested with different limits, the most relaxed limits are used.
 
 > [!NOTE]
 > In most cases, it is recommended to let the builder automatically determine

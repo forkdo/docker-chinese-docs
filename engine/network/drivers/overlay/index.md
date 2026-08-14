@@ -13,19 +13,13 @@ Overlay 网络通常用于在 Swarm 服务之间建立连接，但你也可以�
 
 Docker 主机必须是 swarm 的一部分才能使用 overlay 网络，即使在连接独立容器时也是如此。以下端口必须在参与的主机之间开放：
 
-- `2377/tcp`：Swarm 控制平面（可配置）
-- `4789/udp`：Overlay 流量（可配置）
-- `7946/tcp` 和 `7946/udp`：节点通信（不可配置）
-
-## 创建 overlay 网络
-
-下表列出了参与 overlay 网络的每个主机需要开放的端口：
-
 | 端口                  | 描述                                                                                                                                                     |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `2377/tcp`             | 默认的 Swarm 控制平面端口，可通过 [`docker swarm join --listen-addr`](/reference/cli/docker/swarm/join.md#--listen-addr-value) 配置 |
-| `4789/udp`             | 默认的 overlay 流量端口，可通过 [`docker swarm init --data-path-addr`](/reference/cli/docker/swarm/init.md#data-path-port) 配置          |
+| `2377/tcp`             | 默认的 Swarm 控制平面端口，可通过 [`docker swarm join --listen-addr`](/reference/cli/docker/swarm/join/#listen-addr) 配置 |
+| `4789/udp`             | 默认的 overlay 流量端口，可通过 [`docker swarm init --data-path-addr`](/reference/cli/docker/swarm/init/#data-path-port) 配置          |
 | `7946/tcp`, `7946/udp` | 用于节点间通信，不可配置                                                                                                    |
+
+## 创建 overlay 网络
 
 要创建一个独立容器可以连接的 overlay 网络，请运行以下命令：
 

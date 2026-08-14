@@ -47,7 +47,10 @@ $ sudo dnf remove docker \
 
 
 
+
+
 Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE) 获取完整许可证。
+
 
 ### 使用 rpm 存储库安装 {#install-using-the-repository}
 
@@ -89,14 +92,14 @@ $ sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/do
    ```console
    $ dnf list docker-ce --showduplicates | sort -r
 
-   docker-ce.x86_64    3:29.2.0-1.el9    docker-ce-stable
-   docker-ce.x86_64    3:29.1.5-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.7.2-1.el9    docker-ce-stable
+   docker-ce.x86_64    3:29.7.1-1.el9    docker-ce-stable
    <...>
    ```
 
    返回的列表取决于启用了哪些存储库，并且特定于您的 CentOS 版本（在此示例中由 `.el9` 后缀表示）。
 
-   通过其完全限定的包名安装特定版本，即包名 (`docker-ce`) 加上版本字符串（第 2 列），用连字符 (`-`) 分隔。例如，`docker-ce-3:29.2.0-1.el9`。
+   通过其完全限定的包名安装特定版本，即包名 (`docker-ce`) 加上版本字符串（第 2 列），用连字符 (`-`) 分隔。例如，`docker-ce-3:29.7.2-1.el9`。
 
    将 `<VERSION_STRING>` 替换为所需的版本，然后运行以下命令进行安装：
 
@@ -128,11 +131,14 @@ $ sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/do
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
+
 
 #### 升级 Docker Engine
 
@@ -173,15 +179,20 @@ $ sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/do
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
 
+
 #### 升级 Docker Engine
 
 要升级 Docker Engine，请下载较新的软件包文件，并重复[安装过程](#install-from-a-package)，使用 `dnf upgrade` 代替 `dnf install`，并指向新文件。
+
+
 
 
 
@@ -237,6 +248,7 @@ $ sudo sh test-docker.sh
 #### 使用便捷脚本后升级 Docker
 
 如果您使用便捷脚本安装了 Docker，则应直接使用包管理器升级 Docker。重新运行便捷脚本没有任何优势。如果它尝试重新安装主机上已存在的仓库，重新运行它可能会导致问题。
+
 
 ## 卸载 Docker Engine
 

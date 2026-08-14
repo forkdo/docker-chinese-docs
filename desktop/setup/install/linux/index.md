@@ -3,7 +3,7 @@
 
 > **Docker Desktop 条款**
 >
-> 在大型企业（超过 250 名员工或年收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing/)。
+> 在大型企业（超过 250 名员工或年收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopLinuxInstall)。
 
 本页包含有关一般系统要求、支持的平台以及如何安装 Docker Desktop for Linux 的说明。
 
@@ -19,11 +19,11 @@
 
 > [!IMPORTANT]
 >
-> 对于在大型企业（超过 250 名员工或年收入超过 1000 万美元）中通过 Docker Desktop 获取的 Docker Engine 进行商业使用，需要[付费订阅](https://www.docker.com/pricing/)。
+> 对于在大型企业（超过 250 名员工或年收入超过 1000 万美元）中通过 Docker Desktop 获取的 Docker Engine 进行商业使用，需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopLinuxInstall)。
 
 Docker Desktop for Linux 提供了一个用户友好的图形界面，简化了容器和服务的管理。它包含 Docker Engine，因为这是驱动 Docker 容器的核心技术。Docker Desktop for Linux 还附带额外的功能，如 Docker Scout 和 Docker Extensions。
 
-#### 安装 Docker Desktop 和 Docker Engine
+### 安装 Docker Desktop 和 Docker Engine
 
 Docker Desktop for Linux 和 Docker Engine 可以在同一台机器上并行安装。Docker Desktop for Linux 将容器和镜像存储在虚拟机内的隔离存储位置，并提供控制以限制[其资源](/manuals/desktop/settings-and-maintenance/settings.md#resources)。为 Docker Desktop 使用专用的存储位置可以防止它干扰同一台机器上的 Docker Engine 安装。
 
@@ -55,7 +55,7 @@ Docker CLI 可用于与多个 Docker Engine 交互。例如，您可以使用相
 $ docker context ls
 NAME            DESCRIPTION                               DOCKER ENDPOINT                                  ...
 default *       Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                      ...
-desktop-linux                                             unix:///home/<user>/.docker/desktop/docker.sock  ...        
+desktop-linux                                             unix:///home/<user>/.docker/desktop/docker.sock  ...
 ```
 
 如果您在同一台机器上同时安装了 Docker Desktop 和 Docker Engine，可以运行 `docker context use` 命令在 Docker Desktop 和 Docker Engine 上下文之间切换。例如，使用 "default" 上下文与 Docker Engine 交互：
@@ -65,14 +65,15 @@ $ docker context use default
 default
 Current context is now "default"
 ```
-  
+
 并使用 `desktop-linux` 上下文与 Docker Desktop 交互：
- 
+
 ```console
 $ docker context use desktop-linux
 desktop-linux
 Current context is now "desktop-linux"
-``` 
+```
+
 有关更多详细信息，请参阅 [Docker Context 文档](/manuals/engine/manage-resources/contexts.md)。
 
 
@@ -91,7 +92,7 @@ Docker 为以下 Linux 发行版和架构提供 `.deb` 和 `.rpm` 软件包：
 
 适用于基于 [Arch](archlinux.md) 的发行版的实验性软件包可用。Docker 尚未测试或验证该安装。
 
-Docker 支持上述发行版的当前 LTS 版本和最新版本上的 Docker Desktop。随着新版本的发布，Docker 会停止支持最旧的版本并支持最新的版本。
+Docker 支持上述发行版的当前和上一个 LTS 版本，以及最新版本上的 Docker Desktop。随着新版本的发布，Docker 会停止支持最旧的版本并支持最新的版本。
 
 ## 一般系统要求
 
@@ -163,6 +164,10 @@ $ sudo usermod -aG kvm $USER
 
 注销并重新登录，以便重新评估您的组成员身份。
 
+## 将 Docker SDK 与 Docker Desktop 配合使用
+
+Docker Desktop for Linux 使用每用户 socket 而不是系统级的 `/var/run/docker.sock`。直接连接 Docker 守护进程的 Docker SDK 和工具需要将 `DOCKER_HOST` 环境变量设置为指向 Docker Desktop 才能连接。有关配置详情，请参阅[如何在 Linux 上将 Docker SDK 与 Docker Desktop 配合使用？](/manuals/desktop/troubleshoot-and-support/faqs/linuxfaqs.md#how-do-i-use-docker-sdks-with-docker-desktop-for-linux)。
+
 ## 下一步
 
 - 为您的特定 Linux 发行版安装 Docker Desktop for Linux：
@@ -171,3 +176,4 @@ $ sudo usermod -aG kvm $USER
    - [在 Red Hat Enterprise Linux (RHEL) 上安装](rhel.md)
    - [在 Fedora 上安装](fedora.md)
    - [在 Arch 上安装](archlinux.md)
+

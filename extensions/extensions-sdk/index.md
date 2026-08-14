@@ -1,6 +1,10 @@
 # 扩展 SDK 概览
 
 
+> [!IMPORTANT]
+>
+> 在 Docker 审查 Marketplace 安全性期间，暂停向 Docker 扩展 Marketplace 提交新扩展。您仍然可以更新现有扩展，私有 Marketplace 扩展不受影响。如果您有其他疑问，请联系 extensions@docker.com。
+
 本节中的资源可帮助您创建自己的 Docker 扩展。
 
 Docker CLI 工具提供了一组命令来帮助您构建和发布扩展，这些扩展被打包为特殊格式的 Docker 镜像。
@@ -13,8 +17,12 @@ Docker CLI 工具提供了一组命令来帮助您构建和发布扩展，这些
 
 
 
+
+
 > 已经构建了一个扩展？
 >
 > 请通过 [反馈表单](https://survey.alchemer.com/s3/7184948/Publishers-Feedback-Form) 告诉我们您的使用体验。
+
+
 
 

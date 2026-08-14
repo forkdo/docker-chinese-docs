@@ -34,7 +34,7 @@ alpine       latest    7144f7bab3d4   40 minutes ago   11.7MB
 
 可用字段（本例中为 `reference`）取决于您运行的命令。某些过滤器需要完全匹配，其他过滤器处理部分匹配，有些过滤器允许您使用正则表达式。
 
-请参考每个命令的 [CLI 参考说明](#reference)，了解每个命令支持的过滤功能。
+请参考每个命令的 [CLI 参考说明](#参考)，了解每个命令支持的过滤功能。
 
 ## 组合过滤器
 
@@ -74,21 +74,22 @@ $ docker container prune --filter "label!=foo" --filter "label!=bar"
 
 有关过滤命令的更多信息，请参考支持 `--filter` 标志的命令的 CLI 参考说明：
 
-- [`docker config ls`](/reference/cli/docker/config/ls.md)
-- [`docker container prune`](/reference/cli/docker/container/prune.md)
-- [`docker image prune`](/reference/cli/docker/image/prune.md)
-- [`docker image ls`](/reference/cli/docker/image/ls.md)
-- [`docker network ls`](/reference/cli/docker/network/ls.md)
-- [`docker network prune`](/reference/cli/docker/network/prune.md)
-- [`docker node ls`](/reference/cli/docker/node/ls.md)
-- [`docker node ps`](/reference/cli/docker/node/ps.md)
-- [`docker plugin ls`](/reference/cli/docker/plugin/ls.md)
-- [`docker container ls`](/reference/cli/docker/container/ls.md)
-- [`docker search`](/reference/cli/docker/search.md)
-- [`docker secret ls`](/reference/cli/docker/secret/ls.md)
-- [`docker service ls`](/reference/cli/docker/service/ls.md)
-- [`docker service ps`](/reference/cli/docker/service/ps.md)
-- [`docker stack ps`](/reference/cli/docker/stack/ps.md)
-- [`docker system prune`](/reference/cli/docker/system/prune.md)
-- [`docker volume ls`](/reference/cli/docker/volume/ls.md)
-- [`docker volume prune`](/reference/cli/docker/volume/prune.md)
+- [`docker config ls`](/reference/cli/docker/config/ls/)
+- [`docker container prune`](/reference/cli/docker/container/prune/)
+- [`docker image prune`](/reference/cli/docker/image/prune/)
+- [`docker image ls`](/reference/cli/docker/image/ls/)
+- [`docker network ls`](/reference/cli/docker/network/ls/)
+- [`docker network prune`](/reference/cli/docker/network/prune/)
+- [`docker node ls`](/reference/cli/docker/node/ls/)
+- [`docker node ps`](/reference/cli/docker/node/ps/)
+- [`docker plugin ls`](/reference/cli/docker/plugin/ls/)
+- [`docker container ls`](/reference/cli/docker/container/ls/)
+- [`docker search`](/reference/cli/docker/search/)
+- [`docker secret ls`](/reference/cli/docker/secret/ls/)
+- [`docker service ls`](/reference/cli/docker/service/ls/)
+- [`docker service ps`](/reference/cli/docker/service/ps/)
+- [`docker stack ps`](/reference/cli/docker/stack/ps/)
+- [`docker system prune`](/reference/cli/docker/system/prune/)
+- [`docker volume ls`](/reference/cli/docker/volume/ls/)
+- [`docker volume prune`](/reference/cli/docker/volume/prune/)
+

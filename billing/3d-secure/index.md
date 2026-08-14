@@ -17,10 +17,10 @@ Docker 支持 3D Secure (3DS)，这是某些信用卡支付所需的额外身份
 
 在执行以下任何操作时，系统可能会要求您验证身份：
 
-- 开始[付费订阅](../subscription/setup.md)
-- 将您的[计费周期](/billing/cycle/)从月度更改为年度
-- [升级您的订阅](../subscription/change.md)
-- 向现有订阅[添加席位](../subscription/manage-seats.md)
+- 开始[付费订阅](../subscription/manage.md)
+- 将您的[计费周期](/manuals/billing/details.md#billing-cycle)从月度更改为年度
+- [升级您的订阅](../subscription/manage.md#upgrade-plans)
+- 向现有订阅[添加席位](../admin/organization/manage/manage-seats.md)
 
 如果需要 3DS 且您的支付方式支持，验证提示将在结账过程中显示。
 
@@ -29,9 +29,10 @@ Docker 支持 3D Secure (3DS)，这是某些信用卡支付所需的额外身份
 如果您因 3DS 无法完成支付：
 
 1. 重试您的交易。确保在同一浏览器标签页中完成验证提示。
-2. 使用其他支付方式。某些卡片可能无法正常支持 3DS 或被阻止。
-3. 联系您的银行。您的银行可能正在阻止支付或 3DS 验证尝试。
+1. 使用其他支付方式。
+1. 联系您的银行以确认它是否正在阻止支付或 3DS 验证尝试。
 
 > [!NOTE]
 >
 > 禁用广告拦截器或阻止弹出窗口的浏览器扩展可以帮助 3DS 提示正确显示。
+

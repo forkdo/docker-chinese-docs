@@ -1,11 +1,8 @@
-# Docker Desktop 日志
+# docker desktop logs
 
 **Description:** Print log entries for Docker Desktop
 
 **Usage:** `docker desktop logs [OPTIONS]`
-
-
-
 
 
 

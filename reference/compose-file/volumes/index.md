@@ -3,7 +3,10 @@
 
 
 
+
+
 卷（Volume）是由容器引擎实现的持久化数据存储。Compose 为服务挂载卷提供了一种中立的方式，并提供配置参数以将它们分配给基础设施。顶层的 `volumes` 声明允许您配置命名卷，这些卷可以在多个服务之间重复使用。
+
 
 要在多个服务之间使用卷，必须通过在 `services` 顶层元素中使用 [volumes](services.md#volumes) 属性来显式授予每个服务访问权限。`volumes` 属性具有额外的语法，可提供更精细的控制。
 
@@ -63,6 +66,20 @@ volumes:
       o: "addr=10.40.0.199,nolock,soft,rw"
       device: ":/docker/example"
 ```
+
+如果您想要一个具名的绑定挂载，请使用 `local` 驱动程序配合 `driver_opts`。这种模式为 Compose 卷提供一个稳定的名称，同时将其映射到特定的宿主机路径：
+
+```yaml
+volumes:
+  app-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /srv/app-data # 必须是宿主机的绝对路径且已存在
+```
+
+`type`、`o` 和 `device` 键会被直接传递给 local 驱动程序。若只需在单个服务上进行一次性的宿主机路径挂载，请参阅[绑定挂载](/manuals/engine/storage/bind-mounts.md)。
 
 ### `external`
 
@@ -144,3 +161,4 @@ volumes:
     external: true
     name: actual-name-of-volume
 ```
+

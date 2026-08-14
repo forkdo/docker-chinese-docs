@@ -149,7 +149,7 @@ webapp:
             - BAZ=local
       ```
 
-     结果：
+      结果：
 
       ```yaml
       services:
@@ -221,7 +221,7 @@ webapp:
    
 - 你可以使用 `-f` 标志来指定一个不在当前目录中的 Compose 文件路径，可以通过命令行设置，也可以通过在 shell 中或环境文件中设置 [COMPOSE_FILE 环境变量](../environment-variables/envvars.md#compose_file)。
 
-   例如，如果你正在运行 [Compose Rails 示例](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/rails/README.md)，并且在一个名为 `sandbox/rails` 的目录中有一个 `compose.yaml` 文件。你可以使用像 [docker compose pull](/reference/cli/docker/compose/pull.md) 这样的命令，通过 `-f` 标志从任何地方获取 `db` 服务的 postgres 镜像，如下所示：`docker compose -f ~/sandbox/rails/compose.yaml pull db`
+   例如，如果你正在运行 [Compose Rails 示例](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/rails/README.md)，并且在一个名为 `sandbox/rails` 的目录中有一个 `compose.yaml` 文件。你可以使用像 [docker compose pull](/reference/cli/docker/compose/pull/) 这样的命令，通过 `-f` 标志从任何地方获取 `db` 服务的 postgres 镜像，如下所示：`docker compose -f ~/sandbox/rails/compose.yaml pull db`
 
    以下是完整示例：
 
@@ -325,8 +325,17 @@ $ docker compose -f compose.yaml -f compose.prod.yaml up -d
 
 ## 限制
 
-Docker Compose 为许多要包含在应用程序模型中的资源支持相对路径：服务镜像的构建上下文、定义环境变量的文件位置、绑定挂载卷中使用的本地目录路径。有了这样的限制，在 monorepo（单体仓库）中的代码组织可能会变得困难，因为自然的选择是为每个团队或组件设置专用文件夹，但这样 Compose 文件的相对路径就会变得无关紧要。
+合并 Compose 文件时，所有相对路径（用于构建上下文、环境文件、绑定挂载卷以及其他资源）都会相对于基础 Compose 文件进行解析。基础文件是第一个用 `-f` 指定的文件；如果未使用 `-f`，则是当前目录中的 `compose.yaml`。覆盖文件中的路径不会相对于覆盖文件自身的位置进行解析。
+
+这意味着在 monorepo（单体仓库）中，当 Compose 文件分散在团队或组件的子目录中时，这些文件中相对路径在用作覆盖文件时会被错误地解析。
+
+> [!TIP] 
+>
+> 如果你需要每个 Compose 文件的路径都相对于其自身的位置进行解析，
+> 请使用 [`include` 顶级元素](include.md) 而不是用 `-f` 合并。每个
+> 被包含的文件都会加载自己的项目目录，因此相对路径能够正确解析。
 
 ## 参考信息
 
 - [合并规则](/reference/compose-file/merge.md)
+

@@ -23,17 +23,16 @@ Docker Build Cloud 相比本地构建提供了多项优势：
 
 > [!NOTE]
 >
-> Docker Build Cloud 目前仅在美东地区提供。欧洲和亚洲的用户相比北美地区的用户可能会遇到更高的延迟。
->
-> 多地区构建器支持已在路线图中。
+> Docker Build Cloud 仅在美东地区提供。
 
 ## 获取 Docker Build Cloud
 
 要开始使用 Docker Build Cloud，[创建一个 Docker 账户](/accounts/create-account/)。有两种方式可以获取 Docker Build Cloud：
 
 - 拥有免费个人账户的用户可以选择参加 7 天免费试用，并可选择订阅以继续使用。要开始免费试用，请登录 [Docker Build Cloud Dashboard](https://app.docker.com/build/) 并按照屏幕说明操作。
-- 所有拥有付费 Docker 订阅的用户都可以使用 Docker Build Cloud，该服务已包含在他们的 Docker 产品套件中。更多信息请参阅 [Docker 订阅和功能](https://www.docker.com/pricing/)。
+- 所有拥有付费 Docker 订阅的用户都可以使用 Docker Build Cloud，该服务已包含在他们的 Docker 产品套件中。更多信息请参阅 [Docker 订阅和功能](https://www.docker.com/pricing?ref=Docs&refAction=DocsBuildCloud)。
 
 注册并创建构建器后，请继续[在本地环境中设置构建器](./setup.md)。
 
 有关 Docker Build Cloud 的角色和权限信息，请参阅[角色和权限](/manuals/enterprise/security/roles-and-permissions.md#docker-build-cloud-permissions)。
+

@@ -5,8 +5,7 @@
 
 > [!WARNING]
 >
-> 未在 Marketplace 中的 Docker Extensions 未经过 Docker 的审核流程。
-> 扩展可以安装二进制文件、执行命令并访问您机器上的文件。安装这些扩展需自行承担风险。
+> 在 Marketplace 之外安装的扩展未经过 Docker 的审核流程。与所有 Docker 扩展一样，它们以主机级别的权限运行。它们可以安装二进制文件、访问 Docker Engine、执行命令并访问您机器上的文件。只有在您信任发布者并已验证来源的情况下才安装。
 
 扩展 Marketplace 是在 Docker Desktop 内安装扩展的可信且官方的场所。这些扩展已通过 Docker 的审核流程。但是，如果您信任扩展作者，也可以在 Docker Desktop 中安装其他扩展。
 
@@ -52,3 +51,4 @@ john/my-extension   John                latest              1 tab(My-Extension) 
 ## 卸载扩展
 
 要卸载未在 Marketplace 中提供的扩展，您可以导航到 Marketplace 中的 **管理** 选项卡并选择 **卸载** 按钮，或者在终端中输入 `docker extension uninstall IMAGE[:TAG]`。
+

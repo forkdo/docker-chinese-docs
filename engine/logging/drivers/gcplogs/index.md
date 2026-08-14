@@ -7,8 +7,23 @@ Google Cloud Logging 驱动将容器日志发送到
 
 ## 使用方法
 
-要将 `gcplogs` 驱动设为默认日志驱动，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。该文件在 Linux 主机上位于 `/etc/docker/`，在 Windows Server 上位于 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的详细信息，请参阅
+要将 `gcplogs` 驱动设为默认日志驱动，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。有关使用 `daemon.json` 配置 Docker 的详细信息，请参阅
 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+
+
+
+
+<!-- FILE: includes/daemon-cfg-desktop.md -->
+
+> [!NOTE]
+>
+> 如果你使用的是 Docker Desktop，请通过 Docker Desktop 控制面板来编辑守护进程配置。
+> 打开 **Settings**，然后选择 **Docker Engine**。
+> 详情参阅
+> [Docker Engine 设置](/manuals/desktop/settings-and-maintenance/settings.md#docker-engine)。
+
+
 
 以下示例将日志驱动设为 `gcplogs`，并设置 `gcp-meta-name` 选项。
 
@@ -85,3 +100,4 @@ $ docker run \
     --log-opt gcp-meta-name=`hostname` \
     your/application
 ```
+

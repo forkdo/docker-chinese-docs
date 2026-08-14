@@ -34,6 +34,9 @@
 ### 从应用内诊断
 
 1. 在**排查**中，选择**获取支持**。这将打开应用内支持页面并开始收集诊断信息。
+   > [!NOTE]
+   >
+   > 收集诊断信息可能需要几分钟时间。在收集诊断信息期间，请勿关闭 Docker Desktop。
 2. 当诊断信息收集过程完成后，选择**上传以获取诊断 ID**。
 3. 当诊断信息上传后，Docker Desktop 会打印一个诊断 ID。请复制此 ID。
 4. 使用您的诊断 ID 获取帮助：
@@ -46,6 +49,9 @@
 ### 从错误消息诊断
 
 1. 当出现错误消息时，选择**收集诊断信息**。
+   > [!NOTE]
+   >
+   > 收集诊断信息可能需要几分钟时间。在收集诊断信息期间，请勿关闭 Docker Desktop。
 2. 当诊断信息上传后，Docker Desktop 会打印一个诊断 ID。请复制此 ID。
 3. 使用您的诊断 ID 获取帮助：
    - 如果您拥有付费 Docker 订阅，请选择**联系支持**。这将打开 Docker Desktop 支持表单。填写所需信息，并将您在步骤三中复制的 ID 添加到**诊断 ID 字段**中。然后，选择**提交工单**以请求 Docker Desktop 支持。
@@ -58,6 +64,10 @@
 
 在某些情况下，自行运行诊断很有用，例如当 Docker Desktop 无法启动时。
 
+> [!NOTE]
+>
+> 收集诊断信息可能需要几分钟时间。在关闭终端之前，请等待过程完成。
+
 **Windows**
 
 
@@ -65,13 +75,21 @@
 1. 找到 `com.docker.diagnose` 工具：
 
    ```console
+   # 对于所有用户安装
    $ C:\Program Files\Docker\Docker\resources\com.docker.diagnose.exe
+
+   # 对于按用户安装
+   $ %LOCALAPPDATA%\Programs\DockerDesktop\resources\com.docker.diagnose.exe
    ```
 
 2. 创建并上传诊断 ID。在 PowerShell 中运行：
 
    ```console
+   # 对于所有用户安装
    $ & "C:\Program Files\Docker\Docker\resources\com.docker.diagnose.exe" gather -upload
+
+   # 对于按用户安装
+   $ & %LOCALAPPDATA%\Programs\DockerDesktop\resources\com.docker.diagnose.exe" gather -upload
    ```
 
 诊断完成后，终端会显示您的诊断 ID 和诊断文件的路径。诊断 ID 由您的用户 ID 和时间戳组成。例如 `BE9AFAAF-F68B-41D0-9D12-84760E6B8740/20190905152051`。
@@ -113,6 +131,10 @@
 诊断完成后，终端会显示您的诊断 ID 和诊断文件的路径。诊断 ID 由您的用户 ID 和时间戳组成。例如 `BE9AFAAF-F68B-41D0-9D12-84760E6B8740/20190905152051`。
 
 
+
+> [!TIP]
+>
+> 您也可以使用 [`docker desktop diagnose` 命令](/manuals/desktop/features/desktop-cli.md) 来诊断 Docker Desktop 并上传诊断 ID。
 
 要查看诊断文件的内容：
 
@@ -237,3 +259,4 @@ $ journalctl --user --unit=docker-desktop
 - 查看[已知问题](known-issues.md)相关信息
 - [修复 macOS 上的 "Docker.app is damaged" 问题](mac-damaged-dialog.md) - 解决 macOS 安装问题
 - [获取 Docker 产品支持](/manuals/support/_index.md)
+

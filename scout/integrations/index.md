@@ -13,8 +13,8 @@
 
 提供以下容器镜像仓库集成：
 
-- [Amazon Elastic Container Registry](./registry/ecr.md)
-- [Azure Container Registry](./registry/acr.md)
+- [Amazon Elastic Container Registry](./registry/ecr.md)（已弃用，将于 2026 年 9 月 1 日停用）
+- [Azure Container Registry](./registry/acr.md)（已弃用，将于 2026 年 9 月 1 日停用）
 - [JFrog Artifactory](./registry/artifactory.md)
 
 ### 持续集成 (Continuous Integration)
@@ -37,7 +37,7 @@
 
 提供以下环境监控集成：
 
-- [Sysdig](./environment/sysdig.md)
+- [通用 CLI 集成](./environment/cli.md)
 
 有关环境集成的更多信息，请参见 [环境](./environment/_index.md)。
 
@@ -49,7 +49,7 @@
 
 提供以下代码质量集成：
 
-- [SonarQube](sonarqube.md)
+- [SonarQube](./code-quality/sonarqube.md)（已弃用，将于 2026 年 9 月 1 日停用）
 
 ### 源代码管理
 
@@ -57,8 +57,7 @@
 
 提供以下源代码管理集成：
 
-- [GitHub](source-code-management/github.md) \[Beta\]
-
+- [GitHub](source-code-management/github.md)（已停用）
 
 ### 团队协作
 
@@ -66,4 +65,5 @@
 
 提供以下团队协作集成：
 
-- [Slack](./team-collaboration/slack.md)
+- [Slack](./team-collaboration/slack.md)（已弃用，将于 2026 年 9 月 1 日停用）
+

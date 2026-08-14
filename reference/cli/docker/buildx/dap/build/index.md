@@ -6,20 +6,8 @@
 
 
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议修改此处显示的文本，请在 GitHub 上的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/buildx
--->
 
 
-
-> [!NOTE]
-> **Experimental**
->
-> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
 
 
 
@@ -42,7 +30,7 @@ Arguments are the same as the `build`
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--add-host` |  |  Add a custom host-to-IP mapping (format: `host:ip`) |
-| `--allow` |  |  Allow extra privileged entitlement (e.g., `network.host`, `security.insecure`, `device`)<br> |
+| `--allow` |  |  Allow extra privileged entitlement (e.g., `network.host`, `security.insecure`, `device`, `buildx.local.delete`)<br> |
 | `--annotation` |  |  Add annotation to the image |
 | `--attest` |  |  Attestation parameters (format: `type=sbom,generator=image`) |
 | `--build-arg` |  |  Set build-time variables |
@@ -68,6 +56,7 @@ Arguments are the same as the `build`
 | `--pull` |  |  Always attempt to pull all referenced images |
 | `--push` |  |  Shorthand for `--output=type=registry,unpack=false` |
 | `-q`, `--quiet` |  |  Suppress the build output and print image ID on success |
+| `--resource` |  |  Resource limits for build containers (format: `memory=2g`, `cpu-quota=50000`)<br> |
 | `--sbom` |  |  Shorthand for `--attest=type=sbom` |
 | `--secret` |  |  Secret to expose to the build (format: `id=mysecret[,src=/local/secret]`)<br> |
 | `--shm-size` |  |  Shared memory size for build containers |

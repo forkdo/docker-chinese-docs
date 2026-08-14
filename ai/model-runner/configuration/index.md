@@ -88,7 +88,7 @@ models:
 使用 `docker model configure` 命令：
 
 ```console
-$ docker model configure --runtime-flag "--temp" --runtime-flag "0.7" --runtime-flag "--top-p" --runtime-flag "0.9" ai/qwen2.5-coder
+$ docker model configure ai/qwen2.5-coder -- --temp 0.7 --top-p 0.9
 ```
 
 ### 常用 llama.cpp 参数
@@ -284,3 +284,4 @@ $ docker model configure --context-size -1 ai/qwen2.5-coder
 - [推理引擎](inference-engines.md) - 了解 llama.cpp 和 vLLM
 - [API 参考](api-reference.md) - 用于每个请求配置的 API 参数
 - [Models and Compose](/manuals/ai/compose/models-and-compose.md) - 在 Compose 应用程序中配置模型
+

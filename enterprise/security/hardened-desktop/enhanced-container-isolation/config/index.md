@@ -20,12 +20,12 @@
 
 使用设置管理配置 Docker 套接字异常：
 
-**Admin Console**
+**Docker Home**
 
 
 
 1. 登录 [Docker Home](https://app.docker.com)，从左上角的帐户下拉菜单中选择您的组织。
-2. 转到 **Admin Console** > **Desktop Settings Management**。
+2. 选择 **Docker Desktop**，然后 **Settings Management**。
 3. [创建或编辑设置策略](/manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console.md)。
 4. 找到 **Enhanced Container Isolation** 设置。
 5. 使用受信任的镜像和命令限制配置 **Docker socket access control**。
@@ -272,3 +272,4 @@ Error response from daemon: enhanced container isolation: docker command "/v1.43
 
 - 查看 [增强容器隔离限制](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/limitations.md)。
 - 查看 [增强容器隔离常见问题解答](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/faq.md)。
+

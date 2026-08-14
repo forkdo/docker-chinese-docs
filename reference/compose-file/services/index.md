@@ -3,7 +3,10 @@
 
 
 
+
+
 服务是应用程序中计算资源的抽象定义，可以独立于其他组件进行扩展或替换。服务由平台根据复制要求和部署约束运行的一组容器支持。由于服务由容器支持，因此它们由 Docker 镜像和一组运行时参数定义。服务中的所有容器都使用这些参数以相同的方式创建。
+
 
 Compose 文件必须声明一个 `services` 顶级元素作为映射，其键是服务名称的字符串表示，其值是服务定义。服务定义包含应用于每个服务容器的配置。
 
@@ -367,7 +370,10 @@ configs:
 
 
 
+
+
 使用 `depends_on` 属性，您可以控制服务的启动和关闭顺序。如果服务之间紧密耦合，且启动顺序会影响应用程序的功能，这一属性将非常有用。
+
 
 #### 短语法
 
@@ -394,7 +400,7 @@ services:
 ```
 
 Compose 保证在启动依赖服务之前，依赖服务已经启动。
-Compose 等待依赖服务“就绪”后再启动依赖服务。
+使用短语法时，Compose 不会等待依赖服务变为“健康”（healthy）后才启动依赖它的服务。
 
 #### 长语法
 
@@ -565,7 +571,10 @@ entrypoint:
 
 
 
+
+
 `env_file` 属性用于指定一个或多个包含要传递给容器的环境变量的文件。
+
 
 ```yml
 env_file: .env
@@ -658,8 +667,11 @@ VAR="quoted"
 
 
 
+
+
 `environment` 属性定义了在容器中设置的环境变量。`environment` 可以使用数组或映射。
 任何布尔值：true、false、yes、no，都应该用引号括起来，以确保它们不会被 YAML 解析器转换为 True 或 False。
+
 
 环境变量可以通过单个键（没有值和等号）声明。在这种情况下，Compose 依赖您来解析值。如果值未解析，变量将被取消设置并从服务容器环境中移除。
 
@@ -715,6 +727,8 @@ extends:
 
 - `service`: 定义作为基础引用的服务名称，例如 `web` 或 `database`。
 - `file`: 定义该服务的 Compose 配置文件的位置。
+
+使用 `docker stack deploy` 部署时不支持 `extends`。
 
 #### 限制
 
@@ -967,7 +981,10 @@ services:
 
 
 
+
+
 `healthcheck` 属性声明了一个用于确定服务容器是否“健康”的检查。其工作方式与服务的 Docker 镜像在 Dockerfile 中设置的 `HEALTHCHECK` 指令相同，并且具有相同的默认值。您的 Compose 文件可以覆盖 Dockerfile 中设置的值。
+
 
 有关 `HEALTHCHECK` 的更多信息，请参阅 [Dockerfile 参考](/reference/dockerfile.md#healthcheck)。
 
@@ -1218,6 +1235,7 @@ services:
 
 `network_mode` 设置服务容器的网络模式。
 
+- `bridge`: 将容器连接到 Docker 的默认 bridge 网络，而不是项目专用网络。默认 bridge 网络上的容器无法通过服务名称相互解析。请改用用户自定义网络以获得 DNS 解析能力。
 - `none`: 关闭所有容器网络。
 - `host`: 给予容器对主机网络接口的原始访问权限。
 - `service:{name}`: 通过引用其服务名称，使容器可以访问指定的容器。
@@ -1226,6 +1244,7 @@ services:
 有关容器网络的更多信息，请参阅 [Docker Engine 文档](/manuals/engine/network/_index.md#container-networks)。
 
 ```yml
+    network_mode: "bridge"
     network_mode: "host"
     network_mode: "none"
     network_mode: "service:[service name]"
@@ -1237,7 +1256,10 @@ services:
 
 
 
+
+
 `networks` 属性定义了服务容器所连接的网络，它引用了顶层 `networks` 元素下的条目。`networks` 属性有助于管理容器的网络方面，提供对服务在 Docker 环境中如何被分段和交互的控制。这用于指定该服务的容器应连接到哪些网络。这对于定义容器之间以及容器与外部如何通信非常重要。
+
 
 ```yml
 services:
@@ -1504,7 +1526,10 @@ platform: linux/arm64/v8
 
 
 
+
+
 `ports` 用于定义主机与容器之间的端口映射。这对于允许外部访问容器内运行的服务至关重要。它可以使用简短语法进行简单的端口映射，也可以使用包含协议类型和网络模式等附加选项的详细语法。
+
 
 > [!NOTE]
 >
@@ -1519,6 +1544,10 @@ platform: linux/arm64/v8
 - `HOST` 是 `[IP:](port | range)`（可选）。如果未设置，则绑定到所有网络接口 (`0.0.0.0`)。
 - `CONTAINER` 是 `port | range`。
 - `PROTOCOL` 将端口限制为指定的协议，`tcp` 或 `udp`（可选）。默认为 `tcp`。
+
+> [!WARNING]
+>
+> 如果您不指定主机 IP（例如 `127.0.0.1`），Docker 会绑定到所有网络接口 (`0.0.0.0`)，从而绕过主机防火墙规则。如果主机拥有公网 IP 地址，这可能会使容器直接暴露到互联网。更多信息，请参阅 [端口发布与映射](/manuals/engine/network/port-publishing.md)。
 
 端口可以是单个值或范围。`HOST` 和 `CONTAINER` 必须使用等效的范围。
 
@@ -1605,13 +1634,56 @@ services:
 
 有关更多信息，请参阅 [使用生命周期钩子](/manuals/compose/how-tos/lifecycle.md)。
 
+### pre_start
+
+
+
+`pre_start` 定义在服务容器启动前要运行的一系列 init 容器。每个步骤按声明顺序运行至完成，只有当每个步骤都以 `0` 退出后，服务容器才会启动。任何非零退出都会导致该服务及其依赖者的启动失败。
+
+与在运行中的服务容器内执行命令的 `post_start` 和 `pre_stop` 不同，每个 `pre_start` 步骤都在其自己的临时容器中运行，该容器在服务容器创建之后、启动之前创建。可能的值有：
+
+- `command`: 要运行的命令。当所选镜像的入口点已经运行了预期的命令时，此项为可选。
+- `image`: 用于临时容器的镜像。如果省略，则使用父服务的镜像。
+- `user`: 运行命令的用户。如果未设置，默认使用 `image` 中声明的用户（当省略 `image` 时则使用主服务命令的用户）。
+- `privileged`: 允许 `pre_start` 命令以特权访问运行。
+- `working_dir`: 运行命令的工作目录。如果未设置，则在与主服务命令相同的工作目录中运行。
+- `environment`: 设置运行 `pre_start` 命令的环境变量。该命令继承为服务主命令定义的 `environment`，此部分允许您追加或覆盖值。
+- `per_replica: false`: 该步骤是否在任何副本启动之前，为整个服务只运行一次。
+
+`pre_start` 步骤仅在服务的 `depends_on` 条件满足后才运行，因此步骤可以像主服务命令一样依赖这些依赖项。`pre_start` 容器加入与服务相同的网络，因此它可以访问 `depends_on` 中声明的服务，并共享服务声明的卷挂载，因此它在共享卷中生成的文件对服务可见。
+
+当使用 `per_replica: false` 且服务已扩缩容时，只有在副本之间共享的挂载（命名卷、绑定挂载）才可用。按实例的挂载（`tmpfs`、匿名卷）无法通过单次运行寻址。这不是错误。步骤会在无法访问按实例挂载的情况下运行。`per_replica: false` 步骤必须与服务共享的数据应放在命名卷或绑定挂载中。
+
+对于当前定义已成功执行过的 `pre_start` 步骤，在后续的 `up` 时不会重新运行，服务容器在其 `restart` 策略下重启时也不会重新运行。当步骤的定义发生变化、上次运行未成功，或服务被重新创建时，步骤会再次运行。例如，在更改服务配置或显式强制重新创建之后。
+
+```yaml
+services:
+  app:
+    image: myapp:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    pre_start:
+      - command: ["./manage.py", "migrate"]
+      - image: busybox
+        command: sh -c 'chown -R 1000:1000 /data'
+    volumes:
+      - data:/data
+
+  db:
+    image: postgres:16
+
+volumes:
+  data:
+```
+
 ### `pre_stop`
 
 
 
 `pre_stop` 定义在容器停止之前要运行的一系列生命周期钩子。如果容器自行停止或突然终止，这些钩子不会运行。
 
-配置等同于 [post_start](#post_start)。
+配置等同于 [`post_start`](#post_start)。
 
 ### `privileged`
 
@@ -1715,7 +1787,7 @@ services:
     restart: unless-stopped
 ```
 
-您可以在 Docker 运行参考页的 [重启策略 (--restart)](/reference/cli/docker/container/run.md#restart) 部分找到有关重启策略的更详细信息。
+您可以在 Docker 运行参考页的 [重启策略 (--restart)](/reference/cli/docker/container/run/#restart) 部分找到有关重启策略的更详细信息。
 
 ### `runtime`
 
@@ -1741,7 +1813,10 @@ web:
 
 
 
+
+
 `secrets` 属性允许按服务为基础，访问由顶层 `secrets` 元素定义的敏感数据。可以授予服务访问多个 secret 的权限。
+
 
 支持两种不同的语法变体；短语法和长语法。长语法和短语法可以用于同一个 Compose 文件中的 secrets。
 
@@ -1777,28 +1852,36 @@ secrets:
   默认值为全局可读权限（模式 `0444`）。
   如果设置了可写位，则必须忽略。可执行位可以设置。
 
-请注意，当密钥的源是 [`file`](secrets.md) 时，Docker Compose 不支持 `uid`、`gid` 和 `mode` 属性。这是因为底层使用的绑定挂载不允许 uid 重新映射。
+请注意，只有当密钥的源是 [`environment`](secrets.md) 时，Docker Compose 才支持 `uid`、`gid` 和 `mode` 属性。当源是 [`file`](secrets.md) 时，Compose 在底层使用绑定挂载，其不允许 `uid` 重新映射，因此这些属性会被静默忽略。
 
-以下示例将 `server-certificate` 密钥文件的名称在容器内设置为 `server.cert`，将模式设置为 `0440`（组可读），并将用户和组设置为 `103`。`server-certificate` 的值设置为文件 `./server.cert` 的内容。
+以下示例设置容器内 `my-token` 密钥文件的名称，将模式设置为 `0440`（组可读），并将用户和组设置为 `103`。`my-token` 的值从 `MY_TOKEN` 环境变量读取。
 
 ```yml
 services:
   frontend:
     image: example/webapp
     secrets:
-      - source: server-certificate
-        target: server.cert
+      - source: my-token
         uid: "103"
         gid: "103"
         mode: 0o440
 secrets:
-  server-certificate:
-    file: ./server.cert
+  my-token:
+    environment: "MY_TOKEN"
 ```
 
 ### `security_opt`
 
 `security_opt` 覆盖每个容器的默认标记方案。
+
+选项接受 `option=value` 或 `option:value` 语法。对于诸如 `no-new-privileges` 之类的布尔选项，值可以完全省略，此时该选项被视为已启用。以下几种语法完全等效：
+
+```yml
+security_opt:
+  - no-new-privileges
+  - no-new-privileges=true
+  - no-new-privileges:true
+```
 
 ```yml
 security_opt:
@@ -1806,7 +1889,7 @@ security_opt:
   - label=role:ROLE
 ```
 
-有关您可以覆盖的其他默认标记方案，请参阅 [安全配置](/reference/cli/docker/container/run.md#security-opt)。
+有关您可以覆盖的其他默认标记方案，请参阅 [安全配置](/reference/cli/docker/container/run/#security-opt)。
 
 ### `shm_size`
 
@@ -1815,7 +1898,7 @@ security_opt:
 
 ### `stdin_open`
 
-`stdin_open` 配置服务的容器以分配的 stdin 运行。这与使用 `-i` 标志运行容器相同。有关更多信息，请参阅 [保持 stdin 打开](/reference/cli/docker/container/run.md#interactive)。
+`stdin_open` 配置服务的容器以分配的 stdin 运行。这与使用 `-i` 标志运行容器相同。有关更多信息，请参阅 [保持 stdin 打开](/reference/cli/docker/container/run/#interactive)。
 
 支持的值是 `true` 或 `false`。
 
@@ -1863,7 +1946,7 @@ sysctls:
   - net.ipv4.tcp_syncookies=0
 ```
 
-您只能使用内核中命名空间化的 sysctl。Docker 不支持在也修改主机系统的容器内更改 sysctl。有关支持的 sysctl 概述，请参阅 [在运行时配置命名空间内核参数 (sysctls)](/reference/cli/docker/container/run.md#sysctl)。
+您只能使用内核中命名空间化的 sysctl。Docker 不支持在也修改主机系统的容器内更改 sysctl。有关支持的 sysctl 概述，请参阅 [在运行时配置命名空间内核参数 (sysctls)](/reference/cli/docker/container/run/#sysctl)。
 
 ### `tmpfs`
 
@@ -1894,7 +1977,7 @@ services:
 
 ### `tty`
 
-`tty` 配置服务的容器以带 TTY 的方式运行。这与使用 `-t` 或 `--tty` 标志运行容器相同。有关更多信息，请参阅 [分配伪 TTY](/reference/cli/docker/container/run.md#tty)。
+`tty` 配置服务的容器以带 TTY 的方式运行。这与使用 `-t` 或 `--tty` 标志运行容器相同。有关更多信息，请参阅 [分配伪 TTY](/reference/cli/docker/container/run/#tty)。
 
 支持的值是 `true` 或 `false`。
 
@@ -1942,9 +2025,12 @@ userns_mode: "host"
 
 
 
+
+
 `volumes` 属性定义了可被服务容器访问的主机路径或命名卷。你可以使用 `volumes` 定义多种类型的挂载：`volume`、`bind`、`tmpfs` 或 `npipe`。
 
 如果挂载是主机路径且仅被单个服务使用，它可以作为服务定义的一部分进行声明。要在多个服务之间复用卷，必须在 `volumes` 顶级元素中声明命名卷。
+
 
 以下示例显示了一个命名卷 (`db-data`) 被 `backend` 服务使用，以及为单个服务定义的绑定挂载。
 
@@ -2038,3 +2124,4 @@ volumes_from:
 ### `working_dir`
 
 `working_dir` 覆盖容器的工作目录，该目录由镜像指定，例如 Dockerfile 的 `WORKDIR`。
+

@@ -1,6 +1,10 @@
 # 排查自动构建问题
 
 
+> [!WARNING]
+> Docker Hub 自动构建是一项已弃用的功能。
+> 它将于 2027 年 4 月 1 日完全退役。
+
 > [!NOTE]
 >
 > 自动构建需要
@@ -48,3 +52,4 @@ Docker Hub 会在您的源代码仓库中设置一个部署密钥，允许它克
 > [!NOTE]
 >
 > 您必须使用 SSH 方式（`git@submodule.tld:some-submodule.git`）而非 HTTPS 配置您的私有 git 子模块。
+

@@ -8,19 +8,19 @@ MSI 安装包支持各种 MDM（移动设备管理）解决方案，非常适合
 ## 交互式安装
 
 1. 在 [Docker Home](http://app.docker.com) 中，选择您的组织。
-2. 选择 **Admin Console**，然后选择 **Enterprise deployment**。
+2. 选择 **Docker Desktop**，然后选择 **Deploy**。
 3. 在 **Windows OS** 选项卡中，选择 **Download MSI installer** 按钮。
 4. 下载后，双击 `Docker Desktop Installer.msi` 运行安装程序。
-5. 接受许可协议后，选择安装位置。默认情况下，Docker Desktop 安装在 `C:\Program Files\Docker\Docker`。
+5. 接受许可协议后，选择安装位置。默认情况下，Docker Desktop 安装在 `C:\Program Files\Docker\Docker`（全用户安装）或 `%LOCALAPPDATA%\Programs\DockerDesktop`（每用户安装）。
 6. 配置 Docker Desktop 安装。您可以：
 
-    - 创建桌面快捷方式
+   - 创建桌面快捷方式
 
-    - 将 Docker Desktop 服务启动类型设置为自动
+   - 将 Docker Desktop 服务启动类型设置为自动
 
-    - 禁用 Windows 容器使用
+   - 禁用 Windows 容器使用
 
-    - 选择 Docker Desktop 后端：WSL 或 Hyper-V。如果您的系统仅支持一种，则无法选择。
+   - 选择 Docker Desktop 后端：WSL 或 Hyper-V。如果您的系统仅支持一种，则无法选择。
 7. 按照安装向导上的说明授权安装程序并继续安装。
 8. 安装成功后，选择 **Finish** 完成安装过程。
 
@@ -33,9 +33,10 @@ MSI 安装包支持各种 MDM（移动设备管理）解决方案，非常适合
 
 > [!NOTE]
 >
-> 使用 MSI 安装 Docker Desktop 时，应用内更新会自动禁用。这可以确保组织保持版本一致性并防止未经批准的更新。对于使用 .exe 安装程序安装的 Docker Desktop，应用内更新仍然受支持。
+> 使用 MSI 安装 Docker Desktop 时，应用内更新默认会自动禁用。这可以确保组织保持版本一致性并防止未经批准的更新。
+> 从 Docker Desktop 4.60 及更高版本开始，可以通过[设置管理](../security/hardened-desktop/settings-management/)将 `disableUpdate` 设置更改为 `false` 来启用 MSI 安装的应用内更新。
 >
-> 当有可用更新时，Docker Desktop 会通知您。要更新 Docker Desktop，请从 Docker Admin Console 下载最新的安装程序。导航到 **Enterprise deployment** 页面。
+> 当有可用更新时，Docker Desktop 会通知您。要更新 Docker Desktop，请从 Docker Home 下载最新的安装程序。导航到 **Deploy** 页面。
 >
 > 要了解最新版本，请查看[发行说明](/manuals/desktop/release-notes.md)页面。
 
@@ -59,9 +60,7 @@ MSI 安装包支持各种 MDM（移动设备管理）解决方案，非常适合
 
 ### 常见安装命令
 
-> [!IMPORTANT]
->
-> 运行以下任何命令都需要管理员权限。
+运行以下任何命令都需要管理员权限。
 
 #### 交互式安装并记录详细日志
 
@@ -187,9 +186,7 @@ msiexec /x "DockerDesktop.msi" /quiet
 
 ### 配置选项
 
-> [!IMPORTANT]
->
-> 除了以下自定义属性外，Docker Desktop MSI 安装程序还支持标准的 [Windows Installer 命令行选项](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options)。
+除了以下自定义属性外，Docker Desktop MSI 安装程序还支持标准的 [Windows Installer 命令行选项](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options)。
 
 | 属性 | 描述 | 默认值 |
 | :--- | :--- | :--- |
@@ -211,6 +208,7 @@ msiexec /x "DockerDesktop.msi" /quiet
 | `WINDOWSCONTAINERSDEFAULTDATAROOT` | 指定 Windows 容器的默认位置。 | 无 |
 | `WSLDEFAULTDATAROOT` | 指定 WSL 发行版磁盘的默认位置。 | 无 |
 | `DISABLEANALYTICS` | 设置为 1 时，将禁用 MSI 的分析收集。有关更多信息，请参阅[分析](#analytics)。 | 0 |
+| `REMOVEEXISTINGINSTALL` | 设置为 1 时，会移除任何现有的 EXE 安装。现有的设置和内容会被保留。适用于 Docker Desktop 4.61 及更高版本。 | 1 |
 
 此外，您还可以使用 `/norestart` 或 `/forcerestart` 来控制重启行为。
 
@@ -257,3 +255,4 @@ SOFTWARE\Docker Inc.\Docker Desktop\DisableMsiAnalytics
 ## 其他资源
 
 - [查看常见问题解答](/manuals/enterprise/enterprise-deployment/faq.md)
+

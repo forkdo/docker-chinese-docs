@@ -41,10 +41,10 @@ Docker 强化镜像 (DHI) 提供基于 [Alpine 和基于 Debian 的变体](../ex
 - FROM golang:1.25
 
 + ## 更新为使用强化基础镜像
-+ FROM dhi.io/golang:1.25-debian12-dev
++ FROM dhi.io/golang:1.25-debian13-dev
 ```
 
-请注意，DHI 没有 `latest` 标签，以促进镜像版本控制的最佳实践。请确保为您的镜像指定适当的版本标签。要找到正确的标签，请浏览 [DHI 目录](https://hub.docker.com/hardened-images/catalog/)中的可用标签。此外，发行版基础在标签中指定（例如 `-alpine3.22` 或 `-debian12`），因此请确保为您的应用程序选择正确的变体。
+请注意，DHI 没有 `latest` 标签，以促进镜像版本控制的最佳实践。请确保为您的镜像指定适当的版本标签。要找到正确的标签，请浏览 [DHI 目录](https://hub.docker.com/hardened-images/catalog/)中的可用标签。此外，发行版基础在标签中指定（例如 `-alpine3.22` 或 `-debian13`），因此请确保为您的应用程序选择正确的变体。
 
 ### 步骤 2：在 Dockerfile 中更新运行时镜像
 
@@ -60,19 +60,19 @@ Docker 强化镜像 (DHI) 提供基于 [Alpine 和基于 Debian 的变体](../ex
 
 ```dockerfile
 # 构建阶段
-FROM dhi.io/golang:1.25-debian12-dev AS builder
+FROM dhi.io/golang:1.25-debian13-dev AS builder
 WORKDIR /app
 COPY . .
 RUN go build -o myapp
 
 # 运行时阶段
-FROM dhi.io/golang:1.25-debian12
+FROM dhi.io/golang:1.25-debian13
 WORKDIR /app
 COPY --from=builder /app/myapp .
 ENTRYPOINT ["/app/myapp"]
 ```
 
-更新 Dockerfile 后，构建并测试您的应用程序。如果遇到问题，请参阅[故障排除](/manuals/dhi/troubleshoot.md)指南以了解常见问题及其解决方案。
+更新 Dockerfile 后，构建并测试您的应用程序。如果遇到问题，请参阅[故障排除](/manuals/dhi/how-to/troubleshoot.md)指南以了解常见问题及其解决方案。
 
 ## 语言特定示例
 
@@ -81,3 +81,4 @@ ENTRYPOINT ["/app/myapp"]
 - [Go](examples/go.md)
 - [Python](examples/python.md)
 - [Node.js](examples/node.md)
+

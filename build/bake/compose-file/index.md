@@ -1,8 +1,8 @@
-# Building with Bake from a Compose file
+# 从 Compose 文件使用 Bake 构建
 
 
-Bake supports the [Compose file format](/reference/compose-file/_index.md)
-to parse a Compose file and translate each service to a [target](reference.md#target).
+Bake 支持 [Compose 文件格式](/reference/compose-file/_index.md)，
+可解析 Compose 文件并将每个服务转换为一个 [目标](reference.md#target)。
 
 ```yaml
 # compose.yaml
@@ -87,18 +87,16 @@ $ docker buildx bake --print
 }
 ```
 
-The compose format has some limitations compared to the HCL format:
+与 HCL 格式相比，Compose 格式有一些限制：
 
-- Specifying variables or global scope attributes is not yet supported
-- `inherits` service field is not supported, but you can use [YAML anchors](/reference/compose-file/fragments.md)
-  to reference other services, as demonstrated in the previous example with `&build-dev`.
+- 不支持指定变量或全局作用域属性
+- 不支持 `inherits` 服务字段，但你可以使用 [YAML anchors](/reference/compose-file/fragments.md)
+  引用其他服务，如前面使用 `&build-dev` 的示例所示。
 
-## `.env` file
+## `.env` 文件
 
-You can declare default environment variables in an environment file named
-`.env`. This file will be loaded from the current working directory,
-where the command is executed and applied to compose definitions passed
-with `-f`.
+你可以在名为 `.env` 的环境文件中声明默认环境变量。该文件将从执行命令的当前工作目录加载，
+并应用到通过 `-f` 传递的 Compose 定义中。
 
 ```yaml
 # compose.yaml
@@ -137,14 +135,12 @@ $ docker buildx bake --print
 
 > [!NOTE]
 >
-> System environment variables take precedence over environment variables
-> in `.env` file.
+> 系统环境变量优先于 `.env` 文件中的环境变量。
 
-## Extension field with `x-bake`
+## 使用 `x-bake` 的扩展字段
 
-Where some fields are not available in the compose specification, you can use
-the [special extension](/reference/compose-file/extension.md) field
-`x-bake` in your compose file to evaluate extra fields:
+在 Compose 规范中某些字段不可用时，你可以使用 [特殊扩展](/reference/compose-file/extension.md) 字段
+`x-bake` 在你的 Compose 文件中来求值额外的字段：
 
 ```yaml
 # compose.yaml
@@ -256,7 +252,7 @@ $ docker buildx bake --print
 }
 ```
 
-Complete list of valid fields for `x-bake`:
+`x-bake` 的有效字段完整列表：
 
 - `cache-from`
 - `cache-to`

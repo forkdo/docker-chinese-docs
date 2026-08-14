@@ -10,7 +10,7 @@ Docker Desktop 是用于构建镜像、运行容器等操作的一站式软件�
 
 > **Docker Desktop 使用条款**
 >
-> 在大型企业（超过 250 名员工或年收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing/?_gl=1*1nyypal*_ga*MTYxMTUxMzkzOS4xNjgzNTM0MTcw*_ga_XJWPQMJYHQ*MTcxNjk4MzU4Mi4xMjE2LjEuMTcxNjk4MzkzNS4xNy4wLjA.)。
+> 在大型企业（超过 250 名员工或年收入超过 1000 万美元）中商业使用 Docker Desktop 需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsGetDockerDesktop)。
 
 <div class="not-prose">
 
@@ -60,4 +60,5 @@ Docker Desktop 通过简化应用程序在不同环境中的设置、配置和�
 现在您已经安装了 Docker Desktop 并运行了您的第一个容器，是时候开始使用容器进行开发了。
 
 [使用容器进行开发](develop-with-containers)
+
 

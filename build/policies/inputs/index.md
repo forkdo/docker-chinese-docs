@@ -1,41 +1,38 @@
-# Input reference
+# 输入参考
 
 
-When Buildx evaluates policies, it provides information about build inputs
-through the `input` object. The structure of `input` depends on the type of
-resource your Dockerfile references.
+当 Buildx 评估策略时，它通过 `input` 对象提供有关构建输入的信息。`input` 的结构取决于你的 Dockerfile 所引用资源的类型。
 
-## Input types
+## 输入类型
 
-Build inputs correspond to Dockerfile instructions:
+构建输入对应于 Dockerfile 指令：
 
-| Dockerfile instruction                  | Input type | Access pattern |
-| --------------------------------------- | ---------- | -------------- |
-| `FROM alpine:latest`                    | Image      | `input.image`  |
-| `COPY --from=builder /app /app`         | Image      | `input.image`  |
-| `ADD https://example.com/file.tar.gz /` | HTTP       | `input.http`   |
-| `ADD git@github.com:user/repo.git /src` | Git        | `input.git`    |
-| Build context (`.`)                     | Local      | `input.local`  |
+| Dockerfile 指令                         | 输入类型 | 访问模式          |
+| --------------------------------------- | -------- | ----------------- |
+| `FROM alpine:latest`                    | Image    | `input.image`     |
+| `COPY --from=builder /app /app`         | Image    | `input.image`     |
+| `ADD https://example.com/file.tar.gz /` | HTTP     | `input.http`      |
+| `ADD git@github.com:user/repo.git /src` | Git      | `input.git`       |
+| 构建上下文（`.`）                       | Local    | `input.local`     |
 
-Each input type has specific fields available for policy evaluation.
+每种输入类型都有可供策略评估使用的特定字段。
 
-## HTTP inputs
+## HTTP 输入
 
-HTTP inputs represent files downloaded over HTTP or HTTPS using the `ADD`
-instruction.
+HTTP 输入表示使用 `ADD` 指令通过 HTTP 或 HTTPS 下载的文件。
 
-### Example Dockerfile
+### 示例 Dockerfile
 
 ```dockerfile
 FROM alpine
 ADD --checksum=sha256:abc123... https://example.com/app.tar.gz /app.tar.gz
 ```
 
-### Available fields
+### 可用字段
 
 #### `input.http.url`
 
-The complete URL of the resource.
+资源的完整 URL。
 
 ```rego
 allow if {
@@ -45,10 +42,10 @@ allow if {
 
 #### `input.http.schema`
 
-The URL scheme (`http` or `https`).
+URL 方案（`http` 或 `https`）。
 
 ```rego
-# Require HTTPS for all downloads
+# 要求所有下载使用 HTTPS
 allow if {
     input.http.schema == "https"
 }
@@ -56,10 +53,10 @@ allow if {
 
 #### `input.http.host`
 
-The hostname from the URL.
+来自 URL 的主机名。
 
 ```rego
-# Allow downloads from approved domains
+# 允许来自已批准域名的下载
 allow if {
     input.http.host == "cdn.example.com"
 }
@@ -67,7 +64,7 @@ allow if {
 
 #### `input.http.path`
 
-The path component of the URL.
+URL 的路径部分。
 
 ```rego
 allow if {
@@ -77,11 +74,10 @@ allow if {
 
 #### `input.http.checksum`
 
-The checksum specified with `ADD --checksum=...`, if present. Empty string if
-no checksum was provided.
+使用 `ADD --checksum=...` 指定的校验和（如果存在）。如果未提供校验和，则为空字符串。
 
 ```rego
-# Require checksums for all downloads
+# 要求所有下载都有校验和
 allow if {
     input.http.checksum != ""
 }
@@ -89,34 +85,32 @@ allow if {
 
 #### `input.http.hasAuth`
 
-Boolean indicating if the request includes authentication (HTTP basic auth or
-bearer token).
+布尔值，指示请求是否包含认证信息（HTTP 基本认证或 bearer token）。
 
 ```rego
-# Require authentication for internal servers
+# 要求内部服务器进行认证
 allow if {
     input.http.host == "internal.company.com"
     input.http.hasAuth
 }
 ```
 
-## Image inputs
+## 镜像输入
 
-Image inputs represent container images from `FROM` instructions or
-`COPY --from` references.
+镜像输入表示来自 `FROM` 指令或 `COPY --from` 引用的容器镜像。
 
-### Example Dockerfile
+### 示例 Dockerfile
 
 ```dockerfile
 FROM alpine:3.19@sha256:abc123...
 COPY --from=builder:latest /app /app
 ```
 
-### Available fields
+### 可用字段
 
 #### `input.image.ref`
 
-The complete image reference as written in the Dockerfile.
+如 Dockerfile 中所写的完整镜像引用。
 
 ```rego
 allow if {
@@ -126,15 +120,15 @@ allow if {
 
 #### `input.image.host`
 
-The registry hostname. Docker Hub images use `"docker.io"`.
+镜像仓库主机名。Docker Hub 镜像使用 `"docker.io"`。
 
 ```rego
-# Only allow Docker Hub images
+# 仅允许 Docker Hub 镜像
 allow if {
     input.image.host == "docker.io"
 }
 
-# Only allow images from GitHub Container Registry
+# 仅允许来自 GitHub 容器镜像仓库的镜像
 allow if {
     input.image.host == "ghcr.io"
 }
@@ -142,7 +136,7 @@ allow if {
 
 #### `input.image.repo`
 
-The repository name without the registry host.
+不含镜像仓库主机的仓库名称。
 
 ```rego
 allow if {
@@ -152,7 +146,7 @@ allow if {
 
 #### `input.image.fullRepo`
 
-The full repository path including registry host.
+包含镜像仓库主机的完整仓库路径。
 
 ```rego
 allow if {
@@ -162,10 +156,10 @@ allow if {
 
 #### `input.image.tag`
 
-The tag portion of the reference. Empty if using a digest reference.
+引用中的标签部分。如果使用摘要引用，则为空。
 
 ```rego
-# Allow only specific tags
+# 仅允许特定标签
 allow if {
     input.image.tag == "3.19"
 }
@@ -173,10 +167,10 @@ allow if {
 
 #### `input.image.isCanonical`
 
-Boolean indicating if the reference uses a digest (`@sha256:...`).
+布尔值，指示引用是否使用摘要（`@sha256:...`）。
 
 ```rego
-# Require digest references
+# 要求摘要引用
 allow if {
     input.image.isCanonical
 }
@@ -184,7 +178,7 @@ allow if {
 
 #### `input.image.checksum`
 
-The SHA256 digest of the image manifest.
+镜像清单的 SHA256 摘要。
 
 ```rego
 allow if {
@@ -194,7 +188,7 @@ allow if {
 
 #### `input.image.platform`
 
-The target platform for multi-platform images.
+多平台镜像的目标平台。
 
 ```rego
 allow if {
@@ -204,7 +198,7 @@ allow if {
 
 #### `input.image.os`
 
-The operating system from the image configuration.
+来自镜像配置的操作系统。
 
 ```rego
 allow if {
@@ -214,7 +208,7 @@ allow if {
 
 #### `input.image.arch`
 
-The CPU architecture from the image configuration.
+来自镜像配置的 CPU 架构。
 
 ```rego
 allow if {
@@ -224,10 +218,10 @@ allow if {
 
 #### `input.image.hasProvenance`
 
-Boolean indicating if the image has provenance attestations.
+布尔值，指示镜像是否具有来源证明（provenance attestations）。
 
 ```rego
-# Require provenance for production images
+# 要求生产镜像具有来源证明
 allow if {
     input.image.hasProvenance
 }
@@ -235,10 +229,10 @@ allow if {
 
 #### `input.image.labels`
 
-A map of image labels from the image configuration.
+来自镜像配置的镜像标签映射。
 
 ```rego
-# Check for specific labels
+# 检查特定标签
 allow if {
     input.image.labels["org.opencontainers.image.vendor"] == "Example Corp"
 }
@@ -246,42 +240,40 @@ allow if {
 
 #### `input.image.signatures`
 
-Array of attestation signatures. Each signature in the array has the following
-fields:
+证明签名（attestation signatures）数组。数组中的每个签名具有以下字段：
 
-- `kind`: Signature kind (e.g., `"docker-github-builder"`, `"self-signed"`)
-- `type`: Signature type (e.g., `"bundle-v0.3"`, `"simplesigning-v1"`)
-- `timestamps`: Trusted timestamps from transparency logs
-- `dockerReference`: Docker image reference
-- `isDHI`: Boolean indicating if this is a Docker Hardened Image
-- `signer`: Sigstore certificate details
+- `kind`：签名种类（例如 `"docker-github-builder"`、`"self-signed"`）
+- `type`：签名类型（例如 `"bundle-v0.3"`、`"simplesigning-v1"`）
+- `timestamps`：来自透明度日志的受信任时间戳
+- `dockerReference`：Docker 镜像引用
+- `isDHI`：布尔值，指示这是否为 Docker Hardened Image
+- `signer`：Sigstore 证书详细信息
 
 ```rego
-# Require at least one signature
+# 要求至少一个签名
 allow if {
     count(input.image.signatures) > 0
 }
 ```
 
-For Sigstore signatures, the `signer` object provides detailed certificate
-information from the signing workflow:
+对于 Sigstore 签名，`signer` 对象提供来自签名工作流的详细证书信息：
 
-- `certificateIssuer`: Certificate issuer
-- `subjectAlternativeName`: Subject alternative name from certificate
-- `buildSignerURI`: URI of the build signer
-- `buildSignerDigest`: Digest of the build signer
-- `runnerEnvironment`: CI/CD runner environment
-- `sourceRepositoryURI`: Source repository URL
-- `sourceRepositoryDigest`: Source repository digest
-- `sourceRepositoryRef`: Source repository ref (branch/tag)
-- `sourceRepositoryIdentifier`: Source repository identifier
-- `sourceRepositoryOwnerURI`: Repository owner URI
-- `buildConfigURI`: Build configuration URI
-- `buildTrigger`: What triggered the build
-- `runInvocationURI`: CI/CD run invocation URI
+- `certificateIssuer`：证书颁发者
+- `subjectAlternativeName`：来自证书的 subject alternative name
+- `buildSignerURI`：构建签名者的 URI
+- `buildSignerDigest`：构建签名者的摘要
+- `runnerEnvironment`：CI/CD runner 环境
+- `sourceRepositoryURI`：源仓库 URL
+- `sourceRepositoryDigest`：源仓库摘要
+- `sourceRepositoryRef`：源仓库引用（分支/标签）
+- `sourceRepositoryIdentifier`：源仓库标识符
+- `sourceRepositoryOwnerURI`：仓库所有者 URI
+- `buildConfigURI`：构建配置 URI
+- `buildTrigger`：触发构建的原因
+- `runInvocationURI`：CI/CD 运行调用 URI
 
 ```rego
-# Require signatures from GitHub Actions
+# 要求来自 GitHub Actions 的签名
 allow if {
     some sig in input.image.signatures
     sig.signer.runnerEnvironment == "github-hosted"
@@ -289,25 +281,24 @@ allow if {
 }
 ```
 
-## Git inputs
+## Git 输入
 
-Git inputs represent Git repositories referenced in `ADD` instructions or used
-as build context.
+Git 输入表示在 `ADD` 指令中引用或用作构建上下文的 Git 仓库。
 
-### Example Dockerfile
+### 示例 Dockerfile
 
 ```dockerfile
 ADD git@github.com:moby/buildkit.git#v0.12.0 /src
 ```
 
-### Available fields
+### 可用字段
 
 #### `input.git.schema`
 
-The URL scheme (`https`, `http`, `git`, or `ssh`).
+URL 方案（`https`、`http`、`git` 或 `ssh`）。
 
 ```rego
-# Require HTTPS for Git clones
+# 要求 Git 克隆使用 HTTPS
 allow if {
     input.git.schema == "https"
 }
@@ -315,7 +306,7 @@ allow if {
 
 #### `input.git.host`
 
-The Git host (e.g., `github.com`, `gitlab.com`).
+Git 主机（例如 `github.com`、`gitlab.com`）。
 
 ```rego
 allow if {
@@ -325,7 +316,7 @@ allow if {
 
 #### `input.git.remote`
 
-The complete Git URL.
+完整的 Git URL。
 
 ```rego
 allow if {
@@ -335,7 +326,7 @@ allow if {
 
 #### `input.git.ref`
 
-The Git reference.
+Git 引用。
 
 ```rego
 allow if {
@@ -345,10 +336,10 @@ allow if {
 
 #### `input.git.tagName`
 
-The tag name if the reference is a tag.
+如果引用是标签，则为标签名称。
 
 ```rego
-# Only allow version tags
+# 仅允许版本标签
 allow if {
     regex.match(`^v[0-9]+\.[0-9]+\.[0-9]+$`, input.git.tagName)
 }
@@ -356,7 +347,7 @@ allow if {
 
 #### `input.git.branch`
 
-The branch name if the reference is a branch.
+如果引用是分支，则为分支名称。
 
 ```rego
 allow if {
@@ -366,10 +357,10 @@ allow if {
 
 #### `input.git.subDir`
 
-The subdirectory path within the repository, if specified.
+仓库内的子目录路径（如果指定）。
 
 ```rego
-# Ensure clones are from the root
+# 确保克隆来自根目录
 allow if {
     input.git.subDir == ""
 }
@@ -377,11 +368,10 @@ allow if {
 
 #### `input.git.isCommitRef`
 
-Boolean indicating if the reference is a commit SHA (as opposed to a branch or
-tag name).
+布尔值，指示引用是否为提交 SHA（而不是分支或标签名称）。
 
 ```rego
-# Require commit SHAs for production
+# 要求生产环境使用提交 SHA
 allow if {
     input.env.target == "production"
     input.git.isCommitRef
@@ -390,8 +380,7 @@ allow if {
 
 #### `input.git.checksum`
 
-The checksum of the Git reference. For commit references and branches, this is
-the commit hash. For annotated tags, this is the tag object hash.
+Git 引用的校验和。对于提交引用和分支，这是提交哈希。对于带注释的标签，这是标签对象哈希。
 
 ```rego
 allow if {
@@ -401,9 +390,7 @@ allow if {
 
 #### `input.git.commitChecksum`
 
-The commit hash that the reference points to. For annotated tags, this differs
-from `checksum` (which is the tag object hash). For commit references and
-branches, this is the same as `checksum`.
+引用所指向的提交哈希。对于带注释的标签，这不同于 `checksum`（即标签对象哈希）。对于提交引用和分支，这与 `checksum` 相同。
 
 ```rego
 allow if {
@@ -413,11 +400,10 @@ allow if {
 
 #### `input.git.isAnnotatedTag`
 
-Boolean indicating if the reference is an annotated tag (as opposed to a
-lightweight tag).
+布尔值，指示引用是否为带注释的标签（而不是轻量级标签）。
 
 ```rego
-# Require annotated tags
+# 要求带注释的标签
 allow if {
     input.git.tagName != ""
     input.git.isAnnotatedTag
@@ -426,16 +412,16 @@ allow if {
 
 #### `input.git.commit`
 
-Object containing commit metadata:
+包含提交元数据的对象：
 
-- `author`: Author name, email, when
-- `committer`: Committer name, email, when
-- `message`: Commit message
-- `pgpSignature`: PGP signature details if signed
-- `sshSignature`: SSH signature details if signed
+- `author`：作者姓名、邮箱、时间
+- `committer`：提交者姓名、邮箱、时间
+- `message`：提交信息
+- `pgpSignature`：如果已签名，则为 PGP 签名详情
+- `sshSignature`：如果已签名，则为 SSH 签名详情
 
 ```rego
-# Check commit author
+# 检查提交作者
 allow if {
     input.git.commit.author.email == "maintainer@example.com"
 }
@@ -443,29 +429,29 @@ allow if {
 
 #### `input.git.tag`
 
-Object containing tag metadata for annotated tags:
+包含带注释标签的标签元数据的对象：
 
-- `tagger`: Tagger name, email, when
-- `message`: Tag message
-- `pgpSignature`: PGP signature details if signed
-- `sshSignature`: SSH signature details if signed
+- `tagger`：打标签者姓名、邮箱、时间
+- `message`：标签信息
+- `pgpSignature`：如果已签名，则为 PGP 签名详情
+- `sshSignature`：如果已签名，则为 SSH 签名详情
 
 ```rego
-# Require signed tags
+# 要求已签名的标签
 allow if {
     input.git.tag.pgpSignature != null
 }
 ```
 
-## Local inputs
+## 本地输入
 
-Local inputs represent the build context directory.
+本地输入表示构建上下文目录。
 
-### Available fields
+### 可用字段
 
 #### `input.local.name`
 
-The name or path of the local context.
+本地上下文的名称或路径。
 
 ```rego
 allow if {
@@ -473,28 +459,26 @@ allow if {
 }
 ```
 
-Local inputs are typically less restricted than remote inputs, but you can
-still write policies to enforce context requirements.
+本地输入通常比远程输入限制更少，但你仍然可以编写策略来强制执行上下文要求。
 
-## Environment fields
+## 环境字段
 
-The `input.env` object provides build configuration information set by user on
-invoking the build, not specific to a resource type.
+`input.env` 对象提供由用户在调用构建时设置的构建配置信息，与特定资源类型无关。
 
-### Available fields
+### 可用字段
 
 #### `input.env.filename`
 
-The name of the Dockerfile being built.
+正在构建的 Dockerfile 的名称。
 
 ```rego
-# Stricter rules for production Dockerfile
+# 对生产 Dockerfile 使用更严格的规则
 allow if {
     input.env.filename == "Dockerfile"
     input.image.isCanonical
 }
 
-# Relaxed rules for development
+# 对开发环境使用宽松规则
 allow if {
     input.env.filename == "Dockerfile.dev"
 }
@@ -502,10 +486,10 @@ allow if {
 
 #### `input.env.target`
 
-The build target from multi-stage builds.
+来自多阶段构建的构建目标。
 
 ```rego
-# Require signing only for release builds
+# 仅对发布构建要求签名
 allow if {
     input.env.target == "release"
     input.git.tagName != ""
@@ -515,21 +499,19 @@ allow if {
 
 #### `input.env.args`
 
-Build arguments passed with `--build-arg`. Access specific arguments by key.
+使用 `--build-arg` 传递的构建参数。按键访问特定参数。
 
 ```rego
-# Check build argument values
+# 检查构建参数值
 allow if {
     input.env.args.ENVIRONMENT == "production"
     input.image.hasProvenance
 }
 ```
 
-## Next steps
+## 下一步
 
-- See [Built-in functions](./built-ins.md) for built-in helper functions to
-  check and validate input properties
-- Browse [Example policies](./examples.md) for common patterns
-- Read about [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/)
-  for advanced policy logic
+- 请参阅 [内置函数](./built-ins.md) 了解用于检查和验证输入属性的内置辅助函数
+- 浏览 [示例策略](./examples.md) 获取常见模式
+- 阅读有关 [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) 的内容以了解进阶策略逻辑
 

@@ -41,7 +41,7 @@
 >
 > `docker extension init` 会生成一个 Go 后端。但你仍然可以将其作为自己扩展的起点，使用任何其他语言，如 Node.js、Python、Java、.Net 或任何其他语言和框架。
 
-通常，后端由一个在 Docker Desktop 虚拟机中运行的容器构成。在内部，Docker Desktop 会创建一个 Docker Compose 项目，从 `metadata.json` 的 `vm` 部分的 `image` 选项创建容器，并将其附加到 Compose 项目。有关更多详细信息，请参阅 [ui metadata 部分](metadata.md#vm-section)。
+通常，后端由一个在 Docker Desktop 虚拟机中运行的容器构成。在内部，Docker Desktop 会创建一个 Docker Compose 项目，从 `metadata.json` 的 `vm` 部分的 `image` 选项创建容器，并将其附加到 Compose 项目。有关更多详细信息，请参阅 [`vm` metadata 部分](metadata.md#vm-section)。
 
 在某些情况下，可以使用 `compose.yaml` 文件而不是 `image`。当后端容器需要更具体的选项时，这很有用，例如挂载卷或请求 [capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)，这些无法仅通过 Docker 镜像表达。`compose.yaml` 文件也可用于添加扩展所需的多个容器，如数据库或消息代理。
 请注意，如果 Compose 文件定义了许多服务，SDK 只能联系其中的第一个服务。
@@ -65,7 +65,7 @@
 
 当扩展需要与第三方 CLI 工具（如 AWS、`kubectl` 等）交互时，这些可执行文件非常有用。将这些可执行文件与扩展一起打包，可以确保 CLI 工具始终可用，并且是用户机器上的正确版本。
 
-当 Docker Desktop 安装扩展时，它会根据 `metadata.json` 中的 `host` 部分定义，将可执行文件复制到主机上。有关更多详细信息，请参阅 [ui metadata 部分](metadata.md#host-section)。
+当 Docker Desktop 安装扩展时，它会根据 `metadata.json` 中的 `host` 部分定义，将可执行文件复制到主机上。有关更多详细信息，请参阅 [`host` metadata 部分](metadata.md#host-section)。
 
 ![可执行文件和前端通信](images/extensions-arch-3.png?w=250h=300)
 
@@ -75,3 +75,4 @@
 有关更多详细信息，请参阅 [host metadata 部分](metadata.md#host-section)。
 
 了解如何[调用主机二进制文件](../guides/invoke-host-binaries.md)。
+

@@ -6,12 +6,6 @@
 
 **Aliases:** `docker pull`
 
-<!--
-此页面由 Docker 的源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -33,13 +27,13 @@ use `docker pull`.
 ### Proxy configuration
 
 If you are behind an HTTP proxy server, for example in corporate settings,
-before open a connect to registry, you may need to configure the Docker
-daemon's proxy settings, refer to the [dockerd command-line reference](/reference/cli/dockerd/#proxy-configuration)
-for details.
+you may have to configure the Docker daemon to use the proxy server for
+operations such as pulling and pushing images. Refer to the
+[dockerd command-line reference](/reference/cli/dockerd/#proxy-configuration) for details.
 
 ### Concurrent downloads
 
-By default the Docker daemon will pull three layers of an image at a time.
+By default the Docker daemon downloads three layers of an image at a time.
 If you are on a low bandwidth connection this may cause timeout issues and you may want to lower
 this via the `--max-concurrent-downloads` daemon option. See the
 [daemon documentation](/reference/cli/dockerd/) for more details.

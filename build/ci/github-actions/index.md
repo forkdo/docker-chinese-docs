@@ -1,84 +1,80 @@
 # Docker Build GitHub Actions
 
 
-GitHub Actions is a popular CI/CD platform for automating your build, test, and
-deployment pipeline. Docker provides a set of official GitHub Actions for you to
-use in your workflows. These official actions are reusable, easy-to-use
-components for building, annotating, and pushing images.
+GitHub Actions 是一个流行的 CI/CD 平台，用于自动化你的构建、测试和部署流水线。Docker 提供了一组
+官方 GitHub Actions 供你在工作流中使用。这些官方 action 是用于构建、注解和推送镜像的可复用、
+易用的组件。
 
-The following GitHub Actions are available:
+目前提供以下 GitHub Actions：
 
-- [Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images):
-  build and push Docker images with BuildKit.
-- [Docker Buildx Bake](https://github.com/marketplace/actions/docker-buildx-bake):
-  enables using high-level builds with [Bake](../../bake/_index.md).
-- [Docker Login](https://github.com/marketplace/actions/docker-login):
-  sign in to a Docker registry.
-- [Docker Setup Buildx](https://github.com/marketplace/actions/docker-setup-buildx):
-  creates and boots a BuildKit builder.
-- [Docker Metadata action](https://github.com/marketplace/actions/docker-metadata-action):
-  extracts metadata from Git reference and GitHub events to generate tags,
-  labels, and annotations.
-- [Docker Setup Compose](https://github.com/marketplace/actions/docker-setup-compose):
-  installs and sets up [Compose](../../../compose).
-- [Docker Setup Docker](https://github.com/marketplace/actions/docker-setup-docker):
-  installs Docker Engine.
-- [Docker Setup QEMU](https://github.com/marketplace/actions/docker-setup-qemu):
-  installs [QEMU](https://github.com/qemu/qemu) static binaries for
-  multi-platform builds.
-- [Docker Scout](https://github.com/docker/scout-action):
-  analyze Docker images for security vulnerabilities.
+- [Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images)：
+  使用 BuildKit 构建并推送 Docker 镜像。
+- [Docker Buildx Bake](https://github.com/marketplace/actions/docker-buildx-bake)：
+  支持使用 [Bake](../../bake/_index.md) 进行高层构建。
+- [Docker Login](https://github.com/marketplace/actions/docker-login)：
+  登录到 Docker 注册表。
+- [Docker Setup Buildx](https://github.com/marketplace/actions/docker-setup-buildx)：
+  创建并启动一个 BuildKit 构建器。
+- [Docker Metadata action](https://github.com/marketplace/actions/docker-metadata-action)：
+  从 Git reference 和 GitHub 事件中提取元数据，以生成标签、标注和注解。
+- [Docker Setup Compose](https://github.com/marketplace/actions/docker-setup-compose)：
+  安装并设置 [Compose](../../../compose)。
+- [Docker Setup Docker](https://github.com/marketplace/actions/docker-setup-docker)：
+  安装 Docker Engine。
+- [Docker Setup QEMU](https://github.com/marketplace/actions/docker-setup-qemu)：
+  为多平台构建安装 [QEMU](https://github.com/qemu/qemu) 静态二进制文件。
+- [Docker Scout](https://github.com/docker/scout-action)：
+  分析 Docker 镜像以发现安全漏洞。
 
-Using Docker's actions provides an easy-to-use interface, while still allowing
-flexibility for customizing build parameters.
+使用 Docker 的 action 既提供了易用的接口，同时也保留了自定义构建参数的灵活性。
 
 ## Examples
 
-If you're looking for examples on how to use the Docker GitHub Actions,
-refer to the following sections:
+如果你正在寻找如何使用 Docker GitHub Actions 的示例，请参阅以下章节：
 
 
-- [Add image annotations with GitHub Actions](/build/ci/github-actions/annotations/)
+- [配置你的 GitHub Actions 构建器](/build/ci/github-actions/configure-builder/)
 
-- [Add SBOM and provenance attestations with GitHub Actions](/build/ci/github-actions/attestations/)
+- [Docker GitHub Builder](/build/ci/github-actions/github-builder/)
 
-- [Validating build configuration with GitHub Actions](/build/ci/github-actions/checks/)
+- [在 GitHub Actions 中构建可复现的镜像](/build/ci/github-actions/reproducible-builds/)
 
-- [Using secrets with GitHub Actions](/build/ci/github-actions/secrets/)
+- [在 GitHub Actions 中使用命名上下文](/build/ci/github-actions/named-contexts/)
 
-- [GitHub Actions build summary](/build/ci/github-actions/build-summary/)
+- [在 GitHub Actions 的多个作业间共享构建的镜像](/build/ci/github-actions/share-image-jobs/)
 
-- [Configuring your GitHub Actions builder](/build/ci/github-actions/configure-builder/)
+- [使用 GitHub Actions 在注册表间复制镜像](/build/ci/github-actions/copy-image-registries/)
 
-- [Cache management with GitHub Actions](/build/ci/github-actions/cache/)
+- [使用 GitHub Actions 构建多平台镜像](/build/ci/github-actions/multi-platform/)
 
-- [Copy image between registries with GitHub Actions](/build/ci/github-actions/copy-image-registries/)
+- [使用 GitHub Actions 导出到 Docker](/build/ci/github-actions/export-docker/)
 
-- [Export to Docker with GitHub Actions](/build/ci/github-actions/export-docker/)
+- [使用 GitHub Actions 推送到多个注册表](/build/ci/github-actions/push-multi-registries/)
 
-- [Local registry with GitHub Actions](/build/ci/github-actions/local-registry/)
+- [使用 GitHub Actions 在推送前进行测试](/build/ci/github-actions/test-before-push/)
 
-- [Multi-platform image with GitHub Actions](/build/ci/github-actions/multi-platform/)
+- [使用 GitHub Actions 更新 Docker Hub 描述](/build/ci/github-actions/update-dockerhub-desc/)
 
-- [Named contexts with GitHub Actions](/build/ci/github-actions/named-contexts/)
+- [配合 GitHub Actions 使用本地注册表](/build/ci/github-actions/local-registry/)
 
-- [Push to multiple registries with GitHub Actions](/build/ci/github-actions/push-multi-registries/)
+- [在 GitHub Actions 中使用密钥](/build/ci/github-actions/secrets/)
 
-- [Reproducible builds with GitHub Actions](/build/ci/github-actions/reproducible-builds/)
+- [GitHub Actions 构建摘要](/build/ci/github-actions/build-summary/)
 
-- [Share built image between jobs with GitHub Actions](/build/ci/github-actions/share-image-jobs/)
+- [使用 GitHub Actions 验证构建配置](/build/ci/github-actions/checks/)
 
-- [Manage tags and labels with GitHub Actions](/build/ci/github-actions/manage-tags-labels/)
+- [使用 GitHub Actions 管理标签和标记](/build/ci/github-actions/manage-tags-labels/)
 
-- [Test before push with GitHub Actions](/build/ci/github-actions/test-before-push/)
+- [使用 GitHub Actions 添加镜像注解](/build/ci/github-actions/annotations/)
 
-- [Update Docker Hub description with GitHub Actions](/build/ci/github-actions/update-dockerhub-desc/)
+- [使用 GitHub Actions 管理缓存](/build/ci/github-actions/cache/)
+
+- [使用 GitHub Actions 添加 SBOM 与 provenance 证明](/build/ci/github-actions/attestations/)
 
 
 
 ## Get started with GitHub Actions
 
-The [Introduction to GitHub Actions with Docker](/guides/gha.md) guide walks
-you through the process of setting up and using Docker GitHub Actions for
-building Docker images, and pushing images to Docker Hub.
+[Introduction to GitHub Actions with Docker](/guides/gha.md) 指南将带你完成为构建 Docker 镜像
+以及向 Docker Hub 推送镜像而设置并使用 Docker GitHub Actions 的全过程。
 

@@ -23,7 +23,7 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 
 - [Docker MCP Toolkit and Catalog](/manuals/ai/mcp-catalog-and-toolkit/_index.md)
 - [Docker Model Runner](/manuals/ai/model-runner/_index.md)
-- [Ask Gordon](/manuals/ai/gordon/_index.md)
+- [Gordon](/manuals/ai/gordon/_index.md)
 - [Docker Offload](/manuals/offload/_index.md)
 - [Docker Engine](/manuals/engine/_index.md)
 - Docker CLI client
@@ -33,5 +33,6 @@ Docker Desktop 与您首选的开发工具和语言集成，并通过 Docker Hub
 - [Kubernetes](https://github.com/kubernetes/kubernetes/)
 
 ## 下一步
+
 
 

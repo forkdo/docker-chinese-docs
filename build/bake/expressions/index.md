@@ -1,13 +1,11 @@
-# Expression evaluation in Bake
+# Bake 中的表达式求值
 
 
-Bake files in the HCL format support expression evaluation, which lets you
-perform arithmetic operations, conditionally set values, and more.
+HCL 格式的 Bake 文件支持表达式求值，让你可以执行算术运算、有条件地设置值等。
 
-## Arithmetic operations
+## 算术运算
 
-You can perform arithmetic operations in expressions. The following example
-shows how to multiply two numbers.
+你可以在表达式中执行算术运算。以下示例展示了如何将两个数相乘。
 
 ```hcl {title=docker-bake.hcl}
 sum = 7*6
@@ -19,8 +17,7 @@ target "default" {
 }
 ```
 
-Printing the Bake file with the `--print` flag shows the evaluated value for
-the `answer` build argument.
+使用 `--print` 标志打印 Bake 文件，会显示 `answer` 构建参数的求值结果。
 
 ```console
 $ docker buildx bake --print
@@ -40,12 +37,11 @@ $ docker buildx bake --print
 }
 ```
 
-## Ternary operators
+## 三元运算符
 
-You can use ternary operators to conditionally register a value.
+你可以使用三元运算符有条件地注册一个值。
 
-The following example adds a tag only when a variable is not empty, using the
-built-in `notequal` [function](./funcs.md).
+以下示例使用内置的 `notequal` [函数](./funcs.md)，仅在变量不为空时添加一个 tag。
 
 ```hcl {title=docker-bake.hcl}
 variable "TAG" {}
@@ -60,8 +56,7 @@ target "default" {
 }
 ```
 
-In this case, `TAG` is an empty string, so the resulting build configuration
-only contains the hard-coded `my-image:latest` tag.
+在这种情况下，`TAG` 是一个空字符串，因此生成的构建配置只包含硬编码的 `my-image:latest` tag。
 
 ```console
 $ docker buildx bake --print
@@ -79,15 +74,12 @@ $ docker buildx bake --print
 }
 ```
 
-## Expressions with variables
+## 带变量的表达式
 
-You can use expressions with [variables](./variables.md) to conditionally set
-values, or to perform arithmetic operations.
+你可以使用 [变量](./variables.md) 配合表达式来有条件地设置值，或执行算术运算。
 
-The following example uses expressions to set values based on the value of
-variables. The `v1` build argument is set to "higher" if the variable `FOO` is
-greater than 5, otherwise it is set to "lower". The `v2` build argument is set
-to "yes" if the `IS_FOO` variable is true, otherwise it is set to "no".
+以下示例使用表达式根据变量的值设置值。`v1` 构建参数在变量 `FOO` 大于 5 时设为 "higher"，否则设为
+"lower"。`v2` 构建参数在 `IS_FOO` 变量为 true 时设为 "yes"，否则设为 "no"。
 
 ```hcl {title=docker-bake.hcl}
 variable "FOO" {
@@ -106,8 +98,7 @@ target "app" {
 }
 ```
 
-Printing the Bake file with the `--print` flag shows the evaluated values for
-the `v1` and `v2` build arguments.
+使用 `--print` 标志打印 Bake 文件，会显示 `v1` 和 `v2` 构建参数的求值结果。
 
 ```console
 $ docker buildx bake --print app

@@ -9,3 +9,6 @@ Docker 的可信内容计划确保容器镜像符合最高的安全性、质量�
 - [Docker 赞助开源 (DSOS) 计划](dsos-program.md)：探索开源项目如何获得诸如验证徽章、洞察和访问 Docker Scout 等权益，从而在 Docker Hub 上提升可见性和信任度。
 - [Docker 验证发布者 (DVP) 计划](./dvp-program.md)：探索如何加入 DVP 计划，以展示带有验证徽章的、值得信赖的高质量镜像，在搜索结果中获得优先展示，访问洞察数据，并通过漏洞分析增强安全性。
 - [洞察与分析](./insights-analytics.md)：访问关于镜像和扩展使用的详细指标，包括拉取次数、地理位置和客户端数据，以了解用户行为并优化您的内容。
+
+有关 Docker Hardened Images 指南（包括如何贡献），请参阅专门的 DHI 文档部分中的[为目录做贡献](/dhi/how-to/build/#contribute-to-the-catalog)。
+

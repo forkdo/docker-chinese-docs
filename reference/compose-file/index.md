@@ -1,7 +1,7 @@
 # Compose 文件参考
 
 
->**刚接触 Docker Compose？**
+> **刚接触 Docker Compose？**
 >
 > 查找有关 [Docker Compose 的关键特性和使用场景](/manuals/compose/intro/features-uses.md) 的更多信息，或 [尝试快速入门指南](/manuals/compose/gettingstarted.md)。
 
@@ -16,6 +16,7 @@ Docker Docs 上的 Compose 规范是 Docker Compose 的实现。如果您希望�
 > [!TIP]
 >
 > 希望在 VS Code 中获得更好的 Compose 文件编辑体验？
-> 查看 [Docker VS Code 扩展（Beta）](https://marketplace.visualstudio.com/items?itemName=docker.docker)，支持代码检查、代码导航和漏洞扫描功能。
+> 查看 [Docker DX](https://marketplace.visualstudio.com/items?itemName=docker.docker) 扩展，支持代码检查、代码导航和漏洞扫描。
+
 
 

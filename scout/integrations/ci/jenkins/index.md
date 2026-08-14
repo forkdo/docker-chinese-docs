@@ -24,7 +24,7 @@ pipeline {
                 sh 'echo $DOCKER_HUB_PSW | docker login -u $DOCKER_HUB_USR --password-stdin'
 
                 // Analyze and fail on critical or high vulnerabilities
-                sh 'docker-scout cves $IMAGE_TAG --exit-code --only-severity critical,high'
+                sh 'docker scout cves $IMAGE_TAG --exit-code --only-severity critical,high'
             }
         }
     }
@@ -36,3 +36,4 @@ pipeline {
 > [!NOTE]
 >
 > 如果您看到与镜像缓存相关的 `permission denied` 错误，请尝试将 [`DOCKER_SCOUT_CACHE_DIR`](/manuals/scout/how-tos/configure-cli.md) 环境变量设置为一个可写目录。或者，也可以使用 `DOCKER_SCOUT_NO_CACHE=true` 完全禁用本地缓存。
+

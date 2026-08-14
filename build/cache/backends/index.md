@@ -1,62 +1,49 @@
-# Cache storage backends
+# 缓存存储后端
 
 
-To ensure fast builds, BuildKit automatically caches the build result in its own
-internal cache. Additionally, BuildKit also supports exporting build cache to an
-external location, making it possible to import in future builds.
+为了确保构建快速，BuildKit 会自动将构建结果缓存到其内部的缓存中。此外，BuildKit 还支持将构建缓存导出到外部位置，以便在将来的构建中导入。
 
-An external cache becomes almost essential in CI/CD build environments. Such
-environments usually have little-to-no persistence between runs, but it's still
-important to keep the runtime of image builds as low as possible.
+在 CI/CD 构建环境中，外部缓存几乎不可或缺。这类环境通常在各次运行之间几乎没有持久化存储，但仍然需要尽可能降低镜像构建的运行时间。
 
-The default `docker` driver supports the `inline`, `local`, `registry`, and
-`gha` cache backends, but only if you have enabled the [containerd image store](/manuals/desktop/features/containerd.md).
-Other cache backends require you to select a different [driver](/manuals/build/builders/drivers/_index.md).
+默认的 `docker` 驱动支持 `inline`、`local`、`registry` 和 `gha` 缓存后端，但前提是已启用 [containerd 镜像存储](/manuals/desktop/features/containerd.md)。其他缓存后端需要你选择不同的 [driver](/manuals/build/builders/drivers/_index.md)。
 
 > [!WARNING]
 >
-> If you use secrets or credentials inside your build process, ensure you
-> manipulate them using the dedicated
-> [`--secret` option](/reference/cli/docker/buildx/build.md#secret).
-> Manually managing secrets using `COPY` or `ARG` could result in leaked
-> credentials.
+> 如果你在构建过程中使用了密钥或凭据，请确保通过专用的
+> [`--secret` option](/reference/cli/docker/buildx/build/#secret) 来管理它们。
+> 使用 `COPY` 或 `ARG` 手动管理密钥可能导致凭据泄露。
 
-## Backends
+## 后端（Backends）
 
-Buildx supports the following cache storage backends:
+Buildx 支持以下缓存存储后端：
 
-- `inline`: embeds the build cache into the image.
+- `inline`：将构建缓存嵌入到镜像中。
 
-  The inline cache gets pushed to the same location as the main output result.
-  This only works with the [`image` exporter](../../exporters/image-registry.md).
+  内联缓存会被推送到与主输出结果相同的位置。这仅适用于 [`image` 导出器](../../exporters/image-registry.md)。
 
-- `registry`: embeds the build cache into a separate image, and pushes to a
-  dedicated location separate from the main output.
+- `registry`：将构建缓存嵌入到一个单独的镜像中，并推送到与主输出不同的专用位置。
 
-- `local`: writes the build cache to a local directory on the filesystem.
+- `local`：将构建缓存写入文件系统上的本地目录。
 
-- `gha`: uploads the build cache to
-  [GitHub Actions cache](https://docs.github.com/en/rest/actions/cache) (beta).
+- `gha`：将构建缓存上传到
+  [GitHub Actions 缓存](https://docs.github.com/en/rest/actions/cache)（测试版）。
 
-- `s3`: uploads the build cache to an
-  [AWS S3 bucket](https://aws.amazon.com/s3/) (unreleased).
+- `s3`：将构建缓存上传到
+  [AWS S3 存储桶](https://aws.amazon.com/s3/)（未发布）。
 
-- `azblob`: uploads the build cache to
+- `azblob`：将构建缓存上传到
   [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/)
-  (unreleased).
+  （未发布）。
 
-## Command syntax
+## 命令语法（Command syntax）
 
-To use any of the cache backends, you first need to specify it on build with the
-[`--cache-to` option](/reference/cli/docker/buildx/build.md#cache-to)
-to export the cache to your storage backend of choice. Then, use the
-[`--cache-from` option](/reference/cli/docker/buildx/build.md#cache-from)
-to import the cache from the storage backend into the current build. Unlike the
-local BuildKit cache (which is always enabled), all of the cache storage
-backends must be explicitly exported to, and explicitly imported from.
+要使用上述任意缓存后端，你首先需要在构建时通过
+[`--cache-to` option](/reference/cli/docker/buildx/build/#cache-to)
+指定它，以将缓存导出到你选择的存储后端。然后，使用
+[`--cache-from` option](/reference/cli/docker/buildx/build/#cache-from)
+将缓存从该存储后端导入到当前构建中。与始终启用的本地 BuildKit 缓存不同，所有缓存存储后端都必须显式导出，并显式导入。
 
-Example `buildx` command using the `registry` backend, using import and export
-cache:
+使用 `registry` 后端并同时进行缓存导入与导出的 `buildx` 命令示例：
 
 ```console
 $ docker buildx build --push -t <registry>/<image> \
@@ -66,18 +53,11 @@ $ docker buildx build --push -t <registry>/<image> \
 
 > [!WARNING]
 >
-> As a general rule, each cache writes to some location. No location can be
-> written to twice, without overwriting the previously cached data. If you want
-> to maintain multiple scoped caches (for example, a cache per Git branch), then
-> ensure that you use different locations for exported cache.
+> 通常来说，每个缓存都会写入某个位置。在没有覆盖先前缓存数据的情况下，任何位置都不能被写入两次。如果你希望维护多个作用域隔离的缓存（例如每个 Git 分支一个缓存），请务必为导出的缓存使用不同的位置。
 
-## Multiple caches
+## 多缓存（Multiple caches）
 
-BuildKit supports multiple cache exporters, allowing you to push cache to more 
-than one destination. You can also import from as many remote caches as you'd 
-like. For example, a common pattern is to use the cache of both the current 
-branch and the main branch. The following example shows importing cache from 
-multiple locations using the registry cache backend:
+BuildKit 支持多个缓存导出器，允许你将缓存推送到多个目标。你也可以从任意数量的远程缓存中导入。例如，一种常见模式是同时使用当前分支和主分支的缓存。以下示例展示了使用注册表缓存后端从多个位置导入缓存：
 
 ```console
 $ docker buildx build --push -t <registry>/<image> \
@@ -86,28 +66,21 @@ $ docker buildx build --push -t <registry>/<image> \
   --cache-from type=registry,ref=<registry>/<cache-image>:main .
 ```
 
-## Configuration options
+## 配置选项（Configuration options）
 
-This section describes some configuration options available when generating
-cache exports. The options described here are common for at least two or more
-backend types. Additionally, the different backend types support specific
-parameters as well. See the detailed page about each backend type for more
-information about which configuration parameters apply.
+本节描述生成缓存导出时可用的一些配置选项。这里描述的选项至少对两种或更多后端类型是通用的。此外，不同的后端类型也支持各自的特定参数。有关哪些配置参数适用的详细信息，请参阅每种后端类型的详细说明页面。
 
-The common parameters described here are:
+这里描述的通用参数包括：
 
-- [Cache mode](#cache-mode)
-- [Cache compression](#cache-compression)
-- [OCI media type](#oci-media-types)
+- [缓存模式](#cache-mode)
+- [缓存压缩](#cache-compression)
+- [OCI 媒体类型](#oci-media-types)
 
-### Cache mode
+### 缓存模式（Cache mode）
 
-When generating a cache output, the `--cache-to` argument accepts a `mode`
-option for defining which layers to include in the exported cache. This is
-supported by all cache backends except for the `inline` cache.
+生成缓存输出时，`--cache-to` 参数接受一个 `mode` 选项，用于定义要包含在导出的缓存中的层。除 `inline` 缓存外，所有缓存后端都支持此选项。
 
-Mode can be set to either of two options: `mode=min` or `mode=max`. For example,
-to build the cache with `mode=max` with the registry backend:
+模式可以设置为 `mode=min` 或 `mode=max` 两个选项之一。例如，使用 `mode=max` 与注册表后端构建缓存：
 
 ```console
 $ docker buildx build --push -t <registry>/<image> \
@@ -115,26 +88,17 @@ $ docker buildx build --push -t <registry>/<image> \
   --cache-from type=registry,ref=<registry>/<cache-image> .
 ```
 
-This option is only set when exporting a cache, using `--cache-to`. When
-importing a cache (`--cache-from`) the relevant parameters are automatically
-detected.
+此选项仅在导出缓存时使用 `--cache-to` 设置。导入缓存时（`--cache-from`），相关参数会被自动检测。
 
-In `min` cache mode (the default), only layers that are exported into the
-resulting image are cached, while in `max` cache mode, all layers are cached,
-even those of intermediate steps.
+在 `min` 缓存模式（默认）下，只有导出到最终镜像中的层才会被缓存；而在 `max` 缓存模式下，所有层都会被缓存，包括中间步骤的层。
 
-While `min` cache is typically smaller (which speeds up import/export times, and
-reduces storage costs), `max` cache is more likely to get more cache hits.
-Depending on the complexity and location of your build, you should experiment
-with both parameters to find the results that work best for you.
+虽然 `min` 缓存通常更小（可加快导入/导出速度并降低存储成本），但 `max` 缓存更可能获得更多的缓存命中。根据你的构建复杂度和位置，你应该对两种参数都进行试验，以找到最适合你的结果。
 
-### Cache compression
+### 缓存压缩（Cache compression）
 
-The cache compression options are the same as the
-[exporter compression options](../../exporters/_index.md#compression). This is
-supported by the `local` and `registry` cache backends.
+缓存压缩选项与 [导出器压缩选项](../../exporters/_index.md#compression) 相同。这由 `local` 和 `registry` 缓存后端支持。
 
-For example, to compress the `registry` cache with `zstd` compression:
+例如，使用 `zstd` 压缩来压缩 `registry` 缓存：
 
 ```console
 $ docker buildx build --push -t <registry>/<image> \
@@ -142,13 +106,11 @@ $ docker buildx build --push -t <registry>/<image> \
   --cache-from type=registry,ref=<registry>/<cache-image> .
 ```
 
-### OCI media types
+### OCI 媒体类型（OCI media types）
 
-The cache OCI options are the same as the
-[exporter OCI options](../../exporters/_index.md#oci-media-types). These are
-supported by the `local` and `registry` cache backends.
+缓存 OCI 选项与 [导出器 OCI 选项](../../exporters/_index.md#oci-media-types) 相同。这些由 `local` 和 `registry` 缓存后端支持。
 
-For example, to export OCI media type cache, use the `oci-mediatypes` property:
+例如，要导出 OCI 媒体类型的缓存，请使用 `oci-mediatypes` 属性：
 
 ```console
 $ docker buildx build --push -t <registry>/<image> \
@@ -156,15 +118,9 @@ $ docker buildx build --push -t <registry>/<image> \
   --cache-from type=registry,ref=<registry>/<cache-image> .
 ```
 
-This property is only meaningful with the `--cache-to` flag. When fetching
-cache, BuildKit will auto-detect the correct media types to use.
+此属性仅对 `--cache-to` 标志有意义。获取缓存时，BuildKit 会自动检测要使用的正确媒体类型。
 
-By default, the OCI media type generates an image index for the cache image.
-Some OCI registries, such as Amazon ECR, don't support the image index media
-type: `application/vnd.oci.image.index.v1+json`. If you export cache images to
-ECR, or any other registry that doesn't support image indices, set the
-`image-manifest` parameter to `true` to generate a single image manifest
-instead of an image index for the cache image:
+默认情况下，OCI 媒体类型会为缓存镜像生成一个 image index。某些 OCI 注册表（如 Amazon ECR）不支持 image index 媒体类型：`application/vnd.oci.image.index.v1+json`。如果你将缓存镜像导出到 ECR，或任何不支持 image index 的注册表，请将 `image-manifest` 参数设置为 `true`，以便为缓存镜像生成单个 image manifest 而非 image index：
 
 ```console
 $ docker buildx build --push -t <registry>/<image> \
@@ -173,5 +129,5 @@ $ docker buildx build --push -t <registry>/<image> \
 ```
 
 > [!NOTE]
-> Since BuildKit v0.21, `image-manifest` is enabled by default.
+> 自 BuildKit v0.21 起，`image-manifest` 默认启用。
 

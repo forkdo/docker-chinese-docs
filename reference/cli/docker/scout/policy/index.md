@@ -1,18 +1,11 @@
 # docker scout policy
 
-**Description:** Evaluate policies against an image and display the policy evaluation results (experimental)
+**Description:** Evaluate local Rego policies against an image and display the results (experimental)
 
 
 **Usage:** `docker scout policy [IMAGE | REPO]`
 
 
-
-<!--
-此页面是自动从 Docker 的源代码生成的。如果您想
-建议更改此处显示的文本，请在 GitHub 上的源代码仓库中提交工单：
-
-https://github.com/docker/scout-cli
--->
 
 
 
@@ -41,9 +34,12 @@ The policy evaluation results may take a few minutes to become available.
 | `--only-policy` |  |  Comma separated list of policies to evaluate |
 | `--org` |  |  Namespace of the Docker organization |
 | `-o`, `--output` |  |  Write the report to a file |
-| `--platform` |  |  Platform of image to pull policy results from |
-| `--to-env` |  |  Name of the environment to compare to |
-| `--to-latest` |  |  Latest image processed to compare to |
+| `--platform` |  |  Platform of image to evaluate policies against |
+| `--policy-bundle` |  |  OCI reference of a policy bundle to evaluate (repeatable) |
+| `--policy-config` |  |  Path or http(s) URL to a JSON file configuring policy enablement and inputs<br> |
+| `--policy-dir` |  |  Path to a directory of local .rego policy files (repeatable) |
+| `--policy-file` |  |  Path or http(s) URL to a .rego policy file (repeatable) |
+| `--result-file` |  |  Write the full Rego evaluation result (pass, violations, query bindings and OPA metrics) of each evaluated policy to a JSON file (useful when iterating on local --policy-file policies)<br> |
 
 
 
@@ -73,5 +69,12 @@ $ docker scout policy dockerscoutpolicy/customers-api-service:0.0.1 --platform l
 $ docker scout policy dockerscoutpolicy/customers-api-service --to-env production
 ```
 
+
+## Subcommands
+
+| Command | Description |
+|---------|-------------|
+| [`docker scout policy publish`](/reference/cli/docker/scout/policy/publish/) | Package local Rego policies into an OCI bundle and push it to a registry (experimental)
+ |
 
 

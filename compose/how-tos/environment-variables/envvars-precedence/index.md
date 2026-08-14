@@ -1,5 +1,16 @@
-# Docker Compose 中的环境变量优先级
+# 
 
+<!-- FILE: manuals/compose/how-tos/environment-variables/envvars-precedence.md -->
+
+---
+title: Docker Compose 中的环境变量优先级
+linkTitle: 环境变量优先级
+description: 说明 Compose 中环境变量解析方式的场景概览
+keywords: compose, environment, env file
+weight: 20
+aliases:
+- /compose/environment-variables/envvars-precedence/
+---
 
 当同一个环境变量在多个来源中被设置时，Docker Compose 会遵循优先级规则来确定该变量在容器环境中的值。
 
@@ -14,6 +25,13 @@
 4. 在 Compose 文件中使用 [`env_file` 属性](set-environment-variables.md#use-the-env_file-attribute)。
 5. 在容器镜像的 [ENV 指令](/reference/dockerfile.md#env) 中设置。
    只有在 Compose 文件中没有 `environment`、`env_file` 或 `run --env` 条目时，`Dockerfile` 中的任何 `ARG` 或 `ENV` 设置才会生效。
+
+> [!NOTE] 
+> 
+> 当未设置 `--env-file` 时，Compose 最多可能加载两个 `.env` 文件。
+> 它首先加载来自项目目录的一个（若设置了 `--project-directory` 则由其决定，否则取第一个 `-f`/`--file` Compose 文件的目录，否则取
+> `PWD`）。如果该文件将 `COMPOSE_FILE` 设置为另一个目录中的路径，Compose
+> 会从该目录加载第二个 `.env` 文件，但其优先级较低。如需了解更多信息，请参阅 [本地 `.env` 文件与项目目录 `.env` 文件](variable-interpolation.md#local-env-file-versus-project-directory-env-file)。
 
 ## 简单示例
 
@@ -102,3 +120,4 @@ NODE_ENV=production
 
 - [在 Compose 中设置环境变量](set-environment-variables.md)
 - [在 Compose 文件中使用变量插值](variable-interpolation.md)
+

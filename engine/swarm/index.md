@@ -3,6 +3,8 @@
 
 
 
+
+
 > [!NOTE]
 >
 > Swarm 模式是用于管理 Docker 守护进程集群的高级功能。
@@ -11,6 +13,7 @@
 >
 > 如果您不打算使用 Swarm 进行部署，请改用 [Docker Compose](/compose/)。
 > 如果您正在为 Kubernetes 部署进行开发，请考虑使用 Docker Desktop 中的 [集成 Kubernetes 功能](/manuals/desktop/use-desktop/kubernetes.md)。
+
 
 当前版本的 Docker 包含 Swarm 模式，用于原生管理一组称为 swarm 的 Docker Engine 集群。使用 Docker CLI 可以创建 swarm、将应用程序服务部署到 swarm 以及管理 swarm 行为。
 
@@ -63,12 +66,12 @@ Swarm 中的每个节点都强制执行 TLS 双向身份验证和加密，以保
 * 学习 Swarm 模式[关键概念](key-concepts.md)。
 * 从 [Swarm 模式教程](swarm-tutorial/_index.md)开始。
 * 探索 Swarm 模式 CLI 命令
-  * [swarm init](/reference/cli/docker/swarm/init.md)
-  * [swarm join](/reference/cli/docker/swarm/join.md)
-  * [service create](/reference/cli/docker/service/create.md)
-  * [service inspect](/reference/cli/docker/service/inspect.md)
-  * [service ls](/reference/cli/docker/service/ls.md)
-  * [service rm](/reference/cli/docker/service/rm.md)
-  * [service scale](/reference/cli/docker/service/scale.md)
-  * [service ps](/reference/cli/docker/service/ps.md)
-  * [service update](/reference/cli/docker/service/update.md)
+  * [swarm init](/reference/cli/docker/swarm/init/)
+  * [swarm join](/reference/cli/docker/swarm/join/)
+  * [service create](/reference/cli/docker/service/create/)
+  * [service inspect](/reference/cli/docker/service/inspect/)
+  * [service ls](/reference/cli/docker/service/ls/)
+  * [service rm](/reference/cli/docker/service/rm/)
+  * [service scale](/reference/cli/docker/service/scale/)
+  * [service ps](/reference/cli/docker/service/ps/)
+  * [service update](/reference/cli/docker/service/update/)

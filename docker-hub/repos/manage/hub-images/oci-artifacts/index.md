@@ -52,22 +52,22 @@ OCI 制品的一个常见用例是 [Helm charts](https://helm.sh/docs/topics/cha
 
    ```console
    $ helm package demo
-   Successfully packaged chart and saved it to: /Users/hubuser/demo-0.1.0.tgz
+   Successfully packaged chart and saved it to: demo-0.1.0.tgz
    ```
 
 3. 使用您的 Docker 凭证通过 Helm 登录 Docker Hub。
 
    ```console
-   $ helm registry login registry-1.docker.io -u hubuser
+   $ helm registry login registry-1.docker.io -u <YOUR_DOCKER_USERNAME>
    ```
 
 4. 将 chart 推送到 Docker Hub 仓库。
 
    ```console
-   $ helm push demo-0.1.0.tgz oci://registry-1.docker.io/docker
+   $ helm push demo-0.1.0.tgz oci://registry-1.docker.io/<YOUR_DOCKER_USERNAME>
    ```
 
-   这会将 Helm chart tar 包上传到 `docker` 命名空间下的 `demo` 仓库中。
+   这会将 Helm chart tar 包上传到 `<YOUR_DOCKER_USERNAME>` 命名空间下的 `demo` 仓库中。运行此命令会创建一个 `<YOUR_DOCKER_USERNAME>/demo` 仓库（如果尚不存在）。
 
 5. 转到 Docker Hub 上的仓库页面。页面的 **Tags** 部分会显示 Helm chart 标签。
 
@@ -98,18 +98,18 @@ OCI 制品的一个常见用例是 [Helm charts](https://helm.sh/docs/topics/cha
 2. 使用 ORAS CLI 登录 Docker Hub。
 
    ```console
-   $ oras login -u hubuser registry-1.docker.io
+   $ oras login -u <YOUR_DOCKER_USERNAME> registry-1.docker.io
    ```
 
 3. 将文件推送到 Docker Hub。
 
    ```console
-   $ oras push registry-1.docker.io/docker/demo:0.0.1 \
+   $ oras push registry-1.docker.io/<YOUR_DOCKER_USERNAME>/demo:0.0.1 \
      --artifact-type=application/vnd.docker.volume.v1+tar.gz \
      myvolume.txt:text/plain
    ```
 
-   这会将卷上传到 `docker` 命名空间下的 `demo` 仓库中。`--artifact-type` 标志指定了一种特殊的媒体类型，使 Docker Hub 将该制品识别为容器卷。
+   这会将卷上传到 `<YOUR_DOCKER_USERNAME>` 命名空间下的 `demo` 仓库中。`--artifact-type` 标志指定了一种特殊的媒体类型，使 Docker Hub 将该制品识别为容器卷。
 
 4. 转到 Docker Hub 上的仓库页面。该页面上的 **Tags** 部分会显示卷标签。
 
@@ -134,15 +134,16 @@ OCI 制品的一个常见用例是 [Helm charts](https://helm.sh/docs/topics/cha
 2. 使用 ORAS CLI 登录 Docker Hub。
 
    ```console
-   $ oras login -u hubuser registry-1.docker.io
+   $ oras login -u <YOUR_DOCKER_USERNAME> registry-1.docker.io
    ```
 
 3. 将文件推送到 Docker Hub。
 
    ```console
-   $ oras push registry-1.docker.io/docker/demo:0.0.1 myartifact.txt:text/plain
+   $ oras push registry-1.docker.io/<YOUR_DOCKER_USERNAME>/demo:0.0.1 myartifact.txt:text/plain
    ```
 
 4. 转到 Docker Hub 上的仓库页面。该页面上的 **Tags** 部分会显示制品标签。
 
    ![仓库页面显示标签列表中的一个制品](./images/oci-artifact.png)
+

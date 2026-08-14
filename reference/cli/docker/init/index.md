@@ -13,9 +13,6 @@
 
 
 
-
-
-
 ## Description
 
 Initialize a project with the files necessary to run the project in a container.

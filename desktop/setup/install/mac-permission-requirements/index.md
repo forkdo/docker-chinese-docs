@@ -82,6 +82,12 @@ $ rm /Library/LaunchDaemons/com.docker.vmnetd.plist
 $ rm /Library/PrivilegedHelperTools/com.docker.vmnetd
 ```
 
+## 后端助手套接字
+
+除了可选的[特权助手](#privileged-helper)外，Docker Desktop 后端进程（`com.docker.backend`）使用一个内部助手套接字（`~/Library/Containers/com.docker.docker/Data/forkexecd.sock`）来派生并执行助手进程，作为运行 Docker Desktop 的一部分。
+
+与特权助手不同，此套接字不以 `root` 身份运行，也不授予任何提升的权限。它仅由运行 Docker Desktop 的同一个 macOS 用户拥有和访问，并包含在 Docker Desktop 的应用程序容器中。
+
 ## 在 Linux VM 中以 root 身份运行的容器
 
 使用 Docker Desktop 时，Docker 守护进程和容器运行在由 Docker 管理的轻量级 Linux VM 中。这意味着尽管容器默认以 `root` 身份运行，但这并不会授予对 Mac 主机机器的 `root` 访问权限。Linux VM 充当安全边界，并限制可以从主机访问的资源。从主机绑定挂载到 Docker 容器的任何目录仍保留其原始权限。
@@ -91,3 +97,4 @@ $ rm /Library/PrivilegedHelperTools/com.docker.vmnetd
 此外，Docker Desktop 支持[增强容器隔离模式](/manuals/enterprise/security/hardened-desktop/enhanced-container-isolation/_index.md) (ECI)，仅对企业客户可用，可在不影响开发者工作流的情况下进一步增强容器安全性。
 
 ECI 会自动在 Linux 用户命名空间中运行所有容器，使得容器中的 root 映射到 Docker Desktop VM 内的非特权用户。ECI 使用这种和其他高级技术来进一步保护 Docker Desktop Linux VM 内的容器，使其与 Docker 守护进程和 VM 内运行的其他服务进一步隔离。
+

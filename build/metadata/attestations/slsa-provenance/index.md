@@ -1,64 +1,57 @@
-# Provenance attestations
+# 来源证明（Provenance attestations）
 
 
-The provenance attestations include facts about the build process, including
-details such as:
+来源证明包含关于构建过程的事实，包括如下详细信息：
 
-- Build timestamps
-- Build parameters and environment
-- Version control metadata
-- Source code details
-- Materials (files, scripts) consumed during the build
+- 构建时间戳
+- 构建参数和环境
+- 版本控制元数据
+- 源代码详细信息
+- 构建过程中消耗的材料（文件、脚本）
 
-By default, provenance attestations follow the
-[SLSA provenance schema, version 0.2](https://slsa.dev/spec/v0.2/provenance#schema).
-You can optionally enable [SLSA Provenance v1](https://slsa.dev/spec/v1.1/provenance#schema)
-using [the `version` parameter](#version).
+默认情况下，来源证明遵循 [SLSA provenance schema, version 0.2](https://slsa.dev/spec/v0.2/provenance#schema)。
+你可以使用 [the `version` parameter](#version) 选择启用 [SLSA Provenance v1](https://slsa.dev/spec/v1.1/provenance#schema)。
 
-For more information about how BuildKit populates these provenance properties, refer to
-[SLSA definitions](slsa-definitions.md).
+有关 BuildKit 如何填充这些来源属性的更多信息，请参阅
+[SLSA definitions](slsa-definitions.md)。
 
-## Create provenance attestations
+## 创建来源证明
 
-To create a provenance attestation, pass the `--attest type=provenance` option
-to the `docker buildx build` command:
+要创建来源证明，请将 `--attest type=provenance` 选项
+传递给 `docker buildx build` 命令：
 
 ```console
 $ docker buildx build --tag <namespace>/<image>:<version> \
     --attest type=provenance,mode=[min,max],version=[v0.2,v1] .
 ```
 
-Alternatively, you can use the shorthand `--provenance=true` option instead of `--attest type=provenance`.
-To specify the `mode` or `version` parameters using the shorthand option, use:
-`--provenance=mode=max,version=v1`.
+或者，你可以使用简写选项 `--provenance=true` 代替 `--attest type=provenance`。
+要使用简写选项指定 `mode` 或 `version` 参数，使用：
+`--provenance=mode=max,version=v1`。
 
-For an example on how to add provenance attestations with GitHub Actions, see
-[Add attestations with GitHub Actions](/manuals/build/ci/github-actions/attestations.md).
+有关如何使用 GitHub Actions 添加来源证明的示例，请参阅
+[使用 GitHub Actions 添加证明](/manuals/build/ci/github-actions/attestations.md)。
 
-## Mode
+## 模式（Mode）
 
-You can use the `mode` parameter to define the level of detail to be included in
-the provenance attestation. Supported values are `mode=min` (default) and
-`mode=max`.
+你可以使用 `mode` 参数来定义来源证明中包含的详细级别。支持的值为 `mode=min`（默认）和
+`mode=max`。
 
-### Min
+### 最小模式（Min）
 
-In `min` mode, the provenance attestations include a minimal set of information,
-such as:
+在 `min` 模式下，来源证明包含一组最小的信息，例如：
 
-- Build timestamps
-- The frontend used
-- Build materials
-- Source repository and revision
-- Build platform
-- Reproducibility
+- 构建时间戳
+- 所使用的 frontend
+- 构建材料
+- 源代码仓库和修订版本
+- 构建平台
+- 可复现性
 
-Values of build arguments, the identities of secrets, and rich layer metadata is
-not included `mode=min`. The `min`-level provenance is safe to use for all
-builds, as it doesn't leak information from any part of the build environment.
+构建参数的值、密钥的标识，以及丰富的层元数据不会包含在 `mode=min` 中。`min` 级别的来源
+对所有构建都是安全的，因为它不会泄漏构建环境中任何部分的信息。
 
-The following JSON example shows the information included in a provenance
-attestations created using the `min` mode:
+以下 JSON 示例展示了使用 `min` 模式创建的来源证明所包含的信息：
 
 ```json
 {
@@ -123,55 +116,48 @@ attestations created using the `min` mode:
 }
 ```
 
-### Max
+### 最大模式（Max）
 
-The `max` mode includes all of the information included in the `min` mode, as
-well as:
+`max` 模式包含 `min` 模式中的所有信息，此外还包括：
 
-- The LLB definition of the build. These show the exact steps taken to produce
-  the image.
-- Information about the Dockerfile, including a full base64-encoded version of
-  the file.
-- Source maps describing the relationship between build steps and image layers.
+- 构建的 LLB 定义。这些展示了生成镜像所采取的确切步骤。
+- 有关 Dockerfile 的信息，包括该文件的完整 base64 编码版本。
+- 描述构建步骤与镜像层之间关系的源映射（source maps）。
 
-When possible, you should prefer `mode=max` as it contains significantly more
-detailed information for analysis.
+在可能的情况下，你应优先使用 `mode=max`，因为它包含用于分析的大量详细信息。
 
 > [!WARNING]
 >
-> Note that `mode=max` exposes the values of
-> [build arguments](/reference/cli/docker/buildx/build.md#build-arg).
+> 请注意，`mode=max` 会暴露
+> [构建参数](/reference/cli/docker/buildx/build/#build-arg) 的值。
 >
-> If you're misusing build arguments to pass credentials, authentication
-> tokens, or other secrets, you should refactor your build to pass the secrets using
-> [secret mounts](/reference/cli/docker/buildx/build.md#secret) instead.
-> Secret mounts don't leak outside of the build and are never included in provenance attestations.
+> 如果你错误地使用构建参数来传递凭据、认证令牌或其他密钥，应重构你的构建，
+> 改为使用 [secret mounts](/reference/cli/docker/buildx/build/#secret) 来传递密钥。
+> Secret mounts 不会泄漏到构建之外，也永远不会包含在来源证明中。
 
-## Version
+## 版本（Version）
 
-The `version` parameter lets you specify which SLSA provenance schema version
-to use. Supported values are `version=v0.2` (default) and `version=v1`.
+`version` 参数让你可以指定要使用的 SLSA 来源 schema 版本。支持的值为
+`version=v0.2`（默认）和 `version=v1`。
 
-To use SLSA Provenance v1:
+要使用 SLSA Provenance v1：
 
 ```console
 $ docker buildx build --tag <namespace>/<image>:<version> \
     --attest type=provenance,mode=max,version=v1 .
 ```
 
-For more information about SLSA Provenance v1, see the
-[SLSA specification](https://slsa.dev/spec/v1.1/provenance). To see the
-difference between SLSA v0.2 and v1 provenance attestations, refer to
-[SLSA definitions](./slsa-definitions.md)
+有关 SLSA Provenance v1 的更多信息，请参阅
+[SLSA 规范](https://slsa.dev/spec/v1.1/provenance)。要了解 SLSA v0.2 与 v1 来源证明
+之间的差异，请参阅 [SLSA definitions](./slsa-definitions.md)
 
-## Inspecting Provenance
+## 检查来源（Inspecting Provenance）
 
-To explore created Provenance exported through the `image` exporter, you can
-use [`imagetools inspect`](/reference/cli/docker/buildx/imagetools/inspect.md).
+要探索通过 `image` 导出器导出的已创建来源，你可以使用
+[`imagetools inspect`](/reference/cli/docker/buildx/imagetools/inspect/)。
 
-Using the `--format` option, you can specify a template for the output. All
-provenance-related data is available under the `.Provenance` attribute. For
-example, to get the raw contents of the Provenance in the SLSA format:
+使用 `--format` 选项，你可以指定输出的模板。所有与来源相关的数据都可从
+`.Provenance` 属性下获取。例如，要获取 SLSA 格式来源的原始内容：
 
 ```console
 $ docker buildx imagetools inspect <namespace>/<image>:<version> \
@@ -182,9 +168,8 @@ $ docker buildx imagetools inspect <namespace>/<image>:<version> \
 }
 ```
 
-You can also construct more complex expressions using the full functionality of
-Go templates. For example, for provenance generated with `mode=max`, you can
-extract the full source code of the Dockerfile used to build the image:
+你也可以利用 Go 模板的完整功能构建更复杂的表达式。例如，对于使用 `mode=max`
+生成的来源，你可以提取用于构建镜像的 Dockerfile 的完整源代码：
 
 ```console
 $ docker buildx imagetools inspect <namespace>/<image>:<version> \
@@ -194,12 +179,11 @@ RUN apt-get update
 ...
 ```
 
-## Provenance attestation example
+## 来源证明示例
 
 <!-- TODO: add a link to the definitions page, imported from moby/buildkit -->
 
-The following example shows what a JSON representation of a provenance
-attestation with `mode=max` looks like:
+以下示例展示了 `mode=max` 来源证明的 JSON 表示形式：
 
 ```json
 {

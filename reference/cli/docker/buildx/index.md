@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动从 Docker 的源代码生成的。如果您想
-建议更改此处显示的文本，请在 GitHub 上的源代码仓库中
-打开工单或拉取请求：
-
-https://github.com/docker/buildx
--->
-
 
 
 
@@ -41,6 +33,14 @@ Extended build capabilities with BuildKit
 
 You can also use the `BUILDX_BUILDER` environment variable.
 
+### Enable the default policy
+
+Set `BUILDX_DEFAULT_POLICY=1` to enable Buildx's built-in source policy. The
+policy verifies signed tags for images managed by Docker, including BuildKit
+builder images and Dockerfile frontends. Untagged digest references and images
+outside the managed repositories are allowed unchanged. Tagged references
+that also contain a digest still have their release identity verified.
+
 
 ## Subcommands
 
@@ -51,6 +51,7 @@ You can also use the `BUILDX_BUILDER` environment variable.
 | [`docker buildx create`](/reference/cli/docker/buildx/create/) | Create a new builder instance |
 | [`docker buildx dap`](/reference/cli/docker/buildx/dap/) | Start debug adapter protocol compatible debugger |
 | [`docker buildx debug`](/reference/cli/docker/buildx/debug/) | Start debugger |
+| [`docker buildx dial-stdio`](/reference/cli/docker/buildx/dial-stdio/) | Proxy current stdio streams to builder instance |
 | [`docker buildx du`](/reference/cli/docker/buildx/du/) | Disk usage |
 | [`docker buildx history`](/reference/cli/docker/buildx/history/) | Commands to work on build records |
 | [`docker buildx imagetools`](/reference/cli/docker/buildx/imagetools/) | Commands to work on images in registry |

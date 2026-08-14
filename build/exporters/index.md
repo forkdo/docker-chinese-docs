@@ -1,112 +1,81 @@
-# Exporters overview
+# 导出器概述
 
 
-Exporters save your build results to a specified output type. You specify the
-exporter to use with the
-[`--output` CLI option](/reference/cli/docker/buildx/build.md#output).
-Buildx supports the following exporters:
+导出器将你的构建结果保存为指定的输出类型。你使用 [`--output` CLI 选项](/reference/cli/docker/buildx/build/#output) 来指定要使用的导出器。Buildx 支持以下导出器：
 
-- `image`: exports the build result to a container image.
-- `registry`: exports the build result into a container image, and pushes it to
-  the specified registry.
-- `local`: exports the build root filesystem into a local directory.
-- `tar`: packs the build root filesystem into a local tarball.
-- `oci`: exports the build result to the local filesystem in the
-  [OCI image layout](https://github.com/opencontainers/image-spec/blob/v1.0.1/image-layout.md)
-  format.
-- `docker`: exports the build result to the local filesystem in the
-  [Docker Image Specification v1.2.0](https://github.com/moby/moby/blob/v25.0.0/image/spec/v1.2.md)
-  format.
-- `cacheonly`: doesn't export a build output, but runs the build and creates a
-  cache.
+- `image`：将构建结果导出为容器镜像。
+- `registry`：将构建结果导出为容器镜像，并将其推送到指定的镜像仓库。
+- `local`：将构建的根文件系统导出到本地目录。
+- `tar`：将构建的根文件系统打包为本地 tar 包。
+- `oci`：将构建结果以 [OCI 镜像布局](https://github.com/opencontainers/image-spec/blob/v1.0.1/image-layout.md) 格式导出到本地文件系统。
+- `docker`：将构建结果以 [Docker 镜像规范 v1.2.0](https://github.com/moby/moby/blob/v25.0.0/image/spec/v1.2.md) 格式导出到本地文件系统。
+- `cacheonly`：不导出构建输出，但运行构建并创建缓存。
 
-## Using exporters
+## 使用导出器
 
-To specify an exporter, use the following command syntax:
+要指定导出器，请使用以下命令语法：
 
 ```console
 $ docker buildx build --tag <registry>/<image> \
   --output type=<TYPE> .
 ```
 
-Most common use cases don't require that you specify which exporter to use
-explicitly. You only need to specify the exporter if you intend to customize
-the output, or if you want to save it to disk. The `--load` and `--push`
-options allow Buildx to infer the exporter settings to use.
+大多数常见用例不需要你显式指定要使用哪个导出器。只有在你想自定义输出，或者想将其保存到磁盘时，才需要指定导出器。`--load` 和 `--push` 选项允许 Buildx 推断要使用的导出器设置。
 
-For example, if you use the `--push` option in combination with `--tag`, Buildx
-automatically uses the `image` exporter, and configures the exporter to push the
-results to the specified registry.
+例如，如果你将 `--push` 选项与 `--tag` 组合使用，Buildx 会自动使用 `image` 导出器，并将导出器配置为将结果推送到指定的镜像仓库。
 
-To get the full flexibility out of the various exporters BuildKit has to offer,
-you use the `--output` flag that lets you configure exporter options.
+要充分利用 BuildKit 所提供的各种导出器的全部灵活性，你可以使用 `--output` 标志来配置导出器选项。
 
-## Use cases
+## 使用场景
 
-Each exporter type is designed for different use cases. The following sections
-describe some common scenarios, and how you can use exporters to generate the
-output that you need.
+每种导出器类型都针对不同的用例而设计。以下各节描述了一些常见场景，以及如何使用导出器生成你所需的输出。
 
-### Load to image store
+### 加载到镜像存储
 
-Buildx is often used to build container images that can be loaded to an image
-store. That's where the `docker` exporter comes in. The following example shows
-how to build an image using the `docker` exporter, and have that image loaded to
-the local image store, using the `--output` option:
+Buildx 常用于构建可以加载到镜像存储中的容器镜像。这就是 `docker` 导出器的用武之地。以下示例展示了如何使用 `docker` 导出器构建镜像，并使用 `--output` 选项将该镜像加载到本地镜像存储：
 
 ```console
 $ docker buildx build \
   --output type=docker,name=<registry>/<image> .
 ```
 
-Buildx CLI will automatically use the `docker` exporter and load it to the image
-store if you supply the `--tag` and `--load` options:
+如果你提供 `--tag` 和 `--load` 选项，Buildx CLI 会自动使用 `docker` 导出器并将其加载到镜像存储：
 
 ```console
 $ docker buildx build --tag <registry>/<image> --load .
 ```
 
-Building images using the `docker` driver are automatically loaded to the local
-image store.
+使用 `docker` 驱动构建的镜像会自动加载到本地镜像存储。
 
-Images loaded to the image store are available to `docker run` immediately
-after the build finishes, and you'll see them in the list of images when you run
-the `docker images` command.
+加载到镜像存储的镜像在构建完成后立即可供 `docker run` 使用，并且当你运行 `docker images` 命令时，你会在镜像列表中看到它们。
 
-### Push to registry
+### 推送到镜像仓库
 
-To push a built image to a container registry, you can use the `registry` or
-`image` exporters.
+要将构建好的镜像推送到容器镜像仓库，你可以使用 `registry` 或 `image` 导出器。
 
-When you pass the `--push` option to the Buildx CLI, you instruct BuildKit to
-push the built image to the specified registry:
+当你将 `--push` 选项传递给 Buildx CLI 时，你指示 BuildKit 将构建好的镜像推送到指定的镜像仓库：
 
 ```console
 $ docker buildx build --tag <registry>/<image> --push .
 ```
 
-Under the hood, this uses the `image` exporter, and sets the `push` parameter.
-It's the same as using the following long-form command using the `--output`
-option:
+在底层，这使用了 `image` 导出器，并设置了 `push` 参数。它与使用 `--output` 选项的以下长格式命令相同：
 
 ```console
 $ docker buildx build \
   --output type=image,name=<registry>/<image>,push=true .
 ```
 
-You can also use the `registry` exporter, which does the same thing:
+你也可以使用 `registry` 导出器，它的作用相同：
 
 ```console
 $ docker buildx build \
   --output type=registry,name=<registry>/<image> .
 ```
 
-### Export image layout to file
+### 将镜像布局导出到文件
 
-You can use either the `oci` or `docker` exporters to save the build results to
-image layout on your local filesystem. Both of these exporters generate a tar
-archive file containing the corresponding image layout. The `dest` parameter
-defines the target output path for the tarball.
+你可以使用 `oci` 或 `docker` 导出器将构建结果保存到本地文件系统上的镜像布局。这两个导出器都会生成一个包含相应镜像布局的 tar 归档文件。`dest` 参数定义了 tar 包的目标输出路径。
 
 ```console
 $ docker buildx build --output type=oci,dest=./image.tar .
@@ -132,40 +101,29 @@ out
 └── oci-layout
 ```
 
-### Export filesystem
+### 导出文件系统
 
-If you don't want to build an image from your build results, but instead export
-the filesystem that was built, you can use the `local` and `tar` exporters.
+如果你不想从构建结果构建镜像，而是想导出所构建的文件系统，可以使用 `local` 和 `tar` 导出器。
 
-The `local` exporter unpacks the filesystem into a directory structure in the
-specified location. The `tar` exporter creates a tarball archive file.
+`local` 导出器将文件系统解包到指定位置的目录结构中。`tar` 导出器创建一个 tar 归档文件。
 
 ```console
 $ docker buildx build --output type=local,dest=<path/to/output> .
 ```
 
-The `local` exporter is useful in [multi-stage builds](../building/multi-stage.md)
-since it allows you to export only a minimal number of build artifacts, such as
-self-contained binaries.
+`local` 导出器在 [多阶段构建](../building/multi-stage.md) 中很有用，因为它允许你仅导出最少量的构建制品，例如自包含的二进制文件。
 
-### Cache-only export
+### 仅缓存导出
 
-The `cacheonly` exporter can be used if you just want to run a build, without
-exporting any output. This can be useful if, for example, you want to run a test
-build. Or, if you want to run the build first, and create exports using
-subsequent commands. The `cacheonly` exporter creates a build cache, so any
-successive builds are instant.
+如果你只想运行构建而不导出任何输出，可以使用 `cacheonly` 导出器。例如，当你想运行一次测试构建时，这会很有用。或者，如果你想先运行构建，并使用后续命令创建导出。`cacheonly` 导出器会创建一个构建缓存，因此任何后续构建都是即时的。
 
 ```console
 $ docker buildx build --output type=cacheonly
 ```
 
-If you don't specify an exporter, and you don't provide short-hand options like
-`--load` that automatically selects the appropriate exporter, Buildx defaults to
-using the `cacheonly` exporter. Except if you build using the `docker` driver,
-in which case you use the `docker` exporter.
+如果你没有指定导出器，并且没有提供像 `--load` 这样会自动选择适当导出器的简写选项，Buildx 默认使用 `cacheonly` 导出器。除非你使用 `docker` 驱动进行构建，在这种情况下你使用的是 `docker` 导出器。
 
-Buildx logs a warning message when using `cacheonly` as a default:
+当使用 `cacheonly` 作为默认导出器时，Buildx 会记录一条警告消息：
 
 ```console
 $ docker buildx build .
@@ -175,20 +133,17 @@ WARNING: No output specified with docker-container driver.
          to load image into docker use --load
 ```
 
-## Multiple exporters
+## 多个导出器
 
 
 
-You can use multiple exporters for any given build by specifying the `--output`
-flag multiple times. This requires **both Buildx and BuildKit** version 0.13.0
-or later.
+你可以通过多次指定 `--output` 标志为任何给定的构建使用多个导出器。这需要 **Buildx 和 BuildKit** 均为 0.13.0 或更高版本。
 
-The following example runs a single build, using three
-different exporters:
+以下示例运行一次构建，使用三个不同的导出器：
 
-- The `registry` exporter to push the image to a registry
-- The `local` exporter to extract the build results to the local filesystem
-- The `--load` flag (a shorthand for the `image` exporter) to load the results to the local image store.
+- `registry` 导出器，用于将镜像推送到镜像仓库
+- `local` 导出器，用于将构建结果提取到本地文件系统
+- `--load` 标志（`image` 导出器的简写），用于将结果加载到本地镜像存储
 
 ```console
 $ docker buildx build \
@@ -197,72 +152,70 @@ $ docker buildx build \
   --load .
 ```
 
-## Configuration options
+## 配置选项
 
-This section describes some configuration options available for exporters.
+本节描述导出器可用的一些配置选项。
 
-The options described here are common for at least two or more exporter types.
-Additionally, the different exporters types support specific parameters as well.
-See the detailed page about each exporter for more information about which
-configuration parameters apply.
+此处描述的选项至少对两种或更多导出器类型是通用的。此外，不同的导出器类型也支持特定参数。有关适用哪些配置参数的更多信息，请参阅每种导出器的详细页面。
 
-The common parameters described here are:
+此处描述的通用参数包括：
 
-- [Compression](#compression)
-- [OCI media type](#oci-media-types)
+- [压缩](#compression)
+- [OCI 媒体类型](#oci-media-types)
 
 ### Compression
 
-When you export a compressed output, you can configure the exact compression
-algorithm and level to use. While the default values provide a good
-out-of-the-box experience, you can tweak the parameters to optimize for
-storage versus compute costs. Changing the compression parameters can reduce storage
-space required, and improve image download times, but will increase build times.
+当你导出压缩输出时，可以配置要使用的具体压缩算法和级别。虽然默认值提供了开箱即用的良好体验，但你可以调整参数以优化存储与计算成本之间的权衡。更改压缩参数可以减少所需的存储空间并改善镜像下载时间，但会增加构建时间。
 
-To select the compression algorithm, you can use the `compression` option. For
-example, to build an `image` with `compression=zstd`:
+要选择压缩算法，可以使用 `compression` 选项。例如，要构建具有 `compression=zstd` 的 `image`：
 
 ```console
 $ docker buildx build \
   --output type=image,name=<registry>/<image>,push=true,compression=zstd .
 ```
 
-Use the `compression-level=<value>` option alongside the `compression` parameter
-to choose a compression level for the algorithms which support it:
+使用 `compression-level=<value>` 选项与 `compression` 参数一起，为支持该选项的算法选择压缩级别：
 
-- 0-9 for `gzip` and `estargz`
-- 0-22 for `zstd`
+- `gzip` 和 `estargz` 为 0-9
+- `zstd` 为 0-22
 
-As a general rule, the higher the number, the smaller the resulting file will
-be, and the longer the compression will take to run.
+通常，数字越大，生成的文件越小，但压缩所需时间越长。
 
-Use the `force-compression=true` option to force re-compressing layers imported
-from a previous image, if the requested compression algorithm is different from
-the previous compression algorithm.
+如果你的请求压缩算法与先前的压缩算法不同，请使用 `force-compression=true` 选项强制重新压缩从先前镜像导入的层。
 
 > [!NOTE]
 >
-> The `gzip` and `estargz` compression methods use the [`compress/gzip` package](https://pkg.go.dev/compress/gzip),
-> while `zstd` uses the [`github.com/klauspost/compress/zstd` package](https://github.com/klauspost/compress/tree/master/zstd).
+> `gzip` 和 `estargz` 压缩方法使用 [`compress/gzip` 包](https://pkg.go.dev/compress/gzip)，而 `zstd` 使用 [`github.com/klauspost/compress/zstd` 包](https://github.com/klauspost/compress/tree/master/zstd)。
+
+#### zstd 压缩级别
+
+当你指定 `compression=zstd` 时，`compression-level` 参数接受从 0 到 22 的值。BuildKit 将这些值映射到四个内部压缩级别：
+
+| compression-level | 内部级别   | 近似 zstd 级别 | 描述                       |
+| ----------------- | ---------- | -------------- | -------------------------- |
+| 0-2               | Fastest    | ~1             | 最快压缩，文件更大         |
+| 3-6（默认）       | Default    | ~3             | 压缩与速度平衡             |
+| 7-8               | Better     | ~7             | 更好的压缩，更慢           |
+| 9-22              | Best       | ~11            | 最佳压缩，最慢             |
+
+例如，设置 `compression-level=5` 和 `compression-level=6` 会产生相同的压缩输出，因为两者都映射到 "Default" 内部级别。
 
 ### OCI media types
 
-The `image`, `registry`, `oci` and `docker` exporters create container images.
-These exporters support both Docker media types (default) and OCI media types
+`image`、`registry`、`oci` 和 `docker` 导出器创建容器镜像。这些导出器同时支持 Docker 媒体类型（默认）和 OCI 媒体类型。
 
-To export images with OCI media types set, use the `oci-mediatypes` property.
+要导出设置了 OCI 媒体类型的镜像，请使用 `oci-mediatypes` 属性。
 
 ```console
 $ docker buildx build \
   --output type=image,name=<registry>/<image>,push=true,oci-mediatypes=true .
 ```
 
-## What's next
+## 下一步
 
-Read about each of the exporters to learn about how they work and how to use
-them:
+阅读关于每个导出器的内容，了解它们的工作原理以及如何使用它们：
 
-- [Image and registry exporters](image-registry.md)
-- [OCI and Docker exporters](oci-docker.md).
-- [Local and tar exporters](local-tar.md)
+- [镜像与镜像仓库导出器](image-registry.md)
+- [OCI 与 Docker 导出器](oci-docker.md)。
+- [本地与 tar 导出器](local-tar.md)
 

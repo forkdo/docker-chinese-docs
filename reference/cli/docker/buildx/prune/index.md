@@ -6,14 +6,6 @@
 
 
 
-<!--
-本页内容由 Docker 源代码自动生成。如果您希望
-建议对此处显示的文本进行修改，请在 GitHub 上的源仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/buildx
--->
-
 
 
 
@@ -36,6 +28,7 @@ Clears the build cache of the selected builder.
 | `--max-used-space` |  |  Maximum amount of disk space allowed to keep for cache |
 | `--min-free-space` |  |  Target amount of free disk space after pruning |
 | `--reserved-space` |  |  Amount of disk space always allowed to keep for cache |
+| `--timeout` | `20s` |  Override the default timeout for loading builder status |
 | `--verbose` |  |  Provide a more verbose output |
 
 

@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是根据 Docker 的源代码自动生成的。如果您想
-建议更改此处显示的文本，请在 GitHub 的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -53,7 +45,19 @@ Total reclaimed space: 212 B
 ### Filtering (--filter) {#filter}
 
 The filtering flag (`--filter`) format is of "key=value". If there is more
-than one filter, then pass multiple flags (e.g., `--filter "foo=bar" --filter "bif=baz"`)
+than one filter, then pass multiple flags (e.g., `--filter "foo=bar" --filter "bif=baz"`).
+
+When multiple filters are provided, they are combined as follows:
+
+- Multiple filters with **different keys** are combined using AND logic.
+  A container must satisfy all filter conditions to be pruned.
+- Multiple filters with the **same key** are combined using OR logic.
+  A container is pruned if it matches any of the values for that key.
+
+For example, `--filter "label=foo" --filter "until=24h"` prunes containers
+that have the `foo` label **and** were created more than 24 hours ago.
+Conversely, `--filter "label=foo" --filter "label=bar"` prunes containers
+that have **either** the `foo` **or** `bar` label.
 
 The currently supported filters are:
 

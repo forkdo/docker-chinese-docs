@@ -1,13 +1,13 @@
 # 自动启动容器
 
 
-Docker 提供了[重启策略](/reference/cli/docker/container/run.md#restart)，用于控制容器在退出时或 Docker 重启时是否自动启动。重启策略会按照正确的顺序启动相关联的容器。Docker 建议您使用重启策略，避免使用进程管理器来启动容器。
+Docker 提供了[重启策略](/reference/cli/docker/container/run/#restart)，用于控制容器在退出时或 Docker 重启时是否自动启动。重启策略会按照正确的顺序启动相关联的容器。Docker 建议您使用重启策略，避免使用进程管理器来启动容器。
 
 重启策略与 `dockerd` 命令的 `--live-restore` 标志不同。使用 `--live-restore` 可以在 Docker 升级期间保持容器运行，但网络和用户输入会中断。
 
 ## 使用重启策略
 
-要为容器配置重启策略，请在执行 `docker run` 命令时使用 [`--restart`](/reference/cli/docker/container/run.md#restart) 标志。`--restart` 标志的值可以是以下任意一种：
+要为容器配置重启策略，请在执行 `docker run` 命令时使用 [`--restart`](/reference/cli/docker/container/run/#restart) 标志。`--restart` 标志的值可以是以下任意一种：
 
 | 标志                       | 描述                                                                                                                                                                                                                                                                                                                                                           |
 | :------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,7 +19,7 @@ Docker 提供了[重启策略](/reference/cli/docker/container/run.md#restart)�
 以下命令启动一个 Redis 容器，并配置为始终重启，除非容器被显式停止或守护进程重启。
 
 ```console
-$ docker run -d --restart unless-stopped redis
+$ docker run -d --name redis --restart unless-stopped redis
 ```
 
 以下命令更改名为 `redis` 的正在运行的容器的重启策略。
@@ -42,7 +42,7 @@ $ docker update --restart unless-stopped $(docker ps -q)
 
 - 如果您手动停止容器，则在 Docker 守护进程重启或容器被手动重启之前，重启策略将被忽略。这可以防止重启循环。
 
-- 重启策略仅适用于容器。要为 Swarm 服务配置重启策略，请参见[与服务重启相关的标志](/reference/cli/docker/service/create.md)。
+- 重启策略仅适用于容器。要为 Swarm 服务配置重启策略，请参见[与服务重启相关的标志](/reference/cli/docker/service/create/)。
 
 ### 重启前台容器
 
@@ -121,3 +121,4 @@ $ docker update --restart unless-stopped $(docker ps -q)
 > [!WARNING]
 >
 > 这些进程管理器不感知 Docker，仅监控容器内的操作系统进程。Docker 不推荐这种方法，因为它依赖于平台，并且可能因 Linux 发行版的版本而异。
+

@@ -38,15 +38,16 @@ Docker 建议 swarm 中最多有七个管理器节点。
 
 为了防止调度器在多节点 swarm 中将任务放置在管理器节点上，将管理器节点的可用性设置为 `Drain`。调度器会优雅地停止 `Drain` 模式节点上的任务，并将任务调度到 `Active` 节点上。调度器不会将新任务分配给具有 `Drain` 可用性的节点。
 
-请参阅 [`docker node update`](/reference/cli/docker/node/update.md) 命令行参考，了解如何更改节点可用性。
+请参阅 [`docker node update`](/reference/cli/docker/node/update/) 命令行参考，了解如何更改节点可用性。
 
 ## 更改角色
 
-你可以通过运行 `docker node promote` 将工作节点提升为管理器。例如，当你将管理器节点离线进行维护时，可能需要提升工作节点。请参阅 [node promote](/reference/cli/docker/node/promote.md)。
+你可以通过运行 `docker node promote` 将工作节点提升为管理器。例如，当你将管理器节点离线进行维护时，可能需要提升工作节点。请参阅 [node promote](/reference/cli/docker/node/promote/)。
 
-你也可以将管理器节点降级为工作节点。请参阅 [node demote](/reference/cli/docker/node/demote.md)。
+你也可以将管理器节点降级为工作节点。请参阅 [node demote](/reference/cli/docker/node/demote/)。
 
 ## 了解更多
 
 * 阅读 Swarm 模式 [服务](services.md) 的工作原理。
 * 了解 Swarm 模式中 [PKI](pki.md) 的工作原理。
+

@@ -31,7 +31,7 @@
    $ docker login
    ```
 
-2. 添加云构建器端点。
+2. 将 Buildx 连接到您的云构建器。
 
    ```console
    $ docker buildx create --driver cloud <ORG>/<BUILDER_NAME>
@@ -39,15 +39,19 @@
 
    将 `<ORG>` 替换为您的 Docker 组织的 Docker Hub 命名空间（或如果您使用个人账户，则替换为您的用户名），将 `<BUILDER_NAME>` 替换为您在仪表板中创建构建器时选择的名称。
 
-   这将创建一个名为 `cloud-ORG-BUILDER_NAME` 的云构建器本地实例。
+   这会注册一个该云构建器的本地端点，名为 `cloud-ORG-BUILDER_NAME`。
+
+   > [!NOTE]
+   >
+   > 此命令将 Buildx 连接到已有的 Docker Build Cloud 构建器，并不会创建新的云构建器。要添加新构建器，请使用 [Docker Build Cloud 仪表板](https://app.docker.com/build/)。
 
    > [!NOTE]
    >
    > 如果您的组织是 `acme` 且您将构建器命名为 `default`，请使用：
+   >
    > ```console
    > $ docker buildx create --driver cloud acme/default
    > ```
-
 
 **Docker Desktop**
 
@@ -76,3 +80,4 @@
 
 - 参阅 [使用 Docker Build Cloud 构建](usage.md) 了解如何使用 Docker Build Cloud 的示例。
 - 参阅 [在 CI 中使用 Docker Build Cloud](ci.md) 了解如何在 CI 系统中使用 Docker Build Cloud 的示例。
+

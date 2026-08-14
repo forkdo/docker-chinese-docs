@@ -193,6 +193,23 @@ Docker 建议使用 `/24` 块创建覆盖网络。`/24` 覆盖网络块将网络
 此建议解决了[swarm 模式的限制](https://github.com/moby/moby/issues/30820)。
 如果你需要超过 256 个 IP 地址，请不要增加 IP 块大小。你可以使用带有外部负载均衡器的 `dnsrr` 端点模式，或者使用多个较小的覆盖网络。有关不同端点模式的更多信息，请参阅[配置服务发现](#configure-service-discovery)。
 
+#### 使用直接服务器返回
+
+直接服务器返回（DSR，direct server return）改变了东西向 overlay 负载均衡，使 IPVS 通过更改目标 MAC 地址来路由数据包。源 IP 和目标虚拟 IP（VIP）保持不变。
+
+创建一个使用 DSR 的 overlay 网络：
+
+```console
+$ docker network create \
+  --driver overlay \
+  --opt dsr \
+  dsr-net
+```
+
+> [!NOTE]
+>
+> DSR 仅支持 Linux 节点上服务之间的流量。入口路由网格不使用 DSR。
+
 #### 配置应用数据加密 {#encryption}
 
 与 swarm 相关的管理和控制平面数据始终经过加密。有关加密机制的更多详细信息，请参阅 [Docker swarm 模式覆盖网络安全模型](/manuals/engine/network/drivers/overlay.md)。
@@ -221,7 +238,7 @@ $ docker service create \
 
 ### 配置服务发现
 
-服务发现是 Docker 用来将请求从服务的外部客户端路由到单个 swarm 节点的机制，客户端无需知道有多少节点参与服务或其 IP 地址和端口。对于同一网络上的服务之间使用的端口，你不需要发布。例如，如果你有一个[将其数据存储在 MySQL 服务中的 WordPress 服务](https://training.play-with-docker.com/swarm-service-discovery/)，并且它们连接到同一个覆盖网络，则你不需要将 MySQL 端口发布给客户端，只需发布 WordPress HTTP 端口。
+服务发现是 Docker 用来将请求从服务的外部客户端路由到单个 swarm 节点的机制，客户端无需知道有多少节点参与服务或其 IP 地址和端口。对于同一网络上的服务之间使用的端口，你不需要发布。例如，如果你有一个将其数据存储在 MySQL 服务中的 WordPress 服务，并且它们连接到同一个覆盖网络，则你不需要将 MySQL 端口发布给客户端，只需发布 WordPress HTTP 端口。
 
 服务发现可以以两种不同的方式工作：使用嵌入式 DNS 和虚拟 IP (VIP) 在第 3 层和第 4 层进行基于连接的内部负载均衡，或者使用 DNS 轮询 (DNSRR) 在第 7 层进行外部和定制的基于请求的负载均衡。你可以按服务配置此设置。
 
@@ -230,6 +247,10 @@ $ docker service create \
 - 如果你将服务配置为使用 DNS 轮询 (DNSRR) 服务发现，则没有单一的虚拟 IP。相反，Docker 会为该服务设置 DNS 条目，使得对服务名称的 DNS 查询返回一个 IP 地址列表，客户端直接连接到其中一个地址。
 
   DNS 轮询在你想要使用自己的负载均衡器（例如 HAProxy）的情况下非常有用。要配置服务使用 DNSRR，请在创建新服务或更新现有服务时使用标志 `--endpoint-mode dnsrr`。
+
+### 容器发现
+
+在大多数情况下，连接到服务名称即可。Docker 会在支持该服务的所有运行中的任务（“容器”）之间对请求进行负载均衡。要直接解析支持某个服务的所有单个任务的 IP 地址，请对 `tasks.<service-name>` 执行 DNS 查询。Docker 会返回该服务所有任务 IP 地址的列表，每个运行中的副本对应一个。
 
 ## 自定义入口网络 {#customize-ingress}
 
@@ -273,7 +294,8 @@ $ docker service create \
 
 ## 自定义 docker_gwbridge
 
-`docker_gwbridge` 是一个虚拟网桥，用于将覆盖网络（包括 `ingress` 网络）连接到单个 Docker 守护进程的物理网络。当你初始化 swarm 或将 Docker 主机加入 swarm 时，Docker 会自动创建它，但它不是 Docker 设备。它存在于 Docker 主机的内核中。如果你需要自定义其设置，必须在将 Docker 主机加入 swarm 之前或暂时将主机从 swarm 中移除后进行。
+`docker_gwbridge` 是一个虚拟网桥，用于将覆盖网络（包括 `ingress` 网络）连接到单个 Docker 守护进程的物理网络。当你初始化 swarm 或将 Docker 主机
+加入 swarm 时，Docker 会自动创建它，但它不是 Docker 设备。它存在于 Docker 主机的内核中。如果你需要自定义其设置，必须在将 Docker 主机加入 swarm 之前或暂时将主机从 swarm 中移除后进行。
 
 你需要在操作系统上安装 `brctl` 应用程序才能删除现有的网桥。软件包名称为 `bridge-utils`。
 
@@ -283,7 +305,7 @@ $ docker service create \
 
 3.  启动 Docker。不要加入或初始化 swarm。
 
-4.  使用你的自定义设置创建或重新创建 `docker_gwbridge` 网桥。此示例使用子网 `10.11.0.0/16`。有关可自定义选项的完整列表，请参阅[网桥驱动程序选项](/reference/cli/docker/network/create.md#bridge-driver-options)。
+4.  使用你的自定义设置创建或重新创建 `docker_gwbridge` 网桥。此示例使用子网 `10.11.0.0/16`。有关可自定义选项的完整列表，请参阅[网桥驱动程序选项](/reference/cli/docker/network/create/#bridge-driver-options)。
 
     ```console
     $ docker network create \
@@ -350,3 +372,4 @@ $ docker swarm join \
 * [Swarm 模式教程](swarm-tutorial/_index.md)
 * [网络概述](/manuals/engine/network/_index.md)
 * [Docker CLI 参考](/reference/cli/docker/)
+

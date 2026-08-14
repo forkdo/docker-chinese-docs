@@ -6,14 +6,6 @@
 
 **Aliases:** `docker create`
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议更改此处显示的文本，请在 GitHub 上的源代码仓库中
-提出工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -122,7 +114,7 @@ for details on the available flags and options.
 | `--privileged` |  |  Give extended privileges to this container |
 | `-p`, `--publish` |  |  Publish a container's port(s) to the host |
 | `-P`, `--publish-all` |  |  Publish all exposed ports to random ports |
-| `--pull` | `missing` |  Pull image before creating (`always`, `|missing`, `never`) |
+| `--pull` | `missing` |  Pull image before creating (`always`, `missing`, `never`) |
 | `-q`, `--quiet` |  |  Suppress the pull output |
 | `--read-only` |  |  Mount the container's root filesystem as read only |
 | `--restart` | `no` |  Restart policy to apply when a container exits |

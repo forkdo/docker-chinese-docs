@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议更改此处显示的文本，请在 GitHub 上的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -54,7 +46,7 @@ $ docker swarm unlock-key
 To unlock a swarm manager after it restarts, run the `docker swarm unlock`
 command and provide the following key:
 
-    SWMKEY-1-fySn8TY4w5lKcWcJPIpKufejh9hxx5KYwx6XZigx3Q4
+    SWMKEY-1-aabbccdd00112233aabbccdd00112233aabbccdd00112233aa-aabbccdd00112233...
 
 Remember to store this key in a password manager, since without it you
 will not be able to restart the manager.
@@ -71,7 +63,7 @@ Successfully rotated manager unlock key.
 To unlock a swarm manager after it restarts, run the `docker swarm unlock`
 command and provide the following key:
 
-    SWMKEY-1-7c37Cc8654o6p38HnroywCi19pllOnGtbdZEgtKxZu8
+    SWMKEY-1-aabbccdd00112233aabbccdd00112233aabbccdd00112233aa-aabbccdd00112233...
 
 Remember to store this key in a password manager, since without it you
 will not be able to restart the manager.
@@ -82,7 +74,7 @@ The `-q` (or `--quiet`) flag only prints the key:
 ```console
 $ docker swarm unlock-key -q
 
-SWMKEY-1-7c37Cc8654o6p38HnroywCi19pllOnGtbdZEgtKxZu8
+SWMKEY-1-aabbccdd00112233aabbccdd00112233aabbccdd00112233aa-aabbccdd00112233...
 ```
 
 ### `--rotate` {#rotate}

@@ -259,7 +259,7 @@ COPY --from=build-stage /path/in/build/stage /path/to/place/in/final/stage
 
     - 第一阶段与之前的 Dockerfile 保持一致，提供 Java 开发工具包（JDK）环境用于构建应用程序。该阶段被命名为 builder。
 
-    - 第二阶段是一个名为 `final` 的新阶段。它使用更轻量的 `eclipse-temurin:21.0.2_13-jre-jammy` 镜像，仅包含运行应用程序所需的 Java 运行时环境（JRE）。该镜像提供 Java 运行时环境（JRE），足以运行已编译的应用程序（JAR 文件）。
+    - 第二阶段是一个名为 `final` 的新阶段。它使用更轻量的 `eclipse-temurin:21.0.8_9-jre-jammy` 镜像，仅包含运行应用程序所需的 Java 运行时环境（JRE）。该镜像提供 Java 运行时环境（JRE），足以运行已编译的应用程序（JAR 文件）。
 
     
    > 在生产环境中，强烈建议使用 jlink 生成类似自定义 JRE 的运行时。Eclipse Temurin 的所有版本都提供 JRE 镜像，但 `jlink` 允许你创建一个仅包含应用程序所需 Java 模块的最小运行时。这可以显著减小最终镜像的大小并提高其安全性。[更多信息请参考此页面](https://hub.docker.com/_/eclipse-temurin)。
@@ -305,3 +305,4 @@ COPY --from=build-stage /path/in/build/stage /path/to/place/in/final/stage
 * [Dockerfile 最佳实践](/develop/develop-images/dockerfile_best-practices/)
 * [基础镜像](/build/building/base-images/)
 * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
+

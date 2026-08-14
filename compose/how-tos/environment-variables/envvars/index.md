@@ -1,5 +1,17 @@
-# 在 Docker Compose 中配置预定义环境变量
+# 
 
+<!-- FILE: manuals/compose/how-tos/environment-variables/envvars.md -->
+
+---
+description: 预定义环境变量的配置方法
+keywords: fig, composition, compose, docker, orchestration, cli, reference, compose environment configuration, docker env variables
+title: 在 Docker Compose 中配置预定义环境变量
+linkTitle: 预定义环境变量
+weight: 30
+aliases:
+- /compose/reference/envvars/
+- /compose/environment-variables/envvars/
+---
 
 Docker Compose 包含多个预定义环境变量。它还继承了常见的 Docker CLI 环境变量，例如 `DOCKER_HOST` 和 `DOCKER_CONTEXT`。有关详细信息，请参阅 [Docker CLI 环境变量参考](/reference/cli/docker/#environment-variables)。
 
@@ -51,7 +63,7 @@ Compose 可以通过不同方式设置项目名称。每种方法的优先级（
 
 项目名称必须仅包含小写字母、十进制数字、短横线和下划线，并且必须以小写字母或十进制数字开头。如果项目目录或当前目录的 `basename` 违反此约束，则必须使用其他机制之一。
 
-另请参阅 [命令行选项概述](/reference/cli/docker/compose/_index.md#command-options-overview-and-help) 和 [使用 `-p` 指定项目名称](/reference/cli/docker/compose/_index.md#use--p-to-specify-a-project-name)。
+另请参阅 [使用 `-p` 指定项目名称](/reference/cli/docker/compose/#use--p-to-specify-a-project-name)。
 
 #### COMPOSE\_FILE
 
@@ -68,7 +80,7 @@ Compose 可以通过不同方式设置项目名称。每种方法的优先级（
       ```  
    也可以使用 [`COMPOSE_PATH_SEPARATOR`](#compose_path_separator) 自定义路径分隔符。
 
-另请参阅 [命令行选项概述](/reference/cli/docker/compose/_index.md#command-options-overview-and-help) 和 [使用 `-f` 指定一个或多个 Compose 文件的名称和路径](/reference/cli/docker/compose/_index.md#use--f-to-specify-the-name-and-path-of-one-or-more-compose-files)。
+另请参阅 [使用 `-f` 指定一个或多个 Compose 文件的名称和路径](/reference/cli/docker/compose/#use--f-to-specify-the-name-and-path-of-one-or-more-compose-files)。
 
 #### COMPOSE\_PROFILES
 
@@ -86,7 +98,7 @@ Compose 可以通过不同方式设置项目名称。每种方法的优先级（
 COMPOSE_PROFILES=frontend,debug
 ```
 
-另请参阅 [在 Compose 中使用配置文件](../profiles.md) 和 [`--profile` 命令行选项](/reference/cli/docker/compose/_index.md#use-profiles-to-enable-optional-services)。
+另请参阅 [在 Compose 中使用配置文件](../profiles.md) 和 [`--profile` 命令行选项](/reference/cli/docker/compose/#use-profiles-to-enable-optional-services)。
 
 #### COMPOSE\_PATH\_SEPARATOR
 
@@ -187,7 +199,7 @@ COMPOSE_ENV_FILES=.env.envfile1,.env.envfile2
 
 
 
-启用后，Compose 会显示一个导航菜单，您可以在其中选择在 Docker Desktop 中打开 Compose 堆栈、开启 [`watch` 模式](../file-watch.md) 或使用 [Docker Debug](/reference/cli/docker/debug.md)。
+启用后，Compose 会显示一个导航菜单，您可以在其中选择在 Docker Desktop 中打开 Compose 堆栈、开启 [`watch` 模式](../file-watch.md) 或使用 [Docker Debug](/reference/cli/docker/debug/)。
 
 - 支持的值：
    - `true` 或 `1`，启用
@@ -218,3 +230,4 @@ COMPOSE_ENV_FILES=.env.envfile1,.env.envfile2
 - `COMPOSE_INTERACTIVE_NO_CLI`
 - `COMPOSE_DOCKER_CLI_BUILD`
    使用 `DOCKER_BUILDKIT` 在 BuildKit 和经典构建器之间进行选择。如果 `DOCKER_BUILDKIT=0`，则 `docker compose build` 使用经典构建器来构建镜像。
+

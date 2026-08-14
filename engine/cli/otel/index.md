@@ -125,10 +125,11 @@ volumes:
 
 ## 可用指标
 
-Docker CLI 目前导出一个指标 `command.time`，用于测量命令的执行持续时间（以毫秒为单位）。此指标具有以下属性：
+Docker CLI 导出一个指标 `command.time`，用于测量命令的执行持续时间（以毫秒为单位）。此指标具有以下属性：
 
 - `command.name`：命令的名称
 - `command.status.code`：命令的退出代码
 - `command.stderr.isatty`：如果 stderr 连接到 TTY，则为 true
 - `command.stdin.isatty`：如果 stdin 连接到 TTY，则为 true
 - `command.stdout.isatty`：如果 stdout 连接到 TTY，则为 true
+

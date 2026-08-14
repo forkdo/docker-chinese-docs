@@ -25,6 +25,7 @@
    ├── getting-started-app/
    │ ├── .dockerignore
    │ ├── package.json
+   │ ├── package-lock.json
    │ ├── README.md
    │ ├── spec/
    │ ├── src/
@@ -40,15 +41,22 @@
    ```dockerfile
    # syntax=docker/dockerfile:1
 
-   FROM node:lts-alpine
+   FROM node:24-alpine
    WORKDIR /app
    COPY . .
-   RUN yarn install --production
+   RUN npm install --omit=dev
    CMD ["node", "src/index.js"]
    EXPOSE 3000
    ```
 
-   此 Dockerfile 以 `node:lts-alpine` 基础镜像开始，这是一个轻量级的 Linux 镜像，预装了 Node.js 和 Yarn 包管理器。它将所有源代码复制到镜像中，安装必要的依赖项，并启动应用程序。
+   此 Dockerfile 的作用如下：
+
+   - 使用 `node:24-alpine` 作为基础镜像，这是一个预装了 Node.js 的轻量级 Linux 镜像
+   - 将 `/app` 设置为工作目录
+   - 将源代码复制到镜像中
+   - 安装必要的依赖项
+   - 指定启动应用程序的命令
+   - 说明该应用程序监听端口 3000
 
 2. 使用以下命令构建镜像：
 
@@ -64,9 +72,9 @@
    $ docker build -t getting-started .
    ```
 
-   `docker build` 命令使用 Dockerfile 来构建新镜像。您可能注意到 Docker 下载了很多“层”。这是因为您指示构建器从 `node:lts-alpine` 镜像开始。但是，由于您的机器上没有该镜像，Docker 需要下载它。
+   `docker build` 命令使用 Dockerfile 来构建新镜像。您可能注意到 Docker 下载了很多“层”。这是因为您指示构建器从 `node:24-alpine` 镜像开始。但是，由于您的机器上没有该镜像，Docker 需要下载它。
 
-   Docker 下载镜像后，Dockerfile 中的指令会复制您的应用程序并使用 `yarn` 安装应用程序的依赖项。`CMD` 指令指定了从此镜像启动容器时要运行的默认命令。
+   Docker 下载镜像后，Dockerfile 中的指令会复制您的应用程序并使用 `npm` 安装应用程序的依赖项。
 
    最后，`-t` 标记为您的镜像打上标签。可以将其视为最终镜像的人类可读名称。由于您将镜像命名为 `getting-started`，因此在运行容器时可以引用该镜像。
 
@@ -139,4 +147,5 @@ df784548666d        getting-started     "docker-entrypoint.s…"   2 minutes ago
 接下来，您将对应用程序进行修改，并学习如何使用新镜像更新正在运行的应用程序。在此过程中，您将学习一些其他有用的命令。
 
 [更新应用程序](03_updating_app.md)
+
 

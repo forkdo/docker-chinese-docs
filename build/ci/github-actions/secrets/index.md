@@ -1,22 +1,22 @@
-# Using secrets with GitHub Actions
+# 在 GitHub Actions 中使用密钥
 
 
-A build secret is sensitive information, such as a password or API token, consumed as part of the build process.
-Docker Build supports two forms of secrets:
+构建密钥（build secret）是构建过程中使用的一类敏感信息，例如密码或 API 令牌。
+Docker Build 支持两种形式的密钥：
 
-- [Secret mounts](#secret-mounts) add secrets as files in the build container
-  (under `/run/secrets` by default).
-- [SSH mounts](#ssh-mounts) add SSH agent sockets or keys into the build container.
+- [Secret 挂载](#secret-mounts) 将密钥作为文件添加到构建容器中
+  （默认位于 `/run/secrets` 下）。
+- [SSH 挂载](#ssh-mounts) 将 SSH agent 套接字或密钥注入构建容器。
 
-This page shows how to use secrets with GitHub Actions.
-For an introduction to secrets in general, see [Build secrets](/manuals/build/building/secrets.md).
+本页介绍如何在 GitHub Actions 中使用密钥。
+如需了解密钥的整体概念，请参阅 [Build secrets](/manuals/build/building/secrets.md)。
 
 ## Secret mounts
 
-In the following example uses and exposes the [`GITHUB_TOKEN` secret](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret)
-as provided by GitHub in your workflow.
+下面的示例使用了 GitHub 在工作流中提供的 [`GITHUB_TOKEN` secret](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret)
+并将其暴露给构建。
 
-First, create a `Dockerfile` that uses the secret:
+首先，创建一个使用该密钥的 `Dockerfile`：
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -24,8 +24,8 @@ FROM alpine
 RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN ...
 ```
 
-In this example, the secret name is `github_token`. The following workflow
-exposes this secret using the `secrets` input:
+在本例中，密钥名称为 `github_token`。下面的工作流
+通过 `secrets` 输入将该密钥暴露出来：
 
 ```yaml
 name: ci
@@ -38,13 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           platforms: linux/amd64,linux/arm64
           tags: user/app:latest
@@ -53,17 +53,204 @@ jobs:
 ```
 
 > [!NOTE]
->
-> You can also expose a secret file to the build with the `secret-files` input:
->
-> ```yaml
-> secret-files: |
->   "MY_SECRET=./secret.txt"
-> ```
+> 密钥以文件形式挂载到构建容器中。
+> 默认情况下，它们位于 `/run/secrets/<id>`。
+> 你也可以使用 `env` 选项将密钥加载到环境变量中，
+> 或者使用 `target` 选项自定义挂载路径。
+> 有关 secret 挂载的详细信息，请参阅 [Build secrets](/manuals/build/building/secrets.md)。
 
-If you're using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-and need to handle multi-line value, you will need to place the key-value pair
-between quotes:
+### Secret sources
+
+`docker/build-push-action` 中用于 secret 挂载的输入项定义了密钥
+值的来源。Dockerfile 中的 `RUN --mount=type=secret` 选项则定义了
+构建步骤如何使用该密钥。
+
+| Action 输入                            | 来源                                | 等效的 Buildx 选项                    |
+| -------------------------------------- | ----------------------------------- | ------------------------------------- |
+| `secrets: MY_SECRET=value`             | 工作流中的内联值                    | `--secret id=MY_SECRET,src=<temp-file>` |
+| `secret-envs: MY_SECRET=MY_ENV_VAR`    | runner 上的环境变量                 | `--secret id=MY_SECRET,env=MY_ENV_VAR`  |
+| `secret-files: MY_SECRET=./secret.txt` | runner 上的文件                     | `--secret id=MY_SECRET,src=./secret.txt` |
+
+例如，`RUN --mount=type=secret,id=MY_SECRET` 将密钥作为文件
+挂载到 `/run/secrets/MY_SECRET`。若要在 `RUN` 指令中将同一个密钥
+暴露为环境变量，可在 Dockerfile 中使用 `env` 选项：
+`RUN --mount=type=secret,id=MY_SECRET,env=MY_SECRET`。
+
+### Using environment variables as secret sources
+
+`secret-envs` 输入项会从 GitHub Actions runner 上的环境变量读取密钥。
+当某个先前的步骤设置了环境变量，或者你想将 runner 的环境变量
+映射为构建中不同的密钥 ID 时，可以使用它。
+
+```yaml
+name: ci
+
+on:
+  push:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build
+        uses: docker/build-push-action@v7
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        with:
+          context: .
+          secret-envs: |
+            sentry_token=SENTRY_AUTH_TOKEN
+          tags: user/app:latest
+```
+
+在 Dockerfile 中，挂载该密钥并将其暴露为需要它的命令所用的环境变量：
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+RUN --mount=type=secret,id=sentry_token,env=SENTRY_AUTH_TOKEN \
+    npm run build
+```
+
+### Using secret files
+
+`secret-files` 输入项让你可以将已有文件作为密钥挂载到构建中。
+当你需要使用工作流执行期间生成的凭据文件，
+或需要挂载格式已符合要求（如 `.npmrc` 或 `.pypirc`）的配置文件时，这会很有用。
+
+`secrets`、`secret-envs` 与 `secret-files` 之间的关键区别：
+
+- `secrets`：从工作流中以字符串形式传入密钥值。
+- `secret-envs`：从 runner 上的环境变量读取密钥值。
+- `secret-files`：挂载 runner 文件系统中已有的文件。
+
+#### Example: Using .npmrc for private npm packages
+
+如果构建需要从私有 npm 注册表安装包，
+你可以创建一个 `.npmrc` 文件并将其作为密钥挂载：
+
+```yaml
+name: ci
+
+on:
+  push:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Create .npmrc file
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: Build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          secret-files: |
+            npmrc=./.npmrc
+          tags: user/app:latest
+```
+
+在 Dockerfile 中，将该密钥文件挂载到预期位置：
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN --mount=type=secret,id=npmrc,target=/root/.npmrc \
+    npm ci
+
+COPY . .
+
+RUN npm run build
+```
+
+如果 `RUN` 指令使用非 root 用户，则需要在 secret 挂载上设置 `uid`、`gid` 或 `mode`，
+以便该用户能够读取挂载的文件：
+
+```dockerfile
+RUN --mount=type=secret,id=npmrc,target=/home/node/.npmrc,uid=1000,gid=1000 \
+    npm ci
+```
+
+#### Example: Using dynamically generated credentials
+
+你可以从多个密钥生成凭据文件并挂载它们：
+
+```yaml
+name: ci
+
+on:
+  push:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Create credentials file
+        run: |
+          cat <<EOF > aws-credentials
+          [default]
+          aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          EOF
+
+      - name: Build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          secret-files: |
+            aws=./aws-credentials
+          tags: user/app:latest
+```
+
+在 Dockerfile 中：
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM alpine
+
+RUN apk add --no-cache aws-cli
+
+RUN --mount=type=secret,id=aws,target=/root/.aws/credentials \
+    aws s3 cp s3://my-private-bucket/data.tar.gz /tmp/
+```
+
+### Multi-line secrets
+
+如果你正在使用 [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+并且需要处理多行值，则需要将键值对放在引号之间：
 
 ```yaml
 secrets: |
@@ -91,21 +278,21 @@ secrets: |
 
 > [!NOTE]
 >
-> Double escapes are needed for quote signs.
+> 引号需要双重转义。
 
 ## SSH mounts
 
-SSH mounts let you authenticate with SSH servers.
-For example to perform a `git clone`,
-or to fetch application packages from a private repository.
+SSH 挂载让你可以向 SSH 服务器进行身份验证。
+例如执行 `git clone`，
+或从私有仓库获取应用包。
 
-The following Dockerfile example uses an SSH mount
-to fetch Go modules from a private GitHub repository.
+下面的 Dockerfile 示例使用 SSH 挂载
+从私有 GitHub 仓库获取 Go 模块。
 
 ```dockerfile {collapse=1}
 # syntax=docker/dockerfile:1
 
-ARG GO_VERSION="1.25"
+ARG GO_VERSION="1.26"
 
 FROM golang:${GO_VERSION}-alpine AS base
 ENV CGO_ENABLED=0
@@ -142,15 +329,12 @@ RUN --mount=type=bind,target=. \
     go build ...
 ```
 
-To build this Dockerfile, you must specify an SSH mount that the builder can
-use in the steps with `--mount=type=ssh`.
+要构建这个 Dockerfile，你必须在步骤中指定一个构建器可用于 `--mount=type=ssh` 的 SSH 挂载。
 
-The following GitHub Action workflow uses the `MrSquaare/ssh-setup-action`
-third-party action to bootstrap SSH setup on the GitHub runner. The action
-creates a private key defined by the GitHub Action secret `SSH_GITHUB_PPK` and
-adds it to the SSH agent socket file at `SSH_AUTH_SOCK`. The SSH mount in the
-build step assume `SSH_AUTH_SOCK` by default, so there's no need to specify the
-ID or path for the SSH agent socket explicitly.
+下面的 GitHub Action 工作流使用了第三方 action `MrSquaare/ssh-setup-action`
+在 GitHub runner 上引导 SSH 配置。该 action 会创建一个由 GitHub Action secret `SSH_GITHUB_PPK`
+定义的私钥，并将其添加到 `SSH_AUTH_SOCK` 处的 SSH agent 套接字文件。构建步骤中的 SSH 挂载
+默认假定 `SSH_AUTH_SOCK`，因此无需显式指定 SSH agent 套接字的 ID 或路径。
 
 **`docker/build-push-action`**
 
@@ -174,7 +358,7 @@ jobs:
           private-key-name: github-ppk
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           ssh: default
           push: true
@@ -203,7 +387,7 @@ jobs:
           private-key-name: github-ppk
 
       - name: Build
-        uses: docker/bake-action@v6
+        uses: docker/bake-action@v7
         with:
           set: |
             *.ssh=default

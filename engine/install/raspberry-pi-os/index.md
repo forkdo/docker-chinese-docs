@@ -107,7 +107,10 @@ $ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; 
 
 
 
+
+
 Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE) 获取完整许可证。
+
 
 ### 使用 `apt` 仓库安装 {#install-using-the-repository}
 
@@ -153,15 +156,15 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
    # 列出可用版本：
    $ apt-cache madison docker-ce | awk '{ print $3 }'
 
-   5:29.2.0-1~raspbian.12~bookworm
-   5:29.1.5-1~raspbian.12~bookworm
+   5:29.7.2-1~raspbian.12~bookworm
+   5:29.7.1-1~raspbian.12~bookworm
    ...
    ```
 
    选择所需的版本并安装：
 
    ```console
-   $ VERSION_STRING=5:29.2.0-1~raspbian.12~bookworm
+   $ VERSION_STRING=5:29.7.2-1~raspbian.12~bookworm
    $ sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 
@@ -169,13 +172,13 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -193,11 +196,14 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
+
 
 #### 升级 Docker Engine
 
@@ -235,13 +241,13 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -259,16 +265,21 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
 
+
 #### 升级 Docker Engine
 
 要升级 Docker Engine，请下载较新的软件包文件，并重复
 [安装过程](#install-from-a-package)，指向新的文件。
+
+
 
 
 
@@ -325,6 +336,7 @@ $ sudo sh test-docker.sh
 
 如果您使用便捷脚本安装了 Docker，则应直接使用包管理器升级 Docker。重新运行便捷脚本没有任何优势。如果它尝试重新安装主机上已存在的仓库，重新运行它可能会导致问题。
 
+
 ## 卸载 Docker Engine
 
 1. 卸载 Docker Engine、CLI、containerd 和 Docker Compose 软件包：
@@ -352,3 +364,4 @@ $ sudo sh test-docker.sh
 ## 后续步骤
 
 - 继续执行 [Linux 安装后步骤](linux-postinstall.md)。
+

@@ -279,7 +279,7 @@ $ docker compose up --build
 
 ### 共享您的镜像
 
-1. [注册](https://www.docker.com/pricing?utm_source=docker&utm_medium=webreferral&utm_campaign=docs_driven_upgrade)或登录 [Docker Hub](https://hub.docker.com)。
+1. [注册](https://www.docker.com/pricing?ref=Docs&refAction=DocsGuidesJupyter)或登录 [Docker Hub](https://hub.docker.com)。
 
 2. 重命名您的镜像，以便 Docker 知道要将其推送到哪个存储库。打开终端并运行以下 `docker tag` 命令。将 `YOUR-USER-NAME` 替换为您的 Docker ID。
 
@@ -349,3 +349,4 @@ $ docker run --rm -p 8889:8888 YOUR-USER-NAME/my-jupyter-image start-notebook.py
 - [Compose 文件参考](/reference/compose-file/)
 - [Docker CLI 参考](reference/cli/docker/)
 - [Jupyter Docker Stacks 文档](https://jupyter-docker-stacks.readthedocs.io/en/latest/)
+

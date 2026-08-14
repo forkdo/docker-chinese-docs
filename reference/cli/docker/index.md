@@ -6,12 +6,6 @@
 
 
 
-<!--
-此页面由 Docker 源代码自动生成。如果您想建议对这里的文本进行修改，请在 GitHub 上的源代码仓库中提交 ticket 或 pull request：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -384,7 +378,7 @@ a `docker` command. You can use the following protocols:
 
 | Scheme                                 | Description               | Example                          |
 |----------------------------------------|---------------------------|----------------------------------|
-| `unix://[<path>]`                      | Unix socket (Linux only)  | `unix:///var/run/docker.sock`    |
+| `unix://[<path>]`                      | Unix socket               | `unix:///var/run/docker.sock`    |
 | `tcp://[<IP or host>[:port]]`          | TCP connection            | `tcp://174.17.0.1:2376`          |
 | `ssh://[username@]<IP or host>[:port]` | SSH connection            | `ssh://user@192.168.64.5`        |
 | `npipe://[<name>]`                     | Named pipe (Windows only) | `npipe:////./pipe/docker_engine` |
@@ -438,7 +432,6 @@ $ docker -H ssh://user@192.168.64.5/var/run/docker.sock ps
 
 | Command | Description |
 |---------|-------------|
-| [`docker build (legacy builder)`](/reference/cli/docker/build-legacy/) | Build an image from a Dockerfile |
 | [`docker builder`](/reference/cli/docker/builder/) | Manage builds |
 | [`docker buildx`](/reference/cli/docker/buildx/) | Docker Buildx |
 | [`docker checkpoint`](/reference/cli/docker/checkpoint/) | Manage checkpoints |
@@ -447,17 +440,20 @@ $ docker -H ssh://user@192.168.64.5/var/run/docker.sock ps
 | [`docker container`](/reference/cli/docker/container/) | Manage containers |
 | [`docker context`](/reference/cli/docker/context/) | Manage contexts |
 | [`docker debug`](/reference/cli/docker/debug/) | Get a shell into any container or image. An alternative to debugging with `docker exec`. |
-| [`docker desktop (Beta)`](/reference/cli/docker/desktop/) | Docker Desktop |
+| [`docker desktop`](/reference/cli/docker/desktop/) | Docker Desktop |
+| [`docker dhi`](/reference/cli/docker/dhi/) | CLI for managing Docker Hardened Images |
 | [`docker image`](/reference/cli/docker/image/) | Manage images |
 | [`docker init`](/reference/cli/docker/init/) | Creates Docker-related starter files for your project |
+| [`docker inspect`](/reference/cli/docker/inspect/) | Return low-level information on Docker objects |
+| [`docker login`](/reference/cli/docker/login/) | Authenticate to a registry |
 | [`docker logout`](/reference/cli/docker/logout/) | Log out from a registry |
 | [`docker manifest`](/reference/cli/docker/manifest/) | Manage Docker image manifests and manifest lists |
-| [`docker mcp`](/reference/cli/docker/mcp/) | <no value> |
+| [`docker mcp`](/reference/cli/docker/mcp/) | Manage MCP servers and clients |
 | [`docker model`](/reference/cli/docker/model/) | Docker Model Runner |
 | [`docker network`](/reference/cli/docker/network/) | Manage networks |
 | [`docker node`](/reference/cli/docker/node/) | Manage Swarm nodes |
 | [`docker offload`](/reference/cli/docker/offload/) | Control Docker Offload from the CLI |
-| [`Docker Pass`](/reference/cli/docker/pass/) | Manage your local OS keychain secrets. |
+| [`docker pass`](/reference/cli/docker/pass/) | Manage your local OS keychain secrets. |
 | [`docker plugin`](/reference/cli/docker/plugin/) | Manage plugins |
 | [`docker scout`](/reference/cli/docker/scout/) | Command line tool for Docker Scout |
 | [`docker search`](/reference/cli/docker/search/) | Search Docker Hub for images |
@@ -469,7 +465,5 @@ $ docker -H ssh://user@192.168.64.5/var/run/docker.sock ps
 | [`docker trust`](/reference/cli/docker/trust/) | Manage trust on Docker images |
 | [`docker version`](/reference/cli/docker/version/) | Show the Docker version information |
 | [`docker volume`](/reference/cli/docker/volume/) | Manage volumes |
-| [`Docker 沙箱`](/reference/cli/docker/sandbox/) | Docker Sandbox |
-| [`docker 登录`](/reference/cli/docker/login/) | Authenticate to a registry |
 
 

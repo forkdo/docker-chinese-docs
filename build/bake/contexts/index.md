@@ -1,23 +1,21 @@
-# Using Bake with additional contexts
+# 在 Bake 中使用额外的上下文
 
 
-In addition to the main `context` key that defines the build context, each
-target can also define additional named contexts with a map defined with key
-`contexts`. These values map to the `--build-context` flag in the [build
-command](/reference/cli/docker/buildx/build.md#build-context).
+除了定义构建上下文的主 `context` 键之外，每个目标还可以使用键为 `contexts` 的映射来定义
+额外的命名上下文。这些值映射到 [build 命令](/reference/cli/docker/buildx/build/#build-context) 中的
+`--build-context` 标志。
 
-Inside the Dockerfile these contexts can be used with the `FROM` instruction or
-`--from` flag.
+在 Dockerfile 内部，这些上下文可用于 `FROM` 指令或 `--from` 标志。
 
-Supported context values are:
+支持的上下文值包括：
 
-- Local filesystem directories
-- Container images
-- Git URLs
-- HTTP URLs
-- Name of another target in the Bake file
+- 本地文件系统目录
+- 容器镜像
+- Git URL
+- HTTP URL
+- Bake 文件中另一个目标的名称
 
-## Pinning alpine image
+## 固定 alpine 镜像
 
 ```dockerfile {title=Dockerfile}
 # syntax=docker/dockerfile:1
@@ -33,7 +31,7 @@ target "app" {
 }
 ```
 
-## Using a secondary source directory
+## 使用辅助源目录
 
 ```dockerfile {title=Dockerfile}
 FROM golang
@@ -50,14 +48,14 @@ target "app" {
 }
 ```
 
-## Using a target as a build context
+## 使用目标作为构建上下文
 
-To use a result of one target as a build context of another, specify the target
-name with `target:` prefix.
+要将一个目标的构建结果用作另一个目标的构建上下文，请使用 `target:` 前缀指定目标名称。
 
 ```dockerfile {title=baseapp.Dockerfile}
 FROM scratch
 ```
+
 ```dockerfile {title=Dockerfile}
 # syntax=docker/dockerfile:1
 FROM baseapp
@@ -76,108 +74,6 @@ target "app" {
 }
 ```
 
-In most cases you should just use a single multi-stage Dockerfile with multiple
-targets for similar behavior. This case is only recommended when you have
-multiple Dockerfiles that can't be easily merged into one.
-
-## Deduplicate context transfer
-
-> [!NOTE]
->
-> As of Buildx version 0.17.0 and later, Bake automatically de-duplicates
-> context transfer for targets that share the same context. In addition to
-> Buildx version 0.17.0, the builder must be running BuildKit version 0.16.0 or
-> later, and the Dockerfile syntax must be `docker/dockerfile:1.10` or later.
->
-> If you meet these requirements, you don't need to manually de-duplicate
-> context transfer as described in this section.
->
-> - To check your Buildx version, run `docker buildx version`.
-> - To check your BuildKit version, run `docker buildx inspect --bootstrap` and
->   look for the `BuildKit version` field.
-> - To check your Dockerfile syntax version, check the `syntax`
->   [parser directive](/reference/dockerfile.md#syntax) in your Dockerfile. If
->   it's not present, the default version whatever comes bundled with your
->   current version of BuildKit. To set the version explicitly, add
->   `#syntax=docker/dockerfile:1.10` at the top of your Dockerfile.
-
-When you build targets concurrently, using groups, build contexts are loaded
-independently for each target. If the same context is used by multiple targets
-in a group, that context is transferred once for each time it's used. This can
-result in significant impact on build time, depending on your build
-configuration. For example, say you have a Bake file that defines the following
-group of targets:
-
-```hcl {title=docker-bake.hcl}
-group "default" {
-  targets = ["target1", "target2"]
-}
-
-target "target1" {
-  target = "target1"
-  context = "."
-}
-
-target "target2" {
-  target = "target2"
-  context = "."
-}
-```
-
-In this case, the context `.` is transferred twice when you build the default
-group: once for `target1` and once for `target2`.
-
-If your context is small, and if you are using a local builder, duplicate
-context transfers may not be a big deal. But if your build context is big, or
-you have a large number of targets, or you're transferring the context over a
-network to a remote builder, context transfer becomes a performance bottleneck.
-
-To avoid transferring the same context multiple times, you can define a named
-context that only loads the context files, and have each target that needs
-those files reference that named context. For example, the following Bake file
-defines a named target `ctx`, which is used by both `target1` and `target2`:
-
-```hcl {title=docker-bake.hcl}
-group "default" {
-  targets = ["target1", "target2"]
-}
-
-target "ctx" {
-  context = "."
-  target = "ctx"
-}
-
-target "target1" {
-  target = "target1"
-  contexts = {
-    ctx = "target:ctx"
-  }
-}
-
-target "target2" {
-  target = "target2"
-  contexts = {
-    ctx = "target:ctx"
-  }
-}
-```
-
-The named context `ctx` represents a Dockerfile stage, which copies the files
-from its context (`.`). Other stages in the Dockerfile can now reference the
-`ctx` named context and, for example, mount its files with `--mount=from=ctx`.
-
-```dockerfile {title=Dockerfile}
-FROM scratch AS ctx
-COPY --link . .
-
-FROM golang:alpine AS target1
-WORKDIR /work
-RUN --mount=from=ctx \
-    go build -o /out/client ./cmd/client \
-
-FROM golang:alpine AS target2
-WORKDIR /work
-RUN --mount=from=ctx \
-    go build -o /out/server ./cmd/server
-```
+在大多数情况下，你应该只使用带有多个目标的单个多阶段 Dockerfile 来实现类似的行为。仅当你有
+多个无法轻易合并为一个的 Dockerfile 时，才推荐使用这种情况。
 

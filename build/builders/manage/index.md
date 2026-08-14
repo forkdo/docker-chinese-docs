@@ -1,33 +1,28 @@
-# Manage builders
+# 管理 builders
 
 
-You can create, inspect, and manage builders using `docker buildx` commands,
-or [using Docker Desktop](#manage-builders-with-docker-desktop).
+你可以使用 `docker buildx` 命令，或[使用 Docker Desktop](#manage-builders-with-docker-desktop) 来创建、检查和管builder。
 
-## Create a new builder
+## 创建新的 builder（Create a new builder）
 
-The default builder uses the [`docker` driver](drivers/docker.md).
-You can't manually create new `docker` builders, but you can create builders
-that use other drivers, such as the
-[`docker-container` driver](drivers/docker-container.md),
-which runs the BuildKit daemon in a container.
+默认 builder 使用 [`docker` 驱动](drivers/docker.md)。
+你不能手动创建新的 `docker` builder，但你可以创建使用其他驱动的 builder，例如
+[`docker-container` 驱动](drivers/docker-container.md)，
+它会在容器中运行 BuildKit 守护进程。
 
-Use the
-[`docker buildx create`](/reference/cli/docker/buildx/create.md)
-command to create a builder.
+使用
+[`docker buildx create`](/reference/cli/docker/buildx/create/)
+命令来创建 builder。
 
 ```console
 $ docker buildx create --name=<builder-name>
 ```
 
-Buildx uses the `docker-container` driver by default if you omit the `--driver`
-flag. For more information about available drivers, see
-[Build drivers](drivers/_index.md).
+如果省略 `--driver` 标志，Buildx 默认使用 `docker-container` 驱动。有关可用驱动的更多信息，请参阅 [Build drivers](drivers/_index.md)。
 
-## List available builders
+## 列出可用的 builders（List available builders）
 
-Use `docker buildx ls` to see builder instances available on your system, and
-the drivers they're using.
+使用 `docker buildx ls` 查看系统上可用的 builder 实例，以及它们所使用的驱动。
 
 ```console
 $ docker buildx ls
@@ -38,14 +33,13 @@ my_builder      docker-container
   my_builder0   default              running  v0.11.6  linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
 ```
 
-The asterisk (`*`) next to the builder name indicates the
-[selected builder](_index.md#selected-builder).
+builder 名称旁边的星号（`*`）表示
+[选中的 builder](_index.md#selected-builder)。
 
-## Inspect a builder
+## 检查一个 builder（Inspect a builder）
 
-To inspect a builder with the CLI, use `docker buildx inspect <name>`.
-You can only inspect a builder if the builder is active.
-You can add the `--bootstrap` flag to the command to start the builder.
+要通过 CLI 检查一个 builder，请使用 `docker buildx inspect <name>`。
+你只能检查处于活动状态的 builder。你可以向命令添加 `--bootstrap` 标志来启动该 builder。
 
 ```console
 $ docker buildx inspect --bootstrap my_builder
@@ -65,10 +59,7 @@ Buildkit:  v0.11.6
 Platforms: linux/arm64, linux/amd64, linux/amd64/v2, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/mips64le, linux/mips64, linux/arm/v7, linux/arm/v6
 ```
 
-If you want to see how much disk space a builder is using, use the
-`docker buildx du` command. By default, this command shows the total disk usage
-for all available builders. To see usage for a specific builder, use the
-`--builder` flag.
+如果你想查看某个 builder 使用了多少磁盘空间，请使用 `docker buildx du` 命令。默认情况下，该命令会显示所有可用 builder 的总磁盘用量。要查看特定 builder 的用量，请使用 `--builder` 标志。
 
 ```console
 $ docker buildx du --builder my_builder
@@ -94,31 +85,30 @@ Reclaimable:  2.01GB
 Total:        2.01GB
 ```
 
-## Remove a builder
+## 移除一个 builder（Remove a builder）
 
-Use the
-[`docker buildx remove`](/reference/cli/docker/buildx/create.md)
-command to remove a builder.
+使用
+[`docker buildx remove`](/reference/cli/docker/buildx/create/)
+命令来移除一个 builder。
 
 ```console
 $ docker buildx rm <builder-name>
 ```
 
-If you remove your currently selected builder,
-the default `docker` builder is automatically selected.
-You can't remove the default builder.
+如果你移除了当前选中的 builder，则会自动选中默认的 `docker` builder。
+你不能移除默认 builder。
 
-Local build cache for the builder is also removed.
+该 builder 的本地构建缓存也会被移除。
 
-### Removing remote builders
+### 移除远程 builders（Removing remote builders）
 
-Removing a remote builder doesn't affect the remote build cache.
-It also doesn't stop the remote BuildKit daemon.
-It only removes your connection to the builder.
+移除远程 builder 不会影响远程构建缓存。
+它也不会停止远程的 BuildKit 守护进程。
+它只会移除你与该 builder 的连接。
 
-## Manage builders with Docker Desktop
+## 使用 Docker Desktop 管理 builders（Manage builders with Docker Desktop）
 
-If you have turned on the
-[Docker Desktop Builds view](/manuals/desktop/use-desktop/builds.md),
-you can inspect builders in [Docker Desktop settings](/manuals/desktop/settings-and-maintenance/settings.md#builders). 
+如果你已开启
+[Docker Desktop 构建视图](/manuals/desktop/use-desktop/builds.md)，
+你可以在 [Docker Desktop 设置](/manuals/desktop/settings-and-maintenance/settings.md#builders) 中检查 builder。
 

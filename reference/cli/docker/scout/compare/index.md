@@ -6,12 +6,6 @@
 
 **Aliases:** `docker scout diff`
 
-<!--
-此页面由 Docker 源代码自动生成。如果您希望建议修改此处显示的文本，请在 GitHub 上的源代码仓库中开启一个 issue：
-
-https://github.com/docker/scout-cli
--->
-
 
 
 > [!NOTE]
@@ -65,7 +59,7 @@ or if you want to control from where the image will be resolved, you must prefix
 | Option | Default | Description |
 |--------|---------|-------------|
 | `-x`, `--exit-on` |  |  Comma separated list of conditions to fail the action step if worse or changed, options are: vulnerability, policy, package<br> |
-| `--format` | `text` |  Output format of the generated vulnerability report:<br>- text: default output, plain text with or without colors depending on the terminal<br>- markdown: Markdown output |
+| `--format` | `text` |  Output format of the generated vulnerability report:<br>- text: default output, plain text with or without colors depending on the terminal<br>- markdown: Markdown output<br>- json: JSON output |
 | `--hide-policies` |  |  Hide policy status from the output |
 | `--ignore-base` |  |  Filter out CVEs introduced from base image |
 | `--ignore-suppressed` |  |  Filter CVEs found in Scout exceptions based on the specified exception scope<br> |
@@ -81,6 +75,10 @@ or if you want to control from where the image will be resolved, you must prefix
 | `--org` |  |  Namespace of the Docker organization |
 | `-o`, `--output` |  |  Write the report to a file |
 | `--platform` |  |  Platform of image to analyze |
+| `--policy-bundle` |  |  OCI reference of a policy bundle to evaluate (repeatable) |
+| `--policy-config` |  |  Path or http(s) URL to a JSON file configuring policy enablement and inputs<br> |
+| `--policy-dir` |  |  Path to a directory of local .rego policy files (repeatable) |
+| `--policy-file` |  |  Path or http(s) URL to a .rego policy file (repeatable) |
 | `--ref` |  |  Reference to use if the provided tarball contains multiple references.<br>Can only be used with archive |
 | `--to` |  |  Image, directory, or archive to compare to |
 | `--to-env` |  |  Name of environment to compare to |

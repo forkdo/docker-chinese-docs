@@ -1,6 +1,10 @@
 # 将 Docker Scout 与 SonarQube 集成
 
 
+> [!IMPORTANT]
+>
+> Docker Scout 的 SonarQube 集成已弃用，并将于 2026 年 9 月 1 日停用。我们将提供迁移指引。有关详细信息，请参阅 [Scout 平台版本说明](/manuals/scout/release-notes/platform.md)。
+
 SonarQube 集成功能使 Docker Scout 能够通过策略评估展示 SonarQube 质量门禁检查，具体位于新的 [SonarQube 质量门禁策略](/manuals/scout/policy/_index.md#sonarqube-quality-gates-policy) 下。
 
 ## 工作原理
@@ -41,3 +45,4 @@ SonarQube 集成功能使 Docker Scout 能够通过策略评估展示 SonarQube 
 
 在集成概览页面中，您可以直接进入 **SonarQube 质量门禁策略**。
 此策略最初不会有任何结果。要开始查看此策略的评估结果，请触发项目的新 SonarQube 分析，并将相应镜像推送到仓库。有关更多信息，请参阅 [策略描述](../../policy/_index.md#sonarqube-quality-gates)。
+

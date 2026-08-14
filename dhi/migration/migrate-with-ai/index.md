@@ -1,11 +1,11 @@
-# 使用 Docker 的 AI 助手进行迁移
+# 使用 Gordon 进行迁移
 
 
 
 
-您可以使用 Docker 的 AI 助手自动将您的 Dockerfile 迁移至使用 Docker 强化镜像 (DHI)。
+您可以使用 Gordon 自动将您的 Dockerfile 迁移至使用 Docker 强化镜像 (DHI)。
 
-1. 确保已[启用](/manuals/ai/gordon.md#enable-ask-gordon) Docker 的 AI 助手。
+1. 确保已[启用](/manuals/ai/gordon.md#enable-ask-gordon) Gordon。
 2. 在终端中，导航至包含您的 Dockerfile 的目录。
 3. 与助手开始对话：
    ```bash
@@ -27,3 +27,4 @@
 > [!IMPORTANT]
 >
 > 与任何 AI 工具一样，您必须验证助手的编辑并测试您的镜像。
+

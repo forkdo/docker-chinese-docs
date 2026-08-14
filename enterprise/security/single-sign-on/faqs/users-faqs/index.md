@@ -24,19 +24,19 @@
 - 已创建个人访问令牌，以替换 CLI 访问的密码
 - 已更新 CI/CD 管道，以使用 PAT 而不是密码
 
-有关详细说明，请参阅[配置单点登录](/manuals/enterprise/security/single-sign-on/configure.md)。
+有关详细说明，请参阅[配置单点登录](/manuals/enterprise/security/single-sign-on/connect.md)。
 
 ## Docker SSO 是否与 IdP 完全同步？
 
-Docker SSO 默认提供即时 (JIT) 配置。用户在通过 SSO 进行身份验证时即被配置。如果用户离开组织，管理员必须手动从组织中[删除该用户](/manuals/admin/organization/members.md#remove-a-member-or-invitee)。
+Docker SSO 默认提供即时 (JIT) 配置。用户在通过 SSO 进行身份验证时即被配置。如果用户离开组织，管理员必须手动从组织中[删除该用户](/manuals/admin/organization/manage/members.md#remove-members-from-teams)。
 
-[SCIM](/manuals/enterprise/security/provisioning/scim.md) 提供与用户和组的完全同步。使用 SCIM 时，建议的配置是关闭 JIT，以便所有自动配置都由 SCIM 处理。
+[SCIM](/manuals/enterprise/security/provisioning/scim/_index.md) 提供与用户和组的完全同步。使用 SCIM 时，建议的配置是关闭 JIT，以便所有自动配置都由 SCIM 处理。
 
-此外，您可以使用 [Docker Hub API](/reference/api/hub/latest/) 来完成此过程。
+此外，您可以使用 [Docker Hub API](/reference/api/hub/latest.md) 来完成此过程。
 
 ## 关闭即时配置如何影响用户登录？
 
-当 JIT 关闭时（在管理控制台中使用 SCIM 时可用），用户必须是组织成员或拥有待处理的邀请才能访问 Docker。不符合这些条件的用户会收到“访问被拒绝”错误，需要管理员邀请。
+当 JIT 关闭时（在 Docker Home 中使用 SCIM 时可用），用户必须是组织成员或拥有待处理的邀请才能访问 Docker。不符合这些条件的用户会收到"访问被拒绝"错误，需要管理员邀请。
 
 请参阅[禁用 JIT 配置时的 SSO 身份验证](/manuals/enterprise/security/provisioning/just-in-time.md#sso-authentication-with-jit-provisioning-disabled)。
 
@@ -51,3 +51,4 @@ Docker SSO 默认提供即时 (JIT) 配置。用户在通过 SSO 进行身份验
 ## 用户信息在 Docker Hub 中是否可见？
 
 所有 Docker 帐户都与其命名空间相关联的公共配置文件。如果您不希望用户信息（如全名）可见，请从您的 SSO 和 SCIM 映射中删除这些属性，或使用不同的标识符替换用户的全名。
+

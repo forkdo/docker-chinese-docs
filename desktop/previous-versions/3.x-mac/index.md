@@ -1,5 +1,15 @@
-# Docker Desktop for Mac 3.x 发布说明
+# 
 
+<!-- FILE: manuals/desktop/previous-versions/3.x-mac.md -->
+
+---
+description: Docker Desktop for Mac 3.x 的变更日志 / 发布说明
+keywords: Docker Desktop for Mac 3.x release notes
+title: Docker Desktop for Mac 3.x 发布说明
+toc_min: 1
+toc_max: 2
+sitemap: false
+---
 
 本页包含 Docker Desktop for Mac 3.x 的发布说明。
 
@@ -410,3 +420,4 @@ Docker Desktop 有时在更新到版本 3.2.0 后无法启动。如果您遇到�
 
 - 使用 `github.com/org/repo` 形式从 git URL 使用 BuildKit 构建镜像会失败。要解决此问题，请使用 `git://github.com/org/repo` 形式。
 - 某些 DNS 地址在基于 Alpine Linux 3.13 的容器内无法解析。
+

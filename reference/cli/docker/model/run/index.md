@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议更改此处显示的文本，请在 GitHub 上的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/model-cli
--->
-
 
 
 
@@ -37,7 +29,8 @@ You can also use chat mode in the Docker Desktop Dashboard when you select the m
 | `--color` | `no` |  Use colored output (auto|yes|no) |
 | `--debug` |  |  Enable debug logging |
 | `-d`, `--detach` |  |  Load the model in the background without interaction |
-| `--ignore-runtime-memory-check` |  |  Do not block pull if estimated runtime memory for model exceeds system resources.<br> |
+| `--openaiurl` |  |  OpenAI-compatible API endpoint URL to chat with |
+| `--websearch` |  |  Enable web search tool during chat |
 
 
 

@@ -1,236 +1,108 @@
-# Ask Gordon
+# Gordon
 
 
 
 
-Ask Gordon 是嵌入在 Docker Desktop 和 Docker CLI 中的个人 AI 助手。它旨在简化您的工作流程，帮助您充分利用 Docker 生态系统。
+Gordon 是一个 AI 驱动的助手，可对你的 Docker 工作流采取行动。它会分析你的环境、提出解决方案，并在你许可的情况下执行命令。
 
-## 主要功能
+## Gordon 能做什么
 
-Ask Gordon 提供基于 AI 的 Docker 工具辅助，能够：
+Gordon 会采取行动来帮助你完成 Docker 任务：
 
-- 优化 Dockerfile
-- 运行和排查容器问题
-- 与您的镜像和代码交互
-- 查找漏洞或配置问题
-- 将 Dockerfile 迁移至使用 [Docker Hardened Images](/manuals/dhi/_index.md)
+- 解释 Docker 概念和命令
+- 搜索 Docker 文档和网络资源以寻找解决方案
+- 遵循最佳实践编写和修改 Dockerfile
+- 通过阅读日志并提议修复来调试容器故障
+- 管理容器、镜像、卷和网络
 
-它理解您的本地环境，包括源代码、Dockerfile 和镜像，从而提供个性化且可操作的指导。
+Gordon 在执行每项操作之前都会先提出方案，由你批准。
 
-Ask Gordon 会记住对话，让您更轻松地切换话题。
+## 在哪里使用 Gordon
 
-Ask Gordon 默认未启用，且不适用于生产环境。您可能还会遇到术语 "Docker AI" 作为这项技术的更广泛引用。
+Gordon 在四个入口可用：
+
+- 从 Docker Desktop 侧边栏打开 Gordon 视图，在获得你批准的情况下运行 Docker 命令。请参阅 [在 Docker Desktop 中使用 Gordon](./how-to/docker-desktop.md)。
+- 在终端中运行 `docker ai`，从命令行使用完整的助手。请参阅 [通过 CLI 使用 Gordon](./how-to/cli.md)。
+- 在 [hub.docker.com](https://hub.docker.com) 任意仓库页面选择 Gordon 图标，询问该仓库的镜像、标签和元数据。可移交到 Docker Desktop 以执行操作。
+- 在 [docs.docker.com](https://docs.docker.com) 任意页面选择 Gordon 图标，向 Docker 提问。
+
+Docker Desktop 和 CLI 会计入你 Gordon 套餐的[用量限制](./usage-limits.md)。Docker Hub 和 docs.docker.com 上的 Gordon 是免费的，不需要 Docker 账户或安装 Docker Desktop。它有自己的共享公共用量限制，并且不访问你的 Docker 环境。
+
+## 开始使用
+
+### 先决条件
+
+在开始之前：
+
+- Docker Desktop 4.74 或更高版本
+- 登录你的 Docker 账户
 
 > [!NOTE]
+> Gordon 默认对已登录的 Docker 用户启用。如果你的账户属于拥有 Business 订阅的组织，访问还需两个额外步骤：
 >
-> Ask Gordon 由大语言模型 (LLM) 驱动。与其他所有基于 LLM 的工具一样，其响应有时可能不准确。请始终验证所提供的信息。
+> 1. 联系 Docker 支持为你的组织激活 Gordon。Docker 会在激活完成后确认。
+> 2. 确认后，组织管理员必须通过 [设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md) 开启 Gordon。将 **Enable Gordon** 设置为 **Enabled** 或 **Always enabled**。请确保所有设置管理先决条件都已满足，以使该设置对 Docker Desktop 客户端生效。
 
-### Gordon 访问哪些数据？
+### 快速开始
 
-当您使用 Ask Gordon 时，它访问的数据取决于您的查询：
+**Docker Desktop**
 
-- 本地文件：如果您使用 `docker ai` 命令，Ask Gordon 可以访问执行命令的当前工作目录中的文件和目录。在 Docker Desktop 中，如果您在 **Ask Gordon** 视图中询问特定文件或目录，系统会提示您选择相关上下文。
-- 本地镜像：Gordon 与 Docker Desktop 集成，可以查看本地镜像存储中的所有镜像。这包括您构建或从注册表拉取的镜像。
 
-为了提供准确的响应，Ask Gordon 可能会将相关文件、目录或镜像元数据与您的查询一起发送到 Gordon 后端。此数据传输通过网络进行，但不会被持久存储或与第三方共享。它仅用于处理您的请求并形成响应。有关 Docker AI 隐私条款和条件的详细信息，请查看 [Gordon's Supplemental Terms](https://www.docker.com/legal/docker-ai-supplemental-terms/)。
 
-所有传输的数据均经过加密。
+1. 打开 Docker Desktop。
+2. 在侧边栏中选择 **Gordon**。
+3. 选择你的项目目录。
+4. 输入一个问题："What containers are running?"（正在运行哪些容器？）
 
-### 数据收集和使用方式
+   ![Gordon 在 Docker Desktop 中运行](./images/gordon_gui.avif)
 
-Docker 从您与 Ask Gordon 的交互中收集匿名数据以改进服务。这包括：
+5. 查看 Gordon 提议的操作并批准。
 
-- 您的查询：您向 Gordon 提出的问题。
-- 响应：Gordon 提供的答案。
-- 反馈：点赞和点踩评分。
+**CLI**
 
-为确保隐私和安全：
 
-- 数据经过匿名化处理，无法追溯到您或您的账户。
-- Docker 不使用此数据训练 AI 模型或与第三方共享。
 
-通过使用 Ask Gordon，您帮助提高了 Docker AI 对所有人的可靠性和准确性。
+1. 打开终端并运行：
 
-如果您对数据收集或使用有任何疑虑，可以随时[禁用](#disable-ask-gordon)该功能。
+   ```console
+   $ docker ai
+   ```
 
-## 启用 Ask Gordon
+   这将打开 Gordon 的终端用户界面 (TUI)。
 
-1. 登录您的 Docker 账户。
-1. 转到设置中的 **Beta features** 标签页。
-1. 勾选 **Enable Docker AI** 复选框。
+2. 输入一个问题："what containers are running?"（正在运行哪些容器？），然后按 <kbd>Enter</kbd>。
 
-   Docker AI 服务条款协议将出现。您必须同意条款才能启用该功能。查看条款后，选择 **Accept and enable** 继续。
+   ![Gordon 在终端中运行](./images/gordon_tui.avif)
 
-1. 选择 **Apply**。
+3. 查看 Gordon 提议的操作并输入 `y` 批准。
 
-> [!IMPORTANT]
->
-> 对于 Docker Desktop 4.41 及更早版本，此设置位于 **Features in development** 页面的 **Experimental features** 标签页下。
 
-## 使用 Ask Gordon
 
-您可以通过以下方式访问 Gordon：
+### 权限
 
-- 在 Docker Desktop 的 **Ask Gordon** 视图中。
-- 在 Docker CLI 中使用 `docker ai` 命令。
+默认情况下，Gordon 在执行操作前会请求批准。你可以批准单个操作，或允许当前会话的所有操作。
 
-启用 Docker AI 功能后，您还会在 Docker Desktop 的其他位置看到 **Ask Gordon**。每当您看到带有 **Sparkles** (✨) 图标的按钮时，就可以使用它从 Ask Gordon 获得上下文支持。
+![Gordon 权限请求](./images/gordon_permissions_prompt.avif)
 
-## 示例工作流程
+权限在每个会话都会重置。要配置默认权限或启用自动批准模式，请参阅 [权限](./how-to/permissions.md)。
 
-Ask Gordon 是 Docker 任务和工作流程的通用 AI 助手。以下是一些您可以尝试的操作：
+### 试试这些示例
 
-- [排查崩溃的容器](#troubleshoot-a-crashed-container)
-- [获取运行容器的帮助](#get-help-with-running-a-container)
-- [优化 Dockerfile](#improve-a-dockerfile)
-- [将 Dockerfile 迁移至 DHI](#migrate-a-dockerfile-to-dhi)
-
-更多示例，请直接询问 Gordon。例如：
+检查容器：
 
 ```console
-$ docker ai "What can you do?"
+$ docker ai "show me logs from my nginx container"
 ```
 
-### 排查崩溃的容器
-
-如果您使用无效配置或命令启动容器，可以使用 Ask Gordon 排查错误。例如，尝试在没有数据库密码的情况下启动 Postgres 容器：
+审查 Dockerfile：
 
 ```console
-$ docker run postgres
-Error: Database is uninitialized and superuser password is not specified.
-       You must specify POSTGRES_PASSWORD to a non-empty value for the
-       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
-
-       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
-       connections without a password. This is *not* recommended.
-
-       See PostgreSQL documentation about "trust":
-       https://www.postgresql.org/docs/current/auth-trust.html
+$ docker ai "review my Dockerfile for best practices"
 ```
 
-在 Docker Desktop 的 **Containers** 视图中，选择容器名称旁的 ✨ 图标，或检查容器并打开 **Ask Gordon** 标签页。
+管理镜像：
 
-### 获取运行容器的帮助
-
-如果您想运行特定镜像但不确定如何操作，Gordon 可以帮助您设置：
-
-1. 从 Docker Hub 拉取镜像（例如，`postgres`）。
-1. 在 Docker Desktop 中打开 **Images** 视图并选择镜像。
-1. 选择 **Run** 按钮。
-
-在 **Run a new container** 对话框中，您会看到关于 **Ask Gordon** 的消息。
-
-![Screenshot showing Ask Gordon hint in Docker Desktop.](../../images/gordon-run-ctr.png)
-
-提示中的链接文本是与 Ask Gordon 开始对话的建议提示。
-
-### 优化 Dockerfile
-
-Gordon 可以分析您的 Dockerfile 并提出改进建议。要使用 `docker ai` 命令让 Gordon 评估您的 Dockerfile：
-
-1. 转到您的项目目录：
-
-   ```console
-   $ cd <path-to-your-project>
-   ```
-
-1. 使用 `docker ai` 命令评估您的 Dockerfile：
-
-   ```console
-   $ docker ai rate my Dockerfile
-   ```
-
-Gordon 将分析您的 Dockerfile，并在多个维度上识别改进机会：
-
-- 构建缓存优化
-- 安全性
-- 镜像大小效率
-- 最佳实践合规性
-- 可维护性
-- 可重现性
-- 可移植性
-- 资源效率
-
-### 将 Dockerfile 迁移至 DHI
-
-将 Dockerfile 迁移至使用 [Docker Hardened Images](/manuals/dhi/_index.md) 有助于您构建更安全、更精简且适合生产的容器。DHIs 减少漏洞，强制执行最佳实践，并简化合规性，使其成为安全软件供应链的坚实基础。
-
-要请求 Gordon 帮助迁移：
-
-
-
-1. 确保 Gordon 已[启用](/manuals/ai/gordon.md#enable-ask-gordon)。
-1. 在 Gordon 的工具箱中，确保 Gordon 的 [Developer MCP Toolkit 已启用](/manuals/ai/gordon/mcp/built-in-tools.md#configuration)。
-1. 在终端中，导航到包含您的 Dockerfile 的目录。
-1. 与 Gordon 开始对话：
-   ```bash
-   docker ai
-   ```
-1. 输入：
-   ```console
-   "Migrate my dockerfile to DHI"
-   ```
-1. 按照与 Gordon 的对话进行操作。Gordon 将编辑您的 Dockerfile，因此当它请求访问文件系统等权限时，请输入 `yes` 以允许 Gordon 继续。
-
-   > [!NOTE]
-   > 要了解有关 Gordon 数据保留及其可以访问的数据的更多信息，请参阅 [Gordon](/manuals/ai/gordon.md#what-data-does-gordon-access)。
-
-迁移完成后，您将看到一条成功消息：
-
-```text
-The migration to Docker Hardened Images (DHI) is complete. The updated Dockerfile
-successfully builds the image, and no vulnerabilities were detected in the final image.
-The functionality and optimizations of the original Dockerfile have been preserved.
+```console
+$ docker ai "list my local images and their sizes"
 ```
 
-> [!IMPORTANT]
-> 与任何 AI 工具一样，您必须验证 Gordon 的编辑并测试您的镜像。
-
-## 禁用 Ask Gordon
-
-### 对个人用户
-
-如果您已启用 Ask Gordon 并希望再次禁用它：
-
-1. 在 Docker Desktop 中打开 **Settings** 视图。
-1. 转到 **Beta features**。
-1. 取消勾选 **Enable Docker AI** 复选框。
-1. 选择 **Apply**。
-
-### 对组织
-
-要为整个 Docker 组织禁用 Ask Gordon，请使用 [Settings Management](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md) 并在 `admin-settings.json` 文件中添加以下属性：
-
-```json
-{
-  "enableDockerAI": {
-    "value": false,
-    "locked": true
-  }
-}
-```
-
-或者通过将 `allowBetaFeatures` 设置为 false 来禁用所有 Beta 功能：
-
-```json
-{
-  "allowBetaFeatures": {
-    "value": false,
-    "locked": true
-  }
-}
-```
-
-## 反馈
-
-<!-- vale Docker.We = NO -->
-
-我们重视您对 Ask Gordon 的意见，并鼓励您分享您的体验。您的反馈帮助我们改进和优化 Ask Gordon，造福所有用户。如果您遇到问题、有建议或只是想分享您的喜欢之处，以下是可以联系我们的方式：
-
-- 点赞和点踩按钮
-
-  使用响应中的点赞或点踩按钮对 Ask Gordon 的回复进行评分。
-
-- 反馈调查
-
-  您可以通过 Docker Desktop 中 **Ask Gordon** 视图中的 _Give feedback_ 链接，或通过 CLI 运行 `docker ai feedback` 命令访问 Ask Gordon 调查。

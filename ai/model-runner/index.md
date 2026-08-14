@@ -3,7 +3,7 @@
 
 
 
-Docker Model Runner (DMR) 让您能够轻松地使用 Docker 管理、运行和部署 AI 模型。专为开发人员设计，Docker Model Runner 简化了从 Docker Hub 或任何 OCI 兼容注册表中拉取、运行和提供大型语言模型 (LLM) 及其他 AI 模型的过程。
+Docker Model Runner (DMR) 让您能够轻松地使用 Docker 管理、运行和部署 AI 模型。专为开发人员设计，Docker Model Runner 简化了直接从 Docker Hub、任何 OCI 兼容注册表或 [Hugging Face](https://huggingface.co/) 拉取、运行和提供大型语言模型 (LLM) 及其他 AI 模型的过程。
 
 通过与 Docker Desktop 和 Docker Engine 无缝集成，您可以通过 OpenAI 和 Ollama 兼容 API 提供模型，将 GGUF 文件打包为 OCI 工件，并通过命令行和图形界面与模型进行交互。
 
@@ -11,7 +11,8 @@ Docker Model Runner (DMR) 让您能够轻松地使用 Docker 管理、运行和�
 
 ## 主要功能
 
-- [从 Docker Hub 拉取和推送模型](https://hub.docker.com/u/ai)
+- [从 Docker Hub 或任何 OCI 兼容注册表拉取和推送模型](https://hub.docker.com/u/ai)
+- [从 Hugging Face 拉取模型](https://huggingface.co/)
 - 通过 [OpenAI 和 Ollama 兼容 API](api-reference.md) 提供模型，轻松与现有应用程序集成
 - 支持 [llama.cpp、vLLM 和 Diffusers 推理引擎](inference-engines.md)（vLLM 和 Diffusers 在配备 NVIDIA GPU 的 Linux 系统上可用）
 - 使用 Diffusers 后端通过 Stable Diffusion 模型[根据文本提示生成图像](inference-engines.md#diffusers)
@@ -62,7 +63,7 @@ Windows(arm64)：
 
 ## Docker Model Runner 的工作原理
 
-模型在您首次使用时从 Docker Hub 拉取并存储在本地。它们仅在运行时收到请求时加载到内存中，并在不使用时卸载以优化资源。由于模型可能很大，初始拉取可能需要一些时间。之后，它们会被缓存在本地以便更快访问。您可以使用 [OpenAI 和 Ollama 兼容 API](api-reference.md) 与模型进行交互。
+模型在您首次使用时从 Docker Hub、OCI 兼容注册表或 [Hugging Face](https://huggingface.co/) 拉取并存储在本地。它们仅在运行时收到请求时加载到内存中，并在不使用时卸载以优化资源。由于模型可能很大，初始拉取可能需要一些时间。之后，它们会被缓存在本地以便更快访问。您可以使用 [OpenAI 和 Ollama 兼容 API](api-reference.md) 与模型进行交互。
 
 ### 推理引擎
 
@@ -91,8 +92,21 @@ $ docker model configure --context-size 8192 ai/qwen2.5-coder
 > 正在使用 Testcontainers 或 Docker Compose？
 > [Testcontainers for Java](https://java.testcontainers.org/modules/docker_model_runner/)
 > 和 [Go](https://golang.testcontainers.org/modules/dockermodelrunner/)，以及
-> [Docker Compose](/manuals/ai/compose/models-and-compose.md) 现已支持 Docker
+> [Docker Compose](/manuals/ai/compose/models-and-compose.md) 均支持 Docker
 > Model Runner。
+
+## 安全与隔离
+
+### 执行环境
+
+Docker Model Runner 将推理引擎与你的主机隔离开来：
+
+- 在 Linux 上，Docker Model Runner 及其推理引擎（例如 Diffusers）在容器内运行，容器提供了隔离边界。
+- 在 macOS 和 Windows 上，这些引擎不在容器内运行，因此 Docker Model Runner 会在沙箱环境中运行它们（分别为 seatbelt/sandbox-exec 和 Job Objects）。
+
+### 网络
+
+Model Runner API 不进行身份验证。任何能够访问它的客户端（包括同一 Docker 网络上的其他容器）都可以拉取、加载和运行模型，并发送推理请求。
 
 ## 已知问题
 
@@ -140,4 +154,4 @@ Docker Model Runner 尊重您在 Docker Desktop 中的隐私设置。数据收�
 - [推理引擎](inference-engines.md) - llama.cpp、vLLM 和 Diffusers 详情
 - [IDE 集成](ide-integrations.md) - 连接 Cline、Continue、Cursor 等工具
 - [Open WebUI 集成](openwebui-integration.md) - 设置 Web 聊天界面
----
+

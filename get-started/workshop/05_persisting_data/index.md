@@ -67,7 +67,7 @@
 
 2. 再次使用 `docker rm -f <id>` 停止并移除待办事项应用容器，因为它仍在运行且未使用持久卷。
 
-3. 启动待办事项应用容器，但添加 `--mount` 选项以指定卷挂载。给卷一个名称，并将其挂载到容器中的 `/etc/todos`，这会捕获在该路径下创建的所有文件。
+3. 启动待办事项应用容器，但添加 `--mount` 选项以指定卷挂载。使用名为 `todo-db` 的卷，并将其挂载到容器中的 `/etc/todos`，这会捕获在该路径下创建的所有文件。
 
    ```console
    $ docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
@@ -174,4 +174,5 @@ $ docker volume inspect todo-db
 接下来，你将学习如何使用绑定挂载更高效地开发你的应用。
 
 [使用绑定挂载](06_bind_mounts.md)
+
 

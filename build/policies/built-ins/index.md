@@ -1,24 +1,17 @@
-# Built-in functions
+# 内置函数
 
 
-Buildx provides built-in functions, in addition to the [Rego
-built-ins](#rego-built-in-functions), to extend Rego policies with
-Docker-specific operations like loading local files, verifying Git signatures,
-and pinning image digests.
+除了 [Rego 内置函数](#rego-built-in-functions) 外，Buildx 还提供内置函数，用以通过 Docker 特定的操作（如加载本地文件、验证 Git 签名以及固定镜像摘要）来扩展 Rego 策略。
 
-## Rego built-in functions
+## Rego 内置函数（Rego built-in functions）
 
-The functions [documented on this page](#buildx-built-in-functions) are
-Buildx-specific functions, distinct from [Rego's standard built-in
-functions](https://www.openpolicyagent.org/docs/policy-language#built-in-functions)
+[本页记录的](#buildx-built-in-functions) 函数是 Buildx 特有的函数，不同于 [Rego 标准内置函数](https://www.openpolicyagent.org/docs/policy-language#built-in-functions)。
 
-Buildx also supports standard Rego built-in functions, but only a subset. To
-see the exact list of supported functions, refer to the Buildx [source
-code](https://github.com/docker/buildx/blob/master/policy/builtins.go).
+Buildx 也支持标准的 Rego 内置函数，但仅支持一个子集。要查看受支持函数的确切列表，请参阅 Buildx [源代码](https://github.com/docker/buildx/blob/master/policy/builtins.go)。
 
-## Buildx built-in functions
+## Buildx 内置函数（Buildx built-in functions）
 
-Buildx provides the following custom built-in functions for policy development:
+Buildx 为策略开发提供以下自定义内置函数：
 
 - [`print`](#print)
 - [`load_json`](#load_json)
@@ -27,15 +20,15 @@ Buildx provides the following custom built-in functions for policy development:
 
 ### `print`
 
-Outputs debug information during policy evaluation.
+在策略评估期间输出调试信息。
 
-Parameters:
+参数：
 
-- Any number of values to print
+- 任意数量的待打印值
 
-Returns: The values (pass-through)
+返回：这些值（透传）
 
-Example:
+示例：
 
 ```rego
 allow if {
@@ -44,22 +37,22 @@ allow if {
 }
 ```
 
-Debug output appears when building with `--progress=plain`.
+调试输出会在使用 `--progress=plain` 构建时出现。
 
 ### `load_json`
 
-Loads and parses JSON data from local files in the build context.
+从构建上下文中的本地文件加载并解析 JSON 数据。
 
-Parameters:
+参数：
 
-- `filename` (string) - Path to JSON file relative to policy directory
+- `filename`（字符串）- 相对于策略目录的 JSON 文件路径
 
-Returns: Parsed JSON data as Rego value
+返回：解析后的 JSON 数据，作为 Rego 值
 
-Example:
+示例：
 
 ```rego
-# Load approved versions from external file
+# 从外部文件加载已批准的版本
 approved_versions = load_json("versions.json")
 
 allow if {
@@ -69,7 +62,7 @@ allow if {
 }
 ```
 
-File structure:
+文件结构：
 
 ```text
 project/
@@ -78,7 +71,7 @@ project/
 └── versions.json
 ```
 
-versions.json:
+versions.json：
 
 ```json
 {
@@ -87,46 +80,44 @@ versions.json:
 }
 ```
 
-The JSON file must be in the same directory as the policy or in a
-subdirectory accessible from the policy location.
+JSON 文件必须与策略位于同一目录，或位于可从策略位置访问的子目录中。
 
 ### `verify_git_signature`
 
-Verifies PGP signatures on Git commits or tags.
+验证 Git 提交或标签上的 PGP 签名。
 
-Parameters:
+参数：
 
-- `git_object` (object) - Either `input.git.commit` or `input.git.tag`
-- `keyfile` (string) - Path to PGP public key file (relative to policy
-  directory)
+- `git_object`（对象）- 可以是 `input.git.commit` 或 `input.git.tag`
+- `keyfile`（字符串）- PGP 公钥文件路径（相对于策略目录）
 
-Returns: Boolean - `true` if signature is valid, `false` otherwise
+返回：布尔值 - 如果签名有效则为 `true`，否则为 `false`
 
-Example:
+示例：
 
 ```rego
-# Require signed Git tags
+# 要求已签名的 Git 标签
 allow if {
     input.git.tagName != ""
     verify_git_signature(input.git.tag, "maintainer.asc")
 }
 
-# Require signed commits
+# 要求已签名的提交
 allow if {
     input.git.commit
     verify_git_signature(input.git.commit, "keys/team.asc")
 }
 ```
 
-Directory structure:
+目录结构：
 
 ```text
 project/
 ├── Dockerfile.rego
-└── maintainer.asc          # PGP public key
+└── maintainer.asc          # PGP 公钥
 ```
 
-Or with subdirectory:
+或者使用子目录：
 
 ```text
 project/
@@ -136,7 +127,7 @@ project/
     └── team.asc
 ```
 
-Obtaining public keys:
+获取公钥：
 
 ```console
 $ gpg --export --armor user@example.com > maintainer.asc
@@ -144,21 +135,19 @@ $ gpg --export --armor user@example.com > maintainer.asc
 
 ### `pin_image`
 
-Pins an image to a specific digest, overriding the tag-based reference. Use
-this to force builds to use specific image versions.
+将镜像固定到特定摘要，覆盖基于标签的引用。使用它来强制构建使用特定的镜像版本。
 
-Parameters:
+参数：
 
-- `image_object` (object) - Must be `input.image` (the current image being
-  evaluated)
-- `digest` (string) - Target digest in format `sha256:...`
+- `image_object`（对象）- 必须是 `input.image`（正在评估的当前镜像）
+- `digest`（字符串）- 目标摘要，格式为 `sha256:...`
 
-Returns: Boolean - `true` if pinning succeeds
+返回：布尔值 - 如果固定成功则为 `true`
 
-Example:
+示例：
 
 ```rego
-# Pin alpine 3.19 to specific digest
+# 将 alpine 3.19 固定到特定摘要
 alpine_3_19_digest = "sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412"
 
 allow if {
@@ -168,10 +157,10 @@ allow if {
 }
 ```
 
-Automatic digest replacement:
+自动摘要替换：
 
 ```rego
-# Replace old digests with patched versions
+# 将旧摘要替换为已修补的版本
 replace_map = {
   "3.22.0": "3.22.2",
   "3.22.1": "3.22.2",
@@ -191,11 +180,11 @@ allow if {
 }
 ```
 
-This pattern automatically upgrades old image versions to patched releases.
+这种模式会自动将旧的镜像版本升级到已修补的发布版本。
 
-## Next steps
+## 下一步
 
-- Browse complete examples: [Example policies](./examples.md)
-- Learn policy development workflow: [Using build policies](./usage.md)
-- Reference input fields: [Input reference](./inputs.md)
+- 浏览完整示例：[示例策略](./examples.md)
+- 学习策略开发工作流：[使用构建策略](./usage.md)
+- 参考输入字段：[输入参考](./inputs.md)
 

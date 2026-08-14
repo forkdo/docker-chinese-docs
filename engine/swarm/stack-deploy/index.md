@@ -5,6 +5,8 @@
 
 
 
+
+
 > [!NOTE]
 >
 > `docker stack deploy` 命令使用的是旧版
@@ -15,6 +17,7 @@
 >
 > 有关 Compose 演进的更多信息，请参阅
 > [Compose 历史](/compose/history/)。
+
 
 要完成本教程，您需要：
 

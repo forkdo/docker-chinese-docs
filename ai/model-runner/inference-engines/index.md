@@ -131,7 +131,7 @@ vllm: running vllm version: 0.11.0
 #### Docker Desktop (Windows with WSL2)
 
 1. 确保您具备：
-   - Docker Desktop 4.54 或更高版本
+   - Docker Desktop 4.54 或更高版本（vLLM 支持的最低版本）
    - 更新了驱动的 NVIDIA GPU
    - 已启用 WSL2
 

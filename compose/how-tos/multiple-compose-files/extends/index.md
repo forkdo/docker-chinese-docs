@@ -10,6 +10,11 @@ Docker Compose 的 [`extends` 属性](/reference/compose-file/services.md#extend
 >
 > 当你使用多个 Compose 文件时，必须确保所有文件中的路径都是相对于基础 Compose 文件（即主项目文件夹中的 Compose 文件）的。这是必需的，因为扩展文件不一定是有效的 Compose 文件。扩展文件可以只包含一小部分配置。追踪服务的哪个片段相对于哪个路径是困难且令人困惑的，因此为了保持路径更容易理解，所有路径都必须相对于基础文件定义。
 
+> [!NOTE]
+>
+> 使用 `docker stack deploy` 部署时不支持 `extends`。在使用了 `extends` 的 Compose 文件上运行
+> `docker stack config` 会返回错误：`Configuration contains forbidden properties`。
+
 ## `extends` 属性如何工作
 
 ### 从另一个文件扩展服务
@@ -44,7 +49,7 @@ services:
 ```yaml
 services:
   web:
-    build: alpine
+    build: ./alpine
     command: echo
     extends:
       file: common-services.yml
@@ -64,7 +69,7 @@ services:
 ```yaml 
 services:
   web:
-    build: alpine
+    build: ./alpine
     extends: webapp
   webapp:
     environment:
@@ -163,3 +168,4 @@ services:
 ## 参考信息
 
 - [`extends`](/reference/compose-file/services.md#extends)
+

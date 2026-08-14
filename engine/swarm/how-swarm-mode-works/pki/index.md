@@ -9,7 +9,7 @@ Docker 内置的 Swarm 模式公钥基础设施 (PKI) 系统
 当您通过运行 `docker swarm init` 创建 swarm 时，Docker 将自身指定为
 管理器节点。默认情况下，管理器节点会生成一个新的根证书颁发机构 (CA)
 以及一个密钥对，用于保护与加入 swarm 的其他节点的通信。如果愿意，您可以
-使用 [docker swarm init](/reference/cli/docker/swarm/init.md) 命令的 `--external-ca` 标志
+使用 [docker swarm init](/reference/cli/docker/swarm/init/) 命令的 `--external-ca` 标志
 指定您自己外部生成的根 CA。
 
 管理器节点还会生成两个令牌，用于将其他节点加入 swarm：
@@ -49,7 +49,7 @@ Certificate:
 默认情况下，swarm 中的每个节点每三个月续订一次其证书。
 您可以通过运行 `docker swarm update --cert-expiry <TIME PERIOD>` 命令
 配置此间隔。最小轮换值为 1 小时。有关详细信息，请参阅
-[docker swarm update](/reference/cli/docker/swarm/update.md) CLI
+[docker swarm update](/reference/cli/docker/swarm/update/) CLI
 参考。
 
 ## 轮换 CA 证书
@@ -94,3 +94,4 @@ Certificate:
 
 * 阅读有关[节点](nodes.md)工作原理的内容。
 * 了解 Swarm 模式[服务](services.md)的工作原理。
+

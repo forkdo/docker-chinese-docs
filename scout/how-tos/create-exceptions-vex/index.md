@@ -12,8 +12,11 @@ Vulnerability Exploitability eXchange (VEX) 是一种标准格式，用于记录
 
 - 最新版本的 Docker Desktop 或 Docker Scout CLI 插件
 - [`vexctl`](https://github.com/openvex/vexctl) 命令行工具。
-- [containerd 镜像存储](/manuals/desktop/features/containerd.md) 必须启用
-- 对存储镜像的镜像仓库的写入权限
+
+附加要求取决于您如何附加 VEX 文档：
+
+- 要将文档作为[证明](#attestation)附加，必须启用 [containerd 镜像存储](/manuals/desktop/features/containerd.md)。
+- 要将文档作为证明附加，还需要对存储镜像的镜像仓库具有写入权限。
 
 ## VEX 简介
 
@@ -180,7 +183,7 @@ VEX 文档一旦添加到镜像中便无法移除。对于作为证明附加的�
 
 ### 证明
 
-要将 VEX 文档作为证明附加，您可以使用 `docker scout attestation add` CLI 命令。在使用 VEX 时，使用证明是将例外附加到镜像的推荐选项。
+要将 VEX 文档作为证明附加，您可以使用 `docker scout attestation add` CLI 命令。在使用 VEX 时，使用证明是将例外附加到镜像的推荐选项。此方法需要 [containerd 镜像存储](/manuals/desktop/features/containerd.md) 以及对存储镜像的镜像仓库的写入访问权限。
 
 您可以将证明附加到已经推送到镜像仓库的镜像。您无需再次构建或推送镜像。此外，将例外作为证明附加到镜像，意味着消费者可以直接从镜像仓库检查该镜像的例外。
 
@@ -208,7 +211,7 @@ VEX 文档一旦添加到镜像中便无法移除。对于作为证明附加的�
 
 ### 镜像文件系统
 
-如果您在构建镜像之前就已知例外情况，那么将 VEX 文档直接嵌入镜像文件系统是一个不错的选择。而且这相对简单；只需在您的 Dockerfile 中将 VEX 文档 `COPY` 到镜像中即可。
+如果您在构建镜像之前就已知例外情况，那么将 VEX 文档直接嵌入镜像文件系统是一个不错的选择。而且这相对简单；只需在您的 Dockerfile 中将 VEX 文档 `COPY` 到镜像中即可。与证明不同，此方法在镜像推送之前不需要 containerd 镜像存储或注册表的写入访问权限。
 
 这种方法的缺点是您以后无法更改或更新例外。镜像层是不可变的，因此您放入镜像文件系统中的任何内容都将永久存在。将文档作为[证明](#attestation)附加提供了更好的灵活性。
 
@@ -229,3 +232,4 @@ COPY .vex/* /var/lib/db/
 VEX 文档的文件名必须匹配 `*.vex.json` 通配符模式。文件存储在镜像文件系统的哪个位置并不重要。
 
 请注意，复制的文件必须是最终镜像文件系统的一部分，对于多阶段构建，文档必须保留在最终阶段。
+

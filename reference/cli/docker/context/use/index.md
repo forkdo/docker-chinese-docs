@@ -1,18 +1,10 @@
 # docker context use
 
-**Description:** Set the current docker context
+**Description:** Set the default docker context
 
 **Usage:** `docker context use CONTEXT`
 
 
-
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议更改此处显示的文本，请在 GitHub 的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
 
 
 
@@ -23,13 +15,62 @@ https://github.com/docker/cli
 
 ## Description
 
-Set the default context to use, when `DOCKER_HOST`, `DOCKER_CONTEXT` environment
-variables and `--host`, `--context` global options aren't set.
-To disable usage of contexts, you can use the special `default` context.
+The `docker context use` command sets the default context for the Docker CLI.
+
+The `docker context use` command sets the Docker CLI’s default context by updating
+your CLI config (`~/.docker/config.json`). This change is persistent, affecting
+all shells and sessions that share that config, not just the current terminal.
+
+For one-off commands or per-shell usage, use `--context` or the `DOCKER_CONTEXT`
+environment variable instead.
 
 
 
 
+## Examples
+
+### Set the default (sticky) context
+
+This updates the CLI configuration and applies to new terminal sessions:
+
+```bash
+$ docker context use my-context
+my-context
+
+$ docker context show
+my-context
+```
+
+### Use a context for a single command
+
+Use the global `--context` flag to avoid changing the default:
+
+```bash
+$ docker --context my-context ps
+```
+
+### Use a context for the current shell session
+
+Set `DOCKER_CONTEXT` to override the configured default in the current shell:
+
+```bash
+$ export DOCKER_CONTEXT=my-context
+$ docker context show
+my-context
+```
+
+To stop overriding:
+
+```bash
+$ unset DOCKER_CONTEXT
+```
+
+### Switch back to the default context
+
+```bash
+$ docker context use default
+default
+```
 
 
 

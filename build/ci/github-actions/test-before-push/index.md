@@ -1,13 +1,11 @@
-# Test before push with GitHub Actions
+# 使用 GitHub Actions 在推送前进行测试
 
 
-In some cases, you might want to validate that the image works as expected
-before pushing it. The following workflow implements several steps to achieve
-this:
+在某些情况下，你可能希望在推送镜像之前先验证其是否按预期工作。下面的工作流通过多个步骤来实现这一点：
 
-1. Build and export the image to Docker
-2. Test your image
-3. Multi-platform build and push the image
+1. 构建并将镜像导出到 Docker
+2. 测试你的镜像
+3. 进行多平台构建并推送镜像
 
 ```yaml
 name: ci
@@ -24,19 +22,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build and export to Docker
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           load: true
           tags: ${{ env.TEST_TAG }}
@@ -46,7 +44,7 @@ jobs:
           docker run --rm ${{ env.TEST_TAG }}
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           platforms: linux/amd64,linux/arm64
           push: true
@@ -55,8 +53,6 @@ jobs:
 
 > [!NOTE]
 >
-> The `linux/amd64` image is only built once in this workflow. The image is
-> built once, and the following steps use the internal cache from the first
-> `Build and push` step. The second `Build and push` step only builds
-> `linux/arm64`.
+> 此工作流中 `linux/amd64` 镜像只构建一次。镜像会被构建一次，后续步骤会复用第一个
+> `Build and push` 步骤的内部缓存。第二个 `Build and push` 步骤只构建 `linux/arm64`。
 

@@ -1,5 +1,15 @@
-# Docker Desktop for Mac 2.x 发布说明
+# 
 
+<!-- FILE: manuals/desktop/previous-versions/2.x-mac.md -->
+
+---
+description: Docker Desktop Mac 2.x 的变更日志 / 发布说明
+keywords: Docker Desktop for Mac 2.x 发布说明
+title: Docker Desktop for Mac 2.x 发布说明
+toc_min: 1
+toc_max: 2
+sitemap: false
+---
 
 本页包含 Docker Desktop for Mac 2.x 的发布说明。
 
@@ -350,3 +360,4 @@ Docker Desktop Community 2.1.0.0 包含以下实验性功能。
 * Docker Desktop 会截断超过 512 字节的 UDP DNS 响应。
 * 修复了启动 Kubernetes 时在 localhost 上使用的端口 8080。修复 [docker/for-mac#3522](https://github.com/docker/for-mac/issues/3522)。
 * 改进了错误消息传递：当不适用时，Docker Desktop 不会
+

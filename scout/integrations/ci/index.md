@@ -12,3 +12,4 @@
 - [Jenkins](jenkins.md)
 
 您还可以添加运行时集成作为 CI/CD 流水线的一部分，这使您能够在部署时将一个镜像分配给某个环境（例如 `production` 或 `staging`）。有关更多信息，请参阅 [环境监控](../environment/_index.md)。
+

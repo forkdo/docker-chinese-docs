@@ -1,6 +1,10 @@
 # 使用 Docker 构建和运行智能体 AI 应用程序
 
 
+> [!TIP]
+>
+> 本指南使用熟悉的 Docker Compose 工作流来编排智能体 AI 应用程序。为了更顺畅的开发体验，请查看 [Docker Agent](../manuals/ai/docker-agent/_index.md)，这是一个专为简化运行和管理 AI 智能体而构建的智能体运行时。
+
 ## 简介
 
 智能体应用程序正在改变软件的构建方式。这些应用不仅仅是响应，它们还能决策、规划和行动。它们由模型驱动，由智能体编排，并与 API、工具和服务实时集成。
@@ -11,7 +15,7 @@
 - **智能体 (Agent)**：这是逻辑所在之处。智能体接收目标，将其分解，并找出如何完成它。它们编排一切。它们与 UI、工具、模型和网关进行通信。
 - **MCP 网关 (MCP gateway)**：这是将您的智能体与外部世界（包括 API、工具和服务）连接起来的桥梁。它提供了一种标准方式，让智能体通过模型上下文协议 (MCP) 调用能力。
 
-Docker 通过将模型、工具网关和云基础设施统一到使用 Docker Compose 的开发者友好型工作流中，使这个 AI 驱动的技术栈更简单、更快速、更安全。
+Docker 通过将模型、工具网关统一到使用 Docker Compose 的开发者友好型工作流中，使这个 AI 驱动的技术栈更简单、更快速、更安全。
 
 ![智能体技术栈图示](./images/agentic-ai-diagram.webp)
 
@@ -20,10 +24,9 @@ Docker 通过将模型、工具网关和云基础设施统一到使用 Docker Co
 - [Docker Model Runner](../manuals/ai/model-runner/_index.md) 让您可以通过简单的命令和兼容 OpenAI 的 API 在本地运行 LLM。
 - [Docker MCP Catalog and Toolkit](../manuals/ai/mcp-catalog-and-toolkit/_index.md) 帮助您发现并安全地运行外部工具，如 API 和数据库，使用模型上下文协议 (MCP)。
 - [Docker MCP Gateway](../manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md) 让您编排和管理 MCP 服务器。
-- [Docker Offload](/offload/) 提供了一个强大的、GPU 加速的环境来运行您的 AI 应用程序，使用与您本地相同的基于 Compose 的工作流。
 - [Docker Compose](/manuals/ai/compose/models-and-compose.md) 是将所有内容连接在一起的工具，让您可以用一个文件定义和运行多容器应用程序。
 
-在本指南中，您将首先在 Docker Offload 中运行应用程序，使用您已经熟悉的相同 Compose 工作流。然后，如果您的机器硬件支持，您将使用相同的工作流在本地运行相同的应用程序。最后，您将深入研究 Compose 文件、Dockerfile 和应用程序，了解它们是如何协同工作的。
+在本指南中，您将使用您已经熟悉的相同 Compose 工作流。然后，您将深入研究 Compose 文件、Dockerfile 和应用程序，了解它们是如何协同工作的。
 
 ## 先决条件
 
@@ -31,7 +34,9 @@ Docker 通过将模型、工具网关和云基础设施统一到使用 Docker Co
 
 - [安装 Docker Desktop 4.43 或更高版本](../get-started/get-docker.md)
 - [启用 Docker Model Runner](/manuals/ai/model-runner.md#enable-dmr-in-docker-desktop)
-- [加入 Docker Offload Beta](/offload/quickstart/)
+- 至少满足以下硬件规格：
+  - 显存 (VRAM)：3.5 GB
+  - 存储空间：2.31 GB
 
 ## 步骤 1：克隆示例应用程序
 
@@ -42,48 +47,13 @@ $ git clone https://github.com/docker/compose-for-agents.git
 $ cd compose-for-agents/adk/
 ```
 
-## 步骤 2：使用 Docker Offload 运行应用程序
+## 步骤 2：在本地运行应用程序
 
-您将首先在 Docker Offload 中运行应用程序，它提供了一个用于运行 AI 工作负载的托管环境。如果您想利用云资源，或者您的本地机器不满足在本地运行模型的硬件要求，这是理想的选择。Docker Offload 包含对 GPU 加速实例的支持，非常适合像 AI 模型推理这样的计算密集型工作负载。
-
-要使用 Docker Offload 运行应用程序，请按照以下步骤操作：
-
-1. 登录 Docker Desktop 仪表板。
-2. 在终端中，运行以下命令启动 Docker Offload：
-
-   ```console
-   $ docker offload start
-   ```
-
-   出现提示时，选择您想用于 Docker Offload 的账户，并在提示 **您需要 GPU 支持吗？** 时选择 **是**。
-
-3. 在克隆的仓库的 `adk/` 目录中，在终端中运行以下命令来构建并运行应用程序：
-
-   ```console
-   $ docker compose up
-   ```
-
-   第一次运行此命令时，Docker 会从 Docker Hub 拉取模型，这可能需要一些时间。
-
-   应用程序现在正在使用 Docker Offload 运行。请注意，使用 Docker Offload 时的 Compose 工作流与本地相同。您在 `compose.yaml` 文件中定义您的应用程序，然后使用 `docker compose up` 来构建和运行它。
-
-4. 访问 [http://localhost:8080](http://localhost:8080)。在提示符中输入一个正确或不正确的事实，然后按回车键。一个智能体会搜索 DuckDuckGo 来验证它，另一个智能体会修改输出。
-
-   ![应用程序截图](./images/agentic-ai-app.png)
-
-5. 完成后，在终端中按 `ctrl-c` 停止应用程序。
-6. 运行以下命令停止 Docker Offload：
-
-   ```console
-   $ docker offload stop
-   ```
-
-## 步骤 3：可选。在本地运行应用程序
-
-如果您的机器满足必要的硬件要求，您可以使用 Docker Compose 在本地运行整个应用程序堆栈。这使您可以端到端地测试应用程序，包括模型和 MCP 网关，而无需在云中运行。这个特定的示例使用 [Gemma 3 4B 模型](https://hub.docker.com/r/ai/gemma3)，上下文大小为 `10000`。
+您的机器必须满足必要的硬件要求才能使用 Docker Compose 在本地运行整个应用程序堆栈。这使您可以端到端地测试应用程序，包括模型和 MCP 网关，而无需在云中运行。这个特定的示例使用 [Gemma 3 4B 模型](https://hub.docker.com/r/ai/gemma3)，上下文大小为 `10000`。
 
 硬件要求：
-- VRAM：3.5 GB
+
+- 显存 (VRAM)：3.5 GB
 - 存储空间：2.31 GB
 
 如果您的机器超过这些要求，可以考虑使用更大的上下文大小或更大的模型来运行应用程序，以提高智能体的性能。您可以轻松地在 `compose.yaml` 文件中更新模型和上下文大小。
@@ -99,9 +69,12 @@ $ cd compose-for-agents/adk/
    第一次运行此命令时，Docker 会从 Docker Hub 拉取模型，这可能需要一些时间。
 
 2. 访问 [http://localhost:8080](http://localhost:8080)。在提示符中输入一个正确或不正确的事实，然后按回车键。一个智能体会搜索 DuckDuckGo 来验证它，另一个智能体会修改输出。
+
+   ![应用程序截图](./images/agentic-ai-app.png)
+
 3. 完成后，在终端中按 `ctrl-c` 停止应用程序。
 
-## 步骤 4：审查应用程序环境
+## 步骤 3：审查应用程序环境
 
 您可以在 `adk/` 目录中找到 `compose.yaml` 文件。在文本编辑器中打开它以查看服务是如何定义的。
 
@@ -119,7 +92,7 @@ services:
     depends_on:
       - mcp-gateway
     models:
-      gemma3 :
+      gemma3:
         endpoint_var: MODEL_RUNNER_URL
         model_var: MODEL_RUNNER_MODEL
 
@@ -193,12 +166,12 @@ if test -f /run/secrets/openai-api-key; then
     export OPENAI_API_KEY=$(cat /run/secrets/openai-api-key)
 fi
 
-if test -n "\${OPENAI_API_KEY}"; then
-    echo "Using OpenAI with \${OPENAI_MODEL_NAME}"
+if test -n "${OPENAI_API_KEY}"; then
+    echo "Using OpenAI with ${OPENAI_MODEL_NAME}"
 else
-    echo "Using Docker Model Runner with \${MODEL_RUNNER_MODEL}"
-    export OPENAI_BASE_URL=\${MODEL_RUNNER_URL}
-    export OPENAI_MODEL_NAME=openai/\${MODEL_RUNNER_MODEL}
+    echo "Using Docker Model Runner with ${MODEL_RUNNER_MODEL}"
+    export OPENAI_BASE_URL=${MODEL_RUNNER_URL}
+    export OPENAI_MODEL_NAME=openai/${MODEL_RUNNER_MODEL}
     export OPENAI_API_KEY=cannot_be_empty
 fi
 exec adk web --host 0.0.0.0 --port 8080 --log_level DEBUG
@@ -226,7 +199,7 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 - **托管的 OpenAI**：如果您提供了 `OPENAI_API_KEY`（以及可选的 `OPENAI_MODEL_NAME`）
 - **Model Runner**：通过将 `MODEL_RUNNER_URL` 和 `MODEL_RUNNER_MODEL` 重新映射到 OpenAI 客户端期望的变量中
 
-## 步骤 5：审查应用程序
+## 步骤 4：审查应用程序
 
 `adk` Web 应用程序是一个智能体实现，它通过环境变量和 API 调用连接到 MCP 网关和模型。它使用 [ADK (Agent Development Kit)](https://github.com/google/adk-python) 来定义一个名为 Auditor 的根智能体，该智能体协调两个子智能体 Critic 和 Reviser 来验证和优化模型生成的答案。
 
@@ -251,12 +224,12 @@ MCP 网关通过 `MCPGATEWAY_ENDPOINT` 环境变量进行配置。在本例中�
 
 基于智能体的 AI 应用程序正在成为一种强大的新型软件架构。在本指南中，您探索了一个模块化的、思维链系统，其中 Auditor 智能体协调 Critic 和 Reviser 的工作，以事实核查和优化模型生成的答案。这种架构展示了如何以结构化、模块化的方式将本地模型推理与外部工具集成相结合。
 
-您还了解了 Docker 如何通过提供一套支持本地和基于云的智能体 AI 开发的工具来简化这一过程：
+您还了解了 Docker 如何通过提供一套支持智能体 AI 开发的工具来简化这一过程：
 
 - [Docker Model Runner](../manuals/ai/model-runner/_index.md)：通过兼容 OpenAI 的 API 在本地运行和服务开源模型。
 - [Docker MCP Catalog and Toolkit](../manuals/ai/mcp-catalog-and-toolkit/_index.md)：启动和管理遵循模型上下文协议 (MCP) 标准的工具集成。
 - [Docker MCP Gateway](../manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md)：编排和管理 MCP 服务器，以将智能体连接到外部工具和服务。
-- [Docker Compose](/manuals/ai/compose/models-and-compose.md)：使用单个文件定义和运行多容器智能体 AI 应用程序，在本地和云中使用相同的工作流。
-- [Docker Offload](/offload/)：在安全、托管的云环境中运行 GPU 密集型 AI 工作负载，使用与您本地相同的 Docker Compose 工作流。
+- [Docker Compose](/manuals/ai/compose/models-and-compose.md)：使用单个文件定义和运行多容器智能体 AI 应用程序，使用相同的工作流。
 
-借助这些工具，您可以在本地或云中高效地开发和测试智能体 AI 应用程序，并在整个过程中使用相同的一致工作流。
+借助这些工具，您可以在整个过程中使用相同的一致工作流高效地开发和测试智能体 AI 应用程序。
+

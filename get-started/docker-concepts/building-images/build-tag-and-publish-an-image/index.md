@@ -99,7 +99,6 @@ docker push my-username/my-image
 >
 > 在将镜像推送到仓库之前，您需要进行身份验证。
 > 为此，只需使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令。
-{ .information }
 
 ## 动手尝试
 
@@ -177,7 +176,7 @@ docker push my-username/my-image
     ```plaintext
     IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
     f279389d5f01   8 seconds ago   CMD ["node" "./src/index.js"]                   0B        buildkit.dockerfile.v0
-    <missing>      8 seconds ago   EXPOSE map[3000/tcp:{}]                         0B        buildkit.dockerfile.v0 
+    <missing>      8 seconds ago   EXPOSE map[3000/tcp:{}]                         0B        buildkit.dockerfile.v0
     <missing>      8 seconds ago   WORKDIR /app                                    8.19kB    buildkit.dockerfile.v0
     <missing>      4 days ago      /bin/sh -c #(nop)  CMD ["node"]                 0B
     <missing>      4 days ago      /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B
@@ -211,9 +210,9 @@ docker push my-username/my-image
 要了解有关构建、标记和发布镜像的更多信息，请访问以下资源：
 
 * [什么是构建上下文？](/build/concepts/context/#what-is-a-build-context)
-* [docker build 参考](/engine/reference/commandline/image_build/)
-* [docker image tag 参考](/engine/reference/commandline/image_tag/)
-* [docker push 参考](/engine/reference/commandline/image_push/)
+* [docker build 参考](/reference/cli/docker/buildx/build/)
+* [docker image tag 参考](/reference/cli/docker/image/tag/)
+* [docker push 参考](/reference/cli/docker/image/push/)
 * [什么是注册中心？](/get-started/docker-concepts/the-basics/what-is-a-registry/)
 
 ## 下一步
@@ -221,4 +220,5 @@ docker push my-username/my-image
 现在您已经了解了如何构建和发布镜像，是时候学习如何使用 Docker 构建缓存来加速构建过程了。
 
 [使用构建缓存](using-the-build-cache)
+
 

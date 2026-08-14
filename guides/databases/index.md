@@ -184,7 +184,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
    ![指定了选项的可选设置屏幕。](images/databases-2.webp)
 
 6. 选择 `Run`。
-7. 在 **Containers** 视图中，验证 **Port(s)** 列下是否映射了端口。您应该看到 **my-mysql** 容器的 **3307:3306**。
+7. 在 **Containers** 视图中，验证 **Port(s)** 列下是否映射了端口。您应该看到 `my-mysql` 容器的 `3307:3306`。
 
 
 
@@ -542,3 +542,4 @@ Docker Compose 是一个用于定义和运行多容器 Docker 应用程序的工
 - [Compose 文件参考](/reference/compose-file/)
 - [CLI 参考](/reference/cli/docker/)
 - [数据库示例](../../reference/samples/_index.md#databases)
+

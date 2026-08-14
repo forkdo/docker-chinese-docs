@@ -124,8 +124,6 @@ service:
 创建 `docker-compose.yaml` 文件：
 
 ```yaml
-version: '3.9'
-
 services:
   app:
     build: ./app

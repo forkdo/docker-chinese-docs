@@ -11,7 +11,7 @@ Docker 让您可以将应用程序与基础设施分离开来，从而可以快�
 
 > **Docker Desktop 使用条款**
 >
-> 大型企业（员工超过 250 人或年收入超过 1000 万美元）对 Docker Desktop 的商业使用需要 [付费订阅](https://www.docker.com/pricing/)。
+> 大型企业（员工超过 250 人或年收入超过 1000 万美元）对 Docker Desktop 的商业使用需要 [付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsGetDocker)。
 
 <div class="not-prose">
 
@@ -23,4 +23,5 @@ Docker 让您可以将应用程序与基础设施分离开来，从而可以快�
 
 > [!NOTE]
 >
-> 如果您正在寻找有关如何安装 Docker Engine 的信息，请参阅 [Docker Engine 安装概述](/engine/install/)。
+> 如果您正在寻找有关如何安装 Docker Engine 的信息，请参阅 [Docker Engine 安装概述](/engine/install/)
+

@@ -1,6 +1,6 @@
 # docker pass get
 
-**Description:** Get a secret
+**Description:** Get a secret from a keystore.
 
 **Usage:** `docker pass get NAME`
 
@@ -11,15 +11,11 @@
 
 
 
-> [!NOTE]
-> **Experimental**
->
-> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
 
 
+## Description
 
-
-
+Retrieves a named secret from the local OS keychain. The secret value is masked in output.
 
 
 

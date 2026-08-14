@@ -214,10 +214,10 @@ gui
   .add(state, "backend", ["wasm", "webgl", "cpu"])
   .onChange(async (backend) => {
     await tf.setBackend(backend);
-    addFlagLables();
+    addFlagLabels();
   });
 
-async function addFlagLables() {
+async function addFlagLabels() {
   if (!document.querySelector("#simd_supported")) {
     const simdSupportLabel = document.createElement("div");
     simdSupportLabel.id = "simd_supported";
@@ -306,7 +306,7 @@ const renderPrediction = async () => {
 
 const setupPage = async () => {
   await tf.setBackend(state.backend);
-  addFlagLables();
+  addFlagLabels();
   await setupCamera();
   video.play();
 
@@ -403,7 +403,7 @@ $ docker compose watch
 
 在 Docker Hub 上发布您的 Docker 镜像可简化其他人的部署流程，使其能够无缝集成到各种项目中。它还能促进您的容器化解决方案的采用，扩大其在开发人员生态系统中的影响。要共享您的镜像：
 
-1. [注册](https://www.docker.com/pricing?utm_source=docker&utm_medium=webreferral&utm_campaign=docs_driven_upgrade) 或登录 [Docker Hub](https://hub.docker.com)。
+1. [注册](https://www.docker.com/pricing?ref=Docs&refAction=DocsGuidesTensorflowjs) 或登录 [Docker Hub](https://hub.docker.com)。
 
 2. 重建您的镜像以包含对应用程序所做的更改。这次，在镜像名称前加上您的 Docker ID。Docker 使用该名称来确定将其推送到哪个仓库。打开终端并在 `TensorJS-Face-Detection` 目录中运行以下命令。将 `YOUR-USER-NAME` 替换为您的 Docker ID。
 
@@ -440,3 +440,4 @@ $ docker run -p 80:80 YOUR-USER-NAME/face-detection-tensorjs
 - [Compose 文件参考](/reference/compose-file/_index.md)
 - [Docker CLI 参考](/reference/cli/docker/)
 - [Docker 博客：使用 TensorFlow.js 加速机器学习](https://www.docker.com/blog/accelerating-machine-learning-with-tensorflow-js-using-pretrained-models-and-docker/)
+

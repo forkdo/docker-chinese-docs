@@ -11,7 +11,18 @@
 
 
 
-组织的所有成员均可访问分析数据。成员可以通过 [Docker Hub](https://hub.docker.com/) Web 界面或使用 [DVP Data API](/reference/api/dvp/latest/) 访问分析数据。以下内容介绍 Web 界面的使用方法。
+组织的所有成员均可访问分析数据。成员可以通过 [Docker Hub](https://hub.docker.com/) Web 界面访问分析数据。以下内容介绍 Web 界面的使用方法。
+
+## 配置 DVP 分析设置
+
+组织所有者和编辑者可以通过 Docker Home 配置 DVP 分析设置，以控制追踪的公司数量以及为您的已验证发布者命名空间分配的基准报告数量。
+
+1. 登录 [Docker Home](https://app.docker.com) 并选择您的组织。
+2. 选择 **DVP Settings**。
+3. 配置以下设置：
+   - **Tracked companies（追踪的公司）**：设置用于报告目的要追踪的公司数量。此设置决定了在您的[追踪公司报告](#追踪公司分析报告)中显示多少个公司域名。您只能将此数字设置为不超过 DVP 订阅中包含的最大值。
+   - **Benchmark report allocations（基准报告分配）**：如果您的组织已启用基准报告，请输入要在列出的每个命名空间的基准报告中包含的公司数量。
+4. 选择 **Save** 以应用您的更改。
 
 ## 可用报告
 
@@ -311,7 +322,7 @@ HTTP API 端点位于：
 
 [1]: #image-pulls-action-classification-rules
 [2]: /registry/spec/api/
-[3]: /admin/organization/orgs/
+[3]: /admin/organization/setup/orgs/
 [4]: /docker-hub/repos/
 
 ### 镜像拉取摘要数据
@@ -407,3 +418,4 @@ HTTP API 端点位于：
 镜像拉取摘要数据集包含唯一 IP 地址计数。该数据点仅包含请求镜像的不同唯一 IP 地址的数量。单个 IP 地址永远不会被共享。
 
 镜像拉取原始数据集包含用户 IP 域名作为数据点。这是与用于拉取镜像的 IP 地址关联的域名。如果 IP 类型为 `business`，则该域名代表与该 IP 地址关联的公司或组织（例如 `docker.com`）。对于任何非 `business` 的其他 IP 类型，该域名代表用于发出请求的互联网服务提供商或托管提供商。平均而言，只有约 30% 的拉取操作被归类为 `business` IP 类型（这因发布者和镜像而异）。
+

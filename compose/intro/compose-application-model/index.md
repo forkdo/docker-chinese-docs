@@ -75,7 +75,7 @@ $ docker compose logs
 $ docker compose ps
 ```
 
-有关所有 Compose CLI 命令的完整列表，请参见 [参考文档](/reference/cli/docker/compose/_index.md)。
+有关所有 Compose CLI 命令的完整列表，请参见 [参考文档](/reference/cli/docker/compose/)。
 
 ## 示例说明
 
@@ -157,3 +157,4 @@ example-backend-1   example/database     "docker-entrypoint.s…"   backend     
 - [尝试快速入门指南](/manuals/compose/gettingstarted.md)
 - [探索一些示例应用](https://github.com/docker/awesome-compose)
 - [熟悉 Compose 规范](/reference/compose-file/_index.md)
+

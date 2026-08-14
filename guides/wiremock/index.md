@@ -29,50 +29,50 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
 
 1. 在本地克隆 [GitHub 仓库](https://github.com/dockersamples/wiremock-node-docker)。
 
-    ```console
-    $ git clone https://github.com/dockersamples/wiremock-node-docker
-    ```
+   ```console
+   $ git clone https://github.com/dockersamples/wiremock-node-docker
+   ```
 
 2. 进入 `wiremock-endpoint` 目录
 
-    ```console
-    $ cd wiremock-node-docker/
-    ```
+   ```console
+   $ cd wiremock-node-docker/
+   ```
 
-    WireMock 作为你的后端将与之通信以检索数据的模拟 API。模拟 API 响应已经为你在 mappings 目录中创建。
+   WireMock 作为你的后端将与之通信以检索数据的模拟 API。模拟 API 响应已经为你在 mappings 目录中创建。
 
 3. 在克隆项目目录的根目录下运行以下命令启动 Compose 堆栈
 
-    ```console
-    $ docker compose up -d
-    ```
+   ```console
+   $ docker compose up -d
+   ```
 
-    片刻之后，应用程序将启动并运行。
+   片刻之后，应用程序将启动并运行。
 
-    ![显示 WireMock 容器在 Docker Desktop 上运行的示意图 ](./images/wiremock-using-docker.webp)
+   ![显示 WireMock 容器在 Docker Desktop 上运行的示意图](./images/wiremock-using-docker.webp)
 
-    你可以通过选择 `wiremock-node-docker` 容器来查看日志：
+   你可以通过选择 `wiremock-node-docker` 容器来查看日志：
 
-    ![显示 WireMock 容器在 Docker Desktop 上运行的日志的示意图 ](./images/wiremock-logs-docker-desktop.webp)
+   ![显示 WireMock 容器在 Docker Desktop 上运行的日志的示意图](./images/wiremock-logs-docker-desktop.webp)
 
 4. 测试模拟 API。
 
-    ```console
-    $ curl http://localhost:8080/api/v1/getWeather\?city\=Bengaluru
-    ```
+   ```console
+   $ curl http://localhost:8080/api/v1/getWeather\?city\=Bengaluru
+   ```
 
-    它将返回以下带有模拟数据的预定义响应：
+   它将返回以下带有模拟数据的预定义响应：
 
-    ```plaintext
-    {"city":"Bengaluru","temperature":27.1,"conditions":"Mostly cloudy","forecasts":[{"date":"2024-09-02T07:00:00+05:30","temperature":83,"conditions":"Partly sunny w/ t-storms"},{"date":"2024-09-03T07:00:00+05:30","temperature":83,"conditions":"Thunderstorms"},{"date":"2024-09-04T07:00:00+05:30","temperature":83,"conditions":"Intermittent clouds"},{"date":"2024-09-05T07:00:00+05:30","temperature":82,"conditions":"Dreary"},{"date":"2024-09-06T07:00:00+05:30","temperature":82,"conditions":"Dreary"}]}
-    ```
+   ```plaintext
+   {"city":"Bengaluru","temperature":27.1,"conditions":"Mostly cloudy","forecasts":[{"date":"2024-09-02T07:00:00+05:30","temperature":83,"conditions":"Partly sunny w/ t-storms"},{"date":"2024-09-03T07:00:00+05:30","temperature":83,"conditions":"Thunderstorms"},{"date":"2024-09-04T07:00:00+05:30","temperature":83,"conditions":"Intermittent clouds"},{"date":"2024-09-05T07:00:00+05:30","temperature":82,"conditions":"Dreary"},{"date":"2024-09-06T07:00:00+05:30","temperature":82,"conditions":"Dreary"}]}
+   ```
 
-    使用 WireMock，你可以通过映射文件定义预定义响应。
-    对于这个请求，模拟数据定义在
-    `wiremock-endpoint/mappings/getWeather/getWeatherBengaluru.json` 的 JSON 文件中。
+   使用 WireMock，你可以通过映射文件定义预定义响应。
+   对于这个请求，模拟数据定义在
+   `wiremock-endpoint/mappings/getWeather/getWeatherBengaluru.json` 的 JSON 文件中。
 
-    有关预定义响应的更多信息，请参阅
-    [WireMock 文档](https://wiremock.org/docs/stubbing/)。
+   有关预定义响应的更多信息，请参阅
+   [WireMock 文档](https://wiremock.org/docs/stubbing/)。
 
 ## 在开发中使用 WireMock
 
@@ -83,7 +83,7 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
   - 外部 AccuWeather API：从中获取实时天气数据的真实 API。
   - WireMock：在测试期间模拟 API 响应的模拟服务器。它以 Docker 容器形式运行。
 
-  ![显示开发中 WireMock 架构的示意图 ](./images/wiremock-arch.webp)
+  ![显示开发中 WireMock 架构的示意图](./images/wiremock-arch.webp)
 
   - 在开发中，Node.js 后端向 WireMock 发送请求，而不是实际的 AccuWeather API。
   - 在生产中，它直接连接到实时 AccuWeather API 以获取真实数据。
@@ -120,56 +120,56 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
    - 根据 `API_ENDPOINT_BASE` 的值，应用程序将请求路由到 WireMock 服务器（`http://localhost:8080`）或 AccuWeather API。在此设置中，它使用 WireMock 服务器。
    - 代码确保仅在应用程序未使用 WireMock 时才需要 `ACCUWEATHER_API_KEY`，从而提高效率并避免错误。
 
-    ```javascript
-    require("dotenv").config();
+   ```javascript
+   require("dotenv").config();
 
-    const express = require("express");
-    const axios = require("axios");
+   const express = require("express");
+   const axios = require("axios");
 
-    const router = express.Router();
-    const API_ENDPOINT_BASE = process.env.API_ENDPOINT_BASE;
-    const API_KEY = process.env.ACCUWEATHER_API_KEY;
+   const router = express.Router();
+   const API_ENDPOINT_BASE = process.env.API_ENDPOINT_BASE;
+   const API_KEY = process.env.ACCUWEATHER_API_KEY;
 
-    console.log('API_ENDPOINT_BASE:', API_ENDPOINT_BASE);  // 在定义后记录
-    console.log('ACCUWEATHER_API_KEY is set:', !!API_KEY); // 记录布尔值而不是实际密钥
+   console.log('API_ENDPOINT_BASE:', API_ENDPOINT_BASE);  // 在定义后记录
+   console.log('ACCUWEATHER_API_KEY is set:', !!API_KEY); // 记录布尔值而不是实际密钥
 
-    if (!API_ENDPOINT_BASE) {
-      throw new Error("API_ENDPOINT_BASE is not defined in environment variables");
-    }
+   if (!API_ENDPOINT_BASE) {
+     throw new Error("API_ENDPOINT_BASE is not defined in environment variables");
+   }
 
-    // 仅在不使用 WireMock 时检查 API 密钥
-    if (API_ENDPOINT_BASE !== 'http://localhost:8080' && !API_KEY) {
-      throw new Error("ACCUWEATHER_API_KEY is not defined in environment variables");
-    }
-    // 获取城市位置键的函数
-    async function fetchLocationKey(townName) {
-      const { data: locationData } = await
-    axios.get(`${API_ENDPOINT_BASE}/locations/v1/cities/search`, {
-        params: { q: townName, details: false, apikey: API_KEY },
-      });
-      return locationData[0]?.Key;
-    }
-    ```  
+   // 仅在不使用 WireMock 时检查 API 密钥
+   if (API_ENDPOINT_BASE !== 'http://localhost:8080' && !API_KEY) {
+     throw new Error("ACCUWEATHER_API_KEY is not defined in environment variables");
+   }
+   // 获取城市位置键的函数
+   async function fetchLocationKey(townName) {
+     const { data: locationData } = await
+       axios.get(`${API_ENDPOINT_BASE}/locations/v1/cities/search`, {
+       params: { q: townName, details: false, apikey: API_KEY },
+     });
+     return locationData[0]?.Key;
+   }
+   ```
 
 4. 启动 Node 服务器
 
    在启动 Node 服务器之前，请确保已通过运行 `npm install` 安装了 `package.json` 文件中列出的所有节点包。
 
    ```console
-   npm install 
+   npm install
    npm run start
    ```
 
    你应该看到以下输出：
 
-    ```plaintext
-    > express-api-starter@1.2.0 start
-    > node src/index.js
+   ```plaintext
+   > express-api-starter@1.2.0 start
+   > node src/index.js
 
-    API_ENDPOINT_BASE: http://localhost:8080
-    ..
-    Listening: http://localhost:5001
-    ```
+   API_ENDPOINT_BASE: http://localhost:8080
+   ..
+   Listening: http://localhost:5001
+   ```
 
    输出表明你的 Node 应用程序已成功启动。
    保持此终端窗口打开。
@@ -230,7 +230,7 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
    ```plaintext
    ACCUWEATHER_API_KEY=XXXXXX
    API_ENDPOINT_BASE=http://dataservice.accuweather.com
-   ``` 
+   ```
 
    确保用正确的值填充 `ACCUWEATHER_API_KEY`。
 
@@ -259,9 +259,9 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
    > node src/index.js
 
    API_ENDPOINT_BASE: http://dataservice.accuweather.com
-   ACCUWEATHER_API_KEY is set: true 
+   ACCUWEATHER_API_KEY is set: true
    Listening: http://localhost:5001
-   ``` 
+   ```
 
    保持此终端窗口打开。
 
@@ -271,7 +271,7 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
 
    ```console
    $ curl "http://localhost:5000/api/v1/getWeather?city=Bengaluru"
-   ``` 
+   ```
 
    运行此命令时，你实际上是在告诉本地服务器为你提供名为 `Bengaluru` 的城市的天气数据。请求特别针对 `/api/v1/getWeather` 端点，并且你提供了查询参数 `city=Bengaluru`。执行命令后，服务器处理此请求，获取数据并作为响应返回，`curl` 将在你的终端中显示。
 
@@ -280,3 +280,4 @@ WireMock 是一个开源工具，帮助开发者创建一个模拟服务器，�
 ## 总结
 
 本指南引导你使用 Docker 设置 WireMock。你学习了如何创建存根来模拟 API 端点，从而在不依赖外部服务的情况下开发和测试你的应用程序。通过使用 WireMock，你可以创建可靠且一致的测试环境，重现边缘情况，并加快开发工作流程。
+

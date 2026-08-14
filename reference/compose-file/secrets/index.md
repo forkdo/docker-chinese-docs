@@ -8,7 +8,8 @@ Secrets 是 [Configs](configs.md) 的一种变体，专注于敏感数据，并�
 顶级的 `secrets` 声明用于定义或引用授予给 Compose 应用中服务的敏感数据。secret 的来源是 `file` 或 `environment`。
 
 - `file`: secret 通过指定路径的文件内容创建。
-- `environment`: secret 通过宿主机上的环境变量的值创建。
+- `environment`: secret 通过宿主机上的环境变量的值创建。此方式仅 Docker Compose 支持，使用 [`docker stack deploy`](/manuals/engine/swarm/stack-deploy.md) 部署时不支持。
+
 
 ## 示例 1
 
@@ -30,6 +31,11 @@ secrets:
     environment: "OAUTH_TOKEN"
 ```
 
+> [!NOTE]
+> 使用 `docker stack deploy` 部署时不支持 `environment` 类型的 secrets。
+> 请改用 `file` 或 `external` 作为 secret 来源。
+
 ## 其他资源
 
 更多信息，请参阅 [How to use secrets in Compose](/manuals/compose/how-tos/use-secrets.md)。
+

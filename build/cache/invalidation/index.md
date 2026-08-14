@@ -1,97 +1,64 @@
-# Build cache invalidation
+# 构建缓存失效
 
 
-When building an image, Docker steps through the instructions in your
-Dockerfile, executing each in the order specified. For each instruction, the
-[builder](/manuals/build/builders/_index.md) checks whether it can reuse the
-instruction from the build cache.
+在构建镜像时，Docker 会按指定顺序逐步执行 Dockerfile 中的指令。对于每条指令，[builder](/manuals/build/builders/_index.md) 都会检查是否能够复用构建缓存中的该指令。
 
-## General rules
+## 通用规则（General rules）
 
-The basic rules of build cache invalidation are as follows:
+构建缓存失效的基本规则如下：
 
-- The builder begins by checking if the base image is already cached. Each
-  subsequent instruction is compared against the cached layers. If no cached
-  layer matches the instruction exactly, the cache is invalidated.
+- builder 首先会检查基础镜像是否已被缓存。每条后续指令都会与缓存的层进行比较。如果没有任何缓存层与指令精确匹配，则缓存失效。
 
-- In most cases, comparing the Dockerfile instruction with the corresponding
-  cached layer is sufficient. However, some instructions require additional
-  checks and explanations.
+- 在大多数情况下，将 Dockerfile 指令与对应的缓存层进行比较就足够了。但是，有些指令需要额外的检查和解释。
 
-- For the `ADD` and `COPY` instructions, and for `RUN` instructions with bind
-  mounts (`RUN --mount=type=bind`), the builder calculates a cache checksum
-  from file metadata to determine whether cache is valid. During cache lookup,
-  cache is invalidated if the file metadata has changed for any of the files
-  involved.
+- 对于 `ADD` 和 `COPY` 指令，以及带有绑定挂载的 `RUN` 指令（`RUN --mount=type=bind`），builder 会根据文件元数据计算一个缓存校验和，以确定缓存是否有效。在缓存查找期间，如果任何相关文件的文件元数据发生了变化，则缓存失效。
 
-  The modification time of a file (`mtime`) is not taken into account when
-  calculating the cache checksum. If only the `mtime` of the copied files have
-  changed, the cache is not invalidated.
+  文件的修改时间（`mtime`）在计算缓存校验和时不会被考虑。如果只有被复制文件的 `mtime` 发生了变化，缓存不会失效。
 
-- Aside from the `ADD` and `COPY` commands, cache checking doesn't look at the
-  files in the container to determine a cache match. For example, when processing
-  a `RUN apt-get -y update` command the files updated in the container
-  aren't examined to determine if a cache hit exists. In that case just
-  the command string itself is used to find a match.
+- 除了 `ADD` 和 `COPY` 命令外，缓存检查不会查看容器中的文件来确定缓存是否匹配。例如，在处理 `RUN apt-get -y update` 命令时，不会检查容器中更新的文件来确定是否存在缓存命中。在这种情况下，仅使用该命令字符串本身来查找匹配。
 
-Once the cache is invalidated, all subsequent Dockerfile commands generate new
-images and the cache isn't used.
+一旦缓存失效，所有后续的 Dockerfile 命令都会生成新的镜像，且不会使用缓存。
 
-If your build contains several layers and you want to ensure the build cache is
-reusable, order the instructions from less frequently changed to more
-frequently changed where possible.
+如果你的构建包含多个层，并且你希望确保构建缓存可复用，请在可能的情况下将指令按从较少变更到较频繁变更的顺序排列。
 
-## WORKDIR and SOURCE_DATE_EPOCH
+## WORKDIR 与 SOURCE_DATE_EPOCH
 
-The `WORKDIR` instruction respects the `SOURCE_DATE_EPOCH` build argument when
-determining cache validity. Changing `SOURCE_DATE_EPOCH` between builds
-invalidates the cache for `WORKDIR` and all subsequent instructions.
+`WORKDIR` 指令在确定缓存有效性时会遵循 `SOURCE_DATE_EPOCH` 构建参数。在两次构建之间更改 `SOURCE_DATE_EPOCH` 会使 `WORKDIR` 及其所有后续指令的缓存失效。
 
-`SOURCE_DATE_EPOCH` sets timestamps for files created during the build. If you
-set this to a dynamic value like a Git commit timestamp, the cache breaks with
-each commit. This is expected behavior when tracking build provenance.
+`SOURCE_DATE_EPOCH` 设置构建期间创建文件的时间戳。如果你将其设置为动态值（如 Git 提交时间戳），则每次提交都会破坏缓存。在跟踪构建来源时，这是预期的行为。
 
-For reproducible builds without frequent cache invalidation, use a fixed
-timestamp:
+要在不频繁造成缓存失效的情况下进行可复现构建，请使用固定的时间戳：
 
 ```console
 $ docker build --build-arg SOURCE_DATE_EPOCH=0 .
 ```
 
-## RUN instructions
+## RUN 指令（RUN instructions）
 
-The cache for `RUN` instructions isn't invalidated automatically between builds.
-Suppose you have a step in your Dockerfile to install `curl`:
+`RUN` 指令的缓存在两次构建之间不会自动失效。假设你的 Dockerfile 中有一个安装 `curl` 的步骤：
 
 ```dockerfile
 FROM alpine:3.23 AS install
 RUN apk add curl
 ```
 
-This doesn't mean that the version of `curl` in your image is always up-to-date.
-Rebuilding the image one week later will still get you the same packages as before.
-To force a re-execution of the `RUN` instruction, you can:
+这并不意味着你镜像中的 `curl` 版本始终是最新的。一周后重新构建镜像，仍然会得到与之前相同的软件包。要强制重新执行 `RUN` 指令，你可以：
 
-- Make sure that a layer before it has changed
-- Clear the build cache ahead of the build using
-  [`docker builder prune`](/reference/cli/docker/builder/prune.md)
-- Use the `--no-cache` or `--no-cache-filter` options
+- 确保它之前的某一层已发生变化
+- 在构建之前使用 [`docker builder prune`](/reference/cli/docker/builder/prune/) 清除构建缓存
+- 使用 `--no-cache` 或 `--no-cache-filter` 选项
 
-The `--no-cache-filter` option lets you specify a specific build stage to
-invalidate the cache for:
+`--no-cache-filter` 选项让你指定要使其缓存失效的特定构建阶段：
 
 ```console
 $ docker build --no-cache-filter install .
 ```
 
-## Build secrets
+## 构建密钥（Build secrets）
 
-The contents of build secrets are not part of the build cache.
-Changing the value of a secret doesn't result in cache invalidation.
+构建密钥的内容不属于构建缓存。更改密钥的值不会导致缓存失效。
 
-If you want to force cache invalidation after changing a secret value,
-you can pass a build argument with an arbitrary value that you also change when changing the secret.
-Build arguments do result in cache invalidation.
+如果你希望在更改密钥值后强制缓存失效，你可以传递一个构建参数，并附带一个你在更改密钥时也会更改的任意值。构建参数确实会导致缓存失效。
 
 ```dockerfile
 FROM alpine
@@ -104,6 +71,5 @@ RUN --mount=type=secret,id=TOKEN,env=TOKEN \
 $ TOKEN="tkn_pat123456" docker build --secret id=TOKEN --build-arg CACHEBUST=1 .
 ```
 
-Properties of secrets such as IDs and mount paths do participate in the cache
-checksum, and result in cache invalidation if changed.
+密钥的属性（如 ID 和挂载路径）会参与缓存校验和的计算，如果发生变化会导致缓存失效。
 

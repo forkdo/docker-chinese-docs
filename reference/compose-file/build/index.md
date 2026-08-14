@@ -3,11 +3,16 @@
 
 
 
+
+
 Build 是 Compose Specification 的一个可选部分。它告诉 Compose 如何从源代码（重新）构建应用程序，并允许您以一种可移植的方式在 Compose 文件中定义构建过程。`build` 可以被指定为一个定义上下文路径的单字符串，也可以是一个详细的构建定义。
 
-在前一种情况下，整个路径将作为 Docker 上下文来执行 Docker 构建，并在目录根目录下查找标准的 `Dockerfile`。路径可以是绝对路径或相对路径。如果是相对路径，则会基于包含 Compose 文件的目录进行解析。如果是绝对路径，则会阻止 Compose 文件实现可移植性，因此 Compose 会显示警告。
 
-在后一种情况下，可以指定构建参数，包括替代的 `Dockerfile` 位置。路径可以是绝对路径或相对路径。如果是相对路径，则会基于包含 Compose 文件的目录进行解析。如果是绝对路径，则会阻止 Compose 文件实现可移植性，因此 Compose 会显示警告。
+当 `build` 指定为字符串时，整个路径将作为 Docker 上下文来执行 Docker 构建，并在目录根目录下查找标准的 `Dockerfile`。
+
+当 `build` 指定为详细结构时，可以指定构建参数，包括替代的 `Dockerfile` 位置。
+
+在这两种情况下，路径可以是绝对路径或相对路径。如果是相对路径，则会基于包含 Compose 文件的目录进行解析。如果是绝对路径，则会阻止 Compose 文件实现可移植性，因此 Compose 会显示警告。
 
 ## 同时使用 `build` 和 `image`
 
@@ -41,9 +46,9 @@ services:
 
 当用于从源代码构建服务镜像时，Compose 文件会创建三个 Docker 镜像：
 
-* `example/webapp`：使用 Compose 文件所在文件夹内的 `webapp` 子目录作为 Docker 构建上下文来构建 Docker 镜像。如果此文件夹中缺少 `Dockerfile`，则会返回错误。
-* `example/database`：使用 Compose 文件所在文件夹内的 `backend` 子目录来构建 Docker 镜像。使用 `backend.Dockerfile` 文件来定义构建步骤，该文件相对于上下文路径进行搜索，这意味着 `..` 解析为 Compose 文件的文件夹，因此 `backend.Dockerfile` 是一个同级文件。
-* 使用 `custom` 目录并以用户的 `$HOME` 作为 Docker 上下文来构建 Docker 镜像。Compose 会显示关于用于构建镜像的非可移植路径的警告。
+- `example/webapp`：使用 Compose 文件所在文件夹内的 `webapp` 子目录作为 Docker 构建上下文来构建 Docker 镜像。如果此文件夹中缺少 `Dockerfile`，则会返回错误。
+- `example/database`：使用 Compose 文件所在文件夹内的 `backend` 子目录来构建 Docker 镜像。使用 `backend.Dockerfile` 文件来定义构建步骤，该文件相对于上下文路径进行搜索，这意味着 `..` 解析为 Compose 文件的文件夹，因此 `backend.Dockerfile` 是一个同级文件。
+- 使用 `custom` 目录并以用户的 `$HOME` 作为 Docker 上下文来构建 Docker 镜像。Compose 会显示关于用于构建镜像的非可移植路径的警告。
 
 在推送时，`example/webapp` 和 `example/database` Docker 镜像都会被推送到默认注册表。`custom` 服务镜像会被跳过，因为没有设置 `image` 属性，Compose 会显示关于此缺失属性的警告。
 
@@ -60,7 +65,9 @@ services:
       build: ./dir
   ```
 
-- Git 仓库 URL。Git URL 在其片段部分接受上下文配置，用冒号 (`:`) 分隔。第一部分代表 Git 检出的引用，可以是分支、标签或远程引用。第二部分代表仓库内用作构建上下文的子目录。
+- Git 仓库 URL。Git URL 在其片段部分接受上下文配置，用冒号 (`:`) 分隔。
+  - 第一部分代表 Git 检出的引用，可以是分支、标签或远程引用。
+  - 第二部分代表仓库内用作构建上下文的子目录。
 
   ```yml
   services:
@@ -106,20 +113,20 @@ build:
 
 ```yaml
 services:
- base:
-  build:
-    context: .
-    dockerfile_inline: |
-      FROM alpine
-      RUN ...
- my-service:
-  build:
-    context: .
-    dockerfile_inline: |
-      FROM base # image built for service base
-      RUN ...
-    additional_contexts:
-      base: service:base
+  base:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM alpine
+        RUN ...
+  my-service:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM base # image built for service base
+        RUN ...
+      additional_contexts:
+        base: service:base
 ```
 
 ### `args`
@@ -166,7 +173,6 @@ Compose Build 实现可能支持自定义类型，Compose 规范定义了必须�
 
 - `registry` 通过键 `ref` 设置的 OCI 镜像集来检索构建缓存
 
-
 ```yml
 build:
   context: .
@@ -186,8 +192,8 @@ build:
 build:
   context: .
   cache_to:
-   - user/app:cache
-   - type=local,dest=path/to/cache
+    - user/app:cache
+    - type=local,dest=path/to/cache
 ```
 
 缓存目标使用与 [`cache_from`](#cache_from) 定义的相同 `type=TYPE[,KEY=VALUE]` 语法定义。
@@ -247,11 +253,11 @@ build:
 
 `entitlements` 定义在构建期间允许的额外特权授权。
 
- ```yaml
- entitlements:
-   - network.host
-   - security.insecure
- ```
+```yaml
+entitlements:
+  - network.host
+  - security.insecure
+```
 
 ### `extra_hosts`
 
@@ -263,6 +269,7 @@ extra_hosts:
   - "otherhost=50.31.209.229"
   - "myhostv6=::1"
 ```
+
 IPv6 地址可以用方括号括起来，例如：
 
 ```yml
@@ -322,7 +329,7 @@ build:
 build:
   context: .
   network: host
-```  
+```
 
 ```yaml
 build:
@@ -359,6 +366,7 @@ build:
 当定义了 `platforms` 属性时，Compose 会包含服务的平台，否则用户将无法运行他们构建的镜像。
 
 Compose 在以下情况下会报告错误：
+
 - 当列表包含多个平台但实现无法存储多平台镜像时。
 - 当列表包含不支持的平台时。
 
@@ -369,6 +377,7 @@ Compose 在以下情况下会报告错误：
       - "linux/amd64"
       - "unsupported/unsupported"
   ```
+
 - 当列表非空且不包含服务的平台时。
 
   ```yml
@@ -395,7 +404,7 @@ build:
 
 ### `provenance`
 
- 
+
 
 `provenance` 配置构建器以向发布的镜像添加 [provenance attestation](https://slsa.dev/provenance/v0.2#schema)。
 
@@ -499,23 +508,27 @@ RUN --mount=type=secret,id=cert,required=true,target=/root/cert ...
 `ssh` 定义镜像构建器在构建镜像期间应使用的 SSH 身份验证（例如，克隆私有仓库）。
 
 `ssh` 属性语法可以是以下之一：
-* `default`：让构建器连接到 SSH-agent。
-* `ID=path`：ID 和关联路径的键/值定义。它可以是 [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) 文件，或 ssh-agent 套接字的路径。
+
+- `default`：让构建器连接到 SSH-agent。
+- `ID=path`：ID 和关联路径的键/值定义。它可以是 [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) 文件，或 ssh-agent 套接字的路径。
 
 ```yaml
 build:
   context: .
   ssh:
-    - default   # mount the default SSH agent
+    - default # mount the default SSH agent
 ```
+
 或
+
 ```yaml
 build:
   context: .
-  ssh: ["default"]   # mount the default SSH agent
+  ssh: ["default"] # mount the default SSH agent
 ```
 
 使用带有本地 SSH 密钥路径的自定义 ID `myproject`：
+
 ```yaml
 build:
   context: .
@@ -538,7 +551,7 @@ RUN --mount=type=ssh,id=myproject git clone ...
 ```yml
 build:
   context: .
-  shm_size: '2gb'
+  shm_size: "2gb"
 ```
 
 ```yaml
@@ -584,3 +597,4 @@ services:
           soft: 20000
           hard: 40000
 ```
+

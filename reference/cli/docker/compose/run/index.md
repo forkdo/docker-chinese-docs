@@ -6,12 +6,6 @@
 
 
 
-<!--
-抱歉，此页面内容是自动生成自 Docker 源代码。
-如果您希望修改此处显示的文本，需要在此仓库中搜索相关字符串：
-https://github.com/docker/compose
--->
-
 
 
 
@@ -90,8 +84,8 @@ specified in the service configuration.
 | `-i`, `--interactive` | `true` |  Keep STDIN open even if not attached |
 | `-l`, `--label` |  |  Add or override a label |
 | `--name` |  |  Assign a name to the container |
-| `-T`, `--no-TTY` | `true` |  Disable pseudo-TTY allocation (default: auto-detected) |
 | `--no-deps` |  |  Don't start linked services |
+| `-T`, `--no-tty` | `true` |  Disable pseudo-TTY allocation (default: auto-detected) |
 | `-p`, `--publish` |  |  Publish a container's port(s) to the host |
 | `--pull` | `policy` |  Pull image before running ("always"|"missing"|"never") |
 | `-q`, `--quiet` |  |  Don't print anything to STDOUT |

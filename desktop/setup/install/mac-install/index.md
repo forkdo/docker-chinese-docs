@@ -3,7 +3,7 @@
 
 > **Docker Desktop 条款**
 >
-> 在大型企业中（员工人数超过 250 人或年收入超过 1000 万美元）将 Docker Desktop 用于商业用途需要[付费订阅](https://www.docker.com/pricing/)。
+> 在大型企业中（员工人数超过 250 人或年收入超过 1000 万美元）将 Docker Desktop 用于商业用途需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopMacInstall)。
 
 此页面提供了适用于 Mac 的 Docker Desktop 的下载链接、系统要求以及分步安装说明。
 
@@ -15,18 +15,6 @@
 *有关校验和，请参阅[发行说明](/manuals/desktop/release-notes.md)。*
 
 ## 系统要求
-
-**搭载 Intel 芯片的 Mac**
-
-
-
-- 受支持的 macOS 版本。
-
-  > [!重要]
-  >
-  > Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。
-
-- 至少 4 GB 内存。
 
 **搭载 Apple 芯片的 Mac**
 
@@ -44,6 +32,17 @@
    ```console
    $ softwareupdate --install-rosetta
    ```
+**搭载 Intel 芯片的 Mac**
+
+
+
+- 受支持的 macOS 版本。
+
+  > [!重要]
+  >
+  > Docker Desktop 支持当前版本以及前两个主要的 macOS 版本。随着新的主要 macOS 版本正式发布，Docker 将停止支持最旧的版本，并同时支持最新的 macOS 版本（以及前两个版本）。
+
+- 至少 4 GB 内存。
 
 
 > **在安装或更新之前**
@@ -150,10 +149,11 @@ $ sudo /Applications/Docker.app/Contents/MacOS/install --user testuser --proxy-h
 
 ## 下一步
 
-- 浏览 [Docker 的订阅](https://www.docker.com/pricing/)，了解 Docker 可以为您提供什么。
+- 浏览 [Docker 的订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopMacInstall)，了解 Docker 可以为您提供什么。
 - [开始使用 Docker](/get-started/introduction/_index.md)。
 - [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其所有功能。
 - [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、解决方法、如何运行和提交诊断信息以及提交问题。
 - [常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供常见问题的答案。
 - [发行说明](/manuals/desktop/release-notes.md) 列出了与 Docker Desktop 版本相关的组件更新、新功能和改进。
 - [备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供了有关备份和恢复与 Docker 相关的数据的说明。
+

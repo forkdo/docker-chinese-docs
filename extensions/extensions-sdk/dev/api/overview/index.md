@@ -29,4 +29,5 @@ export function App() {
 - [仪表板](dashboard.md)
 - [导航](dashboard-routes-navigation.md)
 
-另请参阅 [扩展 API 参考](reference/api/extensions-sdk/_index.md)。
+另请参阅 [扩展 API 参考](/reference/api/extensions-sdk/_index.md)。
+

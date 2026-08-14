@@ -5,7 +5,7 @@
 
 > [!IMPORTANT]
 >
-> Wasm 工作负载将在未来的 Docker Desktop 版本中被弃用并移除。目前不再进行积极维护。
+> Wasm 工作负载已被弃用，并将在未来的 Docker Desktop 版本中被移除。此功能不再进行积极维护。
 
 WebAssembly (Wasm) 是 Linux 和 Windows 容器的一种快速、轻量级的替代方案。使用 Docker Desktop，您现在可以与传统容器并行运行 Wasm 工作负载。
 
@@ -185,3 +185,4 @@ docker: Error response from daemon: failed to start shim: failed to resolve runt
 
 - 当被中断时，Docker Compose 可能无法干净地退出。作为解决方法，通过向 `docker-compose` 进程发送 SIGKILL 来清理它们（`killall -9 docker-compose`）。
 - 即使通过 Docker Desktop 登录，推送到 Docker Hub 时可能会给出错误，指出 `server message: insufficient_scope: authorization failed`。作为解决方法，在 CLI 中运行 `docker login`。
+

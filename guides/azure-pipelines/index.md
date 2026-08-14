@@ -298,5 +298,6 @@ steps:
 
 - [Azure Pipelines 文档](https://learn.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops)：配置和管理 Azure DevOps 中 CI/CD 流水线的综合指南。
 - [Azure Pipelines 的 Docker 任务](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker)：在 Azure Pipelines 中使用 Docker 任务构建和推送镜像的详细参考。
-- [Docker Buildx Bake](/manuals/build/bake/_index.md)：探索 Docker 的高级构建工具，适用于复杂的多阶段、多平台构建设置。另请参阅 [Mastering Buildx Bake 指南](/guides/bake/index.md) 了解实用示例和最佳实践。
+- [Docker Buildx Bake](/manuals/build/bake/_index.md)：探索 Docker 的高级构建工具，适用于复杂的多阶段、多平台构建设置。另请参阅 [Mastering Buildx Bake 指南](/guides/bake/) 了解实用示例和最佳实践。
 - [Docker Build Cloud](/guides/docker-build-cloud/_index.md)：了解 Docker 的托管构建服务，用于在云中实现更快、可扩展且多平台的镜像构建。
+

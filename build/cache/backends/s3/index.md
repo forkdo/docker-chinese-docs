@@ -1,17 +1,15 @@
-# Amazon S3 cache
+# Amazon S3 缓存
 
 
 
 
-The `s3` cache storage uploads your resulting build cache to
-[Amazon S3 file storage service](https://aws.amazon.com/s3/)
-or other S3-compatible services, such as [MinIO](https://min.io/).
+`s3` 缓存存储会将你生成的构建缓存上传到
+[Amazon S3 文件存储服务](https://aws.amazon.com/s3/)
+或其他兼容 S3 的服务，例如 [MinIO](https://min.io/)。
 
-This cache storage backend is not supported with the default `docker` driver.
-To use this feature, create a new builder using a different driver. See
-[Build drivers](/manuals/build/builders/drivers/_index.md) for more information.
+默认的 `docker` 驱动不支持这种缓存存储后端。要使用此功能，请使用不同的驱动创建一个新的 builder。更多信息请参阅 [Build drivers](/manuals/build/builders/drivers/_index.md)。
 
-## Synopsis
+## 概要（Synopsis）
 
 ```console
 $ docker buildx build --push -t <user>/<image> \
@@ -19,46 +17,41 @@ $ docker buildx build --push -t <user>/<image> \
   --cache-from type=s3,region=<region>,bucket=<bucket>,name=<cache-image> .
 ```
 
-The following table describes the available CSV parameters that you can pass to
-`--cache-to` and `--cache-from`.
+下表描述了你可以传递给 `--cache-to` 和 `--cache-from` 的可用 CSV 参数。
 
 | Name                 | Option                  | Type        | Default      | Description                                                    |
 |----------------------| ----------------------- | ----------- |--------------|----------------------------------------------------------------|
-| `region`             | `cache-to`,`cache-from` | String      |              | Required. Geographic location.                                 |
-| `bucket`             | `cache-to`,`cache-from` | String      |              | Required. Name of the S3 bucket.                               |
-| `name`               | `cache-to`,`cache-from` | String      | `buildkit`   | Name of the cache image.                                       |
-| `endpoint_url`       | `cache-to`,`cache-from` | String      |              | Endpoint of the S3 bucket.                                     |
-| `prefix`             | `cache-to`,`cache-from` | String      |              | Prefix to prepend to all filenames.                            |
-| `blobs_prefix`       | `cache-to`,`cache-from` | String      | `blobs/`     | Prefix to prepend to blob filenames.                           |
-| `upload_parallelism` | `cache-to`              | Integer     | `4`          | Number of parallel layer uploads.                              |
-| `touch_refresh`      | `cache-to`              | Time        | `24h`        | Interval for updating the timestamp of unchanged cache layers. |
-| `manifests_prefix`   | `cache-to`,`cache-from` | String      | `manifests/` | Prefix to prepend to manifest filenames.                       |
-| `use_path_style`     | `cache-to`,`cache-from` | Boolean     | `false`      | When `true`, uses `bucket` in the URL instead of hostname.     |
-| `access_key_id`      | `cache-to`,`cache-from` | String      |              | See [authentication][1].                                       |
-| `secret_access_key`  | `cache-to`,`cache-from` | String      |              | See [authentication][1].                                       |
-| `session_token`      | `cache-to`,`cache-from` | String      |              | See [authentication][1].                                       |
-| `mode`               | `cache-to`              | `min`,`max` | `min`        | Cache layers to export, see [cache mode][2].                   |
-| `ignore-error`       | `cache-to`              | Boolean     | `false`      | Ignore errors caused by failed cache exports.                  |
+| `region`             | `cache-to`,`cache-from` | String      |              | 必填。地理位置。                                               |
+| `bucket`             | `cache-to`,`cache-from` | String      |              | 必填。S3 存储桶的名称。                                        |
+| `name`               | `cache-to`,`cache-from` | String      | `buildkit`   | 缓存镜像的名称。                                               |
+| `endpoint_url`       | `cache-to`,`cache-from` | String      |              | S3 存储桶的端点。                                              |
+| `prefix`             | `cache-to`,`cache-from` | String      |              | 添加到所有文件名前的前缀。                                     |
+| `blobs_prefix`       | `cache-to`,`cache-from` | String      | `blobs/`     | 添加到 blob 文件名前的前缀。                                   |
+| `upload_parallelism` | `cache-to`              | Integer     | `4`          | 并行上传层的数量。                                             |
+| `touch_refresh`      | `cache-to`              | Time        | `24h`        | 更新未变化缓存层时间戳的间隔。                                 |
+| `manifests_prefix`   | `cache-to`,`cache-from` | String      | `manifests/` | 添加到清单文件名前的前缀。                                     |
+| `use_path_style`     | `cache-to`,`cache-from` | Boolean     | `false`      | 为 `true` 时，在 URL 中使用 `bucket` 而非主机名。              |
+| `access_key_id`      | `cache-to`,`cache-from` | String      |              | 参见 [authentication][1]。                                      |
+| `secret_access_key`  | `cache-to`,`cache-from` | String      |              | 参见 [authentication][1]。                                      |
+| `session_token`      | `cache-to`,`cache-from` | String      |              | 参见 [authentication][1]。                                      |
+| `mode`               | `cache-to`              | `min`,`max` | `min`        | 要导出的缓存层，参见 [cache mode][2]。                          |
+| `ignore-error`       | `cache-to`              | Boolean     | `false`      | 忽略由缓存导出失败引起的错误。                                 |
 
 [1]: #authentication
 [2]: _index.md#cache-mode
 
-## Authentication
+## 身份验证（Authentication）
 
-Buildx can reuse existing AWS credentials, configured either using a
-credentials file or environment variables, for pushing and pulling cache to S3.
-Alternatively, you can use the `access_key_id`, `secret_access_key`, and
-`session_token` attributes to specify credentials directly on the CLI.
+Buildx 可以复用现有的 AWS 凭据（通过凭据文件或环境变量配置）来向 S3 推送和拉取缓存。或者，你可以使用 `access_key_id`、`secret_access_key` 和 `session_token` 属性直接在 CLI 上指定凭据。
 
-Refer to [AWS Go SDK, Specifying Credentials][3] for details about
-authentication using environment variables and credentials file.
+有关使用环境变量和凭据文件进行身份验证的详细信息，请参阅 [AWS Go SDK, Specifying Credentials][3]。
 
 [3]: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/configure-gosdk.html#specifying-credentials
 
-## Further reading
+## 延伸阅读（Further reading）
 
-For an introduction to caching see [Docker build cache](../_index.md).
+有关缓存的入门介绍，请参阅 [Docker 构建缓存](../_index.md)。
 
-For more information on the `s3` cache backend, see the
-[BuildKit README](https://github.com/moby/buildkit#s3-cache-experimental).
+有关 `s3` 缓存后端的更多信息，请参阅
+[BuildKit README](https://github.com/moby/buildkit#s3-cache-experimental)。
 

@@ -18,10 +18,6 @@ Docker Model Runner (DMR) 允许您使用 Docker 在本地运行和管理 AI 模
 
 您现在可以在 CLI 中使用 `docker model` 命令，并在 Docker Desktop Dashboard 的 **Models** 选项卡中查看本地模型并与之交互。
 
-> [!IMPORTANT]
->
-> 对于 Docker Desktop 4.45 及更早版本，此设置位于 **Beta features** 选项卡下。
-
 ### Docker Engine
 
 1. 确保您已安装 [Docker Engine](/engine/install/)。
@@ -66,7 +62,7 @@ docker model uninstall-runner --images && docker model install-runner
 ```
 
 > [!NOTE]
-> 使用上述命令会保留本地模型。若要在升级期间删除模型，请在 `uninstall-runner` 命令中添加 `--models` 选项。
+> 使用上述命令会保留本地模型，并且仅移除 Docker Model Runner 镜像。若要在升级期间一并删除本地模型，请在 `uninstall-runner` 命令中添加 `--models` 选项。
 
 ## 拉取模型
 

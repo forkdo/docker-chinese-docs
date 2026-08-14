@@ -71,14 +71,14 @@
     ```console
     $ DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
     $ mkdir -p $DOCKER_CONFIG/cli-plugins
-    $ curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+    $ curl -SL https://github.com/docker/compose/releases/download/v5.4.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
     ```
 
     此命令为当前用户在 `$HOME` 目录下下载并安装最新版本的 Docker Compose。
 
     要安装：
     - 供系统上_所有用户_使用的 Docker Compose，请将 `~/.docker/cli-plugins` 替换为 `/usr/local/lib/docker/cli-plugins`。
-    - 不同版本的 Compose，请将 `v5.0.1` 替换为您想要使用的 Compose 版本。
+    - 不同版本的 Compose，请将 `v5.4.0` 替换为您想要使用的 Compose 版本。
     - 用于不同的架构，请将 `x86_64` 替换为您想要的[架构](https://github.com/docker/compose/releases)。
 
 2.  为二进制文件应用可执行权限：
@@ -102,3 +102,4 @@
 
 - [了解 Compose 的工作原理](/manuals/compose/intro/compose-application-model.md)
 - [尝试快速入门指南](/manuals/compose/gettingstarted.md)
+

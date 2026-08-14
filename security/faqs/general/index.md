@@ -32,7 +32,7 @@ Docker 活动日志保留 90 天。您有责任导出日志或设置驱动程序
 
 ## 我可以导出包含用户角色和权限的用户列表吗？
 
-可以，使用 [导出成员](../../admin/organization/members.md#export-members) 功能导出 CSV 文件，其中包含您组织的用户及其角色和团队信息。
+可以，使用 [导出成员](../../admin/organization/manage/members.md#export-members-csv-file) 功能导出 CSV 文件，其中包含您组织的用户及其角色和团队信息。
 
 ## Docker Desktop 如何处理身份验证信息？
 
@@ -46,7 +46,7 @@ Docker Desktop 使用主机操作系统的安全密钥管理来存储身份验�
 
 如果未启用 SCIM，您必须手动从组织中移除用户。SCIM 可以自动移除用户，但仅适用于启用 SCIM 后添加的用户。在启用 SCIM 之前添加的用户必须手动移除。
 
-更多信息，请参阅 [管理组织成员](/manuals/admin/organization/members.md)。
+更多信息，请参阅 [管理组织成员](/manuals/admin/organization/manage/members.md)。
 
 ## Scout 从容器镜像收集哪些元数据？
 
@@ -54,8 +54,9 @@ Docker Desktop 使用主机操作系统的安全密钥管理来存储身份验�
 
 ## 市场扩展程序如何进行安全审查？
 
-扩展程序的安全审查已在路线图上，但目前尚未实施。扩展程序不属于 Docker 第三方风险管理计划的覆盖范围。
+扩展程序的安全审查尚未实施。扩展程序不属于 Docker 第三方风险管理计划的覆盖范围。
 
 ## 我能否阻止用户将镜像推送到 Docker Hub 私有仓库？
 
-没有直接的设置可以禁用私有仓库。但是，[注册表访问管理](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) 允许管理员通过管理控制台控制开发人员可以通过 Docker Desktop 访问哪些注册表。
+没有直接的设置可以禁用私有仓库。但是，[注册表访问管理](/manuals/enterprise/security/hardened-desktop/registry-access-management.md) 允许管理员通过 Docker Home 控制开发人员可以通过 Docker Desktop 访问哪些注册表。
+

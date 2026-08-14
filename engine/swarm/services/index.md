@@ -175,8 +175,8 @@ $ docker service remove my_web
 以下部分提供有关服务配置的详细信息。本主题不涵盖每个标志或场景。在几乎每个可以定义服务创建配置的地方，您也可以以类似的方式更新现有服务的配置。
 
 请参见命令行参考
-[`docker service create`](/reference/cli/docker/service/create.md) 和
-[`docker service update`](/reference/cli/docker/service/update.md)，或运行这些命令并加上 `--help` 标志。
+[`docker service create`](/reference/cli/docker/service/create/) 和
+[`docker service update`](/reference/cli/docker/service/update/)，或运行这些命令并加上 `--help` 标志。
 
 ### 配置运行时环境
 
@@ -491,7 +491,7 @@ $ docker service create \
 ```
 
 服务约束允许您设置节点在调度器将服务部署到节点之前必须满足的标准。您可以基于节点属性和元数据或引擎元数据对服务应用约束。有关约束的更多信息，请参见 `docker service create`
-[CLI 参考](/reference/cli/docker/service/create.md)。
+[CLI 参考](/reference/cli/docker/service/create/)。
 
 #### 为服务保留内存或 CPU
 
@@ -535,7 +535,7 @@ $ docker service create \
 您也可以将部署约束与部署偏好和 CPU/内存约束结合使用。请小心不要使用无法实现的设置。
 
 有关约束的更多信息，请参见 `docker service create`
-[CLI 参考](/reference/cli/docker/service/create.md)。
+[CLI 参考](/reference/cli/docker/service/create/)。
 
 #### 部署偏好
 
@@ -660,3 +660,4 @@ $ docker service create --name=my_redis \
 #### 数据卷
 
 数据卷是独立于容器存在的存储。数据卷在 swarm 服务下的生命周期与在容器下的生命周期类似。卷比任务和服务更持久，因此必须单独管理它们的删除。在部署服务之前可以创建卷，或者如果任务调度到特定主机时卷不存在，则根据服务
+

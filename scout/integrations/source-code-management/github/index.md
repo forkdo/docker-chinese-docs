@@ -1,30 +1,49 @@
 # 将 Docker Scout 与 GitHub 集成
 
 
+> [!IMPORTANT]
+>
+> Docker Scout 的 GitHub 集成已于 2026 年 7 月 1 日停止服务。对于基础镜像更新，请使用
+> 配置了 `package-ecosystem: "docker"` 的 GitHub Dependabot。对于镜像到源代码的
+> 关联，请使用 `--provenance=mode=max` 进行构建。
 
+> [!NOTE]
+>
+> 此停止服务仅适用于 Docker Scout GitHub 应用集成。
+> 用于 CI 流水线的 [`docker/scout-action`](https://github.com/docker/scout-action) GitHub
+> Action 不受影响，将继续工作。
 
-Docker Scout 的 GitHub 应用集成授权 Docker Scout 访问您在 GitHub 上的源代码仓库。这种对镜像构建过程的深入可见性意味着 Docker Scout 可以为您提供自动化且具有上下文的修复建议。
+## 从 GitHub 集成迁移
 
-## 工作原理
+该集成提供两项能力，每项都有对应的替代方案。
 
-当您启用 GitHub 集成时，Docker Scout 可以在镜像分析结果与源代码之间建立直接链接。
+### 基础镜像摘要重钉 (Base-image digest repinning)
 
-在分析您的镜像时，Docker Scout 会检查 [provenance attestations](/manuals/build/metadata/attestations/slsa-provenance.md) 以检测镜像的源代码仓库位置。如果找到源代码位置，并且您已启用 GitHub 应用，Docker Scout 将解析用于创建镜像的 Dockerfile。
+使用配置了 `package-ecosystem: "docker"` 的 GitHub Dependabot。Dependabot 会按预定计划
+打开 PR 以更新基础镜像标签和摘要。当您以 `FROM image:tag@sha256:...` 的形式固定时，
+标签和摘要都会被更新。而 Scout 集成仅更新摘要。
 
-解析 Dockerfile 可以揭示用于构建镜像的基础镜像标签。通过了解使用的基础镜像标签，Docker Scout 可以检测标签是否已过时，即标签已指向不同的镜像摘要。例如，假设您使用 `alpine:3.18` 作为基础镜像，在后续某个时间点，镜像维护者发布了版本 `3.18` 的补丁版本，其中包含安全修复。您一直在使用的 `alpine:3.18` 标签就变成了过时版本；您使用的 `alpine:3.18` 不再是最新版本。
+最小 `.github/dependabot.yml`：
 
-当发生这种情况时，Docker Scout 会检测到差异并通过 [Up-to-Date Base Images policy](/manuals/scout/policy/_index.md#up-to-date-base-images-policy) 将其呈现出来。当启用 GitHub 集成时，您还会获得关于如何更新基础镜像的自动化建议。有关 Docker Scout 如何帮助您自动改进供应链行为和安全态势的更多信息，请参阅 [Remediation](../../policy/remediation.md)。
+```yaml
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+```
 
-## 设置
+请参阅 [配置 Dependabot 版本更新](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)。
 
-要将 Docker Scout 与您的 GitHub 组织集成：
+### 镜像到源代码的关联
 
-1. 访问 Docker Scout 仪表板上的 [GitHub integration](https://scout.docker.com/settings/integrations/github/) 页面。
-2. 选择 **Integrate GitHub app** 按钮以打开 GitHub。
-3. 选择您要集成的组织。
-4. 选择是要集成 GitHub 组织中的所有仓库，还是手动选择仓库。
-5. 选择 **Install & Authorize** 以将 Docker Scout 应用添加到该组织。
+使用 `--provenance=mode=max` 进行构建。Docker Scout 读取生成的来源
+证明，从而无需 GitHub 应用即可将镜像关联回其源代码仓库。
 
-   此操作会将您重定向回 Docker Scout 仪表板，其中列出了您活动的 GitHub 集成。
+```console
+$ docker build --provenance=mode=max -t myimage:tag .
+```
 
-GitHub 集成现已激活。
+请参阅 [SLSA 来源证明](/manuals/build/metadata/attestations/slsa-provenance.md)。
+

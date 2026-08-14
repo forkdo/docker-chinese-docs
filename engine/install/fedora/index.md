@@ -9,9 +9,8 @@
 
 要安装 Docker Engine，您需要以下任一 Fedora 版本的维护版本：
 
+- Fedora 44
 - Fedora 43
-- Fedora 42
-- Fedora 41
 
 ### 卸载旧版本
 
@@ -48,7 +47,10 @@ $ sudo dnf remove docker \
 
 
 
+
+
 Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE) 获取完整许可证。
+
 
 ### 使用 rpm 仓库安装 {#install-using-the-repository}
 
@@ -89,8 +91,8 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
    ```console
    $ dnf list docker-ce --showduplicates | sort -r
 
-   docker-ce.x86_64    3:29.2.0-1.fc41    docker-ce-stable
-   docker-ce.x86_64    3:29.1.5-1.fc41    docker-ce-stable
+   docker-ce.x86_64    3:29.7.2-1.fc41    docker-ce-stable
+   docker-ce.x86_64    3:29.7.1-1.fc41    docker-ce-stable
    <...>
    ```
 
@@ -98,7 +100,7 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
 
    通过其完全限定的软件包名称安装特定版本，即
    软件包名称 (`docker-ce`) 加上版本字符串（第 2 列），
-   用连字符 (`-`) 分隔。例如，`docker-ce-3:29.2.0-1.fc41`。
+   用连字符 (`-`) 分隔。例如，`docker-ce-3:29.7.2-1.fc41`。
 
    将 `<VERSION_STRING>` 替换为所需的版本，然后运行以下
    命令进行安装：
@@ -121,6 +123,17 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
    这会将 Docker systemd 服务配置为在系统启动时自动启动。如果您不希望 Docker 自动启动，请使用 `sudo
    systemctl start docker` 代替。
 
+   > [!NOTE]
+   >
+   > 如果 Docker 服务启动失败，并且 `journalctl -u docker`
+   > 显示 `failed to find iptables`，请使用 `alternatives`
+   > 将 `iptables` 命令指向 `iptables-nft`，然后重启服务：
+   >
+   > ```console
+   > $ sudo alternatives --set iptables /usr/bin/iptables-nft
+   > $ sudo systemctl restart docker
+   > ```
+
 3. 通过运行 `hello-world` 镜像验证安装是否成功：
 
    ```console
@@ -133,11 +146,14 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
+
 
 #### 升级 Docker Engine
 
@@ -172,6 +188,17 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
    这会将 Docker systemd 服务配置为在系统启动时自动启动。如果您不希望 Docker 自动启动，请使用 `sudo
    systemctl start docker` 代替。
 
+   > [!NOTE]
+   >
+   > 如果 Docker 服务启动失败，并且 `journalctl -u docker`
+   > 显示 `failed to find iptables`，请使用 `alternatives`
+   > 将 `iptables` 命令指向 `iptables-nft`，然后重启服务：
+   >
+   > ```console
+   > $ sudo alternatives --set iptables /usr/bin/iptables-nft
+   > $ sudo systemctl restart docker
+   > ```
+
 4. 通过运行 `hello-world` 镜像验证安装是否成功：
 
    ```console
@@ -184,16 +211,21 @@ $ sudo dnf config-manager addrepo --from-repofile https://download.docker.com/li
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
 
+
 #### 升级 Docker Engine
 
 要升级 Docker Engine，请下载较新的软件包文件并重复[安装过程](#install-from-a-package)，
 使用 `dnf upgrade` 而不是 `dnf install`，并指向新文件。
+
+
 
 
 
@@ -250,6 +282,7 @@ $ sudo sh test-docker.sh
 
 如果您使用便捷脚本安装了 Docker，则应直接使用包管理器升级 Docker。重新运行便捷脚本没有任何优势。如果它尝试重新安装主机上已存在的仓库，重新运行它可能会导致问题。
 
+
 ## 卸载 Docker Engine
 
 1. 卸载 Docker Engine、CLI、containerd 和 Docker Compose 软件包：
@@ -270,3 +303,4 @@ $ sudo sh test-docker.sh
 ## 后续步骤
 
 - 继续[Linux 安装后步骤](linux-postinstall.md)。
+

@@ -185,14 +185,14 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
 
    ```console
    $ docker run -dp 127.0.0.1:3000:3000 \
-     -w /app -v "$(pwd):/app" \
+     -w /app -v ".:/app" \
      --network todo-app \
      -e MYSQL_HOST=mysql \
      -e MYSQL_USER=root \
      -e MYSQL_PASSWORD=secret \
      -e MYSQL_DB=todos \
-     node:lts-alpine \
-     sh -c "yarn install && yarn run dev"
+     node:24-alpine \
+     sh -c "npm install && npm run dev"
    ```
    
    **PowerShell**
@@ -202,14 +202,14 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
 
    ```powershell
    $ docker run -dp 127.0.0.1:3000:3000 `
-     -w /app -v "$(pwd):/app" `
+     -w /app -v ".:/app" `
      --network todo-app `
      -e MYSQL_HOST=mysql `
      -e MYSQL_USER=root `
      -e MYSQL_PASSWORD=secret `
      -e MYSQL_DB=todos `
-     node:lts-alpine `
-     sh -c "yarn install && yarn run dev"
+     node:24-alpine `
+     sh -c "npm install && npm run dev"
    ```
 
    **Command Prompt**
@@ -225,8 +225,8 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
      -e MYSQL_USER=root ^
      -e MYSQL_PASSWORD=secret ^
      -e MYSQL_DB=todos ^
-     node:lts-alpine ^
-     sh -c "yarn install && yarn run dev"
+     node:24-alpine ^
+     sh -c "npm install && npm run dev"
    ```
 
    **Git Bash**
@@ -235,14 +235,14 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
 
    ```console
    $ docker run -dp 127.0.0.1:3000:3000 \
-     -w //app -v "/$(pwd):/app" \
+     -w //app -v "/.:/app" \
      --network todo-app \
      -e MYSQL_HOST=mysql \
      -e MYSQL_USER=root \
      -e MYSQL_PASSWORD=secret \
      -e MYSQL_DB=todos \
-     node:lts-alpine \
-     sh -c "yarn install && yarn run dev"
+     node:24-alpine \
+     sh -c "npm install && npm run dev"
    ```
    
    
@@ -250,11 +250,13 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
 2. 如果你查看容器的日志（`docker logs -f <container-id>`），你应该会看到类似以下的消息，这表明它正在使用 mysql 数据库。
 
    ```console
-   $ nodemon src/index.js
-   [nodemon] 2.0.20
+   [nodemon] 3.1.11
    [nodemon] to restart at any time, enter `rs`
-   [nodemon] watching dir(s): *.*
+   [nodemon] watching path(s): *.*
+   [nodemon] watching extensions: js,mjs,cjs,json
    [nodemon] starting `node src/index.js`
+   Waiting for mysql:3306.
+   Connected!
    Connected to mysql db at host mysql
    Listening on port 3000
    ```
@@ -296,4 +298,5 @@ Todo 应用支持设置几个环境变量来指定 MySQL 连接设置。它们�
 在下一节中，你将学习 Docker Compose。使用 Docker Compose，你可以更轻松地共享你的应用程序栈，并让其他人通过一个简单、单一的命令来启动它们。
 
 [使用 Docker Compose](08_using_compose.md)
+
 

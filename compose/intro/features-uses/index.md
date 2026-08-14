@@ -37,7 +37,7 @@ $ docker compose down
 
 ### 单主机部署
 
-Compose 传统上专注于开发和测试工作流，但随着每个版本的发布，我们都在面向生产的特性方面取得进展。
+Compose 支持在单主机上进行生产部署。你可以使用 Compose 将应用程序部署到远程 Docker 主机，并管理特定于生产的配置。
 
 有关使用面向生产特性的详细信息，请参阅 [生产环境中的 Compose](/manuals/compose/how-tos/production.md)。
 
@@ -46,3 +46,4 @@ Compose 传统上专注于开发和测试工作流，但随着每个版本的发
 - [了解 Compose 的历史](history.md)
 - [理解 Compose 的工作原理](compose-application-model.md)
 - [尝试快速入门指南](../gettingstarted.md)
+

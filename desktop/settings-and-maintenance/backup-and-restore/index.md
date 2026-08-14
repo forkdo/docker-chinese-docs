@@ -11,7 +11,7 @@
 
 ### 保存数据
 
-1. 使用 [`docker container commit`](/reference/cli/docker/container/commit.md) 将容器提交为镜像。
+1. 使用 [`docker container commit`](/reference/cli/docker/container/commit/) 将容器提交为镜像。
 
    提交容器会将文件系统更改和某些容器配置（如标签和环境变量）存储为本地镜像。请注意，环境变量可能包含敏感信息（如密码或代理认证），因此在将结果镜像推送到注册表时需谨慎。
 
@@ -19,13 +19,13 @@
 
    如果您使用了[命名卷](/manuals/engine/storage/_index.md#more-details-about-mount-types)来存储容器数据（如数据库），请参考存储部分的[备份、恢复或迁移数据卷](/manuals/engine/storage/volumes.md#back-up-restore-or-migrate-data-volumes)页面。
 
-2. 使用 [`docker push`](/reference/cli/docker/image/push.md) 将您在本地构建并希望保留的任何镜像推送到 [Docker Hub 注册表](/manuals/docker-hub/_index.md)。
+2. 使用 [`docker push`](/reference/cli/docker/image/push/) 将您在本地构建并希望保留的任何镜像推送到 [Docker Hub 注册表](/manuals/docker-hub/_index.md)。
    
    > [!TIP]
    >
    > 如果您的镜像包含敏感内容，[将仓库可见性设置为私有](/manuals/docker-hub/repos/_index.md)。
 
-   或者，使用 [`docker image save -o images.tar image1 [image2 ...]`](/reference/cli/docker/image/save.md) 将您希望保留的任何镜像保存到本地 `.tar` 文件中。
+   或者，使用 [`docker image save -o images.tar image1 [image2 ...]`](/reference/cli/docker/image/save/) 将您希望保留的任何镜像保存到本地 `.tar` 文件中。
 
 备份数据后，您可以卸载当前版本的 Docker Desktop 并[安装不同版本](/manuals/desktop/release-notes.md)或重置 Docker Desktop 为出厂默认设置。
 
@@ -45,11 +45,11 @@
       $ docker image load -i images.tar
       ```
 
-2. 如有必要，使用 [`docker run`](/reference/cli/docker/container/run.md) 或 [Docker Compose](/manuals/compose/_index.md) 重新创建容器。
+2. 如有必要，使用 [`docker run`](/reference/cli/docker/container/run/) 或 [Docker Compose](/manuals/compose/_index.md) 重新创建容器。
 
 要恢复卷数据，请参考[备份、恢复或迁移数据卷](/manuals/engine/storage/volumes.md#back-up-restore-or-migrate-data-volumes)。 
 
-## 如果 Docker Desktop 无法启动
+## 如果 Docker Desktop 无法启动或您想备份整个 Docker Desktop VM
 
 如果 Docker Desktop 无法启动且必须重新安装，您可以直接从磁盘备份其 VM 磁盘和镜像数据。在备份这些文件之前，Docker Desktop 必须完全停止。
 
@@ -89,6 +89,10 @@
 
    将其复制到安全位置。
 
+   > [!TIP]
+   >
+   > 若要在 Time Machine 备份中包含 Docker Desktop 数据，请确保 `~/Library/Containers/com.docker.docker` 目录未被排除在您的 Time Machine 备份配置之外。
+
 1. 恢复。
 
    重新安装 Docker Desktop 后，将 `Docker.raw` 恢复到相同位置。
@@ -110,5 +114,6 @@
 1. 恢复。
 
    重新安装 Docker Desktop 后，将 `Docker.raw` 恢复到相同位置。
+
 
 

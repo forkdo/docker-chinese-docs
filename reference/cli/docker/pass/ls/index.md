@@ -1,6 +1,6 @@
 # docker pass ls
 
-**Description:** List secrets
+**Description:** List all secrets from local keychain.
 
 **Usage:** `docker pass ls`
 
@@ -11,15 +11,11 @@
 
 
 
-> [!NOTE]
-> **Experimental**
->
-> This command is experimental. Experimental features are intended for testing and feedback as their functionality or design may change between releases without warning or can be removed entirely in a future release.
 
 
+## Description
 
-
-
+Lists the names of all secrets stored in the local OS keychain.
 
 
 

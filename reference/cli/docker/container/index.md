@@ -6,14 +6,6 @@
 
 
 
-<!--
-本页内容由 Docker 源代码自动生成。如果您希望
-建议对此处显示的文本进行修改，请在 GitHub 上的源仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -37,6 +29,7 @@ Manage containers.
 | [`docker container attach`](/reference/cli/docker/container/attach/) | Attach local standard input, output, and error streams to a running container
  |
 | [`docker container commit`](/reference/cli/docker/container/commit/) | Create a new image from a container's changes |
+| [`docker container cp`](/reference/cli/docker/container/cp/) | Copy files/folders between a container and the local filesystem |
 | [`docker container create`](/reference/cli/docker/container/create/) | Create a new container |
 | [`docker container diff`](/reference/cli/docker/container/diff/) | Inspect changes to files or directories on a container's filesystem |
 | [`docker container exec`](/reference/cli/docker/container/exec/) | Execute a command in a running container |

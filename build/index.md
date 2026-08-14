@@ -1,15 +1,9 @@
 # Docker Build
 
 
-Docker Build is one of Docker Engine's most used features. Whenever you are
-creating an image you are using Docker Build. Build is a key part of your
-software development life cycle allowing you to package and bundle your code and
-ship it anywhere.
+Docker Build 是 Docker Engine 最常用的功能之一。每当你创建镜像时，你都在使用 Docker Build。Build 是你软件开发生命周期的关键部分，让你能够打包和捆绑你的代码并将其发布到任何地方。
 
-Docker Build is more than a command for building images, and it's not only about
-packaging your code. It's a whole ecosystem of tools and features that support
-not only common workflow tasks but also provides support for more complex and
-advanced scenarios.
+Docker Build 不仅仅是一个用于构建镜像的命令，也不仅仅是关于打包你的代码。它是一个完整的工具和特性生态系统，不仅支持常见的工作流任务，还为更复杂和高级的场景提供支持。
 
 
 

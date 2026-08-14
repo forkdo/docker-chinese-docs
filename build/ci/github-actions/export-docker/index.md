@@ -1,8 +1,7 @@
-# Export to Docker with GitHub Actions
+# 使用 GitHub Actions 导出到 Docker
 
 
-You may want your build result to be available in the Docker client through
-`docker images` to be able to use it in another step of your workflow:
+你可能希望借助 `docker images` 让构建结果在 Docker 客户端中可用，以便在你的工作流另一步骤中使用：
 
 ```yaml
 name: ci
@@ -15,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       
       - name: Build
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           load: true
           tags: myimage:latest

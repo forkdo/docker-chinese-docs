@@ -113,7 +113,7 @@ Docker Hub 提供了大量预构建的镜像和资源，可加快开发工作流
    $ docker run -p 8080:80 --rm nginx
    ```
 
-   `docker run` 命令会自动拉取并运行镜像，无需先运行 `docker pull`。要了解有关该命令及其选项的更多信息，请参阅 [`docker run` CLI 参考](../../reference/cli/docker/container/run.md)。运行命令后，您应该会看到类似以下的输出。
+   `docker run` 命令会自动拉取并运行镜像，无需先运行 `docker pull`。要了解有关该命令及其选项的更多信息，请参阅 [`docker run` CLI 参考](/reference/cli/docker/container/run/)。运行命令后，您应该会看到类似以下的输出。
 
    ```console {collapse=true}
    Unable to find image 'nginx:latest' locally
@@ -173,7 +173,7 @@ Docker Hub 提供了大量预构建的镜像和资源，可加快开发工作流
    $ docker build -t <YOUR-USERNAME>/nginx-custom .
    ```
 
-此命令会构建您的镜像并为其打标签，以便 Docker 知道将其推送到 Docker Hub 中的哪个仓库。要了解有关该命令及其选项的更多信息，请参阅 [`docker build` CLI 参考](../../reference/cli/docker/buildx/build.md)。运行该命令后，您应该会看到类似以下的输出。
+此命令会构建您的镜像并为其打标签，以便 Docker 知道将其推送到 Docker Hub 中的哪个仓库。要了解有关该命令及其选项的更多信息，请参阅 [`docker build` CLI 参考](/reference/cli/docker/buildx/build/)。运行该命令后，您应该会看到类似以下的输出。
 
 ```console {collapse=true}
 [+] Building 0.6s (6/6) FINISHED                      docker:desktop-linux
@@ -212,7 +212,7 @@ Docker Hub 提供了大量预构建的镜像和资源，可加快开发工作流
     >
     > 您必须通过 Docker Desktop 或命令行登录 Docker Hub，并且还必须按照上述步骤正确命名您的镜像。
 
-   该命令会将镜像推送到 Docker Hub，如果仓库不存在，则会自动创建。要了解有关该命令的更多信息，请参阅 [`docker push` CLI 参考](../../reference/cli/docker/image/push.md)。运行该命令后，您应该会看到类似以下的输出。
+   该命令会将镜像推送到 Docker Hub，如果仓库不存在，则会自动创建。要了解有关该命令的更多信息，请参阅 [`docker push` CLI 参考](/reference/cli/docker/image/push/)。运行该命令后，您应该会看到类似以下的输出。
 
    ```console {collapse=true}
    Using default tag: latest
@@ -228,7 +228,7 @@ Docker Hub 提供了大量预构建的镜像和资源，可加快开发工作流
    latest: digest: sha256:7f5223ae866e725a7f86b856c30edd3b86f60d76694df81d90b08918d8de1e3f size: 1985
    ```
 
-  现在您已经创建了一个仓库并推送了您的镜像，是时候查看您的仓库并探索其选项了。
+   现在您已经创建了一个仓库并推送了您的镜像，是时候查看您的仓库并探索其选项了。
 
 ## 步骤 4：在 Docker Hub 上查看您的仓库并探索选项
 
@@ -267,3 +267,4 @@ Docker Hub 提供了大量预构建的镜像和资源，可加快开发工作流
 ## 下一步
 
 添加[仓库信息](./repos/manage/information.md)以帮助用户找到并使用您的镜像。
+

@@ -1,10 +1,10 @@
-# Manage tags and labels with GitHub Actions
+# 使用 GitHub Actions 管理标签和标记
 
 
-If you want an "automatic" tag management and [OCI Image Format Specification](https://github.com/opencontainers/image-spec/blob/master/annotations.md)
-for labels, you can do it in a dedicated setup step. The following workflow
-will use the [Docker Metadata Action](https://github.com/docker/metadata-action)
-to handle tags and labels based on GitHub Actions events and Git metadata:
+如果你想要"自动"管理标记，并按照 [OCI 镜像格式规范](https://github.com/opencontainers/image-spec/blob/master/annotations.md)
+来管理标签，可以在一个专门的设置步骤中完成。下面的工作流
+将使用 [Docker Metadata Action](https://github.com/docker/metadata-action)
+根据 GitHub Actions 事件和 Git 元数据来处理标签和标记：
 
 ```yaml
 name: ci
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           # list of Docker images to use as base name for tags
           images: |
@@ -43,27 +43,27 @@ jobs:
 
       - name: Login to Docker Hub
         if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Login to GHCR
         if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}

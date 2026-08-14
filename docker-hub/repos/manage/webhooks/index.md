@@ -8,7 +8,7 @@
 要创建 Webhook：
 1. 在您选择的仓库中，选择 **Webhooks** 选项卡。
 2. 为 Webhook 提供一个名称。
-3. 提供目标 Webhook URL。这是 Webhook POST 请求发送到的位置。
+3. 提供目标 Webhook URL。这是 Webhook POST 请求发送到的位置。URL 必须不超过 255 个字符。
 4. 选择 **Create**。
 
 ## 查看 Webhook 交付历史记录
@@ -36,7 +36,7 @@ Webhook 负载具有以下 JSON 格式：
     "comment_count": 0,
     "date_created": 1417494799,
     "description": "",
-    "dockerfile": "#\n# BUILD\u0009\u0009docker build -t svendowideit/apt-cacher .\n# RUN\u0009\u0009docker run -d -p 3142:3142 -name apt-cacher-run apt-cacher\n#\n# and then you can run containers with:\n# \u0009\u0009docker run -t -i -rm -e http_proxy http://192.168.1.2:3142/ debian bash\n#\nFROM\u0009\u0009ubuntu\n\n\nVOLUME\u0009\u0009[/var/cache/apt-cacher-ng]\nRUN\u0009\u0009apt-get update ; apt-get install -yq apt-cacher-ng\n\nEXPOSE \u0009\u00093142\nCMD\u0009\u0009chmod 777 /var/cache/apt-cacher-ng ; /etc/init.d/apt-cacher-ng start ; tail -f /var/log/apt-cacher-ng/*\n",
+    "dockerfile": "#\n# BUILD\t\tdocker build -t svendowideit/apt-cacher .\n# RUN\t\tdocker run -d -p 3142:3142 -name apt-cacher-run apt-cacher\n#\n# and then you can run containers with:\n# \t\tdocker run -t -i -rm -e http_proxy http://192.168.1.2:3142/ debian bash\n#\nFROM\t\tubuntu\n\n\nVOLUME\t\t[/var/cache/apt-cacher-ng]\nRUN\t\tapt-get update ; apt-get install -yq apt-cacher-ng\n\nEXPOSE \t\t3142\nCMD\t\tchmod 777 /var/cache/apt-cacher-ng ; /etc/init.d/apt-cacher-ng start ; tail -f /var/log/apt-cacher-ng/*\n",
     "full_description": "Docker Hub based automated build from a GitHub repo",
     "is_official": false,
     "is_private": true,
@@ -55,3 +55,4 @@ Webhook 负载具有以下 JSON 格式：
 > [!NOTE]
 >
 > `callback_url` 字段是一个遗留字段，不再受支持。
+

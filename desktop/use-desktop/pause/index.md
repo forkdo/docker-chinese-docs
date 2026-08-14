@@ -10,3 +10,4 @@
 > [!TIP]
 >
 > 资源节省器功能默认已启用，相比手动暂停功能可提供更好的 CPU 和内存节省效果。更多信息请参见 [Resource Saver mode](resource-saver.md)。
+

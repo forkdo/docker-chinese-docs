@@ -7,7 +7,7 @@
 
 > [!NOTE]
 >
-> 默认的项目目录是 Compose 文件所在的基础目录。也可以使用 [`--project-directory` 命令行选项](/reference/cli/docker/compose.md#options)为其设置自定义值。
+> 默认的项目目录是 Compose 文件所在的基础目录。也可以使用 [`--project-directory` 命令行选项](/reference/cli/docker/compose/#options)为其设置自定义值。
 
 ## 示例用例
 
@@ -33,3 +33,4 @@ Compose 使用项目名称来隔离不同的环境。在多种情况下，项目
 
 - 阅读[使用多个 Compose 文件](multiple-compose-files/_index.md)。
 - 探索一些[示例应用](https://github.com/docker/awesome-compose)。
+

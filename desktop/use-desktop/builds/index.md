@@ -10,9 +10,7 @@
 
 > [!NOTE]
 >
-> 使用 `docker build` 命令构建 Windows 容器镜像时，使用的是传统构建器，不会填充 **构建**视图。要切换到使用 BuildKit，您可以：
-> - 在构建命令中设置 `DOCKER_BUILDKIT=1`，例如 `DOCKER_BUILDKIT=1 docker build .`，或者
-> - 使用 `docker buildx build` 命令
+> Windows 容器镜像构建使用传统构建器，不会出现在 **构建**视图中。此处仅显示由 BuildKit 驱动的构建。
 
 ## 显示构建列表
 
@@ -29,8 +27,6 @@
 **构建器设置**按钮允许您在 Docker Desktop 设置中[管理构建器](#manage-builders)。
 
 ### 导入构建
-
-
 
 **导入构建**按钮允许您导入其他人或 CI 环境中的构建记录。导入构建记录后，您可以直接在 Docker Desktop 中查看该构建的完整日志、跟踪和其他数据。
 
@@ -173,3 +169,4 @@
 - 添加或删除构建器（或连接和断开云构建器）
 
 有关管理构建器的更多信息，请参阅 [更改设置](/manuals/desktop/settings-and-maintenance/settings.md#builders)
+

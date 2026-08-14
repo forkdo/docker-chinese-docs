@@ -15,14 +15,11 @@
 
 
 
-
-
-
 ## Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `-f`, `--force` |  |  Don't prompt for confirmation |
+| `--terminate` |  |  Terminate the remote lease |
 
 
 

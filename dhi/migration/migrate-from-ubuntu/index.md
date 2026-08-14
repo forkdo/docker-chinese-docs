@@ -48,7 +48,7 @@ variants](../explore/available.md)。当从基于 Ubuntu 的镜像迁移时，
 - FROM ubuntu/go:1.22-24.04
 
 + ## Updated to use hardened Debian-based image
-+ FROM dhi.io/golang:1-debian13-dev
++ FROM dhi.io/golang:1.25-debian13-dev
 ```
 
 要找到正确的标签，请在 [DHI
@@ -69,7 +69,7 @@ Catalog](https://hub.docker.com/hardened-images/catalog/) 中探索可用的标�
 -     && rm -rf /var/lib/apt/lists/*
 
 + ## DHI: Use a language-specific dev image with package manager
-+ FROM dhi.io/golang:1-debian13-dev
++ FROM dhi.io/golang:1.25-debian13-dev
 + RUN apt-get update && apt-get install -y \
 +     git \
 +     && rm -rf /var/lib/apt/lists/*
@@ -100,7 +100,7 @@ Dockerfile 中的所有阶段都应使用加固镜像。虽然中间阶段通常
 
 ```dockerfile
 # Build stage
-FROM dhi.io/golang:1-debian13-dev AS builder
+FROM dhi.io/golang:1.25-debian13-dev AS builder
 WORKDIR /app
 
 # Install system dependencies (only available in dev images)
@@ -116,7 +116,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -o main .
 
 # Runtime stage
-FROM dhi.io/golang:1-debian13
+FROM dhi.io/golang:1.25-debian13
 WORKDIR /app
 
 # Copy compiled binary from builder
@@ -133,3 +133,4 @@ ENTRYPOINT ["/app/main"]
 - [Go](examples/go.md)
 - [Python](examples/python.md)
 - [Node.js](examples/node.md)
+

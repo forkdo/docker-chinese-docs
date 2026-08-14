@@ -11,7 +11,7 @@ Docker Desktop for Linux 运行虚拟机 (VM) 的原因如下：
 
 2.  **利用新的内核特性。**
 
-    有时我们需要利用新的操作系统特性。由于我们在虚拟机内部控制内核和操作系统，我们可以立即将这些特性推送给所有用户，即使是那些有意坚持使用其机器操作系统 LTS 版本的用户。
+    有时 Docker 需要利用新的操作系统特性。由于 Docker 在虚拟机内部控制内核和操作系统，Docker 可以立即将这些特性推送给所有用户，即使是那些有意坚持使用其机器操作系统 LTS 版本的用户。
 
 3.  **增强安全性。**
 
@@ -21,9 +21,9 @@ Docker Desktop for Linux 运行虚拟机 (VM) 的原因如下：
 
 4.  **在提供功能对等性和增强安全性的同时，将对性能的影响降至最低。**
 
-    Docker Desktop for Linux 使用的虚拟机采用了 [`VirtioFS`](https://virtio-fs.gitlab.io)，这是一种共享文件系统，允许虚拟机访问主机上的目录树。我们的内部基准测试表明，只要为虚拟机分配适当的资源，使用 VirtioFS 就能获得接近原生文件系统的性能。
+    Docker Desktop for Linux 使用的虚拟机采用了 [`VirtioFS`](https://virtio-fs.gitlab.io)，这是一种共享文件系统，允许虚拟机访问主机上的目录树。Docker 的内部基准测试表明，只要为虚拟机分配适当的资源，使用 VirtioFS 就能获得接近原生文件系统的性能。
 
-    因此，我们调整了 Docker Desktop for Linux 中虚拟机的默认可用内存。您可以使用 Docker Desktop **设置** > **资源**选项卡中的**内存**滑块，根据您的具体需求调整此设置。
+    因此，Docker Desktop for Linux 中虚拟机的默认可用内存已进行调整。您可以使用 Docker Desktop **设置** > **资源**选项卡中的**内存**滑块，根据您的具体需求调整此设置。
 
 ### 如何启用文件共享？
 
@@ -37,7 +37,7 @@ Docker Desktop for Linux 使用 [VirtioFS](https://virtio-fs.gitlab.io/) 作为�
 
 | 容器中的 ID | 主机上的 ID                                                                       |
 | --------------- | -------------------------------------------------------------------------------- |
-| 0 (root)        | 运行 Docker Desktop 的用户 ID (例如 1000)                                            |
+| 0 (root)        | 运行 Docker Desktop 的用户 ID (例如 1000)                                |
 | 1               | 0 + `/etc/subuid`/`/etc/subgid` 中指定的 ID 范围的起始值 (例如 100000) |
 | 2               | 1 + `/etc/subuid`/`/etc/subgid` 中指定的 ID 范围的起始值 (例如 100001) |
 | 3               | 2 + `/etc/subuid`/`/etc/subgid` 中指定的 ID 范围的起始值 (例如 100002) |
@@ -66,6 +66,34 @@ exampleuser:100000:65536
 
 
 
+
+### 如何在 Docker Desktop for Linux 中使用 Docker SDK？
+
+Docker Desktop for Linux 使用位于 `~/.docker/desktop/docker.sock` 的按用户套接字，而不是系统级的 `/var/run/docker.sock`。Docker CLI 通过 `desktop-linux` 上下文自动处理此问题，但直接连接到 Docker 守护进程的 Docker SDK 和其他工具也需要设置 `DOCKER_HOST` 环境变量。
+
+如果不设置 `DOCKER_HOST`，SDK 会尝试连接到 `/var/run/docker.sock` 并失败，出现如下错误：
+
+```text
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+```
+
+要解决此问题，请在运行基于 SDK 的应用程序之前设置 `DOCKER_HOST` 环境变量：
+
+```console
+export DOCKER_HOST=unix://$HOME/.docker/desktop/docker.sock
+```
+
+或者从 `desktop-linux` 上下文动态获取它：
+
+```console
+export DOCKER_HOST=$(docker context inspect desktop-linux --format '{{ .Endpoints.docker.Host }}')
+```
+
+要使其永久生效，请将 export 命令添加到您的 shell 配置文件中（`~/.bashrc`、`~/.zshrc` 或类似文件）：
+
+```console
+echo 'export DOCKER_HOST=unix://$HOME/.docker/desktop/docker.sock' >> ~/.bashrc
+```
 
 ### Docker Desktop 将 Linux 容器存储在哪里？
 
@@ -154,3 +182,4 @@ $ ls -klsh Docker.raw
 3.  选择**应用**。
 
 当您减小最大大小时，当前的磁盘镜像文件将被删除，因此，所有容器和镜像都会丢失。
+

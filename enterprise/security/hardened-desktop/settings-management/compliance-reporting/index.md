@@ -9,22 +9,18 @@
 
 在使用 Docker Desktop 设置合规性报告之前，请确保满足以下条件：
 
-- 已在整个组织中安装 [Docker Desktop 4.37.1 或更高版本](/manuals/desktop/release-notes.md)
-- [已验证的域名](/manuals/enterprise/security/single-sign-on/configure.md#step-one-add-and-verify-your-domain)
+- 已在整个组织中安装 [Docker Desktop](/manuals/desktop/release-notes.md)
+- [已验证的域名](/manuals/enterprise/security/single-sign-on/connect.md)
 - 为您的组织[强制启用登录](/manuals/enterprise/security/enforce-sign-in/_index.md)
 - Docker Business 订阅
 - 至少配置了一个设置策略
-
-> [!WARNING]
->
-> 使用 Docker Desktop 4.40 以下版本的用户可能会显示为不合规，因为旧版本无法报告合规状态。为了获得准确的报告，请将用户更新至 Docker Desktop 4.40 或更高版本。
 
 ## 访问合规性报告仪表板
 
 要查看合规性报告：
 
 1. 登录 [Docker Home](https://app.docker.com) 并选择您的组织。
-2. 选择 **Admin Console**（管理控制台），然后选择 **Desktop settings reporting**（桌面设置合规性报告）。
+2. 选择 **Docker Desktop**，然后 **Settings Reporting**。
 
 合规性报告仪表板提供以下工具：
 
@@ -114,4 +110,5 @@ Docker Desktop 检查策略更新的时机：
 - Docker Desktop 运行期间每 60 分钟
 - 用户重新启动 Docker Desktop 时
 
-管理控制台中对策略的更改会立即生效，但用户必须重新启动 Docker Desktop 才能应用这些更改。
+Docker Home 中对策略的更改会立即生效，但用户必须重新启动 Docker Desktop 才能应用这些更改。
+

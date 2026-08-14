@@ -127,5 +127,6 @@
 本页是对 Compose 的简要介绍。在以下资源中，您可以更深入地了解 Compose 以及如何编写 Compose 文件。
 
 * [Docker Compose 概述](/compose/)
-* [Docker Compose CLI 概述](/compose/reference/)
+* [Docker Compose CLI 概述](/reference/cli/docker/compose/)
 * [Compose 的工作原理](/compose/intro/compose-application-model/)
+

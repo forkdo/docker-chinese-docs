@@ -1,13 +1,19 @@
-# Share built image between jobs with GitHub Actions
+# 在 GitHub Actions 的多个作业间共享构建的镜像
 
 
-As each job is isolated in its own runner, you can't use your built image
-between jobs, except if you're using [self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
-or [Docker Build Cloud](/build-cloud).
-However, you can [pass data between jobs](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#passing-data-between-jobs-in-a-workflow)
-in a workflow using the [actions/upload-artifact](https://github.com/actions/upload-artifact)
-and [actions/download-artifact](https://github.com/actions/download-artifact)
-actions:
+由于每个作业都在各自独立的 runner 中隔离运行，除使用
+[自托管 runner](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
+或 [Docker Build Cloud](/build-cloud) 外，你无法在作业之间使用已构建的镜像。
+不过，你可以借助工作流中的 [actions/upload-artifact](https://github.com/actions/upload-artifact)
+和 [actions/download-artifact](https://github.com/actions/download-artifact)
+这两个 action [在作业之间传递数据](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#passing-data-between-jobs-in-a-workflow)：
+
+> [!NOTE]
+>
+> 该工作流仅支持单平台镜像，因为 Docker exporter 不支持 manifest 列表。
+> 对于多平台镜像，请将镜像推送到注册表。如果后续作业在推送前重新构建镜像，
+> 请配置[共享缓存后端](cache.md)以复用先前的构建结果。另请参阅
+> [Multi-platform image with GitHub Actions](multi-platform.md)。
 
 ```yaml
 name: ci
@@ -20,10 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build and export
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           tags: myimage:latest
           outputs: type=docker,dest=${{ runner.temp }}/myimage.tar

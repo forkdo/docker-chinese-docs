@@ -45,7 +45,7 @@ Docker Desktop 默认使用硬件加速图形，这可能导致某些 GPU 出现
 
 禁用硬件加速：
 
-1. 编辑 Docker Desktop 的 `settings-store.json` 文件（Docker Desktop 4.34 及更早版本为 `settings.json`）。该文件位于：
+1. 编辑 Docker Desktop 的 `settings-store.json` 文件。该文件位于：
 
    - Mac: `~/Library/Group Containers/group.com.docker/settings-store.json`
    - Windows: `C:\Users\[USERNAME]\AppData\Roaming\Docker\settings-store.json`
@@ -198,31 +198,13 @@ Docker Desktop 需要支持虚拟化的处理器 (CPU)，更具体地说，需�
 
 另请参阅 Apple 文档中的 [Hypervisor 框架参考](https://developer.apple.com/library/mac/documentation/DriversKernelHardware/Reference/Hypervisor/) 以及 Docker Desktop [Mac 系统要求](/manuals/desktop/setup/install/mac-install.md#system-requirements)。
 
-### VPNKit 不断中断
-
-#### 原因
-
-在 Docker Desktop 4.19 版本中，gVisor 取代了 VPNKit，以在使用 macOS 13 及更高版本的虚拟化框架时增强 VM 网络的性能。
-
-#### 解决方案
-
-要继续使用 VPNKit：
-
-1. 打开位于 `~/Library/Group Containers/group.com.docker/settings-store.json` 的 `settings-store.json` 文件
-2. 添加：
-
-   ```JSON
-   $ "networkType":"vpnkit"
-   ```
-3. 保存文件并重启 Docker Desktop。
-
 ## Windows 相关主题
 
 ### 安装防病毒软件后 Docker Desktop 无法启动
 
 #### 原因
 
-某些防病毒软件可能与 Hyper-V 和 Microsoft Windows 10 版本不兼容。这种冲突通常发生在 Windows 更新之后，表现为 Docker 守护进程的错误响应以及 Docker Desktop 启动失败。
+某些防病毒软件可能与 Hyper-V 和 Microsoft Windows 版本不兼容。这种冲突通常发生在 Windows 更新之后，表现为 Docker 守护进程的错误响应以及 Docker Desktop 启动失败。
 
 #### 解决方案
 
@@ -461,3 +443,4 @@ Docker Desktop - Access Denied
 2. 导航至 **本地用户和组** > **组** > **docker-users**。
 3. 右键单击以将用户添加到该组。
 4. 注销并重新登录以使更改生效。
+

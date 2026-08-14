@@ -39,3 +39,4 @@
 在 Windows 上使用 WSL 时，资源节省模式的工作方式略有不同。它不会停止 WSL 虚拟机，而只是暂停 `docker-desktop` WSL 发行版内的 Docker 引擎。这是因为在 WSL 中，所有 WSL 发行版共享单个 Linux 虚拟机，因此 Docker Desktop 无法停止 Linux 虚拟机（即 WSL Linux 虚拟机不归 Docker Desktop 所有）。因此，资源节省模式会降低 WSL 上的 CPU 使用率，但不会降低 Docker 的内存使用率。
 
 为了降低 WSL 上的内存使用率，我们建议用户启用 WSL 的 `autoMemoryReclaim` 功能，如 [Docker Desktop WSL 文档](/manuals/desktop/features/wsl/_index.md)中所述。最后，由于 Docker Desktop 在 WSL 上不会停止 Linux 虚拟机，因此退出资源节省模式是即时的（没有退出延迟）。
+

@@ -6,14 +6,6 @@
 
 
 
-<!--
-本页内容由 Docker 源代码自动生成。如果您希望
-建议对此处显示的文本进行修改，请在 GitHub 上的源存储库中
-打开工单或提交拉取请求：
-
-https://github.com/docker/buildx
--->
-
 
 
 
@@ -48,6 +40,7 @@ Docker contexts also get the default builder instance.
 | `--name` |  |  Builder instance name |
 | `--node` |  |  Create/modify node with given name |
 | `--platform` |  |  Fixed platforms for current node |
+| `--timeout` | `20s` |  Override the default timeout for loading builder status |
 | `--use` |  |  Set the current builder instance |
 
 
@@ -183,6 +176,18 @@ documentation for the specific driver:
 * [`docker-container` driver](/build/builders/drivers/docker-container/)
 * [`kubernetes` driver](/build/builders/drivers/kubernetes/)
 * [`remote` driver](/build/builders/drivers/remote/)
+
+With `BUILDX_DEFAULT_POLICY=1`, the `docker-container` driver verifies signed
+`moby/buildkit` builder image tags before creating the builder. To explicitly
+bypass this verification, set `allow-untrusted-image=true`. For example:
+
+```console
+$ BUILDX_DEFAULT_POLICY=1 docker buildx create --driver docker-container \
+    --driver-opt allow-untrusted-image=true
+```
+
+Only use this option for an image that you trust. It disables builder image
+verification for the new builder node.
 
 ### Remove a node from a builder (--leave) {#leave}
 

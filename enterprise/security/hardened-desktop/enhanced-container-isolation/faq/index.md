@@ -51,11 +51,11 @@ ECI 的保护范围因容器类型和 Docker Desktop 版本而异：
 
 - 使用 `docker run` 和 `docker create` 创建的容器
 - 使用 `docker-container` 构建驱动的容器
+- 使用 Kind 配置器的 Kubernetes
 
-### 版本依赖
+### 平台依赖
 
-- Docker Build：在 Docker Desktop 4.30+ 版本中受保护（WSL 2 除外）
-- Kubernetes：在 Docker Desktop 4.38+ 版本中使用 kind 配置器时受保护
+- Docker Build：在 Mac、Linux 以及使用 Hyper-V 后端的 Windows 版 Docker Desktop 中受保护
 
 ### 不受保护
 
@@ -74,3 +74,4 @@ ECI 的保护范围因容器类型和 Docker Desktop 版本而异：
 ## ECI 限制哪些绑定挂载？
 
 ECI 限制对 Docker Desktop 虚拟机目录的绑定挂载，但允许在 Docker Desktop 设置中配置的主机目录挂载。
+

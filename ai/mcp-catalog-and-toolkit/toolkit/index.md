@@ -3,14 +3,18 @@
 
 
 
-Docker MCP Toolkit 是集成在 Docker Desktop 中的管理界面，可让您设置、管理和运行容器化的 MCP 服务器，并将它们连接到 AI 代理。它通过提供安全的默认设置、简便的设置过程以及对不断增长的基于 LLM 的客户端生态系统的支持，消除了工具使用的障碍。这是从 MCP 工具发现到本地执行的最快途径。
+> [!NOTE]
+> 本页描述的是 Docker Desktop 4.62 及更高版本中的 MCP Toolkit 界面。较早版本的界面有所不同。请升级后再严格按照这些说明操作。
+
+Docker MCP Toolkit 是集成在 Docker Desktop 中的管理界面，可让您在配置文件中设置、管理和运行容器化的 MCP 服务器，并将它们连接到 AI 代理。它通过提供安全的默认设置、简便的设置过程以及对不断增长的基于 LLM 的客户端生态系统的支持，消除了工具使用的障碍。这是从 MCP 工具发现到本地执行的最快途径。
 
 ## 主要功能
 
 - **跨 LLM 兼容性**：适用于 Claude、Cursor 和其他 MCP 客户端。
 - **集成工具发现**：直接在 Docker Desktop 中浏览并启动来自 Docker MCP 目录的 MCP 服务器。
 - **零手动设置**：无需依赖管理、运行时配置或设置。
-- **兼具 MCP 服务器聚合器和网关功能**：客户端可通过其访问已安装的 MCP 服务器。
+- **基于配置文件的组织方式**：为不同项目或环境创建独立的服务器集合。
+- **将 MCP 服务器组织到配置文件中**：作为网关，供客户端访问各配置文件中的服务器。
 
 > [!TIP]
 > MCP Toolkit 包含 [Dynamic MCP](/manuals/ai/mcp-catalog-and-toolkit/dynamic-mcp.md)，
@@ -26,6 +30,8 @@ MCP 引入了两个核心概念：MCP 客户端和 MCP 服务器。
 Docker 标准化了包括 MCP 服务器在内的应用程序的开发、打包和分发。通过将 MCP 服务器打包为容器，Docker 消除了与隔离和环境差异相关的问题。您可以直接运行容器，而无需管理依赖项或配置运行时。
 
 根据 MCP 服务器的不同，其提供的工具可能在与服务器相同的容器内运行，也可能在专用容器中运行以实现更好的隔离。
+
+MCP Toolkit 将服务器组织到配置文件中：即带有各自配置的服务器命名集合。这让你可以为不同项目或环境维护不同的服务器设置。连接客户端时，你需要指定它应使用哪个配置文件。
 
 ## 安全性
 
@@ -46,15 +52,11 @@ Docker MCP Toolkit 结合了被动和主动措施，以减少攻击面并确保�
 - **文件系统访问**：默认情况下，MCP 服务器无权访问主机文件系统。用户需明确选择将授予文件挂载权限的服务器。
 - **工具请求拦截**：包含敏感信息（如密钥）的进出工具请求会被阻止。
 
-### OAuth 身份验证
+### OAuth authentication（OAuth 身份验证）
 
 某些 MCP 服务器需要身份验证才能访问外部服务，如 GitHub、Notion 和 Linear。MCP Toolkit 会自动处理 OAuth 身份验证。您通过浏览器授权访问，Toolkit 会安全地管理凭据。您无需手动创建 API 令牌或为每项服务配置身份验证。
 
 #### 使用 OAuth 授权服务器
-
-**Docker Desktop**
-
-
 
 1. 在 Docker Desktop 中，转到 **MCP Toolkit** 并选择 **Catalog** 选项卡。
 2. 找到并添加需要 OAuth 的 MCP 服务器。
@@ -64,63 +66,13 @@ Docker MCP Toolkit 结合了被动和主动措施，以减少攻击面并确保�
 
 在 **OAuth** 选项卡中查看所有已授权的服务。要撤销访问权限，请选择要断开连接的服务旁边的 **Revoke**。
 
-**CLI**
-
-
-
-启用 MCP 服务器：
-
-```console
-$ docker mcp server enable github-official
-```
-
-如果服务器需要 OAuth，请授权连接：
-
-```console
-$ docker mcp oauth authorize github
-```
-
-您的浏览器将打开授权页面。完成身份验证过程，然后返回您的终端。
-
-查看已授权的服务：
-
-```console
-$ docker mcp oauth ls
-```
-
-撤销对某项服务的访问权限：
-
-```console
-$ docker mcp oauth revoke github
-```
-
-
-
 ## 使用示例
-
-### 示例：将 GitHub Official MCP 服务器与 Ask Gordon 结合使用
-
-为了说明 MCP Toolkit 的工作原理，以下是启用 GitHub Official MCP 服务器并使用 [Ask Gordon](/manuals/ai/gordon/_index.md) 与您的 GitHub 帐户交互的方法：
-
-1. 从 Docker Desktop 的 **MCP Toolkit** 菜单中，选择 **Catalog** 选项卡，找到 **GitHub Official** 服务器并添加它。
-2. 在服务器的 **Configuration** 选项卡中，通过 OAuth 进行身份验证。
-3. 在 **Clients** 选项卡中，确保 Gordon 已连接。
-4. 从 **Ask Gordon** 菜单中，您现在可以根据 GitHub Official 服务器提供的工具发送与 GitHub 帐户相关的请求。要进行测试，请询问 Gordon：
-
-   ```text
-   What's my GitHub handle?
-   ```
-
-   确保通过在 Gordon 的回答中选择 **Always allow** 来允许 Gordon 与 GitHub 交互。
-
-> [!TIP]
-> Gordon 客户端默认启用，这意味着 Gordon 可以自动与您的 MCP 服务器交互。
 
 ### 示例：使用 Claude Desktop 作为客户端
 
-假设您安装了 Claude Desktop，并且想使用 GitHub MCP 服务器和 Puppeteer MCP 服务器，您无需在 Claude Desktop 中安装这些服务器。您只需在 MCP Toolkit 中安装这 2 个 MCP 服务器，并将 Claude Desktop 添加为客户端：
+假设您安装了 Claude Desktop，并且想使用 GitHub MCP 服务器和 Puppeteer MCP 服务器，您无需在 Claude Desktop 中安装这些服务器。您只需在 MCP Toolkit 中将这 2 个 MCP 服务器添加到您的配置文件，并将 Claude Desktop 连接为客户端：
 
-1. 从 **MCP Toolkit** 菜单中，选择 **Catalog** 选项卡，找到 **Puppeteer** 服务器并添加它。
+1. 从 **MCP Toolkit** 菜单中，选择 **Catalog** 选项卡，找到 **Puppeteer** 服务器并将其添加到你的配置文件。
 2. 对 **GitHub Official** 服务器重复此操作。
 3. 从 **Clients** 选项卡中，选择 **Claude Desktop** 旁边的 **Connect**。如果 Claude Desktop 正在运行，请重新启动它，现在它就可以访问 MCP Toolkit 中的所有服务器了。
 4. 在 Claude Desktop 中，使用 Sonnet 3.5 模型提交以下提示进行测试：
@@ -138,7 +90,6 @@ $ docker mcp oauth revoke github
    **全局启用**
 
 
-
    1. 在 Visual Studio Code 的用户 `mcp.json` 中插入以下内容：
 
       ```json
@@ -149,7 +100,9 @@ $ docker mcp oauth revoke github
            "args": [
              "mcp",
              "gateway",
-             "run"
+             "run",
+             "--profile",
+             "my_profile"
            ],
            "type": "stdio"
          }
@@ -160,22 +113,21 @@ $ docker mcp oauth revoke github
    **为特定项目启用**
 
 
-
    1. 在您的终端中，导航到您的项目文件夹。
    1. 运行：
 
       ```bash
-      docker mcp client connect vscode
+      docker mcp client connect vscode --profile my_profile
       ```
 
       > [!NOTE]
-      > 此命令在当前目录中创建一个 `.vscode/mcp.json` 文件。由于这是一个用户特定的文件，请将其添加到您的 `.gitignore` 文件中，以防止将其提交到仓库。
+      > 此命令在当前目录中创建一个 `.vscode/mcp.json` 文件，将 VSCode 连接到您的配置文件。由于这是一个用户特定的文件，请将其添加到您的 `.gitignore` 文件中，以防止将其提交到仓库。
       >
       > ```console
       > echo ".vscode/mcp.json" >> .gitignore
       > ```
 
-  
+
 
 1. 在 Visual Studio Code 中，打开一个新的聊天并选择 **Agent** 模式：
 
@@ -189,5 +141,7 @@ $ docker mcp oauth revoke github
 
 ## 延伸阅读
 
+- [从 CLI 使用 MCP Toolkit](/manuals/ai/mcp-catalog-and-toolkit/cli.md)
 - [MCP Catalog](/manuals/ai/mcp-catalog-and-toolkit/catalog.md)
 - [MCP Gateway](/manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md)
+

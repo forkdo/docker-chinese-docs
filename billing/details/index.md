@@ -1,172 +1,30 @@
-# 管理您的账单信息
+# 更新您的账单详情
 
 
-您可以更新个人账户或组织的账单信息。当您更新账单信息时，这些更改将应用于未来的账单发票。您为账单账户提供的电子邮件地址是 Docker 发送所有发票和其他账单相关通信的位置。
+您可以随时更新您的账单联系人信息、地址和通知邮箱。现有发票（无论已支付或未支付）无法更新。更改仅适用于未来的发票。
 
-> [!NOTE]
->
-> 现有的发票（无论已支付或未支付）无法更新。
-> 更改仅适用于未来的发票。
+## 更新账单详情
 
+您可以使用相同的流程为 Docker 个人账户和 Docker 组织账户更新账单详情。
 
+要从 Docker Home 的 **Settings** 更新您的账单信息：
 
-> [!重要]
->
-> 对于美国客户，Docker 已于 2024 年 7 月 1 日开始征收销售税。
-> 对于欧洲客户，Docker 已于 2025 年 3 月 1 日开始征收增值税 (VAT)。
-> 对于英国客户，Docker 已于 2025 年 5 月 1 日开始征收增值税 (VAT)。
->
-> 为确保税费计算准确，请确保您的[账单信息](/billing/details/)以及 VAT/税号（如适用）已更新。如果您免征销售税，请参阅[注册税务证明](/billing/tax-certificate/)。
+1. 登录 [Docker Home](https://app.docker.com/) 并选择您的个人或组织账户。
+1. 选择 **Billing**，然后转到 **Settings**。
+1. 选择 **Edit** 进行更改。
+1. 验证您的信息，然后选择 **Save as default**。
 
-## 管理账单信息
+有关更改默认支付方式的信息，请参阅 [更改默认支付方式](/manuals/billing/payment-method.md#change-default-payment-method)。
 
-### 个人账户
+## 账单通知
 
-**Docker subscription**
+Docker 将发票和其他账单相关的通信发送到账单账户的电子邮件地址。这些通信包括：
 
+- 确认信息，例如新订阅、已支付发票
+- 卡片失败和卡片过期错误的通知
+- 订阅续订的提醒
 
+## 计费周期
 
-要更新您的账单信息：
-
-1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
-1. 选择 **Billing**。
-1. 从左侧导航中选择 **Billing information**。
-1. 在您的账单信息卡片上，选择 **Change**。
-1. 更新您的账单联系人和账单地址信息。
-1. 可选。要添加或更新增值税号（VAT ID），请选中 **I'm purchasing as a business** 复选框并输入您的税务 ID。
-
-    > [!IMPORTANT]
-    >
-    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
-
-1. 选择 **Update**。
-
-**Legacy Docker subscription**
-
-
-
-要更新您的账单信息：
-
-1. 登录到 [Docker Hub](https://hub.docker.com)。
-1. 选择您的组织，然后选择 **Billing**。
-1. 选择 **Billing Address** 并输入您的更新后的账单信息。
-1. 可选。要添加或更新增值税号（VAT ID），请输入您的 **Tax ID/VAT**。
-
-    > [!IMPORTANT]
-    >
-    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
-
-1. 选择 **Submit**。
-
-
-
-### 组织
-
-> [!NOTE]
->
-> 您必须是组织所有者才能更改账单信息。
-
-**Docker subscription**
-
-
-
-要更新您的账单信息：
-
-1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
-1. 选择 **Billing**。
-1. 从左侧导航中选择 **Billing information**。
-1. 在您的账单信息卡片上，选择 **Change**。
-1. 更新您的账单联系人和账单地址信息。
-1. 可选。要添加或更新增值税号（VAT ID），请选中 **I'm purchasing as a business** 复选框并输入您的税务 ID。
-
-    > [!IMPORTANT]
-    >
-    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
-
-1. 选择 **Update**。
-
-**Legacy Docker subscription**
-
-
-
-要更新您的账单信息：
-
-1. 登录到 [Docker Hub](https://hub.docker.com)。
-1. 选择您的组织，然后选择 **Billing**。
-1. 选择 **Billing Address**。
-1. 可选。要添加或更新增值税号（VAT ID），请输入您的 **Tax ID/VAT**。
-
-    > [!IMPORTANT]
-    >
-    > 您的增值税号必须包含国家前缀。例如，如果您为德国输入增值税号，应输入 `DE123456789`。
-
-1. 选择 **Submit**。
-
-
-
-## 更新您的账单邮箱地址
-
-Docker 会发送以下与账单相关的电子邮件：
-
-- 确认邮件（新订阅、已支付发票）
-- 通知邮件（卡片失败、卡片过期）
-- 提醒邮件（订阅续订）
-
-您可以随时更新接收账单发票的电子邮件地址。
-
-### 个人账户
-
-**Docker subscription**
-
-
-
-要更新您的账单邮箱地址：
-
-1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
-1. 选择 **Billing**。
-1. 从左侧导航中选择 **Billing information**。
-1. 在您的账单信息卡片上，选择 **Change**。
-1. 更新您的账单联系人信息并选择 **Update**。
-
-**Legacy Docker subscription**
-
-
-
-要更新您的账单邮箱地址：
-
-1. 登录到 [Docker Hub](https://hub.docker.com)。
-1. 选择您的组织，然后选择 **Billing**。
-1. 选择 **Billing Address**。
-1. 在 **Billing contact** 部分更新邮箱地址。
-1. 选择 **Submit**。
-
-
-
-### 组织
-
-**Docker subscription**
-
-
-
-要更新您的账单邮箱地址：
-
-1. 登录到 [Docker Home](https://app.docker.com/) 并选择您的组织。
-1. 选择 **Billing**。
-1. 从左侧导航中选择 **Billing information**。
-1. 在您的账单信息卡片上，选择 **Change**。
-1. 更新您的账单联系人信息并选择 **Update**。
-
-**Legacy Docker subscription**
-
-
-
-要更新您的账单邮箱地址：
-
-1. 登录到 [Docker Hub](https://hub.docker.com)。
-1. 选择您的组织，然后选择 **Billing**。
-1. 选择组织名称。
-1. 选择 **Billing Address**。
-1. 在 **Billing contact** 部分更新邮箱地址。
-1. 选择 **Submit**。
-
+计费周期是按计划定义的。根据您订阅的产品，您的周期可以是月度、年度或其他节奏。有关特定计划的计费周期详情，请参阅 [计划](/manuals/subscription/plans/_index.md)。
 

@@ -74,7 +74,7 @@ express 软件包的 4.17.3 版本修复了该漏洞。因此，将 `package.jso
    +    "express": "4.17.3"
       }
    ```
-   
+
 使用新标签重新构建镜像并推送到 Docker Hub 仓库：
 
    ```console
@@ -93,16 +93,16 @@ $ docker scout cves --only-package express
 
   ## Overview
 
-                      │                  Analyzed Image                   
+                      │                  Analyzed Image
   ────────────────────┼───────────────────────────────────────────────────
-    Target            │  mobywhale/scout-demo:v2                   
-      digest          │  ef68417b2866                                     
-      platform        │ linux/arm64                                       
-      provenance      │ https://github.com/docker/scout-demo-service.git  
-                      │  7c3a06793fc8f97961b4a40c73e0f7ed85501857         
-      vulnerabilities │    0C     0H     0M     0L                        
-      size            │ 19 MB                                             
-      packages        │ 1                                                 
+    Target            │  mobywhale/scout-demo:v2
+      digest          │  ef68417b2866
+      platform        │ linux/arm64
+      provenance      │ https://github.com/docker/scout-demo-service.git
+                      │  7c3a06793fc8f97961b4a40c73e0f7ed85501857
+      vulnerabilities │    0C     0H     0M     0L
+      size            │ 19 MB
+      packages        │ 1
 
 
   ## Packages and Vulnerabilities
@@ -194,11 +194,9 @@ $ docker build --provenance=true --sbom=true --push -t <ORG_NAME>/scout-demo:v3 
 
 关闭 **Recommended fixes for base image** 模态框。在策略列表中，选择策略名称旁边的 **View fixes** 按钮，查看违规详情以及如何解决的建议。
 
-在这种情况下，建议的操作是启用 [Docker Scout 的 GitHub 集成](./integrations/source-code-management/github.md)，它能帮助你自动保持基础镜像最新。
-
-> [!TIP]
->
-> 你无法为本指南中使用的演示应用启用此集成。可以随意将代码推送到你拥有的 GitHub 仓库，在那里尝试该集成！
+在这种情况下，建议的操作是将基础镜像更新到更新的
+版本。你可以使用带有 `package-ecosystem: "docker"` 的 GitHub Dependabot
+来自动更新基础镜像。
 
 ## 总结
 
@@ -220,3 +218,4 @@ $ docker build --provenance=true --sbom=true --push -t <ORG_NAME>/scout-demo:v3 
 - [Docker Scout 仪表板](/scout/dashboard)
 - [集成](./integrations/_index.md)
 - [策略评估](./policy/_index.md)
+

@@ -125,10 +125,6 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 >
 > 请继续阅读，以了解如何通过最大化利用构建缓存、以非 root 用户身份运行以及使用多阶段构建来优化镜像。
 
-> **使用 `docker init` 快速容器化新项目**
->
-> `docker init` 命令会分析您的项目并快速创建 Dockerfile、`compose.yaml` 和 `.dockerignore`，帮助您快速上手。由于您目前正在专门学习 Dockerfile，因此现在不会使用它。但是，您可以[在此处了解更多信息](/engine/reference/commandline/init/)。
-
 ## 其他资源
 
 要了解有关编写 Dockerfile 的更多信息，请访问以下资源：
@@ -136,11 +132,12 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 * [Dockerfile 参考](/reference/dockerfile/)
 * [Dockerfile 最佳实践](/develop/develop-images/dockerfile_best-practices/)
 * [基础镜像](/build/building/base-images/)
-* [Docker Init 入门](/reference/cli/docker/init/)
+* [Gordon](/ai/gordon/) — Docker 的 AI 助手可以为您的项目生成 Dockerfile。让 Gordon 分析您的代码，并建议针对您的语言和框架进行优化的 Dockerfile。
 
 ## 下一步
 
 现在您已经创建了 Dockerfile 并学习了基础知识，是时候学习构建、标记和推送镜像了。
 
 [构建、标记和发布镜像](build-tag-and-publish-an-image)
+
 

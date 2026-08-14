@@ -37,3 +37,4 @@ Microsoft Store 版本的 Docker Desktop 提供与标准安装程序相同的功
 - 确保您的 Intune 策略已配置为处理应用程序更新
 - 请注意，更新过程使用的是 WinGet API，而不是直接的 Store 机制
 - 建议在受控环境中测试更新过程，以验证功能是否正常
+

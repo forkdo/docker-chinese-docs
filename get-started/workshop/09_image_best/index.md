@@ -16,14 +16,13 @@
     ```plaintext
     IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
     a78a40cbf866        18 seconds ago      /bin/sh -c #(nop)  CMD ["node" "src/index.j…    0B                  
-    f1d1808565d6        19 seconds ago      /bin/sh -c yarn install --production            85.4MB              
+    f1d1808565d6        19 seconds ago      /bin/sh -c npm install --omit=dev               85.4MB              
     a2c054d14948        36 seconds ago      /bin/sh -c #(nop) COPY dir:5dc710ad87c789593…   198kB               
     9577ae713121        37 seconds ago      /bin/sh -c #(nop) WORKDIR /app                  0B                  
     b95baba1cfdb        13 days ago         /bin/sh -c #(nop)  CMD ["node"]                 0B                  
     <missing>           13 days ago         /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B                  
     <missing>           13 days ago         /bin/sh -c #(nop) COPY file:238737301d473041…   116B                
     <missing>           13 days ago         /bin/sh -c apk add --no-cache --virtual .bui…   5.35MB              
-    <missing>           13 days ago         /bin/sh -c #(nop)  ENV YARN_VERSION=1.21.1      0B                  
     <missing>           13 days ago         /bin/sh -c addgroup -g 1000 node     && addu…   74.3MB              
     <missing>           13 days ago         /bin/sh -c #(nop)  ENV NODE_VERSION=12.14.1     0B                  
     <missing>           13 days ago         /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
@@ -46,25 +45,26 @@
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM node:lts-alpine
+FROM node:24-alpine
 WORKDIR /app
 COPY . .
-RUN yarn install --production
+RUN npm install --omit=dev
 CMD ["node", "src/index.js"]
+EXPOSE 3000
 ```
 
-回到镜像历史输出，您会看到 Dockerfile 中的每条命令都变成了镜像中的一个新层。您可能还记得，当您修改镜像时，yarn 依赖项必须重新安装。每次构建都携带相同的依赖项并没有太大意义。
+回到镜像历史输出，您会看到 Dockerfile 中的每条命令都变成了镜像中的一个新层。您可能还记得，当您修改镜像时，依赖项必须重新安装。每次构建都携带相同的依赖项并没有太大意义。
 
-要解决这个问题，您需要重新调整 Dockerfile 的结构，以支持依赖项的缓存。对于基于 Node 的应用，这些依赖项在 `package.json` 文件中定义。您可以先复制该文件，安装依赖项，然后再复制其他所有内容。这样，只有当 `package.json` 发生更改时，才会重新创建 yarn 依赖项。
+要解决这个问题，您需要重新调整 Dockerfile 的结构，以支持依赖项的缓存。对于基于 Node 的应用，这些依赖项在 `package.json` 文件中定义。您可以先复制该文件，安装依赖项，然后再复制其他所有内容。这样，只有当 `package.json` 发生更改时，才会重新创建依赖项。
 
 1. 更新 Dockerfile，先复制 `package.json`，安装依赖项，然后再复制其他所有内容。
 
    ```dockerfile
    # syntax=docker/dockerfile:1
-   FROM node:lts-alpine
+   FROM node:24-alpine
    WORKDIR /app
-   COPY package.json yarn.lock ./
-   RUN yarn install --production
+   COPY package.json package-lock.json ./
+   RUN npm install --omit=dev
    COPY . .
    CMD ["node", "src/index.js"]
    ```
@@ -83,13 +83,13 @@ CMD ["node", "src/index.js"]
     => => transferring dockerfile: 175B
     => [internal] load .dockerignore
     => => transferring context: 2B
-    => [internal] load metadata for docker.io/library/node:lts-alpine
+    => [internal] load metadata for docker.io/library/node:24-alpine
     => [internal] load build context
     => => transferring context: 53.37MB
-    => [1/5] FROM docker.io/library/node:lts-alpine
+    => [1/5] FROM docker.io/library/node:24-alpine
     => CACHED [2/5] WORKDIR /app
-    => [3/5] COPY package.json yarn.lock ./
-    => [4/5] RUN yarn install --production
+    => [3/5] COPY package.json package-lock.json ./
+    => [4/5] RUN npm install --omit=dev
     => [5/5] COPY . .
     => exporting to image
     => => exporting layers
@@ -107,13 +107,13 @@ CMD ["node", "src/index.js"]
     => => transferring dockerfile: 37B
     => [internal] load .dockerignore
     => => transferring context: 2B
-    => [internal] load metadata for docker.io/library/node:lts-alpine
+    => [internal] load metadata for docker.io/library/node:24-alpine
     => [internal] load build context
     => => transferring context: 450.43kB
-    => [1/5] FROM docker.io/library/node:lts-alpine
+    => [1/5] FROM docker.io/library/node:24-alpine
     => CACHED [2/5] WORKDIR /app
-    => CACHED [3/5] COPY package.json yarn.lock ./
-    => CACHED [4/5] RUN yarn install --production
+    => CACHED [3/5] COPY package.json package-lock.json ./
+    => CACHED [4/5] RUN npm install
     => [5/5] COPY . .
     => exporting to image
     => => exporting layers
@@ -153,19 +153,22 @@ COPY --from=build /app/target/file.war /usr/local/tomcat/webapps
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM node:lts AS build
+FROM node:24-alpine AS build
 WORKDIR /app
-COPY package* yarn.lock ./
-RUN yarn install
+COPY package* ./
+RUN npm install
 COPY public ./public
 COPY src ./src
-RUN yarn run build
+RUN npm run build
 
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 ```
 
-在前面的 Dockerfile 示例中，它使用 `node:lts` 镜像执行构建（最大化层缓存），然后将输出复制到 nginx 容器中。
+在前面的 Dockerfile 示例中，它使用 `node:24-alpine` 镜像执行构建（最大化层缓存），然后将输出复制到 nginx 容器中。
+
+  > [!Tips]
+  > 此 React 示例仅用于说明目的。入门待办事项应用是一个 `Node.js` 后端应用程序，而不是 React 前端。
 
 ## 总结
 
@@ -180,4 +183,5 @@ COPY --from=build /app/build /usr/share/nginx/html
 在下一节中，您将学习可以用来继续学习容器的其他资源。
 
 [下一步](10_what_next.md)
+
 

@@ -1,7 +1,7 @@
 # 可信内容
 
 
-Docker Hub 的可信内容提供了一系列经过精心挑选的高质量、安全的镜像，旨在让开发者对所依赖资源的可靠性和安全性充满信心。这些镜像稳定、定期更新，并遵循行业最佳实践，是构建和部署应用程序的坚实基础。Docker Hub 的可信内容包括 Docker Official Images、已验证发布者镜像（Verified Publisher images）以及 Docker 赞助的开源软件镜像（Docker-Sponsored Open Source Software images）。
+Docker Hub 的可信内容提供了一系列经过精心挑选的高质量、安全的镜像，旨在让开发者对所依赖资源的可靠性和安全性充满信心。这些镜像稳定、定期更新，并遵循行业最佳实践，是构建和部署应用程序的坚实基础。Docker Hub 的可信内容包括 Docker 官方镜像、Docker 强化镜像和图表、已验证发布者镜像（Verified Publisher images）以及 Docker 赞助的开源软件镜像（Docker-Sponsored Open Source Software images）。
 
 ## Docker Official Images
 
@@ -11,7 +11,7 @@ Docker 建议您在项目中使用 Docker Official Images。这些镜像拥有�
 
 > [!NOTE]
 >
-> 使用 Docker Official Images 需遵守 [Docker 服务条款](https://www.docker.com/legal/docker-terms-service/)。
+> 使用 Docker Official Images 需遵守 [Docker 服务条款](https://www.docker.com/legal/docker-terms-service/)
 
 这些镜像提供了基础仓库，是大多数用户的起点。
 
@@ -57,7 +57,7 @@ CMD ["node", "app.js"]
 
 许多 Docker Official Images 仓库也提供 `alpine` 变体。这些镜像基于 [Alpine Linux](https://www.alpinelinux.org/) 发行版构建，而不是 Debian 或 Ubuntu。Alpine Linux 专注于为容器镜像提供小型、简单且安全的基础，Docker Official Images 的 `alpine` 变体通常只安装必要的软件包。因此，Docker Official Images 的 `alpine` 变体通常比 `slim` 变体更小。
 
-需要注意的主要问题是，Alpine Linux 使用 [musl libc](https://musl.libc.org/) 而不是 [glibc](https://www.gnu.org/software/libc/)。此外，为了最小化镜像大小，基于 Alpine 的镜像通常默认不包含 Git 或 Bash 等工具。根据您的程序对 libc 要求的深度或假设，您可能会遇到缺少库或工具的问题。
+需要注意的主要问题是，Alpine Linux 使用 [musl libc](https://musl.libc.org/) 而不是 [glibc](https://www.gnu.org/software/libc)。此外，为了最小化镜像大小，基于 Alpine 的镜像通常默认不包含 Git 或 Bash 等工具。根据您的程序对 libc 要求的深度或假设，您可能会遇到缺少库或工具的问题。
 
 当您使用 Alpine 镜像作为基础时，请考虑以下选项，以使您的程序兼容 Alpine Linux 和 musl：
 
@@ -80,7 +80,21 @@ Linux 发行版指示符很有用，因为许多 Docker Official Images 提供�
 
 ### 解决拉取失败问题
 
-如果您在拉取 Docker Official Images 时遇到问题，请检查 `DOCKER_CONTENT_TRUST` 环境变量是否设置为 `1`。从 2025 年 8 月起，Docker Official Images 的 Docker Content Trust 签名证书开始过期。要解决拉取失败问题，请取消设置 `DOCKER_CONTENT_TRUST` 环境变量。有关更多详细信息，请参阅 [DCT 退役博客文章](https://www.docker.com/blog/retiring-docker-content-trust/)。
+如果您在拉取 Docker Official Images 时遇到问题，请检查 `DOCKER_CONTENT_TRUST` 环境变量是否设置为 `1`。Docker Content Trust 正在被退役，该服务用于拉取已不再可靠。要解决拉取失败问题，请取消设置 `DOCKER_CONTENT_TRUST`。有关更多信息，请参阅 [Docker Content Trust (DCT)](/manuals/retired.md#docker-content-trust-dct)。
+
+## Docker Hardened Images
+
+Docker Hardened Images (DHI) 是由 Docker 维护的最小化、安全且可用于生产的容器基础镜像和应用镜像。DHI 还包括由 Docker 提供的、基于上游源码构建并作为 OCI 制品发布在 Docker Hub 中的加固 Helm 图表。
+
+DHI 旨在减少漏洞并简化合规性，同时以极少甚至无需重新调整工具的方式融入现有的 Docker 工作流。Docker 在 DHI 镜像中保持近乎零的 CVE，并且 DHI 镜像和图表包含签名的安元数据，如 SBOM 和来源证明。
+
+镜像和图表仓库在 Docker Hub 上具有特殊徽章，便于识别受信任的 DHI 内容。
+
+![Docker Hardened Image badge](../images/dhi-image-label.png)
+
+![Docker Hardened Chart badge](../images/dhi-chart-label.png)
+
+要浏览可用的仓库，请参阅 [Docker Hardened Images 目录](https://hub.docker.com/hardened-images/catalog)。有关实施指南，请参阅 [Docker Hardened Images](/dhi/)。
 
 ## 已验证发布者镜像（Verified Publisher images）
 
@@ -99,3 +113,4 @@ Docker 赞助的开源软件（OSS）计划提供了由 Docker 赞助的开源�
 属于该计划的项目在 Docker Hub 上有一个特殊标记，便于用户识别 Docker 已验证为可信、安全且活跃的开源项目。
 
 ![Docker-Sponsored Open Source badge](../images/sponsored-badge-iso.png)
+

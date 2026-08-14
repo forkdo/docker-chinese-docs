@@ -55,12 +55,12 @@ Docker 包含对 Windows 容器中 secrets 的支持。在实现上存在差异�
 使用这些链接了解特定命令的详细信息，或继续阅读
 [关于在服务中使用 secrets 的示例](secrets.md#simple-example-get-started-with-secrets)。
 
-- [`docker secret create`](/reference/cli/docker/secret/create.md)
-- [`docker secret inspect`](/reference/cli/docker/secret/inspect.md)
-- [`docker secret ls`](/reference/cli/docker/secret/ls.md)
-- [`docker secret rm`](/reference/cli/docker/secret/rm.md)
-- [`--secret`](/reference/cli/docker/service/create.md#secret) 标志用于 `docker service create`
-- [`--secret-add` 和 `--secret-rm`](/reference/cli/docker/service/update.md#secret-add) 标志用于 `docker service update`
+- [`docker secret create`](/reference/cli/docker/secret/create/)
+- [`docker secret inspect`](/reference/cli/docker/secret/inspect/)
+- [`docker secret ls`](/reference/cli/docker/secret/ls/)
+- [`docker secret rm`](/reference/cli/docker/secret/rm/)
+- [`--secret`](/reference/cli/docker/service/create/#secret) 标志用于 `docker service create`
+- [`--secret-add` 和 `--secret-rm`](/reference/cli/docker/service/update/#secret-add) 标志用于 `docker service update`
 
 ## 示例
 
@@ -74,7 +74,7 @@ Docker 包含对 Windows 容器中 secrets 的支持。在实现上存在差异�
 ### 在 compose 文件中定义和使用 secrets
 
 `docker-compose` 和 `docker stack` 命令都支持在 compose 文件中定义 secrets。详细信息请参阅
-[Compose 文件参考](/reference/compose-file/legacy-versions.md)。
+[Compose 文件参考](/reference/compose-file/secrets.md)。
 
 ### 简单示例：开始使用 secrets
 
@@ -239,7 +239,7 @@ Docker 包含对 Windows 容器中 secrets 的支持。在实现上存在差异�
 
 #### 生成站点证书
 
-为你的站点生成根 CA 和 TLS 证书及密钥。对于生产站点，你可能希望使用 `Let’s Encrypt` 等服务生成 TLS 证书和密钥，但此示例使用命令行工具。这一步有点复杂，但只是一个设置步骤，以便你有东西可以作为 Docker secret 存储。如果你不想执行这些子步骤，可以 [使用 Let's Encrypt](https://letsencrypt.org/getting-started/) 生成站点密钥和证书，将文件命名为 `site.key` 和 `site.crt`，然后跳到
+为你的站点生成根 CA 和 TLS 证书及密钥。对于生产站点，你可能希望使用 `Let's Encrypt` 等服务生成 TLS 证书和密钥，但此示例使用命令行工具。这一步有点复杂，但只是一个设置步骤，以便你有东西可以作为 Docker secret 存储。如果你不想执行这些子步骤，可以 [使用 Let's Encrypt](https://letsencrypt.org/getting-started/) 生成站点密钥和证书，将文件命名为 `site.key` 和 `site.crt`，然后跳到
 [配置 Nginx 容器](#configure-the-nginx-container)。
 
 1.  生成根密钥。
@@ -643,3 +643,4 @@ Docker 包含对 Windows 容器中 secrets 的支持。在实现上存在差异�
     ```
 
     更新服务会导致其重启，当 MySQL 服务第二次重启时，它可以在 `/run/secrets/old_mysql
+

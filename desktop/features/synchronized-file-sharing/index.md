@@ -5,13 +5,11 @@
 
 同步文件共享（Synchronized file shares）是一种替代性的文件共享机制，它提供了快速且灵活的主机到虚拟机（VM）文件共享功能，通过使用同步的文件系统缓存来增强绑定挂载（bind mount）的性能。
 
-![同步文件共享窗格图像](../images/synched-file-shares.webp)
- 
 ## 适用人群
 
 同步文件共享非常适合以下开发者：
 - 拥有大型代码库或单体仓库（monorepo），其中包含 100,000 个或更多文件，总大小达数百兆字节甚至数千兆字节。
-- 正在使用虚拟文件系统（如 VirtioFS、gRPC FUSE 和 osxfs），而这些系统已无法很好地扩展以适应其代码库。
+- 正在使用虚拟文件系统（如 VirtioFS 和 gRPC FUSE），而这些系统已无法很好地扩展以适应其代码库。
 - 经常遇到性能限制。
 - 不希望担心文件所有权问题，或在修改多个容器时花费时间解决冲突的文件所有权信息。
 
@@ -27,7 +25,7 @@
 
 > [!IMPORTANT]
 >
-> 同步文件共享在 WSL 上或使用 Windows 容器时不可用。
+> 同步文件共享在使用 Windows 容器时不可用。
 
 ## 创建文件共享实例
 
@@ -43,12 +41,7 @@
 
 > [!NOTE]
 >
-> 创建新服务时，将[绑定挂载选项一致性](/reference/cli/docker/service/create.md#options-for-bind-mounts)设置为 `:consistent` 会绕过同步文件共享。
-
-> [!TIP]
->
-> Docker Compose 可以自动为绑定挂载创建文件共享。
-> 确保您已使用付费订阅登录 Docker，并在 Docker Desktop 设置中同时启用了**访问实验性功能（Access experimental features）**和**使用 Compose 管理同步文件共享（Manage Synchronized file shares with Compose）**。
+> 创建新服务时，将[绑定挂载选项一致性](/reference/cli/docker/service/create/#options-for-bind-mounts)设置为 `:consistent` 会绕过同步文件共享。
 
 ## 探索您的文件共享实例
 
@@ -76,7 +69,7 @@
 
 - 对 `.syncignore` 的更改不会导致立即删除文件，除非重新创建文件共享。换句话说，由于修改 `.syncignore` 文件而新被忽略的文件仍保留在其当前位置，但在同步期间不再更新。
 
-- 文件共享实例目前限制为每个共享约 200 万个文件。为了获得最佳性能，如果您有如此大小的文件共享实例，请尝试将其分解为多个对应于单个绑定挂载位置的共享。
+- 文件共享实例限制为每个共享约 200 万个文件。为了获得最佳性能，如果您有如此大小的文件共享实例，请尝试将其分解为多个对应于单个绑定挂载位置的共享。
 
 - 由于 Linux 区分大小写而 macOS/Windows 仅保留大小写，因此大小写冲突会在 GUI 中显示为**文件已存在（File exists）**问题。这些可以忽略。但是，如果问题持续存在，您可以报告该问题。
 
@@ -87,3 +80,4 @@
 - 不支持 POSIX 风格的 Windows 路径。避免在 Docker Compose 中设置 [`COMPOSE_CONVERT_WINDOWS_PATHS`](/manuals/compose/how-tos/environment-variables/envvars.md#compose_convert_windows_paths) 环境变量。
 
 - 如果您没有创建符号链接的正确权限，并且您的容器尝试在您的文件共享实例中创建符号链接，则会显示**无法创建符号链接（unable to create symbolic link）**错误消息。对于 Windows 用户，请参阅 Microsoft 的[创建符号链接文档](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/create-symbolic-links)以获取最佳实践和**创建符号链接（Create symbolic links）**安全策略设置的位置。对于 Mac 和 Linux 用户，请检查您是否对该文件夹具有写权限。
+

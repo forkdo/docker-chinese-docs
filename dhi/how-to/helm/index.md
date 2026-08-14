@@ -1,7 +1,7 @@
 # 使用 Docker 加固镜像（DHI）Helm chart
 
 
-Docker 加固镜像（Docker Hardened Image，简称 DHI）chart 是由 Docker 提供的 [Helm chart](https://helm.sh/docs/)，基于上游源码构建，专为与 Docker 加固镜像兼容而设计。这些 chart 以 OCI 制品的形式在 Docker Hub 上的 DHI 目录中提供。更多详情，请参阅 [Docker 加固镜像 chart](/dhi/features/helm/)。
+Docker 加固镜像（Docker Hardened Image，简称 DHI）chart 是由 Docker 提供的 Helm chart，基于上游源码构建，专为与 Docker 加固镜像兼容而设计。这些 chart 可在 [Docker Hub 上的 DHI 目录](https://hub.docker.com/hardened-images/catalog?types=helmChart) 中获取。
 
 DHI chart 集成了多层供应链安全保障，这些保障在上游 chart 中并不存在：
 
@@ -12,15 +12,6 @@ DHI chart 集成了多层供应链安全保障，这些保障在上游 chart 中
 - **兼容性测试**：Chart 经过严格测试，可开箱即用，与 Docker 加固镜像完美配合
 
 您可以像使用存储在 OCI 注册表中的其他 Helm chart 一样使用 DHI chart。当您拥有 Docker 加固镜像订阅时，还可以自定义 DHI chart，使其引用自定义镜像和镜像仓库。定制化的 chart 构建流水线可确保您的定制内容安全构建，使用最新的基础 chart，并包含证明信息。
-
-## 查找 Docker Helm chart
-
-要查找适用于 DHI 的 Docker Helm chart，请执行以下操作：
-
-1. 访问 [Docker Hub](https://hub.docker.com/hardened-images/catalog) 中的“加固镜像”目录并登录。
-2. 在左侧边栏中，选择 **Hardened Images** > **Catalog**。
-3. 选择 **Filter by** 下的 **Helm Charts**。
-4. 选择一个 Helm chart 仓库以查看其详细信息。
 
 ## 将 Helm chart 及其镜像镜像到第三方注册表
 
@@ -97,3 +88,4 @@ regctl image copy \
 ## 验证 Helm chart 并查看其证明
 
 您可以验证 Helm chart。更多详情，请参阅 [验证 Helm chart 证明](./verify.md#verify-helm-chart-attestations-with-docker-scout)。
+

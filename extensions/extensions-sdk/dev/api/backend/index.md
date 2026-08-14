@@ -15,7 +15,7 @@ ddClient.extension.vm.service
  .then((value: any) => console.log(value)
 ```
 
-有关其他方法（如 POST、UPDATE 和 DELETE），请参阅 [Service API 参考](/reference/api/extensions-sdk/HttpService.md)。
+有关其他 HTTP 方法，请参阅 [Service API 参考](/reference/api/extensions-sdk/HttpService.md)。
 
 > 已弃用的扩展后端通信
 >
@@ -169,3 +169,4 @@ window.ddClient.spawnHostCmd(
 > 你不能使用此方法在单个 `exec()` 调用中链接命令（例如 `cmd1 $(cmd2)` 或在命令之间使用管道）。
 >
 > 如果需要将参数传递给下一个命令，你需要为每个命令调用 `exec()` 并解析结果。
+

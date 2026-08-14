@@ -93,7 +93,7 @@ dckr_pat_...
 
 3. 在 Prometheus 配置文件 `/prometheus/prometheus/prometheus.yml` 中，将第 6 行 `metrics_path` 属性中的 `ORG` 替换为您的 Docker 组织命名空间。
 
-   ```yaml {title="prometheus/prometheus.yml",hl_lines="6",linenos=1}
+   ```yaml {title="prometheus/prometheus.yml",hl_lines="6",linenos=true}
    global:
      scrape_interval: 60s
      scrape_timeout: 40s
@@ -279,3 +279,4 @@ openmetrics (4.2.0)
 如果您怀疑 PAT 已泄露或不再需要，您可以随时撤销它。要撤销 PAT，请按照 [创建和管理访问令牌](/manuals/security/access-tokens.md) 中的步骤操作。
 
 撤销 PAT 会立即使令牌失效，并防止 Prometheus 使用该令牌抓取指标。您需要创建新的 PAT 并更新 Prometheus 配置以使用新令牌。
+

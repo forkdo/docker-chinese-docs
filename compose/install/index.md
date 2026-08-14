@@ -40,3 +40,4 @@ Docker Desktop 适用于：
 > 不建议使用此安装场景，仅出于向后兼容目的提供支持。
 
 您可以在 Linux 或 Windows Server 上[安装 Docker Compose 独立版](standalone.md)。
+

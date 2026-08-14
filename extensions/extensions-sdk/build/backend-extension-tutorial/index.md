@@ -1,32 +1,33 @@
-# Add a backend to your extension
+# 为你的扩展添加后端
 
 
-Your extension can ship a backend part with which the frontend can interact with. This page provides information on why and how to add a backend.
+你的扩展可以附带一个后端部分，前端可以与之交互。本页提供关于为什么以及如何添加后端的信息。
 
-Before you start, make sure you have installed the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+在开始之前，请确保你已经安装了最新版本的 [Docker Desktop](https://www.docker.com/products/docker-desktop/)。
 
 > Tip
 >
-> Check the [Quickstart guide](../quickstart.md) and `docker extension init <my-extension>`. They provide a better base for your extension as it's more up-to-date and related to your install of Docker Desktop.
+> 查看 [快速入门指南](../quickstart.md) 和 `docker extension init <my-extension>`。它们为你的扩展提供了更好的基础，因为它们
+> 更新且与你安装的 Docker Desktop 相关。
 
-## Why add a backend?
+## 为什么要添加后端？（Why add a backend?）
 
-Thanks to the Docker Extensions SDK, most of the time you should be able to do what you need from the Docker CLI
-directly from [the frontend](frontend-extension-tutorial.md#use-the-extension-apis-client).
+得益于 Docker Extensions SDK，大多数情况下你应该能直接从 [前端](frontend-extension-tutorial.md#use-the-extension-apis-client)
+通过 Docker CLI 完成你需要的操作。
 
-Nonetheless, there are some cases where you might need to add a backend to your extension. So far, extension
-builders have used the backend to:
-- Store data in a local database and serve them back with a REST API.
-- Store the extension state, for example when a button starts a long-running process, so that if you navigate away from the extension user interface and comes back, the frontend can pick up where it left off.
+尽管如此，有些情况下你可能需要为扩展添加后端。迄今为止，扩展开发者已使用后端来：
+- 将数据存储在本地数据库中，并通过 REST API 提供。
+- 存储扩展状态，例如当某个按钮启动一个长时间运行的进程时，这样如果你离开扩展用户界面再返回，前端可以从中断
+  处继续。
 
-For more information about extension backends, see [Architecture](../architecture/_index.md#the-backend).
+有关扩展后端的更多信息，请参阅 [架构](../architecture/_index.md#the-backend)。
 
-## Add a backend to the extension
+## 为扩展添加后端（Add a backend to the extension）
 
-If you created your extension using the `docker extension init` command, you already have a backend setup. Otherwise, you have to first create a `vm` directory that contains the code and updates the Dockerfile to
-containerize it.
+如果你使用 `docker extension init` 命令创建了扩展，你已经有了后端设置。否则，你必须先创建一个 `vm` 目录，
+包含代码并更新 Dockerfile 以将其容器化。
 
-Here is the extension folder structure with a backend:
+以下是带后端的扩展文件夹结构：
 
 ```bash
 .
@@ -40,18 +41,18 @@ Here is the extension folder structure with a backend:
     └── main.go
 ```
 
-1. Contains everything required to build the backend and copy it in the extension's container filesystem.
-2. The source folder that contains the backend code of the extension.
+1. 包含构建后端并将其复制到扩展容器文件系统中所需的一切。
+2. 包含扩展后端代码的源文件夹。
 
-Although you can start from an empty directory or from the `vm-ui extension` [sample](https://github.com/docker/extensions-sdk/tree/main/samples),
-it is highly recommended that you start from the `docker extension init` command and change it to suit your needs.
+虽然你可以从空目录或 `vm-ui extension` [示例](https://github.com/docker/extensions-sdk/tree/main/samples) 开始，但强烈建议
+你从 `docker extension init` 命令开始，并更改为满足你的需求。
 
 > [!TIP]
 >
-> The `docker extension init` generates a Go backend. But you can still use it as a starting point for
-> your own extension and use any other language like Node.js, Python, Java, .Net, or any other language and framework.
+> `docker extension init` 生成的是 Go 后端。但你仍可以将其作为你自己扩展的起点，并使用任何其他语言，如 Node.js、
+> Python、Java、.Net 或任何其他语言和框架。
 
-In this tutorial, the backend service simply exposes one route that returns a JSON payload that says "Hello".
+在本教程中，后端服务仅暴露一个路由，返回一条说 "Hello" 的 JSON 负载。
 
 ```json
 { "Message": "Hello" }
@@ -59,11 +60,9 @@ In this tutorial, the backend service simply exposes one route that returns a JS
 
 > [!IMPORTANT]
 >
-> We recommend that, the frontend and the backend communicate through sockets, and named pipes on Windows, instead of
-> HTTP. This prevents port collision with any other running application or container running
-> on the host. Also, some Docker Desktop users are running in constrained environments where they
-> can't open ports on their machines. When choosing the language and framework for your backend, make sure it
-> supports sockets connection.
+> 我们建议前端和后端通过套接字（在 Windows 上为命名管道）而非 HTTP 进行通信。这可以防止与主机上运行的任何其他
+> 应用程序或容器发生端口冲突。此外，一些 Docker Desktop 用户运行在受限环境中，无法在机器上打开端口。为后端选择
+> 语言和框架时，请确保它支持套接字连接。
 
 **Go**
 
@@ -126,8 +125,8 @@ type HTTPMessageBody struct {
 
 > [!IMPORTANT]
 >
-> We don't have a working example for Node yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Node)
-> and let us know if you'd like a sample for Node.
+> 我们目前还没有 Node 的可运行示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Node)
+> 让我们知道你是否想要 Node 的示例。
 
 **Python**
 
@@ -135,8 +134,8 @@ type HTTPMessageBody struct {
 
 > [!IMPORTANT]
 >
-> We don't have a working example for Python yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Python)
-> and let us know if you'd like a sample for Python.
+> 我们目前还没有 Python 的可运行示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Python)
+> 让我们知道你是否想要 Python 的示例。
 
 **Java**
 
@@ -144,8 +143,8 @@ type HTTPMessageBody struct {
 
 > [!IMPORTANT]
 >
-> We don't have a working example for Java yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Java)
-> and let us know if you'd like a sample for Java.
+> 我们目前还没有 Java 的可运行示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Java)
+> 让我们知道你是否想要 Java 的示例。
 
 **.NET**
 
@@ -153,30 +152,29 @@ type HTTPMessageBody struct {
 
 > [!IMPORTANT]
 >
-> We don't have a working example for .NET. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=.Net)
-> and let us know if you'd like a sample for .NET.
+> 我们目前还没有 .NET 的可运行示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=.Net)
+> 让我们知道你是否想要 .NET 的示例。
 
 
 
-## Adapt the Dockerfile
+## 调整 Dockerfile（Adapt the Dockerfile）
 
 > [!NOTE]
 >
-> When using the `docker extension init`, it creates a `Dockerfile` that already contains what is needed for a Go backend.
+> 使用 `docker extension init` 时，它会创建一个已经包含 Go 后端所需内容的 `Dockerfile`。
 
 **Go**
 
 
 
-To deploy your Go backend when installing the extension, you need first to configure the `Dockerfile`, so that it:
-- Builds the backend application
-- Copies the binary in the extension's container filesystem
-- Starts the binary when the container starts listening on the extension socket
+要在安装扩展时部署你的 Go 后端，你首先需要配置 `Dockerfile`，使其：
+- 构建后端应用程序
+- 将二进制文件复制到扩展的容器文件系统
+- 在容器启动时启动二进制文件，监听扩展的套接字
 
 > [!TIP]
-> 
-> To ease version management, you can reuse the same image to build the frontend, build the
-backend service, and package the extension.
+>
+> 为简化版本管理，你可以复用相同的镜像来构建前端、构建后端服务并打包扩展。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -205,8 +203,8 @@ CMD /service -socket /run/guest-services/extension-allthethings-extension.sock
 
 > [!IMPORTANT]
 >
-> We don't have a working Dockerfile for Node yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Node)
-> and let us know if you'd like a Dockerfile for Node.
+> 我们目前还没有 Node 的可运行 Dockerfile。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Node)
+> 让我们知道你是否想要 Node 的 Dockerfile。
 
 **Python**
 
@@ -214,8 +212,8 @@ CMD /service -socket /run/guest-services/extension-allthethings-extension.sock
 
 > [!IMPORTANT]
 >
-> We don't have a working Dockerfile for Python yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Python)
-> and let us know if you'd like a Dockerfile for Python.
+> 我们目前还没有 Python 的可运行 Dockerfile。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Python)
+> 让我们知道你是否想要 Python 的 Dockerfile。
 
 **Java**
 
@@ -223,8 +221,8 @@ CMD /service -socket /run/guest-services/extension-allthethings-extension.sock
 
 > [!IMPORTANT]
 >
-> We don't have a working Dockerfile for Java yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Java)
-> and let us know if you'd like a Dockerfile for Java.
+> 我们目前还没有 Java 的可运行 Dockerfile。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=Java)
+> 让我们知道你是否想要 Java 的 Dockerfile。
 
 **.NET**
 
@@ -232,15 +230,14 @@ CMD /service -socket /run/guest-services/extension-allthethings-extension.sock
 
 > [!IMPORTANT]
 >
-> We don't have a working Dockerfile for .Net. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=.Net)
-> and let us know if you'd like a Dockerfile for .Net.
+> 我们目前还没有 .Net 的可运行 Dockerfile。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.25798127=.Net)
+> 让我们知道你是否想要 .Net 的 Dockerfile。
 
 
 
-## Configure the metadata file
+## 配置元数据文件（Configure the metadata file）
 
-To start the backend service of your extension inside the VM of Docker Desktop, you have to configure the image name
-in the `vm` section of the `metadata.json` file.
+要在 Docker Desktop 的 VM 中启动扩展的后端服务，你必须在 `metadata.json` 文件的 `vm` 段落中配置镜像名。
 
 ```json
 {
@@ -254,36 +251,35 @@ in the `vm` section of the `metadata.json` file.
 }
 ```
 
-For more information on the `vm` section of the `metadata.json`, see [Metadata](../architecture/metadata.md).
+有关 `metadata.json` 的 `vm` 段落的更多信息，请参阅 [元数据](../architecture/metadata.md)。
 
 > [!WARNING]
 >
-> Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed.
+> 不要替换 `metadata.json` 文件中的 `${DESKTOP_PLUGIN_IMAGE}` 占位符。该占位符在安装扩展时会自动替换为正确的镜像名。
 
-## Invoke the extension backend from your frontend
+## 从前端调用扩展后端（Invoke the extension backend from your frontend）
 
-Using the [advanced frontend extension example](frontend-extension-tutorial.md), we can invoke our extension backend.
+使用 [高级前端扩展示例](frontend-extension-tutorial.md)，我们可以调用扩展后端。
 
-Use the Docker Desktop Client object and then invoke the `/hello` route from the backend service with `ddClient.
-extension.vm.service.get` that returns the body of the response.
+使用 Docker Desktop Client 对象，然后通过 `ddClient.extension.vm.service.get` 调用后端服务的 `/hello` 路由，它返回
+响应的主体。
 
 **React**
 
 
 
-Replace the `ui/src/App.tsx` file with the following code:
+用以下代码替换 `ui/src/App.tsx` 文件：
 
 ```tsx
 
 // ui/src/App.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createDockerDesktopClient } from "@docker/extension-api-client";
 
 //obtain docker desktop extension client
 const ddClient = createDockerDesktopClient();
 
 export function App() {
-  const ddClient = createDockerDesktopClient();
   const [hello, setHello] = useState<string>();
 
   useEffect(() => {
@@ -307,8 +303,8 @@ export function App() {
 
 > [!IMPORTANT]
 >
-> We don't have an example for Vue yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Vue)
-> and let us know if you'd like a sample with Vue.
+> 我们目前还没有 Vue 的示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Vue)
+> 让我们知道你是否想要 Vue 的示例。
 
 **Angular**
 
@@ -316,8 +312,8 @@ export function App() {
 
 > [!IMPORTANT]
 >
-> We don't have an example for Angular yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Angular)
-> and let us know if you'd like a sample with Angular.
+> 我们目前还没有 Angular 的示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Angular)
+> 让我们知道你是否想要 Angular 的示例。
 
 **Svelte**
 
@@ -325,37 +321,36 @@ export function App() {
 
 > [!IMPORTANT]
 >
-> We don't have an example for Svelte yet. [Fill out the form](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Svelte)
-> and let us know if you'd like a sample with Svelte.
+> 我们目前还没有 Svelte 的示例。[填写表单](https://docs.google.com/forms/d/e/1FAIpQLSdxJDGFJl5oJ06rG7uqtw1rsSBZpUhv_s9HHtw80cytkh2X-Q/viewform?usp=pp_url&entry.1333218187=Svelte)
+> 让我们知道你是否想要 Svelte 的示例。
 
 
 
-## Re-build the extension and update it
+## 重新构建扩展并更新它（Re-build the extension and update it）
 
-Since you have modified the configuration of the extension and added a stage in the Dockerfile, you must re-build the extension.
+由于你已修改了扩展的配置并在 Dockerfile 中添加了阶段，你必须重新构建扩展。
 
 ```bash
 docker build --tag=awesome-inc/my-extension:latest .
 ```
 
-Once built, you need to update it, or install it if you haven't already done so.
+构建完成后，你需要更新它，或者如果尚未安装则安装它。
 
 ```bash
 docker extension update awesome-inc/my-extension:latest
 ```
 
-Now you can see the backend service running in the **Containers** view of the Docker Desktop Dashboard and watch the logs when you need to debug it.
+现在你可以在 Docker Desktop 仪表盘的 **容器（Containers）** 视图中看到后端服务正在运行，并在需要调试时查看日志。
 
 > [!TIP]
 >
-> You may need to turn on the **Show system containers** option in **Settings** to see the backend container running.
-> See [Show extension containers](../dev/test-debug.md#show-the-extension-containers) for more information.
+> 你可能需要打开 **设置（Settings）** 中的 **显示系统容器（Show system containers）** 选项才能看到后端容器在运行。
+> 有关更多信息，请参阅 [显示扩展容器](../dev/test-debug.md#show-the-extension-containers)。
 
-Open the Docker Desktop Dashboard and select the **Containers** tab. You should see the response from the backend service
-call displayed.
+打开 Docker Desktop 仪表盘并选择 **容器（Containers）** 标签页。你应该会看到来自后端服务调用的响应显示出来。
 
-## What's next?
+## 接下来？（What's next?）
 
-- Learn how to [share and publish your extension](../extensions/_index.md).
-- Learn more about extensions [architecture](../architecture/_index.md).
+- 了解如何 [共享和发布你的扩展](../extensions/_index.md)。
+- 了解更多关于扩展 [架构](../architecture/_index.md)。
 

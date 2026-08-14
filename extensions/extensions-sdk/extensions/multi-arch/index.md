@@ -26,7 +26,7 @@ $ make push-extension
 $ docker buildx build --push --platform=linux/amd64,linux/arm64 --tag=username/my-extension:0.0.1 .
 ```
 
-然后，您可以使用 [`docker buildx imagetools` 命令](/reference/cli/docker/buildx/imagetools/_index.md) 检查镜像清单，以查看镜像是否可用于两种架构：
+然后，您可以使用 [`docker buildx imagetools` 命令](/reference/cli/docker/buildx/imagetools/) 检查镜像清单，以查看镜像是否可用于两种架构：
 
 ```console
 $ docker buildx imagetools inspect username/my-extension:0.0.1
@@ -133,3 +133,4 @@ COPY --from=dl /out /
 ## 我可以开发运行 Windows 容器的扩展吗？
 
 尽管 Docker 扩展在 Docker Desktop for Windows、Mac 和 Linux 上均受支持，但扩展框架仅支持 Linux 容器。因此，在构建扩展镜像时，必须将操作系统目标指定为 `linux`。
+

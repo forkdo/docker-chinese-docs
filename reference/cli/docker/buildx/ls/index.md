@@ -6,14 +6,6 @@
 
 
 
-<!--
-本页内容由 Docker 源代码自动生成。如果您希望
-建议对此处显示的文本进行修改，请在 GitHub 上的源仓库中
-提交 issue 或 pull request：
-
-https://github.com/docker/buildx
--->
-
 
 
 
@@ -46,6 +38,7 @@ the target platform marked with a `*` in the `PLATFORMS` column.
 |--------|---------|-------------|
 | `--format` | `table` |  Format the output |
 | `--no-trunc` |  |  Don't truncate output |
+| `--timeout` | `20s` |  Override the default timeout for loading builder status |
 
 
 

@@ -5,7 +5,10 @@
 
 
 
+
+
 使用 `include`，您可以将单独的 `compose.yaml` 文件直接合并到当前的 `compose.yaml` 文件中。这样可以轻松地将复杂应用程序模块化到子 Compose 文件中，从而使应用程序配置变得更简单、更明确。
+
 
 [`include` 顶级元素](/reference/compose-file/include.md) 有助于将负责代码的工程团队直接反映在配置文件的组织结构中。它还解决了 [`extends`](extends.md) 和 [merge](merge.md) 所带来的相对路径问题。
 
@@ -86,3 +89,4 @@ services:
 ## 参考信息
 
 [`include` top-level element](/reference/compose-file/include.md)
+

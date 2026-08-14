@@ -33,7 +33,7 @@ Compose v1 发布了三个主要版本的 Compose 文件格式：
 - 2016 年随 Compose 1.6.0 发布的 Compose 文件格式 2.x
 - 2017 年随 Compose 1.10.0 发布的 Compose 文件格式 3.x
 
-Compose 文件格式 1 与所有后续格式有显著不同，因为它缺少顶级 `services` 键。它的使用是历史性的，用此格式编写的文件无法在 Compose v2 上运行。
+Compose 文件格式 1 与所有后续格式有显著不同，因为它缺少顶级 `services` 键。它的使用是历史性的，用此格式编写的文件无法在 Compose v2 或 v5 上运行。
 
 Compose 文件格式 2.x 和 3.x 彼此非常相似，但后者引入了许多针对 Swarm 部署的新选项。
 
@@ -47,3 +47,4 @@ Compose v2 和 v5 使用 Compose 规范进行项目定义。与之前的文件�
 
 - [Compose 的工作原理](compose-application-model.md)
 - [Compose 规范参考](/reference/compose-file/_index.md)
+

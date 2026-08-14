@@ -9,7 +9,7 @@ Docker Extensions 的私有市场专为那些不授予开发人员机器 root �
 
 ## 先决条件
 
-- [下载并安装 Docker Desktop 4.26.0 或更高版本](https://docs.docker.com/desktop/release-notes/)。
+- [下载并安装 Docker Desktop](https://docs.docker.com/desktop/release-notes/)。
 - 您必须是您组织的管理员。
 - 您有能力通过设备管理软件（如 [Jamf](https://www.jamf.com/)）将 `extension-marketplace` 文件夹和 `admin-settings.json` 文件推送到以下指定位置。
 
@@ -37,7 +37,11 @@ Docker Extensions 的私有市场专为那些不授予开发人员机器 root �
 
 
    ```console
+   # 针对所有用户的安装
    $ C:\Program Files\Docker\Docker\resources\bin\extension-admin init
+
+   # 针对单用户的安装
+   $ %LOCALAPPDATA%\Programs\DockerDesktop\resources\bin\extension-admin init
    ```
 
    **Linux**
@@ -55,9 +59,17 @@ Docker Extensions 的私有市场专为那些不授予开发人员机器 root �
 - `admin-settings.json`，一旦应用到开发人员机器上的 Docker Desktop，将激活私有市场功能。
 - `extensions.txt`，用于确定在私有市场中列出的扩展。
 
+> [!IMPORTANT]
+>
+> 如果您的组织通过 [Docker Home](manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console/_index.md) 使用[设置管理](/manuals/enterprise/security/hardened-desktop/settings-management/_index.md)，您将不需要 `admin-settings.json` 文件。删除生成的文件，仅保留 `extensions.txt` 文件。
+
 ## 第二步：设置行为
 
 生成的 `admin-settings.json` 文件包含您可以修改的各种设置。
+
+> [!IMPORTANT]
+>
+> 如果您的组织通过 [Docker Home](manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console/_index.md) 管理设置，您将在 Docker Home 中而非 `admin-settings.json` 文件中定义相同的设置。
 
 每个设置都有一个可以设置的 `value`，包括一个 `locked` 字段，该字段允许您锁定设置并使其对开发人员不可更改。
 
@@ -116,7 +128,11 @@ $ /Applications/Docker.app/Contents/Resources/bin/extension-admin generate
 
 
 ```console
+# 针对所有用户的安装
 $ C:\Program Files\Docker\Docker\resources\bin\extension-admin generate
+
+# 针对单用户的安装
+$ %LOCALAPPDATA%\Programs\DockerDesktop\resources\bin\extension-admin generate
 ```
 
 **Linux**
@@ -156,7 +172,11 @@ $ /opt/docker-desktop/extension-admin generate
 
 
    ```console
+   # 针对所有用户的安装
    $ C:\Program Files\Docker\Docker\resources\bin\extension-admin apply
+
+   # 针对单用户的安装
+   $ %LOCALAPPDATA%\Programs\DockerDesktop\resources\bin\extension-admin apply
    ```
 
    **Linux**
@@ -172,6 +192,10 @@ $ /opt/docker-desktop/extension-admin generate
 2. 退出并重新打开 Docker Desktop。
 3. 使用 Docker 账户登录。
 
+> [!IMPORTANT]
+>
+> > 如果您的组织通过 [Docker Home](manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console/_index.md) 管理设置，在 Docker Desktop 4.59 及更早版本中，您必须在第 2 步之前手动删除由 `apply` 命令在目标文件夹中创建的 `admin-settings.json` 文件。在 Docker Desktop 4.60 及更高版本中，此步骤不再必要。
+
 当您选择 **Extensions** 选项卡时，您应该看到私有市场仅列出您在 `extensions.txt` 中允许的扩展。
 
 ![Extensions Private Marketplace](/assets/images/extensions-private-marketplace.webp)
@@ -181,7 +205,7 @@ $ /opt/docker-desktop/extension-admin generate
 一旦您确认私有市场配置有效，最后一步是使用组织使用的 MDM 软件将文件分发到开发人员的机器上。例如，[Jamf](https://www.jamf.com/)。
 
 要分发的文件是：
-* `admin-settings.json`
+* `admin-settings.json`（除非您的组织通过 [Docker Home](manuals/enterprise/security/hardened-desktop/settings-management/configure-admin-console/_index.md) 管理设置）
 * 整个 `extension-marketplace` 文件夹及其子文件夹
 
 这些文件必须放置在开发人员的机器上。根据您的操作系统，目标位置为（如上所述）：
@@ -195,3 +219,4 @@ $ /opt/docker-desktop/extension-admin generate
 ## 反馈
 
 通过发送电子邮件到 `extensions@docker.com` 提供反馈或报告您可能发现的任何错误。
+

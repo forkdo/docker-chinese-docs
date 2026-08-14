@@ -79,7 +79,7 @@ staticPasswords:
 
 配置好 Docker Compose 后，启动 Dex：
 ```yaml
-# docker-compose.yaml
+# compose.yaml
 
 services:
   dex:
@@ -158,3 +158,4 @@ jobs:
 ### 结论
 
 通过遵循本指南，您已经使用 Docker 将 Dex 设置为 OAuth 模拟服务器。此设置对于测试和开发非常宝贵，允许您模拟 OAuth 流程而无需依赖外部身份认证服务。有关更高级的配置和集成，请参阅 [Dex 文档](https://dexidp.io/docs/)。
+

@@ -31,3 +31,28 @@ Testcontainers 会自动检测并使用这些 Docker 环境，无需进行任何
 请在 [Slack](https://slack.testcontainers.org/) 上联系 Testcontainers 团队以及 Testcontainers 社区的其他用户。
 
  
+
+## 指南
+
+探索动手实践性的 Testcontainers 指南，了解如何在不同语言和流行框架中使用 Testcontainers：
+
+- [.NET 版 Testcontainers 入门](/guides/testcontainers-dotnet-getting-started/)
+- [Go 版 Testcontainers 入门](/guides/testcontainers-go-getting-started/)
+- [Java 版 Testcontainers 入门](/guides/testcontainers-java-getting-started/)
+- [Node.js 版 Testcontainers 入门](/guides/testcontainers-nodejs-getting-started/)
+- [Python 版 Testcontainers 入门](/guides/testcontainers-python-getting-started/)
+- [使用 Testcontainers 测试 Spring Boot REST API](/guides/testcontainers-java-spring-boot-rest-api/)
+- [Testcontainers 容器生命周期管理](/guides/testcontainers-java-lifecycle/)
+- [用真实数据库替换 H2 进行测试](/guides/testcontainers-java-replace-h2/)
+- [在容器中运行的服务配置](/guides/testcontainers-java-service-configuration/)
+- [测试 ASP.NET Core Web 应用](/guides/testcontainers-dotnet-aspnet-core/)
+- [测试 Spring Boot Kafka 监听器](/guides/testcontainers-java-spring-boot-kafka/)
+- [使用 MockServer 测试 REST API 集成](/guides/testcontainers-java-mockserver/)
+- [使用 LocalStack 测试 AWS 服务集成](/guides/testcontainers-java-aws-localstack/)
+- [使用 Testcontainers 测试 Quarkus 应用](/guides/testcontainers-java-quarkus/)
+- [在 Testcontainers 中使用 jOOQ 和 Flyway](/guides/testcontainers-java-jooq-flyway/)
+- [使用 WireMock 测试 REST API 集成](/guides/testcontainers-java-wiremock/)
+- [使用 Keycloak 和 Testcontainers 保护 Spring Boot 安全](/guides/testcontainers-java-keycloak-spring-boot/)
+- [使用 WireMock 测试 Micronaut REST API](/guides/testcontainers-java-micronaut-wiremock/)
+- [测试 Micronaut Kafka 监听器](/guides/testcontainers-java-micronaut-kafka/)
+

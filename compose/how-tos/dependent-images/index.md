@@ -150,5 +150,5 @@ $ COMPOSE_BAKE=true docker compose build
 
 ## 其他资源
 
-- [Docker Compose 构建参考](/reference/cli/docker/compose/build.md)
+- [Docker Compose 构建参考](/reference/cli/docker/compose/build/)
 - [了解多阶段 Dockerfile](/manuals/build/building/multi-stage.md)

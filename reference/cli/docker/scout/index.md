@@ -6,12 +6,6 @@
 
 
 
-<!--
-此页面由 Docker 源代码自动生成。如果您希望修改此处显示的文本内容，请在 GitHub 上的源代码仓库中提交问题：
-
-https://github.com/docker/scout-cli
--->
-
 
 
 
@@ -39,8 +33,9 @@ Command line tool for Docker Scout
 | [`docker scout cves`](/reference/cli/docker/scout/cves/) | Display CVEs identified in a software artifact |
 | [`docker scout enroll`](/reference/cli/docker/scout/enroll/) | Enroll an organization with Docker Scout |
 | [`docker scout environment`](/reference/cli/docker/scout/environment/) | Manage environments (experimental) |
+| [`docker scout help`](/reference/cli/docker/scout/help/) | Display information about the available commands |
 | [`docker scout integration`](/reference/cli/docker/scout/integration/) | Commands to list, configure, and delete Docker Scout integrations |
-| [`docker scout policy`](/reference/cli/docker/scout/policy/) | Evaluate policies against an image and display the policy evaluation results (experimental)
+| [`docker scout policy`](/reference/cli/docker/scout/policy/) | Evaluate local Rego policies against an image and display the results (experimental)
  |
 | [`docker scout push`](/reference/cli/docker/scout/push/) | Push an image or image index to Docker Scout |
 | [`docker scout quickview`](/reference/cli/docker/scout/quickview/) | Quick overview of an image |

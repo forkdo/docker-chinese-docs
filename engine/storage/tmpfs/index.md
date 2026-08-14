@@ -165,4 +165,5 @@ $ docker rm tmptest
 
 - 了解 [volumes](volumes.md)
 - 了解 [bind mounts](bind-mounts.md)
+- 了解 [镜像挂载](image-mounts.md)
 - 了解 [storage drivers](/engine/storage/drivers/)

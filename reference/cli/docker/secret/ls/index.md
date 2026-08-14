@@ -6,14 +6,6 @@
 
 **Aliases:** `docker secret list`
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议更改此处显示的文本，请在 GitHub 上的源代码仓库中
-提出工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -96,7 +88,7 @@ The following filter matches only services with the `project` label with the
 `project-a` value.
 
 ```console
-$ docker service ls --filter label=project=test
+$ docker secret ls --filter label=project=project-a
 
 ID                          NAME                        CREATED             UPDATED
 mem02h8n73mybpgqjf0kfi1n0   test_secret                 About an hour ago   About an hour ago
@@ -109,7 +101,7 @@ The `name` filter matches on all or prefix of a secret's name.
 The following filter matches secret with a name containing a prefix of `test`.
 
 ```console
-$ docker secret ls --filter name=test_secret
+$ docker secret ls --filter name=test
 
 ID                          NAME                        CREATED             UPDATED
 mem02h8n73mybpgqjf0kfi1n0   test_secret                 About an hour ago   About an hour ago

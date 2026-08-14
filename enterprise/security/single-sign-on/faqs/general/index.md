@@ -20,3 +20,4 @@ Docker 支持服务提供商发起（SP-initiated）的 SSO 流程。用户必�
 ## Docker 是否会使用我的 IdP 的默认会话超时时间？
 
 是的，Docker 支持通过自定义的 `dockerSessionMinutes` SAML 属性（而非标准的 `SessionNotOnOrAfter` 元素）使用 IdP 的会话超时时间。更多信息请参见 [SSO 属性](/manuals/enterprise/security/provisioning/_index.md#sso-attributes)。
+

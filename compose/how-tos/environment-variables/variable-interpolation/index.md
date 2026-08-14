@@ -1,5 +1,18 @@
-# 在 Compose 文件中使用插值设置、使用和管理变量
+# 
 
+<!-- FILE: manuals/compose/how-tos/environment-variables/variable-interpolation.md -->
+
+---
+title: 在 Compose 文件中使用插值设置、使用和管理变量
+linkTitle: 插值
+description: 如何在 Compose 文件中使用插值设置、使用和管理变量
+keywords: compose, orchestration, environment, variables, interpolation
+weight: 40
+aliases:
+- /compose/env-file/
+- /compose/environment-variables/env-file/
+- /compose/environment-variables/variable-interpolation/
+---
 
 Compose 文件可以使用变量来提供更大的灵活性。如果你想在镜像标签之间快速切换以测试多个版本，或者想将卷源调整到你的本地环境，你不需要每次都编辑 Compose 文件，只需设置变量即可在运行时将值插入到你的 Compose 文件中。
 
@@ -16,7 +29,7 @@ services:
     image: "webapp:${TAG}"
 ```
 
-当你运行 `docker compose up` 时，Compose 文件中定义的 `web` 服务会将镜像[插值](variable-interpolation.md)为在 `.env` 文件中设置的 `webapp:v1.5`。你可以使用 [config 命令](/reference/cli/docker/compose/config.md) 来验证这一点，该命令会将你解析后的应用配置打印到终端：
+当你运行 `docker compose up` 时，Compose 文件中定义的 `web` 服务会将镜像[插值](variable-interpolation.md)为在 `.env` 文件中设置的 `webapp:v1.5`。你可以使用 [config 命令](/reference/cli/docker/compose/config/) 来验证这一点，该命令会将你解析后的应用配置打印到终端：
 
 ```console
 $ docker compose config
@@ -52,8 +65,11 @@ Docker Compose 可以从多个来源将变量插值到你的 Compose 文件中�
 请注意，当同一个变量被多个来源声明时，适用优先级规则：
 
 1. 来自 Shell 环境的变量
-2. 如果未设置 `--env-file`，则由本地工作目录 (`PWD`) 中的 `.env` 文件设置的变量
-3. 由 `--env-file` 设置的文件或项目目录中的 `.env` 文件中的变量
+2. 由 `--env-file` 设置的文件中的变量
+3. 如果未设置 `--env-file`，则由项目目录中的 `.env` 文件设置的变量，其中项目目录为：
+   - 若设置了 `--project-directory`，则为其值
+   - 否则，为使用 `-f`/`--file` 指定的第一个 Compose 文件所在的目录
+   - 否则，为你 shell 的当前目录（`PWD`）
 
 你可以通过运行 `docker compose config --environment` 来检查 Compose 用于插值 Compose 模型的变量和值。
 
@@ -211,11 +227,11 @@ $ docker compose --env-file ./config/.env.dev up
   $ docker compose --env-file .env.dev up -e DATABASE_URL=mysql://new_user:new_password@new_db:3306/new_database
   ```
 
-### 本地 `.env` 文件与 <项目目录> `.env` 文件
+### 本地 `.env` 文件与项目目录 `.env` 文件
 
 `.env` 文件也可用于声明用于控制 Compose 行为和要加载的文件的[预定义环境变量](envvars.md)。
 
-当在没有显式 `--env-file` 标志的情况下执行时，Compose 会在你的工作目录 ([PWD](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#index-PWD)) 中搜索 `.env` 文件，并加载值用于自身配置和插值。如果此文件中的值定义了 `COMPOSE_FILE` 预定义变量，这会导致项目目录被设置为另一个文件夹，Compose 将加载第二个 `.env` 文件（如果存在）。这第二个 `.env` 文件具有较低的优先级。
+当在没有显式 `--env-file` 标志的情况下执行时，Compose 会在项目目录中搜索 `.env` 文件，并加载值用于自身配置和插值。项目目录由 `--project-directory` 决定（若已设置），否则由使用 `-f`/`--file` 指定的第一个 Compose 文件所在的目录决定，否则为 `PWD`。如果此文件中的值定义了 `COMPOSE_FILE` 预定义变量，这会导致项目目录被设置为另一个文件夹，Compose 将加载第二个 `.env` 文件（如果存在）。这第二个 `.env` 文件具有较低的优先级。
 
 这种机制使得可以使用一组自定义变量作为覆盖来调用现有的 Compose 项目，而无需通过命令行传递环境变量。
 
@@ -254,3 +270,4 @@ db:
 > [!NOTE]
 >
 > `postgres:` 不是有效的镜像引用。Docker 期望一个不带标签的引用，如 `postgres`（默认为最新镜像），或者带标签的引用，如 `postgres:15`。
+

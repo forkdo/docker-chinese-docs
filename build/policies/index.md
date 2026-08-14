@@ -1,77 +1,58 @@
-# Validating build inputs with policies
+# 使用策略验证构建输入
 
 
-Building with Docker often involves downloading remote resources. These
-external dependencies, such as Docker images, Git repositories, remote files,
-and other artifacts, are called build inputs.
+使用 Docker 进行构建通常涉及下载远程资源。这些外部依赖（例如 Docker 镜像、Git 仓库、远程文件以及其他制品）被称为构建输入（build inputs）。
 
-For example:
+例如：
 
-- Pulling images from a registry
-- Cloning a source code repository
-- Fetching files from a server over HTTPS
+- 从镜像仓库拉取镜像
+- 克隆源代码仓库
+- 通过 HTTPS 从服务器获取文件
 
-When consuming build inputs, it's a good idea to verify the contents are what
-you expect them to be. One way to do this is to use the `--checksum` option for
-the `ADD` Dockerfile instruction. This lets you verify the SHA256 checksum of a
-remote resource when pulling it into a build:
+在消费构建输入时，验证内容是否符合预期是一个好主意。一种方法是为 `ADD` Dockerfile 指令使用 `--checksum` 选项。这让你可以在将远程资源拉入构建时验证其 SHA256 校验和：
 
 ```dockerfile
 ADD --checksum=sha256:c0ff3312345… https://example.com/archive.tar.gz /
 ```
 
-If the remote `archive.tar.gz` file does not match the checksum that the
-Dockerfile expects, the build fails.
+如果远程的 `archive.tar.gz` 文件与 Dockerfile 期望的校验和不匹配，构建将失败。
 
-Checksums verify that content matches what you expect, but only for the `ADD`
-instruction. They don't tell you anything about where the content came from or
-how it was produced. You can't use checksums to enforce constraints like
-"images must be signed" or "dependencies must come from approved sources."
+校验和可以验证内容是否符合预期，但仅限于 `ADD` 指令。它们无法告诉你内容的来源或生成方式。你无法使用校验和来强制执行"镜像必须已签名"或"依赖项必须来自已批准的来源"之类的约束。
 
-Build policies solve this problem. They let you define rules that validate all
-your build inputs, enforcing requirements like provenance attestations,
-approved registries, and signed Git tags across your entire build process.
+构建策略（build policies）解决了这个问题。它们让你能够定义规则，用于验证所有的构建输入，并在整个构建过程中强制执行诸如来源证明（provenance attestations）、已批准的镜像仓库以及已签名的 Git 标签等要求。
 
-## Prerequisites
+## 先决条件
 
-Build policies is currently an experimental feature. To try it out, you'll
-need:
+构建策略目前是一项实验性功能。要试用它，你需要：
 
-- Buildx 0.31.0 or later - Check your version: `docker buildx version`
-- BuildKit 0.27.0 or later - Verify with: `docker buildx inspect --bootstrap`
+- Buildx 0.31.0 或更高版本 - 检查你的版本：`docker buildx version`
+- BuildKit 0.27.0 或更高版本 - 通过以下命令验证：`docker buildx inspect --bootstrap`
 
-If you're using Docker Desktop, ensure you're on a version that includes these
-updates.
+如果你使用的是 Docker Desktop，请确保你使用的版本包含这些更新。
 
-## Build policies
+## 构建策略（Build policies）
 
-Buildx version 0.31.0 added support for build policies. Build policies are
-rules for securing your Docker build supply chain, and help protect against
-upstream compromises, malicious dependencies, and unauthorized modifications to
-your build inputs.
+Buildx 0.31.0 版本新增了对构建策略的支持。构建策略是用于保障 Docker 构建供应链安全的规则，有助于防范上游被入侵、恶意依赖项以及构建输入被未授权篡改。
 
-Build policies let you enforce extended verifications on inputs used to build
-your projects, such as:
+构建策略让你能够在用于构建项目的输入上强制执行扩展验证，例如：
 
-- Docker images must use digest references (not tags alone)
-- Images must have provenance attestations and cosign signatures
-- Git tags are signed by maintainers with a PGP public key
-- All remote artifacts must use HTTPS and include a checksum for verification
+- Docker 镜像必须使用摘要引用（不能仅使用标签）
+- 镜像必须具有来源证明和 cosign 签名
+- Git 标签由维护者使用 PGP 公钥签名
+- 所有远程制品必须使用 HTTPS 并包含用于验证的校验和
 
-Build policies are defined in a declarative policy language, called Rego,
-created for the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
-The following example shows a minimal build policy in Rego.
+构建策略使用一种声明式策略语言（称为 Rego）定义，该语言为 [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) 而创建。以下示例展示了一个最小的 Rego 构建策略。
 
 ```rego {title="Dockerfile.rego"}
 package docker
 
 default allow := false
 
-# Allow any local inputs for this build
-# For example: a local build context, or a local Dockerfile
+# 允许此构建的任何本地输入
+# 例如：本地构建上下文，或本地 Dockerfile
 allow if input.local
 
-# Allow images, but only if they have provenance attestations
+# 允许镜像，但仅当它们具有来源证明时
 allow if {
     input.image.hasProvenance
 }
@@ -79,25 +60,20 @@ allow if {
 decision := {"allow": allow}
 ```
 
-If the Dockerfile associated with this policy references an image with no
-provenance attestation in a `FROM` instruction, the policy would be violated
-and the build would fail.
+如果与此策略关联的 Dockerfile 在 `FROM` 指令中引用了没有来源证明的镜像，该策略就会被违反，构建将失败。
 
-## How policies work
+## 策略工作原理（How policies work）
 
-When you run `docker buildx build`, Buildx:
+当你运行 `docker buildx build` 时，Buildx 会：
 
-1. Resolves all build inputs (images, Git repos, HTTP downloads)
-2. Looks for a policy file matching your Dockerfile name (e.g.,
-   `Dockerfile.rego`)
-3. Evaluates each input against the policy before the build starts
-4. Allows the build to proceed only if all inputs pass the policy
+1. 解析所有构建输入（镜像、Git 仓库、HTTP 下载）
+2. 查找与你的 Dockerfile 名称匹配的策略文件（例如 `Dockerfile.rego`）
+3. 在构建开始之前，针对策略对每个输入进行评估
+4. 仅当所有输入都通过策略时才允许构建继续
 
-Policies are written in Rego (Open Policy Agent's policy language). You don't
-need to be a Rego expert - the [Introduction](./intro.md) tutorial teaches you
-everything needed.
+策略使用 Rego（Open Policy Agent 的策略语言）编写。你不需要是 Rego 专家——[简介](./intro.md) 教程会教你所需的一切。
 
-Policy files live alongside your Dockerfile:
+策略文件与你的 Dockerfile 放在一起：
 
 ```text
 project/
@@ -106,53 +82,40 @@ project/
 └── src/
 ```
 
-No additional configuration is needed - Buildx automatically finds and loads
-the policy when you build.
+无需额外配置——Buildx 在构建时会自动查找并加载策略。
 
-## Use cases
+## 使用场景（Use cases）
 
-Build policies help you enforce security and compliance requirements on your
-Docker builds. Common scenarios where policies provide value:
+构建策略可帮助你针对 Docker 构建强制执行安全和合规要求。策略能提供价值的常见场景：
 
-### Enforce base image standards
+### 强制执行基础镜像标准
 
-Require all production Dockerfiles to use specific, approved base images with
-digest references. Prevent developers from using arbitrary images that haven't
-been vetted by your security team.
+要求所有生产 Dockerfile 使用特定的、已批准的基础镜像（带摘要引用）。防止开发者使用未经安全团队审查的任意镜像。
 
-### Validate third-party dependencies
+### 验证第三方依赖项
 
-When your build downloads files, libraries, or tools from the internet, verify
-they come from trusted sources and match expected checksums or signatures. This
-protects against supply chain attacks where an upstream dependency is
-compromised.
+当你的构建从互联网下载文件、库或工具时，验证它们来自受信任的来源，并与预期的校验和或签名相匹配。这可以防止上游依赖项被入侵的供应链攻击。
 
-### Ensure signed releases
+### 确保签名的发布版本
 
-Require that all dependencies have valid signatures from trusted parties.
+要求所有依赖项具有来自受信任方的有效签名。
 
-- Check GPG signatures for Git repositories you clone in your builds
-- Verify provenance attestation signatures with Sigstore
+- 检查你在构建中克隆的 Git 仓库的 GPG 签名
+- 使用 Sigstore 验证来源证明签名
 
-### Meet compliance requirements
+### 满足合规要求
 
-Some regulatory frameworks require evidence that you validate your build
-inputs. Build policies give you an auditable, declarative way to demonstrate
-you're checking dependencies against security standards.
+某些监管框架要求提供你验证构建输入的证明。构建策略为你提供了一种可审计的、声明式的方式来证明你正在根据安全标准检查依赖项。
 
-### Separate development and production rules
+### 区分开发与生产规则
 
-Apply stricter validation for production builds while allowing more flexibility
-during development. The same policy file can contain conditional rules based on
-build context or target.
+对生产构建应用更严格的验证，同时在开发期间允许更大的灵活性。同一个策略文件可以根据构建上下文或目标包含条件规则。
 
-## Get started
+## 开始使用（Get started）
 
-Ready to start writing policies? The [Introduction](./intro.md) tutorial walks
-you through creating your first policy and teaches the Rego basics you need.
+准备好开始编写策略了吗？[简介](./intro.md) 教程将引导你创建第一个策略，并教授你所需的 Rego 基础知识。
 
-For practical usage guidance, see [Using build policies](./usage.md).
+有关实际使用指南，请参阅 [使用构建策略](./usage.md)。
 
-For practical examples you can copy and adapt, see the [Example
-policies](./examples.md) library.
+有关可供复制和改编的实用示例，请参阅 [示例策略](./examples.md) 库。
 

@@ -17,7 +17,22 @@
 
 ## 用法
 
-要将 `json-file` 驱动用作默认日志驱动，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opts` 键设置为适当的值。该文件在 Linux 主机上位于 `/etc/docker/`，在 Windows Server 上位于 `C:\ProgramData\docker\config\`。如果该文件不存在，请先创建它。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `json-file` 驱动用作默认日志驱动，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opts` 键设置为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+
+
+
+
+<!-- FILE: includes/daemon-cfg-desktop.md -->
+
+> [!NOTE]
+>
+> 如果你使用的是 Docker Desktop，请通过 Docker Desktop 控制面板来编辑守护进程配置。
+> 打开 **Settings**，然后选择 **Docker Engine**。
+> 详情参阅
+> [Docker Engine 设置](/manuals/desktop/settings-and-maintenance/settings.md#docker-engine)。
+
+
 
 以下示例将日志驱动设置为 `json-file`，并设置 `max-size` 和 `max-file` 选项以启用自动日志轮转。
 
@@ -57,7 +72,7 @@ $ docker run \
 | `labels-regex` | 与 `labels` 类似且兼容。用于匹配日志相关标签的正则表达式。用于高级[日志标签选项](log_tags.md)。                                                            | `--log-opt labels-regex=^(production_status\|geo)` |
 | `env`          | 在启动 Docker 守护进程时应用。此守护进程接受的以逗号分隔的日志相关环境变量列表。用于高级[日志标签选项](log_tags.md)。                                        | `--log-opt env=os,customer`                        |
 | `env-regex`    | 与 `env` 类似且兼容。用于匹配日志相关环境变量的正则表达式。用于高级[日志标签选项](log_tags.md)。                                                           | `--log-opt env-regex=^(os\|customer)`              |
-| `compress`     | 切换轮转日志的压缩。默认为 `disabled`。                                                                                                                  | `--log-opt compress=true`                          |
+| `compress`     | 切换轮转日志的压缩。默认为 `false`（不压缩）。                                                                                                                  | `--log-opt compress=true`                          |
 
 ### 示例
 
@@ -66,3 +81,4 @@ $ docker run \
 ```console
 $ docker run -it --log-opt max-size=10m --log-opt max-file=3 alpine ash
 ```
+

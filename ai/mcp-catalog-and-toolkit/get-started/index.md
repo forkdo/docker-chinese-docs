@@ -3,7 +3,10 @@
 
 
 
-Docker MCP Toolkit 可以轻松设置、管理和运行容器化的 Model Context Protocol (MCP) 服务器，并将其连接到 AI 代理。它提供了安全的默认配置，并支持不断增长的基于 LLM 的客户端生态系统。本页面将向您展示如何快速开始使用 Docker MCP Toolkit。
+> [!NOTE]
+> 本页描述的是 Docker Desktop 4.62 及更高版本中的 MCP Toolkit 界面。较早版本的界面有所不同。请升级后再严格按照这些说明操作。
+
+Docker MCP Toolkit 可以轻松地在配置文件中设置、管理和运行容器化的 Model Context Protocol (MCP) 服务器，并将其连接到 AI 代理。它提供了安全的默认配置，并支持不断增长的基于 LLM 的客户端生态系统。本页面将向您展示如何快速开始使用 Docker MCP Toolkit。
 
 ## 设置
 
@@ -16,64 +19,44 @@ Docker MCP Toolkit 可以轻松设置、管理和运行容器化的 Model Contex
 
 Docker Desktop 中的 **Learning center** 提供了教程和资源，帮助您开始使用 Docker 产品和功能。在 **MCP Toolkit** 页面上，**Get started** 教程将指导您安装 MCP 服务器、连接客户端并测试您的设置。
 
-或者，请按照本页的分步说明来：
+或者，请按照本页的分步说明操作：
 
-- [安装 MCP 服务器](#install-mcp-servers)
-- [连接客户端](#connect-clients)
-- [验证连接](#verify-connections)
+- [创建配置文件](#create-a-profile) —— 用于组织服务器的工作区
+- [向配置文件添加 MCP 服务器](#add-mcp-servers) —— 从目录中选择工具
+- [连接客户端](#connect-clients) —— 将 AI 应用程序关联到你的配置文件
+- [验证连接](#verify-connections) —— 测试一切是否正常工作
 
-## 安装 MCP 服务器
+配置完成后，你的 AI 应用程序即可使用配置文件中的所有服务器。
 
-**Docker Desktop**
+> [!TIP]
+> 更喜欢在终端中操作？有关使用 `docker mcp` 命令的说明，参见[从 CLI 使用 MCP Toolkit](cli.md)。
 
+## Create a profile（创建配置文件）
 
+配置文件将你的 MCP 服务器组织成集合。为你的工作创建一个配置文件：
+
+> [!NOTE]
+> 如果你是从旧版本的 MCP Toolkit 升级而来，你现有的服务器配置已经存在于 `default` 配置文件中。你可以继续使用默认配置文件，也可以为不同项目创建新的配置文件。
+
+1. 在 Docker Desktop 中，选择 **MCP Toolkit**，然后选择 **Profiles** 选项卡。
+2. 选择 **Create profile**。
+3. 为配置文件输入名称（例如 "Frontend development"）。
+4. 你可以选择现在添加服务器和客户端，也可以稍后再添加。
+5. 选择 **Create**。
+
+你的新配置文件会出现在配置文件列表中。
+
+## Add MCP servers（添加 MCP 服务器）
 
 1. 在 Docker Desktop 中，选择 **MCP Toolkit**，然后选择 **Catalog** 选项卡。
-2. 在目录中搜索 **GitHub Official** 服务器，然后选择加号图标将其添加。
-3. 在 **GitHub Official** 服务器页面，选择 **Configuration** 选项卡，然后选择 **OAuth**。
+2. 浏览目录并选择你想添加的服务器。
+3. 选择 **Add to** 按钮，并选择要将服务器添加到现有配置文件，还是创建新的配置文件。
 
-   > [!NOTE]
-   >
-   > 所需的配置类型取决于您选择的服务器。对于 GitHub Official 服务器，您必须使用 OAuth 进行身份验证。
+如果某个服务器需要配置，其名称旁会出现 **Configuration Required** 徽章。你必须完成必填配置后才能使用该服务器。
 
-   您的浏览器将打开 GitHub 授权页面。请按照屏幕上的说明 [通过 OAuth 进行身份验证](/manuals/ai/mcp-catalog-and-toolkit/toolkit.md#authenticate-via-oauth)。
+您已成功将 MCP 服务器添加到配置文件。接下来，连接 MCP 客户端以使用配置文件中的服务器。
 
-4. 身份验证完成后返回 Docker Desktop。
-5. 在目录中搜索 **Playwright** 服务器并添加它。
-
-**CLI**
-
-
-
-1. 添加 GitHub Official MCP 服务器。运行：
-
-   ```console
-   $ docker mcp server enable github-official
-   ```
-
-2. 通过运行以下命令对服务器进行身份验证：
-
-   ```console
-   $ docker mcp oauth authorize github
-   ```
-
-   > [!NOTE]
-   >
-   > 所需的配置类型取决于您选择的服务器。对于 GitHub Official 服务器，您必须使用 OAuth 进行身份验证。
-
-   您的浏览器将打开 GitHub 授权页面。请按照屏幕上的说明 [通过 OAuth 进行身份验证](/manuals/ai/mcp-catalog-and-toolkit/toolkit.md#authenticate-via-oauth)。
-
-3. 添加 **Playwright** 服务器。运行：
-
-   ```console
-   $ docker mcp server enable playwright
-   ```
-
-   
-
-您已成功添加 MCP 服务器。接下来，连接 MCP 客户端以在 AI 应用程序中使用 MCP Toolkit。
-
-## 连接客户端
+## Connect clients（连接客户端）
 
 要将客户端连接到 MCP Toolkit：
 
@@ -81,10 +64,10 @@ Docker Desktop 中的 **Learning center** 提供了教程和资源，帮助您�
 2. 在列表中找到您的应用程序。
 3. 选择 **Connect** 以配置客户端。
 
-如果您的客户端未列出，您可以通过 `stdio` 手动连接 MCP Toolkit，方法是配置您的客户端运行以下命令：
+如果您的客户端未列出，您可以通过 `stdio` 手动连接 MCP Toolkit，方法是配置您的客户端使用你的配置文件运行网关：
 
 ```plaintext
-docker mcp gateway run
+docker mcp gateway run --profile my_profile
 ```
 
 例如，如果您的客户端使用 JSON 文件来配置 MCP 服务器，您可以添加如下条目：
@@ -94,7 +77,7 @@ docker mcp gateway run
   "servers": {
     "MCP_DOCKER": {
       "command": "docker",
-      "args": ["mcp", "gateway", "run"],
+      "args": ["mcp", "gateway", "run", "--profile", "my_profile"],
       "type": "stdio"
     }
   }
@@ -103,7 +86,7 @@ docker mcp gateway run
 
 请查阅您正在使用的应用程序的文档，了解如何手动设置 MCP 服务器的说明。
 
-## 验证连接
+## Verify connections（验证连接）
 
 请参考相关部分，了解如何验证您的设置是否正常工作：
 
@@ -114,7 +97,6 @@ docker mcp gateway run
 - [Cursor](#cursor)
 - [Gemini](#gemini)
 - [Goose](#goose)
-- [Gordon](#gordon)
 - [LM Studio](#lm-studio)
 - [OpenCode](#opencode)
 - [Sema4.ai](#sema4)
@@ -261,18 +243,6 @@ $ goose info -v
 使用 GitHub MCP 服务器向我展示我的开放拉取请求
 ```
 
-### Gordon
-
-在 Docker Desktop 中打开 **Ask Gordon** 视图，然后选择聊天输入区域中的工具箱图标。**MCP Toolkit** 选项卡显示 MCP Toolkit 是否已启用，并显示所有提供的工具：
-
-![MCP Toolkit in the Ask Gordon UI](images/ask-gordon.avif)
-
-通过提交一个调用您已安装的 MCP 服务器的提示来测试连接，可以直接在 Docker Desktop 中或使用 CLI：
-
-```console
-$ docker ai "使用 GitHub MCP 服务器向我展示我的开放拉取请求"
-```
-
 ### LM Studio
 
 重启 LM Studio 并开始新的聊天。打开集成菜单并查找名为 `mcp/mcp-docker` 的条目。使用切换按钮启用服务器：
@@ -354,6 +324,8 @@ $ opencode "使用 GitHub MCP 服务器向我展示我的开放拉取请求"
 
 ## 进一步阅读
 
+- [MCP Profiles](/manuals/ai/mcp-catalog-and-toolkit/profiles.md)
 - [MCP Toolkit](/manuals/ai/mcp-catalog-and-toolkit/toolkit.md)
 - [MCP Catalog](/manuals/ai/mcp-catalog-and-toolkit/catalog.md)
 - [MCP Gateway](/manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md)
+

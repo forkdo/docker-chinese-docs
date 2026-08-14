@@ -28,6 +28,13 @@ IPv6 仅支持运行在 Linux 主机上的 Docker 守护进程。
            - subnet: 2001:db8::/64
   ```
 
+> [!NOTE]
+>
+> 这些示例中的地址 `2001:db8::/64` 是
+> [保留用于文档][wikipedia-ipv6-reserved]的地址。
+> 请将其替换为有效的 IPv6 网络，例如来自 `fd00::/8` 的
+> [唯一本地地址 (ULA)][wikipedia-ipv6-ula] 子网。
+
 现在，您可以运行连接到 `ip6net` 网络的容器。
 
 ```console
@@ -65,6 +72,13 @@ Accept: */*
      "fixed-cidr-v6": "2001:db8:1::/64"
    }
    ```
+
+   > [!NOTE]
+   >
+   > 此示例中的地址 `2001:db8:1::/64` 是
+   > [保留用于文档][wikipedia-ipv6-reserved]的地址。
+   > 请将其替换为有效的 IPv6 网络，例如来自 `fd00::/8` 的
+   > [唯一本地地址 (ULA)][wikipedia-ipv6-ula] 子网。
 
    - `ipv6` 在默认网络上启用 IPv6 网络。
    - `fixed-cidr-v6` 为默认桥接网络分配一个子网，
@@ -165,3 +179,4 @@ Accept: */*
 ## 下一步
 
 - [网络概述](/manuals/engine/network/_index.md)
+

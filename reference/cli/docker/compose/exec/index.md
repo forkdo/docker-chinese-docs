@@ -6,12 +6,6 @@
 
 
 
-<!--
-抱歉，本页面的内容是自动从 Docker 源代码生成的。如果您想修改此处显示的文本，
-需要在以下代码仓库中搜索相关字符串并提出修改建议：
-https://github.com/docker/compose
--->
-
 
 
 
@@ -27,7 +21,7 @@ With this subcommand, you can run arbitrary commands in your services. Commands 
 you can use a command such as `docker compose exec web sh` to get an interactive prompt.
 
 By default, Compose will enter container in interactive mode and allocate a TTY, while the equivalent `docker exec`
-command requires passing `--interactive --tty` flags to get the same behavior. Compose also support those two flags
+command requires passing `--interactive --tty` flags to get the same behavior. Compose also supports those two flags
 to offer a smooth migration between commands, whenever they are no-op by default. Still, `interactive` can be used to
 force disabling interactive mode (`--interactive=false`), typically when `docker compose exec` command is used inside
 a script.

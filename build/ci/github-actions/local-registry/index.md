@@ -1,8 +1,8 @@
-# Local registry with GitHub Actions
+# 配合 GitHub Actions 使用本地注册表
 
 
-For testing purposes you may need to create a [local registry](https://hub.docker.com/_/registry)
-to push images into:
+出于测试目的，你可能需要创建一个 [本地注册表](https://hub.docker.com/_/registry)
+来推送镜像：
 
 ```yaml
 name: ci
@@ -20,15 +20,15 @@ jobs:
           - 5000:5000
     steps:
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
       
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
         with:
           driver-opts: network=host
       
       - name: Build and push to local registry
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: true
           tags: localhost:5000/name/app:latest

@@ -1,13 +1,15 @@
 # 故障排除 Docker Offload
 
 
+
+
 Docker Offload 需要满足以下条件：
 
 - 身份验证
 - 活跃的互联网连接
 - 没有限制性代理或防火墙阻止通往 Docker Cloud 的流量
 - 访问 Docker Offload 的权限
-- Docker Desktop 4.50 或更高版本
+- Docker Desktop 4.68 或更高版本
 
 Docker Desktop 使用 Offload 在云端运行构建和容器。
 如果构建或容器运行失败、回退到本地运行或报告会话错误，请使用以下步骤来帮助解决问题。
@@ -45,4 +47,5 @@ Docker Desktop 使用 Offload 在云端运行构建和容器。
    $ docker login
    ```
 
-7. 验证您的使用情况和账单。更多信息，请参阅 [Docker Offload 使用情况](/offload/usage/)。
+7. 验证您的使用情况。更多信息，请参阅 [Docker Offload 使用情况](/offload/usage/)。
+

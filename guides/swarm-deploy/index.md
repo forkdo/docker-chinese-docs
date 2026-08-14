@@ -3,6 +3,8 @@
 
 
 
+
+
 > [!NOTE]
 >
 > Swarm 模式是用于管理 Docker 守护进程集群的高级功能。
@@ -11,6 +13,7 @@
 >
 > 如果您不打算使用 Swarm 进行部署，请改用 [Docker Compose](/compose/)。
 > 如果您正在为 Kubernetes 部署进行开发，请考虑使用 Docker Desktop 中的 [集成 Kubernetes 功能](/manuals/desktop/use-desktop/kubernetes.md)。
+
 
 ## 前提条件
 
@@ -34,6 +37,8 @@ Swarm 不会像本教程上一步那样创建单个容器。相反，所有 Swar
 
 
 
+
+
 > [!NOTE]
 >
 > `docker stack deploy` 命令使用的是旧版
@@ -44,6 +49,7 @@ Swarm 不会像本教程上一步那样创建单个容器。相反，所有 Swar
 >
 > 有关 Compose 演进的更多信息，请参阅
 > [Compose 历史](/compose/history/)。
+
 
 ```yaml
 version: "3.7"

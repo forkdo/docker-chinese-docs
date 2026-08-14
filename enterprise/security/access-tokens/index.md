@@ -7,7 +7,7 @@ Organization access tokens (OATs) provide secure, programmatic access to Docker 
 
 > [!WARNING]
 >
-> Organization access tokens are incompatible with Docker Desktop, Image Access Management, and Registry Access Management. If you use these features, use [personal access tokens](/manuals/security/access-tokens.md) instead.
+> Organization access tokens are incompatible with Docker Desktop and Image Access Management. If you use these features, use [personal access tokens](/manuals/security/access-tokens.md) instead.
 
 ## Who should use organization access tokens?
 
@@ -50,7 +50,7 @@ To create an OAT:
 
 1. Sign in to [Docker Home](https://app.docker.com/) and select your
 organization.
-1. Select **Admin Console**, then **Access tokens**.
+1. Select **Identity & auth**, then **Access tokens**.
 1. Select **Generate access token**.
 1. Configure token details:
     - Label: Descriptive name indicating the token's purpose
@@ -91,40 +91,12 @@ To manage existing tokens:
 
 1. Sign in to [Docker Home](https://app.docker.com/) and select your
 organization.
-1. Select **Admin Console**, then **Access tokens**.
+1. Select **Identity & auth**, then **Access tokens**.
 1. Select the actions menu in the token row, you can:
     - **Edit**
     - **Deactivate**
     - **Delete**
 1. Select **Save** after making changes to a token.
-
-## Migrate from service accounts
-
-[Enhanced Service Account add-ons](/manuals/docker-hub/service-accounts.md)
-are deprecated and no longer available for
-new purchases as of December 10, 2024.
-
-Organization access tokens provide a
-modern, secure replacement with additional benefits:
-
-| Feature | Service accounts | Organization access tokens |
-|---------|------------------|----------------------------|
-| Authentication | Username/password | Organization name + token |
-| Cost | Tiered add-on pricing | Included with subscription |
-| Management | Individual account-based | Organization owner managed |
-| Repository access | Full account access | Granular repository permissions |
-| Security | Basic password auth | Token-based with expiration |
-| Rate limits | Separate tiered limits | Organization subscription limits |
-
-### Migration steps
-
-To migrate from service accounts to OATs, use the following steps:
-
-1. Document current service accounts and their purposes.
-1. Generate organization access tokens with appropriate repository permissions.
-1. Replace service account credentials in your systems.
-1. Validate all automated workflows work correctly.
-1. Remove deprecated service account credentials.
 
 ## Organization access token best practices
 
@@ -133,3 +105,4 @@ To migrate from service accounts to OATs, use the following steps:
 - Monitor token usage: Regularly review when tokens were last used to identify unused or suspicious tokens.
 - Secure storage: Store tokens in secure credential management systems, never in plain text or source code.
 - Immediate revocation: Deactivate or delete tokens immediately if they're compromised or no longer needed.
+

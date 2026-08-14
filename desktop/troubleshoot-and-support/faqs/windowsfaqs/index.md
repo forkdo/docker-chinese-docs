@@ -36,7 +36,7 @@ Docker Desktop 基于 Windows 证书存储创建所有用户受信任 CA 的证�
 
 ### 如何添加客户端证书？
 
-您可以在 `~/.docker/certs.d/<MyRegistry><Port>/client.cert` 和 `~/.docker/certs.d/<MyRegistry><Port>/client.key` 中添加您的客户端证书。您不需要使用 `git` 命令推送您的证书。
+您可以在 `~/.docker/certs.d/<MyRegistry>:<Port>/client.cert` 和 `~/.docker/certs.d/<MyRegistry>:<Port>/client.key` 中添加您的客户端证书。您不需要使用 `git` 命令推送您的证书。
 
 当 Docker Desktop 应用程序启动时，它会将 Windows 系统上的 `~/.docker/certs.d` 文件夹复制到 Moby（在 Hyper-V 上运行的 Docker Desktop 虚拟机）上的 `/etc/docker/certs.d` 目录。
 
@@ -45,3 +45,4 @@ Docker Desktop 基于 Windows 证书存储创建所有用户受信任 CA 的证�
 注册表不能被列为不安全注册表（请参阅 [Docker 守护进程](/manuals/desktop/settings-and-maintenance/settings.md#docker-engine)）。Docker Desktop 会忽略不安全注册下列出的证书，并且不发送客户端证书。像 `docker run` 这样尝试从注册表拉取的命令会在命令行和注册表上产生错误消息。
 
 要了解有关如何设置客户端 TLS 证书以进行验证的更多信息，请参阅 Docker Engine 主题中的[使用证书验证仓库客户端](/manuals/engine/security/certificates.md)。
+

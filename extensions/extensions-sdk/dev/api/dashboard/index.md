@@ -78,7 +78,7 @@ ddClient.host.openExternal("https://docker.com");
 
 有关可用方法参数和返回类型的更多详细信息，请参阅 [Desktop host API 参考](/reference/api/extensions-sdk/Host.md)。
 
-> 已弃用的用户通知
+> 已弃用的外部 URL 打开
 >
 > 此方法已被弃用，将在未来版本中移除。请使用上面指定的方法。
 
@@ -89,3 +89,4 @@ window.ddClient.openExternal("https://docker.com");
 ## 导航到仪表板路由
 
 从您的扩展中，您还可以 [导航](dashboard-routes-navigation.md) 到 Docker Desktop 仪表板的其他部分。
+

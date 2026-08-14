@@ -1,6 +1,10 @@
 # 配置从 GitHub 和 BitBucket 的自动构建
 
 
+> [!WARNING]
+> Docker Hub 自动构建是一项已弃用的功能。
+> 它将于 2027 年 4 月 1 日完全退役。
+
 > [!NOTE]
 >
 > 自动构建需要 Docker Pro、Team 或 Business 订阅。
@@ -8,7 +12,7 @@
 
 为了自动构建和测试您的镜像，您需要将托管的源代码服务链接到 Docker Hub，以便它能够访问您的源代码仓库。您可以为用户账户或组织配置此链接。
 
-如果您正在链接源代码提供商以为团队创建自动构建，请在按照以下说明链接账户之前，先为该团队[创建服务账户](index.md#service-users-for-team-autobuilds)。
+如果您正在链接源代码提供商以为团队创建自动构建，请在按照以下说明链接账户之前，先为该团队[创建服务账户](setup.md#service-users-for-team-autobuilds)。
 
 ## 链接到 GitHub 用户账户
 
@@ -63,6 +67,7 @@
 2. 选择您要撤销 Docker Hub 访问权限的组织。
 
 3. 从组织配置文件菜单中，选择 **Third-party access**。
+
     该页面显示第三方应用程序及其访问状态的列表。
 
 4. 选择 **Docker Hub Builder** 旁边的铅笔图标。
@@ -125,3 +130,4 @@
 > [!NOTE]
 >
 > 每个配置为自动构建源的仓库都包含一个 webhook，用于通知 Docker Hub 仓库中的更改。当您撤销对源代码提供商的访问权限时，此 webhook 不会自动删除。
+

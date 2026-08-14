@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议修改此处显示的文本，请在 GitHub 上的
-源代码仓库中提出工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -76,7 +68,7 @@ desired root digest: sha256:05da740cf2577a25224c53019e2cce99bcc5ba09664ad6bb2a94
   rotated CA certificates:   [>                                                  ] 0/2 nodes
 ```
 
-Once the rotation os finished (all the progress bars have completed) the now-current
+Once the rotation is finished (all the progress bars have completed) the now-current
 CA certificate will be printed:
 
 ```console

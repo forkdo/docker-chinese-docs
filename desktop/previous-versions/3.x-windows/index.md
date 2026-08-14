@@ -1,5 +1,15 @@
-# Docker for Windows 3.x 发行说明
+# 
 
+<!-- FILE: manuals/desktop/previous-versions/3.x-windows.md -->
+
+---
+description: Docker Desktop for Windows 3.x 发行说明
+keywords: Docker Desktop for Windows 3.x, release notes
+title: Docker for Windows 3.x 发行说明
+toc_min: 1
+toc_max: 2
+sitemap: false
+---
 
 本页包含 Docker Desktop for Windows 3.x 的发行说明。
 
@@ -337,3 +347,4 @@
 
 - 当使用 `github.com/org/repo` 形式的 URL 时，使用 BuildKit 从 Git URL 构建镜像会失败。要解决此问题，请使用 `git://github.com/org/repo` 形式。
 - 基于 Alpine Linux 3.13 的容器中某些 DNS 地址无法解析。
+

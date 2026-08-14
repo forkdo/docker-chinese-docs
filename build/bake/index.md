@@ -1,13 +1,11 @@
 # Bake
 
 
-Bake is a feature of Docker Buildx that lets you define your build configuration
-using a declarative file, as opposed to specifying a complex CLI expression. It
-also lets you run multiple builds concurrently with a single invocation.
+Bake 是 Docker Buildx 的一项功能，让你使用声明式文件来定义构建配置，而不是指定复杂的 CLI 表达式。
+它还让你可以使用单次调用并发运行多个构建。
 
-A Bake file can be written in HCL, JSON, or YAML formats, where the YAML format
-is an extension of a Docker Compose file. Here's an example Bake file in HCL
-format:
+Bake 文件可以用 HCL 或 JSON 格式编写。Bake 还可以直接从 [Docker Compose 文件](./compose-file.md)
+构建。下面是一个 HCL 格式的 Bake 文件示例：
 
 ```hcl {title=docker-bake.hcl}
 group "default" {
@@ -27,26 +25,24 @@ target "backend" {
   context = "./backend"
   dockerfile = "backend.Dockerfile"
   args = {
-    GO_VERSION = "1.25"
+    GO_VERSION = "1.26"
   }
   tags = ["myapp/backend:latest"]
 }
 ```
 
-The `group` block defines a group of targets that can be built concurrently.
-Each `target` block defines a build target with its own configuration, such as
-the build context, Dockerfile, and tags.
+`group` 块定义了一组可以并发构建的目标。每个 `target` 块定义一个带有自身配置的构建目标，
+例如构建上下文、Dockerfile 和 tags。
 
-To invoke a build using the above Bake file, you can run:
+要使用上述 Bake 文件调用构建，你可以运行：
 
 ```console
 $ docker buildx bake
 ```
 
-This executes the `default` group, which builds the `frontend` and `backend`
-targets concurrently.
+这会执行 `default` 组，该组并发构建 `frontend` 和 `backend` 目标。
 
-## Get started
+## 开始使用
 
-To learn how to get started with Bake, head over to the [Bake introduction](./introduction.md).
+要了解如何开始使用 Bake，请前往 [Bake 简介](./introduction.md)。
 

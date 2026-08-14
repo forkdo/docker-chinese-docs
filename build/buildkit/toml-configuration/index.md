@@ -12,14 +12,13 @@ The following is a complete `buildkitd.toml` configuration example.
 Note that some configuration options are only useful in edge cases.
 
 ```toml
-# debug enables additional debug logging
-debug = true
-# trace enables additional trace logging (very verbose, with potential performance impacts)
-trace = true
 # root is where all buildkit state is stored.
 root = "/var/lib/buildkit"
 # insecure-entitlements allows insecure entitlements, disabled by default.
 insecure-entitlements = [ "network.host", "security.insecure", "device" ]
+# proxyNetwork enables proxy network enforcement for all builds, disabled by default.
+# It can also be enabled with buildkitd --proxy-network.
+proxyNetwork = true
 # provenanceEnvDir is the directory where extra config is loaded that is added
 # to the provenance of builds:
 # slsa v0.2: invocation.environment.*
@@ -29,6 +28,9 @@ provenanceEnvDir = "/etc/buildkit/provenance.d"
 [log]
   # log formatter: json or text
   format = "text"
+
+  # log level (error/warn/info/debug/trace)
+  level = "info"
 
 [dns]
   nameservers=["1.1.1.1","8.8.8.8"]
@@ -212,6 +214,9 @@ provenanceEnvDir = "/etc/buildkit/provenance.d"
 [system]
   # how often buildkit scans for changes in the supported emulated platforms
   platformsCacheMaxAge = "1h"
+  # maxRegistryConcurrency sets the maximum number of concurrent connections
+  # per registry. If unset, the default concurrency limit is used.
+  maxRegistryConcurrency = 4
 
 
 # optional signed cache configuration for GitHub Actions backend

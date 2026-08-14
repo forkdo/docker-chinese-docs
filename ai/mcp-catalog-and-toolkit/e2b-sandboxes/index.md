@@ -1,9 +1,9 @@
 # E2B 沙盒
 
 
-Docker 已与 [E2B](https://e2b.dev/) 达成合作，后者是为 AI 智能体提供安全云沙盒的供应商。通过此次合作，每个 E2B 沙盒均可直接访问 Docker 的 [MCP Catalog](https://hub.docker.com/mcp)，该目录汇集了来自 GitHub、Notion 和 Stripe 等发布者的 200 多款工具。
+[E2B](https://e2b.dev/) 为 AI 智能体提供安全的云沙盒，并可直接访问 Docker 的 [MCP Catalog](https://hub.docker.com/mcp)，该目录汇集了来自 GitHub、Notion 和 Stripe 等发布者的 200 多款工具。
 
-创建沙盒时，您需指定其应访问的 MCP 工具。E2B 会启动这些工具，并通过 Docker MCP Gateway 提供访问权限。
+创建 E2B 沙盒时，您需指定其应访问的 MCP 工具。E2B 会启动这些工具，并通过 Docker MCP Gateway 提供访问权限。
 
 ## 示例：使用 GitHub 和 Notion MCP 服务器
 
@@ -17,7 +17,7 @@ Docker 已与 [E2B](https://e2b.dev/) 达成合作，后者是为 AI 智能体�
 - 用于 Claude 的 Anthropic API 密钥
 
   > [!NOTE]
-  > 本示例使用预装在 E2B 沙盒中的 Claude Code。
+  > 本示例使用 Claude Code，它已预装在 E2B 沙盒中。
   > 不过，您可以调整示例以使用其他自选的 AI 助手。
   > 有关替代连接方法，请参阅 [E2B 的 MCP 文档](https://e2b.dev/docs/mcp/quickstart)。
 
@@ -444,3 +444,4 @@ Both operations completed successfully. The MCP servers are properly configured 
 - [Docker MCP 工具包和目录](/manuals/ai/mcp-catalog-and-toolkit/_index.md)
 - [Docker MCP Gateway](/manuals/ai/mcp-catalog-and-toolkit/mcp-gateway.md)
 - [E2B MCP 文档](https://e2b.dev/docs/mcp)
+

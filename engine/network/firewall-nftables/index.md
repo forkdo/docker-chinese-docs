@@ -131,6 +131,17 @@ $ ip6tables -P FORWARD ACCEPT
 
 防火墙标记必须在 Docker 的规则运行之前添加。因此，如果标记添加在类型为 `filter` 且钩子为 `forward` 的链中，它必须具有优先级 `filter - 1` 或更低。
 
+> [!NOTE]
+>
+> 默认情况下，远程主机只能通过发布到 Docker 主机某个地址上的端口访问容器。不允许改为将数据包直接发送到容器自身的 IP 地址（即“直接路由”访问）。
+>
+> 这些数据包会被 `docker-bridges` 表的 `raw-PREROUTING` 链中的一条规则丢弃。由于丢弃是最终的，您自己表中的规则无法放行它们。而且，由于该链在 `prerouting` 钩子处运行，早于 Docker 的 `filter-FORWARD` 规则，因此用 `--bridge-accept-fwmark` 添加的防火墙标记对它没有影响。
+>
+> 任何到达主机防火墙规则时已经以容器为目标地址的数据包都会被这样处理。例如，Kubernetes CNI 插件可能会在数据包到达主机的预路由规则之前，就把 Service 地址转换为容器地址。Docker 无法把这种结果与远程主机直接路由到容器的数据包区分开来。这些数据包到达的是哪个主机接口取决于插件的数据路径 —— 对于覆盖网络，通常是隧道设备。
+>
+> 要允许对容器*已发布*端口的直接路由访问，请使用网络选项 `com.docker.network.bridge.trusted_host_interfaces` 或守护进程选项 `allow-direct-routing`。未发布的端口仍受保护。请参阅[桥接网络中到容器的直接路由](./port-publishing.md#direct-routing-to-containers-in-bridge-networks)。
+> 要允许对容器所有端口（无论是否已发布）的直接路由访问，请参阅[网关模式](./port-publishing.md#gateway-modes)。
+
 #### 用 nftables 表替换 `DOCKER-USER`
 
 由于 nftables 没有预定义的链，要替换 `DOCKER-USER` 链，您可以创建自己的表并向其中添加链和规则。

@@ -10,6 +10,1449 @@ Docker Desktop 的下载不提供早于最新版本 6 个月的版本。以前�
 
 有关更常见的问题，请参阅[常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/releases.md)。
 
+## 4.86.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-08-10</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/236216/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/236216/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/236216/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/236216/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/236216/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/236216/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/236216/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Engine v29.7.2](https://docs.docker.com/engine/release-notes/29/#2972)
+- [Docker Buildx v0.36.0](https://github.com/docker/buildx/releases/tag/v0.36.0)
+- [Docker Scout CLI v1.24.0](https://github.com/docker/scout-cli/releases/tag/v1.24.0)
+- [Docker Agent v1.119.0](https://github.com/docker/docker-agent/releases/tag/v1.119.0)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- Docker VMM Beta 通过 Docker 自有的容器优化型虚拟机监控程序实现性能提升。适用于 Mac 和 Windows。
+- Gordon 现在针对工具失败、策略阻止的操作以及循环检测显示具体的错误消息，而不是通用的 **Agent error**。
+- 修复了引擎关闭期间未遵循容器停止超时和 `unless-stopped` 重启策略的问题。
+- 修复了当代理由操作系统（而非环境变量）配置时，从 Docker Desktop 仪表板启用 Docker Offload 失败的 Bug。
+- 修复了升级后启动时的崩溃问题，影响那些设置文件由非常旧的版本写入的用户。
+- 修复了使用自动分配发布端口的 Swarm 服务的端口转发问题，包括主机模式任务端口和重复的 ingress 端口定义。
+- 为 Gordon AI 代理的工具确认 UI 添加了三模式安全系统（Strict、Balanced、Autonomous），取代原有的二元批准/全部允许对话框，并在确认时带有风险等级标签。
+- 修复了应用启动时错误 UI 内容的一闪而过，例如短暂的 "Waiting for the Docker Engine..." 屏幕或意外的从受限页面导航离开。
+- 通过 VirtioFS 共享的 AF_UNIX 套接字现在可双向工作（主机到客户机以及客户机到主机）。
+- 修复了重启 VM 会抢占窗口焦点的问题。
+
+#### 适用于 Mac
+
+- 修复了带有增强型容器隔离的 Kubernetes（kind）集群在 Docker Desktop 重启后可能无法恢复的 Bug。
+- 修复了在 Apple Silicon 的 `inet` 表中 nftables `fib` 表达式以 "Operation not supported" 失败的问题。
+
+#### 适用于 Windows
+
+- 修复了当 Windows 安装程序无法写入其设置或企业策略文件时仍报告成功的问题。
+- 修复了当 Docker Desktop 通过 Secondary Logon（run-as-user）会话启动时，Model Runner 因 `CreateJobObject: Access is denied` 而无法启动的问题。
+- 更新了内置的 7-Zip 至 26.02，以避免在 Windows 上升级期间被防病毒软件隔离。
+
+#### 适用于 Linux
+
+- 修复了 Linux arm64 主机上因 QEMU 二进制路径解析不正确导致 Docker Desktop 无法启动的问题。
+
+### 安全性
+
+- 修复了 CVE-2026-17106，即 `docker container cp` 中的目标逃逸缺陷。
+
+## 4.85.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-08-03</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/235549/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/235549/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/235549/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/235549/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/235549/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/235549/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/235549/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker AI Agent v1.115.0](https://github.com/docker/docker-agent/releases/tag/v1.115.0)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了即使用户禁用了分析功能，原生崩溃报告仍会被上传到 Bugsnag 的问题。
+- 修复了在 Gordon 确认卡片中，当批准写入或编辑文件操作时，文件内容预览和差异被隐藏的问题。
+- 修复了无效的 `install-settings.json` 导致在显示错误对话框前出现约 7 分钟启动延迟的问题。错误现在会立即显示。
+- 修复了 Gordon 的计划模式在首条消息后静默回退到构建模式的问题，导致后续轮次以完整工具访问权限运行，尽管计划模式看似处于活动状态。
+- 修复了启动时无效的 `config.json` 会将错误对话框延迟最多 7 分钟，而不是在数秒内出现的问题。
+- 修复了当容器的文件观察器（inotify/fanotify）观察到绑定挂载上主机侧文件更改时，可能使 Docker Desktop 挂起的 Linux VM 内核崩溃。
+- 修复了 Docker Hardened Images CLI 在将 JSON 输出到控制台时与号被编码的问题。
+- 修复了由于扩展选择器在设置加载前错误地默认启用，导致启动时与扩展相关的请求失败的 Bug。
+- 修复了重新加载历史多代理 Gordon 会话时子代理消息归属丢失，导致子代理消息看起来像是由主代理生成的问题。
+- 修复了 Gordon 的 **清理 Docker** 建议提示，现在会先提出清理计划并等待用户确认后再移除任何资源，防止意外删除。
+- 修复了 Gordon AI 计划模式开关的可见性，以准确反映后端支持情况，仅在连接的代理声明具有计划能力时才显示。
+
+#### 适用于 Windows
+
+- 修复了在 Windows 上尝试还原 hosts 文件时，Per-user 卸载 Docker Desktop 因未授权访问错误而失败的 Bug。
+- 将 Per-user 安装模式设为从 Microsoft Store 全新安装 Docker Desktop 的默认模式，不再需要管理员权限。
+- 修复了当 `docker-users` 组缺失时 Docker Desktop 崩溃的问题，现在会显示一个可恢复的组成员资格对话框。
+
+#### 适用于 Linux
+
+- 在增强型容器隔离容器内，移除主机绑定挂载上的文件不再因 "Value too large for data type" 而失败。
+
+## 4.84.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-07-27</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/234817/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/234817/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/234817/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/234817/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/234817/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/234817/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/234817/docker-desktop-x86_64.pkg.tar.zst)
+
+
+
+### 更新
+
+- [Docker Agent v1.111.0](https://github.com/docker/docker-agent/releases/tag/v1.111.0)
+- Kubernetes：
+  - cri-dockerd v0.4.4
+- [Docker Hardened Images CLI (`dhictl`) v0.0.7](https://github.com/docker-hardened-images/dhictl/releases/tag/v0.0.7)
+- Docker Desktop CLI `v0.4.3`
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了一个 Bug，其中无效的 `~/.docker/config.json` 会导致 Docker Desktop 挂起并占用高 CPU/内存且不显示错误对话框。Docker Desktop 现在会显示错误对话框，提示用户更正该文件。
+- 修复了一个阻止创建部分 Docker Hardened Images 自定义的 Bug。
+- 修复了一个 Bug，其中删除无关凭据 ID 可能会意外清除 Docker Hub OAuth 令牌，导致用户被意外登出。
+- 移除了在运行 `docker pull` 或 `docker buildx build` 命令后曾经出现的 Docker Scout CLI 提示。
+
+#### 适用于 Windows
+
+- 修复了 Windows 上一个空或格式错误的 `install-settings.json` 会导致 Docker Desktop 在启动时挂起并占用高 CPU/内存且不显示错误对话框的 Bug。
+- MSI 安装程序现在会检测计算机上的 Per-user Docker Desktop 安装，并通过清晰指明受影响用户的消息阻止安装。受影响用户必须先卸载其 Per-user Docker Desktop，才能安装 MSI。
+- 修复了一个 Bug，当卸载 Docker Desktop 在删除过程中途失败时，可能会永久锁定用户对其自身应用程序数据目录的访问。
+
+## 4.83.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-07-20</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/234302/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/234302/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/234302/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/234302/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/234302/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/234302/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/234302/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- Docker Desktop CLI `v0.4.2`
+- [Docker Model Runner v1.2.6](https://github.com/docker/model-runner/releases/tag/v1.2.6)
+- Docker Offload `v0.6.9`
+- [Docker Agent v1.103.0](https://github.com/docker/docker-agent/releases/tag/v1.103.0)
+- [Docker Compose v5.3.1](https://github.com/docker/compose/releases/tag/v5.3.1)
+- Docker Desktop Build `v0.36.0`
+- [Docker Engine v29.6.2](https://docs.docker.com/engine/release-notes/29/#2962)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 新增支持通过 Windows 上的 `install --user` 将 per-machine 的 Docker Desktop 安装就地迁移为 per-user 安装，保留用户数据而无需手动卸载。
+- 修复了 v1.36 的 `kubectl exec` 和 `kubectl attach` 功能。
+- 修复了 Docker Engine 启动失败被报告为通用的 `io: read/write on closed pipe` 错误，而非底层原因的问题。
+- 修复了 **镜像** 视图在存在大量镜像时一段时间内显示可回收大小为 **0 Bytes** 的问题。
+- 修复了卷列表未能按大小正确排序的问题。
+- 修复了当 GPU 进程崩溃会通过自动禁用硬件加速并重启应用，从而阻止 Docker Desktop 仪表板加载的问题。
+- 修复了直接从终端启动的 `docker ai` 会话在 Docker Desktop 重启时被终止的问题。
+- 修复了格式错误的 `daemon.json` 会在启动时静默被默认值覆盖，导致用户丢失其自定义守护进程配置的问题。
+- 在 Gordon 的权限对话框中新增了 **自定义规则** 选项卡。用户现在可以为特定命令或 MCP 工具添加允许/拒绝规则。
+- 在 Gordon 的 **计划模式** 按钮、模型选择器和 **反馈/问题** 按钮上添加了脉冲式发现徽章，以帮助用户找到新功能。
+
+#### 适用于 Mac
+
+- 修复了陈旧的 `com.docker.virtualization` 进程可能以 `VZErrorInvalidVirtualMachineConfiguration` 错误阻止 Docker Desktop 启动新 VM 的问题。
+
+#### 适用于 Windows
+
+- 修复了失败的增量更新会将用户遗留在旧版本的问题，现在会自动回退到完整安装程序。
+- 修复了 Windows MSI 安装程序在组件安装步骤实际失败时仍报告成功的问题。
+- 修复了 Windows 安装向导在通过 DISM 启用 Windows 功能时冻结的问题。
+- 修复了 Windows 安装程序中 UI 线程死锁导致在管理员安装期间注册但未运行必备服务时出现空白或挂起的窗口的问题。
+- 修复了 Windows 安装程序在无法安装 Docker CLI 插件时仍静默报告成功的问题。
+- 修复了 Windows 安装程序在重新链接 CLI 插件失败时会删除先前已安装的 CLI 插件的问题。
+- 修复了注册表策略下载失败被静默忽略的问题，现在当管理员助手以非零代码退出时用户会看到正确的错误报告。
+- 更改了 Windows 安装程序，默认选择 per-user 安装。
+- 修复了 WSL 2.6.x 及更高版本上的 WSL 集成问题，其中 Docker Desktop 由于 0 字节的代理二进制文件在用户发行版中无法工作，导致 **Permission denied** 或 **Exec format error**。
+- 修复了在 Resource Saver 停止 VM 后，集成 WSL 发行版中的 Docker CLI 中断的问题。当 WSL 集成处于活动状态时，VM 现在保持运行，并在启用时唤醒。修复了 [docker/desktop-feedback#522](https://github.com/docker/desktop-feedback/issues/522)。
+
+## 4.82.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-07-13</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/233772/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/233772/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/233772/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/233772/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/233772/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/233772/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/233772/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Compose v5.3.0](https://github.com/docker/compose/releases/tag/v5.3.0)
+- [Docker Agent v1.98.0](https://github.com/docker/docker-agent/releases/tag/v1.98.0)
+- [Docker Scout CLI v1.23.1](https://github.com/docker/scout-cli/releases/tag/v1.23.1)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 在 Gordon 的回复中添加了点赞和点踩反馈按钮。用户可以直接从聊天中对回复评分或报告问题。
+- 修复了一个 Bug，其中 Docker Desktop 创建的容器的停止超时被设为 1 秒，而非 Docker Engine 默认值，导致 `docker stop` 过快地终止进程。
+- 修复了恢复出厂默认设置时未清除 MCP Toolkit 配置文件、目录和授权的问题。
+- 修复了 Gordon 中选择的点赞/点踩反馈按钮在选择后视觉上难以区分的问题。
+- 修复了恢复出厂默认设置时未清除已下载的 LLM 模型的问题。
+- 修复了当代理通过 elicitation 请求自由文本输入时，Gordon 聊天区域会变空白的 Bug。
+- 修复了 Kubernetes 屏幕中确认创建或删除集群后进度 UI 未立即出现的问题。
+- 修复了 Docker Desktop 重启后 Kubernetes kind 集群以 **Failed to get API server port** 错误启动失败的 Bug。
+- 使用 `docker pass` 时，`ls` 命令现在在所有平台上行为一致。
+- 修复了因登录强制策略而登出的用户会看到通用登录提示，而非对其登出原因的清晰说明的问题。
+
+#### 适用于 Mac
+
+- 修复了在后端意外退出后 Docker Desktop 子进程可能残留的问题。
+- 修复了主目录路径较长的用户因 Unix 套接字路径超出操作系统长度限制而导致 Docker Desktop 无法启动的问题。
+- 修复了 vsock 监听器失败会显示隐晦崩溃，而非清晰的、可操作的恢复对话框的问题。
+
+#### 适用于 Windows
+
+- 修复了诊断包中缺失 `.log` 文件的问题，现在包含了 Docker Desktop 服务日志。
+- 降低了 Docker Desktop 后台进程的优先级，并在空闲时启用 Windows 效率模式，以减少功耗和 CPU 占用。
+- 修复了当 Docker Desktop 由非安装用户运行时，恢复出厂默认设置在 Hyper-V 上遗留容器和镜像的问题。
+- 修复了在 wsl-bootstrap 进程意外失败时 WSL 引擎启动期间出现数分钟挂起的问题，现在会及时暴露错误。
+- 修复了自动更新可能因成功安装被错误地回滚，导致 Docker Desktop 卡在 "connecting" 状态的问题。
+- 修复了 Windows Hyper-V 上 vsock 监听器失败会显示隐晦崩溃，而非清晰的、可操作的恢复对话框的问题。
+- 修复了在启动后立即连接 `com.docker.service` 时可能出现 **File not found** 错误的竞态条件。
+- 修复了后台自动更新期间会闪现图形安装程序窗口的问题。现在更新以静默方式运行。
+- 通过在执行更新前验证所下载安装程序的 Authenticode 签名，提高了安全性。
+- 修复了缺失或禁用的 Windows 功能描述未显示在诊断输出中的问题。
+- 改进了安装程序进度屏幕，使用单一的连续进度条，在整个安装过程中从 0% 平滑推进到 100%。
+- 修复了当未设置 `HOME` 环境变量时，绑定挂载路径中的 `~` 未正确解析为 home 目录的问题。
+
+#### 适用于 Linux
+
+- 修复了主目录路径较长的用户因 Unix 套接字路径超出操作系统长度限制而导致 Docker Desktop 无法启动的问题。
+
+## 4.81.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-07-06</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/232925/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/232925/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/232925/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/232925/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/232925/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/232925/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/232925/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Model Runner v1.2.5](https://github.com/docker/model-runner/releases/tag/v1.2.5)
+- [Docker Agent v1.88.1](https://github.com/docker/docker-agent/releases/tag/v1.88.1)
+- Docker Offload `v0.6.7`
+- [Docker Compose v5.2.0](https://github.com/docker/compose/releases/tag/v5.2.0)
+- [Docker Scout CLI v1.22.0](https://github.com/docker/scout-cli/releases/tag/v1.22.0)
+- [DHI CLI (`dhictl`) v0.0.5](https://github.com/docker-hardened-images/dhictl/releases/tag/v0.0.5)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了导致卷、镜像和容器无法在 Docker Desktop 仪表板中加载的错误。
+- 从 Docker Desktop 中移除了已弃用的 `cagent` 二进制文件；请改用 `docker agent`。
+- Kubernetes kind 集群现在可与 Registry Access Management 配合使用。
+- 修复了在跨越版本号位数边界（例如 4.9.x 到 4.10.x）的版本之间升级时，未显示登录/更新提示的 Bug。
+- 修复了 Ask Gordon 中工具调用权限对话框会阻塞聊天视图的问题，现将其替换为行内批准卡片，使用户能够在批准或拒绝之前阅读 Gordon 的完整消息。
+- 修复了在工厂重置等情况下，构建服务崩溃可能导致 Docker Desktop 关闭的罕见问题。
+- 修复了由于代理层强制对所有容器施加 1 秒超时，导致容器在正常操作中忽略用户配置的停止超时的问题。
+
+#### 适用于 Mac
+
+- 修复了当用户环境中包含非常长的环境变量时 Docker Desktop 无法启动的问题。
+- 修复了由于 `__DATA_CONST` 段中未设置 `SG_READ_ONLY` 导致系统链接器无法加载可执行文件，从而在 Intel 机器上造成 Docker Offload 崩溃的问题。修复了 [docker/desktop-feedback#471](https://github.com/docker/desktop-feedback/issues/471)。
+
+#### 适用于 Windows
+
+- 修复了 Windows 上停止 Docker Desktop 会立即强制关闭 Hyper-V VM 而不等待客户机正常关闭，从而降低数据损坏风险的问题。
+- 修复了 Windows 上一个 Bug，其中 `dockerd` 由于代理 URL 方案不正确导致的 TLS 握手错误，无法通过本地 HTTPS 代理连接。
+- 修复了 Windows 更新在目标版本已安装后再次运行时回退并显示 **Mismatch patch version** 错误的问题。
+- 修复了在 WSL 上运行时 Resource Saver 未停止 Docker 引擎的问题。
+- 修复了 Docker Desktop 在无法附加 Synchronized File Shares eBPF 探针的 WSL2 内核（例如 Windows on Arm）上无法启动的回归问题。修复了 [docker/desktop-feedback#470](https://github.com/docker/desktop-feedback/issues/470)。
+
+#### 适用于 Linux
+
+- 修复了重置后 Docker Desktop 无法启动的 Bug。
+
+## 4.80.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-06-29</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/232116/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/232116/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/232116/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/232116/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/232116/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/232116/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/232116/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- Docker Offload `v0.6.6`
+- [Docker Buildx v0.35.0](https://github.com/docker/buildx/releases/tag/v0.35.0)
+- [Docker Model Runner v1.2.4](https://github.com/docker/model-runner/releases/tag/v1.2.4)
+- [containerd v2.2.5](https://github.com/containerd/containerd/releases/tag/v2.2.5)
+- [Docker Engine v29.6.1](https://docs.docker.com/engine/release-notes/29/#2961)
+- [Runc v1.3.6](https://github.com/opencontainers/runc/releases/tag/v1.3.6)
+- Kubernetes v1.36.1
+   - CNI plugins v1.9.1
+   - cri-tools v1.35.0
+   - cri-dockerd v0.3.25
+- 更新了 Kubernetes 镜像：
+   - Kubeadm：
+      - `docker/desktop-storage-provisioner:v4.0`
+      - `docker/desktop-vpnkit-controller:v4.0`
+      - `docker/desktop-kubernetes-etcd:3.6.8-0`
+      - `docker/desktop-kubernetes-coredns:v1.14.2`
+      - `docker/desktop-kubernetes-pause:3.10.2`
+      - `docker/desktop-kubernetes-apiserver:v1.36.1`
+      - `docker/desktop-kubernetes-controller-manager:v1.36.1`
+      - `docker/desktop-kubernetes-scheduler:v1.36.1`
+      - `docker/desktop-kubernetes-proxy:v1.36.1`
+   - Kind：
+      - `docker/desktop-containerd-registry-mirror:v0.0.4`
+      - `docker/desktop-cloud-provider-kind:v0.6.0`
+      - `envoyproxy/envoy:v1.36.7`
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 实验性的 `docker sandbox` 插件已被移除。请迁移到 [`docker sbx`](/manuals/ai/sandboxes/_index.md)。
+- 修复了磁盘空间耗尽时显示通用错误对话框，而非清晰的 **Disk full** 消息提示用户释放空间并重启的问题。
+- 修复了在云上下文处于活动状态时使用 `docker -c desktop-linux`，会静默将命令路由到云引擎而非本地桌面 Linux 引擎的问题。
+- 修复了一个 Bug，其中在空闲关闭后，后端会错误地报告已停止的 VM 仍在运行，尤其是在启用增强型容器隔离时。
+- 修复了操作系统更新通知的时机问题，即启用了自动下载的用户是在更新可用时收到通知，而非在准备安装时收到通知。
+
+#### 适用于 Mac
+
+- 移除了旧版 osxfs 文件共享。仍在使用 osxfs 的用户已迁移到 VirtioFS。
+- 通过不在主机上持久化（伪造的）文件所有权更改，提高了 VirtioFS 文件共享性能。对 `chown` 的调用将成功，但 `stat` 不会受到影响。
+
+#### 适用于 Windows
+
+- 修复了当目标目录包含来自先前被中断安装遗留的文件时，Windows 安装程序失败的问题。
+- 修复了 Windows 上升级 Docker Desktop 会通过 `wsl --shutdown` 不必要地关闭并注销无关的 WSL 发行版的问题。
+- 修复了 Windows 上短暂经过挂起或正在关闭状态时，Hyper-V 作业被错误报告为失败的虚假问题。
+- 修复了在跨发行版 WSL 挂载被配置为 `noexec` 的机器上，WSL 引擎以 **Permission denied** 错误启动失败的问题。
+- 修复了 Windows 上终端用户即使在管理员锁定了代理配置的情况下，也能覆盖 `NO_PROXY` 排除列表的问题。
+- 修复了 Windows 上 Docker Desktop 在启动失败时静默消失的问题。现在会改为显示错误对话框。
+- 修复了 Windows 上 Docker Desktop 显示通用的引擎启动失败，而非在较旧的 wsl.exe 不支持 --version 标志时路由到 WSL 更新恢复的问题。
+
+## 4.79.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-06-22</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/230596/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/230596/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/230596/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/230596/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/230596/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/230596/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/230596/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Agent v1.79.0](https://github.com/docker/docker-agent/releases/tag/v1.79.0)
+- `docker pass` v0.1.5
+- Docker Desktop CLI v0.4.1
+- Docker Offload v0.6.4
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- Gordon 改进：
+   - 在 **容器**、**镜像**、**卷** 和 **构建** 选项卡的 Ask Gordon 菜单中添加了上下文感知的建议问题，在条目处于问题状态时优先显示相关诊断信息。
+   - 为 Gordon 添加了 **提供反馈** 链接，方便你通过脱敏的会话预览或分享产品反馈来报告问题。
+   - 修复了在 Gordon 侧边栏搜索输入框中，输入搜索查询时首次按键出现的 React 警告。
+- 修复了 Docker Engine 设置编辑器在首次打开时显示压缩（minified）JSON 而非格式化 JSON 的问题。
+- 修复了 VM 从空闲关闭唤醒后，紧接其后的 Docker API 调用出现虚假 500 错误的问题。
+- 修复了由先前捆绑的二进制文件遗留的符号链接引起的虚假 "Integrity issue detected" 通知。
+- 修复了当当前用户不是 `docker-users` 组成员时，错误屏幕上损坏的文档链接。
+- 修复了导致 NVIDIA 等集成停止正常工作的 `/app/settings/grouped` API 的破坏性变更。
+- 修复了 macOS Retina 显示屏上由 Gordon 登录页中的 SVG 动画引起的高 CPU 占用（约 30%）。
+- 修复了 OAuth 网络错误导致 Docker Desktop 错误地将用户显示为已登出的问题。
+- 修复了通过 OAuth 登录后，UI 中不会显示用户名和邮箱的问题。
+- QEMU 已更新至 v10.2.3
+- **日志** 视图改进：
+   - 添加了复制按钮。可一次性复制所有可见的已过滤日志，或在悬停时复制单条日志条目，并遵循当前的时间戳可见性设置。
+   - 通过重新组织的布局、现在可捕获容器选择和构建日志可见性的已保存筛选预设，以及持久化容器筛选状态的能力，改进了工具栏。
+   - 添加了清除日志的能力。
+   - 将 **复制** 和 **展开**/**折叠** 按钮合并为单个固定列，在水平滚动时保持可见，并修复了 **复制** 意外切换行详情面板的问题。
+- 修复了 Registry Access Management 策略下载，通过在使用者自己的目录中获取和缓存策略并进行防篡改检测，避免 `permission denied` 错误。
+
+#### 适用于 Windows
+
+- 修复了一个 Bug，其中在强制终止的引导进程遗留陈旧的 rootfs 挂载后，WSL 上的 Docker Desktop 会以 "is already mounted" 错误启动失败。
+- 修复了 Windows 上点击 "Quit Docker Desktop" 在后端崩溃或被杀死时无效的问题。
+- 修复了 Windows 上 Docker Desktop 进程在意外退出或崩溃后可能作为孤儿进程残留的问题。
+- 修复了在 Windows 上就地升级后，当 WSL 虚拟机尚未关闭时卡在 "Starting the Docker Engine…" 的问题。
+- 修复了 Windows 上托盘图标与系统任务栏主题不匹配的问题，现在会显示正确的浅色或深色图标。
+- 修复了 Windows 上后端启动错误仅写入日志文件的静默失败。现在当 Docker Desktop 启动失败时，用户会看到可见的错误对话框。
+
+## 4.78.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-06-15</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/229452/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/229452/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/229452/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/229452/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/229452/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/229452/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/229452/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Agent v1.73.0](https://github.com/docker/docker-agent/releases/tag/v1.73.0)
+- `docker pass` v0.1.4
+- [Credential helpers v0.9.8](https://github.com/docker/docker-credential-helpers/releases/tag/v0.9.8)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了在 Docker Desktop 仪表板中流式传输日志时，会导致 Docker Desktop 无响应或崩溃的内存不足崩溃。
+- 通过重试停滞和瞬时的下载失败并从部分下载的文件继续，提高了更新的可靠性。
+- 为 Gordon 工具调用添加了实时流式输出，因此像 `docker compose up` 这样的长时间运行命令会实时显示 STDOUT/STDERR，而不是等到完成才显示。
+- 在 **日志** 视图中添加了颜色编码标签，使每个容器和构建来源在日志网格和容器筛选下拉列表中通过唯一颜色进行视觉区分。
+- 改进了 Docker Desktop VM 启动失败时的错误消息。现在显示底层的 `VirtualizationFramework` / `libkrun` 原因，而非通用的 **Use of closed network connection**。
+- 修复了 Docker Desktop 处于 Resource Saver 模式时，Docker CLI 错误消息以原始 JSON 而非人类可读文本显示的问题。
+- 修复了在 **日志** 视图中取消选择容器筛选器时发生的崩溃。
+- 修复了从故障排除弹出窗口访问时，支持页面被无虚拟化覆盖屏幕替换的问题。
+- 修复了 Docker Desktop 在裸金属 EC2 实例（例如 `g4dn.metal`）上以 **Nested virtualization not supported** 错误启动失败的问题。
+- 提高了重试延迟，以适应由防病毒软件持有文件锁导致的瞬时重命名失败。
+- Gordon 现在在到 Docker 服务的出站 HTTPS 被阻止时，会显示清晰的网络错误消息，并指导检查 VPN、代理或防火墙设置，而非通用的代理错误。
+- 修复了 Gordon AI 模型选择器错误地为未显式选择模型的会话显示内部模型标识符，而非 **Default** 的问题。
+
+#### 适用于 Windows
+
+- 修复了就地升级后卡在 **Starting the Docker Engine…** 的问题。
+- 修复了失败更新回退到先前版本后，Docker Desktop 未重启的 Bug。
+- 修复了增量更新未能准备的问题。
+- 修复了在 Hyper-V 上，当引擎已空闲关闭或暂停后，`docker login` 等 Docker 命令首次尝试会失败的问题。
+- 修复了 Windows 上未安装 WSL 时，Docker Desktop 显示通用的引擎启动失败，而非清晰、可操作的错误消息的问题。
+
+## 4.77.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-06-08</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/228796/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/228796/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/228796/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/228796/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/228796/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/228796/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/228796/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 现在可以从 **日志** 视图导出日志数据。
+
+### 更新
+
+- Docker Offload v0.6.3
+- [Docker Buildx v0.34.1](https://github.com/docker/buildx/releases/tag/v0.34.1)
+- [Docker Agent v1.70.0](https://github.com/docker/docker-agent/releases/tag/v1.70.0)
+- [Docker MCP gateway v0.42.2](https://github.com/docker/mcp-gateway/releases/tag/v0.42.2)
+- `docker pass` v0.1.2
+- [containerd v2.2.4](https://github.com/containerd/containerd/releases/tag/v2.2.4)
+- [DHI CLI (`dhictl`) v0.0.4](https://github.com/docker-hardened-images/dhictl/releases/tag/v0.0.4)
+- [Docker Engine v29.5.3](https://docs.docker.com/engine/release-notes/29/#2953)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 提高了重试延迟，以适应由防病毒软件持有文件锁导致的瞬时重命名失败。
+- Marketplace 扩展现在通过固定的清单摘要（而非标签）进行安装和更新，以防止发布后标签被篡改。
+- 在关于窗口中添加了 Buildx 版本信息。
+- 在 **日志** 搜索栏中添加了大小写敏感切换，可在不区分大小写（默认）和区分大小写的日志筛选之间切换。
+- 修复了 **日志** 视图网格中鼠标滚轮滚动不起作用的问题。
+- 修复了在通过 SIGINT 或 SIGTERM 正常关闭时，后端错误地以错误代码 150 退出，导致虚假失败信号的问题。
+- 从 Docker Desktop 中移除了捆绑的 `hub-tool` 二进制文件。
+- 为 Gordon 中的 MCP OAuth 授权聊天气泡添加了可用的 **认证** 和 **取消** 按钮，让你能够从 MCP 服务器完成或拒绝 OAuth 登录流程。
+- 为 `docker pass` 添加了两个新命令：
+   - 使用 `docker pass run` 将密钥注入主机命令。
+   - 使用 `docker pass plugins` 进行动态插件管理。
+- 修复了在启用增强型容器隔离（ECI）的情况下 `docker cp` 到容器时，将文件所有权设置为 `nobody:nogroup` 的回归问题。
+
+#### 适用于 Windows
+
+- 修复了 Windows 上在失败的 WSL 发行版注册遗留 VHDX 在磁盘上后，Docker Desktop 会卡在 **Starting the Docker Engine...** 的问题。
+- 修复了 Windows 容器模式下后端关闭挂起，导致 Docker Desktop 长时间或无法干净退出问题。
+
+## 4.76.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-06-01</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/228118/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/228118/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/228118/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/228118/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/228118/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/228118/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/228118/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- Docker Model Runner 现在支持注册表镜像。
+
+### 更新
+
+- [Docker Desktop Build v0.35.0](https://github.com/docker/desktop-build/releases/tag/v0.35.0)
+- [Docker Agent v1.62.0](https://github.com/docker/docker-agent/releases/tag/v1.62.0)
+- [NVIDIA Container Toolkit v1.19.1](https://github.com/NVIDIA/nvidia-container-toolkit/releases/tag/v1.19.1)
+- [Docker Compose v5.1.4](https://github.com/docker/compose/releases/tag/v5.1.4)
+- Docker Offload v0.5.93
+- [Docker Scout CLI v1.21.0](https://github.com/docker/scout-cli/releases/tag/v1.21.0)
+- `docker pass` v0.0.29
+
+### 安全性
+
+- 修复了 [CVE-2026-8936](https://www.cve.org/CVERecord?id=CVE-2026-8936)，该漏洞为 `grpcfuse` 内核模块中因无界递归引起的 VM 崩溃。当容器在绑定挂载的主机文件夹上创建深度嵌套的目录并触发 `dentry` 失效事件时会发生。
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- `docker sbom` 命令已被弃用，将在未来的版本中移除。请改用 [`docker scout sbom command`](/reference/cli/docker/scout/sbom/)。
+- 修复了 **Resource Saver** 处于活动状态时 Docker Engine 中的竞态条件。
+- 修复了一个 Bug，其中每次删除 `kind` 集群时都会泄漏匿名的 Docker 卷，导致孤立卷累积。
+- 修复了 **所有日志** 网格中的列调整大小问题，使 **时间戳** 和 **对象** 列不再意外扩展，并且列宽现在在导航会话之间得以保留。
+- 修复了即使底层文件系统正常，VM 磁盘调整操作遇到错误时 Docker Desktop 仍无法启动的问题。
+- 修复了退出时导致 Docker Desktop 挂起的问题。
+- 修复了停止或启动 Docker Offload 后，CPU 和 RAM 资源总计可能卡在 Docker Desktop 仪表板中显示 0 的 Bug。
+- 修复了 Gordon 中最终答案文本会在跳转到回复气泡之前，短暂出现在工作组内的闪烁问题。
+- 修复了在并发登出和令牌刷新操作期间可能发生的守护进程崩溃。
+- 修复了 **卷** 视图为具有多个卷的容器显示错误挂载目标的问题。
+- `docker pass` 现在在 `set` 命令上带有 `--force` 标志。
+- `docker --help` 现在会显示 `docker pass`。
+- 修复了重启空闲停止的引擎后，通过外部 API 调用返回的容器、镜像、网络、卷和插件的陈旧 API 缓存响应（合成 404）。
+- 修复了在 **构建** 视图中选择构建后，**删除** 按钮可能不会立即可见的 Bug。修复了 [docker/desktop-feedback#329](https://github.com/docker/desktop-feedback/issues/329) 和 [docker/desktop-feedback#330](https://github.com/docker/desktop-feedback/issues/330)。
+- 修复了启用增强型容器隔离（ECI）时时间命名空间不可用的问题。
+
+#### 适用于 Windows
+
+- 修复了 `--quiet` 安装标志在静默安装期间未能抑制安装类型对话框的回归问题。
+- 修复了 Windows 上一个带有尾随换行的陈旧 PID 文件会阻止遗留守护进程被终止，导致 Windows 容器模式无法配置的 Bug。
+- 修复了 Windows 上在另一个安装程序实例已在运行时触发更新，会显示通用错误而非特定消息的问题。
+- 修复了 Windows 上安装程序和更新程序可执行文件由于 Windows 启发式安装程序检测而错误触发 UAC 提升提示的问题。
+- 修复了在 Windows 容器模式下托盘菜单中双分隔符的问题。
+- 修复了 Windows Hyper-V 上的端口绑定失败，其中 `docker run -p 0:N` 可能分配 HNS 保留端口，导致绑定错误。
+- 修复了非英文 Windows 系统（例如使用 GBK 编码的中文 Windows）日志中乱码的 taskkill 错误消息。
+- 修复了 WSL2 ISO 缓存的无界增长。安装新版本时会移除旧的 `docker-desktop.iso` 和 `docker-wsl-cli.iso` 条目。修复了 [docker/desktop-feedback#419](https://github.com/docker/desktop-feedback/issues/419)。
+
+## 4.75.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-05-26</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/227598/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/227598/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/227598/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/227598/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/227598/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/227598/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/227598/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- Docker Offload v0.5.92
+- [Docker Engine v29.5.2](https://docs.docker.com/engine/release-notes/29/#2952)
+- [Docker Buildx v0.34.0](https://github.com/docker/buildx/releases/tag/v0.34.0)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 移除了 Docker Scout 视图，并禁用了 Scout 相关的操作系统通知和通知弹窗。
+- 新增对 ECI 受保护容器中的时间命名空间的支持。
+- 修复了一个 Bug，其中 `http_proxy` 环境变量可能阻止 kind 集群拉取本地镜像。
+- 修复了 VM 从空闲关闭唤醒后，首次 Docker API 调用可能出现 `500 Internal Server Error` 的问题。
+- 修复了由相对 URL 被解析为无效的 `app://` 方案 URL 而导致的 Docker Hub 镜像描述中损坏的图片。
+
+#### 适用于 Mac
+
+- 添加了在启动时由于更新失败而 Docker Desktop 从暂存目录运行时出现的警告对话框。同时添加了下载全新安装的链接。
+
+#### 适用于 Windows
+
+- 与默认发行版的 WSL 集成已被禁用。要更改此设置，请访问 **设置**。
+- 修复了在 Windows 上接受文件共享同意提示时，使用 Hyper-V 后端的 `docker compose up` 以 `EOF` 错误失败的 Bug。
+- 修复了 Windows 安装程序可能导致安装期间后端模式检测错误或意外创建目录的 Bug。
+
+## 4.74.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-05-19</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/227015/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/227015/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/227015/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/227015/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/227015/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/227015/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/227015/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- [Gordon](/ai/gordon) 现已正式发布（GA）。同时也提供了新的使用计划。付费的 Gordon 计划可解锁更高的使用限额。
+
+### 更新
+
+- Docker Offload v0.5.89
+- [Docker Agent v1.57.0](https://github.com/docker/docker-agent/releases/tag/v1.57.0)
+- [Credential helpers v0.9.7](https://github.com/docker/docker-credential-helpers/releases/tag/v0.9.7)
+- `docker pass` v0.0.26
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了一个 Bug，其中 Docker Desktop 自身的 Electron 辅助进程（GPU、渲染器、实用工具）在从开始菜单启动时会被错误地检测并作为残留进程杀死，导致崩溃循环。
+- 修复了日志视图显示设置中的 **查看构建日志** 切换在重启 Docker Desktop 后被重置，而非持久化用户偏好的问题。
+- Docker Extensions 现在默认禁用。
+
+#### 适用于 Mac
+
+- 修复了当容器同时连接到 Swarm 覆盖网络时发布端口不可访问的问题。修复了 [docker/for-mac#7854](https://github.com/docker/for-mac/issues/7854)。
+- 修复了某些企业环境中的仪表板 TLS 失败。
+- 通过内容哈希校验提高了 GUI 安全性。
+
+#### 适用于 Linux
+
+- 新增对 Ubuntu 26.04 的支持。
+
+## 4.73.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-05-13</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/226574/Docker%20Desktop%20Installer.exe)
+
+
+### 错误修复和增强
+
+#### 适用于 Windows
+
+- 修复了从开始菜单启动时，Docker Desktop 自身的 Electron 进程被错误杀死的 Bug。修复了 [docker/desktop-feedback#367](https://github.com/docker/desktop-feedback/issues/367)。
+
+## 4.73.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-05-11</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/226246/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/226246/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/226246/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/226246/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/226246/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/226246/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/226246/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Engine v29.4.3](https://docs.docker.com/engine/release-notes/29/#2943)
+- [Docker Agent v1.54.0](https://github.com/docker/docker-agent/releases/tag/v1.54.0)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了 Mac 上的 `Cmd+Q` 和 Windows/Linux 上的 `Ctrl+Q` 未能完全退出 Docker Desktop 的问题。修复了 [docker/for-mac#7833](https://github.com/docker/for-mac/issues/7833)。
+- 修复了一个 Bug，其中取消 `docker load` 会持有 containerd 引用锁，导致后续加载同一镜像失败。
+- 修复了当 MCP Toolkit 禁用时，Docker Desktop 在登录时向 `mcp.docker.com` 发出不必要网络请求，导致意外代理身份验证提示的问题。
+- 修复了 Gordon 会话侧边栏中的搜索输入框在留空时不会关闭的问题。
+- 改进了 Docker Desktop 对由防病毒软件同时访问这些文件导致的瞬时重命名失败的处理。
+
+#### 适用于 Mac
+
+- 通过改进 Linux VM 将释放的容器内存归还给主机操作系统的能力，修复了 Apple Silicon Mac 上内存占用过高的问题。
+- 修复了一个 Bug，其中当另一个容器与同一子网范围内的 IP 存在活动出站连接时，容器收到的连接源 IP 被破坏。修复了 [docker/for-mac#7824](https://github.com/docker/for-mac/issues/7824)。
+
+## 4.72.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-05-06</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/225998/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/225998/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/225998/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/225998/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/225998/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/225998/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/225998/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- **日志** 视图现已正式发布（GA）。
+- 新安装的 Windows 版 Docker Desktop 可以在 per-user（Beta）或 all-user 安装之间进行选择。
+
+### 更新
+
+- [Docker Agent v1.50.0](https://github.com/docker/docker-agent/releases/tag/v1.50.0)
+- [Docker DHI (`dhictl`) v0.0.3](https://github.com/docker-hardened-images/dhictl/releases/tag/v0.0.3)
+- [Docker Model Runner v1.1.37](https://github.com/docker/model-cli/releases/tag/v1.1.37)
+- [credential helpers v0.9.6](https://github.com/docker/docker-credential-helpers/releases/tag/v0.9.6)
+
+### 安全性
+
+- 扩展设置页面现在包含一条安全提示，说明扩展以主机级权限运行，且未经 Docker 审核。
+- 通过反向移植上游 Linux 内核补丁修复了 [CVE-2026-31431（"copy.fail"）](https://xint.io/blog/copy-fail-linux-distributions)，该补丁可防止未特权容器用户通过对主机 VM 页缓存的受控写入在容器内获取 root 权限。
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 改进了 Docker Offload 空闲通知。
+- 修复了由于 Docker Agent 命令参数中缺少 `run` 子命令，导致 **在 TUI 中打开 Gordon** 按钮不起作用的问题。
+- 修复了登录期间瞬时网络错误或 Docker Hub 服务器错误会意外将用户登出，而非自动重试的问题。
+- 通过导航到这些屏幕时按需获取最新数据，改进了容器、镜像和卷屏幕的数据刷新，减少了后台轮询负载。
+- 修复了在大量容器文件活动后更改文件共享技术时可能发生的内核崩溃。
+- 在 Docker Model Runner 中启用了 OpenAI Responses API（`/responses`）端点。
+- 修复了通过 `docker login` 使用 OAuth 登录时，用户会在流程中途被意外登出 Docker Desktop 的 Bug。
+
+#### 适用于 Windows
+
+- 修复了 Windows 上多次选择 Docker Desktop 任务栏图标会生成多个后端进程的 Bug。在 Docker Desktop 运行时重新选择该图标现在会将仪表板置于前台。
+- 修复了 Windows 上 Docker Desktop 正常启动或退出时，出现虚假的 "进程仍在运行" 对话框的竞态条件。
+
+### 适用于 Linux
+
+- 已放弃对 RHEL 8 的支持。
+
+## 4.71.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-04-27</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/225177/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/225177/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/225177/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/225177/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/225177/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/225177/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/225177/docker-desktop-x86_64.pkg.tar.zst)
+
+
+> [!重要]
+>
+> 对 RHEL 8 的支持已结束。在下一版本中，安装 Docker Desktop 将需要 RHEL 9 或 RHEL 10。
+
+### 更新
+
+- [Docker Model Runner v1.1.36](https://github.com/docker/model-runner/releases/tag/v1.1.36)
+- [containerd to v2.2.3](https://github.com/containerd/containerd/releases/tag/v2.2.3)
+- [Runc v1.3.5](https://github.com/opencontainers/runc/releases/tag/v1.3.5)
+- [Docker Compose v5.1.3](https://github.com/docker/compose/releases/tag/v5.1.3)
+- [Docker Agent v1.44.0](https://github.com/docker/docker-agent/releases/tag/v1.44.0)
+- [Docker Engine v29.4.1](/manuals/engine/release-notes/29.md#2941)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- Docker Model Runner 现在默认禁用，必须在 **设置** 中显式启用。启用时，TCP 主机端支持会自动激活。
+- 修复了在磁盘可用空间不足时，下载 Docker Desktop 更新会因缺乏清晰错误而失败的问题。
+- 修复了在检查镜像时，当基础镜像摘要或仓库名称为空时，Docker Scout 标签推荐失败的问题。
+- 在登录屏幕上添加了 **切换到本地 Docker 上下文** 按钮，允许处于云上下文中的用户无需登录即可切换回其本地上下文。
+- 为云引擎添加了专用的 **已停止** 状态屏幕，使用户在从 Docker Offload 切换离开时看到清晰的已停止状态，而非错误屏幕。
+
+#### 适用于 Mac
+
+- 修复了用户禁用分析后，错误跟踪会暂时继续直接发送会话数据的问题。修复了 [docker/for-mac#7768](https://github.com/docker/for-mac/issues/7768)。
+
+#### 适用于 Windows
+
+- 修复了由进程加固策略与 Chromium 冲突导致的 `ERR_FAILED` 错误，使 Docker Desktop 仪表板无法打开的严重问题。
+- 修复了当 WSL 2 本身设置了 `HTTP_PROXY` 环境变量时，Kubernetes 可能在 WSL 2 上启动失败的 Bug。
+- 修复了增强型容器隔离（ECI）中使用 WSL 时，会导致容器 `rootfs` 持久性在 Docker Desktop 重启之间丢失的 Bug。
+
+### 安全性
+
+- 修复了 [CVE-2026-5843](https://www.cve.org/cverecord?id=CVE-2026-5843)，即通过 MLX-LM `model_file` importlib 加载，在 Docker Model Runner MLX 推理后端中发生的容器到主机的代码执行。
+
+## 4.70.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-04-20</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/224270/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/224270/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/224270/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/224270/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/224270/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/224270/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/224270/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 添加了一个 CLI 提示，在运行 `logs`、`compose logs`、`compose attach` 或 `compose up` 命令时显示 **日志** 视图，让你能够快速访问所有运行中的容器的日志。需启用 **日志**（Beta）功能。
+
+### 更新
+
+- [Docker Compose v5.1.2](https://github.com/docker/compose/releases/tag/v5.1.2)
+- [Docker Engine v29.4.0](/manuals/engine/release-notes/29.md#2940)
+- [Docker Agent v1.43.0](https://github.com/docker/docker-agent/releases/tag/v1.43.0)
+- [Docker Model Runner v1.1.33](https://github.com/docker/model-runner/releases/tag/v1.1.33)
+- [Docker Scout CLI v1.20.4](https://github.com/docker/scout-cli/releases/tag/v1.20.4)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了在 CI 环境中，由于 Docker Hub 响应缓慢导致凭据存储更新超时，`docker login` 可能静默失败的 Bug。
+- 修复了禁用 Beta 功能同时也会禁用 Docker Model Runner 的问题。
+- 修复了 `docker desktop start` 由于继承的 CLI 插件环境变量，导致 Docker AI agent API 守护进程失败的问题。
+
+#### 适用于 Mac
+
+- 修复了由于损坏的 `DockerAppLaunchPath` 设置，更新后 Docker Desktop 以退出状态 `42` 反复启动失败的崩溃循环。
+- 修复了失败的更新可能使 Docker Desktop 处于损坏状态的问题。现在安装程序会自动回退到先前版本并显示清晰的错误消息。
+- 修复了一个 Bug，其中停止一个容器可能会干扰其他运行容器的活动 Unix 套接字转发。
+
+#### 适用于 Windows
+
+- 修复了失败的更新可能使 Docker Desktop 处于损坏状态的问题。现在安装程序会自动回退到先前版本并显示清晰的错误消息。
+- 修复了一个 Bug，其中切换到 Windows 容器失败可能使 Docker Desktop 处于损坏状态，需要重启。
+- 修复了 Docker Desktop 在环境中设置了 `DEVHOME` 的用户上无法启动的问题。
+- 暂时回退了导致 Windows 上 Electron 崩溃的进程加固。修复了 [docker/desktop-feedback#245](https://github.com/docker/desktop-feedback/issues/245)。
+
+## 4.69.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-04-13</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/224084/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/224084/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/224084/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/224084/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/224084/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/224084/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/224084/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Agent v1.42.0](https://github.com/docker/docker-agent/releases/tag/v1.42.0)
+- [Docker Model v1.1.29](https://github.com/docker/model-runner/releases/tag/v1.1.29)
+- [containerd v2.2.2](https://github.com/containerd/containerd/releases/tag/v2.2.2)
+- [Docker Buildx v0.33.0](https://github.com/docker/buildx/releases/tag/v0.33.0)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了当 OAuth 令牌仍保留在凭据存储中时，来自 CLI 的 `docker logout` 被 Docker Desktop 忽略，导致用户意外保持登录状态的问题。
+- 修复了当无关的凭据更新、`docker login` 或瞬时网络错误触发登出时，Docker Desktop 可能意外将用户登出的问题。
+- 修复了在失败的恢复操作中可能删除备份数据，导致用户无数据可用的数据丢失问题。
+- 修复了登录凭据（`login-info.json`）可能被包含在诊断包中的问题，提高了隐私和安全性。请注意，该文件仅包含编码的组织名称、计划名称、编码的用户名和编码的邮箱。不包含任何密码或凭据。
+- 修复了页脚更新标签在更新的准备/解包阶段错误地显示 **Downloading** 的问题。现在正确显示为 **Preparing**。
+- 修复了内部存储磁盘已满时 Docker Desktop 无法启动的问题。
+
+#### 适用于 Mac
+
+- 修复了当 `Docker.app` 安装在非用户可写目录时，应用内更新按钮未禁用，从而避免失败更新尝试的问题。
+- 修复了通过 Mac 上的 Homebrew 安装 Docker Desktop 的用户的更新失败问题。
+
+#### 适用于 Windows
+
+- 修复了在 Docker Desktop 安装或卸载期间，使用 Hyper-V 后端的 Windows 用户会意外弹出 WSL 终端的问题。
+- 修复了 Windows 上恢复出厂默认设置会从 `~/.docker/cli-plugins` 删除 CLI 插件，导致 `docker build` 回退到旧版构建器的问题。
+- 修复了一个 Bug，其中当 WSL 集成与另一个使用 cgroup v1 控制器的发行版同时启用时，Kubernetes 无法启动。
+- 修复了在启动期间 Registry Access Management 策略更改发生时，导致 Kubernetes 无法启动的竞态条件。
+- 防止 Docker Desktop 因 Windows 上文件操作期间的瞬时 "Access is denied" 错误而致命失败。
+
+## 4.68.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-04-07</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/223695/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/223695/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/223695/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/223695/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/223695/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/223695/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/223695/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- Gordon 现在拥有持久化的本地记忆，使其能够跨会话记住你的偏好和上下文。
+
+### 更新
+
+- [Docker Agent v1.39.0](https://github.com/docker/docker-agent/releases/tag/v1.39.0)
+- [Docker Model v1.1.28](https://github.com/docker/model-runner/releases/tag/v1.1.28)
+- Docker Offload v0.5.81
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了增强型容器隔离中导致容器在创建时无限期挂起的死锁（启用 ECI 时）。
+- 添加了警告横幅，在 MCP 服务器由社区提供且未经 Docker 验证时发出提醒。
+- 在 **日志** 视图中添加了持久的 **显示时间戳** 切换，允许在表格和可视化视图中跨会话隐藏时间戳。
+- 修复了退出时 Docker Desktop 前端进程未被正确终止的问题。
+- 修复了由管理员控制的设置在重新加载时可能导致 Docker Desktop 在登录或登出操作期间无响应的死锁。
+- 修复了一个 Bug，其中由于磁盘映像上无法修复的文件系统错误未被修复，导致 Docker Desktop 无法启动。
+- 修复了一个导致增强型容器隔离（ECI）无意中阻止 Kubernetes 集群启动的 Bug。
+- 修复了失败的卷大小获取可能导致 **卷** 视图无法访问的问题；卷上的容器计数现在已正确排除绑定挂载。
+- 修复了卷备份中的竞态条件，该条件可能导致容器被错误地重启、导出日志被损坏，或在调度任务时发生运行时崩溃。
+- 修复了当无名容器导致 panic 时，API 缓存中发生的崩溃，该崩溃会干扰容器列表。
+- 修复了一个 Bug，其中如果在没有容器使用绑定时删除了绑定挂载的父目录，启动容器可能以 `ENOENT` 失败。
+
+#### 适用于 Mac
+
+- 修复了一个安全漏洞，其中被篡改的用户部署配置 profile 可能绕过组织的登录强制策略。
+- 修复了一个 Bug，其中失败的 `vmnetd` 握手可能在已断开的连接上分派虚假命令，导致意外的网络错误。
+- 修复了在启动时恢复到全屏状态时，Docker Desktop 仪表板可能过早显示的问题。
+- 修复了在使用 Docker Compose 且多个服务共享一个卷时，嵌套绑定挂载在 VirtioFS 上显示为空子挂载内容的问题。修复了 [docker/desktop-feedback#264](https://github.com/docker/desktop-feedback/issues/264)。
+
+#### 适用于 Windows
+
+- 修复了安装程序解压未更新进度条并可能耗时约 5 分钟（取决于机器）的问题。现在解压速度提高约 60%，并包含正确的进度更新。
+- 修复了容器启动后容器端口有时无法正确发布的竞态条件，影响了临时端口、`--publish-all` 和网关 IP 绑定。
+- 修复了失败的 WSL 发行版移动可能使该发行版处于未注册状态的问题。
+
+### 安全性
+
+- 修复了 [CVE-2026-5817](https://www.cve.org/cverecord?id=CVE-2026-5817)，即通过未沙箱化的 `trust_remote_code` tokenizer 加载，在 Docker Model Runner vllm-metal 推理后端中发生的容器到主机的代码执行。
+
+## 4.67.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-03-30</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/222858/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/222858/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/222858/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/222858/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/222858/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/222858/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/222858/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- Docker MCP Toolkit 现在拥有 MCP profile 模板卡片，以及可通过 **配置文件** 选项卡访问的入门导览。
+
+### 更新
+
+- [Docker Compose v5.1.1](https://github.com/docker/compose/releases/tag/v5.1.1)
+- [Docker Agent v1.34.0](https://github.com/docker/docker-agent/releases/tag/v1.34.0)
+- [Docker Scout CLI v1.20.3](https://github.com/docker/scout-cli/releases/tag/v1.20.3)
+- [Docker Model v1.1.25](https://github.com/docker/model-runner/releases/tag/v1.1.25)
+
+### 错误修复和小幅改动
+
+#### 适用于所有平台
+
+- Docker Model Runner 现在支持 Qwen3.5。
+- 借助新的 **日志（Beta）** 视图，你现在可以按 Compose 堆栈筛选容器日志。
+- 改进了在 Docker 引擎或 Kubernetes 启动或停止时与 **设置** 的交互。
+- 修复了一个 Bug，其中随机 UDP 端口绑定报告端口 `0` 而非实际分配的端口。
+- 修复了 Docker Desktop 快捷方式在 Docker Desktop 已运行时无法重新打开仪表板的问题。
+- 修复了 **添加到现有 profile** 对话框在下拉列表中显示了已包含所有所选 MCP 服务器的 profile 的问题。
+
+#### 适用于 Mac
+
+- 修复了由于 Rosetta `binfmt` 注册与 `virtiofs` 设备可用性之间的竞态条件，在 Apple Silicon Mac 上启动 amd64 容器时出现的间歇性 `exec format error`。
+
+#### 适用于 Windows
+
+- 修复了 WSL 2 用户的 Hyper-V 在每次 EXE 升级时被静默重新启用的问题。
+- 修复了 Windows 上卸载后 Docker Desktop 进程可能仍在运行的 MSI 安装程序 Bug。
+- 修复了 Windows 上使用 `--installation-dir` 的安装或更新会因安装程序归档被解压到自定义安装目录而失败的问题。
+- 通过 WSL 2 将 Windows 上的 Docker Desktop 启动时间缩短了数秒。
+- 修复了 Windows 上 **模型** > **日志** 屏幕每次访问时导致 `docker-model` 进程累积的 Bug。
+
+### 安全性
+
+- 修复了 [CVE-2026-33990](https://www.cve.org/cverecord?id=CVE-2026-33990)，即 Docker Model Runner OCI Registry Client 中的 SSRF。
+
+## 4.66.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-03-26</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/222799/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/222799/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/222799/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/222799/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/222799/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/222799/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/222799/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Engine v29.3.1](/manuals/engine/release-notes/29.md#2931)
+
+## 4.66.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-03-23</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/222299/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/222299/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/222299/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/222299/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/222299/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/222299/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/222299/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Engine v29.3.0](https://docs.docker.com/engine/release-notes/29/#2930)
+- [NVIDIA Container Toolkit v1.19.0](https://github.com/NVIDIA/nvidia-container-toolkit/releases/tag/v1.19.0)
+
+### 错误修复和小幅改动
+
+#### 适用于所有平台
+
+- Gordon 改进：
+   - 从命令行失败提示进行深层链接时提供预填充的提示。
+   - 通过在发出请求前进行身份验证，防止 Docker Hub 速率限制。
+- 修复了当 kube 上下文损坏或不可达时 Kubernetes pod 发现挂起的问题。
+- 修复了终端调整大小期间由于未定义尺寸错误导致的终端崩溃。
+- 修复了针对文件、镜像和注册表导出操作的卷备份导出错误处理。
+
+#### 适用于 Windows
+
+- 修复了 Windows API 代理中由不必要的进程枚举导致的高 CPU 占用。
+- 修复了 Windows MSI 安装程序无法更新 Docker Desktop 的问题。4.56 到 4.65 之间的版本需要先卸载再重新安装 4.66 或更高版本。请注意，卸载会移除所有关联数据。
+
+## 4.65.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-03-16</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/221669/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/221669/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/221669/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/221669/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/221669/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/221669/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/221669/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 添加了一个新的 **日志** 视图，你可以在其中通过统一视图探索所有来源的日志。（Beta）
+- 当 `docker build`、`docker run` 或 `docker compose` 命令失败时，现在会出现 Gordon 提示，提供上下文建议。
+- 社区 MCP 服务器现在支持直接在 UI 中进行 OAuth 身份验证。
+- 添加了 [`docker dhi` CLI 插件](https://github.com/docker-hardened-images/dhictl) 用于管理 Docker Hardened Images。
+
+### 更新
+
+- [Docker Scout CLI v1.20.1](https://github.com/docker/scout-cli/releases/tag/v1.20.1)
+- [Docker Agent v1.29.0](https://github.com/docker/docker-agent/releases/tag/v1.29.0)
+- [Docker Buildx v0.32.1](https://github.com/docker/buildx/releases/tag/v0.32.1)
+
+### 错误修复和小幅改动
+
+#### 适用于所有平台
+
+- Kubernetes 现在对新集群默认使用 kind。
+- 修复了更新进度条无法正确恢复的问题。
+
+#### 适用于 Windows
+
+- 通过在使用 WSL2 后端时跳过 docker-users 组检查，缩短了启动时间。
+
+### 已知问题
+
+- Windows MSI 安装程序在 current version 介于 4.56 到 4.65 之间时无法更新现有的 Docker Desktop 安装。作为变通方法，请在重新安装最新版本之前卸载现有版本。请注意，卸载会移除所有关联数据。
+
+## 4.64.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-03-11</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/221278/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/221278/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/221278/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/221278/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/221278/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/221278/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/221278/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- [Docker Compose v5.1.0](https://github.com/docker/compose/releases/tag/v5.1.0)
+- [Docker Scout CLI v1.20.0](https://github.com/docker/scout-cli/releases/tag/v1.20.0)
+- [Docker Agent v1.27.1](https://github.com/docker/docker-agent/releases/tag/v1.27.1)
+
+### 错误修复和小幅改动
+
+#### 适用于所有平台
+
+- 修复了 MCP Toolkit 中禁用 profile 中所有工具反而会启用所有工具的 Bug。
+- 修复了 Docker Agent 更新后 `docker ai` 命令停止的问题。
+- 修复了 Gordon 会话标题在悬停按钮出现时闪烁的问题。
+- 改进了 Gordon 摘要渲染并减少了叙述冗长。
+- 修复了 `docker ai` CLI 命令未正确调用 Docker Agent 的 Bug。
+- 修复了 Docker MCP Toolkit 中的 **OAuth** 选项卡未显示来自所有目录的条目的问题。
+- 改进了 MCP Catalog 搜索。
+- 修复了 **构建日志** 选项卡在切换选项卡时未保留搜索词和筛选器的问题。
+- 修复了 Kind 容器启动更可靠的问题。
+
+#### 适用于 Mac
+
+- 通过更具描述性的诊断信息改进了更新错误报告。
+- 通过在 `Application Support` 下而非 `/tmp` 中准备更新后的 `Docker.app`，提高了更新可靠性。
+
+### 已知问题
+
+- Windows MSI 安装程序在 current version 介于 4.56 到 4.65 之间时无法更新现有的 Docker Desktop 安装。作为变通方法，请在重新安装最新版本之前卸载现有版本。请注意，卸载会移除所有关联数据。
+
+## 4.63.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-03-02</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/220185/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/220185/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/220185/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/220185/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/220185/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/220185/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/220185/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 在 **构建** 视图中添加了 SLSA v1 来源（provenance）支持。
+
+### 更新
+
+- [Kubernetes v1.34.3](https://github.com/kubernetes/kubernetes/releases/tag/v1.34.3)
+- Linux 内核 `v6.12.72`
+
+### 错误修复和小幅改动
+
+#### 适用于所有平台
+
+- 增强了代理设置 UI，并为容器添加了单独的代理。
+- 修复了当服务器的 config 对象包含 `"required": null` 时，社区注册表 MCP 目录无法加载的问题。
+- 修复了当 Docker Desktop VM 处于 Resource Saver 模式时，`mcp-gateway` 从 Secrets Engine 获取密钥会挂起的问题。
+- 将 "Docker AI" 相关引用重新命名为 "Gordon"。
+
+#### 适用于 Windows
+
+- 缩短了 Windows 上的启动时间。
+
+### 已知问题
+
+- Windows MSI 安装程序在 current version 介于 4.56 到 4.65 之间时无法更新现有的 Docker Desktop 安装。作为变通方法，请在重新安装最新版本之前卸载现有版本。请注意，卸载会移除所有关联数据。
+
+## 4.62.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-02-23</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/219486/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/219486/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/219486/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/219486/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/219486/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/219486/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/219486/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 借助 Docker MCP Toolkit，你现在可以使用 [profiles](/manuals/ai/mcp-catalog-and-toolkit/profiles.md) 将你的 MCP 服务器组织到命名的集合中。你还可以创建自定义目录——为你的团队或组织精选的服务器集合。
+
+### 更新
+
+- Linux 内核 `v6.12.69`
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了后台更新检查在 **自动检查更新** 设置被禁用时未遵循该设置的问题。修复了 [docker/for-mac#3908](https://github.com/docker/for-mac/issues/3908)。
+
+#### 适用于 Mac
+
+- 为 Docker Model Runner 添加了对 vLLM Metal 的支持。
+
+#### 适用于 Linux
+
+- 修复了 QEMU 10.2.0 及更高版本上的网络崩溃。
+
+### 安全性
+
+- 修复了 [CVE-2026-2664](https://www.cve.org/cverecord?id=CVE-2026-2664)，即 grpcfuse 内核模块中的越界读取。
+- 修复了 [CVE-2026-28400](https://www.cve.org/cverecord?id=CVE-2026-28400)，即 Docker Model Runner 中的运行时标志注入。
+
+### 已知问题
+
+- Windows MSI 安装程序在 current version 介于 4.56 到 4.65 之间时无法更新现有的 Docker Desktop 安装。作为变通方法，请在重新安装最新版本之前卸载现有版本。请注意，卸载会移除所有关联数据。
+
+## 4.61.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-02-18</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/219004/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/219004/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/219004/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/219004/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/219004/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/219004/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/219004/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 你现在可以自定义左侧导航，仅显示对你重要的选项卡，并隐藏不需要的选项卡。
+
+### 更新
+
+- Linux 内核 `v6.12.68`
+- [Docker Engine v29.2.1](https://docs.docker.com/engine/release-notes/29/#2921)
+- Docker Sandbox `v0.12.0`
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- Docker Sandboxes：
+   - 添加了自动镜像缓存，以防止不必要的重复下载镜像。
+   - 为空白编码代理沙箱添加了 Shell 模式。
+   - 添加了对 OpenCode 的支持。
+   - 添加了对挂载多个工作区的支持。
+   - 添加了实验性的 Linux 支持（仅单用户，UID 1000）。
+   - 添加了对在 WSL 2 中运行的支持。
+   - 如果未提供路径，沙箱现在会在当前工作目录中启动。
+
+### 已知问题
+
+- Windows MSI 安装程序在 current version 介于 4.56 到 4.65 之间时无法更新现有的 Docker Desktop 安装。作为变通方法，请在重新安装最新版本之前卸载现有版本。请注意，卸载会移除所有关联数据。
+
+## 4.60.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-02-10</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/218372/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/218372/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/218372/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/218372/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/218372/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/218372/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/218372/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了登录后导致 Docker Desktop 仪表板崩溃的罕见问题。
+
+## 4.60.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-02-09</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/218231/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/218231/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/218231/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/218231/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/218231/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/218231/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/218231/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 新增功能
+
+- 添加了一个新的 `docker desktop diagnose` 命令来收集诊断信息。
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 修复了 `ping6 host.docker.internal`。
+- 启用了 landlock LSM。
+- Docker Sandboxes 改进：
+   - 通过包含网络访问文档改进了代理系统提示
+   - 修复了 Gemini API 密钥注入
+   - 沙箱现在在代理默认规则中屏蔽 `console.anthropic.com/claude.ai`
+   - 修复了 `run <agent> --help` 的 CLI 帮助文本
+   - 改进了终端大小处理
+
+### 已知问题
+
+- Windows MSI 安装程序在 current version 介于 4.56 到 4.65 之间时无法更新现有的 Docker Desktop 安装。作为变通方法，请在重新安装最新版本之前卸载现有版本。请注意，卸载会移除所有关联数据。
+
+## 4.59.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-02-03</em>
+
+
+Download Docker Desktop:
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/217750/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/217750/Docker.dmg)
+
+
+### 错误修复和增强
+
+#### 适用于 Mac
+
+- 修复了 CPU 使用率可能定期飙升的问题。修复了 [docker/for-mac#7839](https://github.com/docker/for-mac/issues/7839)。
+
+## 4.59.0
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-02-02</em>
+
+
+Download Docker Desktop:
+- [Windows](https://desktop.docker.com/win/main/amd64/217644/Docker%20Desktop%20Installer.exe)
+- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/217644/Docker%20Desktop%20Installer.exe)
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/217644/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/217644/Docker.dmg)
+- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/217644/docker-desktop-amd64.deb)
+- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/217644/docker-desktop-x86_64.rpm)
+- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/217644/docker-desktop-x86_64.pkg.tar.zst)
+
+
+### 更新
+
+- Linux 内核 `v6.12.67`
+- [Docker Compose v5.0.2](https://github.com/docker/compose/releases/tag/v5.0.2)
+- Docker Sandbox `v0.10.1`
+- [Docker Buildx v0.31.1](https://github.com/docker/buildx/releases/tag/v0.31.1)
+
+### 错误修复和增强
+
+#### 适用于所有平台
+
+- 将 Neo4j 作为已知发布者添加到 Docker MCP Catalog。
+- 修复了 **模型** 选项卡在显示通过 Anthropic Messages API 发出的请求时会崩溃的问题。
+
+#### 适用于 Mac
+
+- 修复了使用 DockerVMM 时共享文件权限可能被意外修改的问题。修复了 [docker/for-mac#7830](https://github.com/docker/for-mac/issues/7830)。
+
+#### 适用于 Windows
+
+- 修复了容器密钥注入可能因 `docker-pass` 失败的问题。
+- 暂时禁用了 WSL 数据磁盘的 VHDX 压缩以提高稳定性。
+
+### 安全性
+
+- 修复了增强型容器隔离中的一个安全问题，其中在使用 `--use-api-socket` 标志时，Docker socket 挂载权限可能被绕过。
+
+## 4.58.1
+
+<em class="text-gray-400 italic dark:text-gray-500">2026-01-29</em>
+
+
+Download Docker Desktop:
+- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/217134/Docker.dmg)
+- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/217134/Docker.dmg)
+
+
+### 错误修复和增强
+
+#### 适用于 Mac
+
+- 修复了 CPU 使用率可能定期飙升的问题。修复了 [docker/for-mac#7839](https://github.com/docker/for-mac/issues/7839)。
+
 ## 4.58.0
 
 <em class="text-gray-400 italic dark:text-gray-500">2026-01-26</em>
@@ -81,6 +1524,10 @@ Download Docker Desktop:
 - [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/215387/docker-desktop-x86_64.pkg.tar.zst)
 
 
+### 安全性
+
+- 修复了 [CVE-2025-14740](https://www.cve.org/cverecord?id=CVE-2025-14740)，该漏洞涉及 Docker Desktop for Windows 安装程序在处理 `C:\ProgramData\DockerDesktop` 目录时存在多处不正确的权限分配漏洞。
+
 ### 新增功能
 
 - Docker Desktop 现在在 https://github.com/docker/desktop-feedback 上有一个适用于所有平台的新问题跟踪器。来自以前特定于平台跟踪器的相关且积极讨论的问题将被迁移。
@@ -119,7 +1566,7 @@ Download Docker Desktop:
 
 - [containerd v2.2.1](https://github.com/containerd/containerd/releases/tag/v2.2.1)
 - [Docker Compose v5.0.0](https://github.com/docker/compose/releases/tag/v5.0.0)
-- [cagent v1.18.6](https://github.com/docker/cagent/releases/tag/v1.18.6)
+- [Docker Agent v1.18.6](https://github.com/docker/cagent/releases/tag/v1.18.6)
 
 ### 错误修复和增强
 
@@ -160,7 +1607,7 @@ Download Docker Desktop:
 ### 更新
 
 - [Docker Engine v29.1.3](https://docs.docker.com/engine/release-notes/29/#2913)
-- [cagent v1.15.1](https://github.com/docker/cagent/releases/tag/v1.15.1)
+- [Docker Agent v1.15.1](https://github.com/docker/cagent/releases/tag/v1.15.1)
 
 ### 错误修复和增强
 
@@ -179,15 +1626,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-12-04</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/212467/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/212467/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/212467/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/212467/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/212467/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新增功能
@@ -216,15 +1654,6 @@ Download Docker Desktop:
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-27</em>
 
 
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/211793/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/211793/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/211793/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/211793/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/211793/docker-desktop-x86_64.pkg.tar.zst)
-
 
 ### 错误修复和增强
 
@@ -240,15 +1669,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-20</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/210994/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/210994/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/210994/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/210994/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/210994/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新增功能
@@ -285,15 +1705,6 @@ Download Docker Desktop:
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-13</em>
 
 
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/210443/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/210443/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/210443/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/210443/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/210443/docker-desktop-x86_64.pkg.tar.zst)
-
 
 ### 新增功能
 
@@ -314,15 +1725,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-11-06</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/209931/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/209931/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/209931/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/209931/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/209931/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新增功能
@@ -369,8 +1771,8 @@ Download Docker Desktop:
 
 ### 新增功能
 
-- [cagent](/manuals/ai/cagent/_index.md) 现已通过 Docker Desktop 提供。
-- [Docker Debug](/reference/cli/docker/debug.md) 现已对所有用户免费开放。
+- [Docker Agent](/manuals/ai/docker-agent/_index.md) 现已通过 Docker Desktop 提供。
+- [Docker Debug](/reference/cli/docker/debug/) 现已对所有用户免费开放。
 
 ### 升级组件
 
@@ -397,15 +1799,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-10-09</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/207573/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/207573/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/207573/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/207573/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/207573/docker-desktop-x86_64.pkg.tar.zst)
 
 
 > [!重要]
@@ -501,15 +1894,6 @@ Download Docker Desktop:
 <em class="text-gray-400 italic dark:text-gray-500">2025-09-11</em>
 
 
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/204649/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/204649/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/204649/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/204649/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/204649/docker-desktop-x86_64.pkg.tar.zst)
-
 
 ### 新增功能
 
@@ -546,15 +1930,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-28</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/203075/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/203075/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/203075/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/203075/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/203075/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新增功能
@@ -593,15 +1968,6 @@ Download Docker Desktop:
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-20</em>
 
 
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/202357/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/202357/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/202357/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/202357/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/202357/docker-desktop-x86_64.pkg.tar.zst)
-
 
 ### 安全
 
@@ -615,15 +1981,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-15</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/202017/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/202017/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/202017/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/202017/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/202017/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### Bug 修复与增强
@@ -661,15 +2018,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-08-07</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/201307/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/201307/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/201307/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/201307/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/201307/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### 新增功能
@@ -736,15 +2084,6 @@ Download Docker Desktop:
 <em class="text-gray-400 italic dark:text-gray-500">2025-07-15</em>
 
 
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/199162/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/199162/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/199162/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/199162/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/199162/docker-desktop-x86_64.pkg.tar.zst)
-
 
 ### 升级组件
 
@@ -756,15 +2095,6 @@ Download Docker Desktop:
 
 <em class="text-gray-400 italic dark:text-gray-500">2025-07-04</em>
 
-
-Download Docker Desktop:
-- [Windows](https://desktop.docker.com/win/main/amd64/198352/Docker%20Desktop%20Installer.exe)
-- [Windows ARM Early Access](https://desktop.docker.com/win/main/arm64/198352/Docker%20Desktop%20Installer.exe)
-- [Mac (Apple chip)](https://desktop.docker.com/mac/main/arm64/198352/Docker.dmg)
-- [Mac (Intel chip)](https://desktop.docker.com/mac/main/amd64/198352/Docker.dmg)
-- [Linux (Debian)](https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-amd64.deb)
-- [Linux (RPM)](https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.rpm)
-- [Linux (Arch)](https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.pkg.tar.zst)
 
 
 ### Bug 修复与增强
@@ -1081,7 +2411,7 @@ Download Docker Desktop:
 ### 新增功能
 
 - [Docker Desktop CLI](/manuals/desktop/features/desktop-cli.md) 现已全面可用。您现在还可以使用新的 `docker desktop logs` 命令打印日志。
-- Docker Desktop 现已支持在 [`docker load`](/reference/cli/docker/image/load.md) 和 [`docker save`](/reference/cli/docker/image/save.md) 命令中使用 `--platform` 标志。这有助于您导入和导出多平台镜像的子集。
+- Docker Desktop 现已支持在 [`docker load`](/reference/cli/docker/image/load/) 和 [`docker save`](/reference/cli/docker/image/save/) 命令中使用 `--platform` 标志。这有助于您导入和导出多平台镜像的子集。
 
 ### 升级内容
 
@@ -1138,7 +2468,7 @@ Download Docker Desktop:
 - 通过 PKG 安装程序安装 Docker Desktop 现已全面可用。
 - 通过配置描述文件强制登录现已全面可用。
 - Docker Compose、Docker Scout、Docker CLI 和 Ask Gordon 现在可以独立于 Docker Desktop 更新，且无需完全重启（Beta）。
-- 新的 [`update` 命令](/reference/cli/docker/desktop/update.md) 已添加到 Docker Desktop CLI（仅限 Mac）。
+- 新的 [`update` 命令](/reference/cli/docker/desktop/update/) 已添加到 Docker Desktop CLI（仅限 Mac）。
 - [Bake](/manuals//build/bake/_index.md) 现已全面可用，支持权限和可组合属性。
 - 您现在可以在 Docker Desktop 中创建[多节点 Kubernetes 集群](/manuals/desktop/settings-and-maintenance/settings.md#kubernetes)。
 - [Ask Gordon](/manuals/ai/gordon/_index.md) 现在更广泛可用，仍处于 Beta 阶段。
@@ -1650,7 +2980,7 @@ Download Docker Desktop:
 
 ### 新增功能
 
-- [Docker Debug](/reference/cli/docker/debug.md) 现已全面发布。
+- [Docker Debug](/reference/cli/docker/debug/) 现已全面发布。
 - BuildKit 现在会评估 Dockerfile 规则，以告知您潜在问题。
 - **资源分配**设置现在可以直接从仪表板页脚显示的资源使用数据中访问。
 - [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md)体验焕然一新。
@@ -2207,7 +3537,7 @@ Download Docker Desktop:
 
 #### 适用于所有平台
 
-- `docker scan` 命令已被移除。要继续了解镜像的漏洞以及许多其他功能，请使用 [`docker scout` 命令](/reference/cli/docker/scout/_index.md)。
+- `docker scan` 命令已被移除。要继续了解镜像的漏洞以及许多其他功能，请使用 [`docker scout` 命令](/reference/cli/docker/scout/)。
 - 修复了选中 **始终下载更新** 复选框时自动更新无法下载的问题。
 - 修复了仪表板工具提示中的拼写错误。修复了 [docker/for-mac#7132](https://github.com/docker/for-mac/issues/7132)
 - 改进了信号处理行为（例如，在终端中运行 `docker` 命令时按 Ctrl-C）。
@@ -2573,7 +3903,7 @@ Download Docker Desktop:
 ### 新增功能
 
 - 新增对 Wasm 运行时的支持：wws 和 lunatic。
-- [`docker init`](/reference/cli/docker/init.md) 现在支持 ASP.NET
+- [`docker init`](/reference/cli/docker/init/) 现在支持 ASP.NET
 - 提高了 macOS 上暴露端口的性能，例如使用 `docker run -p` 时。
 
 ### 移除功能
@@ -2827,7 +4157,7 @@ Download Docker Desktop:
 
 ### 移除功能
 
-- 移除了 `docker scan` 命令。如需继续了解镜像漏洞及其他众多功能，请使用新的 `docker scout` 命令。运行 `docker scout --help` 或[阅读文档了解更多信息](/reference/cli/docker/scout/_index.md)。
+- 移除了 `docker scan` 命令。如需继续了解镜像漏洞及其他众多功能，请使用新的 `docker scout` 命令。运行 `docker scout --help` 或[阅读文档了解更多信息](/reference/cli/docker/scout/)。
 
 ### 升级组件
 
@@ -2922,7 +4252,7 @@ Download Docker Desktop:
 - 修复了 `docker run --gpus=all` 命令挂起的问题。修复了 [docker/for-win#13324](https://github.com/docker/for-win/issues/13324)。
 - 修复了注册表访问管理策略更新未下载的问题。
 - 当 `C:` 盘启用 BitLocker 时，Docker Desktop 现在允许 Windows 容器正常工作。
-- 使用 WSL 后端的 Docker Desktop 不再需要 `com.docker.service` 特权服务永久运行。更多信息请参阅 [Windows 权限要求](https://docs.docker.com/desktop/windows/permission-requirements/)。
+- 使用 WSL 后端的 Docker Desktop 不再需要 `com.docker.service` 特权服务永久运行。更多信息请参阅 [Windows 权限要求](/manuals/desktop/setup/install/windows-permission-requirements.md)。
 
 ### 适用于 Mac
 
@@ -4349,4 +5679,4 @@ Docker 已[宣布](https://www.docker.com/blog/updating-product-subscriptions/)�
 #### Windows 版本
 
 - 修复了 CLI 工具在 WSL 2 发行版中不可用的问题。
-- 修复了因 `panic.log` 访问权限导致从 Linux 容器切换到 Windows 容器的问题。[for-win#11899](https://github.com/docker/for-win/issues/11899)
+

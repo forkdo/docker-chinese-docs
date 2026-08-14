@@ -1,13 +1,9 @@
 # 通过 CLI 进行通用环境集成
 
 
-
-
-
-
 您可以通过在 CI 工作流中运行 Docker Scout CLI 客户端来创建通用环境集成。CLI 客户端可在 GitHub 上作为二进制文件获取，也可在 Docker Hub 上作为容器镜像获取。使用该客户端调用 `docker scout environment` 命令，将您的镜像分配给环境。
 
-有关如何使用 `docker scout environment` 命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/environment.md)。
+有关如何使用 `docker scout environment` 命令的更多信息，请参阅 [CLI 参考](/reference/cli/docker/scout/environment/)。
 
 ## 示例
 
@@ -33,12 +29,12 @@ jobs:
     steps:
       - run: |
           if [[ -z "$CIRCLE_TAG" ]]; then
+            tag="$CIRCLE_BRANCH"
+            echo "Running on branch '$CIRCLE_BRANCH'"
+          else
             tag="$CIRCLE_TAG"
             echo "Running tag '$CIRCLE_TAG'"
-          else
-            tag="$CIRCLE_BRANCH"
-            echo "Running on branch '$CI_COMMIT_BRANCH'"
-          fi    
+          fi
           echo "tag = $tag"
       - run: docker run -it \
           -e DOCKER_SCOUT_HUB_USER=$DOCKER_SCOUT_HUB_USER \
@@ -63,12 +59,12 @@ record_environment:
   script:
     - |
       if [[ -z "$CI_COMMIT_TAG" ]]; then
-        tag="latest"
-        echo "Running tag '$CI_COMMIT_TAG'"
-      else
         tag="$CI_COMMIT_REF_SLUG"
         echo "Running on branch '$CI_COMMIT_BRANCH'"
-      fi    
+      else
+        tag="$CI_COMMIT_TAG"
+        echo "Running tag '$CI_COMMIT_TAG'"
+      fi
       echo "tag = $tag"
     - environment --org <MY_DOCKER_ORG> "PRODUCTION" ${image}:${tag}
 ```
@@ -97,7 +93,6 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
-          - task: Docker@2
           - script: docker run -it \
               -e DOCKER_SCOUT_HUB_USER=$DOCKER_SCOUT_HUB_USER \
               -e DOCKER_SCOUT_HUB_PASSWORD=$DOCKER_SCOUT_HUB_PASSWORD \
@@ -111,7 +106,7 @@ stages:
 
 
 ```groovy
-stage('Analyze image') {
+stage('Record environment') {
     steps {
         // Install Docker Scout
         sh 'curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- -b /usr/local/bin'
@@ -119,10 +114,11 @@ stage('Analyze image') {
         // Log into Docker Hub
         sh 'echo $DOCKER_SCOUT_HUB_PASSWORD | docker login -u $DOCKER_SCOUT_HUB_USER --password-stdin'
 
-        // Analyze and fail on critical or high vulnerabilities
-        sh 'docker-scout environment --org "<MY_DOCKER_ORG>" "<ENVIRONMENT>" $IMAGE_TAG
+        // Record image to environment
+        sh 'docker-scout environment --org "<MY_DOCKER_ORG>" "<ENVIRONMENT>" $IMAGE_TAG'
     }
 }
 ```
+
 
 

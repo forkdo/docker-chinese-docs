@@ -1,5 +1,15 @@
-# 旧版本发行说明
+# 
 
+<!-- FILE: manuals/desktop/previous-versions/archive-windows.md -->
+
+---
+description: Docker Desktop for Windows 旧版本发行说明
+keywords: Docker Desktop for Windows, 发行说明
+title: 旧版本发行说明
+toc_min: 1
+toc_max: 2
+sitemap: false
+---
 
 此页面包含 Docker Desktop for Windows 旧版本的发行说明。
 
@@ -514,3 +524,4 @@
 * Docker 1.12.0
 * Docker Machine 0.8.0
 * Docker Compose 1.8.0
+

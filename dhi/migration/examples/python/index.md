@@ -1,10 +1,11 @@
 # Python
 
 
-本示例展示如何将 Python 应用程序迁移到 Docker Hardened Images。
+本示例展示如何将 Python 应用程序迁移到 Docker 强化镜像。
 
-以下示例展示了迁移到 Docker Hardened Images 前后的 Dockerfile。每个示例包含四种变体：
+以下示例展示了迁移到 Docker 强化镜像前后的 Dockerfile。每个示例包含五种变体：
 
+- 迁移前 (Ubuntu)：使用基于 Ubuntu 的镜像的示例 Dockerfile，迁移到 DHI 之前
 - 迁移前 (Wolfi)：使用 Wolfi 发行版镜像的示例 Dockerfile，迁移到 DHI 之前
 - 迁移前 (DOI)：使用 Docker Official Images 的示例 Dockerfile，迁移到 DHI 之前
 - 迁移后 (多阶段)：迁移到 DHI 后使用多阶段构建的示例 Dockerfile（推荐用于最小化、安全的镜像）
@@ -14,8 +15,47 @@
 >
 > 大多数用例推荐使用多阶段构建。为简化操作也支持单阶段构建，但在镜像大小和安全性方面需要权衡。
 >
-> 在拉取 Docker Hardened Images 之前，必须先向 `dhi.io` 进行身份验证。
+> 在拉取 Docker 强化镜像之前，必须先向 `dhi.io` 进行身份验证。
+> 使用您的 Docker ID 凭据（与您用于 Docker Hub 的用户名和密码相同）。如果您没有 Docker 账户，请[免费创建一个](../../../accounts/create-account.md)。
 > 运行 `docker login dhi.io` 进行身份验证。
+
+**迁移前 (Ubuntu)**
+
+
+
+```dockerfile
+#syntax=docker/dockerfile:1
+
+FROM ubuntu:24.04 AS builder
+
+RUN apt-get update && apt-get install -y python3 python3-pip python3-venv --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=C.UTF-8
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PATH="/app/venv/bin:$PATH"
+
+WORKDIR /app
+
+RUN python3 -m venv /app/venv
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+FROM ubuntu:24.04
+
+RUN apt-get update && apt-get install -y python3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1
+ENV PATH="/app/venv/bin:$PATH"
+
+COPY app.py ./
+COPY --from=builder /app/venv /app/venv
+
+ENTRYPOINT [ "python3", "/app/app.py" ]
+```
 
 **迁移前 (Wolfi)**
 
@@ -99,7 +139,7 @@ ENTRYPOINT [ "python", "/app/app.py" ]
 #syntax=docker/dockerfile:1
 
 # === 构建阶段：安装依赖并创建虚拟环境 ===
-FROM dhi.io/python:3.13-alpine3.21-dev AS builder
+FROM dhi.io/python:3.13-alpine3.23-dev AS builder
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -117,7 +157,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # === 最终阶段：创建最小运行时镜像 ===
-FROM dhi.io/python:3.13-alpine3.21
+FROM dhi.io/python:3.13-alpine3.23
 
 WORKDIR /app
 
@@ -137,7 +177,7 @@ ENTRYPOINT [ "python", "/app/app.py" ]
 ```dockerfile
 #syntax=docker/dockerfile:1
 
-FROM dhi.io/python:3.13-alpine3.21-dev
+FROM dhi.io/python:3.13-alpine3.23-dev
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -158,5 +198,6 @@ COPY app.py ./
 
 ENTRYPOINT [ "python", "/app/app.py" ]
 ```
+
 
 

@@ -12,6 +12,7 @@ Docker Hub 的主要功能：
 * 并发和自动化构建
 * 可信内容，提供高质量、安全的镜像
 
-除了图形界面外，您还可以使用 [Docker Hub API](../../reference/api/hub/latest.md) 或实验性的 [Docker Hub CLI 工具](https://github.com/docker/hub-tool#readme) 与 Docker Hub 交互。
+除了图形界面外，您还可以使用 [Docker Hub API](../../reference/api/hub/latest.md)、实验性的 [Docker Hub CLI 工具](https://github.com/docker/hub-tool#readme)，或通过 [Docker Hub MCP 服务器](/docker-hub/mcp-server/) 进行 AI 代理集成来与 Docker Hub 交互。
+
 
 

@@ -18,8 +18,23 @@
 
 ## 使用方法
 
-要将 `journald` 驱动用作默认日志驱动，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opts` 键设置为适当的值。该文件在 Linux 主机上位于 `/etc/docker/`，在 Windows Server 上位于 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅
+要将 `journald` 驱动用作默认日志驱动，请在 `daemon.json` 文件中将 `log-driver` 和 `log-opts` 键设置为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅
 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+
+
+
+
+<!-- FILE: includes/daemon-cfg-desktop.md -->
+
+> [!NOTE]
+>
+> 如果你使用的是 Docker Desktop，请通过 Docker Desktop 控制面板来编辑守护进程配置。
+> 打开 **Settings**，然后选择 **Docker Engine**。
+> 详情参阅
+> [Docker Engine 设置](/manuals/desktop/settings-and-maintenance/settings.md#docker-engine)。
+
+
 
 以下示例将日志驱动设置为 `journald`：
 
@@ -111,3 +126,4 @@ reader.add_match('CONTAINER_NAME=web')
 for msg in reader:
     print '{CONTAINER_ID_FULL}: {MESSAGE}'.format(**msg)
 ```
+

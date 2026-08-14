@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动从 Docker 的源代码生成的。如果您想
-建议更改此处显示的文本，请在 GitHub 的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/buildx
--->
-
 
 
 
@@ -31,6 +23,7 @@ Shows information about the current or specified builder.
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--bootstrap` |  |  Ensure builder has booted before inspecting |
+| `--timeout` | `20s` |  Override the default timeout for loading builder status |
 
 
 

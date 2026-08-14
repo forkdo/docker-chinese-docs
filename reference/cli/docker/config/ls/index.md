@@ -6,12 +6,6 @@
 
 **Aliases:** `docker config list`
 
-<!--
-此页面由 Docker 源代码自动生成。如果您想修改此处显示的文本，请在 GitHub 上的源代码仓库中提交问题或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -94,7 +88,7 @@ The following filter matches only services with the `project` label with the
 `project-a` value.
 
 ```console
-$ docker service ls --filter label=project=test
+$ docker config ls --filter label=project=project-a
 
 ID                          NAME                        CREATED             UPDATED
 mem02h8n73mybpgqjf0kfi1n0   test_config                 About an hour ago   About an hour ago
@@ -107,7 +101,7 @@ The `name` filter matches on all or prefix of a config's name.
 The following filter matches config with a name containing a prefix of `test`.
 
 ```console
-$ docker config ls --filter name=test_config
+$ docker config ls --filter name=test
 
 ID                          NAME                        CREATED             UPDATED
 mem02h8n73mybpgqjf0kfi1n0   test_config                 About an hour ago   About an hour ago

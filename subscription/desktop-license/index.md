@@ -5,17 +5,17 @@ Docker Desktop 根据 [Docker 订阅服务协议](https://www.docker.com/legal/d
 
 Docker 订阅服务协议规定：
 
- - Docker Desktop 免费适用于：
-    - 小型企业（员工人数少于 250 人且年收入少于 1000 万美元）
-    - 个人使用
-    - 教育用途
-    - 非商业开源项目
+- Docker Desktop 免费适用于：
+  - 小型企业（员工人数少于 250 人且年收入少于 1000 万美元）
+  - 个人使用
+  - 教育用途
+  - 非商业开源项目
 - Docker Desktop 对以下情况需要付费订阅：
-    - 大型组织的专业使用
-    - 政府机构
-    - 超出免费层级限制的商业使用
+  - 大型组织的专业使用
+  - 政府机构
+  - 超出免费层级限制的商业使用
 - 包含 Docker Desktop 的付费订阅：
-    - Docker Pro、Team 和 Business 订阅
+  - Docker Pro、Team 和 Business 订阅
 
 ## 了解许可条款
 
@@ -33,3 +33,4 @@ Docker Desktop 基于开源软件构建。有关 Docker Desktop 中开源组件�
 ## 开源组件
 
 Docker Desktop 分发了一些根据 GNU 通用公共许可证授权的组件。[点击此处下载这些组件的源代码](https://download.docker.com/opensource/License.tar.gz)。
+

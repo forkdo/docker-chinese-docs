@@ -1,5 +1,16 @@
-# 在容器环境中设置环境变量
+# 
 
+<!-- FILE: manuals/compose/how-tos/environment-variables/set-environment-variables.md -->
+
+---
+title: 在容器环境中设置环境变量
+linkTitle: 设置环境变量
+weight: 10
+description: 如何使用 Compose 设置、使用和管理环境变量
+keywords: compose, orchestration, environment, environment variables, container environment variables
+aliases:
+- /compose/environment-variables/set-environment-variables/
+---
 
 在服务配置中明确指定之前，容器的环境变量不会被设置。使用 Compose，您可以通过 Compose 文件以两种方式为容器设置环境变量。
 
@@ -110,3 +121,4 @@ $ docker compose run -e DEBUG=1 web python console.py
 - [设置或更改预定义环境变量](envvars.md)
 - [探索最佳实践](best-practices.md)
 - [了解插值](variable-interpolation.md)
+

@@ -5,7 +5,10 @@
 
 
 
+
+
 Docker Compose 提供了一种使用 secrets 的方式，无需通过环境变量来存储信息。如果将密码和 API 密钥作为环境变量注入，可能会导致信息意外泄露。服务只有在 `services` 顶层元素中通过 `secrets` 属性明确授权后，才能访问 secrets。
+
 
 环境变量通常对所有进程都可见，并且难以追踪访问情况。在调试错误时，它们也可能在不知情的情况下被打印到日志中。使用机密信息可以降低这些风险。
 
@@ -103,6 +106,8 @@ secrets:
 
 ## 资源
 
+- [熟悉 Compose 的信任模型](/manuals/compose/trust-model.md)
 - [Secrets 顶层元素](/reference/compose-file/secrets.md)
 - [服务顶层元素的 Secrets 属性](/reference/compose-file/services.md#secrets)
 - [构建机密信息](https://docs.docker.com/build/building/secrets/)
+

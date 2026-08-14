@@ -1,6 +1,10 @@
 # 在 Marketplace 中发布
 
 
+> [!IMPORTANT]
+>
+> 在 Docker 审查 Marketplace 安全性期间，暂停向 Docker 扩展 Marketplace 提交新扩展。您仍然可以更新现有扩展，私有 Marketplace 扩展不受影响。如果您有其他疑问，请联系 extensions@docker.com。
+
 ## 将您的扩展提交到 Marketplace
 
 Docker Desktop 会在 [Docker Desktop](https://open.docker.com/extensions/marketplace) 和 [Docker Hub](https://hub.docker.com/search?q=&type=extension) 的扩展市场 (Extensions Marketplace) 中显示已发布的扩展。
@@ -40,3 +44,4 @@ Docker Desktop 会在 [Docker Desktop](https://open.docker.com/extensions/market
 > [!IMPORTANT]
 >
 > Docker Desktop 会将 Marketplace 中可用扩展的列表缓存 12 小时。如果您在 Marketplace 中看不到您的扩展，可以重新启动 Docker Desktop 以强制刷新缓存。
+

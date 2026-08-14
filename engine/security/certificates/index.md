@@ -9,7 +9,14 @@
 
 ## 了解配置
 
-通过在 `/etc/docker/certs.d` 下创建与注册表主机名相同的目录（例如 `localhost`）来配置自定义证书。所有 `*.crt` 文件都作为 CA 根添加到此目录中。
+通过在守护进程的证书根目录下创建与注册表主机名相同的目录（例如 `localhost`）来配置自定义证书。所有 `*.crt` 文件都作为 CA 根添加到此目录中。
+
+该证书根目录的位置取决于平台：
+
+- 原生 Linux Engine：`/etc/docker/certs.d/`
+- 无根（Rootless）Linux：`$XDG_CONFIG_HOME/docker/certs.d`（默认为 `~/.config/docker/certs.d`），而不是 `/etc/docker/certs.d`
+- 原生 Windows Engine（Windows 容器）：`%PROGRAMDATA%\docker\certs.d`（通常为 `C:\ProgramData\docker\certs.d`）。如果注册表地址包含端口，请从目录名中去掉冒号，因为 Windows 文件名不能包含 `:`。例如，`registry.example.com:5000` 变为 `registry.example.com5000`。
+- 使用 Linux 容器的 Docker Desktop：将客户端证书放在主机的 `~/.docker/certs.d` 中。Docker Desktop 会将它们复制到 VM 中；不要自己在 VM 内配置 `/etc/docker/certs.d`。受信任的 CA 也可以来自主机证书存储（在 Windows 上为 Windows 证书存储）。
 
 > [!NOTE]
 >

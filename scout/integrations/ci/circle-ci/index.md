@@ -48,7 +48,7 @@ steps:
   - run:
       name: 扫描镜像中的 CVE
       command: |
-        docker-scout cves $IMAGE_TAG --exit-code --only-severity critical,high
+        docker scout cves $IMAGE_TAG --exit-code --only-severity critical,high
 ```
 
 这会检出仓库文件，然后设置一个单独的 Docker 环境以在其中运行命令。
@@ -63,3 +63,4 @@ workflows:
     jobs:
       - build
 ```
+

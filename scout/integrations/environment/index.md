@@ -22,7 +22,6 @@ Docker Scout 支持以下运行时集成：
 
 - [Docker Scout GitHub Action](https://github.com/marketplace/actions/docker-scout#record-an-image-deployed-to-an-environment)
 - [CLI 客户端](./cli.md)
-- [Sysdig 集成](./sysdig.md)
 
 > [!NOTE]
 >
@@ -53,7 +52,7 @@ $ docker scout config organization <org>
 
 将镜像分配到环境可以让您在环境内部和环境之间进行比较。这对于 GitHub 拉取请求等场景非常有用，可以比较从 PR 中的代码构建的镜像与 staging 或 production 中的相应镜像。
 
-您还可以使用 `--to-env` 标志与流进行比较，通过 [`docker scout compare`](/reference/cli/docker/scout/compare.md) CLI 命令：
+您还可以使用 `--to-env` 标志与流进行比较，通过 [`docker scout compare`](/reference/cli/docker/scout/compare/) CLI 命令：
 
 ```console
 $ docker scout compare --to-env production myorg/webapp:latest
@@ -79,3 +78,4 @@ docker/scout-demo-service:main@sha256:ef08dca54c4f371e7ea090914f503982e890ec81d2
 ### 不匹配的镜像标签
 
 当您在 **Images** 选项卡上选择一个环境时，列表中的标签代表用于部署镜像的标签。标签是可变的，这意味着您可以更改标签引用的镜像摘要。如果 Docker Scout 检测到某个标签引用了过时的摘要，则会在镜像名称旁边显示一个警告图标。
+

@@ -3,6 +3,8 @@
 
 Docker Hardened Images (DHI) 是一个全面的安全加固容器镜像目录，旨在满足多样化的开发和生产需求。
 
+您可以在 [Docker Hub](https://hub.docker.com/hardened-images/catalog) 上浏览 DHI 目录，或使用 [DHI CLI](../tools/cli.md) 从命令行浏览可用的镜像、标签和元数据。
+
 ## 框架和应用镜像
 
 DHI 包含一系列流行的框架和应用镜像，每个镜像都经过安全加固和维护，以确保安全性和合规性。这些镜像能够无缝集成到现有工作流中，让开发者能够专注于构建应用，而不必牺牲安全性。
@@ -45,12 +47,12 @@ Docker Hardened Images 提供多种基础镜像选项，让您能够灵活选择
 - `3.9.23-debian12`：Python 3.9.23 的运行时镜像
 - `3.9.23-debian12-dev`：Python 3.9.23 的开发镜像
 
-## FIPS 和 STIG 变体 {tier="DHI Enterprise"}
+## FIPS 和 STIG 变体
 
 
 
 部分 Docker Hardened Images 包含 `-fips` 变体。这些变体使用经过 [FIPS
-140](../core-concepts/fips.md) 验证的加密模块，FIPS 140 是美国政府关于安全加密操作的标准。
+140](security-concepts/fips.md) 验证的加密模块，FIPS 140 是美国政府关于安全加密操作的标准。
 
 FIPS 变体旨在帮助组织满足敏感或受监管环境中与加密使用相关的法规和合规要求。
 
@@ -79,3 +81,21 @@ FIPS 变体可以像任何其他 Docker Hardened Image 一样使用，非常适�
 您可以通过标签中包含 `-compat` 来识别兼容性变体。
 
 当您的部署需要超出最小运行时的额外工具时，请使用兼容性变体，例如使用 Helm 图表或具有特定工具要求的应用。
+
+## Socket Firewall 变体
+
+部分 Docker Hardened Images 包含 Socket Firewall 变体。这些是预装了 [Socket](https://socket.dev/) 的 `dev` 变体，用于监控包管理器活动，并在开发和 CI 构建期间拦截恶意软件包。
+
+提供两个层级，可通过标签后缀识别：
+
+- `-sfw-dev`：Socket Firewall Free。无需 API 密钥。
+- `-sfw-ent-dev`：Socket Firewall Enterprise。需要来自 Socket 的 API 密钥。
+
+并非所有镜像都同时提供这两个层级。
+
+## 镜像专属变体
+
+部分镜像包含超出常规 `dev`、`compat` 和 `sfw` 模式的变体。它们代表该镜像特有的不同版本、捆绑工具或运行时配置。例如用于 Web 服务器集成的 PHP-FPM 变体、用于加快启动速度的原生二进制构建，或数据库的某个特定版本。
+
+您可以通过标签后缀识别这些变体。标签后缀中的镜像名称通常反映了其包含的内容或差异之处。
+

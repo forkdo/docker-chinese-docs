@@ -13,7 +13,22 @@
 
 ## 使用方法
 
-要将 `gelf` 驱动程序用作默认日志驱动程序，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。该文件位于 Linux 主机上的 `/etc/docker/` 目录，或 Windows Server 上的 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+要将 `gelf` 驱动程序用作默认日志驱动程序，请在 `daemon.json` 文件中设置 `log-driver` 和 `log-opt` 键为适当的值。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+
+
+
+
+<!-- FILE: includes/daemon-cfg-desktop.md -->
+
+> [!NOTE]
+>
+> 如果你使用的是 Docker Desktop，请通过 Docker Desktop 控制面板来编辑守护进程配置。
+> 打开 **Settings**，然后选择 **Docker Engine**。
+> 详情参阅
+> [Docker Engine 设置](/manuals/desktop/settings-and-maintenance/settings.md#docker-engine)。
+
+
 
 以下示例将日志驱动程序设置为 `gelf`，并设置了 `gelf-address` 选项。
 
@@ -71,3 +86,4 @@ $ docker run -dit \
     --log-opt gelf-address=udp://192.168.0.42:12201 \
     alpine sh
 ```
+

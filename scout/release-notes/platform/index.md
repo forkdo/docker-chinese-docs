@@ -5,6 +5,35 @@
 
 本页面包含有关 Docker Scout 版本中的新功能、改进、已知问题和错误修复的信息。这些发布说明涵盖了 Docker Scout 平台，包括仪表盘。有关 CLI 发布说明，请参阅 [Docker Scout CLI 发布说明](./cli.md)。
 
+## 2026 年第二季度
+
+### 2026-07-01
+
+以下 Docker Scout 功能已停用：
+
+- 健康评分和 Scout Everywhere：Docker Hub 和 Docker Desktop 不再显示健康评分或始终在线的 Scout 体验。请使用 `docker scout quickview` 快速获取漏洞和策略摘要。
+- Sysdig 集成：已移除 Sysdig 运行时环境集成。
+- GitHub 源代码管理集成：请迁移到 GitHub Dependabot 以进行基础镜像更新，并使用 `--provenance=mode=max` 构建以实现镜像到源代码的关联。有关迁移指南，请参阅
+  [GitHub 集成](../integrations/source-code-management/github.md)。
+
+以下功能已弃用，将于 2026 年 7 月 30 日停用：
+
+- Slack 集成：向 Slack 频道发送漏洞和策略合规性通知。作为替代方案，可将 `docker scout cves` 或 `docker scout policy` 集成到您的 CI 流水线中。请参阅
+  [Slack 集成](../integrations/team-collaboration/slack.md)。
+
+以下功能已弃用，将于 2026 年 9 月 1 日停用：
+
+- 通知：关于新披露 CVE 的产品内和电子邮件通知。可将 `docker scout cves` 或 `docker scout policy` 集成到您的 CI 流水线中，以便在没有推送通知的情况下呈现漏洞和策略结果。
+
+- Amazon ECR 集成：请迁移到
+  [`docker scout watch`](/reference/cli/docker/scout/watch/) 进行持续轮询，或将 Scout 集成到您的 CI 流水线中。迁移指南请参阅
+  [ECR 集成](../integrations/registry/ecr.md)。
+- Azure Container Registry 集成：与 ECR 相同的迁移选项。迁移指南请参阅
+  [ACR 集成](../integrations/registry/acr.md)。
+- 仪表板中的策略页面：`docker scout policy`
+  命令将取代该页面，并提供更多用于评估策略的选项。您可以在本地、CI 中、针对自定义 Rego 策略或使用 OCI 包进行评估。请参阅 [评估策略](../policy/local.md)。
+- SonarQube 集成。
+
 ## 2024 年第四季度
 
 2024 年第四季度发布的新功能和增强功能。
@@ -26,11 +55,11 @@ Docker Scout 仪表盘 UI 变更：
 
 在此版本中，我们更改了自定义策略的工作方式。以前，自定义策略是通过复制开箱即用的策略来创建的。现在，您可以通过编辑来自**策略类型**的默认策略来自定义策略，该策略类型充当模板。Docker Scout 中的默认策略也是基于这些类型实现的。
 
-有关更多信息，请参阅 [策略类型](/manuals/scout/policy/_index.md#policy-types)。
+有关更多信息，请参阅 [策略类型](../policy/_index.md#policy-types)。
 
 ### 2024-09-09
 
-此版本更改了 Docker Scout 中[健康评分](/manuals/scout/policy/scores.md)的计算方式。健康评分计算现在会考虑您为组织配置的可选策略和自定义策略。
+此版本更改了 Docker Scout 中健康评分的计算方式。健康评分计算现在会考虑您为组织配置的可选策略和自定义策略。
 
 这意味着，如果您已启用、禁用或自定义了任何默认策略，Docker Scout 在计算您组织镜像的健康评分时现在会将这些策略考虑在内。
 
@@ -38,7 +67,7 @@ Docker Scout 仪表盘 UI 变更：
 
 ### 2024-08-13
 
-此版本更改了开箱即用的策略，以使其与用于评估 Docker Scout [健康评分](/manuals/scout/policy/scores.md)的策略配置保持一致。
+此版本更改了开箱即用的策略，以使其与用于评估 Docker Scout 健康评分的策略配置保持一致。
 
 默认的开箱即用策略现在是：
 
@@ -88,7 +117,7 @@ Docker Scout 仪表盘 UI 变更：
 
 ### 2024-01-26
 
-**Azure Container Registry** 集成已从[早期访问](../../release-lifecycle.md#early-access-ea)阶段毕业，进入[正式发布](../../release-lifecycle.md#genera-availability-ga)阶段。
+**Azure Container Registry** 集成已从[早期访问](../../release-lifecycle.md#early-access-ea)阶段毕业，进入[正式发布](../../release-lifecycle.md#general-availability-ga)阶段。
 
 有关更多信息 and 设置说明，请参阅[集成 Azure Container Registry](../integrations/registry/acr.md)。
 
@@ -108,7 +137,7 @@ Docker Scout 仪表盘 UI 变更：
 
 GitHub 集成增强了修复建议功能。启用集成后，Docker Scout 能够将分析结果与源代码关联起来。这种关于镜像构建方式的额外上下文被用于生成更好、更精确的推荐。
 
-有关 Docker Scout 可提供哪些类型的推荐来帮助您提高策略合规性的更多信息，请参阅[修复建议](../policy/remediation.md)。
+有关 Docker Scout 可提供哪些类型的推荐来帮助您提高策略合规性的更多信息，请参阅[使用仪表板](../policy/dashboard.md)。
 
 有关如何在您的源代码存储库上授权 Docker Scout GitHub 应用程序的更多信息，请参阅[将 Docker Scout 与 GitHub 集成](../integrations/source-code-management/github.md)。
 
@@ -140,7 +169,7 @@ GitHub 集成增强了修复建议功能。启用集成后，Docker Scout 能够
 - 自定义“高调漏洞”列表
 - 添加或移除要标记为“著佐权”的软件许可证
 
-有关更多信息，请参阅[可配置策略](../policy/configure.md)。
+有关更多信息，请参阅[可配置策略](../policy/dashboard.md)。
 
 ### 2023-11-10
 
@@ -186,9 +215,7 @@ GitHub 集成增强了修复建议功能。启用集成后，Docker Scout 能够
 
 新的 Sysdig 集成为您的 Kubernetes 运行时环境提供实时安全洞察。
 
-启用此集成有助于您解决和确定用于运行生产工作负载的镜像的风险优先级。它还通过使用 VEX 文档自动排除从未加载到内存中的程序中的漏洞，来帮助减少监控噪音。
-
-有关更多信息和入门指南，请参阅 [Sysdig 集成文档](../integrations/environment/sysdig.md)。
+有关更多信息和入门指南，请参阅 [Scout 平台发布说明](#2026-07-01)。
 
 #### JFrog Artifactory 集成
 
@@ -201,3 +228,4 @@ GitHub 集成增强了修复建议功能。启用集成后，Docker Scout 能够
 - 镜像分析仅适用于 Linux 镜像
 - Docker Scout 无法处理压缩后大小超过 12GB 的镜像
 - 创建镜像 SBOM（镜像分析的一部分）有 4 分钟的超时限制
+

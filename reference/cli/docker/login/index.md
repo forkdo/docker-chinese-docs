@@ -1,16 +1,10 @@
-# docker 登录
+# docker login
 
 **Description:** Authenticate to a registry
 
 **Usage:** `docker login [OPTIONS] [SERVER]`
 
 
-
-<!--
-此页面由 Docker 的源代码自动生成。如果您想建议更改此处显示的文本，请在 GitHub 上的源代码仓库中提交 issue 或拉取请求：
-
-https://github.com/docker/cli
--->
 
 
 
@@ -177,7 +171,7 @@ registry domain, and values specify the suffix of the program to use
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `-p`, `--password` |  |  Password or Personal Access Token (PAT) |
+| `-p`, `--password` |  |  Password or Personal Access Token (PAT), or `-` to read from stdin |
 | `--password-stdin` |  |  Take the Password or Personal Access Token (PAT) from stdin |
 | `-u`, `--username` |  |  Username |
 
@@ -257,6 +251,13 @@ The following example reads a password from a file, and passes it to the
 
 ```console
 $ cat ~/my_password.txt | docker login --username foo --password-stdin
+```
+
+You can also pass `-` as the value for `--password` or `-p` to read the
+password from `STDIN`.
+
+```console
+$ cat ~/my_password.txt | docker login --username foo --password -
 ```
 
 

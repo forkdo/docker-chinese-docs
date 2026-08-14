@@ -3,7 +3,7 @@
 
 > **Docker Desktop 使用条款**
 >
-> 在大型企业（员工超过 250 人 **或** 年收入超过 1,000 万美元）中商业使用 Docker Desktop 需要 [付费订阅](https://www.docker.com/pricing/)。
+> 在大型企业（员工超过 250 人 **或** 年收入超过 1,000 万美元）中商业使用 Docker Desktop 需要 [付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopWindowsInstall)。
 
 本页面提供 Docker Desktop for Windows 的下载链接、系统要求和逐步安装说明。
 
@@ -16,26 +16,44 @@
 
 _如需校验和，请参阅[发布说明](/manuals/desktop/release-notes.md)_
 
+## 安装模式
+
+Docker Desktop 支持两种安装模式。按用户安装是大多数用户的推荐选择，并且是安装程序默认选择的模式。它不需要管理员权限即可安装或更新，其使用的 WSL 2 后端可满足绝大多数 Docker Desktop 用户的需求。
+
+| | 按用户（推荐） | 所有用户 |
+|---|---|---|
+| 安装位置 | `%LOCALAPPDATA%\Programs\DockerDesktop` | `C:\Program Files\Docker\Docker` |
+| 注册表项 | 当前用户 (HKCU) | 本地计算机 (HKLM) |
+| 安装所需管理员权限 | 不需要 | 需要 |
+| 更新所需管理员权限 | 不需要 | 需要 |
+| Linux 容器后端 | WSL 2 或 Docker VMM | WSL 2、Hyper-V 或 Docker VMM |
+| Windows 容器 | 不支持 | 支持 |
+| 安全性 | 攻击面更小；不安装特权系统服务 | 需要特权系统服务；对主机资源的访问范围更广 |
+
+有关更多信息，请参阅 [了解 Windows 的权限要求](windows-install.md)。
+
 ## 系统要求
 
 > [!TIP]
 >
-> **我应该使用 Hyper-V 还是 WSL？**
+> **我应该使用哪种后端？**
 >
-> Docker Desktop 在 WSL 和 Hyper-V 上的功能保持一致，对任一种架构都没有偏好。Hyper-V 和 WSL 各有其优缺点，具体取决于您的实际配置和计划用途。
+> Docker Desktop for Windows 支持三种后端：WSL 2、Hyper-V 和 Docker VMM（Beta）。WSL 2 是默认后端，可在大多数用户无需管理员权限的情况下工作。Hyper-V 仅在所有用户安装模式下可用。Docker VMM 是一个针对容器优化的虚拟机监控程序，可回收空闲内存并改善文件 I/O。有关更多信息，请参阅 [虚拟机管理器](/manuals/desktop/features/vmm.md)。
 
 **WSL 2 后端，x86_64**
 
 
 
 - WSL 版本 2.1.5 或更高版本。要检查您的版本，请参阅[WSL：验证和设置](#wsl-verification-and-setup)
+- 如果您打算使用增强容器隔离（ECI），请确保您使用的是 WSL 版本 2.6 或更高版本。这是必需的，因为 ECI 依赖于至少 6.3.0 的 Linux 内核版本，而 WSL 2.6+ 捆绑了 Linux 内核版本 6.6。
 - Windows 10 64 位：Enterprise、Pro 或 Education 版本 22H2（构建 19045）。
 - Windows 11 64 位：Enterprise、Pro 或 Education 版本 23H2（构建 22631）或更高版本。
+- Windows Server 服务（LanmanServer）必须已启用，且其启动模式设置为 **自动**。
 - 在 Windows 上启用 WSL 2 功能。有关详细说明，请参阅
   [Microsoft 文档](https://docs.microsoft.com/en-us/windows/wsl/install-win10)。
 - 要在 Windows 10 或 Windows 11 上成功运行 WSL 2，需要以下硬件前提条件：
   - 支持[第二层地址转换（SLAT）](https://en.wikipedia.org/wiki/Second_Level_Address_Translation)的 64 位处理器
-  - 4GB 系统内存
+  - 8GB 系统内存
   - 在 BIOS/UEFI 中启用硬件虚拟化。有关更多信息，请参阅
     [虚拟化](/manuals/desktop/troubleshoot-and-support/troubleshoot/topics.md#virtualization)。
 
@@ -56,11 +74,12 @@ _如需校验和，请参阅[发布说明](/manuals/desktop/release-notes.md)_
 
 - Windows 10 64 位：Enterprise、Pro 或 Education 版本 22H2（构建 19045）。
 - Windows 11 64 位：Enterprise、Pro 或 Education 版本 23H2（构建 22631）或更高版本。
+- Windows Server 服务（LanmanServer）必须已启用，且其启动模式设置为 **自动**。
 - 启用 Hyper-V 和 Containers Windows 功能。
 - 要在 Windows 10 上成功运行 Client Hyper-V，需要以下硬件前提条件：
 
   - 支持[第二层地址转换（SLAT）](https://en.wikipedia.org/wiki/Second_Level_Address_Translation)的 64 位处理器
-  - 4GB 系统内存
+  - 8GB 系统内存
   - 在 BIOS/UEFI 设置中启用 BIOS/UEFI 级硬件虚拟化支持。有关更多信息，请参阅
     [虚拟化](/manuals/desktop/troubleshoot-and-support/troubleshoot/topics.md#virtualization)。
 
@@ -80,11 +99,12 @@ _如需校验和，请参阅[发布说明](/manuals/desktop/release-notes.md)_
 - WSL 版本 2.1.5 或更高版本。要检查您的版本，请参阅[WSL：验证和设置](#wsl-verification-and-setup)
 - Windows 10 64 位：Enterprise、Pro 或 Education 版本 22H2（构建 19045）。
 - Windows 11 64 位：Enterprise、Pro 或 Education 版本 23H2（构建 22631）或更高版本。
+- Windows Server 服务（LanmanServer）必须已启用，且其启动模式设置为 **自动**。
 - 在 Windows 上启用 WSL 2 功能。有关详细说明，请参阅
   [Microsoft 文档](https://docs.microsoft.com/en-us/windows/wsl/install-win10)。
 - 要在 Windows 10 或 Windows 11 上成功运行 WSL 2，需要以下硬件前提条件：
   - 支持[第二层地址转换（SLAT）](https://en.wikipedia.org/wiki/Second_Level_Address_Translation)的 64 位处理器
-  - 4GB 系统内存
+  - 8GB 系统内存
   - 在 BIOS/UEFI 中启用硬件虚拟化。有关更多信息，请参阅
     [虚拟化](/manuals/desktop/troubleshoot-and-support/troubleshoot/topics.md#virtualization)。
 
@@ -106,9 +126,13 @@ _如需校验和，请参阅[发布说明](/manuals/desktop/release-notes.md)_
 
 1. 使用页面顶部的下载按钮或从[发布说明](/manuals/desktop/release-notes.md)下载安装程序。
 
-2. 双击 `Docker Desktop Installer.exe` 运行安装程序。默认情况下，Docker Desktop 安装在 `C:\Program Files\Docker\Docker`。
+2. 双击 `Docker Desktop Installer.exe` 运行安装程序。安装程序会询问您偏好的安装模式。选择按用户安装会安装到 `%LOCALAPPDATA%\Programs\DockerDesktop`，且不需要管理员权限。选择所有用户安装会提示提升权限。
 
-3. 根据提示，确保在“配置”页面上选择或取消选择“使用 WSL 2 而非 Hyper-V”选项，具体取决于您选择的后端。
+   > [!NOTE]
+   >
+   > 如果您日后想要切换安装模式，需要先卸载再重新安装 Docker Desktop。
+
+3. 根据提示，在“配置”页面上选择您的后端：WSL 2 选择 **使用 WSL 2 而非 Hyper-V**，Hyper-V 则保持不选中。安装后您可以从 **设置** > **常规** 切换到 Docker VMM。
 
     在仅支持一种后端的系统上，Docker Desktop 会自动选择可用的选项。
 
@@ -118,16 +142,17 @@ _如需校验和，请参阅[发布说明](/manuals/desktop/release-notes.md)_
 
 6. [启动 Docker Desktop](#start-docker-desktop)。
 
-如果您的管理员账户与用户账户不同，您必须将用户添加到 **docker-users** 组中，以访问需要更高权限的功能，例如创建和管理 Hyper-V 虚拟机，或使用 Windows 容器：
-
-1. 以 **管理员** 身份运行 **计算机管理**。
-2. 导航到 **本地用户和组** > **组** > **docker-users**。
-3. 右键单击以将用户添加到该组。
-4. 注销并重新登录以使更改生效。
-
 ### 从命令行安装
 
-下载 `Docker Desktop Installer.exe` 后，在终端中运行以下命令来安装 Docker Desktop：
+下载 `Docker Desktop Installer.exe` 后，在终端中运行以下命令，将 Docker Desktop 安装到 `%LOCALAPPDATA%\Programs\DockerDesktop`。
+
+对于按用户安装，运行：
+
+```console
+$ "Docker Desktop Installer.exe" install --user
+```
+
+要安装在机器上的所有用户（需要管理员权限）：
 
 ```console
 $ "Docker Desktop Installer.exe" install
@@ -136,24 +161,40 @@ $ "Docker Desktop Installer.exe" install
 如果您使用 PowerShell，请运行：
 
 ```powershell
+# 按用户安装（无需管理员）
+Start-Process 'Docker Desktop Installer.exe' -Wait -ArgumentList 'install', '--user'
+
+# 所有用户安装（以管理员身份运行）
 Start-Process 'Docker Desktop Installer.exe' -Wait install
 ```
 
 如果您使用 Windows 命令提示符：
 
 ```sh
+# 按用户安装（无需管理员）
+start /w "" "Docker Desktop Installer.exe" install --user
+
+# 所有用户安装（以管理员身份运行）
 start /w "" "Docker Desktop Installer.exe" install
 ```
 
-默认情况下，Docker Desktop 安装在 `C:\Program Files\Docker\Docker`。
-
-如果您的管理员账户与用户账户不同，您必须将用户添加到 **docker-users** 组中，以访问需要更高权限的功能，例如创建和管理 Hyper-V 虚拟机，或使用 Windows 容器。
+如果使用所有用户安装，且您的管理员账户与用户账户不同，您必须将用户添加到 **docker-users** 组中，以访问需要更高权限的功能，例如创建和管理 Hyper-V 虚拟机，或使用 Windows 容器：
 
 ```console
 $ net localgroup docker-users <user> /add
 ```
 
+> [!WARNING]
+>
+> `docker-users` 组的成员身份授予对 Docker 守护进程套接字的访问权限，这等同于在主机上授予管理权限。只添加需要访问 Windows 容器或 Hyper-V VM 管理的用户。对于使用 WSL 2 后端的 Linux 容器，不需要该组成员身份。有关更多信息，请参阅 [保护 Docker 守护进程套接字](/manuals/engine/security/protect-access.md)。
+
+如果您通过 MDM（例如 Intune）部署，且 `docker-users` 组未被自动填充，请参阅[为什么通过 Intune 或其他 MDM 解决方案安装 MSI 时未填充 `docker-users` 组？](/manuals/enterprise/enterprise-deployment/faq.md#why-isnt-the-docker-users-group-populated-when-the-msi-is-installed-with-intune-or-another-mdm-solution)。
+
 请参阅[安装程序标志](#installer-flags)部分，了解 `install` 命令接受哪些标志。
+
+> [!NOTE]
+>
+> 如果您日后想要切换安装模式，需要先卸载再重新安装 Docker Desktop。
 
 ## 启动 Docker Desktop
 
@@ -168,12 +209,15 @@ $ net localgroup docker-users <user> /add
 
    
    
+   
+   
    以下是关键点的总结：
    
    - Docker Desktop 对小企业（员工少于 250 人 AND 年收入低于 1000 万美元）、个人使用、教育用途以及非商业开源项目是免费的。
    - 否则，专业使用需要付费订阅。
    - 政府机构也需要付费订阅。
    - Docker Pro、Team 和 Business 订阅包含 Docker Desktop 的商业使用权限。
+
 
 3. 选择 **接受** 以继续。接受条款后，Docker Desktop 将启动。
 
@@ -233,6 +277,7 @@ wsl --update
 
 #### 安装行为
 
+- `--user`：以按用户模式安装 Docker Desktop，安装到 `%LOCALAPPDATA%\Programs\DockerDesktop`。不需要管理员权限。这是大多数用户的推荐模式。请参阅[安装模式](#installation-modes)。
 - `--quiet`: 运行安装程序时抑制信息输出
 - `--accept-license`: 立即接受 [Docker 订阅服务协议](https://www.docker.com/legal/docker-subscription-service-agreement)，而无需在首次运行应用程序时要求接受
 - `--installation-dir=<path>`: 更改默认安装位置（`C:\Program Files\Docker\Docker`）
@@ -277,13 +322,19 @@ wsl --update
 
 ### 管理员权限
 
-安装 Docker Desktop 需要管理员权限。但安装后，可以在无需管理员访问权限的情况下使用它。不过，某些操作仍需要提升权限。有关详细信息，请参阅[了解 Windows 的权限要求](./windows-permission-requirements.md)。
+在按用户模式下，可以在不需要管理员权限的情况下安装和更新 Docker Desktop。某些设置在设置 UI 中标记为 **需要密码** 并仍需要提升权限。首次启用 WSL 2 也需要管理员权限，但这是一次性的、按计算机的操作。
+
+在所有用户模式下，安装 Docker Desktop 需要管理员权限。但安装后，可以在无需管理员访问权限的情况下使用它。不过，某些操作仍需要提升权限。有关详细信息，请参阅[了解 Windows 的权限要求](./windows-permission-requirements.md)。
 
 请参阅[常见问题](/manuals/desktop/troubleshoot-and-support/faqs/general.md#how-do-i-run-docker-desktop-without-administrator-privileges)，了解如何在不需要管理员权限的情况下安装和运行 Docker Desktop。
 
 如果您是 IT 管理员，用户没有管理员权限，但计划执行需要提升权限的操作，请确保使用 `--always-run-service` 安装程序标志安装 Docker Desktop。这确保在不提示用户账户控制（UAC）提升的情况下仍可执行这些操作。请参阅[安装程序标志](#installer-flags)了解更详细信息。
 
 ### Windows 容器
+
+> [!NOTE]
+>
+> Windows 容器仅在所有用户安装模式下受支持。在按用户安装 Docker Desktop 时不可用。
 
 在 Docker Desktop 菜单中，您可以切换 Docker CLI 与之通信的守护进程（Linux 或 Windows）。选择 **切换到 Windows 容器** 以使用 Windows 容器，或选择 **切换到 Linux 容器** 以使用 Linux 容器（默认）。
 
@@ -309,10 +360,11 @@ wsl --update
 
 ## 接下来该做什么
 
-- 探索 [Docker 订阅](https://www.docker.com/pricing/)，了解 Docker 为您提供什么。
+- 探索 [Docker 订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopWindowsInstall)，了解 Docker 为您提供什么。
 - [开始使用 Docker](/get-started/introduction/_index.md)。
 - [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其所有功能。
 - [故障排除](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md) 描述了常见问题、变通方案以及如何获得支持。
 - [常见问题](/manuals/desktop/troubleshoot-and-support/faqs/general.md) 提供常见问题的答案。
 - [发布说明](/manuals/desktop/release-notes.md) 列出了与 Docker Desktop 发布相关的组件更新、新增功能和改进。
 - [备份和恢复数据](/manuals/desktop/settings-and-maintenance/backup-and-restore.md) 提供关于 Docker 相关数据备份和恢复的说明。
+

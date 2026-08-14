@@ -1,35 +1,32 @@
-# Local and tar exporters
+# 本地与 tar 导出器
 
 
-The `local` and `tar` exporters output the root filesystem of the build result
-into a local directory. They're useful for producing artifacts that aren't
-container images.
+`local` 和 `tar` 导出器将构建结果的根文件系统输出到本地目录。它们对于生成非容器镜像的制品很有用。
 
-- `local` exports files and directories.
-- `tar` exports the same, but bundles the export into a tarball.
+- `local` 导出文件和目录。
+- `tar` 导出相同的内容，但将导出打包成 tar 包。
 
-## Synopsis
+## 概要（Synopsis）
 
-Build a container image using the `local` exporter:
+使用 `local` 导出器构建容器镜像：
 
 ```console
 $ docker buildx build --output type=local[,parameters] .
 $ docker buildx build --output type=tar[,parameters] .
 ```
 
-The following table describes the available parameters:
+下表描述了可用的参数：
 
-| Parameter        | Type    | Default | Description                                                                       |
-| ---------------- | ------- | ------- | --------------------------------------------------------------------------------- |
-| `dest`           | String  |         | Path to copy files to                                                             |
-| `platform-split` | Boolean | `true`  | `local` exporter only. Split multi-platform outputs into platform subdirectories. |
+| 参数             | 类型    | 默认值  | 描述                                                                         |
+| ---------------- | ------- | ------- | ---------------------------------------------------------------------------- |
+| `dest`           | String  |         | 要复制文件到的路径                                                           |
+| `platform-split` | Boolean | `true`  | 仅 `local` 导出器。将多平台输出拆分到平台子目录中。                          |
 
-## Multi-platform builds with local exporter
+## 使用 local 导出器的多平台构建
 
-The `platform-split` parameter controls how multi-platform build outputs are
-organized.
+`platform-split` 参数控制多平台构建输出的组织方式。
 
-Consider this Dockerfile that creates platform-specific files:
+考虑这个创建平台特定文件的 Dockerfile：
 
 ```dockerfile
 FROM busybox AS build
@@ -41,10 +38,9 @@ FROM scratch
 COPY --from=build /out /
 ```
 
-### Split by platform (default)
+### 按平台拆分（默认）
 
-By default, the local exporter creates a separate subdirectory for each
-platform:
+默认情况下，local 导出器为每个平台创建一个单独的子目录：
 
 ```console
 $ docker buildx build \
@@ -53,7 +49,7 @@ $ docker buildx build \
   .
 ```
 
-This produces the following directory structure:
+这会生成以下目录结构：
 
 ```text
 output/
@@ -63,10 +59,9 @@ output/
     └── hello-linux-arm64
 ```
 
-### Merge all platforms
+### 合并所有平台
 
-To merge files from all platforms into the same directory, set
-`platform-split=false`:
+要将所有平台的文件合并到同一目录中，请设置 `platform-split=false`：
 
 ```console
 $ docker buildx build \
@@ -75,7 +70,7 @@ $ docker buildx build \
   .
 ```
 
-This produces a flat directory structure:
+这会生成一个扁平的目录结构：
 
 ```text
 output/
@@ -83,13 +78,11 @@ output/
 └── hello-linux-arm64
 ```
 
-Files from all platforms merge into a single directory. If multiple platforms
-produce files with identical names, the export fails with an error.
+来自所有平台的文件合并到单个目录中。如果多个平台生成了名称相同的文件，导出将因错误而失败。
 
-### Single-platform builds
+### 单平台构建
 
-Single-platform builds export directly to the destination directory without
-creating a platform subdirectory:
+单平台构建直接导出到目标目录，不创建平台子目录：
 
 ```console
 $ docker buildx build \
@@ -98,15 +91,14 @@ $ docker buildx build \
   .
 ```
 
-This produces:
+这会生成：
 
 ```text
 output/
 └── hello-linux-amd64
 ```
 
-To include the platform subdirectory even for single-platform builds, explicitly
-set `platform-split=true`:
+即使对于单平台构建，要包含平台子目录，请显式设置 `platform-split=true`：
 
 ```console
 $ docker buildx build \
@@ -115,7 +107,7 @@ $ docker buildx build \
   .
 ```
 
-This produces:
+这会生成：
 
 ```text
 output/
@@ -123,8 +115,7 @@ output/
     └── hello-linux-amd64
 ```
 
-## Further reading
+## 延伸阅读
 
-For more information on the `local` or `tar` exporters, see the
-[BuildKit README](https://github.com/moby/buildkit/blob/master/README.md#local-directory).
+有关 `local` 或 `tar` 导出器的更多信息，请参阅 [BuildKit README](https://github.com/moby/buildkit/blob/master/README.md#local-directory)。
 

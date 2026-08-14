@@ -7,7 +7,7 @@ Docker 推荐使用 Docker Dashboard 右上角的 **Sign in** 选项进行登录
 
 > [!TIP]
 >
-> 浏览 [Docker 核心订阅](https://www.docker.com/pricing/)，了解 Docker 还能为您提供哪些服务。
+> 浏览 [Docker 核心订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsDesktopSignIn)，了解 Docker 还能为您提供哪些服务。
 
 ## 登录的好处
 
@@ -73,3 +73,4 @@ docker.io/molly/privateimage:latest
 - [探索 Docker Desktop](/manuals/desktop/use-desktop/_index.md) 及其功能。
 - 更改您的 [Docker Desktop 设置](/manuals/desktop/settings-and-maintenance/settings.md)。
 - [浏览常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/general.md)。
+

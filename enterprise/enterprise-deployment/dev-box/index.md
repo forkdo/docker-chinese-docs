@@ -7,11 +7,11 @@ Microsoft Dev Box 提供基于云的、预配置的开发人员工作站，让�
 
 ## 主要优势
 
-- **预配置环境**：Docker Desktop、WSL2 和其他要求均已预装并配置好
-- **一致的开发**：确保所有团队成员都使用相同的 Docker 环境
-- **强大的资源**：访问比本地机器可能提供的更强大的计算能力和存储空间
-- **状态持久化**：Dev Box 会在会话之间保持您的状态，类似于本地计算机的休眠功能
-- **无缝许可**：使用您现有的 Docker 订阅或直接通过 Azure Marketplace 购买新订阅
+- Docker Desktop、WSL2 及依赖项均已预装
+- 每位团队成员都拥有相同的环境
+- 比典型本地机器更强的计算和存储能力
+- 会话状态在多次使用之间持久保留
+- 可与您现有的 Docker 订阅配合使用
 
 ## 设置
 
@@ -20,9 +20,9 @@ Microsoft Dev Box 提供基于云的、预配置的开发人员工作站，让�
 - Azure 订阅
 - 访问 Microsoft Dev Box 的权限
 - Docker 订阅（Pro、Team 或 Business）。您可以在 Microsoft Dev Box 中使用以下任何订阅选项使用 Docker Desktop：
-   - 现有或新的 Docker 订阅
-   - 通过 Azure Marketplace 购买的新 Docker 订阅
-   - 为您的组织配置了 SSO 的 Docker Business 订阅
+  - 现有或新的 Docker 订阅
+  - 通过 Azure Marketplace 购买的新 Docker 订阅
+  - 为您的组织配置了 SSO 的 Docker Business 订阅
 
 ### 在 Dev Box 中设置 Docker Desktop
 
@@ -48,5 +48,6 @@ Microsoft Dev Box 提供基于云的、预配置的开发人员工作站，让�
 
 ## 限制
 
-- Microsoft Dev Box 目前仅在 Windows 10 和 11 上可用（不支持 Linux 虚拟机）。
+- Microsoft Dev Box 仅在 Windows 10 和 11 上可用（不支持 Linux 虚拟机）。
 - 性能可能因您的 Dev Box 配置和网络状况而异。
+

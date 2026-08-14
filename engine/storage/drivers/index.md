@@ -2,12 +2,11 @@
 
 
 > [!NOTE]
-> Docker Engine 29.0 及更高版本在全新安装时默认使用
-> [containerd 镜像存储](../containerd.md)。
-> containerd 镜像存储使用快照程序（snapshotters），而不是本页描述的经典存储驱动程序。
+> 本页介绍经典存储驱动程序，例如 `overlay2`。Docker Engine 29.0 及更高版本在全新安装时默认使用
+> [containerd 镜像存储](../containerd.md)，它使用快照程序（snapshotters）而非经典存储驱动程序。
 > 如果您运行的是 Docker Engine 29.0 或更高版本的全新安装，或者您已迁移到 containerd 镜像存储，
-> 本页提供了关于镜像层工作原理的背景知识，但具体实现细节可能有所不同。
-> 有关 containerd 镜像存储的信息，请参阅 [containerd 镜像存储](../containerd.md)。
+> 本页中的概念仍然解释了镜像层的工作原理，但命令和示例不会反映您系统的镜像存储方式。
+> 有关操作指南，请参阅 [containerd 镜像存储](../containerd.md)。
 
 要有效使用存储驱动程序，了解 Docker 如何构建和存储镜像，以及容器如何使用这些镜像是很重要的。
 您可以利用这些信息，为持久化应用程序数据做出明智的选择，并避免在此过程中出现性能问题。

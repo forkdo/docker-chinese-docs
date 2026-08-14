@@ -23,6 +23,7 @@ package main
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/api/pkg/stdcopy"
@@ -32,15 +33,15 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	reader, err := apiClient.ImagePull(ctx, "docker.io/library/alpine", client.ImagePullOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer reader.Close()
@@ -57,25 +58,25 @@ func main() {
 		Image: "alpine",
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	if _, err := apiClient.ContainerStart(ctx, resp.ID, client.ContainerStartOptions{}); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	wait := apiClient.ContainerWait(ctx, resp.ID, client.ContainerWaitOptions{})
 	select {
 	case err := <-wait.Error:
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 	case <-wait.Result:
 	}
 
 	out, err := apiClient.ContainerLogs(ctx, resp.ID, client.ContainerLogsOptions{ShowStdout: true})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	stdcopy.StdCopy(os.Stdout, os.Stderr, out)
@@ -99,15 +100,15 @@ print(client.containers.run("alpine", ["echo", "hello", "world"]))
 ```console
 $ curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
   -d '{"Image": "alpine", "Cmd": ["echo", "hello world"]}' \
-  -X POST http://localhost/v1.53/containers/create
+  -X POST http://localhost/v1.55/containers/create
 {"Id":"1c6594faf5","Warnings":null}
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.55/containers/1c6594faf5/start
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/wait
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.55/containers/1c6594faf5/wait
 {"StatusCode":0}
 
-$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.53/containers/1c6594faf5/logs?stdout=1"
+$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.55/containers/1c6594faf5/logs?stdout=1"
 hello world
 ```
 
@@ -117,7 +118,7 @@ hello world
 >
 > 前面的示例假设您使用的是 cURL 7.50.0 或更高版本。旧版本的 cURL 在使用套接字连接时使用了[非标准 URL 表示法](https://github.com/moby/moby/issues/17960)。
 >
-> 如果您使用的是旧版本的 cURL，请使用 `http:/<API version>/`，例如：`http:/v1.53/containers/1c6594faf5/start`。
+> 如果您使用的是旧版本的 cURL，请使用 `http:/<API version>/`，例如：`http:/v1.55/containers/1c6594faf5/start`。
 
 
 
@@ -136,6 +137,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/client"
@@ -143,9 +145,9 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
@@ -153,7 +155,7 @@ func main() {
 
 	out, err := apiClient.ImagePull(ctx, imageName, client.ImagePullOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer out.Close()
 	io.Copy(os.Stdout, out)
@@ -162,11 +164,11 @@ func main() {
 		Image: imageName,
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	if _, err := apiClient.ContainerStart(ctx, resp.ID, client.ContainerStartOptions{}); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	fmt.Println(resp.ID)
@@ -191,10 +193,10 @@ print(container.id)
 ```console
 $ curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
   -d '{"Image": "bfirsh/reticulate-splines"}' \
-  -X POST http://localhost/v1.53/containers/create
+  -X POST http://localhost/v1.55/containers/create
 {"Id":"1c6594faf5","Warnings":null}
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.55/containers/1c6594faf5/start
 ```
 
 
@@ -213,21 +215,22 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	containers, err := apiClient.ContainerList(ctx, client.ContainerListOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	for _, container := range containers.Items {
@@ -252,7 +255,7 @@ for container in client.containers.list():
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
+$ curl --unix-socket /var/run/docker.sock http://localhost/v1.55/containers/json
 [{
   "Id":"ae63e8b89a26f01f6b4b2c9a7817c31a1b6196acf560f66586fbc8809ffcd772",
   "Names":["/tender_wing"],
@@ -281,28 +284,29 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	containers, err := apiClient.ContainerList(ctx, client.ContainerListOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	for _, container := range containers.Items {
 		fmt.Print("正在停止容器 ", container.ID[:10], "... ")
 		noWaitTimeout := 0 // 不等待容器正常退出
 		if _, err := apiClient.ContainerStop(ctx, container.ID, client.ContainerStopOptions{Timeout: &noWaitTimeout}); err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 		fmt.Println("成功")
 	}
@@ -325,7 +329,7 @@ for container in client.containers.list():
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
+$ curl --unix-socket /var/run/docker.sock http://localhost/v1.55/containers/json
 [{
   "Id":"ae63e8b89a26f01f6b4b2c9a7817c31a1b6196acf560f66586fbc8809ffcd772",
   "Names":["/tender_wing"],
@@ -334,7 +338,7 @@ $ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/containers/json
 }]
 
 $ curl --unix-socket /var/run/docker.sock \
-  -X POST http://localhost/v1.53/containers/ae63e8b89a26/stop
+  -X POST http://localhost/v1.55/containers/ae63e8b89a26/stop
 ```
 
 
@@ -353,6 +357,7 @@ package main
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/client"
@@ -360,9 +365,9 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
@@ -370,7 +375,7 @@ func main() {
 	// 将此 ID 替换为实际存在的容器
 	out, err := apiClient.ContainerLogs(ctx, "f1064a8a4c82", options)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	io.Copy(os.Stdout, out)
@@ -393,7 +398,7 @@ print(container.logs())
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.53/containers/ca5f55cdb/logs?stdout=1"
+$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.55/containers/ca5f55cdb/logs?stdout=1"
 Reticulating spline 1...
 Reticulating spline 2...
 Reticulating spline 3...
@@ -417,21 +422,22 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	images, err := apiClient.ImageList(ctx, client.ImageListOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	for _, image := range images.Items {
@@ -456,7 +462,7 @@ for image in client.images.list():
 
 
 ```console
-$ curl --unix-socket /var/run/docker.sock http://localhost/v1.53/images/json
+$ curl --unix-socket /var/run/docker.sock http://localhost/v1.55/images/json
 [{
   "Id":"sha256:31d9a31e1dd803470c5a151b8919ef1988ac3efd44281ac59d43ad623f275dcd",
   "ParentId":"sha256:ee4603260daafe1a8c2f3b78fd760922918ab2441cbb2853ed5c439e59c52f96",
@@ -480,6 +486,7 @@ package main
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/moby/moby/client"
@@ -487,15 +494,15 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
 	out, err := apiClient.ImagePull(ctx, "alpine", client.ImagePullOptions{})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer out.Close()
@@ -521,7 +528,7 @@ print(image.id)
 
 ```console
 $ curl --unix-socket /var/run/docker.sock \
-  -X POST "http://localhost/v1.53/images/create?fromImage=alpine"
+  -X POST "http://localhost/v1.55/images/create?fromImage=alpine"
 {"status":"Pulling from library/alpine","id":"3.1"}
 {"status":"Pulling fs layer","progressDetail":{},"id":"8f13703509f7"}
 {"status":"Downloading","progressDetail":{"current":32768,"total":2244027},"progress":"[\u003e                                                  ] 32.77 kB/2.244 MB","id":"8f13703509f7"}
@@ -547,36 +554,34 @@ package main
 
 import (
 	"context"
-	"encoding/base64"
-	"encoding/json"
 	"io"
+	"log"
 	"os"
 
+	"github.com/moby/moby/api/pkg/authconfig"
 	"github.com/moby/moby/api/types/registry"
 	"github.com/moby/moby/client"
 )
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
-	authConfig := registry.AuthConfig{
+	authStr, err := authconfig.Encode(registry.AuthConfig{
 		Username: "username",
 		Password: "password",
-	}
-	encodedJSON, err := json.Marshal(authConfig)
+	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	authStr := base64.URLEncoding.EncodeToString(encodedJSON)
 
 	out, err := apiClient.ImagePull(ctx, "alpine", client.ImagePullOptions{RegistryAuth: authStr})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer out.Close()
@@ -608,7 +613,7 @@ $ JSON=$(echo '{"username": "string", "password": "string", "serveraddress": "st
 
 $ curl --unix-socket /var/run/docker.sock \
   -H "Content-Type: application/tar"
-  -X POST "http://localhost/v1.53/images/create?fromImage=alpine"
+  -X POST "http://localhost/v1.55/images/create?fromImage=alpine"
   -H "X-Registry-Auth"
   -d "$JSON"
 {"status":"Pulling from library/alpine","id":"3.1"}
@@ -633,6 +638,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/moby/moby/api/types/container"
 	"github.com/moby/moby/client"
@@ -640,9 +646,9 @@ import (
 
 func main() {
 	ctx := context.Background()
-	apiClient, err := client.New(client.FromEnv)
+	apiClient, err := client.New(client.FromEnv, client.WithUserAgent("my-application/1.0.0"))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer apiClient.Close()
 
@@ -653,25 +659,25 @@ func main() {
 		Image: "alpine",
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	if _, err := apiClient.ContainerStart(ctx, createResp.ID, client.ContainerStartOptions{}); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	wait := apiClient.ContainerWait(ctx, createResp.ID, client.ContainerWaitOptions{})
 	select {
 	case err := <-wait.Error:
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 	case <-wait.Result:
 	}
 
 	commitResp, err := apiClient.ContainerCommit(ctx, createResp.ID, client.ContainerCommitOptions{Reference: "helloworld"})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	fmt.Println(commitResp.ID)
@@ -699,8 +705,9 @@ print(image.id)
 $ docker run -d alpine touch /helloworld
 0888269a9d584f0fa8fc96b3c0d8d57969ceea3a64acf47cd34eebb4744dbc52
 $ curl --unix-socket /var/run/docker.sock\
-  -X POST "http://localhost/v1.53/commit?container=0888269a9d&repo=helloworld"
+  -X POST "http://localhost/v1.55/commit?container=0888269a9d&repo=helloworld"
 {"Id":"sha256:6c86a5cd4b87f2771648ce619e319f3e508394b5bfc2cdbd2d60f59d52acda6c"}
 ```
+
 
 

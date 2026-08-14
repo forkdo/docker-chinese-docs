@@ -1,82 +1,65 @@
-# Build variables
+# 构建变量
 
 
-In Docker Build, build arguments (`ARG`) and environment variables (`ENV`)
-both serve as a means to pass information into the build process.
-You can use them to parameterize the build, allowing for more flexible and configurable builds.
+在 Docker Build 中，构建参数（`ARG`）和环境变量（`ENV`）都是将信息传递给构建过程的
+手段。你可以用它们对构建进行参数化，从而实现更灵活、可配置的构建。
 
 > [!WARNING]
 >
-> Build arguments and environment variables are inappropriate for passing secrets
-> to your build, because they're exposed in the final image. Instead, use
-> secret mounts or SSH mounts, which expose secrets to your builds securely.
+> 构建参数和环境变量不适合用来向构建传递密钥，因为它们会在最终镜像中暴露。相反，请使用
+> secret 挂载或 SSH 挂载，它们能安全地将密钥暴露给构建过程。
 >
-> See [Build secrets](./secrets.md) for more information.
+> 详见 [构建密钥](./secrets.md)。
 
-## Similarities and differences
+## 异同点（Similarities and differences）
 
-Build arguments and environment variables are similar.
-They're both declared in the Dockerfile and can be set using flags for the `docker build` command.
-Both can be used to parameterize the build.
-But they each serve a distinct purpose.
+构建参数和环境变量很相似。它们都在 Dockerfile 中声明，并可以使用 `docker build`
+命令的标志进行设置。两者都可用于对构建进行参数化。但它们各自服务于不同的目的。
 
-### Build arguments
+### 构建参数（Build arguments）
 
-Build arguments are variables for the Dockerfile itself.
-Use them to parameterize values of Dockerfile instructions.
-For example, you might use a build argument to specify the version of a dependency to install.
+构建参数是 Dockerfile 本身的变量。用它们来参数化 Dockerfile 指令的值。例如，你可能
+会使用一个构建参数来指定要安装的依赖版本。
 
-Build arguments have no effect on the build unless it's used in an instruction.
-They're not accessible or present in containers instantiated from the image
-unless explicitly passed through from the Dockerfile into the image filesystem or configuration.
-They may persist in the image metadata, as provenance attestations and in the image history,
-which is why they're not suitable for holding secrets.
+构建参数除非在指令中实际使用，否则对构建没有影响。它们无法在被镜像实例化的容器中
+访问或存在，除非显式地从 Dockerfile 传入镜像文件系统或配置。它们可能持久化在镜像
+元数据（如来源证明 attestations）和镜像历史中，这就是它们不适合保存密钥的原因。
 
-They make Dockerfiles more flexible, and easier to maintain.
+它们使 Dockerfile 更灵活，也更易于维护。
 
-For an example on how you can use build arguments,
-see [`ARG` usage example](#arg-usage-example).
+有关如何使用构建参数的示例，参见 [`ARG` 用法示例](#arg-usage-example)。
 
-### Environment variables
+### 环境变量（Environment variables）
 
-Environment variables are passed through to the build execution environment,
-and persist in containers instantiated from the image.
+环境变量会被传递进构建执行环境，并持久化在被镜像实例化的容器中。
 
-Environment variables are primarily used to:
+环境变量主要用于：
 
-- Configure the execution environment for builds
-- Set default environment variables for containers
+- 配置构建的执行环境
+- 为容器设置默认环境变量
 
-Environment variables, if set, can directly influence the execution of your build,
-and the behavior or configuration of the application.
+环境变量（若已设置）可以直接影响构建的执行，以及应用程序的行为或配置。
 
-You can't override or set an environment variable at build-time.
-Values for environment variables must be declared in the Dockerfile.
-You can combine environment variables and build arguments to allow
-environment variables to be configured at build-time.
+你无法在构建时覆盖或设置环境变量。环境变量的值必须在 Dockerfile 中声明。你可以
+将环境变量与构建参数结合，以允许在构建时配置环境变量。
 
-For an example on how to use environment variables for configuring builds,
-see [`ENV` usage example](#env-usage-example).
+有关如何使用环境变量配置构建的示例，参见 [`ENV` 用法示例](#env-usage-example)。
 
-## `ARG` usage example
+## `ARG` 用法示例（`ARG` usage example）
 
-Build arguments are commonly used to specify versions of components,
-such as image variants or package versions, used in a build.
+构建参数通常用于指定所用组件（如镜像变体或软件包版本）的版本。
 
-Specifying versions as build arguments lets you build with different versions
-without having to manually update the Dockerfile.
-It also makes it easier to maintain the Dockerfile,
-since it lets you declare versions at the top of the file.
+将版本指定为构建参数，让你可以使用不同版本进行构建，而无需手动更新 Dockerfile。
+这也让 Dockerfile 更易于维护，因为它允许你在文件顶部声明版本。
 
-Build arguments can also be a way to reuse a value in multiple places.
-For example, if you use multiple flavors of `alpine` in your build,
-you can ensure you're using the same version of `alpine` everywhere:
+构建参数也可以是在多处复用某个值的一种方式。例如，如果你在构建中使用了多个 `alpine`
+变体，可以确保各处使用的是相同版本的 `alpine`：
 
 - `golang:1.22-alpine${ALPINE_VERSION}`
 - `python:3.12-alpine${ALPINE_VERSION}`
 - `nginx:1-alpine${ALPINE_VERSION}`
 
-The following example defines the version of `node` and `alpine` using build arguments.
+以下示例使用构建参数定义了 `node` 和 `alpine` 的版本。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -99,26 +82,23 @@ COPY --from=build /src/dist/ .
 CMD ["node", "app.js"]
 ```
 
-In this case, the build arguments have default values.
-Specifying their values when you invoke a build is optional.
-To override the defaults, you would use the `--build-arg` CLI flag:
+在此例中，构建参数具有默认值。调用构建时指定它们的值是可选的。要覆盖默认值，
+需使用 `--build-arg` CLI 标志：
 
 ```console
 $ docker build --build-arg NODE_VERSION=current .
 ```
 
-For more information on how to use build arguments, refer to:
+有关如何使用构建参数的更多信息，请参阅：
 
-- [`ARG` Dockerfile reference](/reference/dockerfile.md#arg)
-- [`docker build --build-arg` reference](/reference/cli/docker/buildx/build.md#build-arg)
+- [`ARG` Dockerfile 参考](/reference/dockerfile.md#arg)
+- [`docker build --build-arg` 参考](/reference/cli/docker/buildx/build/#build-arg)
 
-## `ENV` usage example
+## `ENV` 用法示例（`ENV` usage example）
 
-Declaring an environment variable with `ENV` makes the variable
-available to all subsequent instructions in the build stage.
-The following example shows an example setting `NODE_ENV` to `production`
-before installing JavaScript dependencies with `npm`.
-Setting the variable makes `npm` omits packages needed only for local development.
+使用 `ENV` 声明环境变量，会使该变量对构建阶段中所有后续指令可用。以下示例展示了
+在使用 `npm` 安装 JavaScript 依赖之前，将 `NODE_ENV` 设置为 `production` 的例子。
+设置该变量会使 `npm` 省略仅本地开发所需的软件包。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -132,9 +112,8 @@ COPY . .
 CMD ["node", "app.js"]
 ```
 
-Environment variables aren't configurable at build-time by default.
-If you want to change the value of an `ENV` at build-time,
-you can combine environment variables and build arguments:
+环境变量默认在构建时不可配置。如果你想在构建时更改 `ENV` 的值，可以将环境变量与
+构建参数结合：
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -149,131 +128,120 @@ COPY . .
 CMD ["node", "app.js"]
 ```
 
-With this Dockerfile, you can use `--build-arg` to override the default value of `NODE_ENV`:
+使用此 Dockerfile，你可以用 `--build-arg` 覆盖 `NODE_ENV` 的默认值：
 
 ```console
 $ docker build --build-arg NODE_ENV=development .
 ```
 
-Note that, because the environment variables you set persist in containers,
-using them can lead to unintended side-effects for the application's runtime.
+注意，由于你设置的环境变量会持久化在容器中，使用它们可能导致应用程序运行时出现
+非预期的副作用。
 
-For more information on how to use environment variables in builds, refer to:
+有关如何在构建中使用环境变量的更多信息，请参阅：
 
-- [`ENV` Dockerfile reference](/reference/dockerfile.md#env)
+- [`ENV` Dockerfile 参考](/reference/dockerfile.md#env)
 
-## Scoping
+## 作用域（Scoping）
 
-Build arguments declared in the global scope of a Dockerfile
-aren't automatically inherited into the build stages.
-They're only accessible in the global scope.
+在 Dockerfile 全局作用域中声明的构建参数不会自动继承到构建阶段中。它们只能在
+全局作用域中访问。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-# The following build argument is declared in the global scope:
+# 以下构建参数在全局作用域中声明：
 ARG NAME="joe"
 
 FROM alpine
-# The following instruction doesn't have access to the $NAME build argument
-# because the argument was defined in the global scope, not for this stage.
+# 以下指令无法访问 $NAME 构建参数
+# 因为该参数是在全局作用域中定义的，而非针对此阶段。
 RUN echo "hello ${NAME}!"
 ```
 
-The `echo` command in this example evaluates to `hello !`
-because the value of the `NAME` build argument is out of scope.
-To inherit global build arguments into a stage, you must consume them:
+此例中的 `echo` 命令求值结果为 `hello !`，因为 `NAME` 构建参数的值超出了作用域。
+要将全局构建参数继承到某个阶段，必须消费它们：
 
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-# Declare the build argument in the global scope
+# 在全局作用域中声明构建参数
 ARG NAME="joe"
 
 FROM alpine
-# Consume the build argument in the build stage
+# 在构建阶段消费该构建参数
 ARG NAME
 RUN echo $NAME
 ```
 
-Once a build argument is declared or consumed in a stage,
-it's automatically inherited by child stages.
+一旦构建参数在某个阶段被声明或消费，它就会自动被子阶段继承。
 
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM alpine AS base
-# Declare the build argument in the build stage
+# 在构建阶段中声明构建参数
 ARG NAME="joe"
 
-# Create a new stage based on "base"
+# 基于 "base" 创建一个新阶段
 FROM base AS build
-# The NAME build argument is available here
-# since it's declared in a parent stage
+# NAME 构建参数在此处可用
+# 因为它在父阶段中声明
 RUN echo "hello $NAME!"
 ```
 
-The following diagram further exemplifies how build argument
-and environment variable inheritance works for multi-stage builds.
+下图进一步说明了在多阶段构建中构建参数和环境变量的继承机制。
 
 <figure class="invertible"><img src="../../images/build-variables.svg">
 </figure>
 
 
-## Pre-defined build arguments
+## 预定义构建参数（Pre-defined build arguments）
 
-This section describes pre-defined build arguments available to all builds by default.
+本节描述默认情况下所有构建都可用的预定义构建参数。
 
-### Multi-platform build arguments
+### 多平台构建参数（Multi-platform build arguments）
 
-Multi-platform build arguments describe the build and target platforms for the build.
+多平台构建参数描述构建和目标平台的构建与目标平台。
 
-The build platform is the operating system, architecture, and platform variant
-of the host system where the builder (the BuildKit daemon) is running.
+构建平台是构建器（BuildKit 守护进程）所在主机的操作系统、架构和平台变体。
 
 - `BUILDPLATFORM`
 - `BUILDOS`
 - `BUILDARCH`
 - `BUILDVARIANT`
 
-The target platform arguments hold the same values for the target platforms for the build,
-specified using the `--platform` flag for the `docker build` command.
+目标平台参数持有为构建指定的目标平台的相同值，使用 `docker build` 命令的
+`--platform` 标志指定。
 
 - `TARGETPLATFORM`
 - `TARGETOS`
 - `TARGETARCH`
 - `TARGETVARIANT`
 
-These arguments are useful for doing cross-compilation in multi-platform builds.
-They're available in the global scope of the Dockerfile,
-but they aren't automatically inherited by build stages.
-To use them inside stage, you must declare them:
+这些参数对于在多平台构建中进行交叉编译很有用。它们在 Dockerfile 的全局作用域中
+可用，但不会自动被子构建阶段继承。要在阶段内部使用它们，必须声明它们：
 
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-# Pre-defined build arguments are available in the global scope
+# 预定义构建参数在全局作用域中可用
 FROM --platform=$BUILDPLATFORM golang
-# To inherit them to a stage, declare them with ARG
+# 要将它们继承到阶段，使用 ARG 声明
 ARG TARGETOS
 RUN GOOS=$TARGETOS go build -o ./exe .
 ```
 
-For more information about multi-platform build arguments, refer to
-[Multi-platform arguments](/reference/dockerfile.md#automatic-platform-args-in-the-global-scope)
+有关多平台构建参数的更多信息，请参阅
+[多平台参数](/reference/dockerfile.md#automatic-platform-args-in-the-global-scope)
 
-### Proxy arguments
+### 代理参数（Proxy arguments）
 
-Proxy build arguments let you specify proxies to use for your build.
-You don't need to declare or reference these arguments in the Dockerfile.
-Specifying a proxy with `--build-arg` is enough to make your build use the proxy.
+代理构建参数让你为构建指定要使用的代理。你无需在 Dockerfile 中声明或引用这些参数。
+使用 `--build-arg` 指定一个代理就足以让构建使用该代理。
 
-Proxy arguments are automatically excluded from the build cache
-and the output of `docker history` by default.
-If you do reference the arguments in your Dockerfile,
-the proxy configuration ends up in the build cache.
+代理参数默认会自动从构建缓存和 `docker history` 的输出中排除。如果你确实在
+Dockerfile 中引用了这些参数，代理配置就会进入构建缓存。
 
-The builder respects the following proxy build arguments.
-The variables are case insensitive.
+构建器支持以下代理构建参数。这些变量不区分大小写。
 
 - `HTTP_PROXY`
 - `HTTPS_PROXY`
@@ -281,102 +249,99 @@ The variables are case insensitive.
 - `NO_PROXY`
 - `ALL_PROXY`
 
-To configure a proxy for your build:
+要为你的构建配置代理：
 
 ```console
 $ docker build --build-arg HTTP_PROXY=https://my-proxy.example.com .
 ```
 
-For more information about proxy build arguments, refer to
-[Proxy arguments](/reference/dockerfile.md#predefined-args).
+有关代理构建参数的更多信息，请参阅
+[代理参数](/reference/dockerfile.md#predefined-args)。
 
-## Build tool configuration variables
+## 构建工具配置变量（Build tool configuration variables）
 
-The following environment variables enable, disable, or change the behavior of Buildx and BuildKit.
-Note that these variables aren't used to configure the build container;
-they aren't available inside the build and they have no relation to the `ENV` instruction.
-They're used to configure the Buildx client, or the BuildKit daemon.
+以下环境变量用于启用、禁用或改变 Buildx 和 BuildKit 的行为。注意，这些变量并非用于
+配置构建容器；它们在构建内部不可用，且与 `ENV` 指令无关。它们用于配置 Buildx 客户端
+或 BuildKit 守护进程。
 
-| Variable                                                                    | Type              | Description                                                      |
+| 变量                                                                        | 类型              | 描述                                                      |
 |-----------------------------------------------------------------------------|-------------------|------------------------------------------------------------------|
-| [BUILDKIT_COLORS](#buildkit_colors)                                         | String            | Configure text color for the terminal output.                    |
-| [BUILDKIT_HOST](#buildkit_host)                                             | String            | Specify host to use for remote builders.                         |
-| [BUILDKIT_PROGRESS](#buildkit_progress)                                     | String            | Configure type of progress output.                               |
-| [BUILDKIT_TTY_LOG_LINES](#buildkit_tty_log_lines)                           | String            | Number of log lines (for active steps in TTY mode).              |
-| [BUILDX_BAKE_FILE](#buildx_bake_file)                                       | String            | Specify the build definition file(s) for `docker buildx bake`.   |
-| [BUILDX_BAKE_FILE_SEPARATOR](#buildx_bake_file_separator)                   | String            | Specify the file-path separator for `BUILDX_BAKE_FILE`.          |
-| [BUILDX_BAKE_GIT_AUTH_HEADER](#buildx_bake_git_auth_header)                 | String            | HTTP authentication scheme for remote Bake files.                |
-| [BUILDX_BAKE_GIT_AUTH_TOKEN](#buildx_bake_git_auth_token)                   | String            | HTTP authentication token for remote Bake files.                 |
-| [BUILDX_BAKE_GIT_SSH](#buildx_bake_git_ssh)                                 | String            | SSH authentication for remote Bake files.                        |
-| [BUILDX_BUILDER](#buildx_builder)                                           | String            | Specify the builder instance to use.                             |
-| [BUILDX_CONFIG](#buildx_config)                                             | String            | Specify location for configuration, state, and logs.             |
-| [BUILDX_CPU_PROFILE](#buildx_cpu_profile)                                   | String            | Generate a `pprof` CPU profile at the specified location.        |
-| [BUILDX_EXPERIMENTAL](#buildx_experimental)                                 | Boolean           | Turn on experimental features.                                   |
-| [BUILDX_GIT_CHECK_DIRTY](#buildx_git_check_dirty)                           | Boolean           | Enable dirty Git checkout detection.                             |
-| [BUILDX_GIT_INFO](#buildx_git_info)                                         | Boolean           | Remove Git information in provenance attestations.               |
-| [BUILDX_GIT_LABELS](#buildx_git_labels)                                     | String \| Boolean | Add Git provenance labels to images.                             |
-| [BUILDX_MEM_PROFILE](#buildx_mem_profile)                                   | String            | Generate a `pprof` memory profile at the specified location.     |
-| [BUILDX_METADATA_PROVENANCE](#buildx_metadata_provenance)                   | String \| Boolean | Customize provenance information included in the metadata file.  |
-| [BUILDX_METADATA_WARNINGS](#buildx_metadata_warnings)                       | String            | Include build warnings in the metadata file.                     |
-| [BUILDX_NO_DEFAULT_ATTESTATIONS](#buildx_no_default_attestations)           | Boolean           | Turn off default provenance attestations.                        |
-| [BUILDX_NO_DEFAULT_LOAD](#buildx_no_default_load)                           | Boolean           | Turn off loading images to image store by default.               |
-| [EXPERIMENTAL_BUILDKIT_SOURCE_POLICY](#experimental_buildkit_source_policy) | String            | Specify a BuildKit source policy file.                           |
+| [BUILDKIT_COLORS](#buildkit_colors)                                         | String            | 配置终端输出的文字颜色。                                        |
+| [BUILDKIT_HOST](#buildkit_host)                                             | String            | 指定用于远程构建器的主机。                                      |
+| [BUILDKIT_PROGRESS](#buildkit_progress)                                     | String            | 配置进度输出的类型。                                            |
+| [BUILDKIT_TTY_LOG_LINES](#buildkit_tty_log_lines)                           | String            | 日志行数（针对 TTY 模式下的活动步骤）。                          |
+| [BUILDX_BAKE_FILE](#buildx_bake_file)                                       | String            | 指定 `docker buildx bake` 的构建定义文件。                      |
+| [BUILDX_BAKE_FILE_SEPARATOR](#buildx_bake_file_separator)                   | String            | 指定 `BUILDX_BAKE_FILE` 的文件路径分隔符。                     |
+| [BUILDX_BAKE_GIT_AUTH_HEADER](#buildx_bake_git_auth_header)                 | String            | 远程 Bake 文件的 HTTP 认证方案。                               |
+| [BUILDX_BAKE_GIT_AUTH_TOKEN](#buildx_bake_git_auth_token)                   | String            | 远程 Bake 文件的 HTTP 认证令牌。                               |
+| [BUILDX_BAKE_GIT_SSH](#buildx_bake_git_ssh)                                 | String            | 远程 Bake 文件的 SSH 认证。                                   |
+| [BUILDX_BUILDER](#buildx_builder)                                           | String            | 指定要使用的构建器实例。                                        |
+| [BUILDX_CONFIG](#buildx_config)                                             | String            | 指定配置、状态和日志的位置。                                    |
+| [BUILDX_CPU_PROFILE](#buildx_cpu_profile)                                   | String            | 在指定位置生成 `pprof` CPU profile。                          |
+| [BUILDX_EXPERIMENTAL](#buildx_experimental)                                 | Boolean           | 开启实验性特性。                                              |
+| [BUILDX_GIT_CHECK_DIRTY](#buildx_git_check_dirty)                           | Boolean           | 启用脏 Git 检出检测。                                         |
+| [BUILDX_GIT_INFO](#buildx_git_info)                                         | Boolean           | 移除来源证明中的 Git 信息。                                    |
+| [BUILDX_GIT_LABELS](#buildx_git_labels)                                     | String \| Boolean | 向镜像添加 Git 来源标签。                                      |
+| [BUILDX_MEM_PROFILE](#buildx_mem_profile)                                   | String            | 在指定位置生成 `pprof` 内存 profile。                          |
+| [BUILDX_METADATA_PROVENANCE](#buildx_metadata_provenance)                   | String \| Boolean | 自定义包含在元数据文件中的来源信息。                            |
+| [BUILDX_METADATA_WARNINGS](#buildx_metadata_warnings)                       | String            | 在元数据文件中包含构建警告。                                    |
+| [BUILDX_NO_DEFAULT_ATTESTATIONS](#buildx_no_default_attestations)           | Boolean           | 关闭默认来源证明。                                            |
+| [BUILDX_NO_DEFAULT_OCI_ARTIFACT](#buildx_no_default_oci_artifact)           | Boolean           | 默认关闭证明的 OCI artifact 存储。                              |
+| [BUILDX_NO_DEFAULT_LOAD](#buildx_no_default_load)                           | Boolean           | 默认关闭向镜像存储加载镜像。                                    |
+| [EXPERIMENTAL_BUILDKIT_SOURCE_POLICY](#experimental_buildkit_source_policy) | String            | 指定 BuildKit 源策略文件。                                     |
 
-BuildKit also supports a few additional configuration parameters. Refer to
-[BuildKit built-in build args](/reference/dockerfile.md#buildkit-built-in-build-args).
+BuildKit 还支持一些额外的配置参数。请参阅
+[BuildKit 内置构建参数](/reference/dockerfile.md#buildkit-built-in-build-args)。
 
-You can express Boolean values for environment variables in different ways.
-For example, `true`, `1`, and `T` all evaluate to true.
-Evaluation is done using the `strconv.ParseBool` function in the Go standard library.
-See the [reference documentation](https://pkg.go.dev/strconv#ParseBool) for details.
+你可以用不同方式表达环境变量的布尔值。例如，`true`、`1` 和 `T` 都求值为真。求值是
+使用 Go 标准库中的 `strconv.ParseBool` 函数完成的。详见
+[参考文档](https://pkg.go.dev/strconv#ParseBool)。
 
 <!-- vale Docker.HeadingSentenceCase = NO -->
 
 ### BUILDKIT_COLORS
 
-Changes the colors of the terminal output. Set `BUILDKIT_COLORS` to a CSV string
-in the following format:
+更改终端输出的颜色。将 `BUILDKIT_COLORS` 设置为以下格式的 CSV 字符串：
 
 ```console
 $ export BUILDKIT_COLORS="run=123,20,245:error=yellow:cancel=blue:warning=white"
 ```
 
-Color values can be any valid RGB hex code, or one of the
-[BuildKit predefined colors](https://github.com/moby/buildkit/blob/master/util/progress/progressui/colors.go).
+颜色值可以是任意有效的 RGB 十六进制码，或
+[BuildKit 预定义颜色](https://github.com/moby/buildkit/blob/master/util/progress/progressui/colors.go)
+之一。
 
-Setting `NO_COLOR` to anything turns off colorized output, as recommended by
-[no-color.org](https://no-color.org/).
+按照 [no-color.org](https://no-color.org/) 的建议，将 `NO_COLOR` 设置为任何值都会关闭
+彩色输出。
 
 ### BUILDKIT_HOST
 
 
 
-You use the `BUILDKIT_HOST` to specify the address of a BuildKit daemon to use
-as a remote builder. This is the same as specifying the address as a positional
-argument to `docker buildx create`.
+你使用 `BUILDKIT_HOST` 来指定用作远程构建器的 BuildKit 守护进程地址。这与将地址作为
+位置参数传递给 `docker buildx create` 相同。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDKIT_HOST=tcp://localhost:1234
 $ docker buildx create --name=remote --driver=remote
 ```
 
-If you specify both the `BUILDKIT_HOST` environment variable and a positional
-argument, the argument takes priority.
+如果你同时指定了 `BUILDKIT_HOST` 环境变量和位置参数，则参数优先。
 
 ### BUILDKIT_PROGRESS
 
-Sets the type of the BuildKit progress output. Valid values are:
+设置 BuildKit 进度输出的类型。有效值为：
 
-- `auto` (default): automatically uses `tty` in interactive terminals, `plain` otherwise
-- `plain`: displays build steps sequentially in simple text format
-- `tty`: interactive output with formatted progress bars and build steps
-- `quiet`: suppresses progress output, only shows errors and final image ID
-- `none`: no progress output, only shows errors
-- `rawjson`: outputs build progress as raw JSON (useful for parsing by other tools)
+- `auto`（默认）：在交互式终端中自动使用 `tty`，否则使用 `plain`
+- `plain`：以简单文本格式顺序显示构建步骤
+- `tty`：带有格式化进度条和构建步骤的交互式输出
+- `quiet`：抑制进度输出，仅显示错误和最终镜像 ID
+- `none`：无进度输出，仅显示错误
+- `rawjson`：以原始 JSON 输出构建进度（便于其他工具解析）
 
-Usage:
+用法：
 
 ```console
 $ export BUILDKIT_PROGRESS=plain
@@ -384,8 +349,8 @@ $ export BUILDKIT_PROGRESS=plain
 
 ### BUILDKIT_TTY_LOG_LINES
 
-You can change how many log lines are visible for active steps in TTY mode by
-setting `BUILDKIT_TTY_LOG_LINES` to a number (default to `6`).
+你可以通过设置 `BUILDKIT_TTY_LOG_LINES` 为一个数字（默认为 `6`）来更改 TTY 模式下
+活动步骤可见的日志行数。
 
 ```console
 $ export BUILDKIT_TTY_LOG_LINES=8
@@ -393,15 +358,15 @@ $ export BUILDKIT_TTY_LOG_LINES=8
 
 ### EXPERIMENTAL_BUILDKIT_SOURCE_POLICY
 
-Lets you specify a
-[BuildKit source policy](https://github.com/moby/buildkit/blob/master/docs/build-repro.md#reproducing-the-pinned-dependencies)
-file for creating reproducible builds with pinned dependencies.
+让你指定一个
+[BuildKit 源策略](https://github.com/moby/buildkit/blob/master/docs/build-repro.md#reproducing-the-pinned-dependencies)
+文件，用于创建具有固定依赖的可复现构建。
 
 ```console
 $ export EXPERIMENTAL_BUILDKIT_SOURCE_POLICY=./policy.json
 ```
 
-Example:
+示例：
 
 ```json
 {
@@ -438,34 +403,34 @@ Example:
 
 
 
-Specify one or more build definition files for `docker buildx bake`. 
+指定 `docker buildx bake` 的一个或多个构建定义文件。
 
-This environment variable provides an alternative to the `-f` / `--file` command-line flag.
+此环境变量提供了 `-f` / `--file` 命令行标志的替代方案。
 
-Multiple files can be specified by separating them with the system path separator (":" on Linux/macOS, ";" on Windows):
+多个文件可通过系统路径分隔符分隔（Linux/macOS 上为 `:`，Windows 上为 `;`）：
 
 ```console
 export BUILDX_BAKE_FILE=file1.hcl:file2.hcl
 ```
 
-Or with a custom separator defined by the [BUILDX_BAKE_FILE_SEPARATOR](#buildx_bake_file_separator) variable:
+或使用由 [BUILDX_BAKE_FILE_SEPARATOR](#buildx_bake_file_separator) 变量定义的自定义分隔符：
 
 ```console
 export BUILDX_BAKE_FILE_SEPARATOR=@
 export BUILDX_BAKE_FILE=file1.hcl@file2.hcl
 ```
 
-If both `BUILDX_BAKE_FILE` and the `-f` flag are set, only the files provided via `-f` are used. 
+如果 `BUILDX_BAKE_FILE` 和 `-f` 标志都设置了，则只使用通过 `-f` 提供的文件。
 
-If a listed file does not exist or is invalid, bake returns an error.
+如果列出的文件不存在或无效，bake 会返回错误。
 
 ### BUILDX_BAKE_FILE_SEPARATOR
 
 
 
-Controls the separator used between file paths in the `BUILDX_BAKE_FILE` environment variable. 
+控制 `BUILDX_BAKE_FILE` 环境变量中文件路径之间使用的分隔符。
 
-This is useful if your file paths contain the default separator character or if you want to standardize separators across different platforms.
+如果你的文件路径包含默认分隔符字符，或者你想跨不同平台统一分隔符，这会很有用。
 
 ```console
 export BUILDX_BAKE_PATH_SEPARATOR=@
@@ -476,12 +441,11 @@ export BUILDX_BAKE_FILE=file1.hcl@file2.hcl
 
 
 
-Sets the HTTP authentication scheme when using a remote Bake definition in a private Git repository.
-This is equivalent to the [`GIT_AUTH_HEADER` secret](./secrets#http-authentication-scheme),
-but facilitates the pre-flight authentication in Bake when loading the remote Bake file.
-Supported values are `bearer` (default) and `basic`.
+在使用私有 Git 仓库中的远程 Bake 定义时，设置 HTTP 认证方案。这等效于
+[`GIT_AUTH_HEADER` 密钥](./secrets#http-authentication-scheme)，但在加载远程 Bake 文件时
+便于 Bake 的起飞前认证。支持的值为 `bearer`（默认）和 `basic`。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_BAKE_GIT_AUTH_HEADER=basic
@@ -491,11 +455,11 @@ $ export BUILDX_BAKE_GIT_AUTH_HEADER=basic
 
 
 
-Sets the HTTP authentication token when using a remote Bake definition in a private Git repository.
-This is equivalent to the [`GIT_AUTH_TOKEN` secret](./secrets#git-authentication-for-remote-contexts),
-but facilitates the pre-flight authentication in Bake when loading the remote Bake file.
+在使用私有 Git 仓库中的远程 Bake 定义时，设置 HTTP 认证令牌。这等效于
+[`GIT_AUTH_TOKEN` 密钥](./secrets#git-authentication-for-remote-contexts)，但在加载远程 Bake 文件时
+便于 Bake 的起飞前认证。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_BAKE_GIT_AUTH_TOKEN=$(cat git-token.txt)
@@ -505,15 +469,13 @@ $ export BUILDX_BAKE_GIT_AUTH_TOKEN=$(cat git-token.txt)
 
 
 
-Lets you specify a list of SSH agent socket filepaths to forward to Bake
-for authenticating to a Git server when using a remote Bake definition in a private repository.
-This is similar to SSH mounts for builds, but facilitates the pre-flight authentication in Bake when resolving the build definition.
+让你指定要转发给 Bake 的 SSH agent 套接字文件路径列表，用于在使用私有仓库中的远程 Bake 定义时
+向 Git 服务器认证。这类似于构建的 SSH 挂载，但在解析构建定义时便于 Bake 的起飞前认证。
 
-Setting this environment is typically not necessary, because Bake will use the `SSH_AUTH_SOCK` agent socket by default.
-You only need to specify this variable if you want to use a socket with a different filepath.
-This variable can take multiple paths using a comma-separated string.
+通常无需设置此环境变量，因为 Bake 默认会使用 `SSH_AUTH_SOCK` agent 套接字。只有在你想使用一个
+不同文件路径的套接字时才需要指定此变量。此变量可以接受使用逗号分隔字符串的多个路径。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_BAKE_GIT_SSH=/run/foo/listener.sock,~/.creds/ssh.sock
@@ -521,10 +483,9 @@ $ export BUILDX_BAKE_GIT_SSH=/run/foo/listener.sock,~/.creds/ssh.sock
 
 ### BUILDX_BUILDER
 
-Overrides the configured builder instance. Same as the `docker buildx --builder`
-CLI flag.
+覆盖已配置的构建器实例。与 `docker buildx --builder` CLI 标志相同。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_BUILDER=my-builder
@@ -532,15 +493,13 @@ $ export BUILDX_BUILDER=my-builder
 
 ### BUILDX_CONFIG
 
-You can use `BUILDX_CONFIG` to specify the directory to use for build
-configuration, state, and logs. The lookup order for this directory is as
-follows:
+你可以使用 `BUILDX_CONFIG` 指定用于构建配置、状态和日志的目录。该目录的查找顺序如下：
 
 - `$BUILDX_CONFIG`
 - `$DOCKER_CONFIG/buildx`
-- `~/.docker/buildx` (default)
+- `~/.docker/buildx`（默认）
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_CONFIG=/usr/local/etc
@@ -550,13 +509,12 @@ $ export BUILDX_CONFIG=/usr/local/etc
 
 
 
-If specified, Buildx generates a `pprof` CPU profile at the specified location.
+如果指定，Buildx 会在指定位置生成一个 `pprof` CPU profile。
 
 > [!NOTE]
-> This property is only useful for when developing Buildx. The profiling data
-> is not relevant for analyzing a build's performance.
+> 此属性仅当你开发 Buildx 时才有用。该 profiling 数据与构建性能分析无关。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_CPU_PROFILE=buildx_cpu.prof
@@ -564,9 +522,9 @@ $ export BUILDX_CPU_PROFILE=buildx_cpu.prof
 
 ### BUILDX_EXPERIMENTAL
 
-Enables experimental build features.
+启用实验性构建特性。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_EXPERIMENTAL=1
@@ -576,10 +534,10 @@ $ export BUILDX_EXPERIMENTAL=1
 
 
 
-When set to true, checks for dirty state in source control information for
-[provenance attestations](/manuals/build/metadata/attestations/slsa-provenance.md).
+当设置为 true 时，检查
+[来源证明](/manuals/build/metadata/attestations/slsa-provenance.md) 中源码控制信息的脏状态。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_GIT_CHECK_DIRTY=1
@@ -589,10 +547,10 @@ $ export BUILDX_GIT_CHECK_DIRTY=1
 
 
 
-When set to false, removes source control information from
-[provenance attestations](/manuals/build/metadata/attestations/slsa-provenance.md).
+当设置为 false 时，从
+[来源证明](/manuals/build/metadata/attestations/slsa-provenance.md) 中移除源码控制信息。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_GIT_INFO=0
@@ -602,15 +560,13 @@ $ export BUILDX_GIT_INFO=0
 
 
 
-Adds provenance labels, based on Git information, to images that you build. The
-labels are:
+根据你构建的镜像的 Git 信息添加来源标签。这些标签为：
 
-- `com.docker.image.source.entrypoint`: Location of the Dockerfile relative to
-  the project root
-- `org.opencontainers.image.revision`: Git commit revision
-- `org.opencontainers.image.source`: SSH or HTTPS address of the repository
+- `com.docker.image.source.entrypoint`：Dockerfile 相对于项目根目录的位置
+- `org.opencontainers.image.revision`：Git 提交修订
+- `org.opencontainers.image.source`：仓库的 SSH 或 HTTPS 地址
 
-Example:
+示例：
 
 ```json
   "Labels": {
@@ -620,25 +576,23 @@ Example:
   }
 ```
 
-Usage:
+用法：
 
-- Set `BUILDX_GIT_LABELS=1` to include the `entrypoint` and `revision` labels.
-- Set `BUILDX_GIT_LABELS=full` to include all labels.
+- 设置 `BUILDX_GIT_LABELS=1` 以包含 `entrypoint` 和 `revision` 标签。
+- 设置 `BUILDX_GIT_LABELS=full` 以包含所有标签。
 
-If the repository is in a dirty state, the `revision` gets a `-dirty` suffix.
+如果仓库处于脏状态，`revision` 会获得一个 `-dirty` 后缀。
 
 ### BUILDX_MEM_PROFILE
 
 
 
-If specified, Buildx generates a `pprof` memory profile at the specified
-location.
+如果指定，Buildx 会在指定位置生成一个 `pprof` 内存 profile。
 
 > [!NOTE]
-> This property is only useful for when developing Buildx. The profiling data
-> is not relevant for analyzing a build's performance.
+> 此属性仅当你开发 Buildx 时才有用。该 profiling 数据与构建性能分析无关。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_MEM_PROFILE=buildx_mem.prof
@@ -648,48 +602,57 @@ $ export BUILDX_MEM_PROFILE=buildx_mem.prof
 
 
 
-By default, Buildx includes minimal provenance information in the metadata file
-through [`--metadata-file` flag](/reference/cli/docker/buildx/build/#metadata-file).
-This environment variable allows you to customize the provenance information
-included in the metadata file:
-* `min` sets minimal provenance (default).
-* `max` sets full provenance.
-* `disabled`, `false` or `0` does not set any provenance.
+默认情况下，Buildx 通过 [`--metadata-file` flag](/reference/cli/docker/buildx/build/#metadata-file)
+在元数据文件中包含最少的来源信息。此环境变量允许你自定义元数据文件中包含的来源信息：
+* `min` 设置最少来源（默认）。
+* `max` 设置完整来源。
+* `disabled`、`false` 或 `0` 不设置任何来源。
 
 ### BUILDX_METADATA_WARNINGS
 
 
 
-By default, Buildx does not include build warnings in the metadata file through
-[`--metadata-file` flag](/reference/cli/docker/buildx/build/#metadata-file).
-You can set this environment variable to `1` or `true` to include them.
+默认情况下，Buildx 不会通过
+[`--metadata-file` flag](/reference/cli/docker/buildx/build/#metadata-file) 在元数据文件中包含构建警告。
+你可以将此环境变量设置为 `1` 或 `true` 来包含它们。
 
 ### BUILDX_NO_DEFAULT_ATTESTATIONS
 
 
 
-By default, BuildKit v0.11 and later adds
-[provenance attestations](/manuals/build/metadata/attestations/slsa-provenance.md) to images you
-build. Set `BUILDX_NO_DEFAULT_ATTESTATIONS=1` to disable the default provenance
-attestations.
+默认情况下，BuildKit v0.11 及更高版本会向你构建的镜像添加
+[来源证明](/manuals/build/metadata/attestations/slsa-provenance.md)。设置 `BUILDX_NO_DEFAULT_ATTESTATIONS=1`
+以禁用默认来源证明。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_NO_DEFAULT_ATTESTATIONS=1
 ```
 
+### BUILDX_NO_DEFAULT_OCI_ARTIFACT
+
+
+
+从 BuildKit v0.32.0 开始，当启用 OCI 媒体类型时，BuildKit 将证明存储为 OCI artifact。
+设置 `BUILDX_NO_DEFAULT_OCI_ARTIFACT=1` 使 Buildx 在构建使用支持证明的导出器且你未显式设置
+`oci-artifact` 导出器属性时，设置 `oci-artifact=false`。
+
+用法：
+
+```console
+$ export BUILDX_NO_DEFAULT_OCI_ARTIFACT=1
+```
+
 ### BUILDX_NO_DEFAULT_LOAD
 
-When you build an image using the `docker` driver, the image is automatically
-loaded to the image store when the build finishes. Set `BUILDX_NO_DEFAULT_LOAD`
-to disable automatic loading of images to the local container store.
+当你使用 `docker` 驱动构建镜像时，镜像会在构建结束时自动加载到镜像存储。设置
+`BUILDX_NO_DEFAULT_LOAD` 以禁用镜像到本地容器存储的自动加载。
 
-Usage:
+用法：
 
 ```console
 $ export BUILDX_NO_DEFAULT_LOAD=1
 ```
 
 <!-- vale Docker.HeadingSentenceCase = YES -->
-

@@ -3,13 +3,15 @@
 
 ### 什么是 HyperKit？
 
-HyperKit 是一个构建在 macOS Hypervisor.framework 之上的虚拟机管理器（hypervisor）。它完全在用户空间中运行，没有其他依赖项。
+HyperKit 是一个构建在 macOS Hypervisor.framework 之上的传统虚拟机管理器（hypervisor）。
+旧版 Docker Desktop for Mac 使用 HyperKit 来运行 Linux VM。
 
-Docker 使用 HyperKit 来消除对其他 VM 产品（如 Oracle VirtualBox 或 VMware Fusion）的需求。
+当前版本的 Docker Desktop 默认使用 Apple Virtualization 框架。
+此处保留 HyperKit 的内容，仅供旧版配置的历史参考。
 
 ### HyperKit 有什么优势？
 
-HyperKit 比 VirtualBox 和 VMware Fusion 更轻量级，并且包含的版本是针对 Mac 上的 Docker 工作负载定制的。
+当 HyperKit 是默认虚拟机管理器时，它提供了一个轻量级的虚拟化层，针对 Docker 工作负载进行了定制，并消除对 Oracle VirtualBox 或 VMware Fusion 等第三方 VM 产品的需求。
 
 ### Docker Desktop 将 Linux 容器和镜像存储在哪里？
 
@@ -95,7 +97,7 @@ $ ls -klsh Docker.raw
 
 要减小磁盘镜像文件的最大大小：
 
-1. 选择 **Settings**（设置），然后从 **Resources**（资源）选项卡中选择 **Advanced**（高级）。
+1. 选择 **Settings**（设置），然后从 **Resources** 资源 选项卡中选择 **Advanced**（高级）。
 2. **Disk image size**（磁盘镜像大小）部分包含一个滑块，允许您更改磁盘镜像的最大大小。调整滑块以设置较低的限制。
 3. 选择 **Apply**（应用）。
 
@@ -172,3 +174,4 @@ $ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychai
 ```
 
 要了解有关如何为注册表安装 CA 根证书以及如何设置客户端 TLS 证书以进行验证的更多信息，请参阅 Docker Engine 主题中的[使用证书验证仓库客户端](/manuals/engine/security/certificates.md)。
+

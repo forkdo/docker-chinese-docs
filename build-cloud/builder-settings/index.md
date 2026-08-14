@@ -18,7 +18,7 @@ Docker Build Cloud 中的 **Builder 设置** 页面允许你为组织中的云�
 你的订阅包含以下构建缓存空间：
 
 | 订阅类型 | 构建缓存空间 |
-|--------------|-------------------|
+| -------- | ------------ |
 | Personal     | N/A               |
 | Pro          | 50GB              |
 | Team         | 100GB             |
@@ -38,7 +38,7 @@ Docker Build Cloud 会自动为 amd64 和 arm64 两种架构配置构建器。�
 
 ### 获取更多构建缓存空间
 
-要获取更多构建缓存空间，请[升级你的订阅](/manuals/subscription/scale.md)。
+要获取更多构建缓存空间，请[升级你的订阅](/manuals/subscription/manage.md#upgrade-plans)。
 
 > [!TIP]
 >
@@ -56,7 +56,7 @@ Docker Build Cloud 会自动为 amd64 和 arm64 两种架构配置构建器。�
 
 如果你的内部工件需要身份验证，请确保在构建之前或构建期间对仓库进行身份验证。对于 npm 或 PyPI 的内部包仓库，使用 [构建密钥](/manuals/build/building/secrets.md) 在构建期间进行身份验证。对于内部 OCI 注册表，使用 `docker login` 在构建之前进行身份验证。
 
-请注意，如果你使用需要身份验证的私有注册表，你需要在构建之前进行两次 `docker login`。这是因为云构建器需要先向 Docker 进行身份验证以使用云构建器，然后再向私有注册表进行身份验证。
+如果你使用需要身份验证的私有注册表，你需要在构建之前进行两次身份验证：一次向 Docker Hub 验证（以访问 Docker Build Cloud），一次向你的私有注册表验证（以推送/拉取镜像）。
 
 ```console
 $ echo $DOCKER_PAT | docker login docker.io -u <username> --password-stdin
@@ -71,3 +71,4 @@ $ docker build --builder <cloud-builder> --tag registry.example.com/<image> --pu
 1. 选中 **Enable firewall: Restrict cloud builder egress to specific public IP address** 复选框。
 2. 输入你想要允许的 IP 地址。
 3. 选择 **Add** 以应用限制。
+

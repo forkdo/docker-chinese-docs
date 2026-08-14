@@ -6,12 +6,6 @@
 
 **Aliases:** `docker scout qv`
 
-<!--
-此页面由 Docker 源代码自动生成。如果您希望修改此处显示的文本，请在 GitHub 上的源代码仓库中提交问题：
-
-https://github.com/docker/scout-cli
--->
-
 
 
 
@@ -66,6 +60,10 @@ or if you want to control from where the image will be resolved, you must prefix
 | `--org` |  |  Namespace of the Docker organization |
 | `-o`, `--output` |  |  Write the report to a file |
 | `--platform` |  |  Platform of image to analyze |
+| `--policy-bundle` |  |  OCI reference of a policy bundle to evaluate (repeatable) |
+| `--policy-config` |  |  Path or http(s) URL to a JSON file configuring policy enablement and inputs<br> |
+| `--policy-dir` |  |  Path to a directory of local .rego policy files (repeatable) |
+| `--policy-file` |  |  Path or http(s) URL to a .rego policy file (repeatable) |
 | `--ref` |  |  Reference to use if the provided tarball contains multiple references.<br>Can only be used with archive |
 | `--vex-author` | `[<.*@docker.com>]` |  List of VEX statement authors to accept |
 | `--vex-location` |  |  File location of directory or file containing VEX statements |

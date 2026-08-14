@@ -14,7 +14,6 @@
 | [Fedora](fedora.md)                              |       ✅       |       ✅        |              |   ✅    |       |
 | [Raspberry Pi OS (32-bit)](raspberry-pi-os.md)   |                |                 |      ⚠️      |         |       |
 | [RHEL](rhel.md)                                  |       ✅       |       ✅        |              |         |  ✅   |
-| [SLES](sles.md)                                  |                |                 |              |         |  ❌   |
 | [Ubuntu](ubuntu.md)                              |       ✅       |       ✅        |      ✅      |   ✅    |  ✅   |
 | [Binaries](binaries.md)                          |       ✅       |       ✅        |      ✅      |         |       |
 
@@ -51,7 +50,7 @@ Docker Engine 是一个开源项目，由 Moby 项目维护者和社区成员提
 
 ### 许可
 
-在大型企业（员工人数超过 250 人或年收入超过 1000 万美元）中，通过 Docker Desktop 获得的 Docker Engine 的商业使用需要[付费订阅](https://www.docker.com/pricing/)。Apache License, Version 2.0。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
+在大型企业（员工人数超过 250 人或年收入超过 1000 万美元）中，通过 Docker Desktop 获得的 Docker Engine 的商业使用需要[付费订阅](https://www.docker.com/pricing?ref=Docs&refAction=DocsEngineInstall)。Apache License, Version 2.0。完整许可证请参见 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE)。
 
 ## 报告安全问题
 
@@ -64,3 +63,4 @@ Docker Engine 是一个开源项目，由 Moby 项目维护者和社区成员提
 ## 开始使用
 
 设置 Docker 后，您可以通过[使用 Docker 入门](/get-started/introduction/_index.md)学习基础知识。
+

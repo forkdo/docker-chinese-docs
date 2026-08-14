@@ -35,6 +35,7 @@
 - `docker.io`
 - `docker-compose`
 - `docker-doc`
+- `docker-buildx`
 - `podman-docker`
 
 此外，Docker Engine 依赖于 `containerd` 和 `runc`。Docker Engine 将这些依赖项捆绑为一个包：`containerd.io`。如果您之前安装了 `containerd` 或 `runc`，请卸载它们以避免与 Docker Engine 捆绑的版本发生冲突。
@@ -42,7 +43,7 @@
 运行以下命令以卸载所有冲突的软件包：
 
 ```console
-$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
+$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc docker-buildx podman-docker containerd runc | cut -f1)
 ```
 
 `apt` 可能会报告您没有安装这些软件包。
@@ -60,7 +61,10 @@ $ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc po
 
 
 
+
+
 Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/blob/master/LICENSE) 获取完整许可证。
+
 
 ### 使用 `apt` 仓库安装 {#install-using-the-repository}
 
@@ -82,6 +86,7 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
    URIs: https://download.docker.com/linux/debian
    Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
    Components: stable
+   Architectures: $(dpkg --print-architecture)
    Signed-By: /etc/apt/keyrings/docker.asc
    EOF
 
@@ -90,13 +95,13 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
    > [!NOTE]
    >
-   > 如果您使用的是衍生发行版，例如 Kali Linux，您可能需要替换命令中预期打印版本代号的部分：
+   > 如果您使用的是 Debian testing 或衍生发行版（例如 Kali Linux），您可能需要替换命令中预期打印版本代号的部分：
    >
    > ```console
    > $(. /etc/os-release && echo "$VERSION_CODENAME")
    > ```
    >
-   > 将此部分替换为相应 Debian 版本的代号，例如 `bookworm`。
+   > 将此部分替换为相应 Debian 版本的代号，例如 `trixie`。
 
 2. 安装 Docker 软件包。
 
@@ -119,15 +124,15 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
    ```console
    $ apt list --all-versions docker-ce
 
-   docker-ce/bookworm 5:29.2.0-1~debian.12~bookworm <arch>
-   docker-ce/bookworm 5:29.1.5-1~debian.12~bookworm <arch>
+   docker-ce/bookworm 5:29.7.2-1~debian.12~bookworm <arch>
+   docker-ce/bookworm 5:29.7.1-1~debian.12~bookworm <arch>
    ...
    ```
 
    选择所需的版本并安装：
 
    ```console
-   $ VERSION_STRING=5:29.2.0-1~debian.12~bookworm
+   $ VERSION_STRING=5:29.7.2-1~debian.12~bookworm
    $ sudo apt install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 
@@ -135,13 +140,13 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -159,11 +164,14 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
+
 
 #### 升级 Docker Engine
 
@@ -200,13 +208,13 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
     > [!NOTE]
     >
-    > Docker 服务在安装后会自动启动。要验证 Docker 是否正在运行，请使用：
-    > 
+    > 安装后，请验证 Docker 是否正在运行：
+    >
     > ```console
     > $ sudo systemctl status docker
     > ```
     >
-    > 某些系统可能禁用了此行为，需要手动启动：
+    > 如果 Docker 未运行，请手动启动：
     >
     > ```console
     > $ sudo systemctl start docker
@@ -224,15 +232,20 @@ Apache License, Version 2.0. 请参阅 [LICENSE](https://github.com/moby/moby/bl
 
 
 
+
+
 > [!TIP]
 > 
 > 尝试以非 root 用户身份运行时遇到错误？
 >
 > `docker` 用户组存在但不包含任何用户，这就是为什么您需要使用 `sudo` 来运行 Docker 命令。请继续阅读 [Linux 安装后配置](/engine/install/linux-postinstall)，了解如何允许非特权用户运行 Docker 命令以及其他可选配置步骤。
 
+
 #### 升级 Docker Engine
 
 要升级 Docker Engine，请下载更新的软件包文件，并重复[安装过程](#install-from-a-package)，指向新文件。
+
+
 
 
 
@@ -289,6 +302,7 @@ $ sudo sh test-docker.sh
 
 如果您使用便捷脚本安装了 Docker，则应直接使用包管理器升级 Docker。重新运行便捷脚本没有任何优势。如果它尝试重新安装主机上已存在的仓库，重新运行它可能会导致问题。
 
+
 ## 卸载 Docker Engine
 
 1. 卸载 Docker Engine、CLI、containerd 和 Docker Compose 软件包：
@@ -316,3 +330,4 @@ $ sudo sh test-docker.sh
 ## 后续步骤
 
 - 继续阅读 [Linux 安装后步骤](linux-postinstall.md)。
+

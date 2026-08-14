@@ -21,8 +21,25 @@
 }
 ```
 
-`daemon.json` 文件在 Linux 主机上位于 `/etc/docker/`，在 Windows Server 上位于 `C:\ProgramData\docker\config\daemon.json`。有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅
+```
+
+有关使用 `daemon.json` 配置 Docker 的更多信息，请参阅
 [daemon.json](/reference/cli/dockerd.md#daemon-configuration-file)。
+
+
+
+
+
+<!-- FILE: includes/daemon-cfg-desktop.md -->
+
+> [!NOTE]
+>
+> 如果你使用的是 Docker Desktop，请通过 Docker Desktop 控制面板来编辑守护进程配置。
+> 打开 **Settings**，然后选择 **Docker Engine**。
+> 详情参阅
+> [Docker Engine 设置](/manuals/desktop/settings-and-maintenance/settings.md#docker-engine)。
+
+
 
 > [!NOTE]
 >
@@ -173,3 +190,4 @@ Splunk 日志记录驱动程序允许您通过为 Docker 守护程序设置环�
 | `SPLUNK_LOGGING_DRIVER_POST_MESSAGES_BATCH_SIZE` | `1000`      | 在一批发送之前应累积的消息数量。                                                                                                   |
 | `SPLUNK_LOGGING_DRIVER_BUFFER_MAX`               | `10 * 1000` | 用于重试的缓冲区中保留的最大消息数。                                                                                               |
 | `SPLUNK_LOGGING_DRIVER_CHANNEL_SIZE`             | `4 * 1000`  | 可以在用于向后台日志记录器工作进程发送消息的通道中等待处理的最大消息数，这些消息会在工作进程中进行批处理。 |
+

@@ -9,6 +9,8 @@
 
 无 root 模式在用户命名空间内执行 Docker 守护进程和容器。这类似于 [`userns-remap` 模式](../userns-remap.md)，不同之处在于 `userns-remap` 模式下，守护进程本身是以 root 权限运行的，而在无 root 模式下，守护进程和容器都是在没有 root 权限的情况下运行的。
 
+这两种模式在将容器 UID 和 GID 映射到主机的方式上也有所不同：详见 [UID/GID 映射](uid-gid-mapping/)。
+
 无 root 模式不使用带有 `SETUID` 位或文件能力的二进制文件，除了 `newuidmap` 和 `newgidmap`，它们是允许在用户命名空间中使用多个 UID/GID 所必需的。
 
 ## 先决条件

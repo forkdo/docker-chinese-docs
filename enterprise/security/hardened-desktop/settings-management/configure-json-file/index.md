@@ -12,23 +12,21 @@
 - 为您的组织[强制执行登录](/manuals/enterprise/security/enforce-sign-in/_index.md)
 - 拥有 Docker Business 订阅
 
-Docker Desktop 仅在身份验证和 Docker Business 许可证检查均成功时，才会应用 `admin-settings.json` 文件中的设置。
+`admin-settings.json` 文件的存在会在 Docker Desktop 上强制执行登录。这适用于需要身份验证的商业功能。
 
-> [!IMPORTANT]
->
-> 用户必须已登录并属于 Docker Business 组织。如果任一条件不满足，设置文件将被忽略。
+用户必须已登录并属于 Docker Business 组织。如果任一条件不满足，设置文件将被忽略。
 
 ## 第一步：创建设置文件
 
 您可以通过两种方式创建 `admin-settings.json` 文件：
 
 - 使用 `--admin-settings` 安装程序标志自动生成文件：
-    - [macOS](/manuals/desktop/setup/install/mac-install.md#install-from-the-command-line) 安装指南
-    - [Windows](/manuals/desktop/setup/install/windows-install.md#install-from-the-command-line) 安装指南
+  - [Mac](/manuals/desktop/setup/install/mac-install.md#install-from-the-command-line) 安装指南
+  - [Windows](/manuals/desktop/setup/install/windows-install.md#install-from-the-command-line) 安装指南
 - 手动创建（UTF-8 无 BOM）并将其放置在以下位置：
-    - Mac: `/Library/Application\ Support/com.docker.docker/admin-settings.json`
-    - Windows: `C:\ProgramData\DockerDesktop\admin-settings.json`
-    - Linux: `/usr/share/docker-desktop/admin-settings.json`
+  - Mac: `/Library/Application Support/com.docker.docker/admin-settings.json`
+  - Windows: `C:\ProgramData\DockerDesktop\admin-settings.json`
+  - Linux: `/usr/share/docker-desktop/admin-settings.json`
 
 > [!IMPORTANT]
 >
@@ -105,7 +103,7 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
     "http": "",
     "https": "",
     "exclude": [],
-    "pac":"",
+    "pac": "",
     "embeddedPac": "",
     "transparentPorts": ""
   },
@@ -132,23 +130,23 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
     },
     "dockerDaemonOptions": {
       "locked": false,
-      "value":"{\"debug\": false}"
+      "value": "{\"debug\": false}"
     },
     "vpnkitCIDR": {
       "locked": false,
-      "value":"192.168.65.0/24"
+      "value": "192.168.65.0/24"
     }
   },
   "kubernetes": {
-     "locked": false,
-     "enabled": false,
-     "showSystemContainers": false,
-     "imagesRepository": ""
+    "locked": false,
+    "enabled": false,
+    "showSystemContainers": false,
+    "imagesRepository": ""
   },
   "windowsContainers": {
     "dockerDaemonOptions": {
       "locked": false,
-      "value":"{\"debug\": false}"
+      "value": "{\"debug\": false}"
     }
   },
   "disableUpdate": {
@@ -182,7 +180,7 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
       "sharedByDefault": true
     },
     {
-      "path":"$TMP",
+      "path": "$TMP",
       "sharedByDefault": false
     }
   ],
@@ -257,7 +255,7 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 
 > [!NOTE]
 >
-> 某些设置是平台特定的或需要最低 Docker Desktop 版本。请检查“版本”列以了解要求。
+> 某些设置是平台特定的或需要最低 Docker Desktop 版本。请检查"版本"列以了解要求。
 
 ### 常规设置
 
@@ -266,21 +264,29 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 |`configurationFileVersion`|   |指定配置文件格式的版本。|   |
 |`analyticsEnabled`|  |如果 `value` 设置为 false，Docker Desktop 不会将使用统计信息发送给 Docker。 |  |
 |`disableUpdate`|  |如果 `value` 设置为 true，则禁用 Docker Desktop 更新的检查和通知。|  |
-|`extensionsEnabled`|  |如果 `value` 设置为 false，则禁用 Docker 扩展。 |  |
-| `blockDockerLoad` | | 如果 `value` 设置为 `true`，用户将无法再运行 [`docker load`](/reference/cli/docker/image/load/)，如果尝试运行则会收到错误。 |  |
-| `displayedOnboarding` |  | 如果 `value` 设置为 `true`，则不会向新用户显示入门调查。将 `value` 设置为 `false` 无效果。 |  Docker Desktop 版本 4.30 及更高版本 |
+|`blockDockerLoad`|  |如果 `value` 设置为 `true`，用户将无法再运行 [`docker load`](/reference/cli/docker/image/load/)，如果尝试运行则会收到错误。 |  |
+| `displayedOnboarding` |  | 如果 `value` 设置为 `true`，则不会向新用户显示入门调查。将 `value` 设置为 `false` 无效果。 |  |
 | `desktopTerminalEnabled` |  | 如果 `value` 设置为 `false`，开发人员将无法使用 Docker 终端与主机交互并直接从 Docker Desktop 执行命令。 |  |
 |`exposeDockerAPIOnTCP2375`| 仅限 Windows | 在指定端口上公开 Docker API。如果 `value` 设置为 true，则 Docker API 在端口 2375 上公开。注意：这是未经身份验证的，应仅在受适当防火墙规则保护的情况下启用。|  |
-| `silentModulesUpdate` | | 如果 `value` 设置为 `true`，Docker Desktop 会自动更新不需要重启的组件。例如，Docker CLI 或 Docker Scout 组件。 | Docker Desktop 版本 4.46 及更高版本。 |
+| `silentModulesUpdate` | | 如果 `value` 设置为 `true`，Docker Desktop 会自动更新不需要重启的组件。例如，Docker CLI 或 Docker Scout 组件。 |  |
+
+### 扩展
+
+| 参数 | 操作系统 | 描述 | 版本 |
+| :-------------------------------------------- | --- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `extensionsEnabled`                           |     | 如果 `value` 设置为 false，则禁用 Docker 扩展。                                                                                                                                                    |         |
+| `onlyMarketplaceExtensions`                   |     | 如果 `value` 设置为 true，则阻止开发人员通过命令行安装其他扩展。                                                                                                       |         |
+| `extensionsPrivateMarketplace`                |     | 如果 `value` 设置为 true，则启用私有应用市场。这确保 Docker Desktop 连接到由管理员定义和控制的内容，而不是公共 Docker 应用市场。 |         |
+| `extensionsPrivateMarketplaceAdminContactURL` |     | 定义供开发人员在私有应用市场中请求新扩展的联系链接。                                                                                                                    |         |
 
 ### 文件共享和仿真
 
 | 参数 | 操作系统 | 描述 | 版本 |
 |:-------------------------------|---|:-------------------------------|---|
 | `filesharingAllowedDirectories` |  | 指定开发人员可以添加文件共享的路径。也接受 `$HOME`、`$TMP` 或 `$TEMP` 作为 `path` 变量。添加路径时，其子目录也被允许。如果 `sharedByDefault` 设置为 `true`，则该路径将在出厂重置或 Docker Desktop 首次启动时添加。 |  |
-| `useVirtualizationFrameworkVirtioFS`|  仅限 macOS | 如果 `value` 设置为 `true`，则 VirtioFS 被设置为文件共享机制。注意：如果 `useVirtualizationFrameworkVirtioFS` 和 `useGrpcfuse` 的 `value` 都设置为 `true`，则 VirtioFS 优先。同样，如果 `useVirtualizationFrameworkVirtioFS` 和 `useGrpcfuse` 的 `value` 都设置为 `false`，则 osxfs 被设置为文件共享机制。 |  |
+| `useVirtualizationFrameworkVirtioFS`|  仅限 macOS | 如果 `value` 设置为 `true`，则 VirtioFS 被设置为文件共享机制。注意：如果 `useVirtualizationFrameworkVirtioFS` 和 `useGrpcfuse` 的 `value` 都设置为 `true`，则 VirtioFS 优先。如果两者都设置为 `false`，Docker Desktop 会启动失败并报错，因为必须至少启用一种文件共享机制。 |  |
 | `useGrpcfuse` | 仅限 macOS | 如果 `value` 设置为 `true`，则 gRPC Fuse 被设置为文件共享机制。 |  |
-| `useVirtualizationFrameworkRosetta`|  仅限 macOS | 如果 `value` 设置为 `true`，Docker Desktop 会开启 Rosetta 以加速 Apple Silicon 上的 x86_64/amd64 二进制仿真。注意：这也会自动启用 `Use Virtualization framework`。 | Docker Desktop 版本 4.29 及更高版本。 |
+| `useVirtualizationFrameworkRosetta`|  仅限 macOS | 如果 `value` 设置为 `true`，Docker Desktop 会开启 Rosetta 以加速 Apple Silicon 上的 x86_64/amd64 二进制仿真。注意：这也会自动启用 `Use Virtualization framework`。 |  |
 
 ### Docker Scout
 
@@ -290,21 +296,37 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 
 ### 代理设置
 
+Docker Desktop 有两个不同的代理设置，作用范围不同：
+
+- `proxy`（应用代理）：作用于 Docker Desktop 主机级流量——Desktop 应用程序、Docker CLI 和扩展。当未显式配置 `containersProxy` 时，它也作为守护进程的回退代理。一旦设置了 `containersProxy`，`proxy` 就不再参与守护进程或容器流量。
+- [`containersProxy`](#容器代理)：始终作用于 `docker image pull`。所有 `docker image pull` 和 Compose 拉取操作都经过 `containersProxy`，包括任何 PAC 文件规则。当配置了 `transparentPorts` 时，它也作用于运行中的容器出站流量。
+
 | 参数 | 操作系统 | 描述 | 版本 |
 |:-------------------------------|---|:-------------------------------|---|
 |`proxy`|   |如果 `mode` 设置为 `system` 而不是 `manual`，Docker Desktop 会从系统获取代理值，并忽略为 `http`、`https` 和 `exclude` 设置的任何值。将 `mode` 更改为 `manual` 以手动配置代理服务器。如果代理端口是自定义的，请在 `http` 或 `https` 属性中指定，例如 `"https": "http://myotherproxy.com:4321"`。`exclude` 属性指定要绕过代理的主机和域的逗号分隔列表。 |  |
 | `windowsDockerdPort`| 仅限 Windows | 在本地此端口上公开 Docker Desktop 的内部代理，以供 Windows Docker 守护进程连接。如果设置为 0，则选择一个随机的空闲端口。如果值大于 0，则使用该确切值作为端口。默认值为 -1，表示禁用该选项。 |  |
-|`enableKerberosNtlm`|  |当设置为 `true` 时，启用 Kerberos 和 NTLM 身份验证。默认为 `false`。有关更多信息，请参阅设置文档。 | Docker Desktop 版本 4.32 及更高版本。 |
-| `pac` | | 指定 PAC 文件 URL。例如，`"pac": "http://proxy/proxy.pac"`。 | |
-| `embeddedPac`  | | 指定嵌入式 PAC（代理自动配置）脚本。例如，`"embeddedPac": "function FindProxyForURL(url, host) { return \"DIRECT\"; }"`。此设置优先于 HTTP、HTTPS、代理绕过和 PAC 服务器 URL。 |  Docker Desktop 版本 4.46 及更高版本。 |
+|`enableKerberosNtlm`|  |当设置为 `true` 时，启用 Kerberos 和 NTLM 身份验证。默认为 `false`。有关更多信息，请参阅设置文档。 |  |
+| `pac` | | 指定 PAC 文件 URL。例如 `"pac": "http://proxy/proxy.pac"`。 | |
+| `embeddedPac`  | | 指定嵌入式 PAC（代理自动配置）脚本。例如，`"embeddedPac": "function FindProxyForURL(url, host) { return \"DIRECT\"; }"`。此设置优先于 HTTP、HTTPS、代理绕过和 PAC 服务器 URL。 |  |
+
+> [!NOTE]
+>
+> 代理配置是一个特例，因为它必须在两个地方进行配置：
+>
+> 1. 在 Docker Home 中为您的组织配置。
+> 2. 在安装了 Docker Desktop 的用户系统上配置。
+>
+> 在用户机器上，通过 `admin-settings.json` 文件或在 Docker Desktop 安装期间使用安装程序标志来配置代理。有关详细说明，请参阅[安装指南](/manuals/desktop/setup/install/windows-install.md#proxy-configuration)。
+>
+> 需要进行此额外配置，是因为 Docker Desktop 必须先知道使用哪个代理服务器，才能完成用户登录并从 Docker Home 获取组织设置。
 
 ### 容器代理
 
 | 参数 | 操作系统 | 描述 | 版本 |
 |:-------------------------------|---|:-------------------------------|---|
-|`containersProxy` | | 创建隔离容器。有关更多信息，请参阅[隔离容器](../air-gapped-containers.md)。| Docker Desktop 版本 4.29 及更高版本。 |
+|`containersProxy` | | 配置 `docker image pull`（始终强制执行）和运行中容器的出站流量（在设置 `transparentPorts` 时强制执行）的代理。有关更多信息，请参阅[隔离容器](../air-gapped-containers.md)。|  |
 | `pac` | | 指定 PAC 文件 URL。例如，`"pac": "http://containerproxy/proxy.pac"`。 | |
-| `embeddedPac`  | | 指定嵌入式 PAC（代理自动配置）脚本。例如，`"embeddedPac": "function FindProxyForURL(url, host) { return \"PROXY 192.168.92.1:2003\"; }"`。此设置优先于 HTTP、HTTPS、代理绕过和 PAC 服务器 URL。 |  Docker Desktop 版本 4.46 及更高版本。 |
+| `embeddedPac`  | | 指定嵌入式 PAC（代理自动配置）脚本。例如，`"embeddedPac": "function FindProxyForURL(url, host) { return \"PROXY 192.168.92.1:2003\"; }"`。此设置优先于 HTTP、HTTPS、代理绕过和 PAC 服务器 URL。 |  |
 
 ### Linux VM 设置
 
@@ -312,7 +334,7 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 |:-------------------------------|---|:-------------------------------|---|
 | `linuxVM` |   |与 Linux VM 选项相关的参数和设置 - 为方便起见在此分组。 |  |
 | &nbsp; &nbsp; &nbsp; &nbsp;`wslEngineEnabled`  | 仅限 Windows | 如果 `value` 设置为 true，Docker Desktop 使用基于 WSL 2 的引擎。这会覆盖安装时使用 `--backend=<backend name>` 标志设置的任何内容。 |  |
-| &nbsp; &nbsp; &nbsp; &nbsp;`dockerDaemonOptions` |  |如果 `value` 设置为 true，它会覆盖 Docker 引擎配置文件中的选项。请参阅 [Docker 引擎参考](/reference/cli/dockerd/#daemon-configuration-file)。请注意，为了增强安全性，当启用增强容器隔离时，某些配置属性可能会被覆盖。 |  |
+| &nbsp; &nbsp; &nbsp; &nbsp;`dockerDaemonOptions` |  |如果 `value` 设置为 true，它会覆盖 Docker 引擎配置文件中的选项。请参阅 [Docker 引擎参考](/reference/cli/dockerd.md#daemon-configuration-file)。请注意，为了增强安全性，当启用增强容器隔离时，某些配置属性可能会被覆盖。 |  |
 | &nbsp; &nbsp; &nbsp; &nbsp;`vpnkitCIDR` |  |覆盖用于 vpnkit DHCP/DNS 的 `*.docker.internal` 网络范围 |  |
 
 ### Windows 容器
@@ -320,11 +342,11 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 | 参数 | 操作系统 | 描述 | 版本 |
 |:-------------------------------|---|:-------------------------------|---|
 | `windowsContainers` |  | 与 `windowsContainers` 选项相关的参数和设置 - 为方便起见在此分组。 |  |
-| &nbsp; &nbsp; &nbsp; &nbsp;`dockerDaemonOptions` |  | 覆盖 Linux 守护进程配置文件中的选项。请参阅 [Docker 引擎参考](/reference/cli/dockerd/#daemon-configuration-file)。|  |
+| &nbsp; &nbsp; &nbsp; &nbsp;`dockerDaemonOptions` |  | 覆盖 Linux 守护进程配置文件中的选项。请参阅 [Docker 引擎参考](/reference/cli/dockerd.md#daemon-configuration-file)。|  |
 
 > [!NOTE]
 >
-> 此设置无法通过 Docker 管理控制台进行配置。
+> 此设置无法通过 Docker Home 进行配置。
 
 ### Kubernetes 设置
 
@@ -334,7 +356,7 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 
 > [!NOTE]
 >
-> 当将 `imagesRepository` 与增强容器隔离 (ECI) 一起使用时，请将这些镜像添加到 [ECI Docker 套接字挂载镜像列表](#enhanced-container-isolation)：
+> 当将 `imagesRepository` 与增强容器隔离 (ECI) 一起使用时，请将这些镜像添加到 [ECI Docker 套接字挂载镜像列表](#增强容器隔离)：
 >
 > `[imagesRepository]/desktop-cloud-provider-kind:`
 > `[imagesRepository]/desktop-containerd-registry-mirror:`
@@ -345,8 +367,8 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 
 | 参数 | 操作系统 | 描述 | 版本 |
 |:-------------------------------|---|:-------------------------------|---|
-| `defaultNetworkingMode` | 仅限 Windows 和 Mac | 定义新 Docker 网络的默认 IP 协议：`dual-stack`（IPv4 + IPv6，默认）、`ipv4only` 或 `ipv6only`。 | Docker Desktop 版本 4.43 及更高版本。 |
-| `dnsInhibition` | 仅限 Windows 和 Mac | 控制返回给容器的 DNS 记录过滤。选项：`auto`（推荐）、`ipv4`、`ipv6`、`none` | Docker Desktop 版本 4.43 及更高版本。 |
+| `defaultNetworkingMode` | 仅限 Windows 和 Mac | 定义新 Docker 网络的默认 IP 协议：`dual-stack`（IPv4 + IPv6，默认）、`ipv4only` 或 `ipv6only`。 |  |
+| `dnsInhibition` | 仅限 Windows 和 Mac | 控制返回给容器的 DNS 记录过滤。选项：`auto`（推荐）、`ipv4`、`ipv6`、`none` |  |
 | `portBindingBehavior` | 仅限基于 Linux 的容器 | 定义端口绑定限制和默认行为，允许管理员控制用户如何从其容器暴露端口。选项：`default-port-binding`、`default-local-port-binding`、`local-only-port-binding` | Docker Desktop 版本 4.52 及更高版本。 |
 
 有关更多信息，请参阅[网络](/manuals/desktop/features/networking.md#networking-mode-and-dns-behaviour-for-mac-and-windows)。
@@ -370,9 +392,9 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 | 参数 | 操作系统 | 描述 | 版本 |
 |:-----------------------------------------------------|----|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
 | `allowBetaFeatures` | | 如果 `value` 设置为 `true`，则启用 Beta 功能。 | |
-| `enableDockerAI` | | 如果 `allowBetaFeatures` 为 true，将 `enableDockerAI` 设置为 `true` 会默认启用 [Docker AI (Ask Gordon)](/manuals/ai/gordon/_index.md)。您可以独立于 `allowBetaFeatures` 设置控制此设置。 | |
+| `enableDockerAI` | | 如果 `allowBetaFeatures` 为 true，将 `enableDockerAI` 设置为 `true` 会默认启用 [Gordon](/manuals/ai/gordon/_index.md)。您可以独立于 `allowBetaFeatures` 设置控制此设置。 | |
 | `enableDockerMCPToolkit` | | 如果 `allowBetaFeatures` 为 true，将 `enableDockerMCPToolkit` 设置为 `true` 会默认启用 [MCP Toolkit 功能](/manuals/ai/mcp-catalog-and-toolkit/toolkit.md)。您可以独立于 `allowBetaFeatures` 设置控制此设置。 | |
-| `allowExperimentalFeatures` | | 如果 `value` 设置为 `true`，则启用实验性功能。 | Docker Desktop 版本 4.41 及更早版本 |
+| `allowExperimentalFeatures` | | 如果 `value` 设置为 `true`，则启用实验性功能。 |  |
 
 ### 增强容器隔离
 
@@ -382,3 +404,4 @@ Docker Desktop 将一些设置组合在一起，使用一个切换开关来控�
 | &nbsp; &nbsp; &nbsp; &nbsp;`dockerSocketMount` |  | 默认情况下，增强容器隔离会阻止将 Docker 引擎套接字绑定挂载到容器中（例如，`docker run -v /var/run/docker.sock:/var/run/docker.sock ...`）。这允许您以受控方式放宽此限制。有关更多信息，请参阅 [ECI 配置](../enhanced-container-isolation/config.md)。 |  |
 | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `imageList` |  | 指示允许绑定挂载 Docker 引擎套接字的容器镜像。 |  |
 | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `commandList` |  | 限制容器可以通过绑定挂载的 Docker 引擎套接字发出的命令。 |  |
+

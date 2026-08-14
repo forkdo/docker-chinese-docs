@@ -3,7 +3,10 @@
 
 
 
+
+
 配置使服务能够调整其行为，而无需重新构建 Docker 镜像。与卷类似，配置会以文件形式挂载到容器的文件系统中。在 Linux 容器中，挂载点在容器内的默认位置为 `/<config-name>`；在 Windows 容器中，则为 `C:\<config-name>`。
+
 
 只有当服务被 `services` 顶级元素中的 [`configs`](services.md#configs) 属性显式授权时，才能访问 configs。
 

@@ -5,7 +5,7 @@
 
 ### 开启或关闭扩展
 
-Docker Extensions 默认开启。要更改您的设置：
+Docker Extensions 默认关闭。要更改您的设置：
 
 1. 导航至 **Settings**（设置）。
 2. 选择 **Extensions**（扩展）选项卡。
@@ -14,8 +14,8 @@ Docker Extensions 默认开启。要更改您的设置：
 
 > [!NOTE]
 >
-> 如果您是[组织所有者](/manuals/admin/organization/manage-a-team.md#organization-owner)，可以为用户关闭扩展。打开 `settings-store.json` 文件，并将 `"extensionsEnabled"` 设置为 `false`。
-> `settings-store.json` 文件（对于 Docker Desktop 4.34 及更早版本为 `settings.json`）位于：
+> 如果您是[组织所有者](/manuals/admin/organization/manage/manage-a-team.md#what-is-an-organization-owner)，可以为用户关闭扩展。打开 `settings-store.json` 文件，并将 `"extensionsEnabled"` 设置为 `false`。
+> `settings-store.json` 文件位于：
 >   - Mac 上的 `~/Library/Group Containers/group.com.docker/settings-store.json`
 >   - Windows 上的 `C:\Users\[USERNAME]\AppData\Roaming\Docker\settings-store.json`
 >
@@ -58,3 +58,4 @@ Docker Extensions 默认开启。要更改您的设置：
     - Issues（问题）。您将被发送到 Docker Desktop 外部的一个页面来提交您的反馈。
 
 如果某个扩展没有提供给您提供反馈的方式，请联系我们，我们会为您转达反馈。要提供反馈，请选择 **Extensions Marketplace**（扩展市场）右侧的 **Give feedback**（提供反馈）。
+

@@ -13,11 +13,9 @@ Docker 提供多种支持渠道，具体取决于您的订阅级别和需求。
 - Docker Team：2 个工作日内响应，24×5 可用性
 - Docker Business：1 个工作日内响应，24×5 可用性
 
-> [!NOTE]
+> [!TIP]
 >
-> Docker Business 订阅用户可额外购买高级支持服务，享受更快的响应时间和 24×7 可用性。
-
-有关详细的支持功能和响应时间，请参阅 [Docker 定价](https://www.docker.com/pricing/)。
+> 面向 [Docker Business 订阅用户](https://www.docker.com/pricing?ref=Docs&refAction=DocsSupport) 的高级支持附加组件提供更快的响应时间和 24×7 可用性。
 
 ### 支持严重性级别
 
@@ -125,3 +123,4 @@ Docker Desktop 支持不包括：
 默认情况下，Docker, Inc. 会在 30 天后删除上传的诊断包。您可以通过指定诊断 ID 或您的 GitHub ID 请求删除诊断包。Docker, Inc. 仅使用数据调查特定用户问题，但可能会得出高级（非个人）指标。
 
 有关更多信息，请参阅 [Docker 数据处理协议](https://www.docker.com/legal/data-processing-agreement)。
+

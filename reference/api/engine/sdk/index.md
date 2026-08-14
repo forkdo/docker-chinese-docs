@@ -30,6 +30,17 @@ $ go get github.com/moby/moby/client
 
 更多信息，请参阅 [Docker Engine Python SDK 参考](https://docker-py.readthedocs.io/)。
 
+> [!NOTE]
+> Docker Desktop for Linux 用户
+>
+> Docker Desktop for Linux 使用每用户套接字，而不是系统级的 `/var/run/docker.sock`。要将 Docker SDK 与 Docker Desktop for Linux 配合使用，请设置 `DOCKER_HOST` 环境变量：
+>
+> ```bash
+> export DOCKER_HOST=unix://$HOME/.docker/desktop/docker.sock
+> ```
+>
+> 更多详情，请参阅 [Linux 常见问题解答](/manuals/desktop/troubleshoot-and-support/faqs/linuxfaqs.md#how-do-i-use-docker-sdks-with-docker-desktop-for-linux)。
+
 ## 查看 API 参考
 
 您可以[查看最新版本 API 的参考](/reference/api/engine/latest/)或[选择特定版本](/reference/api/engine/#api-version-matrix)。
@@ -128,15 +139,15 @@ print(client.containers.run("alpine", ["echo", "hello", "world"]))
 ```console
 $ curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
   -d '{"Image": "alpine", "Cmd": ["echo", "hello world"]}' \
-  -X POST http://localhost/v1.53/containers/create
+  -X POST http://localhost/v1.55/containers/create
 {"Id":"1c6594faf5","Warnings":null}
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/start
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.55/containers/1c6594faf5/start
 
-$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.53/containers/1c6594faf5/wait
+$ curl --unix-socket /var/run/docker.sock -X POST http://localhost/v1.55/containers/1c6594faf5/wait
 {"StatusCode":0}
 
-$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.53/containers/1c6594faf5/logs?stdout=1"
+$ curl --unix-socket /var/run/docker.sock "http://localhost/v1.55/containers/1c6594faf5/logs?stdout=1"
 hello world
 ```
 
@@ -146,7 +157,7 @@ hello world
 >
 > 前面的示例假设您使用的是 cURL 7.50.0 或更高版本。旧版本的 cURL 在使用套接字连接时使用了[非标准 URL 表示法](https://github.com/moby/moby/issues/17960)。
 >
-> 如果您使用的是旧版本的 cURL，请改用 `http:/<API version>/`，例如：`http:/v1.53/containers/1c6594faf5/start`。
+> 如果您使用的是旧版本的 cURL，请改用 `http:/<API version>/`，例如：`http:/v1.55/containers/1c6594faf5/start`。
 
 
 
@@ -159,7 +170,7 @@ hello world
 | 语言 | 库 |
 | :------- | :-------------------------------------------------------------------------- |
 | C | [libdocker](https://github.com/danielsuo/libdocker) |
-| C# | [Docker.DotNet](https://github.com/ahmetalpbalkan/Docker.DotNet) |
+| C# | [Docker.DotNet](https://github.com/testcontainers/Docker.DotNet) |
 | C++ | [lasote/docker_client](https://github.com/lasote/docker_client) |
 | Clojure | [clj-docker-client](https://github.com/into-docker/clj-docker-client) |
 | Clojure | [contajners](https://github.com/lispyclouds/contajners) |
@@ -184,3 +195,4 @@ hello world
 | Scala | [tugboat](https://github.com/softprops/tugboat) |
 | Scala | [reactive-docker](https://github.com/almoehi/reactive-docker) |
 | Swift | [docker-client-swift](https://github.com/valeriomazzeo/docker-client-swift) |
+

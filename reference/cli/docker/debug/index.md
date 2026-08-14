@@ -13,9 +13,6 @@
 
 
 
-
-
-
 ## Description
 
 Docker Debug is a CLI command that helps you follow best practices by keeping your images small and secure. 

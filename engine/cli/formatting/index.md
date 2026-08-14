@@ -20,7 +20,6 @@ Docker 提供了一套基本函数来操作模板元素。
 > ```console
 > $ docker inspect --format '{{join .Args \" , \"}}'
 > ```
->
 
 ## join
 
@@ -99,7 +98,7 @@ $ docker image list --format '{{truncate .Repository 15}}'
 
 本示例显示镜像仓库名称，如果名称超过 15 个字符，则截断为前 15 个字符。
 
-## println
+## `println`
 
 `println` 将每个值打印在新的一行上。
 
@@ -114,3 +113,4 @@ $ docker inspect --format='{{range .NetworkSettings.Networks}}{{println .IPAddre
 ```console
 $ docker container ls --format='{{json .}}'
 ```
+

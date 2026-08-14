@@ -1,19 +1,16 @@
-# Matrix targets
+# 矩阵目标（Matrix targets）
 
 
-A matrix strategy lets you fork a single target into multiple different
-variants, based on parameters that you specify. This works in a similar way to
-[Matrix strategies for GitHub Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs).
-You can use this to reduce duplication in your Bake definition.
+矩阵策略让你可以根据指定的参数将单个目标分叉为多个不同的变体。其工作方式类似于
+[GitHub Actions 的矩阵策略](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)。
+你可以用它来减少 Bake 定义中的重复。
 
-The matrix attribute is a map of parameter names to lists of values. Bake
-builds each possible combination of values as a separate target.
+矩阵属性是一个从参数名到值列表的映射。Bake 将每个可能的值组合作为一个独立目标进行构建。
 
-Each generated target must have a unique name. To specify how target names
-should resolve, use the name attribute.
+每个生成的目标都必须有唯一的名称。要指定目标名称应如何解析，请使用 `name` 属性。
 
-The following example resolves the app target to `app-foo` and `app-bar`. It
-also uses the matrix value to define the [target build stage](/build/bake/reference/#targettarget).
+以下示例将 `app` 目标解析为 `app-foo` 和 `app-bar`。它还使用矩阵值来定义
+[目标构建阶段](/build/bake/reference/#targettarget)。
 
 ```hcl {title=docker-bake.hcl}
 target "app" {
@@ -57,12 +54,11 @@ $ docker buildx bake --print app
 }
 ```
 
-## Multiple axes
+## 多个轴
 
-You can specify multiple keys in your matrix to fork a target on multiple axes.
-When using multiple matrix keys, Bake builds every possible variant.
+你可以在矩阵中指定多个键，以在多个轴上分叉目标。使用多个矩阵键时，Bake 会构建每个可能的变体。
 
-The following example builds four targets:
+以下示例构建四个目标：
 
 - `app-foo-1-0`
 - `app-foo-2-0`
@@ -83,13 +79,12 @@ target "app" {
 }
 ```
 
-## Multiple values per matrix target
+## 每个矩阵目标多个值
 
-If you want to differentiate the matrix on more than just a single value, you
-can use maps as matrix values. Bake creates a target for each map, and you can
-access the nested values using dot notation.
+如果你想在多个值上区分矩阵，而不只是单个值，可以使用 map 作为矩阵值。Bake 为每个 map 创建一个目标，
+你可以使用点表示法访问嵌套值。
 
-The following example builds two targets:
+以下示例构建两个目标：
 
 - `app-foo-1-0`
 - `app-bar-2-0`

@@ -605,7 +605,7 @@ $ sudo dockerd --add-runtime <runtime>=<path>
 
 Defining runtime arguments via the command line is not supported.
 
-For an example configuration for a runc drop-in replacment, see
+For an example configuration for a runc drop-in replacement, see
 [Alternative container runtimes > youki](https://docs.docker.com/engine/daemon/alternative-runtimes/#youki)
 
 ##### Configure the default container runtime
@@ -953,8 +953,6 @@ the `--cgroup-parent` option on the daemon.
 #### Daemon metrics
 
 The `--metrics-addr` option takes a TCP address to serve the metrics API.
-This feature is still experimental, therefore, the daemon must be running in experimental
-mode for this feature to work.
 
 To serve the metrics API on `localhost:9323` you would specify `--metrics-addr 127.0.0.1:9323`,
 allowing you to make requests on the API at `127.0.0.1:9323/metrics` to receive metrics in the
@@ -1054,9 +1052,9 @@ $ echo $?
 
 ##### On Linux
 
-The default location of the configuration file on Linux is
-`/etc/docker/daemon.json`. Use the `--config-file` flag to specify a
-non-default location.
+The default location of the configuration file on Linux is `/etc/docker/daemon.json`.
+If the file does not exist, you need to create it first. Use the `--config-file`
+flag to specify a non-default location.
 
 The following is a full example of the allowed configuration options on Linux:
 
@@ -1205,8 +1203,9 @@ The following is a full example of the allowed configuration options on Linux:
 ##### On Windows
 
 The default location of the configuration file on Windows is
-`%programdata%\docker\config\daemon.json`. Use the `--config-file` flag
-to specify a non-default location.
+`%programdata%\docker\config\daemon.json`. If the file does not exist, you need
+to create it first. Use the `--config-file` flag to specify a non-default
+location.
 
 The following is a full example of the allowed configuration options on Windows:
 

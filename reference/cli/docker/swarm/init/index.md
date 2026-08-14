@@ -6,14 +6,6 @@
 
 
 
-<!--
-此页面是自动生成自 Docker 的源代码。如果您想
-建议修改此处显示的文本，请在 GitHub 的源代码仓库中
-提交工单或拉取请求：
-
-https://github.com/docker/cli
--->
-
 
 
 
@@ -58,7 +50,7 @@ Swarm initialized: current node (bvz81updecsj6wjz393c09vti) is now a manager.
 
 To add a worker to this swarm, run the following command:
 
-    docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-1awxwuwd3z9j1z3puu7rcgdbx 172.17.0.2:2377
+    docker swarm join --token SWMTKN-1-aabbccdd00112233aabbccdd00112233aabbccdd00112233aa-aabbccdd00112233... 172.17.0.2:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```

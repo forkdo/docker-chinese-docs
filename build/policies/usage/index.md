@@ -1,44 +1,35 @@
-# Using build policies
+# 使用构建策略
 
 
-Build policies validate inputs before builds execute. This guide covers how to
-develop policies iteratively and apply them to real builds with `docker buildx
-build` and `docker buildx bake`.
+构建策略在构建执行之前验证输入。本指南介绍如何使用 `docker buildx build` 和 `docker buildx bake` 以迭代方式开发策略并将其应用到真实构建中。
 
-## Prerequisites
+## 先决条件
 
-- Buildx 0.31.0 or later - Check your version: `docker buildx version`
-- BuildKit 0.26.0 or later - Verify with: `docker buildx inspect
-  --bootstrap`
+- Buildx 0.31.0 或更高版本 - 检查你的版本：`docker buildx version`
+- BuildKit 0.26.0 或更高版本 - 通过以下命令验证：`docker buildx inspect --bootstrap`
 
-If you're using Docker Desktop, ensure you're on a version that includes these
-updates.
+如果你使用的是 Docker Desktop，请确保你使用的版本包含这些更新。
 
-## Policy development workflow
+## 策略开发工作流
 
-Buildx automatically loads policies that match your Dockerfile name. When you
-build with `Dockerfile`, Buildx looks for `Dockerfile.rego` in the same
-directory. For a file named `app.Dockerfile`, it looks for
-`app.Dockerfile.rego`. See the [Advanced: Policy configuration](#advanced-policy-configuration)
-section for configuration options and manual policy loading.
+Buildx 会自动加载与你的 Dockerfile 名称匹配的策略。当你使用 `Dockerfile` 构建时，Buildx 会在同一目录中查找 `Dockerfile.rego`。对于名为 `app.Dockerfile` 的文件，它会查找 `app.Dockerfile.rego`。有关配置选项和手动策略加载，请参阅 [进阶：策略配置](#advanced-policy-configuration) 部分。
 
-Writing policies is an iterative process:
+编写策略是一个迭代的过程：
 
-1. Start with a basic deny-all policy.
-2. Build with debug logging to see what inputs your Dockerfile uses.
-3. Add rules to allow specific sources based on the debug output.
-4. Test and refine.
+1. 从基本的默认拒绝策略开始。
+2. 使用调试日志构建，查看你的 Dockerfile 使用了哪些输入。
+3. 根据调试输出添加规则以允许特定来源。
+4. 测试并完善。
 
-### Viewing inputs from your Dockerfile
+### 查看来自 Dockerfile 的输入
 
-To see the inputs that your Dockerfile references (images, Git repos, HTTP
-downloads), build with debug logging:
+要查看你的 Dockerfile 引用的输入（镜像、Git 仓库、HTTP 下载），请使用调试日志构建：
 
 ```console
 $ docker buildx build --progress=plain --policy log-level=debug .
 ```
 
-Example output for an image source:
+镜像源的示例输出：
 
 ```text
 #1 0.010 checking policy for source docker-image://alpine:3.19 (linux/arm64)
@@ -58,54 +49,46 @@ Example output for an image source:
 #1 0.012 policy decision for source docker-image://alpine:3.19: ALLOW
 ```
 
-This shows the complete input structure, which fields are unresolved, and the
-policy decision for each source. See [Input reference](./inputs.md) for all
-available fields.
+这显示了完整的输入结构、哪些字段未解析，以及每个源的策略决策。有关所有可用字段，请参阅 [输入参考](./inputs.md)。
 
-### Testing policies with policy eval
+### 使用 policy eval 测试策略
 
-Use [`docker buildx policy eval`](/reference/cli/docker/buildx/policy/eval/) to
-test whether your policy allows a specific source without running a full build.
+使用 [`docker buildx policy eval`](/reference/cli/docker/buildx/policy/eval/) 来测试你的策略是否允许某个特定源，而无需运行完整构建。
 
-Note: `docker buildx policy eval` tests the source specified as the argument.
-It doesn't parse your Dockerfile to evaluate all inputs - for that, [build with
---progress=plain](#viewing-inputs-from-your-dockerfile).
+注意：`docker buildx policy eval` 测试作为参数指定的源。它不会解析你的 Dockerfile 来评估所有输入——要做到这一点，请 [使用 --progress=plain 构建](#viewing-inputs-from-your-dockerfile)。
 
-Test if your policy allows the local context:
+测试你的策略是否允许本地上下文：
 
 ```console
 $ docker buildx policy eval .
 ```
 
-No output means the policy allowed the source. If denied, you see:
+没有输出意味着策略允许了该源。如果被拒绝，你会看到：
 
 ```console
 ERROR: policy denied
 ```
 
-Test other sources:
+测试其他源：
 
 ```console
-$ docker buildx policy eval https://example.com              # Test HTTP
-$ docker buildx policy eval https://github.com/org/repo.git  # Test Git
+$ docker buildx policy eval https://example.com              # 测试 HTTP
+$ docker buildx policy eval https://github.com/org/repo.git  # 测试 Git
 ```
 
-By default, `--print` shows reference information parsed from the source string
-(like `repo`, `tag`, `host`) without fetching from registries. To inspect
-metadata that requires fetching the source (like `labels`, `checksum`, or
-`hasProvenance`), specify which fields to fetch with `--fields`:
+默认情况下，`--print` 显示从源字符串解析出的引用信息（如 `repo`、`tag`、`host`），而不从镜像仓库获取。要检查需要获取源才能得到的元数据（如 `labels`、`checksum` 或 `hasProvenance`），请使用 `--fields` 指定要获取的字段：
 
 ```console
 $ docker buildx policy eval --print --fields image.labels docker-image://alpine:3.19
 ```
 
-Multiple fields can be specified as a comma-separated list.
+多个字段可以指定为逗号分隔的列表。
 
-### Iterative development example
+### 迭代开发示例
 
-Here's a practical workflow for developing policies:
+以下是开发策略的实用工作流：
 
-1. Start with basic deny-all policy:
+1. 从基本的默认拒绝策略开始：
 
    ```rego {title="Dockerfile.rego"}
    package docker
@@ -117,13 +100,13 @@ Here's a practical workflow for developing policies:
    decision := {"allow": allow}
    ```
 
-2. Build with debug logging to see what inputs your Dockerfile uses:
+2. 使用调试日志构建，查看你的 Dockerfile 使用了哪些输入：
 
    ```console
    $ docker buildx build --progress=plain --policy log-level=debug .
    ```
 
-   The output shows the denied image and its input structure:
+   输出显示了被拒绝的镜像及其输入结构：
 
    ```text
    #1 0.026 checking policy for source docker-image://docker.io/library/alpine:3.19
@@ -138,7 +121,7 @@ Here's a practical workflow for developing policies:
    #1 ERROR: source "docker-image://alpine:3.19" not allowed by policy
    ```
 
-3. Add a rule allowing the alpine image:
+3. 添加一条允许 alpine 镜像的规则：
 
    ```rego
    allow if {
@@ -146,21 +129,21 @@ Here's a practical workflow for developing policies:
    }
    ```
 
-4. Build again to verify the policy works:
+4. 再次构建以验证策略是否有效：
 
    ```console
    $ docker buildx build .
    ```
 
-If it fails, see [Debugging](./debugging.md) for troubleshooting guidance.
+如果失败，请参阅 [调试](./debugging.md) 获取故障排除指南。
 
-## Using policies with `docker build`
+## 将策略与 `docker build` 一起使用
 
-Once you've developed and tested your policy, apply it to real builds.
+一旦你开发并测试了策略，就将它应用到真实构建中。
 
-### Basic usage
+### 基本用法
 
-Create a policy alongside your Dockerfile:
+在你的 Dockerfile 旁边创建一个策略：
 
 ```dockerfile {title="Dockerfile"}
 FROM alpine:3.19
@@ -181,55 +164,53 @@ allow if {
 decision := {"allow": allow}
 ```
 
-Build normally:
+正常构建：
 
 ```console
 $ docker buildx build .
 ```
 
-Buildx loads the policy automatically and validates the `alpine:3.19` image
-before building.
+Buildx 会在构建前自动加载策略并验证 `alpine:3.19` 镜像。
 
-### Build with different Dockerfile names
+### 使用不同的 Dockerfile 名称构建
 
-Specify the Dockerfile with `-f`:
+使用 `-f` 指定 Dockerfile：
 
 ```console
 $ docker buildx build -f app.Dockerfile .
 ```
 
-Buildx looks for `app.Dockerfile.rego` in the same directory.
+Buildx 会在同一目录中查找 `app.Dockerfile.rego`。
 
-### Build with manual policy
+### 使用手动策略构建
 
-Add an extra policy to the automatic one:
+在自动策略之外添加一个额外策略：
 
 ```console
 $ docker buildx build --policy filename=extra-checks.rego .
 ```
 
-Both `Dockerfile.rego` (automatic) and `extra-checks.rego` (manual) must pass.
+`Dockerfile.rego`（自动）和 `extra-checks.rego`（手动）都必须通过。
 
-### Build without automatic policy
+### 在没有自动策略的情况下构建
 
-Use only your specified policy:
+仅使用你指定的策略：
 
 ```console
 $ docker buildx build --policy reset=true,filename=strict.rego .
 ```
 
-## Using policies with bake
+## 将策略与 bake 一起使用
 
-[Bake](/build/bake/) supports automatic policy loading just like `docker buildx
-build`. Place `Dockerfile.rego` alongside your Dockerfile and run:
+[Bake](/build/bake/) 支持与 `docker buildx build` 一样的自动策略加载。将 `Dockerfile.rego` 放在你的 Dockerfile 旁边并运行：
 
 ```console
 $ docker buildx bake
 ```
 
-### Manual policy in bake files
+### bake 文件中的手动策略
 
-Specify additional policies in your `docker-bake.hcl`:
+在你的 `docker-bake.hcl` 中指定额外的策略：
 
 ```hcl {title="docker-bake.hcl"}
 target "default" {
@@ -238,10 +219,9 @@ target "default" {
 }
 ```
 
-The `policy` attribute takes a list of policy files. Bake loads these in
-addition to the automatic `Dockerfile.rego` (if it exists).
+`policy` 属性接受一个策略文件列表。Bake 会加载这些文件，外加自动的 `Dockerfile.rego`（如果存在）。
 
-### Multiple policies in bake
+### bake 中的多个策略
 
 ```hcl {title="docker-bake.hcl"}
 target "webapp" {
@@ -253,11 +233,11 @@ target "webapp" {
 }
 ```
 
-All policies must pass for the target to build successfully.
+所有策略都必须通过，目标才能成功构建。
 
-### Different policies per target
+### 每个目标使用不同的策略
 
-Apply different validation rules to different targets:
+对不同目标应用不同的验证规则：
 
 ```hcl {title="docker-bake.hcl"}
 target "development" {
@@ -271,27 +251,26 @@ target "production" {
 }
 ```
 
-Build with the appropriate target:
+使用适当的目标构建：
 
 ```console
-$ docker buildx bake development  # Uses permissive policy
-$ docker buildx bake production   # Uses strict policies
+$ docker buildx bake development  # 使用宽松策略
+$ docker buildx bake production   # 使用严格策略
 ```
 
-### Bake with policy options
+### 带策略选项的 bake
 
-Currently, bake doesn't support policy options (reset, strict, disabled) in the
-HCL file. Use command-line flags instead:
+目前，bake 不支持在 HCL 文件中使用策略选项（reset、strict、disabled）。请改用命令行标志：
 
 ```console
 $ docker buildx bake --policy disabled=true production
 ```
 
-## Testing in CI/CD
+## 在 CI/CD 中测试
 
-Validate policies in continuous integration by running builds with the `--policy` flag. For unit testing policies before running builds, see [Test build policies](./testing.md).
+通过在构建时使用 `--policy` 标志运行构建，在持续集成中验证策略。有关在运行构建之前对策略进行单元测试，请参阅 [测试构建策略](./testing.md)。
 
-Test policies during CI builds:
+在 CI 构建期间测试策略：
 
 ```yaml {title=".github/workflows/test-policies.yml"}
 name: Test Build Policies
@@ -301,111 +280,95 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
+      - uses: actions/checkout@v6
+      - uses: docker/setup-buildx-action@v4
       - name: Test build with policy
         run: docker buildx build --policy strict=true .
 ```
 
-This ensures policy changes don't break builds and that new rules work as
-intended. The `strict=true` flag fails the build if policies aren't loaded (for
-example, if the BuildKit instance used by the build is too old and doesn't
-support policies).
+这可确保策略更改不会破坏构建，并且新规则按预期工作。`strict=true` 标志会在策略未加载（例如，构建使用的 BuildKit 实例过旧且不支持策略）时使构建失败。
 
-## Advanced: Policy configuration
+## 进阶：策略配置
 
-This section covers advanced policy loading mechanisms and configuration
-options.
+本节介绍进阶的策略加载机制和配置选项。
 
-### Automatic policy loading
+### 自动策略加载
 
-Buildx automatically loads policies that match your Dockerfile name. When you
-build with `Dockerfile`, Buildx looks for `Dockerfile.rego` in the same
-directory. For a file named `app.Dockerfile`, it looks for
-`app.Dockerfile.rego`.
+Buildx 会自动加载与你的 Dockerfile 名称匹配的策略。当你使用 `Dockerfile` 构建时，Buildx 会在同一目录中查找 `Dockerfile.rego`。对于名为 `app.Dockerfile` 的文件，它会查找 `app.Dockerfile.rego`。
 
 ```text
 project/
 ├── Dockerfile
-├── Dockerfile.rego          # Loaded automatically for Dockerfile
+├── Dockerfile.rego          # 为 Dockerfile 自动加载
 ├── app.Dockerfile
-├── app.Dockerfile.rego      # Loaded automatically for app.Dockerfile
+├── app.Dockerfile.rego      # 为 app.Dockerfile 自动加载
 └── src/
 ```
 
-This automatic loading means you don't need command-line flags in most cases.
-Create the policy file alongside your Dockerfile and build:
+这种自动加载意味着在大多数情况下你不需要命令行标志。在你的 Dockerfile 旁边创建策略文件并构建：
 
 ```console
 $ docker buildx build .
 ```
 
-Buildx detects `Dockerfile.rego` and evaluates it before running the build.
+Buildx 会检测到 `Dockerfile.rego` 并在运行构建之前评估它。
 
 > [!NOTE]
-> Policy files must be in the same directory as the Dockerfile they validate.
-> Buildx doesn't search parent directories or subdirectories.
+> 策略文件必须与它们所验证的 Dockerfile 位于同一目录。Buildx 不会搜索父目录或子目录。
 
-### When policies don't load
+### 当策略未加载时
 
-If buildx can't find a matching `.rego` file, the build proceeds without policy
-evaluation. To require policies and fail if none are found, use strict mode:
+如果 buildx 找不到匹配的 `.rego` 文件，构建将在不进行策略评估的情况下继续进行。要要求策略并在找不到任何策略时失败，请使用严格模式：
 
 ```console
 $ docker buildx build --policy strict=true .
 ```
 
-This fails the build if no policy loads or if the BuildKit daemon doesn't
-support policies.
+如果未加载任何策略，或者 BuildKit 守护进程不支持策略，这会使构建失败。
 
-### Manual policy configuration
+### 手动策略配置
 
-The `--policy` flag lets you specify additional policies, override automatic
-loading, or control policy behavior.
+`--policy` 标志让你指定额外的策略、覆盖自动加载，或控制策略行为。
 
-Basic syntax:
+基本语法：
 
 ```console
 $ docker buildx build --policy filename=custom.rego .
 ```
 
-This loads `custom.rego` in addition to the automatic `Dockerfile.rego` (if it
-exists).
+这会加载 `custom.rego`，外加自动的 `Dockerfile.rego`（如果存在）。
 
-Multiple policies:
+多个策略：
 
 ```console
 $ docker buildx build --policy filename=policy1.rego --policy filename=policy2.rego .
 ```
 
-All policies must pass for the build to succeed. Use this to enforce layered
-requirements (base policy + project-specific rules).
+所有策略都必须通过，构建才能成功。用它来强制执行分层要求（基础策略 + 项目特定规则）。
 
-Available options:
+可用选项：
 
-| Option              | Description                                             | Example                       |
-| ------------------- | ------------------------------------------------------- | ----------------------------- |
-| `filename=<path>`   | Load policy from specified file                         | `filename=custom.rego`        |
-| `reset=true`        | Ignore automatic policies, use only specified ones      | `reset=true`                  |
-| `disabled=true`     | Disable all policy evaluation                           | `disabled=true`               |
-| `strict=true`       | Fail if BuildKit doesn't support policies               | `strict=true`                 |
-| `log-level=<level>` | Control policy logging (error, warn, info, debug, none). Use `debug` to see complete input JSON and unresolved fields | `log-level=debug`             |
+| 选项                  | 描述                                                                           | 示例                          |
+| --------------------- | ------------------------------------------------------------------------------ | ----------------------------- |
+| `filename=<path>`     | 从指定文件加载策略                                                             | `filename=custom.rego`        |
+| `reset=true`          | 忽略自动策略，仅使用指定的策略                                                 | `reset=true`                  |
+| `disabled=true`       | 禁用所有策略评估                                                               | `disabled=true`               |
+| `strict=true`         | 如果 BuildKit 不支持策略则失败                                                 | `strict=true`                 |
+| `log-level=<level>`   | 控制策略日志（error、warn、info、debug、none）。使用 `debug` 可查看完整的输入 JSON 和未解析字段 | `log-level=debug`             |
 
-Combine options with commas:
+用逗号组合选项：
 
 ```console
 $ docker buildx build --policy filename=extra.rego,strict=true .
 ```
 
-### Exploring sources with policy eval
+### 使用 policy eval 探索源
 
-The `docker buildx policy eval` command lets you quickly explore and test
-sources without running a build.
+`docker buildx policy eval` 命令让你可以快速探索和测试源，而无需运行构建。
 
-#### Inspect input structure with --print
+#### 使用 --print 检查输入结构
 
-Use `--print` to see the input structure for any source without running policy
-evaluation:
+使用 `--print` 查看任何源的的输入结构，而无需运行策略评估：
 
 ```console
 $ docker buildx policy eval --print https://github.com/moby/buildkit.git
@@ -421,69 +384,64 @@ $ docker buildx policy eval --print https://github.com/moby/buildkit.git
 }
 ```
 
-Test different source types:
+测试不同的源类型：
 
 ```console
-# HTTP downloads
+# HTTP 下载
 $ docker buildx policy eval --print https://releases.hashicorp.com/terraform/1.5.0/terraform.zip
 
-# Images (requires docker-image:// prefix)
+# 镜像（需要 docker-image:// 前缀）
 $ docker buildx policy eval --print docker-image://alpine:3.19
 
-# Local context
+# 本地上下文
 $ docker buildx policy eval --print .
 ```
 
-Shows information parsed from the source without fetching. Use `--fields` to
-fetch specific metadata (see [above](#testing-policies-with-policy-eval)).
+显示从源解析出的信息，而无需获取。使用 `--fields` 获取特定的元数据（请参阅 [上文](#testing-policies-with-policy-eval)）。
 
-#### Test with specific policy files
+#### 使用特定策略文件测试
 
-The `--filename` flag specifies which policy file to load by providing the base
-Dockerfile name (without the `.rego` extension). This is useful for testing
-sources against policies associated with different Dockerfiles.
+`--filename` 标志通过提供基础 Dockerfile 名称（不带 `.rego` 扩展名）来指定要加载哪个策略文件。这对于针对与不同 Dockerfile 关联的策略测试源很有用。
 
-For example, to test a source against the policy for `app.Dockerfile`:
+例如，要针对 `app.Dockerfile` 的策略测试一个源：
 
 ```console
 $ docker buildx policy eval --filename app.Dockerfile .
 ```
 
-This loads `app.Dockerfile.rego` and tests whether it allows the source `.`
-(the local directory). The flag defaults to `Dockerfile` if not specified.
+这会加载 `app.Dockerfile.rego` 并测试它是否允许该源 `.`（本地目录）。如果未指定，该标志默认为 `Dockerfile`。
 
-Test different sources against your policy:
+针对你的策略测试不同的源：
 
 ```console
 $ docker buildx policy eval --filename app.Dockerfile https://github.com/org/repo.git
 $ docker buildx policy eval --filename app.Dockerfile docker-image://alpine:3.19
 ```
 
-### Reset automatic loading
+### 重置自动加载
 
-To use only your specified policies and ignore automatic `.rego` files:
+要仅使用你指定的策略并忽略自动的 `.rego` 文件：
 
 ```console
 $ docker buildx build --policy reset=true,filename=custom.rego .
 ```
 
-This skips `Dockerfile.rego` and loads only `custom.rego`.
+这会跳过 `Dockerfile.rego`，仅加载 `custom.rego`。
 
-### Disable policies temporarily
+### 临时禁用策略
 
-Disable policy evaluation for testing or emergencies:
+为测试或紧急情况禁用策略评估：
 
 ```console
 $ docker buildx build --policy disabled=true .
 ```
 
-The build proceeds without any policy checks. Use this carefully - you're
-bypassing security controls.
+构建将在没有任何策略检查的情况下继续进行。请谨慎使用——你正在绕过安全控制。
 
-## Next steps
+## 下一步
 
-- Write unit tests for your policies: [Test build policies](./testing.md)
-- Debug policy failures: [Debugging](./debugging.md)
-- Browse working examples: [Example policies](./examples.md)
-- Reference all input fields: [Input reference](./inputs.md)
+- 为你的策略编写单元测试：[测试构建策略](./testing.md)
+- 调试策略失败：[调试](./debugging.md)
+- 浏览可用的示例：[示例策略](./examples.md)
+- 参考所有输入字段：[输入参考](./inputs.md)
 

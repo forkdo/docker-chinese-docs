@@ -3,7 +3,10 @@
 
 
 
+
+
 Deploy 是 Compose Specification 的一个可选部分。它提供了一组部署规范，用于管理容器在不同环境中的行为。
+
 
 ## 属性
 
@@ -76,7 +79,7 @@ services:
 > - 已完成的任务会一直保留，直到被显式移除。
 > - 用于控制并发的选项（如 `max-concurrent`）仅通过 CLI 支持，在 Compose 中不可用。
 
-有关作业选项和行为的更多详细信息，请参阅 [Docker CLI 文档](/reference/cli/docker/service/create.md#running-as-a-job)
+有关作业选项和行为的更多详细信息，请参阅 [Docker CLI 文档](/reference/cli/docker/service/create/#running-as-a-job)
 
 ### `placement`
 
@@ -84,7 +87,7 @@ services:
 
 #### `constraints`
 
-`constraints` 定义平台节点必须满足的必要属性，才能运行服务容器。更多示例，请参阅 [CLI 参考文档](/reference/cli/docker/service/create.md#constraint)。
+`constraints` 定义平台节点必须满足的必要属性，才能运行服务容器。更多示例，请参阅 [CLI 参考文档](/reference/cli/docker/service/create/#constraint)。
 
 ```yml
 deploy:
@@ -95,7 +98,7 @@ deploy:
 
 #### `preferences`
 
-`preferences` 定义一种策略（目前唯一支持的策略是 `spread`），用于将任务均匀分布到数据中心节点标签的各个值上。更多示例，请参阅 [CLI 参考文档](/reference/cli/docker/service/create.md#placement-pref)。
+`preferences` 定义一种策略（目前唯一支持的策略是 `spread`），用于将任务均匀分布到数据中心节点标签的各个值上。更多示例，请参阅 [CLI 参考文档](/reference/cli/docker/service/create/#placement-pref)。
 
 ```yml
 deploy:
@@ -282,3 +285,4 @@ deploy:
     delay: 10s
     order: stop-first
 ```
+

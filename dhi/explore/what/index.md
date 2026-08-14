@@ -9,7 +9,7 @@
 
 ## 什么是加固镜像？
 
-加固镜像是经过精心最小化和安全加固的容器镜像，旨在减少漏洞并满足严格的安全和合规要求。与可能包含增加风险的非必要组件的标准镜像不同，加固镜像经过精简，仅包含安全运行应用程序所需的组件。
+加固镜像是经过精心最小化和安全加固的容器镜像，旨在减少漏洞并满足严格的安全和合规要求。与可能包含增加风险的非必要组件的标准镜像不同，加固镜像经过精简，仅包含安全运行应用程序所需的组件。如需深入了解相关技术，请参阅 [Base image hardening](security-concepts/hardening.md)。
 
 ## 加固镜像的优势
 
@@ -26,16 +26,16 @@ Docker 加固镜像默认安全、设计最小化，并由 Docker 维护，您�
 
 ## Docker 加固镜像与通用加固镜像的区别
 
-- 符合 SLSA 标准的构建：Docker 加固镜像按照 [SLSA Build Level 3](../core-concepts/slsa.md) 构建，确保构建过程防篡改、可验证且可审计，从而抵御供应链威胁。
+- 符合 SLSA 标准的构建：Docker 加固镜像按照 [SLSA Build Level 3](security-concepts/slsa.md) 构建，确保构建过程防篡改、可验证且可审计，从而抵御供应链威胁。
 
-- 无发行版（Distroless）方法：与捆绑整个操作系统、包含 shell、包管理器和调试工具的传统基础镜像不同，[无发行版镜像](../core-concepts/distroless.md) 仅保留运行应用程序所需的最小操作系统组件。通过排除不必要的工具和库，它们将攻击面减少了高达 95%，并可提高性能和镜像大小。
+- 无发行版（Distroless）方法：与捆绑整个操作系统、包含 shell、包管理器和调试工具的传统基础镜像不同，[无发行版镜像](security-concepts/distroless.md) 仅保留运行应用程序所需的最小操作系统组件。通过排除不必要的工具和库，它们将攻击面减少了高达 95%，并可提高性能和镜像大小。
 
-- 持续维护：所有 DHIs 均经过持续监控和更新，以维持接近零已知可利用 [CVE](../core-concepts/cves.md) 的状态，帮助您的团队避免补丁疲劳和意外告警。
+- 持续维护：所有 DHIs 均经过持续监控和更新，以维持接近零已知可利用 [CVE](security-concepts/cves.md) 的状态，帮助您的团队避免补丁疲劳和意外告警。
 
 - 合规就绪：每个镜像都包含加密签名的元数据：
-  - [SBOM](../core-concepts/sbom.md) 显示镜像中包含的内容
-  - [VEX 文档](../core-concepts/vex.md) 识别哪些漏洞实际上可被利用
-  - [构建溯源](../core-concepts/provenance.md) 证明镜像的构建方式和地点
+  - [SBOM](security-concepts/sbom.md) 显示镜像中包含的内容
+  - [VEX 文档](security-concepts/vex.md) 识别哪些漏洞实际上可被利用
+  - [构建溯源](security-concepts/provenance.md) 证明镜像的构建方式和地点
 
 - 以兼容性为中心的设计：Docker 加固镜像在提供最小运行环境的同时，保持与常见 Linux 发行版的兼容性。它们移除非必要组件（如 shell 和包管理器）以增强安全性，但仍保留基于熟悉发行版标准构建的小型基础层。镜像通常提供 musl libc（基于 Alpine）和 glibc（基于 Debian）版本，支持广泛的应用兼容性需求。
 
@@ -44,7 +44,8 @@ Docker 加固镜像默认安全、设计最小化，并由 Docker 维护，您�
 Docker 加固镜像（DHIs）默认安全、设计最小化，并由 Docker 维护，您无需操心。它们提供：
 
 - 为安心而构建的镜像：极简且无发行版，DHIs 消除了高达 95% 的传统容器攻击面。
-- 不再为补丁恐慌：通过持续 CVE 扫描和 SLA 支持的修复，Docker 帮助您领先于威胁。
+- 不再为补丁恐慌：通过持续 CVE 扫描和 [SLA 支持的修复](https://docs.docker.com/go/dhi-sla/)，Docker 帮助您领先于威胁。
 - 审计就绪的镜像：所有 DHIs 均包含签名的 SBOM、VEX 和溯源信息，支持安全和合规工作流程。
 - 与您的技术栈兼容的镜像：提供 Alpine 和 Debian 版本，DHIs 可直接集成到您现有的 Dockerfile 和流水线中。
 - 企业级支持的镜像：通过 Docker 的支持和对关键漏洞的快速响应，获得安心保障。
+

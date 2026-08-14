@@ -13,8 +13,6 @@
 
 
 
-
-
 ## Description
 
 Show the Docker Desktop CLI plugin version information

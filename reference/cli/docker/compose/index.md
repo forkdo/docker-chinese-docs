@@ -6,12 +6,6 @@
 
 
 
-<!--
-抱歉，本页面的内容是自动从 Docker 的源代码生成的。如果你想修改此处显示的文本，
-需要在以下仓库中搜索相关字符串并提出修改建议：
-https://github.com/docker/compose
--->
-
 
 
 
@@ -242,17 +236,24 @@ Dry Run mode works with almost all commands. You cannot use Dry Run mode with a 
 
 | Command | Description |
 |---------|-------------|
-| [`docker compose alpha`](/reference/cli/docker/compose/alpha/) | Experimental commands |
+| [`docker compose alpha dry-run`](/reference/cli/docker/compose/alpha/dry-run/) | EXPERIMENTAL - Dry run command allow you to test a command without applying changes
+ |
+| [`docker compose alpha scale`](/reference/cli/docker/compose/alpha/scale/) | Scale services |
+| [`docker compose alpha watch`](/reference/cli/docker/compose/alpha/watch/) | Watch build context for service and rebuild/refresh containers when files are updated
+ |
 | [`docker compose attach`](/reference/cli/docker/compose/attach/) | Attach local standard input, output, and error streams to a service's running container
  |
 | [`docker compose bridge`](/reference/cli/docker/compose/bridge/) | Convert compose files into another model |
 | [`docker compose build`](/reference/cli/docker/compose/build/) | Build or rebuild services |
+| [`docker compose commit`](/reference/cli/docker/compose/commit/) | Create a new image from a service container's changes |
 | [`docker compose config`](/reference/cli/docker/compose/config/) | Parse, resolve and render compose file in canonical format |
+| [`docker compose convert`](/reference/cli/docker/compose/convert/) | Converts the compose file to platform's canonical format |
 | [`docker compose cp`](/reference/cli/docker/compose/cp/) | Copy files/folders between a service container and the local filesystem |
 | [`docker compose create`](/reference/cli/docker/compose/create/) | Creates containers for a service |
 | [`docker compose down`](/reference/cli/docker/compose/down/) | Stop and remove containers, networks |
 | [`docker compose events`](/reference/cli/docker/compose/events/) | Receive real time events from containers |
 | [`docker compose exec`](/reference/cli/docker/compose/exec/) | Execute a command in a running container |
+| [`docker compose export`](/reference/cli/docker/compose/export/) | Export a service container's filesystem as a tar archive |
 | [`docker compose images`](/reference/cli/docker/compose/images/) | List images used by the created containers |
 | [`docker compose kill`](/reference/cli/docker/compose/kill/) | Force stop service containers |
 | [`docker compose logs`](/reference/cli/docker/compose/logs/) | View output from containers |
@@ -266,7 +267,9 @@ Dry Run mode works with almost all commands. You cannot use Dry Run mode with a 
 | [`docker compose restart`](/reference/cli/docker/compose/restart/) | Restart service containers |
 | [`docker compose rm`](/reference/cli/docker/compose/rm/) | Removes stopped service containers |
 | [`docker compose run`](/reference/cli/docker/compose/run/) | Run a one-off command on a service |
+| [`docker compose scale`](/reference/cli/docker/compose/scale/) | Scale services |
 | [`docker compose start`](/reference/cli/docker/compose/start/) | Start services |
+| [`docker compose stats`](/reference/cli/docker/compose/stats/) | Display a live stream of container(s) resource usage statistics |
 | [`docker compose stop`](/reference/cli/docker/compose/stop/) | Stop services |
 | [`docker compose top`](/reference/cli/docker/compose/top/) | Display the running processes |
 | [`docker compose unpause`](/reference/cli/docker/compose/unpause/) | Unpause services |

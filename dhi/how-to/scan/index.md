@@ -5,14 +5,13 @@ Docker 安全加固镜像（Docker Hardened Images，简称 DHI）在设计上�
 
 ## 使用兼容 OpenVEX 的扫描器
 
-为了获得准确的漏洞评估，请使用支持 [VEX](/manuals/dhi/core-concepts/vex.md) 证明的扫描器。以下扫描器可以读取并应用 Docker 安全加固镜像中包含的 VEX 声明：
+为了获得准确的漏洞评估，请使用支持 [VEX](/manuals/dhi/explore/security-concepts/vex.md) 证明的扫描器。以下扫描器可以读取并应用 Docker 安全加固镜像中包含的 VEX 声明：
 
 - [Docker Scout](#docker-scout)：自动应用 VEX 声明，无需配置
 - [Trivy](#trivy)：通过 VEX Hub 或本地 VEX 文件支持 VEX
 - [Grype](#grype)：通过 `--vex` 标志支持 VEX
-- [Wiz](#wiz)：自动应用 VEX 声明，无需配置
 
-有关如何选择合适的扫描器以及了解支持 VEX 的扫描器与不支持 VEX 的扫描器之间的差异，请参阅[扫描器集成](/manuals/dhi/explore/scanner-integrations.md)。
+有关受支持扫描器的完整列表，请参阅[扫描器集成](/manuals/dhi/explore/scanner-integrations.md)。
 
 ## Docker Scout
 
@@ -37,7 +36,84 @@ $ docker scout cves dhi.io/<image>:<tag> --platform <platform>
     ...
 ```
 
-有关更详细的过滤和 JSON 输出，请参阅 [Docker Scout CLI 参考](../../../reference/cli/docker/scout/_index.md)。
+有关更详细的过滤和 JSON 输出，请参阅 [Docker Scout CLI 参考](/reference/cli/docker/scout/)。
+
+### 构建带有溯源证明的子镜像
+
+当您构建以 Docker 安全加固镜像为基础镜像的自定义镜像时，必须使用 `--provenance=mode=max` 和 `--sbom=true` 进行构建，以便 Docker Scout 能够追踪基础镜像的血缘关系并正确应用 VEX 声明。
+
+如果没有这些标志，Docker Scout 无法在溯源链中识别 DHI 基础镜像。因此，它会报告基础镜像中已被 VEX 声明抑制的 CVE，从而在扫描结果中产生错误的 CVE 误报。
+
+> [!NOTE]
+> **为何需要溯源证明**
+>
+> Docker Scout 使用 max 模式溯源证明来识别 DHI 基础镜像并追踪其血缘关系。经过加密签名的溯源证明可确保基础镜像血缘关系经过验证且防篡改，为 Docker Scout 提供正确应用基础镜像 VEX 声明所需的信任锚点。
+
+要使用最大溯源和 SBOM 证明进行构建：
+
+```console
+$ docker build \
+    --provenance=mode=max \
+    --sbom=true \
+    --push \
+    -t docker.io/<namespace>/<image>:<tag> .
+```
+
+使用这些标志构建后，Docker Scout 会读取完整的溯源链，匹配 DHI 基础镜像，并应用其 VEX 声明。对您子镜像的扫描随后会反映正确被抑制的 CVE，为您提供准确的漏洞评估。
+
+### 子镜像中的 VEX 证明
+
+如果您在子镜像中引入了新的层，并希望抑制这些层中的 CVE，您可以独立地将自己的 VEX 证明附加到子镜像，无需复制或聚合来自 DHI 基础镜像的 VEX 声明。
+
+当 `docker scout cves` 针对您的子镜像运行时，Scout 会从完整的溯源链中读取 VEX 证明并累积应用：
+
+- **基础镜像 VEX** - 附加到 DHI，应用于基础镜像层中的 CVE
+- **子镜像 VEX** - 附加到您的镜像，应用于您引入的层中的 CVE
+
+例如，如果您向 DHI Python 基础镜像添加了一个 `requests` 层，并附加了一个抑制 `CVE-2024-47081` 的 VEX 声明，Scout 会独立应用这两个 VEX 证明，并将每个归属于各自的作者：
+
+```text
+✓ VEX statements obtained from attestation
+CVE-2024-47081  VEX: not affected [vulnerable code not present] : <your-namespace>
+```
+
+Scout 在同一扫描中抑制来自 DHI 基础镜像 VEX 和来自您子镜像 VEX 的 CVE——无需聚合的 VEX 文档。
+
+要为您的子镜像创建并附加 VEX 证明：
+
+```bash
+cat > child-vex.json << 'EOF'
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://<your-namespace>/vex/<image-name>/1",
+  "author": "<your-namespace>",
+  "timestamp": "<timestamp>",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "<CVE-ID>"
+      },
+      "products": [
+        {
+          "@id": "pkg:pypi/<package>@<version>"
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present"
+    }
+  ]
+}
+EOF
+
+docker scout attestation add \
+  --file child-vex.json \
+  --predicate-type https://openvex.dev/ns/v0.2.0 \
+  docker.io/<your-namespace>/<image>:<tag>
+```
+
+> [!NOTE]
+> 这只有在您使用 `--provenance=mode=max` 构建时才有可能。如果没有完整的溯源链，Scout 无法回溯到基础镜像以获取其 VEX 证明。
 
 ### 在 CI/CD 中使用 Docker Scout 自动扫描 DHI
 
@@ -45,16 +121,16 @@ $ docker scout cves dhi.io/<image>:<tag> --platform <platform>
 
 #### GitHub Actions 工作流示例
 
-以下是一个示例 GitHub Actions 工作流，它构建镜像并使用 Docker Scout 扫描它：
+以下是一个示例 GitHub Actions 工作流，它构建镜像、扫描镜像，并仅在扫描通过时才推送到注册表：
 
 ```yaml {collapse="true"}
 name: DHI Vulnerability Scan
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ "**" ]
 
 env:
   REGISTRY: docker.io
@@ -71,21 +147,32 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Set up Docker with containerd image store
+        uses: docker/setup-docker-action@v5
+        with:
+          daemon-config: |
+            {
+              "features": {
+                 "containerd-snapshotter": true
+              }
+            }
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v4
         with:
+          registry: ${{ env.REGISTRY }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
-        run: |
-          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }} .
-
+      - name: Build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          sbom: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
+      
       - name: Run Docker Scout CVE scan
         uses: docker/scout-action@v1
         with:
@@ -93,9 +180,19 @@ jobs:
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
           only-severities: critical,high
           exit-code: true
+
+      - name: Push image
+        if: success()
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHA }}
 ```
 
 `exit-code: true` 参数确保如果检测到任何严重或高危漏洞，工作流将失败，从而防止部署不安全的镜像。
+
+> [!NOTE]
+>
+> 需要使用 `--provenance=mode=max` 和 `--sbom=true` 标志，以便 Docker Scout 能够追踪 DHI 基础镜像的血缘关系并正确应用其 VEX 声明。通过 `docker/setup-docker-action` 启用 containerd 镜像存储可让 BuildKit 在本地存储证明，而无需先推送到注册表。如果没有 containerd 镜像存储，Docker Engine 将以如下错误拒绝构建：`Attestation is not supported for the docker driver. Switch to a different driver, or turn on the containerd image store, and try again.`
+> `Push image` 步骤仅在使用 `if: success()` 时、扫描通过时才运行，以确保仅在镜像没有严重或高危漏洞时才推送到注册表。
 
 有关在 CI 中使用 Docker Scout 的更多详细信息，请参阅[将 Docker Scout 与其他系统集成](/manuals/scout/integrations/_index.md)。
 
@@ -187,13 +284,11 @@ Legend:
 - '0': Clean (no security findings detected)
 ```
 
-`--vex repo` 标志会在扫描期间应用来自已配置仓库的 VEX 声明，
-从而过滤掉已知的不可利用 CVE。
+`--vex repo` 标志会在扫描期间应用来自已配置仓库的 VEX 声明，从而过滤掉已知的不可利用 CVE。
 
 #### 使用本地 VEX 文件
 
-除了 VEX Hub，Trivy 还支持使用本地 VEX 文件进行漏洞过滤。
-您可以下载 Docker Hardened Images 提供的 VEX 证明，并直接将其与 Trivy 配合使用。
+除了 VEX Hub，Trivy 还支持使用本地 VEX 文件进行漏洞过滤。您可以下载 Docker Hardened Images 提供的 VEX 证明，并直接将其与 Trivy 配合使用。
 
 首先，为您的镜像下载 VEX 证明：
 
@@ -207,25 +302,9 @@ $ docker scout vex get dhi.io/<image>:<tag> --output vex.json
 $ trivy image --scanners vuln --vex vex.json dhi.io/<image>:<tag>
 ```
 
-## Wiz
-
-[Wiz](https://www.wiz.io/) 是一个云安全平台，包含容器镜像扫描功能，并支持 DHI VEX 证明。
-Wiz CLI 会自动从 Docker Hardened Images 获取 VEX 声明，以提供准确的漏洞评估。
-
-### 使用 Wiz CLI 扫描 DHI
-
-获取 Wiz 订阅并安装 Wiz CLI 后，您可以通过拉取镜像并运行扫描命令来扫描 Docker Hardened Image：
-
-```console
-$ docker login dhi.io
-$ docker pull dhi.io/<image>:<tag>
-$ wiz docker scan --image dhi.io/<image>:<tag>
-```
-
 ## 导出 VEX 证明
 
-对于需要本地 VEX 文件的扫描器（如 Grype 或带本地文件的 Trivy），
-您可以从 Docker Hardened Images 导出 VEX 证明。
+对于需要本地 VEX 文件的扫描器（如 Grype 或带本地文件的 Trivy），您可以从 Docker Hardened Images 导出 VEX 证明。
 
 > [!NOTE]
 >
@@ -242,5 +321,9 @@ $ docker scout vex get dhi.io/<image>:<tag> --output vex.json
 >
 > `docker scout vex get` 命令需要 [Docker Scout CLI](https://github.com/docker/scout-cli/) 1.18.3 或更高版本。
 >
-> 如果镜像在您的设备上本地存在，您必须在镜像名称前加上 `registry://` 前缀。例如，使用
-> `registry://docs/dhi-python:3.13` 而不是 `docs/dhi-python:3.13`。
+> 如果镜像在您的设备上本地存在，您必须在镜像名称前加上 `registry://` 前缀。例如，使用 `registry://docs/dhi-python:3.13` 而不是 `docs/dhi-python:3.13`。
+
+## 探索 VEX 文件
+
+导出 VEX 证明后，您可以检查其内容，以了解每条声明的含义，并按状态进行过滤。有关 VEX 文档结构、状态值和 `jq` 过滤命令的循序渐进讲解，请参阅[探索 Docker Hardened Images 中的 VEX 声明](/guides/dhi-vex-walkthrough/)。
+
